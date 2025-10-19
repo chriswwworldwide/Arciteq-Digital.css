@@ -1,0 +1,30 @@
+#=========================================================# Cloudflare Pages _redirects file for L’Art de la Séduction #=========================================================# --- Force "www" canonical redirect --- https: //lartdelaseduction.com/*     https://www.lartdelaseduction.com/:splat 301!
+
+# --- Root fallback (optional) --- / /index.html 200 #=========================================================# THEME ROUTES #=========================================================# Amour Noir /amour-noir /themes/amour-noir.css 200 https: //amournoir.org/*              /themes/amour-noir.css 200
+
+# Désir Noir /desir-noir /themes/desir-noir.css 200 https: //desirnoir.org/*              /themes/desir-noir.css 200
+
+# Désir Brûlant /desir-brulant /themes/desir-brulant.css 200 https: //desirbrulant.org/*           /themes/desir-brulant.css 200
+
+# Échos de Soie /echos-de-soie /themes/echos-de-soie.css 200 https: //echosdesoie.com/*            /themes/echos-de-soie.css 200
+
+# Éros Noir /eros-noir /themes/eros-noir.css 200 https: //erosnoir.com/*               /themes/eros-noir.css 200
+
+# La Tentatrice /la-tentatrice /themes/la-tentatrice.css 200 https: //latentatrice.com/*           /themes/la-tentatrice.css 200
+
+# Les Péchés de la Chair /les-peches-de-la-chair /themes/les-peches-de-la-chair.css 200 https: //lespechesdelachair.com/*     /themes/les-peches-de-la-chair.css 200
+
+# Maison de Séduction /maison-de-seduction /themes/maison-de-seduction.css 200 https: //maisondeseduction.com/*      /themes/maison-de-seduction.css 200
+
+# Maison Nocturne /maison-nocturne /themes/maison-nocturne.css 200 https: //maisonnocturne.com/*         /themes/maison-nocturne.css 200
+
+# Nuit Étoilée /nuit-etoilee /themes/nuit-etoilee.css 200 https: //nuitetoilee.com/*            /themes/nuit-etoilee.css 200
+
+# Rouge Séduction /rouge-seduction /themes/rouge-seduction.css 200 https: //rougeseduction.com/*         /themes/rouge-seduction.css 200
+
+# Satin des Péchés /satin-des-peches /themes/satin-des-peches.css 200 https: //satindespeches.com/*         /themes/satin-des-peches.css 200
+
+# Séductiv by L’Art /seductiv-by-lart /themes/seductiv-by-lart.css 200 https: //seductivbylart.com/*         /themes/seductiv-by-lart.css 200
+
+# Default fallback for any other route
+/*                                   /index.html 200

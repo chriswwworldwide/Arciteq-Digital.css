@@ -19,7 +19,7 @@
     "audit": "npm audit --production --audit-level=moderate",
     "type-check": "tsc --noEmit || echo 'TypeScript not installed or no config found — skipping type check'",
     "// ---------------- Git Hooks / Secrets ----------------": "",
-    "prepare": "husky install",
+    "prepare": "husky",
     "precommit": "lint-staged && npm run secret-check",
     "secret-check": "node ./scripts/prevent-secrets.js",
     "// ---------------- Automation & Deploy ----------------": "",
@@ -57,6 +57,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/jquery": "^3.5.33",
+    "@types/node": "^24.10.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",

@@ -2,6 +2,8 @@
   "name": "lart-de-la-seduction",
   "version": "1.0.0",
   "description": "Luxury lingerie project for storefront and referrals",
+  "author": "chriswworldwide",
+  "license": "MIT",
   "type": "module",
   "main": "autoAnimateAndPost.js",
   "scripts": {
@@ -17,7 +19,7 @@
     "audit": "npm audit --production --audit-level=moderate",
     "type-check": "tsc --noEmit || echo 'TypeScript not installed or no config found — skipping type check'",
     "// ---------------- Git Hooks / Secrets ----------------": "",
-    "prepare": "husky install",
+    "prepare": "husky",
     "precommit": "lint-staged && npm run secret-check",
     "secret-check": "node ./scripts/prevent-secrets.js",
     "// ---------------- Automation & Deploy ----------------": "",
@@ -63,14 +65,12 @@
     "lint-staged": "^15.2.0",
     "nodemon": "^3.1.0",
     "prettier": "^3.3.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.9.3"
   },
   "keywords": [
     "lingerie",
     "luxury",
     "frontend",
     "storefront"
-  ],
-  "author": "chriswworldwide",
-  "license": "MIT"
+  ]
 }

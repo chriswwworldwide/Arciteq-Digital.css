@@ -1,61 +1,130 @@
 <!-- Wishlist Page -->
-    <section style="padding: 30px 15px;">
-        <h2 style="font-family: 'Lingerie XO', cursive; font-size: 2.5rem; text-align: center; color: #EAAECF;">
-            Your Wishlist
-        </h2>
-        <div style="margin-top: 30px;">
-            <!-- Wishlist Items -->
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-                <!-- Placeholder Wishlist Product -->
-                <div style="width: 200px; text-align: center;">
-                    <img src="placeholder12.jpg" alt="Wishlist Product 1" style="width: 100%; border: 1px solid #ccc;">
-                    <p style="margin: 10px 0; font-size: 1rem;">Lace Bodysuit</p>
-                    <p style="color: #EAAECF; font-weight: bold;">$79.99</p>
-                    <button style="background-color: #000; color: #fff; padding: 10px; border: none; cursor: pointer;" onclick="removeFromWishlist(this)">
-                        Remove
-                    </button>
-                    <button style="background-color: #EAAECF; color: #000; padding: 10px; border: none; cursor: pointer; margin-top: 10px;" onclick="addToCart()">
-                        Order Now
-                    </button>
-                </div>
-                <!-- Repeat for other wishlist products -->
-                <div style="width: 200px; text-align: center;">
-                    <img src="placeholder13.jpg" alt="Wishlist Product 2" style="width: 100%; border: 1px solid #ccc;">
-                    <p style="margin: 10px 0; font-size: 1rem;">Silk Nightgown</p>
-                    <p style="color: #EAAECF; font-weight: bold;">$99.99</p>
-                    <button style="background-color: #000; color: #fff; padding: 10px; border: none; cursor: pointer;" onclick="removeFromWishlist(this)">
-                        Remove
-                    </button>
-                    <button style="background-color: #EAAECF; color: #000; padding: 10px; border: none; cursor: pointer; margin-top: 10px;" onclick="addToCart()">
-                        Order Now
-                    </button>
-                </div>
-            </div>
-            <!-- Empty Wishlist Message -->
-            <div id="emptyWishlistMessage" style="display: none; text-align: center; margin-top: 30px;">
-                <p style="font-size: 1.5rem; color: #000;">Your wishlist is empty.</p>
-                <button style="background-color: #EAAECF; color: #000; padding: 10px 20px; border: none; cursor: pointer;" onclick="window.location.href='index.html'">
-                    Start Shopping
-                </button>
-            </div>
-        </div>
-    </section>
+<section style="padding: 30px 15px">
+  <h2
+    style="
+      font-family: &quot;Lingerie XO&quot;, cursive;
+      font-size: 2.5rem;
+      text-align: center;
+      color: #eaaecf;
+    "
+  >
+    Your Wishlist
+  </h2>
+  <div style="margin-top: 30px">
+    <!-- Wishlist Items -->
+    <div
+      style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px"
+    >
+      <!-- Placeholder Wishlist Product -->
+      <div style="width: 200px; text-align: center">
+        <img
+          src="placeholder12.jpg"
+          alt="Wishlist Product 1"
+          style="width: 100%; border: 1px solid #ccc"
+        />
+        <p style="margin: 10px 0; font-size: 1rem">Lace Bodysuit</p>
+        <p style="color: #eaaecf; font-weight: bold">$79.99</p>
+        <button
+          style="
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+          "
+          onclick="removeFromWishlist(this)"
+        >
+          Remove
+        </button>
+        <button
+          style="
+            background-color: #eaaecf;
+            color: #000;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+          "
+          onclick="addToCart()"
+        >
+          Order Now
+        </button>
+      </div>
+      <!-- Repeat for other wishlist products -->
+      <div style="width: 200px; text-align: center">
+        <img
+          src="placeholder13.jpg"
+          alt="Wishlist Product 2"
+          style="width: 100%; border: 1px solid #ccc"
+        />
+        <p style="margin: 10px 0; font-size: 1rem">Silk Nightgown</p>
+        <p style="color: #eaaecf; font-weight: bold">$99.99</p>
+        <button
+          style="
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+          "
+          onclick="removeFromWishlist(this)"
+        >
+          Remove
+        </button>
+        <button
+          style="
+            background-color: #eaaecf;
+            color: #000;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+          "
+          onclick="addToCart()"
+        >
+          Order Now
+        </button>
+      </div>
+    </div>
+    <!-- Empty Wishlist Message -->
+    <div
+      id="emptyWishlistMessage"
+      style="display: none; text-align: center; margin-top: 30px"
+    >
+      <p style="font-size: 1.5rem; color: #000">Your wishlist is empty.</p>
+      <button
+        style="
+          background-color: #eaaecf;
+          color: #000;
+          padding: 10px 20px;
+          border: none;
+          cursor: pointer;
+        "
+        onclick="window.location.href='index.html'"
+      >
+        Start Shopping
+      </button>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Remove item from wishlist
-        function removeFromWishlist(button) {
-            const productCard = button.parentElement;
-            productCard.remove();
+<script>
+  // Remove item from wishlist
+  function removeFromWishlist(button) {
+    const productCard = button.parentElement;
+    productCard.remove();
 
-            // Check if wishlist is empty
-            const wishlistItems = document.querySelectorAll("section div[style*='flex']").length;
-            if (wishlistItems === 0) {
-                document.getElementById('emptyWishlistMessage').style.display = 'block';
-            }
-        }
+    // Check if wishlist is empty
+    const wishlistItems = document.querySelectorAll(
+      "section div[style*='flex']",
+    ).length;
+    if (wishlistItems === 0) {
+      document.getElementById("emptyWishlistMessage").style.display = "block";
+    }
+  }
 
-        // Placeholder function for adding to cart
-        function addToCart() {
-            alert('Added to Cart!');
-        }
-    </script>
+  // Placeholder function for adding to cart
+  function addToCart() {
+    alert("Added to Cart!");
+  }
+</script>

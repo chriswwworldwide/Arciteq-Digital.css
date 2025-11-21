@@ -1,103 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>L’Art de la Séduction – Theme Gallery</title>
-  <link rel="stylesheet" data-theme href="themes/default.css" />
-  <script type="module" src="js/theme-switcher.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L’Art de la Séduction – Theme Gallery</title>
+    <link rel="stylesheet" data-theme href="themes/default.css" />
+    <script type="module" src="js/theme-switcher.js"></script>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Raleway', sans-serif;
-      background: #111;
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      margin: 1.5rem 0 0.5rem;
-      font-size: clamp(2rem, 5vw, 3rem);
-    }
-    p { margin: 0 0 1.2rem; color: #ccc; }
+    <style>
+      body {
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+        background: #111;
+        color: white;
+        text-align: center;
+        overflow-x: hidden;
+      }
+      h1 {
+        font-family: "Playfair Display", serif;
+        margin: 1.5rem 0 0.5rem;
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+      p {
+        margin: 0 0 1.2rem;
+        color: #ccc;
+      }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      max-width: 1400px;
-      margin: 0 auto 3rem;
-      padding: 0 1rem;
-    }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1400px;
+        margin: 0 auto 3rem;
+        padding: 0 1rem;
+      }
 
-    .theme-card {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 240px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      text-shadow: 0 3px 8px rgba(0,0,0,0.5);
-      transition: transform .3s ease, filter .3s ease;
-    }
-    .theme-card:hover {
-      transform: scale(1.03);
-      filter: brightness(1.15);
-    }
+      .theme-card {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 240px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+        transition:
+          transform 0.3s ease,
+          filter 0.3s ease;
+      }
+      .theme-card:hover {
+        transform: scale(1.03);
+        filter: brightness(1.15);
+      }
 
-    footer {
-      color: #888;
-      font-size: .85rem;
-      margin: 2rem 0;
-    }
-  </style>
-</head>
+      footer {
+        color: #888;
+        font-size: 0.85rem;
+        margin: 2rem 0;
+      }
+    </style>
+  </head>
 
-<body>
-  <h1>L’Art de la Séduction – Theme Gallery</h1>
-  <p>Click any preview to apply that theme site‑wide.</p>
+  <body>
+    <h1>L’Art de la Séduction – Theme Gallery</h1>
+    <p>Click any preview to apply that theme site‑wide.</p>
 
-  <div class="gallery" id="themeGallery"></div>
+    <div class="gallery" id="themeGallery"></div>
 
-  <footer>© L’Art de la Séduction</footer>
+    <footer>© L’Art de la Séduction</footer>
 
-  <script type="module">
-    import { setTheme } from "./js/theme-switcher.js";
+    <script type="module">
+      import { setTheme } from "./js/theme-switcher.js";
 
-    const themes = [
-      "maison-de-seduction",
-      "amour-noir",
-      "rouge-seduction",
-      "seductiv-by-lart",
-      "echos-de-soie",
-      "maison-nocturne",
-      "eros-noir",
-      "satin-des-peches",
-      "desir-noir",
-      "desir-brulant",
-      "la-tentatrice",
-      "les-peches-de-la-chair"
-    ];
+      const themes = [
+        "maison-de-seduction",
+        "amour-noir",
+        "rouge-seduction",
+        "seductiv-by-lart",
+        "echos-de-soie",
+        "maison-nocturne",
+        "eros-noir",
+        "satin-des-peches",
+        "desir-noir",
+        "desir-brulant",
+        "la-tentatrice",
+        "les-peches-de-la-chair",
+      ];
 
-    const gallery = document.getElementById("themeGallery");
+      const gallery = document.getElementById("themeGallery");
 
-    themes.forEach(theme => {
-      const card = document.createElement("div");
-      card.className = "theme-card";
-      card.style.background = `url('themes/${theme}.css'), linear-gradient(135deg, #222, #555)`;
-      card.textContent = theme.split('-')
-        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(' ');
-      card.onclick = () => setTheme(theme);
-      gallery.appendChild(card);
-    });
-  </script>
-</body>
+      themes.forEach((theme) => {
+        const card = document.createElement("div");
+        card.className = "theme-card";
+        card.style.background = `url('themes/${theme}.css'), linear-gradient(135deg, #222, #555)`;
+        card.textContent = theme
+          .split("-")
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" ");
+        card.onclick = () => setTheme(theme);
+        gallery.appendChild(card);
+      });
+    </script>
+  </body>
 </html>

@@ -1,109 +1,201 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">Category</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title id="page-title">Category | L’Art de la Séduction</title>
 
-  <!-- ✅ Google Analytics (replace G-XXXXXXX with your GA4 ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-  </script>
+    <!-- ✅ SEO -->
+    <meta
+      name="description"
+      content="Browse curated categories from L’Art de la Séduction. Filter, sort, and explore our most enticing collections."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://<your-domain>/categories.html" />
 
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    header { text-align:center; font-size:3em; margin-bottom:20px; }
-    .filters { margin-bottom:20px; }
-    .product-row { display:flex; flex-wrap:wrap; gap:15px; }
-    .product { width:calc(33% - 10px); text-align:center; }
-    .product img { width:100%; height:auto; }
-    @media(max-width:600px){ .product{width:100%;} }
-  </style>
-</head>
-<body>
+    <!-- ✅ Security -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https:; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self';"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-<header id="category-title">Category</header>
+    <!-- ✅ Google Analytics (replace G‑XXXXXXX) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G‑XXXXXXX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G‑XXXXXXX");
+    </script>
 
-<!-- Filters -->
-<div class="filters">
-  <label>
-    Sort by:
-    <select id="sort">
-      <option value="name">Name</option>
-      <option value="price-low">Price: Low to High</option>
-      <option value="price-high">Price: High to Low</option>
-    </select>
-  </label>
-  <label>
-    <input type="checkbox" id="in-stock"> In Stock Only
-  </label>
-</div>
+    <!-- ✅ Theme system -->
+    <link rel="stylesheet" data-theme href="themes/default.css" />
+    <script type="module" src="js/theme-switcher.js"></script>
 
-<!-- Products -->
-<div class="product-row" id="category-products"></div>
-
-<script>
-  function getQueryParam(param){
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-  }
-
-  const categoryID = getQueryParam("cat");
-
-  fetch("products.json")
-    .then(res => res.json())
-    .then(products => {
-      const container = document.getElementById("category-products");
-      const title = document.getElementById("category-title");
-
-      let list = Object.keys(products)
-        .map(id => ({ id, ...products[id] }))
-        .filter(p => p.category === categoryID);
-
-      title.textContent = categoryID.replace("-", " ").toUpperCase();
-      document.title = title.textContent + " | L'art de la Séduction";
-
-      function render(){
-        container.innerHTML="";
-        let filtered = [...list];
-
-        // In Stock filter
-        if(document.getElementById("in-stock").checked){
-          filtered = filtered.filter(p=>p.inStock);
-        }
-
-        // Sorting
-        const sort = document.getElementById("sort").value;
-        if(sort==="name"){ filtered.sort((a,b)=>a.name.localeCompare(b.name)); }
-        if(sort==="price-low"){ filtered.sort((a,b)=>parseFloat(a.price.replace(/[^0-9.]/g,""))-parseFloat(b.price.replace(/[^0-9.]/g,""))); }
-        if(sort==="price-high"){ filtered.sort((a,b)=>parseFloat(b.price.replace(/[^0-9.]/g,""))-parseFloat(a.price.replace(/[^0-9.]/g,""))); }
-
-        // Render cards
-        filtered.forEach(p=>{
-          const div=document.createElement("div");
-          div.className="product";
-          div.innerHTML=`
-            <a href="product.html?id=${p.id}">
-              <picture>
-                <source srcset="images/${p.imageBase}.avif" type="image/avif">
-                <source srcset="images/${p.imageBase}.webp" type="image/webp">
-                <img src="images/${p.imageBase}.jpg" alt="${p.alt}" loading="lazy">
-              </picture>
-              <p>${p.name} - ${p.price}</p>
-            </a>`;
-          container.appendChild(div);
-        });
+    <!-- ✅ Inline fallback styles -->
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 20px;
       }
 
-      render();
-      document.getElementById("sort").addEventListener("change", render);
-      document.getElementById("in-stock").addEventListener("change", render);
-    });
-</script>
+      header {
+        text-align: center;
+        font-size: 2.8em;
+        margin-bottom: 20px;
+      }
 
-</body>
+      .filters {
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 1rem;
+      }
+
+      .product-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+      }
+
+      .product {
+        width: calc(33% - 10px);
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      .product img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+      }
+
+      select,
+      input[type="checkbox"] {
+        margin-left: 6px;
+      }
+
+      @media (max-width: 700px) {
+        .product {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header id="category-title">Category</header>
+
+    <!-- ✅ Filter panel -->
+    <div class="filters" aria-label="Category Filters">
+      <label>
+        Sort by:
+        <select id="sort">
+          <option value="name">Name</option>
+          <option value="price-low">Price: Low → High</option>
+          <option value="price-high">Price: High → Low</option>
+        </select>
+      </label>
+      <label> <input type="checkbox" id="in-stock" /> In Stock Only </label>
+    </div>
+
+    <!-- ✅ Grid of products -->
+    <div class="product-row" id="category-products"></div>
+
+    <script>
+      // --- helpers ---
+      const esc = (s) =>
+        String(s).replace(
+          /[&<>'"]/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              "'": "&#39;",
+              '"': "&quot;",
+            })[c],
+        );
+
+      const params = new URLSearchParams(location.search);
+      const categoryID = params.get("cat");
+
+      async function loadCategory() {
+        try {
+          const res = await fetch("products.json", { cache: "no-cache" });
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          const products = await res.json();
+
+          const container = document.getElementById("category-products");
+          const title = document.getElementById("category-title");
+
+          let list = Object.entries(products)
+            .map(([id, p]) => ({ id, ...p }))
+            .filter((p) => p.category === categoryID);
+
+          if (!list.length) {
+            title.textContent = "Category Not Found";
+            container.textContent = "No products available in this category.";
+            document.title = "Category Not Found | L’Art de la Séduction";
+            return;
+          }
+
+          title.textContent = categoryID.replace(/-/g, " ").toUpperCase();
+          document.title = esc(title.textContent) + " | L’Art de la Séduction";
+
+          function render() {
+            container.innerHTML = "";
+            let filtered = [...list];
+
+            // filter
+            if (document.getElementById("in-stock").checked)
+              filtered = filtered.filter((p) => p.inStock);
+
+            // sort
+            const s = document.getElementById("sort").value;
+            const val = (v) => parseFloat(v.price.replace(/[^0-9.]/g, ""));
+            if (s === "name")
+              filtered.sort((a, b) => a.name.localeCompare(b.name));
+            if (s === "price-low") filtered.sort((a, b) => val(a) - val(b));
+            if (s === "price-high") filtered.sort((a, b) => val(b) - val(a));
+
+            // render cards
+            filtered.forEach((p) => {
+              const el = document.createElement("div");
+              el.className = "product";
+              el.innerHTML = `
+              <a href="product.html?id=${esc(p.id)}">
+                <picture>
+                  <source srcset="images/${esc(p.imageBase)}.avif" type="image/avif">
+                  <source srcset="images/${esc(p.imageBase)}.webp" type="image/webp">
+                  <img src="images/${esc(p.imageBase)}.jpg" alt="${esc(p.alt)}" loading="lazy" decoding="async">
+                </picture>
+                <p>${esc(p.name)} – ${esc(p.price)}</p>
+              </a>`;
+              container.appendChild(el);
+            });
+          }
+
+          render();
+          document.getElementById("sort").addEventListener("change", render);
+          document
+            .getElementById("in-stock")
+            .addEventListener("change", render);
+        } catch (err) {
+          console.error("Category load error:", err);
+          document.getElementById("category-products").innerHTML =
+            "<p style='color:crimson'>Unable to load category.</p>";
+        }
+      }
+
+      loadCategory();
+    </script>
+  </body>
 </html>

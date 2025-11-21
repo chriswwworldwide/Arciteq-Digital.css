@@ -1,20 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Features</title>
-</head>
-<body>
-    <header>
-        <!-- Include header here -->
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore L’art de la Séduction’s advanced features — search, personalization, and more coming soon."
+    />
+    <title>Advanced Features | L’art de la Séduction</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="styles/main.css" />
+
+    <!-- Favicon (optional) -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <!-- Dynamic includes -->
+    <div id="header-placeholder" class="loading">Loading header...</div>
+
     <main>
-        <h1>Advanced Features</h1>
-        <p>Search functionality, personalized recommendations, and more coming soon!</p>
+      <section class="features-section">
+        <h1>Advanced Features</h1>
+        <p>
+          Our new features — personalized recommendations, intelligent search,
+          and seamless shopping experiences — are launching soon!
+        </p>
+
+        <div class="feature-preview">
+          <img
+            src="images/products/screenshot-1.png"
+            alt="Preview of advanced store features coming soon"
+          />
+        </div>
+
+        <p>
+          <a href="index.html" class="btn">← Back to Homepage</a>
+        </p>
+      </section>
     </main>
-    <footer>
-        <!-- Include footer here -->
-    </footer>
-</body>
+
+    <div id="footer-placeholder" class="loading">Loading footer...</div>
+
+    <script>
+      async function loadIncludes() {
+        try {
+          const [header, footer] = await Promise.all([
+            fetch("header.html").then((res) => res.text()),
+            fetch("footer.html").then((res) => res.text()),
+          ]);
+          document.getElementById("header-placeholder").innerHTML = header;
+          document.getElementById("footer-placeholder").innerHTML = footer;
+        } catch (err) {
+          console.warn("Header or footer file could not be loaded", err);
+        }
+      }
+      loadIncludes();
+    </script>
+  </body>
 </html>

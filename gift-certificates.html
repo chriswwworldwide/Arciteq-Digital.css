@@ -1,76 +1,215 @@
 <!-- Gift Certificate Page -->
-    <section style="padding: 30px 15px;">
-        <h2 style="font-family: 'Lingerie XO', cursive; font-size: 2.5rem; text-align: center; color: #EAAECF;">
-            Purchase a Gift Certificate
-        </h2>
-        <form id="giftCertificateForm" style="max-width: 500px; margin: 30px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
-            <!-- Recipient's Name -->
-            <div style="margin-bottom: 20px;">
-                <label for="recipientName" style="display: block; font-size: 1rem; font-weight: bold; margin-bottom: 5px;">Recipient's Name:</label>
-                <input type="text" id="recipientName" name="recipientName" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
-            </div>
-            <!-- Recipient's Email -->
-            <div style="margin-bottom: 20px;">
-                <label for="recipientEmail" style="display: block; font-size: 1rem; font-weight: bold; margin-bottom: 5px;">Recipient's Email:</label>
-                <input type="email" id="recipientEmail" name="recipientEmail" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
-            </div>
-            <!-- Gift Amount -->
-            <div style="margin-bottom: 20px;">
-                <label for="giftAmount" style="display: block; font-size: 1rem; font-weight: bold; margin-bottom: 5px;">Gift Amount:</label>
-                <select id="giftAmount" name="giftAmount" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
-                    <option value="50">$50</option>
-                    <option value="100">$100</option>
-                    <option value="150">$150</option>
-                    <option value="200">$200</option>
-                </select>
-            </div>
-            <!-- Personal Message -->
-            <div style="margin-bottom: 20px;">
-                <label for="personalMessage" style="display: block; font-size: 1rem; font-weight: bold; margin-bottom: 5px;">Personal Message:</label>
-                <textarea id="personalMessage" name="personalMessage" rows="5" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Write your message here..."></textarea>
-            </div>
-            <!-- Sender's Name -->
-            <div style="margin-bottom: 20px;">
-                <label for="senderName" style="display: block; font-size: 1rem; font-weight: bold; margin-bottom: 5px;">Your Name:</label>
-                <input type="text" id="senderName" name="senderName" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
-            </div>
-            <!-- Submit Button -->
-            <button type="submit" style="background-color: #EAAECF; color: #000; padding: 15px; border: none; font-size: 1rem; cursor: pointer; width: 100%; border-radius: 4px;">
-                Purchase Gift Certificate
-            </button>
-        </form>
-        <!-- Confirmation Message -->
-        <div id="confirmationMessage" style="display: none; text-align: center; margin-top: 30px; color: #28a745; font-size: 1.2rem;">Thank you! Your gift certificate has been sent.</div>
-    </section>
+<section style="padding: 30px 15px">
+  <h2
+    style="
+      font-family: &quot;Lingerie XO&quot;, cursive;
+      font-size: 2.5rem;
+      text-align: center;
+      color: #eaaecf;
+    "
+  >
+    Purchase a Gift Certificate
+  </h2>
+  <form
+    id="giftCertificateForm"
+    style="
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    "
+  >
+    <!-- Recipient's Name -->
+    <div style="margin-bottom: 20px">
+      <label
+        for="recipientName"
+        style="
+          display: block;
+          font-size: 1rem;
+          font-weight: bold;
+          margin-bottom: 5px;
+        "
+        >Recipient's Name:</label
+      >
+      <input
+        type="text"
+        id="recipientName"
+        name="recipientName"
+        style="
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        "
+        required
+      />
+    </div>
+    <!-- Recipient's Email -->
+    <div style="margin-bottom: 20px">
+      <label
+        for="recipientEmail"
+        style="
+          display: block;
+          font-size: 1rem;
+          font-weight: bold;
+          margin-bottom: 5px;
+        "
+        >Recipient's Email:</label
+      >
+      <input
+        type="email"
+        id="recipientEmail"
+        name="recipientEmail"
+        style="
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        "
+        required
+      />
+    </div>
+    <!-- Gift Amount -->
+    <div style="margin-bottom: 20px">
+      <label
+        for="giftAmount"
+        style="
+          display: block;
+          font-size: 1rem;
+          font-weight: bold;
+          margin-bottom: 5px;
+        "
+        >Gift Amount:</label
+      >
+      <select
+        id="giftAmount"
+        name="giftAmount"
+        style="
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        "
+        required
+      >
+        <option value="50">$50</option>
+        <option value="100">$100</option>
+        <option value="150">$150</option>
+        <option value="200">$200</option>
+      </select>
+    </div>
+    <!-- Personal Message -->
+    <div style="margin-bottom: 20px">
+      <label
+        for="personalMessage"
+        style="
+          display: block;
+          font-size: 1rem;
+          font-weight: bold;
+          margin-bottom: 5px;
+        "
+        >Personal Message:</label
+      >
+      <textarea
+        id="personalMessage"
+        name="personalMessage"
+        rows="5"
+        style="
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        "
+        placeholder="Write your message here..."
+      ></textarea>
+    </div>
+    <!-- Sender's Name -->
+    <div style="margin-bottom: 20px">
+      <label
+        for="senderName"
+        style="
+          display: block;
+          font-size: 1rem;
+          font-weight: bold;
+          margin-bottom: 5px;
+        "
+        >Your Name:</label
+      >
+      <input
+        type="text"
+        id="senderName"
+        name="senderName"
+        style="
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        "
+        required
+      />
+    </div>
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      style="
+        background-color: #eaaecf;
+        color: #000;
+        padding: 15px;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 4px;
+      "
+    >
+      Purchase Gift Certificate
+    </button>
+  </form>
+  <!-- Confirmation Message -->
+  <div
+    id="confirmationMessage"
+    style="
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+      color: #28a745;
+      font-size: 1.2rem;
+    "
+  >
+    Thank you! Your gift certificate has been sent.
+  </div>
+</section>
 
-    <script>
-        // Form Submission Handler
-        const giftCertificateForm = document.getElementById("giftCertificateForm");
-        const confirmationMessage = document.getElementById("confirmationMessage");
+<script>
+  // Form Submission Handler
+  const giftCertificateForm = document.getElementById("giftCertificateForm");
+  const confirmationMessage = document.getElementById("confirmationMessage");
 
-        giftCertificateForm.addEventListener("submit", (event) => {
-            event.preventDefault(); // Prevent form submission
+  giftCertificateForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent form submission
 
-            const formData = new FormData(giftCertificateForm);
-            const recipientName = formData.get("recipientName");
-            const recipientEmail = formData.get("recipientEmail");
-            const giftAmount = formData.get("giftAmount");
-            const personalMessage = formData.get("personalMessage");
-            const senderName = formData.get("senderName");
+    const formData = new FormData(giftCertificateForm);
+    const recipientName = formData.get("recipientName");
+    const recipientEmail = formData.get("recipientEmail");
+    const giftAmount = formData.get("giftAmount");
+    const personalMessage = formData.get("personalMessage");
+    const senderName = formData.get("senderName");
 
-            // Simulate sending gift certificate (this would be replaced with a real API call)
-            console.log("Gift Certificate Details:", {
-                recipientName,
-                recipientEmail,
-                giftAmount,
-                personalMessage,
-                senderName
-            });
+    // Simulate sending gift certificate (this would be replaced with a real API call)
+    console.log("Gift Certificate Details:", {
+      recipientName,
+      recipientEmail,
+      giftAmount,
+      personalMessage,
+      senderName,
+    });
 
-            // Display confirmation message
-            confirmationMessage.style.display = "block";
+    // Display confirmation message
+    confirmationMessage.style.display = "block";
 
-            // Clear the form
-            giftCertificateForm.reset();
-        });
-    </script>
+    // Clear the form
+    giftCertificateForm.reset();
+  });
+</script>

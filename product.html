@@ -1,93 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">Product</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title id="page-title">Product | L’Art de la Séduction</title>
 
-  <!-- ✅ Google Analytics (replace G-XXXXXXX with your GA4 ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-  </script>
+    <!-- ✅ SEO -->
+    <meta
+      name="description"
+      content="Explore luxurious details and pricing for exclusive L’Art de la Séduction products."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://<your‑domain>/product.html" />
 
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    .product-details { max-width: 800px; margin: 40px auto; padding: 20px; text-align: center; }
-    .product-details h1 { font-size: 2em; margin-bottom: 20px; }
-    .product-details picture img { max-width: 100%; height: auto; border: none; }
-    .product-details p { margin: 15px 0; }
-    .product-details button { margin: 10px; padding: 10px 20px; font-size: 1em; cursor: pointer; }
-  </style>
-</head>
-<body>
-  <header>
-    <!-- Include header -->
-  </header>
+    <!-- ✅ Security / Privacy -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https:; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self';"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <main>
-    <section class="product-details">
-      <h1 id="product-name"></h1>
+    <!-- ✅ Google Analytics (GA4) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G‑XXXXXXX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G‑XXXXXXX");
+    </script>
 
-      <picture id="product-image">
-        <!-- JS injects sources + img -->
-      </picture>
+    <!-- ✅ Theme system -->
+    <link rel="stylesheet" data-theme href="themes/default.css" />
+    <script type="module" src="js/theme-switcher.js"></script>
 
-      <p id="product-description"></p>
-      <p id="product-price"></p>
-      <button>Add to Cart</button>
-      <button>Add to Wishlist</button>
-    </section>
-  </main>
+    <!-- ✅ Fallback CSS -->
+    <link rel="stylesheet" href="styles.css" />
 
-  <footer>
-    <!-- Include footer -->
-  </footer>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
 
-  <script>
-    // Helper: get query parameter (e.g., ?id=satin-corset)
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
-    }
+      main {
+        min-height: 60vh;
+      }
 
-    const productId = getQueryParam("id");
+      .product-details {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        text-align: center;
+      }
 
-    // Fetch products from external JSON
-    fetch("products.json")
-      .then(response => response.json())
-      .then(products => {
-        const product = products[productId];
+      .product-details h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
 
-        if (product) {
-          document.getElementById("page-title").textContent = product.name + " | L'art de la Séduction";
+      .product-details picture img {
+        max-width: 100%;
+        height: auto;
+        border: none;
+        border-radius: 6px;
+      }
+
+      .product-details p {
+        margin: 15px 0;
+      }
+
+      .product-details button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        border: 0;
+        border-radius: 4px;
+      }
+
+      .notice {
+        color: crimson;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header></header>
+
+    <main>
+      <section class="product-details" aria-labelledby="product-name">
+        <h1 id="product-name">Loading Product…</h1>
+
+        <picture id="product-image" aria-hidden="true"></picture>
+
+        <p id="product-description"></p>
+        <p id="product-price"></p>
+        <button type="button">Add to Cart</button>
+        <button type="button">Add to Wishlist</button>
+      </section>
+    </main>
+
+    <footer></footer>
+
+    <!-- ✅ JS: safe fetch + basic sanitization -->
+    <script>
+      // get ?id= parameter safely
+      const params = new URLSearchParams(location.search);
+      const productId = params.get("id");
+
+      async function loadProduct() {
+        try {
+          const res = await fetch("products.json", { cache: "no-cache" });
+          if (!res.ok) throw new Error("Network error " + res.status);
+          const products = await res.json();
+          const product = products?.[productId];
+
+          const section = document.querySelector(".product-details");
+
+          if (!product) {
+            section.innerHTML = "<p class='notice'>Product not found.</p>";
+            document.title = "Product Not Found | L’Art de la Séduction";
+            return;
+          }
+
+          // escaping text to prevent XSS through JSON
+          const esc = (s) =>
+            String(s).replace(
+              /[&<>'"]/g,
+              (c) =>
+                ({
+                  "&": "&amp;",
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  "'": "&#39;",
+                  '"': "&quot;",
+                })[c],
+            );
+
+          document.title = esc(product.name) + " | L’Art de la Séduction";
           document.getElementById("product-name").textContent = product.name;
-          document.getElementById("product-description").textContent = product.description;
-          document.getElementById("product-price").textContent = "Price: " + product.price;
+          document.getElementById("product-description").textContent =
+            product.description;
+          document.getElementById("product-price").textContent =
+            "Price: " + product.price;
 
-          const picture = document.getElementById("product-image");
-          picture.innerHTML = `
-            <source srcset="images/${product.imageBase}.avif" type="image/avif">
-            <source srcset="images/${product.imageBase}.webp" type="image/webp">
-            <img src="images/${product.imageBase}.jpg"
-                 alt="${product.alt}"
-                 loading="lazy"
-                 decoding="async"
-                 width="600"
-                 height="800">
-          `;
-        } else {
-          document.querySelector(".product-details").innerHTML = "<p>Product not found.</p>";
+          const pic = document.getElementById("product-image");
+          pic.innerHTML = `
+        <source srcset="images/${esc(product.imageBase)}.avif" type="image/avif">
+        <source srcset="images/${esc(product.imageBase)}.webp" type="image/webp">
+        <img src="images/${esc(product.imageBase)}.jpg"
+             alt="${esc(product.alt)}"
+             loading="lazy"
+             decoding="async"
+             width="600"
+             height="800">
+      `;
+        } catch (err) {
+          console.error("🛑 Error loading product:", err);
+          document.querySelector(".product-details").innerHTML =
+            "<p class='notice'>Unable to load product details.</p>";
         }
-      })
-      .catch(error => {
-        console.error("Error loading products.json:", error);
-        document.querySelector(".product-details").innerHTML = "<p>Unable to load product details.</p>";
-      });
-  </script>
-</body>
+      }
+
+      loadProduct();
+    </script>
+  </body>
 </html>

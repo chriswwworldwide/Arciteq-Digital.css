@@ -1,0 +1,22 @@
+# Dependencies & generated folders
+node_modules
+dist
+coverage
+build
+public_backup_*
+backups_*
+
+# Config / infrastructure files
+package*.json
+eslint.config.js
+.eslintrc.*
+.prettierrc*
+*.backup.json
+.env
+.env.*
+
+# Large or static assets
+**/*.html
+**/*.css
+**/*.min.js
+**/*.bundle.js

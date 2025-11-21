@@ -1,1 +1,18 @@
-"*.{jpg,png,svg,mp4}": "true"
+# Node / build artifacts
+node_modules
+dist
+coverage
+
+# Lock & environment files
+package-lock.json
+.env
+.env.*
+
+# Tool/config files Prettier shouldn't parse
+eslint.config.js
+.eslintrc.*
+*.backup.json
+
+# Optional archives or backups
+backups_*
+public_backup_*

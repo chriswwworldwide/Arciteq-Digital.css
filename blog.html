@@ -1,126 +1,208 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>L'art de la Séduction Blog</title>
-  <meta name="description" content="Guides, tips, and style advice from L'art de la Séduction.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L'art de la Séduction Blog</title>
+    <meta
+      name="description"
+      content="Guides, tips, and style advice from L'art de la Séduction."
+    />
 
-  <!-- ✅ Open Graph -->
-  <meta property="og:title" content="L'art de la Séduction Blog">
-  <meta property="og:description" content="Guides, tips, and style advice from L'art de la Séduction.">
-  <meta property="og:image" content="https://yourdomain.com/images/blog-banner.jpg">
-  <meta property="og:url" content="https://yourdomain.com/blog.html">
-  <meta property="og:type" content="article">
+    <!-- ✅ Open Graph -->
+    <meta property="og:title" content="L'art de la Séduction Blog" />
+    <meta
+      property="og:description"
+      content="Guides, tips, and style advice from L'art de la Séduction."
+    />
+    <meta
+      property="og:image"
+      content="https://yourdomain.com/images/blog-banner.jpg"
+    />
+    <meta property="og:url" content="https://yourdomain.com/blog.html" />
+    <meta property="og:type" content="article" />
 
-  <!-- ✅ Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="L'art de la Séduction Blog">
-  <meta name="twitter:description" content="Guides, tips, and style advice from L'art de la Séduction.">
-  <meta name="twitter:image" content="https://yourdomain.com/images/blog-banner.jpg">
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="L'art de la Séduction Blog" />
+    <meta
+      name="twitter:description"
+      content="Guides, tips, and style advice from L'art de la Séduction."
+    />
+    <meta
+      name="twitter:image"
+      content="https://yourdomain.com/images/blog-banner.jpg"
+    />
 
-  <!-- ✅ Canonical -->
-  <link rel="canonical" href="https://yourdomain.com/blog.html" />
+    <!-- ✅ Canonical -->
+    <link rel="canonical" href="https://yourdomain.com/blog.html" />
 
-  <!-- ✅ Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-  </script>
+    <!-- ✅ Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXX");
+    </script>
 
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; }
-    header { position:sticky; top:0; background:#fff; z-index:1000; text-align:center; font-size:3em; padding:10px;
-      font-family:'Brush Script MT', cursive; color:black; -webkit-text-stroke:0.5px pink;
-      text-shadow:0.5px 0 pink,-0.5px 0 pink,0 0.5px pink,0 -0.5px pink; }
-    main { max-width:800px; margin:40px auto; padding:0 20px; }
-    article { margin-bottom:40px; }
-    article h2 { font-size:2em; margin-bottom:10px; }
-    article img { max-width:100%; height:auto; margin:15px 0; }
-    footer { background:#000; color:#fff; padding:20px; text-align:center; }
-    footer .trust-badges img { height:30px; margin:5px; }
-  </style>
-</head>
-<body>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 1000;
+        text-align: center;
+        font-size: 3em;
+        padding: 10px;
+        font-family: "Brush Script MT", cursive;
+        color: black;
+        -webkit-text-stroke: 0.5px pink;
+        text-shadow:
+          0.5px 0 pink,
+          -0.5px 0 pink,
+          0 0.5px pink,
+          0 -0.5px pink;
+      }
+      main {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      article {
+        margin-bottom: 40px;
+      }
+      article h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+      article img {
+        max-width: 100%;
+        height: auto;
+        margin: 15px 0;
+      }
+      footer {
+        background: #000;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      footer .trust-badges img {
+        height: 30px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      L'art de la Séduction Blog
+      <button onclick="toggleDarkMode()">🌙</button>
+    </header>
 
-<header>
-  L'art de la Séduction Blog
-  <button onclick="toggleDarkMode()">🌙</button>
-</header>
+    <main>
+      <article>
+        <h2>How to Choose the Perfect Lingerie</h2>
+        <p><em>Published August 2025 · 5 min read</em></p>
+        <img src="images/blog-lingerie-guide.jpg" alt="Lingerie Style Guide" />
+        <p>
+          Lingerie is more than clothing — it’s confidence, empowerment, and
+          elegance. Whether you’re buying for yourself or a partner, choosing
+          the right style is key. In this guide, we’ll explore body types,
+          fabrics, and colors to help you find your perfect piece.
+        </p>
+        <h3>1. Know Your Body Shape</h3>
+        <p>
+          Different cuts flatter different figures. Corsets create curves, while
+          teddies elongate the silhouette.
+        </p>
+        <h3>2. Fabrics Matter</h3>
+        <p>
+          Silk feels luxurious, lace adds romance, and sheer fabrics create
+          allure.
+        </p>
+        <h3>3. Confidence First</h3>
+        <p>
+          The best lingerie is the one that makes you feel incredible the moment
+          you put it on.
+        </p>
+      </article>
 
-<main>
-  <article>
-    <h2>How to Choose the Perfect Lingerie</h2>
-    <p><em>Published August 2025 · 5 min read</em></p>
-    <img src="images/blog-lingerie-guide.jpg" alt="Lingerie Style Guide">
-    <p>Lingerie is more than clothing — it’s confidence, empowerment, and elegance. Whether you’re buying for yourself or a partner, choosing the right style is key. In this guide, we’ll explore body types, fabrics, and colors to help you find your perfect piece.</p>
-    <h3>1. Know Your Body Shape</h3>
-    <p>Different cuts flatter different figures. Corsets create curves, while teddies elongate the silhouette.</p>
-    <h3>2. Fabrics Matter</h3>
-    <p>Silk feels luxurious, lace adds romance, and sheer fabrics create allure.</p>
-    <h3>3. Confidence First</h3>
-    <p>The best lingerie is the one that makes you feel incredible the moment you put it on.</p>
-  </article>
+      <!-- ✅ Newsletter CTA -->
+      <section>
+        <h3>Stay Updated</h3>
+        <form action="https://YOUR_MAILCHIMP_URL" method="post" target="_blank">
+          <input
+            type="email"
+            name="EMAIL"
+            placeholder="Enter your email"
+            required
+          />
+          <button type="submit">Subscribe</button>
+        </form>
+      </section>
+    </main>
 
-  <!-- ✅ Newsletter CTA -->
-  <section>
-    <h3>Stay Updated</h3>
-    <form action="https://YOUR_MAILCHIMP_URL" method="post" target="_blank">
-      <input type="email" name="EMAIL" placeholder="Enter your email" required>
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
-</main>
+    <footer>
+      <div class="trust-badges">
+        <img src="images/ssl-secure.png" alt="SSL Secure Checkout" />
+        <img src="images/free-returns.png" alt="Free Returns" />
+        <img src="images/fast-shipping.png" alt="Fast Shipping" />
+      </div>
+      <p>
+        <a href="privacy.html">Privacy Policy</a> |
+        <a href="terms.html">Terms & Conditions</a> |
+        <a href="sitemap.xml">Sitemap</a> |
+        <a href="index.html">Home</a>
+      </p>
+    </footer>
 
-<footer>
-  <div class="trust-badges">
-    <img src="images/ssl-secure.png" alt="SSL Secure Checkout">
-    <img src="images/free-returns.png" alt="Free Returns">
-    <img src="images/fast-shipping.png" alt="Fast Shipping">
-  </div>
-  <p>
-    <a href="privacy.html">Privacy Policy</a> | 
-    <a href="terms.html">Terms & Conditions</a> | 
-    <a href="sitemap.xml">Sitemap</a> | 
-    <a href="index.html">Home</a>
-  </p>
-</footer>
+    <script>
+      // Dark mode toggle
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem(
+          "darkMode",
+          document.body.classList.contains("dark-mode"),
+        );
+      }
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+    </script>
 
-<script>
-  // Dark mode toggle
-  function toggleDarkMode(){
-    document.body.classList.toggle("dark-mode");
-    localStorage.setItem("darkMode",document.body.classList.contains("dark-mode"));
-  }
-  if(localStorage.getItem("darkMode")==="true"){ document.body.classList.add("dark-mode"); }
-</script>
-
-<!-- ✅ Structured Data for Blog Article -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "How to Choose the Perfect Lingerie",
-  "image": "https://yourdomain.com/images/blog-lingerie-guide.jpg",
-  "author": {
-    "@type": "Organization",
-    "name": "L'art de la Séduction"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "L'art de la Séduction",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://yourdomain.com/images/logo.png"
-    }
-  },
-  "datePublished": "2025-08-01",
-  "description": "A guide to choosing the perfect lingerie for your body type, fabrics, and confidence."
-}
-</script>
-
-</body>
+    <!-- ✅ Structured Data for Blog Article -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How to Choose the Perfect Lingerie",
+        "image": "https://yourdomain.com/images/blog-lingerie-guide.jpg",
+        "author": {
+          "@type": "Organization",
+          "name": "L'art de la Séduction"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "L'art de la Séduction",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://yourdomain.com/images/logo.png"
+          }
+        },
+        "datePublished": "2025-08-01",
+        "description": "A guide to choosing the perfect lingerie for your body type, fabrics, and confidence."
+      }
+    </script>
+  </body>
 </html>

@@ -1,0 +1,309 @@
+/* ================================================================
+   AMOUR NOIR — THEME STYLESHEET
+   ================================================================ */
+
+:root {
+  --theme-gold: #f4e3a3;
+  --theme-accent: #a81d3a;
+  --theme-bg-body: #111012;
+  --theme-text: #f8f8f8;
+  --theme-subtext: #bfbfbf;
+  --theme-footer-bg: #000;
+  --theme-footer-text: #fff;
+}
+
+/* ============ GLOBAL RESET & TYPOGRAPHY ======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--theme-bg-body);
+  color: var(--theme-text);
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* =================== HEADER SECTION ============================ */
+header {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+header .site-title {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-size: 4rem;
+  color: var(--theme-text);
+  -webkit-text-stroke: 0.5px var(--theme-accent);
+  display: inline-block;
+}
+
+header .subtext {
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  color: var(--theme-subtext);
+  margin-top: 0.4rem;
+}
+
+header .signup {
+  margin: 1rem auto 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+header .signup input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #333;
+  border-radius: 25px;
+  width: 260px;
+  font-size: 0.9rem;
+  background: #181818;
+  color: var(--theme-text);
+}
+
+header .signup input::placeholder {
+  color: #888;
+}
+
+header .signup button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  background: var(--theme-accent);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+header .signup button:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* =================== NAVIGATION BAR ============================= */
+@keyframes shimmerGold {
+  0% {
+    background-position: -300px 0;
+  }
+  100% {
+    background-position: 300px 0;
+  }
+}
+
+nav.nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    120deg,
+    #f2dc9a 0%,
+    #f4e3a3 35%,
+    #fff1b8 50%,
+    #f4e3a3 65%,
+    #e8cf91 100%
+  );
+  background-size: 400px 100%;
+  animation: shimmerGold 6s linear infinite;
+  padding: 0.25rem 1rem;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  border: none;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 1.4rem;
+}
+
+.nav-menu a {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transform: scaleX(0.94);
+  color: #000;
+  display: inline-block;
+  transition: color 0.25s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--theme-accent);
+}
+
+/* =================== HERO SECTION =============================== */
+.hero {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero img {
+  width: 100%;
+  height: 65vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* =================== MAIN CONTENT =============================== */
+main {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 0 1rem;
+}
+
+main h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  font-family: "Poppins", sans-serif;
+  color: var(--theme-gold);
+}
+
+main p {
+  color: var(--theme-subtext);
+  line-height: 1.6;
+  font-size: 1rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* =================== GALLERY GRID =============================== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
+  padding: 0 2rem;
+  margin: 3rem 0;
+}
+
+.gallery img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #181818;
+  border: 1px solid #222;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+  border-color: var(--theme-accent);
+}
+
+/* =================== FOOTER ===================================== */
+footer {
+  margin-top: 4rem;
+  background: var(--theme-footer-bg);
+  color: var(--theme-footer-text);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+footer a {
+  color: var(--theme-gold);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--theme-accent);
+}
+
+/* =================== RESPONSIVE QUERIES ========================= */
+@media (max-width: 1024px) {
+  header .site-title {
+    font-size: 3.2rem;
+  }
+  .nav-menu {
+    gap: 1rem;
+  }
+  .nav-menu a {
+    font-size: 0.7rem;
+  }
+  .gallery img {
+    height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav.nav-bar {
+    flex-wrap: wrap;
+  }
+  .nav-menu {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  header .site-title {
+    font-size: 2.8rem;
+  }
+  .gallery img {
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  header .site-title {
+    font-size: 2.4rem;
+  }
+  .nav-menu a {
+    font-size: 0.65rem;
+  }
+  nav.nav-bar {
+    padding: 0.2rem 0.6rem;
+    gap: 0.8rem;
+  }
+  .gallery img {
+    height: 260px;
+  }
+}
+
+/* =================== CAROUSEL BUTTONS =========================== */
+.carousel-arrow {
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* =============== END OF AMOUR NOIR THEME ======================== */

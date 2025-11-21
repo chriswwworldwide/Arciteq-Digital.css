@@ -1,1 +1,15 @@
-npm run precommit && git add -u
+#!/bin/sh
+# ==========================================================
+# Husky pre-commit hook
+# Runs before every git commit to ensure code quality.
+# ==========================================================
+
+echo "🔍 Running pre-commit checks..."
+
+# 1️⃣  Run lint-staged to apply Prettier + ESLint fixes on staged files
+npx lint-staged
+
+# 2️⃣  Optional secret scan (safe to ignore if not defined)
+npm run secret-check || true
+
+echo "✅ Pre-commit checks complete."

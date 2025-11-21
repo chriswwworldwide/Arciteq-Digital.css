@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L’Art de la Séduction | Gallery</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        background: #fafafa;
+        color: #222;
+        line-height: 1.5;
+      }
+
+      header {
+        background: #111;
+        color: #fff;
+        text-align: center;
+        padding: 1.5rem 0;
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+      }
+
+      main {
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 1.6rem;
+        color: #8b0f20;
+        margin-bottom: 1.5rem;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+
+      .gallery img {
+        width: 100%;
+        display: block;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      }
+
+      footer {
+        background: #111;
+        color: #ccc;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+      }
+
+      footer a {
+        color: #d9b43e;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>L’Art de la Séduction — Gallery</header>
+
+    <main>
+      <h2>All Product Screenshots</h2>
+      <div class="gallery" id="gallery"></div>
+    </main>
+
+    <footer>
+      <p>
+        © 2025 L’Art de la Séduction — All Rights Reserved | Contact us: <a
+          href="mailto:lartdelaseductionglobal@gmail.com"
+          >lartdelaseductionglobal@gmail.com</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      // Automatically generate image elements for all screenshots
+      const gallery = document.getElementById("gallery");
+
+      // Adjust this depending on your total number of images
+      const totalImages = 140;
+
+      for (let i = 1; i <= totalImages; i++) {
+        const img = document.createElement("img");
+        img.src = `images2/screenshot-${i}.png`;
+        img.alt = `Screenshot ${i}`;
+        img.loading = "lazy"; // improves performance
+        gallery.appendChild(img);
+      }
+    </script>
+  </body>
+</html>

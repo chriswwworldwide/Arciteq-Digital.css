@@ -1,0 +1,322 @@
+/* ===================================================
+   L’art de la Séduction — Global Stylesheet
+   =================================================== */
+
+/* --- Reset & Global settings --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Playfair Display", serif;
+  background: #fff;
+  color: #111;
+  margin: 0;
+}
+
+/* --- Header --- */
+#site-header {
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo a {
+  text-decoration: none;
+  font-size: 1.7rem;
+  font-style: italic;
+  color: #111;
+}
+
+nav ul.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul.nav-list li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+nav ul.nav-list li a:hover,
+nav ul.nav-list li a:focus {
+  color: #b30059;
+}
+
+/* --- Responsive Header --- */
+@media (max-width: 700px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul.nav-list {
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 0.8rem;
+  }
+}
+
+/* --- Main Layout --- */
+main {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+h1,
+h2 {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+/* --- Product Grid --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.product {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fafafa;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.product:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.product img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: cover;
+}
+
+.product h3 {
+  margin: 0.6rem 0 1rem;
+  font-size: 1rem;
+  color: #222;
+  padding: 0 0.5rem;
+}
+
+/* --- Footer --- */
+#site-footer {
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-family: "Playfair Display", serif;
+  color: #555;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#site-footer p {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.footer-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  color: #b30059;
+}
+
+.social-media a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: #444;
+  transition: color 0.2s ease;
+}
+
+.social-media a:hover {
+  color: #b30059;
+}
+
+/* --- Responsive Footer --- */
+@media (max-width: 600px) {
+  #site-footer {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .social-media a {
+    display: inline-block;
+    margin: 0.3rem;
+  }
+}
+
+/* --- Features Page Styling --- */
+.features-section {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.features-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.features-section p {
+  margin: 0.8rem auto;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.feature-preview img {
+  margin: 1rem auto 2rem;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-block;
+  background: #b30059;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #800040;
+}
+
+.btn.secondary {
+  background: #555;
+}
+
+.btn.secondary:hover {
+  background: #333;
+}
+
+/* --- Contact Page --- */
+.contact-section {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem 1.2rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+.contact-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact-section p {
+  line-height: 1.6;
+  margin: 0.6rem auto 1.2rem;
+  color: #333;
+  max-width: 600px;
+}
+
+.contact-form {
+  margin: 2rem auto;
+  text-align: left;
+  max-width: 500px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+/* --- Loading Placeholder --- */
+.loading {
+  text-align: center;
+  padding: 1rem;
+  color: #777;
+  font-style: italic;
+}
+
+/* --- Contact Details --- */
+.contact-details {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.contact-details a {
+  color: #b30059;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}

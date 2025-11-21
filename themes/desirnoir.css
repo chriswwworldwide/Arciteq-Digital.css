@@ -1,0 +1,211 @@
+/* ==========================================================
+   L’Art de la Séduction — Désir Noir Edition  (No‑haze)
+   Charcoal‑burgundy depth with violet and rose‑gold reflections
+   ========================================================== */
+
+:root {
+  /* ===== Brand Palette ===== */
+  --deep: #5a1625;
+  /* burgundy foundation */
+  --rasp: #482250;
+  /* violet‑plum glow */
+  --gold: #b35e7e;
+  /* rose‑gold accent */
+  --noir-dark: #0e0c0d;
+  --noir-mid: #2b1a22;
+  --noir-light: #432735;
+
+  --white: #ffffff;
+  --black: #000000;
+
+  /* ===== Typography ===== */
+  --f-logo: "Italianno", cursive;
+  --f-display: "Bebas Neue", sans-serif;
+  --f-body: "Manrope", sans-serif;
+
+  /* ===== Gradients & Depth ===== */
+  --grad-accent: linear-gradient(145deg, var(--rasp), var(--deep));
+  --grad-nav: linear-gradient(180deg, var(--gold) 0%, var(--rasp) 100%);
+  --grad-featured: radial-gradient(
+    circle at 65% 40%,
+    var(--noir-light),
+    var(--noir-dark)
+  );
+  --grad-highlight: linear-gradient(180deg, var(--rasp) 0%, var(--deep) 100%);
+  --grad-shadowed: linear-gradient(
+    160deg,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.5)
+  );
+
+  /* ===== Shadows ===== */
+  --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.25);
+  --shadow-hard: 0 12px 18px rgba(0, 0, 0, 0.45);
+
+  /* ===== Borders ===== */
+  --border-hairline: 1px solid var(--deep);
+  --border-light: 1px solid rgba(0, 0, 0, 0.1);
+
+  /* ===== Text ===== */
+  --text-base: var(--black);
+  --text-light: var(--white);
+  --text-accent: var(--gold);
+
+  /* ===== Timings ===== */
+  --speed-fast: 0.25s;
+  --speed-medium: 0.45s;
+  --speed-slow: 0.8s;
+  --ease-standard: cubic-bezier(0.17, 0.67, 0.58, 1);
+}
+
+/* === BACKGROUND HELPERS === */
+.bg-noir {
+  background: var(--grad-featured);
+  color: var(--white);
+}
+
+.bg-deep {
+  background: var(--grad-accent);
+  color: var(--white);
+}
+
+.bg-gold {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* === TEXT HELPERS === */
+.text-deep {
+  color: var(--deep);
+}
+
+.text-rasp {
+  color: var(--rasp);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.text-light {
+  color: var(--white);
+}
+
+.text-dark {
+  color: var(--black);
+}
+
+/* === BORDERS === */
+.border-deep {
+  border: 1px solid var(--deep);
+}
+
+.border-gold {
+  border: 1px solid var(--gold);
+}
+
+.border-light {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* === BUTTONS / PANELS === */
+.theme-btn-gradient {
+  background: var(--grad-accent);
+  color: var(--white);
+  transition: opacity var(--speed-fast) ease;
+}
+
+.theme-btn-gradient:hover {
+  opacity: 0.9;
+}
+
+.theme-panel-gradient {
+  background: var(--grad-nav);
+  color: var(--white);
+}
+
+.theme-featured-gradient {
+  background: var(--grad-featured);
+  color: var(--white);
+}
+
+/* === SHADOWS === */
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-hard {
+  box-shadow: var(--shadow-hard);
+}
+
+/* === TEXT OUTLINE === */
+.text-outline-deep {
+  color: var(--black);
+  text-shadow: none;
+}
+
+/* === TYPOGRAPHY === */
+.font-logo {
+  font-family: var(--f-logo);
+}
+
+.font-display {
+  font-family: var(--f-display);
+}
+
+.font-body {
+  font-family: var(--f-body);
+}
+
+/* ==========================================================
+   COMING SOON / NOTIFY‑ME — crisp, no glow
+   ========================================================== */
+
+.coming-soon {
+  color: var(--deep);
+  font-weight: 600;
+  letter-spacing: 0.035em;
+  text-shadow: none;
+  /* removed haze */
+}
+
+header form button {
+  background: var(--grad-accent);
+  color: var(--white);
+  border: none;
+  font-weight: 600;
+  box-shadow: none;
+  /* no glow */
+  transition:
+    background var(--speed-medium) var(--ease-standard),
+    transform var(--speed-fast) var(--ease-standard);
+}
+
+header form button:hover {
+  background: linear-gradient(145deg, var(--deep), var(--rasp));
+  transform: scale(1.04);
+}
+
+/* === NAV / HEADER === */
+.gold-panel {
+  background: var(--grad-nav);
+  color: var(--white);
+  box-shadow: none;
+}
+
+header h1 {
+  color: var(--gold);
+  text-shadow: none;
+}
+
+/* === FEATURED AREA === */
+.featured {
+  background: var(--grad-featured);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.55);
+}
+
+/* === GLOBAL BASE === */
+body {
+  background: var(--noir-dark);
+  color: var(--text-light);
+}

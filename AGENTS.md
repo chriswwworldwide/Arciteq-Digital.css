@@ -93,3 +93,12 @@ Guardrails that still apply:
 - Do not run destructive commands (`rm -rf`, force push, drop tables, delete files) without explicit user confirmation.
 - Avoid exposing or logging secrets.
 - Keep the final summary concise: what changed, why, and what's next.
+
+### Where the "no approval buttons" setting lives
+
+Two separate things control whether you get prompted:
+
+1. **Devin CLI / Devin Desktop (running on your machine).** `.devin/config.json` in this repo pre-approves the commands used here (git, gh, npm, npx, node, make, curl, file reads/writes) so they run without a prompt. `rm -rf` and force-with-lease pushes still ask, and `sudo`, `rm -rf /`, `rm -rf ~`, `git push --force`, `git reset --hard` and writes to `.env` are blocked outright. For a completely prompt-free local run, start the CLI in bypass mode: `devin --permission-mode bypass` (or `/bypass` inside a session) — note it still cannot override the deny rules above.
+2. **Cloud sessions (app.devin.ai, Slack, ACP).** These never show per-command approval buttons; the agent runs commands, starts local servers, and commits on its own. `.devin/config.json` does not apply there, so it is expected behaviour that nothing asks you to click Accept.
+
+Practical upshot: you can hand over a block of work and walk away in either place. Approval is only ever needed for the deny/ask cases above, or when the agent needs something only you have (a secret, a production setting).

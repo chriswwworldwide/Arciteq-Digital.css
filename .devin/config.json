@@ -6,11 +6,37 @@
       "write",
       "grep",
       "glob",
-      "exec"
+      "exec",
+      "fetch",
+      "Read(**)",
+      "Write(**)",
+      "Edit(**)",
+      "Exec(git)",
+      "Exec(gh)",
+      "Exec(npm)",
+      "Exec(npx)",
+      "Exec(node)",
+      "Exec(make)",
+      "Exec(mkdir)",
+      "Exec(cp)",
+      "Exec(mv)",
+      "Exec(curl)",
+      "Exec(kill)",
+      "Exec(pkill)",
+      "Exec(lsof)"
+    ],
+    "ask": [
+      "Exec(rm -rf)",
+      "Exec(git push --force-with-lease)"
     ],
     "deny": [
-      "Write(.env*)",
-      "Exec(rm)"
+      "Write(.env)",
+      "Write(.env.*)",
+      "Exec(sudo)",
+      "Exec(rm -rf /)",
+      "Exec(rm -rf ~)",
+      "Exec(git push --force)",
+      "Exec(git reset --hard)"
     ]
   }
 }

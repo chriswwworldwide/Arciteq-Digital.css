@@ -2,4 +2,18 @@ node_modules/
 
 archive/
 
-.env.local
+# Environment files — never commit real credentials
+.env
+.env.*
+!.env.example
+
+# OS metadata
+.DS_Store
+
+# Local archives / backups (may embed .env and other secrets)
+backups/
+backups_cleanup/
+public_backup_*/
+*.tar.gz
+*.tgz
+*.zip

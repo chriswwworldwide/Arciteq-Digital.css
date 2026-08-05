@@ -1568,6 +1568,7 @@ app.get("/sitemap.xml", (req, res) => {
       { path: "/shop.html", priority: "0.9" },
       { path: "/content/senior-dog-mobility.html", priority: "0.85" },
       { path: "/content/night-walk-safety-for-dogs.html", priority: "0.85" },
+      { path: "/content/senior-cat-comfort.html", priority: "0.85" },
     ];
     const staticXml = staticUrls
       .map(

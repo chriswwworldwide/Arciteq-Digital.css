@@ -320,6 +320,9 @@
         if (typeof loadProducts === "function") {
           await loadProducts();
         }
+        if (typeof loadReviews === "function") {
+          await loadReviews();
+        }
 
         const list = Array.isArray(products) ? products : [];
         const filtered = list.filter(
@@ -356,12 +359,18 @@
             const imageEl = isDemoPlaceholder
               ? '<div style="width:100%;height:220px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#374151;font-size:0.95rem;">Product image coming soon</div>'
               : `<img src="${esc(img)}" alt="${esc(name)}" loading="lazy" decoding="async" />`;
+            const rating = typeof reviewRatings !== "undefined" ? reviewRatings.get(p?.id) : null;
+            const ratingEl =
+              rating && rating.count > 0
+                ? `<div style="color:#f59e0b;letter-spacing:1px;margin:4px 0;">${"★".repeat(Math.round(rating.avg))}${"☆".repeat(5 - Math.round(rating.avg))} <span style="color:#6b7280;font-size:0.85rem;letter-spacing:0;">(${rating.count} verified)</span></div>`
+                : "";
             return `
               <div class="card">
                 <a href="${esc(href)}">
                   ${imageEl}
                   <div class="card-body">
                     <div class="card-title">${esc(name)}</div>
+                    ${ratingEl}
                     <div class="card-meta">${esc(money)}</div>
                   </div>
                 </a>

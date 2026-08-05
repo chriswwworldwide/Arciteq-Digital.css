@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Collection | Shop</title>
+
+    <meta name="description" content="Explore our curated collection." />
+    <meta name="robots" content="index,follow" />
+    <link id="canonical-link" rel="canonical" href="/" />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self';"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <link rel="stylesheet" data-theme href="/themes/default.css" />
+    <script type="module" src="/js/theme-switcher.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+
+    <style>
+      main {
+        min-height: 60vh;
+      }
+
+      .collection {
+        max-width: 1000px;
+        margin: 28px auto;
+        padding: 0 16px;
+      }
+
+      .collection h1 {
+        margin: 0;
+        font-size: 1.75rem;
+      }
+
+      .collection p {
+        margin: 10px 0 0;
+        color: #374151;
+        line-height: 1.45;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 560px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .card {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .card a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        background: #f3f4f6;
+      }
+
+      .card-body {
+        padding: 12px;
+      }
+
+      .card-title {
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .card-meta {
+        margin-top: 6px;
+        color: #374151;
+      }
+
+      .notice {
+        margin-top: 16px;
+        padding: 12px;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+        color: #374151;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="header-mount" data-title="Collection"></div>
+
+    <main>
+      <section class="collection">
+        <nav id="breadcrumbs" aria-label="Breadcrumb" style="text-align:left;"></nav>
+        <h1 id="collection-title">Collection</h1>
+        <p id="collection-intro"></p>
+        <div id="collection-trust" aria-label="Delivery and returns"></div>
+        <div id="collection-products" class="grid" aria-live="polite"></div>
+        <div id="collection-empty" class="notice" style="display:none;"></div>
+      </section>
+    </main>
+
+    <script src="/script.js"></script>
+    <script>
+      const pathParts = location.pathname.split("/").filter(Boolean);
+      const nicheCategorySlug = pathParts.length >= 1 ? String(pathParts[0] || "") : "";
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "\"": "&quot;",
+          "'": "&#39;",
+        })[c]);
+      }
+
+      function formatMoney(amount, currency) {
+        const n = Number(amount || 0);
+        const cur = String(currency || "").toUpperCase();
+        return `${(n / 100).toFixed(2)} ${cur}`;
+      }
+
+      function getCollectionCopy(slug) {
+        const s = String(slug || "").toLowerCase();
+        if (s === "pet-safety-essentials") {
+          return {
+            title: "Pet Safety Essentials",
+            intro:
+              "Curated essentials to help keep pets visible, secure, and safe at home and on walks — with practical, safety-first choices.",
+            description:
+              "Shop pet safety essentials: visibility, anti-loss, and practical safety gear curated for everyday peace of mind.",
+            guides: [
+              { label: "Night Walk Safety guide", href: "/kits/night-walk-safety-dog.html" },
+              { label: "Shop featured picks", href: "/shop.html?featured=1" },
+            ],
+            faqs: [
+              {
+                q: "What’s the most important upgrade for night walks?",
+                a: "Visibility. Prioritise gear that can be seen from a distance (lights and reflective materials), not just close-up.",
+              },
+              {
+                q: "Is this safe for puppies or kittens?",
+                a: "Generally yes, but correct sizing and secure attachment matter most. Always check the product safety disclaimer on each product page.",
+              },
+              {
+                q: "Do I need a tracker as well as reflective gear?",
+                a: "They solve different problems. Reflective and lights help prevent incidents. A tracker helps if your pet slips a lead or gets lost.",
+              },
+            ],
+          };
+        }
+
+        if (s === "senior-pet-care") {
+          return {
+            title: "Senior Pet Care",
+            intro:
+              "Non-ingestible comfort and routine support for older pets — simple products that make day-to-day life easier without guesswork.",
+            description:
+              "Shop senior pet care essentials: comfort, mobility-friendly routines, and practical non-ingestible support for older pets.",
+            guides: [
+              { label: "Senior Dog Comfort guide", href: "/kits/senior-dog-comfort.html" },
+              { label: "Shop featured picks", href: "/shop.html?featured=1" },
+            ],
+            faqs: [
+              {
+                q: "What’s a good first upgrade for a senior pet?",
+                a: "Start with comfort basics: a supportive rest setup and simple routine consistency. Small changes often make the biggest difference.",
+              },
+              {
+                q: "Are these products non-ingestible?",
+                a: "Yes. This collection focuses on non-ingestible items like comfort, mobility, and routine helpers.",
+              },
+              {
+                q: "How do I choose the right size?",
+                a: "Check the size requirement on each product page and match it to your pet’s measurements and mobility needs.",
+              },
+            ],
+          };
+        }
+
+        if (s === "smart-monitoring") {
+          return {
+            title: "Smart Monitoring",
+            intro:
+              "Simple monitoring tools for peace of mind — track routines, spot changes early, and feel reassured when you’re not home.",
+            description:
+              "Shop smart monitoring tools for pets: practical tracking and monitoring to spot routine changes early and support calm daily care.",
+            guides: [
+              { label: "Home Monitoring Kit", href: "/kits/home-monitoring.html" },
+              { label: "Shop featured picks", href: "/shop.html?featured=1" },
+            ],
+            faqs: [
+              {
+                q: "What problem does smart monitoring solve?",
+                a: "It helps you notice routine changes earlier and feel more confident when you can’t be there in person.",
+              },
+              {
+                q: "Is smart monitoring only for dogs?",
+                a: "No. Many monitoring tools can work for both dogs and cats — just check compatibility and sizing.",
+              },
+              {
+                q: "Will this replace vet care?",
+                a: "No. It’s a support tool for awareness and routine. If you notice concerning changes, contact your vet.",
+              },
+            ],
+          };
+        }
+        return {
+          title: "Collection",
+          intro: "Explore our curated collection.",
+          description: "Explore our curated collection.",
+          guides: [],
+          faqs: [],
+        };
+      }
+
+      async function loadCollection() {
+        if (typeof loadTenant === "function") {
+          await loadTenant();
+        }
+        if (typeof applyTenantSeo === "function") {
+          applyTenantSeo();
+        }
+        if (typeof injectSharedHeader === "function") {
+          injectSharedHeader();
+        }
+        if (typeof updateCartCount === "function") {
+          updateCartCount();
+        }
+
+        const copy = getCollectionCopy(nicheCategorySlug);
+        document.getElementById("collection-title").textContent = copy.title;
+        document.getElementById("collection-intro").textContent = copy.intro;
+
+        {
+          const trustEl = document.getElementById("collection-trust");
+          if (trustEl) {
+            const supportEmail = String(tenant?.seo?.supportEmail || "").trim();
+            const supportText = supportEmail ? `Support: ${supportEmail}.` : "Support: reply within 24 hours.";
+            trustEl.innerHTML = `
+              <div style="margin-top:14px;padding:12px 14px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb;color:#374151;line-height:1.45;">
+                <div><strong>Delivery:</strong> Estimated delivery: 7–15 business days (UK).</div>
+                <div style="margin-top:8px;"><strong>Returns:</strong> 30-day returns.</div>
+                <div style="margin-top:8px;"><strong>${esc(supportText)}</strong></div>
+              </div>
+            `;
+          }
+        }
+
+        document.title = `${copy.title} | ${String(tenant?.seo?.brandName || "Shop")}`;
+
+        if (typeof upsertMetaTag === "function") {
+          upsertMetaTag("name", "description", copy.description);
+          upsertMetaTag("property", "og:title", document.title);
+          upsertMetaTag("property", "og:description", copy.description);
+          upsertMetaTag("property", "og:type", "website");
+        }
+
+        {
+          const canonicalEl = document.getElementById("canonical-link");
+          if (canonicalEl) {
+            canonicalEl.setAttribute(
+              "href",
+              `${globalThis.location.origin}/${encodeURIComponent(nicheCategorySlug)}`,
+            );
+          }
+        }
+
+        const crumbsEl = document.getElementById("breadcrumbs");
+        if (crumbsEl) {
+          crumbsEl.innerHTML = `
+            <a href="/" style="color:inherit;text-decoration:none;">Home</a>
+            <span style="margin:0 8px;color:#6b7280;">/</span>
+            <span style="color:#111827;">${esc(copy.title)}</span>
+          `;
+        }
+
+        if (Array.isArray(copy.guides) && copy.guides.length > 0) {
+          const introEl = document.getElementById("collection-intro");
+          if (introEl) {
+            const links = copy.guides
+              .map((g) => {
+                const href = String(g?.href || "");
+                const label = String(g?.label || "");
+                if (!href || !label) return "";
+                return `<a href="${esc(href)}" style="color:inherit;font-weight:700;text-decoration:none;">${esc(label)}</a>`;
+              })
+              .filter(Boolean)
+              .join('<span style="margin:0 10px;color:#6b7280;">·</span>');
+
+            if (links) {
+              introEl.insertAdjacentHTML(
+                "afterend",
+                `<div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">${links}</div>`,
+              );
+            }
+          }
+        }
+
+        if (typeof loadProducts === "function") {
+          await loadProducts();
+        }
+
+        const list = Array.isArray(products) ? products : [];
+        const filtered = list.filter(
+          (p) => String(p?.nicheCategory || "").toLowerCase() === nicheCategorySlug.toLowerCase(),
+        );
+
+        const mount = document.getElementById("collection-products");
+        const emptyEl = document.getElementById("collection-empty");
+
+        if (!mount) return;
+
+        if (filtered.length === 0) {
+          if (emptyEl) {
+            emptyEl.style.display = "block";
+            emptyEl.textContent = "No products found in this collection yet.";
+          }
+          mount.innerHTML = "";
+          return;
+        }
+
+        if (emptyEl) {
+          emptyEl.style.display = "none";
+          emptyEl.textContent = "";
+        }
+
+        mount.innerHTML = filtered
+          .slice(0, 48)
+          .map((p) => {
+            const href = String(p?.canonicalPath || "#");
+            const img = String(p?.image || "");
+            const name = String(p?.name || "Product");
+            const money = formatMoney(p?.price, p?.currency);
+            const isDemoPlaceholder = img.startsWith("/images2/");
+            const imageEl = isDemoPlaceholder
+              ? '<div style="width:100%;height:220px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#374151;font-size:0.95rem;">Product image coming soon</div>'
+              : `<img src="${esc(img)}" alt="${esc(name)}" loading="lazy" decoding="async" />`;
+            return `
+              <div class="card">
+                <a href="${esc(href)}">
+                  ${imageEl}
+                  <div class="card-body">
+                    <div class="card-title">${esc(name)}</div>
+                    <div class="card-meta">${esc(money)}</div>
+                  </div>
+                </a>
+              </div>
+            `;
+          })
+          .join("");
+
+        {
+          document
+            .querySelectorAll("script[data-schema='collection']")
+            .forEach((s) => s.remove());
+
+          document
+            .querySelectorAll("script[data-schema='collection-faq']")
+            .forEach((s) => s.remove());
+
+          const origin = globalThis.location.origin;
+          const collectionUrl = `${origin}/${nicheCategorySlug}`;
+          const itemList = {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            itemListElement: filtered.slice(0, 48).map((p, idx) => ({
+              "@type": "ListItem",
+              position: idx + 1,
+              url: `${origin}${String(p?.canonicalPath || "")}`,
+              name: String(p?.name || "Product"),
+            })),
+          };
+
+          const schema = document.createElement("script");
+          schema.type = "application/ld+json";
+          schema.dataset.schema = "collection";
+          schema.textContent = JSON.stringify(itemList);
+          document.head.appendChild(schema);
+
+          if (typeof upsertMetaTag === "function") {
+            upsertMetaTag("property", "og:url", collectionUrl);
+          }
+        }
+
+        if (Array.isArray(copy.faqs) && copy.faqs.length > 0) {
+          const faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: copy.faqs
+              .map((f) => ({
+                "@type": "Question",
+                name: String(f?.q || "").trim(),
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: String(f?.a || "").trim(),
+                },
+              }))
+              .filter((x) => x.name && x.acceptedAnswer && x.acceptedAnswer.text),
+          };
+
+          const schema = document.createElement("script");
+          schema.type = "application/ld+json";
+          schema.dataset.schema = "collection-faq";
+          schema.textContent = JSON.stringify(faqSchema);
+          document.head.appendChild(schema);
+        }
+      }
+
+      loadCollection().catch((err) => {
+        const emptyEl = document.getElementById("collection-empty");
+        if (emptyEl) {
+          emptyEl.style.display = "block";
+          emptyEl.textContent = "Failed to load collection.";
+        }
+        console.error(err);
+      });
+    </script>
+  </body>
+</html>

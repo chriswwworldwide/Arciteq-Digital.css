@@ -1,0 +1,61 @@
+name: Build, Lint, Format, and SonarCloud Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud:
+    name: Lint + Format + SonarCloud
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Required for proper analysis history
+
+      # 2️⃣ Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # 3️⃣ Install project dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4️⃣ Run ESLint — check for code quality issues but don't fail the build
+      - name: Run ESLint
+        run: |
+          npx eslint . || true
+
+      # 5️⃣ Run Prettier — auto‑format code (no push/commit back)
+      - name: Run Prettier
+        run: |
+          npx prettier --write .
+
+      # 6️⃣ Run SonarCloud analysis (simplified — no coverage, no debug)
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Auto‑provided by GitHub
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    # Your SonarCloud secret
+        with:
+          args: >
+            -Dsonar.organization=chriswwworldwide
+            -Dsonar.projectKey=chriswwworldwide_lartdelaseduction
+            -Dsonar.sources=.
+            -Dsonar.exclusions=node_modules/**,coverage/**,dist/**,public/**
+
+      # 7️⃣ Upload SonarCloud artifacts for optional inspection
+      - name: Upload SonarCloud report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sonarcloud-report
+          path: .scannerwork/

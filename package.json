@@ -9,15 +9,18 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "migrate": "node scripts/migrate.js",
     "// ---------------- Quality & Security ----------------": "",
-    "check": "npm run format:check && npm run lint && npm run type-check && npm run audit",
+    "check": "npm run format:check && npm run lint && npm run type-check && npm run build && npm run test && npm run audit",
     "lint": "eslint . --max-warnings=999",
     "lint:fix": "eslint . --fix",
     "format:check": "prettier --check '**/*.{js,jsx,ts,html,css,json,md}'",
     "format:fix": "prettier --write '**/*.{js,jsx,ts,html,css,json,md}'",
     "fix": "npm run lint:fix && npm run format:fix",
-    "audit": "npm audit --production --audit-level=moderate",
-    "type-check": "tsc --noEmit || echo 'TypeScript not installed or no config found — skipping type check'",
+    "audit": "npm audit --omit=dev --audit-level=moderate",
+    "type-check": "tsc --noEmit",
+    "// ---------------- Build Validation ----------------": "",
+    "build": "tsc --noEmit",
     "// ---------------- Git Hooks / Secrets ----------------": "",
     "prepare": "husky",
     "precommit": "lint-staged && npm run secret-check",
@@ -27,7 +30,11 @@
     "predeploy": "npm run update-sitemap",
     "postinstall": "npm run prepare",
     "// ---------------- Tests ----------------": "",
-    "test": "echo \"No tests defined yet\" && exit 0"
+    "test": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest watch",
+    "// ---------------- Reporting ----------------": "",
+    "badge": "npx coverage-badges save .github/badges/coverage.svg"
   },
   "lint-staged": {
     "*.{js,jsx,html,css,json,md}": [
@@ -45,20 +52,26 @@
     "chokidar": "^3.6.0",
     "cookie": "^1.0.1",
     "debug": "^4.3.4",
+    "dotenv": "^17.4.2",
     "express": "^5.1.0",
     "finalhandler": "^1.1.2",
     "http-errors": "^2.0.0",
     "mime-types": "^3.0.0",
+    "pg": "^8.16.0",
     "qs": "^6.11.2",
     "send": "^0.19.0",
     "serve-static": "^1.16.0",
     "statuses": "^2.0.1",
+    "stripe": "^22.1.0",
     "vary": "^1.1.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/jquery": "^3.5.33",
     "@types/node": "^24.10.1",
+    "@vitest/coverage-v8": "^4.0.12",
+    "@vitest/ui": "^4.0.12",
+    "coverage-badges": "^1.0.7",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -67,7 +80,10 @@
     "lint-staged": "^15.2.0",
     "nodemon": "^3.1.0",
     "prettier": "^3.3.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.12",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
   },
   "keywords": [
     "lingerie",

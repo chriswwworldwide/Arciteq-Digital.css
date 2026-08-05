@@ -1,42 +1,32 @@
 {
-    "compilerOptions": {
-        "target": "ES2022",
-        "module": "ESNext",
-        "moduleResolution": "node",
-        "rootDir": ".",
-        "allowJs": true,
-        "checkJs": false,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "noEmit": true,
-        "strict": false,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        /* ✅ Updated type libraries */
-        "types": [
-            "node"
-        ], // only keep node typings
-        "lib": [
-            "ES2022",
-            "DOM"
-        ],
-        "typeRoots": [
-            "./node_modules/@types"
-        ]
-    },
-    "include": [
-        "**/*.js",
-        "**/*.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist",
-        "build",
-        "public",
-        "themes",
-        "backups_*",
-        "public_backup_*",
-        "**/*.min.js"
-    ]
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "rootDir": ".",
+    "allowJs": true,
+    "checkJs": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "strict": false,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    /* ✅ Updated type libraries */
+    "types": ["node"], // only keep node typings
+    "lib": ["ES2022", "DOM"],
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["**/*.js", "**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "public",
+    "themes",
+    "backups_*",
+    "public_backup_*",
+    "**/*.min.js"
+  ]
 }

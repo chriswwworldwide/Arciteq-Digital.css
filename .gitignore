@@ -1,5 +1,7 @@
 node_modules/
 
+archive/
+
 # Environment files — never commit real credentials
 .env
 .env.*

@@ -11,12 +11,12 @@
       content="Explore luxurious details and pricing for exclusive L’Art de la Séduction products."
     />
     <meta name="robots" content="index,follow" />
-    <link rel="canonical" href="https://<your‑domain>/product.html" />
+    <link id="canonical-link" rel="canonical" href="/" />
 
     <!-- ✅ Security / Privacy -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data: https:; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self';"
+      content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self';"
     />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
@@ -35,11 +35,11 @@
     </script>
 
     <!-- ✅ Theme system -->
-    <link rel="stylesheet" data-theme href="themes/default.css" />
-    <script type="module" src="js/theme-switcher.js"></script>
+    <link rel="stylesheet" data-theme href="/themes/default.css" />
+    <script type="module" src="/js/theme-switcher.js"></script>
 
     <!-- ✅ Fallback CSS -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
 
     <style>
       body {
@@ -65,14 +65,108 @@
       }
 
       .product-details picture img {
-        max-width: 100%;
+        width: 100%;
+        max-width: 560px;
         height: auto;
+        object-fit: contain;
         border: none;
-        border-radius: 6px;
+        border-radius: 10px;
+      }
+
+      .product-details picture {
+        display: flex;
+        justify-content: center;
+        margin: 16px 0;
+      }
+
+      .product-details picture.is-landscape img {
+        max-height: 420px;
+      }
+
+      .product-details picture.is-portrait img {
+        max-height: 560px;
+      }
+
+      @media (max-width: 520px) {
+        .product-details {
+          margin: 20px auto;
+          padding: 16px;
+        }
+
+        .product-details picture img {
+          max-width: 100%;
+          max-height: 380px;
+        }
+
+        #reviews,
+        #faqs {
+          padding: 14px;
+          border-radius: 10px;
+        }
       }
 
       .product-details p {
         margin: 15px 0;
+      }
+
+      #reviews,
+      #faqs {
+        text-align: left;
+        margin: 24px auto 0;
+        max-width: 680px;
+        padding: 16px;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+      }
+
+      #reviews h2,
+      #faqs h2 {
+        margin: 0 0 12px;
+        font-size: 1.25rem;
+      }
+
+      #reviews p {
+        margin: 0 0 12px;
+        color: #374151;
+      }
+
+      #faqs details {
+        padding: 10px 0;
+        border-top: 1px solid #eee;
+      }
+
+      #faqs details:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      #faqs summary {
+        cursor: pointer;
+        font-weight: 600;
+        list-style: none;
+        outline: none;
+      }
+
+      #faqs summary::-webkit-details-marker {
+        display: none;
+      }
+
+      #faqs summary::before {
+        content: "+";
+        display: inline-block;
+        width: 1.2em;
+        color: #111827;
+      }
+
+      #faqs details[open] summary::before {
+        content: "–";
+      }
+
+      #faqs details > div {
+        margin-top: 8px;
+        color: #374151;
+        line-height: 1.45;
       }
 
       .product-details button {
@@ -92,45 +186,119 @@
   </head>
 
   <body>
-    <header></header>
+    <div id="header-mount" data-title="Product"></div>
 
     <main>
       <section class="product-details" aria-labelledby="product-name">
+        <nav id="breadcrumbs" aria-label="Breadcrumb" style="text-align:left;"></nav>
         <h1 id="product-name">Loading Product…</h1>
 
         <picture id="product-image" aria-hidden="true"></picture>
 
         <p id="product-description"></p>
         <p id="product-price"></p>
-        <button type="button">Add to Cart</button>
-        <button type="button">Add to Wishlist</button>
+        <button id="add-to-cart" type="button">Add to Cart</button>
+        <button id="add-to-wishlist" type="button">Add to Wishlist</button>
+
+        <section id="trust" aria-label="Delivery and returns"></section>
+
+        <section id="more-in-collection" aria-label="More in this collection"></section>
+
+        <section id="safety-fit" aria-label="Safety and fit"></section>
+
+        <section id="reviews" aria-label="Reviews"></section>
+
+        <section id="faqs" aria-label="FAQs"></section>
       </section>
     </main>
 
     <footer></footer>
-
+  
+    <script src="/script.js"></script>
     <!-- ✅ JS: safe fetch + basic sanitization -->
     <script>
-      // get ?id= parameter safely
       const params = new URLSearchParams(location.search);
-      const productId = params.get("id");
+      const legacyProductId = params.get("id");
+
+      const pathParts = location.pathname.split("/").filter(Boolean);
+      const nicheCategorySlug = pathParts.length >= 2 ? pathParts[0] : null;
+      const productSlug = pathParts.length >= 2 ? pathParts[1] : null;
 
       async function loadProduct() {
         try {
-          const res = await fetch("products.json", { cache: "no-cache" });
+          if (typeof loadTenant === "function") {
+            await loadTenant();
+          }
+
+          if (typeof loadProducts === "function") {
+            await loadProducts();
+          }
+
+          const res = await fetch("/data/products.json", { cache: "no-cache" });
           if (!res.ok) throw new Error("Network error " + res.status);
-          const products = await res.json();
-          const product = products?.[productId];
+          const parsed = await res.json();
+          const list = Array.isArray(parsed?.products) ? parsed.products : [];
 
           const section = document.querySelector(".product-details");
 
+          let product = null;
+          if (nicheCategorySlug && productSlug) {
+            product =
+              list.find(
+                (p) =>
+                  String(p?.nicheCategory?.slug || "") === nicheCategorySlug &&
+                  String(p?.seo?.slug || "") === productSlug,
+              ) || null;
+          } else if (legacyProductId) {
+            product =
+              list.find((p) => String(p?.productId || "") === legacyProductId) ||
+              null;
+          }
+
           if (!product) {
             section.innerHTML = "<p class='notice'>Product not found.</p>";
-            document.title = "Product Not Found | L’Art de la Séduction";
+            const brand = String(tenant?.seo?.brandName || "").trim();
+            document.title = `Product Not Found | ${brand || "Shop"}`;
             return;
           }
 
-          // escaping text to prevent XSS through JSON
+          const allowedNiches = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
+            ? tenant.catalog.nicheCategorySlugs
+                .map((s) => String(s || "").toLowerCase())
+                .filter(Boolean)
+            : null;
+          const allowedProductTypes = Array.isArray(tenant?.catalog?.productTypeSlugs)
+            ? tenant.catalog.productTypeSlugs
+                .map((s) => String(s || "").toLowerCase())
+                .filter(Boolean)
+            : null;
+          const productNiche = String(product?.nicheCategory?.slug || "").toLowerCase();
+          const productType = String(product?.productType?.slug || "").toLowerCase();
+          const nicheAllowed = !allowedNiches || allowedNiches.length === 0 || allowedNiches.includes(productNiche);
+          const typeAllowed = !allowedProductTypes || allowedProductTypes.length === 0 || allowedProductTypes.includes(productType);
+          if (!nicheAllowed || !typeAllowed) {
+            section.innerHTML = "<p class='notice'>Product not found.</p>";
+            const brand = String(tenant?.seo?.brandName || "").trim();
+            document.title = `Product Not Found | ${brand || "Shop"}`;
+            return;
+          }
+
+          const canonicalPath = String(product?.seo?.canonicalPath || "");
+          if (legacyProductId && canonicalPath) {
+            location.replace(canonicalPath);
+            return;
+          }
+
+          if (canonicalPath) {
+            const canonicalEl = document.getElementById("canonical-link");
+            if (canonicalEl) {
+              canonicalEl.setAttribute(
+                "href",
+                `${globalThis.location.origin}${canonicalPath}`,
+              );
+            }
+          }
+
           const esc = (s) =>
             String(s).replace(
               /[&<>'"]/g,
@@ -144,24 +312,628 @@
                 })[c],
             );
 
-          document.title = esc(product.name) + " | L’Art de la Séduction";
-          document.getElementById("product-name").textContent = product.name;
+          const title = String(product?.title || "Product");
+          const description = String(product?.description || "");
+          const priceAmount = Number(product?.price?.amount || 0);
+          const currency = String(product?.price?.currency || "").toUpperCase();
+          const categoryName = String(product?.nicheCategory?.name || "");
+          const categorySlug = String(product?.nicheCategory?.slug || "");
+
+          let deliveryEstimateText = "Estimated delivery: 7–15 business days (UK).";
+          try {
+            const assignmentsRes = await fetch("/data/supplier-assignments.json", {
+              cache: "no-cache",
+            });
+            if (assignmentsRes.ok) {
+              const assignmentsPayload = await assignmentsRes.json();
+              const assignments = Array.isArray(assignmentsPayload?.assignments)
+                ? assignmentsPayload.assignments
+                : [];
+              const activeTenantId = String(tenant?.tenant_id || "default");
+              const productId = String(product?.productId || "");
+
+              const match = assignments.find((a) => {
+                if (String(a?.tenant_id || "default") !== activeTenantId) return false;
+                return String(a?.productId || "") === productId;
+              });
+
+              const w = match?.expectedShippingWindowDays || null;
+              const minDays = Number(w?.min);
+              const maxDays = Number(w?.max);
+              if (Number.isFinite(minDays) && Number.isFinite(maxDays) && minDays > 0 && maxDays > 0) {
+                deliveryEstimateText = `Estimated delivery: ${minDays}–${maxDays} business days (UK).`;
+              }
+            }
+          } catch {
+            // ignore
+          }
+
+          const upsertMetaTag = (attrName, attrValue, content) => {
+            const safeAttrValue = String(attrValue || "");
+            const safeContent = String(content || "");
+            if (!safeAttrValue) return;
+
+            let el = document.querySelector(
+              `meta[${attrName}='${CSS.escape(safeAttrValue)}']`,
+            );
+            if (!el) {
+              el = document.createElement("meta");
+              el.setAttribute(attrName, safeAttrValue);
+              document.head.appendChild(el);
+            }
+            el.setAttribute("content", safeContent);
+          };
+
+          const brand = String(tenant?.seo?.brandName || "").trim();
+          document.title = `${esc(title)} | ${brand || "Shop"}`;
+
+          {
+            const desc = String(description || "").trim();
+            const shortDesc = desc.length > 155 ? `${desc.slice(0, 152)}...` : desc;
+            if (shortDesc) {
+              upsertMetaTag("name", "description", shortDesc);
+              upsertMetaTag("property", "og:description", shortDesc);
+              upsertMetaTag("name", "twitter:description", shortDesc);
+            }
+
+            const ogTitle = brand ? `${title} | ${brand}` : title;
+            upsertMetaTag("property", "og:title", ogTitle);
+            upsertMetaTag("name", "twitter:title", ogTitle);
+
+            const origin = globalThis.location.origin;
+            const canonicalPath = String(product?.seo?.canonicalPath || "");
+            const productUrl = canonicalPath ? `${origin}${canonicalPath}` : "";
+            if (productUrl) {
+              upsertMetaTag("property", "og:url", productUrl);
+            }
+
+            const img = product?.images?.[0] || {};
+            const imgSrc = String(img?.src || "");
+            const absoluteImg = imgSrc ? `${origin}${imgSrc}` : "";
+            if (absoluteImg) {
+              upsertMetaTag("property", "og:image", absoluteImg);
+              upsertMetaTag("name", "twitter:image", absoluteImg);
+            }
+
+            upsertMetaTag("property", "og:type", "product");
+          }
+          document.getElementById("product-name").textContent = title;
           document.getElementById("product-description").textContent =
-            product.description;
+            description;
           document.getElementById("product-price").textContent =
-            "Price: " + product.price;
+            `Price: ${(priceAmount / 100).toFixed(2)} ${currency}`;
+
+          {
+            const trustEl = document.getElementById("trust");
+            if (trustEl) {
+              const shippingOrigin = String(
+                product?.shippingOrigin || product?.warehouseLocation || "",
+              ).trim();
+              const originText = shippingOrigin ? `Ships from: ${shippingOrigin}.` : "";
+              const supportEmail = String(tenant?.seo?.supportEmail || "").trim();
+              const supportText = supportEmail
+                ? `Support: ${supportEmail}.`
+                : "Support: reply within 24 hours.";
+
+              trustEl.innerHTML = `
+                <div style="margin:16px auto 0;max-width:680px;padding:16px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb;text-align:left;">
+                  <div style="font-weight:700;">Delivery & Returns</div>
+                  <div style="margin-top:8px;color:#374151;line-height:1.45;">
+                    <div><strong>Delivery:</strong> ${esc(deliveryEstimateText)} ${originText}</div>
+                    <div style="margin-top:8px;"><strong>Returns:</strong> If something isn’t right, contact us and we’ll make it right.</div>
+                    <div style="margin-top:8px;"><strong>${supportText}</strong></div>
+                  </div>
+                </div>
+              `;
+            }
+          }
+
+          {
+            const mount = document.getElementById("safety-fit");
+            if (mount) {
+              const petType = Array.isArray(product?.petType)
+                ? product.petType.map((v) => String(v || "").trim()).filter(Boolean)
+                : [];
+              const lifeStage = Array.isArray(product?.lifeStage)
+                ? product.lifeStage.map((v) => String(v || "").trim()).filter(Boolean)
+                : [];
+              const sizeReq = Array.isArray(product?.sizeRequirement)
+                ? product.sizeRequirement.map((v) => String(v || "").trim()).filter(Boolean)
+                : [];
+              const materials = Array.isArray(product?.materials)
+                ? product.materials.map((v) => String(v || "").trim()).filter(Boolean)
+                : [];
+              const safetyDisclaimer = String(product?.safetyDisclaimer || "").trim();
+
+              const formatList = (label, values) => {
+                if (!values || values.length === 0) return "";
+                return `<div style=\"margin-top:8px;\"><strong>${esc(label)}:</strong> ${esc(values.join(", "))}</div>`;
+              };
+
+              const materialsLine =
+                materials.length > 0
+                  ? `<div style=\"margin-top:8px;\"><strong>Materials:</strong> ${esc(materials.join(", "))}</div>`
+                  : "";
+              const disclaimerLine = safetyDisclaimer
+                ? `<div style=\"margin-top:8px;\"><strong>Safety:</strong> ${esc(safetyDisclaimer)}</div>`
+                : "";
+
+              const content =
+                formatList("Pet type", petType) +
+                formatList("Life stage", lifeStage) +
+                formatList("Size", sizeReq) +
+                materialsLine +
+                disclaimerLine;
+
+              if (!content) {
+                mount.innerHTML = "";
+              } else {
+                mount.innerHTML = `
+                  <div style="margin:12px auto 0;max-width:680px;padding:16px;border:1px solid #e5e7eb;border-radius:12px;background:#ffffff;text-align:left;">
+                    <div style="font-weight:700;">Safety & Fit</div>
+                    <div style="margin-top:8px;color:#374151;line-height:1.45;">
+                      ${content}
+                    </div>
+                  </div>
+                `;
+              }
+            }
+          }
+
+          // Product JSON-LD is built once after reviews are loaded.
+
+          const crumbsEl = document.getElementById("breadcrumbs");
+          if (crumbsEl) {
+            const categoryHref = categorySlug ? `/shop.html#${categorySlug}` : "/shop.html";
+            crumbsEl.innerHTML = `
+              <a href="/" style="color:inherit;text-decoration:none;">Home</a>
+              <span style="margin:0 8px;color:#6b7280;">/</span>
+              <a href="${esc(categoryHref)}" style="color:inherit;text-decoration:none;">${esc(categoryName || "Shop")}</a>
+              <span style="margin:0 8px;color:#6b7280;">/</span>
+              <span style="color:#111827;">${esc(title)}</span>
+            `;
+          }
+
+          {
+            const mount = document.getElementById("more-in-collection");
+            if (mount) {
+              const collectionHref = categorySlug ? `/${encodeURIComponent(categorySlug)}` : "/shop.html";
+              const featuredHref = "/shop.html?featured=1";
+
+              mount.innerHTML = `
+                <div style="margin:12px auto 0;max-width:680px;padding:16px;border:1px solid #e5e7eb;border-radius:12px;background:#ffffff;text-align:left;">
+                  <div style="font-weight:700;">More in this collection</div>
+                  <div style="margin-top:8px;color:#374151;line-height:1.45;">
+                    <a href="${esc(collectionHref)}" style="color:inherit;font-weight:700;text-decoration:none;">Browse ${esc(categoryName || "collection")} →</a>
+                    <span style="margin:0 10px;color:#6b7280;">·</span>
+                    <a href="${esc(featuredHref)}" style="color:inherit;font-weight:700;text-decoration:none;">Shop featured picks →</a>
+                  </div>
+                </div>
+              `;
+            }
+          }
+
+          {
+            const origin = globalThis.location.origin;
+            const canonicalPath = String(product?.seo?.canonicalPath || "");
+            const productUrl = canonicalPath ? `${origin}${canonicalPath}` : "";
+            const categoryUrl = categorySlug
+              ? `${origin}/shop.html#${encodeURIComponent(categorySlug)}`
+              : `${origin}/shop.html`;
+
+            const breadcrumbJsonLd = {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: `${origin}/`,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: categoryName || "Shop",
+                  item: categoryUrl,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: title,
+                  item: productUrl,
+                },
+              ],
+            };
+
+            const breadcrumbSchema = document.createElement("script");
+            breadcrumbSchema.type = "application/ld+json";
+            breadcrumbSchema.dataset.schema = "breadcrumbs";
+            breadcrumbSchema.textContent = JSON.stringify(breadcrumbJsonLd);
+            document.head.appendChild(breadcrumbSchema);
+          }
+
+          let reviewsPayload = null;
+          try {
+            const reviewsRes = await fetch("/data/reviews.json", {
+              cache: "no-cache",
+            });
+            if (reviewsRes.ok) {
+              reviewsPayload = await reviewsRes.json();
+            }
+          } catch {
+            reviewsPayload = null;
+          }
+
+          const tenantId =
+            typeof getTenantId === "function" ? getTenantId() : "default";
+          const allReviews = Array.isArray(reviewsPayload?.reviews)
+            ? reviewsPayload.reviews
+            : [];
+          const productId = String(product?.productId || "");
+          const productReviews = allReviews.filter((r) => {
+            if (String(r?.tenant_id || "default") !== String(tenantId))
+              return false;
+            if (String(r?.productId || "") !== productId) return false;
+            return true;
+          });
+
+          const reviewsEl = document.getElementById("reviews");
+          if (reviewsEl) {
+            if (productReviews.length === 0) {
+              reviewsEl.innerHTML = "";
+            } else {
+              const ratings = productReviews
+                .map((r) => Number(r?.rating))
+                .filter((n) => Number.isFinite(n) && n >= 1);
+              const avg = ratings.length
+                ? ratings.reduce((a, b) => a + b, 0) / ratings.length
+                : 0;
+
+              const reviewsHtml = productReviews
+                .slice(0, 6)
+                .map((r) => {
+                  const author = String(r?.authorName || "Anonymous");
+                  const title = String(r?.title || "");
+                  const body = String(r?.body || "");
+                  const rating = Number(r?.rating || 0);
+                  const verified = Boolean(r?.verifiedBuyer);
+                  const badge = verified ? "Verified pet parent" : "";
+                  const media = Array.isArray(r?.media) ? r.media : [];
+                  const firstMedia = media[0];
+                  const mediaUrl = String(firstMedia?.url || "");
+                  const mediaHtml = mediaUrl
+                    ? firstMedia?.type === "video"
+                      ? `<div style="position:relative;width:100%;max-width:220px;margin-top:10px;"><video src="${esc(mediaUrl)}" muted loop playsinline autoplay preload="metadata" disablePictureInPicture title="Tap to hear this pet parent" onclick="this.muted = !this.muted; const b = this.nextElementSibling; if (b) b.textContent = this.muted ? 'Tap for sound' : 'Sound on';" style="width:100%;border-radius:10px;display:block;cursor:pointer;" playsinline></video><div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.65);color:#fff;font-size:0.75rem;padding:4px 8px;border-radius:20px;pointer-events:none;">Tap for sound</div></div>`
+                      : `<img src="${esc(mediaUrl)}" alt="Pet using this product" style="width:100%;max-width:220px;border-radius:10px;margin-top:10px;" />`
+                    : "";
+                  return `
+                    <article style="border-top:1px solid #eee;padding:12px 0;">
+                      <div style="font-weight:600;">${esc(title || "Review")}</div>
+                      <div style="color:#555;font-size:0.95rem;">${esc(author)}${badge ? " • " + esc(badge) : ""} • ${rating}/5</div>
+                      <p style="margin:8px 0 0;">${esc(body)}</p>
+                      ${mediaHtml}
+                    </article>
+                  `;
+                })
+                .join("");
+
+              reviewsEl.innerHTML = `
+                <h2 style="margin-top:24px;">Reviews</h2>
+                <p style="margin:0 0 12px;">Average rating: ${avg.toFixed(1)} / 5 from ${productReviews.length} pet parent${productReviews.length === 1 ? "" : "s"}</p>
+                ${reviewsHtml}
+              `;
+
+              if ("IntersectionObserver" in globalThis) {
+                const reviewVideos = reviewsEl.querySelectorAll("video");
+                const observer = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        entry.target.play().catch(() => {});
+                      } else {
+                        entry.target.pause();
+                      }
+                    });
+                  },
+                  { threshold: 0.4 },
+                );
+                reviewVideos.forEach((v) => observer.observe(v));
+              }
+            }
+          }
+
+          const origin = globalThis.location.origin;
+          const canonicalPath = String(product?.seo?.canonicalPath || "");
+          const productUrl = canonicalPath ? `${origin}${canonicalPath}` : "";
+
+          const img = product?.images?.[0] || {};
+          const imgSrc = String(img?.src || "");
+          const absoluteImg = imgSrc ? `${origin}${imgSrc}` : "";
+          const productBrand = String(product?.brand || "") || String(tenant?.seo?.brandName || "");
+          const availability = String(product?.availability || "https://schema.org/InStock");
+
+          const ratings = productReviews
+            .map((r) => Number(r?.rating))
+            .filter((n) => Number.isFinite(n) && n >= 1);
+          const avg = ratings.length
+            ? ratings.reduce((a, b) => a + b, 0) / ratings.length
+            : 0;
+
+          const productJsonLd = {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: title,
+            description,
+            url: productUrl,
+            image: absoluteImg ? [absoluteImg] : undefined,
+            brand: productBrand ? { "@type": "Brand", name: productBrand } : undefined,
+            offers: {
+              "@type": "Offer",
+              url: productUrl,
+              priceCurrency: String(currency || "").toUpperCase(),
+              price: (priceAmount / 100).toFixed(2),
+              availability,
+            },
+            ...(productReviews.length > 0 && avg > 0
+              ? {
+                  aggregateRating: {
+                    "@type": "AggregateRating",
+                    ratingValue: Number(avg.toFixed(2)),
+                    reviewCount: productReviews.length,
+                  },
+                  review: productReviews.map((r) => ({
+                    "@type": "Review",
+                    author: {
+                      "@type": "Person",
+                      name: String(r?.authorName || "Anonymous"),
+                    },
+                    reviewRating: {
+                      "@type": "Rating",
+                      ratingValue: Number(r?.rating || 0),
+                    },
+                    name: String(r?.title || ""),
+                    reviewBody: String(r?.body || ""),
+                    datePublished: String(r?.createdAt || ""),
+                  })),
+                }
+              : {}),
+          };
+
+          document
+            .querySelectorAll("script[data-schema='product']")
+            .forEach((s) => s.remove());
+
+          const schema = document.createElement("script");
+          schema.type = "application/ld+json";
+          schema.dataset.schema = "product";
+          schema.textContent = JSON.stringify(productJsonLd);
+          document.head.appendChild(schema);
+
+          const faqsEl = document.getElementById("faqs");
+          if (faqsEl) {
+            const petTypes = Array.isArray(product?.petType)
+              ? product.petType.map(String).filter(Boolean)
+              : [];
+            const lifeStages = Array.isArray(product?.lifeStage)
+              ? product.lifeStage.map(String).filter(Boolean)
+              : [];
+            const sizes = Array.isArray(product?.sizeRequirement)
+              ? product.sizeRequirement.map(String).filter(Boolean)
+              : [];
+            const materials = Array.isArray(product?.materials)
+              ? product.materials.map(String).filter(Boolean)
+              : [];
+            const shippingOrigin = String(
+              product?.shippingOrigin || product?.warehouseLocation || "",
+            );
+            const safetyDisclaimer = String(product?.safetyDisclaimer || "");
+
+            const joinList = (arr) => {
+              if (!Array.isArray(arr) || arr.length === 0) return "";
+              if (arr.length === 1) return arr[0];
+              if (arr.length === 2) return `${arr[0]} and ${arr[1]}`;
+              return `${arr.slice(0, -1).join(", ")}, and ${arr[arr.length - 1]}`;
+            };
+
+            const faqItems = [];
+
+            if (petTypes.length || lifeStages.length) {
+              const who = `${petTypes.length ? joinList(petTypes) : "pets"}${lifeStages.length ? ` (${joinList(lifeStages)})` : ""}`;
+              faqItems.push({
+                q: `Who is this best for?`,
+                a: `This product is designed for ${who}. Always choose the right size for your pet and follow the safety guidance on the page.`,
+              });
+            }
+
+            if (sizes.length) {
+              faqItems.push({
+                q: "What size should I choose?",
+                a: `Recommended sizes: ${joinList(sizes)}. If you're between sizes, choose the size that gives your pet more room to lie comfortably.`,
+              });
+            }
+
+            if (materials.length) {
+              faqItems.push({
+                q: "What materials is it made from?",
+                a: `Materials: ${joinList(materials)}. If your pet has sensitivities, patch-test and stop use if irritation occurs.`,
+              });
+            }
+
+            if (safetyDisclaimer) {
+              faqItems.push({
+                q: "Is it safe for pets?",
+                a: safetyDisclaimer,
+              });
+            }
+
+            if (shippingOrigin) {
+              faqItems.push({
+                q: "Where does it ship from?",
+                a: `Shipping origin: ${shippingOrigin} (supplier dependent).`,
+              });
+            }
+
+            const finalFaqs = faqItems.slice(0, 6);
+
+            if (finalFaqs.length === 0) {
+              faqsEl.innerHTML = "";
+            } else {
+              const itemsHtml = finalFaqs
+                .map(
+                  (f) => `
+                    <details style="border-top:1px solid #eee;padding:10px 0;text-align:left;">
+                      <summary style="cursor:pointer;font-weight:600;">${esc(f.q)}</summary>
+                      <div style="margin-top:8px;color:#333;">${esc(f.a)}</div>
+                    </details>
+                  `,
+                )
+                .join("");
+
+              faqsEl.innerHTML = `
+                <h2 style="margin-top:24px;">FAQs</h2>
+                ${itemsHtml}
+              `;
+
+              const faqJsonLd = {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: finalFaqs.map((f) => ({
+                  "@type": "Question",
+                  name: String(f.q),
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: String(f.a),
+                  },
+                })),
+              };
+
+              const faqSchema = document.createElement("script");
+              faqSchema.type = "application/ld+json";
+              faqSchema.dataset.schema = "faq";
+              faqSchema.textContent = JSON.stringify(faqJsonLd);
+              document.head.appendChild(faqSchema);
+            }
+          }
+
+          const addToCartBtn = document.getElementById("add-to-cart");
+          if (addToCartBtn) {
+            addToCartBtn.addEventListener("click", () => {
+              const originalLabel = addToCartBtn.textContent;
+              addToCartBtn.disabled = true;
+
+              const id = String(product?.productId || "");
+              if (!id) {
+                addToCartBtn.disabled = false;
+                return;
+              }
+
+              let cart = [];
+              try {
+                cart = JSON.parse(localStorage.getItem("cart") || "[]");
+              } catch {
+                cart = [];
+              }
+
+              const next = Array.isArray(cart) ? cart : [];
+              const item = next.find((i) => String(i?.id || "") === id);
+              if (item) item.qty = Number(item.qty || 0) + 1;
+              else next.push({ id, qty: 1 });
+
+              localStorage.setItem("cart", JSON.stringify(next));
+
+              if (typeof window.updateCartBadge === "function") {
+                window.updateCartBadge();
+              }
+
+              if (typeof window.showNotice === "function") {
+                const name = String(product?.title || "this item");
+                window.showNotice(`Added ${name} to your cart.`, {
+                  actionLabel: "Checkout",
+                  onAction: () => {
+                    window.location.href = "/cart.html";
+                  },
+                });
+              }
+
+              addToCartBtn.textContent = "Added";
+              setTimeout(() => {
+                addToCartBtn.textContent = originalLabel;
+                addToCartBtn.disabled = false;
+              }, 900);
+            });
+          }
+
+          const wishBtn = document.getElementById("add-to-wishlist");
+          if (wishBtn) {
+            wishBtn.addEventListener("click", () => {
+              const originalLabel = wishBtn.textContent;
+              wishBtn.disabled = true;
+
+              const id = String(product?.productId || "");
+              if (!id) {
+                wishBtn.disabled = false;
+                return;
+              }
+
+              let list = [];
+              try {
+                list = JSON.parse(localStorage.getItem("wishlist") || "[]");
+              } catch {
+                list = [];
+              }
+
+              const next = Array.isArray(list) ? list.map(String) : [];
+              if (!next.includes(id)) next.push(id);
+              localStorage.setItem("wishlist", JSON.stringify(next));
+
+              wishBtn.textContent = "Saved";
+              setTimeout(() => {
+                wishBtn.textContent = originalLabel;
+                wishBtn.disabled = false;
+              }, 900);
+            });
+          }
 
           const pic = document.getElementById("product-image");
-          pic.innerHTML = `
-        <source srcset="images/${esc(product.imageBase)}.avif" type="image/avif">
-        <source srcset="images/${esc(product.imageBase)}.webp" type="image/webp">
-        <img src="images/${esc(product.imageBase)}.jpg"
-             alt="${esc(product.alt)}"
+          const img = product?.images?.[0] || {};
+          const src = String(img?.src || "");
+          const alt = String(img?.alt || title);
+          const width = Number(img?.width || 600);
+          const height = Number(img?.height || 800);
+          const isDemoPlaceholder = src.startsWith("/images2/");
+          if (isDemoPlaceholder) {
+            pic.classList.remove("is-landscape", "is-portrait");
+            pic.innerHTML =
+              '<div style="width:100%;max-width:560px;height:360px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#374151;font-size:0.95rem;border-radius:10px;">Product image coming soon</div>';
+          } else {
+            pic.innerHTML = `
+        <img src="${esc(src)}"
+             alt="${esc(alt)}"
              loading="lazy"
              decoding="async"
-             width="600"
-             height="800">
+             width="${esc(width)}"
+             height="${esc(height)}">
       `;
+
+            const imgEl = pic.querySelector("img");
+            if (imgEl) {
+              imgEl.addEventListener(
+                "load",
+                () => {
+                  const w = Number(imgEl.naturalWidth || 0);
+                  const h = Number(imgEl.naturalHeight || 0);
+
+                  pic.classList.remove("is-landscape", "is-portrait");
+                  if (w > 0 && h > 0) {
+                    if (w >= h) pic.classList.add("is-landscape");
+                    else pic.classList.add("is-portrait");
+                  }
+                },
+                { once: true },
+              );
+            }
+          }
         } catch (err) {
           console.error("🛑 Error loading product:", err);
           document.querySelector(".product-details").innerHTML =

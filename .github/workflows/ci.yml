@@ -1,0 +1,125 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  schedule:
+    - cron: "0 2 * * *"   # 🕑 Nightly 2AM UTC run
+
+permissions:
+  contents: write           # ✅ allows committing coverage badge
+  security-events: write    # ✅ needed for CodeQL uploads
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ---------------- Repository Setup ----------------
+      - name: 🛎️ Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      # ---------------- Lint + Format ----------------
+      - name: 🧹 Lint & Format Check
+        run: npm run lint && npm run format:check
+
+      # ---------------- Type Checking ----------------
+      - name: 🧾 TypeScript Check
+        run: npm run type-check
+
+      # ---------------- Build Validation ----------------
+      - name: 🏗️ Build Validation
+        run: npm run build
+
+      # ---------------- Unit / Integration Tests ----------------
+      - name: 🧪 Run Tests with Coverage
+        run: npm run test
+
+      - name: 📈 Generate Coverage Badge
+        if: success()
+        run: |
+          mkdir -p .github/badges
+          npx coverage-badges save .github/badges/coverage.svg
+
+      # ---------------- Secrets Scan ----------------
+      - name: 🕵️ Trufflehog Secrets Scan
+        uses: trufflesecurity/trufflehog@v3
+        with:
+          base: main
+          head: HEAD
+        continue-on-error: true
+
+      # ---------------- Container Scan ----------------
+      - name: 🧱 Container / IaC Security Scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          ignore-unfixed: true
+          format: table
+          exit-code: 0
+          severity: HIGH,CRITICAL
+
+      # ---------------- Dependency Audit ----------------
+      - name: 🛡️ Dependency Security Audit
+        run: npm audit --omit=dev --audit-level=moderate
+
+      # ---------------- License Compliance ----------------
+      - name: ⚖️ License Compliance (FOSSA)
+        if: ${{ secrets.FOSSA_API_KEY != '' }}
+        uses: fossas/fossa-action@v1
+        with:
+          api-key: ${{ secrets.FOSSA_API_KEY }}
+
+      # ---------------- CodeQL Static Analysis ----------------
+      - name: 🧠 Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+      - name: 🔍 Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+      # ---------------- Runtime Security (DAST) ----------------
+      - name: ⚔️ OWASP ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.10.0
+        with:
+          target: "http://localhost:3000"  # change to your staging URL if needed
+          cmd_options: "-a"
+        continue-on-error: true
+
+      # ---------------- Performance & Accessibility --------------
+      - name: 🚦 Lighthouse Performance Audit
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            https://lartdelaseduction.com   # replace with production/staging URL
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: ♿ Accessibility Scan
+        uses: pa11y/pa11y-ci-action@v2
+        with:
+          config: pa11yci.json
+
+      # ---------------- Commit Coverage Badge ----------------
+      - name: 🪄 Commit updated coverage badge
+        if: success()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/badges/coverage.svg
+          git commit -m "🔄 Update coverage badge [skip ci]" || echo "No badge changes to commit"
+          git push origin HEAD:main

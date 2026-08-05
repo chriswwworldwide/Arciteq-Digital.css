@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-14T00:00:00.000Z",
+  "supplier": {
+    "id": "placeholder",
+    "name": "Placeholder Supplier"
+  },
+  "items": [
+    {
+      "supplierSku": "ph-tracker-001",
+      "title": "GPS Activity Tracker Tag (Placeholder)",
+      "description": "Placeholder supplier feed item for a lightweight tracker tag.",
+      "price": {
+        "amount": 2499,
+        "currency": "eur"
+      },
+      "image": {
+        "src": "/images2/screenshot-1.png",
+        "alt": "Placeholder product image",
+        "width": 1200,
+        "height": 1200
+      },
+      "availability": "https://schema.org/InStock",
+      "supplierId": "placeholder",
+      "petType": ["Dog", "Cat"],
+      "lifeStage": ["Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "materials": ["ABS plastic", "Silicone"],
+      "safetyDisclaimer": "Inspect for damage regularly. Not a chew toy. Ensure it is attached securely and does not restrict breathing or movement.",
+      "warehouseLocation": "EU"
+    },
+    {
+      "supplierSku": "ph-bed-001",
+      "title": "Calming Support Bed (Placeholder)",
+      "description": "Placeholder supplier feed item for a calming bed.",
+      "price": {
+        "amount": 3999,
+        "currency": "eur"
+      },
+      "image": {
+        "src": "/images2/screenshot-1.png",
+        "alt": "Placeholder product image",
+        "width": 1200,
+        "height": 1200
+      },
+      "availability": "https://schema.org/InStock",
+      "supplierId": "placeholder",
+      "warehouseLocation": "UK"
+    },
+    {
+      "supplierSku": "ph-camera-001",
+      "title": "Indoor Pet Wellness Camera (Placeholder)",
+      "description": "Placeholder supplier feed item for a simple indoor wellness camera.",
+      "price": {
+        "amount": 5999,
+        "currency": "eur"
+      },
+      "image": {
+        "src": "/images2/screenshot-1.png",
+        "alt": "Placeholder product image",
+        "width": 1200,
+        "height": 1200
+      },
+      "availability": "https://schema.org/InStock",
+      "supplierId": "placeholder",
+      "petType": ["Dog", "Cat"],
+      "lifeStage": ["Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "materials": ["ABS plastic", "Aluminium"],
+      "safetyDisclaimer": "Indoor use only. Keep away from water and heat sources. Not a toy. Use the provided power adapter.",
+      "warehouseLocation": "EU"
+    }
+  ]
+}

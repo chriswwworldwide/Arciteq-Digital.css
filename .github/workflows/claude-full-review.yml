@@ -1,0 +1,37 @@
+name: Claude Full Repository Review
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full_review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install system tools
+        run: sudo apt-get update && sudo apt-get install -y jq tree
+
+      - name: Summarize repository contents
+        run: |
+          echo "### Repository structure (depth: 3)" > repo_summary.txt
+          tree -L 3 -I 'node_modules|venv|.git|dist|build|__pycache__' >> repo_summary.txt
+
+      - name: Generate metadata JSON
+        run: |
+          jq -n --arg date "$(date)" --arg repo "$GITHUB_REPOSITORY" \
+          '{repository: $repo, generated_at: $date}' > metadata.json
+
+      - name: Upload review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Claude-Architecture-Review
+          path: |
+            repo_summary.txt
+            metadata.json

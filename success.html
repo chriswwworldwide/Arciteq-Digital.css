@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Payment Successful</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Payment Successful</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <p>Thank you. Your payment went through.</p>
+      <p id="session"></p>
+      <p>
+        <a href="shop.html">Continue shopping</a>
+      </p>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get("session_id");
+      const el = document.getElementById("session");
+      if (sessionId) {
+        el.textContent = `Session: ${sessionId}`;
+        try {
+          localStorage.removeItem("cart");
+        } catch {
+          // ignore
+        }
+      }
+    </script>
+  </body>
+</html>

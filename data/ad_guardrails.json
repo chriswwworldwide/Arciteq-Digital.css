@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-30T15:57:43.921Z",
+  "guardrails": [
+    {
+      "tenant_id": "default",
+      "currency": "eur",
+      "range_days": 7,
+      "stop_spend_no_revenue_minor": 1,
+      "warn_roas_below": 1.5,
+      "warn_profit_below_minor": -500,
+      "note": "",
+      "updatedAt": "2026-07-30T15:57:43.921Z"
+    }
+  ]
+}

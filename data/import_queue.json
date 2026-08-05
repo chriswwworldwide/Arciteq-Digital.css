@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-05-14T00:00:00.000Z",
+  "queue": [
+    {
+      "jobId": "job-placeholder-005",
+      "source": {
+        "type": "placeholder_supplier_feed",
+        "path": "data/placeholder_supplier_feed.json",
+        "supplierId": "placeholder"
+      },
+      "status": "completed",
+      "requestedBy": "system",
+      "createdAt": "2026-05-16T00:00:00.000Z",
+      "startedAt": "2026-05-16T20:18:40.178Z",
+      "completedAt": "2026-05-16T20:18:40.180Z",
+      "result": {
+        "imported": 3,
+        "published": 1,
+        "errors": [],
+        "productsBefore": 6,
+        "productsAfter": 7,
+        "draftsAfter": 3,
+        "autoPublishMinScore": 85
+      }
+    },
+    {
+      "jobId": "job-placeholder-004",
+      "source": {
+        "type": "placeholder_supplier_feed",
+        "path": "data/placeholder_supplier_feed.json",
+        "supplierId": "placeholder"
+      },
+      "status": "completed",
+      "requestedBy": "system",
+      "createdAt": "2026-05-16T00:00:00.000Z",
+      "startedAt": "2026-05-16T19:34:27.679Z",
+      "completedAt": "2026-05-16T19:34:27.680Z",
+      "result": {
+        "imported": 2,
+        "published": 0,
+        "errors": [],
+        "productsBefore": 6,
+        "productsAfter": 6,
+        "draftsAfter": 2,
+        "autoPublishMinScore": 85
+      }
+    },
+    {
+      "jobId": "job-placeholder-003",
+      "source": {
+        "type": "placeholder_supplier_feed",
+        "path": "data/placeholder_supplier_feed.json",
+        "supplierId": "placeholder"
+      },
+      "status": "completed",
+      "requestedBy": "system",
+      "createdAt": "2026-05-16T00:00:00.000Z",
+      "startedAt": "2026-05-16T19:28:31.281Z",
+      "completedAt": "2026-05-16T19:28:31.283Z",
+      "result": {
+        "imported": 2,
+        "published": 0,
+        "errors": [],
+        "productsBefore": 6,
+        "productsAfter": 6,
+        "draftsAfter": 2,
+        "autoPublishMinScore": 85
+      }
+    },
+    {
+      "jobId": "job-placeholder-002",
+      "source": {
+        "type": "placeholder_supplier_feed",
+        "path": "data/placeholder_supplier_feed.json",
+        "supplierId": "placeholder"
+      },
+      "status": "completed",
+      "requestedBy": "system",
+      "createdAt": "2026-05-15T00:00:00.000Z",
+      "startedAt": "2026-05-15T11:29:52.293Z",
+      "completedAt": "2026-05-15T11:29:52.296Z",
+      "result": {
+        "imported": 2,
+        "published": 1,
+        "errors": [],
+        "productsBefore": 7,
+        "productsAfter": 7,
+        "draftsAfter": 2,
+        "autoPublishMinScore": 85
+      }
+    },
+    {
+      "jobId": "job-placeholder-001",
+      "source": {
+        "type": "placeholder_supplier_feed",
+        "path": "data/placeholder_supplier_feed.json",
+        "supplierId": "placeholder"
+      },
+      "status": "completed",
+      "requestedBy": "system",
+      "createdAt": "2026-05-14T00:00:00.000Z",
+      "startedAt": "2026-05-15T10:47:09.284Z",
+      "completedAt": "2026-05-15T10:47:09.286Z",
+      "result": {
+        "imported": 2,
+        "published": 2,
+        "errors": [],
+        "productsBefore": 5,
+        "productsAfter": 7,
+        "draftsAfter": 2,
+        "autoPublishMinScore": 85
+      }
+    }
+  ]
+}

@@ -1,0 +1,996 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-05T22:16:34.672Z",
+  "alerts": [
+    {
+      "id": "dbecb2c40cc83e8b54d9",
+      "tenant_id": "default",
+      "type": "paid_orders_stuck",
+      "severity": "warning",
+      "message": "10 paid order(s) have not updated in 48 hours.",
+      "data": {
+        "count": 10,
+        "oldest_updated_at_before": "2026-07-28T16:09:48.072Z",
+        "sample": [
+          {
+            "order_id": "909c7fbd-19ac-454c-b1ba-ad60a49efd67",
+            "created_at": "2026-05-21T21:46:40.208Z",
+            "updated_at": "2026-05-21T21:47:34.616Z",
+            "customer_email": "chriswworldwide@yahoo.co.uk",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "27080776-9fef-406d-97d5-6e397286e84a",
+            "created_at": "2026-05-21T22:03:16.175Z",
+            "updated_at": "2026-05-21T22:04:35.233Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 2499,
+            "currency": "eur"
+          },
+          {
+            "order_id": "49274836-1a8e-40b7-a526-f96cb590f738",
+            "created_at": "2026-05-23T21:17:57.510Z",
+            "updated_at": "2026-05-23T21:18:46.046Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "900fa773-95b1-4779-bb91-a31a84e12545",
+            "created_at": "2026-05-23T21:40:25.649Z",
+            "updated_at": "2026-05-23T21:41:14.418Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "7735a9d9-70e9-4572-8e2e-0134736ad045",
+            "created_at": "2026-05-27T15:03:19.343Z",
+            "updated_at": "2026-05-27T15:04:08.714Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "434b1e8e-d7e7-41ad-b0cd-284a62709e5b",
+            "created_at": "2026-05-27T15:15:28.791Z",
+            "updated_at": "2026-05-27T15:16:16.636Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "b1d781f9-fe13-4692-b282-de696a71d6d3",
+            "created_at": "2026-05-29T11:39:57.019Z",
+            "updated_at": "2026-05-29T11:41:17.339Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 64500,
+            "currency": "eur"
+          },
+          {
+            "order_id": "12cc2609-9a25-4afb-9c3b-d3b0e46f2d72",
+            "created_at": "2026-05-29T12:00:28.265Z",
+            "updated_at": "2026-05-29T12:01:09.952Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "a1ee7669-e48a-4f3e-a45e-6ef08a5ea7c0",
+            "created_at": "2026-05-29T12:01:48.630Z",
+            "updated_at": "2026-05-29T12:02:32.293Z",
+            "customer_email": "James@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "047016e1-b282-459b-a45c-a01c2909d998",
+            "created_at": "2026-05-29T12:20:36.408Z",
+            "updated_at": "2026-05-29T12:21:21.504Z",
+            "customer_email": "John@gmail.com",
+            "amount_total": 103200,
+            "currency": "eur"
+          }
+        ]
+      },
+      "createdAt": "2026-07-30T16:09:48.072Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "89007722d8af7538eba6",
+      "tenant_id": "default",
+      "type": "stripe_webhooks_stale",
+      "severity": "stop",
+      "message": "No Stripe webhook received in the last 6 hours.",
+      "data": {
+        "last_webhook_at": "2026-07-30T10:40:04.486Z",
+        "stale_before": "2026-07-30T10:41:17.976Z"
+      },
+      "createdAt": "2026-07-30T16:41:17.976Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "db58df57e46c2ba65606",
+      "tenant_id": "default",
+      "type": "paid_orders_stuck",
+      "severity": "warning",
+      "message": "10 paid order(s) have not updated in 48 hours.",
+      "data": {
+        "count": 10,
+        "oldest_updated_at_before": "2026-07-28T22:13:25.615Z",
+        "sample": [
+          {
+            "order_id": "909c7fbd-19ac-454c-b1ba-ad60a49efd67",
+            "created_at": "2026-05-21T21:46:40.208Z",
+            "updated_at": "2026-05-21T21:47:34.616Z",
+            "customer_email": "chriswworldwide@yahoo.co.uk",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "27080776-9fef-406d-97d5-6e397286e84a",
+            "created_at": "2026-05-21T22:03:16.175Z",
+            "updated_at": "2026-05-21T22:04:35.233Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 2499,
+            "currency": "eur"
+          },
+          {
+            "order_id": "49274836-1a8e-40b7-a526-f96cb590f738",
+            "created_at": "2026-05-23T21:17:57.510Z",
+            "updated_at": "2026-05-23T21:18:46.046Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "900fa773-95b1-4779-bb91-a31a84e12545",
+            "created_at": "2026-05-23T21:40:25.649Z",
+            "updated_at": "2026-05-23T21:41:14.418Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "7735a9d9-70e9-4572-8e2e-0134736ad045",
+            "created_at": "2026-05-27T15:03:19.343Z",
+            "updated_at": "2026-05-27T15:04:08.714Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "434b1e8e-d7e7-41ad-b0cd-284a62709e5b",
+            "created_at": "2026-05-27T15:15:28.791Z",
+            "updated_at": "2026-05-27T15:16:16.636Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "b1d781f9-fe13-4692-b282-de696a71d6d3",
+            "created_at": "2026-05-29T11:39:57.019Z",
+            "updated_at": "2026-05-29T11:41:17.339Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 64500,
+            "currency": "eur"
+          },
+          {
+            "order_id": "12cc2609-9a25-4afb-9c3b-d3b0e46f2d72",
+            "created_at": "2026-05-29T12:00:28.265Z",
+            "updated_at": "2026-05-29T12:01:09.952Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "a1ee7669-e48a-4f3e-a45e-6ef08a5ea7c0",
+            "created_at": "2026-05-29T12:01:48.630Z",
+            "updated_at": "2026-05-29T12:02:32.293Z",
+            "customer_email": "James@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "047016e1-b282-459b-a45c-a01c2909d998",
+            "created_at": "2026-05-29T12:20:36.408Z",
+            "updated_at": "2026-05-29T12:21:21.504Z",
+            "customer_email": "John@gmail.com",
+            "amount_total": 103200,
+            "currency": "eur"
+          }
+        ]
+      },
+      "createdAt": "2026-07-30T22:13:25.615Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "eb3a13983c21e94c4ba1",
+      "tenant_id": "default",
+      "type": "stripe_webhooks_stale",
+      "severity": "stop",
+      "message": "No Stripe webhook received in the last 6 hours.",
+      "data": {
+        "last_webhook_at": "2026-07-30T16:48:29.635Z",
+        "stale_before": "2026-07-30T16:53:25.646Z"
+      },
+      "createdAt": "2026-07-30T22:53:25.646Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "7f42e98c6e543caf8174",
+      "tenant_id": "default",
+      "type": "paid_orders_stuck",
+      "severity": "warning",
+      "message": "10 paid order(s) have not updated in 48 hours.",
+      "data": {
+        "count": 10,
+        "oldest_updated_at_before": "2026-07-29T04:13:25.790Z",
+        "sample": [
+          {
+            "order_id": "909c7fbd-19ac-454c-b1ba-ad60a49efd67",
+            "created_at": "2026-05-21T21:46:40.208Z",
+            "updated_at": "2026-05-21T21:47:34.616Z",
+            "customer_email": "chriswworldwide@yahoo.co.uk",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "27080776-9fef-406d-97d5-6e397286e84a",
+            "created_at": "2026-05-21T22:03:16.175Z",
+            "updated_at": "2026-05-21T22:04:35.233Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 2499,
+            "currency": "eur"
+          },
+          {
+            "order_id": "49274836-1a8e-40b7-a526-f96cb590f738",
+            "created_at": "2026-05-23T21:17:57.510Z",
+            "updated_at": "2026-05-23T21:18:46.046Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "900fa773-95b1-4779-bb91-a31a84e12545",
+            "created_at": "2026-05-23T21:40:25.649Z",
+            "updated_at": "2026-05-23T21:41:14.418Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "7735a9d9-70e9-4572-8e2e-0134736ad045",
+            "created_at": "2026-05-27T15:03:19.343Z",
+            "updated_at": "2026-05-27T15:04:08.714Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "434b1e8e-d7e7-41ad-b0cd-284a62709e5b",
+            "created_at": "2026-05-27T15:15:28.791Z",
+            "updated_at": "2026-05-27T15:16:16.636Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "b1d781f9-fe13-4692-b282-de696a71d6d3",
+            "created_at": "2026-05-29T11:39:57.019Z",
+            "updated_at": "2026-05-29T11:41:17.339Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 64500,
+            "currency": "eur"
+          },
+          {
+            "order_id": "12cc2609-9a25-4afb-9c3b-d3b0e46f2d72",
+            "created_at": "2026-05-29T12:00:28.265Z",
+            "updated_at": "2026-05-29T12:01:09.952Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "a1ee7669-e48a-4f3e-a45e-6ef08a5ea7c0",
+            "created_at": "2026-05-29T12:01:48.630Z",
+            "updated_at": "2026-05-29T12:02:32.293Z",
+            "customer_email": "James@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "047016e1-b282-459b-a45c-a01c2909d998",
+            "created_at": "2026-05-29T12:20:36.408Z",
+            "updated_at": "2026-05-29T12:21:21.504Z",
+            "customer_email": "John@gmail.com",
+            "amount_total": 103200,
+            "currency": "eur"
+          }
+        ]
+      },
+      "createdAt": "2026-07-31T04:13:25.790Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "e24e8b43e0216fd64efe",
+      "tenant_id": "default",
+      "type": "stripe_webhooks_stale",
+      "severity": "stop",
+      "message": "No Stripe webhook received in the last 6 hours.",
+      "data": {
+        "last_webhook_at": "2026-07-30T16:48:29.635Z",
+        "stale_before": "2026-07-30T22:53:25.791Z"
+      },
+      "createdAt": "2026-07-31T04:53:25.791Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "72d2509ecbf72dc4cba2",
+      "tenant_id": "default",
+      "type": "paid_orders_stuck",
+      "severity": "warning",
+      "message": "10 paid order(s) have not updated in 48 hours.",
+      "data": {
+        "count": 10,
+        "oldest_updated_at_before": "2026-07-29T10:13:25.879Z",
+        "sample": [
+          {
+            "order_id": "909c7fbd-19ac-454c-b1ba-ad60a49efd67",
+            "created_at": "2026-05-21T21:46:40.208Z",
+            "updated_at": "2026-05-21T21:47:34.616Z",
+            "customer_email": "chriswworldwide@yahoo.co.uk",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "27080776-9fef-406d-97d5-6e397286e84a",
+            "created_at": "2026-05-21T22:03:16.175Z",
+            "updated_at": "2026-05-21T22:04:35.233Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 2499,
+            "currency": "eur"
+          },
+          {
+            "order_id": "49274836-1a8e-40b7-a526-f96cb590f738",
+            "created_at": "2026-05-23T21:17:57.510Z",
+            "updated_at": "2026-05-23T21:18:46.046Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "900fa773-95b1-4779-bb91-a31a84e12545",
+            "created_at": "2026-05-23T21:40:25.649Z",
+            "updated_at": "2026-05-23T21:41:14.418Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "7735a9d9-70e9-4572-8e2e-0134736ad045",
+            "created_at": "2026-05-27T15:03:19.343Z",
+            "updated_at": "2026-05-27T15:04:08.714Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "434b1e8e-d7e7-41ad-b0cd-284a62709e5b",
+            "created_at": "2026-05-27T15:15:28.791Z",
+            "updated_at": "2026-05-27T15:16:16.636Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "b1d781f9-fe13-4692-b282-de696a71d6d3",
+            "created_at": "2026-05-29T11:39:57.019Z",
+            "updated_at": "2026-05-29T11:41:17.339Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 64500,
+            "currency": "eur"
+          },
+          {
+            "order_id": "12cc2609-9a25-4afb-9c3b-d3b0e46f2d72",
+            "created_at": "2026-05-29T12:00:28.265Z",
+            "updated_at": "2026-05-29T12:01:09.952Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "a1ee7669-e48a-4f3e-a45e-6ef08a5ea7c0",
+            "created_at": "2026-05-29T12:01:48.630Z",
+            "updated_at": "2026-05-29T12:02:32.293Z",
+            "customer_email": "James@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "047016e1-b282-459b-a45c-a01c2909d998",
+            "created_at": "2026-05-29T12:20:36.408Z",
+            "updated_at": "2026-05-29T12:21:21.504Z",
+            "customer_email": "John@gmail.com",
+            "amount_total": 103200,
+            "currency": "eur"
+          }
+        ]
+      },
+      "createdAt": "2026-07-31T10:13:25.879Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "ffc5ed7d99fd8d30846b",
+      "tenant_id": "default",
+      "type": "stripe_webhooks_stale",
+      "severity": "stop",
+      "message": "No Stripe webhook received in the last 6 hours.",
+      "data": {
+        "last_webhook_at": "2026-07-30T16:48:29.635Z",
+        "stale_before": "2026-07-31T04:53:25.909Z"
+      },
+      "createdAt": "2026-07-31T10:53:25.909Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "f5a9bcdf825f1364bbf4",
+      "tenant_id": "default",
+      "type": "stripe_webhooks_stale",
+      "severity": "stop",
+      "message": "No Stripe webhook received in the last 6 hours.",
+      "data": {
+        "last_webhook_at": "2026-07-30T16:48:29.635Z",
+        "stale_before": "2026-08-04T14:05:17.351Z"
+      },
+      "createdAt": "2026-08-04T20:05:17.351Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "727ad6a3be8df473be08",
+      "tenant_id": "default",
+      "type": "paid_orders_stuck",
+      "severity": "warning",
+      "message": "10 paid order(s) have not updated in 48 hours.",
+      "data": {
+        "count": 10,
+        "oldest_updated_at_before": "2026-08-02T20:05:17.351Z",
+        "sample": [
+          {
+            "order_id": "909c7fbd-19ac-454c-b1ba-ad60a49efd67",
+            "created_at": "2026-05-21T21:46:40.208Z",
+            "updated_at": "2026-05-21T21:47:34.616Z",
+            "customer_email": "chriswworldwide@yahoo.co.uk",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "27080776-9fef-406d-97d5-6e397286e84a",
+            "created_at": "2026-05-21T22:03:16.175Z",
+            "updated_at": "2026-05-21T22:04:35.233Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 2499,
+            "currency": "eur"
+          },
+          {
+            "order_id": "49274836-1a8e-40b7-a526-f96cb590f738",
+            "created_at": "2026-05-23T21:17:57.510Z",
+            "updated_at": "2026-05-23T21:18:46.046Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "900fa773-95b1-4779-bb91-a31a84e12545",
+            "created_at": "2026-05-23T21:40:25.649Z",
+            "updated_at": "2026-05-23T21:41:14.418Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "7735a9d9-70e9-4572-8e2e-0134736ad045",
+            "created_at": "2026-05-27T15:03:19.343Z",
+            "updated_at": "2026-05-27T15:04:08.714Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "434b1e8e-d7e7-41ad-b0cd-284a62709e5b",
+            "created_at": "2026-05-27T15:15:28.791Z",
+            "updated_at": "2026-05-27T15:16:16.636Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "b1d781f9-fe13-4692-b282-de696a71d6d3",
+            "created_at": "2026-05-29T11:39:57.019Z",
+            "updated_at": "2026-05-29T11:41:17.339Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 64500,
+            "currency": "eur"
+          },
+          {
+            "order_id": "12cc2609-9a25-4afb-9c3b-d3b0e46f2d72",
+            "created_at": "2026-05-29T12:00:28.265Z",
+            "updated_at": "2026-05-29T12:01:09.952Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "a1ee7669-e48a-4f3e-a45e-6ef08a5ea7c0",
+            "created_at": "2026-05-29T12:01:48.630Z",
+            "updated_at": "2026-05-29T12:02:32.293Z",
+            "customer_email": "James@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "047016e1-b282-459b-a45c-a01c2909d998",
+            "created_at": "2026-05-29T12:20:36.408Z",
+            "updated_at": "2026-05-29T12:21:21.504Z",
+            "customer_email": "John@gmail.com",
+            "amount_total": 103200,
+            "currency": "eur"
+          }
+        ]
+      },
+      "createdAt": "2026-08-04T20:05:17.351Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "60845cf883f7e124d386",
+      "tenant_id": "default",
+      "type": "stripe_webhooks_stale",
+      "severity": "stop",
+      "message": "No Stripe webhook received in the last 6 hours.",
+      "data": {
+        "last_webhook_at": "2026-07-30T16:48:29.635Z",
+        "stale_before": "2026-08-04T20:06:02.394Z"
+      },
+      "createdAt": "2026-08-05T02:06:02.394Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "e4a1fbe027109dfeda8a",
+      "tenant_id": "default",
+      "type": "paid_orders_stuck",
+      "severity": "warning",
+      "message": "10 paid order(s) have not updated in 48 hours.",
+      "data": {
+        "count": 10,
+        "oldest_updated_at_before": "2026-08-03T02:06:02.394Z",
+        "sample": [
+          {
+            "order_id": "909c7fbd-19ac-454c-b1ba-ad60a49efd67",
+            "created_at": "2026-05-21T21:46:40.208Z",
+            "updated_at": "2026-05-21T21:47:34.616Z",
+            "customer_email": "chriswworldwide@yahoo.co.uk",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "27080776-9fef-406d-97d5-6e397286e84a",
+            "created_at": "2026-05-21T22:03:16.175Z",
+            "updated_at": "2026-05-21T22:04:35.233Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 2499,
+            "currency": "eur"
+          },
+          {
+            "order_id": "49274836-1a8e-40b7-a526-f96cb590f738",
+            "created_at": "2026-05-23T21:17:57.510Z",
+            "updated_at": "2026-05-23T21:18:46.046Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "900fa773-95b1-4779-bb91-a31a84e12545",
+            "created_at": "2026-05-23T21:40:25.649Z",
+            "updated_at": "2026-05-23T21:41:14.418Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "7735a9d9-70e9-4572-8e2e-0134736ad045",
+            "created_at": "2026-05-27T15:03:19.343Z",
+            "updated_at": "2026-05-27T15:04:08.714Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "434b1e8e-d7e7-41ad-b0cd-284a62709e5b",
+            "created_at": "2026-05-27T15:15:28.791Z",
+            "updated_at": "2026-05-27T15:16:16.636Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "b1d781f9-fe13-4692-b282-de696a71d6d3",
+            "created_at": "2026-05-29T11:39:57.019Z",
+            "updated_at": "2026-05-29T11:41:17.339Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 64500,
+            "currency": "eur"
+          },
+          {
+            "order_id": "12cc2609-9a25-4afb-9c3b-d3b0e46f2d72",
+            "created_at": "2026-05-29T12:00:28.265Z",
+            "updated_at": "2026-05-29T12:01:09.952Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "a1ee7669-e48a-4f3e-a45e-6ef08a5ea7c0",
+            "created_at": "2026-05-29T12:01:48.630Z",
+            "updated_at": "2026-05-29T12:02:32.293Z",
+            "customer_email": "James@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "047016e1-b282-459b-a45c-a01c2909d998",
+            "created_at": "2026-05-29T12:20:36.408Z",
+            "updated_at": "2026-05-29T12:21:21.504Z",
+            "customer_email": "John@gmail.com",
+            "amount_total": 103200,
+            "currency": "eur"
+          }
+        ]
+      },
+      "createdAt": "2026-08-05T02:06:02.394Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "282ac133c73cc341fdc1",
+      "tenant_id": "default",
+      "type": "stripe_webhooks_stale",
+      "severity": "stop",
+      "message": "No Stripe webhook received in the last 6 hours.",
+      "data": {
+        "last_webhook_at": "2026-07-30T16:48:29.635Z",
+        "stale_before": "2026-08-05T02:06:02.564Z"
+      },
+      "createdAt": "2026-08-05T08:06:02.564Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "40dc4bf72a2f3fed1778",
+      "tenant_id": "default",
+      "type": "paid_orders_stuck",
+      "severity": "warning",
+      "message": "10 paid order(s) have not updated in 48 hours.",
+      "data": {
+        "count": 10,
+        "oldest_updated_at_before": "2026-08-03T08:06:02.564Z",
+        "sample": [
+          {
+            "order_id": "909c7fbd-19ac-454c-b1ba-ad60a49efd67",
+            "created_at": "2026-05-21T21:46:40.208Z",
+            "updated_at": "2026-05-21T21:47:34.616Z",
+            "customer_email": "chriswworldwide@yahoo.co.uk",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "27080776-9fef-406d-97d5-6e397286e84a",
+            "created_at": "2026-05-21T22:03:16.175Z",
+            "updated_at": "2026-05-21T22:04:35.233Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 2499,
+            "currency": "eur"
+          },
+          {
+            "order_id": "49274836-1a8e-40b7-a526-f96cb590f738",
+            "created_at": "2026-05-23T21:17:57.510Z",
+            "updated_at": "2026-05-23T21:18:46.046Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "900fa773-95b1-4779-bb91-a31a84e12545",
+            "created_at": "2026-05-23T21:40:25.649Z",
+            "updated_at": "2026-05-23T21:41:14.418Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "7735a9d9-70e9-4572-8e2e-0134736ad045",
+            "created_at": "2026-05-27T15:03:19.343Z",
+            "updated_at": "2026-05-27T15:04:08.714Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "434b1e8e-d7e7-41ad-b0cd-284a62709e5b",
+            "created_at": "2026-05-27T15:15:28.791Z",
+            "updated_at": "2026-05-27T15:16:16.636Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "b1d781f9-fe13-4692-b282-de696a71d6d3",
+            "created_at": "2026-05-29T11:39:57.019Z",
+            "updated_at": "2026-05-29T11:41:17.339Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 64500,
+            "currency": "eur"
+          },
+          {
+            "order_id": "12cc2609-9a25-4afb-9c3b-d3b0e46f2d72",
+            "created_at": "2026-05-29T12:00:28.265Z",
+            "updated_at": "2026-05-29T12:01:09.952Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "a1ee7669-e48a-4f3e-a45e-6ef08a5ea7c0",
+            "created_at": "2026-05-29T12:01:48.630Z",
+            "updated_at": "2026-05-29T12:02:32.293Z",
+            "customer_email": "James@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "047016e1-b282-459b-a45c-a01c2909d998",
+            "created_at": "2026-05-29T12:20:36.408Z",
+            "updated_at": "2026-05-29T12:21:21.504Z",
+            "customer_email": "John@gmail.com",
+            "amount_total": 103200,
+            "currency": "eur"
+          }
+        ]
+      },
+      "createdAt": "2026-08-05T08:06:02.564Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "c9d5ab1c4406ca6e97b2",
+      "tenant_id": "default",
+      "type": "stripe_webhooks_stale",
+      "severity": "stop",
+      "message": "No Stripe webhook received in the last 6 hours.",
+      "data": {
+        "last_webhook_at": "2026-07-30T16:48:29.635Z",
+        "stale_before": "2026-08-05T08:09:50.877Z"
+      },
+      "createdAt": "2026-08-05T14:09:50.877Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "1993c9296fffc803ba30",
+      "tenant_id": "default",
+      "type": "paid_orders_stuck",
+      "severity": "warning",
+      "message": "10 paid order(s) have not updated in 48 hours.",
+      "data": {
+        "count": 10,
+        "oldest_updated_at_before": "2026-08-03T14:09:50.877Z",
+        "sample": [
+          {
+            "order_id": "909c7fbd-19ac-454c-b1ba-ad60a49efd67",
+            "created_at": "2026-05-21T21:46:40.208Z",
+            "updated_at": "2026-05-21T21:47:34.616Z",
+            "customer_email": "chriswworldwide@yahoo.co.uk",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "27080776-9fef-406d-97d5-6e397286e84a",
+            "created_at": "2026-05-21T22:03:16.175Z",
+            "updated_at": "2026-05-21T22:04:35.233Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 2499,
+            "currency": "eur"
+          },
+          {
+            "order_id": "49274836-1a8e-40b7-a526-f96cb590f738",
+            "created_at": "2026-05-23T21:17:57.510Z",
+            "updated_at": "2026-05-23T21:18:46.046Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "900fa773-95b1-4779-bb91-a31a84e12545",
+            "created_at": "2026-05-23T21:40:25.649Z",
+            "updated_at": "2026-05-23T21:41:14.418Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "7735a9d9-70e9-4572-8e2e-0134736ad045",
+            "created_at": "2026-05-27T15:03:19.343Z",
+            "updated_at": "2026-05-27T15:04:08.714Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "434b1e8e-d7e7-41ad-b0cd-284a62709e5b",
+            "created_at": "2026-05-27T15:15:28.791Z",
+            "updated_at": "2026-05-27T15:16:16.636Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "b1d781f9-fe13-4692-b282-de696a71d6d3",
+            "created_at": "2026-05-29T11:39:57.019Z",
+            "updated_at": "2026-05-29T11:41:17.339Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 64500,
+            "currency": "eur"
+          },
+          {
+            "order_id": "12cc2609-9a25-4afb-9c3b-d3b0e46f2d72",
+            "created_at": "2026-05-29T12:00:28.265Z",
+            "updated_at": "2026-05-29T12:01:09.952Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "a1ee7669-e48a-4f3e-a45e-6ef08a5ea7c0",
+            "created_at": "2026-05-29T12:01:48.630Z",
+            "updated_at": "2026-05-29T12:02:32.293Z",
+            "customer_email": "James@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "047016e1-b282-459b-a45c-a01c2909d998",
+            "created_at": "2026-05-29T12:20:36.408Z",
+            "updated_at": "2026-05-29T12:21:21.504Z",
+            "customer_email": "John@gmail.com",
+            "amount_total": 103200,
+            "currency": "eur"
+          }
+        ]
+      },
+      "createdAt": "2026-08-05T14:09:50.877Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "daa54fdc0333cb10cbc1",
+      "tenant_id": "default",
+      "type": "stripe_webhooks_stale",
+      "severity": "stop",
+      "message": "No Stripe webhook received in the last 6 hours.",
+      "data": {
+        "last_webhook_at": "2026-07-30T16:48:29.635Z",
+        "stale_before": "2026-08-05T14:15:42.586Z"
+      },
+      "createdAt": "2026-08-05T20:15:42.586Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    },
+    {
+      "id": "a4598f2c911a5bc68479",
+      "tenant_id": "default",
+      "type": "paid_orders_stuck",
+      "severity": "warning",
+      "message": "10 paid order(s) have not updated in 48 hours.",
+      "data": {
+        "count": 10,
+        "oldest_updated_at_before": "2026-08-03T20:15:42.586Z",
+        "sample": [
+          {
+            "order_id": "909c7fbd-19ac-454c-b1ba-ad60a49efd67",
+            "created_at": "2026-05-21T21:46:40.208Z",
+            "updated_at": "2026-05-21T21:47:34.616Z",
+            "customer_email": "chriswworldwide@yahoo.co.uk",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "27080776-9fef-406d-97d5-6e397286e84a",
+            "created_at": "2026-05-21T22:03:16.175Z",
+            "updated_at": "2026-05-21T22:04:35.233Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 2499,
+            "currency": "eur"
+          },
+          {
+            "order_id": "49274836-1a8e-40b7-a526-f96cb590f738",
+            "created_at": "2026-05-23T21:17:57.510Z",
+            "updated_at": "2026-05-23T21:18:46.046Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 12900,
+            "currency": "eur"
+          },
+          {
+            "order_id": "900fa773-95b1-4779-bb91-a31a84e12545",
+            "created_at": "2026-05-23T21:40:25.649Z",
+            "updated_at": "2026-05-23T21:41:14.418Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "7735a9d9-70e9-4572-8e2e-0134736ad045",
+            "created_at": "2026-05-27T15:03:19.343Z",
+            "updated_at": "2026-05-27T15:04:08.714Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "434b1e8e-d7e7-41ad-b0cd-284a62709e5b",
+            "created_at": "2026-05-27T15:15:28.791Z",
+            "updated_at": "2026-05-27T15:16:16.636Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 25800,
+            "currency": "eur"
+          },
+          {
+            "order_id": "b1d781f9-fe13-4692-b282-de696a71d6d3",
+            "created_at": "2026-05-29T11:39:57.019Z",
+            "updated_at": "2026-05-29T11:41:17.339Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 64500,
+            "currency": "eur"
+          },
+          {
+            "order_id": "12cc2609-9a25-4afb-9c3b-d3b0e46f2d72",
+            "created_at": "2026-05-29T12:00:28.265Z",
+            "updated_at": "2026-05-29T12:01:09.952Z",
+            "customer_email": "chris@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "a1ee7669-e48a-4f3e-a45e-6ef08a5ea7c0",
+            "created_at": "2026-05-29T12:01:48.630Z",
+            "updated_at": "2026-05-29T12:02:32.293Z",
+            "customer_email": "James@gmail.com",
+            "amount_total": 77400,
+            "currency": "eur"
+          },
+          {
+            "order_id": "047016e1-b282-459b-a45c-a01c2909d998",
+            "created_at": "2026-05-29T12:20:36.408Z",
+            "updated_at": "2026-05-29T12:21:21.504Z",
+            "customer_email": "John@gmail.com",
+            "amount_total": 103200,
+            "currency": "eur"
+          }
+        ]
+      },
+      "createdAt": "2026-08-05T20:15:42.586Z",
+      "emailedTo": "",
+      "emailStatus": "skipped (ALERT_EMAIL_TO not set)"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# .snyk
+version: v1.32.0
+
+ignore:
+  # Ignore the old AJV ReDoS vulnerability pulled in by ESLint (dev-only)
+  SNYK-JS-AJV-1044394:
+    - '*':
+        reason: "AJV 6.x is used only by ESLint for linting; not part of runtime."
+        expires: 2026-12-31T23:59:59.000Z
+
+  # Optional: ignore generic Snyk Code ReDoS flag inside ajv/scripts/compile-dots.js
+  SNYK-CODE-JS-REGEX-DOS:
+    - '*':
+        reason: "False positive in ESLint’s vendored AJV 6 (build-time dependency)."
+        expires: 2026-12-31T23:59:59.000Z

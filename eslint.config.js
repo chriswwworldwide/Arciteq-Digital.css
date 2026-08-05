@@ -1,19 +1,22 @@
 // eslint.config.js
-// Modern ESLint flat‑config version (v9+)
-// Clean, compatible with Prettier and Node ESM setup
+// -------------------------------------------------------------
+// Modern ESLint flat‑config (for ESLint v9+)
+// Works seamlessly in ESM projects (package.json → "type": "module")
+// Compatible with Prettier and modern toolchains
+// -------------------------------------------------------------
 
 import js from "@eslint/js";
 import globals from "globals";
 
 export default [
-  // Base recommended configuration from ESLint
+  // ✅ Base ESLint recommended rules
   js.configs.recommended,
 
   {
-    // ✅ Lint only JS source files, not assets or configs
+    // ✅ Apply rules only to JavaScript source files
     files: ["**/*.js"],
 
-    // ✅ Folders / files ESLint should never lint
+    // ✅ Skip non‑source or generated directories
     ignores: [
       "node_modules/**",
       "dist/**",
@@ -29,7 +32,7 @@ export default [
       "eslint.config.js"
     ],
 
-    // ✅ ECMAScript + global setup
+    // ✅ Language and environment setup
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
@@ -39,17 +42,20 @@ export default [
       }
     },
 
-    // ✅ Rules tuned for your project
+    // ✅ Custom rules
     rules: {
       // ---- General Hygiene ----
       "no-undef": "off",
       semi: ["warn", "always"],
 
       // ---- Unused variables ----
-      // Warn only if actually worth fixing, ignore args and _vars
-      "no-unused-vars": ["warn", { "args": "none", "varsIgnorePattern": "^_" }],
+      // Warn on truly unused variables, ignore args and leading underscores
+      "no-unused-vars": [
+        "warn",
+        { args: "none", varsIgnorePattern: "^_" }
+      ],
 
-      // ---- Whitespace / spacing ----
+      // ---- Whitespace / spacing issues ----
       "no-irregular-whitespace": "off",
       "no-mixed-spaces-and-tabs": "off",
       "no-trailing-spaces": "off",

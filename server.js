@@ -38,6 +38,42 @@ const alertHeartbeatMinutesRaw = Number(process.env.ALERT_HEARTBEAT_MINUTES);
 const alertHeartbeatMinutes = Number.isFinite(alertHeartbeatMinutesRaw) && alertHeartbeatMinutesRaw > 0 ? alertHeartbeatMinutesRaw : 5;
 const publicBaseUrl = String(process.env.PUBLIC_BASE_URL || "").trim();
 
+// Baseline response hardening.
+app.disable("x-powered-by");
+app.use((req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  next();
+});
+
+// Internal files that must never be reachable over HTTP, even though the
+// project root is served statically for the storefront's assets.
+const PRIVATE_STATIC_PATHS = [
+  /^\/(server|db)\.js$/i,
+  /^\/(scripts|coverage|middleware|node_modules|backups|backups_cleanup|archive)(\/|$)/i,
+  /^\/public_backup[^/]*(\/|$)/i,
+  /^\/data\/(ad_spend|ad_guardrails|alerts|drafts|import_queue|import_audit|placeholder_supplier_feed)\.json$/i,
+  /^\/data\/.*\.log$/i,
+  /^\/(package(-lock)?\.json|tsconfig\.json|Procfile|Makefile|docker-compose\.yml|render\.yaml)$/i,
+  /\.(tar\.gz|tgz|zip|env|pem|key|sql)$/i,
+  /(^|\/)\.DS_Store$/i,
+];
+
+app.use((req, res, next) => {
+  let decodedPath = req.path;
+  try {
+    decodedPath = decodeURIComponent(req.path);
+  } catch {
+    // keep the raw path when it is not valid percent-encoding
+  }
+
+  if (PRIVATE_STATIC_PATHS.some((pattern) => pattern.test(decodedPath))) {
+    return res.status(404).type("text/plain").send("Not found");
+  }
+  return next();
+});
+
 const recentServerErrors = [];
 app.use((req, res, next) => {
   res.on("finish", () => {
@@ -1252,17 +1288,68 @@ function startHeartbeatScheduler() {
   }, ms);
 }
 
+function secretsMatch(provided, expected) {
+  const a = Buffer.from(String(provided));
+  const b = Buffer.from(String(expected));
+  if (a.length !== b.length) return false;
+  return crypto.timingSafeEqual(a, b);
+}
+
 function requireAdmin(req, res) {
   if (!adminApiKey) {
     return res.status(500).json({ error: "ADMIN_API_KEY is not set on the server" });
   }
 
   const provided = String(req.headers["x-admin-key"] || req.headers["x-admin-api-key"] || "");
-  if (!provided || provided !== adminApiKey) {
+  if (!provided || !secretsMatch(provided, adminApiKey)) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
   return null;
+}
+
+// Minimal fixed-window per-IP limiter for unauthenticated write endpoints.
+const rateLimitBuckets = new Map();
+
+function rateLimit(req, res, { key, limit, windowMs }) {
+  const ip = String(req.ip || req.socket?.remoteAddress || "unknown");
+  const bucketKey = `${key}:${ip}`;
+  const now = Date.now();
+  const bucket = rateLimitBuckets.get(bucketKey);
+
+  if (!bucket || now >= bucket.resetAt) {
+    rateLimitBuckets.set(bucketKey, { count: 1, resetAt: now + windowMs });
+  } else if (bucket.count >= limit) {
+    res.setHeader("Retry-After", String(Math.ceil((bucket.resetAt - now) / 1000)));
+    return res.status(429).json({ error: "Too many requests" });
+  } else {
+    bucket.count += 1;
+  }
+
+  if (rateLimitBuckets.size > 5000) {
+    for (const [k, v] of rateLimitBuckets) {
+      if (now >= v.resetAt) rateLimitBuckets.delete(k);
+    }
+  }
+
+  return null;
+}
+
+const MAX_ITEM_QUANTITY = 20;
+
+/**
+ * Stripe redirects the buyer to these URLs after checkout, so they must never
+ * be derived from a request header an attacker controls.
+ */
+function resolveCheckoutOrigin(req) {
+  if (publicBaseUrl) return publicBaseUrl.replace(/\/+$/, "");
+
+  const requestOrigin = String(req.headers.origin || "").trim();
+  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(requestOrigin)) {
+    return requestOrigin;
+  }
+
+  return `http://localhost:${PORT}`;
 }
 
 function normalizeToSlug(value) {
@@ -1406,6 +1493,10 @@ function resolveTenantFromRequest(req) {
 }
 
 function getBaseUrl(req) {
+  // Prefer the configured base URL so a spoofed Host header cannot end up in
+  // canonicals, sitemaps or robots.txt.
+  if (publicBaseUrl) return publicBaseUrl.replace(/\/+$/, "");
+
   const hostHeader = String(req.headers.host || "localhost");
   const forwardedProto = String(req.headers["x-forwarded-proto"] || "");
   const protocol = forwardedProto ? forwardedProto.split(",")[0] : req.protocol;
@@ -2118,16 +2209,23 @@ app.get("/api/tenant", (req, res) => {
 });
 
 app.post("/api/capture-email", async (req, res) => {
+  const limited = rateLimit(req, res, {
+    key: "capture-email",
+    limit: 10,
+    windowMs: 60 * 1000,
+  });
+  if (limited) return limited;
+
   try {
     const tenant = resolveTenantFromRequest(req);
     const tenantId = String(tenant?.tenant_id || "default");
     const email = String(req.body?.email || "").trim().toLowerCase();
-    const cart = Array.isArray(req.body?.cart) ? req.body.cart : [];
+    const cart = Array.isArray(req.body?.cart) ? req.body.cart.slice(0, 100) : [];
 
     if (!email) {
       return res.status(400).json({ error: "Email is required" });
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return res.status(400).json({ error: "Invalid email" });
     }
 
@@ -2846,7 +2944,11 @@ app.post("/create-checkout-session", async (req, res) => {
         );
       }
 
-      const quantity = Number(item.quantity) || 1;
+      const requestedQuantity = Math.floor(Number(item?.quantity ?? 1));
+      if (!Number.isFinite(requestedQuantity) || requestedQuantity < 1) {
+        throw new Error(`Invalid quantity for productId: ${productId}`);
+      }
+      const quantity = Math.min(MAX_ITEM_QUANTITY, requestedQuantity);
       return {
         productId,
         title: String(product?.title || "Product"),
@@ -2875,7 +2977,7 @@ app.post("/create-checkout-session", async (req, res) => {
     );
     const amountTotal = amountSubtotal;
 
-    const origin = req.headers.origin || `http://localhost:${PORT}`;
+    const origin = resolveCheckoutOrigin(req);
 
     const orderId = crypto.randomUUID();
     await dbQuery(
@@ -2972,6 +3074,7 @@ app.post("/create-checkout-session", async (req, res) => {
       "Invalid price.amount for productId:",
       "Missing price.currency for productId:",
       "Currency mismatch for productId:",
+      "Invalid quantity for productId:",
       "Tenant mismatch for checkout session",
     ];
 

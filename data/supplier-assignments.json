@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-31T10:38:00.000Z",
+  "assignments": [
+    {
+      "tenant_id": "default",
+      "productId": "pet-demo-smart-tracker-001",
+      "primarySupplierId": "placeholder-uk-fulfil",
+      "backupSupplierId": "placeholder-eu-fulfil",
+      "expectedShippingWindowDays": { "min": 7, "max": 15 },
+      "notes": "Both suppliers are placeholders; replace with real suppliers once sourcing is done."
+    },
+    {
+      "tenant_id": "default",
+      "productId": "pet-ph-led-collar-light-001",
+      "primarySupplierId": "placeholder-uk-fulfil",
+      "backupSupplierId": "placeholder-eu-fulfil",
+      "expectedShippingWindowDays": { "min": 7, "max": 15 },
+      "notes": "Both suppliers are placeholders; replace with real suppliers once sourcing is done."
+    },
+    {
+      "tenant_id": "default",
+      "productId": "pet-ph-reflective-walk-leash-001",
+      "primarySupplierId": "placeholder-uk-fulfil",
+      "backupSupplierId": "placeholder-eu-fulfil",
+      "expectedShippingWindowDays": { "min": 7, "max": 15 },
+      "notes": "Both suppliers are placeholders; replace with real suppliers once sourcing is done."
+    },
+    {
+      "tenant_id": "default",
+      "productId": "pet-ph-reflective-harness-001",
+      "primarySupplierId": "placeholder-uk-fulfil",
+      "backupSupplierId": "placeholder-eu-fulfil",
+      "expectedShippingWindowDays": { "min": 7, "max": 15 },
+      "notes": "Both suppliers are placeholders; replace with real suppliers once sourcing is done."
+    },
+    {
+      "tenant_id": "default",
+      "productId": "pet-ph-id-tag-qr-001",
+      "primarySupplierId": "placeholder-uk-fulfil",
+      "backupSupplierId": "placeholder-eu-fulfil",
+      "expectedShippingWindowDays": { "min": 7, "max": 15 },
+      "notes": "Both suppliers are placeholders; replace with real suppliers once sourcing is done."
+    },
+    {
+      "tenant_id": "default",
+      "productId": "pet-ph-training-clicker-001",
+      "primarySupplierId": "placeholder-uk-fulfil",
+      "backupSupplierId": "placeholder-eu-fulfil",
+      "expectedShippingWindowDays": { "min": 7, "max": 15 },
+      "notes": "Both suppliers are placeholders; replace with real suppliers once sourcing is done."
+    },
+    {
+      "tenant_id": "default",
+      "productId": "pet-ph-seatbelt-tether-001",
+      "primarySupplierId": "placeholder-uk-fulfil",
+      "backupSupplierId": "placeholder-eu-fulfil",
+      "expectedShippingWindowDays": { "min": 7, "max": 15 },
+      "notes": "Both suppliers are placeholders; replace with real suppliers once sourcing is done."
+    },
+    {
+      "tenant_id": "default",
+      "productId": "pet-ph-poop-bag-holder-001",
+      "primarySupplierId": "placeholder-uk-fulfil",
+      "backupSupplierId": "placeholder-eu-fulfil",
+      "expectedShippingWindowDays": { "min": 7, "max": 15 },
+      "notes": "Both suppliers are placeholders; replace with real suppliers once sourcing is done."
+    }
+  ]
+}

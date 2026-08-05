@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <style>
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .panel {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 16px;
+        background: #fff;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .metric {
+        border: 1px solid #eef2f7;
+        border-radius: 12px;
+        padding: 12px;
+        background: #fafafa;
+      }
+
+      .metric .label {
+        font-size: 0.9rem;
+        color: #4b5563;
+        margin-bottom: 6px;
+      }
+
+      .metric .value {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .error {
+        border: 1px solid #fecaca;
+        background: #fef2f2;
+        color: #7f1d1d;
+        padding: 12px;
+        border-radius: 12px;
+        margin-top: 12px;
+      }
+
+      .muted {
+        color: #6b7280;
+      }
+
+      @media (max-width: 640px) {
+        main {
+          padding: 16px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header-mount" data-title="Health"></div>
+
+    <main>
+      <h1>Health</h1>
+      <p class="muted">Quick sanity checks for data + SEO basics.</p>
+
+      <section class="panel">
+        <div id="status" class="muted">Loading…</div>
+        <div id="metrics" class="grid" style="margin-top: 12px"></div>
+        <div id="errors"></div>
+      </section>
+    </main>
+
+    <script src="/script.js"></script>
+    <script>
+      function metric(label, value) {
+        return `
+          <div class="metric">
+            <div class="label">${label}</div>
+            <div class="value">${value}</div>
+          </div>
+        `;
+      }
+
+      async function loadHealth() {
+        const statusEl = document.getElementById("status");
+        const metricsEl = document.getElementById("metrics");
+        const errorsEl = document.getElementById("errors");
+
+        try {
+          const res = await fetch("/api/health", { cache: "no-cache" });
+          const payload = await res.json();
+
+          if (!res.ok) {
+            statusEl.textContent = "Error";
+            errorsEl.innerHTML = `<div class="error">${String(payload?.error || "Failed to load health")}</div>`;
+            return;
+          }
+
+          statusEl.textContent = "OK";
+
+          const tenantId = String(payload?.tenant?.tenant_id || "");
+          const productsCount = String(payload?.products?.count ?? "0");
+          const reviewsCount = String(payload?.reviews?.count ?? "0");
+          const canonicalPct = String(payload?.seo?.canonicalCoveragePercent ?? "0");
+          const productsGeneratedAt = String(payload?.products?.generatedAt || "");
+          const reviewsGeneratedAt = String(payload?.reviews?.generatedAt || "");
+
+          metricsEl.innerHTML =
+            metric("Tenant", tenantId || "(none)") +
+            metric("Products", productsCount) +
+            metric("Reviews", reviewsCount) +
+            metric("Canonical coverage", canonicalPct + "%") +
+            metric("Products generatedAt", productsGeneratedAt || "(unknown)") +
+            metric("Reviews generatedAt", reviewsGeneratedAt || "(unknown)");
+
+          const warnings = Array.isArray(payload?.warnings) ? payload.warnings : [];
+          if (warnings.length) {
+            errorsEl.innerHTML = warnings
+              .map((w) => `<div class="error">${String(w)}</div>`)
+              .join("");
+          } else {
+            errorsEl.innerHTML = "";
+          }
+        } catch (err) {
+          statusEl.textContent = "Error";
+          errorsEl.innerHTML = `<div class="error">${String(err?.message || err || "Unknown error")}</div>`;
+        }
+      }
+
+      loadHealth();
+    </script>
+  </body>
+</html>

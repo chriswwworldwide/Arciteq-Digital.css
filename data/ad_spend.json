@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-29T13:13:40.536Z",
+  "spends": [
+    {
+      "tenant_id": "default",
+      "utm_source": "acebook",
+      "utm_medium": "cpc",
+      "utm_campaign": "paid_test_2",
+      "utm_content": "test_ad_2",
+      "spend_minor": 1000,
+      "currency": "eur",
+      "updatedAt": "2026-07-29T13:11:15.437Z"
+    },
+    {
+      "tenant_id": "default",
+      "utm_source": "facebook",
+      "utm_medium": "cpc",
+      "utm_campaign": "paid_test_2",
+      "utm_content": "test_ad_2",
+      "spend_minor": 1500,
+      "currency": "eur",
+      "updatedAt": "2026-07-29T13:13:40.536Z"
+    }
+  ]
+}

@@ -4,24 +4,132 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping Bag</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <style>
+      header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      header nav ul {
+        list-style: none;
+        display: flex;
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+      }
+
+      header nav a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      header nav a:hover {
+        text-decoration: underline;
+      }
+
+      header > div {
+        white-space: nowrap;
+      }
+
+      #cart-items {
+        display: grid;
+        gap: 12px;
+      }
+
+      .cart-row {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 12px;
+        background: #fafafa;
+      }
+
+      .cart-thumb {
+        width: 92px;
+        height: 92px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex: 0 0 auto;
+      }
+
+      .cart-info {
+        flex: 1;
+      }
+
+      .cart-info h3 {
+        margin: 0 0 6px;
+        font-size: 1rem;
+      }
+
+      .cart-info p {
+        margin: 0 0 10px;
+      }
+
+      .cart-info label {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        margin-right: 12px;
+      }
+
+      .cart-info input[type="number"] {
+        width: 72px;
+      }
+
+      @media (max-width: 520px) {
+        .cart-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .cart-thumb {
+          width: 100%;
+          height: auto;
+          max-height: 240px;
+        }
+
+        .cart-info label {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+
+        .cart-info button {
+          padding: 10px 12px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <h1>Your Shopping Bag</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="wishlist.html">Wishlist</a></li>
-          <li><a href="gift-certificates.html">Gift Certificates</a></li>
-          <li><a href="cart.html">Shopping Bag</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div id="header-mount" data-title="Your Shopping Bag"></div>
     <main>
       <h2>Items in Your Shopping Bag</h2>
-      <p>Your shopping bag is currently empty.</p>
+      <div id="cart-items"></div>
+      <p id="cart-total">Subtotal:
+        0.00
+        EUR
+      </p>
+      <div id="cart-shipping-progress" style="margin:12px 0;"></div>
+      <div id="trust-strip" style="margin:12px 0;"></div>
+      <div id="cart-addons" style="margin:12px 0;"></div>
+      <div style="margin:16px 0;max-width:520px;">
+        <label for="customer-email" style="display:block;font-weight:600;margin-bottom:6px;">Email for receipt & updates</label>
+        <input id="customer-email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" style="width:100%;padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px;" />
+        <div style="margin-top:6px;font-size:0.92rem;color:#4b5563;line-height:1.35;">We’ll use this for your receipt and to help recover your order if checkout is interrupted.</div>
+      </div>
+      <div style="position:sticky;bottom:0;z-index:10;background:#ffffff;padding:12px 0;">
+        <button id="checkout-btn" type="button" onclick="checkout()" style="padding:14px 16px;border:1px solid #111827;border-radius:12px;background:#111827;color:#ffffff;font-weight:800;cursor:pointer;min-width:180px;">Checkout</button>
+        <button id="clear-cart" type="button" onclick="clearCart()" style="padding:14px 16px;border:1px solid #d1d5db;border-radius:12px;background:#ffffff;color:#111827;font-weight:700;cursor:pointer;margin-left:10px;">Clear cart</button>
+      </div>
     </main>
-    <script src="script.js"></script>
+    <script type="module" src="/script.js"></script>
   </body>
 </html>

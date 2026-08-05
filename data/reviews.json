@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-04-28T00:00:00.000Z",
+  "reviews": [
+    {
+      "reviewId": "rev-demo-0001",
+      "tenant_id": "default",
+      "productId": "pet-demo-heatpad-001",
+      "rating": 5,
+      "title": "Great demo review",
+      "body": "My senior pet settled much faster and seemed more comfortable within a day.",
+      "authorName": "Demo Buyer",
+      "verifiedBuyer": true,
+      "media": [],
+      "createdAt": "2026-04-28T00:00:00.000Z"
+    },
+    {
+      "reviewId": "rev-demo-0002",
+      "tenant_id": "default",
+      "productId": "pet-demo-calming-bed-001",
+      "rating": 5,
+      "title": "Instant favorite",
+      "body": "Our senior cat stopped pacing at night and sleeps longer now.",
+      "authorName": "A. P.",
+      "verifiedBuyer": true,
+      "media": [
+        {
+          "type": "photo",
+          "url": "/images/ugc/demo-senior-cat-bed.jpg"
+        }
+      ],
+      "createdAt": "2026-04-28T00:00:00.000Z"
+    },
+    {
+      "reviewId": "rev-demo-0003",
+      "tenant_id": "default",
+      "productId": "pet-demo-smart-tracker-001",
+      "rating": 4,
+      "title": "Helpful routine tracking",
+      "body": "It helped us notice a change in activity early and adjust our routine.",
+      "authorName": "M. K.",
+      "verifiedBuyer": false,
+      "media": [
+        {
+          "type": "video",
+          "url": "/images/ugc/demo-senior-dog-walk.mp4"
+        }
+      ],
+      "createdAt": "2026-04-28T00:00:00.000Z"
+    }
+  ]
+}

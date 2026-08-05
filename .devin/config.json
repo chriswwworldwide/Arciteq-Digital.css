@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "read",
+      "edit",
+      "write",
+      "grep",
+      "glob",
+      "exec"
+    ],
+    "deny": [
+      "Write(.env*)",
+      "Exec(rm)"
+    ]
+  }
+}

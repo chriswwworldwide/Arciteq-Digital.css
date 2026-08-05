@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "at": "2026-05-15T10:47:09.286Z",
+      "type": "import_run",
+      "tenant_id": "default",
+      "jobId": "job-placeholder-001",
+      "imported": 2,
+      "published": 2,
+      "errorsCount": 0
+    },
+    {
+      "at": "2026-05-15T11:29:52.296Z",
+      "type": "import_run",
+      "tenant_id": "default",
+      "jobId": "job-placeholder-002",
+      "imported": 2,
+      "published": 1,
+      "errorsCount": 0
+    },
+    {
+      "at": "2026-05-16T19:09:33.931Z",
+      "type": "unpublish_product",
+      "tenant_id": "default",
+      "productId": "imp-default-ph-bed-001"
+    },
+    {
+      "at": "2026-05-16T19:28:31.283Z",
+      "type": "import_run",
+      "tenant_id": "default",
+      "jobId": "job-placeholder-003",
+      "imported": 2,
+      "published": 0,
+      "errorsCount": 0
+    },
+    {
+      "at": "2026-05-16T19:34:27.680Z",
+      "type": "import_run",
+      "tenant_id": "default",
+      "jobId": "job-placeholder-004",
+      "imported": 2,
+      "published": 0,
+      "errorsCount": 0
+    },
+    {
+      "at": "2026-05-16T20:18:40.180Z",
+      "type": "import_run",
+      "tenant_id": "default",
+      "jobId": "job-placeholder-005",
+      "imported": 3,
+      "published": 1,
+      "errorsCount": 0
+    },
+    {
+      "at": "2026-05-16T20:20:00.626Z",
+      "type": "unpublish_product",
+      "tenant_id": "default",
+      "productId": "imp-default-ph-camera-001"
+    },
+    {
+      "at": "2026-05-16T20:20:20.426Z",
+      "type": "publish_draft",
+      "tenant_id": "default",
+      "productId": "imp-default-ph-camera-001"
+    }
+  ]
+}

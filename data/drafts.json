@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-16T20:20:20.425Z",
+  "drafts": [
+    {
+      "draftId": "draft-imp-default-ph-tracker-001",
+      "productId": "imp-default-ph-tracker-001",
+      "tenant_id": "default",
+      "source": {
+        "type": "placeholder_supplier_feed",
+        "supplierSku": "ph-tracker-001"
+      },
+      "score": 100,
+      "reasons": [
+        "Duplicate of existing productId: imp-default-ph-tracker-001"
+      ],
+      "status": "duplicate",
+      "product": {
+        "productId": "imp-default-ph-tracker-001",
+        "tenant_id": "default",
+        "source": {
+          "supplierId": "placeholder",
+          "supplierSku": "ph-tracker-001"
+        },
+        "dedupeKey": "pawsense::gps-activity-tracker-tag-placeholder",
+        "title": "GPS Activity Tracker Tag (Placeholder)",
+        "description": "Placeholder supplier feed item for a lightweight tracker tag.",
+        "nicheCategory": {
+          "slug": "senior-pet-care",
+          "name": "Senior Pet Care"
+        },
+        "productType": {
+          "slug": "smart-monitoring",
+          "name": "Smart Monitoring"
+        },
+        "seo": {
+          "slug": "gps-activity-tracker-tag-placeholder",
+          "canonicalPath": "/senior-pet-care/gps-activity-tracker-tag-placeholder",
+          "legacySlugs": []
+        },
+        "images": [
+          {
+            "src": "/images2/screenshot-1.png",
+            "alt": "Placeholder product image",
+            "width": 1200,
+            "height": 1200
+          }
+        ],
+        "price": {
+          "amount": 2499,
+          "currency": "eur"
+        },
+        "availability": "https://schema.org/InStock",
+        "brand": "PawSense",
+        "tags": [
+          "imported",
+          "placeholder"
+        ],
+        "petType": [
+          "Dog",
+          "Cat"
+        ],
+        "lifeStage": [
+          "Adult",
+          "Senior"
+        ],
+        "sizeRequirement": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "shippingOrigin": "EU",
+        "warehouseLocation": "EU",
+        "materials": [
+          "ABS plastic",
+          "Silicone"
+        ],
+        "marketing_hooks": {
+          "emotionalPainPoints": [
+            "Spot routine changes early",
+            "Feel reassured when you’re not home"
+          ],
+          "ugcAngles": [
+            "Photo of the product on a collar",
+            "Short video of a calm daily routine"
+          ]
+        },
+        "attributes": {},
+        "safetyDisclaimer": "Inspect for damage regularly. Not a chew toy. Ensure it is attached securely and does not restrict breathing or movement.",
+        "linkedConsumables": [],
+        "bundle": null,
+        "flags": {
+          "featured": false,
+          "priority": 5
+        },
+        "audit": {
+          "createdAt": "2026-05-16T20:18:40.179Z",
+          "updatedAt": "2026-05-16T20:18:40.179Z"
+        }
+      },
+      "createdAt": "2026-05-16T20:18:40.179Z",
+      "updatedAt": "2026-05-16T20:18:40.179Z"
+    },
+    {
+      "draftId": "draft-imp-default-ph-bed-001",
+      "productId": "imp-default-ph-bed-001",
+      "tenant_id": "default",
+      "source": {
+        "type": "placeholder_supplier_feed",
+        "supplierSku": "ph-bed-001"
+      },
+      "score": 10,
+      "reasons": [
+        "Missing petType",
+        "Missing lifeStage",
+        "Missing sizeRequirement",
+        "Missing safetyDisclaimer",
+        "Missing materials"
+      ],
+      "status": "draft",
+      "product": {
+        "productId": "imp-default-ph-bed-001",
+        "tenant_id": "default",
+        "source": {
+          "supplierId": "placeholder",
+          "supplierSku": "ph-bed-001"
+        },
+        "dedupeKey": "pawsense::calming-support-bed-placeholder",
+        "title": "Calming Support Bed (Placeholder)",
+        "description": "Placeholder supplier feed item for a calming bed.",
+        "nicheCategory": {
+          "slug": "senior-pet-care",
+          "name": "Senior Pet Care"
+        },
+        "productType": {
+          "slug": "smart-monitoring",
+          "name": "Smart Monitoring"
+        },
+        "seo": {
+          "slug": "calming-support-bed-placeholder",
+          "canonicalPath": "/senior-pet-care/calming-support-bed-placeholder",
+          "legacySlugs": []
+        },
+        "images": [
+          {
+            "src": "/images2/screenshot-1.png",
+            "alt": "Placeholder product image",
+            "width": 1200,
+            "height": 1200
+          }
+        ],
+        "price": {
+          "amount": 3999,
+          "currency": "eur"
+        },
+        "availability": "https://schema.org/InStock",
+        "brand": "PawSense",
+        "tags": [
+          "imported",
+          "placeholder"
+        ],
+        "petType": [],
+        "lifeStage": [],
+        "sizeRequirement": [],
+        "shippingOrigin": "UK",
+        "warehouseLocation": "UK",
+        "materials": [],
+        "marketing_hooks": {
+          "emotionalPainPoints": [
+            "Spot routine changes early",
+            "Feel reassured when you’re not home"
+          ],
+          "ugcAngles": [
+            "Photo of the product on a collar",
+            "Short video of a calm daily routine"
+          ]
+        },
+        "attributes": {},
+        "safetyDisclaimer": "",
+        "linkedConsumables": [],
+        "bundle": null,
+        "flags": {
+          "featured": false,
+          "priority": 5
+        },
+        "audit": {
+          "createdAt": "2026-05-16T20:18:40.179Z",
+          "updatedAt": "2026-05-16T20:18:40.179Z"
+        }
+      },
+      "createdAt": "2026-05-16T20:18:40.179Z",
+      "updatedAt": "2026-05-16T20:18:40.179Z"
+    },
+    {
+      "draftId": "draft-imp-default-ph-camera-001",
+      "productId": "imp-default-ph-camera-001",
+      "tenant_id": "default",
+      "source": {
+        "type": "placeholder_supplier_feed",
+        "supplierSku": "ph-camera-001"
+      },
+      "score": 100,
+      "reasons": [],
+      "status": "published",
+      "product": {
+        "productId": "imp-default-ph-camera-001",
+        "tenant_id": "default",
+        "source": {
+          "supplierId": "placeholder",
+          "supplierSku": "ph-camera-001"
+        },
+        "dedupeKey": "pawsense::indoor-pet-wellness-camera-placeholder",
+        "title": "Indoor Pet Wellness Camera (Placeholder)",
+        "description": "Placeholder supplier feed item for a simple indoor wellness camera.",
+        "nicheCategory": {
+          "slug": "senior-pet-care",
+          "name": "Senior Pet Care"
+        },
+        "productType": {
+          "slug": "smart-monitoring",
+          "name": "Smart Monitoring"
+        },
+        "seo": {
+          "slug": "indoor-pet-wellness-camera-placeholder",
+          "canonicalPath": "/senior-pet-care/indoor-pet-wellness-camera-placeholder",
+          "legacySlugs": []
+        },
+        "images": [
+          {
+            "src": "/images2/screenshot-1.png",
+            "alt": "Placeholder product image",
+            "width": 1200,
+            "height": 1200
+          }
+        ],
+        "price": {
+          "amount": 5999,
+          "currency": "eur"
+        },
+        "availability": "https://schema.org/InStock",
+        "brand": "PawSense",
+        "tags": [
+          "imported",
+          "placeholder"
+        ],
+        "petType": [
+          "Dog",
+          "Cat"
+        ],
+        "lifeStage": [
+          "Adult",
+          "Senior"
+        ],
+        "sizeRequirement": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "shippingOrigin": "EU",
+        "warehouseLocation": "EU",
+        "materials": [
+          "ABS plastic",
+          "Aluminium"
+        ],
+        "marketing_hooks": {
+          "emotionalPainPoints": [
+            "Spot routine changes early",
+            "Feel reassured when you’re not home"
+          ],
+          "ugcAngles": [
+            "Photo of the product on a collar",
+            "Short video of a calm daily routine"
+          ]
+        },
+        "attributes": {},
+        "safetyDisclaimer": "Indoor use only. Keep away from water and heat sources. Not a toy. Use the provided power adapter.",
+        "linkedConsumables": [],
+        "bundle": null,
+        "flags": {
+          "featured": false,
+          "priority": 5
+        },
+        "audit": {
+          "createdAt": "2026-05-16T20:18:40.179Z",
+          "updatedAt": "2026-05-16T20:18:40.179Z"
+        }
+      },
+      "createdAt": "2026-05-16T20:18:40.179Z",
+      "updatedAt": "2026-05-16T20:20:20.425Z"
+    }
+  ]
+}

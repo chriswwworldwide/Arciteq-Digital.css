@@ -73,7 +73,15 @@ This is worth doing only as a final pre-flight, not a replacement for going live
 
 ## iPhone / headless execution charter
 
-When the session is running on iPhone or in any headless mode and the user has said "go", "do it", "execute", or similar, Devin has blanket permission to:
+The iPhone version of Devin is a **read-only indexed-search assistant**. It cannot edit files, run `npm start`, run `git`, run `curl`, open browser previews, or persist across turns. Use it only for:
+
+- Reading `AGENTS.md` and `PROJECT_STATUS.md`
+- Searching the repo and answering one-off questions
+- Reviewing a specific file or diff
+
+The execution charter below applies to a desktop/terminal Devin session that has filesystem, shell, and browser access:
+
+When the user has said "go", "do it", "execute", or similar, desktop Devin has blanket permission to:
 
 - Start and stop the local server (`npm start`, `node server.js`, etc.) for testing.
 - Run `curl`, `gh`, `git`, and other CLI commands without per-step approval.

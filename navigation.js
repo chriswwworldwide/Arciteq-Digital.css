@@ -2,6 +2,8 @@
 const toggleButton = document.getElementById("menu-toggle");
 const navMenu = document.querySelector("nav ul");
 
-toggleButton.addEventListener("click", () => {
-  navMenu.classList.toggle("visible");
-});
+if (toggleButton && navMenu) {
+  toggleButton.addEventListener("click", () => {
+    navMenu.classList.toggle("visible");
+  });
+}

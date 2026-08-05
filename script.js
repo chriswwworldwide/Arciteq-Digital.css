@@ -195,6 +195,10 @@ async function checkout() {
       }),
     });
 
+    if (!res.ok) {
+      throw new Error(`Checkout request failed with status ${res.status}`);
+    }
+
     const data = await res.json();
     if (data.sessionUrl) {
       window.location.href = data.sessionUrl;

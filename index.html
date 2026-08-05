@@ -511,6 +511,7 @@
       <div class="gold-links">
         <a href="#">Lingerie Sets</a><a href="#">Panties</a><a href="#">Bras</a
         ><a href="#">Hosiery</a><a href="#">Accessories</a>
+        <a href="shop.html">Shop</a>
       </div>
     </nav>
 
@@ -555,23 +556,16 @@
 
     <script>
       const TOTAL = 140;
+      const PLACEHOLDER =
+        "data:image/svg+xml;utf8," +
+        encodeURIComponent(
+          `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='900'>
+            <rect width='100%' height='100%' fill='#f3f4f6'/>
+            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#374151' font-family='Arial, sans-serif' font-size='34'>Image coming soon</text>
+          </svg>`,
+        );
       async function preload() {
-        const arr = [];
-        for (let i = 1; i <= TOTAL; i++) {
-          for (const e of ["png", "jpg"]) {
-            const p = `images2/screenshot-${i}.${e}`,
-              im = new Image();
-            arr.push(
-              new Promise((r) => {
-                im.onload = () => r(p);
-                im.onerror = () => r(null);
-                im.src = p;
-              }),
-            );
-          }
-        }
-        const f = (await Promise.all(arr)).filter(Boolean);
-        return [...new Set(f)];
+        return Array.from({ length: Math.max(6, TOTAL) }, () => PLACEHOLDER);
       }
       class Pool {
         constructor(a) {

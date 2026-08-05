@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin — Supplier Guardrails</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <style>
+      header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      header nav ul {
+        list-style: none;
+        display: flex;
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+        flex-wrap: wrap;
+      }
+
+      header nav a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      header nav a:hover {
+        text-decoration: underline;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px 32px;
+      }
+
+      .panel {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 14px;
+        background: #fafafa;
+      }
+
+      .kpis {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr;
+      }
+
+      .kpi {
+        border: 1px solid #eee;
+        border-radius: 12px;
+        background: white;
+        padding: 12px;
+      }
+
+      .kpi .label {
+        font-size: 0.95rem;
+        color: #6b7280;
+      }
+
+      .kpi .value {
+        margin-top: 6px;
+        font-size: 1.6rem;
+        font-weight: 800;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-weight: 800;
+        font-size: 0.9rem;
+        border: 1px solid #e5e7eb;
+      }
+
+      .pill.green {
+        background: #ecfdf5;
+        border-color: #a7f3d0;
+        color: #065f46;
+      }
+
+      .pill.amber {
+        background: #fffbeb;
+        border-color: #fde68a;
+        color: #92400e;
+      }
+
+      .pill.red {
+        background: #fef2f2;
+        border-color: #fecaca;
+        color: #991b1b;
+      }
+
+      .list {
+        margin-top: 10px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .item {
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 12px;
+        background: white;
+        display: grid;
+        gap: 6px;
+      }
+
+      .item-title {
+        font-weight: 800;
+      }
+
+      .item-meta {
+        color: #374151;
+        line-height: 1.45;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .table th,
+      .table td {
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 1px solid #f3f4f6;
+        vertical-align: top;
+      }
+
+      .table th {
+        background: #f9fafb;
+        font-weight: 800;
+        color: #111827;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      .muted {
+        color: #6b7280;
+      }
+
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        word-break: break-all;
+      }
+
+      .table-wrap {
+        overflow: auto;
+        border-radius: 12px;
+      }
+
+      @media (min-width: 720px) {
+        .kpis {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>PawSense Tech & Wellness</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/shop.html">Shop</a></li>
+          <li><a href="/cart.html">Cart</a></li>
+          <li><a href="/admin.html">Admin Orders</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Supplier Guardrails</h2>
+      <p class="muted" style="max-width: 900px; line-height: 1.45;">
+        A quick view of hero SKUs and what needs attention (backup supplier, delivery estimate, assignment coverage). This
+        doesn’t block selling — it helps you avoid avoidable refunds and support tickets.
+      </p>
+
+      <div class="kpis" aria-label="Guardrail summary" style="margin-top: 12px;">
+        <div class="kpi">
+          <div class="label">Hero SKUs checked</div>
+          <div id="kpi-hero" class="value">–</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Needs attention</div>
+          <div id="kpi-attention" class="value">–</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Missing backup supplier</div>
+          <div id="kpi-backup" class="value">–</div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top: 16px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <div style="font-weight:800;">Needs attention</div>
+          <button id="refresh" type="button" style="padding:10px 12px;border-radius:8px;border:1px solid #ddd;background:white;cursor:pointer;font:inherit;">Refresh</button>
+        </div>
+        <div id="needs-attention" class="list" aria-live="polite"></div>
+      </div>
+
+      <div class="panel" style="margin-top: 16px;">
+        <div style="font-weight:800;">Hero SKU checklist</div>
+        <div class="muted" style="margin-top:6px;line-height:1.45;">
+          Uses the tenant hero list, supplier assignments, and delivery estimates.
+        </div>
+        <div class="table-wrap" style="margin-top: 12px;">
+          <table class="table" aria-label="Hero SKU checklist table">
+            <thead>
+              <tr>
+                <th>SKU</th>
+                <th>Delivery</th>
+                <th>Supplier</th>
+                <th>Backup</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="hero-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function esc(s) {
+        return String(s || "").replace(/[&<>'"]/g, (c) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "'": "&#39;",
+          '"': "&quot;",
+        })[c]);
+      }
+
+      function normalizeDaysWindow(w) {
+        const min = Number(w && w.min);
+        const max = Number(w && w.max);
+        if (!Number.isFinite(min) || !Number.isFinite(max) || min <= 0 || max <= 0) return null;
+        return { min, max };
+      }
+
+      function formatWindow(w) {
+        const ww = normalizeDaysWindow(w);
+        if (!ww) return "–";
+        return `${ww.min}–${ww.max} business days (UK)`;
+      }
+
+      function statusForRow(row) {
+        const issues = [];
+        if (!row.assignment) issues.push("missing assignment");
+        if (row.assignment && !String(row.assignment.primarySupplierId || "").trim()) issues.push("missing supplier");
+        if (row.assignment && !String(row.assignment.backupSupplierId || "").trim()) issues.push("missing backup");
+        if (row.assignment) {
+          const w = normalizeDaysWindow(row.assignment.expectedShippingWindowDays);
+          if (!w) issues.push("missing delivery window");
+          if (w && w.max >= 25) issues.push("slow delivery (25+ days)");
+        }
+
+        if (issues.length === 0) return { level: "green", label: "OK" };
+        if (issues.some((i) => i.includes("missing assignment") || i.includes("missing supplier") || i.includes("missing delivery"))) {
+          return { level: "red", label: "Fix required" };
+        }
+        return { level: "amber", label: "Needs attention" };
+      }
+
+      async function loadJson(url) {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) throw new Error(`${url} ${res.status}`);
+        return res.json();
+      }
+
+      function findTenant(tenantsPayload) {
+        const tenants = Array.isArray(tenantsPayload && tenantsPayload.tenants) ? tenantsPayload.tenants : [];
+        const hostname = String(location.hostname || "").toLowerCase();
+        const match = tenants.find((t) => (Array.isArray(t && t.hostnames) ? t.hostnames.map((h) => String(h).toLowerCase()).includes(hostname) : false));
+        return match || tenants.find((t) => String(t && t.tenant_id) === "default") || { tenant_id: "default" };
+      }
+
+      function buildNeedsAttention(rows, suppliersById) {
+        const items = [];
+        for (const r of rows) {
+          const issues = [];
+          const productTitle = r.product ? String(r.product.title || r.product.productId || "") : String(r.productId || "");
+          const productUrl = r.product && r.product.seo && r.product.seo.canonicalPath ? String(r.product.seo.canonicalPath) : "";
+
+          if (!r.assignment) {
+            issues.push({
+              title: "Missing supplier assignment",
+              detail: "This hero SKU has no supplier/delivery setup yet.",
+              fix: "Add an assignment entry in data/supplier-assignments.json.",
+              level: "red",
+            });
+          } else {
+            const primary = String(r.assignment.primarySupplierId || "").trim();
+            const backup = String(r.assignment.backupSupplierId || "").trim();
+            const w = normalizeDaysWindow(r.assignment.expectedShippingWindowDays);
+            if (!primary) {
+              issues.push({
+                title: "Missing primary supplier",
+                detail: "Orders can’t be routed reliably without a primary supplier.",
+                fix: "Set primarySupplierId for this SKU.",
+                level: "red",
+              });
+            }
+            if (!backup) {
+              issues.push({
+                title: "Missing backup supplier",
+                detail: "If the primary supplier slips or stocks out, you have no fallback.",
+                fix: "Set backupSupplierId (even if it’s just a placeholder for now).",
+                level: "amber",
+              });
+            }
+            if (!w) {
+              issues.push({
+                title: "Missing delivery estimate",
+                detail: "The site can’t disclose realistic delivery time without this.",
+                fix: "Set expectedShippingWindowDays (min/max).",
+                level: "red",
+              });
+            }
+            if (primary && suppliersById[primary] && String(suppliersById[primary].status || "") === "draft") {
+              issues.push({
+                title: "Supplier is still draft",
+                detail: "This supplier record is placeholder-only.",
+                fix: "Replace with real supplier details when chosen.",
+                level: "amber",
+              });
+            }
+          }
+
+          for (const i of issues) {
+            items.push({
+              level: i.level,
+              title: i.title,
+              productTitle,
+              productId: r.productId,
+              productUrl,
+              detail: i.detail,
+              fix: i.fix,
+            });
+          }
+        }
+        return items;
+      }
+
+      function renderNeedsAttention(items) {
+        const mount = document.getElementById("needs-attention");
+        if (!mount) return;
+        if (!items || items.length === 0) {
+          mount.innerHTML = `<div class="item"><div class="item-title">All clear</div><div class="item-meta">No issues detected for hero SKUs.</div></div>`;
+          return;
+        }
+
+        const order = { red: 0, amber: 1, green: 2 };
+        const sorted = items.slice().sort((a, b) => (order[a.level] ?? 9) - (order[b.level] ?? 9));
+
+        mount.innerHTML = sorted
+          .map((i) => {
+            const pill = `<span class="pill ${esc(i.level)}">${esc(i.level.toUpperCase())}</span>`;
+            const productLink = i.productUrl
+              ? `<a href="${esc(i.productUrl)}" style="color:inherit;font-weight:800;text-decoration:none;">${esc(i.productTitle)}</a>`
+              : `<span style="font-weight:800;">${esc(i.productTitle)}</span>`;
+            return `
+              <div class="item">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+                  <div class="item-title">${productLink}</div>
+                  ${pill}
+                </div>
+                <div class="item-meta"><strong>${esc(i.title)}:</strong> ${esc(i.detail)}</div>
+                <div class="item-meta"><strong>Fix:</strong> ${esc(i.fix)}</div>
+                <div class="item-meta muted"><span class="mono">${esc(i.productId)}</span></div>
+              </div>
+            `;
+          })
+          .join("");
+      }
+
+      function renderHeroRows(rows, suppliersById) {
+        const mount = document.getElementById("hero-rows");
+        if (!mount) return;
+
+        mount.innerHTML = rows
+          .map((r) => {
+            const title = r.product ? String(r.product.title || "") : "";
+            const productUrl = r.product && r.product.seo && r.product.seo.canonicalPath ? String(r.product.seo.canonicalPath) : "";
+            const label = title ? title : r.productId;
+            const skuCell = productUrl
+              ? `<a href="${esc(productUrl)}" style="color:inherit;text-decoration:none;font-weight:800;">${esc(label)}</a><div class="muted mono" style="margin-top:6px;">${esc(r.productId)}</div>`
+              : `<div style="font-weight:800;">${esc(label)}</div><div class="muted mono" style="margin-top:6px;">${esc(r.productId)}</div>`;
+
+            const delivery = r.assignment ? formatWindow(r.assignment.expectedShippingWindowDays) : "–";
+
+            const primaryId = r.assignment ? String(r.assignment.primarySupplierId || "").trim() : "";
+            const primary = primaryId && suppliersById[primaryId] ? String(suppliersById[primaryId].name || primaryId) : (primaryId || "–");
+
+            const backupId = r.assignment ? String(r.assignment.backupSupplierId || "").trim() : "";
+            const backup = backupId && suppliersById[backupId] ? String(suppliersById[backupId].name || backupId) : (backupId || "–");
+
+            const s = statusForRow(r);
+            const pill = `<span class="pill ${esc(s.level)}">${esc(s.label)}</span>`;
+
+            return `
+              <tr>
+                <td>${skuCell}</td>
+                <td>${esc(delivery)}</td>
+                <td>${esc(primary)}</td>
+                <td>${esc(backup)}</td>
+                <td>${pill}</td>
+              </tr>
+            `;
+          })
+          .join("");
+      }
+
+      function updateKpis(rows, needsAttentionItems) {
+        const heroCount = rows.length;
+        const attentionCount = needsAttentionItems.length;
+        const backupMissing = rows.filter((r) => r.assignment && !String(r.assignment.backupSupplierId || "").trim()).length;
+
+        const heroEl = document.getElementById("kpi-hero");
+        const attentionEl = document.getElementById("kpi-attention");
+        const backupEl = document.getElementById("kpi-backup");
+
+        if (heroEl) heroEl.textContent = String(heroCount);
+        if (attentionEl) attentionEl.textContent = String(attentionCount);
+        if (backupEl) backupEl.textContent = String(backupMissing);
+      }
+
+      async function refresh() {
+        const btn = document.getElementById("refresh");
+        if (btn) btn.disabled = true;
+
+        try {
+          const [tenantsPayload, productsPayload, suppliersPayload, assignmentsPayload] = await Promise.all([
+            loadJson("/data/tenants.json"),
+            loadJson("/data/products.json"),
+            loadJson("/data/suppliers.json"),
+            loadJson("/data/supplier-assignments.json"),
+          ]);
+
+          const tenant = findTenant(tenantsPayload);
+          const heroProductIds = Array.isArray(tenant && tenant.catalog && tenant.catalog.heroProductIds)
+            ? tenant.catalog.heroProductIds.map((v) => String(v || "").trim()).filter(Boolean)
+            : [];
+
+          const products = Array.isArray(productsPayload && productsPayload.products) ? productsPayload.products : [];
+          const assignments = Array.isArray(assignmentsPayload && assignmentsPayload.assignments) ? assignmentsPayload.assignments : [];
+          const suppliers = Array.isArray(suppliersPayload && suppliersPayload.suppliers) ? suppliersPayload.suppliers : [];
+
+          const suppliersById = {};
+          for (const s of suppliers) {
+            const id = String(s && s.supplierId || "").trim();
+            if (!id) continue;
+            suppliersById[id] = s;
+          }
+
+          const activeTenantId = String(tenant && tenant.tenant_id || "default");
+
+          const rows = heroProductIds.map((productId) => {
+            const product = products.find((p) => String(p && p.productId || "") === String(productId));
+            const assignment = assignments.find((a) => {
+              if (String(a && a.tenant_id || "default") !== activeTenantId) return false;
+              return String(a && a.productId || "") === String(productId);
+            }) || null;
+
+            return { productId: String(productId), product, assignment };
+          });
+
+          const needsAttentionItems = buildNeedsAttention(rows, suppliersById);
+          updateKpis(rows, needsAttentionItems);
+          renderNeedsAttention(needsAttentionItems);
+          renderHeroRows(rows, suppliersById);
+        } catch (err) {
+          const mount = document.getElementById("needs-attention");
+          if (mount) {
+            mount.innerHTML = `<div class="item"><div class="item-title">Failed to load guardrails</div><div class="item-meta">${esc(err && err.message ? err.message : "Unknown error")}</div></div>`;
+          }
+        } finally {
+          if (btn) btn.disabled = false;
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("refresh");
+        if (btn) btn.addEventListener("click", refresh);
+        refresh();
+      });
+    </script>
+  </body>
+</html>

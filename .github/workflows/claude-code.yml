@@ -1,0 +1,63 @@
+name: Claude Code Review (Direct API)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# ✅ Required so the workflow token can post comments
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # ensure full history for git diff
+
+      - name: Install jq JSON parser
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Run Claude code review through API
+        id: claude
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          echo "🔍 Gathering changed files..."
+          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
+          echo "Files changed:"
+          echo "$FILES"
+
+          echo "" > review_output.txt
+          for FILE in $FILES; do
+            if [ -f "$FILE" ]; then
+              echo "Reviewing $FILE ..."
+              CONTENT=$(head -c 12000 "$FILE" | sed 's/"/\\"/g')
+              RESPONSE=$(curl -s https://api.anthropic.com/v1/messages \
+                -H "x-api-key: $ANTHROPIC_API_KEY" \
+                -H "content-type: application/json" \
+                -d "{
+                      \"model\": \"claude-3-5-sonnet-latest\",
+                      \"max_tokens\": 400,
+                      \"messages\": [
+                        {\"role\": \"user\", \"content\": \"Please review the following file for potential issues, improvements, or best practices. Filename: $FILE\\n\\n$CONTENT\"}
+                      ]
+                    }" | jq -r '.content[0].text')
+              echo "### 💬 Feedback for $FILE" >> review_output.txt
+              echo "$RESPONSE" >> review_output.txt
+              echo "" >> review_output.txt
+            fi
+          done
+
+      - name: 🗨️ Post Claude feedback as PR comment
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COMMENT_BODY=$(cat review_output.txt)
+          gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+            -f body="$COMMENT_BODY"

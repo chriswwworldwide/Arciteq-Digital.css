@@ -1,0 +1,12 @@
+{
+    "urls": [
+        "https://lartdelaseduction.com"
+    ],
+    "defaults": {
+        "timeout": 30000,
+        "ignore": [
+            "notice",
+            "warning"
+        ]
+    }
+}

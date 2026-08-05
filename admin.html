@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin — Orders</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <style>
+      header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      header nav ul {
+        list-style: none;
+        display: flex;
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+      }
+
+      header nav a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      header nav a:hover {
+        text-decoration: underline;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px 32px;
+      }
+
+      .panel {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 14px;
+        background: #fafafa;
+      }
+
+      .controls {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr;
+      }
+
+      .controls label {
+        display: grid;
+        gap: 6px;
+      }
+
+      .controls input,
+      .controls select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font: inherit;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .actions button {
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background: white;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .actions button:hover {
+        background: #f4f4f4;
+      }
+
+      .orders {
+        margin-top: 16px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .order {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 12px;
+        background: white;
+        display: grid;
+        gap: 6px;
+      }
+
+      .order strong {
+        font-weight: 600;
+      }
+
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        word-break: break-all;
+      }
+
+      @media (min-width: 720px) {
+        .controls {
+          grid-template-columns: 2fr 1fr 1fr;
+          align-items: end;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>PawSense Tech & Wellness</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/shop.html">Shop</a></li>
+          <li><a href="/cart.html">Cart</a></li>
+          <li><a href="/admin-suppliers.html">Supplier Guardrails</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Admin Orders</h2>
+
+      <div class="panel">
+        <div class="controls">
+          <label>
+            Admin key
+            <input id="admin-key" type="password" autocomplete="off" placeholder="Paste ADMIN_API_KEY" />
+          </label>
+
+          <label>
+            Filter
+            <input id="admin-filter" type="text" autocomplete="off" placeholder="Type: paid, pending, abandoned, an email, order id…" />
+          </label>
+
+          <label>
+            Status
+            <select id="admin-status">
+              <option value="paid">paid</option>
+              <option value="pending">pending</option>
+              <option value="abandoned">abandoned</option>
+              <option value="" selected>all</option>
+            </select>
+          </label>
+
+          <label>
+            Focus
+            <select id="admin-focus">
+              <option value="">all</option>
+              <option value="recover">pending + abandoned</option>
+            </select>
+          </label>
+
+          <label>
+            Email captured
+            <select id="admin-has-email">
+              <option value="">all</option>
+              <option value="yes">only with email</option>
+            </select>
+          </label>
+
+          <label>
+            Limit
+            <select id="admin-limit">
+              <option value="25">25</option>
+              <option value="50" selected>50</option>
+              <option value="100">100</option>
+              <option value="200">200</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="actions" style="margin-top: 12px">
+          <button id="admin-refresh" type="button">Refresh</button>
+          <button id="admin-save" type="button">Save key</button>
+          <button id="admin-clear" type="button">Clear saved key</button>
+          <label style="display:inline-flex;align-items:center;gap:8px;">
+            <span style="font-size:0.95rem;">Cleanup pending older than</span>
+            <select id="admin-cleanup-minutes" style="padding:10px 12px;border-radius:8px;border:1px solid #ddd;">
+              <option value="30">30 min</option>
+              <option value="60" selected>60 min</option>
+              <option value="120">2 hours</option>
+              <option value="240">4 hours</option>
+              <option value="1440">24 hours</option>
+            </select>
+          </label>
+          <button id="admin-cleanup" type="button">Run cleanup</button>
+        </div>
+
+        <p id="admin-status-text" style="margin: 12px 0 0"></p>
+      </div>
+
+      <div id="admin-alerts" class="panel" style="margin-top:16px;"></div>
+
+      <div id="admin-ops-health" class="panel" style="margin-top:16px;"></div>
+
+      <div id="admin-ops-trends" class="panel" style="margin-top:16px;"></div>
+
+      <div id="admin-needs-attention" class="panel" style="margin-top:16px;"></div>
+
+      <div id="admin-attribution" class="panel" style="margin-top:16px;"></div>
+
+      <div id="admin-ad-guardrails" class="panel" style="margin-top:16px;"></div>
+
+      <div id="admin-orders" class="orders" aria-live="polite"></div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

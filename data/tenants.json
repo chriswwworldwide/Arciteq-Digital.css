@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "tenants": [
+    {
+      "tenant_id": "default",
+      "hostnames": ["localhost", "127.0.0.1"],
+      "currency": "eur",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": ["pet-safety-essentials", "senior-pet-care", "smart-monitoring"],
+        "heroProductIds": [
+          "pet-demo-smart-tracker-001",
+          "pet-ph-led-collar-light-001",
+          "pet-ph-reflective-walk-leash-001",
+          "pet-ph-reflective-harness-001",
+          "pet-ph-id-tag-qr-001",
+          "pet-ph-training-clicker-001",
+          "pet-ph-seatbelt-tether-001",
+          "pet-ph-poop-bag-holder-001"
+        ],
+        "productTypeSlugs": [
+          "safety-essentials",
+          "mobility-comfort",
+          "joint-support-topicals",
+          "calming-anxiety",
+          "grooming-hygiene",
+          "smart-monitoring"
+        ]
+      },
+      "seo": {
+        "brandName": "PawSense Tech & Wellness",
+        "tagline": "Smart pet tech and non-ingestible wellness for calm, comfort, and everyday monitoring.",
+        "supportEmail": "support@pawsense.example",
+        "about": "We curate pet tech and non-ingestible wellness products with a focus on comfort, mobility, and everyday monitoring — built for pet parents who want simple, practical support.",
+        "meta": {
+          "homeDescription": "PawSense Tech & Wellness curates pet tech and non-ingestible wellness for calm, comfort, and everyday monitoring. Shop practical solutions for dogs and cats.",
+          "shopDescription": "Shop pet tech and non-ingestible wellness products curated for comfort, calm, and smart monitoring. Filter by pet type, category, life stage, and size.",
+          "cartDescription": "Review your cart and checkout securely. All prices are shown in the storefront’s currency."
+        },
+        "sameAs": []
+      },
+      "offers": {
+        "freeShipping": {
+          "thresholdMinor": 4000,
+          "label": "Free UK delivery over €40"
+        },
+        "starterKits": {
+          "subtitle": "Multi‑pet household? Save automatically when you add 2+ kits.",
+          "howItWorks": "2nd kit 10% off, 3rd+ 15% off (cap applies).",
+          "kits": [
+            {
+              "id": "senior-comfort-dog",
+              "title": "Senior Comfort Kit (Dog)",
+              "description": "Comfort basics for older dogs: softer rest + gentle routine support.",
+              "petTypes": ["Dog"],
+              "productIds": [
+                "pet-demo-heatpad-001",
+                "pet-demo-joint-topical-001",
+                "pet-demo-grooming-glove-001"
+              ]
+            },
+            {
+              "id": "senior-comfort-cat",
+              "title": "Senior Comfort Kit (Cat)",
+              "description": "Comfort basics for older cats: calmer rest + gentle routine support.",
+              "petTypes": ["Cat"],
+              "productIds": [
+                "pet-demo-calming-bed-001",
+                "pet-demo-joint-topical-001"
+              ]
+            },
+            {
+              "id": "home-monitoring-both",
+              "title": "Home Monitoring Kit (Dog or Cat)",
+              "description": "Simple monitoring setup for peace of mind while you’re out.",
+              "petTypes": ["Dog", "Cat"],
+              "productIds": [
+                "imp-default-ph-camera-001",
+                "pet-demo-smart-tracker-001"
+              ]
+            }
+          ]
+        },
+        "trustStrip": {
+          "items": [
+            { "title": "Delivery", "text": "Free UK delivery over €40." },
+            { "title": "Estimated delivery", "text": "7–15 business days (UK)." },
+            { "title": "Returns", "text": "30-day returns." },
+            { "title": "Support", "text": "Reply within 24 hours." },
+            { "title": "Secure checkout", "text": "Stripe." }
+          ]
+        }
+      }
+    }
+  ]
+}

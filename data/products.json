@@ -1,0 +1,1018 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-16T20:20:20.425Z",
+  "products": [
+    {
+      "productId": "pet-demo-heatpad-001",
+      "tenant_id": "default",
+      "title": "Self-Warming Orthopedic Pet Mat (Demo)",
+      "description": "Non-ingestible comfort mat designed to help senior pets rest more comfortably.",
+      "nicheCategory": {
+        "slug": "senior-pet-care",
+        "name": "Senior Pet Care"
+      },
+      "productType": {
+        "slug": "mobility-comfort",
+        "name": "Mobility & Comfort"
+      },
+      "seo": {
+        "slug": "self-warming-orthopedic-pet-mat",
+        "canonicalPath": "/senior-pet-care/self-warming-orthopedic-pet-mat",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Demo product image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 12900,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "SeniorPetCare",
+      "tags": [
+        "demo",
+        "senior",
+        "comfort"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Medium",
+        "Large"
+      ],
+      "shippingOrigin": "UK",
+      "warehouseLocation": "UK",
+      "materials": [
+        "Memory foam",
+        "Polyester cover"
+      ],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Help your senior pet settle and sleep more comfortably",
+          "Make rest time easier on stiff joints"
+        ],
+        "ugcAngles": [
+          "Before/after photos of your pet’s favorite resting spot",
+          "Short video of your pet choosing the mat on their own"
+        ]
+      },
+      "attributes": {
+        "thickness": "5cm",
+        "coverWashable": true,
+        "supportType": "Orthopedic"
+      },
+      "safetyDisclaimer": "For supervised use. Discontinue use if the product becomes damaged or if your pet chews the cover. Not a medical device.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": true,
+        "priority": 10
+      },
+      "audit": {
+        "createdAt": "2026-04-28T00:00:00.000Z",
+        "updatedAt": "2026-04-28T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-demo-joint-topical-001",
+      "tenant_id": "default",
+      "title": "Joint Comfort Massage Balm (Non-Ingestible) (Demo)",
+      "description": "Non-ingestible topical balm designed to support comfort for senior pets after walks.",
+      "nicheCategory": {
+        "slug": "senior-pet-care",
+        "name": "Senior Pet Care"
+      },
+      "productType": {
+        "slug": "joint-support-topicals",
+        "name": "Joint Support Topicals"
+      },
+      "seo": {
+        "slug": "joint-comfort-massage-balm",
+        "canonicalPath": "/senior-pet-care/joint-comfort-massage-balm",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Demo product image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 1899,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "SeniorPetCare",
+      "tags": [
+        "demo",
+        "senior",
+        "topical"
+      ],
+      "petType": [
+        "Dog",
+        "Cat"
+      ],
+      "lifeStage": [
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": [
+        "Beeswax",
+        "Plant oils",
+        "Vitamin E"
+      ],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Help your senior pet feel more comfortable after gentle exercise",
+          "Support daily routines without a struggle"
+        ],
+        "ugcAngles": [
+          "Short clip of a calm post-walk routine",
+          "Photo of a cozy recovery corner"
+        ]
+      },
+      "attributes": {
+        "scentFree": true,
+        "application": "External use only"
+      },
+      "safetyDisclaimer": "External use only. Avoid eyes and broken skin. Stop use if irritation occurs. Keep out of reach of children.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 8
+      },
+      "audit": {
+        "createdAt": "2026-04-28T00:00:00.000Z",
+        "updatedAt": "2026-04-28T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-demo-calming-bed-001",
+      "tenant_id": "default",
+      "title": "Calming Bolster Bed for Seniors (Demo)",
+      "description": "Non-ingestible calming bed with supportive bolsters designed for senior dogs and cats.",
+      "nicheCategory": {
+        "slug": "senior-pet-care",
+        "name": "Senior Pet Care"
+      },
+      "productType": {
+        "slug": "calming-anxiety",
+        "name": "Calming & Anxiety"
+      },
+      "seo": {
+        "slug": "calming-bolster-bed-seniors",
+        "canonicalPath": "/senior-pet-care/calming-bolster-bed-seniors",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Demo product image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 4499,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "SeniorPetCare",
+      "tags": [
+        "demo",
+        "senior",
+        "calming"
+      ],
+      "petType": [
+        "Cat"
+      ],
+      "lifeStage": [
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium"
+      ],
+      "shippingOrigin": "UK",
+      "warehouseLocation": "UK",
+      "materials": [
+        "Memory foam",
+        "Polyester",
+        "Non-slip base"
+      ],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Help your senior pet feel safe and settled while you’re busy",
+          "Reduce pacing and restless nights"
+        ],
+        "ugcAngles": [
+          "Photo of your pet curled up asleep",
+          "Short video of the first time they choose the bed"
+        ]
+      },
+      "attributes": {
+        "coverWashable": true,
+        "bolsterSupport": true
+      },
+      "safetyDisclaimer": "Place on a flat surface. Check regularly for damage and loose seams.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": true,
+        "priority": 9
+      },
+      "audit": {
+        "createdAt": "2026-04-28T00:00:00.000Z",
+        "updatedAt": "2026-04-28T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-demo-smart-tracker-001",
+      "tenant_id": "default",
+      "title": "Smart Activity Tracker Tag (Demo)",
+      "description": "Lightweight tracker tag for monitoring your senior pet’s daily activity trends.",
+      "nicheCategory": {
+        "slug": "pet-safety-essentials",
+        "name": "Pet Safety Essentials"
+      },
+      "productType": {
+        "slug": "safety-essentials",
+        "name": "Safety Essentials"
+      },
+      "seo": {
+        "slug": "smart-activity-tracker-tag",
+        "canonicalPath": "/pet-safety-essentials/smart-activity-tracker-tag",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Demo product image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 2999,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "SeniorPetCare",
+      "tags": [
+        "demo",
+        "senior",
+        "tech"
+      ],
+      "petType": [
+        "Dog",
+        "Cat"
+      ],
+      "lifeStage": [
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "shippingOrigin": "US",
+      "warehouseLocation": "US",
+      "materials": [
+        "ABS plastic",
+        "Silicone"
+      ],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Spot routine changes early so you can support your senior pet",
+          "Feel reassured when you’re not home"
+        ],
+        "ugcAngles": [
+          "Photo of the tracker on a collar/harness",
+          "Short video of a calm senior walk"
+        ]
+      },
+      "attributes": {
+        "batteryLife": "7 days",
+        "waterResistant": true
+      },
+      "safetyDisclaimer": "Inspect for damage regularly. Not a chew toy. Ensure it is attached securely and does not restrict breathing or movement.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 7
+      },
+      "audit": {
+        "createdAt": "2026-04-28T00:00:00.000Z",
+        "updatedAt": "2026-04-28T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-ph-led-collar-light-001",
+      "tenant_id": "default",
+      "title": "USB Rechargeable LED Collar Light (Placeholder)",
+      "description": "Clip-on LED collar light to improve visibility on early-morning and night walks.",
+      "nicheCategory": {
+        "slug": "pet-safety-essentials",
+        "name": "Pet Safety Essentials"
+      },
+      "productType": {
+        "slug": "safety-essentials",
+        "name": "Safety Essentials"
+      },
+      "seo": {
+        "slug": "usb-led-collar-light",
+        "canonicalPath": "/pet-safety-essentials/usb-led-collar-light",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "LED collar light placeholder image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 1599,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "PawSense",
+      "tags": ["placeholder", "safety", "visibility"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": ["ABS plastic", "Silicone"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Feel calmer on night walks",
+          "Be seen sooner by drivers and cyclists"
+        ],
+        "ugcAngles": [
+          "Before/after visibility photo",
+          "Short night-walk clip showing the glow"
+        ]
+      },
+      "attributes": {
+        "rechargeable": true,
+        "waterResistant": true
+      },
+      "safetyDisclaimer": "Not a chew toy. Remove before unsupervised crate time. Inspect regularly and stop use if damaged.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 7
+      },
+      "audit": {
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-ph-reflective-walk-leash-001",
+      "tenant_id": "default",
+      "title": "Reflective Night-Walk Leash (Placeholder)",
+      "description": "Reflective leash designed to help you and your dog stay more visible after dark.",
+      "nicheCategory": {
+        "slug": "pet-safety-essentials",
+        "name": "Pet Safety Essentials"
+      },
+      "productType": {
+        "slug": "safety-essentials",
+        "name": "Safety Essentials"
+      },
+      "seo": {
+        "slug": "reflective-night-walk-leash",
+        "canonicalPath": "/pet-safety-essentials/reflective-night-walk-leash",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Reflective leash placeholder image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 1899,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "PawSense",
+      "tags": ["placeholder", "safety", "visibility"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": ["Nylon", "Reflective thread", "Zinc alloy"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Less anxiety on dark streets",
+          "More confidence on evening walks"
+        ],
+        "ugcAngles": [
+          "Flash photo showing reflectivity",
+          "Short clip of a calm night walk"
+        ]
+      },
+      "attributes": {
+        "reflective": true
+      },
+      "safetyDisclaimer": "Check clips and stitching before use. Do not leave on unattended pets. Replace if frayed.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 6
+      },
+      "audit": {
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-ph-reflective-harness-001",
+      "tenant_id": "default",
+      "title": "Reflective No-Pull Harness (Placeholder)",
+      "description": "Reflective harness for better visibility and steadier control on night walks.",
+      "nicheCategory": {
+        "slug": "pet-safety-essentials",
+        "name": "Pet Safety Essentials"
+      },
+      "productType": {
+        "slug": "safety-essentials",
+        "name": "Safety Essentials"
+      },
+      "seo": {
+        "slug": "reflective-no-pull-harness",
+        "canonicalPath": "/pet-safety-essentials/reflective-no-pull-harness",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Reflective harness placeholder image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 2899,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "PawSense",
+      "tags": ["placeholder", "safety", "visibility"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": ["Nylon", "Polyester", "Plastic buckles"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Feel safer when your dog gets excited",
+          "More control without yanking"
+        ],
+        "ugcAngles": [
+          "Fit check photo",
+          "Before/after calmer walk clip"
+        ]
+      },
+      "attributes": {
+        "reflective": true,
+        "noPull": true
+      },
+      "safetyDisclaimer": "Ensure correct sizing and fit. Inspect buckles and straps regularly. Not for tie-out.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 6
+      },
+      "audit": {
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-ph-id-tag-qr-001",
+      "tenant_id": "default",
+      "title": "QR Pet ID Tag (Placeholder)",
+      "description": "Simple QR ID tag to help someone contact you fast if your dog gets lost.",
+      "nicheCategory": {
+        "slug": "pet-safety-essentials",
+        "name": "Pet Safety Essentials"
+      },
+      "productType": {
+        "slug": "safety-essentials",
+        "name": "Safety Essentials"
+      },
+      "seo": {
+        "slug": "qr-pet-id-tag",
+        "canonicalPath": "/pet-safety-essentials/qr-pet-id-tag",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "QR pet ID tag placeholder image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 999,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "PawSense",
+      "tags": ["placeholder", "safety", "anti-loss"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": ["Stainless steel"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Get your dog home faster",
+          "Less panic if they bolt"
+        ],
+        "ugcAngles": [
+          "Close-up photo on collar",
+          "Short clip showing how it sits"
+        ]
+      },
+      "attributes": {
+        "qr": true
+      },
+      "safetyDisclaimer": "Attach securely and inspect regularly. Remove if it becomes damaged or sharp.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 5
+      },
+      "audit": {
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-ph-training-clicker-001",
+      "tenant_id": "default",
+      "title": "Training Clicker (Placeholder)",
+      "description": "Simple clicker for reinforcing recall and calmer leash habits.",
+      "nicheCategory": {
+        "slug": "pet-safety-essentials",
+        "name": "Pet Safety Essentials"
+      },
+      "productType": {
+        "slug": "safety-essentials",
+        "name": "Safety Essentials"
+      },
+      "seo": {
+        "slug": "training-clicker",
+        "canonicalPath": "/pet-safety-essentials/training-clicker",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Training clicker placeholder image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 799,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "PawSense",
+      "tags": ["placeholder", "safety", "training"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": ["ABS plastic", "Stainless steel"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Feel more in control on walks",
+          "Build a recall you can trust"
+        ],
+        "ugcAngles": [
+          "Short training clip",
+          "Before/after calm walk moment"
+        ]
+      },
+      "attributes": {
+        "lightweight": true
+      },
+      "safetyDisclaimer": "Use with positive reinforcement only. Keep small parts away from children.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 5
+      },
+      "audit": {
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-ph-seatbelt-tether-001",
+      "tenant_id": "default",
+      "title": "Car Seatbelt Safety Tether (Placeholder)",
+      "description": "Seatbelt tether to help keep your dog safer and more stable during car rides.",
+      "nicheCategory": {
+        "slug": "pet-safety-essentials",
+        "name": "Pet Safety Essentials"
+      },
+      "productType": {
+        "slug": "safety-essentials",
+        "name": "Safety Essentials"
+      },
+      "seo": {
+        "slug": "car-seatbelt-safety-tether",
+        "canonicalPath": "/pet-safety-essentials/car-seatbelt-safety-tether",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Car seatbelt tether placeholder image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 1499,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "PawSense",
+      "tags": ["placeholder", "safety"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": ["Nylon", "Zinc alloy"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Feel calmer driving with your dog",
+          "Reduce sudden jumps and distraction"
+        ],
+        "ugcAngles": [
+          "In-car setup photo",
+          "Short clip showing quick attachment"
+        ]
+      },
+      "attributes": {
+        "quickRelease": true
+      },
+      "safetyDisclaimer": "Attach to a harness (not a collar). Check fit and hardware before each trip. Not crash-certified unless explicitly stated.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 5
+      },
+      "audit": {
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-ph-poop-bag-holder-001",
+      "tenant_id": "default",
+      "title": "Clip-On Poop Bag Holder (Placeholder)",
+      "description": "Simple bag holder so you’re not juggling bags on night walks.",
+      "nicheCategory": {
+        "slug": "pet-safety-essentials",
+        "name": "Pet Safety Essentials"
+      },
+      "productType": {
+        "slug": "safety-essentials",
+        "name": "Safety Essentials"
+      },
+      "seo": {
+        "slug": "clip-on-poop-bag-holder",
+        "canonicalPath": "/pet-safety-essentials/clip-on-poop-bag-holder",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Poop bag holder placeholder image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 699,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "PawSense",
+      "tags": ["placeholder", "walks"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": ["Silicone"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Less fuss on walks",
+          "Hands-free and calmer"
+        ],
+        "ugcAngles": [
+          "Photo clipped to lead",
+          "Short clip showing how it holds"
+        ]
+      },
+      "attributes": {
+        "handsFree": true
+      },
+      "safetyDisclaimer": "Keep away from chewing. Inspect regularly and stop use if torn.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 4
+      },
+      "audit": {
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pet-demo-grooming-glove-001",
+      "tenant_id": "default",
+      "title": "Gentle Grooming Glove for Seniors (Demo)",
+      "description": "Soft grooming glove designed for sensitive senior skin and shorter grooming sessions.",
+      "nicheCategory": {
+        "slug": "senior-pet-care",
+        "name": "Senior Pet Care"
+      },
+      "productType": {
+        "slug": "grooming-hygiene",
+        "name": "Grooming & Hygiene"
+      },
+      "seo": {
+        "slug": "gentle-grooming-glove-seniors",
+        "canonicalPath": "/senior-pet-care/gentle-grooming-glove-seniors",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Demo product image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 1299,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "SeniorPetCare",
+      "tags": [
+        "demo",
+        "senior",
+        "grooming"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small"
+      ],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": [
+        "Silicone",
+        "Polyester"
+      ],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Make grooming gentle for a pet that doesn’t tolerate long sessions",
+          "Reduce shedding without stress"
+        ],
+        "ugcAngles": [
+          "Before/after fur collection photo",
+          "Short video of a relaxed grooming moment"
+        ]
+      },
+      "attributes": {
+        "easyToClean": true,
+        "softTips": true
+      },
+      "safetyDisclaimer": "Use gentle pressure. Stop if your pet shows discomfort. Clean after use.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 6
+      },
+      "audit": {
+        "createdAt": "2026-04-28T00:00:00.000Z",
+        "updatedAt": "2026-04-28T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "imp-default-ph-tracker-001",
+      "tenant_id": "default",
+      "title": "GPS Activity Tracker Tag (Placeholder)",
+      "description": "Placeholder supplier feed item for a lightweight tracker tag.",
+      "nicheCategory": {
+        "slug": "smart-monitoring",
+        "name": "Smart Monitoring"
+      },
+      "productType": {
+        "slug": "smart-monitoring",
+        "name": "Smart Monitoring"
+      },
+      "seo": {
+        "slug": "gps-activity-tracker-tag-placeholder",
+        "canonicalPath": "/smart-monitoring/gps-activity-tracker-tag-placeholder",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Placeholder product image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 2499,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "PawSense",
+      "tags": [
+        "imported",
+        "placeholder"
+      ],
+      "petType": [
+        "Dog",
+        "Cat"
+      ],
+      "lifeStage": [
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": [
+        "ABS plastic",
+        "Silicone"
+      ],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Spot routine changes early",
+          "Feel reassured when you’re not home"
+        ],
+        "ugcAngles": [
+          "Photo of the product on a collar",
+          "Short video of a calm daily routine"
+        ]
+      },
+      "attributes": {},
+      "safetyDisclaimer": "Inspect for damage regularly. Not a chew toy. Ensure it is attached securely and does not restrict breathing or movement.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 5
+      },
+      "audit": {
+        "createdAt": "2026-05-15T10:47:09.285Z",
+        "updatedAt": "2026-05-15T11:29:52.295Z"
+      }
+    },
+    {
+      "productId": "imp-default-ph-camera-001",
+      "tenant_id": "default",
+      "source": {
+        "supplierId": "placeholder",
+        "supplierSku": "ph-camera-001"
+      },
+      "dedupeKey": "pawsense::indoor-pet-wellness-camera-placeholder",
+      "title": "Indoor Pet Wellness Camera (Placeholder)",
+      "description": "Placeholder supplier feed item for a simple indoor wellness camera.",
+      "nicheCategory": {
+        "slug": "smart-monitoring",
+        "name": "Smart Monitoring"
+      },
+      "productType": {
+        "slug": "smart-monitoring",
+        "name": "Smart Monitoring"
+      },
+      "seo": {
+        "slug": "indoor-pet-wellness-camera-placeholder",
+        "canonicalPath": "/smart-monitoring/indoor-pet-wellness-camera-placeholder",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-1.png",
+          "alt": "Placeholder product image",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 5999,
+        "currency": "eur"
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "PawSense",
+      "tags": [
+        "imported",
+        "placeholder"
+      ],
+      "petType": [
+        "Dog",
+        "Cat"
+      ],
+      "lifeStage": [
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "shippingOrigin": "EU",
+      "warehouseLocation": "EU",
+      "materials": [
+        "ABS plastic",
+        "Aluminium"
+      ],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Spot routine changes early",
+          "Feel reassured when you’re not home"
+        ],
+        "ugcAngles": [
+          "Photo of the product on a collar",
+          "Short video of a calm daily routine"
+        ]
+      },
+      "attributes": {},
+      "safetyDisclaimer": "Indoor use only. Keep away from water and heat sources. Not a toy. Use the provided power adapter.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 5
+      },
+      "audit": {
+        "createdAt": "2026-05-16T20:18:40.179Z",
+        "updatedAt": "2026-05-16T20:18:40.179Z"
+      }
+    }
+  ]
+}

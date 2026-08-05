@@ -1,0 +1,71 @@
+Plain English only: explain changes for a non-coder.
+
+Conversation tone:
+- Keep our conversations casual and friendly like office workmates.
+- Use moderate humour by default, but keep it short and non-distracting.
+- No humour during debugging/error moments.
+- No humour during complex moments.
+- Clarity and precision always come first.
+
+Device support:
+- Everything we build must work on desktop and mobile (responsive layouts).
+- Assume “app” means a mobile webview/PWA wrapper: no hover-only interactions, touch-friendly controls, and layouts must adapt to small screens.
+
+Business operating model:
+- Goal: you are the frame observer. The business should run with minimal day-to-day involvement from you.
+- Default to automation + dashboards (monitoring, alerts, scheduled jobs) over manual processes.
+
+SEO priority:
+- Prioritise maximal SEO optimisation for growth, while still meeting performance (CWV) and safety guardrails.
+
+Atomic tasks only:
+- Ship one small change at a time.
+- After each task, provide a 3-step manual browser test plan.
+- Manually verify in Preview before moving to the next task.
+
+Recommendations:
+- When presenting options, always explicitly label which option you recommend.
+
+Global vs Local discipline:
+- Global = shared engine logic used by all sites (checkout, product schema, supplier connectors, core templates/layout, shared CSS, database schema).
+- Local = per-site branding + SEO + product collections + domain settings.
+- Before editing any Global file, I will explain the impact across all sites, then proceed and report the change. I will only ask for explicit approval when you have asked me to ask, or when the change is unusually large or risky.
+
+Max change size rule (suspended):
+- There is no hard 5-file limit. I will judge each change by how likely it is to cause problems and how hard it would be to unpick later. If it is harder to patch later than to stop and check now, I will pause and ask. If it is easier to patch later, I will move forward and patch after.
+
+Product system rules:
+- Single source of truth: product data must come from data/products.json only.
+- Reviews source of truth: review data must come from data/reviews.json only.
+- Stripe prices must be integer minor units (cents/pence) in price.amount.
+- Pivot: Pet Tech & Wellness (non-ingestibles in v1).
+- Pet layer required on every product:
+  - petType (Dog, Cat, etc.)
+  - lifeStage (Puppy/Kitten, Adult, Senior, etc.)
+  - sizeRequirement (Small, Medium, Large)
+- Consumable linking rule:
+  - Tech items can link to recurring consumables via linkedConsumables (by productId).
+- Bundle engine rule:
+  - Support “Pet Solution Bundle” SKUs (one SKU can include a tech item + a wellness item).
+- Marketing hooks rule:
+  - Every product should include marketing_hooks with emotional pain points for automated exports.
+- Reviews / UGC rule:
+  - Reviews should support photo/video uploads (media array) and verifiedBuyer + rating for rich snippets.
+- Safety + logistics guardrails:
+  - Tech items must include a safetyDisclaimer (battery safety, chew-resistance, etc.).
+  - Every product must include warehouseLocation (UK/EU/US/Other).
+  - Wellness (non-ingestible) products must include materials list.
+- Hong Kong accounting note (future):
+  - Recurring refill/subscription reconciliation must attribute payments to the original tenant/site.
+
+SEO rules:
+- Canonical URLs are slug-first immediately: /<nicheCategorySlug>/<productSlug>.
+- Any legacy IDs/slugs must 301 redirect to the canonical path.
+- Mobile/desktop parity: same content + reviews + structured data.
+- E-E-A-T topical silos:
+  - Each site/tenant must have niche-specific metadata reinforcing its expertise.
+- Dynamic FAQ schema:
+  - Generate product-specific FAQs (e.g., “Is this safe for puppies?”) to capture long-tail traffic.
+
+Performance targets (2025 CWV):
+- LCP < 2.0s, CLS < 0.1, INP < 200ms.

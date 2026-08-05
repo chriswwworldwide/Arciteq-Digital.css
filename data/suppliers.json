@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-31T10:38:00.000Z",
+  "suppliers": [
+    {
+      "supplierId": "placeholder-uk-fulfil",
+      "name": "Placeholder UK Fulfilment",
+      "status": "draft",
+      "regions": ["UK"],
+      "defaultShippingWindowDays": { "min": 3, "max": 7 },
+      "contact": {
+        "email": "ops@pawsense.example"
+      },
+      "notes": "Temporary supplier record for MVP guardrails. Replace with real supplier once chosen."
+    },
+    {
+      "supplierId": "placeholder-eu-fulfil",
+      "name": "Placeholder EU Fulfilment",
+      "status": "draft",
+      "regions": ["EU"],
+      "defaultShippingWindowDays": { "min": 3, "max": 7 },
+      "contact": {
+        "email": "ops@pawsense.example"
+      },
+      "notes": "Temporary backup supplier record for MVP guardrails. Replace with real supplier once chosen."
+    }
+  ]
+}

@@ -70,3 +70,18 @@ Before launch, polish the current single storefront. Do not expand to more sites
 6. **Do not let analysis block launch** — if a benchmark does not reveal a clear 10x fix in 30 minutes, move on. Launch is the real benchmark.
 
 This is worth doing only as a final pre-flight, not a replacement for going live.
+
+## iPhone / headless execution charter
+
+When the session is running on iPhone or in any headless mode and the user has said "go", "do it", "execute", or similar, Devin has blanket permission to:
+
+- Start and stop the local server (`npm start`, `node server.js`, etc.) for testing.
+- Run `curl`, `gh`, `git`, and other CLI commands without per-step approval.
+- Open browser previews, run lint/type-check, and make multiple file edits in one block.
+- Proceed with the next logical pre-launch block without asking for confirmation on every tool call.
+- Touch Global files (server.js, script.js, product.html templates, etc.) and report the impact after.
+
+Guardrails that still apply:
+- Do not run destructive commands (`rm -rf`, force push, drop tables, delete files) without explicit user confirmation.
+- Avoid exposing or logging secrets.
+- Keep the final summary concise: what changed, why, and what's next.

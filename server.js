@@ -20,6 +20,7 @@ import {
   getBaseUrl,
   xmlEscape,
 } from "./src/product-utils.js";
+import { relatedProducts } from "./src/related-products.js";
 import {
   estimateForProduct,
   shipsFromLabel,
@@ -2072,6 +2073,50 @@ app.get("/api/free-shipping-progress", (req, res) => {
     return res.json(progress);
   } catch {
     return res.status(500).json({ error: "Failed to compute free-shipping progress" });
+  }
+});
+
+app.get("/api/related-products", (req, res) => {
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const activeTenantId = String(tenant?.tenant_id || "default");
+
+    const id = String(req.query?.id || "");
+    if (!id) {
+      return res.status(400).json({ error: "Missing product id" });
+    }
+
+    const { list, byId } = loadProductsData();
+    const target = byId.get(id);
+    if (!target || String(target?.tenant_id || "default") !== activeTenantId) {
+      return res.status(404).json({ error: "Not found" });
+    }
+
+    const limit = Math.max(1, Math.min(12, Number(req.query?.limit) || 4));
+
+    // Only ever rank against this tenant's own catalog so we never surface
+    // another site's products via internal links.
+    const tenantCatalog = list.filter(
+      (p) => String(p?.tenant_id || "default") === activeTenantId,
+    );
+
+    const related = relatedProducts(target, tenantCatalog, { limit }).map((p) => {
+      const image = Array.isArray(p?.images) ? p.images[0] : p?.images;
+      return {
+        productId: String(p?.productId || ""),
+        title: String(p?.title || ""),
+        canonicalPath: String(p?.seo?.canonicalPath || ""),
+        image: image?.src ? { src: String(image.src), alt: String(image.alt || "") } : null,
+        price:
+          p?.price && Number.isInteger(p.price.amount)
+            ? { amount: p.price.amount, currency: String(p.price.currency || "") }
+            : null,
+      };
+    });
+
+    return res.json({ tenant_id: activeTenantId, productId: id, related });
+  } catch {
+    return res.status(500).json({ error: "Failed to resolve related products" });
   }
 });
 

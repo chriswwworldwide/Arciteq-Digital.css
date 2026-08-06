@@ -535,15 +535,17 @@
                       const name = esc(String(r?.title || ""));
                       const imgSrc = String(r?.image?.src || "");
                       const imgAlt = esc(String(r?.image?.alt || r?.title || ""));
+                      const isDemoPlaceholder = imgSrc.startsWith("/images2/");
                       const amt = Number(r?.price?.amount);
                       const cur = String(r?.price?.currency || "").toUpperCase();
                       const priceText =
                         Number.isFinite(amt) && cur
                           ? `${(amt / 100).toFixed(2)} ${cur}`
                           : "";
-                      const imgHtml = imgSrc
-                        ? `<img src="${esc(imgSrc)}" alt="${imgAlt}" loading="lazy" decoding="async" width="120" height="120" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:8px;" />`
-                        : "";
+                      const imgHtml =
+                        imgSrc && !isDemoPlaceholder
+                          ? `<img src="${esc(imgSrc)}" alt="${imgAlt}" loading="lazy" decoding="async" width="120" height="120" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:8px;" />`
+                          : `<div style="width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#6b7280;font-size:0.75rem;border-radius:8px;text-align:center;padding:6px;">Image coming soon</div>`;
                       return `
                         <a href="${esc(href)}" style="flex:1 1 140px;min-width:140px;max-width:200px;color:inherit;text-decoration:none;">
                           ${imgHtml}

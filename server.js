@@ -7,6 +7,11 @@ import dotenv from "dotenv";
 import fs from "node:fs";
 import crypto from "node:crypto";
 import { dbQuery } from "./db.js";
+import {
+  normalizeEmail,
+  isValidEmail,
+  orderTotalsDelta,
+} from "./src/data-stitch.js";
 import { spawn } from "child_process";
 import {
   scoreDraftProduct,
@@ -162,6 +167,19 @@ app.post("/stripe/webhook", express.raw({ type: "application/json" }), async (re
             stripeEventId,
           ],
         );
+
+        // Data-stitch: on a first-time paid event, bump the customer's running
+        // totals, mark any open captured cart as converted (attributing which
+        // nudge won), and log a unified order_completed funnel event.
+        if (customerEmail && isFirstTimeEvent) {
+          await stitchPaidOrder({
+            tenantId,
+            email: normalizeEmail(customerEmail),
+            orderId,
+            currency,
+            amountTotal,
+          });
+        }
       } else if (sessionId) {
         const updated = await dbQuery(
           "UPDATE orders SET status = $1, currency = COALESCE(NULLIF($2, ''), currency), amount_subtotal = $3, amount_total = $4, stripe_checkout_session_id = COALESCE(NULLIF($5, ''), stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(NULLIF($6, ''), stripe_payment_intent_id), customer_email = COALESCE(NULLIF($7, ''), customer_email), updated_at = now() WHERE stripe_checkout_session_id = $5 RETURNING order_id, tenant_id, status, currency, amount_total, customer_email",
@@ -184,6 +202,19 @@ app.post("/stripe/webhook", express.raw({ type: "application/json" }), async (re
               isFirstTimeEvent,
             }),
           );
+
+          const stitchEmail = normalizeEmail(updatedRow.customer_email);
+          if (stitchEmail && isFirstTimeEvent) {
+            await stitchPaidOrder({
+              tenantId: String(updatedRow.tenant_id || tenantId),
+              email: stitchEmail,
+              orderId: String(updatedRow.order_id),
+              currency: String(updatedRow.currency || currency),
+              amountTotal: Number.isInteger(updatedRow.amount_total)
+                ? updatedRow.amount_total
+                : amountTotal,
+            });
+          }
         }
       }
     } else if (
@@ -1223,6 +1254,29 @@ function requireAdmin(req, res) {
   return null;
 }
 
+// Data-stitching: apply a paid order to the single-customer-view record,
+// mark the matching captured cart converted (recording which nudge won), and
+// log a unified order_completed funnel event. Idempotency is the caller's job
+// (only invoked on a first-time Stripe event).
+async function stitchPaidOrder({ tenantId, email, orderId, currency, amountTotal }) {
+  const delta = orderTotalsDelta(amountTotal);
+  const cur = String(currency || "").toLowerCase() || null;
+
+  await dbQuery(
+    "INSERT INTO customers (tenant_id, email, currency, total_orders, total_spend_minor, subscribed) VALUES ($1, $2, $3, $4, $5, true) ON CONFLICT (tenant_id, email) DO UPDATE SET total_orders = customers.total_orders + EXCLUDED.total_orders, total_spend_minor = customers.total_spend_minor + EXCLUDED.total_spend_minor, currency = COALESCE(customers.currency, EXCLUDED.currency), last_seen_at = now(), updated_at = now()",
+    [tenantId, email, cur, delta.orders, delta.spendMinor],
+  );
+
+  await dbQuery(
+    "UPDATE cart_emails SET status = 'converted', converted_at = now(), converted_order_id = $3, updated_at = now() WHERE tenant_id = $1 AND lower(email) = $2 AND converted_at IS NULL",
+    [tenantId, email, orderId],
+  );
+
+  await dbQuery(
+    "INSERT INTO email_events (tenant_id, email, type, order_id, data) VALUES ($1, $2, 'order_completed', $3, $4::jsonb)",
+    [tenantId, email, orderId, JSON.stringify({ amountTotal: delta.spendMinor, currency: cur })],
+  );
+}
 function resolveTenantFromRequest(req) {
   const hostHeader = String(req.headers.host || "");
   const hostname = hostHeader.split(":")[0].toLowerCase();
@@ -1945,21 +1999,45 @@ app.post("/api/capture-email", async (req, res) => {
   try {
     const tenant = resolveTenantFromRequest(req);
     const tenantId = String(tenant?.tenant_id || "default");
-    const email = String(req.body?.email || "").trim().toLowerCase();
+    const email = normalizeEmail(req.body?.email);
     const cart = Array.isArray(req.body?.cart) ? req.body.cart : [];
+    const currency = String(tenant?.currency || "").toLowerCase() || null;
+    const utm = req.body?.utm && typeof req.body.utm === "object" ? req.body.utm : {};
+    const clean = (v) => String(v || "").trim() || null;
 
     if (!email) {
       return res.status(400).json({ error: "Email is required" });
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!isValidEmail(email)) {
       return res.status(400).json({ error: "Invalid email" });
     }
 
-    await dbQuery("INSERT INTO cart_emails (tenant_id, email, cart) VALUES ($1, $2, $3::jsonb)", [
-      tenantId,
-      email,
-      JSON.stringify(cart),
-    ]);
+    const captured = await dbQuery(
+      "INSERT INTO cart_emails (tenant_id, email, cart) VALUES ($1, $2, $3::jsonb) RETURNING id",
+      [tenantId, email, JSON.stringify(cart)],
+    );
+    const cartEmailId = Array.isArray(captured?.rows) ? captured.rows[0]?.id : null;
+
+    // Data-stitch: upsert the single-customer-view record (first-touch UTM kept)
+    // and log a unified funnel event tied to this capture.
+    await dbQuery(
+      "INSERT INTO customers (tenant_id, email, currency, subscribed, first_utm_source, first_utm_medium, first_utm_campaign, first_utm_content, first_utm_term) VALUES ($1, $2, $3, true, $4, $5, $6, $7, $8) ON CONFLICT (tenant_id, email) DO UPDATE SET last_seen_at = now(), subscribed = true, currency = COALESCE(customers.currency, EXCLUDED.currency), first_utm_source = COALESCE(customers.first_utm_source, EXCLUDED.first_utm_source), first_utm_medium = COALESCE(customers.first_utm_medium, EXCLUDED.first_utm_medium), first_utm_campaign = COALESCE(customers.first_utm_campaign, EXCLUDED.first_utm_campaign), first_utm_content = COALESCE(customers.first_utm_content, EXCLUDED.first_utm_content), first_utm_term = COALESCE(customers.first_utm_term, EXCLUDED.first_utm_term), updated_at = now()",
+      [
+        tenantId,
+        email,
+        currency,
+        clean(utm.utm_source),
+        clean(utm.utm_medium),
+        clean(utm.utm_campaign),
+        clean(utm.utm_content),
+        clean(utm.utm_term),
+      ],
+    );
+
+    await dbQuery(
+      "INSERT INTO email_events (tenant_id, email, type, cart_email_id, data) VALUES ($1, $2, 'cart_captured', $3, $4::jsonb)",
+      [tenantId, email, cartEmailId, JSON.stringify({ cartSize: cart.length })],
+    );
 
     return res.json({ ok: true });
   } catch (err) {

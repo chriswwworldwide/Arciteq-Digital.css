@@ -28,8 +28,12 @@ describe("getNudgeWindowMs", () => {
     expect(getNudgeWindowMs(1)).toBe(7 * DAY_MS);
   });
 
+  it("returns the win-back window (30 days) for nudgeCount 2", () => {
+    expect(getNudgeWindowMs(2)).toBe(30 * DAY_MS);
+  });
+
   it("returns Infinity once the max nudges are exhausted", () => {
-    expect(getNudgeWindowMs(2)).toBe(Infinity);
+    expect(getNudgeWindowMs(3)).toBe(Infinity);
     expect(getNudgeWindowMs(5)).toBe(Infinity);
   });
 });

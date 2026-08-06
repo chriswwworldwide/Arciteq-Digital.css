@@ -35,7 +35,7 @@ const EXCLUDED_DIRS = [
 ];
 
 // --- Priority rules ---
-function getPriority(urlPath) {
+export function getPriority(urlPath) {
   if (urlPath === "" || urlPath === "/") return "1.0"; // homepage
   if (urlPath.startsWith("product") || urlPath.startsWith("store"))
     return "0.8";
@@ -46,7 +46,7 @@ function getPriority(urlPath) {
 /**
  * Recursively scan /public for .html files while excluding internal dirs
  */
-function getHtmlFiles(dir) {
+export function getHtmlFiles(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   let files = [];
   for (const entry of entries) {
@@ -66,7 +66,7 @@ function getHtmlFiles(dir) {
 /**
  * Build <url> entries for each HTML page
  */
-function buildUrlEntries(files) {
+export function buildUrlEntries(files) {
   const today = new Date().toISOString().split("T")[0];
   return files
     .map((filePath) => {
@@ -88,7 +88,7 @@ function buildUrlEntries(files) {
 /**
  * Compose the full sitemap.xml
  */
-function generateSitemap(files) {
+export function generateSitemap(files) {
   const urls = buildUrlEntries(files);
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -112,11 +112,11 @@ function pingSearchEngines() {
         if (res.statusCode === 200) {
           console.log(`🌍  Pinged ${name} successfully`);
         } else {
-          console.warn(`� ️  ${name} ping responded with ${res.statusCode}`);
+          console.warn(`⚠️  ${name} ping responded with ${res.statusCode}`);
         }
       })
       .on("error", (err) => {
-        console.warn(`� ️  ${name} ping failed:`, err.message);
+        console.warn(`⚠️  ${name} ping failed:`, err.message);
       });
   });
 }
@@ -133,7 +133,7 @@ function updateSitemap() {
 
     const files = getHtmlFiles(publicDir);
     if (!files.length) {
-      console.warn("� ️  No .html files found in /public, nothing to include.");
+      console.warn("⚠️  No .html files found in /public, nothing to include.");
       process.exit(0);
     }
 
@@ -155,5 +155,10 @@ function updateSitemap() {
   }
 }
 
-// --- Run the process ---
-updateSitemap();
+// --- Run the process (only when invoked directly, not when imported) ---
+const isDirectRun =
+  process.argv[1] && path.resolve(process.argv[1]) === __filename;
+
+if (isDirectRun) {
+  updateSitemap();
+}

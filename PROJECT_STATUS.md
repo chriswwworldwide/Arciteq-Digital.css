@@ -28,6 +28,15 @@ High-level objective:
 Operating model (for now):
 - Fulfilment is dropship (no staff). Overheads are mainly domains + hosting + payment processing fees + lightweight SaaS (e.g. email tool).
 
+### Standing goal: fully data-stitch the site (single customer view)
+Every visitor/buyer should be tracked as one stitched record across the whole funnel, so we can measure real pick-up/profit and later plug marketing tools (Mailchimp first) straight in. This is now an active goal (previously parked under "Later"):
+- One `customers` record per person (per tenant) as the source of truth: email, first/last seen, order count + total spend, first-touch UTM, subscribe state.
+- A unified `email_events` timeline stitching `cart_captured` → `nudge_sent` → `order_completed`, so each nudge and each sale ties back to the same person and cart.
+- Link the currently-disconnected pieces: `cart_emails` (capture) and `orders` (Stripe webhook) share only an email today; add conversion attribution (`converted_at`, `converted_order_id`, which nudge won).
+- Build the outbound sender as a provider adapter so **Mailchimp** (and others) can be wired in later without touching the funnel logic.
+- Add a 3rd, later "payday" win-back nudge (gated, no/low discount, suppress purchasers) once tracking exists to measure it.
+- Keep it privacy-safe and tenant-scoped so all 14 sites share one dashboard.
+
 ### Standing requirement: site-wide speed (no compromises)
 Everything on the site must feel instant — click-throughs, page loads, images, and video — across desktop and mobile, and this is a hard gate, not a nice-to-have. Build for speed without sacrificing features or trust:
 - Hold every page to the 2025 Core Web Vitals targets already in the rules: **LCP < 2.0s, CLS < 0.1, INP < 200ms**.
@@ -251,7 +260,7 @@ Speed-to-profit module (extra tactics from UK/US leaders):
 Later (only once traffic + ops are stable):
 - Community/chat and engagement points
 - Advanced personalisation (“others bought”), heavy AI recommenders
-- Full single-customer-view CDP-style data stitching
+- Full single-customer-view CDP-style data stitching — NOW ACTIVE, see "Standing goal: fully data-stitch the site" near the top
 - Tiered rewards / loyalty programme (Bronze → Silver → Gold → Platinum → Black) — see "Standing goal (later): tiered rewards / loyalty programme" near the top
 
 Note: implement these as small, safe blocks. The exact order can adapt, but the general principle is: trust first, then AOV lift, then automation.

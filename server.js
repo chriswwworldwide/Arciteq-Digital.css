@@ -7,7 +7,19 @@ import dotenv from "dotenv";
 import fs from "node:fs";
 import crypto from "node:crypto";
 import { dbQuery } from "./db.js";
+import {
+  normalizeEmail,
+  isValidEmail,
+  orderTotalsDelta,
+} from "./src/data-stitch.js";
 import { spawn } from "child_process";
+import {
+  scoreDraftProduct,
+  findDuplicateProductId,
+  buildProductFromSupplierItem,
+  getBaseUrl,
+  xmlEscape,
+} from "./src/product-utils.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -155,6 +167,32 @@ app.post("/stripe/webhook", express.raw({ type: "application/json" }), async (re
             stripeEventId,
           ],
         );
+
+        // Data-stitch: on a first-time paid event, bump the customer's running
+        // totals, mark any open captured cart as converted (attributing which
+        // nudge won), and log a unified order_completed funnel event.
+        if (customerEmail && isFirstTimeEvent) {
+          // Data-stitch is best-effort analytics: never let it turn a paid
+          // checkout into a failed webhook response.
+          try {
+            await stitchPaidOrder({
+              tenantId,
+              email: normalizeEmail(customerEmail),
+              orderId,
+              currency,
+              amountTotal,
+            });
+          } catch (stitchErr) {
+            console.error(
+              "STITCH_FAILED",
+              JSON.stringify({
+                orderId,
+                stripeEventId,
+                message: String(stitchErr?.message || stitchErr),
+              }),
+            );
+          }
+        }
       } else if (sessionId) {
         const updated = await dbQuery(
           "UPDATE orders SET status = $1, currency = COALESCE(NULLIF($2, ''), currency), amount_subtotal = $3, amount_total = $4, stripe_checkout_session_id = COALESCE(NULLIF($5, ''), stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(NULLIF($6, ''), stripe_payment_intent_id), customer_email = COALESCE(NULLIF($7, ''), customer_email), updated_at = now() WHERE stripe_checkout_session_id = $5 RETURNING order_id, tenant_id, status, currency, amount_total, customer_email",
@@ -177,6 +215,31 @@ app.post("/stripe/webhook", express.raw({ type: "application/json" }), async (re
               isFirstTimeEvent,
             }),
           );
+
+          const stitchEmail = normalizeEmail(updatedRow.customer_email);
+          if (stitchEmail && isFirstTimeEvent) {
+            // Best-effort: a data-stitch failure must not fail the webhook.
+            try {
+              await stitchPaidOrder({
+                tenantId: String(updatedRow.tenant_id || tenantId),
+                email: stitchEmail,
+                orderId: String(updatedRow.order_id),
+                currency: String(updatedRow.currency || currency),
+                amountTotal: Number.isInteger(updatedRow.amount_total)
+                  ? updatedRow.amount_total
+                  : amountTotal,
+              });
+            } catch (stitchErr) {
+              console.error(
+                "STITCH_FAILED",
+                JSON.stringify({
+                  orderId: String(updatedRow.order_id),
+                  stripeEventId,
+                  message: String(stitchErr?.message || stitchErr),
+                }),
+              );
+            }
+          }
         }
       }
     } else if (
@@ -815,55 +878,6 @@ app.get("/admin/ops-trends", async (req, res) => {
 
 app.use(express.json());
 
-function scoreDraftProduct(product) {
-  const reasons = [];
-  let score = 100;
-
-  const petType = Array.isArray(product?.petType) ? product.petType : [];
-  const lifeStage = Array.isArray(product?.lifeStage) ? product.lifeStage : [];
-  const sizeRequirement = Array.isArray(product?.sizeRequirement)
-    ? product.sizeRequirement
-    : [];
-  const materials = Array.isArray(product?.materials) ? product.materials : [];
-  const safetyDisclaimer = String(product?.safetyDisclaimer || "").trim();
-  const warehouseLocation = String(product?.warehouseLocation || "").trim();
-  const availability = String(product?.availability || "").toLowerCase();
-
-  if (availability.includes("outofstock") || availability.includes("out_of_stock")) {
-    score -= 100;
-    reasons.push("Out of stock at supplier");
-  }
-
-  if (petType.length === 0) {
-    score -= 25;
-    reasons.push("Missing petType");
-  }
-  if (lifeStage.length === 0) {
-    score -= 15;
-    reasons.push("Missing lifeStage");
-  }
-  if (sizeRequirement.length === 0) {
-    score -= 15;
-    reasons.push("Missing sizeRequirement");
-  }
-  if (!safetyDisclaimer) {
-    score -= 25;
-    reasons.push("Missing safetyDisclaimer");
-  }
-  if (!warehouseLocation) {
-    score -= 10;
-    reasons.push("Missing warehouseLocation");
-  }
-  if (materials.length === 0) {
-    score -= 10;
-    reasons.push("Missing materials");
-  }
-
-  if (score < 0) score = 0;
-  if (score > 100) score = 100;
-  return { score, reasons };
-}
-
 function loadProductsData() {
   const filePath = path.join(__dirname, "data", "products.json");
   const raw = fs.readFileSync(filePath, "utf8");
@@ -1265,125 +1279,29 @@ function requireAdmin(req, res) {
   return null;
 }
 
-function normalizeToSlug(value) {
-  return String(value || "")
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+// Data-stitching: apply a paid order to the single-customer-view record,
+// mark the matching captured cart converted (recording which nudge won), and
+// log a unified order_completed funnel event. Idempotency is the caller's job
+// (only invoked on a first-time Stripe event).
+async function stitchPaidOrder({ tenantId, email, orderId, currency, amountTotal }) {
+  const delta = orderTotalsDelta(amountTotal);
+  const cur = String(currency || "").toLowerCase() || null;
+
+  await dbQuery(
+    "INSERT INTO customers (tenant_id, email, currency, total_orders, total_spend_minor, subscribed) VALUES ($1, $2, $3, $4, $5, true) ON CONFLICT (tenant_id, email) DO UPDATE SET total_orders = customers.total_orders + EXCLUDED.total_orders, total_spend_minor = customers.total_spend_minor + EXCLUDED.total_spend_minor, currency = COALESCE(customers.currency, EXCLUDED.currency), last_seen_at = now(), updated_at = now()",
+    [tenantId, email, cur, delta.orders, delta.spendMinor],
+  );
+
+  await dbQuery(
+    "UPDATE cart_emails SET status = 'converted', converted_at = now(), converted_order_id = $3, updated_at = now() WHERE tenant_id = $1 AND lower(email) = $2 AND converted_at IS NULL",
+    [tenantId, email, orderId],
+  );
+
+  await dbQuery(
+    "INSERT INTO email_events (tenant_id, email, type, order_id, data) VALUES ($1, $2, 'order_completed', $3, $4::jsonb)",
+    [tenantId, email, orderId, JSON.stringify({ amountTotal: delta.spendMinor, currency: cur })],
+  );
 }
-
-function buildDedupeKey({ brand, title }) {
-  const b = normalizeToSlug(brand);
-  const t = normalizeToSlug(title);
-  if (!b || !t) return "";
-  return `${b}::${t}`;
-}
-
-function findDuplicateProductId({ products, nextProduct }) {
-  const nextKey = String(nextProduct?.dedupeKey || "");
-  if (!nextKey) return "";
-
-  const hit = products.find((p) => {
-    const existingKey = String(p?.dedupeKey || "") ||
-      buildDedupeKey({ brand: String(p?.brand || ""), title: String(p?.title || "") });
-    return existingKey === nextKey;
-  });
-  return hit?.productId ? String(hit.productId) : "";
-}
-
-function buildProductFromSupplierItem(item, tenantId) {
-  const title = String(item?.title || "").trim();
-  if (!title) throw new Error("Missing title");
-
-  const supplierSku = String(item?.supplierSku || "").trim();
-  if (!supplierSku) throw new Error("Missing supplierSku");
-
-  const amount = Number(item?.price?.amount);
-  if (!Number.isInteger(amount) || amount < 0) throw new Error("Invalid price.amount");
-
-  const currency = String(item?.price?.currency || "").toLowerCase();
-  if (!currency) throw new Error("Missing price.currency");
-
-  const productSlug = normalizeToSlug(title);
-  const nicheSlug = "pet-safety-essentials";
-  const productTypeSlug = "safety-essentials";
-
-  const productId = `imp-${normalizeToSlug(tenantId)}-${normalizeToSlug(supplierSku)}`;
-
-  const brand = "PawSense";
-  const supplierId = String(item?.supplierId || item?.supplier?.id || "placeholder");
-  const dedupeKey = buildDedupeKey({ brand, title });
-
-  return {
-    productId,
-    tenant_id: String(tenantId || "default"),
-    source: {
-      supplierId,
-      supplierSku,
-    },
-    dedupeKey,
-    title,
-    description: String(item?.description || ""),
-    nicheCategory: {
-      slug: nicheSlug,
-      name: "Pet Safety Essentials",
-    },
-    productType: {
-      slug: productTypeSlug,
-      name: "Safety Essentials",
-    },
-    seo: {
-      slug: productSlug,
-      canonicalPath: `/${nicheSlug}/${productSlug}`,
-      legacySlugs: [],
-    },
-    images: [
-      {
-        src: String(item?.image?.src || ""),
-        alt: String(item?.image?.alt || title),
-        width: Number(item?.image?.width || 1200),
-        height: Number(item?.image?.height || 1200),
-      },
-    ],
-    price: {
-      amount,
-      currency,
-    },
-    availability: String(item?.availability || "https://schema.org/InStock"),
-    brand,
-    tags: ["imported", "placeholder"],
-    petType: Array.isArray(item?.petType) ? item.petType : [],
-    lifeStage: Array.isArray(item?.lifeStage) ? item.lifeStage : [],
-    sizeRequirement: Array.isArray(item?.sizeRequirement) ? item.sizeRequirement : [],
-    shippingOrigin: String(item?.warehouseLocation || "EU"),
-    warehouseLocation: String(item?.warehouseLocation || "EU"),
-    materials: Array.isArray(item?.materials) ? item.materials : [],
-    marketing_hooks: {
-      emotionalPainPoints: [
-        "Spot routine changes early",
-        "Feel reassured when you’re not home",
-      ],
-      ugcAngles: [
-        "Photo of the product on a collar",
-        "Short video of a calm daily routine",
-      ],
-    },
-    attributes: {},
-    safetyDisclaimer: String(item?.safetyDisclaimer || "").trim(),
-    linkedConsumables: [],
-    bundle: null,
-    flags: {
-      featured: false,
-      priority: 5,
-    },
-    audit: {
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    },
-  };
-}
-
 function resolveTenantFromRequest(req) {
   const hostHeader = String(req.headers.host || "");
   const hostname = hostHeader.split(":")[0].toLowerCase();
@@ -1403,22 +1321,6 @@ function resolveTenantFromRequest(req) {
 
   if (match?.tenant_id) return match;
   return { tenant_id: "default", currency: "eur", language: "en" };
-}
-
-function getBaseUrl(req) {
-  const hostHeader = String(req.headers.host || "localhost");
-  const forwardedProto = String(req.headers["x-forwarded-proto"] || "");
-  const protocol = forwardedProto ? forwardedProto.split(",")[0] : req.protocol;
-  return `${protocol}://${hostHeader}`;
-}
-
-function xmlEscape(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&apos;");
 }
 
 // Disable all browser caching during local development
@@ -2122,21 +2024,45 @@ app.post("/api/capture-email", async (req, res) => {
   try {
     const tenant = resolveTenantFromRequest(req);
     const tenantId = String(tenant?.tenant_id || "default");
-    const email = String(req.body?.email || "").trim().toLowerCase();
+    const email = normalizeEmail(req.body?.email);
     const cart = Array.isArray(req.body?.cart) ? req.body.cart : [];
+    const currency = String(tenant?.currency || "").toLowerCase() || null;
+    const utm = req.body?.utm && typeof req.body.utm === "object" ? req.body.utm : {};
+    const clean = (v) => String(v || "").trim() || null;
 
     if (!email) {
       return res.status(400).json({ error: "Email is required" });
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!isValidEmail(email)) {
       return res.status(400).json({ error: "Invalid email" });
     }
 
-    await dbQuery("INSERT INTO cart_emails (tenant_id, email, cart) VALUES ($1, $2, $3::jsonb)", [
-      tenantId,
-      email,
-      JSON.stringify(cart),
-    ]);
+    const captured = await dbQuery(
+      "INSERT INTO cart_emails (tenant_id, email, cart) VALUES ($1, $2, $3::jsonb) RETURNING id",
+      [tenantId, email, JSON.stringify(cart)],
+    );
+    const cartEmailId = Array.isArray(captured?.rows) ? captured.rows[0]?.id : null;
+
+    // Data-stitch: upsert the single-customer-view record (first-touch UTM kept)
+    // and log a unified funnel event tied to this capture.
+    await dbQuery(
+      "INSERT INTO customers (tenant_id, email, currency, subscribed, first_utm_source, first_utm_medium, first_utm_campaign, first_utm_content, first_utm_term) VALUES ($1, $2, $3, true, $4, $5, $6, $7, $8) ON CONFLICT (tenant_id, email) DO UPDATE SET last_seen_at = now(), subscribed = true, currency = COALESCE(customers.currency, EXCLUDED.currency), first_utm_source = COALESCE(customers.first_utm_source, EXCLUDED.first_utm_source), first_utm_medium = COALESCE(customers.first_utm_medium, EXCLUDED.first_utm_medium), first_utm_campaign = COALESCE(customers.first_utm_campaign, EXCLUDED.first_utm_campaign), first_utm_content = COALESCE(customers.first_utm_content, EXCLUDED.first_utm_content), first_utm_term = COALESCE(customers.first_utm_term, EXCLUDED.first_utm_term), updated_at = now()",
+      [
+        tenantId,
+        email,
+        currency,
+        clean(utm.utm_source),
+        clean(utm.utm_medium),
+        clean(utm.utm_campaign),
+        clean(utm.utm_content),
+        clean(utm.utm_term),
+      ],
+    );
+
+    await dbQuery(
+      "INSERT INTO email_events (tenant_id, email, type, cart_email_id, data) VALUES ($1, $2, 'cart_captured', $3, $4::jsonb)",
+      [tenantId, email, cartEmailId, JSON.stringify({ cartSize: cart.length })],
+    );
 
     return res.json({ ok: true });
   } catch (err) {

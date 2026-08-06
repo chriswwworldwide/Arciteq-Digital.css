@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin-suppliers.html
+Disallow: /orders.html
+Disallow: /api/
+Disallow: /stripe/
+Disallow: /success.html
+Disallow: /checkout-cancel.html
+
+Sitemap: https://lartdelaseduction.com/sitemap.xml

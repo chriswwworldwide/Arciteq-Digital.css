@@ -1,11 +1,9 @@
 # Project Status — L’Art de la Séduction (current repo)
 
 ## What this project is
-
 This repository currently contains a static website (multiple HTML pages + theme CSS files) and a small Node/Express server used to run the site locally. It’s evolving toward a multi-site e‑commerce platform.
 
 ## Origins (how it was built)
-
 - Built from a “human in the loop orchestrating AI” workflow.
 - A lot of code was created by iterating with AI, copying code between browser/editor, and patching issues as they appeared.
 - This explains why the project historically accumulated:
@@ -17,9 +15,7 @@ This repository currently contains a static website (multiple HTML pages + theme
 On 2026-04-28 we performed an aggressive cleanup by archiving redundant content locally (not committed) to reduce clutter and make the project easier to evolve.
 
 ## Current goals (where this is going)
-
 High-level objective:
-
 - Build a curated expert shop e‑commerce engine with a private trust/QA layer.
 - Run ~14 branded storefronts from one shared codebase.
 - Each storefront has its own branding + SEO content and focuses on two niches.
@@ -30,61 +26,48 @@ High-level objective:
 - Support marketing workflows (TikTok/IG) via Gumloop and other automation.
 
 Operating model (for now):
-
 - Fulfilment is dropship (no staff). Overheads are mainly domains + hosting + payment processing fees + lightweight SaaS (e.g. email tool).
 
 Direction note:
-
 - We have pivoted away from the “mini‑Amazon” framing. The target experience is curated (limited, quality-controlled catalog), trust-first (clear safety/fit/shipping/returns), and automation-first (dashboards + guardrails so it runs with minimal day-to-day involvement).
 
 ## What works right now (confirmed)
-
 Stripe checkout is working end-to-end locally:
-
 - Shop page renders products and can add to cart.
 - Cart page shows items and has a working Checkout button.
 - Clicking Checkout creates a Stripe Checkout Session server-side.
 - Stripe redirects back to a local success page.
 
 Pages:
-
 - Home: http://localhost:3000/
 - Shop: http://localhost:3000/shop.html
 - Cart: http://localhost:3000/cart.html
 - Success: http://localhost:3000/success.html
 
 ## How to run locally
-
-1. Install dependencies
-
+1) Install dependencies
 - npm install
 
-2. Create a local env file (DO NOT commit)
-
+2) Create a local env file (DO NOT commit)
 - Create .env.local in the project root:
-  STRIPE*SECRET_KEY=sk_test*...
+  STRIPE_SECRET_KEY=sk_test_...
 
-3. Run the server
-
+3) Run the server
 - npm start
 
 ## Local Stripe checkout runbook (repeatable test)
-
 Terminal setup:
-
 - Terminal A: npm start (server)
 - Terminal B: stripe listen --forward-to localhost:3000/stripe/webhook (webhooks)
 - Terminal C: free terminal for curl commands
 
 Happy-path browser flow:
-
 - Open: http://localhost:3000/shop.html
 - Add item(s) to cart
 - Open: http://localhost:3000/cart.html
 - Click Checkout and pay with Stripe test card 4242 4242 4242 4242
 
 Confirm in terminal (admin API):
-
 - List orders:
   curl -i -H "x-admin-key: <ADMIN_API_KEY>" "http://localhost:3000/admin/orders"
 - List paid orders only (clean view):
@@ -93,25 +76,21 @@ Confirm in terminal (admin API):
   curl -i -H "x-admin-key: <ADMIN_API_KEY>" "http://localhost:3000/admin/orders/<ORDER_ID>"
 
 Env / secret sanity check (admin-only):
-
 - Confirm which secrets are set (does not reveal secret values):
   curl -i -H "x-admin-key: <ADMIN_API_KEY>" "http://localhost:3000/admin/env"
 
 Admin key rotation (local):
-
 - Generate a new random key
 - Update ADMIN_API_KEY in .env.local
 - Restart the server
 - In the browser, open /admin.html and click “Clear saved key”, then paste the new key and click “Save key”
 
 What “good” looks like:
-
 - Stripe CLI shows 200 POST http://localhost:3000/stripe/webhook
 - /admin/orders returns HTTP/1.1 200 OK
 - The newest order shows status: paid
 
 ## Project framework (current structure)
-
 - index.html
   - Current landing/brand page (does not run the store).
 - shop.html
@@ -135,27 +114,22 @@ What “good” looks like:
   - This file.
 
 ## Security / hardening (current state)
-
 - Repo includes linting/formatting/testing tooling and CI workflow configuration.
 - Secrets are kept out of code by using .env.local (gitignored).
 
 ## Recent cleanup (archive)
-
 A local-only archive was created at:
-
 - archive/2026-04-28/
 
 It contains backups, generated outputs, placeholder files, and other redundant content moved out of the project root.
 
 ## Known constraints / caveats
-
 - The current store/cart implementation is minimal and uses localStorage.
 - A persistent order database is implemented (Postgres).
 - Stripe webhooks are implemented for reliable payment confirmation.
 - Many pages still contain placeholder content and will be redesigned for the home-tech pivot.
 
 ## SEO resilience (plan)
-
 - Expect SEO volatility and design the platform to be resilient.
 - Build real topical authority per site/niche (not thin product pages).
 - Maintain strong technical SEO foundations: canonical URLs, structured data (Product/Review/FAQ), and fast mobile performance (CWV).
@@ -164,35 +138,28 @@ It contains backups, generated outputs, placeholder files, and other redundant c
 - Treat supplier/merchandising automation as drafts-first with guardrails to avoid publishing low-quality pages at scale.
 
 ## Agentic operations (automation + dashboards) (plan)
-
 Goal: make the business runnable with minimal day-to-day involvement by adding automation + dashboards (not risky “AI chat” that can hallucinate promises to customers).
 
 Recommended order (safe and high ROI):
-
-1. Ops dashboard + alerts
-
+1) Ops dashboard + alerts
 - Surface what needs attention: stuck pending orders, webhook missed, paid but not reconciled, payment failed.
 - Daily digest summary: new orders, abandoned checkouts, failures.
 - One-click actions for admin: reconcile order, mark shipped, view Stripe IDs.
 
-2. Catalog QA autopilot (pre-publish checks)
-
+2) Catalog QA autopilot (pre-publish checks)
 - Block publishing unless required fields exist (petType, lifeStage, sizeRequirement).
 - Enforce guardrails: integer minor-unit prices, safetyDisclaimer for tech, materials for wellness, warehouseLocation.
 - Produce a simple “ready to publish” vs “blocked (missing X)” list.
 
-3. Import + scoring automation (draft-first)
-
+3) Import + scoring automation (draft-first)
 - Supplier feeds import to drafts.
 - Hard filters + weighted scoring.
 - Human approval required before publish.
 
-4. Customer support triage (human-approved)
-
+4) Customer support triage (human-approved)
 - Draft replies and categorize issues, but keep approval required to avoid wrong refunds/delivery promises.
 
 Optional later blocks (only if/when we want them):
-
 - Reviews + UGC system (upload/moderation, verified buyer, rich snippets)
 - Community/social discovery (lists/boards, share flows, creator-style collections)
 - Multi-seller marketplace layer (seller profiles, per-seller shipping, dispute flows)
@@ -200,78 +167,64 @@ Optional later blocks (only if/when we want them):
 Reminder note: revisit these optional blocks once the core store has stable traffic + reliable fulfilment + low support load.
 
 ## Implemented building blocks (open PRs, pending merge to `main`)
-
 These are pure, tested modules already built and opened as focused PRs. They are
 listed here so future sessions (and the iPhone read-only assistant) discover them
-and do **not** rebuild them. Each is off `main` and independent unless noted.
+and do NOT rebuild them. Each is off `main` and independent unless noted.
 
 Coverage / test foundation:
-
-- `src/product-utils.js`, `src/sitemap-utils.js` + widened coverage gate (PR #9 supersedes #5–#8).
+- src/product-utils.js, src/sitemap-utils.js + widened coverage gate (PR #9 supersedes #5-#8).
 
 Data-stitch + lifecycle:
-
-- `migrations/004_add_customers_and_email_events.sql`, `src/data-stitch.js`, capture + Stripe webhook wiring (PR #11).
-- Gated 3rd "payday" win-back nudge, off by default (`WINBACK_ENABLED`, `NUDGE_WINBACK_DAYS`), logs to `email_events` (PR #13, stacked on #11).
-- `src/email-provider.js` — console/mock/Mailchimp-stub adapter, no creds needed yet (PR #14).
-- `src/attribution.js` + `scripts/attribution-report.js` — nudge→conversion last-touch report (PR #18).
+- migrations/004_add_customers_and_email_events.sql, src/data-stitch.js, capture + Stripe webhook wiring (PR #11).
+- Gated 3rd "payday" win-back nudge, off by default (WINBACK_ENABLED, NUDGE_WINBACK_DAYS), logs to email_events (PR #13, stacked on #11).
+- src/email-provider.js - console/mock/Mailchimp-stub adapter, no creds needed yet (PR #14).
+- src/attribution.js + scripts/attribution-report.js - nudge to conversion last-touch report (PR #18).
 
 SEO / marketing:
-
-- `robots.txt` + `src/robots.js` generator (PR #16).
-- `src/related-products.js` — relatedness ranking for internal linking / cross-sell (PR #22).
-- `src/product-feed.js` — Google Merchant / Meta catalog items + RSS XML (PR #23).
+- robots.txt + src/robots.js generator (PR #16).
+- src/related-products.js - relatedness ranking for internal linking / cross-sell (PR #22).
+- src/product-feed.js - Google Merchant / Meta catalog items + RSS XML (PR #23).
 
 Ops / quality / performance:
-
-- `src/catalog-qa.js` + `scripts/catalog-qa.js` — pre-publish product validation (PR #15).
-- `src/order-health.js` + `scripts/order-health.js` — stuck / at-risk order alerts (PR #20).
-- `src/perf-budget.js` + `scripts/perf-budget.js` — client asset byte budgets, report-only (PR #19).
+- src/catalog-qa.js + scripts/catalog-qa.js - pre-publish product validation (PR #15).
+- src/order-health.js + scripts/order-health.js - stuck / at-risk order alerts (PR #20).
+- src/perf-budget.js + scripts/perf-budget.js - client asset byte budgets, report-only (PR #19).
 
 Experimentation / logistics:
+- src/ab-test.js - deterministic weighted A/B assignment (PR #21).
+- src/shipping.js - ships-from + delivery-window estimates by region (PR #24).
 
-- `src/ab-test.js` — deterministic weighted A/B assignment (PR #21).
-- `src/shipping.js` — ships-from + delivery-window estimates by region (PR #24).
-
-### Integration wiring backlog (unlocks once the above merge to `main`)
-
-Most further value is _wiring_, not new modules — it needs the blocks above on
-`main` first, otherwise CLIs/tests can't import them:
-
-- Route real nudge sends through `email-provider` (currently console-only).
+### Integration wiring backlog (unlocks once the above merge to main)
+Most further value is wiring, not new modules - it needs the blocks above on
+main first, otherwise CLIs/tests cannot import them:
+- Route real nudge sends through email-provider (currently console-only).
 - Render related products + ships-from label + delivery estimate on product/shop pages.
 - Add a scheduled job/workflow to regenerate the product feed (mirror the sitemap workflow).
-- Wire `order-health` and `attribution` into an ops dashboard / daily digest.
-- Re-enable the widened coverage gate once the tested modules are on `main`.
-- Revisit the `server.js` data-stitch path so a stitch DB error can't 500 a paid checkout.
+- Wire order-health and attribution into an ops dashboard / daily digest.
+- Re-enable the widened coverage gate once the tested modules are on main.
+- Revisit the server.js data-stitch path so a stitch DB error cannot 500 a paid checkout.
 
-### Known external blockers (do not stop work — see autonomous-execution directive)
-
-- Empty `SONAR_TOKEN` Actions secret → the only red X on every PR (SonarCloud step).
+### Known external blockers (do not stop work - see autonomous-execution directive)
+- Empty SONAR_TOKEN Actions secret is the only red X on every PR (SonarCloud step).
 - No Mailchimp account/keys, no live Stripe keys, no live DB migration verification this session.
 
 ## Next milestones (in order)
-
 Note: this layout is a working path, not a strict sequence. We will adapt as we learn what customers respond to, what SEO rewards, and what ops load looks like.
 
 Next build block (queued):
-
 - Content hub v2: build 2–3 more topical guides and interlink them from the shop and product pages. Then resume with local landing pages and ops dashboards.
 
 Recently completed:
-
 - Speed-to-profit: email capture + abandoned cart recovery with 1-day and 7-day nudges (email provider to be wired later).
 - Checkout friction: payment methods are now configurable from env, and the trust strip accurately reflects Stripe + PayPal only when PayPal is enabled.
 - Ads tracking + attribution: UTM capture, persistence, order/Stripe metadata, and admin visibility were already in place; plan updated to reflect this.
 - SEO resilience v1: per-tenant sitemap.xml and robots.txt, product JSON-LD with reviews, UGC review videos, and one "Senior Dog Mobility" content hub page.
 
 Future execution (not next; revisit after sitemap / schema):
-
 - See AGENTS.md for the full SEO + nudge + automation backlog.
 - Priority candidates: reviews on product cards (already partially in place), local landing pages, ops dashboard + alerts.
 
 Speed-to-profit module (build blocks, in recommended order):
-
 - Offer + trust strip across key pages (shop, product, cart): delivery window, returns promise, support response time, secure checkout
 - Cart AOV lift: free-shipping threshold progress + 2–4 relevant add-ons (rule-based, pet-layer safe)
 - Curated bundles / starter kits (problem-based: travel safety, home safety, anxiety, hygiene)
@@ -307,7 +260,6 @@ Speed-to-profit module (build blocks, in recommended order):
 - Abandoned cart email automation (delay + dedupe + 1–2 touches; provider: Mailchimp once onboarded)
 
 Speed-to-profit module (extra tactics from UK/US leaders):
-
 - Guided bundles (problem/concern-first): choose a goal first, then recommend a kit (avoid “pick anything” overwhelm)
 - Gift-with-purchase thresholds (simple freebies at spend thresholds; often better than % discounts)
 - Shipping protection toggle (optional add-on; choose provider later; keep wording careful)
@@ -317,7 +269,6 @@ Speed-to-profit module (extra tactics from UK/US leaders):
 - BYO box / subscription-style bundles (later): discovery + repeats model; only after core store is stable
 
 14-site viability foundations (bake in early, in logical order):
-
 - Tenant/site separation (brand name, support email, currency, catalog allowlists) so each site can differ without forking code
 - Canonical + redirect discipline so cloned sites don’t create duplicate-index chaos
 - Shared ops events/flags so one dashboard can run the whole portfolio (orders + order_events + needs-attention)
@@ -325,7 +276,6 @@ Speed-to-profit module (extra tactics from UK/US leaders):
 - Product data guardrails stay strict (pet layer, safety/materials, warehouse/shipping) to prevent a low-trust “dropship farm” outcome
 
 Later (only once traffic + ops are stable):
-
 - Community/chat and engagement points
 - Advanced personalisation (“others bought”), heavy AI recommenders
 - Full single-customer-view CDP-style data stitching
@@ -333,7 +283,6 @@ Later (only once traffic + ops are stable):
 Note: implement these as small, safe blocks. The exact order can adapt, but the general principle is: trust first, then AOV lift, then automation.
 
 ## Profit milestones (updated with shipping progress + add-ons + starter kits)
-
 These features typically increase AOV and reduce checkout drop-off. They do not create traffic by themselves, but they improve the value of each visitor and make paid experiments/SEO traffic more profitable.
 
 - $1k/month profit (Site #1): target month 4–6 after launch if publishing cadence (2–3 pages/week) is sustained and fulfilment/support is stable
@@ -341,31 +290,27 @@ These features typically increase AOV and reduce checkout drop-off. They do not 
 
 Wallet payments impact note (Apple Pay + Google Pay + PayPal): if enabled and used by the audience, expect roughly ~0–1 month faster to $1k and ~1–2 months faster to $2k due to reduced mobile checkout friction.
 
-1. Membership tiers (Stripe subscriptions)
-
+1) Membership tiers (Stripe subscriptions)
 - Decide tier count, names, pricing, and perks.
 - Add a membership page and Stripe subscription checkout flow.
 - Add a webhook endpoint (later) to confirm subscription status reliably.
 
-2. Multi-site engine (14 sites from one codebase)
-
+2) Multi-site engine (14 sites from one codebase)
 - Per-domain configuration: theme, copy, niche selection, SEO meta.
 - Clear separation between "site config" vs "engine".
 
-3. SEO + marketing foundation
-
+3) SEO + marketing foundation
 - Unique landing pages per site/niche.
 - Structured data (JSON-LD) strategy.
 - Sitemap strategy for multi-site.
 
-4. Dropshipper product ingestion (curated launch)
-
+4) Dropshipper product ingestion (curated launch)
 - Start with curated product lists (20–50 per niche).
 - Upgrade to automated feeds after v1.
 
 ## Quick troubleshooting
-
 - If checkout fails:
-  - Confirm .env.local exists and contains STRIPE*SECRET_KEY=sk_test*...
+  - Confirm .env.local exists and contains STRIPE_SECRET_KEY=sk_test_...
   - Restart npm start
   - Retry: shop.html -> add to cart -> cart.html -> checkout
+

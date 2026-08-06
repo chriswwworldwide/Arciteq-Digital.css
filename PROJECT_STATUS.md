@@ -220,6 +220,48 @@ Optional later blocks (only if/when we want them):
 
 Reminder note: revisit these optional blocks once the core store has stable traffic + reliable fulfilment + low support load.
 
+## Implemented building blocks (open PRs, pending merge to `main`)
+These are pure, tested modules already built and opened as focused PRs. They are
+listed here so future sessions (and the iPhone read-only assistant) discover them
+and do NOT rebuild them. Each is off `main` and independent unless noted.
+
+Coverage / test foundation:
+- src/product-utils.js, src/sitemap-utils.js + widened coverage gate (PR #9 supersedes #5-#8).
+
+Data-stitch + lifecycle:
+- migrations/004_add_customers_and_email_events.sql, src/data-stitch.js, capture + Stripe webhook wiring (PR #11).
+- Gated 3rd "payday" win-back nudge, off by default (WINBACK_ENABLED, NUDGE_WINBACK_DAYS), logs to email_events (PR #13, stacked on #11).
+- src/email-provider.js - console/mock/Mailchimp-stub adapter, no creds needed yet (PR #14).
+- src/attribution.js + scripts/attribution-report.js - nudge to conversion last-touch report (PR #18).
+
+SEO / marketing:
+- robots.txt + src/robots.js generator (PR #16).
+- src/related-products.js - relatedness ranking for internal linking / cross-sell (PR #22).
+- src/product-feed.js - Google Merchant / Meta catalog items + RSS XML (PR #23).
+
+Ops / quality / performance:
+- src/catalog-qa.js + scripts/catalog-qa.js - pre-publish product validation (PR #15).
+- src/order-health.js + scripts/order-health.js - stuck / at-risk order alerts (PR #20).
+- src/perf-budget.js + scripts/perf-budget.js - client asset byte budgets, report-only (PR #19).
+
+Experimentation / logistics:
+- src/ab-test.js - deterministic weighted A/B assignment (PR #21).
+- src/shipping.js - ships-from + delivery-window estimates by region (PR #24).
+
+### Integration wiring backlog (unlocks once the above merge to main)
+Most further value is wiring, not new modules - it needs the blocks above on
+main first, otherwise CLIs/tests cannot import them:
+- Route real nudge sends through email-provider (currently console-only).
+- Render related products + ships-from label + delivery estimate on product/shop pages.
+- Add a scheduled job/workflow to regenerate the product feed (mirror the sitemap workflow).
+- Wire order-health and attribution into an ops dashboard / daily digest.
+- Re-enable the widened coverage gate once the tested modules are on main.
+- Revisit the server.js data-stitch path so a stitch DB error cannot 500 a paid checkout.
+
+### Known external blockers (do not stop work - see autonomous-execution directive)
+- Empty SONAR_TOKEN Actions secret is the only red X on every PR (SonarCloud step).
+- No Mailchimp account/keys, no live Stripe keys, no live DB migration verification this session.
+
 ## Next milestones (in order)
 
 Note: this layout is a working path, not a strict sequence. We will adapt as we learn what customers respond to, what SEO rewards, and what ops load looks like.

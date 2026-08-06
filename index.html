@@ -435,18 +435,24 @@
           if (catMount) {
             const seen = new Map();
             for (const p of scoped) {
-              const slug = String((p && p.nicheCategory) || "").trim();
+              const nc = (p && p.nicheCategory) || {};
+              const pathSlug = String((p.seo && p.seo.canonicalPath) || "")
+                .split("/")
+                .filter(Boolean)[0];
+              const slug = String(nc.slug || pathSlug || "").trim();
               if (!slug) continue;
-              seen.set(slug, (seen.get(slug) || 0) + 1);
+              const name = String(nc.name || titleCase(slug));
+              if (!seen.has(slug)) seen.set(slug, { name, count: 0 });
+              seen.get(slug).count += 1;
             }
             const cats = [...seen.entries()];
             catMount.innerHTML = cats.length
               ? cats
                   .map(
-                    ([slug, count]) => `
+                    ([slug, info]) => `
                     <a class="cat-tile" href="/${esc(slug)}">
-                      ${esc(titleCase(slug))}
-                      <span>${count} product${count === 1 ? "" : "s"}</span>
+                      ${esc(info.name)}
+                      <span>${info.count} product${info.count === 1 ? "" : "s"}</span>
                     </a>`,
                   )
                   .join("")

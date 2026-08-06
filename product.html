@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title id="page-title">Product | L’Art de la Séduction</title>
+    <title id="page-title">Product | PawSense Tech &amp; Wellness</title>
 
     <!-- ✅ SEO -->
     <meta
       name="description"
-      content="Explore luxurious details and pricing for exclusive L’Art de la Séduction products."
+      content="Smart pet tech and non-ingestible wellness for calm, comfort, and everyday monitoring."
     />
     <meta name="robots" content="index,follow" />
     <link id="canonical-link" rel="canonical" href="/" />
@@ -190,7 +190,11 @@
 
     <main>
       <section class="product-details" aria-labelledby="product-name">
-        <nav id="breadcrumbs" aria-label="Breadcrumb" style="text-align:left;"></nav>
+        <nav
+          id="breadcrumbs"
+          aria-label="Breadcrumb"
+          style="text-align: left"
+        ></nav>
         <h1 id="product-name">Loading Product…</h1>
 
         <picture id="product-image" aria-hidden="true"></picture>
@@ -202,7 +206,12 @@
 
         <section id="trust" aria-label="Delivery and returns"></section>
 
-        <section id="more-in-collection" aria-label="More in this collection"></section>
+        <section
+          id="more-in-collection"
+          aria-label="More in this collection"
+        ></section>
+
+        <section id="related-products" aria-label="You may also like"></section>
 
         <section id="safety-fit" aria-label="Safety and fit"></section>
 
@@ -213,7 +222,7 @@
     </main>
 
     <footer></footer>
-  
+
     <script src="/script.js"></script>
     <!-- ✅ JS: safe fetch + basic sanitization -->
     <script>
@@ -251,8 +260,9 @@
               ) || null;
           } else if (legacyProductId) {
             product =
-              list.find((p) => String(p?.productId || "") === legacyProductId) ||
-              null;
+              list.find(
+                (p) => String(p?.productId || "") === legacyProductId,
+              ) || null;
           }
 
           if (!product) {
@@ -262,20 +272,34 @@
             return;
           }
 
-          const allowedNiches = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
+          const allowedNiches = Array.isArray(
+            tenant?.catalog?.nicheCategorySlugs,
+          )
             ? tenant.catalog.nicheCategorySlugs
                 .map((s) => String(s || "").toLowerCase())
                 .filter(Boolean)
             : null;
-          const allowedProductTypes = Array.isArray(tenant?.catalog?.productTypeSlugs)
+          const allowedProductTypes = Array.isArray(
+            tenant?.catalog?.productTypeSlugs,
+          )
             ? tenant.catalog.productTypeSlugs
                 .map((s) => String(s || "").toLowerCase())
                 .filter(Boolean)
             : null;
-          const productNiche = String(product?.nicheCategory?.slug || "").toLowerCase();
-          const productType = String(product?.productType?.slug || "").toLowerCase();
-          const nicheAllowed = !allowedNiches || allowedNiches.length === 0 || allowedNiches.includes(productNiche);
-          const typeAllowed = !allowedProductTypes || allowedProductTypes.length === 0 || allowedProductTypes.includes(productType);
+          const productNiche = String(
+            product?.nicheCategory?.slug || "",
+          ).toLowerCase();
+          const productType = String(
+            product?.productType?.slug || "",
+          ).toLowerCase();
+          const nicheAllowed =
+            !allowedNiches ||
+            allowedNiches.length === 0 ||
+            allowedNiches.includes(productNiche);
+          const typeAllowed =
+            !allowedProductTypes ||
+            allowedProductTypes.length === 0 ||
+            allowedProductTypes.includes(productType);
           if (!nicheAllowed || !typeAllowed) {
             section.innerHTML = "<p class='notice'>Product not found.</p>";
             const brand = String(tenant?.seo?.brandName || "").trim();
@@ -319,11 +343,15 @@
           const categoryName = String(product?.nicheCategory?.name || "");
           const categorySlug = String(product?.nicheCategory?.slug || "");
 
-          let deliveryEstimateText = "Estimated delivery: 7–15 business days (UK).";
+          let deliveryEstimateText =
+            "Estimated delivery: 7–15 business days (UK).";
           try {
-            const assignmentsRes = await fetch("/data/supplier-assignments.json", {
-              cache: "no-cache",
-            });
+            const assignmentsRes = await fetch(
+              "/data/supplier-assignments.json",
+              {
+                cache: "no-cache",
+              },
+            );
             if (assignmentsRes.ok) {
               const assignmentsPayload = await assignmentsRes.json();
               const assignments = Array.isArray(assignmentsPayload?.assignments)
@@ -333,14 +361,20 @@
               const productId = String(product?.productId || "");
 
               const match = assignments.find((a) => {
-                if (String(a?.tenant_id || "default") !== activeTenantId) return false;
+                if (String(a?.tenant_id || "default") !== activeTenantId)
+                  return false;
                 return String(a?.productId || "") === productId;
               });
 
               const w = match?.expectedShippingWindowDays || null;
               const minDays = Number(w?.min);
               const maxDays = Number(w?.max);
-              if (Number.isFinite(minDays) && Number.isFinite(maxDays) && minDays > 0 && maxDays > 0) {
+              if (
+                Number.isFinite(minDays) &&
+                Number.isFinite(maxDays) &&
+                minDays > 0 &&
+                maxDays > 0
+              ) {
                 deliveryEstimateText = `Estimated delivery: ${minDays}–${maxDays} business days (UK).`;
               }
             }
@@ -369,7 +403,8 @@
 
           {
             const desc = String(description || "").trim();
-            const shortDesc = desc.length > 155 ? `${desc.slice(0, 152)}...` : desc;
+            const shortDesc =
+              desc.length > 155 ? `${desc.slice(0, 152)}...` : desc;
             if (shortDesc) {
               upsertMetaTag("name", "description", shortDesc);
               upsertMetaTag("property", "og:description", shortDesc);
@@ -409,8 +444,12 @@
               const shippingOrigin = String(
                 product?.shippingOrigin || product?.warehouseLocation || "",
               ).trim();
-              const originText = shippingOrigin ? `Ships from: ${shippingOrigin}.` : "";
-              const supportEmail = String(tenant?.seo?.supportEmail || "").trim();
+              const originText = shippingOrigin
+                ? `Ships from: ${shippingOrigin}.`
+                : "";
+              const supportEmail = String(
+                tenant?.seo?.supportEmail || "",
+              ).trim();
               const supportText = supportEmail
                 ? `Support: ${supportEmail}.`
                 : "Support: reply within 24 hours.";
@@ -432,18 +471,28 @@
             const mount = document.getElementById("safety-fit");
             if (mount) {
               const petType = Array.isArray(product?.petType)
-                ? product.petType.map((v) => String(v || "").trim()).filter(Boolean)
+                ? product.petType
+                    .map((v) => String(v || "").trim())
+                    .filter(Boolean)
                 : [];
               const lifeStage = Array.isArray(product?.lifeStage)
-                ? product.lifeStage.map((v) => String(v || "").trim()).filter(Boolean)
+                ? product.lifeStage
+                    .map((v) => String(v || "").trim())
+                    .filter(Boolean)
                 : [];
               const sizeReq = Array.isArray(product?.sizeRequirement)
-                ? product.sizeRequirement.map((v) => String(v || "").trim()).filter(Boolean)
+                ? product.sizeRequirement
+                    .map((v) => String(v || "").trim())
+                    .filter(Boolean)
                 : [];
               const materials = Array.isArray(product?.materials)
-                ? product.materials.map((v) => String(v || "").trim()).filter(Boolean)
+                ? product.materials
+                    .map((v) => String(v || "").trim())
+                    .filter(Boolean)
                 : [];
-              const safetyDisclaimer = String(product?.safetyDisclaimer || "").trim();
+              const safetyDisclaimer = String(
+                product?.safetyDisclaimer || "",
+              ).trim();
 
               const formatList = (label, values) => {
                 if (!values || values.length === 0) return "";
@@ -484,7 +533,9 @@
 
           const crumbsEl = document.getElementById("breadcrumbs");
           if (crumbsEl) {
-            const categoryHref = categorySlug ? `/shop.html#${categorySlug}` : "/shop.html";
+            const categoryHref = categorySlug
+              ? `/shop.html#${categorySlug}`
+              : "/shop.html";
             crumbsEl.innerHTML = `
               <a href="/" style="color:inherit;text-decoration:none;">Home</a>
               <span style="margin:0 8px;color:#6b7280;">/</span>
@@ -497,7 +548,9 @@
           {
             const mount = document.getElementById("more-in-collection");
             if (mount) {
-              const collectionHref = categorySlug ? `/${encodeURIComponent(categorySlug)}` : "/shop.html";
+              const collectionHref = categorySlug
+                ? `/${encodeURIComponent(categorySlug)}`
+                : "/shop.html";
               const featuredHref = "/shop.html?featured=1";
 
               mount.innerHTML = `
@@ -510,6 +563,70 @@
                   </div>
                 </div>
               `;
+            }
+          }
+
+          {
+            const mount = document.getElementById("related-products");
+            if (mount) {
+              try {
+                const productId = String(product?.productId || "");
+                const relRes = await fetch(
+                  `/api/related-products?id=${encodeURIComponent(productId)}&limit=4`,
+                  { cache: "no-cache" },
+                );
+                const relData = relRes.ok ? await relRes.json() : null;
+                const related = Array.isArray(relData?.related)
+                  ? relData.related
+                  : [];
+
+                if (related.length > 0) {
+                  const cards = related
+                    .map((r) => {
+                      const href = String(r?.canonicalPath || "");
+                      if (!href) return "";
+                      const name = esc(String(r?.title || ""));
+                      const imgSrc = String(r?.image?.src || "");
+                      const imgAlt = esc(
+                        String(r?.image?.alt || r?.title || ""),
+                      );
+                      const isDemoPlaceholder = imgSrc.startsWith("/images2/");
+                      const amt = Number(r?.price?.amount);
+                      const cur = String(
+                        r?.price?.currency || "",
+                      ).toUpperCase();
+                      const priceText =
+                        Number.isFinite(amt) && cur
+                          ? `${(amt / 100).toFixed(2)} ${cur}`
+                          : "";
+                      const imgHtml =
+                        imgSrc && !isDemoPlaceholder
+                          ? `<img src="${esc(imgSrc)}" alt="${imgAlt}" loading="lazy" decoding="async" width="120" height="120" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:8px;" />`
+                          : `<div style="width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#6b7280;font-size:0.75rem;border-radius:8px;text-align:center;padding:6px;">Image coming soon</div>`;
+                      return `
+                        <a href="${esc(href)}" style="flex:1 1 140px;min-width:140px;max-width:200px;color:inherit;text-decoration:none;">
+                          ${imgHtml}
+                          <div style="margin-top:6px;font-weight:600;line-height:1.3;">${name}</div>
+                          ${priceText ? `<div style=\"margin-top:2px;color:#374151;\">${esc(priceText)}</div>` : ""}
+                        </a>
+                      `;
+                    })
+                    .join("");
+
+                  mount.innerHTML = `
+                    <div style="margin:12px auto 0;max-width:680px;padding:16px;border:1px solid #e5e7eb;border-radius:12px;background:#ffffff;text-align:left;">
+                      <div style="font-weight:700;">You may also like</div>
+                      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:14px;">
+                        ${cards}
+                      </div>
+                    </div>
+                  `;
+                } else {
+                  mount.innerHTML = "";
+                }
+              } catch {
+                mount.innerHTML = "";
+              }
             }
           }
 
@@ -644,14 +761,16 @@
           }
 
           const origin = globalThis.location.origin;
-          const canonicalPath = String(product?.seo?.canonicalPath || "");
           const productUrl = canonicalPath ? `${origin}${canonicalPath}` : "";
 
-          const img = product?.images?.[0] || {};
-          const imgSrc = String(img?.src || "");
+          const imgSrc = String(product?.images?.[0]?.src || "");
           const absoluteImg = imgSrc ? `${origin}${imgSrc}` : "";
-          const productBrand = String(product?.brand || "") || String(tenant?.seo?.brandName || "");
-          const availability = String(product?.availability || "https://schema.org/InStock");
+          const productBrand =
+            String(product?.brand || "") ||
+            String(tenant?.seo?.brandName || "");
+          const availability = String(
+            product?.availability || "https://schema.org/InStock",
+          );
 
           const ratings = productReviews
             .map((r) => Number(r?.rating))
@@ -667,7 +786,9 @@
             description,
             url: productUrl,
             image: absoluteImg ? [absoluteImg] : undefined,
-            brand: productBrand ? { "@type": "Brand", name: productBrand } : undefined,
+            brand: productBrand
+              ? { "@type": "Brand", name: productBrand }
+              : undefined,
             offers: {
               "@type": "Offer",
               url: productUrl,

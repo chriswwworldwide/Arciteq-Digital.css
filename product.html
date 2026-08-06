@@ -204,6 +204,8 @@
 
         <section id="more-in-collection" aria-label="More in this collection"></section>
 
+        <section id="related-products" aria-label="You may also like"></section>
+
         <section id="safety-fit" aria-label="Safety and fit"></section>
 
         <section id="reviews" aria-label="Reviews"></section>
@@ -510,6 +512,62 @@
                   </div>
                 </div>
               `;
+            }
+          }
+
+          {
+            const mount = document.getElementById("related-products");
+            if (mount) {
+              try {
+                const productId = String(product?.productId || "");
+                const relRes = await fetch(
+                  `/api/related-products?id=${encodeURIComponent(productId)}&limit=4`,
+                  { cache: "no-cache" },
+                );
+                const relData = relRes.ok ? await relRes.json() : null;
+                const related = Array.isArray(relData?.related) ? relData.related : [];
+
+                if (related.length > 0) {
+                  const cards = related
+                    .map((r) => {
+                      const href = String(r?.canonicalPath || "");
+                      if (!href) return "";
+                      const name = esc(String(r?.title || ""));
+                      const imgSrc = String(r?.image?.src || "");
+                      const imgAlt = esc(String(r?.image?.alt || r?.title || ""));
+                      const amt = Number(r?.price?.amount);
+                      const cur = String(r?.price?.currency || "").toUpperCase();
+                      const priceText =
+                        Number.isFinite(amt) && cur
+                          ? `${(amt / 100).toFixed(2)} ${cur}`
+                          : "";
+                      const imgHtml = imgSrc
+                        ? `<img src="${esc(imgSrc)}" alt="${imgAlt}" loading="lazy" decoding="async" width="120" height="120" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:8px;" />`
+                        : "";
+                      return `
+                        <a href="${esc(href)}" style="flex:1 1 140px;min-width:140px;max-width:200px;color:inherit;text-decoration:none;">
+                          ${imgHtml}
+                          <div style="margin-top:6px;font-weight:600;line-height:1.3;">${name}</div>
+                          ${priceText ? `<div style=\"margin-top:2px;color:#374151;\">${esc(priceText)}</div>` : ""}
+                        </a>
+                      `;
+                    })
+                    .join("");
+
+                  mount.innerHTML = `
+                    <div style="margin:12px auto 0;max-width:680px;padding:16px;border:1px solid #e5e7eb;border-radius:12px;background:#ffffff;text-align:left;">
+                      <div style="font-weight:700;">You may also like</div>
+                      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:14px;">
+                        ${cards}
+                      </div>
+                    </div>
+                  `;
+                } else {
+                  mount.innerHTML = "";
+                }
+              } catch {
+                mount.innerHTML = "";
+              }
             }
           }
 

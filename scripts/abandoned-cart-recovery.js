@@ -15,7 +15,7 @@ const maxAgeDays = Number(process.env.RECOVERY_MAX_AGE_DAYS || 7);
 const nudge1Days = Number(process.env.NUDGE_1_DAYS || 1);
 const nudge2Days = Number(process.env.NUDGE_2_DAYS || 7);
 
-function loadProductsMap() {
+export function loadProductsMap() {
   const file = path.join(__dirname, "..", "data", "products.json");
   const raw = fs.readFileSync(file, "utf8");
   const parsed = JSON.parse(raw);
@@ -27,13 +27,13 @@ function loadProductsMap() {
   return map;
 }
 
-function getNudgeWindowMs(nudgeCount) {
+export function getNudgeWindowMs(nudgeCount) {
   if (nudgeCount === 0) return nudge1Days * 24 * 60 * 60 * 1000;
   if (nudgeCount === 1) return nudge2Days * 24 * 60 * 60 * 1000;
   return Infinity;
 }
 
-function buildRecoveryEmail(items, products, nudgeCount) {
+export function buildRecoveryEmail(items, products, nudgeCount) {
   const lines = items
     .map((i) => {
       const pid = String(i?.id || "");
@@ -81,7 +81,9 @@ function buildRecoveryEmail(items, products, nudgeCount) {
 
 async function main() {
   const products = loadProductsMap();
-  const maxAge = new Date(Date.now() - maxAgeDays * 24 * 60 * 60 * 1000).toISOString();
+  const maxAge = new Date(
+    Date.now() - maxAgeDays * 24 * 60 * 60 * 1000,
+  ).toISOString();
 
   const { rows } = await dbQuery(
     `SELECT id, tenant_id, email, cart, nudge_count, last_nudged_at, created_at
@@ -116,7 +118,8 @@ async function main() {
     if (!dryRun) {
       const nextCount = nudgeCount + 1;
       const nextStatus = nudgeCount === 0 ? "active" : "nudged_2";
-      const statusLabel = nudgeCount === 0 ? "nudged_1 (still active)" : "nudged_2";
+      const statusLabel =
+        nudgeCount === 0 ? "nudged_1 (still active)" : "nudged_2";
       await dbQuery(
         `UPDATE cart_emails
          SET nudge_count = $1, last_nudged_at = now(), status = $2, updated_at = now()
@@ -133,7 +136,12 @@ async function main() {
   process.exit(0);
 }
 
-main().catch((err) => {
-  console.error("Abandoned cart recovery failed:", err);
-  process.exit(1);
-});
+const isDirectRun =
+  process.argv[1] && path.resolve(process.argv[1]) === __filename;
+
+if (isDirectRun) {
+  main().catch((err) => {
+    console.error("Abandoned cart recovery failed:", err);
+    process.exit(1);
+  });
+}

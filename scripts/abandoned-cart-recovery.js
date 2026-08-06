@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
 import { dbQuery } from "../db.js";
 import { nudgeTypeForCount } from "../src/data-stitch.js";
+import { createEmailProvider } from "../src/email-provider.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -105,6 +106,7 @@ export function buildRecoveryEmail(items, products, nudgeCount) {
 /* v8 ignore next */
 async function main() {
   const products = loadProductsMap();
+  const emailProvider = createEmailProvider(process.env);
   const maxAge = new Date(
     Date.now() - maxAgeDays * 24 * 60 * 60 * 1000,
   ).toISOString();
@@ -145,6 +147,26 @@ async function main() {
 
     if (!dryRun) {
       const nextCount = nudgeCount + 1;
+
+      // Route the actual send through the configured provider (console/mock
+      // now, Mailchimp once credentialed). Never let a send failure abort the
+      // run or the funnel logging below — record the outcome and move on.
+      let delivery;
+      try {
+        delivery = await emailProvider.sendCampaign({
+          tenantId: row.tenant_id,
+          to: row.email,
+          subject,
+          body,
+          tags: ["abandoned-cart", nudgeType],
+        });
+      } catch (sendErr) {
+        delivery = {
+          ok: false,
+          error: String(sendErr?.message || sendErr),
+        };
+      }
+
       const isFinal = nextCount >= maxNudges;
       const nextStatus = isFinal
         ? nudgeCount === 2
@@ -167,7 +189,7 @@ async function main() {
           row.email,
           row.id,
           nudgeType,
-          JSON.stringify({ nudgeCount: nextCount, subject }),
+          JSON.stringify({ nudgeCount: nextCount, subject, delivery }),
         ],
       );
       console.log(

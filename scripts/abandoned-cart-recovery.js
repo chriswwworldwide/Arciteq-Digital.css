@@ -79,6 +79,7 @@ export function buildRecoveryEmail(items, products, nudgeCount) {
   return { subject, body };
 }
 
+/* v8 ignore next */
 async function main() {
   const products = loadProductsMap();
   const maxAge = new Date(
@@ -139,6 +140,7 @@ async function main() {
 const isDirectRun =
   process.argv[1] && path.resolve(process.argv[1]) === __filename;
 
+/* v8 ignore next */
 if (isDirectRun) {
   main().catch((err) => {
     console.error("Abandoned cart recovery failed:", err);

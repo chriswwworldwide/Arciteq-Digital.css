@@ -95,6 +95,29 @@
         }
       }
 
+      /* One-time entrance: slide in from the right + fade in. Only when JS
+         is present (body.js-reveal); skipped under reduced-motion so the
+         photo is simply shown. GPU transform/opacity only — no layout shift. */
+      .js-reveal .hero-media {
+        animation: heroSlideIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+        will-change: transform, opacity;
+      }
+      @keyframes heroSlideIn {
+        from {
+          opacity: 0;
+          transform: translateX(48px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .js-reveal .hero-media {
+          animation: none;
+        }
+      }
+
       .home-hero h2 {
         margin: 0 0 14px;
         font-size: clamp(2.3rem, 5.4vw, 3.6rem);

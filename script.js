@@ -3102,7 +3102,8 @@ function addToCart(productId) {
   writeCartToStorage(next);
   updateCartBadge();
   if (product?.name) {
-    showNotice(`Added ${product.name} to your cart.`, {
+    const noticeName = (globalThis.pawDisplayTitle || String)(product.name);
+    showNotice(`Added ${noticeName} to your cart.`, {
       actionLabel: "Checkout",
       onAction: () => {
         window.location.href = "/cart.html";

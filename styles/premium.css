@@ -24,11 +24,12 @@
   --brand: #1a1a1a;
   --brand-600: #000000;
   --brand-200: #cfcfcf;
-  /* Single accent — warm coral. Applied sparingly (buttons, outlines,
-     links, kickers). Swap these three values to re-tint the whole site. */
-  --accent: #e05a3c;
-  --accent-600: #c2472c;
-  --accent-100: #f7ddd4;
+  /* Single accent — deep oxblood red (dark, lots of black in it).
+     Applied sparingly (buttons, outlines, links, kickers).
+     Swap these three values to re-tint the whole site. */
+  --accent: #6a2420;
+  --accent-600: #4a1815;
+  --accent-100: #e7d4d2;
   --cream: #fafafa;
   --paper-card: #ffffff;
 

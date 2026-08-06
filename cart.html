@@ -113,7 +113,26 @@
   <body>
     <div id="header-mount" data-title="Your Shopping Bag"></div>
     <main>
-      <h2>Items in Your Shopping Bag</h2>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin: 8px 0 20px;
+        "
+      >
+        <img
+          src="/images/shopping-totes.svg"
+          alt=""
+          width="84"
+          height="58"
+          decoding="async"
+        />
+        <div>
+          <span class="eyebrow">Your bag</span>
+          <h2 style="margin: 0">Items in Your Shopping Bag</h2>
+        </div>
+      </div>
       <div id="cart-items"></div>
       <p id="cart-total">Subtotal: 0.00 EUR</p>
       <div id="cart-shipping-progress" style="margin: 12px 0"></div>

@@ -6,37 +6,60 @@
    Purely presentational, reduced-motion-safe, zero layout shift.
    =================================================================== */
 
-:root {
-  /* Type: elegant serif display + clean humanist sans body.
-     System-stack only, so it is instant with no network cost / no CLS. */
-  --font-display:
-    ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
-    "Times New Roman", serif;
-  --font-body:
-    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    sans-serif;
+/* ---- Self-hosted display + body faces (variable woff2, subset latin).
+   Fraunces gives aspirational, high-character headlines; Inter keeps body
+   crisp and legible. Self-hosted = fast, private, no third-party request. */
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
-  /* Brand palette — calm, premium, pet-wellness. */
-  --ink: #0f172a;
-  --ink-soft: #334155;
-  --muted: #64748b;
-  --bg: #ffffff;
-  --bg-soft: #f8fafc;
-  --line: #e6e9ee;
-  --brand: #0f766e; /* deep teal */
-  --brand-600: #0d9488;
-  --brand-200: #99f6e4;
-  --accent: #f59e0b; /* warm amber */
-  --accent-600: #d97706;
+:root {
+  /* Type: aspirational serif display + clean humanist sans body.
+     Both self-hosted variable fonts with system fallbacks (no CLS). */
+  --font-display:
+    "Fraunces", ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino,
+    Georgia, "Times New Roman", serif;
+  --font-body:
+    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+
+  /* Brand palette — warm, premium, editorial pet-wellness. */
+  --ink: #1f1b17; /* warm near-black */
+  --ink-soft: #4a433c;
+  --muted: #857c72;
+  --bg: #faf7f1; /* warm paper */
+  --bg-soft: #f3ede3;
+  --line: #e7ded0;
+  --brand: #14514b; /* deep spruce teal */
+  --brand-600: #0f766e;
+  --brand-200: #b7e4dd;
+  --accent: #c67b30; /* honey amber */
+  --accent-600: #a9631f;
   --cream: #fdf6ec;
+  --paper-card: #fffdf9; /* card surface, a touch lighter than paper */
 
   /* Framing */
   --radius-sm: 10px;
   --radius: 14px;
   --radius-lg: 20px;
-  --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.06);
-  --shadow: 0 10px 28px rgba(15, 23, 42, 0.1);
-  --shadow-lg: 0 20px 44px rgba(15, 23, 42, 0.14);
+  /* Warm, low-opacity depth — used only where lift helps, never as default. */
+  --shadow-sm:
+    0 1px 2px rgba(31, 27, 23, 0.04), 0 4px 14px rgba(31, 27, 23, 0.05);
+  --shadow:
+    0 2px 6px rgba(31, 27, 23, 0.05), 0 14px 34px rgba(31, 27, 23, 0.09);
+  --shadow-lg:
+    0 4px 10px rgba(31, 27, 23, 0.06), 0 26px 56px rgba(31, 27, 23, 0.13);
 
   /* Spacing rhythm */
   --space-1: 4px;
@@ -56,10 +79,10 @@ body {
   font-family: var(--font-body);
   color: var(--ink);
   background: var(--bg);
-  line-height: 1.62;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-size: 16.5px;
+  font-size: 17px;
 }
 
 h1,
@@ -69,23 +92,41 @@ h4,
 .display {
   font-family: var(--font-display);
   color: var(--ink);
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  font-weight: 600;
+  font-optical-sizing: auto;
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+  text-wrap: balance;
 }
 
+/* Aspirational, editorial scale — big, confident, drawing the reader in. */
 h1 {
-  font-size: clamp(1.9rem, 4.4vw, 2.9rem);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 600;
 }
 h2 {
-  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
 }
 h3 {
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
 }
 
 p {
   color: var(--ink-soft);
+}
+
+/* Editorial eyebrow/kicker — sits above a headline to set the tone. */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-600);
+  display: block;
+  margin-bottom: var(--space-3);
 }
 
 a {
@@ -156,20 +197,141 @@ body > header nav a:hover {
   background: linear-gradient(90deg, var(--brand), var(--accent));
 }
 
-/* ---- Buttons (shared polish; pages may set their own colors) ---- */
+/* ---- Buttons — high-class, black on white, refined lettering ---- */
 .btn-primary,
 .btn-secondary {
+  font-family: var(--font-body);
   border-radius: var(--radius-sm);
   font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
     background 0.18s ease,
+    color 0.18s ease,
     border-color 0.18s ease;
 }
-.btn-primary:hover,
+/* Primary keeps hierarchy via a firmer ink border + soft ink fill on hover. */
+.btn-primary {
+  border-color: var(--ink);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  background: var(--ink);
+  color: #ffffff;
+  box-shadow: var(--shadow);
+}
 .btn-secondary:hover {
   transform: translateY(-1px);
+  border-color: var(--brand);
+  color: var(--brand);
+  box-shadow: var(--shadow);
+}
+
+/* ---- Form controls — premium custom dropdowns (cascades site-wide) ---- */
+select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%234a433c' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 10px 36px 10px 14px;
+  min-height: 44px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+select:hover {
+  border-color: var(--brand-200);
+}
+select:focus-visible {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(20, 81, 75, 0.16);
+}
+
+/* Filter row — labelled dropdowns laid out cleanly, touch-friendly. */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 8px;
+  margin: 10px 0 22px;
+}
+.filter-bar label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 4px 0 10px;
+}
+.filter-bar label:first-child {
+  margin-left: 0;
+}
+
+/* ---- Branded image placeholder (cascades: shop grid, etc.) ---- */
+.ph-tile {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--brand);
+  background:
+    radial-gradient(
+      120% 120% at 22% 18%,
+      rgba(20, 81, 75, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(135deg, #f3ede3 0%, #eadfce 100%);
+}
+.ph-tile svg {
+  width: 46px;
+  height: 46px;
+  opacity: 0.55;
+}
+.ph-tile span {
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Compact branded placeholder — fills its container (cart thumb, add-ons). */
+.ph-mini {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+  background: linear-gradient(135deg, #f3ede3 0%, #eadfce 100%);
+}
+.ph-mini svg {
+  width: 46%;
+  height: 46%;
+  max-width: 34px;
+  max-height: 34px;
+  opacity: 0.55;
 }
 
 /* ---- Cards (product + category) shared elevation ---- */

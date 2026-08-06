@@ -50,6 +50,20 @@
   }
   globalThis.pawObserveReveals = observeReveals;
 
+  // Aspirational display titles: strip functional trailing tags like
+  // "(Demo)" / "(Placeholder)" so storefront copy reads like a brand,
+  // not a spec sheet. Meaningful parentheticals are left intact.
+  function displayTitle(t) {
+    var s = String(t == null ? "" : t);
+    var prev;
+    do {
+      prev = s;
+      s = s.replace(/\s*\((?:demo|placeholder|sample|test|wip)\)\s*$/i, "");
+    } while (s !== prev);
+    return s.trim();
+  }
+  globalThis.pawDisplayTitle = displayTitle;
+
   function initPawBurst() {
     if (prefersReduced) return;
     // Trigger zone: the home hero, or anything marked data-paw.

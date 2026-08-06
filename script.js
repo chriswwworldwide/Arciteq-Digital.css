@@ -14,6 +14,15 @@ function getTenantId() {
   return String(tenant?.tenant_id || "default");
 }
 
+// Demo assets under /images2/ are off-brand pre-pivot stills. Never show them
+// as product photography — fall back to a branded placeholder instead.
+function isDemoImg(src) {
+  const s = String(src || "");
+  return !s || s.startsWith("/images2/");
+}
+const PAW_SVG_MINI =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.6" cy="12" r="1.7"/><circle cx="9.6" cy="7.4" r="1.7"/><circle cx="14.4" cy="7.4" r="1.7"/><circle cx="18.4" cy="12" r="1.7"/><path d="M8 16.6c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6c0 1.9-1.7 2.9-4 2.9s-4-1-4-2.9Z"/></svg>';
+
 function scrollToMount(id) {
   try {
     const el = document.getElementById(id);
@@ -24,7 +33,14 @@ function scrollToMount(id) {
   }
 }
 
-function renderAdGuardrailsPanel({ guardrails, currency, summaryRows, spendByKey, adminKey, onSaved }) {
+function renderAdGuardrailsPanel({
+  guardrails,
+  currency,
+  summaryRows,
+  spendByKey,
+  adminKey,
+  onSaved,
+}) {
   const mount = document.getElementById("admin-ad-guardrails");
   if (!mount) return;
 
@@ -32,13 +48,16 @@ function renderAdGuardrailsPanel({ guardrails, currency, summaryRows, spendByKey
   const g = guardrails && typeof guardrails === "object" ? guardrails : null;
 
   const rangeDays = Number(g?.range_days || 7) || 7;
-  const stopSpendNoRevenueMinor = Number(g?.stop_spend_no_revenue_minor ?? 2000);
+  const stopSpendNoRevenueMinor = Number(
+    g?.stop_spend_no_revenue_minor ?? 2000,
+  );
   const warnRoasBelow = Number(g?.warn_roas_below ?? 1.5);
   const warnProfitBelowMinor = Number(g?.warn_profit_below_minor ?? -500);
   const note = String(g?.note || "");
 
   const rows = Array.isArray(summaryRows) ? summaryRows : [];
-  const spendMap = spendByKey && typeof spendByKey === "object" ? spendByKey : {};
+  const spendMap =
+    spendByKey && typeof spendByKey === "object" ? spendByKey : {};
 
   let paidRevenueMinor = 0;
   let spendMinor = 0;
@@ -59,7 +78,8 @@ function renderAdGuardrailsPanel({ guardrails, currency, summaryRows, spendByKey
   const roas = spendMinor > 0 ? paidRevenueMinor / spendMinor : NaN;
   const profitMinor = paidRevenueMinor - spendMinor;
 
-  const stopTriggered = spendMinor >= stopSpendNoRevenueMinor && paidRevenueMinor <= 0;
+  const stopTriggered =
+    spendMinor >= stopSpendNoRevenueMinor && paidRevenueMinor <= 0;
   const warnRoas = Number.isFinite(roas) && roas < warnRoasBelow;
   const warnProfit = profitMinor < warnProfitBelowMinor;
 
@@ -81,8 +101,11 @@ function renderAdGuardrailsPanel({ guardrails, currency, summaryRows, spendByKey
 
   const revenueText = formatMoneyMinor(paidRevenueMinor, ccy);
   const spendText = spendMinor > 0 ? formatMoneyMinor(spendMinor, ccy) : "—";
-  const profitText = Number.isFinite(profitMinor) ? formatMoneyMinor(profitMinor, ccy) : "—";
-  const roasText = spendMinor > 0 ? (paidRevenueMinor / spendMinor).toFixed(2) : "—";
+  const profitText = Number.isFinite(profitMinor)
+    ? formatMoneyMinor(profitMinor, ccy)
+    : "—";
+  const roasText =
+    spendMinor > 0 ? (paidRevenueMinor / spendMinor).toFixed(2) : "—";
 
   mount.innerHTML = `
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;">
@@ -116,7 +139,12 @@ function renderAdGuardrailsPanel({ guardrails, currency, summaryRows, spendByKey
         <label style="display:grid;gap:6px;">
           <span style="color:#4b5563;">STOP if spend ≥ (and paid revenue = 0)</span>
           <input id="ag-stop" type="text" value="${sanitizeHTML(
-            formatMoneyMinor(Number.isInteger(stopSpendNoRevenueMinor) ? stopSpendNoRevenueMinor : 0, ccy).replace(/[^0-9.,-]/g, ""),
+            formatMoneyMinor(
+              Number.isInteger(stopSpendNoRevenueMinor)
+                ? stopSpendNoRevenueMinor
+                : 0,
+              ccy,
+            ).replace(/[^0-9.,-]/g, ""),
           )}" style="padding:10px;border-radius:8px;border:1px solid #ddd;font:inherit;" />
         </label>
 
@@ -128,7 +156,10 @@ function renderAdGuardrailsPanel({ guardrails, currency, summaryRows, spendByKey
         <label style="display:grid;gap:6px;">
           <span style="color:#4b5563;">WARN if profit below</span>
           <input id="ag-profit" type="text" value="${sanitizeHTML(
-            formatMoneyMinor(Number.isInteger(warnProfitBelowMinor) ? warnProfitBelowMinor : 0, ccy).replace(/[^0-9.,-]/g, ""),
+            formatMoneyMinor(
+              Number.isInteger(warnProfitBelowMinor) ? warnProfitBelowMinor : 0,
+              ccy,
+            ).replace(/[^0-9.,-]/g, ""),
           )}" style="padding:10px;border-radius:8px;border:1px solid #ddd;font:inherit;" />
         </label>
 
@@ -161,7 +192,12 @@ function renderAdGuardrailsPanel({ guardrails, currency, summaryRows, spendByKey
         const stopMinor = parseMoneyToMinorUnits(stopEl?.value || "");
         const profitMinor = parseMoneyToMinorUnits(profitEl?.value || "");
         const roasVal = Number(roasEl?.value || 0);
-        if (!Number.isFinite(stopMinor) || !Number.isFinite(profitMinor) || !Number.isFinite(roasVal) || roasVal < 0) {
+        if (
+          !Number.isFinite(stopMinor) ||
+          !Number.isFinite(profitMinor) ||
+          !Number.isFinite(roasVal) ||
+          roasVal < 0
+        ) {
           throw new Error("Please enter valid numbers.");
         }
 
@@ -178,7 +214,8 @@ function renderAdGuardrailsPanel({ guardrails, currency, summaryRows, spendByKey
         if (statusEl) statusEl.textContent = "Saved.";
         if (typeof onSaved === "function") onSaved();
       } catch (err) {
-        if (statusEl) statusEl.textContent = String(err?.message || "Save failed.");
+        if (statusEl)
+          statusEl.textContent = String(err?.message || "Save failed.");
       }
     });
   }
@@ -193,21 +230,37 @@ function renderOpsHealthPanel(data) {
   const pendingHours = Number(data?.pending_hours || 0) || 0;
   const errText = String(data?._error || "").trim();
 
-  const stripeLast = data?.stripe?.last_webhook_at ? new Date(data.stripe.last_webhook_at) : null;
-  const stripeLastText = stripeLast && Number.isFinite(stripeLast.getTime()) ? stripeLast.toLocaleString("en-GB") : "—";
+  const stripeLast = data?.stripe?.last_webhook_at
+    ? new Date(data.stripe.last_webhook_at)
+    : null;
+  const stripeLastText =
+    stripeLast && Number.isFinite(stripeLast.getTime())
+      ? stripeLast.toLocaleString("en-GB")
+      : "—";
   const stripeCount24h = Number(data?.stripe?.webhooks_24h || 0) || 0;
 
   const now = Date.now();
-  const stripeLastMs = stripeLast && Number.isFinite(stripeLast.getTime()) ? stripeLast.getTime() : Number.NaN;
-  const webhookAgeMs = Number.isFinite(stripeLastMs) ? now - stripeLastMs : Number.NaN;
-  const webhookColor =
-    !Number.isFinite(webhookAgeMs) ? "#b91c1c" : webhookAgeMs > 6 * 60 * 60 * 1000 ? "#b91c1c" : webhookAgeMs > 60 * 60 * 1000 ? "#92400e" : "#065f46";
+  const stripeLastMs =
+    stripeLast && Number.isFinite(stripeLast.getTime())
+      ? stripeLast.getTime()
+      : Number.NaN;
+  const webhookAgeMs = Number.isFinite(stripeLastMs)
+    ? now - stripeLastMs
+    : Number.NaN;
+  const webhookColor = !Number.isFinite(webhookAgeMs)
+    ? "#b91c1c"
+    : webhookAgeMs > 6 * 60 * 60 * 1000
+      ? "#b91c1c"
+      : webhookAgeMs > 60 * 60 * 1000
+        ? "#92400e"
+        : "#065f46";
 
   const o24 = data?.orders?.last_24h || {};
   const o7 = data?.orders?.last_7d || {};
   const stale = data?.orders?.stale_pending || {};
   const staleCount = Number(stale?.count || 0) || 0;
-  const staleColor = staleCount >= 6 ? "#b91c1c" : staleCount > 0 ? "#92400e" : "#065f46";
+  const staleColor =
+    staleCount >= 6 ? "#b91c1c" : staleCount > 0 ? "#92400e" : "#065f46";
   const staleAction = staleCount > 0;
 
   mount.innerHTML = `
@@ -294,17 +347,26 @@ function renderAlertsPanel({ data, heartbeat, opsHealth, adminKey, onRun }) {
   const alerts = Array.isArray(data?.alerts) ? data.alerts : [];
   const emailStatus = String(data?.alert_email_to || "");
 
-  const hb = heartbeat && typeof heartbeat === "object" ? heartbeat.heartbeat : null;
+  const hb =
+    heartbeat && typeof heartbeat === "object" ? heartbeat.heartbeat : null;
   const hbLastRunAt = String(hb?.lastRunAt || "");
   const hbLastOk = hb?.lastOk;
   const hbInterval = Number(hb?.intervalMinutes || 0) || 0;
   const hbCreated = Number(hb?.lastCreatedCount || 0) || 0;
   const hbErr = String(hb?.lastError || "").trim();
 
-  const stripeLast = opsHealth?.stripe?.last_webhook_at ? new Date(opsHealth.stripe.last_webhook_at) : null;
-  const stripeLastMs = stripeLast && Number.isFinite(stripeLast.getTime()) ? stripeLast.getTime() : Number.NaN;
-  const webhookAgeMs = Number.isFinite(stripeLastMs) ? Date.now() - stripeLastMs : Number.NaN;
-  const webhookStaleNow = !Number.isFinite(webhookAgeMs) || webhookAgeMs > 6 * 60 * 60 * 1000;
+  const stripeLast = opsHealth?.stripe?.last_webhook_at
+    ? new Date(opsHealth.stripe.last_webhook_at)
+    : null;
+  const stripeLastMs =
+    stripeLast && Number.isFinite(stripeLast.getTime())
+      ? stripeLast.getTime()
+      : Number.NaN;
+  const webhookAgeMs = Number.isFinite(stripeLastMs)
+    ? Date.now() - stripeLastMs
+    : Number.NaN;
+  const webhookStaleNow =
+    !Number.isFinite(webhookAgeMs) || webhookAgeMs > 6 * 60 * 60 * 1000;
 
   const hbLine = hb
     ? `Heartbeat: every ${hbInterval || "?"} min • last run ${hbLastRunAt ? new Date(hbLastRunAt).toLocaleString("en-GB") : "—"} • ${
@@ -312,7 +374,10 @@ function renderAlertsPanel({ data, heartbeat, opsHealth, adminKey, onRun }) {
       } • new alerts ${hbCreated}`
     : "Heartbeat: not loaded";
 
-  const headerRight = emailStatus === "configured" ? "Email enabled" : "Email disabled (set ALERT_EMAIL_TO)";
+  const headerRight =
+    emailStatus === "configured"
+      ? "Email enabled"
+      : "Email disabled (set ALERT_EMAIL_TO)";
 
   const listHtml = alerts.length
     ? alerts
@@ -329,7 +394,9 @@ function renderAlertsPanel({ data, heartbeat, opsHealth, adminKey, onRun }) {
             <div style="padding:10px 0;border-top:1px solid #e5e7eb;">
               <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;">
                 <div style="font-weight:700;color:${sanitizeHTML(sevColor)};">${sanitizeHTML(sev.toUpperCase())}${
-                  resolved ? ` <span style="color:#065f46;font-weight:700;">(RESOLVED)</span>` : ""
+                  resolved
+                    ? ` <span style="color:#065f46;font-weight:700;">(RESOLVED)</span>`
+                    : ""
                 }</div>
                 <div style="color:#6b7280;font-size:0.95rem;">${sanitizeHTML(when)}</div>
               </div>
@@ -391,7 +458,8 @@ function renderOpsTrendsPanel(data) {
   const start = String(data?.start || "");
   const end = String(data?.end || "");
 
-  const headerRight = `${start ? new Date(start).toLocaleDateString("en-GB") : ""}${end ? ` → ${new Date(end).toLocaleDateString("en-GB")}` : ""}`.trim();
+  const headerRight =
+    `${start ? new Date(start).toLocaleDateString("en-GB") : ""}${end ? ` → ${new Date(end).toLocaleDateString("en-GB")}` : ""}`.trim();
 
   const totals = rows.reduce(
     (acc, r) => {
@@ -428,11 +496,14 @@ function renderOpsTrendsPanel(data) {
       const profitColor = profitMinor < 0 ? "#b91c1c" : "#065f46";
 
       const revenueColor = revenueMinor > 0 ? "#065f46" : "#111827";
-      const spendColor = spendMinor > 0 && revenueMinor <= 0 ? "#b91c1c" : "#111827";
+      const spendColor =
+        spendMinor > 0 && revenueMinor <= 0 ? "#b91c1c" : "#111827";
       const abandoned = Number(r?.abandoned || 0) || 0;
       const failed = Number(r?.failed || 0) || 0;
-      const abandonedColor = abandoned >= 3 ? "#b91c1c" : abandoned > 0 ? "#92400e" : "#111827";
-      const failedColor = failed >= 3 ? "#b91c1c" : failed > 0 ? "#92400e" : "#111827";
+      const abandonedColor =
+        abandoned >= 3 ? "#b91c1c" : abandoned > 0 ? "#92400e" : "#111827";
+      const failedColor =
+        failed >= 3 ? "#b91c1c" : failed > 0 ? "#92400e" : "#111827";
 
       return `
         <tr>
@@ -453,7 +524,9 @@ function renderOpsTrendsPanel(data) {
             spendMinor > 0 && revenueMinor <= 0 ? "700" : "400",
           )};">${sanitizeHTML(spendMinor > 0 ? formatMoneyMinor(spendMinor, currency) : "—")}</td>
           <td style="padding:8px 6px;border-top:1px solid #eee;text-align:right;color:${sanitizeHTML(profitColor)};">${sanitizeHTML(
-            spendMinor > 0 || revenueMinor !== 0 ? formatMoneyMinor(profitMinor, currency) : "—",
+            spendMinor > 0 || revenueMinor !== 0
+              ? formatMoneyMinor(profitMinor, currency)
+              : "—",
           )}</td>
           <td style="padding:8px 6px;border-top:1px solid #eee;text-align:right;">${sanitizeHTML(String(Number(r?.webhooks || 0) || 0))}</td>
         </tr>
@@ -503,10 +576,14 @@ function renderOpsTrendsPanel(data) {
             <td style="padding:8px 6px;border-top:1px solid #ddd;text-align:right;font-weight:700;">${sanitizeHTML(String(totals.failed))}</td>
             <td style="padding:8px 6px;border-top:1px solid #ddd;text-align:right;font-weight:700;">${sanitizeHTML(formatMoneyMinor(totals.revenue_minor, currency))}</td>
             <td style="padding:8px 6px;border-top:1px solid #ddd;text-align:right;font-weight:700;">${sanitizeHTML(
-              totals.spend_minor > 0 ? formatMoneyMinor(totals.spend_minor, currency) : "—",
+              totals.spend_minor > 0
+                ? formatMoneyMinor(totals.spend_minor, currency)
+                : "—",
             )}</td>
             <td style="padding:8px 6px;border-top:1px solid #ddd;text-align:right;font-weight:700;">${sanitizeHTML(
-              totals.spend_minor > 0 || totals.revenue_minor !== 0 ? formatMoneyMinor(totals.profit_minor, currency) : "—",
+              totals.spend_minor > 0 || totals.revenue_minor !== 0
+                ? formatMoneyMinor(totals.profit_minor, currency)
+                : "—",
             )}</td>
             <td style="padding:8px 6px;border-top:1px solid #ddd;text-align:right;font-weight:700;">${sanitizeHTML(String(totals.webhooks))}</td>
           </tr>
@@ -526,14 +603,19 @@ function getUtmStorageKey() {
 
 function captureUtmFromUrl() {
   try {
-    const params = new URLSearchParams(String(globalThis.location.search || ""));
+    const params = new URLSearchParams(
+      String(globalThis.location.search || ""),
+    );
     const utm_source = String(params.get("utm_source") || "").trim();
     const utm_medium = String(params.get("utm_medium") || "").trim();
     const utm_campaign = String(params.get("utm_campaign") || "").trim();
-    const utm_content = String(params.get("utm_content") || params.get("ref") || "").trim();
+    const utm_content = String(
+      params.get("utm_content") || params.get("ref") || "",
+    ).trim();
     const utm_term = String(params.get("utm_term") || "").trim();
 
-    const hasAny = utm_source || utm_medium || utm_campaign || utm_content || utm_term;
+    const hasAny =
+      utm_source || utm_medium || utm_campaign || utm_content || utm_term;
     if (!hasAny) return;
 
     const payload = {
@@ -566,7 +648,9 @@ function readUtmFromStorage() {
 
 function readCheckoutEmailFromStorage() {
   try {
-    return String(localStorage.getItem(getCheckoutEmailStorageKey()) || "").trim();
+    return String(
+      localStorage.getItem(getCheckoutEmailStorageKey()) || "",
+    ).trim();
   } catch {
     return "";
   }
@@ -587,7 +671,9 @@ function writeCheckoutEmailToStorage(email) {
 
 function saveCheckoutEmail(email) {
   writeCheckoutEmailToStorage(email);
-  const safe = String(email || "").trim().toLowerCase();
+  const safe = String(email || "")
+    .trim()
+    .toLowerCase();
   if (!safe) return;
   try {
     const cartPayload = Array.isArray(cart)
@@ -743,10 +829,14 @@ async function loadTenant() {
     tenant_id: String(data?.tenant_id || "default"),
     currency: String(data?.currency || "eur").toLowerCase(),
     language: String(data?.language || "en").toLowerCase(),
-    catalog: data?.catalog && typeof data.catalog === "object" ? data.catalog : null,
+    catalog:
+      data?.catalog && typeof data.catalog === "object" ? data.catalog : null,
     seo: data?.seo && typeof data.seo === "object" ? data.seo : null,
-    offers: data?.offers && typeof data.offers === "object" ? data.offers : null,
-    payment_methods: Array.isArray(data?.payment_methods) ? data.payment_methods : ["card"],
+    offers:
+      data?.offers && typeof data.offers === "object" ? data.offers : null,
+    payment_methods: Array.isArray(data?.payment_methods)
+      ? data.payment_methods
+      : ["card"],
   };
 }
 
@@ -754,10 +844,16 @@ function renderTrustStrip() {
   const mount = document.getElementById("trust-strip");
   if (!mount) return;
 
-  const offers = tenant?.offers && typeof tenant.offers === "object" ? tenant.offers : null;
-  const items = Array.isArray(offers?.trustStrip?.items) ? offers.trustStrip.items : [];
+  const offers =
+    tenant?.offers && typeof tenant.offers === "object" ? tenant.offers : null;
+  const items = Array.isArray(offers?.trustStrip?.items)
+    ? offers.trustStrip.items
+    : [];
   const clean = items
-    .map((i) => ({ title: String(i?.title || "").trim(), text: String(i?.text || "").trim() }))
+    .map((i) => ({
+      title: String(i?.title || "").trim(),
+      text: String(i?.text || "").trim(),
+    }))
     .filter((i) => i.title && i.text);
 
   if (clean.length === 0) {
@@ -765,11 +861,17 @@ function renderTrustStrip() {
     return;
   }
 
-  const hasPaypal = Array.isArray(tenant?.payment_methods) && tenant.payment_methods.includes("paypal");
+  const hasPaypal =
+    Array.isArray(tenant?.payment_methods) &&
+    tenant.payment_methods.includes("paypal");
   const cells = clean
     .map((i) => {
       let text = i.text;
-      if (i.title.toLowerCase() === "secure checkout" && hasPaypal && !text.toLowerCase().includes("paypal")) {
+      if (
+        i.title.toLowerCase() === "secure checkout" &&
+        hasPaypal &&
+        !text.toLowerCase().includes("paypal")
+      ) {
         text = `${text.replace(/\.$/, "")} + PayPal.`;
       }
       return `<div><strong>${sanitizeHTML(i.title)}:</strong> ${sanitizeHTML(text)}</div>`;
@@ -787,17 +889,26 @@ function renderStarterKits() {
   const mount = document.getElementById("starter-kits");
   if (!mount) return;
 
-  const offers = tenant?.offers && typeof tenant.offers === "object" ? tenant.offers : null;
-  const starter = offers?.starterKits && typeof offers.starterKits === "object" ? offers.starterKits : null;
+  const offers =
+    tenant?.offers && typeof tenant.offers === "object" ? tenant.offers : null;
+  const starter =
+    offers?.starterKits && typeof offers.starterKits === "object"
+      ? offers.starterKits
+      : null;
   const kits = Array.isArray(starter?.kits) ? starter.kits : [];
-  const selectedPet = String(mount.getAttribute("data-kits-pet") || "all").trim() || "all";
+  const selectedPet =
+    String(mount.getAttribute("data-kits-pet") || "all").trim() || "all";
   const cleanKits = kits
     .map((k) => ({
       id: String(k?.id || "").trim(),
       title: String(k?.title || "").trim(),
       description: String(k?.description || "").trim(),
-      petTypes: Array.isArray(k?.petTypes) ? k.petTypes.map((x) => String(x || "").trim()).filter(Boolean) : [],
-      productIds: Array.isArray(k?.productIds) ? k.productIds.map((x) => String(x || "").trim()).filter(Boolean) : [],
+      petTypes: Array.isArray(k?.petTypes)
+        ? k.petTypes.map((x) => String(x || "").trim()).filter(Boolean)
+        : [],
+      productIds: Array.isArray(k?.productIds)
+        ? k.productIds.map((x) => String(x || "").trim()).filter(Boolean)
+        : [],
     }))
     .filter((k) => k.id && k.title && k.productIds.length > 0);
 
@@ -820,9 +931,14 @@ function renderStarterKits() {
         .map((pid) => products.find((p) => String(p?.id || "") === pid))
         .filter(Boolean);
 
-      const priceMinor = included.reduce((sum, p) => sum + (Number(p?.price) || 0), 0);
+      const priceMinor = included.reduce(
+        (sum, p) => sum + (Number(p?.price) || 0),
+        0,
+      );
       const currency = String(tenant?.currency || "eur");
-      const priceLabel = sanitizeHTML(formatMoneyMinorBasic(priceMinor, currency));
+      const priceLabel = sanitizeHTML(
+        formatMoneyMinorBasic(priceMinor, currency),
+      );
 
       return `
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #e5e7eb;">
@@ -865,7 +981,8 @@ function renderStarterKits() {
 
   mount.querySelectorAll("button[data-kits-filter]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const pet = String(btn.getAttribute("data-kits-filter") || "all").trim() || "all";
+      const pet =
+        String(btn.getAttribute("data-kits-filter") || "all").trim() || "all";
       mount.setAttribute("data-kits-pet", pet);
 
       const petTypeEl = document.getElementById("pet-type");
@@ -885,7 +1002,9 @@ function isShopPage() {
 }
 
 function getHeroProductIds() {
-  const ids = Array.isArray(tenant?.catalog?.heroProductIds) ? tenant.catalog.heroProductIds : [];
+  const ids = Array.isArray(tenant?.catalog?.heroProductIds)
+    ? tenant.catalog.heroProductIds
+    : [];
   return ids.map((x) => String(x || "").trim()).filter(Boolean);
 }
 
@@ -908,17 +1027,34 @@ function writeShowAllProductsPreference(v) {
 function applyShopFeaturedQueryParam() {
   if (!isShopPage()) return;
   try {
-    const params = new URLSearchParams(String(globalThis.location && globalThis.location.search ? globalThis.location.search : ""));
+    const params = new URLSearchParams(
+      String(
+        globalThis.location && globalThis.location.search
+          ? globalThis.location.search
+          : "",
+      ),
+    );
     const featured = String(params.get("featured") || "").trim();
     if (featured !== "1") return;
 
     writeShowAllProductsPreference(false);
     params.delete("featured");
     const qs = params.toString();
-    const pathname = String(globalThis.location && globalThis.location.pathname ? globalThis.location.pathname : "/shop.html");
-    const hash = String(globalThis.location && globalThis.location.hash ? globalThis.location.hash : "");
+    const pathname = String(
+      globalThis.location && globalThis.location.pathname
+        ? globalThis.location.pathname
+        : "/shop.html",
+    );
+    const hash = String(
+      globalThis.location && globalThis.location.hash
+        ? globalThis.location.hash
+        : "",
+    );
     const next = pathname + (qs ? "?" + qs : "") + hash;
-    if (globalThis.history && typeof globalThis.history.replaceState === "function") {
+    if (
+      globalThis.history &&
+      typeof globalThis.history.replaceState === "function"
+    ) {
       globalThis.history.replaceState({}, "", next);
     }
   } catch {
@@ -962,8 +1098,12 @@ function renderKitsLandingPage() {
 
   const pet = String(mount.getAttribute("data-kits-pet") || "").trim();
   const kitIdFilter = String(mount.getAttribute("data-kit-id") || "").trim();
-  const offers = tenant?.offers && typeof tenant.offers === "object" ? tenant.offers : null;
-  const starter = offers?.starterKits && typeof offers.starterKits === "object" ? offers.starterKits : null;
+  const offers =
+    tenant?.offers && typeof tenant.offers === "object" ? tenant.offers : null;
+  const starter =
+    offers?.starterKits && typeof offers.starterKits === "object"
+      ? offers.starterKits
+      : null;
   const kits = Array.isArray(starter?.kits) ? starter.kits : [];
 
   const cleanKits = kits
@@ -971,8 +1111,12 @@ function renderKitsLandingPage() {
       id: String(k?.id || "").trim(),
       title: String(k?.title || "").trim(),
       description: String(k?.description || "").trim(),
-      petTypes: Array.isArray(k?.petTypes) ? k.petTypes.map((x) => String(x || "").trim()).filter(Boolean) : [],
-      productIds: Array.isArray(k?.productIds) ? k.productIds.map((x) => String(x || "").trim()).filter(Boolean) : [],
+      petTypes: Array.isArray(k?.petTypes)
+        ? k.petTypes.map((x) => String(x || "").trim()).filter(Boolean)
+        : [],
+      productIds: Array.isArray(k?.productIds)
+        ? k.productIds.map((x) => String(x || "").trim()).filter(Boolean)
+        : [],
     }))
     .filter((k) => k.id && k.title && k.productIds.length > 0);
 
@@ -985,7 +1129,9 @@ function renderKitsLandingPage() {
   const currency = String(tenant?.currency || "eur");
   const brandName = String(tenant?.seo?.brandName || "").trim() || "Shop";
   const heading = kitIdFilter
-    ? (visibleKits[0]?.title ? String(visibleKits[0].title) : "Starter kit")
+    ? visibleKits[0]?.title
+      ? String(visibleKits[0].title)
+      : "Starter kit"
     : pet
       ? `${pet} starter kits`
       : "Starter kits";
@@ -1015,11 +1161,19 @@ function renderKitsLandingPage() {
         .map((pid) => products.find((p) => String(p?.id || "") === pid))
         .filter(Boolean);
 
-      const priceMinor = included.reduce((sum, p) => sum + (Number(p?.price) || 0), 0);
-      const priceLabel = sanitizeHTML(formatMoneyMinorBasic(priceMinor, currency));
+      const priceMinor = included.reduce(
+        (sum, p) => sum + (Number(p?.price) || 0),
+        0,
+      );
+      const priceLabel = sanitizeHTML(
+        formatMoneyMinorBasic(priceMinor, currency),
+      );
 
       const includedList = included
-        .map((p) => `<li style="margin:6px 0;">${sanitizeHTML(String(p?.name || p?.title || "Item").trim())}</li>`)
+        .map(
+          (p) =>
+            `<li style="margin:6px 0;">${sanitizeHTML(String(p?.name || p?.title || "Item").trim())}</li>`,
+        )
         .join("");
 
       return `
@@ -1065,7 +1219,10 @@ function renderKitsLandingPage() {
     { href: "/kits/cat.html", label: "All Cat Kits" },
     { href: "/kits/senior-comfort-dog.html", label: "Senior Comfort (Dog)" },
     { href: "/kits/senior-comfort-cat.html", label: "Senior Comfort (Cat)" },
-    { href: "/kits/home-monitoring.html", label: "Home Monitoring (Dog or Cat)" },
+    {
+      href: "/kits/home-monitoring.html",
+      label: "Home Monitoring (Dog or Cat)",
+    },
   ]
     .filter((x) => x && x.href && x.label)
     .filter((x) => String(x.href) !== pathname);
@@ -1158,7 +1315,9 @@ function upsertMetaTag(attrName, attrValue, content) {
   const safeContent = String(content || "");
   if (!safeAttrValue) return;
 
-  let el = document.querySelector(`meta[${attrName}='${CSS.escape(safeAttrValue)}']`);
+  let el = document.querySelector(
+    `meta[${attrName}='${CSS.escape(safeAttrValue)}']`,
+  );
   if (!el) {
     el = document.createElement("meta");
     el.setAttribute(attrName, safeAttrValue);
@@ -1176,25 +1335,42 @@ function applyTenantSeo() {
   const isHome = pathname === "/" || pathname.endsWith("/index.html");
   const isShop = pathname.endsWith("/shop.html") || pathname === "/shop.html";
   const isCart = pathname.endsWith("/cart.html") || pathname === "/cart.html";
-  const isDogKits = pathname.endsWith("/kits/dog.html") || pathname === "/kits/dog.html";
-  const isCatKits = pathname.endsWith("/kits/cat.html") || pathname === "/kits/cat.html";
-  const isSeniorComfortDog = pathname.endsWith("/kits/senior-comfort-dog.html") || pathname === "/kits/senior-comfort-dog.html";
-  const isSeniorComfortCat = pathname.endsWith("/kits/senior-comfort-cat.html") || pathname === "/kits/senior-comfort-cat.html";
-  const isSeniorDogComfortGuide = pathname.endsWith("/kits/senior-dog-comfort.html") || pathname === "/kits/senior-dog-comfort.html";
-  const isNightWalkSafetyDog = pathname.endsWith("/kits/night-walk-safety-dog.html") || pathname === "/kits/night-walk-safety-dog.html";
-  const isHomeMonitoring = pathname.endsWith("/kits/home-monitoring.html") || pathname === "/kits/home-monitoring.html";
+  const isDogKits =
+    pathname.endsWith("/kits/dog.html") || pathname === "/kits/dog.html";
+  const isCatKits =
+    pathname.endsWith("/kits/cat.html") || pathname === "/kits/cat.html";
+  const isSeniorComfortDog =
+    pathname.endsWith("/kits/senior-comfort-dog.html") ||
+    pathname === "/kits/senior-comfort-dog.html";
+  const isSeniorComfortCat =
+    pathname.endsWith("/kits/senior-comfort-cat.html") ||
+    pathname === "/kits/senior-comfort-cat.html";
+  const isSeniorDogComfortGuide =
+    pathname.endsWith("/kits/senior-dog-comfort.html") ||
+    pathname === "/kits/senior-dog-comfort.html";
+  const isNightWalkSafetyDog =
+    pathname.endsWith("/kits/night-walk-safety-dog.html") ||
+    pathname === "/kits/night-walk-safety-dog.html";
+  const isHomeMonitoring =
+    pathname.endsWith("/kits/home-monitoring.html") ||
+    pathname === "/kits/home-monitoring.html";
   const isKits = isDogKits || isCatKits;
-  const isKitDetail = isSeniorComfortDog || isSeniorComfortCat || isHomeMonitoring;
+  const isKitDetail =
+    isSeniorComfortDog || isSeniorComfortCat || isHomeMonitoring;
 
   let pageTitle = brandName;
   if (isShop) pageTitle = `${brandName} | Shop`;
   else if (isCart) pageTitle = `${brandName} | Cart`;
   else if (isDogKits) pageTitle = `${brandName} | Dog Kits`;
   else if (isCatKits) pageTitle = `${brandName} | Cat Kits`;
-  else if (isSeniorComfortDog) pageTitle = `${brandName} | Senior Comfort Kit (Dog)`;
-  else if (isSeniorComfortCat) pageTitle = `${brandName} | Senior Comfort Kit (Cat)`;
-  else if (isSeniorDogComfortGuide) pageTitle = `${brandName} | Senior Dog Comfort Guide`;
-  else if (isNightWalkSafetyDog) pageTitle = `${brandName} | Night Walk Safety for Dogs`;
+  else if (isSeniorComfortDog)
+    pageTitle = `${brandName} | Senior Comfort Kit (Dog)`;
+  else if (isSeniorComfortCat)
+    pageTitle = `${brandName} | Senior Comfort Kit (Cat)`;
+  else if (isSeniorDogComfortGuide)
+    pageTitle = `${brandName} | Senior Dog Comfort Guide`;
+  else if (isNightWalkSafetyDog)
+    pageTitle = `${brandName} | Night Walk Safety for Dogs`;
   else if (isHomeMonitoring) pageTitle = `${brandName} | Home Monitoring Kit`;
 
   document.title = pageTitle;
@@ -1204,13 +1380,20 @@ function applyTenantSeo() {
     (isHome && meta?.homeDescription) ||
     (isShop && meta?.shopDescription) ||
     (isCart && meta?.cartDescription) ||
-    (isDogKits && `Browse dog starter kits from ${brandName}. Add a whole kit to your cart in one tap.`) ||
-    (isCatKits && `Browse cat starter kits from ${brandName}. Add a whole kit to your cart in one tap.`) ||
-    (isSeniorComfortDog && `A simple comfort kit for older dogs from ${brandName}: softer rest plus gentle routine support. Add the whole kit in one tap.`) ||
-    (isSeniorComfortCat && `A simple comfort kit for older cats from ${brandName}: calmer rest plus gentle routine support. Add the whole kit in one tap.`) ||
-    (isSeniorDogComfortGuide && `A simple comfort guide for senior dogs: reduce stiffness, improve rest, and build a calmer routine with practical, non-ingestible picks.`) ||
-    (isNightWalkSafetyDog && `A simple night-walk safety guide for dogs: visibility, calm control, and peace of mind — with practical, non-ingestible picks.`) ||
-    (isHomeMonitoring && `A simple home monitoring kit from ${brandName} for peace of mind while you’re out. Add the whole kit in one tap.`) ||
+    (isDogKits &&
+      `Browse dog starter kits from ${brandName}. Add a whole kit to your cart in one tap.`) ||
+    (isCatKits &&
+      `Browse cat starter kits from ${brandName}. Add a whole kit to your cart in one tap.`) ||
+    (isSeniorComfortDog &&
+      `A simple comfort kit for older dogs from ${brandName}: softer rest plus gentle routine support. Add the whole kit in one tap.`) ||
+    (isSeniorComfortCat &&
+      `A simple comfort kit for older cats from ${brandName}: calmer rest plus gentle routine support. Add the whole kit in one tap.`) ||
+    (isSeniorDogComfortGuide &&
+      `A simple comfort guide for senior dogs: reduce stiffness, improve rest, and build a calmer routine with practical, non-ingestible picks.`) ||
+    (isNightWalkSafetyDog &&
+      `A simple night-walk safety guide for dogs: visibility, calm control, and peace of mind — with practical, non-ingestible picks.`) ||
+    (isHomeMonitoring &&
+      `A simple home monitoring kit from ${brandName} for peace of mind while you’re out. Add the whole kit in one tap.`) ||
     "";
 
   if (description) {
@@ -1225,7 +1408,11 @@ function applyTenantSeo() {
   upsertMetaTag("property", "og:title", ogTitle);
   if (ogDesc) upsertMetaTag("property", "og:description", ogDesc);
   if (url) upsertMetaTag("property", "og:url", url);
-  upsertMetaTag("property", "og:type", isHome ? "website" : isKits || isKitDetail ? "website" : "article");
+  upsertMetaTag(
+    "property",
+    "og:type",
+    isHome ? "website" : isKits || isKitDetail ? "website" : "article",
+  );
 
   upsertMetaTag("name", "twitter:card", "summary_large_image");
   upsertMetaTag("name", "twitter:title", ogTitle);
@@ -1286,8 +1473,9 @@ function formatLocalDateTime(value) {
       timeZone: "Europe/London",
       timeZoneName: "short",
     }).formatToParts(d);
-    const tz = String(parts.find((p) => p.type === "timeZoneName")?.value || "")
-      .trim();
+    const tz = String(
+      parts.find((p) => p.type === "timeZoneName")?.value || "",
+    ).trim();
 
     const when = new Intl.DateTimeFormat("en-GB", {
       timeZone: "Europe/London",
@@ -1545,7 +1733,15 @@ async function fetchAdSpend({ adminKey }) {
   return data;
 }
 
-async function saveAdSpend({ adminKey, currency, utmSource, utmMedium, utmCampaign, utmContent, spendMinor }) {
+async function saveAdSpend({
+  adminKey,
+  currency,
+  utmSource,
+  utmMedium,
+  utmCampaign,
+  utmContent,
+  spendMinor,
+}) {
   const key = String(adminKey || "").trim();
   if (!key) throw new Error("Missing admin key");
 
@@ -1648,12 +1844,21 @@ function computeRangeFromPreset(preset) {
   return { start, end };
 }
 
-function renderAttributionSummaryPanel({ rows, start, end, spendByKey, currency, rangePreset, mode }) {
+function renderAttributionSummaryPanel({
+  rows,
+  start,
+  end,
+  spendByKey,
+  currency,
+  rangePreset,
+  mode,
+}) {
   const mount = document.getElementById("admin-attribution");
   if (!mount) return;
 
   const list = Array.isArray(rows) ? rows : [];
-  const spendMap = spendByKey && typeof spendByKey === "object" ? spendByKey : {};
+  const spendMap =
+    spendByKey && typeof spendByKey === "object" ? spendByKey : {};
   const defaultCurrency = String(currency || "EUR");
 
   const calcTotals = () => {
@@ -1685,15 +1890,33 @@ function renderAttributionSummaryPanel({ rows, start, end, spendByKey, currency,
   };
 
   const totals = calcTotals();
-  const totalConv = totals.started > 0 ? `${((totals.paid / totals.started) * 100).toFixed(1)}%` : "—";
+  const totalConv =
+    totals.started > 0
+      ? `${((totals.paid / totals.started) * 100).toFixed(1)}%`
+      : "—";
   const totalRevenue = formatMoneyMinor(totals.revenueMinor, defaultCurrency);
-  const totalSpend = totals.spendMinor > 0 ? formatMoneyMinor(totals.spendMinor, defaultCurrency) : "—";
-  const totalProfitMinor = totals.spendMinor > 0 ? totals.revenueMinor - totals.spendMinor : Number.NaN;
-  const totalProfit = Number.isFinite(totalProfitMinor) ? formatMoneyMinor(totalProfitMinor, defaultCurrency) : "—";
-  const totalRoas = totals.spendMinor > 0 ? (totals.revenueMinor / totals.spendMinor).toFixed(2) : "—";
+  const totalSpend =
+    totals.spendMinor > 0
+      ? formatMoneyMinor(totals.spendMinor, defaultCurrency)
+      : "—";
+  const totalProfitMinor =
+    totals.spendMinor > 0
+      ? totals.revenueMinor - totals.spendMinor
+      : Number.NaN;
+  const totalProfit = Number.isFinite(totalProfitMinor)
+    ? formatMoneyMinor(totalProfitMinor, defaultCurrency)
+    : "—";
+  const totalRoas =
+    totals.spendMinor > 0
+      ? (totals.revenueMinor / totals.spendMinor).toFixed(2)
+      : "—";
 
   const totalSpendBad = totals.spendMinor > 0 && totals.revenueMinor <= 0;
-  const totalSpendColor = totalSpendBad ? "#b91c1c" : totals.spendMinor > 0 ? "#111827" : "#111827";
+  const totalSpendColor = totalSpendBad
+    ? "#b91c1c"
+    : totals.spendMinor > 0
+      ? "#111827"
+      : "#111827";
 
   const totalProfitColor = Number.isFinite(totalProfitMinor)
     ? totalProfitMinor < 0
@@ -1701,7 +1924,10 @@ function renderAttributionSummaryPanel({ rows, start, end, spendByKey, currency,
       : "#065f46"
     : "#111827";
 
-  const totalRoasNum = totals.spendMinor > 0 ? totals.revenueMinor / totals.spendMinor : Number.NaN;
+  const totalRoasNum =
+    totals.spendMinor > 0
+      ? totals.revenueMinor / totals.spendMinor
+      : Number.NaN;
   const totalRoasColor = Number.isFinite(totalRoasNum)
     ? totalRoasNum < 1
       ? "#b91c1c"
@@ -1712,7 +1938,8 @@ function renderAttributionSummaryPanel({ rows, start, end, spendByKey, currency,
           : "#111827"
     : "#111827";
 
-  const totalConvNum = totals.started > 0 ? (totals.paid / totals.started) * 100 : Number.NaN;
+  const totalConvNum =
+    totals.started > 0 ? (totals.paid / totals.started) * 100 : Number.NaN;
   const totalConvColor = Number.isFinite(totalConvNum)
     ? totalConvNum < 1
       ? "#b91c1c"
@@ -1728,7 +1955,11 @@ function renderAttributionSummaryPanel({ rows, start, end, spendByKey, currency,
       <div><strong>Started:</strong> ${sanitizeHTML(String(totals.started))}</div>
       <div><strong>Paid:</strong> ${sanitizeHTML(String(totals.paid))}</div>
       <div><strong>Conv:</strong> <span style="color:${sanitizeHTML(totalConvColor)};font-weight:${sanitizeHTML(
-        totalConvColor === "#b91c1c" || totalConvColor === "#92400e" || totalConvColor === "#065f46" ? "700" : "400",
+        totalConvColor === "#b91c1c" ||
+          totalConvColor === "#92400e" ||
+          totalConvColor === "#065f46"
+          ? "700"
+          : "400",
       )};">${sanitizeHTML(totalConv)}</span></div>
       <div><strong>Revenue:</strong> ${sanitizeHTML(totalRevenue)}</div>
       <div><strong>Spend:</strong> <button id="kpi-spend" type="button" style="padding:0;border:0;background:transparent;cursor:pointer;font:inherit;color:${sanitizeHTML(
@@ -1737,12 +1968,18 @@ function renderAttributionSummaryPanel({ rows, start, end, spendByKey, currency,
       <div><strong>ROAS:</strong> <button id="kpi-roas" type="button" style="padding:0;border:0;background:transparent;cursor:pointer;font:inherit;color:${sanitizeHTML(
         totalRoasColor,
       )};font-weight:${sanitizeHTML(
-        totalRoasColor === "#b91c1c" || totalRoasColor === "#92400e" || totalRoasColor === "#065f46" ? "700" : "400",
+        totalRoasColor === "#b91c1c" ||
+          totalRoasColor === "#92400e" ||
+          totalRoasColor === "#065f46"
+          ? "700"
+          : "400",
       )};">${sanitizeHTML(String(totalRoas))}</button></div>
       <div><strong>Profit:</strong> <button id="kpi-profit" type="button" style="padding:0;border:0;background:transparent;cursor:pointer;font:inherit;color:${sanitizeHTML(
         totalProfitColor,
       )};font-weight:${sanitizeHTML(
-        totalProfitColor === "#b91c1c" || totalProfitColor === "#065f46" ? "700" : "400",
+        totalProfitColor === "#b91c1c" || totalProfitColor === "#065f46"
+          ? "700"
+          : "400",
       )};">${sanitizeHTML(totalProfit)}</button></div>
     </div>
   `;
@@ -1829,13 +2066,23 @@ function renderAttributionSummaryPanel({ rows, start, end, spendByKey, currency,
 
       const key = `${source}||${medium}||${campaign}||${ad}`;
       const spendMinor = Number(spendMap[key] || 0) || 0;
-      const spend = spendMinor > 0 ? formatMoneyMinor(spendMinor, rowCurrency) : "—";
-      const roas = spendMinor > 0 ? (revenueMinor / spendMinor).toFixed(2) : "—";
-      const profitMinor = spendMinor > 0 ? revenueMinor - spendMinor : Number.NaN;
-      const profit = Number.isFinite(profitMinor) ? formatMoneyMinor(profitMinor, rowCurrency) : "—";
+      const spend =
+        spendMinor > 0 ? formatMoneyMinor(spendMinor, rowCurrency) : "—";
+      const roas =
+        spendMinor > 0 ? (revenueMinor / spendMinor).toFixed(2) : "—";
+      const profitMinor =
+        spendMinor > 0 ? revenueMinor - spendMinor : Number.NaN;
+      const profit = Number.isFinite(profitMinor)
+        ? formatMoneyMinor(profitMinor, rowCurrency)
+        : "—";
 
-      const profitColor = Number.isFinite(profitMinor) ? (profitMinor < 0 ? "#b91c1c" : "#065f46") : "#111827";
-      const spendColor = spendMinor > 0 && revenueMinor <= 0 ? "#b91c1c" : "#111827";
+      const profitColor = Number.isFinite(profitMinor)
+        ? profitMinor < 0
+          ? "#b91c1c"
+          : "#065f46"
+        : "#111827";
+      const spendColor =
+        spendMinor > 0 && revenueMinor <= 0 ? "#b91c1c" : "#111827";
       const roasNum = spendMinor > 0 ? revenueMinor / spendMinor : Number.NaN;
       const roasColor = Number.isFinite(roasNum)
         ? roasNum < 1
@@ -1860,10 +2107,14 @@ function renderAttributionSummaryPanel({ rows, start, end, spendByKey, currency,
               spendMinor > 0 && revenueMinor <= 0 ? "700" : "400",
             )};">${sanitizeHTML(spend)}</span></div>
             <div><strong>ROAS:</strong> <span style="color:${sanitizeHTML(roasColor)};font-weight:${sanitizeHTML(
-              roasColor === "#b91c1c" || roasColor === "#065f46" ? "700" : "400",
+              roasColor === "#b91c1c" || roasColor === "#065f46"
+                ? "700"
+                : "400",
             )};">${sanitizeHTML(String(roas))}</span></div>
             <div><strong>Profit:</strong> <span style="color:${sanitizeHTML(profitColor)};font-weight:${sanitizeHTML(
-              profitColor === "#b91c1c" || profitColor === "#065f46" ? "700" : "400",
+              profitColor === "#b91c1c" || profitColor === "#065f46"
+                ? "700"
+                : "400",
             )};">${sanitizeHTML(profit)}</span></div>
           </div>
         </div>
@@ -1967,11 +2218,30 @@ function renderAdminOrders(list) {
 
     const createdRaw = String(o?.created_at || "");
     const createdMs = createdRaw ? new Date(createdRaw).getTime() : Number.NaN;
-    const ageMs = Number.isFinite(createdMs) ? Date.now() - createdMs : Number.NaN;
+    const ageMs = Number.isFinite(createdMs)
+      ? Date.now() - createdMs
+      : Number.NaN;
     const ageMin = Number.isFinite(ageMs) ? Math.floor(ageMs / 60000) : null;
-    const ageText = ageMin === null ? "—" : ageMin >= 1440 ? `${Math.floor(ageMin / 1440)}d` : ageMin >= 60 ? `${Math.floor(ageMin / 60)}h ${ageMin % 60}m` : `${ageMin}m`;
-    const ageColor = ageMin === null ? "#111827" : ageMin >= 120 ? "#b91c1c" : ageMin >= 30 ? "#92400e" : "#065f46";
-    const ageLine = status === "pending" ? `<div><strong>Age:</strong> <span style="color:${sanitizeHTML(ageColor)};font-weight:700;">${sanitizeHTML(ageText)}</span></div>` : "";
+    const ageText =
+      ageMin === null
+        ? "—"
+        : ageMin >= 1440
+          ? `${Math.floor(ageMin / 1440)}d`
+          : ageMin >= 60
+            ? `${Math.floor(ageMin / 60)}h ${ageMin % 60}m`
+            : `${ageMin}m`;
+    const ageColor =
+      ageMin === null
+        ? "#111827"
+        : ageMin >= 120
+          ? "#b91c1c"
+          : ageMin >= 30
+            ? "#92400e"
+            : "#065f46";
+    const ageLine =
+      status === "pending"
+        ? `<div><strong>Age:</strong> <span style="color:${sanitizeHTML(ageColor)};font-weight:700;">${sanitizeHTML(ageText)}</span></div>`
+        : "";
 
     const attributionBits = [utmSource, utmMedium, utmCampaign].filter(Boolean);
     const adLabel = utmContent ? ` | Ad: ${utmContent}` : "";
@@ -2044,7 +2314,11 @@ function renderNeedsAttentionPanel({ orders, onPreset }) {
     const ageMs = Number.isFinite(createdMs) ? now - createdMs : NaN;
     const paymentIntentId = String(o?.stripe_payment_intent_id || "").trim();
 
-    if (status === "pending" && Number.isFinite(ageMs) && ageMs > 30 * 60 * 1000) {
+    if (
+      status === "pending" &&
+      Number.isFinite(ageMs) &&
+      ageMs > 30 * 60 * 1000
+    ) {
       pendingTooLong.push(o);
     }
 
@@ -2061,7 +2335,8 @@ function renderNeedsAttentionPanel({ orders, onPreset }) {
     const safeTitle = sanitizeHTML(title);
     const safeCount = sanitizeHTML(String(count));
     const countNum = Number(count || 0) || 0;
-    const countColor = countNum >= 3 ? "#b91c1c" : countNum > 0 ? "#92400e" : "#065f46";
+    const countColor =
+      countNum >= 3 ? "#b91c1c" : countNum > 0 ? "#92400e" : "#065f46";
 
     const actionDisabled = !preset || countNum <= 0;
     const action = preset
@@ -2098,7 +2373,10 @@ function renderNeedsAttentionPanel({ orders, onPreset }) {
 
   mount.onclick = (ev) => {
     const target = ev?.target;
-    const btn = target && typeof target.closest === "function" ? target.closest("button[data-na-preset]") : null;
+    const btn =
+      target && typeof target.closest === "function"
+        ? target.closest("button[data-na-preset]")
+        : null;
     if (!btn) return;
     if (btn.disabled) return;
     const preset = String(btn.getAttribute("data-na-preset") || "").trim();
@@ -2170,9 +2448,12 @@ function initAdminOrdersPage() {
           fetchAdGuardrails({ adminKey: keyEl.value }),
         ]);
 
-        const guardrailsRangeDays = Number(guardrails?.guardrails?.range_days || 7) || 7;
+        const guardrailsRangeDays =
+          Number(guardrails?.guardrails?.range_days || 7) || 7;
         const guardrailsNow = new Date();
-        const guardrailsStart = new Date(guardrailsNow.getTime() - guardrailsRangeDays * 24 * 60 * 60 * 1000);
+        const guardrailsStart = new Date(
+          guardrailsNow.getTime() - guardrailsRangeDays * 24 * 60 * 60 * 1000,
+        );
         const guardrailsSummary = await fetchAttributionSummary({
           adminKey: keyEl.value,
           limit: 500,
@@ -2181,8 +2462,11 @@ function initAdminOrdersPage() {
           mode: "paid",
         });
 
-        const opsResult = await Promise.allSettled([fetchOpsHealth({ adminKey: keyEl.value, pendingHours: 1 })]);
-        const opsHealthData = opsResult[0]?.status === "fulfilled" ? opsResult[0].value : null;
+        const opsResult = await Promise.allSettled([
+          fetchOpsHealth({ adminKey: keyEl.value, pendingHours: 1 }),
+        ]);
+        const opsHealthData =
+          opsResult[0]?.status === "fulfilled" ? opsResult[0].value : null;
         if (opsResult[0]?.status === "fulfilled") {
           renderOpsHealthPanel(opsResult[0].value);
         } else {
@@ -2196,11 +2480,15 @@ function initAdminOrdersPage() {
               last_7d: { started: 0, paid: 0, pending: 0, abandoned: 0 },
               stale_pending: { count: 0, before: new Date().toISOString() },
             },
-            _error: String(opsResult[0]?.reason?.message || "Failed to load ops health."),
+            _error: String(
+              opsResult[0]?.reason?.message || "Failed to load ops health.",
+            ),
           });
         }
 
-        const opsTrendsSettled = await Promise.allSettled([fetchOpsTrends({ adminKey: keyEl.value, days: 7 })]);
+        const opsTrendsSettled = await Promise.allSettled([
+          fetchOpsTrends({ adminKey: keyEl.value, days: 7 }),
+        ]);
         if (opsTrendsSettled[0]?.status === "fulfilled") {
           renderOpsTrendsPanel(opsTrendsSettled[0].value);
         } else {
@@ -2210,16 +2498,24 @@ function initAdminOrdersPage() {
             currency: "eur",
             start: new Date().toISOString(),
             end: new Date().toISOString(),
-            _error: String(opsTrendsSettled[0]?.reason?.message || "Failed to load ops trends."),
+            _error: String(
+              opsTrendsSettled[0]?.reason?.message ||
+                "Failed to load ops trends.",
+            ),
           });
         }
 
-        const alertsSettled = await Promise.allSettled([fetchAdminAlerts({ adminKey: keyEl.value, limit: 25 })]);
-        const hbSettled = await Promise.allSettled([fetchAdminHeartbeat({ adminKey: keyEl.value })]);
+        const alertsSettled = await Promise.allSettled([
+          fetchAdminAlerts({ adminKey: keyEl.value, limit: 25 }),
+        ]);
+        const hbSettled = await Promise.allSettled([
+          fetchAdminHeartbeat({ adminKey: keyEl.value }),
+        ]);
         if (alertsSettled[0]?.status === "fulfilled") {
           renderAlertsPanel({
             data: alertsSettled[0].value,
-            heartbeat: hbSettled[0]?.status === "fulfilled" ? hbSettled[0].value : null,
+            heartbeat:
+              hbSettled[0]?.status === "fulfilled" ? hbSettled[0].value : null,
             opsHealth: opsHealthData,
             adminKey: keyEl.value,
             onRun: () => {
@@ -2228,8 +2524,15 @@ function initAdminOrdersPage() {
           });
         } else {
           renderAlertsPanel({
-            data: { alerts: [], alert_email_to: "not_configured", _error: String(alertsSettled[0]?.reason?.message || "Failed to load alerts.") },
-            heartbeat: hbSettled[0]?.status === "fulfilled" ? hbSettled[0].value : null,
+            data: {
+              alerts: [],
+              alert_email_to: "not_configured",
+              _error: String(
+                alertsSettled[0]?.reason?.message || "Failed to load alerts.",
+              ),
+            },
+            heartbeat:
+              hbSettled[0]?.status === "fulfilled" ? hbSettled[0].value : null,
             opsHealth: opsHealthData,
             adminKey: keyEl.value,
             onRun: () => {
@@ -2238,7 +2541,9 @@ function initAdminOrdersPage() {
           });
         }
 
-        const serverModeRaw = String(summary?.mode || "").trim().toLowerCase();
+        const serverModeRaw = String(summary?.mode || "")
+          .trim()
+          .toLowerCase();
         const mode = serverModeRaw === "paid" ? "paid" : desiredMode;
         setAttributionMode(mode);
 
@@ -2343,8 +2648,10 @@ function initAdminOrdersPage() {
                 const revenueMinor = Number(r?.revenue_minor || 0) || 0;
                 const key = `${source}||${medium}||${campaign}||${ad}`;
                 const spendMinor = Number(spendByKey[key] || 0) || 0;
-                const profitMinor = spendMinor > 0 ? revenueMinor - spendMinor : "";
-                const roas = spendMinor > 0 ? (revenueMinor / spendMinor).toFixed(4) : "";
+                const profitMinor =
+                  spendMinor > 0 ? revenueMinor - spendMinor : "";
+                const roas =
+                  spendMinor > 0 ? (revenueMinor / spendMinor).toFixed(4) : "";
                 const cr = started > 0 ? (paid / started).toFixed(4) : "";
 
                 lines.push(
@@ -2384,7 +2691,8 @@ function initAdminOrdersPage() {
               if (copyStatus) copyStatus.textContent = "Copied.";
               showNotice("Copied CSV.");
             } catch (err) {
-              if (copyStatus) copyStatus.textContent = String(err?.message || "Copy failed.");
+              if (copyStatus)
+                copyStatus.textContent = String(err?.message || "Copy failed.");
               showNotice("Copy failed.");
             }
           });
@@ -2428,7 +2736,8 @@ function initAdminOrdersPage() {
               if (statusEl2) statusEl2.textContent = "Saved.";
               void doFetch();
             } catch (err) {
-              if (statusEl2) statusEl2.textContent = String(err?.message || "Save failed.");
+              if (statusEl2)
+                statusEl2.textContent = String(err?.message || "Save failed.");
             }
           });
         }
@@ -2477,7 +2786,9 @@ function initAdminOrdersPage() {
 
       const focus = String(focusEl.value || "");
       const onlyEmail = String(hasEmailEl.value || "") === "yes";
-      const filterText = String(filterEl.value || "").trim().toLowerCase();
+      const filterText = String(filterEl.value || "")
+        .trim()
+        .toLowerCase();
       const filtered = raw.filter((o) => {
         if (filterText === "__pending_too_long") {
           const s = String(o?.status || "");
@@ -2545,7 +2856,11 @@ function initAdminOrdersPage() {
         minutes,
       });
       const cleaned = Number(result?.cleaned || 0) || 0;
-      showNotice(cleaned > 0 ? `Cleanup complete: marked ${cleaned} stale pending order(s) as abandoned.` : "Cleanup complete: nothing to clean.");
+      showNotice(
+        cleaned > 0
+          ? `Cleanup complete: marked ${cleaned} stale pending order(s) as abandoned.`
+          : "Cleanup complete: nothing to clean.",
+      );
       void doFetch();
     } catch (err) {
       showNotice(String(err?.message || "Cleanup failed."));
@@ -2603,10 +2918,14 @@ async function loadProducts() {
   const tenantId = getTenantId();
   const tenantCurrency = String(tenant?.currency || "").toLowerCase();
   const allowedNicheSlugs = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
-    ? tenant.catalog.nicheCategorySlugs.map((s) => String(s || "").toLowerCase()).filter(Boolean)
+    ? tenant.catalog.nicheCategorySlugs
+        .map((s) => String(s || "").toLowerCase())
+        .filter(Boolean)
     : null;
   const allowedProductTypes = Array.isArray(tenant?.catalog?.productTypeSlugs)
-    ? tenant.catalog.productTypeSlugs.map((s) => String(s || "").toLowerCase()).filter(Boolean)
+    ? tenant.catalog.productTypeSlugs
+        .map((s) => String(s || "").toLowerCase())
+        .filter(Boolean)
     : null;
 
   products = list
@@ -2663,7 +2982,8 @@ async function loadReviews() {
     reviewRatings = new Map();
     for (const [productId, ratings] of byProduct.entries()) {
       const valid = ratings.filter((n) => Number.isFinite(n) && n > 0);
-      const avg = valid.length > 0 ? valid.reduce((s, n) => s + n, 0) / valid.length : 0;
+      const avg =
+        valid.length > 0 ? valid.reduce((s, n) => s + n, 0) / valid.length : 0;
       reviewRatings.set(productId, { avg, count: valid.length });
     }
   } catch (err) {
@@ -2840,14 +3160,20 @@ function renderProducts() {
   const heroIds = getHeroProductIds();
   const canUseHero = isShopPage() && heroIds.length > 0;
   const { petType, productType, lifeStage, size } = getShopFilters();
-  const filtersAreDefault = petType === "all" && productType === "all" && lifeStage === "all" && size === "all";
+  const filtersAreDefault =
+    petType === "all" &&
+    productType === "all" &&
+    lifeStage === "all" &&
+    size === "all";
   const showAllPref = readShowAllProductsPreference();
   const useHeroOnly = canUseHero && filtersAreDefault && !showAllPref;
 
   const filtered = useHeroOnly
     ? filteredBase
         .filter((p) => heroIds.includes(String(p?.id || "")))
-        .concat(filteredBase.filter((p) => !heroIds.includes(String(p?.id || ""))))
+        .concat(
+          filteredBase.filter((p) => !heroIds.includes(String(p?.id || ""))),
+        )
         .slice(0, heroIds.length)
     : filteredBase;
 
@@ -2871,18 +3197,18 @@ function renderProducts() {
     // Check availability
     let actionEl = "";
     if (p.availability === "https://schema.org/InStock") {
-      actionEl = `<button aria-label="Add ${sanitizeHTML(p.name)} to cart" onclick="addToCart('${p.id}')">Add to Cart</button>`;
+      actionEl = `<button aria-label="Add ${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))} to cart" onclick="addToCart('${p.id}')">Add to Cart</button>`;
     } else if (p.availability === "https://schema.org/PreOrder") {
-      actionEl = `<button aria-label="Pre-order ${sanitizeHTML(p.name)}" onclick="addToCart('${p.id}')">Pre-Order</button>`;
+      actionEl = `<button aria-label="Pre-order ${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))}" onclick="addToCart('${p.id}')">Pre-Order</button>`;
     } else {
-      actionEl = `<span class="out-of-stock" aria-label="Out of stock for ${sanitizeHTML(p.name)}">Out of Stock</span>`;
+      actionEl = `<span class="out-of-stock" aria-label="Out of stock for ${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))}">Out of Stock</span>`;
     }
 
     const href = p.canonicalPath || "#";
     const imgSrc = String(p.image || "");
     const isDemoPlaceholder = imgSrc.startsWith("/images2/");
     const imageEl = isDemoPlaceholder
-      ? `<div style="width:100%;height:260px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#374151;font-size:0.95rem;text-decoration:none;">Product image coming soon</div>`
+      ? `<div class="ph-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.6" cy="12" r="1.7"/><circle cx="9.6" cy="7.4" r="1.7"/><circle cx="14.4" cy="7.4" r="1.7"/><circle cx="18.4" cy="12" r="1.7"/><path d="M8 16.6c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6c0 1.9-1.7 2.9-4 2.9s-4-1-4-2.9Z"/></svg><span>Photography coming soon</span></div>`
       : `<img src="${imgSrc}" alt="${sanitizeHTML(p.name)}">`;
 
     const rating = reviewRatings.get(p.id);
@@ -2894,7 +3220,7 @@ function renderProducts() {
     card.innerHTML = `
       <a href="${sanitizeHTML(href)}">
         ${imageEl}
-        <h2>${sanitizeHTML(p.name)}</h2>
+        <h2>${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))}</h2>
       </a>
       ${starEl}
       <p>${sanitizeHTML(p.description)}</p>
@@ -2932,7 +3258,10 @@ function renderCartPage() {
   const missingOrMismatched = cart.filter((item) => {
     const product = products.find((p) => p.id === item.id);
     if (!product) return true;
-    if (tenantCurrency && String(product?.currency || "").toLowerCase() !== tenantCurrency)
+    if (
+      tenantCurrency &&
+      String(product?.currency || "").toLowerCase() !== tenantCurrency
+    )
       return true;
     return false;
   });
@@ -2954,18 +3283,21 @@ function renderCartPage() {
 
     const row = document.createElement("div");
     row.className = "cart-row";
+    const cartThumb = isDemoImg(product.image)
+      ? `<div class="cart-thumb ph-mini" role="img" aria-label="${sanitizeHTML((globalThis.pawDisplayTitle || String)(product.name))}">${PAW_SVG_MINI}</div>`
+      : `<img src="${product.image}" alt="${sanitizeHTML(product.name)}" class="cart-thumb">`;
     row.innerHTML = `
-      <img src="${product.image}" alt="${sanitizeHTML(product.name)}" class="cart-thumb">
+      ${cartThumb}
       <div class="cart-info">
-        <h3>${sanitizeHTML(product.name)}</h3>
+        <h3>${sanitizeHTML((globalThis.pawDisplayTitle || String)(product.name))}</h3>
         <p><strong>${(product.price / 100).toFixed(2)} ${product.currency.toUpperCase()}</strong></p>
         <label>
           Qty: 
           <input type="number" value="${item.qty}" min="1"
-            aria-label="Quantity for ${sanitizeHTML(product.name)}"
+            aria-label="Quantity for ${sanitizeHTML((globalThis.pawDisplayTitle || String)(product.name))}"
             onchange="updateQuantity('${item.id}', this.value)">
         </label>
-        <button aria-label="Remove ${sanitizeHTML(product.name)} from cart"
+        <button aria-label="Remove ${sanitizeHTML((globalThis.pawDisplayTitle || String)(product.name))} from cart"
           onclick="removeFromCart('${item.id}')">Remove</button>
       </div>
     `;
@@ -2981,13 +3313,24 @@ function renderCartPage() {
     const shippingMount = document.getElementById("cart-shipping-progress");
     if (shippingMount) {
       const currency = String(tenant?.currency || "eur").toLowerCase();
-      const offers = tenant?.offers && typeof tenant.offers === "object" ? tenant.offers : null;
-      const thresholdMinorRaw = Number(offers?.freeShipping?.thresholdMinor ?? 4000);
-      const thresholdMinor = Number.isFinite(thresholdMinorRaw) && thresholdMinorRaw > 0 ? Math.floor(thresholdMinorRaw) : 4000;
+      const offers =
+        tenant?.offers && typeof tenant.offers === "object"
+          ? tenant.offers
+          : null;
+      const thresholdMinorRaw = Number(
+        offers?.freeShipping?.thresholdMinor ?? 4000,
+      );
+      const thresholdMinor =
+        Number.isFinite(thresholdMinorRaw) && thresholdMinorRaw > 0
+          ? Math.floor(thresholdMinorRaw)
+          : 4000;
       const thresholdLabel = String(offers?.freeShipping?.label || "").trim();
       const remaining = Math.max(0, thresholdMinor - total);
       const isFree = remaining <= 0;
-      const percent = Math.max(0, Math.min(100, (total / thresholdMinor) * 100));
+      const percent = Math.max(
+        0,
+        Math.min(100, (total / thresholdMinor) * 100),
+      );
 
       const headline = isFree
         ? "Free UK delivery unlocked."
@@ -3002,7 +3345,9 @@ function renderCartPage() {
           <div style="margin-top:8px;color:#4b5563;font-size:0.92rem;line-height:1.35;">${
             thresholdLabel
               ? sanitizeHTML(`Offer: ${thresholdLabel}.`)
-              : sanitizeHTML(`Threshold: ${formatMoneyMinorBasic(thresholdMinor, currency)}.`)
+              : sanitizeHTML(
+                  `Threshold: ${formatMoneyMinorBasic(thresholdMinor, currency)}.`,
+                )
           }</div>
         </div>
       `;
@@ -3014,16 +3359,24 @@ function renderCartPage() {
     if (mount) {
       const inCartIds = new Set(cart.map((i) => String(i?.id || "")));
       const cartProducts = cart
-        .map((i) => products.find((p) => String(p?.id || "") === String(i?.id || "")))
+        .map((i) =>
+          products.find((p) => String(p?.id || "") === String(i?.id || "")),
+        )
         .filter(Boolean);
 
       const petTypes = new Set();
       const lifeStages = new Set();
       const sizes = new Set();
       cartProducts.forEach((p) => {
-        (Array.isArray(p?.petType) ? p.petType : []).forEach((v) => petTypes.add(String(v)));
-        (Array.isArray(p?.lifeStage) ? p.lifeStage : []).forEach((v) => lifeStages.add(String(v)));
-        (Array.isArray(p?.sizeRequirement) ? p.sizeRequirement : []).forEach((v) => sizes.add(String(v)));
+        (Array.isArray(p?.petType) ? p.petType : []).forEach((v) =>
+          petTypes.add(String(v)),
+        );
+        (Array.isArray(p?.lifeStage) ? p.lifeStage : []).forEach((v) =>
+          lifeStages.add(String(v)),
+        );
+        (Array.isArray(p?.sizeRequirement) ? p.sizeRequirement : []).forEach(
+          (v) => sizes.add(String(v)),
+        );
       });
 
       const scoreCandidate = (p) => {
@@ -3032,17 +3385,21 @@ function renderCartPage() {
           for (const v of p.petType) if (petTypes.has(String(v))) score += 3;
         }
         if (Array.isArray(p?.lifeStage)) {
-          for (const v of p.lifeStage) if (lifeStages.has(String(v))) score += 2;
+          for (const v of p.lifeStage)
+            if (lifeStages.has(String(v))) score += 2;
         }
         if (Array.isArray(p?.sizeRequirement)) {
-          for (const v of p.sizeRequirement) if (sizes.has(String(v))) score += 1;
+          for (const v of p.sizeRequirement)
+            if (sizes.has(String(v))) score += 1;
         }
         return score;
       };
 
       const candidates = (Array.isArray(products) ? products : [])
         .filter((p) => !inCartIds.has(String(p?.id || "")))
-        .filter((p) => String(p?.availability || "") === "https://schema.org/InStock")
+        .filter(
+          (p) => String(p?.availability || "") === "https://schema.org/InStock",
+        )
         .map((p) => ({ p, score: scoreCandidate(p) }))
         .filter((x) => x.score > 0)
         .sort((a, b) => b.score - a.score)
@@ -3055,15 +3412,19 @@ function renderCartPage() {
         const cards = candidates
           .map((p) => {
             const imgSrc = String(p?.image || "");
-            const name = sanitizeHTML(String(p?.name || "Product"));
-            const price = sanitizeHTML(formatMoneyMinorBasic(p?.price, p?.currency));
+            const name = sanitizeHTML(
+              (globalThis.pawDisplayTitle || String)(p?.name || "Product"),
+            );
+            const price = sanitizeHTML(
+              formatMoneyMinorBasic(p?.price, p?.currency),
+            );
             return `
               <div style="display:flex;gap:12px;align-items:center;border:1px solid #e5e7eb;border-radius:12px;padding:12px;background:#ffffff;">
-                <div style="width:64px;height:64px;flex:0 0 auto;border-radius:10px;overflow:hidden;background:#f3f4f6;display:flex;align-items:center;justify-content:center;">
+                <div style="width:64px;height:64px;flex:0 0 auto;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
                   ${
-                    imgSrc
-                      ? `<img src="${sanitizeHTML(imgSrc)}" alt="${name}" style="width:100%;height:100%;object-fit:cover;" />`
-                      : ""
+                    isDemoImg(imgSrc)
+                      ? `<div class="ph-mini">${PAW_SVG_MINI}</div>`
+                      : `<img src="${sanitizeHTML(imgSrc)}" alt="${name}" style="width:100%;height:100%;object-fit:cover;" />`
                   }
                 </div>
                 <div style="flex:1;min-width:0;">
@@ -3113,7 +3474,9 @@ async function checkout() {
     return;
   }
 
-  console.log("checkout: started", { cartCount: Array.isArray(cart) ? cart.length : 0 });
+  console.log("checkout: started", {
+    cartCount: Array.isArray(cart) ? cart.length : 0,
+  });
   showNotice("Opening secure checkout...");
 
   const checkoutBtn = document.getElementById("checkout-btn");
@@ -3133,15 +3496,24 @@ async function checkout() {
   const invalidItems = cart.filter((item) => {
     const product = products.find((p) => p.id === item.id);
     if (!product) return true;
-    if (tenantCurrency && String(product?.currency || "").toLowerCase() !== tenantCurrency) return true;
+    if (
+      tenantCurrency &&
+      String(product?.currency || "").toLowerCase() !== tenantCurrency
+    )
+      return true;
     return false;
   });
   if (invalidItems.length > 0) {
     const example = String(invalidItems[0]?.id || "");
-    showNotice(example ? `Unknown productId: ${example}` : "Some items in your cart aren’t available.", {
-      actionLabel: "Clear cart",
-      onAction: clearCart,
-    });
+    showNotice(
+      example
+        ? `Unknown productId: ${example}`
+        : "Some items in your cart aren’t available.",
+      {
+        actionLabel: "Clear cart",
+        onAction: clearCart,
+      },
+    );
     if (checkoutBtn) {
       checkoutBtn.disabled = false;
       checkoutBtn.style.opacity = "1";
@@ -3163,12 +3535,16 @@ async function checkout() {
       }),
     });
 
-    const contentType = String(res.headers.get("content-type") || "").toLowerCase();
+    const contentType = String(
+      res.headers.get("content-type") || "",
+    ).toLowerCase();
     const isJson = contentType.includes("application/json");
     const data = isJson ? await res.json() : { error: await res.text() };
 
     if (!res.ok) {
-      const serverError = String(data?.error || "Checkout failed. Please try again.");
+      const serverError = String(
+        data?.error || "Checkout failed. Please try again.",
+      );
       console.error("Checkout failed:", { status: res.status, serverError });
       showNotice(serverError);
       if (checkoutBtn) {
@@ -3304,7 +3680,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     cart = [];
     writeCartTenantIdToStorage(activeTenantId);
-    showNotice("You switched storefronts, so we cleared your cart to match this store.");
+    showNotice(
+      "You switched storefronts, so we cleared your cart to match this store.",
+    );
   } else if (!storedCartTenantId) {
     writeCartTenantIdToStorage(activeTenantId);
   }

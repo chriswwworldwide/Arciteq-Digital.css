@@ -75,21 +75,19 @@
         min-width: 0;
       }
       .hero-media {
-        flex: 0 1 320px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 28px;
+        flex: 0 1 340px;
+        padding: 6px;
         background: #ffffff;
         border: 1px solid var(--line);
-        border-radius: 14px;
-        box-shadow: var(--shadow-sm);
+        border-radius: 16px;
+        box-shadow: var(--shadow);
       }
       .hero-media img {
         width: 100%;
-        max-width: 260px;
-        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
         display: block;
+        border-radius: 11px;
       }
       @media (max-width: 720px) {
         .hero-media {
@@ -376,10 +374,10 @@
             </div>
             <div class="hero-media">
               <img
-                src="/images/shopping-totes.svg"
-                alt="PawSense shopping totes"
-                width="260"
-                height="181"
+                src="/images/hero-pet.jpg"
+                alt="A happy, well-cared-for dog"
+                width="640"
+                height="480"
                 decoding="async"
               />
             </div>

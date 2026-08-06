@@ -26,9 +26,9 @@
   --brand-200: #cfcfcf;
   /* Single accent — oxblood red. Applied sparingly (buttons, outlines,
      links, kickers). Swap these three values to re-tint the whole site. */
-  --accent: #8a352d;
-  --accent-600: #6a2420;
-  --accent-100: #ecd7d4;
+  --accent: #9b3b32;
+  --accent-600: #7a2f27;
+  --accent-100: #efdad6;
   --cream: #fafafa;
   --paper-card: #ffffff;
 

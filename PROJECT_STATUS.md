@@ -28,6 +28,21 @@ High-level objective:
 Operating model (for now):
 - Fulfilment is dropship (no staff). Overheads are mainly domains + hosting + payment processing fees + lightweight SaaS (e.g. email tool).
 
+### Standing requirement: site-wide speed (no compromises)
+Everything on the site must feel instant — click-throughs, page loads, images, and video — across desktop and mobile, and this is a hard gate, not a nice-to-have. Build for speed without sacrificing features or trust:
+- Hold every page to the 2025 Core Web Vitals targets already in the rules: **LCP < 2.0s, CLS < 0.1, INP < 200ms**.
+- No feature ships if it regresses performance — performance is part of "done", checked before merge.
+- Techniques (add as blocks): responsive/lazy images (AVIF/WebP + width-based srcset), lazy-loaded + poster-first video (never autoplay heavy assets), route/click prefetch on intent (hover/touchstart), code-splitting and deferring non-critical JS, critical-CSS inlining, HTTP caching + CDN edge delivery, and font-display swap.
+- Measure continuously: a CWV/pulse dashboard + budget check in CI so regressions are caught automatically.
+- Video specifically: adaptive/compressed sources, lazy mount, and schema markup — rich media must not cost us load speed.
+
+### Standing goal (later): tiered rewards / loyalty programme
+Add a membership-style rewards ladder to drive signups, repeat purchases, and an owned audience:
+- **Bronze** — awarded on first signup when the customer subscribes and provides their email (unlocks personalised email blasts).
+- **Silver → Gold → Platinum → Black** — higher tiers earned by spend/orders/engagement, with escalating perks (free shipping, early access, bigger discounts, concierge).
+- Sits directly on top of the data-stitch `customers` record (spend/order totals already tracked there) and feeds the email tool (Mailchimp) for tier-based segmentation.
+- Keep it lightweight at first (no heavy account system); privacy-safe and tenant-scoped so all 14 sites can share the engine.
+
 Direction note:
 - We have pivoted away from the “mini‑Amazon” framing. The target experience is curated (limited, quality-controlled catalog), trust-first (clear safety/fit/shipping/returns), and automation-first (dashboards + guardrails so it runs with minimal day-to-day involvement).
 
@@ -237,6 +252,7 @@ Later (only once traffic + ops are stable):
 - Community/chat and engagement points
 - Advanced personalisation (“others bought”), heavy AI recommenders
 - Full single-customer-view CDP-style data stitching
+- Tiered rewards / loyalty programme (Bronze → Silver → Gold → Platinum → Black) — see "Standing goal (later): tiered rewards / loyalty programme" near the top
 
 Note: implement these as small, safe blocks. The exact order can adapt, but the general principle is: trust first, then AOV lift, then automation.
 

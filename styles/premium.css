@@ -24,8 +24,11 @@
   --brand: #1a1a1a;
   --brand-600: #000000;
   --brand-200: #cfcfcf;
-  --accent: #1a1a1a;
-  --accent-600: #767676;
+  /* Single accent — warm coral. Applied sparingly (buttons, outlines,
+     links, kickers). Swap these three values to re-tint the whole site. */
+  --accent: #e05a3c;
+  --accent-600: #c2472c;
+  --accent-100: #f7ddd4;
   --cream: #fafafa;
   --paper-card: #ffffff;
 
@@ -84,20 +87,20 @@ p {
   color: var(--ink-soft);
 }
 
-/* Eyebrow/kicker hook (neutral for now). */
+/* Eyebrow/kicker hook — carries the accent for a subtle pop of colour. */
 .eyebrow {
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--accent-600);
   display: block;
   margin-bottom: var(--space-3);
 }
 
 a {
-  color: var(--brand);
+  color: var(--accent-600);
 }
 
 /* ---- Shared site header / nav (cascades to pages without their own) ---- */
@@ -141,7 +144,7 @@ body > header nav a:hover {
   margin: var(--space-12) 0 var(--space-6);
 }
 
-/* ---- Buttons (neutral baseline) ---- */
+/* ---- Buttons — minimal, with the accent carrying the colour ---- */
 .btn-primary,
 .btn-secondary {
   font-family: var(--font-body);
@@ -155,16 +158,23 @@ body > header nav a:hover {
     color 0.15s ease,
     border-color 0.15s ease;
 }
+/* Primary = solid accent fill. */
 .btn-primary {
-  background: var(--ink);
+  background: var(--accent);
   color: #ffffff;
-  border-color: var(--ink);
+  border-color: var(--accent);
 }
 .btn-primary:hover {
-  background: #000000;
+  background: var(--accent-600);
+  border-color: var(--accent-600);
+}
+/* Secondary = clean outline that picks up the accent on hover. */
+.btn-secondary {
+  border-color: var(--brand-200);
 }
 .btn-secondary:hover {
-  border-color: var(--ink);
+  border-color: var(--accent);
+  color: var(--accent-600);
 }
 
 /* ---- Form controls — usable custom dropdowns (kept, neutral) ---- */
@@ -185,8 +195,11 @@ select {
   -webkit-appearance: none;
   cursor: pointer;
 }
+select:hover {
+  border-color: var(--brand-200);
+}
 select:focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
 
@@ -265,7 +278,7 @@ select:focus-visible {
 .prod-card:focus-visible,
 .cat-tile:hover,
 .cat-tile:focus-visible {
-  border-color: var(--brand-200);
+  border-color: var(--accent-100);
   box-shadow: var(--shadow-sm);
 }
 

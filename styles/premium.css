@@ -24,12 +24,11 @@
   --brand: #1a1a1a;
   --brand-600: #000000;
   --brand-200: #cfcfcf;
-  /* Single accent — deep oxblood red (dark, lots of black in it).
-     Applied sparingly (buttons, outlines, links, kickers).
-     Swap these three values to re-tint the whole site. */
-  --accent: #6a2420;
-  --accent-600: #4a1815;
-  --accent-100: #e7d4d2;
+  /* Single accent — oxblood red. Applied sparingly (buttons, outlines,
+     links, kickers). Swap these three values to re-tint the whole site. */
+  --accent: #8a352d;
+  --accent-600: #6a2420;
+  --accent-100: #ecd7d4;
   --cream: #fafafa;
   --paper-card: #ffffff;
 
@@ -169,13 +168,15 @@ body > header nav a:hover {
   background: var(--accent-600);
   border-color: var(--accent-600);
 }
-/* Secondary = clean outline that picks up the accent on hover. */
+/* Secondary = clean white outline with a hint of lift; accent on hover. */
 .btn-secondary {
   border-color: var(--brand-200);
+  box-shadow: var(--shadow-sm);
 }
 .btn-secondary:hover {
   border-color: var(--accent);
   color: var(--accent-600);
+  box-shadow: var(--shadow);
 }
 
 /* ---- Form controls — usable custom dropdowns (kept, neutral) ---- */

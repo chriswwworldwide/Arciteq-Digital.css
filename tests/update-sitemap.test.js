@@ -9,7 +9,7 @@ import {
   buildUrlEntries,
   generateSitemap,
   getHtmlFiles,
-} from "../scripts/update-sitemap.js";
+} from "../src/sitemap-utils.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Mirrors the module's internal publicDir (repoRoot/public).

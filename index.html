@@ -13,6 +13,8 @@
     />
     <link rel="canonical" href="/" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="/styles/premium.css" />
+    <script src="/styles/premium.js" defer></script>
     <style>
       header {
         max-width: 1200px;
@@ -53,18 +55,76 @@
       }
 
       .home-hero {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
         margin: 8px auto 24px;
-        padding: 40px 28px;
-        border-radius: 16px;
-        background: linear-gradient(135deg, #eef2ff 0%, #f0fdfa 100%);
-        border: 1px solid #e5e7eb;
+        padding: 48px 32px;
+        border-radius: 20px;
+        border: 1px solid #dbe7e4;
+        color: #0f172a;
+        background: linear-gradient(
+          125deg,
+          #d8f3ee 0%,
+          #eaf7f0 28%,
+          #fdf6ec 55%,
+          #fbe4c9 78%,
+          #d8f3ee 100%
+        );
+        background-size: 300% 300%;
+        animation: heroWash 18s ease infinite;
+      }
+
+      /* Slow, calming gradient drift (GPU-cheap: only background-position). */
+      @keyframes heroWash {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* One-time premium light sweep across the hero on load. */
+      .home-hero::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        z-index: -1;
+        background: linear-gradient(
+          115deg,
+          rgba(255, 255, 255, 0) 40%,
+          rgba(255, 255, 255, 0.55) 50%,
+          rgba(255, 255, 255, 0) 60%
+        );
+        transform: translateX(-120%);
+        animation: heroSheen 2.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.35s 1
+          forwards;
+        pointer-events: none;
+      }
+
+      @keyframes heroSheen {
+        0% {
+          transform: translateX(-120%);
+          opacity: 0;
+        }
+        18% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(120%);
+          opacity: 0;
+        }
       }
 
       .home-hero h2 {
         margin: 0 0 12px;
         font-size: clamp(1.7rem, 4vw, 2.6rem);
         line-height: 1.15;
-        color: #111827;
+        color: #0f172a;
       }
 
       .home-hero p {
@@ -131,10 +191,17 @@
         color: #111827;
         text-decoration: none;
         font-weight: 600;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
       }
 
-      .cat-tile:hover {
-        border-color: #9ca3af;
+      .cat-tile:hover,
+      .cat-tile:focus-visible {
+        border-color: #14b8a6;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
       }
 
       .cat-tile span {
@@ -159,9 +226,21 @@
         border-radius: 12px;
         overflow: hidden;
         background: #ffffff;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
       }
 
-      .prod-card:hover h3 {
+      .prod-card:hover,
+      .prod-card:focus-visible {
+        transform: translateY(-4px);
+        border-color: #14b8a6;
+        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+      }
+
+      .prod-card:hover h3,
+      .prod-card:focus-visible h3 {
         text-decoration: underline;
       }
 
@@ -263,9 +342,28 @@
         font-size: 0.9rem;
       }
 
+      /* Reveal + paw-burst styles now live in the shared template
+         (/styles/premium.css) so they cascade across every page. */
+
+      .home-hero {
+        cursor: default;
+      }
+
       @media (max-width: 520px) {
         .home-hero {
           padding: 28px 18px;
+        }
+      }
+
+      /* Homepage-specific reduced-motion: stop the hero drift + sheen.
+         (Shared reveal/card/paw reduced-motion handling is in premium.css.) */
+      @media (prefers-reduced-motion: reduce) {
+        .home-hero {
+          animation: none;
+        }
+        .home-hero::before {
+          animation: none;
+          opacity: 0;
         }
       }
     </style>
@@ -297,12 +395,12 @@
       <section class="wrap" id="trust-strip" aria-label="Trust"></section>
 
       <section class="wrap" aria-label="Shop by category">
-        <h2 class="section-head">Shop by category</h2>
+        <h2 class="section-head reveal">Shop by category</h2>
         <div class="cat-grid" id="home-categories"></div>
       </section>
 
       <section class="wrap" aria-label="Featured products">
-        <h2 class="section-head">Featured</h2>
+        <h2 class="section-head reveal">Featured</h2>
         <div class="prod-grid" id="home-featured"></div>
       </section>
 
@@ -388,7 +486,7 @@
               : `<div class="thumb-ph">Image coming soon</div>`;
           const pt = priceText(p.price);
           return `
-            <a class="prod-card" href="${esc(href)}">
+            <a class="prod-card reveal" href="${esc(href)}">
               ${thumb}
               <div class="body">
                 <h3>${esc(String(p.title || ""))}</h3>
@@ -476,7 +574,14 @@
           }
         }
 
-        renderHome();
+        // Motion (reveal + paw burst) lives in the shared template
+        // (/styles/premium.js). Re-scan for reveal targets once the
+        // dynamically-rendered category/product cards are in the DOM.
+        renderHome().then(() => {
+          if (typeof globalThis.pawObserveReveals === "function") {
+            globalThis.pawObserveReveals();
+          }
+        });
 
         const form = document.getElementById("signup-form");
         const status = document.getElementById("signup-status");

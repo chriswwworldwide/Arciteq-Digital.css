@@ -41,9 +41,13 @@
     <!-- ✅ Fallback CSS -->
     <link rel="stylesheet" href="/styles.css" />
 
+    <!-- Shared premium template (single source of truth) -->
+    <link rel="stylesheet" href="/styles/premium.css" />
+    <script src="/styles/premium.js" defer></script>
+
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: var(--font-body, Arial, sans-serif);
         margin: 0;
         padding: 0;
       }

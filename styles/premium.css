@@ -1,0 +1,274 @@
+/* ===================================================================
+   PawSense — Premium visual template (SINGLE SOURCE OF TRUTH)
+   -------------------------------------------------------------------
+   Design tokens (fonts, palette, spacing) + shared component polish.
+   Edit here once and it cascades to every page that links this file.
+   Purely presentational, reduced-motion-safe, zero layout shift.
+   =================================================================== */
+
+:root {
+  /* Type: elegant serif display + clean humanist sans body.
+     System-stack only, so it is instant with no network cost / no CLS. */
+  --font-display:
+    ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    "Times New Roman", serif;
+  --font-body:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+
+  /* Brand palette — calm, premium, pet-wellness. */
+  --ink: #0f172a;
+  --ink-soft: #334155;
+  --muted: #64748b;
+  --bg: #ffffff;
+  --bg-soft: #f8fafc;
+  --line: #e6e9ee;
+  --brand: #0f766e; /* deep teal */
+  --brand-600: #0d9488;
+  --brand-200: #99f6e4;
+  --accent: #f59e0b; /* warm amber */
+  --accent-600: #d97706;
+  --cream: #fdf6ec;
+
+  /* Framing */
+  --radius-sm: 10px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.06);
+  --shadow: 0 10px 28px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 20px 44px rgba(15, 23, 42, 0.14);
+
+  /* Spacing rhythm */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --maxw: 1200px;
+}
+
+/* ---- Base typography (cascades to every linked page) ---- */
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-size: 16.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+.display {
+  font-family: var(--font-display);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 4.4vw, 2.9rem);
+}
+h2 {
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+h3 {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+}
+
+p {
+  color: var(--ink-soft);
+}
+
+a {
+  color: var(--brand);
+}
+
+/* Refined link underline on hover (non-nav prose links). */
+main
+  a:not(.btn-primary):not(.btn-secondary):not(.prod-card):not(.cat-tile):hover {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+/* ---- Shared site header / nav (cascades to pages without their own).
+   Pages that set inline header CSS (index/shop/cart) load it after this
+   file, so their rules still win; product/content inherit these. ---- */
+#header-mount header,
+body > header {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+#header-mount h1,
+body > header h1 {
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  margin: 0;
+}
+#header-mount nav ul,
+body > header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+#header-mount nav a,
+body > header nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+#header-mount nav a:hover,
+body > header nav a:hover {
+  color: var(--brand);
+}
+
+/* ---- Section heading rhythm ---- */
+.section-head {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  margin: var(--space-12) 0 var(--space-6);
+  position: relative;
+}
+
+/* A subtle brand accent rule under section titles for editorial polish. */
+.section-head::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  margin-top: var(--space-3);
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+}
+
+/* ---- Buttons (shared polish; pages may set their own colors) ---- */
+.btn-primary,
+.btn-secondary {
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+/* ---- Cards (product + category) shared elevation ---- */
+.prod-card,
+.cat-tile {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.prod-card:hover,
+.prod-card:focus-visible,
+.cat-tile:hover,
+.cat-tile:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--brand-200);
+  box-shadow: var(--shadow);
+}
+
+/* ===================================================================
+   Motion primitives — staggered scroll reveal + playful paw burst.
+   Reveal only activates once JS adds `.js-reveal` to <body>, so content
+   is never hidden for no-JS users or crawlers (SEO-safe).
+   =================================================================== */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+  will-change: opacity, transform;
+}
+.js-reveal .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.paw-burst {
+  position: fixed;
+  z-index: 60;
+  font-size: 20px;
+  line-height: 1;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: pawFloat 1s ease-out forwards;
+}
+@keyframes pawFloat {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 60px)) scale(1.1)
+      rotate(var(--paw-rot, 0deg));
+  }
+}
+
+/* ===================================================================
+   Reusable lazy VIDEO SLOT (apparatus for later clips / AI stills->video).
+   Hidden by default; a page shows it by adding `data-has-video`.
+   =================================================================== */
+.media-slot {
+  display: none;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-soft);
+  box-shadow: var(--shadow-sm);
+}
+.media-slot[data-has-video] {
+  display: block;
+}
+.media-slot video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Respect reduced-motion everywhere ---- */
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .prod-card,
+  .cat-tile,
+  .btn-primary,
+  .btn-secondary {
+    transition: none;
+  }
+  .paw-burst {
+    display: none;
+  }
+}

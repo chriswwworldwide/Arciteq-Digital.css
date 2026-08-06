@@ -14,20 +14,6 @@
     <link rel="canonical" href="/" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="/styles/premium.css" />
-    <link
-      rel="preload"
-      href="/fonts/fraunces.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/inter.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
     <script src="/styles/premium.js" defer></script>
     <style>
       header {
@@ -70,68 +56,12 @@
 
       .home-hero {
         position: relative;
-        overflow: hidden;
-        isolation: isolate;
         margin: 8px auto 24px;
         padding: 48px 32px;
-        border-radius: 20px;
-        border: 1px solid #dbe7e4;
-        color: #0f172a;
-        background: linear-gradient(
-          125deg,
-          #d8f3ee 0%,
-          #eaf7f0 28%,
-          #fdf6ec 55%,
-          #fbe4c9 78%,
-          #d8f3ee 100%
-        );
-        background-size: 300% 300%;
-        animation: heroWash 18s ease infinite;
-      }
-
-      /* Slow, calming gradient drift (GPU-cheap: only background-position). */
-      @keyframes heroWash {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      /* One-time premium light sweep across the hero on load. */
-      .home-hero::before {
-        content: "";
-        position: absolute;
-        inset: -40%;
-        z-index: -1;
-        background: linear-gradient(
-          115deg,
-          rgba(255, 255, 255, 0) 40%,
-          rgba(255, 255, 255, 0.55) 50%,
-          rgba(255, 255, 255, 0) 60%
-        );
-        transform: translateX(-120%);
-        animation: heroSheen 2.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.35s 1
-          forwards;
-        pointer-events: none;
-      }
-
-      @keyframes heroSheen {
-        0% {
-          transform: translateX(-120%);
-          opacity: 0;
-        }
-        18% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateX(120%);
-          opacity: 0;
-        }
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        color: var(--ink);
       }
 
       .home-hero h2 {
@@ -259,8 +189,8 @@
       .prod-card:hover,
       .prod-card:focus-visible {
         transform: translateY(-4px);
-        border-color: #14b8a6;
-        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+        border-color: var(--brand-200);
+        box-shadow: var(--shadow-sm);
       }
 
       .prod-card:hover h3,
@@ -275,7 +205,6 @@
         display: block;
       }
 
-      /* Branded placeholder — warm, designed, never a flat grey box. */
       .prod-card .thumb-ph {
         width: 100%;
         aspect-ratio: 1 / 1;
@@ -284,19 +213,13 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        background:
-          radial-gradient(
-            120% 120% at 22% 18%,
-            rgba(20, 81, 75, 0.12),
-            transparent 60%
-          ),
-          linear-gradient(135deg, #f3ede3 0%, #eadfce 100%);
-        color: var(--brand, #14514b);
+        background: var(--bg-soft);
+        color: var(--muted);
       }
       .prod-card .thumb-ph svg {
         width: 42px;
         height: 42px;
-        opacity: 0.55;
+        opacity: 0.5;
       }
       .prod-card .thumb-ph span {
         font-family: var(--font-body);
@@ -361,14 +284,14 @@
         padding: 0 22px;
         border: 0;
         border-radius: 10px;
-        background: #f59e0b;
+        background: #ffffff;
         color: #111827;
         font-weight: 700;
         cursor: pointer;
       }
 
       .signup-form button:hover {
-        background: #fbbf24;
+        background: #e6e6e6;
       }
 
       #signup-status {
@@ -386,28 +309,9 @@
         font-size: 0.9rem;
       }
 
-      /* Reveal + paw-burst styles now live in the shared template
-         (/styles/premium.css) so they cascade across every page. */
-
-      .home-hero {
-        cursor: default;
-      }
-
       @media (max-width: 520px) {
         .home-hero {
           padding: 28px 18px;
-        }
-      }
-
-      /* Homepage-specific reduced-motion: stop the hero drift + sheen.
-         (Shared reveal/card/paw reduced-motion handling is in premium.css.) */
-      @media (prefers-reduced-motion: reduce) {
-        .home-hero {
-          animation: none;
-        }
-        .home-hero::before {
-          animation: none;
-          opacity: 0;
         }
       }
     </style>

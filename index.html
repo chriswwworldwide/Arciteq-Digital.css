@@ -64,6 +64,39 @@
         color: var(--ink);
       }
 
+      .hero-inner {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+      .hero-copy {
+        flex: 1 1 340px;
+        min-width: 0;
+      }
+      .hero-media {
+        flex: 0 1 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 28px;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow-sm);
+      }
+      .hero-media img {
+        width: 100%;
+        max-width: 260px;
+        height: auto;
+        display: block;
+      }
+      @media (max-width: 720px) {
+        .hero-media {
+          flex-basis: 100%;
+        }
+      }
+
       .home-hero h2 {
         margin: 0 0 14px;
         font-size: clamp(2.3rem, 5.4vw, 3.6rem);
@@ -322,21 +355,34 @@
     <main>
       <section class="wrap">
         <div class="home-hero">
-          <span class="eyebrow">PawSense — Tech &amp; Wellness</span>
-          <h2>Calm, comfort &amp; peace of mind for the pets you love</h2>
-          <p>
-            Smart pet tech and non-ingestible wellness — orthopedic mats,
-            calming beds, activity trackers and safety essentials chosen to help
-            your pet rest easier and stay safe, and to give you one less thing
-            to worry about.
-          </p>
-          <div class="cta-row">
-            <a class="btn-primary" href="/shop.html">Shop the collection</a>
-            <a
-              class="btn-secondary"
-              href="/content/senior-dog-mobility.html?ref=home-hero"
-              >Read the Senior Dog Mobility Guide</a
-            >
+          <div class="hero-inner">
+            <div class="hero-copy">
+              <span class="eyebrow">PawSense — Tech &amp; Wellness</span>
+              <h2>Calm, comfort &amp; peace of mind for the pets you love</h2>
+              <p>
+                Smart pet tech and non-ingestible wellness — orthopedic mats,
+                calming beds, activity trackers and safety essentials chosen to
+                help your pet rest easier and stay safe, and to give you one
+                less thing to worry about.
+              </p>
+              <div class="cta-row">
+                <a class="btn-primary" href="/shop.html">Shop the collection</a>
+                <a
+                  class="btn-secondary"
+                  href="/content/senior-dog-mobility.html?ref=home-hero"
+                  >Read the Senior Dog Mobility Guide</a
+                >
+              </div>
+            </div>
+            <div class="hero-media">
+              <img
+                src="/images/shopping-totes.svg"
+                alt="PawSense shopping totes"
+                width="260"
+                height="181"
+                decoding="async"
+              />
+            </div>
           </div>
         </div>
       </section>

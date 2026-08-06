@@ -172,13 +172,26 @@ app.post("/stripe/webhook", express.raw({ type: "application/json" }), async (re
         // totals, mark any open captured cart as converted (attributing which
         // nudge won), and log a unified order_completed funnel event.
         if (customerEmail && isFirstTimeEvent) {
-          await stitchPaidOrder({
-            tenantId,
-            email: normalizeEmail(customerEmail),
-            orderId,
-            currency,
-            amountTotal,
-          });
+          // Data-stitch is best-effort analytics: never let it turn a paid
+          // checkout into a failed webhook response.
+          try {
+            await stitchPaidOrder({
+              tenantId,
+              email: normalizeEmail(customerEmail),
+              orderId,
+              currency,
+              amountTotal,
+            });
+          } catch (stitchErr) {
+            console.error(
+              "STITCH_FAILED",
+              JSON.stringify({
+                orderId,
+                stripeEventId,
+                message: String(stitchErr?.message || stitchErr),
+              }),
+            );
+          }
         }
       } else if (sessionId) {
         const updated = await dbQuery(
@@ -205,15 +218,27 @@ app.post("/stripe/webhook", express.raw({ type: "application/json" }), async (re
 
           const stitchEmail = normalizeEmail(updatedRow.customer_email);
           if (stitchEmail && isFirstTimeEvent) {
-            await stitchPaidOrder({
-              tenantId: String(updatedRow.tenant_id || tenantId),
-              email: stitchEmail,
-              orderId: String(updatedRow.order_id),
-              currency: String(updatedRow.currency || currency),
-              amountTotal: Number.isInteger(updatedRow.amount_total)
-                ? updatedRow.amount_total
-                : amountTotal,
-            });
+            // Best-effort: a data-stitch failure must not fail the webhook.
+            try {
+              await stitchPaidOrder({
+                tenantId: String(updatedRow.tenant_id || tenantId),
+                email: stitchEmail,
+                orderId: String(updatedRow.order_id),
+                currency: String(updatedRow.currency || currency),
+                amountTotal: Number.isInteger(updatedRow.amount_total)
+                  ? updatedRow.amount_total
+                  : amountTotal,
+              });
+            } catch (stitchErr) {
+              console.error(
+                "STITCH_FAILED",
+                JSON.stringify({
+                  orderId: String(updatedRow.order_id),
+                  stripeEventId,
+                  message: String(stitchErr?.message || stitchErr),
+                }),
+              );
+            }
           }
         }
       }

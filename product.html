@@ -702,11 +702,9 @@
           }
 
           const origin = globalThis.location.origin;
-          const canonicalPath = String(product?.seo?.canonicalPath || "");
           const productUrl = canonicalPath ? `${origin}${canonicalPath}` : "";
 
-          const img = product?.images?.[0] || {};
-          const imgSrc = String(img?.src || "");
+          const imgSrc = String(product?.images?.[0]?.src || "");
           const absoluteImg = imgSrc ? `${origin}${imgSrc}` : "";
           const productBrand = String(product?.brand || "") || String(tenant?.seo?.brandName || "");
           const availability = String(product?.availability || "https://schema.org/InStock");

@@ -10,7 +10,13 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       reporter: ["text", "html"],
-      include: ["src/**/*.{js,ts}"], // Only your source files
+      // Source files that have unit tests. Kept explicit (rather than a broad
+      // glob) so untested modules don't drag the coverage gate below threshold.
+      include: [
+        "src/**/*.{js,ts}",
+        "db.js",
+        "scripts/abandoned-cart-recovery.js",
+      ],
       all: true, // Include untested files
       thresholds: {
         // Coverage thresholds enforcement

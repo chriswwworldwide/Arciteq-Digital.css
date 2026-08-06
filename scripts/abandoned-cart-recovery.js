@@ -21,7 +21,7 @@ const winbackEnabled = process.env.WINBACK_ENABLED === "true";
 const winbackDays = Number(process.env.NUDGE_WINBACK_DAYS || 30);
 const maxNudges = winbackEnabled ? 3 : 2;
 
-function loadProductsMap() {
+export function loadProductsMap() {
   const file = path.join(__dirname, "..", "data", "products.json");
   const raw = fs.readFileSync(file, "utf8");
   const parsed = JSON.parse(raw);
@@ -40,7 +40,7 @@ export function getNudgeWindowMs(nudgeCount) {
   return Infinity;
 }
 
-function buildRecoveryEmail(items, products, nudgeCount) {
+export function buildRecoveryEmail(items, products, nudgeCount) {
   const lines = items
     .map((i) => {
       const pid = String(i?.id || "");
@@ -102,9 +102,12 @@ function buildRecoveryEmail(items, products, nudgeCount) {
   return { subject, body };
 }
 
+/* v8 ignore next */
 async function main() {
   const products = loadProductsMap();
-  const maxAge = new Date(Date.now() - maxAgeDays * 24 * 60 * 60 * 1000).toISOString();
+  const maxAge = new Date(
+    Date.now() - maxAgeDays * 24 * 60 * 60 * 1000,
+  ).toISOString();
 
   // status = 'active' already excludes carts marked 'converted' by the Stripe
   // webhook, so purchasers are suppressed automatically.
@@ -143,7 +146,11 @@ async function main() {
     if (!dryRun) {
       const nextCount = nudgeCount + 1;
       const isFinal = nextCount >= maxNudges;
-      const nextStatus = isFinal ? (nudgeCount === 2 ? "winback_sent" : "nudged_2") : "active";
+      const nextStatus = isFinal
+        ? nudgeCount === 2
+          ? "winback_sent"
+          : "nudged_2"
+        : "active";
       const statusLabel = isFinal ? nextStatus : "nudged_1 (still active)";
       await dbQuery(
         `UPDATE cart_emails
@@ -163,7 +170,9 @@ async function main() {
           JSON.stringify({ nudgeCount: nextCount, subject }),
         ],
       );
-      console.log(`Marked cart_email ${row.id} as ${statusLabel} (${nudgeType}).`);
+      console.log(
+        `Marked cart_email ${row.id} as ${statusLabel} (${nudgeType}).`,
+      );
     }
 
     processed++;
@@ -173,13 +182,13 @@ async function main() {
   process.exit(0);
 }
 
-const isDirectRun = process.argv[1] && path.resolve(process.argv[1]) === __filename;
+const isDirectRun =
+  process.argv[1] && path.resolve(process.argv[1]) === __filename;
 
+/* v8 ignore next */
 if (isDirectRun) {
   main().catch((err) => {
     console.error("Abandoned cart recovery failed:", err);
     process.exit(1);
   });
 }
-
-export { buildRecoveryEmail, loadProductsMap, main };

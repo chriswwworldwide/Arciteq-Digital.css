@@ -18,7 +18,11 @@ export function setTheme(name) {
   if (!themes.includes(name)) name = "default";
   if (linkEl) {
     linkEl.href = `themes/${name}.css`;
-    localStorage.setItem("activeTheme", name);
+    try {
+      localStorage.setItem("activeTheme", name);
+    } catch (err) {
+      console.warn("Could not persist active theme to localStorage:", err);
+    }
     document.documentElement.setAttribute("data-theme", name);
   } else {
     console.warn("Theme link element not found!");
@@ -27,7 +31,12 @@ export function setTheme(name) {
 
 // Initialize on page load
 export function initThemeSwitcher() {
-  const saved = localStorage.getItem("activeTheme") || "default";
+  let saved = "default";
+  try {
+    saved = localStorage.getItem("activeTheme") || "default";
+  } catch (err) {
+    console.warn("Could not read active theme from localStorage:", err);
+  }
   setTheme(saved);
 
   // Optional dropdown element

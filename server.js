@@ -20,6 +20,14 @@ import {
   getBaseUrl,
   xmlEscape,
 } from "./src/product-utils.js";
+import {
+  estimateForProduct,
+  shipsFromLabel,
+  originRegion,
+  resolveRegion,
+  formatEstimate,
+} from "./src/shipping.js";
+import { freeShippingProgress } from "./src/free-shipping.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -2018,6 +2026,53 @@ app.get("/api/tenant", (req, res) => {
     offers,
     payment_methods: paymentMethods,
   });
+});
+
+app.get("/api/shipping-estimate", (req, res) => {
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const activeTenantId = String(tenant?.tenant_id || "default");
+
+    const id = String(req.query?.id || "");
+    if (!id) {
+      return res.status(400).json({ error: "Missing product id" });
+    }
+
+    const { byId } = loadProductsData();
+    const product = byId.get(id);
+    if (!product || String(product?.tenant_id || "default") !== activeTenantId) {
+      return res.status(404).json({ error: "Not found" });
+    }
+
+    const country = String(req.query?.country || "GB");
+    const estimate = estimateForProduct(product, country);
+
+    return res.json({
+      productId: id,
+      shipsFrom: shipsFromLabel(product),
+      originRegion: originRegion(product),
+      destinationRegion: resolveRegion(country),
+      minDays: estimate.minDays,
+      maxDays: estimate.maxDays,
+      estimateLabel: formatEstimate(estimate),
+    });
+  } catch {
+    return res.status(500).json({ error: "Failed to estimate shipping" });
+  }
+});
+
+app.get("/api/free-shipping-progress", (req, res) => {
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const thresholdMinor = Number(tenant?.offers?.freeShipping?.thresholdMinor) || 0;
+    const currency = String(tenant?.currency || "GBP").toUpperCase();
+    const subtotalMinor = Number(req.query?.subtotal) || 0;
+
+    const progress = freeShippingProgress(subtotalMinor, { thresholdMinor, currency });
+    return res.json(progress);
+  } catch {
+    return res.status(500).json({ error: "Failed to compute free-shipping progress" });
+  }
 });
 
 app.post("/api/capture-email", async (req, res) => {

@@ -6,6 +6,7 @@ import {
   nudgeTypeForCount,
   orderTotalsDelta,
   pickFirstTouch,
+  sanitizeExperiments,
 } from "../src/data-stitch.js";
 
 describe("normalizeEmail", () => {
@@ -68,5 +69,41 @@ describe("pickFirstTouch", () => {
   it("returns null when both are empty", () => {
     expect(pickFirstTouch("", "")).toBeNull();
     expect(pickFirstTouch(null, undefined)).toBeNull();
+  });
+});
+
+describe("sanitizeExperiments", () => {
+  it("maps { variant } objects (browser shape) to experimentKey -> variantId", () => {
+    expect(
+      sanitizeExperiments({
+        trust_strip_headline_v1: { variant: "peace_of_mind", at: "2026-01-01" },
+      }),
+    ).toEqual({ trust_strip_headline_v1: "peace_of_mind" });
+  });
+  it("accepts flat string variant values", () => {
+    expect(sanitizeExperiments({ exp_a: "b" })).toEqual({ exp_a: "b" });
+  });
+  it("trims keys/values and drops empty ones", () => {
+    expect(
+      sanitizeExperiments({
+        "  exp  ": "  v  ",
+        empty: "",
+        blank: { variant: "" },
+      }),
+    ).toEqual({ exp: "v" });
+  });
+  it("caps the number of experiments", () => {
+    const raw = {};
+    for (let i = 0; i < 30; i++) raw[`e${i}`] = `v${i}`;
+    expect(
+      Object.keys(sanitizeExperiments(raw, { maxExperiments: 5 })),
+    ).toHaveLength(5);
+  });
+  it("returns null for non-objects, arrays, and empty results", () => {
+    expect(sanitizeExperiments(null)).toBeNull();
+    expect(sanitizeExperiments("x")).toBeNull();
+    expect(sanitizeExperiments(["a"])).toBeNull();
+    expect(sanitizeExperiments({})).toBeNull();
+    expect(sanitizeExperiments({ a: "" })).toBeNull();
   });
 });

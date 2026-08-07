@@ -669,6 +669,17 @@ function writeCheckoutEmailToStorage(email) {
   }
 }
 
+function readAbExposures() {
+  try {
+    const raw = localStorage.getItem("paw_ab_exposures");
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object" ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
 function saveCheckoutEmail(email) {
   writeCheckoutEmailToStorage(email);
   const safe = String(email || "")
@@ -682,7 +693,12 @@ function saveCheckoutEmail(email) {
     fetch("/api/capture-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: safe, cart: cartPayload }),
+      body: JSON.stringify({
+        email: safe,
+        cart: cartPayload,
+        utm: readUtmFromStorage() || {},
+        experiments: readAbExposures() || {},
+      }),
     }).catch(() => {});
   } catch {
     // ignore

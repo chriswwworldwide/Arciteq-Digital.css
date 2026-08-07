@@ -651,6 +651,35 @@ export function renderSegmentPage(
  * @param {Array} segments
  * @returns {string} complete HTML document
  */
+function hubBreadcrumbJsonLd() {
+  const crumbs = [
+    { name: "Home", item: "/" },
+    { name: "Who it's for", item: "/segments/" },
+  ];
+  const items = crumbs
+    .map(
+      (c, i) =>
+        `{"@type":"ListItem","position":${i + 1},"name":${escapeJsonLd(c.name)},"item":${escapeJsonLd(c.item)}}`,
+    )
+    .join(",");
+  return `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[${items}]}`;
+}
+
+function hubItemListJsonLd(segments) {
+  const items = (Array.isArray(segments) ? segments : [])
+    .map((s) => ({
+      url: `/segments/${String(s?.slug || "")}.html`,
+      name: String(s?.indexTitle || s?.heroTitle || s?.slug || ""),
+    }))
+    .filter((s) => s.name && s.url !== "/segments/.html")
+    .map(
+      (s, i) =>
+        `{"@type":"ListItem","position":${i + 1},"url":${escapeJsonLd(s.url)},"name":${escapeJsonLd(s.name)}}`,
+    )
+    .join(",");
+  return `{"@context":"https://schema.org","@type":"ItemList","name":"Who PawSense is for","itemListElement":[${items}]}`;
+}
+
 export function renderSegmentsIndex(segments) {
   const list = Array.isArray(segments) ? segments : [];
   const cards = list
@@ -691,6 +720,10 @@ export function renderSegmentsIndex(segments) {
       .seg-card h3 { margin: 0; padding: 14px 14px 0; font-size: 1.05rem; color: #111827; }
       .seg-card p { margin: 8px 0 0; padding: 0 14px 14px; color: #374151; line-height: 1.45; font-size: 0.95rem; }
       .seg-card a:hover h3 { text-decoration: underline; }
+      .seg-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 14px 0 0; font-size: 0.85rem; color: #6b7280; }
+      .seg-breadcrumb a { color: #6b7280; text-decoration: none; }
+      .seg-breadcrumb a:hover { color: var(--accent, #8a2e2e); }
+      .seg-breadcrumb [aria-current="page"] { color: #111827; font-weight: 600; }
     </style>
   </head>
   <body>
@@ -702,6 +735,11 @@ export function renderSegmentsIndex(segments) {
     </header>
     <main class="seg-main">
       <section id="trust-strip" aria-label="Trust"></section>
+      <nav class="seg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Who it's for</span>
+      </nav>
       <section class="seg-hero">
         <h1>Who PawSense is for</h1>
         <p>Whatever your relationship with your pets — raising a litter, showing, walking, sitting, or keeping cats and dogs in harmony — here are the specialist non-ingestible picks built around your day.</p>
@@ -710,6 +748,12 @@ export function renderSegmentsIndex(segments) {
         ${cards}
       </section>
     </main>
+    <script type="application/ld+json">
+      ${hubBreadcrumbJsonLd()}
+    </script>
+    <script type="application/ld+json">
+      ${hubItemListJsonLd(list)}
+    </script>
   </body>
 </html>
 `;

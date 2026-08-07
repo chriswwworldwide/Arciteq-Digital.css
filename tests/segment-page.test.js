@@ -151,6 +151,25 @@ describe("renderSegmentPage", () => {
     expect(html).toContain('aria-current="page"');
   });
 
+  it("hub has breadcrumb + ItemList schema listing every segment", () => {
+    const index = renderSegmentsIndex([
+      { slug: "breeders", indexTitle: "Breeders" },
+      { slug: "show-dogs", indexTitle: "Show Dogs" },
+    ]);
+    expect(index).toContain('class="seg-breadcrumb"');
+    const blocks = [
+      ...index.matchAll(
+        /<script type="application\/ld\+json">\s*([\s\S]*?)<\/script>/g,
+      ),
+    ].map((m) => JSON.parse(m[1].trim()));
+    const types = blocks.map((b) => b["@type"]);
+    expect(types).toContain("BreadcrumbList");
+    expect(types).toContain("ItemList");
+    const itemList = blocks.find((b) => b["@type"] === "ItemList");
+    expect(itemList.itemListElement).toHaveLength(2);
+    expect(itemList.itemListElement[0].url).toBe("/segments/breeders.html");
+  });
+
   it("renders the enquiry form for the kit", () => {
     expect(html).toContain('class="seg-enquiry"');
     expect(html).toContain('data-segment="show-dogs"');

@@ -2146,6 +2146,11 @@ app.post("/api/capture-email", async (req, res) => {
     const currency = String(tenant?.currency || "").toLowerCase() || null;
     const utm = req.body?.utm && typeof req.body.utm === "object" ? req.body.utm : {};
     const clean = (v) => String(v || "").trim() || null;
+    // Where the capture came from, e.g. "segment:breeders" from a kit-interest
+    // form. Kept short and label-only (no PII) so we can attribute interest.
+    const source = clean(req.body?.source)
+      ? clean(req.body.source).slice(0, 80)
+      : null;
 
     if (!email) {
       return res.status(400).json({ error: "Email is required" });
@@ -2176,9 +2181,11 @@ app.post("/api/capture-email", async (req, res) => {
       ],
     );
 
+    const eventData = { cartSize: cart.length };
+    if (source) eventData.source = source;
     await dbQuery(
       "INSERT INTO email_events (tenant_id, email, type, cart_email_id, data) VALUES ($1, $2, 'cart_captured', $3, $4::jsonb)",
-      [tenantId, email, cartEmailId, JSON.stringify({ cartSize: cart.length })],
+      [tenantId, email, cartEmailId, JSON.stringify(eventData)],
     );
 
     return res.json({ ok: true });

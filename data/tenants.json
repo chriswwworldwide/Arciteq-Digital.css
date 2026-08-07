@@ -7,7 +7,11 @@
       "currency": "eur",
       "language": "en",
       "catalog": {
-        "nicheCategorySlugs": ["pet-safety-essentials", "senior-pet-care", "smart-monitoring"],
+        "nicheCategorySlugs": [
+          "pet-safety-essentials",
+          "senior-pet-care",
+          "smart-monitoring"
+        ],
         "heroProductIds": [
           "pet-demo-smart-tracker-001",
           "pet-ph-led-collar-light-001",
@@ -38,6 +42,17 @@
           "cartDescription": "Review your cart and checkout securely. All prices are shown in the storefront’s currency."
         },
         "sameAs": []
+      },
+      "media": {
+        "heroVideo": {
+          "src": "/videos/hero-pet-kenburns.mp4",
+          "type": "video/mp4",
+          "poster": "/images/hero-pet.jpg",
+          "name": "PawSense — calm, comfort & peace of mind for the pets you love",
+          "description": "A gentle look at the calm, cared-for pets PawSense is built for. (Placeholder motion-from-still clip — swap for real footage later.)",
+          "uploadDate": "2026-08-05",
+          "duration": "PT6S"
+        }
       },
       "offers": {
         "freeShipping": {
@@ -82,9 +97,27 @@
           ]
         },
         "trustStrip": {
+          "headline": {
+            "experimentKey": "trust_strip_headline_v1",
+            "variants": [
+              {
+                "id": "peace_of_mind",
+                "text": "Loved by pet parents — calm, comfort & peace of mind, guaranteed.",
+                "weight": 1
+              },
+              {
+                "id": "chosen_with_care",
+                "text": "Thoughtful pet tech & wellness, chosen with your pet's comfort in mind.",
+                "weight": 1
+              }
+            ]
+          },
           "items": [
             { "title": "Delivery", "text": "Free UK delivery over €40." },
-            { "title": "Estimated delivery", "text": "7–15 business days (UK)." },
+            {
+              "title": "Estimated delivery",
+              "text": "7–15 business days (UK)."
+            },
             { "title": "Returns", "text": "30-day returns." },
             { "title": "Support", "text": "Reply within 24 hours." },
             { "title": "Secure checkout", "text": "Stripe." }

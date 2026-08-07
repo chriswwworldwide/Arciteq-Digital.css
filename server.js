@@ -11,6 +11,7 @@ import {
   normalizeEmail,
   isValidEmail,
   orderTotalsDelta,
+  sanitizeExperiments,
 } from "./src/data-stitch.js";
 import { spawn } from "child_process";
 import {
@@ -2128,6 +2129,7 @@ app.post("/api/capture-email", async (req, res) => {
     const cart = Array.isArray(req.body?.cart) ? req.body.cart : [];
     const currency = String(tenant?.currency || "").toLowerCase() || null;
     const utm = req.body?.utm && typeof req.body.utm === "object" ? req.body.utm : {};
+    const experiments = sanitizeExperiments(req.body?.experiments);
     const clean = (v) => String(v || "").trim() || null;
 
     if (!email) {
@@ -2159,9 +2161,12 @@ app.post("/api/capture-email", async (req, res) => {
       ],
     );
 
+    const eventData = { cartSize: cart.length };
+    if (experiments) eventData.experiments = experiments;
+
     await dbQuery(
       "INSERT INTO email_events (tenant_id, email, type, cart_email_id, data) VALUES ($1, $2, 'cart_captured', $3, $4::jsonb)",
-      [tenantId, email, cartEmailId, JSON.stringify({ cartSize: cart.length })],
+      [tenantId, email, cartEmailId, JSON.stringify(eventData)],
     );
 
     return res.json({ ok: true });

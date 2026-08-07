@@ -669,6 +669,17 @@ function writeCheckoutEmailToStorage(email) {
   }
 }
 
+function readAbExposures() {
+  try {
+    const raw = localStorage.getItem("paw_ab_exposures");
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object" ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
 function saveCheckoutEmail(email) {
   writeCheckoutEmailToStorage(email);
   const safe = String(email || "")
@@ -682,7 +693,12 @@ function saveCheckoutEmail(email) {
     fetch("/api/capture-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: safe, cart: cartPayload }),
+      body: JSON.stringify({
+        email: safe,
+        cart: cartPayload,
+        utm: readUtmFromStorage() || {},
+        experiments: readAbExposures() || {},
+      }),
     }).catch(() => {});
   } catch {
     // ignore
@@ -878,11 +894,73 @@ function renderTrustStrip() {
     })
     .join("");
 
+  // Optional A/B-tested headline above the strip. Data-driven from
+  // offers.trustStrip.headline; deterministic per visitor via the shared
+  // A/B primitive. Falls back to a sensible default set so it works without
+  // config, and degrades to no headline if the primitive isn't loaded.
+  const headlineHtml = buildTrustStripHeadline(offers);
+
   mount.innerHTML = `
+    ${headlineHtml}
     <div style="margin:12px auto 0;padding:12px 14px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb;display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));text-align:left;">
       ${cells}
     </div>
   `;
+}
+
+function buildTrustStripHeadline(offers) {
+  const cfg =
+    offers?.trustStrip?.headline &&
+    typeof offers.trustStrip.headline === "object"
+      ? offers.trustStrip.headline
+      : null;
+
+  const experimentKey = String(cfg?.experimentKey || "trust_strip_headline");
+  const rawVariants = Array.isArray(cfg?.variants) ? cfg.variants : [];
+  const variants = rawVariants
+    .map((v) => ({
+      id: String(v?.id || "").trim(),
+      text: String(v?.text || "").trim(),
+      weight: Number(v?.weight ?? 1),
+    }))
+    .filter((v) => v.id && v.text);
+
+  // Built-in defaults so the surface reads premium even before config lands.
+  const effective =
+    variants.length > 0
+      ? variants
+      : [
+          {
+            id: "peace_of_mind",
+            text: "Loved by pet parents — calm, comfort & peace of mind, guaranteed.",
+            weight: 1,
+          },
+          {
+            id: "vet_informed",
+            text: "Thoughtful pet tech & wellness, chosen with your pet's comfort in mind.",
+            weight: 1,
+          },
+        ];
+
+  if (effective.length === 0) return "";
+
+  const assign = globalThis.pawAssignVariant;
+  const getVisitor = globalThis.pawGetVisitorId;
+  let chosen = effective[0];
+  if (typeof assign === "function" && typeof getVisitor === "function") {
+    const visitorId = getVisitor();
+    const chosenId = assign({
+      experimentKey,
+      visitorId,
+      variants: effective.map((v) => ({ id: v.id, weight: v.weight })),
+    });
+    chosen = effective.find((v) => v.id === chosenId) || effective[0];
+    if (typeof globalThis.pawRecordExposure === "function") {
+      globalThis.pawRecordExposure(experimentKey, chosen.id);
+    }
+  }
+
+  return `<p data-experiment="${sanitizeHTML(experimentKey)}" data-variant="${sanitizeHTML(chosen.id)}" style="margin:0;text-align:center;font-weight:600;color:#111827;">${sanitizeHTML(chosen.text)}</p>`;
 }
 
 function renderStarterKits() {
@@ -3604,22 +3682,39 @@ function injectAllSchema(list) {
 
   const origin = globalThis.location.origin;
 
-  const graph = list.map((p) => ({
-    "@type": "Product",
-    "@id": `${origin}${String(p?.canonicalPath || "")}`,
-    name: p.name,
-    description: p.description,
-    image: [`${origin}${p.image}`],
-    brand: { "@type": "Brand", name: p.brand },
-    offers: {
-      "@type": "Offer",
-      "@id": `${origin}${String(p?.canonicalPath || "")}#offer`,
-      priceCurrency: p.currency.toUpperCase(),
-      price: (p.price / 100).toFixed(2),
-      availability: p.availability,
-      url: `${origin}${String(p?.canonicalPath || "")}`,
-    },
-  }));
+  const graph = list.map((p) => {
+    const node = {
+      "@type": "Product",
+      "@id": `${origin}${String(p?.canonicalPath || "")}`,
+      name: p.name,
+      description: p.description,
+      image: [`${origin}${p.image}`],
+      brand: { "@type": "Brand", name: p.brand },
+      offers: {
+        "@type": "Offer",
+        "@id": `${origin}${String(p?.canonicalPath || "")}#offer`,
+        priceCurrency: p.currency.toUpperCase(),
+        price: (p.price / 100).toFixed(2),
+        availability: p.availability,
+        url: `${origin}${String(p?.canonicalPath || "")}`,
+      },
+    };
+
+    // Emit aggregateRating only when genuine reviews exist, so the visible
+    // card stars are backed by structured data (star rich-results in listings).
+    const rating = reviewRatings.get(p.id);
+    if (rating && rating.count > 0 && rating.avg > 0) {
+      node.aggregateRating = {
+        "@type": "AggregateRating",
+        ratingValue: Number(rating.avg.toFixed(2)),
+        reviewCount: rating.count,
+        bestRating: 5,
+        worstRating: 1,
+      };
+    }
+
+    return node;
+  });
 
   const payload = {
     "@context": "https://schema.org",

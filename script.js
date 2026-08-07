@@ -3241,6 +3241,20 @@ function renderCartPage() {
   const container = document.getElementById("cart-items");
   if (!container) return;
 
+  // Delegated handlers (bound once). Inline on* attributes can't reach these
+  // module-scoped functions because script.js loads as type="module".
+  if (!container.dataset.cartHandlersBound) {
+    container.dataset.cartHandlersBound = "1";
+    container.addEventListener("change", (e) => {
+      const input = e.target.closest("input[data-qty-id]");
+      if (input) updateQuantity(input.getAttribute("data-qty-id"), input.value);
+    });
+    container.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-remove-id]");
+      if (btn) removeFromCart(btn.getAttribute("data-remove-id"));
+    });
+  }
+
   container.innerHTML = "";
   if (cart.length === 0) {
     container.innerHTML = "<p>Your cart is empty.</p>";
@@ -3296,10 +3310,10 @@ function renderCartPage() {
           Qty: 
           <input type="number" value="${item.qty}" min="1"
             aria-label="Quantity for ${sanitizeHTML((globalThis.pawDisplayTitle || String)(product.name))}"
-            onchange="updateQuantity('${item.id}', this.value)">
+            data-qty-id="${sanitizeHTML(String(item.id))}">
         </label>
         <button aria-label="Remove ${sanitizeHTML((globalThis.pawDisplayTitle || String)(product.name))} from cart"
-          onclick="removeFromCart('${item.id}')">Remove</button>
+          data-remove-id="${sanitizeHTML(String(item.id))}">Remove</button>
       </div>
     `;
     container.appendChild(row);

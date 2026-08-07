@@ -2,6 +2,7 @@
 import { describe, it, expect } from "vitest";
 import {
   buildAttributionReport,
+  buildExperimentReport,
   formatMinor,
   NUDGE_TYPES,
 } from "../src/attribution.js";
@@ -76,6 +77,58 @@ describe("buildAttributionReport", () => {
     });
     expect(r.byNudgeType.nudge2.converted).toBe(1);
     expect(r.byNudgeType.nudge2.revenueMinor).toBe(0);
+  });
+});
+
+describe("buildExperimentReport", () => {
+  it("counts exposures, conversions, revenue and rate per variant", () => {
+    const report = buildExperimentReport({
+      exposures: [
+        { experimentKey: "trust", variant: "a" },
+        { experimentKey: "trust", variant: "a" },
+        { experimentKey: "trust", variant: "b" },
+        { experimentKey: "trust", variant: "b" },
+      ],
+      conversions: [
+        { experimentKey: "trust", variant: "a", amountMinor: 4999 },
+        { experimentKey: "trust", variant: "b", amountMinor: 1000 },
+        { experimentKey: "trust", variant: "b", amountMinor: 2000 },
+      ],
+    });
+    expect(report.byExperiment.trust.variants.a).toEqual({
+      exposed: 2,
+      converted: 1,
+      revenueMinor: 4999,
+      conversionRate: 0.5,
+    });
+    expect(report.byExperiment.trust.variants.b).toEqual({
+      exposed: 2,
+      converted: 2,
+      revenueMinor: 3000,
+      conversionRate: 1,
+    });
+  });
+
+  it("ignores rows with a missing key or variant and non-integer revenue", () => {
+    const report = buildExperimentReport({
+      exposures: [
+        { experimentKey: "", variant: "a" },
+        { experimentKey: "x", variant: "" },
+        { experimentKey: "x", variant: "v" },
+      ],
+      conversions: [{ experimentKey: "x", variant: "v", amountMinor: 9.99 }],
+    });
+    expect(Object.keys(report.byExperiment)).toEqual(["x"]);
+    expect(report.byExperiment.x.variants.v).toEqual({
+      exposed: 1,
+      converted: 1,
+      revenueMinor: 0,
+      conversionRate: 1,
+    });
+  });
+
+  it("returns an empty map for no input", () => {
+    expect(buildExperimentReport()).toEqual({ byExperiment: {} });
   });
 });
 

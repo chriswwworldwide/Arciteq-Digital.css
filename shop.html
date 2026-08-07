@@ -12,6 +12,21 @@
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="/styles/premium.css" />
     <script src="/styles/premium.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Shop",
+            "item": "/shop.html"
+          }
+        ]
+      }
+    </script>
     <style>
       header {
         max-width: 1200px;
@@ -105,6 +120,22 @@
         aria-label="Trust"
         style="max-width: 1200px; margin: 0 auto; padding: 0 24px"
       ></section>
+      <nav
+        aria-label="Breadcrumb"
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 12px 24px 0;
+          font-size: 0.85rem;
+          color: #6b7280;
+        "
+      >
+        <a href="/" style="color: #6b7280; text-decoration: none">Home</a>
+        <span aria-hidden="true" style="margin: 0 6px">›</span>
+        <span aria-current="page" style="color: #111827; font-weight: 600"
+          >Shop</span
+        >
+      </nav>
       <section style="max-width: 1200px; margin: 0 auto; padding: 0 24px">
         <div
           style="

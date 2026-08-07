@@ -86,6 +86,60 @@ export function buildAttributionReport({
   };
 }
 
+/**
+ * Build an A/B experiment report: per experiment, per variant, how many
+ * visitors were exposed, how many converted, and the revenue — so we can see
+ * which trust-strip (etc.) variant actually wins. Pure/last-touch: a
+ * conversion is credited to the variant recorded on its converting cart.
+ *
+ * @param {object} input
+ * @param {{experimentKey:string, variant:string}[]} input.exposures one row per exposed visitor
+ * @param {{experimentKey:string, variant:string, amountMinor?:number}[]} input.conversions one row per converted cart+variant
+ * @returns {{byExperiment: Object}} nested { [key]: { variants: { [variant]: {exposed,converted,revenueMinor,conversionRate} } } }
+ */
+export function buildExperimentReport({
+  exposures = [],
+  conversions = [],
+} = {}) {
+  const byExperiment = {};
+  const bucket = (key, variant) => {
+    const k = String(key || "").trim();
+    const v = String(variant || "").trim();
+    if (!k || !v) return null;
+    if (!byExperiment[k]) byExperiment[k] = { variants: {} };
+    if (!byExperiment[k].variants[v]) {
+      byExperiment[k].variants[v] = {
+        exposed: 0,
+        converted: 0,
+        revenueMinor: 0,
+        conversionRate: 0,
+      };
+    }
+    return byExperiment[k].variants[v];
+  };
+
+  for (const e of Array.isArray(exposures) ? exposures : []) {
+    const b = bucket(e?.experimentKey, e?.variant);
+    if (b) b.exposed += 1;
+  }
+  for (const c of Array.isArray(conversions) ? conversions : []) {
+    const b = bucket(c?.experimentKey, c?.variant);
+    if (b) {
+      b.converted += 1;
+      b.revenueMinor += toMinor(c?.amountMinor);
+    }
+  }
+
+  for (const k of Object.keys(byExperiment)) {
+    for (const v of Object.keys(byExperiment[k].variants)) {
+      const b = byExperiment[k].variants[v];
+      b.conversionRate = b.exposed > 0 ? b.converted / b.exposed : 0;
+    }
+  }
+
+  return { byExperiment };
+}
+
 /** Format minor units (pence/cents) as a human string, e.g. 4999 -> "49.99". */
 export function formatMinor(amountMinor) {
   const n = toMinor(amountMinor);

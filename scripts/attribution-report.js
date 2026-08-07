@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 import { dbQuery } from "../db.js";
 import {
   buildAttributionReport,
+  buildExperimentReport,
   formatMinor,
   NUDGE_TYPES,
 } from "../src/attribution.js";
@@ -35,6 +36,60 @@ export async function loadAttributionInputs() {
       amountMinor: r.amount_minor,
     })),
   };
+}
+
+export async function loadExperimentInputs() {
+  // One exposure row per (email, experiment) captured in the funnel, and one
+  // conversion row per converted cart × the experiments recorded at capture.
+  const exposures = await dbQuery(
+    `SELECT DISTINCT ee.email, kv.key AS experiment_key, kv.value AS variant
+       FROM email_events ee,
+            LATERAL jsonb_each_text(ee.data->'experiments') kv
+      WHERE ee.type = 'cart_captured'
+        AND ee.data ? 'experiments'`,
+  );
+  const conversions = await dbQuery(
+    `SELECT DISTINCT ce.converted_order_id, kv.key AS experiment_key,
+            kv.value AS variant, o.amount_total AS amount_minor
+       FROM cart_emails ce
+       JOIN orders o ON o.order_id = ce.converted_order_id
+       JOIN email_events ee
+         ON ee.email = ce.email
+        AND ee.type = 'cart_captured'
+        AND ee.data ? 'experiments',
+            LATERAL jsonb_each_text(ee.data->'experiments') kv
+      WHERE ce.converted_at IS NOT NULL`,
+  );
+  return {
+    exposures: exposures.rows.map((r) => ({
+      experimentKey: r.experiment_key,
+      variant: r.variant,
+    })),
+    conversions: conversions.rows.map((r) => ({
+      experimentKey: r.experiment_key,
+      variant: r.variant,
+      amountMinor: r.amount_minor,
+    })),
+  };
+}
+
+function printExperimentReport(report) {
+  const keys = Object.keys(report.byExperiment);
+  if (keys.length === 0) {
+    console.log("  (no A/B exposures recorded yet)");
+    return;
+  }
+  for (const key of keys) {
+    console.log(`  ${key}:`);
+    const variants = report.byExperiment[key].variants;
+    for (const v of Object.keys(variants)) {
+      const b = variants[v];
+      const pct = (b.conversionRate * 100).toFixed(1);
+      console.log(
+        `    ${v}: exposed=${b.exposed} converted=${b.converted} (${pct}%) revenue=${formatMinor(b.revenueMinor)}`,
+      );
+    }
+  }
 }
 
 export async function main() {
@@ -71,6 +126,18 @@ export async function main() {
   console.log(
     `  TOTAL: converted=${report.totals.totalConverted} revenue=${formatMinor(report.totals.totalRevenueMinor)}`,
   );
+
+  try {
+    const expInputs = await loadExperimentInputs();
+    const expReport = buildExperimentReport(expInputs);
+    console.log("\n[attribution] A/B variant -> conversion (last-touch)");
+    printExperimentReport(expReport);
+  } catch (err) {
+    console.log(
+      "[attribution] could not read A/B exposures:",
+      String(err?.message || err),
+    );
+  }
 }
 
 const isDirectRun =

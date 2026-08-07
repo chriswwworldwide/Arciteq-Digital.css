@@ -45,3 +45,33 @@ export function pickFirstTouch(existing, incoming) {
   if (prev) return prev;
   return String(incoming || "").trim() || null;
 }
+
+/**
+ * Sanitize client-reported A/B exposures into a bounded { experimentKey:
+ * variantId } map so a conversion can be attributed to the variant shown.
+ * Accepts either flat string values or { variant } objects (the browser
+ * writes the latter). Trims/caps keys+values and the number of experiments to
+ * keep the JSONB payload small and untrusted input safe. Returns null when
+ * there is nothing usable.
+ */
+export function sanitizeExperiments(raw, { maxExperiments = 20 } = {}) {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
+  const out = {};
+  let count = 0;
+  for (const key of Object.keys(raw)) {
+    if (count >= maxExperiments) break;
+    const experimentKey = String(key || "")
+      .trim()
+      .slice(0, 80);
+    if (!experimentKey) continue;
+    const value = raw[key];
+    const variant = value && typeof value === "object" ? value.variant : value;
+    const variantId = String(variant == null ? "" : variant)
+      .trim()
+      .slice(0, 80);
+    if (!variantId) continue;
+    out[experimentKey] = variantId;
+    count += 1;
+  }
+  return count > 0 ? out : null;
+}

@@ -11,6 +11,7 @@ import {
   normalizeEmail,
   isValidEmail,
   orderTotalsDelta,
+  sanitizeExperiments,
 } from "./src/data-stitch.js";
 import { spawn } from "child_process";
 import {
@@ -2514,6 +2515,10 @@ app.post("/api/capture-email", async (req, res) => {
       req.body?.utm && typeof req.body.utm === "object" ? req.body.utm : {};
     const clean = (v) => String(v || "").trim() || null;
 
+    // A/B exposures (experimentKey -> variantId), sanitized + bounded so a
+    // conversion can later be attributed to the variant a visitor was shown.
+    const experiments = sanitizeExperiments(req.body?.experiments);
+
     if (!email) {
       return res.status(400).json({ error: "Email is required" });
     }
@@ -2545,9 +2550,12 @@ app.post("/api/capture-email", async (req, res) => {
       ],
     );
 
+    const eventData = { cartSize: cart.length };
+    if (experiments) eventData.experiments = experiments;
+
     await dbQuery(
       "INSERT INTO email_events (tenant_id, email, type, cart_email_id, data) VALUES ($1, $2, 'cart_captured', $3, $4::jsonb)",
-      [tenantId, email, cartEmailId, JSON.stringify({ cartSize: cart.length })],
+      [tenantId, email, cartEmailId, JSON.stringify(eventData)],
     );
 
     return res.json({ ok: true });

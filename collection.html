@@ -110,28 +110,37 @@
 
     <main>
       <section class="collection">
-        <nav id="breadcrumbs" aria-label="Breadcrumb" style="text-align:left;"></nav>
+        <nav
+          id="breadcrumbs"
+          aria-label="Breadcrumb"
+          style="text-align: left"
+        ></nav>
         <h1 id="collection-title">Collection</h1>
         <p id="collection-intro"></p>
         <div id="collection-trust" aria-label="Delivery and returns"></div>
         <div id="collection-products" class="grid" aria-live="polite"></div>
-        <div id="collection-empty" class="notice" style="display:none;"></div>
+        <div id="collection-empty" class="notice" style="display: none"></div>
       </section>
     </main>
 
     <script src="/script.js"></script>
     <script>
       const pathParts = location.pathname.split("/").filter(Boolean);
-      const nicheCategorySlug = pathParts.length >= 1 ? String(pathParts[0] || "") : "";
+      const nicheCategorySlug =
+        pathParts.length >= 1 ? String(pathParts[0] || "") : "";
 
       function esc(s) {
-        return String(s).replace(/[&<>"']/g, (c) => ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          "\"": "&quot;",
-          "'": "&#39;",
-        })[c]);
+        return String(s).replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+        );
       }
 
       function formatMoney(amount, currency) {
@@ -150,7 +159,10 @@
             description:
               "Shop pet safety essentials: visibility, anti-loss, and practical safety gear curated for everyday peace of mind.",
             guides: [
-              { label: "Night Walk Safety guide", href: "/kits/night-walk-safety-dog.html" },
+              {
+                label: "Night Walk Safety guide",
+                href: "/kits/night-walk-safety-dog.html",
+              },
               { label: "Shop featured picks", href: "/shop.html?featured=1" },
             ],
             faqs: [
@@ -178,7 +190,10 @@
             description:
               "Shop senior pet care essentials: comfort, mobility-friendly routines, and practical non-ingestible support for older pets.",
             guides: [
-              { label: "Senior Dog Comfort guide", href: "/kits/senior-dog-comfort.html" },
+              {
+                label: "Senior Dog Comfort guide",
+                href: "/kits/senior-dog-comfort.html",
+              },
               { label: "Shop featured picks", href: "/shop.html?featured=1" },
             ],
             faqs: [
@@ -206,7 +221,10 @@
             description:
               "Shop smart monitoring tools for pets: practical tracking and monitoring to spot routine changes early and support calm daily care.",
             guides: [
-              { label: "Home Monitoring Kit", href: "/kits/home-monitoring.html" },
+              {
+                label: "Home Monitoring Kit",
+                href: "/kits/home-monitoring.html",
+              },
               { label: "Shop featured picks", href: "/shop.html?featured=1" },
             ],
             faqs: [
@@ -256,7 +274,9 @@
           const trustEl = document.getElementById("collection-trust");
           if (trustEl) {
             const supportEmail = String(tenant?.seo?.supportEmail || "").trim();
-            const supportText = supportEmail ? `Support: ${supportEmail}.` : "Support: reply within 24 hours.";
+            const supportText = supportEmail
+              ? `Support: ${supportEmail}.`
+              : "Support: reply within 24 hours.";
             trustEl.innerHTML = `
               <div style="margin-top:14px;padding:12px 14px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb;color:#374151;line-height:1.45;">
                 <div><strong>Delivery:</strong> Estimated delivery: 7–15 business days (UK).</div>
@@ -326,7 +346,9 @@
 
         const list = Array.isArray(products) ? products : [];
         const filtered = list.filter(
-          (p) => String(p?.nicheCategory || "").toLowerCase() === nicheCategorySlug.toLowerCase(),
+          (p) =>
+            String(p?.nicheCategory || "").toLowerCase() ===
+            nicheCategorySlug.toLowerCase(),
         );
 
         const mount = document.getElementById("collection-products");
@@ -359,7 +381,10 @@
             const imageEl = isDemoPlaceholder
               ? '<div style="width:100%;height:220px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#374151;font-size:0.95rem;">Product image coming soon</div>'
               : `<img src="${esc(img)}" alt="${esc(name)}" loading="lazy" decoding="async" />`;
-            const rating = typeof reviewRatings !== "undefined" ? reviewRatings.get(p?.id) : null;
+            const rating =
+              typeof reviewRatings !== "undefined"
+                ? reviewRatings.get(p?.id)
+                : null;
             const ratingEl =
               rating && rating.count > 0
                 ? `<div style="color:#f59e0b;letter-spacing:1px;margin:4px 0;">${"★".repeat(Math.round(rating.avg))}${"☆".repeat(5 - Math.round(rating.avg))} <span style="color:#6b7280;font-size:0.85rem;letter-spacing:0;">(${rating.count} verified)</span></div>`
@@ -388,6 +413,10 @@
             .querySelectorAll("script[data-schema='collection-faq']")
             .forEach((s) => s.remove());
 
+          document
+            .querySelectorAll("script[data-schema='collection-breadcrumbs']")
+            .forEach((s) => s.remove());
+
           const origin = globalThis.location.origin;
           const collectionUrl = `${origin}/${nicheCategorySlug}`;
           const itemList = {
@@ -407,6 +436,30 @@
           schema.textContent = JSON.stringify(itemList);
           document.head.appendChild(schema);
 
+          const breadcrumbJsonLd = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: origin + "/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: String(copy.title || "Collection"),
+                item: collectionUrl,
+              },
+            ],
+          };
+          const breadcrumbSchema = document.createElement("script");
+          breadcrumbSchema.type = "application/ld+json";
+          breadcrumbSchema.dataset.schema = "collection-breadcrumbs";
+          breadcrumbSchema.textContent = JSON.stringify(breadcrumbJsonLd);
+          document.head.appendChild(breadcrumbSchema);
+
           if (typeof upsertMetaTag === "function") {
             upsertMetaTag("property", "og:url", collectionUrl);
           }
@@ -425,7 +478,9 @@
                   text: String(f?.a || "").trim(),
                 },
               }))
-              .filter((x) => x.name && x.acceptedAnswer && x.acceptedAnswer.text),
+              .filter(
+                (x) => x.name && x.acceptedAnswer && x.acceptedAnswer.text,
+              ),
           };
 
           const schema = document.createElement("script");

@@ -142,6 +142,13 @@ describe("renderSegmentPage", () => {
     expect(types).toContain("FAQPage");
     expect(types).toContain("ItemList");
     expect(types).toContain("Event");
+    expect(types).toContain("BreadcrumbList");
+  });
+
+  it("renders a breadcrumb trail to the hub", () => {
+    expect(html).toContain('class="seg-breadcrumb"');
+    expect(html).toContain('href="/segments/"');
+    expect(html).toContain('aria-current="page"');
   });
 
   it("renders the enquiry form for the kit", () => {

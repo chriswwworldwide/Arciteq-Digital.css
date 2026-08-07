@@ -25,6 +25,26 @@
         margin: 0 auto;
         padding: 0 24px 48px;
       }
+      .seg-breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        padding: 14px 0 0;
+        font-size: 0.85rem;
+        color: #6b7280;
+      }
+      .seg-breadcrumb a {
+        color: #6b7280;
+        text-decoration: none;
+      }
+      .seg-breadcrumb a:hover {
+        color: var(--accent, #8a2e2e);
+      }
+      .seg-breadcrumb [aria-current="page"] {
+        color: #111827;
+        font-weight: 600;
+      }
       .seg-hero {
         padding: 20px 0 8px;
       }
@@ -180,6 +200,14 @@
 
     <main class="seg-main">
       <section id="trust-strip" aria-label="Trust"></section>
+
+      <nav class="seg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/segments/">Who it's for</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Breeders</span>
+      </nav>
 
       <section class="seg-hero">
         <p class="seg-kicker">For breeders</p>
@@ -341,6 +369,9 @@
     </script>
     <script type="application/ld+json">
       {"@context":"https://schema.org","@type":"ItemList","name":"/segments/breeders.html","itemListElement":[{"@type":"ListItem","position":1,"url":"/smart-monitoring/indoor-pet-wellness-camera-placeholder","name":"Indoor Pet Wellness Camera"},{"@type":"ListItem","position":2,"url":"/senior-pet-care/self-warming-orthopedic-pet-mat","name":"Self-Warming Orthopedic Pet Mat"},{"@type":"ListItem","position":3,"url":"/pet-safety-essentials/qr-pet-id-tag","name":"QR Pet ID Tag"},{"@type":"ListItem","position":4,"url":"/pet-safety-essentials/smart-activity-tracker-tag","name":"Smart Activity Tracker Tag"}]}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Who it's for","item":"/segments/"},{"@type":"ListItem","position":3,"name":"Breeders","item":"/segments/breeders.html"}]}
     </script>
   </body>
 </html>

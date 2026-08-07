@@ -248,6 +248,21 @@ function itemListJsonLd(picks, products, canonical) {
   return `{"@context":"https://schema.org","@type":"ItemList","name":${escapeJsonLd(canonical)},"itemListElement":[${items}]}`;
 }
 
+function breadcrumbJsonLd(label, canonical) {
+  const crumbs = [
+    { name: "Home", item: "/" },
+    { name: "Who it's for", item: "/segments/" },
+    { name: String(label || ""), item: canonical },
+  ];
+  const items = crumbs
+    .map(
+      (c, i) =>
+        `{"@type":"ListItem","position":${i + 1},"name":${escapeJsonLd(c.name)},"item":${escapeJsonLd(c.item)}}`,
+    )
+    .join(",");
+  return `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[${items}]}`;
+}
+
 /**
  * Render a full segment landing page HTML document.
  * @param {object} segment one entry from data/segments.json
@@ -280,6 +295,9 @@ export function renderSegmentPage(
   const picksIntro = escapeHtml(segment?.picksIntro || "");
   const kitName = escapeHtml(segment?.kit?.name || "");
   const kitText = escapeHtml(segment?.kit?.text || "");
+  const crumbLabel = escapeHtml(
+    segment?.indexTitle || segment?.heroTitle || slug,
+  );
 
   const problemCards = renderProblemCards(segment?.problems);
   const pickCards = renderPicks(segment?.picks, products);
@@ -356,6 +374,26 @@ export function renderSegmentPage(
         max-width: 1100px;
         margin: 0 auto;
         padding: 0 24px 48px;
+      }
+      .seg-breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        padding: 14px 0 0;
+        font-size: 0.85rem;
+        color: #6b7280;
+      }
+      .seg-breadcrumb a {
+        color: #6b7280;
+        text-decoration: none;
+      }
+      .seg-breadcrumb a:hover {
+        color: var(--accent, #8a2e2e);
+      }
+      .seg-breadcrumb [aria-current="page"] {
+        color: #111827;
+        font-weight: 600;
       }
       .seg-hero {
         padding: 20px 0 8px;
@@ -513,6 +551,14 @@ export function renderSegmentPage(
     <main class="seg-main">
       <section id="trust-strip" aria-label="Trust"></section>
 
+      <nav class="seg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/segments/">Who it's for</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">${crumbLabel}</span>
+      </nav>
+
       <section class="seg-hero">
         ${kicker ? `<p class="seg-kicker">${kicker}</p>` : ""}
         <h1>${heroTitle}</h1>
@@ -591,6 +637,9 @@ export function renderSegmentPage(
     </script>
     <script type="application/ld+json">
       ${itemListJsonLd(segment?.picks, products, canonical)}
+    </script>
+    <script type="application/ld+json">
+      ${breadcrumbJsonLd(segment?.indexTitle || segment?.heroTitle || segment?.slug, canonical)}
     </script>${eventsJsonLd(segment?.events, today)}
   </body>
 </html>

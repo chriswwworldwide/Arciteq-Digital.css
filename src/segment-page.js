@@ -272,7 +272,7 @@ function breadcrumbJsonLd(label, canonical) {
  */
 export function renderSegmentPage(
   segment,
-  { products = [], today = new Date() } = {},
+  { products = [], today = new Date(), allSegments = [] } = {},
 ) {
   const slug = escapeHtml(segment?.slug || "");
   const canonical = `/segments/${slug}.html`;
@@ -347,6 +347,23 @@ export function renderSegmentPage(
         </form>
       </section>`
     : "";
+
+  const otherGuides = (Array.isArray(allSegments) ? allSegments : [])
+    .filter((s) => s && s.slug && s.slug !== segment?.slug)
+    .map((s) => ({
+      url: `/segments/${escapeHtml(s.slug)}.html`,
+      label: escapeHtml(s.indexTitle || s.heroTitle || s.slug),
+    }));
+  const otherGuidesBlock =
+    otherGuides.length > 0
+      ? `
+      <section class="seg-other-guides" aria-label="Explore other guides">
+        <h2>Explore other guides</h2>
+        <ul>
+          ${otherGuides.map((g) => `<li><a href="${g.url}">${g.label}</a></li>`).join("")}
+        </ul>
+      </section>`
+      : "";
 
   return `<!doctype html>
 <html lang="en">
@@ -537,6 +554,11 @@ export function renderSegmentPage(
         font-size: 0.9rem;
       }
       .seg-footer-note a { color: #111827; text-decoration: underline; }
+      .seg-other-guides { margin-top: 34px; }
+      .seg-other-guides h2 { font-size: 1.4rem; margin: 0 0 12px; }
+      .seg-other-guides ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+      .seg-other-guides li a { display: inline-block; padding: 8px 14px; border: 1px solid #e5e7eb; border-radius: 999px; color: #111827; text-decoration: none; font-size: 0.95rem; background: #fff; }
+      .seg-other-guides li a:hover { border-color: var(--accent, #8a2e2e); color: var(--accent, #8a2e2e); }
     </style>
   </head>
   <body>
@@ -589,6 +611,8 @@ export function renderSegmentPage(
       ${rundownBlock}
 
       ${kitBlock}
+
+      ${otherGuidesBlock}
 
       <section class="seg-faq" aria-label="Frequently asked questions">
         <h2>Frequently asked questions</h2>

@@ -170,6 +170,31 @@ describe("renderSegmentPage", () => {
     expect(itemList.itemListElement[0].url).toBe("/segments/breeders.html");
   });
 
+  it("cross-links sibling guides but not itself", () => {
+    const withGuides = renderSegmentPage(
+      { slug: "breeders", heroTitle: "Breeders" },
+      {
+        allSegments: [
+          { slug: "breeders", indexTitle: "Breeders" },
+          { slug: "show-dogs", indexTitle: "Show Dogs" },
+          { slug: "pet-sitters", indexTitle: "Pet Sitters" },
+        ],
+      },
+    );
+    expect(withGuides).toContain('class="seg-other-guides"');
+    const section = withGuides
+      .split('class="seg-other-guides"')[1]
+      .split("</section>")[0];
+    expect(section).toContain('href="/segments/show-dogs.html"');
+    expect(section).toContain('href="/segments/pet-sitters.html"');
+    expect(section).not.toContain('href="/segments/breeders.html"');
+  });
+
+  it("omits the other-guides section when no siblings are given", () => {
+    const solo = renderSegmentPage({ slug: "breeders", heroTitle: "Breeders" });
+    expect(solo).not.toContain('class="seg-other-guides"');
+  });
+
   it("renders the enquiry form for the kit", () => {
     expect(html).toContain('class="seg-enquiry"');
     expect(html).toContain('data-segment="show-dogs"');

@@ -34,7 +34,11 @@ export function build({ today = new Date() } = {}) {
   for (const segment of segments) {
     const slug = String(segment?.slug || "").trim();
     if (!slug) continue;
-    const html = renderSegmentPage(segment, { products, today });
+    const html = renderSegmentPage(segment, {
+      products,
+      today,
+      allSegments: segments,
+    });
     const outPath = path.join(outDir, `${slug}.html`);
     fs.writeFileSync(outPath, html, "utf8");
     written.push(`/segments/${slug}.html`);

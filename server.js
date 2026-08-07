@@ -53,10 +53,15 @@ const PORT = process.env.PORT || 3000;
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
-const stripeWebhookSecret = String(process.env.STRIPE_WEBHOOK_SECRET || "").trim();
+const stripeWebhookSecret = String(
+  process.env.STRIPE_WEBHOOK_SECRET || "",
+).trim();
 const alertEmailTo = String(process.env.ALERT_EMAIL_TO || "").trim();
 const alertHeartbeatMinutesRaw = Number(process.env.ALERT_HEARTBEAT_MINUTES);
-const alertHeartbeatMinutes = Number.isFinite(alertHeartbeatMinutesRaw) && alertHeartbeatMinutesRaw > 0 ? alertHeartbeatMinutesRaw : 5;
+const alertHeartbeatMinutes =
+  Number.isFinite(alertHeartbeatMinutesRaw) && alertHeartbeatMinutesRaw > 0
+    ? alertHeartbeatMinutesRaw
+    : 5;
 const publicBaseUrl = String(process.env.PUBLIC_BASE_URL || "").trim();
 
 const recentServerErrors = [];
@@ -65,10 +70,16 @@ app.use((req, res, next) => {
     try {
       const code = Number(res.statusCode);
       if (Number.isFinite(code) && code >= 500) {
-        recentServerErrors.push({ at: Date.now(), path: String(req.originalUrl || req.url || "") });
+        recentServerErrors.push({
+          at: Date.now(),
+          path: String(req.originalUrl || req.url || ""),
+        });
       }
       const cutoff = Date.now() - 15 * 60 * 1000;
-      while (recentServerErrors.length > 0 && Number(recentServerErrors[0]?.at || 0) < cutoff) {
+      while (
+        recentServerErrors.length > 0 &&
+        Number(recentServerErrors[0]?.at || 0) < cutoff
+      ) {
         recentServerErrors.shift();
       }
     } catch {
@@ -87,231 +98,285 @@ const heartbeatState = {
   lastCreatedCount: 0,
 };
 
-app.post("/stripe/webhook", express.raw({ type: "application/json" }), async (req, res) => {
-  try {
-    if (!stripe) {
-      return res.status(500).json({ error: "STRIPE_SECRET_KEY is not set on the server" });
-    }
-    if (!stripeWebhookSecret) {
-      return res.status(500).json({ error: "STRIPE_WEBHOOK_SECRET is not set on the server" });
-    }
+app.post(
+  "/stripe/webhook",
+  express.raw({ type: "application/json" }),
+  async (req, res) => {
+    try {
+      if (!stripe) {
+        return res
+          .status(500)
+          .json({ error: "STRIPE_SECRET_KEY is not set on the server" });
+      }
+      if (!stripeWebhookSecret) {
+        return res
+          .status(500)
+          .json({ error: "STRIPE_WEBHOOK_SECRET is not set on the server" });
+      }
 
-    const signature = String(req.headers["stripe-signature"] || "");
-    if (!signature) {
-      return res.status(400).json({ error: "Missing Stripe signature" });
-    }
+      const signature = String(req.headers["stripe-signature"] || "");
+      if (!signature) {
+        return res.status(400).json({ error: "Missing Stripe signature" });
+      }
 
-    const event = stripe.webhooks.constructEvent(req.body, signature, stripeWebhookSecret);
+      const event = stripe.webhooks.constructEvent(
+        req.body,
+        signature,
+        stripeWebhookSecret,
+      );
 
-    const stripeEventId = String(event?.id || "");
-    const stripeEventType = String(event?.type || "unknown");
-    if (!stripeEventId) {
-      return res.status(400).json({ error: "Missing Stripe event id" });
-    }
+      const stripeEventId = String(event?.id || "");
+      const stripeEventType = String(event?.type || "unknown");
+      if (!stripeEventId) {
+        return res.status(400).json({ error: "Missing Stripe event id" });
+      }
 
-    const eventInsert = await dbQuery(
-      "INSERT INTO stripe_events (stripe_event_id, type, payload) VALUES ($1, $2, $3) ON CONFLICT (stripe_event_id) DO NOTHING RETURNING stripe_event_id",
-      [stripeEventId, stripeEventType, event],
-    );
-    const isFirstTimeEvent = Array.isArray(eventInsert?.rows) && eventInsert.rows.length > 0;
+      const eventInsert = await dbQuery(
+        "INSERT INTO stripe_events (stripe_event_id, type, payload) VALUES ($1, $2, $3) ON CONFLICT (stripe_event_id) DO NOTHING RETURNING stripe_event_id",
+        [stripeEventId, stripeEventType, event],
+      );
+      const isFirstTimeEvent =
+        Array.isArray(eventInsert?.rows) && eventInsert.rows.length > 0;
 
-    if (stripeEventType === "checkout.session.completed") {
-      const session = event?.data?.object;
-      const sessionId = String(session?.id || "");
-      const rawPaymentIntent = session?.payment_intent;
-      const paymentIntentId =
-        typeof rawPaymentIntent === "string"
-          ? rawPaymentIntent
-          : rawPaymentIntent && typeof rawPaymentIntent === "object"
-            ? String(rawPaymentIntent.id || "")
-            : "";
-      const orderId = String(session?.metadata?.order_id || "");
-      const tenantId = String(session?.metadata?.tenant_id || "default");
-      const currency = String(session?.currency || "").toLowerCase();
-      const customerEmail = String(session?.customer_details?.email || session?.customer_email || "");
-      const amountSubtotal = Number.isInteger(session?.amount_subtotal) ? session.amount_subtotal : null;
-      const amountTotal = Number.isInteger(session?.amount_total) ? session.amount_total : null;
-
-      if (orderId) {
-        const upsert = await dbQuery(
-          "INSERT INTO orders (order_id, tenant_id, status, currency, amount_subtotal, amount_total, stripe_checkout_session_id, stripe_payment_intent_id, customer_email, items) VALUES ($1, $2, $3, $4, $5, $6, NULLIF($7, ''), NULLIF($8, ''), NULLIF($9, ''), '[]'::jsonb) ON CONFLICT (order_id) DO UPDATE SET status = EXCLUDED.status, currency = COALESCE(NULLIF(EXCLUDED.currency, ''), orders.currency), amount_subtotal = EXCLUDED.amount_subtotal, amount_total = EXCLUDED.amount_total, stripe_checkout_session_id = COALESCE(EXCLUDED.stripe_checkout_session_id, orders.stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(EXCLUDED.stripe_payment_intent_id, orders.stripe_payment_intent_id), customer_email = COALESCE(EXCLUDED.customer_email, orders.customer_email), updated_at = now() RETURNING order_id, tenant_id, status, currency, amount_total, customer_email",
-          [
-            orderId,
-            tenantId,
-            "paid",
-            currency,
-            amountSubtotal,
-            amountTotal,
-            sessionId,
-            paymentIntentId,
-            customerEmail,
-          ],
+      if (stripeEventType === "checkout.session.completed") {
+        const session = event?.data?.object;
+        const sessionId = String(session?.id || "");
+        const rawPaymentIntent = session?.payment_intent;
+        const paymentIntentId =
+          typeof rawPaymentIntent === "string"
+            ? rawPaymentIntent
+            : rawPaymentIntent && typeof rawPaymentIntent === "object"
+              ? String(rawPaymentIntent.id || "")
+              : "";
+        const orderId = String(session?.metadata?.order_id || "");
+        const tenantId = String(session?.metadata?.tenant_id || "default");
+        const currency = String(session?.currency || "").toLowerCase();
+        const customerEmail = String(
+          session?.customer_details?.email || session?.customer_email || "",
         );
+        const amountSubtotal = Number.isInteger(session?.amount_subtotal)
+          ? session.amount_subtotal
+          : null;
+        const amountTotal = Number.isInteger(session?.amount_total)
+          ? session.amount_total
+          : null;
 
-        const upserted = Array.isArray(upsert?.rows) ? upsert.rows[0] : null;
-        if (upserted?.order_id && String(upserted?.status || "") === "paid") {
-          console.log(
-            "ORDER_PAID",
-            JSON.stringify({
-              orderId: String(upserted.order_id),
-              tenantId: String(upserted.tenant_id || ""),
-              amountTotal: Number.isInteger(upserted.amount_total) ? upserted.amount_total : null,
-              currency: String(upserted.currency || ""),
-              customerEmail: String(upserted.customer_email || ""),
-              stripeEventId,
-              stripeSessionId: sessionId,
-              stripePaymentIntentId: paymentIntentId,
-              isFirstTimeEvent,
-            }),
-          );
-        }
-
-        const eventData = { stripeEventId, sessionId, tenantId, isFirstTimeEvent };
-        await dbQuery(
-          "INSERT INTO order_events (order_id, type, data) SELECT $1, $2, $3::jsonb WHERE NOT EXISTS (SELECT 1 FROM order_events WHERE order_id = $1 AND type = $2 AND data->>'stripeEventId' = $4)",
-          [
-            orderId,
-            "stripe.checkout.session.completed",
-            JSON.stringify(eventData),
-            stripeEventId,
-          ],
-        );
-
-        // Data-stitch: on a first-time paid event, bump the customer's running
-        // totals, mark any open captured cart as converted (attributing which
-        // nudge won), and log a unified order_completed funnel event.
-        if (customerEmail && isFirstTimeEvent) {
-          // Data-stitch is best-effort analytics: never let it turn a paid
-          // checkout into a failed webhook response.
-          try {
-            await stitchPaidOrder({
-              tenantId,
-              email: normalizeEmail(customerEmail),
+        if (orderId) {
+          const upsert = await dbQuery(
+            "INSERT INTO orders (order_id, tenant_id, status, currency, amount_subtotal, amount_total, stripe_checkout_session_id, stripe_payment_intent_id, customer_email, items) VALUES ($1, $2, $3, $4, $5, $6, NULLIF($7, ''), NULLIF($8, ''), NULLIF($9, ''), '[]'::jsonb) ON CONFLICT (order_id) DO UPDATE SET status = EXCLUDED.status, currency = COALESCE(NULLIF(EXCLUDED.currency, ''), orders.currency), amount_subtotal = EXCLUDED.amount_subtotal, amount_total = EXCLUDED.amount_total, stripe_checkout_session_id = COALESCE(EXCLUDED.stripe_checkout_session_id, orders.stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(EXCLUDED.stripe_payment_intent_id, orders.stripe_payment_intent_id), customer_email = COALESCE(EXCLUDED.customer_email, orders.customer_email), updated_at = now() RETURNING order_id, tenant_id, status, currency, amount_total, customer_email",
+            [
               orderId,
+              tenantId,
+              "paid",
               currency,
+              amountSubtotal,
               amountTotal,
-            });
-          } catch (stitchErr) {
-            console.error(
-              "STITCH_FAILED",
+              sessionId,
+              paymentIntentId,
+              customerEmail,
+            ],
+          );
+
+          const upserted = Array.isArray(upsert?.rows) ? upsert.rows[0] : null;
+          if (upserted?.order_id && String(upserted?.status || "") === "paid") {
+            console.log(
+              "ORDER_PAID",
               JSON.stringify({
-                orderId,
+                orderId: String(upserted.order_id),
+                tenantId: String(upserted.tenant_id || ""),
+                amountTotal: Number.isInteger(upserted.amount_total)
+                  ? upserted.amount_total
+                  : null,
+                currency: String(upserted.currency || ""),
+                customerEmail: String(upserted.customer_email || ""),
                 stripeEventId,
-                message: String(stitchErr?.message || stitchErr),
+                stripeSessionId: sessionId,
+                stripePaymentIntentId: paymentIntentId,
+                isFirstTimeEvent,
               }),
             );
           }
-        }
-      } else if (sessionId) {
-        const updated = await dbQuery(
-          "UPDATE orders SET status = $1, currency = COALESCE(NULLIF($2, ''), currency), amount_subtotal = $3, amount_total = $4, stripe_checkout_session_id = COALESCE(NULLIF($5, ''), stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(NULLIF($6, ''), stripe_payment_intent_id), customer_email = COALESCE(NULLIF($7, ''), customer_email), updated_at = now() WHERE stripe_checkout_session_id = $5 RETURNING order_id, tenant_id, status, currency, amount_total, customer_email",
-          ["paid", currency, amountSubtotal, amountTotal, sessionId, paymentIntentId, customerEmail],
-        );
 
-        const updatedRow = Array.isArray(updated?.rows) ? updated.rows[0] : null;
-        if (updatedRow?.order_id) {
-          console.log(
-            "ORDER_PAID",
-            JSON.stringify({
-              orderId: String(updatedRow.order_id),
-              tenantId: String(updatedRow.tenant_id || ""),
-              amountTotal: Number.isInteger(updatedRow.amount_total) ? updatedRow.amount_total : null,
-              currency: String(updatedRow.currency || ""),
-              customerEmail: String(updatedRow.customer_email || ""),
+          const eventData = {
+            stripeEventId,
+            sessionId,
+            tenantId,
+            isFirstTimeEvent,
+          };
+          await dbQuery(
+            "INSERT INTO order_events (order_id, type, data) SELECT $1, $2, $3::jsonb WHERE NOT EXISTS (SELECT 1 FROM order_events WHERE order_id = $1 AND type = $2 AND data->>'stripeEventId' = $4)",
+            [
+              orderId,
+              "stripe.checkout.session.completed",
+              JSON.stringify(eventData),
               stripeEventId,
-              stripeSessionId: sessionId,
-              stripePaymentIntentId: paymentIntentId,
-              isFirstTimeEvent,
-            }),
+            ],
           );
 
-          const stitchEmail = normalizeEmail(updatedRow.customer_email);
-          if (stitchEmail && isFirstTimeEvent) {
-            // Best-effort: a data-stitch failure must not fail the webhook.
+          // Data-stitch: on a first-time paid event, bump the customer's running
+          // totals, mark any open captured cart as converted (attributing which
+          // nudge won), and log a unified order_completed funnel event.
+          if (customerEmail && isFirstTimeEvent) {
+            // Data-stitch is best-effort analytics: never let it turn a paid
+            // checkout into a failed webhook response.
             try {
               await stitchPaidOrder({
-                tenantId: String(updatedRow.tenant_id || tenantId),
-                email: stitchEmail,
-                orderId: String(updatedRow.order_id),
-                currency: String(updatedRow.currency || currency),
-                amountTotal: Number.isInteger(updatedRow.amount_total)
-                  ? updatedRow.amount_total
-                  : amountTotal,
+                tenantId,
+                email: normalizeEmail(customerEmail),
+                orderId,
+                currency,
+                amountTotal,
               });
             } catch (stitchErr) {
               console.error(
                 "STITCH_FAILED",
                 JSON.stringify({
-                  orderId: String(updatedRow.order_id),
+                  orderId,
                   stripeEventId,
                   message: String(stitchErr?.message || stitchErr),
                 }),
               );
             }
           }
-        }
-      }
-    } else if (
-      stripeEventType === "checkout.session.expired" ||
-      stripeEventType === "checkout.session.async_payment_failed"
-    ) {
-      const session = event?.data?.object;
-      const sessionId = String(session?.id || "");
-      const rawPaymentIntent = session?.payment_intent;
-      const paymentIntentId =
-        typeof rawPaymentIntent === "string"
-          ? rawPaymentIntent
-          : rawPaymentIntent && typeof rawPaymentIntent === "object"
-            ? String(rawPaymentIntent.id || "")
-            : "";
-      const orderId = String(session?.metadata?.order_id || "");
-      const tenantId = String(session?.metadata?.tenant_id || "default");
-
-      const nextStatus =
-        stripeEventType === "checkout.session.expired" ? "abandoned" : "failed";
-
-      if (orderId) {
-        const updated = await dbQuery(
-          "UPDATE orders SET status = $1, stripe_checkout_session_id = COALESCE(NULLIF($2, ''), stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(NULLIF($3, ''), stripe_payment_intent_id), updated_at = now() WHERE tenant_id = $4 AND order_id = $5 AND status = $6 RETURNING order_id",
-          [nextStatus, sessionId, paymentIntentId, tenantId, orderId, "pending"],
-        );
-
-        const updatedRow = Array.isArray(updated?.rows) ? updated.rows[0] : null;
-        if (updatedRow?.order_id) {
-          const eventData = { stripeEventId, sessionId, tenantId, isFirstTimeEvent };
-          await dbQuery(
-            "INSERT INTO order_events (order_id, type, data) SELECT $1, $2, $3::jsonb WHERE NOT EXISTS (SELECT 1 FROM order_events WHERE order_id = $1 AND type = $2 AND data->>'stripeEventId' = $4)",
+        } else if (sessionId) {
+          const updated = await dbQuery(
+            "UPDATE orders SET status = $1, currency = COALESCE(NULLIF($2, ''), currency), amount_subtotal = $3, amount_total = $4, stripe_checkout_session_id = COALESCE(NULLIF($5, ''), stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(NULLIF($6, ''), stripe_payment_intent_id), customer_email = COALESCE(NULLIF($7, ''), customer_email), updated_at = now() WHERE stripe_checkout_session_id = $5 RETURNING order_id, tenant_id, status, currency, amount_total, customer_email",
             [
-              orderId,
-              stripeEventType,
-              JSON.stringify(eventData),
-              stripeEventId,
+              "paid",
+              currency,
+              amountSubtotal,
+              amountTotal,
+              sessionId,
+              paymentIntentId,
+              customerEmail,
             ],
           );
-        }
-      } else if (sessionId) {
-        await dbQuery(
-          "UPDATE orders SET status = $1, stripe_payment_intent_id = COALESCE(NULLIF($2, ''), stripe_payment_intent_id), updated_at = now() WHERE stripe_checkout_session_id = $3 AND status = $4",
-          [nextStatus, paymentIntentId, sessionId, "pending"],
-        );
-      }
-    } else if (stripeEventType === "payment_intent.payment_failed") {
-      const paymentIntent = event?.data?.object;
-      const paymentIntentId = String(paymentIntent?.id || "");
-      if (paymentIntentId) {
-        await dbQuery(
-          "UPDATE orders SET status = $1, updated_at = now() WHERE stripe_payment_intent_id = $2 AND status = $3",
-          ["failed", paymentIntentId, "pending"],
-        );
-      }
-    }
 
-    return res.json({ received: true });
-  } catch (err) {
-    const message = String(err?.message || "Webhook error");
-    return res.status(400).json({ error: message });
-  }
-});
+          const updatedRow = Array.isArray(updated?.rows)
+            ? updated.rows[0]
+            : null;
+          if (updatedRow?.order_id) {
+            console.log(
+              "ORDER_PAID",
+              JSON.stringify({
+                orderId: String(updatedRow.order_id),
+                tenantId: String(updatedRow.tenant_id || ""),
+                amountTotal: Number.isInteger(updatedRow.amount_total)
+                  ? updatedRow.amount_total
+                  : null,
+                currency: String(updatedRow.currency || ""),
+                customerEmail: String(updatedRow.customer_email || ""),
+                stripeEventId,
+                stripeSessionId: sessionId,
+                stripePaymentIntentId: paymentIntentId,
+                isFirstTimeEvent,
+              }),
+            );
+
+            const stitchEmail = normalizeEmail(updatedRow.customer_email);
+            if (stitchEmail && isFirstTimeEvent) {
+              // Best-effort: a data-stitch failure must not fail the webhook.
+              try {
+                await stitchPaidOrder({
+                  tenantId: String(updatedRow.tenant_id || tenantId),
+                  email: stitchEmail,
+                  orderId: String(updatedRow.order_id),
+                  currency: String(updatedRow.currency || currency),
+                  amountTotal: Number.isInteger(updatedRow.amount_total)
+                    ? updatedRow.amount_total
+                    : amountTotal,
+                });
+              } catch (stitchErr) {
+                console.error(
+                  "STITCH_FAILED",
+                  JSON.stringify({
+                    orderId: String(updatedRow.order_id),
+                    stripeEventId,
+                    message: String(stitchErr?.message || stitchErr),
+                  }),
+                );
+              }
+            }
+          }
+        }
+      } else if (
+        stripeEventType === "checkout.session.expired" ||
+        stripeEventType === "checkout.session.async_payment_failed"
+      ) {
+        const session = event?.data?.object;
+        const sessionId = String(session?.id || "");
+        const rawPaymentIntent = session?.payment_intent;
+        const paymentIntentId =
+          typeof rawPaymentIntent === "string"
+            ? rawPaymentIntent
+            : rawPaymentIntent && typeof rawPaymentIntent === "object"
+              ? String(rawPaymentIntent.id || "")
+              : "";
+        const orderId = String(session?.metadata?.order_id || "");
+        const tenantId = String(session?.metadata?.tenant_id || "default");
+
+        const nextStatus =
+          stripeEventType === "checkout.session.expired"
+            ? "abandoned"
+            : "failed";
+
+        if (orderId) {
+          const updated = await dbQuery(
+            "UPDATE orders SET status = $1, stripe_checkout_session_id = COALESCE(NULLIF($2, ''), stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(NULLIF($3, ''), stripe_payment_intent_id), updated_at = now() WHERE tenant_id = $4 AND order_id = $5 AND status = $6 RETURNING order_id",
+            [
+              nextStatus,
+              sessionId,
+              paymentIntentId,
+              tenantId,
+              orderId,
+              "pending",
+            ],
+          );
+
+          const updatedRow = Array.isArray(updated?.rows)
+            ? updated.rows[0]
+            : null;
+          if (updatedRow?.order_id) {
+            const eventData = {
+              stripeEventId,
+              sessionId,
+              tenantId,
+              isFirstTimeEvent,
+            };
+            await dbQuery(
+              "INSERT INTO order_events (order_id, type, data) SELECT $1, $2, $3::jsonb WHERE NOT EXISTS (SELECT 1 FROM order_events WHERE order_id = $1 AND type = $2 AND data->>'stripeEventId' = $4)",
+              [
+                orderId,
+                stripeEventType,
+                JSON.stringify(eventData),
+                stripeEventId,
+              ],
+            );
+          }
+        } else if (sessionId) {
+          await dbQuery(
+            "UPDATE orders SET status = $1, stripe_payment_intent_id = COALESCE(NULLIF($2, ''), stripe_payment_intent_id), updated_at = now() WHERE stripe_checkout_session_id = $3 AND status = $4",
+            [nextStatus, paymentIntentId, sessionId, "pending"],
+          );
+        }
+      } else if (stripeEventType === "payment_intent.payment_failed") {
+        const paymentIntent = event?.data?.object;
+        const paymentIntentId = String(paymentIntent?.id || "");
+        if (paymentIntentId) {
+          await dbQuery(
+            "UPDATE orders SET status = $1, updated_at = now() WHERE stripe_payment_intent_id = $2 AND status = $3",
+            ["failed", paymentIntentId, "pending"],
+          );
+        }
+      }
+
+      return res.json({ received: true });
+    } catch (err) {
+      const message = String(err?.message || "Webhook error");
+      return res.status(400).json({ error: message });
+    }
+  },
+);
 
 app.get("/admin/heartbeat", async (req, res) => {
   const denied = requireAdmin(req, res);
@@ -331,10 +396,17 @@ app.post("/admin/alerts/run", async (req, res) => {
     const tenant = resolveTenantFromRequest(req);
     const now = new Date();
     const result = await evaluateAndRecordAlerts({ tenant, now });
-    return res.json({ ok: true, tenant_id: String(tenant?.tenant_id || "default"), now: now.toISOString(), ...result });
+    return res.json({
+      ok: true,
+      tenant_id: String(tenant?.tenant_id || "default"),
+      now: now.toISOString(),
+      ...result,
+    });
   } catch (err) {
     console.error("/admin/alerts/run failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to run alerts") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to run alerts") });
   }
 });
 
@@ -346,15 +418,24 @@ app.get("/admin/alerts", async (req, res) => {
     const tenant = resolveTenantFromRequest(req);
     const activeTenantId = String(tenant?.tenant_id || "default");
     const limitRaw = Number(req.query?.limit);
-    const limit = Number.isFinite(limitRaw) && limitRaw > 0 ? Math.min(Math.floor(limitRaw), 100) : 25;
+    const limit =
+      Number.isFinite(limitRaw) && limitRaw > 0
+        ? Math.min(Math.floor(limitRaw), 100)
+        : 25;
 
     const alertsPath = path.join(__dirname, "data", "alerts.json");
-    const store = safeReadJsonFile(alertsPath, { schemaVersion: 1, updatedAt: "", alerts: [] });
+    const store = safeReadJsonFile(alertsPath, {
+      schemaVersion: 1,
+      updatedAt: "",
+      alerts: [],
+    });
     const list = Array.isArray(store?.alerts) ? store.alerts : [];
     const filtered = list
       .filter((a) => String(a?.tenant_id || "") === activeTenantId)
       .slice()
-      .sort((a, b) => String(b?.createdAt || "").localeCompare(String(a?.createdAt || "")))
+      .sort((a, b) =>
+        String(b?.createdAt || "").localeCompare(String(a?.createdAt || "")),
+      )
       .slice(0, limit);
 
     return res.json({
@@ -366,7 +447,9 @@ app.get("/admin/alerts", async (req, res) => {
     });
   } catch (err) {
     console.error("/admin/alerts failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to load alerts") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to load alerts") });
   }
 });
 
@@ -386,7 +469,9 @@ app.get("/admin/ad-spend", async (req, res) => {
     });
 
     const spends = Array.isArray(spendData?.spends) ? spendData.spends : [];
-    const filtered = spends.filter((s) => String(s?.tenant_id || "") === activeTenantId);
+    const filtered = spends.filter(
+      (s) => String(s?.tenant_id || "") === activeTenantId,
+    );
 
     return res.json({
       ok: true,
@@ -397,7 +482,9 @@ app.get("/admin/ad-spend", async (req, res) => {
     });
   } catch (err) {
     console.error("/admin/ad-spend failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to load ad spend") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to load ad spend") });
   }
 });
 
@@ -410,7 +497,9 @@ app.post("/admin/ad-spend", express.json(), async (req, res) => {
     const activeTenantId = String(tenant?.tenant_id || "default");
     const expectedCurrency = String(tenant?.currency || "").toLowerCase();
     if (!expectedCurrency) {
-      return res.status(400).json({ error: "Tenant currency is not configured" });
+      return res
+        .status(400)
+        .json({ error: "Tenant currency is not configured" });
     }
 
     const clean = (value) => {
@@ -426,16 +515,24 @@ app.post("/admin/ad-spend", express.json(), async (req, res) => {
 
     const spendMinor = Number(req.body?.spend_minor);
     if (!Number.isInteger(spendMinor) || spendMinor < 0) {
-      return res.status(400).json({ error: "spend_minor must be a non-negative integer" });
+      return res
+        .status(400)
+        .json({ error: "spend_minor must be a non-negative integer" });
     }
 
-    const spendCurrency = String(req.body?.currency || expectedCurrency).toLowerCase();
+    const spendCurrency = String(
+      req.body?.currency || expectedCurrency,
+    ).toLowerCase();
     if (spendCurrency !== expectedCurrency) {
-      return res.status(400).json({ error: `Currency mismatch (expected ${expectedCurrency})` });
+      return res
+        .status(400)
+        .json({ error: `Currency mismatch (expected ${expectedCurrency})` });
     }
 
     if (!utmCampaign && !utmContent) {
-      return res.status(400).json({ error: "Provide at least utm_campaign or utm_content" });
+      return res
+        .status(400)
+        .json({ error: "Provide at least utm_campaign or utm_content" });
     }
 
     const spendPath = path.join(__dirname, "data", "ad_spend.json");
@@ -483,7 +580,9 @@ app.post("/admin/ad-spend", express.json(), async (req, res) => {
     return res.json({ ok: true, saved: next });
   } catch (err) {
     console.error("POST /admin/ad-spend failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to save ad spend") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to save ad spend") });
   }
 });
 
@@ -503,7 +602,8 @@ app.get("/admin/ad-guardrails", async (req, res) => {
     });
 
     const list = Array.isArray(raw?.guardrails) ? raw.guardrails : [];
-    const entry = list.find((g) => String(g?.tenant_id || "") === activeTenantId) || null;
+    const entry =
+      list.find((g) => String(g?.tenant_id || "") === activeTenantId) || null;
 
     return res.json({
       ok: true,
@@ -514,7 +614,9 @@ app.get("/admin/ad-guardrails", async (req, res) => {
     });
   } catch (err) {
     console.error("/admin/ad-guardrails failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to load ad guardrails") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to load ad guardrails") });
   }
 });
 
@@ -527,7 +629,9 @@ app.post("/admin/ad-guardrails", express.json(), async (req, res) => {
     const activeTenantId = String(tenant?.tenant_id || "default");
     const expectedCurrency = String(tenant?.currency || "").toLowerCase();
     if (!expectedCurrency) {
-      return res.status(400).json({ error: "Tenant currency is not configured" });
+      return res
+        .status(400)
+        .json({ error: "Tenant currency is not configured" });
     }
 
     const cleanText = (value) => {
@@ -536,28 +640,48 @@ app.post("/admin/ad-guardrails", express.json(), async (req, res) => {
       return s.length > 120 ? s.slice(0, 120) : s;
     };
 
-    const currency = String(req.body?.currency || expectedCurrency).toLowerCase();
+    const currency = String(
+      req.body?.currency || expectedCurrency,
+    ).toLowerCase();
     if (currency !== expectedCurrency) {
-      return res.status(400).json({ error: `Currency mismatch (expected ${expectedCurrency})` });
+      return res
+        .status(400)
+        .json({ error: `Currency mismatch (expected ${expectedCurrency})` });
     }
 
     const rangeDaysRaw = Number(req.body?.range_days);
-    const rangeDays = Number.isFinite(rangeDaysRaw) && rangeDaysRaw > 0 ? Math.min(Math.floor(rangeDaysRaw), 365) : 7;
+    const rangeDays =
+      Number.isFinite(rangeDaysRaw) && rangeDaysRaw > 0
+        ? Math.min(Math.floor(rangeDaysRaw), 365)
+        : 7;
 
-    const stopSpendNoRevenueMinor = Number(req.body?.stop_spend_no_revenue_minor);
+    const stopSpendNoRevenueMinor = Number(
+      req.body?.stop_spend_no_revenue_minor,
+    );
     const warnRoasBelow = Number(req.body?.warn_roas_below);
     const warnProfitBelowMinor = Number(req.body?.warn_profit_below_minor);
 
-    if (!Number.isInteger(stopSpendNoRevenueMinor) || stopSpendNoRevenueMinor < 0) {
-      return res.status(400).json({ error: "stop_spend_no_revenue_minor must be a non-negative integer" });
+    if (
+      !Number.isInteger(stopSpendNoRevenueMinor) ||
+      stopSpendNoRevenueMinor < 0
+    ) {
+      return res
+        .status(400)
+        .json({
+          error: "stop_spend_no_revenue_minor must be a non-negative integer",
+        });
     }
 
     if (!Number.isFinite(warnRoasBelow) || warnRoasBelow < 0) {
-      return res.status(400).json({ error: "warn_roas_below must be a non-negative number" });
+      return res
+        .status(400)
+        .json({ error: "warn_roas_below must be a non-negative number" });
     }
 
     if (!Number.isInteger(warnProfitBelowMinor)) {
-      return res.status(400).json({ error: "warn_profit_below_minor must be an integer" });
+      return res
+        .status(400)
+        .json({ error: "warn_profit_below_minor must be an integer" });
     }
 
     const note = cleanText(req.body?.note);
@@ -582,7 +706,9 @@ app.post("/admin/ad-guardrails", express.json(), async (req, res) => {
       updatedAt: now,
     };
 
-    const idx = list.findIndex((g) => String(g?.tenant_id || "") === activeTenantId);
+    const idx = list.findIndex(
+      (g) => String(g?.tenant_id || "") === activeTenantId,
+    );
     if (idx >= 0) list[idx] = next;
     else list.push(next);
 
@@ -594,7 +720,9 @@ app.post("/admin/ad-guardrails", express.json(), async (req, res) => {
     return res.json({ ok: true, saved: next });
   } catch (err) {
     console.error("POST /admin/ad-guardrails failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to save ad guardrails") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to save ad guardrails") });
   }
 });
 
@@ -606,17 +734,24 @@ app.get("/admin/attribution-summary", async (req, res) => {
     const tenant = resolveTenantFromRequest(req);
     const activeTenantId = String(tenant?.tenant_id || "default");
 
-    const mode = String(req.query?.mode || "").trim().toLowerCase();
+    const mode = String(req.query?.mode || "")
+      .trim()
+      .toLowerCase();
     const paidOnly = mode === "paid";
 
     const rangeDays = 30;
     const startParam = String(req.query?.start || "").trim();
     const endParam = String(req.query?.end || "").trim();
     const limitRaw = Number(req.query?.limit);
-    const limit = Number.isFinite(limitRaw) && limitRaw > 0 ? Math.min(Math.floor(limitRaw), 500) : 100;
+    const limit =
+      Number.isFinite(limitRaw) && limitRaw > 0
+        ? Math.min(Math.floor(limitRaw), 500)
+        : 100;
 
     const now = new Date();
-    const defaultStart = new Date(now.getTime() - rangeDays * 24 * 60 * 60 * 1000);
+    const defaultStart = new Date(
+      now.getTime() - rangeDays * 24 * 60 * 60 * 1000,
+    );
 
     const start = startParam ? new Date(startParam) : defaultStart;
     const end = endParam ? new Date(endParam) : now;
@@ -686,7 +821,11 @@ app.get("/admin/attribution-summary", async (req, res) => {
     });
   } catch (err) {
     console.error("/admin/attribution-summary failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to load attribution summary") });
+    return res
+      .status(500)
+      .json({
+        error: String(err?.message || "Failed to load attribution summary"),
+      });
   }
 });
 
@@ -699,29 +838,41 @@ app.get("/admin/ops-health", async (req, res) => {
     const activeTenantId = String(tenant?.tenant_id || "default");
 
     const pendingHoursRaw = Number(req.query?.pending_hours);
-    const pendingHours = Number.isFinite(pendingHoursRaw) && pendingHoursRaw > 0 ? pendingHoursRaw : 1;
+    const pendingHours =
+      Number.isFinite(pendingHoursRaw) && pendingHoursRaw > 0
+        ? pendingHoursRaw
+        : 1;
 
     const now = new Date();
     const since24h = new Date(now.getTime() - 24 * 60 * 60 * 1000);
     const since7d = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    const stalePendingBefore = new Date(now.getTime() - pendingHours * 60 * 60 * 1000);
+    const stalePendingBefore = new Date(
+      now.getTime() - pendingHours * 60 * 60 * 1000,
+    );
 
-    const [webhookLast, webhookCount24h, orders24h, orders7d, stalePending] = await Promise.all([
-      dbQuery("SELECT MAX(created_at) AS last_webhook_at FROM stripe_events", []),
-      dbQuery("SELECT COUNT(*)::int AS count FROM stripe_events WHERE created_at >= $1", [since24h.toISOString()]),
-      dbQuery(
-        "SELECT COUNT(*)::int AS started, SUM(CASE WHEN status='paid' THEN 1 ELSE 0 END)::int AS paid, SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END)::int AS pending, SUM(CASE WHEN status='abandoned' THEN 1 ELSE 0 END)::int AS abandoned FROM orders WHERE tenant_id=$1 AND created_at >= $2",
-        [activeTenantId, since24h.toISOString()],
-      ),
-      dbQuery(
-        "SELECT COUNT(*)::int AS started, SUM(CASE WHEN status='paid' THEN 1 ELSE 0 END)::int AS paid, SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END)::int AS pending, SUM(CASE WHEN status='abandoned' THEN 1 ELSE 0 END)::int AS abandoned FROM orders WHERE tenant_id=$1 AND created_at >= $2",
-        [activeTenantId, since7d.toISOString()],
-      ),
-      dbQuery(
-        "SELECT COUNT(*)::int AS count FROM orders WHERE tenant_id=$1 AND status='pending' AND created_at < $2",
-        [activeTenantId, stalePendingBefore.toISOString()],
-      ),
-    ]);
+    const [webhookLast, webhookCount24h, orders24h, orders7d, stalePending] =
+      await Promise.all([
+        dbQuery(
+          "SELECT MAX(created_at) AS last_webhook_at FROM stripe_events",
+          [],
+        ),
+        dbQuery(
+          "SELECT COUNT(*)::int AS count FROM stripe_events WHERE created_at >= $1",
+          [since24h.toISOString()],
+        ),
+        dbQuery(
+          "SELECT COUNT(*)::int AS started, SUM(CASE WHEN status='paid' THEN 1 ELSE 0 END)::int AS paid, SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END)::int AS pending, SUM(CASE WHEN status='abandoned' THEN 1 ELSE 0 END)::int AS abandoned FROM orders WHERE tenant_id=$1 AND created_at >= $2",
+          [activeTenantId, since24h.toISOString()],
+        ),
+        dbQuery(
+          "SELECT COUNT(*)::int AS started, SUM(CASE WHEN status='paid' THEN 1 ELSE 0 END)::int AS paid, SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END)::int AS pending, SUM(CASE WHEN status='abandoned' THEN 1 ELSE 0 END)::int AS abandoned FROM orders WHERE tenant_id=$1 AND created_at >= $2",
+          [activeTenantId, since7d.toISOString()],
+        ),
+        dbQuery(
+          "SELECT COUNT(*)::int AS count FROM orders WHERE tenant_id=$1 AND status='pending' AND created_at < $2",
+          [activeTenantId, stalePendingBefore.toISOString()],
+        ),
+      ]);
 
     const lastWebhookAt = webhookLast?.rows?.[0]?.last_webhook_at || null;
     const webhooks24h = Number(webhookCount24h?.rows?.[0]?.count || 0) || 0;
@@ -759,7 +910,9 @@ app.get("/admin/ops-health", async (req, res) => {
     });
   } catch (err) {
     console.error("/admin/ops-health failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to load ops health") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to load ops health") });
   }
 });
 
@@ -772,13 +925,20 @@ app.get("/admin/ops-trends", async (req, res) => {
     const activeTenantId = String(tenant?.tenant_id || "default");
 
     const daysRaw = Number(req.query?.days);
-    const days = Number.isFinite(daysRaw) && daysRaw > 0 ? Math.min(Math.floor(daysRaw), 30) : 7;
+    const days =
+      Number.isFinite(daysRaw) && daysRaw > 0
+        ? Math.min(Math.floor(daysRaw), 30)
+        : 7;
 
     const now = new Date();
     const since = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
 
     const spendPath = path.join(__dirname, "data", "ad_spend.json");
-    const spendData = safeReadJsonFile(spendPath, { schemaVersion: 1, updatedAt: "", spends: [] });
+    const spendData = safeReadJsonFile(spendPath, {
+      schemaVersion: 1,
+      updatedAt: "",
+      spends: [],
+    });
     const spends = Array.isArray(spendData?.spends) ? spendData.spends : [];
 
     const spendByDate = {};
@@ -790,7 +950,9 @@ app.get("/admin/ops-trends", async (req, res) => {
         if (!d || !Number.isFinite(d.getTime())) return;
         if (d < since || d > now) return;
         const dateKey = d.toISOString().slice(0, 10);
-        spendByDate[dateKey] = (Number(spendByDate[dateKey] || 0) || 0) + (Number(s?.spend_minor || 0) || 0);
+        spendByDate[dateKey] =
+          (Number(spendByDate[dateKey] || 0) || 0) +
+          (Number(s?.spend_minor || 0) || 0);
       });
 
     const [ordersDaily, revenueDaily, webhooksDaily] = await Promise.all([
@@ -831,8 +993,12 @@ app.get("/admin/ops-trends", async (req, res) => {
     ]);
 
     const ordersRows = Array.isArray(ordersDaily?.rows) ? ordersDaily.rows : [];
-    const revenueRows = Array.isArray(revenueDaily?.rows) ? revenueDaily.rows : [];
-    const webhookRows = Array.isArray(webhooksDaily?.rows) ? webhooksDaily.rows : [];
+    const revenueRows = Array.isArray(revenueDaily?.rows)
+      ? revenueDaily.rows
+      : [];
+    const webhookRows = Array.isArray(webhooksDaily?.rows)
+      ? webhooksDaily.rows
+      : [];
 
     const ordersByDay = {};
     ordersRows.forEach((r) => {
@@ -881,7 +1047,9 @@ app.get("/admin/ops-trends", async (req, res) => {
     });
   } catch (err) {
     console.error("/admin/ops-trends failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to load ops trends") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to load ops trends") });
   }
 });
 
@@ -940,7 +1108,9 @@ function sendAlertEmail({ to, subject, body }) {
       return resolve({ ok: false, error: "Missing recipient" });
     }
 
-    const safeSubject = String(subject || "Alert").replace(/[\r\n]+/g, " ").slice(0, 200);
+    const safeSubject = String(subject || "Alert")
+      .replace(/[\r\n]+/g, " ")
+      .slice(0, 200);
     const content = `To: ${address}\nSubject: ${safeSubject}\n\n${String(body || "")}`;
 
     let done = false;
@@ -952,9 +1122,14 @@ function sendAlertEmail({ to, subject, body }) {
 
     let cp;
     try {
-      cp = spawn("/usr/sbin/sendmail", ["-t"], { stdio: ["pipe", "ignore", "pipe"] });
+      cp = spawn("/usr/sbin/sendmail", ["-t"], {
+        stdio: ["pipe", "ignore", "pipe"],
+      });
     } catch (err) {
-      return finish({ ok: false, error: String(err?.message || "sendmail spawn failed") });
+      return finish({
+        ok: false,
+        error: String(err?.message || "sendmail spawn failed"),
+      });
     }
 
     const timer = setTimeout(() => {
@@ -982,7 +1157,9 @@ function sendAlertEmail({ to, subject, body }) {
     cp.on("close", (code) => {
       clearTimeout(timer);
       if (code === 0) return finish({ ok: true });
-      const msg = stderr.trim() ? `sendmail exit ${code}: ${stderr.trim()}` : `sendmail exit ${code}`;
+      const msg = stderr.trim()
+        ? `sendmail exit ${code}: ${stderr.trim()}`
+        : `sendmail exit ${code}`;
       return finish({ ok: false, error: msg });
     });
 
@@ -991,7 +1168,10 @@ function sendAlertEmail({ to, subject, body }) {
       cp.stdin.end();
     } catch (err) {
       clearTimeout(timer);
-      finish({ ok: false, error: String(err?.message || "sendmail stdin failed") });
+      finish({
+        ok: false,
+        error: String(err?.message || "sendmail stdin failed"),
+      });
     }
   });
 }
@@ -1029,7 +1209,8 @@ function buildAlertEmail({ tenantId, alert }) {
     }
   } else if (type === "paid_orders_stuck") {
     const count = Number(data?.count || 0) || 0;
-    explainer = "A paid order means money was taken, but the order hasn’t progressed since then.";
+    explainer =
+      "A paid order means money was taken, but the order hasn’t progressed since then.";
     why =
       "This usually means fulfillment didn’t happen (or your system didn’t record the next step). It’s a risk: customers may not receive their items, and refunds/chargebacks can follow.";
     actions = [
@@ -1045,7 +1226,8 @@ function buildAlertEmail({ tenantId, alert }) {
     const spendMinor = Number(data?.spend_minor_24h || 0) || 0;
     const revenueMinor = Number(data?.revenue_minor_24h || 0) || 0;
     const thresholdMinor = Number(data?.threshold_minor || 0) || 0;
-    explainer = "This means you’ve recorded ad spend, but there’s zero paid revenue in the same window.";
+    explainer =
+      "This means you’ve recorded ad spend, but there’s zero paid revenue in the same window.";
     why =
       "This is the classic ‘leaky bucket’ moment: ads are spending money but sales aren’t coming through (or tracking is broken).";
     actions = [
@@ -1054,11 +1236,15 @@ function buildAlertEmail({ tenantId, alert }) {
       "If there truly are no sales: pause the ads and investigate landing page / checkout / tracking.",
       "If there were sales but they’re missing: investigate Stripe webhooks and order capture.",
     ];
-    actions.unshift(`Last 24h totals (minor units): spend=${spendMinor}, revenue=${revenueMinor}`);
+    actions.unshift(
+      `Last 24h totals (minor units): spend=${spendMinor}, revenue=${revenueMinor}`,
+    );
   } else if (type === "server_error_spike") {
     const count = Number(data?.count_15m || 0) || 0;
-    explainer = "Your server returned a lot of 5xx errors (server-side failures) in a short time.";
-    why = "If customers hit errors, they can’t buy — and ads/SEO traffic gets wasted.";
+    explainer =
+      "Your server returned a lot of 5xx errors (server-side failures) in a short time.";
+    why =
+      "If customers hit errors, they can’t buy — and ads/SEO traffic gets wasted.";
     actions = [
       "Open server logs and look for the first error in the last 15 minutes.",
       "Try loading the store and admin pages in a browser to reproduce.",
@@ -1068,7 +1254,8 @@ function buildAlertEmail({ tenantId, alert }) {
     actions.unshift(`Error count (15m): ${count}`);
   } else {
     explainer = "An operational alert was triggered.";
-    why = "Something needs a quick check to avoid revenue or customer experience issues.";
+    why =
+      "Something needs a quick check to avoid revenue or customer experience issues.";
     actions = [
       "Open the admin dashboard and review the Ops panels.",
       "If you can’t explain the alert quickly, check server logs.",
@@ -1109,7 +1296,11 @@ async function evaluateAndRecordAlerts({ tenant, now }) {
   const activeTenantId = String(tenant?.tenant_id || "default");
   const tsNow = now instanceof Date ? now : new Date();
   const alertsPath = path.join(__dirname, "data", "alerts.json");
-  const store = safeReadJsonFile(alertsPath, { schemaVersion: 1, updatedAt: "", alerts: [] });
+  const store = safeReadJsonFile(alertsPath, {
+    schemaVersion: 1,
+    updatedAt: "",
+    alerts: [],
+  });
   const existing = Array.isArray(store?.alerts) ? store.alerts : [];
 
   const dedupeWindowMs = 6 * 60 * 60 * 1000;
@@ -1150,7 +1341,9 @@ async function evaluateAndRecordAlerts({ tenant, now }) {
         body: built.body,
       });
       entry.emailedTo = alertEmailTo;
-      entry.emailStatus = email.ok ? "sent" : `failed: ${String(email.error || "unknown")}`;
+      entry.emailStatus = email.ok
+        ? "sent"
+        : `failed: ${String(email.error || "unknown")}`;
     } else {
       entry.emailStatus = "skipped (ALERT_EMAIL_TO not set)";
     }
@@ -1160,20 +1353,30 @@ async function evaluateAndRecordAlerts({ tenant, now }) {
   };
 
   const staleWebhookHours = 6;
-  const staleWebhookBefore = new Date(tsNow.getTime() - staleWebhookHours * 60 * 60 * 1000);
-  const webhookLast = await dbQuery("SELECT MAX(created_at) AS last_webhook_at FROM stripe_events", []);
+  const staleWebhookBefore = new Date(
+    tsNow.getTime() - staleWebhookHours * 60 * 60 * 1000,
+  );
+  const webhookLast = await dbQuery(
+    "SELECT MAX(created_at) AS last_webhook_at FROM stripe_events",
+    [],
+  );
   const lastWebhookAt = webhookLast?.rows?.[0]?.last_webhook_at || null;
   if (!lastWebhookAt || new Date(lastWebhookAt) < staleWebhookBefore) {
     await add({
       type: "stripe_webhooks_stale",
       severity: "stop",
       message: `No Stripe webhook received in the last ${staleWebhookHours} hours.`,
-      data: { last_webhook_at: lastWebhookAt, stale_before: staleWebhookBefore.toISOString() },
+      data: {
+        last_webhook_at: lastWebhookAt,
+        stale_before: staleWebhookBefore.toISOString(),
+      },
     });
   }
 
   const paidStaleHours = 48;
-  const paidStaleBefore = new Date(tsNow.getTime() - paidStaleHours * 60 * 60 * 1000);
+  const paidStaleBefore = new Date(
+    tsNow.getTime() - paidStaleHours * 60 * 60 * 1000,
+  );
   const stuckPaid = await dbQuery(
     "SELECT order_id, created_at, updated_at, customer_email, amount_total, currency FROM orders WHERE tenant_id=$1 AND status='paid' AND updated_at < $2 ORDER BY updated_at ASC LIMIT 10",
     [activeTenantId, paidStaleBefore.toISOString()],
@@ -1184,7 +1387,11 @@ async function evaluateAndRecordAlerts({ tenant, now }) {
       type: "paid_orders_stuck",
       severity: "warning",
       message: `${stuck.length} paid order(s) have not updated in ${paidStaleHours} hours.`,
-      data: { count: stuck.length, oldest_updated_at_before: paidStaleBefore.toISOString(), sample: stuck },
+      data: {
+        count: stuck.length,
+        oldest_updated_at_before: paidStaleBefore.toISOString(),
+        sample: stuck,
+      },
     });
   }
 
@@ -1197,7 +1404,11 @@ async function evaluateAndRecordAlerts({ tenant, now }) {
   const revMinor = Number(revenue24h?.rows?.[0]?.revenue_minor || 0) || 0;
 
   const spendPath = path.join(__dirname, "data", "ad_spend.json");
-  const spendData = safeReadJsonFile(spendPath, { schemaVersion: 1, updatedAt: "", spends: [] });
+  const spendData = safeReadJsonFile(spendPath, {
+    schemaVersion: 1,
+    updatedAt: "",
+    spends: [],
+  });
   const spends = Array.isArray(spendData?.spends) ? spendData.spends : [];
   const spendMinor24h = spends
     .filter((s) => String(s?.tenant_id || "default") === activeTenantId)
@@ -1214,7 +1425,11 @@ async function evaluateAndRecordAlerts({ tenant, now }) {
       type: "spend_without_revenue",
       severity: "stop",
       message: `Spend is above threshold but paid revenue is zero in the last 24 hours.`,
-      data: { spend_minor_24h: spendMinor24h, revenue_minor_24h: revMinor, threshold_minor: spendNoRevenueThresholdMinor },
+      data: {
+        spend_minor_24h: spendMinor24h,
+        revenue_minor_24h: revMinor,
+        threshold_minor: spendNoRevenueThresholdMinor,
+      },
     });
   }
 
@@ -1224,7 +1439,10 @@ async function evaluateAndRecordAlerts({ tenant, now }) {
       type: "server_error_spike",
       severity: "warning",
       message: `High server error rate: ${recentServerErrors.length} responses with 5xx in the last 15 minutes.`,
-      data: { count_15m: recentServerErrors.length, sample: recentServerErrors.slice(-10) },
+      data: {
+        count_15m: recentServerErrors.length,
+        sample: recentServerErrors.slice(-10),
+      },
     });
   }
 
@@ -1246,14 +1464,22 @@ async function runHeartbeatOnce() {
     const tenantsPath = path.join(__dirname, "data", "tenants.json");
     const tenantsData = safeReadJsonFile(tenantsPath, { tenants: [] });
     const list = Array.isArray(tenantsData?.tenants) ? tenantsData.tenants : [];
-    const tenantIds = Array.from(new Set(list.map((t) => String(t?.tenant_id || "").trim()).filter(Boolean)));
+    const tenantIds = Array.from(
+      new Set(
+        list.map((t) => String(t?.tenant_id || "").trim()).filter(Boolean),
+      ),
+    );
     if (!tenantIds.includes("default")) tenantIds.unshift("default");
 
     let createdTotal = 0;
     for (const tenantId of tenantIds) {
-      const tenant = list.find((t) => String(t?.tenant_id || "").trim() === tenantId) || { tenant_id: tenantId };
+      const tenant = list.find(
+        (t) => String(t?.tenant_id || "").trim() === tenantId,
+      ) || { tenant_id: tenantId };
       const result = await evaluateAndRecordAlerts({ tenant, now });
-      createdTotal += Array.isArray(result?.created) ? result.created.length : 0;
+      createdTotal += Array.isArray(result?.created)
+        ? result.created.length
+        : 0;
     }
 
     heartbeatState.lastCreatedCount = createdTotal;
@@ -1277,10 +1503,14 @@ function startHeartbeatScheduler() {
 
 function requireAdmin(req, res) {
   if (!adminApiKey) {
-    return res.status(500).json({ error: "ADMIN_API_KEY is not set on the server" });
+    return res
+      .status(500)
+      .json({ error: "ADMIN_API_KEY is not set on the server" });
   }
 
-  const provided = String(req.headers["x-admin-key"] || req.headers["x-admin-api-key"] || "");
+  const provided = String(
+    req.headers["x-admin-key"] || req.headers["x-admin-api-key"] || "",
+  );
   if (!provided || provided !== adminApiKey) {
     return res.status(401).json({ error: "Unauthorized" });
   }
@@ -1292,7 +1522,13 @@ function requireAdmin(req, res) {
 // mark the matching captured cart converted (recording which nudge won), and
 // log a unified order_completed funnel event. Idempotency is the caller's job
 // (only invoked on a first-time Stripe event).
-async function stitchPaidOrder({ tenantId, email, orderId, currency, amountTotal }) {
+async function stitchPaidOrder({
+  tenantId,
+  email,
+  orderId,
+  currency,
+  amountTotal,
+}) {
   const delta = orderTotalsDelta(amountTotal);
   const cur = String(currency || "").toLowerCase() || null;
 
@@ -1308,7 +1544,12 @@ async function stitchPaidOrder({ tenantId, email, orderId, currency, amountTotal
 
   await dbQuery(
     "INSERT INTO email_events (tenant_id, email, type, order_id, data) VALUES ($1, $2, 'order_completed', $3, $4::jsonb)",
-    [tenantId, email, orderId, JSON.stringify({ amountTotal: delta.spendMinor, currency: cur })],
+    [
+      tenantId,
+      email,
+      orderId,
+      JSON.stringify({ amountTotal: delta.spendMinor, currency: cur }),
+    ],
   );
 }
 function resolveTenantFromRequest(req) {
@@ -1347,7 +1588,9 @@ app.get("/pet-safety-essentials", (req, res, next) => {
   try {
     const tenant = resolveTenantFromRequest(req);
     const allowedNiches = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
-      ? tenant.catalog.nicheCategorySlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.nicheCategorySlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
     if (allowedNiches && allowedNiches.length > 0) {
       if (!allowedNiches.includes("pet-safety-essentials")) {
@@ -1359,7 +1602,10 @@ app.get("/pet-safety-essentials", (req, res, next) => {
       if (!err) return;
       console.error("/pet-safety-essentials sendFile failed", err);
       if (res.headersSent) return;
-      return res.status(500).type("text/plain").send("Failed to render collection");
+      return res
+        .status(500)
+        .type("text/plain")
+        .send("Failed to render collection");
     });
   } catch (err) {
     return next(err);
@@ -1370,7 +1616,9 @@ app.get("/pet-safety-essentials/", (req, res, next) => {
   try {
     const tenant = resolveTenantFromRequest(req);
     const allowedNiches = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
-      ? tenant.catalog.nicheCategorySlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.nicheCategorySlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
     if (allowedNiches && allowedNiches.length > 0) {
       if (!allowedNiches.includes("pet-safety-essentials")) {
@@ -1382,7 +1630,10 @@ app.get("/pet-safety-essentials/", (req, res, next) => {
       if (!err) return;
       console.error("/pet-safety-essentials/ sendFile failed", err);
       if (res.headersSent) return;
-      return res.status(500).type("text/plain").send("Failed to render collection");
+      return res
+        .status(500)
+        .type("text/plain")
+        .send("Failed to render collection");
     });
   } catch (err) {
     return next(err);
@@ -1413,7 +1664,9 @@ app.get("/:nicheCategorySlug", (req, res, next) => {
 
     const tenant = resolveTenantFromRequest(req);
     const allowedNiches = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
-      ? tenant.catalog.nicheCategorySlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.nicheCategorySlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
     if (allowedNiches && allowedNiches.length > 0) {
       if (!allowedNiches.includes(nicheCategorySlug.toLowerCase())) {
@@ -1425,7 +1678,10 @@ app.get("/:nicheCategorySlug", (req, res, next) => {
       if (!err) return;
       console.error("/:nicheCategorySlug sendFile failed", err);
       if (res.headersSent) return;
-      return res.status(500).type("text/plain").send("Failed to render collection");
+      return res
+        .status(500)
+        .type("text/plain")
+        .send("Failed to render collection");
     });
   } catch (err) {
     return next(err);
@@ -1450,27 +1706,40 @@ app.get("/sitemap.xml", (req, res) => {
       ? `${req.protocol}://${host}`
       : publicBaseUrl || "http://localhost:3000";
     const allowedNiches = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
-      ? tenant.catalog.nicheCategorySlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.nicheCategorySlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
     const allowedProductTypes = Array.isArray(tenant?.catalog?.productTypeSlugs)
-      ? tenant.catalog.productTypeSlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.productTypeSlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
     const productsData = loadProductsData();
     const productUrls = (productsData.list || [])
       .filter((p) => String(p?.tenant_id || "default") === activeTenantId)
       .filter((p) => {
         if (!allowedNiches) return true;
-        return allowedNiches.includes(String(p?.nicheCategory?.slug || "").toLowerCase());
+        return allowedNiches.includes(
+          String(p?.nicheCategory?.slug || "").toLowerCase(),
+        );
       })
       .filter((p) => {
         if (!allowedProductTypes) return true;
-        return allowedProductTypes.includes(String(p?.productType?.slug || "").toLowerCase());
+        return allowedProductTypes.includes(
+          String(p?.productType?.slug || "").toLowerCase(),
+        );
       })
       .map((p) => {
-        const canonicalPath = String(p?.seo?.canonicalPath || "/").replace(/^\/+/, "/");
+        const canonicalPath = String(p?.seo?.canonicalPath || "/").replace(
+          /^\/+/,
+          "/",
+        );
         const loc = `${baseUrl}${canonicalPath}`;
         const lastmod = String(p?.updatedAt || p?.createdAt || "").slice(0, 10);
-        const lastmodXml = lastmod ? `<lastmod>${xmlEscape(lastmod)}</lastmod>` : "";
+        const lastmodXml = lastmod
+          ? `<lastmod>${xmlEscape(lastmod)}</lastmod>`
+          : "";
         return `  <url><loc>${xmlEscape(loc)}</loc><changefreq>weekly</changefreq><priority>0.8</priority>${lastmodXml}</url>`;
       })
       .join("\n");
@@ -1537,7 +1806,11 @@ app.post("/checkout/cancel", express.json(), async (req, res) => {
     if (updated) {
       await dbQuery(
         "INSERT INTO order_events (order_id, type, data) SELECT $1, $2, $3::jsonb WHERE NOT EXISTS (SELECT 1 FROM order_events WHERE order_id = $1 AND type = $2)",
-        [orderId, "checkout_cancelled", JSON.stringify({ at: new Date().toISOString() })],
+        [
+          orderId,
+          "checkout_cancelled",
+          JSON.stringify({ at: new Date().toISOString() }),
+        ],
       );
     }
 
@@ -1561,7 +1834,11 @@ app.get("/checkout/cancel", async (req, res) => {
       if (updated) {
         await dbQuery(
           "INSERT INTO order_events (order_id, type, data) SELECT $1, $2, $3::jsonb WHERE NOT EXISTS (SELECT 1 FROM order_events WHERE order_id = $1 AND type = $2)",
-          [orderId, "checkout_cancelled", JSON.stringify({ at: new Date().toISOString() })],
+          [
+            orderId,
+            "checkout_cancelled",
+            JSON.stringify({ at: new Date().toISOString() }),
+          ],
         );
       }
     }
@@ -1583,9 +1860,15 @@ app.get("/admin/env", (req, res) => {
     has: {
       adminApiKey: Boolean(String(process.env.ADMIN_API_KEY || "").trim()),
       databaseUrl: Boolean(String(process.env.DATABASE_URL || "").trim()),
-      stripeSecretKey: Boolean(String(process.env.STRIPE_SECRET_KEY || "").trim()),
-      stripePublishableKey: Boolean(String(process.env.STRIPE_PUBLISHABLE_KEY || "").trim()),
-      stripeWebhookSecret: Boolean(String(process.env.STRIPE_WEBHOOK_SECRET || "").trim()),
+      stripeSecretKey: Boolean(
+        String(process.env.STRIPE_SECRET_KEY || "").trim(),
+      ),
+      stripePublishableKey: Boolean(
+        String(process.env.STRIPE_PUBLISHABLE_KEY || "").trim(),
+      ),
+      stripeWebhookSecret: Boolean(
+        String(process.env.STRIPE_WEBHOOK_SECRET || "").trim(),
+      ),
     },
   });
 });
@@ -1610,7 +1893,11 @@ app.post("/admin/run-import", (req, res) => {
 
     const queuePath = path.join(__dirname, "data", "import_queue.json");
     const auditPath = path.join(__dirname, "data", "import_audit.json");
-    const feedPath = path.join(__dirname, "data", "placeholder_supplier_feed.json");
+    const feedPath = path.join(
+      __dirname,
+      "data",
+      "placeholder_supplier_feed.json",
+    );
     const draftsPath = path.join(__dirname, "data", "drafts.json");
     const productsPath = path.join(__dirname, "data", "products.json");
 
@@ -1619,8 +1906,14 @@ app.post("/admin/run-import", (req, res) => {
       createdAt: new Date().toISOString(),
       queue: [],
     });
-    const auditData = safeReadJsonFile(auditPath, { schemaVersion: 1, events: [] });
-    const feedData = safeReadJsonFile(feedPath, { schemaVersion: 1, items: [] });
+    const auditData = safeReadJsonFile(auditPath, {
+      schemaVersion: 1,
+      events: [],
+    });
+    const feedData = safeReadJsonFile(feedPath, {
+      schemaVersion: 1,
+      items: [],
+    });
     const draftsData = safeReadJsonFile(draftsPath, {
       schemaVersion: 1,
       generatedAt: new Date().toISOString(),
@@ -1646,12 +1939,20 @@ app.post("/admin/run-import", (req, res) => {
 
     const feedItems = Array.isArray(feedData?.items) ? feedData.items : [];
 
-    const beforeCount = Array.isArray(productsData?.products) ? productsData.products.length : 0;
-    const products = Array.isArray(productsData?.products) ? productsData.products : [];
+    const beforeCount = Array.isArray(productsData?.products)
+      ? productsData.products.length
+      : 0;
+    const products = Array.isArray(productsData?.products)
+      ? productsData.products
+      : [];
     const drafts = Array.isArray(draftsData?.drafts) ? draftsData.drafts : [];
 
-    const autoPublishMinScore = Number(process.env.AUTO_PUBLISH_MIN_SCORE || 85);
-    const minScore = Number.isFinite(autoPublishMinScore) ? autoPublishMinScore : 85;
+    const autoPublishMinScore = Number(
+      process.env.AUTO_PUBLISH_MIN_SCORE || 85,
+    );
+    const minScore = Number.isFinite(autoPublishMinScore)
+      ? autoPublishMinScore
+      : 85;
 
     let imported = 0;
     let published = 0;
@@ -1659,14 +1960,22 @@ app.post("/admin/run-import", (req, res) => {
 
     for (const rawItem of feedItems) {
       try {
-        const nextProduct = buildProductFromSupplierItem(rawItem, activeTenantId);
+        const nextProduct = buildProductFromSupplierItem(
+          rawItem,
+          activeTenantId,
+        );
 
-        const duplicateOfProductId = findDuplicateProductId({ products, nextProduct });
+        const duplicateOfProductId = findDuplicateProductId({
+          products,
+          nextProduct,
+        });
         const isDuplicate = Boolean(duplicateOfProductId);
 
         const { score, reasons } = scoreDraftProduct(nextProduct);
         if (isDuplicate) {
-          reasons.push(`Duplicate of existing productId: ${duplicateOfProductId}`);
+          reasons.push(
+            `Duplicate of existing productId: ${duplicateOfProductId}`,
+          );
         }
         const draftEntry = {
           draftId: `draft-${String(nextProduct.productId)}`,
@@ -1678,7 +1987,11 @@ app.post("/admin/run-import", (req, res) => {
           },
           score,
           reasons,
-          status: isDuplicate ? "duplicate" : score >= minScore ? "auto_published" : "draft",
+          status: isDuplicate
+            ? "duplicate"
+            : score >= minScore
+              ? "auto_published"
+              : "draft",
           product: nextProduct,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
@@ -1726,7 +2039,8 @@ app.post("/admin/run-import", (req, res) => {
     productsData.generatedAt = new Date().toISOString();
     safeWriteJsonFile(productsPath, productsData);
 
-    pendingJob.status = errors.length > 0 ? "completed_with_errors" : "completed";
+    pendingJob.status =
+      errors.length > 0 ? "completed_with_errors" : "completed";
     pendingJob.completedAt = new Date().toISOString();
     pendingJob.result = {
       imported,
@@ -1753,7 +2067,9 @@ app.post("/admin/run-import", (req, res) => {
 
     return res.json({ ok: true, job: pendingJob });
   } catch (err) {
-    return res.status(500).json({ error: String(err?.message || "Import failed") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Import failed") });
   }
 });
 
@@ -1784,12 +2100,19 @@ app.post("/admin/unpublish-product", (req, res) => {
       generatedAt: new Date().toISOString(),
       drafts: [],
     });
-    const auditData = safeReadJsonFile(auditPath, { schemaVersion: 1, events: [] });
+    const auditData = safeReadJsonFile(auditPath, {
+      schemaVersion: 1,
+      events: [],
+    });
 
-    const products = Array.isArray(productsData?.products) ? productsData.products : [];
+    const products = Array.isArray(productsData?.products)
+      ? productsData.products
+      : [];
     const drafts = Array.isArray(draftsData?.drafts) ? draftsData.drafts : [];
 
-    const existingProduct = products.find((p) => String(p?.productId || "") === productId);
+    const existingProduct = products.find(
+      (p) => String(p?.productId || "") === productId,
+    );
     if (!existingProduct) {
       return res.status(404).json({ error: "Product not found" });
     }
@@ -1798,12 +2121,16 @@ app.post("/admin/unpublish-product", (req, res) => {
       return res.status(404).json({ error: "Product not found" });
     }
 
-    const nextProducts = products.filter((p) => String(p?.productId || "") !== productId);
+    const nextProducts = products.filter(
+      (p) => String(p?.productId || "") !== productId,
+    );
     productsData.products = nextProducts;
     productsData.generatedAt = new Date().toISOString();
     safeWriteJsonFile(productsPath, productsData);
 
-    const draftIndex = drafts.findIndex((d) => String(d?.productId || "") === productId);
+    const draftIndex = drafts.findIndex(
+      (d) => String(d?.productId || "") === productId,
+    );
     if (draftIndex >= 0) {
       const prev = drafts[draftIndex] || {};
       drafts[draftIndex] = {
@@ -1865,12 +2192,19 @@ app.post("/admin/publish-draft", (req, res) => {
       generatedAt: new Date().toISOString(),
       products: [],
     });
-    const auditData = safeReadJsonFile(auditPath, { schemaVersion: 1, events: [] });
+    const auditData = safeReadJsonFile(auditPath, {
+      schemaVersion: 1,
+      events: [],
+    });
 
     const drafts = Array.isArray(draftsData?.drafts) ? draftsData.drafts : [];
-    const products = Array.isArray(productsData?.products) ? productsData.products : [];
+    const products = Array.isArray(productsData?.products)
+      ? productsData.products
+      : [];
 
-    const draftIndex = drafts.findIndex((d) => String(d?.productId || "") === productId);
+    const draftIndex = drafts.findIndex(
+      (d) => String(d?.productId || "") === productId,
+    );
     if (draftIndex < 0) {
       return res.status(404).json({ error: "Draft not found" });
     }
@@ -1881,22 +2215,39 @@ app.post("/admin/publish-draft", (req, res) => {
     }
 
     if (String(draft?.status || "") === "duplicate") {
-      return res.status(400).json({ error: "Draft is marked as duplicate", reasons: draft?.reasons || [] });
+      return res
+        .status(400)
+        .json({
+          error: "Draft is marked as duplicate",
+          reasons: draft?.reasons || [],
+        });
     }
 
-    const draftProduct = draft?.product && typeof draft.product === "object" ? draft.product : null;
+    const draftProduct =
+      draft?.product && typeof draft.product === "object"
+        ? draft.product
+        : null;
     if (!draftProduct) {
       return res.status(400).json({ error: "Draft has no product data" });
     }
 
     const { score, reasons } = scoreDraftProduct(draftProduct);
-    const autoPublishMinScore = Number(process.env.AUTO_PUBLISH_MIN_SCORE || 85);
-    const minScore = Number.isFinite(autoPublishMinScore) ? autoPublishMinScore : 85;
+    const autoPublishMinScore = Number(
+      process.env.AUTO_PUBLISH_MIN_SCORE || 85,
+    );
+    const minScore = Number.isFinite(autoPublishMinScore)
+      ? autoPublishMinScore
+      : 85;
 
-    const duplicateOfProductId = findDuplicateProductId({ products, nextProduct: draftProduct });
+    const duplicateOfProductId = findDuplicateProductId({
+      products,
+      nextProduct: draftProduct,
+    });
     if (duplicateOfProductId && duplicateOfProductId !== productId) {
       reasons.push(`Duplicate of existing productId: ${duplicateOfProductId}`);
-      return res.status(400).json({ error: "Duplicate product detected", score, reasons });
+      return res
+        .status(400)
+        .json({ error: "Duplicate product detected", score, reasons });
     }
 
     if (score < minScore) {
@@ -1908,7 +2259,9 @@ app.post("/admin/publish-draft", (req, res) => {
       });
     }
 
-    const existingIndex = products.findIndex((p) => String(p?.productId || "") === productId);
+    const existingIndex = products.findIndex(
+      (p) => String(p?.productId || "") === productId,
+    );
     if (existingIndex >= 0) {
       products[existingIndex] = {
         ...products[existingIndex],
@@ -1948,7 +2301,9 @@ app.post("/admin/publish-draft", (req, res) => {
 
     return res.json({ ok: true, published: productId, score });
   } catch (err) {
-    return res.status(500).json({ error: String(err?.message || "Failed to publish draft") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to publish draft") });
   }
 });
 
@@ -1984,7 +2339,9 @@ app.get("/product.html", (req, res) => {
     }
 
     if (allowedNiches && allowedNiches.length > 0) {
-      const nicheSlug = String(product?.nicheCategory?.slug || "").toLowerCase();
+      const nicheSlug = String(
+        product?.nicheCategory?.slug || "",
+      ).toLowerCase();
       if (!allowedNiches.includes(nicheSlug)) {
         return res.status(404).type("text/plain").send("Not found");
       }
@@ -2010,14 +2367,21 @@ app.get("/product.html", (req, res) => {
 
 app.get("/api/tenant", (req, res) => {
   const tenant = resolveTenantFromRequest(req);
-  const catalog = tenant?.catalog && typeof tenant.catalog === "object" ? tenant.catalog : null;
+  const catalog =
+    tenant?.catalog && typeof tenant.catalog === "object"
+      ? tenant.catalog
+      : null;
   const seo = tenant?.seo && typeof tenant.seo === "object" ? tenant.seo : null;
-  const offers = tenant?.offers && typeof tenant.offers === "object" ? tenant.offers : null;
+  const offers =
+    tenant?.offers && typeof tenant.offers === "object" ? tenant.offers : null;
+  const media =
+    tenant?.media && typeof tenant.media === "object" ? tenant.media : null;
   const rawPaymentMethods = String(process.env.STRIPE_PAYMENT_METHODS || "card")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean);
-  const paymentMethods = rawPaymentMethods.length > 0 ? rawPaymentMethods : ["card"];
+  const paymentMethods =
+    rawPaymentMethods.length > 0 ? rawPaymentMethods : ["card"];
   return res.json({
     tenant_id: String(tenant.tenant_id || "default"),
     currency: String(tenant.currency || ""),
@@ -2025,6 +2389,7 @@ app.get("/api/tenant", (req, res) => {
     catalog,
     seo,
     offers,
+    media,
     payment_methods: paymentMethods,
   });
 });
@@ -2041,7 +2406,10 @@ app.get("/api/shipping-estimate", (req, res) => {
 
     const { byId } = loadProductsData();
     const product = byId.get(id);
-    if (!product || String(product?.tenant_id || "default") !== activeTenantId) {
+    if (
+      !product ||
+      String(product?.tenant_id || "default") !== activeTenantId
+    ) {
       return res.status(404).json({ error: "Not found" });
     }
 
@@ -2065,14 +2433,20 @@ app.get("/api/shipping-estimate", (req, res) => {
 app.get("/api/free-shipping-progress", (req, res) => {
   try {
     const tenant = resolveTenantFromRequest(req);
-    const thresholdMinor = Number(tenant?.offers?.freeShipping?.thresholdMinor) || 0;
+    const thresholdMinor =
+      Number(tenant?.offers?.freeShipping?.thresholdMinor) || 0;
     const currency = String(tenant?.currency || "GBP").toUpperCase();
     const subtotalMinor = Number(req.query?.subtotal) || 0;
 
-    const progress = freeShippingProgress(subtotalMinor, { thresholdMinor, currency });
+    const progress = freeShippingProgress(subtotalMinor, {
+      thresholdMinor,
+      currency,
+    });
     return res.json(progress);
   } catch {
-    return res.status(500).json({ error: "Failed to compute free-shipping progress" });
+    return res
+      .status(500)
+      .json({ error: "Failed to compute free-shipping progress" });
   }
 });
 
@@ -2100,23 +2474,32 @@ app.get("/api/related-products", (req, res) => {
       (p) => String(p?.tenant_id || "default") === activeTenantId,
     );
 
-    const related = relatedProducts(target, tenantCatalog, { limit }).map((p) => {
-      const image = Array.isArray(p?.images) ? p.images[0] : p?.images;
-      return {
-        productId: String(p?.productId || ""),
-        title: String(p?.title || ""),
-        canonicalPath: String(p?.seo?.canonicalPath || ""),
-        image: image?.src ? { src: String(image.src), alt: String(image.alt || "") } : null,
-        price:
-          p?.price && Number.isInteger(p.price.amount)
-            ? { amount: p.price.amount, currency: String(p.price.currency || "") }
+    const related = relatedProducts(target, tenantCatalog, { limit }).map(
+      (p) => {
+        const image = Array.isArray(p?.images) ? p.images[0] : p?.images;
+        return {
+          productId: String(p?.productId || ""),
+          title: String(p?.title || ""),
+          canonicalPath: String(p?.seo?.canonicalPath || ""),
+          image: image?.src
+            ? { src: String(image.src), alt: String(image.alt || "") }
             : null,
-      };
-    });
+          price:
+            p?.price && Number.isInteger(p.price.amount)
+              ? {
+                  amount: p.price.amount,
+                  currency: String(p.price.currency || ""),
+                }
+              : null,
+        };
+      },
+    );
 
     return res.json({ tenant_id: activeTenantId, productId: id, related });
   } catch {
-    return res.status(500).json({ error: "Failed to resolve related products" });
+    return res
+      .status(500)
+      .json({ error: "Failed to resolve related products" });
   }
 });
 
@@ -2127,7 +2510,8 @@ app.post("/api/capture-email", async (req, res) => {
     const email = normalizeEmail(req.body?.email);
     const cart = Array.isArray(req.body?.cart) ? req.body.cart : [];
     const currency = String(tenant?.currency || "").toLowerCase() || null;
-    const utm = req.body?.utm && typeof req.body.utm === "object" ? req.body.utm : {};
+    const utm =
+      req.body?.utm && typeof req.body.utm === "object" ? req.body.utm : {};
     const clean = (v) => String(v || "").trim() || null;
 
     if (!email) {
@@ -2141,7 +2525,9 @@ app.post("/api/capture-email", async (req, res) => {
       "INSERT INTO cart_emails (tenant_id, email, cart) VALUES ($1, $2, $3::jsonb) RETURNING id",
       [tenantId, email, JSON.stringify(cart)],
     );
-    const cartEmailId = Array.isArray(captured?.rows) ? captured.rows[0]?.id : null;
+    const cartEmailId = Array.isArray(captured?.rows)
+      ? captured.rows[0]?.id
+      : null;
 
     // Data-stitch: upsert the single-customer-view record (first-touch UTM kept)
     // and log a unified funnel event tied to this capture.
@@ -2177,10 +2563,14 @@ app.get("/api/health", (req, res) => {
     const activeTenantId = String(tenant?.tenant_id || "default");
 
     const allowedNiches = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
-      ? tenant.catalog.nicheCategorySlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.nicheCategorySlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
     const allowedProductTypes = Array.isArray(tenant?.catalog?.productTypeSlugs)
-      ? tenant.catalog.productTypeSlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.productTypeSlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
 
     let productsData = { list: [], generatedAt: "" };
@@ -2206,7 +2596,8 @@ app.get("/api/health", (req, res) => {
             return allowedNiches.includes(slug);
           })
           .filter((p) => {
-            if (!allowedProductTypes || allowedProductTypes.length === 0) return true;
+            if (!allowedProductTypes || allowedProductTypes.length === 0)
+              return true;
             const slug = String(p?.productType?.slug || "").toLowerCase();
             return allowedProductTypes.includes(slug);
           })
@@ -2272,10 +2663,14 @@ app.get("/sitemap.xml", (req, res) => {
     const baseUrl = getBaseUrl(req);
 
     const allowedNiches = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
-      ? tenant.catalog.nicheCategorySlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.nicheCategorySlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
     const allowedProductTypes = Array.isArray(tenant?.catalog?.productTypeSlugs)
-      ? tenant.catalog.productTypeSlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.productTypeSlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
 
     let productsData = { list: [], generatedAt: "" };
@@ -2309,7 +2704,8 @@ app.get("/sitemap.xml", (req, res) => {
             return allowedNiches.includes(slug);
           })
           .filter((p) => {
-            if (!allowedProductTypes || allowedProductTypes.length === 0) return true;
+            if (!allowedProductTypes || allowedProductTypes.length === 0)
+              return true;
             const slug = String(p?.productType?.slug || "").toLowerCase();
             return allowedProductTypes.includes(slug);
           })
@@ -2328,12 +2724,15 @@ app.get("/sitemap.xml", (req, res) => {
       .filter(Boolean)
       .map((u) => {
         const loc = xmlEscape(`${baseUrl}${u}`);
-        const lastmodTag = lastmod ? `<lastmod>${xmlEscape(lastmod)}</lastmod>` : "";
+        const lastmodTag = lastmod
+          ? `<lastmod>${xmlEscape(lastmod)}</lastmod>`
+          : "";
         return `<url><loc>${loc}</loc>${lastmodTag}</url>`;
       })
       .join("");
 
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>` +
+    const xml =
+      `<?xml version="1.0" encoding="UTF-8"?>` +
       `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${body}</urlset>`;
 
     res.setHeader("Content-Type", "application/xml; charset=utf-8");
@@ -2357,10 +2756,14 @@ app.get("/:nicheCategorySlug/:productSlug", (req, res, next) => {
     if (nicheCategorySlug.toLowerCase() === "admin") return next();
 
     const allowedNiches = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
-      ? tenant.catalog.nicheCategorySlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.nicheCategorySlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
     const allowedProductTypes = Array.isArray(tenant?.catalog?.productTypeSlugs)
-      ? tenant.catalog.productTypeSlugs.map((s) => String(s || "").toLowerCase())
+      ? tenant.catalog.productTypeSlugs.map((s) =>
+          String(s || "").toLowerCase(),
+        )
       : null;
     if (
       allowedNiches &&
@@ -2388,7 +2791,9 @@ app.get("/:nicheCategorySlug/:productSlug", (req, res, next) => {
       product &&
       allowedProductTypes &&
       allowedProductTypes.length > 0 &&
-      !allowedProductTypes.includes(String(product?.productType?.slug || "").toLowerCase())
+      !allowedProductTypes.includes(
+        String(product?.productType?.slug || "").toLowerCase(),
+      )
     ) {
       return res.status(404).type("text/plain").send("Not found");
     }
@@ -2464,7 +2869,9 @@ app.post("/admin/orders/cleanup-stale", async (req, res) => {
       [activeTenantId, "pending", String(minutes)],
     );
 
-    const orderIds = staleOrders.rows.map((r) => String(r?.order_id || "")).filter(Boolean);
+    const orderIds = staleOrders.rows
+      .map((r) => String(r?.order_id || ""))
+      .filter(Boolean);
     if (orderIds.length === 0) {
       return res.json({ ok: true, minutes, cleaned: 0, orderIds: [] });
     }
@@ -2482,7 +2889,9 @@ app.post("/admin/orders/cleanup-stale", async (req, res) => {
     return res.json({ ok: true, minutes, cleaned: orderIds.length, orderIds });
   } catch (err) {
     console.error("/admin/orders/cleanup-stale failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to cleanup orders") });
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to cleanup orders") });
   }
 });
 
@@ -2492,7 +2901,9 @@ app.get("/admin/reconcile", async (req, res) => {
 
   try {
     if (!stripe) {
-      return res.status(500).json({ error: "STRIPE_SECRET_KEY is not set on the server" });
+      return res
+        .status(500)
+        .json({ error: "STRIPE_SECRET_KEY is not set on the server" });
     }
 
     const tenant = resolveTenantFromRequest(req);
@@ -2545,20 +2956,26 @@ app.get("/admin/reconcile", async (req, res) => {
             : "";
       if (!paymentIntentId && piFromSession) {
         try {
-          stripePaymentIntent = await stripe.paymentIntents.retrieve(piFromSession);
+          stripePaymentIntent =
+            await stripe.paymentIntents.retrieve(piFromSession);
         } catch (err) {
           stripePaymentIntent = null;
-          stripePaymentIntentRetrieveError = String(err?.message || "Failed to retrieve payment intent");
+          stripePaymentIntentRetrieveError = String(
+            err?.message || "Failed to retrieve payment intent",
+          );
         }
       }
     }
 
     if (!stripePaymentIntent && paymentIntentId) {
       try {
-        stripePaymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+        stripePaymentIntent =
+          await stripe.paymentIntents.retrieve(paymentIntentId);
       } catch (err) {
         stripePaymentIntent = null;
-        stripePaymentIntentRetrieveError = String(err?.message || "Failed to retrieve payment intent");
+        stripePaymentIntentRetrieveError = String(
+          err?.message || "Failed to retrieve payment intent",
+        );
       }
     }
 
@@ -2589,7 +3006,9 @@ app.get("/admin/reconcile", async (req, res) => {
 
     const order = Array.isArray(orderResult?.rows) ? orderResult.rows[0] : null;
 
-    const stripeCurrency = String(stripeSession?.currency || stripePaymentIntent?.currency || "")
+    const stripeCurrency = String(
+      stripeSession?.currency || stripePaymentIntent?.currency || "",
+    )
       .toLowerCase()
       .trim();
     const stripeAmountTotal = Number.isInteger(stripeSession?.amount_total)
@@ -2601,23 +3020,34 @@ app.get("/admin/reconcile", async (req, res) => {
       stripeSession?.payment_status || stripePaymentIntent?.status || "",
     ).trim();
 
-    const dbCurrency = String(order?.currency || "").toLowerCase().trim();
-    const dbAmountTotal = Number.isInteger(order?.amount_total) ? order.amount_total : null;
+    const dbCurrency = String(order?.currency || "")
+      .toLowerCase()
+      .trim();
+    const dbAmountTotal = Number.isInteger(order?.amount_total)
+      ? order.amount_total
+      : null;
 
-    const dbPaymentIntentId = String(order?.stripe_payment_intent_id || "").trim();
+    const dbPaymentIntentId = String(
+      order?.stripe_payment_intent_id || "",
+    ).trim();
     const stripePaymentIntentId = String(stripePaymentIntent?.id || "").trim();
     const stripePaymentIntentIdFromSession = String(piFromSession || "").trim();
 
     const match = {
       foundOrder: Boolean(order?.order_id),
-      sessionId: Boolean(sessionId) && String(order?.stripe_checkout_session_id || "") === sessionId,
+      sessionId:
+        Boolean(sessionId) &&
+        String(order?.stripe_checkout_session_id || "") === sessionId,
       paymentIntentId:
         (Boolean(paymentIntentId) && dbPaymentIntentId === paymentIntentId) ||
         (Boolean(stripePaymentIntentIdFromSession) &&
           dbPaymentIntentId === stripePaymentIntentIdFromSession) ||
-        (Boolean(stripePaymentIntentId) && dbPaymentIntentId === stripePaymentIntentId),
+        (Boolean(stripePaymentIntentId) &&
+          dbPaymentIntentId === stripePaymentIntentId),
       currency:
-        Boolean(stripeCurrency) && Boolean(dbCurrency) && stripeCurrency === dbCurrency,
+        Boolean(stripeCurrency) &&
+        Boolean(dbCurrency) &&
+        stripeCurrency === dbCurrency,
       amountTotal:
         Number.isInteger(stripeAmountTotal) &&
         Number.isInteger(dbAmountTotal) &&
@@ -2641,7 +3071,9 @@ app.get("/admin/reconcile", async (req, res) => {
                 : null,
               currency: String(stripeSession.currency || "").toLowerCase(),
               payment_intent: piFromSession,
-              customer_email: String(stripeSession.customer_details?.email || ""),
+              customer_email: String(
+                stripeSession.customer_details?.email || "",
+              ),
             }
           : null,
         payment_intent: stripePaymentIntent
@@ -2651,7 +3083,9 @@ app.get("/admin/reconcile", async (req, res) => {
               amount: Number.isInteger(stripePaymentIntent.amount)
                 ? stripePaymentIntent.amount
                 : null,
-              currency: String(stripePaymentIntent.currency || "").toLowerCase(),
+              currency: String(
+                stripePaymentIntent.currency || "",
+              ).toLowerCase(),
             }
           : null,
         payment_intent_retrieve_error: stripePaymentIntentRetrieveError || null,
@@ -2689,7 +3123,11 @@ app.get("/admin/orders/:orderId", async (req, res) => {
       [orderId],
     );
 
-    return res.json({ ok: true, order: orderResult.rows[0], events: eventsResult.rows });
+    return res.json({
+      ok: true,
+      order: orderResult.rows[0],
+      events: eventsResult.rows,
+    });
   } catch (err) {
     console.error("/admin/orders/:orderId failed", err);
     return res
@@ -2706,13 +3144,17 @@ app.post("/admin/jobs/abandoned-recovery", async (req, res) => {
     const tenant = resolveTenantFromRequest(req);
     const activeTenantId = String(tenant?.tenant_id || "default");
 
-    const delayMinutesRaw = Number(req.query?.delay_minutes ?? req.body?.delay_minutes ?? 60);
+    const delayMinutesRaw = Number(
+      req.query?.delay_minutes ?? req.body?.delay_minutes ?? 60,
+    );
     const delayMinutes = Number.isFinite(delayMinutesRaw)
       ? Math.max(5, Math.min(60 * 24 * 7, Math.floor(delayMinutesRaw)))
       : 60;
 
     const limitRaw = Number(req.query?.limit ?? req.body?.limit ?? 50);
-    const limit = Number.isFinite(limitRaw) ? Math.max(1, Math.min(500, Math.floor(limitRaw))) : 50;
+    const limit = Number.isFinite(limitRaw)
+      ? Math.max(1, Math.min(500, Math.floor(limitRaw)))
+      : 50;
 
     const eligible = await dbQuery(
       `SELECT o.order_id, o.customer_email, o.created_at, o.updated_at
@@ -2734,7 +3176,14 @@ app.post("/admin/jobs/abandoned-recovery", async (req, res) => {
 
     const rows = Array.isArray(eligible?.rows) ? eligible.rows : [];
     if (rows.length === 0) {
-      return res.json({ ok: true, delayMinutes, limit, attempted: 0, sent: 0, orderIds: [] });
+      return res.json({
+        ok: true,
+        delayMinutes,
+        limit,
+        attempted: 0,
+        sent: 0,
+        orderIds: [],
+      });
     }
 
     const orderIds = [];
@@ -2747,8 +3196,7 @@ app.post("/admin/jobs/abandoned-recovery", async (req, res) => {
       const draft = {
         to: email,
         subject: "Did you still want to complete your order?",
-        body:
-          "Looks like checkout didn’t complete. If you’d like help finishing your order, reply to this email and we’ll sort it.",
+        body: "Looks like checkout didn’t complete. If you’d like help finishing your order, reply to this email and we’ll sort it.",
       };
 
       console.log(
@@ -2771,10 +3219,21 @@ app.post("/admin/jobs/abandoned-recovery", async (req, res) => {
       );
     }
 
-    return res.json({ ok: true, delayMinutes, limit, attempted: orderIds.length, sent: orderIds.length, orderIds });
+    return res.json({
+      ok: true,
+      delayMinutes,
+      limit,
+      attempted: orderIds.length,
+      sent: orderIds.length,
+      orderIds,
+    });
   } catch (err) {
     console.error("/admin/jobs/abandoned-recovery failed", err);
-    return res.status(500).json({ error: String(err?.message || "Failed to run abandoned recovery") });
+    return res
+      .status(500)
+      .json({
+        error: String(err?.message || "Failed to run abandoned recovery"),
+      });
   }
 });
 
@@ -2804,21 +3263,31 @@ app.post("/create-checkout-session", async (req, res) => {
     const utmTerm = cleanUtm(utmObj?.utm_term);
 
     const rawCustomerEmail = String(customer_email || "").trim();
-    const customerEmail = rawCustomerEmail?.includes("@") ? rawCustomerEmail : "";
+    const customerEmail = rawCustomerEmail?.includes("@")
+      ? rawCustomerEmail
+      : "";
 
     const resolvedTenant = resolveTenantFromRequest(req);
     const resolvedTenantId = String(resolvedTenant?.tenant_id || "default");
-    const expectedCurrency = String(resolvedTenant?.currency || "").toLowerCase();
+    const expectedCurrency = String(
+      resolvedTenant?.currency || "",
+    ).toLowerCase();
     if (!expectedCurrency) {
-      return res.status(400).json({ error: "Tenant currency is not configured" });
+      return res
+        .status(400)
+        .json({ error: "Tenant currency is not configured" });
     }
 
-    const allowedNiches = Array.isArray(resolvedTenant?.catalog?.nicheCategorySlugs)
+    const allowedNiches = Array.isArray(
+      resolvedTenant?.catalog?.nicheCategorySlugs,
+    )
       ? resolvedTenant.catalog.nicheCategorySlugs
           .map((s) => String(s || "").toLowerCase())
           .filter(Boolean)
       : null;
-    const allowedProductTypes = Array.isArray(resolvedTenant?.catalog?.productTypeSlugs)
+    const allowedProductTypes = Array.isArray(
+      resolvedTenant?.catalog?.productTypeSlugs,
+    )
       ? resolvedTenant.catalog.productTypeSlugs
           .map((s) => String(s || "").toLowerCase())
           .filter(Boolean)
@@ -2844,16 +3313,22 @@ app.post("/create-checkout-session", async (req, res) => {
       }
 
       if (allowedNiches && allowedNiches.length > 0) {
-        const nicheSlug = String(product?.nicheCategory?.slug || "").toLowerCase();
+        const nicheSlug = String(
+          product?.nicheCategory?.slug || "",
+        ).toLowerCase();
         if (!allowedNiches.includes(nicheSlug)) {
-          throw new Error(`Product not available for tenant catalog: ${productId}`);
+          throw new Error(
+            `Product not available for tenant catalog: ${productId}`,
+          );
         }
       }
 
       if (allowedProductTypes && allowedProductTypes.length > 0) {
         const typeSlug = String(product?.productType?.slug || "").toLowerCase();
         if (!allowedProductTypes.includes(typeSlug)) {
-          throw new Error(`Product not available for tenant catalog: ${productId}`);
+          throw new Error(
+            `Product not available for tenant catalog: ${productId}`,
+          );
         }
       }
 
@@ -2897,7 +3372,8 @@ app.post("/create-checkout-session", async (req, res) => {
     });
 
     const amountSubtotal = normalizedItems.reduce(
-      (sum, it) => sum + (Number(it?.unitAmount) || 0) * (Number(it?.quantity) || 0),
+      (sum, it) =>
+        sum + (Number(it?.unitAmount) || 0) * (Number(it?.quantity) || 0),
       0,
     );
     const amountTotal = amountSubtotal;
@@ -2942,11 +3418,14 @@ app.post("/create-checkout-session", async (req, res) => {
       ],
     );
 
-    const rawPaymentMethods = String(process.env.STRIPE_PAYMENT_METHODS || "card")
+    const rawPaymentMethods = String(
+      process.env.STRIPE_PAYMENT_METHODS || "card",
+    )
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
-    const paymentMethodTypes = rawPaymentMethods.length > 0 ? rawPaymentMethods : ["card"];
+    const paymentMethodTypes =
+      rawPaymentMethods.length > 0 ? rawPaymentMethods : ["card"];
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -2974,7 +3453,11 @@ app.post("/create-checkout-session", async (req, res) => {
     );
     await dbQuery(
       "INSERT INTO order_events (order_id, type, data) VALUES ($1, $2, $3::jsonb)",
-      [orderId, "stripe_session_created", JSON.stringify({ sessionId: String(session?.id || "") })],
+      [
+        orderId,
+        "stripe_session_created",
+        JSON.stringify({ sessionId: String(session?.id || "") }),
+      ],
     );
 
     return res.json({ sessionUrl: session.url });
@@ -3002,7 +3485,9 @@ app.post("/create-checkout-session", async (req, res) => {
       "Tenant mismatch for checkout session",
     ];
 
-    const isClientError = clientErrorPrefixes.some((p) => message.startsWith(p));
+    const isClientError = clientErrorPrefixes.some((p) =>
+      message.startsWith(p),
+    );
     if (isClientError) {
       return res.status(400).json({ error: message });
     }

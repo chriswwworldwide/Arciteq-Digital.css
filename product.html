@@ -34,12 +34,7 @@
       gtag("config", "G‑XXXXXXX");
     </script>
 
-    <!-- ✅ Theme system -->
-    <link rel="stylesheet" data-theme href="/themes/default.css" />
-    <script type="module" src="/js/theme-switcher.js"></script>
-
-    <!-- ✅ Fallback CSS -->
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles/styles.css" />
 
     <!-- Shared premium template (single source of truth) -->
     <link rel="stylesheet" href="/styles/premium.css" />
@@ -200,6 +195,11 @@
         <h1 id="product-name">Loading Product…</h1>
 
         <picture id="product-image" aria-hidden="true"></picture>
+
+        <div
+          id="product-video"
+          style="max-width: 560px; margin: 14px auto 0"
+        ></div>
 
         <p id="product-description"></p>
         <p id="product-price"></p>
@@ -1066,6 +1066,22 @@
                 { once: true },
               );
             }
+          }
+
+          // Product video apparatus: render a lazy, schema-marked clip when
+          // product.video.src is set; otherwise the mount stays empty.
+          try {
+            const vcfg = product?.video;
+            if (vcfg && vcfg.src && globalThis.pawRenderVideoSlot) {
+              globalThis.pawRenderVideoSlot("product-video", vcfg, {
+                name: vcfg.name || title,
+                description:
+                  vcfg.description || String(product?.description || ""),
+                uploadDate: vcfg.uploadDate,
+              });
+            }
+          } catch {
+            /* no video → leave the mount empty */
           }
         } catch (err) {
           console.error("🛑 Error loading product:", err);

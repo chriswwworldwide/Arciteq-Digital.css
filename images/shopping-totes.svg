@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 46" role="img" aria-label="Shopping totes">
+  <!-- Three overlapping totes in soft pastels: blue, yellow, pink -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- back: powder blue -->
+    <g transform="translate(4 8)">
+      <path d="M5 8 v-2 a5 5 0 0 1 10 0 v2" fill="none" stroke="#7fb0d0" stroke-width="1.6"/>
+      <rect x="0" y="8" width="20" height="20" rx="3.2" fill="#bcd9ec" stroke="#7fb0d0" stroke-width="1.6"/>
+    </g>
+    <!-- middle: butter yellow -->
+    <g transform="translate(22 4)">
+      <path d="M5 8 v-2 a5 5 0 0 1 10 0 v2" fill="none" stroke="#d8b85a" stroke-width="1.6"/>
+      <rect x="0" y="8" width="20" height="20" rx="3.2" fill="#f5df9b" stroke="#d8b85a" stroke-width="1.6"/>
+    </g>
+    <!-- front: soft pink -->
+    <g transform="translate(38 10)">
+      <path d="M5 8 v-2 a5 5 0 0 1 10 0 v2" fill="none" stroke="#dd93a6" stroke-width="1.6"/>
+      <rect x="0" y="8" width="20" height="20" rx="3.2" fill="#f7c6d0" stroke="#dd93a6" stroke-width="1.6"/>
+    </g>
+  </g>
+</svg>

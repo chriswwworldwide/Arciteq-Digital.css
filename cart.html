@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping Bag</title>
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="/styles/premium.css" />
+    <script src="/styles/premium.js" defer></script>
     <style>
       header {
         max-width: 1200px;
@@ -111,23 +113,105 @@
   <body>
     <div id="header-mount" data-title="Your Shopping Bag"></div>
     <main>
-      <h2>Items in Your Shopping Bag</h2>
-      <div id="cart-items"></div>
-      <p id="cart-total">Subtotal:
-        0.00
-        EUR
-      </p>
-      <div id="cart-shipping-progress" style="margin:12px 0;"></div>
-      <div id="trust-strip" style="margin:12px 0;"></div>
-      <div id="cart-addons" style="margin:12px 0;"></div>
-      <div style="margin:16px 0;max-width:520px;">
-        <label for="customer-email" style="display:block;font-weight:600;margin-bottom:6px;">Email for receipt & updates</label>
-        <input id="customer-email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" style="width:100%;padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px;" />
-        <div style="margin-top:6px;font-size:0.92rem;color:#4b5563;line-height:1.35;">We’ll use this for your receipt and to help recover your order if checkout is interrupted.</div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin: 8px 0 20px;
+        "
+      >
+        <img
+          src="/images/shopping-totes.svg"
+          alt=""
+          width="84"
+          height="58"
+          decoding="async"
+        />
+        <div>
+          <span class="eyebrow">Your bag</span>
+          <h2 style="margin: 0">Items in Your Shopping Bag</h2>
+        </div>
       </div>
-      <div style="position:sticky;bottom:0;z-index:10;background:#ffffff;padding:12px 0;">
-        <button id="checkout-btn" type="button" onclick="checkout()" style="padding:14px 16px;border:1px solid #111827;border-radius:12px;background:#111827;color:#ffffff;font-weight:800;cursor:pointer;min-width:180px;">Checkout</button>
-        <button id="clear-cart" type="button" onclick="clearCart()" style="padding:14px 16px;border:1px solid #d1d5db;border-radius:12px;background:#ffffff;color:#111827;font-weight:700;cursor:pointer;margin-left:10px;">Clear cart</button>
+      <div id="cart-items"></div>
+      <p id="cart-total">Subtotal: 0.00 EUR</p>
+      <div id="cart-shipping-progress" style="margin: 12px 0"></div>
+      <div id="trust-strip" style="margin: 12px 0"></div>
+      <div id="cart-addons" style="margin: 12px 0"></div>
+      <div style="margin: 16px 0; max-width: 520px">
+        <label
+          for="customer-email"
+          style="display: block; font-weight: 600; margin-bottom: 6px"
+          >Email for receipt & updates</label
+        >
+        <input
+          id="customer-email"
+          type="email"
+          inputmode="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+          style="
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+          "
+        />
+        <div
+          style="
+            margin-top: 6px;
+            font-size: 0.92rem;
+            color: #4b5563;
+            line-height: 1.35;
+          "
+        >
+          We’ll use this for your receipt and to help recover your order if
+          checkout is interrupted.
+        </div>
+      </div>
+      <div
+        style="
+          position: sticky;
+          bottom: 0;
+          z-index: 10;
+          background: #ffffff;
+          padding: 12px 0;
+        "
+      >
+        <button
+          id="checkout-btn"
+          type="button"
+          onclick="checkout()"
+          style="
+            padding: 14px 16px;
+            border: 1px solid #111827;
+            border-radius: 12px;
+            background: #111827;
+            color: #ffffff;
+            font-weight: 800;
+            cursor: pointer;
+            min-width: 180px;
+          "
+        >
+          Checkout
+        </button>
+        <button
+          id="clear-cart"
+          type="button"
+          onclick="clearCart()"
+          style="
+            padding: 14px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #111827;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: 10px;
+          "
+        >
+          Clear cart
+        </button>
       </div>
     </main>
     <script type="module" src="/script.js"></script>

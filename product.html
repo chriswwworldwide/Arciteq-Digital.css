@@ -16,7 +16,7 @@
     <!-- ✅ Security / Privacy -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self';"
+      content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; connect-src 'self';"
     />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
@@ -41,9 +41,13 @@
     <!-- ✅ Fallback CSS -->
     <link rel="stylesheet" href="/styles.css" />
 
+    <!-- Shared premium template (single source of truth) -->
+    <link rel="stylesheet" href="/styles/premium.css" />
+    <script src="/styles/premium.js" defer></script>
+
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: var(--font-body, Arial, sans-serif);
         margin: 0;
         padding: 0;
       }
@@ -170,12 +174,10 @@
       }
 
       .product-details button {
-        margin: 10px;
-        padding: 10px 20px;
+        margin: 10px 10px 10px 0;
+        padding: 11px 22px;
         font-size: 1em;
         cursor: pointer;
-        border: 0;
-        border-radius: 4px;
       }
 
       .notice {
@@ -201,8 +203,12 @@
 
         <p id="product-description"></p>
         <p id="product-price"></p>
-        <button id="add-to-cart" type="button">Add to Cart</button>
-        <button id="add-to-wishlist" type="button">Add to Wishlist</button>
+        <button id="add-to-cart" type="button" class="btn-primary">
+          Add to Cart
+        </button>
+        <button id="add-to-wishlist" type="button" class="btn-secondary">
+          Add to Wishlist
+        </button>
 
         <section id="trust" aria-label="Delivery and returns"></section>
 
@@ -337,6 +343,8 @@
             );
 
           const title = String(product?.title || "Product");
+          // Clean, aspirational title for on-page display (drops "(Demo)" etc).
+          const titleDisp = (globalThis.pawDisplayTitle || String)(title);
           const description = String(product?.description || "");
           const priceAmount = Number(product?.price?.amount || 0);
           const currency = String(product?.price?.currency || "").toUpperCase();
@@ -399,7 +407,7 @@
           };
 
           const brand = String(tenant?.seo?.brandName || "").trim();
-          document.title = `${esc(title)} | ${brand || "Shop"}`;
+          document.title = `${esc(titleDisp)} | ${brand || "Shop"}`;
 
           {
             const desc = String(description || "").trim();
@@ -432,7 +440,7 @@
 
             upsertMetaTag("property", "og:type", "product");
           }
-          document.getElementById("product-name").textContent = title;
+          document.getElementById("product-name").textContent = titleDisp;
           document.getElementById("product-description").textContent =
             description;
           document.getElementById("product-price").textContent =
@@ -541,7 +549,7 @@
               <span style="margin:0 8px;color:#6b7280;">/</span>
               <a href="${esc(categoryHref)}" style="color:inherit;text-decoration:none;">${esc(categoryName || "Shop")}</a>
               <span style="margin:0 8px;color:#6b7280;">/</span>
-              <span style="color:#111827;">${esc(title)}</span>
+              <span style="color:#111827;">${esc(titleDisp)}</span>
             `;
           }
 
@@ -585,7 +593,9 @@
                     .map((r) => {
                       const href = String(r?.canonicalPath || "");
                       if (!href) return "";
-                      const name = esc(String(r?.title || ""));
+                      const name = esc(
+                        (globalThis.pawDisplayTitle || String)(r?.title || ""),
+                      );
                       const imgSrc = String(r?.image?.src || "");
                       const imgAlt = esc(
                         String(r?.image?.alt || r?.title || ""),
@@ -602,7 +612,7 @@
                       const imgHtml =
                         imgSrc && !isDemoPlaceholder
                           ? `<img src="${esc(imgSrc)}" alt="${imgAlt}" loading="lazy" decoding="async" width="120" height="120" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:8px;" />`
-                          : `<div style="width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#6b7280;font-size:0.75rem;border-radius:8px;text-align:center;padding:6px;">Image coming soon</div>`;
+                          : `<div class="ph-mini" style="aspect-ratio:1/1;border-radius:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.6" cy="12" r="1.7"/><circle cx="9.6" cy="7.4" r="1.7"/><circle cx="14.4" cy="7.4" r="1.7"/><circle cx="18.4" cy="12" r="1.7"/><path d="M8 16.6c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6c0 1.9-1.7 2.9-4 2.9s-4-1-4-2.9Z"/></svg></div>`;
                       return `
                         <a href="${esc(href)}" style="flex:1 1 140px;min-width:140px;max-width:200px;color:inherit;text-decoration:none;">
                           ${imgHtml}
@@ -616,7 +626,7 @@
                   mount.innerHTML = `
                     <div style="margin:12px auto 0;max-width:680px;padding:16px;border:1px solid #e5e7eb;border-radius:12px;background:#ffffff;text-align:left;">
                       <div style="font-weight:700;">You may also like</div>
-                      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:14px;">
+                      <div style="margin-top:12px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:14px;">
                         ${cards}
                       </div>
                     </div>
@@ -968,7 +978,9 @@
               }
 
               if (typeof window.showNotice === "function") {
-                const name = String(product?.title || "this item");
+                const name = (globalThis.pawDisplayTitle || String)(
+                  product?.title || "this item",
+                );
                 window.showNotice(`Added ${name} to your cart.`, {
                   actionLabel: "Checkout",
                   onAction: () => {
@@ -1026,7 +1038,7 @@
           if (isDemoPlaceholder) {
             pic.classList.remove("is-landscape", "is-portrait");
             pic.innerHTML =
-              '<div style="width:100%;max-width:560px;height:360px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#374151;font-size:0.95rem;border-radius:10px;">Product image coming soon</div>';
+              '<div class="ph-tile" style="max-width:560px;border-radius:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:58px;height:58px;"><circle cx="5.6" cy="12" r="1.7"/><circle cx="9.6" cy="7.4" r="1.7"/><circle cx="14.4" cy="7.4" r="1.7"/><circle cx="18.4" cy="12" r="1.7"/><path d="M8 16.6c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6c0 1.9-1.7 2.9-4 2.9s-4-1-4-2.9Z"/></svg><span>Photography coming soon</span></div>';
           } else {
             pic.innerHTML = `
         <img src="${esc(src)}"

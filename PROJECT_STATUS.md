@@ -46,7 +46,9 @@ Operating model (for now):
 - Fulfilment is dropship (no staff). Overheads are mainly domains + hosting + payment processing fees + lightweight SaaS (e.g. email tool).
 
 ### Standing goal: fully data-stitch the site (single customer view)
+
 Every visitor/buyer should be tracked as one stitched record across the whole funnel, so we can measure real pick-up/profit and later plug marketing tools (Mailchimp first) straight in. This is now an active goal (previously parked under "Later"):
+
 - One `customers` record per person (per tenant) as the source of truth: email, first/last seen, order count + total spend, first-touch UTM, subscribe state.
 - A unified `email_events` timeline stitching `cart_captured` → `nudge_sent` → `order_completed`, so each nudge and each sale ties back to the same person and cart.
 - Link the currently-disconnected pieces: `cart_emails` (capture) and `orders` (Stripe webhook) share only an email today; add conversion attribution (`converted_at`, `converted_order_id`, which nudge won).
@@ -55,7 +57,9 @@ Every visitor/buyer should be tracked as one stitched record across the whole fu
 - Keep it privacy-safe and tenant-scoped so all 14 sites share one dashboard.
 
 ### Standing requirement: site-wide speed (no compromises)
+
 Everything on the site must feel instant — click-throughs, page loads, images, and video — across desktop and mobile, and this is a hard gate, not a nice-to-have. Build for speed without sacrificing features or trust:
+
 - Hold every page to the 2025 Core Web Vitals targets already in the rules: **LCP < 2.0s, CLS < 0.1, INP < 200ms**.
 - No feature ships if it regresses performance — performance is part of "done", checked before merge.
 - Techniques (add as blocks): responsive/lazy images (AVIF/WebP + width-based srcset), lazy-loaded + poster-first video (never autoplay heavy assets), route/click prefetch on intent (hover/touchstart), code-splitting and deferring non-critical JS, critical-CSS inlining, HTTP caching + CDN edge delivery, and font-display swap.
@@ -63,15 +67,63 @@ Everything on the site must feel instant — click-throughs, page loads, images,
 - Video specifically: adaptive/compressed sources, lazy mount, and schema markup — rich media must not cost us load speed.
 
 ### Standing goal (later): tiered rewards / loyalty programme
+
 Add a membership-style rewards ladder to drive signups, repeat purchases, and an owned audience:
+
 - **Bronze** — awarded on first signup when the customer subscribes and provides their email (unlocks personalised email blasts).
 - **Silver → Gold → Platinum → Black** — higher tiers earned by spend/orders/engagement, with escalating perks (free shipping, early access, bigger discounts, concierge).
 - Sits directly on top of the data-stitch `customers` record (spend/order totals already tracked there) and feeds the email tool (Mailchimp) for tier-based segmentation.
 - Keep it lightweight at first (no heavy account system); privacy-safe and tenant-scoped so all 14 sites can share the engine.
 
+### Standing goal (later): Breeders track (prestige + higher AOV)
+
+Add a trade/breeder tier to give the site real prestige and lift order value:
+
+- **Breeder's Starter Kit** — a curated multi-pet / bulk bundle SKU (e.g. whelping/new-litter comfort + monitoring essentials) using the existing bundle engine.
+- **Breeder bundles** — tiered bulk bundles (small cattery/kennel → professional breeder) with trade-appropriate pricing hooks (guardrailed dynamic pricing / trade discount, display-layer only — never a display↔charge mismatch).
+- **Breeders landing page** — dedicated trade positioning page: credibility/trust cues (quality control, safety, warehouse/dispatch), bulk value proposition, and a breeder application / trade-enquiry capture wired into the data-stitch (`customers` + `email_events`, tagged `segment=breeder`) so it feeds tiered email segmentation later.
+- Sits on the same catalog + data-stitch + email-provider seams already built; no new credentials required to scaffold. Real trade pricing/terms and any verification step are a later, user-gated decision.
+
+### Standing goal (later): Show Dog track + specialist/segment landing pages
+
+Mirror the Breeders track with a **Show Dog** landing page and, more broadly, treat specialist segments as first-class:
+
+- **Show Dog landing page** — speciality content + curated bundles + pro/specialist equipment (show grooming & conditioning, ring kit, transport/crates, coat care), value→premium ladder.
+- **Show Cat landing page** — cat shows are a real prestige scene (TICA/CFA/GCCF, "Supreme" shows): specialist content + bundles + kit (show grooming/coat conditioning, benching pens/show cages, transport carriers, calming aids for the show hall), value→premium ladder.
+- **Breeders page** gets the same specialist-equipment treatment (whelping, monitoring, bulk husbandry kit).
+- **Broaden beyond the pets themselves** — merchandise for _the people and the products they use_, not only the animals: a full range from **value to premium** (everyday shampoos/consumables → elite collars, leads, show equipment). Position clear "good / better / best" tiers per category.
+- Reuse the shared landing-page template + bundle engine + data-stitch (segment tags: `show`, `breeder`, `pro-groomer`, etc.) so each segment page is content + collection config, not bespoke code.
+- Real specialist SKUs, pricing and supplier sourcing are a later, user-gated decision; scaffold the pages, collections and bundles first.
+
+### Standing goal (later): more audience landing pages (dog walkers, pet sitters, multi-pet)
+
+Extend the segment-landing-page engine to more real-world audiences, each with tailored content + bundles:
+
+- **Dog Walkers** — pro kit for people walking multiple/other people's dogs (multi-lead systems, hi-vis/night-walk safety, waste/hygiene, weatherproofing, GPS/ID).
+- **Pet Sitters** — kit for looking after clients' pets (monitoring cameras, feeding/scheduling aids, calming, safety/containment, handover checklists).
+- **Multi-Pet Harmony (cats + dogs together)** — products that reduce conflict and encourage safe co-existence and mutual play/engagement (separate feeding stations, high perches/escape routes for cats, gates/zoning, scent-neutral introductions, interactive/co-play toys, calming aids).
+- Same pattern as Breeders/Show Dog: shared landing template + bundle engine + data-stitch segment tags (`dog-walker`, `pet-sitter`, `multi-pet`), value→premium tiers, enquiry/email capture. Content + collections, not bespoke code.
+
 Direction note:
 
 - We have pivoted away from the “mini‑Amazon” framing. The target experience is curated (limited, quality-controlled catalog), trust-first (clear safety/fit/shipping/returns), and automation-first (dashboards + guardrails so it runs with minimal day-to-day involvement).
+
+## Visual system (current direction)
+
+The storefront's look is driven by ONE shared template so changes cascade site-wide:
+
+- **`styles/premium.css`** — design tokens + component styles (fonts, palette, spacing/framing, buttons, cards). Every page links it; edit here to restyle the whole site.
+- **`styles/premium.js`** — progressive enhancement only: `pawObserveReveals` (staggered scroll reveal) and `pawDisplayTitle` (strips functional `(Demo)`/`(Placeholder)` tags from displayed product names).
+
+Design decisions (2026-08, after a full reset from a blank slate — the earlier Fraunces/warm-paper/teal-amber/paw-burst "premium" system was discarded):
+
+- **Neutral base** — system font stack, greyscale ink/paper palette, clean framing tokens. Simple and elegant, not "functional".
+- **Single accent — oxblood red** (`--accent: #9b3b32`, `--accent-600`, `--accent-100`). Used sparingly: primary buttons, button-outline hovers, links, kicker/eyebrow labels. Re-tint the whole site by swapping those three tokens.
+- **Buttons** — clean white/outline with a hint of shadow; primary = solid oxblood fill.
+- **Homepage hero** — responsive two-column: copy + a framed pet photo (`/images/hero-pet.jpg`, hairline border + soft drop shadow). Photo is a self-hosted, license-safe placeholder → swap for real photography later.
+- **Hero motion** — the photo slides in from the right + fades in once on load (GPU transform/opacity, zero CLS); disabled under `prefers-reduced-motion` (photo simply shown). Gated behind `body.js-reveal` so no-JS/reduced-motion users always see it.
+
+Guardrails kept: `/images2/` legacy assets untouched but guarded from rendering as product photography; reduced-motion + no-JS safe; CWV budgets (LCP < 2.0s, CLS < 0.1, INP < 200ms) respected.
 
 ## What works right now (confirmed)
 
@@ -236,36 +288,44 @@ Optional later blocks (only if/when we want them):
 Reminder note: revisit these optional blocks once the core store has stable traffic + reliable fulfilment + low support load.
 
 ## Implemented building blocks (open PRs, pending merge to `main`)
+
 These are pure, tested modules already built and opened as focused PRs. They are
 listed here so future sessions (and the iPhone read-only assistant) discover them
 and do NOT rebuild them. Each is off `main` and independent unless noted.
 
 Coverage / test foundation:
+
 - src/product-utils.js, src/sitemap-utils.js + widened coverage gate (PR #9 supersedes #5-#8).
 
 Data-stitch + lifecycle:
+
 - migrations/004_add_customers_and_email_events.sql, src/data-stitch.js, capture + Stripe webhook wiring (PR #11).
 - Gated 3rd "payday" win-back nudge, off by default (WINBACK_ENABLED, NUDGE_WINBACK_DAYS), logs to email_events (PR #13, stacked on #11).
 - src/email-provider.js - console/mock/Mailchimp-stub adapter, no creds needed yet (PR #14).
 - src/attribution.js + scripts/attribution-report.js - nudge to conversion last-touch report (PR #18).
 
 SEO / marketing:
+
 - robots.txt + src/robots.js generator (PR #16).
 - src/related-products.js - relatedness ranking for internal linking / cross-sell (PR #22).
 - src/product-feed.js - Google Merchant / Meta catalog items + RSS XML (PR #23).
 
 Ops / quality / performance:
+
 - src/catalog-qa.js + scripts/catalog-qa.js - pre-publish product validation (PR #15).
 - src/order-health.js + scripts/order-health.js - stuck / at-risk order alerts (PR #20).
 - src/perf-budget.js + scripts/perf-budget.js - client asset byte budgets, report-only (PR #19).
 
 Experimentation / logistics:
+
 - src/ab-test.js - deterministic weighted A/B assignment (PR #21).
 - src/shipping.js - ships-from + delivery-window estimates by region (PR #24).
 
 ### Integration wiring backlog (unlocks once the above merge to main)
+
 Most further value is wiring, not new modules - it needs the blocks above on
 main first, otherwise CLIs/tests cannot import them:
+
 - Route real nudge sends through email-provider (currently console-only).
 - Render related products + ships-from label + delivery estimate on product/shop pages.
 - Add a scheduled job/workflow to regenerate the product feed (mirror the sitemap workflow).
@@ -274,6 +334,7 @@ main first, otherwise CLIs/tests cannot import them:
 - Revisit the server.js data-stitch path so a stitch DB error cannot 500 a paid checkout.
 
 ### Known external blockers (do not stop work - see autonomous-execution directive)
+
 - Empty SONAR_TOKEN Actions secret is the only red X on every PR (SonarCloud step).
 - No Mailchimp account/keys, no live Stripe keys, no live DB migration verification this session.
 

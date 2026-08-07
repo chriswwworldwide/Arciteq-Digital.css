@@ -10,6 +10,8 @@
     />
     <link rel="canonical" href="/shop.html" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="/styles/premium.css" />
+    <script src="/styles/premium.js" defer></script>
     <style>
       header {
         max-width: 1200px;
@@ -98,17 +100,42 @@
     <div id="header-mount" data-title="Shop"></div>
 
     <main>
-      <section id="trust-strip" aria-label="Trust" style="max-width:1200px;margin:0 auto;padding:0 24px;"></section>
-      <section style="max-width:1200px;margin:0 auto;padding:0 24px;">
-        <div style="display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:start;" class="shop-two-col">
+      <section
+        id="trust-strip"
+        aria-label="Trust"
+        style="max-width: 1200px; margin: 0 auto; padding: 0 24px"
+      ></section>
+      <section style="max-width: 1200px; margin: 0 auto; padding: 0 24px">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 18px;
+            align-items: start;
+          "
+          class="shop-two-col"
+        >
           <aside id="starter-kits" aria-label="Starter kits"></aside>
           <div>
-            <div style="margin:12px 0 16px;padding:12px 16px;background:#f3f4f6;border-radius:10px;font-size:0.95rem;">
+            <div
+              style="
+                margin: 12px 0 16px;
+                padding: 12px 16px;
+                background: #f3f4f6;
+                border-radius: 10px;
+                font-size: 0.95rem;
+              "
+            >
               <strong>Not sure where to start?</strong>
-              <a href="/content/senior-dog-mobility.html?ref=shop-banner" style="color:#111827;text-decoration:underline;">Read our Senior Dog Mobility Guide</a>
+              <a
+                href="/content/senior-dog-mobility.html?ref=shop-banner"
+                style="color: #111827; text-decoration: underline"
+                >Read our Senior Dog Mobility Guide</a
+              >
             </div>
+            <span class="eyebrow">Find the right fit</span>
             <h2>Products</h2>
-            <div>
+            <div class="filter-bar">
               <label for="pet-type">Pet:</label>
               <select id="pet-type">
                 <option value="all">All</option>
@@ -120,7 +147,9 @@
               <select id="product-type">
                 <option value="all">All</option>
                 <option value="mobility-comfort">Mobility & Comfort</option>
-                <option value="joint-support-topicals">Joint Support Topicals</option>
+                <option value="joint-support-topicals">
+                  Joint Support Topicals
+                </option>
                 <option value="calming-anxiety">Calming & Anxiety</option>
                 <option value="smart-monitoring">Smart Monitoring</option>
                 <option value="grooming-hygiene">Grooming & Hygiene</option>

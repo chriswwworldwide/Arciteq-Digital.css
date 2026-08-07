@@ -23,12 +23,7 @@
       "body": "Our senior cat stopped pacing at night and sleeps longer now.",
       "authorName": "A. P.",
       "verifiedBuyer": true,
-      "media": [
-        {
-          "type": "photo",
-          "url": "/images/ugc/demo-senior-cat-bed.jpg"
-        }
-      ],
+      "media": [],
       "createdAt": "2026-04-28T00:00:00.000Z"
     },
     {
@@ -40,12 +35,7 @@
       "body": "It helped us notice a change in activity early and adjust our routine.",
       "authorName": "M. K.",
       "verifiedBuyer": false,
-      "media": [
-        {
-          "type": "video",
-          "url": "/images/ugc/demo-senior-dog-walk.mp4"
-        }
-      ],
+      "media": [],
       "createdAt": "2026-04-28T00:00:00.000Z"
     }
   ]

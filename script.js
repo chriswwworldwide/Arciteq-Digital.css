@@ -3604,22 +3604,39 @@ function injectAllSchema(list) {
 
   const origin = globalThis.location.origin;
 
-  const graph = list.map((p) => ({
-    "@type": "Product",
-    "@id": `${origin}${String(p?.canonicalPath || "")}`,
-    name: p.name,
-    description: p.description,
-    image: [`${origin}${p.image}`],
-    brand: { "@type": "Brand", name: p.brand },
-    offers: {
-      "@type": "Offer",
-      "@id": `${origin}${String(p?.canonicalPath || "")}#offer`,
-      priceCurrency: p.currency.toUpperCase(),
-      price: (p.price / 100).toFixed(2),
-      availability: p.availability,
-      url: `${origin}${String(p?.canonicalPath || "")}`,
-    },
-  }));
+  const graph = list.map((p) => {
+    const node = {
+      "@type": "Product",
+      "@id": `${origin}${String(p?.canonicalPath || "")}`,
+      name: p.name,
+      description: p.description,
+      image: [`${origin}${p.image}`],
+      brand: { "@type": "Brand", name: p.brand },
+      offers: {
+        "@type": "Offer",
+        "@id": `${origin}${String(p?.canonicalPath || "")}#offer`,
+        priceCurrency: p.currency.toUpperCase(),
+        price: (p.price / 100).toFixed(2),
+        availability: p.availability,
+        url: `${origin}${String(p?.canonicalPath || "")}`,
+      },
+    };
+
+    // Emit aggregateRating only when genuine reviews exist, so the visible
+    // card stars are backed by structured data (star rich-results in listings).
+    const rating = reviewRatings.get(p.id);
+    if (rating && rating.count > 0 && rating.avg > 0) {
+      node.aggregateRating = {
+        "@type": "AggregateRating",
+        ratingValue: Number(rating.avg.toFixed(2)),
+        reviewCount: rating.count,
+        bestRating: 5,
+        worstRating: 1,
+      };
+    }
+
+    return node;
+  });
 
   const payload = {
     "@context": "https://schema.org",

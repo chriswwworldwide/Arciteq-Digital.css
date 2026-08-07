@@ -108,6 +108,23 @@ Direction note:
 
 - We have pivoted away from the “mini‑Amazon” framing. The target experience is curated (limited, quality-controlled catalog), trust-first (clear safety/fit/shipping/returns), and automation-first (dashboards + guardrails so it runs with minimal day-to-day involvement).
 
+## Visual system (current direction)
+
+The storefront's look is driven by ONE shared template so changes cascade site-wide:
+
+- **`styles/premium.css`** — design tokens + component styles (fonts, palette, spacing/framing, buttons, cards). Every page links it; edit here to restyle the whole site.
+- **`styles/premium.js`** — progressive enhancement only: `pawObserveReveals` (staggered scroll reveal) and `pawDisplayTitle` (strips functional `(Demo)`/`(Placeholder)` tags from displayed product names).
+
+Design decisions (2026-08, after a full reset from a blank slate — the earlier Fraunces/warm-paper/teal-amber/paw-burst "premium" system was discarded):
+
+- **Neutral base** — system font stack, greyscale ink/paper palette, clean framing tokens. Simple and elegant, not "functional".
+- **Single accent — oxblood red** (`--accent: #9b3b32`, `--accent-600`, `--accent-100`). Used sparingly: primary buttons, button-outline hovers, links, kicker/eyebrow labels. Re-tint the whole site by swapping those three tokens.
+- **Buttons** — clean white/outline with a hint of shadow; primary = solid oxblood fill.
+- **Homepage hero** — responsive two-column: copy + a framed pet photo (`/images/hero-pet.jpg`, hairline border + soft drop shadow). Photo is a self-hosted, license-safe placeholder → swap for real photography later.
+- **Hero motion** — the photo slides in from the right + fades in once on load (GPU transform/opacity, zero CLS); disabled under `prefers-reduced-motion` (photo simply shown). Gated behind `body.js-reveal` so no-JS/reduced-motion users always see it.
+
+Guardrails kept: `/images2/` legacy assets untouched but guarded from rendering as product photography; reduced-motion + no-JS safe; CWV budgets (LCP < 2.0s, CLS < 0.1, INP < 200ms) respected.
+
 ## What works right now (confirmed)
 
 Stripe checkout is working end-to-end locally:

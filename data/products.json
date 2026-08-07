@@ -34,27 +34,13 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
-      "tags": [
-        "demo",
-        "senior",
-        "comfort"
-      ],
-      "petType": [
-        "Dog"
-      ],
-      "lifeStage": [
-        "Senior"
-      ],
-      "sizeRequirement": [
-        "Medium",
-        "Large"
-      ],
+      "tags": ["demo", "senior", "comfort"],
+      "petType": ["Dog"],
+      "lifeStage": ["Senior"],
+      "sizeRequirement": ["Medium", "Large"],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": [
-        "Memory foam",
-        "Polyester cover"
-      ],
+      "materials": ["Memory foam", "Polyester cover"],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Help your senior pet settle and sleep more comfortably",
@@ -114,30 +100,13 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
-      "tags": [
-        "demo",
-        "senior",
-        "topical"
-      ],
-      "petType": [
-        "Dog",
-        "Cat"
-      ],
-      "lifeStage": [
-        "Senior"
-      ],
-      "sizeRequirement": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
+      "tags": ["demo", "senior", "topical"],
+      "petType": ["Dog", "Cat"],
+      "lifeStage": ["Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": [
-        "Beeswax",
-        "Plant oils",
-        "Vitamin E"
-      ],
+      "materials": ["Beeswax", "Plant oils", "Vitamin E"],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Help your senior pet feel more comfortable after gentle exercise",
@@ -196,28 +165,13 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
-      "tags": [
-        "demo",
-        "senior",
-        "calming"
-      ],
-      "petType": [
-        "Cat"
-      ],
-      "lifeStage": [
-        "Senior"
-      ],
-      "sizeRequirement": [
-        "Small",
-        "Medium"
-      ],
+      "tags": ["demo", "senior", "calming"],
+      "petType": ["Cat"],
+      "lifeStage": ["Senior"],
+      "sizeRequirement": ["Small", "Medium"],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": [
-        "Memory foam",
-        "Polyester",
-        "Non-slip base"
-      ],
+      "materials": ["Memory foam", "Polyester", "Non-slip base"],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Help your senior pet feel safe and settled while you’re busy",
@@ -270,35 +224,28 @@
           "height": 1200
         }
       ],
+      "video": {
+        "src": "/videos/hero-pet-kenburns.mp4",
+        "type": "video/mp4",
+        "poster": "/images/hero-pet.jpg",
+        "name": "Smart Activity Tracker Tag — in use",
+        "description": "A short look at everyday activity monitoring for your senior pet. (Placeholder motion-from-still clip — swap for real product footage later.)",
+        "uploadDate": "2026-08-05",
+        "duration": "PT6S"
+      },
       "price": {
         "amount": 2999,
         "currency": "eur"
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
-      "tags": [
-        "demo",
-        "senior",
-        "tech"
-      ],
-      "petType": [
-        "Dog",
-        "Cat"
-      ],
-      "lifeStage": [
-        "Senior"
-      ],
-      "sizeRequirement": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
+      "tags": ["demo", "senior", "tech"],
+      "petType": ["Dog", "Cat"],
+      "lifeStage": ["Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
       "shippingOrigin": "US",
       "warehouseLocation": "US",
-      "materials": [
-        "ABS plastic",
-        "Silicone"
-      ],
+      "materials": ["ABS plastic", "Silicone"],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Spot routine changes early so you can support your senior pet",
@@ -498,10 +445,7 @@
           "Feel safer when your dog gets excited",
           "More control without yanking"
         ],
-        "ugcAngles": [
-          "Fit check photo",
-          "Before/after calmer walk clip"
-        ]
+        "ugcAngles": ["Fit check photo", "Before/after calmer walk clip"]
       },
       "attributes": {
         "reflective": true,
@@ -627,10 +571,7 @@
           "Feel more in control on walks",
           "Build a recall you can trust"
         ],
-        "ugcAngles": [
-          "Short training clip",
-          "Before/after calm walk moment"
-        ]
+        "ugcAngles": ["Short training clip", "Before/after calm walk moment"]
       },
       "attributes": {
         "lightweight": true
@@ -751,10 +692,7 @@
       "warehouseLocation": "EU",
       "materials": ["Silicone"],
       "marketing_hooks": {
-        "emotionalPainPoints": [
-          "Less fuss on walks",
-          "Hands-free and calmer"
-        ],
+        "emotionalPainPoints": ["Less fuss on walks", "Hands-free and calmer"],
         "ugcAngles": [
           "Photo clipped to lead",
           "Short clip showing how it holds"
@@ -807,26 +745,13 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
-      "tags": [
-        "demo",
-        "senior",
-        "grooming"
-      ],
-      "petType": [
-        "Dog"
-      ],
-      "lifeStage": [
-        "Senior"
-      ],
-      "sizeRequirement": [
-        "Small"
-      ],
+      "tags": ["demo", "senior", "grooming"],
+      "petType": ["Dog"],
+      "lifeStage": ["Senior"],
+      "sizeRequirement": ["Small"],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": [
-        "Silicone",
-        "Polyester"
-      ],
+      "materials": ["Silicone", "Polyester"],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Make grooming gentle for a pet that doesn’t tolerate long sessions",
@@ -885,29 +810,13 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawSense",
-      "tags": [
-        "imported",
-        "placeholder"
-      ],
-      "petType": [
-        "Dog",
-        "Cat"
-      ],
-      "lifeStage": [
-        "Adult",
-        "Senior"
-      ],
-      "sizeRequirement": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
+      "tags": ["imported", "placeholder"],
+      "petType": ["Dog", "Cat"],
+      "lifeStage": ["Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": [
-        "ABS plastic",
-        "Silicone"
-      ],
+      "materials": ["ABS plastic", "Silicone"],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Spot routine changes early",
@@ -968,29 +877,13 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawSense",
-      "tags": [
-        "imported",
-        "placeholder"
-      ],
-      "petType": [
-        "Dog",
-        "Cat"
-      ],
-      "lifeStage": [
-        "Adult",
-        "Senior"
-      ],
-      "sizeRequirement": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
+      "tags": ["imported", "placeholder"],
+      "petType": ["Dog", "Cat"],
+      "lifeStage": ["Adult", "Senior"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": [
-        "ABS plastic",
-        "Aluminium"
-      ],
+      "materials": ["ABS plastic", "Aluminium"],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Spot routine changes early",

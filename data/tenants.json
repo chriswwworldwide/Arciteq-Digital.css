@@ -97,6 +97,21 @@
           ]
         },
         "trustStrip": {
+          "headline": {
+            "experimentKey": "trust_strip_headline_v1",
+            "variants": [
+              {
+                "id": "peace_of_mind",
+                "text": "Loved by pet parents — calm, comfort & peace of mind, guaranteed.",
+                "weight": 1
+              },
+              {
+                "id": "chosen_with_care",
+                "text": "Thoughtful pet tech & wellness, chosen with your pet's comfort in mind.",
+                "weight": 1
+              }
+            ]
+          },
           "items": [
             { "title": "Delivery", "text": "Free UK delivery over €40." },
             {

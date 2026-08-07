@@ -162,6 +162,95 @@
   globalThis.pawInjectVideoSchema = injectVideoSchema;
   globalThis.pawRenderVideoSlot = renderVideoSlot;
 
+  // ---- A/B assignment (browser copy of src/ab-test.js; keep in sync) ----
+  // FNV-1a 32-bit hash -> unit float in [0, 1). Stable across runs/devices.
+  function hashToUnit(input) {
+    var str = String(input);
+    var h = 0x811c9dc5;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 0x01000193) >>> 0;
+    }
+    return (h >>> 0) / 0x100000000;
+  }
+
+  function normalizeVariants(variants) {
+    var list = Array.isArray(variants) ? variants : [];
+    var out = [];
+    for (var i = 0; i < list.length; i++) {
+      var v = list[i];
+      if (v == null) continue;
+      var id = typeof v === "string" ? v : v.id;
+      if (id == null || id === "") continue;
+      var weight =
+        typeof v === "string" ? 1 : Number(v.weight == null ? 1 : v.weight);
+      if (!isFinite(weight) || weight <= 0) continue;
+      out.push({ id: String(id), weight: weight });
+    }
+    return out;
+  }
+
+  // Deterministic: same (experimentKey, visitorId) -> same variant id.
+  function assignVariant(args) {
+    args = args || {};
+    var normalized = normalizeVariants(args.variants);
+    if (normalized.length === 0) return null;
+    if (normalized.length === 1) return normalized[0].id;
+    var total = 0;
+    for (var i = 0; i < normalized.length; i++) total += normalized[i].weight;
+    var point = hashToUnit(args.experimentKey + ":" + args.visitorId) * total;
+    var cursor = 0;
+    for (var j = 0; j < normalized.length; j++) {
+      cursor += normalized[j].weight;
+      if (point < cursor) return normalized[j].id;
+    }
+    return normalized[normalized.length - 1].id;
+  }
+
+  // Stable, privacy-light first-party visitor id (no PII). Used as the A/B
+  // bucketing key so a visitor sees a consistent variant across page loads.
+  function getVisitorId() {
+    var KEY = "paw_visitor_id";
+    try {
+      var existing = localStorage.getItem(KEY);
+      if (existing) return existing;
+      var id =
+        globalThis.crypto && globalThis.crypto.randomUUID
+          ? globalThis.crypto.randomUUID()
+          : "v-" +
+            Date.now().toString(36) +
+            "-" +
+            Math.random().toString(36).slice(2, 10);
+      localStorage.setItem(KEY, id);
+      return id;
+    } catch {
+      // Storage blocked (private mode): fall back to a per-load id.
+      return "v-ephemeral-" + Math.random().toString(36).slice(2, 10);
+    }
+  }
+
+  // Record an experiment exposure locally so a later block can stitch it to a
+  // conversion. Best-effort; never throws.
+  function recordExposure(experimentKey, variant) {
+    try {
+      var KEY = "paw_ab_exposures";
+      var map = JSON.parse(localStorage.getItem(KEY) || "{}");
+      if (!map || typeof map !== "object") map = {};
+      map[String(experimentKey)] = {
+        variant: String(variant),
+        at: new Date().toISOString(),
+      };
+      localStorage.setItem(KEY, JSON.stringify(map));
+    } catch {
+      /* ignore */
+    }
+  }
+
+  globalThis.pawHashToUnit = hashToUnit;
+  globalThis.pawAssignVariant = assignVariant;
+  globalThis.pawGetVisitorId = getVisitorId;
+  globalThis.pawRecordExposure = recordExposure;
+
   function init() {
     // Signal CSS that JS is present so reveal elements may start hidden.
     // Skipped under reduced-motion so nothing is ever hidden.

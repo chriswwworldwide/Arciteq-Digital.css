@@ -354,6 +354,41 @@
         min-height: 1.2rem;
       }
 
+      .seg-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 6px;
+      }
+
+      .seg-links a {
+        display: inline-block;
+        padding: 10px 16px;
+        border: 1px solid #e5e7eb;
+        border-radius: 999px;
+        background: #fff;
+        color: #111827;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+      }
+
+      .seg-links a:hover {
+        border-color: var(--accent, #8a2e2e);
+        color: var(--accent, #8a2e2e);
+      }
+
+      .seg-links-more {
+        margin-top: 12px;
+      }
+
+      .seg-links-more a {
+        color: var(--accent, #8a2e2e);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
       footer {
         border-top: 1px solid #e5e7eb;
         margin-top: 40px;
@@ -414,6 +449,22 @@
         <span class="eyebrow reveal">Explore the collection</span>
         <h2 class="section-head reveal">Shop by category</h2>
         <div class="cat-grid" id="home-categories"></div>
+      </section>
+
+      <section class="wrap" aria-label="Who PawSense is for">
+        <span class="eyebrow reveal">Whoever you are to your pets</span>
+        <h2 class="section-head reveal">Who it&rsquo;s for</h2>
+        <div class="seg-links">
+          <a href="/segments/breeders.html">Breeders</a>
+          <a href="/segments/show-dogs.html">Show dogs</a>
+          <a href="/segments/show-cats.html">Show cats</a>
+          <a href="/segments/dog-walkers.html">Dog walkers</a>
+          <a href="/segments/pet-sitters.html">Pet sitters</a>
+          <a href="/segments/multi-pet.html">Cats &amp; dogs together</a>
+        </div>
+        <p class="seg-links-more">
+          <a href="/segments/">See all specialist guides &rarr;</a>
+        </p>
       </section>
 
       <section class="wrap" aria-label="Featured products">

@@ -1,0 +1,603 @@
+{
+  "tenant_id": "default",
+  "segments": [
+    {
+      "slug": "breeders",
+      "metaTitle": "For Breeders — Whelping, Litter Monitoring & Starter Kit | PawSense",
+      "metaDescription": "Non-ingestible pet tech and wellness for responsible breeders: whelping-box monitoring, litter safety, ID and calm handling — plus a Breeder Starter Kit.",
+      "kicker": "For breeders",
+      "heroTitle": "Raise a healthy, calm litter",
+      "heroIntro": "From the whelping box to their first homes, PawSense helps responsible breeders monitor, protect and gently socialise every puppy or kitten — with non-ingestible tech and wellness built for busy programmes.",
+      "indexTitle": "Breeders",
+      "indexBlurb": "Whelping monitoring, litter safety and a Breeder Starter Kit for responsible programmes.",
+      "whoFor": "Hobby and professional dog and cat breeders raising planned litters who want to monitor the whelping box, keep newborns safe and warm, and hand over confident, well-socialised pups and kittens.",
+      "why": "The first weeks decide temperament and health. Simple monitoring and warmth reduce risk overnight, and early, positive exposure to handling and sound builds the calm, adaptable animals new owners are looking for.",
+      "readsHeading": "Specialist short reads",
+      "reads": [
+        {
+          "title": "Setting up the whelping box",
+          "body": "Warmth, quiet and a clear line of sight matter most. Position the box away from draughts and foot traffic, keep a warm resting zone the dam can leave, and use a camera so you can check without disturbing her overnight."
+        },
+        {
+          "title": "Early socialisation, week by week",
+          "body": "Gentle daily handling, varied surfaces and gradually introduced everyday sounds between weeks 3 and 12 build resilience. Keep sessions short and positive, and never overwhelm — the goal is curiosity, not stress."
+        },
+        {
+          "title": "Safe ID for a whole litter",
+          "body": "Colour-coded collars and a QR ID plan make it easy to track weights and worming per pup, and give new owners an instant ID solution the day they collect."
+        }
+      ],
+      "problemsHeading": "What a breeding programme needs",
+      "problems": [
+        {
+          "title": "Overnight peace of mind",
+          "text": "Newborns fade fast if they get cold or separated. Quiet monitoring lets you check the box without disturbing the dam."
+        },
+        {
+          "title": "Warmth without risk",
+          "text": "A safe, even warm zone supports tiny bodies that can't yet regulate their own temperature."
+        },
+        {
+          "title": "Confident hand-over",
+          "text": "New owners want ID, records and a calm animal. Give them a head start on day one."
+        }
+      ],
+      "picksHeading": "Curated picks for breeders",
+      "picksIntro": "Non-ingestible essentials that earn their place in a working programme.",
+      "picks": [
+        {
+          "productId": "imp-default-ph-camera-001",
+          "why": "Watch the whelping box overnight without opening the door.",
+          "ref": "breeders"
+        },
+        {
+          "productId": "pet-demo-heatpad-001",
+          "why": "A safe, even warm zone for newborns and the nursing dam.",
+          "ref": "breeders"
+        },
+        {
+          "productId": "pet-ph-id-tag-qr-001",
+          "why": "Instant ID for each pup or kitten as they head to new homes.",
+          "ref": "breeders"
+        },
+        {
+          "productId": "pet-demo-smart-tracker-001",
+          "why": "Track activity and settling as the litter grows.",
+          "ref": "breeders"
+        }
+      ],
+      "kit": {
+        "name": "Breeder Starter Kit (coming soon)",
+        "text": "A bundled whelping-and-handover kit — monitoring, warmth, ID and calm-handling essentials at a programme price. Register interest and we'll email you first when bundles open."
+      },
+      "faqs": [
+        {
+          "q": "Do you offer trade or bulk pricing for breeders?",
+          "a": "Bundled Breeder Starter Kits and multi-pack pricing are on the way. Register interest on this page and we'll email you as soon as they're available."
+        },
+        {
+          "q": "Is the monitoring camera safe near a whelping box?",
+          "a": "Yes — it's a non-contact camera placed outside the box so you can watch without disturbing the dam. Keep all cables out of reach as with any electrical device."
+        },
+        {
+          "q": "How early can I start socialising a litter?",
+          "a": "Gentle handling can begin in the first weeks, with structured sound and surface exposure building from around three weeks. Keep every session short, calm and positive."
+        }
+      ]
+    },
+    {
+      "slug": "show-dogs",
+      "metaTitle": "For Show Dogs — Ring Prep, Coat Care & Show-Day Kit | PawSense",
+      "metaDescription": "Specialist non-ingestible gear for show dogs: coat and grooming care, calm ring handling, safe transport and a show-day rundown with upcoming events and results.",
+      "kicker": "For show dogs",
+      "heroTitle": "Ring-ready, calm and conditioned",
+      "heroIntro": "Presentation is half the battle. PawSense helps handlers keep coats conditioned, nerves settled and travel safe — so your dog walks into the ring looking and feeling its best.",
+      "indexTitle": "Show Dogs",
+      "indexBlurb": "Coat care, calm ring handling, safe transport and a show-day rundown.",
+      "whoFor": "Owner-handlers and professional handlers preparing dogs for conformation and performance shows who want repeatable coat, condition and composure on the day.",
+      "why": "Judges reward condition and confidence. A settled, well-conditioned dog that travels calmly and stands relaxed presents far better than one that arrives frazzled — and consistency across the season protects results.",
+      "readsHeading": "Specialist short reads",
+      "reads": [
+        {
+          "title": "Coat conditioning through the season",
+          "body": "Great ring coats are built weeks out, not the night before. A gentle, regular grooming routine plus topical conditioning keeps skin healthy and the coat in bloom without stripping natural oils."
+        },
+        {
+          "title": "Calm handling in the ring",
+          "body": "Nerves travel down the lead. Short, upbeat practice sessions with a clear cue system and a calm warm-up routine help a dog hold a relaxed stack and free-stack under pressure."
+        },
+        {
+          "title": "Travelling to shows safely",
+          "body": "A secured, ventilated travel setup and a familiar resting mat reduce stress on long drives, so your dog arrives rested rather than wired."
+        }
+      ],
+      "problemsHeading": "What show handlers need",
+      "problems": [
+        {
+          "title": "Consistent condition",
+          "text": "Coat and skin health has to hold across a whole season of travel and baths."
+        },
+        {
+          "title": "Composure on the day",
+          "text": "A calm dog stacks and moves better — nerves cost placements."
+        },
+        {
+          "title": "Safe, low-stress travel",
+          "text": "Long drives shouldn't leave your dog frazzled at ringside."
+        }
+      ],
+      "picksHeading": "Curated picks for the ring",
+      "picksIntro": "Presentation, composure and travel — the non-ingestible essentials.",
+      "picks": [
+        {
+          "productId": "pet-demo-grooming-glove-001",
+          "why": "Daily coat maintenance that keeps the finish in bloom.",
+          "ref": "show-dogs"
+        },
+        {
+          "productId": "pet-demo-joint-topical-001",
+          "why": "Non-ingestible topical comfort for hard-working show dogs.",
+          "ref": "show-dogs"
+        },
+        {
+          "productId": "pet-ph-reflective-harness-001",
+          "why": "Calm, controlled movement to and from the ring.",
+          "ref": "show-dogs"
+        },
+        {
+          "productId": "pet-ph-seatbelt-tether-001",
+          "why": "Secured, lower-stress travel to shows.",
+          "ref": "show-dogs"
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-03-12",
+          "name": "Crufts",
+          "location": "Birmingham, NEC",
+          "result": "Placeholder result — update after the event"
+        },
+        {
+          "date": "2026-10-03",
+          "name": "Autumn Championship Show",
+          "location": "TBC"
+        },
+        { "date": "2026-11-14", "name": "Winter Open Show", "location": "TBC" }
+      ],
+      "rundown": {
+        "heading": "Show-day rundown",
+        "intro": "A calm timeline keeps you and your dog composed from arrival to results.",
+        "steps": [
+          {
+            "time": "Pre-dawn",
+            "title": "Travel & settle",
+            "text": "Arrive early, walk and toilet your dog, and let it settle at the benching area."
+          },
+          {
+            "time": "Morning",
+            "title": "Grooming & final prep",
+            "text": "Last-minute coat work, check kit, and confirm your ring and class time."
+          },
+          {
+            "time": "Ring time",
+            "title": "Warm up & show",
+            "text": "A short, upbeat warm-up, then stack and move as practised."
+          },
+          {
+            "time": "After judging",
+            "title": "Cool down & results",
+            "text": "Water, rest and praise regardless of placing — then note results for the season."
+          }
+        ]
+      },
+      "kit": {
+        "name": "Show-Day Kit (coming soon)",
+        "text": "A bundled ringside kit — grooming, topical comfort, calm handling and safe travel essentials. Register interest and we'll email you first when bundles open."
+      },
+      "faqs": [
+        {
+          "q": "When should I start conditioning a show coat?",
+          "a": "Weeks ahead. A steady grooming and topical-conditioning routine builds a healthy coat far better than any last-minute effort."
+        },
+        {
+          "q": "How do I keep my dog calm ringside?",
+          "a": "Keep your own energy low, use a consistent warm-up, and practise short relaxed stacks at home so the ring feels familiar."
+        },
+        {
+          "q": "Do you list upcoming shows?",
+          "a": "Yes — the Events section shows upcoming shows, and once a date passes it moves to Recent events with results after we update it."
+        }
+      ]
+    },
+    {
+      "slug": "show-cats",
+      "metaTitle": "For Show Cats — Coat Prep, Benching & Show-Day Kit | PawSense",
+      "metaDescription": "Specialist non-ingestible gear for show cats: coat and grooming prep, calm benching, safe transport and a show-day rundown with upcoming events and results.",
+      "kicker": "For show cats",
+      "heroTitle": "Benched, groomed and calm",
+      "heroIntro": "Cat shows reward condition and composure just as much as dog shows. PawSense helps you prep coats, keep your cat calm in a busy hall, and travel safely between shows.",
+      "indexTitle": "Show Cats",
+      "indexBlurb": "Coat prep, calm benching, safe transport and a show-day rundown.",
+      "whoFor": "Exhibitors showing pedigree and household-pet cats under bodies like GCCF, TICA and CFA who want their cat calm, clean and well-presented at benching and judging.",
+      "why": "A stressed cat in a loud hall shows poorly and recovers slowly. Careful coat prep, a familiar resting setup and calm transport protect both condition and temperament across the season.",
+      "readsHeading": "Specialist short reads",
+      "reads": [
+        {
+          "title": "Coat prep by type",
+          "body": "Longhairs, shorthairs and rex coats all need different routines. Build a gentle grooming rhythm in the weeks before, and keep bathing well ahead of the show so the coat settles."
+        },
+        {
+          "title": "Keeping calm at benching",
+          "body": "A familiar-smelling resting mat, a partly covered pen and a quiet arrival routine help a cat settle in a noisy hall between judging rings."
+        },
+        {
+          "title": "Safe transport for cats",
+          "body": "A secure, ventilated carrier and steady temperature matter more for cats than distance. Cover part of the carrier and avoid sudden noise and light."
+        }
+      ],
+      "problemsHeading": "What cat exhibitors need",
+      "problems": [
+        {
+          "title": "Show-ready coat",
+          "text": "Condition and cleanliness have to peak on the right weekend."
+        },
+        {
+          "title": "Calm in a busy hall",
+          "text": "Noise and strangers stress cats fast — a familiar setup helps them settle."
+        },
+        {
+          "title": "Low-stress travel",
+          "text": "Secure, quiet transport keeps your cat composed on arrival."
+        }
+      ],
+      "picksHeading": "Curated picks for the bench",
+      "picksIntro": "Grooming, calm and comfort — the non-ingestible essentials.",
+      "picks": [
+        {
+          "productId": "pet-demo-grooming-glove-001",
+          "why": "Gentle daily coat maintenance ahead of the show.",
+          "ref": "show-cats"
+        },
+        {
+          "productId": "pet-demo-calming-bed-001",
+          "why": "A familiar, calming resting spot for the benching pen.",
+          "ref": "show-cats"
+        },
+        {
+          "productId": "imp-default-ph-camera-001",
+          "why": "Keep an eye on a settling cat at home before travel.",
+          "ref": "show-cats"
+        },
+        {
+          "productId": "pet-demo-heatpad-001",
+          "why": "Steady warmth for comfort during rest.",
+          "ref": "show-cats"
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-06-27",
+          "name": "Supreme Cat Show (regional heat)",
+          "location": "TBC"
+        },
+        {
+          "date": "2026-10-24",
+          "name": "Autumn Championship Cat Show",
+          "location": "TBC"
+        },
+        {
+          "date": "2026-02-07",
+          "name": "Winter Pedigree & Household Pet Show",
+          "location": "TBC",
+          "result": "Placeholder result — update after the event"
+        }
+      ],
+      "rundown": {
+        "heading": "Show-day rundown",
+        "intro": "Cats settle best on a calm, predictable timeline.",
+        "steps": [
+          {
+            "time": "Early",
+            "title": "Arrive & vet-in",
+            "text": "Arrive in good time for the veterinary check and find your pen."
+          },
+          {
+            "time": "Set up",
+            "title": "Benching & settle",
+            "text": "Set up a familiar, partly covered pen and let your cat settle quietly."
+          },
+          {
+            "time": "Judging",
+            "title": "To the ring",
+            "text": "Present a clean, calm cat to the judge as called."
+          },
+          {
+            "time": "After",
+            "title": "Rest & results",
+            "text": "Quiet, water and rest — then note the outcome for the season."
+          }
+        ]
+      },
+      "kit": {
+        "name": "Show-Cat Kit (coming soon)",
+        "text": "A bundled benching kit — grooming, calm resting and travel comfort essentials. Register interest and we'll email you first when bundles open."
+      },
+      "faqs": [
+        {
+          "q": "Is there really a cat show scene?",
+          "a": "Yes — bodies like GCCF, TICA and CFA run pedigree and household-pet shows, including large championship and 'Supreme' events."
+        },
+        {
+          "q": "How do I keep a show cat calm at the hall?",
+          "a": "Bring a familiar-smelling resting mat, partly cover the pen, and keep arrival and handling quiet and predictable."
+        },
+        {
+          "q": "How should I transport a show cat?",
+          "a": "Use a secure, ventilated carrier, keep temperature steady, and cover part of the carrier to reduce visual stress."
+        }
+      ]
+    },
+    {
+      "slug": "dog-walkers",
+      "metaTitle": "For Dog Walkers — Multi-Dog Safety, Visibility & Tracking | PawSense",
+      "metaDescription": "Professional dog-walker gear from PawSense: visibility, calm control, GPS tracking and safe transport for walking several dogs at once — value to premium.",
+      "kicker": "For dog walkers",
+      "heroTitle": "Every dog home safe",
+      "heroIntro": "Walking other people's dogs is a duty of care. PawSense helps professional walkers stay visible, keep control of several dogs, and prove every dog was tracked and safe.",
+      "indexTitle": "Dog Walkers",
+      "indexBlurb": "Visibility, calm control, GPS tracking and safe transport for multi-dog walks.",
+      "whoFor": "Professional and part-time dog walkers handling multiple dogs, in all weather and light, who are accountable to owners for each dog's safety.",
+      "why": "Group walks multiply risk — traffic, low light and one dog pulling can unsettle the pack. Visibility, reliable control gear and tracking protect the dogs, you, and your reputation with clients.",
+      "readsHeading": "Specialist short reads",
+      "reads": [
+        {
+          "title": "Handling several dogs safely",
+          "body": "Match harnesses and lead length to each dog, keep reactive dogs apart, and use a consistent recall cue. Control gear beats strength every time."
+        },
+        {
+          "title": "Low-light and roadside visibility",
+          "body": "Dawn and dusk walks need you and every dog visible. Reflective leads and collar lights cut the risk on pavements and country lanes alike."
+        },
+        {
+          "title": "Transporting a group by car",
+          "body": "Secured, separated travel keeps dogs calm and prevents a loose dog in the footwell — and reassures owners their dog travels safely."
+        }
+      ],
+      "problemsHeading": "What professional walkers need",
+      "problems": [
+        {
+          "title": "Be seen, day or night",
+          "text": "Roadside and low-light walks demand high visibility for you and every dog."
+        },
+        {
+          "title": "Calm control of the pack",
+          "text": "The right lead and harness setup keeps a mixed group manageable."
+        },
+        {
+          "title": "Proof and peace of mind",
+          "text": "Tracking reassures owners their dog was safe on your watch."
+        }
+      ],
+      "picksHeading": "Curated picks for the round",
+      "picksIntro": "Visibility, control, tracking and transport — value to premium.",
+      "picks": [
+        {
+          "productId": "pet-ph-reflective-walk-leash-001",
+          "why": "High-visibility lead for roadside and low-light walks.",
+          "ref": "dog-walkers"
+        },
+        {
+          "productId": "pet-ph-reflective-harness-001",
+          "why": "Calm, no-pull control for stronger dogs.",
+          "ref": "dog-walkers"
+        },
+        {
+          "productId": "pet-ph-led-collar-light-001",
+          "why": "Make every dog visible in the dark.",
+          "ref": "dog-walkers"
+        },
+        {
+          "productId": "imp-default-ph-tracker-001",
+          "why": "GPS tracking so no dog is ever unaccounted for.",
+          "ref": "dog-walkers"
+        },
+        {
+          "productId": "pet-ph-seatbelt-tether-001",
+          "why": "Secured transport between pick-ups.",
+          "ref": "dog-walkers"
+        },
+        {
+          "productId": "pet-ph-poop-bag-holder-001",
+          "why": "Always-ready clean-up on the round.",
+          "ref": "dog-walkers"
+        }
+      ],
+      "kit": {
+        "name": "Walker's Pro Kit (coming soon)",
+        "text": "A bundled multi-dog kit — visibility, control, tracking and transport essentials at a pro price. Register interest and we'll email you first when bundles open."
+      },
+      "faqs": [
+        {
+          "q": "What's the safest way to walk several dogs at once?",
+          "a": "Match control gear to each dog, keep reactive dogs separated, use reflective visibility gear, and carry a reliable recall and clean-up setup."
+        },
+        {
+          "q": "How do I reassure owners their dog is safe?",
+          "a": "GPS tracking, visible gear and secured transport give owners evidence their dog was monitored and protected throughout the walk."
+        },
+        {
+          "q": "Do you offer pricing for professionals?",
+          "a": "A bundled Walker's Pro Kit is on the way. Register interest and we'll email you when pro bundles open."
+        }
+      ]
+    },
+    {
+      "slug": "pet-sitters",
+      "metaTitle": "For Pet Sitters — Remote Monitoring, ID & Handover | PawSense",
+      "metaDescription": "Pet-sitter essentials from PawSense: remote wellness monitoring, reliable ID, activity tracking and calm handover for caring for pets in someone else's home.",
+      "kicker": "For pet sitters",
+      "heroTitle": "Trusted care while they're away",
+      "heroIntro": "Owners hand you their home and their best friend. PawSense helps sitters monitor wellbeing, keep pets identifiable, and share reassuring updates while the family's away.",
+      "indexTitle": "Pet Sitters",
+      "indexBlurb": "Remote monitoring, reliable ID, activity tracking and calm handover.",
+      "whoFor": "Professional and casual pet sitters and house-sitters caring for dogs and cats in the owner's home or their own, who need to reassure clients from a distance.",
+      "why": "Owners worry most about the unseen hours. Monitoring, tracking and solid ID let you catch problems early and send the updates that turn a one-off client into a regular.",
+      "readsHeading": "Specialist short reads",
+      "reads": [
+        {
+          "title": "Settling a pet in the owner's absence",
+          "body": "Keep routine, feeding and resting spots as close to normal as possible. Familiar bedding and calm handling reduce separation stress in the first days."
+        },
+        {
+          "title": "Reassuring updates that win repeat bookings",
+          "body": "A quick daily check-in with a photo and an activity note reassures anxious owners and sets you apart. Monitoring makes those updates effortless."
+        },
+        {
+          "title": "What to confirm at handover",
+          "body": "Vet contact, feeding, medication routine, ID details and emergency permissions. A tracker and QR ID close the gap if a pet ever slips out."
+        }
+      ],
+      "problemsHeading": "What sitters need",
+      "problems": [
+        {
+          "title": "Eyes on the unseen hours",
+          "text": "Owners worry most about what happens when no one's watching."
+        },
+        {
+          "title": "Fail-safe identification",
+          "text": "If a pet slips out, solid ID gets them home fast."
+        },
+        {
+          "title": "Updates that build trust",
+          "text": "Simple daily reassurance turns clients into regulars."
+        }
+      ],
+      "picksHeading": "Curated picks for sitters",
+      "picksIntro": "Monitoring, ID and comfort — the non-ingestible essentials.",
+      "picks": [
+        {
+          "productId": "imp-default-ph-camera-001",
+          "why": "Check in on a pet remotely between visits.",
+          "ref": "pet-sitters"
+        },
+        {
+          "productId": "imp-default-ph-tracker-001",
+          "why": "GPS tracking for total peace of mind.",
+          "ref": "pet-sitters"
+        },
+        {
+          "productId": "pet-ph-id-tag-qr-001",
+          "why": "Instant ID with owner contact if a pet gets out.",
+          "ref": "pet-sitters"
+        },
+        {
+          "productId": "pet-demo-smart-tracker-001",
+          "why": "Activity and rest data to share in daily updates.",
+          "ref": "pet-sitters"
+        }
+      ],
+      "kit": {
+        "name": "Sitter's Care Kit (coming soon)",
+        "text": "A bundled sitting kit — monitoring, tracking and ID essentials to reassure every client. Register interest and we'll email you first when bundles open."
+      },
+      "faqs": [
+        {
+          "q": "How do I reassure nervous owners while they're away?",
+          "a": "Send a short daily update with a photo and an activity note. Remote monitoring and tracking make this quick and genuinely reassuring."
+        },
+        {
+          "q": "What ID should a sat pet have?",
+          "a": "A QR ID tag with owner contact plus a tracker means a pet that slips out can be identified and located quickly."
+        },
+        {
+          "q": "What should I confirm at handover?",
+          "a": "Feeding and medication routine, vet contact, ID details and emergency permissions — ideally written down before the owner leaves."
+        }
+      ]
+    },
+    {
+      "slug": "multi-pet",
+      "metaTitle": "Cats & Dogs Together — Multi-Pet Harmony Essentials | PawSense",
+      "metaDescription": "Help cats and dogs share a home in peace: safe spaces, calm introductions, monitoring and enrichment that reduce conflict and encourage mutual play.",
+      "kicker": "Cats & dogs together",
+      "heroTitle": "A calmer, happier mixed home",
+      "heroIntro": "Cats and dogs can be great housemates with the right setup. PawSense helps multi-pet homes create safe spaces, reduce conflict, and encourage the calm curiosity that turns into real companionship.",
+      "indexTitle": "Multi-Pet Harmony",
+      "indexBlurb": "Safe spaces, calm introductions, monitoring and enrichment for cats-and-dogs homes.",
+      "whoFor": "Households sharing life with both cats and dogs — whether introducing a new pet or smoothing an established but tense relationship.",
+      "why": "Most cat-dog friction comes from resources, space and pace, not personality. Give each pet retreat options, control the introductions, and monitor the flashpoints, and rivalry usually settles into tolerance — often into play.",
+      "readsHeading": "Specialist short reads",
+      "reads": [
+        {
+          "title": "Introducing a cat and dog the right way",
+          "body": "Go slow: scent-swap first, then barrier meetings, then short supervised sessions. Reward calm, end on a good note, and never force contact — the cat needs an easy exit at all times."
+        },
+        {
+          "title": "Giving the cat safe high ground",
+          "body": "Cats settle when they can watch from above and retreat when they want. Dog-free resting spots and vertical escape routes prevent most stand-offs."
+        },
+        {
+          "title": "Encouraging safe shared play",
+          "body": "Parallel play and calm shared routines build tolerance. Keep high-value toys and food separate at first to avoid guarding, and monitor the early sessions."
+        }
+      ],
+      "problemsHeading": "What mixed homes need",
+      "problems": [
+        {
+          "title": "Everyone needs a retreat",
+          "text": "A cat with safe high ground and a dog with its own rest spot rarely clash."
+        },
+        {
+          "title": "Controlled introductions",
+          "text": "Slow, positive meetings prevent a bad first impression sticking."
+        },
+        {
+          "title": "Watch the flashpoints",
+          "text": "Food, doorways and toys cause most spats — monitoring catches them early."
+        }
+      ],
+      "picksHeading": "Curated picks for harmony",
+      "picksIntro": "Safe spaces, calm and monitoring — the non-ingestible essentials.",
+      "picks": [
+        {
+          "productId": "pet-demo-calming-bed-001",
+          "why": "A dedicated safe retreat for the cat.",
+          "ref": "multi-pet"
+        },
+        {
+          "productId": "imp-default-ph-camera-001",
+          "why": "Monitor introductions and flashpoints while you're out.",
+          "ref": "multi-pet"
+        },
+        {
+          "productId": "pet-demo-joint-topical-001",
+          "why": "Non-ingestible comfort so an achy pet is less short-tempered.",
+          "ref": "multi-pet"
+        },
+        {
+          "productId": "pet-demo-smart-tracker-001",
+          "why": "Track activity and rest for both pets.",
+          "ref": "multi-pet"
+        }
+      ],
+      "kit": {
+        "name": "Multi-Pet Harmony Kit (coming soon)",
+        "text": "A bundled cats-and-dogs kit — safe spaces, calming and monitoring essentials to smooth a mixed home. Register interest and we'll email you first when bundles open."
+      },
+      "faqs": [
+        {
+          "q": "Can cats and dogs really live together happily?",
+          "a": "Very often, yes. With safe retreats, slow introductions and monitored early sessions, most cat-dog pairs settle into tolerance and frequently into play."
+        },
+        {
+          "q": "How do I stop my cat and dog fighting over food?",
+          "a": "Feed them separately, keep high-value toys apart at first, and give the cat elevated, dog-free space. Most conflict is about resources, not dislike."
+        },
+        {
+          "q": "How long do introductions take?",
+          "a": "Anywhere from days to several weeks. Go at the more nervous animal's pace, reward calm, and never force contact."
+        }
+      ]
+    }
+  ]
+}

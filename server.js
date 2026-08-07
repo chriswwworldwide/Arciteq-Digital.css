@@ -1389,6 +1389,16 @@ app.get("/pet-safety-essentials/", (req, res, next) => {
   }
 });
 
+// Segment landing hub (/segments and /segments/) — the per-segment
+// /segments/<slug>.html pages are served as static files.
+app.get(["/segments", "/segments/"], (req, res) => {
+  return res.sendFile(path.join(__dirname, "segments", "index.html"), (err) => {
+    if (!err) return;
+    console.error("/segments sendFile failed", err);
+    return res.status(500).type("text/plain").send("Failed to render segments");
+  });
+});
+
 app.get("/:nicheCategorySlug", (req, res, next) => {
   try {
     const nicheCategorySlug = String(req.params.nicheCategorySlug || "").trim();
@@ -1480,6 +1490,13 @@ app.get("/sitemap.xml", (req, res) => {
       { path: "/content/senior-dog-mobility.html", priority: "0.85" },
       { path: "/content/night-walk-safety-for-dogs.html", priority: "0.85" },
       { path: "/content/senior-cat-comfort.html", priority: "0.85" },
+      { path: "/segments/", priority: "0.8" },
+      { path: "/segments/breeders.html", priority: "0.8" },
+      { path: "/segments/show-dogs.html", priority: "0.8" },
+      { path: "/segments/show-cats.html", priority: "0.8" },
+      { path: "/segments/dog-walkers.html", priority: "0.8" },
+      { path: "/segments/pet-sitters.html", priority: "0.8" },
+      { path: "/segments/multi-pet.html", priority: "0.8" },
     ];
     const staticXml = staticUrls
       .map(

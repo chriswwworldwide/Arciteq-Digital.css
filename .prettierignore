@@ -16,3 +16,5 @@ eslint.config.js
 # Optional archives or backups
 backups_*
 public_backup_*
+# Generated segment landing pages (built by scripts/build-segment-pages.js)
+segments

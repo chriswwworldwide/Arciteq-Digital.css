@@ -269,6 +269,21 @@ select:focus-visible {
   opacity: 0.5;
 }
 
+/* ---- Video slot (shared, lazy) ----
+   Reusable 16:9 clip frame for hero + product pages. Matches the photo
+   framing (hairline + soft shadow). Fixed aspect-ratio → zero CLS. */
+.video-slot {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--ink);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
 /* ---- Cards (product + category) ---- */
 .prod-card,
 .cat-tile {

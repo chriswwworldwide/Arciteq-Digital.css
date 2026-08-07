@@ -89,6 +89,14 @@
         display: block;
         border-radius: 11px;
       }
+      /* When a hero clip is present the .video-slot carries its own frame,
+         so drop the outer photo frame to avoid a double border. */
+      .hero-media--video {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+      }
       @media (max-width: 720px) {
         .hero-media {
           flex-basis: 100%;
@@ -532,6 +540,7 @@
 
         async function renderHome() {
           let activeTenant = "default";
+          let heroVideoCfg = null;
           try {
             const tr = await fetch("/api/tenant", { cache: "no-cache" });
             if (tr.ok) {
@@ -540,9 +549,33 @@
                 (t && (t.tenant_id || (t.tenant && t.tenant.tenant_id))) ||
                   "default",
               );
+              heroVideoCfg = (t && t.media && t.media.heroVideo) || null;
             }
           } catch {
             /* fall back to default */
+          }
+
+          // Hero video apparatus: when a clip is configured, swap the framed
+          // photo for a lazy, schema-marked video. Poster keeps the same
+          // look; no clip → the photo stays. Hidden cost until play.
+          try {
+            if (
+              heroVideoCfg &&
+              heroVideoCfg.src &&
+              globalThis.pawRenderVideoSlot
+            ) {
+              const frame = document.querySelector(".hero-media");
+              if (frame) {
+                frame.classList.add("hero-media--video");
+                globalThis.pawRenderVideoSlot(frame, heroVideoCfg, {
+                  name: heroVideoCfg.name,
+                  description: heroVideoCfg.description,
+                  uploadDate: heroVideoCfg.uploadDate,
+                });
+              }
+            }
+          } catch {
+            /* keep the static photo on any error */
           }
 
           let list = [];

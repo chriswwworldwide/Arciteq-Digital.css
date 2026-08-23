@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title id="page-title">Category | L’Art de la Séduction</title>
+    <title id="page-title">Category | PawSense Tech & Wellness</title>
 
     <!-- ✅ SEO -->
     <meta
       name="description"
-      content="Browse curated categories from L’Art de la Séduction. Filter, sort, and explore our most enticing collections."
+      content="Browse curated categories from PawSense Tech & Wellness. Filter, sort, and explore our pet tech and wellness collections."
     />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href="https://<your-domain>/categories.html" />
@@ -143,12 +143,13 @@
           if (!list.length) {
             title.textContent = "Category Not Found";
             container.textContent = "No products available in this category.";
-            document.title = "Category Not Found | L’Art de la Séduction";
+            document.title = "Category Not Found | PawSense Tech & Wellness";
             return;
           }
 
           title.textContent = categoryID.replace(/-/g, " ").toUpperCase();
-          document.title = esc(title.textContent) + " | L’Art de la Séduction";
+          document.title =
+            esc(title.textContent) + " | PawSense Tech & Wellness";
 
           function render() {
             container.innerHTML = "";

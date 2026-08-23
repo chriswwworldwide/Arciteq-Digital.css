@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Breeders — Whelping, Litter Monitoring &amp; Starter Kit | PawSense</title>
+    <meta name="description" content="Non-ingestible pet tech and wellness for responsible breeders: whelping-box monitoring, litter safety, ID and calm handling — plus a Breeder Starter Kit." />
+    <link rel="canonical" href="/segments/breeders.html" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/premium.css" />
+    <script src="/styles/premium.js" defer></script>
+    <script src="/script.js" defer></script>
+    <style>
+      header.seg-header {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      main.seg-main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px 48px;
+      }
+      .seg-breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        padding: 14px 0 0;
+        font-size: 0.85rem;
+        color: #6b7280;
+      }
+      .seg-breadcrumb a {
+        color: #6b7280;
+        text-decoration: none;
+      }
+      .seg-breadcrumb a:hover {
+        color: var(--accent, #8a2e2e);
+      }
+      .seg-breadcrumb [aria-current="page"] {
+        color: #111827;
+        font-weight: 600;
+      }
+      .seg-hero {
+        padding: 20px 0 8px;
+      }
+      .seg-kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--accent, #8a2e2e);
+        margin: 0 0 8px;
+      }
+      .seg-hero h1 {
+        margin: 0;
+        font-size: 2.1rem;
+        line-height: 1.15;
+        color: #111827;
+      }
+      .seg-hero p {
+        margin: 12px 0 0;
+        max-width: 62ch;
+        color: #374151;
+        line-height: 1.55;
+        font-size: 1.05rem;
+      }
+      .seg-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 14px;
+      }
+      @media (max-width: 900px) {
+        .seg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 600px) {
+        .seg-grid { grid-template-columns: 1fr; }
+      }
+      .seg-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+      }
+      .seg-card > h3 { margin: 0; padding: 14px 14px 0; font-size: 1.02rem; color: #111827; }
+      .seg-card > p { margin: 8px 0 0; padding: 0 14px 14px; color: #374151; line-height: 1.45; font-size: 0.95rem; }
+      .seg-card a { display: block; color: inherit; text-decoration: none; }
+      .seg-card a h3 { margin: 0; padding: 14px 14px 0; font-size: 1.02rem; color: #111827; }
+      .seg-card a p { margin: 8px 0 0; padding: 0 14px 14px; color: #374151; line-height: 1.45; font-size: 0.95rem; }
+      .seg-card a:hover h3 { text-decoration: underline; }
+      .seg-intro {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 20px;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        background: #fafafa;
+      }
+      @media (max-width: 700px) { .seg-intro { grid-template-columns: 1fr; } }
+      .seg-intro-col h2 { margin: 0 0 6px; font-size: 1.05rem; color: #111827; }
+      .seg-intro-col p { margin: 0; color: #374151; line-height: 1.55; }
+      .seg-reads { margin-top: 14px; display: grid; gap: 10px; }
+      details.seg-read {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+        padding: 12px 14px;
+        box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+      }
+      details.seg-read summary { cursor: pointer; list-style: none; outline: none; }
+      details.seg-read summary::-webkit-details-marker { display: none; }
+      .seg-read-title { font-weight: 600; color: #111827; }
+      details.seg-read[open] .seg-read-title { color: var(--accent, #8a2e2e); }
+      details.seg-read p { margin: 8px 0 0; color: #374151; line-height: 1.5; }
+      .seg-events-sub { font-size: 1rem; margin: 16px 0 6px; color: #111827; }
+      ul.seg-events { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+      li.seg-event {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px 12px;
+        padding: 10px 12px;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        background: #fff;
+      }
+      .seg-event-date { font-variant-numeric: tabular-nums; color: var(--accent, #8a2e2e); font-weight: 700; min-width: 96px; }
+      .seg-event-name { font-weight: 600; color: #111827; }
+      .seg-event-loc { color: #6b7280; font-size: 0.9rem; }
+      .seg-event-result { color: #374151; font-size: 0.9rem; margin-left: auto; font-style: italic; }
+      ol.seg-rundown { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; }
+      li.seg-rundown-step { display: flex; gap: 14px; align-items: flex-start; }
+      .seg-rundown-time { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--accent, #8a2e2e); min-width: 68px; }
+      .seg-rundown-title { font-weight: 600; color: #111827; }
+      li.seg-rundown-step p { margin: 4px 0 0; color: #374151; line-height: 1.45; }
+      section.seg-section { margin-top: 34px; }
+      section.seg-section > h2 { font-size: 1.4rem; margin: 0 0 6px; color: #111827; }
+      section.seg-section > p.lead { margin: 0 0 4px; color: #374151; line-height: 1.5; max-width: 62ch; }
+      .seg-kit {
+        margin-top: 34px;
+        padding: 22px;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        background: #f9fafb;
+      }
+      .seg-kit h2 { margin: 0 0 6px; font-size: 1.3rem; color: #111827; }
+      .seg-kit p { margin: 0; color: #374151; line-height: 1.5; max-width: 62ch; }
+      .seg-enquiry { margin-top: 14px; }
+      .seg-enquiry label { display: block; font-size: 0.9rem; color: #374151; margin-bottom: 8px; }
+      .seg-enquiry-row { display: flex; gap: 8px; flex-wrap: wrap; }
+      .seg-enquiry input {
+        flex: 1 1 220px;
+        padding: 10px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+      .seg-enquiry button {
+        padding: 10px 18px;
+        border-radius: 10px;
+        border: 1px solid var(--accent, #8a2e2e);
+        background: var(--accent, #8a2e2e);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .seg-enquiry-note { margin: 8px 0 0; font-size: 0.85rem; color: #059669; min-height: 1em; }
+      section.seg-faq { margin-top: 34px; }
+      section.seg-faq h2 { font-size: 1.4rem; margin: 0 0 8px; }
+      section.seg-faq details { border-top: 1px solid #e5e7eb; padding: 12px 0; }
+      section.seg-faq details:last-child { border-bottom: 1px solid #e5e7eb; }
+      section.seg-faq summary { font-weight: 600; cursor: pointer; list-style: none; outline: none; }
+      section.seg-faq p { margin: 8px 0 0; color: #374151; line-height: 1.5; }
+      .seg-footer-note {
+        margin-top: 44px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+        color: #6b7280;
+        font-size: 0.9rem;
+      }
+      .seg-footer-note a { color: #111827; text-decoration: underline; }
+      .seg-other-guides { margin-top: 34px; }
+      .seg-other-guides h2 { font-size: 1.4rem; margin: 0 0 12px; }
+      .seg-other-guides ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+      .seg-other-guides li a { display: inline-block; padding: 8px 14px; border: 1px solid #e5e7eb; border-radius: 999px; color: #111827; text-decoration: none; font-size: 0.95rem; background: #fff; }
+      .seg-other-guides li a:hover { border-color: var(--accent, #8a2e2e); color: var(--accent, #8a2e2e); }
+    </style>
+  </head>
+  <body>
+    <header class="seg-header">
+      <a href="/" style="font-weight: 700; font-size: 1.25rem; color: #111827; text-decoration: none;">PawSense</a>
+      <nav style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="/shop.html" style="color: #374151; text-decoration: none;">Shop</a>
+        <a href="/segments/" style="color: #374151; text-decoration: none;">Who it's for</a>
+      </nav>
+    </header>
+
+    <main class="seg-main">
+      <section id="trust-strip" aria-label="Trust"></section>
+
+      <nav class="seg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/segments/">Who it's for</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Breeders</span>
+      </nav>
+
+      <section class="seg-hero">
+        <p class="seg-kicker">For breeders</p>
+        <h1>Raise a healthy, calm litter</h1>
+        <p>From the whelping box to their first homes, PawSense helps responsible breeders monitor, protect and gently socialise every puppy or kitten — with non-ingestible tech and wellness built for busy programmes.</p>
+      </section>
+
+      
+      <section class="seg-intro">
+        <div class="seg-intro-col"><h2>Who it's for</h2><p>Hobby and professional dog and cat breeders raising planned litters who want to monitor the whelping box, keep newborns safe and warm, and hand over confident, well-socialised pups and kittens.</p></div>
+        <div class="seg-intro-col"><h2>Why it matters</h2><p>The first weeks decide temperament and health. Simple monitoring and warmth reduce risk overnight, and early, positive exposure to handling and sound builds the calm, adaptable animals new owners are looking for.</p></div>
+      </section>
+
+      
+      <section class="seg-section" aria-label="Specialist short reads">
+        <h2>Specialist short reads</h2>
+        <div class="seg-reads">
+          
+        <details class="seg-read">
+          <summary><span class="seg-read-title">Setting up the whelping box</span></summary>
+          <p>Warmth, quiet and a clear line of sight matter most. Position the box away from draughts and foot traffic, keep a warm resting zone the dam can leave, and use a camera so you can check without disturbing her overnight.</p>
+        </details>
+        <details class="seg-read">
+          <summary><span class="seg-read-title">Early socialisation, week by week</span></summary>
+          <p>Gentle daily handling, varied surfaces and gradually introduced everyday sounds between weeks 3 and 12 build resilience. Keep sessions short and positive, and never overwhelm — the goal is curiosity, not stress.</p>
+        </details>
+        <details class="seg-read">
+          <summary><span class="seg-read-title">Safe ID for a whole litter</span></summary>
+          <p>Colour-coded collars and a QR ID plan make it easy to track weights and worming per pup, and give new owners an instant ID solution the day they collect.</p>
+        </details>
+        </div>
+      </section>
+
+      <section class="seg-section" aria-label="What a breeding programme needs">
+        <h2>What a breeding programme needs</h2>
+        <div class="seg-grid">
+          
+        <div class="seg-card">
+          <h3>Overnight peace of mind</h3>
+          <p>Newborns fade fast if they get cold or separated. Quiet monitoring lets you check the box without disturbing the dam.</p>
+        </div>
+        <div class="seg-card">
+          <h3>Warmth without risk</h3>
+          <p>A safe, even warm zone supports tiny bodies that can&#39;t yet regulate their own temperature.</p>
+        </div>
+        <div class="seg-card">
+          <h3>Confident hand-over</h3>
+          <p>New owners want ID, records and a calm animal. Give them a head start on day one.</p>
+        </div>
+        </div>
+      </section>
+
+      <section class="seg-section" aria-label="Curated picks for breeders">
+        <h2>Curated picks for breeders</h2>
+        <p class="lead">Non-ingestible essentials that earn their place in a working programme.</p>
+        <div class="seg-grid">
+          
+        <div class="seg-card">
+          <a href="/smart-monitoring/indoor-pet-wellness-camera-placeholder?ref=breeders">
+            <h3>Indoor Pet Wellness Camera</h3>
+            <p>Watch the whelping box overnight without opening the door.</p>
+          </a>
+        </div>
+        <div class="seg-card">
+          <a href="/senior-pet-care/self-warming-orthopedic-pet-mat?ref=breeders">
+            <h3>Self-Warming Orthopedic Pet Mat</h3>
+            <p>A safe, even warm zone for newborns and the nursing dam.</p>
+          </a>
+        </div>
+        <div class="seg-card">
+          <a href="/pet-safety-essentials/qr-pet-id-tag?ref=breeders">
+            <h3>QR Pet ID Tag</h3>
+            <p>Instant ID for each pup or kitten as they head to new homes.</p>
+          </a>
+        </div>
+        <div class="seg-card">
+          <a href="/pet-safety-essentials/smart-activity-tracker-tag?ref=breeders">
+            <h3>Smart Activity Tracker Tag</h3>
+            <p>Track activity and settling as the litter grows.</p>
+          </a>
+        </div>
+        </div>
+      </section>
+
+      
+
+      
+
+      
+      <section class="seg-kit">
+        <h2>Breeder Starter Kit (coming soon)</h2>
+        <p>A bundled whelping-and-handover kit — monitoring, warmth, ID and calm-handling essentials at a programme price. Register interest and we&#39;ll email you first when bundles open.</p>
+        <form class="seg-enquiry" data-segment="breeders" aria-label="Register interest">
+          <label for="seg-email-breeders">Register interest — we'll email when it's ready.</label>
+          <div class="seg-enquiry-row">
+            <input id="seg-email-breeders" type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            <button type="submit">Notify me</button>
+          </div>
+          <p class="seg-enquiry-note" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      
+      <section class="seg-other-guides" aria-label="Explore other guides">
+        <h2>Explore other guides</h2>
+        <ul>
+          <li><a href="/segments/show-dogs.html">Show Dogs</a></li><li><a href="/segments/show-cats.html">Show Cats</a></li><li><a href="/segments/dog-walkers.html">Dog Walkers</a></li><li><a href="/segments/pet-sitters.html">Pet Sitters</a></li><li><a href="/segments/multi-pet.html">Multi-Pet Harmony</a></li>
+        </ul>
+      </section>
+
+      <section class="seg-faq" aria-label="Frequently asked questions">
+        <h2>Frequently asked questions</h2>
+        
+        <details>
+          <summary>Do you offer trade or bulk pricing for breeders?</summary>
+          <p>Bundled Breeder Starter Kits and multi-pack pricing are on the way. Register interest on this page and we&#39;ll email you as soon as they&#39;re available.</p>
+        </details>
+        <details>
+          <summary>Is the monitoring camera safe near a whelping box?</summary>
+          <p>Yes — it&#39;s a non-contact camera placed outside the box so you can watch without disturbing the dam. Keep all cables out of reach as with any electrical device.</p>
+        </details>
+        <details>
+          <summary>How early can I start socialising a litter?</summary>
+          <p>Gentle handling can begin in the first weeks, with structured sound and surface exposure building from around three weeks. Keep every session short, calm and positive.</p>
+        </details>
+      </section>
+
+      <section class="seg-footer-note">
+        <p>
+          PawSense focuses on non-ingestible pet tech &amp; wellness. This page is
+          general guidance, not veterinary advice.
+          <a href="/">Back to home</a> or <a href="/shop.html">browse the shop</a>.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var form = document.querySelector(".seg-enquiry");
+        if (!form) return;
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var input = form.querySelector("input[type=email]");
+          var note = form.querySelector(".seg-enquiry-note");
+          var email = input && input.value ? input.value.trim() : "";
+          if (!email) return;
+          if (note) note.textContent = "Thanks — we'll be in touch.";
+          var payload = {
+            email: email,
+            source: "segment:" + (form.getAttribute("data-segment") || ""),
+          };
+          try {
+            fetch("/api/capture-email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            }).catch(function () {});
+          } catch (err) {
+            /* non-fatal: the reassurance message already showed */
+          }
+          form.reset();
+        });
+      })();
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you offer trade or bulk pricing for breeders?","acceptedAnswer":{"@type":"Answer","text":"Bundled Breeder Starter Kits and multi-pack pricing are on the way. Register interest on this page and we'll email you as soon as they're available."}},{"@type":"Question","name":"Is the monitoring camera safe near a whelping box?","acceptedAnswer":{"@type":"Answer","text":"Yes — it's a non-contact camera placed outside the box so you can watch without disturbing the dam. Keep all cables out of reach as with any electrical device."}},{"@type":"Question","name":"How early can I start socialising a litter?","acceptedAnswer":{"@type":"Answer","text":"Gentle handling can begin in the first weeks, with structured sound and surface exposure building from around three weeks. Keep every session short, calm and positive."}}]}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"ItemList","name":"/segments/breeders.html","itemListElement":[{"@type":"ListItem","position":1,"url":"/smart-monitoring/indoor-pet-wellness-camera-placeholder","name":"Indoor Pet Wellness Camera"},{"@type":"ListItem","position":2,"url":"/senior-pet-care/self-warming-orthopedic-pet-mat","name":"Self-Warming Orthopedic Pet Mat"},{"@type":"ListItem","position":3,"url":"/pet-safety-essentials/qr-pet-id-tag","name":"QR Pet ID Tag"},{"@type":"ListItem","position":4,"url":"/pet-safety-essentials/smart-activity-tracker-tag","name":"Smart Activity Tracker Tag"}]}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Who it's for","item":"/segments/"},{"@type":"ListItem","position":3,"name":"Breeders","item":"/segments/breeders.html"}]}
+    </script>
+  </body>
+</html>

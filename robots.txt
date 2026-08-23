@@ -7,5 +7,9 @@ Disallow: /api/
 Disallow: /stripe/
 Disallow: /success.html
 Disallow: /checkout-cancel.html
+Disallow: /returns.html
+Disallow: /eturns.html
+Disallow: /theme-gallery.html
+Disallow: /images2/
 
 Sitemap: https://lartdelaseduction.com/sitemap.xml

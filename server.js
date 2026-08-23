@@ -29,6 +29,8 @@ import {
   formatEstimate,
 } from "./src/shipping.js";
 import { freeShippingProgress } from "./src/free-shipping.js";
+import { normalizeContactMessage } from "./src/contact-message.js";
+import { generateRobotsTxt, DEFAULT_DISALLOW } from "./src/robots.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -1389,6 +1391,16 @@ app.get("/pet-safety-essentials/", (req, res, next) => {
   }
 });
 
+// Segment landing hub (/segments and /segments/) — the per-segment
+// /segments/<slug>.html pages are served as static files.
+app.get(["/segments", "/segments/"], (req, res) => {
+  return res.sendFile(path.join(__dirname, "segments", "index.html"), (err) => {
+    if (!err) return;
+    console.error("/segments sendFile failed", err);
+    return res.status(500).type("text/plain").send("Failed to render segments");
+  });
+});
+
 app.get("/:nicheCategorySlug", (req, res, next) => {
   try {
     const nicheCategorySlug = String(req.params.nicheCategorySlug || "").trim();
@@ -1480,14 +1492,32 @@ app.get("/sitemap.xml", (req, res) => {
       { path: "/content/senior-dog-mobility.html", priority: "0.85" },
       { path: "/content/night-walk-safety-for-dogs.html", priority: "0.85" },
       { path: "/content/senior-cat-comfort.html", priority: "0.85" },
+      { path: "/blog.html", priority: "0.8" },
+      { path: "/features.html", priority: "0.6" },
+      { path: "/contact.html", priority: "0.5" },
+      { path: "/segments/", priority: "0.8" },
+      { path: "/segments/breeders.html", priority: "0.8" },
+      { path: "/segments/show-dogs.html", priority: "0.8" },
+      { path: "/segments/show-cats.html", priority: "0.8" },
+      { path: "/segments/dog-walkers.html", priority: "0.8" },
+      { path: "/segments/pet-sitters.html", priority: "0.8" },
+      { path: "/segments/multi-pet.html", priority: "0.8" },
     ];
+    // Collection pages this tenant is allowed to show, so the niche silos are
+    // discoverable and not only reachable by crawling the shop.
+    const collectionUrls = (allowedNiches || [])
+      .map(
+        (slug) =>
+          `  <url><loc>${xmlEscape(`${baseUrl}/${slug}`)}</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>`,
+      )
+      .join("\n");
     const staticXml = staticUrls
       .map(
         (u) =>
           `  <url><loc>${xmlEscape(baseUrl + u.path)}</loc><changefreq>weekly</changefreq><priority>${xmlEscape(u.priority)}</priority></url>`,
       )
       .join("\n");
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticXml}\n${productUrls}\n</urlset>`;
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticXml}\n${collectionUrls}\n${productUrls}\n</urlset>`;
     res.set("Content-Type", "application/xml");
     res.send(xml);
   } catch (err) {
@@ -1501,20 +1531,24 @@ app.get("/robots.txt", (req, res) => {
   const baseUrl = host
     ? `${req.protocol}://${host}`
     : publicBaseUrl || "http://localhost:3000";
-  const text = [
-    "User-agent: *",
-    "Allow: /",
-    "Disallow: /admin",
-    "Disallow: /cart.html",
-    "",
-    `Sitemap: ${baseUrl}/sitemap.xml`,
-  ].join("\n");
+  // Single source of truth for the disallow list, so the served robots.txt and
+  // the generated one can't drift apart.
+  const text = generateRobotsTxt({
+    siteUrl: baseUrl,
+    disallow: [...DEFAULT_DISALLOW, "/cart.html"],
+  });
   res.set("Content-Type", "text/plain");
   res.send(text);
 });
 
+// Keep one canonical homepage: /index.html permanently redirects to "/".
+// Must run before express.static, which would otherwise serve the file directly.
+app.get("/index.html", (req, res) => {
+  return res.redirect(301, "/");
+});
+
 // Serve everything in this folder (HTML, CSS, JS, images, etc.)
-// Disable the default index.html behavior so our explicit "/" route can redirect.
+// Disable the default index.html behavior so our explicit "/" route can serve it.
 app.use(express.static(__dirname, { index: false }));
 
 app.get("/health", (req, res) => {
@@ -1590,14 +1624,13 @@ app.get("/admin/env", (req, res) => {
   });
 });
 
-// When you visit http://localhost:3000/, send users to the store entry point.
-// The old landing page remains available at /index.html.
+// The branded homepage is the canonical site root (its canonical tag is "/").
 app.get("/", (req, res) => {
-  return res.redirect(302, "/shop.html");
-});
-
-app.get("/index.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  return res.sendFile(path.join(__dirname, "index.html"), (err) => {
+    if (!err) return;
+    console.error("/ sendFile failed", err);
+    return res.status(500).type("text/plain").send("Failed to render homepage");
+  });
 });
 
 app.post("/admin/run-import", (req, res) => {
@@ -2129,6 +2162,11 @@ app.post("/api/capture-email", async (req, res) => {
     const currency = String(tenant?.currency || "").toLowerCase() || null;
     const utm = req.body?.utm && typeof req.body.utm === "object" ? req.body.utm : {};
     const clean = (v) => String(v || "").trim() || null;
+    // Where the capture came from, e.g. "segment:breeders" from a kit-interest
+    // form. Kept short and label-only (no PII) so we can attribute interest.
+    const source = clean(req.body?.source)
+      ? clean(req.body.source).slice(0, 80)
+      : null;
 
     if (!email) {
       return res.status(400).json({ error: "Email is required" });
@@ -2159,15 +2197,45 @@ app.post("/api/capture-email", async (req, res) => {
       ],
     );
 
+    const eventData = { cartSize: cart.length };
+    if (source) eventData.source = source;
     await dbQuery(
       "INSERT INTO email_events (tenant_id, email, type, cart_email_id, data) VALUES ($1, $2, 'cart_captured', $3, $4::jsonb)",
-      [tenantId, email, cartEmailId, JSON.stringify({ cartSize: cart.length })],
+      [tenantId, email, cartEmailId, JSON.stringify(eventData)],
     );
 
     return res.json({ ok: true });
   } catch (err) {
     console.error("Capture email failed", err);
     return res.status(500).json({ error: "Failed to capture email" });
+  }
+});
+
+// Contact form. Stored as a funnel event so an enquiry lands next to that
+// person's captures and orders in the single-customer view (no new table).
+app.post("/api/contact", async (req, res) => {
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const tenantId = String(tenant?.tenant_id || "default");
+    const parsed = normalizeContactMessage(req.body || {});
+    if (!parsed.ok) {
+      return res.status(400).json({ error: parsed.error });
+    }
+    const { name, email, message } = parsed.value;
+
+    await dbQuery(
+      "INSERT INTO customers (tenant_id, email) VALUES ($1, $2) ON CONFLICT (tenant_id, email) DO UPDATE SET last_seen_at = now(), updated_at = now()",
+      [tenantId, email],
+    );
+    await dbQuery(
+      "INSERT INTO email_events (tenant_id, email, type, data) VALUES ($1, $2, 'contact_message', $3::jsonb)",
+      [tenantId, email, JSON.stringify({ name, message })],
+    );
+
+    return res.json({ ok: true });
+  } catch (err) {
+    console.error("Contact message failed", err);
+    return res.status(500).json({ error: "Failed to send message" });
   }
 });
 

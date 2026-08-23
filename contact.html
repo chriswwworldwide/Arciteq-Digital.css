@@ -3,106 +3,291 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact us | PawSense Tech &amp; Wellness</title>
     <meta
       name="description"
-      content="Get in touch with L’art de la Séduction — we’re here to answer questions about orders, collections, and memberships."
+      content="Questions about an order, sizing, or which PawSense product suits your pet? Send us a message and we'll reply by email."
     />
-    <title>Contact Us | L’art de la Séduction</title>
+    <link rel="canonical" href="/contact.html" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/premium.css" />
+    <script src="/styles/premium.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Contact",
+            "item": "/contact.html"
+          }
+        ]
+      }
+    </script>
+    <style>
+      header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
 
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="styles/main.css" />
+      header nav ul {
+        list-style: none;
+        display: flex;
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+      }
 
-    <!-- Favicon (optional) -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+      header nav a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      header > div {
+        white-space: nowrap;
+      }
+
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px 48px;
+      }
+
+      .crumb {
+        font-size: 0.85rem;
+        color: #6b7280;
+        padding: 12px 0 0;
+      }
+
+      .crumb a {
+        color: #6b7280;
+        text-decoration: none;
+      }
+
+      .lede h1 {
+        margin: 14px 0 0;
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+
+      .lede p {
+        margin: 12px 0 0;
+        color: var(--ink-soft);
+        line-height: 1.55;
+      }
+
+      .contact-form {
+        margin-top: 26px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: var(--paper-card);
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        font: inherit;
+        background: #fff;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+      }
+
+      .contact-form button {
+        padding: 13px 22px;
+        border: 0;
+        border-radius: var(--radius-sm);
+        background: var(--accent);
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        min-height: 44px;
+      }
+
+      #contact-status {
+        margin-top: 12px;
+        color: var(--ink-soft);
+        line-height: 1.5;
+      }
+
+      .helpful {
+        margin-top: 34px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+      }
+
+      .helpful h2 {
+        margin: 0;
+        font-size: 1.15rem;
+      }
+
+      .helpful ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+        color: var(--ink-soft);
+        line-height: 1.6;
+      }
+
+      .helpful a {
+        color: var(--accent);
+        font-weight: 600;
+      }
+    </style>
   </head>
-
   <body>
-    <!-- Dynamic header include -->
-    <div id="header-placeholder" class="loading">Loading header...</div>
+    <div id="header-mount" data-title="Contact"></div>
 
     <main>
-      <section class="contact-section">
-        <h1>Contact Us</h1>
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Contact</span>
+      </nav>
+
+      <section class="lede">
+        <span class="eyebrow">We read every message</span>
+        <h1>Contact us</h1>
         <p>
-          We’d love to hear from you. Whether you have a question about your
-          order, a special request, or just want to say hello — our team is here
-          to help.
+          Stuck on sizing, not sure which setup suits your pet, or chasing an
+          order? Send us the details and we'll reply to the email address you
+          give us. The more you tell us about your pet — age, size, the problem
+          you're solving — the more useful our answer will be.
         </p>
+      </section>
 
-        <form
-          class="contact-form"
-          action="#"
-          method="post"
-          onsubmit="return false;"
-        >
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your name"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="you@example.com"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="6"
-              placeholder="Write your message here ..."
-              required
-            ></textarea>
-          </div>
-
-          <button type="submit" class="btn">Send Message</button>
-        </form>
-
-        <div class="contact-details">
-          <p>
-            Email:
-            <a href="mailto:lartdelaseductionglobal@gmail.com"
-              >lartdelaseductionglobal@gmail.com</a
-            >
-          </p>
-          <p>Instagram: <a href="#">@lartdelaseduction</a></p>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-group">
+          <label for="name">Your name (optional)</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            autocomplete="name"
+            placeholder="Your name"
+          />
         </div>
 
-        <p><a href="index.html" class="btn secondary">← Back to Homepage</a></p>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="message">How can we help?</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            placeholder="Tell us about your pet and what you're trying to solve…"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit">Send message</button>
+        <div id="contact-status" role="status" aria-live="polite"></div>
+      </form>
+
+      <section class="helpful">
+        <h2>Might answer it faster</h2>
+        <ul>
+          <li>
+            Choosing between products? Start with the
+            <a href="/blog.html">pet care guides</a>.
+          </li>
+          <li>
+            Pets are your work or your whole household? See the
+            <a href="/segments/">specialist guides</a>.
+          </li>
+          <li>
+            Want to browse first? Head to the <a href="/shop.html">shop</a> and
+            filter by pet type, life stage and size.
+          </li>
+        </ul>
       </section>
     </main>
 
-    <!-- Dynamic footer include -->
-    <div id="footer-placeholder" class="loading">Loading footer...</div>
-
+    <script src="/script.js"></script>
     <script>
-      // Load header.html and footer.html dynamically
-      async function loadIncludes() {
-        try {
-          const [header, footer] = await Promise.all([
-            fetch("header.html").then((res) => res.text()),
-            fetch("footer.html").then((res) => res.text()),
-          ]);
-          document.getElementById("header-placeholder").innerHTML = header;
-          document.getElementById("footer-placeholder").innerHTML = footer;
-        } catch (err) {
-          console.warn("Header or footer could not be loaded.", err);
-        }
-      }
-      loadIncludes();
+      (function () {
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("contact-status");
+        if (!form) return;
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = String(
+            document.getElementById("email")?.value || "",
+          ).trim();
+          const message = String(
+            document.getElementById("message")?.value || "",
+          ).trim();
+          const name = String(
+            document.getElementById("name")?.value || "",
+          ).trim();
+
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            if (status)
+              status.textContent = "Please enter a valid email address.";
+            return;
+          }
+          if (!message) {
+            if (status) status.textContent = "Please add a message.";
+            return;
+          }
+
+          if (status) status.textContent = "Sending…";
+          try {
+            const res = await fetch("/api/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ name, email, message }),
+            });
+            if (!res.ok) throw new Error("send failed");
+            form.reset();
+            if (status)
+              status.textContent =
+                "Thanks — your message is with us. We'll reply to " +
+                email +
+                ".";
+          } catch {
+            if (status)
+              status.textContent =
+                "Sorry, that didn't send. Please try again in a moment.";
+          }
+        });
+      })();
     </script>
   </body>
 </html>

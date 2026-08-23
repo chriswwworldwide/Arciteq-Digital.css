@@ -346,6 +346,12 @@ Next build block (queued):
 
 - Content hub v2: build 2–3 more topical guides and interlink them from the shop and product pages. Then resume with local landing pages and ops dashboards.
 
+Immediately after launch (next major initiative — DIRECTLY follows go-live):
+
+- **B2B local-service lead-generation system.** Adapt ~60–70% of this architecture: the data-driven page engine (segments.json → renderer → static pages) becomes a service×location landing-page generator; swap Product/ItemList schema for LocalBusiness/Service/FAQ/BreadcrumbList; reuse /api/capture-email + UTM/first-touch attribution + the A/B framework for lead capture & optimisation; catalog-qa → lead/listing QA; order-health → lead-health/SLA dashboard; email adapter for nurture/win-back; existing multi-tenant scoping = one tenant per business/franchise.
+- New pieces to build fresh: a CRM/lead pipeline model + storage, routing/notifications to the business, and call/form tracking. MVP well under a day; solid end-to-end ~2–3 days of blocks. Rationale: higher margin (no inventory/fulfilment), higher value per conversion, recurring per-lead/retainer revenue, faster path to first revenue than the store. Success hinges on lead quality + fast hand-off to the business.
+- **REMINDER OWED:** remind Chris about kicking this off at launch time.
+
 Recently completed:
 
 - Speed-to-profit: email capture + abandoned cart recovery with 1-day and 7-day nudges (email provider to be wired later).

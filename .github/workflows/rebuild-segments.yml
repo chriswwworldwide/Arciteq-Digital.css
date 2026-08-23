@@ -1,0 +1,52 @@
+name: Rebuild segment pages
+
+# Regenerates the segment landing pages daily so date-driven show events flip
+# from "Upcoming" to "Recent & results" as their dates pass. Commits only when
+# the generated output actually changes, so there is no daily empty-commit noise.
+#
+# NOTE: for the push step to succeed, the repo must allow GitHub Actions to write:
+# Settings → Actions → General → Workflow permissions → "Read and write permissions".
+# If `main` is protected, also allow this workflow (or the actions bot) to push to it.
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # daily 03:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rebuild-segments
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Rebuild segment pages
+        run: npm run build-segments
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- segments/; then
+            echo "No segment changes — nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add segments/
+          git commit -m "chore(segments): scheduled rebuild (refresh event status)"
+          git push

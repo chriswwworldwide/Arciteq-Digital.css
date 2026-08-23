@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Show Dogs — Ring Prep, Coat Care &amp; Show-Day Kit | PawSense</title>
+    <meta name="description" content="Specialist non-ingestible gear for show dogs: coat and grooming care, calm ring handling, safe transport and a show-day rundown with upcoming events and results." />
+    <link rel="canonical" href="/segments/show-dogs.html" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/premium.css" />
+    <script src="/styles/premium.js" defer></script>
+    <script src="/script.js" defer></script>
+    <style>
+      header.seg-header {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      main.seg-main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px 48px;
+      }
+      .seg-breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        padding: 14px 0 0;
+        font-size: 0.85rem;
+        color: #6b7280;
+      }
+      .seg-breadcrumb a {
+        color: #6b7280;
+        text-decoration: none;
+      }
+      .seg-breadcrumb a:hover {
+        color: var(--accent, #8a2e2e);
+      }
+      .seg-breadcrumb [aria-current="page"] {
+        color: #111827;
+        font-weight: 600;
+      }
+      .seg-hero {
+        padding: 20px 0 8px;
+      }
+      .seg-kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--accent, #8a2e2e);
+        margin: 0 0 8px;
+      }
+      .seg-hero h1 {
+        margin: 0;
+        font-size: 2.1rem;
+        line-height: 1.15;
+        color: #111827;
+      }
+      .seg-hero p {
+        margin: 12px 0 0;
+        max-width: 62ch;
+        color: #374151;
+        line-height: 1.55;
+        font-size: 1.05rem;
+      }
+      .seg-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 14px;
+      }
+      @media (max-width: 900px) {
+        .seg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 600px) {
+        .seg-grid { grid-template-columns: 1fr; }
+      }
+      .seg-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+      }
+      .seg-card > h3 { margin: 0; padding: 14px 14px 0; font-size: 1.02rem; color: #111827; }
+      .seg-card > p { margin: 8px 0 0; padding: 0 14px 14px; color: #374151; line-height: 1.45; font-size: 0.95rem; }
+      .seg-card a { display: block; color: inherit; text-decoration: none; }
+      .seg-card a h3 { margin: 0; padding: 14px 14px 0; font-size: 1.02rem; color: #111827; }
+      .seg-card a p { margin: 8px 0 0; padding: 0 14px 14px; color: #374151; line-height: 1.45; font-size: 0.95rem; }
+      .seg-card a:hover h3 { text-decoration: underline; }
+      .seg-intro {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 20px;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        background: #fafafa;
+      }
+      @media (max-width: 700px) { .seg-intro { grid-template-columns: 1fr; } }
+      .seg-intro-col h2 { margin: 0 0 6px; font-size: 1.05rem; color: #111827; }
+      .seg-intro-col p { margin: 0; color: #374151; line-height: 1.55; }
+      .seg-reads { margin-top: 14px; display: grid; gap: 10px; }
+      details.seg-read {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+        padding: 12px 14px;
+        box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+      }
+      details.seg-read summary { cursor: pointer; list-style: none; outline: none; }
+      details.seg-read summary::-webkit-details-marker { display: none; }
+      .seg-read-title { font-weight: 600; color: #111827; }
+      details.seg-read[open] .seg-read-title { color: var(--accent, #8a2e2e); }
+      details.seg-read p { margin: 8px 0 0; color: #374151; line-height: 1.5; }
+      .seg-events-sub { font-size: 1rem; margin: 16px 0 6px; color: #111827; }
+      ul.seg-events { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+      li.seg-event {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px 12px;
+        padding: 10px 12px;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        background: #fff;
+      }
+      .seg-event-date { font-variant-numeric: tabular-nums; color: var(--accent, #8a2e2e); font-weight: 700; min-width: 96px; }
+      .seg-event-name { font-weight: 600; color: #111827; }
+      .seg-event-loc { color: #6b7280; font-size: 0.9rem; }
+      .seg-event-result { color: #374151; font-size: 0.9rem; margin-left: auto; font-style: italic; }
+      ol.seg-rundown { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; }
+      li.seg-rundown-step { display: flex; gap: 14px; align-items: flex-start; }
+      .seg-rundown-time { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--accent, #8a2e2e); min-width: 68px; }
+      .seg-rundown-title { font-weight: 600; color: #111827; }
+      li.seg-rundown-step p { margin: 4px 0 0; color: #374151; line-height: 1.45; }
+      section.seg-section { margin-top: 34px; }
+      section.seg-section > h2 { font-size: 1.4rem; margin: 0 0 6px; color: #111827; }
+      section.seg-section > p.lead { margin: 0 0 4px; color: #374151; line-height: 1.5; max-width: 62ch; }
+      .seg-kit {
+        margin-top: 34px;
+        padding: 22px;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        background: #f9fafb;
+      }
+      .seg-kit h2 { margin: 0 0 6px; font-size: 1.3rem; color: #111827; }
+      .seg-kit p { margin: 0; color: #374151; line-height: 1.5; max-width: 62ch; }
+      .seg-enquiry { margin-top: 14px; }
+      .seg-enquiry label { display: block; font-size: 0.9rem; color: #374151; margin-bottom: 8px; }
+      .seg-enquiry-row { display: flex; gap: 8px; flex-wrap: wrap; }
+      .seg-enquiry input {
+        flex: 1 1 220px;
+        padding: 10px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+      .seg-enquiry button {
+        padding: 10px 18px;
+        border-radius: 10px;
+        border: 1px solid var(--accent, #8a2e2e);
+        background: var(--accent, #8a2e2e);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .seg-enquiry-note { margin: 8px 0 0; font-size: 0.85rem; color: #059669; min-height: 1em; }
+      section.seg-faq { margin-top: 34px; }
+      section.seg-faq h2 { font-size: 1.4rem; margin: 0 0 8px; }
+      section.seg-faq details { border-top: 1px solid #e5e7eb; padding: 12px 0; }
+      section.seg-faq details:last-child { border-bottom: 1px solid #e5e7eb; }
+      section.seg-faq summary { font-weight: 600; cursor: pointer; list-style: none; outline: none; }
+      section.seg-faq p { margin: 8px 0 0; color: #374151; line-height: 1.5; }
+      .seg-footer-note {
+        margin-top: 44px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+        color: #6b7280;
+        font-size: 0.9rem;
+      }
+      .seg-footer-note a { color: #111827; text-decoration: underline; }
+      .seg-other-guides { margin-top: 34px; }
+      .seg-other-guides h2 { font-size: 1.4rem; margin: 0 0 12px; }
+      .seg-other-guides ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+      .seg-other-guides li a { display: inline-block; padding: 8px 14px; border: 1px solid #e5e7eb; border-radius: 999px; color: #111827; text-decoration: none; font-size: 0.95rem; background: #fff; }
+      .seg-other-guides li a:hover { border-color: var(--accent, #8a2e2e); color: var(--accent, #8a2e2e); }
+    </style>
+  </head>
+  <body>
+    <header class="seg-header">
+      <a href="/" style="font-weight: 700; font-size: 1.25rem; color: #111827; text-decoration: none;">PawSense</a>
+      <nav style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="/shop.html" style="color: #374151; text-decoration: none;">Shop</a>
+        <a href="/segments/" style="color: #374151; text-decoration: none;">Who it's for</a>
+      </nav>
+    </header>
+
+    <main class="seg-main">
+      <section id="trust-strip" aria-label="Trust"></section>
+
+      <nav class="seg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/segments/">Who it's for</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Show Dogs</span>
+      </nav>
+
+      <section class="seg-hero">
+        <p class="seg-kicker">For show dogs</p>
+        <h1>Ring-ready, calm and conditioned</h1>
+        <p>Presentation is half the battle. PawSense helps handlers keep coats conditioned, nerves settled and travel safe — so your dog walks into the ring looking and feeling its best.</p>
+      </section>
+
+      
+      <section class="seg-intro">
+        <div class="seg-intro-col"><h2>Who it's for</h2><p>Owner-handlers and professional handlers preparing dogs for conformation and performance shows who want repeatable coat, condition and composure on the day.</p></div>
+        <div class="seg-intro-col"><h2>Why it matters</h2><p>Judges reward condition and confidence. A settled, well-conditioned dog that travels calmly and stands relaxed presents far better than one that arrives frazzled — and consistency across the season protects results.</p></div>
+      </section>
+
+      
+      <section class="seg-section" aria-label="Specialist short reads">
+        <h2>Specialist short reads</h2>
+        <div class="seg-reads">
+          
+        <details class="seg-read">
+          <summary><span class="seg-read-title">Coat conditioning through the season</span></summary>
+          <p>Great ring coats are built weeks out, not the night before. A gentle, regular grooming routine plus topical conditioning keeps skin healthy and the coat in bloom without stripping natural oils.</p>
+        </details>
+        <details class="seg-read">
+          <summary><span class="seg-read-title">Calm handling in the ring</span></summary>
+          <p>Nerves travel down the lead. Short, upbeat practice sessions with a clear cue system and a calm warm-up routine help a dog hold a relaxed stack and free-stack under pressure.</p>
+        </details>
+        <details class="seg-read">
+          <summary><span class="seg-read-title">Travelling to shows safely</span></summary>
+          <p>A secured, ventilated travel setup and a familiar resting mat reduce stress on long drives, so your dog arrives rested rather than wired.</p>
+        </details>
+        </div>
+      </section>
+
+      <section class="seg-section" aria-label="What show handlers need">
+        <h2>What show handlers need</h2>
+        <div class="seg-grid">
+          
+        <div class="seg-card">
+          <h3>Consistent condition</h3>
+          <p>Coat and skin health has to hold across a whole season of travel and baths.</p>
+        </div>
+        <div class="seg-card">
+          <h3>Composure on the day</h3>
+          <p>A calm dog stacks and moves better — nerves cost placements.</p>
+        </div>
+        <div class="seg-card">
+          <h3>Safe, low-stress travel</h3>
+          <p>Long drives shouldn&#39;t leave your dog frazzled at ringside.</p>
+        </div>
+        </div>
+      </section>
+
+      <section class="seg-section" aria-label="Curated picks for the ring">
+        <h2>Curated picks for the ring</h2>
+        <p class="lead">Presentation, composure and travel — the non-ingestible essentials.</p>
+        <div class="seg-grid">
+          
+        <div class="seg-card">
+          <a href="/senior-pet-care/gentle-grooming-glove-seniors?ref=show-dogs">
+            <h3>Gentle Grooming Glove for Seniors</h3>
+            <p>Daily coat maintenance that keeps the finish in bloom.</p>
+          </a>
+        </div>
+        <div class="seg-card">
+          <a href="/senior-pet-care/joint-comfort-massage-balm?ref=show-dogs">
+            <h3>Joint Comfort Massage Balm</h3>
+            <p>Non-ingestible topical comfort for hard-working show dogs.</p>
+          </a>
+        </div>
+        <div class="seg-card">
+          <a href="/pet-safety-essentials/reflective-no-pull-harness?ref=show-dogs">
+            <h3>Reflective No-Pull Harness</h3>
+            <p>Calm, controlled movement to and from the ring.</p>
+          </a>
+        </div>
+        <div class="seg-card">
+          <a href="/pet-safety-essentials/car-seatbelt-safety-tether?ref=show-dogs">
+            <h3>Car Seatbelt Safety Tether</h3>
+            <p>Secured, lower-stress travel to shows.</p>
+          </a>
+        </div>
+        </div>
+      </section>
+
+      
+      <section class="seg-section seg-events-section" aria-label="Events">
+        <h2>Events</h2>
+        <h3 class="seg-events-sub">Upcoming events</h3><ul class="seg-events">
+        <li class="seg-event">
+          <span class="seg-event-date">3 Oct 2026</span>
+          <span class="seg-event-name">Autumn Championship Show</span>
+          <span class="seg-event-loc">TBC</span>
+          
+        </li>
+        <li class="seg-event">
+          <span class="seg-event-date">14 Nov 2026</span>
+          <span class="seg-event-name">Winter Open Show</span>
+          <span class="seg-event-loc">TBC</span>
+          
+        </li></ul>
+        <h3 class="seg-events-sub">Recent events &amp; results</h3><ul class="seg-events">
+        <li class="seg-event">
+          <span class="seg-event-date">12 Mar 2026</span>
+          <span class="seg-event-name">Crufts</span>
+          <span class="seg-event-loc">Birmingham, NEC</span>
+          <span class="seg-event-result">Placeholder result — update after the event</span>
+        </li></ul>
+      </section>
+
+      
+      <section class="seg-section" aria-label="Show-day rundown">
+        <h2>Show-day rundown</h2>
+        <p class="lead">A calm timeline keeps you and your dog composed from arrival to results.</p>
+        <ol class="seg-rundown">
+          
+        <li class="seg-rundown-step">
+          <span class="seg-rundown-time">Pre-dawn</span>
+          <div>
+            <span class="seg-rundown-title">Travel &amp; settle</span>
+            <p>Arrive early, walk and toilet your dog, and let it settle at the benching area.</p>
+          </div>
+        </li>
+        <li class="seg-rundown-step">
+          <span class="seg-rundown-time">Morning</span>
+          <div>
+            <span class="seg-rundown-title">Grooming &amp; final prep</span>
+            <p>Last-minute coat work, check kit, and confirm your ring and class time.</p>
+          </div>
+        </li>
+        <li class="seg-rundown-step">
+          <span class="seg-rundown-time">Ring time</span>
+          <div>
+            <span class="seg-rundown-title">Warm up &amp; show</span>
+            <p>A short, upbeat warm-up, then stack and move as practised.</p>
+          </div>
+        </li>
+        <li class="seg-rundown-step">
+          <span class="seg-rundown-time">After judging</span>
+          <div>
+            <span class="seg-rundown-title">Cool down &amp; results</span>
+            <p>Water, rest and praise regardless of placing — then note results for the season.</p>
+          </div>
+        </li>
+        </ol>
+      </section>
+
+      
+      <section class="seg-kit">
+        <h2>Show-Day Kit (coming soon)</h2>
+        <p>A bundled ringside kit — grooming, topical comfort, calm handling and safe travel essentials. Register interest and we&#39;ll email you first when bundles open.</p>
+        <form class="seg-enquiry" data-segment="show-dogs" aria-label="Register interest">
+          <label for="seg-email-show-dogs">Register interest — we'll email when it's ready.</label>
+          <div class="seg-enquiry-row">
+            <input id="seg-email-show-dogs" type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            <button type="submit">Notify me</button>
+          </div>
+          <p class="seg-enquiry-note" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      
+      <section class="seg-other-guides" aria-label="Explore other guides">
+        <h2>Explore other guides</h2>
+        <ul>
+          <li><a href="/segments/breeders.html">Breeders</a></li><li><a href="/segments/show-cats.html">Show Cats</a></li><li><a href="/segments/dog-walkers.html">Dog Walkers</a></li><li><a href="/segments/pet-sitters.html">Pet Sitters</a></li><li><a href="/segments/multi-pet.html">Multi-Pet Harmony</a></li>
+        </ul>
+      </section>
+
+      <section class="seg-faq" aria-label="Frequently asked questions">
+        <h2>Frequently asked questions</h2>
+        
+        <details>
+          <summary>When should I start conditioning a show coat?</summary>
+          <p>Weeks ahead. A steady grooming and topical-conditioning routine builds a healthy coat far better than any last-minute effort.</p>
+        </details>
+        <details>
+          <summary>How do I keep my dog calm ringside?</summary>
+          <p>Keep your own energy low, use a consistent warm-up, and practise short relaxed stacks at home so the ring feels familiar.</p>
+        </details>
+        <details>
+          <summary>Do you list upcoming shows?</summary>
+          <p>Yes — the Events section shows upcoming shows, and once a date passes it moves to Recent events with results after we update it.</p>
+        </details>
+      </section>
+
+      <section class="seg-footer-note">
+        <p>
+          PawSense focuses on non-ingestible pet tech &amp; wellness. This page is
+          general guidance, not veterinary advice.
+          <a href="/">Back to home</a> or <a href="/shop.html">browse the shop</a>.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var form = document.querySelector(".seg-enquiry");
+        if (!form) return;
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var input = form.querySelector("input[type=email]");
+          var note = form.querySelector(".seg-enquiry-note");
+          var email = input && input.value ? input.value.trim() : "";
+          if (!email) return;
+          if (note) note.textContent = "Thanks — we'll be in touch.";
+          var payload = {
+            email: email,
+            source: "segment:" + (form.getAttribute("data-segment") || ""),
+          };
+          try {
+            fetch("/api/capture-email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            }).catch(function () {});
+          } catch (err) {
+            /* non-fatal: the reassurance message already showed */
+          }
+          form.reset();
+        });
+      })();
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When should I start conditioning a show coat?","acceptedAnswer":{"@type":"Answer","text":"Weeks ahead. A steady grooming and topical-conditioning routine builds a healthy coat far better than any last-minute effort."}},{"@type":"Question","name":"How do I keep my dog calm ringside?","acceptedAnswer":{"@type":"Answer","text":"Keep your own energy low, use a consistent warm-up, and practise short relaxed stacks at home so the ring feels familiar."}},{"@type":"Question","name":"Do you list upcoming shows?","acceptedAnswer":{"@type":"Answer","text":"Yes — the Events section shows upcoming shows, and once a date passes it moves to Recent events with results after we update it."}}]}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"ItemList","name":"/segments/show-dogs.html","itemListElement":[{"@type":"ListItem","position":1,"url":"/senior-pet-care/gentle-grooming-glove-seniors","name":"Gentle Grooming Glove for Seniors"},{"@type":"ListItem","position":2,"url":"/senior-pet-care/joint-comfort-massage-balm","name":"Joint Comfort Massage Balm"},{"@type":"ListItem","position":3,"url":"/pet-safety-essentials/reflective-no-pull-harness","name":"Reflective No-Pull Harness"},{"@type":"ListItem","position":4,"url":"/pet-safety-essentials/car-seatbelt-safety-tether","name":"Car Seatbelt Safety Tether"}]}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Who it's for","item":"/segments/"},{"@type":"ListItem","position":3,"name":"Show Dogs","item":"/segments/show-dogs.html"}]}
+    </script>
+    <script type="application/ld+json">
+      [{"@context":"https://schema.org","@type":"Event","name":"Autumn Championship Show","startDate":"2026-10-03","location":{"@type":"Place","name":"TBC"},"eventStatus":"https://schema.org/EventScheduled"},{"@context":"https://schema.org","@type":"Event","name":"Winter Open Show","startDate":"2026-11-14","location":{"@type":"Place","name":"TBC"},"eventStatus":"https://schema.org/EventScheduled"}]
+    </script>
+  </body>
+</html>

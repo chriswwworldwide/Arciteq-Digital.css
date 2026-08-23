@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Pet Sitters — Remote Monitoring, ID &amp; Handover | PawSense</title>
+    <meta name="description" content="Pet-sitter essentials from PawSense: remote wellness monitoring, reliable ID, activity tracking and calm handover for caring for pets in someone else&#39;s home." />
+    <link rel="canonical" href="/segments/pet-sitters.html" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/premium.css" />
+    <script src="/styles/premium.js" defer></script>
+    <script src="/script.js" defer></script>
+    <style>
+      header.seg-header {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      main.seg-main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px 48px;
+      }
+      .seg-breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        padding: 14px 0 0;
+        font-size: 0.85rem;
+        color: #6b7280;
+      }
+      .seg-breadcrumb a {
+        color: #6b7280;
+        text-decoration: none;
+      }
+      .seg-breadcrumb a:hover {
+        color: var(--accent, #8a2e2e);
+      }
+      .seg-breadcrumb [aria-current="page"] {
+        color: #111827;
+        font-weight: 600;
+      }
+      .seg-hero {
+        padding: 20px 0 8px;
+      }
+      .seg-kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--accent, #8a2e2e);
+        margin: 0 0 8px;
+      }
+      .seg-hero h1 {
+        margin: 0;
+        font-size: 2.1rem;
+        line-height: 1.15;
+        color: #111827;
+      }
+      .seg-hero p {
+        margin: 12px 0 0;
+        max-width: 62ch;
+        color: #374151;
+        line-height: 1.55;
+        font-size: 1.05rem;
+      }
+      .seg-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 14px;
+      }
+      @media (max-width: 900px) {
+        .seg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 600px) {
+        .seg-grid { grid-template-columns: 1fr; }
+      }
+      .seg-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+      }
+      .seg-card > h3 { margin: 0; padding: 14px 14px 0; font-size: 1.02rem; color: #111827; }
+      .seg-card > p { margin: 8px 0 0; padding: 0 14px 14px; color: #374151; line-height: 1.45; font-size: 0.95rem; }
+      .seg-card a { display: block; color: inherit; text-decoration: none; }
+      .seg-card a h3 { margin: 0; padding: 14px 14px 0; font-size: 1.02rem; color: #111827; }
+      .seg-card a p { margin: 8px 0 0; padding: 0 14px 14px; color: #374151; line-height: 1.45; font-size: 0.95rem; }
+      .seg-card a:hover h3 { text-decoration: underline; }
+      .seg-intro {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 20px;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        background: #fafafa;
+      }
+      @media (max-width: 700px) { .seg-intro { grid-template-columns: 1fr; } }
+      .seg-intro-col h2 { margin: 0 0 6px; font-size: 1.05rem; color: #111827; }
+      .seg-intro-col p { margin: 0; color: #374151; line-height: 1.55; }
+      .seg-reads { margin-top: 14px; display: grid; gap: 10px; }
+      details.seg-read {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+        padding: 12px 14px;
+        box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+      }
+      details.seg-read summary { cursor: pointer; list-style: none; outline: none; }
+      details.seg-read summary::-webkit-details-marker { display: none; }
+      .seg-read-title { font-weight: 600; color: #111827; }
+      details.seg-read[open] .seg-read-title { color: var(--accent, #8a2e2e); }
+      details.seg-read p { margin: 8px 0 0; color: #374151; line-height: 1.5; }
+      .seg-events-sub { font-size: 1rem; margin: 16px 0 6px; color: #111827; }
+      ul.seg-events { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+      li.seg-event {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px 12px;
+        padding: 10px 12px;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        background: #fff;
+      }
+      .seg-event-date { font-variant-numeric: tabular-nums; color: var(--accent, #8a2e2e); font-weight: 700; min-width: 96px; }
+      .seg-event-name { font-weight: 600; color: #111827; }
+      .seg-event-loc { color: #6b7280; font-size: 0.9rem; }
+      .seg-event-result { color: #374151; font-size: 0.9rem; margin-left: auto; font-style: italic; }
+      ol.seg-rundown { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; }
+      li.seg-rundown-step { display: flex; gap: 14px; align-items: flex-start; }
+      .seg-rundown-time { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--accent, #8a2e2e); min-width: 68px; }
+      .seg-rundown-title { font-weight: 600; color: #111827; }
+      li.seg-rundown-step p { margin: 4px 0 0; color: #374151; line-height: 1.45; }
+      section.seg-section { margin-top: 34px; }
+      section.seg-section > h2 { font-size: 1.4rem; margin: 0 0 6px; color: #111827; }
+      section.seg-section > p.lead { margin: 0 0 4px; color: #374151; line-height: 1.5; max-width: 62ch; }
+      .seg-kit {
+        margin-top: 34px;
+        padding: 22px;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        background: #f9fafb;
+      }
+      .seg-kit h2 { margin: 0 0 6px; font-size: 1.3rem; color: #111827; }
+      .seg-kit p { margin: 0; color: #374151; line-height: 1.5; max-width: 62ch; }
+      .seg-enquiry { margin-top: 14px; }
+      .seg-enquiry label { display: block; font-size: 0.9rem; color: #374151; margin-bottom: 8px; }
+      .seg-enquiry-row { display: flex; gap: 8px; flex-wrap: wrap; }
+      .seg-enquiry input {
+        flex: 1 1 220px;
+        padding: 10px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+      .seg-enquiry button {
+        padding: 10px 18px;
+        border-radius: 10px;
+        border: 1px solid var(--accent, #8a2e2e);
+        background: var(--accent, #8a2e2e);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .seg-enquiry-note { margin: 8px 0 0; font-size: 0.85rem; color: #059669; min-height: 1em; }
+      section.seg-faq { margin-top: 34px; }
+      section.seg-faq h2 { font-size: 1.4rem; margin: 0 0 8px; }
+      section.seg-faq details { border-top: 1px solid #e5e7eb; padding: 12px 0; }
+      section.seg-faq details:last-child { border-bottom: 1px solid #e5e7eb; }
+      section.seg-faq summary { font-weight: 600; cursor: pointer; list-style: none; outline: none; }
+      section.seg-faq p { margin: 8px 0 0; color: #374151; line-height: 1.5; }
+      .seg-footer-note {
+        margin-top: 44px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+        color: #6b7280;
+        font-size: 0.9rem;
+      }
+      .seg-footer-note a { color: #111827; text-decoration: underline; }
+      .seg-other-guides { margin-top: 34px; }
+      .seg-other-guides h2 { font-size: 1.4rem; margin: 0 0 12px; }
+      .seg-other-guides ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+      .seg-other-guides li a { display: inline-block; padding: 8px 14px; border: 1px solid #e5e7eb; border-radius: 999px; color: #111827; text-decoration: none; font-size: 0.95rem; background: #fff; }
+      .seg-other-guides li a:hover { border-color: var(--accent, #8a2e2e); color: var(--accent, #8a2e2e); }
+    </style>
+  </head>
+  <body>
+    <header class="seg-header">
+      <a href="/" style="font-weight: 700; font-size: 1.25rem; color: #111827; text-decoration: none;">PawSense</a>
+      <nav style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="/shop.html" style="color: #374151; text-decoration: none;">Shop</a>
+        <a href="/segments/" style="color: #374151; text-decoration: none;">Who it's for</a>
+      </nav>
+    </header>
+
+    <main class="seg-main">
+      <section id="trust-strip" aria-label="Trust"></section>
+
+      <nav class="seg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/segments/">Who it's for</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Pet Sitters</span>
+      </nav>
+
+      <section class="seg-hero">
+        <p class="seg-kicker">For pet sitters</p>
+        <h1>Trusted care while they&#39;re away</h1>
+        <p>Owners hand you their home and their best friend. PawSense helps sitters monitor wellbeing, keep pets identifiable, and share reassuring updates while the family&#39;s away.</p>
+      </section>
+
+      
+      <section class="seg-intro">
+        <div class="seg-intro-col"><h2>Who it's for</h2><p>Professional and casual pet sitters and house-sitters caring for dogs and cats in the owner&#39;s home or their own, who need to reassure clients from a distance.</p></div>
+        <div class="seg-intro-col"><h2>Why it matters</h2><p>Owners worry most about the unseen hours. Monitoring, tracking and solid ID let you catch problems early and send the updates that turn a one-off client into a regular.</p></div>
+      </section>
+
+      
+      <section class="seg-section" aria-label="Specialist short reads">
+        <h2>Specialist short reads</h2>
+        <div class="seg-reads">
+          
+        <details class="seg-read">
+          <summary><span class="seg-read-title">Settling a pet in the owner&#39;s absence</span></summary>
+          <p>Keep routine, feeding and resting spots as close to normal as possible. Familiar bedding and calm handling reduce separation stress in the first days.</p>
+        </details>
+        <details class="seg-read">
+          <summary><span class="seg-read-title">Reassuring updates that win repeat bookings</span></summary>
+          <p>A quick daily check-in with a photo and an activity note reassures anxious owners and sets you apart. Monitoring makes those updates effortless.</p>
+        </details>
+        <details class="seg-read">
+          <summary><span class="seg-read-title">What to confirm at handover</span></summary>
+          <p>Vet contact, feeding, medication routine, ID details and emergency permissions. A tracker and QR ID close the gap if a pet ever slips out.</p>
+        </details>
+        </div>
+      </section>
+
+      <section class="seg-section" aria-label="What sitters need">
+        <h2>What sitters need</h2>
+        <div class="seg-grid">
+          
+        <div class="seg-card">
+          <h3>Eyes on the unseen hours</h3>
+          <p>Owners worry most about what happens when no one&#39;s watching.</p>
+        </div>
+        <div class="seg-card">
+          <h3>Fail-safe identification</h3>
+          <p>If a pet slips out, solid ID gets them home fast.</p>
+        </div>
+        <div class="seg-card">
+          <h3>Updates that build trust</h3>
+          <p>Simple daily reassurance turns clients into regulars.</p>
+        </div>
+        </div>
+      </section>
+
+      <section class="seg-section" aria-label="Curated picks for sitters">
+        <h2>Curated picks for sitters</h2>
+        <p class="lead">Monitoring, ID and comfort — the non-ingestible essentials.</p>
+        <div class="seg-grid">
+          
+        <div class="seg-card">
+          <a href="/smart-monitoring/indoor-pet-wellness-camera-placeholder?ref=pet-sitters">
+            <h3>Indoor Pet Wellness Camera</h3>
+            <p>Check in on a pet remotely between visits.</p>
+          </a>
+        </div>
+        <div class="seg-card">
+          <a href="/smart-monitoring/gps-activity-tracker-tag-placeholder?ref=pet-sitters">
+            <h3>GPS Activity Tracker Tag</h3>
+            <p>GPS tracking for total peace of mind.</p>
+          </a>
+        </div>
+        <div class="seg-card">
+          <a href="/pet-safety-essentials/qr-pet-id-tag?ref=pet-sitters">
+            <h3>QR Pet ID Tag</h3>
+            <p>Instant ID with owner contact if a pet gets out.</p>
+          </a>
+        </div>
+        <div class="seg-card">
+          <a href="/pet-safety-essentials/smart-activity-tracker-tag?ref=pet-sitters">
+            <h3>Smart Activity Tracker Tag</h3>
+            <p>Activity and rest data to share in daily updates.</p>
+          </a>
+        </div>
+        </div>
+      </section>
+
+      
+
+      
+
+      
+      <section class="seg-kit">
+        <h2>Sitter&#39;s Care Kit (coming soon)</h2>
+        <p>A bundled sitting kit — monitoring, tracking and ID essentials to reassure every client. Register interest and we&#39;ll email you first when bundles open.</p>
+        <form class="seg-enquiry" data-segment="pet-sitters" aria-label="Register interest">
+          <label for="seg-email-pet-sitters">Register interest — we'll email when it's ready.</label>
+          <div class="seg-enquiry-row">
+            <input id="seg-email-pet-sitters" type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            <button type="submit">Notify me</button>
+          </div>
+          <p class="seg-enquiry-note" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      
+      <section class="seg-other-guides" aria-label="Explore other guides">
+        <h2>Explore other guides</h2>
+        <ul>
+          <li><a href="/segments/breeders.html">Breeders</a></li><li><a href="/segments/show-dogs.html">Show Dogs</a></li><li><a href="/segments/show-cats.html">Show Cats</a></li><li><a href="/segments/dog-walkers.html">Dog Walkers</a></li><li><a href="/segments/multi-pet.html">Multi-Pet Harmony</a></li>
+        </ul>
+      </section>
+
+      <section class="seg-faq" aria-label="Frequently asked questions">
+        <h2>Frequently asked questions</h2>
+        
+        <details>
+          <summary>How do I reassure nervous owners while they&#39;re away?</summary>
+          <p>Send a short daily update with a photo and an activity note. Remote monitoring and tracking make this quick and genuinely reassuring.</p>
+        </details>
+        <details>
+          <summary>What ID should a sat pet have?</summary>
+          <p>A QR ID tag with owner contact plus a tracker means a pet that slips out can be identified and located quickly.</p>
+        </details>
+        <details>
+          <summary>What should I confirm at handover?</summary>
+          <p>Feeding and medication routine, vet contact, ID details and emergency permissions — ideally written down before the owner leaves.</p>
+        </details>
+      </section>
+
+      <section class="seg-footer-note">
+        <p>
+          PawSense focuses on non-ingestible pet tech &amp; wellness. This page is
+          general guidance, not veterinary advice.
+          <a href="/">Back to home</a> or <a href="/shop.html">browse the shop</a>.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var form = document.querySelector(".seg-enquiry");
+        if (!form) return;
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var input = form.querySelector("input[type=email]");
+          var note = form.querySelector(".seg-enquiry-note");
+          var email = input && input.value ? input.value.trim() : "";
+          if (!email) return;
+          if (note) note.textContent = "Thanks — we'll be in touch.";
+          var payload = {
+            email: email,
+            source: "segment:" + (form.getAttribute("data-segment") || ""),
+          };
+          try {
+            fetch("/api/capture-email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            }).catch(function () {});
+          } catch (err) {
+            /* non-fatal: the reassurance message already showed */
+          }
+          form.reset();
+        });
+      })();
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I reassure nervous owners while they're away?","acceptedAnswer":{"@type":"Answer","text":"Send a short daily update with a photo and an activity note. Remote monitoring and tracking make this quick and genuinely reassuring."}},{"@type":"Question","name":"What ID should a sat pet have?","acceptedAnswer":{"@type":"Answer","text":"A QR ID tag with owner contact plus a tracker means a pet that slips out can be identified and located quickly."}},{"@type":"Question","name":"What should I confirm at handover?","acceptedAnswer":{"@type":"Answer","text":"Feeding and medication routine, vet contact, ID details and emergency permissions — ideally written down before the owner leaves."}}]}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"ItemList","name":"/segments/pet-sitters.html","itemListElement":[{"@type":"ListItem","position":1,"url":"/smart-monitoring/indoor-pet-wellness-camera-placeholder","name":"Indoor Pet Wellness Camera"},{"@type":"ListItem","position":2,"url":"/smart-monitoring/gps-activity-tracker-tag-placeholder","name":"GPS Activity Tracker Tag"},{"@type":"ListItem","position":3,"url":"/pet-safety-essentials/qr-pet-id-tag","name":"QR Pet ID Tag"},{"@type":"ListItem","position":4,"url":"/pet-safety-essentials/smart-activity-tracker-tag","name":"Smart Activity Tracker Tag"}]}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Who it's for","item":"/segments/"},{"@type":"ListItem","position":3,"name":"Pet Sitters","item":"/segments/pet-sitters.html"}]}
+    </script>
+  </body>
+</html>

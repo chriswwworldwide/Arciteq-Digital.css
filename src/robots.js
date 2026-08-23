@@ -2,7 +2,8 @@
 // Pure generator for robots.txt so crawl rules + the sitemap reference stay in
 // one place and can be produced per-tenant/host later. No IO here.
 
-// Private/no-index surfaces: admin, account/order views, and API/webhook paths.
+// Private/no-index surfaces: admin, account/order views, API/webhook paths, and
+// legacy asset galleries kept in the repo but not part of the storefront.
 export const DEFAULT_DISALLOW = [
   "/admin.html",
   "/admin-suppliers.html",
@@ -11,6 +12,10 @@ export const DEFAULT_DISALLOW = [
   "/stripe/",
   "/success.html",
   "/checkout-cancel.html",
+  "/returns.html",
+  "/eturns.html",
+  "/theme-gallery.html",
+  "/images2/",
 ];
 
 /**

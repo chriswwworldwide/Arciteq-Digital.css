@@ -706,7 +706,7 @@ function injectSharedHeader() {
       </div>
       <nav>
         <ul>
-          <li><a href="/index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="/shop.html">Shop</a></li>
           <li><a href="/cart.html">Cart</a></li>
         </ul>

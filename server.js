@@ -1530,8 +1530,14 @@ app.get("/robots.txt", (req, res) => {
   res.send(text);
 });
 
+// Keep one canonical homepage: /index.html permanently redirects to "/".
+// Must run before express.static, which would otherwise serve the file directly.
+app.get("/index.html", (req, res) => {
+  return res.redirect(301, "/");
+});
+
 // Serve everything in this folder (HTML, CSS, JS, images, etc.)
-// Disable the default index.html behavior so our explicit "/" route can redirect.
+// Disable the default index.html behavior so our explicit "/" route can serve it.
 app.use(express.static(__dirname, { index: false }));
 
 app.get("/health", (req, res) => {
@@ -1607,14 +1613,13 @@ app.get("/admin/env", (req, res) => {
   });
 });
 
-// When you visit http://localhost:3000/, send users to the store entry point.
-// The old landing page remains available at /index.html.
+// The branded homepage is the canonical site root (its canonical tag is "/").
 app.get("/", (req, res) => {
-  return res.redirect(302, "/shop.html");
-});
-
-app.get("/index.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  return res.sendFile(path.join(__dirname, "index.html"), (err) => {
+    if (!err) return;
+    console.error("/ sendFile failed", err);
+    return res.status(500).type("text/plain").send("Failed to render homepage");
+  });
 });
 
 app.post("/admin/run-import", (req, res) => {

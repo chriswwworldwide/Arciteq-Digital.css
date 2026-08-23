@@ -3,206 +3,382 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>L'art de la Séduction Blog</title>
+    <title>Pet care guides | PawSense Tech &amp; Wellness</title>
     <meta
       name="description"
-      content="Guides, tips, and style advice from L'art de la Séduction."
+      content="Practical PawSense guides on senior pet comfort, night-walk safety and specialist setups for breeders, show handlers, walkers, sitters and multi-pet homes."
     />
-
-    <!-- ✅ Open Graph -->
-    <meta property="og:title" content="L'art de la Séduction Blog" />
-    <meta
-      property="og:description"
-      content="Guides, tips, and style advice from L'art de la Séduction."
-    />
-    <meta
-      property="og:image"
-      content="https://yourdomain.com/images/blog-banner.jpg"
-    />
-    <meta property="og:url" content="https://yourdomain.com/blog.html" />
-    <meta property="og:type" content="article" />
-
-    <!-- ✅ Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="L'art de la Séduction Blog" />
-    <meta
-      name="twitter:description"
-      content="Guides, tips, and style advice from L'art de la Séduction."
-    />
-    <meta
-      name="twitter:image"
-      content="https://yourdomain.com/images/blog-banner.jpg"
-    />
-
-    <!-- ✅ Canonical -->
-    <link rel="canonical" href="https://yourdomain.com/blog.html" />
-
-    <!-- ✅ Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+    <link rel="canonical" href="/blog.html" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/premium.css" />
+    <script src="/styles/premium.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Guides",
+                "item": "/blog.html"
+              }
+            ]
+          },
+          {
+            "@type": "ItemList",
+            "name": "PawSense pet care guides",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Senior Dog Mobility Guide",
+                "url": "/content/senior-dog-mobility.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Senior Cat Comfort Guide",
+                "url": "/content/senior-cat-comfort.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Night Walk Safety for Dogs",
+                "url": "/content/night-walk-safety-for-dogs.html"
+              }
+            ]
+          }
+        ]
       }
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXX");
     </script>
-
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        line-height: 1.6;
-      }
       header {
-        position: sticky;
-        top: 0;
-        background: #fff;
-        z-index: 1000;
-        text-align: center;
-        font-size: 3em;
-        padding: 10px;
-        font-family: "Brush Script MT", cursive;
-        color: black;
-        -webkit-text-stroke: 0.5px pink;
-        text-shadow:
-          0.5px 0 pink,
-          -0.5px 0 pink,
-          0 0.5px pink,
-          0 -0.5px pink;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
       }
+
+      header nav ul {
+        list-style: none;
+        display: flex;
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+      }
+
+      header nav a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      header > div {
+        white-space: nowrap;
+      }
+
       main {
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 0 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px 48px;
       }
-      article {
-        margin-bottom: 40px;
+
+      .crumb {
+        font-size: 0.85rem;
+        color: #6b7280;
+        padding: 12px 0 0;
       }
-      article h2 {
-        font-size: 2em;
-        margin-bottom: 10px;
+
+      .crumb a {
+        color: #6b7280;
+        text-decoration: none;
       }
-      article img {
-        max-width: 100%;
-        height: auto;
-        margin: 15px 0;
+
+      .lede h1 {
+        margin: 14px 0 0;
+        font-size: 2rem;
+        line-height: 1.2;
       }
-      footer {
-        background: #000;
+
+      .lede p {
+        margin: 12px 0 0;
+        color: var(--ink-soft);
+        line-height: 1.55;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 22px;
+      }
+
+      @media (max-width: 700px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper-card);
+        overflow: hidden;
+      }
+
+      .card a {
+        display: block;
+        padding: 16px;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 1.05rem;
+      }
+
+      .card p {
+        margin: 8px 0 0;
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .card .more {
+        display: inline-block;
+        margin-top: 10px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .block {
+        margin-top: 36px;
+      }
+
+      .seg-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .seg-list a {
+        display: inline-block;
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: var(--paper-card);
+        color: inherit;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .signup {
+        margin-top: 40px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: var(--bg-soft);
+      }
+
+      .signup h2 {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+
+      .signup p {
+        margin: 8px 0 0;
+        color: var(--ink-soft);
+        line-height: 1.5;
+      }
+
+      .signup-form {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
+
+      .signup-form input[type="email"] {
+        flex: 1 1 240px;
+        min-width: 0;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        font: inherit;
+        background: #fff;
+      }
+
+      .signup-form button {
+        padding: 12px 18px;
+        border: 0;
+        border-radius: var(--radius-sm);
+        background: var(--accent);
         color: #fff;
-        padding: 20px;
-        text-align: center;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
       }
-      footer .trust-badges img {
-        height: 30px;
-        margin: 5px;
+
+      #signup-status {
+        margin-top: 10px;
+        color: var(--ink-soft);
+        font-size: 0.95rem;
       }
     </style>
   </head>
   <body>
-    <header>
-      L'art de la Séduction Blog
-      <button onclick="toggleDarkMode()">🌙</button>
-    </header>
+    <div id="header-mount" data-title="Guides"></div>
 
     <main>
-      <article>
-        <h2>How to Choose the Perfect Lingerie</h2>
-        <p><em>Published August 2025 · 5 min read</em></p>
-        <img src="images/blog-lingerie-guide.jpg" alt="Lingerie Style Guide" />
-        <p>
-          Lingerie is more than clothing — it’s confidence, empowerment, and
-          elegance. Whether you’re buying for yourself or a partner, choosing
-          the right style is key. In this guide, we’ll explore body types,
-          fabrics, and colors to help you find your perfect piece.
-        </p>
-        <h3>1. Know Your Body Shape</h3>
-        <p>
-          Different cuts flatter different figures. Corsets create curves, while
-          teddies elongate the silhouette.
-        </p>
-        <h3>2. Fabrics Matter</h3>
-        <p>
-          Silk feels luxurious, lace adds romance, and sheer fabrics create
-          allure.
-        </p>
-        <h3>3. Confidence First</h3>
-        <p>
-          The best lingerie is the one that makes you feel incredible the moment
-          you put it on.
-        </p>
-      </article>
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Guides</span>
+      </nav>
 
-      <!-- ✅ Newsletter CTA -->
-      <section>
-        <h3>Stay Updated</h3>
-        <form action="https://YOUR_MAILCHIMP_URL" method="post" target="_blank">
+      <section class="lede">
+        <span class="eyebrow">Practical reads, no filler</span>
+        <h1>Pet care guides</h1>
+        <p>
+          Short, specific guides for the problems people actually write to us
+          about — an older dog losing confidence on the stairs, a cat that has
+          gone quiet, walking a dog safely in the dark. Each one explains the
+          problem first, then what genuinely helps.
+        </p>
+      </section>
+
+      <section class="grid" aria-label="Guides">
+        <article class="card">
+          <a href="/content/senior-dog-mobility.html?ref=guides">
+            <h3>Senior Dog Mobility Guide</h3>
+            <p>
+              Why an older dog starts hesitating and moving smaller — and the
+              simplest traction, rest and routine changes that keep them going.
+            </p>
+            <span class="more">Read the guide →</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="/content/senior-cat-comfort.html?ref=guides">
+            <h3>Senior Cat Comfort Guide</h3>
+            <p>
+              Older cats hide discomfort well. What to watch for, and how
+              warmth, height and quiet resting spots change their day.
+            </p>
+            <span class="more">Read the guide →</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="/content/night-walk-safety-for-dogs.html?ref=guides">
+            <h3>Night Walk Safety for Dogs</h3>
+            <p>
+              Being seen is only half of it. How to set up visibility, control
+              and quick ID for dark-morning and evening walks.
+            </p>
+            <span class="more">Read the guide →</span>
+          </a>
+        </article>
+      </section>
+
+      <section class="block" aria-label="Specialist guides">
+        <span class="eyebrow">Written for your situation</span>
+        <h2 class="section-head">Specialist guides</h2>
+        <p style="color: var(--ink-soft); line-height: 1.55; margin: 0">
+          Deeper reads for people whose pets are their work or their whole
+          household — each with the kit that suits it.
+        </p>
+        <ul class="seg-list">
+          <li><a href="/segments/breeders.html">Breeders</a></li>
+          <li><a href="/segments/show-dogs.html">Show dogs</a></li>
+          <li><a href="/segments/show-cats.html">Show cats</a></li>
+          <li><a href="/segments/dog-walkers.html">Dog walkers</a></li>
+          <li><a href="/segments/pet-sitters.html">Pet sitters</a></li>
+          <li>
+            <a href="/segments/multi-pet.html">Cats &amp; dogs together</a>
+          </li>
+        </ul>
+        <p style="margin-top: 14px">
+          <a href="/segments/" style="color: var(--accent); font-weight: 700"
+            >See all specialist guides →</a
+          >
+        </p>
+      </section>
+
+      <section class="signup" aria-label="Newsletter">
+        <h2>New guides, straight to your inbox</h2>
+        <p>
+          One email when we publish something worth reading — plus 10% off your
+          first order. No daily sales blasts.
+        </p>
+        <form class="signup-form" id="signup-form" novalidate>
+          <label for="signup-email" style="position: absolute; left: -9999px"
+            >Email address</label
+          >
           <input
             type="email"
-            name="EMAIL"
-            placeholder="Enter your email"
+            id="signup-email"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
             required
           />
           <button type="submit">Subscribe</button>
         </form>
+        <div id="signup-status" role="status" aria-live="polite"></div>
       </section>
     </main>
 
-    <footer>
-      <div class="trust-badges">
-        <img src="images/ssl-secure.png" alt="SSL Secure Checkout" />
-        <img src="images/free-returns.png" alt="Free Returns" />
-        <img src="images/fast-shipping.png" alt="Fast Shipping" />
-      </div>
-      <p>
-        <a href="privacy.html">Privacy Policy</a> |
-        <a href="terms.html">Terms & Conditions</a> |
-        <a href="sitemap.xml">Sitemap</a> |
-        <a href="/">Home</a>
-      </p>
-    </footer>
-
+    <script src="/script.js"></script>
     <script>
-      // Dark mode toggle
-      function toggleDarkMode() {
-        document.body.classList.toggle("dark-mode");
-        localStorage.setItem(
-          "darkMode",
-          document.body.classList.contains("dark-mode"),
-        );
-      }
-      if (localStorage.getItem("darkMode") === "true") {
-        document.body.classList.add("dark-mode");
-      }
-    </script>
-
-    <!-- ✅ Structured Data for Blog Article -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "How to Choose the Perfect Lingerie",
-        "image": "https://yourdomain.com/images/blog-lingerie-guide.jpg",
-        "author": {
-          "@type": "Organization",
-          "name": "L'art de la Séduction"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "L'art de la Séduction",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://yourdomain.com/images/logo.png"
+      (function () {
+        const form = document.getElementById("signup-form");
+        const status = document.getElementById("signup-status");
+        if (!form) return;
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const input = document.getElementById("signup-email");
+          const email = String((input && input.value) || "")
+            .trim()
+            .toLowerCase();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            if (status)
+              status.textContent = "Please enter a valid email address.";
+            return;
           }
-        },
-        "datePublished": "2025-08-01",
-        "description": "A guide to choosing the perfect lingerie for your body type, fabrics, and confidence."
-      }
+          if (status) status.textContent = "Signing you up…";
+          try {
+            await fetch("/api/capture-email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, source: "guides-newsletter" }),
+            });
+          } catch {
+            /* best-effort */
+          }
+          form.reset();
+          if (status)
+            status.textContent =
+              "You're in — check your inbox for your 10% code.";
+        });
+      })();
     </script>
   </body>
 </html>

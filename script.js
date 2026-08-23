@@ -708,6 +708,8 @@ function injectSharedHeader() {
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/shop.html">Shop</a></li>
+          <li><a href="/blog.html">Guides</a></li>
+          <li><a href="/segments/">Who it's for</a></li>
           <li><a href="/cart.html">Cart</a></li>
         </ul>
       </nav>

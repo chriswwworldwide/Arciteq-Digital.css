@@ -29,6 +29,7 @@ import {
   formatEstimate,
 } from "./src/shipping.js";
 import { freeShippingProgress } from "./src/free-shipping.js";
+import { normalizeContactMessage } from "./src/contact-message.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -2197,6 +2198,34 @@ app.post("/api/capture-email", async (req, res) => {
   } catch (err) {
     console.error("Capture email failed", err);
     return res.status(500).json({ error: "Failed to capture email" });
+  }
+});
+
+// Contact form. Stored as a funnel event so an enquiry lands next to that
+// person's captures and orders in the single-customer view (no new table).
+app.post("/api/contact", async (req, res) => {
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const tenantId = String(tenant?.tenant_id || "default");
+    const parsed = normalizeContactMessage(req.body || {});
+    if (!parsed.ok) {
+      return res.status(400).json({ error: parsed.error });
+    }
+    const { name, email, message } = parsed.value;
+
+    await dbQuery(
+      "INSERT INTO customers (tenant_id, email) VALUES ($1, $2) ON CONFLICT (tenant_id, email) DO UPDATE SET last_seen_at = now(), updated_at = now()",
+      [tenantId, email],
+    );
+    await dbQuery(
+      "INSERT INTO email_events (tenant_id, email, type, data) VALUES ($1, $2, 'contact_message', $3::jsonb)",
+      [tenantId, email, JSON.stringify({ name, message })],
+    );
+
+    return res.json({ ok: true });
+  } catch (err) {
+    console.error("Contact message failed", err);
+    return res.status(500).json({ error: "Failed to send message" });
   }
 });
 

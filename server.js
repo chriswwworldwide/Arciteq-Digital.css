@@ -30,6 +30,7 @@ import {
 } from "./src/shipping.js";
 import { freeShippingProgress } from "./src/free-shipping.js";
 import { normalizeContactMessage } from "./src/contact-message.js";
+import { generateRobotsTxt, DEFAULT_DISALLOW } from "./src/robots.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -1491,6 +1492,9 @@ app.get("/sitemap.xml", (req, res) => {
       { path: "/content/senior-dog-mobility.html", priority: "0.85" },
       { path: "/content/night-walk-safety-for-dogs.html", priority: "0.85" },
       { path: "/content/senior-cat-comfort.html", priority: "0.85" },
+      { path: "/blog.html", priority: "0.8" },
+      { path: "/features.html", priority: "0.6" },
+      { path: "/contact.html", priority: "0.5" },
       { path: "/segments/", priority: "0.8" },
       { path: "/segments/breeders.html", priority: "0.8" },
       { path: "/segments/show-dogs.html", priority: "0.8" },
@@ -1499,13 +1503,21 @@ app.get("/sitemap.xml", (req, res) => {
       { path: "/segments/pet-sitters.html", priority: "0.8" },
       { path: "/segments/multi-pet.html", priority: "0.8" },
     ];
+    // Collection pages this tenant is allowed to show, so the niche silos are
+    // discoverable and not only reachable by crawling the shop.
+    const collectionUrls = (allowedNiches || [])
+      .map(
+        (slug) =>
+          `  <url><loc>${xmlEscape(`${baseUrl}/${slug}`)}</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>`,
+      )
+      .join("\n");
     const staticXml = staticUrls
       .map(
         (u) =>
           `  <url><loc>${xmlEscape(baseUrl + u.path)}</loc><changefreq>weekly</changefreq><priority>${xmlEscape(u.priority)}</priority></url>`,
       )
       .join("\n");
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticXml}\n${productUrls}\n</urlset>`;
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticXml}\n${collectionUrls}\n${productUrls}\n</urlset>`;
     res.set("Content-Type", "application/xml");
     res.send(xml);
   } catch (err) {
@@ -1519,14 +1531,12 @@ app.get("/robots.txt", (req, res) => {
   const baseUrl = host
     ? `${req.protocol}://${host}`
     : publicBaseUrl || "http://localhost:3000";
-  const text = [
-    "User-agent: *",
-    "Allow: /",
-    "Disallow: /admin",
-    "Disallow: /cart.html",
-    "",
-    `Sitemap: ${baseUrl}/sitemap.xml`,
-  ].join("\n");
+  // Single source of truth for the disallow list, so the served robots.txt and
+  // the generated one can't drift apart.
+  const text = generateRobotsTxt({
+    siteUrl: baseUrl,
+    disallow: [...DEFAULT_DISALLOW, "/cart.html"],
+  });
   res.set("Content-Type", "text/plain");
   res.send(text);
 });

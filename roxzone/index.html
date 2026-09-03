@@ -334,7 +334,12 @@
           </p>
         </div>
         <div class="reveal">
-          <form action="/api/capture" method="post" data-tenant="roxzone">
+          <form
+            id="ask-form"
+            action="/api/capture-email"
+            method="post"
+            data-tenant="roxzone"
+          >
             <input
               type="email"
               name="email"
@@ -349,7 +354,9 @@
             />
             <button class="btn btn-primary" type="submit">Ask Dina</button>
           </form>
-          <p class="fine">No spam. Unsubscribe any time.</p>
+          <p class="fine" id="ask-note" role="status">
+            No spam. Unsubscribe any time.
+          </p>
         </div>
       </div>
     </section>

@@ -32,6 +32,41 @@
     if (e.key === "Escape") closeAll();
   });
 
+  const form = document.getElementById("ask-form");
+  const note = document.getElementById("ask-note");
+  if (form && note) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const btn = form.querySelector("button[type=submit]");
+      if (btn) btn.disabled = true;
+      note.textContent = "Sending…";
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: data.get("email"),
+            tenant_id: form.dataset.tenant,
+            utm: {
+              source: "roxzone",
+              medium: "ask-dina",
+              content: data.get("question") || "",
+            },
+          }),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        note.textContent = "Got it — Dina will reply to your inbox.";
+        form.reset();
+      } catch {
+        note.textContent =
+          "Couldn't send just now. DM @roxzonewarriors on Instagram instead.";
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  }
+
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 

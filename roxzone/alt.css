@@ -1,0 +1,296 @@
+/* Alternative layout for /roxzone/alt.html — loaded after styles.css */
+
+.alt-page .masthead {
+  text-align: left;
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 26px 0 18px;
+}
+
+.alt-page .masthead h1 {
+  font-size: clamp(24px, 3.4vw, 42px);
+  letter-spacing: 0.14em;
+}
+
+.alt-page .masthead .city {
+  margin: 0;
+  padding-left: 18px;
+  border-left: 2px solid var(--pink);
+  font-size: clamp(11px, 1vw, 13px);
+  letter-spacing: 0.36em;
+}
+
+/* Full-bleed hero, copy overlaid bottom-left */
+.alt-page .hero {
+  display: block;
+  min-height: min(88vh, 820px);
+}
+
+.alt-page .hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 55% 58%;
+}
+
+.alt-page .hero::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15, 15, 17, 0.1) 0%,
+      rgba(15, 15, 17, 0.25) 45%,
+      rgba(15, 15, 17, 0.92) 100%
+    ),
+    linear-gradient(90deg, rgba(15, 15, 17, 0.55) 0%, rgba(15, 15, 17, 0) 60%);
+}
+
+.alt-page .hero .wrap {
+  position: relative;
+  width: min(1180px, 100% - 40px);
+  margin: 0 auto;
+  min-height: min(88vh, 820px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 64px;
+}
+
+.alt-page .hero h2 {
+  font-size: clamp(42px, 7vw, 104px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  max-width: none;
+}
+
+.alt-page .hero h2 em {
+  font-style: normal;
+  color: var(--pink);
+}
+
+.alt-page .hero p {
+  font-size: clamp(16px, 1.5vw, 20px);
+  max-width: 46ch;
+}
+
+/* Pink stats band */
+.alt-page .band {
+  background: var(--pink);
+  color: #fff;
+}
+
+.alt-page .band .stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+}
+
+.alt-page .band .stats div {
+  padding: 22px 24px;
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.alt-page .band .stats div:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.alt-page .band .stats strong {
+  display: block;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.alt-page .band .stats span {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* Zones: dark band with a horizontal rule list */
+.alt-page #zones {
+  background: var(--ink);
+  color: #fff;
+}
+
+.alt-page #zones h3 {
+  color: #fff;
+}
+
+.alt-page #zones .lead {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.alt-page .zones {
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.alt-page .zone {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0;
+  padding: 26px 0;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1.6fr) auto;
+  gap: 24px;
+  align-items: center;
+  color: #fff;
+}
+
+.alt-page .zone:hover {
+  transform: none;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.alt-page .zone h4 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.alt-page .zone p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.alt-page .zone .num {
+  font-size: 14px;
+}
+
+.alt-page .zone .more {
+  white-space: nowrap;
+  color: #fff;
+}
+
+/* Story: image right, sled push */
+.alt-page .story figure {
+  order: 2;
+}
+
+.alt-page .story figure::before {
+  inset: -18px 18px 18px -18px;
+}
+
+/* Featured plan goes pink */
+.alt-page .plan.featured {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.alt-page .plan.featured .tag {
+  background: var(--pink);
+  color: #fff;
+}
+
+.alt-page .plan.featured .per,
+.alt-page .plan.featured li {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Ask Dina on light paper instead of the photo */
+.alt-page .capture {
+  background: var(--pink-100);
+  color: var(--ink);
+}
+
+.alt-page .capture::before {
+  display: none;
+}
+
+.alt-page .capture h3 {
+  color: var(--ink);
+}
+
+.alt-page .capture p {
+  color: var(--ink-2);
+}
+
+.alt-page .bio {
+  width: 140px;
+  height: 140px;
+  box-shadow: 0 0 0 6px #fff;
+}
+
+.alt-page .capture input {
+  background: #fff;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.alt-page .capture input::placeholder {
+  color: var(--ink-3);
+}
+
+.alt-page .capture .fine {
+  color: var(--ink-3);
+}
+
+@media (max-width: 800px) {
+  .alt-page .masthead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .alt-page .masthead .city {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .alt-page .hero {
+    min-height: 0;
+  }
+
+  .alt-page .hero img {
+    position: absolute;
+    aspect-ratio: auto;
+    max-height: none;
+    object-position: 60% 25%;
+  }
+
+  .alt-page .hero .wrap {
+    min-height: 94vh;
+    padding: 0 0 40px;
+  }
+
+  .alt-page .band .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .alt-page .band .stats div {
+    padding: 18px 16px;
+  }
+
+  .alt-page .band .stats div:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .alt-page .zone {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+
+  .alt-page .zone p,
+  .alt-page .zone .more {
+    grid-column: 2;
+  }
+
+  .alt-page .story figure {
+    order: 0;
+  }
+
+  .alt-page .bio {
+    width: 104px;
+    height: 104px;
+  }
+}

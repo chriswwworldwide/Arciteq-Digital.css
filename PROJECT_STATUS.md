@@ -117,6 +117,8 @@ Pricing ladder (positioning hypotheses, IDR/month; anchored to her current Rp 35
 - Elite Race Prep (12-week build, 3-month minimum) — Rp 6m (SEO-led, no hard sell)
 - Athlete Mum (pre/postnatal Hyrox) — after Feb; her own story is the content
 
+Delineation rule (agreed): Rox Zone may only touch the shared engine through seams that already exist for multiple sites (tenant entry, checkout/webhooks, email capture, sitemap). Everything else — pages, CSS, images, copy — lives under `/roxzone/`. Any engine change made for Rox Zone must be generic (e.g. a recurring-billing mode, not a "Rox Zone subscription"). If it ever needs more than that, fork it into its own repo rather than intertwine.
+
 Build blocks (atomic, in order — each ends with a preview check and 3-step browser test):
 
 1. **Tenant + home page** — add `roxzone` to `data/tenants.json` (IDR, brand, SEO meta, `vertical: "coaching"`); promote the chosen layout to `/roxzone/` home; retire the unused layout to a comparison page. Global touch: tenant loader must tolerate a non-pet vertical (skip petType/safety validators). _Local_ otherwise.

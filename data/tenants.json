@@ -7,7 +7,11 @@
       "currency": "eur",
       "language": "en",
       "catalog": {
-        "nicheCategorySlugs": ["pet-safety-essentials", "senior-pet-care", "smart-monitoring"],
+        "nicheCategorySlugs": [
+          "pet-safety-essentials",
+          "senior-pet-care",
+          "smart-monitoring"
+        ],
         "heroProductIds": [
           "pet-demo-smart-tracker-001",
           "pet-ph-led-collar-light-001",
@@ -83,14 +87,54 @@
         },
         "trustStrip": {
           "items": [
-            { "title": "Delivery", "text": "Free UK delivery over €40." },
-            { "title": "Estimated delivery", "text": "7–15 business days (UK)." },
-            { "title": "Returns", "text": "30-day returns." },
-            { "title": "Support", "text": "Reply within 24 hours." },
-            { "title": "Secure checkout", "text": "Stripe." }
+            {
+              "title": "Delivery",
+              "text": "Free UK delivery over €40."
+            },
+            {
+              "title": "Estimated delivery",
+              "text": "7–15 business days (UK)."
+            },
+            {
+              "title": "Returns",
+              "text": "30-day returns."
+            },
+            {
+              "title": "Support",
+              "text": "Reply within 24 hours."
+            },
+            {
+              "title": "Secure checkout",
+              "text": "Stripe."
+            }
           ]
         }
       }
+    },
+    {
+      "tenant_id": "roxzone",
+      "vertical": "coaching",
+      "hostnames": ["roxzone.localhost"],
+      "currency": "idr",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Rox Zone Warriors Jakarta",
+        "tagline": "Hyrox coaching, online programming and race prep from Jakarta.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Dina — podium athlete and Jakarta personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Jakarta and online with Dina — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": []
+      },
+      "offers": {}
     }
   ]
 }

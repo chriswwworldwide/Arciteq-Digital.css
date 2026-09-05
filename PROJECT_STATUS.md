@@ -104,6 +104,34 @@ Extend the segment-landing-page engine to more real-world audiences, each with t
 - **Multi-Pet Harmony (cats + dogs together)** — products that reduce conflict and encourage safe co-existence and mutual play/engagement (separate feeding stations, high perches/escape routes for cats, gates/zoning, scent-neutral introductions, interactive/co-play toys, calming aids).
 - Same pattern as Breeders/Show Dog: shared landing template + bundle engine + data-stitch segment tags (`dog-walker`, `pet-sitter`, `multi-pet`), value→premium tiers, enquiry/email capture. Content + collections, not bespoke code.
 
+### Sub-plan: Rox Zone / Hyrox Warriors Jakarta (coaching tenant, PR #42)
+
+A coaching business (not a product shop) running on the same engine: tenant config, Stripe checkout + webhooks, Postgres orders → customers data-stitch, email capture, UTM attribution, SEO tooling. Owner: Dina (Hyrox podium athlete, Jakarta PT, ~16 clients). Deadline driver: baby due 1 Feb — she needs floor hours off her plate before then. Launch small, bill monthly, let SEO build the premium tier.
+
+What exists (PR #42): static landing pages `roxzone/index.html` (Rox Zone Warriors, split hero) and `roxzone/alt.html` (Hyrox Warriors, full-bleed sled-pull hero — recommended as the home page), Dina's own photos, Ask Dina form posting to `/api/capture-email`, nav (Ask Dina, Chat Zone, Upcoming Events, Stations Prep, Run Zone, Subscriptions, Merchandise). No tenant entry, no billing, no chat/events/merch backend yet.
+
+Pricing ladder (positioning hypotheses, IDR/month; anchored to her current Rp 350k/session local and Rp 750k/session expat rates):
+
+- Warrior Program (self-serve programming) — Rp 599k
+- Hybrid Coaching (online + 2 floor sessions) — Rp 2.5m (migration path for current clients)
+- Elite Race Prep (12-week build, 3-month minimum) — Rp 6m (SEO-led, no hard sell)
+- Athlete Mum (pre/postnatal Hyrox) — after Feb; her own story is the content
+
+Build blocks (atomic, in order — each ends with a preview check and 3-step browser test):
+
+1. **Tenant + home page** — add `roxzone` to `data/tenants.json` (IDR, brand, SEO meta, `vertical: "coaching"`); promote the chosen layout to `/roxzone/` home; retire the unused layout to a comparison page. Global touch: tenant loader must tolerate a non-pet vertical (skip petType/safety validators). _Local_ otherwise.
+2. **Recurring billing** — Stripe Checkout `mode: "subscription"` on the shared engine + `customer.subscription.created/updated/deleted` and `invoice.paid/payment_failed` webhooks; plans as tenant-scoped price IDs; orders/customers stitched exactly like one-time orders. Global change (also unlocks "membership tiers" for the pet sites). Guardrail: server-authoritative prices, integer minor units.
+3. **Payment adapter for locals** — Xendit (QRIS / e-wallet recurring) behind the same checkout interface; Stripe stays for cards/expats. Blocked until Dina/Chris choose the entity + provide sandbox keys — do not fake it.
+4. **Ask Dina capture → data-stitch** — tenant-scoped `email_events` (`segment=roxzone`, medium `ask-dina`), UTM from TikTok/IG links, confirmation email via the existing provider seam. Onboarding questionnaire (goals, race date, injuries, pregnancy status) stored on the customer record.
+5. **Zones as content silos** — Stations Prep (8 station guides), Run Zone (pacing/compromised running), Upcoming Events (Hyrox APAC calendar, real dates only), FAQ schema, `Person` + `SportsActivityLocation`/`Service` JSON-LD, Indonesian + English pages, sitemap/robots per tenant. Target silos: "Hyrox coach Jakarta", "Hyrox training online", "pregnancy-safe Hyrox".
+6. **Athlete dashboard (thin)** — logged-in page showing plan, next payment, programme link (Google Sheets / TrueCoach / WhatsApp — coaching delivery is NOT built here), cancel/pause via Stripe customer portal.
+7. **Chat Zone + Merchandise** — Chat Zone = WhatsApp/Telegram community deep link first (no custom chat); Merchandise = 3–5 SKUs reusing the existing product engine once the coaching tenant is live.
+8. **Ops + automation** — subscription health in the admin dashboard (MRR, churn, failed payments), alerts on `payment_failed`, CWV check for `/roxzone/` in the existing pulse job.
+
+Open decisions (user-gated): which layout is the home page (alt recommended); real hero stats (podiums, athletes coached); payment entity (UK/SG Stripe vs Xendit); real domain; IG/TikTok handles; event dates. Do not invent any of these.
+
+Definition of "launched": tenant live on its domain, one Hybrid subscription taken by a real current client end-to-end, Ask Dina capture landing in `customers`, LCP < 2.0s on the home page mobile.
+
 Direction note:
 
 - We have pivoted away from the “mini‑Amazon” framing. The target experience is curated (limited, quality-controlled catalog), trust-first (clear safety/fit/shipping/returns), and automation-first (dashboards + guardrails so it runs with minimal day-to-day involvement).

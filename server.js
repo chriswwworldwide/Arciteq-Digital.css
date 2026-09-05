@@ -32,6 +32,7 @@ import {
   isoFromUnix,
   isRenewalInvoice,
 } from "./src/subscriptions.js";
+import { sanitizeProfile, hasProfile } from "./src/lead-profile.js";
 import {
   estimateForProduct,
   shipsFromLabel,
@@ -2705,6 +2706,10 @@ app.post("/api/capture-email", async (req, res) => {
     const utm =
       req.body?.utm && typeof req.body.utm === "object" ? req.body.utm : {};
     const clean = (v) => String(v || "").trim() || null;
+    const profile = sanitizeProfile(req.body?.profile);
+    const message = String(req.body?.message || "")
+      .trim()
+      .slice(0, 1000);
 
     if (!email) {
       return res.status(400).json({ error: "Email is required" });
@@ -2724,7 +2729,7 @@ app.post("/api/capture-email", async (req, res) => {
     // Data-stitch: upsert the single-customer-view record (first-touch UTM kept)
     // and log a unified funnel event tied to this capture.
     await dbQuery(
-      "INSERT INTO customers (tenant_id, email, currency, subscribed, first_utm_source, first_utm_medium, first_utm_campaign, first_utm_content, first_utm_term) VALUES ($1, $2, $3, true, $4, $5, $6, $7, $8) ON CONFLICT (tenant_id, email) DO UPDATE SET last_seen_at = now(), subscribed = true, currency = COALESCE(customers.currency, EXCLUDED.currency), first_utm_source = COALESCE(customers.first_utm_source, EXCLUDED.first_utm_source), first_utm_medium = COALESCE(customers.first_utm_medium, EXCLUDED.first_utm_medium), first_utm_campaign = COALESCE(customers.first_utm_campaign, EXCLUDED.first_utm_campaign), first_utm_content = COALESCE(customers.first_utm_content, EXCLUDED.first_utm_content), first_utm_term = COALESCE(customers.first_utm_term, EXCLUDED.first_utm_term), updated_at = now()",
+      "INSERT INTO customers (tenant_id, email, currency, subscribed, first_utm_source, first_utm_medium, first_utm_campaign, first_utm_content, first_utm_term, profile) VALUES ($1, $2, $3, true, $4, $5, $6, $7, $8, $9::jsonb) ON CONFLICT (tenant_id, email) DO UPDATE SET last_seen_at = now(), subscribed = true, currency = COALESCE(customers.currency, EXCLUDED.currency), first_utm_source = COALESCE(customers.first_utm_source, EXCLUDED.first_utm_source), first_utm_medium = COALESCE(customers.first_utm_medium, EXCLUDED.first_utm_medium), first_utm_campaign = COALESCE(customers.first_utm_campaign, EXCLUDED.first_utm_campaign), first_utm_content = COALESCE(customers.first_utm_content, EXCLUDED.first_utm_content), first_utm_term = COALESCE(customers.first_utm_term, EXCLUDED.first_utm_term), profile = customers.profile || EXCLUDED.profile, updated_at = now()",
       [
         tenantId,
         email,
@@ -2734,12 +2739,24 @@ app.post("/api/capture-email", async (req, res) => {
         clean(utm.utm_campaign),
         clean(utm.utm_content),
         clean(utm.utm_term),
+        JSON.stringify(profile),
       ],
     );
 
+    const isLead = cart.length === 0 && (hasProfile(profile) || message);
     await dbQuery(
-      "INSERT INTO email_events (tenant_id, email, type, cart_email_id, data) VALUES ($1, $2, 'cart_captured', $3, $4::jsonb)",
-      [tenantId, email, cartEmailId, JSON.stringify({ cartSize: cart.length })],
+      "INSERT INTO email_events (tenant_id, email, type, cart_email_id, data) VALUES ($1, $2, $3, $4, $5::jsonb)",
+      [
+        tenantId,
+        email,
+        isLead ? "lead_captured" : "cart_captured",
+        cartEmailId,
+        JSON.stringify(
+          isLead
+            ? { profile, message, medium: clean(utm.utm_medium) }
+            : { cartSize: cart.length },
+        ),
+      ],
     );
 
     return res.json({ ok: true });

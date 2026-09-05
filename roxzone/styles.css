@@ -872,6 +872,83 @@ section.block.alt {
   margin-top: 10px;
 }
 
+/* Step 2: short onboarding questionnaire, revealed after the email lands */
+.capture .onboard {
+  display: block;
+  margin-top: 22px;
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 45, 149, 0.45);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.capture .onboard[hidden] {
+  display: none;
+}
+
+.onboard-title {
+  margin: 0 0 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.onboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.onboard label {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.onboard-wide {
+  margin-top: 12px;
+}
+
+.capture .onboard input,
+.capture .onboard select,
+.capture .onboard textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.capture .onboard select option {
+  color: var(--ink);
+}
+
+.capture .onboard textarea {
+  resize: vertical;
+}
+
+.onboard-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+@media (max-width: 560px) {
+  .onboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Footer */
 footer {
   padding: 40px 0;

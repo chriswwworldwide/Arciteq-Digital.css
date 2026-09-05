@@ -390,6 +390,78 @@
           <p class="fine" id="ask-note" role="status">
             No spam. Unsubscribe any time.
           </p>
+          <form
+            class="onboard"
+            id="onboard-form"
+            action="/api/capture-email"
+            method="post"
+            hidden
+          >
+            <p class="onboard-title">
+              30 seconds more and Dina can reply with a real plan.
+            </p>
+            <div class="onboard-grid">
+              <label>
+                <span>Your goal</span>
+                <select name="goal" required>
+                  <option value="">Choose…</option>
+                  <option>First Hyrox</option>
+                  <option>Faster time</option>
+                  <option>Podium / elite</option>
+                  <option>Doubles / relay</option>
+                  <option>Fit through pregnancy</option>
+                  <option>Post-natal comeback</option>
+                  <option>General strength &amp; running</option>
+                </select>
+              </label>
+              <label>
+                <span>Race date (if any)</span>
+                <input type="date" name="race_date" />
+              </label>
+              <label>
+                <span>Hyrox experience</span>
+                <select name="experience">
+                  <option value="">Choose…</option>
+                  <option>Never raced</option>
+                  <option>1 race</option>
+                  <option>2–4 races</option>
+                  <option>5+ races</option>
+                </select>
+              </label>
+              <label>
+                <span>Training days / week</span>
+                <select name="days_per_week">
+                  <option value="">Choose…</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5+</option>
+                </select>
+              </label>
+              <label>
+                <span>Where are you based?</span>
+                <input type="text" name="city" placeholder="Jakarta" />
+              </label>
+              <label>
+                <span>Instagram / TikTok handle</span>
+                <input type="text" name="social_handle" placeholder="@" />
+              </label>
+            </div>
+            <label class="onboard-wide">
+              <span
+                >Injuries, pregnancy stage, or anything Dina should know</span
+              >
+              <textarea name="notes" rows="3"></textarea>
+            </label>
+            <div class="onboard-actions">
+              <button class="btn btn-primary" type="submit">
+                Send to Dina
+              </button>
+              <button class="btn btn-ghost" type="button" data-skip>
+                Skip for now
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>

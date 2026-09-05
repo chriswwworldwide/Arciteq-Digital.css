@@ -32,43 +32,6 @@
     if (e.key === "Escape") closeAll();
   });
 
-  const form = document.getElementById("ask-form");
-  const note = document.getElementById("ask-note");
-  if (form && note) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const btn = form.querySelector("button[type=submit]");
-      if (btn) btn.disabled = true;
-      note.textContent = "Sending…";
-      try {
-        const res = await fetch(form.action, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: data.get("email"),
-            tenant_id: form.dataset.tenant,
-            utm: {
-              source: "roxzone",
-              medium: "ask-dina",
-              content: data.get("question") || "",
-            },
-          }),
-        });
-        if (!res.ok) throw new Error(String(res.status));
-        note.textContent = "Got it — Dina will reply to your inbox.";
-        form.reset();
-      } catch {
-        note.textContent =
-          "Couldn't send just now. DM @roxzonewarriors on Instagram instead.";
-      } finally {
-        if (btn) btn.disabled = false;
-      }
-    });
-  }
-
-  const planButtons = Array.from(document.querySelectorAll("[data-plan]"));
-  const plansNote = document.getElementById("plans-note");
   const params = new URLSearchParams(window.location.search);
   const utm = {};
   [
@@ -81,6 +44,94 @@
     const v = String(params.get(k) || "").trim();
     if (v) utm[k] = v;
   });
+
+  const form = document.getElementById("ask-form");
+  const note = document.getElementById("ask-note");
+  const onboard = document.getElementById("onboard-form");
+  let leadEmail = "";
+
+  async function capture(payload) {
+    const res = await fetch("/api/capture-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        tenant_id: "roxzone",
+        utm: {
+          utm_source: utm.utm_source || "roxzone",
+          utm_medium: utm.utm_medium || "ask-dina",
+          utm_campaign: utm.utm_campaign || "",
+          utm_content: utm.utm_content || "",
+          utm_term: utm.utm_term || "",
+        },
+        ...payload,
+      }),
+    });
+    if (!res.ok) throw new Error(String(res.status));
+  }
+
+  if (form && note) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const btn = form.querySelector("button[type=submit]");
+      if (btn) btn.disabled = true;
+      note.textContent = "Sending…";
+      try {
+        leadEmail = String(data.get("email") || "").trim();
+        await capture({
+          email: leadEmail,
+          message: String(data.get("question") || ""),
+        });
+        note.textContent = "Got it — Dina will reply to your inbox.";
+        form.reset();
+        if (onboard) {
+          onboard.hidden = false;
+          const first = onboard.querySelector("select, input");
+          if (first) first.focus({ preventScroll: true });
+        }
+      } catch {
+        note.textContent =
+          "Couldn't send just now. DM @roxzonewarriors on Instagram instead.";
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  }
+
+  if (onboard && note) {
+    const skip = onboard.querySelector("[data-skip]");
+    if (skip) {
+      skip.addEventListener("click", () => {
+        onboard.hidden = true;
+      });
+    }
+    onboard.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!leadEmail) return;
+      const data = new FormData(onboard);
+      const profile = {};
+      data.forEach((v, k) => {
+        const s = String(v || "").trim();
+        if (s) profile[k] = s;
+      });
+      const btn = onboard.querySelector("button[type=submit]");
+      if (btn) btn.disabled = true;
+      try {
+        await capture({ email: leadEmail, profile });
+        onboard.hidden = true;
+        note.textContent =
+          "Thanks — Dina has your details and will reply with a plan.";
+      } catch {
+        note.textContent =
+          "Couldn't save that just now — your email still went through.";
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  }
+
+  const planButtons = Array.from(document.querySelectorAll("[data-plan]"));
+  const plansNote = document.getElementById("plans-note");
 
   planButtons.forEach((btn) => {
     btn.addEventListener("click", async () => {

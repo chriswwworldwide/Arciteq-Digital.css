@@ -67,6 +67,58 @@
     });
   }
 
+  const planButtons = Array.from(document.querySelectorAll("[data-plan]"));
+  const plansNote = document.getElementById("plans-note");
+  const params = new URLSearchParams(window.location.search);
+  const utm = {};
+  [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+  ].forEach((k) => {
+    const v = String(params.get(k) || "").trim();
+    if (v) utm[k] = v;
+  });
+
+  planButtons.forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const planId = btn.dataset.plan;
+      if (!planId) return;
+      planButtons.forEach((b) => (b.disabled = true));
+      if (plansNote) {
+        plansNote.classList.remove("error");
+        plansNote.textContent = "Opening secure checkout…";
+      }
+      try {
+        const res = await fetch("/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            tenant_id: "roxzone",
+            items: [{ id: planId, quantity: 1 }],
+            ...utm,
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.sessionUrl) {
+          throw new Error(String(data?.error || "Checkout unavailable"));
+        }
+        window.location.href = data.sessionUrl;
+      } catch (err) {
+        if (plansNote) {
+          plansNote.classList.add("error");
+          plansNote.textContent =
+            "Checkout isn't open yet — send Dina a message below and she'll set you up. (" +
+            String(err && err.message ? err.message : "error") +
+            ")";
+        }
+        planButtons.forEach((b) => (b.disabled = false));
+      }
+    });
+  });
+
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 

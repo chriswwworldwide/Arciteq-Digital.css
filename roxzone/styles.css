@@ -274,8 +274,32 @@ a {
     transform 0.15s;
 }
 
+button.btn {
+  font: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+}
+
 .btn:hover {
   transform: translateY(-1px);
+}
+
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+  transform: none;
+}
+
+.plans-note {
+  margin: 22px 0 0;
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
+.plans-note.error {
+  color: var(--pink-600);
 }
 
 .btn-primary {

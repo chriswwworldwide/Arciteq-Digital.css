@@ -1013,6 +1013,168 @@
         "createdAt": "2026-05-16T20:18:40.179Z",
         "updatedAt": "2026-05-16T20:18:40.179Z"
       }
+    },
+    {
+      "productId": "roxzone-plan-warrior-001",
+      "tenant_id": "roxzone",
+      "kind": "service",
+      "title": "Warrior Program",
+      "description": "Self-serve monthly Hyrox programming: 4 sessions a week, station technique videos and run pacing, delivered weekly.",
+      "nicheCategory": {
+        "slug": "plans",
+        "name": "Coaching Plans"
+      },
+      "productType": {
+        "slug": "coaching-plan",
+        "name": "Coaching Plan"
+      },
+      "seo": {
+        "slug": "warrior-program",
+        "canonicalPath": "/roxzone/plans/warrior-program",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/roxzone/images/feature.jpg",
+          "alt": "Warrior Program — Hyrox coaching with Dina in Jakarta",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "price": {
+        "amount": 59900000,
+        "currency": "idr"
+      },
+      "billing": {
+        "interval": "month",
+        "intervalCount": 1
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "Rox Zone Warriors",
+      "tags": [
+        "hyrox",
+        "program",
+        "online"
+      ],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Stop guessing what to train — follow a plan built by a podium athlete",
+          "Fit Hyrox prep around work, heat and real life"
+        ],
+        "ugcAngles": [
+          "Race-day finish photo",
+          "Station PB clip"
+        ]
+      },
+      "attributes": {}
+    },
+    {
+      "productId": "roxzone-plan-hybrid-001",
+      "tenant_id": "roxzone",
+      "kind": "service",
+      "title": "Hybrid Coaching",
+      "description": "Online programming plus two in-person floor sessions a month in Jakarta, weekly check-ins and race planning with Dina.",
+      "nicheCategory": {
+        "slug": "plans",
+        "name": "Coaching Plans"
+      },
+      "productType": {
+        "slug": "coaching-plan",
+        "name": "Coaching Plan"
+      },
+      "seo": {
+        "slug": "hybrid-coaching",
+        "canonicalPath": "/roxzone/plans/hybrid-coaching",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/roxzone/images/feature.jpg",
+          "alt": "Hybrid Coaching — Hyrox coaching with Dina in Jakarta",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "price": {
+        "amount": 250000000,
+        "currency": "idr"
+      },
+      "billing": {
+        "interval": "month",
+        "intervalCount": 1
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "Rox Zone Warriors",
+      "tags": [
+        "hyrox",
+        "hybrid",
+        "jakarta"
+      ],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Keep the coach, drop the commute — half the floor hours, all the accountability",
+          "Technique fixed in person, volume done on your schedule"
+        ],
+        "ugcAngles": [
+          "Race-day finish photo",
+          "Station PB clip"
+        ]
+      },
+      "attributes": {}
+    },
+    {
+      "productId": "roxzone-plan-elite-001",
+      "tenant_id": "roxzone",
+      "kind": "service",
+      "title": "Elite Race Prep",
+      "description": "12-week individualised race build with 1:1 coaching, weekly video review and race-day strategy. Three-month minimum.",
+      "nicheCategory": {
+        "slug": "plans",
+        "name": "Coaching Plans"
+      },
+      "productType": {
+        "slug": "coaching-plan",
+        "name": "Coaching Plan"
+      },
+      "seo": {
+        "slug": "elite-race-prep",
+        "canonicalPath": "/roxzone/plans/elite-race-prep",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/roxzone/images/feature.jpg",
+          "alt": "Elite Race Prep — Hyrox coaching with Dina in Jakarta",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "price": {
+        "amount": 600000000,
+        "currency": "idr"
+      },
+      "billing": {
+        "interval": "month",
+        "intervalCount": 1
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "Rox Zone Warriors",
+      "tags": [
+        "hyrox",
+        "elite",
+        "race-prep"
+      ],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Turn a finish into a podium with a plan built around your splits",
+          "Race-day strategy from someone who has stood on the box"
+        ],
+        "ugcAngles": [
+          "Race-day finish photo",
+          "Station PB clip"
+        ]
+      },
+      "attributes": {}
     }
   ]
 }

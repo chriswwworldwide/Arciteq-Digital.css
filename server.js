@@ -21,6 +21,17 @@ import {
   xmlEscape,
 } from "./src/product-utils.js";
 import { relatedProducts } from "./src/related-products.js";
+import { isRecurringProduct } from "./src/catalog-qa.js";
+import {
+  subscriptionIdFromInvoice,
+  metadataFromInvoice,
+  subscriptionIdFromSession,
+  customerIdOf,
+  priceFromSubscription,
+  periodEndFromSubscription,
+  isoFromUnix,
+  isRenewalInvoice,
+} from "./src/subscriptions.js";
 import {
   estimateForProduct,
   shipsFromLabel,
@@ -213,6 +224,26 @@ app.post(
             ],
           );
 
+          const subscriptionId = subscriptionIdFromSession(session);
+          if (subscriptionId) {
+            await dbQuery(
+              "INSERT INTO subscriptions (stripe_subscription_id, tenant_id, order_id, customer_email, stripe_customer_id, status, currency, amount_minor) VALUES ($1, $2, $3, NULLIF($4, ''), NULLIF($5, ''), 'active', NULLIF($6, ''), $7) ON CONFLICT (stripe_subscription_id) DO UPDATE SET order_id = COALESCE(subscriptions.order_id, EXCLUDED.order_id), customer_email = COALESCE(subscriptions.customer_email, EXCLUDED.customer_email), stripe_customer_id = COALESCE(subscriptions.stripe_customer_id, EXCLUDED.stripe_customer_id), updated_at = now()",
+              [
+                subscriptionId,
+                tenantId,
+                orderId,
+                customerEmail,
+                customerIdOf(session),
+                currency,
+                amountTotal,
+              ],
+            );
+            await dbQuery(
+              "UPDATE orders SET stripe_subscription_id = $1, updated_at = now() WHERE order_id = $2",
+              [subscriptionId, orderId],
+            );
+          }
+
           // Data-stitch: on a first-time paid event, bump the customer's running
           // totals, mark any open captured cart as converted (attributing which
           // nudge won), and log a unified order_completed funnel event.
@@ -367,6 +398,171 @@ app.post(
             "UPDATE orders SET status = $1, updated_at = now() WHERE stripe_payment_intent_id = $2 AND status = $3",
             ["failed", paymentIntentId, "pending"],
           );
+        }
+      } else if (
+        stripeEventType === "customer.subscription.created" ||
+        stripeEventType === "customer.subscription.updated" ||
+        stripeEventType === "customer.subscription.deleted"
+      ) {
+        const subscription = event?.data?.object;
+        const subscriptionId = String(subscription?.id || "");
+        if (subscriptionId) {
+          const tenantId = String(
+            subscription?.metadata?.tenant_id || "default",
+          );
+          const orderId = String(subscription?.metadata?.order_id || "");
+          const email = normalizeEmail(subscription?.metadata?.customer_email);
+          const status =
+            stripeEventType === "customer.subscription.deleted"
+              ? "canceled"
+              : String(subscription?.status || "active");
+          const price = priceFromSubscription(subscription);
+          await dbQuery(
+            "INSERT INTO subscriptions (stripe_subscription_id, tenant_id, order_id, customer_email, stripe_customer_id, status, currency, amount_minor, billing_interval, current_period_end, canceled_at) VALUES ($1, $2, NULLIF($3, ''), NULLIF($4, ''), NULLIF($5, ''), $6, $7, $8, $9, $10, $11) ON CONFLICT (stripe_subscription_id) DO UPDATE SET status = EXCLUDED.status, order_id = COALESCE(subscriptions.order_id, EXCLUDED.order_id), customer_email = COALESCE(subscriptions.customer_email, EXCLUDED.customer_email), stripe_customer_id = COALESCE(subscriptions.stripe_customer_id, EXCLUDED.stripe_customer_id), currency = COALESCE(EXCLUDED.currency, subscriptions.currency), amount_minor = COALESCE(EXCLUDED.amount_minor, subscriptions.amount_minor), billing_interval = COALESCE(EXCLUDED.billing_interval, subscriptions.billing_interval), current_period_end = COALESCE(EXCLUDED.current_period_end, subscriptions.current_period_end), canceled_at = COALESCE(EXCLUDED.canceled_at, subscriptions.canceled_at), updated_at = now()",
+            [
+              subscriptionId,
+              tenantId,
+              orderId,
+              email,
+              customerIdOf(subscription),
+              status,
+              price.currency,
+              price.amountMinor,
+              price.interval,
+              periodEndFromSubscription(subscription),
+              isoFromUnix(subscription?.canceled_at),
+            ],
+          );
+          if (email && isFirstTimeEvent) {
+            await dbQuery(
+              "INSERT INTO email_events (tenant_id, email, type, order_id, data) VALUES ($1, $2, $3, NULLIF($4, ''), $5::jsonb)",
+              [
+                tenantId,
+                email,
+                stripeEventType === "customer.subscription.deleted"
+                  ? "subscription_canceled"
+                  : "subscription_updated",
+                orderId,
+                JSON.stringify({ stripeEventId, subscriptionId, status }),
+              ],
+            );
+          }
+        }
+      } else if (
+        stripeEventType === "invoice.paid" ||
+        stripeEventType === "invoice.payment_failed"
+      ) {
+        const invoice = event?.data?.object;
+        const subscriptionId = subscriptionIdFromInvoice(invoice);
+        if (subscriptionId) {
+          const meta = metadataFromInvoice(invoice);
+          const existing = await dbQuery(
+            "SELECT tenant_id, order_id, customer_email FROM subscriptions WHERE stripe_subscription_id = $1",
+            [subscriptionId],
+          );
+          const known = Array.isArray(existing?.rows) ? existing.rows[0] : null;
+          const tenantId = String(
+            meta?.tenant_id || known?.tenant_id || "default",
+          );
+          const email = normalizeEmail(
+            invoice?.customer_email ||
+              known?.customer_email ||
+              meta?.customer_email,
+          );
+          const currency = String(invoice?.currency || "").toLowerCase();
+          const amountPaid = Number.isInteger(invoice?.amount_paid)
+            ? invoice.amount_paid
+            : null;
+          const invoiceId = String(invoice?.id || "");
+
+          if (stripeEventType === "invoice.payment_failed") {
+            await dbQuery(
+              "UPDATE subscriptions SET status = 'past_due', updated_at = now() WHERE stripe_subscription_id = $1",
+              [subscriptionId],
+            );
+            if (email && isFirstTimeEvent) {
+              await dbQuery(
+                "INSERT INTO email_events (tenant_id, email, type, data) VALUES ($1, $2, 'subscription_payment_failed', $3::jsonb)",
+                [
+                  tenantId,
+                  email,
+                  JSON.stringify({
+                    stripeEventId,
+                    subscriptionId,
+                    invoiceId,
+                    amountDue: Number.isInteger(invoice?.amount_due)
+                      ? invoice.amount_due
+                      : null,
+                    currency,
+                  }),
+                ],
+              );
+            }
+          } else if (isRenewalInvoice(invoice) && isFirstTimeEvent) {
+            // Each renewal becomes its own paid order so revenue, customer
+            // totals and the admin dashboard see it like any other sale.
+            const renewalOrderId = crypto.randomUUID();
+            await dbQuery(
+              "INSERT INTO orders (order_id, tenant_id, status, currency, amount_subtotal, amount_total, customer_email, items, stripe_subscription_id) VALUES ($1, $2, 'paid', $3, $4, $4, NULLIF($5, ''), '[]'::jsonb, $6)",
+              [
+                renewalOrderId,
+                tenantId,
+                currency,
+                amountPaid,
+                email,
+                subscriptionId,
+              ],
+            );
+            await dbQuery(
+              "INSERT INTO order_events (order_id, type, data) VALUES ($1, 'stripe.invoice.paid', $2::jsonb)",
+              [
+                renewalOrderId,
+                JSON.stringify({
+                  stripeEventId,
+                  subscriptionId,
+                  invoiceId,
+                  billingReason: String(invoice?.billing_reason || ""),
+                  parentOrderId: String(
+                    known?.order_id || meta?.order_id || "",
+                  ),
+                }),
+              ],
+            );
+            await dbQuery(
+              "UPDATE subscriptions SET status = 'active', current_period_end = COALESCE($2, current_period_end), updated_at = now() WHERE stripe_subscription_id = $1",
+              [
+                subscriptionId,
+                isoFromUnix(
+                  invoice?.lines?.data?.[0]?.period?.end ?? invoice?.period_end,
+                ),
+              ],
+            );
+            if (email) {
+              try {
+                await stitchPaidOrder({
+                  tenantId,
+                  email,
+                  orderId: renewalOrderId,
+                  currency,
+                  amountTotal: amountPaid,
+                });
+              } catch (stitchErr) {
+                console.error(
+                  "STITCH_FAILED",
+                  JSON.stringify({
+                    orderId: renewalOrderId,
+                    stripeEventId,
+                    message: String(stitchErr?.message || stitchErr),
+                  }),
+                );
+              }
+            }
+          } else if (stripeEventType === "invoice.paid") {
+            await dbQuery(
+              "UPDATE subscriptions SET status = 'active', updated_at = now() WHERE stripe_subscription_id = $1",
+              [subscriptionId],
+            );
+          }
         }
       }
 
@@ -665,11 +861,9 @@ app.post("/admin/ad-guardrails", express.json(), async (req, res) => {
       !Number.isInteger(stopSpendNoRevenueMinor) ||
       stopSpendNoRevenueMinor < 0
     ) {
-      return res
-        .status(400)
-        .json({
-          error: "stop_spend_no_revenue_minor must be a non-negative integer",
-        });
+      return res.status(400).json({
+        error: "stop_spend_no_revenue_minor must be a non-negative integer",
+      });
     }
 
     if (!Number.isFinite(warnRoasBelow) || warnRoasBelow < 0) {
@@ -821,11 +1015,9 @@ app.get("/admin/attribution-summary", async (req, res) => {
     });
   } catch (err) {
     console.error("/admin/attribution-summary failed", err);
-    return res
-      .status(500)
-      .json({
-        error: String(err?.message || "Failed to load attribution summary"),
-      });
+    return res.status(500).json({
+      error: String(err?.message || "Failed to load attribution summary"),
+    });
   }
 });
 
@@ -2220,12 +2412,10 @@ app.post("/admin/publish-draft", (req, res) => {
     }
 
     if (String(draft?.status || "") === "duplicate") {
-      return res
-        .status(400)
-        .json({
-          error: "Draft is marked as duplicate",
-          reasons: draft?.reasons || [],
-        });
+      return res.status(400).json({
+        error: "Draft is marked as duplicate",
+        reasons: draft?.reasons || [],
+      });
     }
 
     const draftProduct =
@@ -3231,11 +3421,9 @@ app.post("/admin/jobs/abandoned-recovery", async (req, res) => {
     });
   } catch (err) {
     console.error("/admin/jobs/abandoned-recovery failed", err);
-    return res
-      .status(500)
-      .json({
-        error: String(err?.message || "Failed to run abandoned recovery"),
-      });
+    return res.status(500).json({
+      error: String(err?.message || "Failed to run abandoned recovery"),
+    });
   }
 });
 
@@ -3351,14 +3539,31 @@ app.post("/create-checkout-session", async (req, res) => {
       }
 
       const quantity = Number(item.quantity) || 1;
+      const recurring = isRecurringProduct(product)
+        ? {
+            interval: String(product.billing.interval).toLowerCase(),
+            interval_count: Number.isInteger(product.billing.intervalCount)
+              ? product.billing.intervalCount
+              : 1,
+          }
+        : null;
       return {
         productId,
         title: String(product?.title || "Product"),
         unitAmount,
         currency,
         quantity,
+        recurring,
       };
     });
+
+    const recurringCount = normalizedItems.filter((it) => it.recurring).length;
+    if (recurringCount > 0 && recurringCount !== normalizedItems.length) {
+      throw new Error(
+        "Mixed cart: recurring plans must be checked out separately from one-off items",
+      );
+    }
+    const checkoutMode = recurringCount > 0 ? "subscription" : "payment";
 
     const line_items = normalizedItems.map((it) => {
       return {
@@ -3368,6 +3573,7 @@ app.post("/create-checkout-session", async (req, res) => {
             name: it.title,
           },
           unit_amount: it.unitAmount,
+          ...(it.recurring ? { recurring: it.recurring } : {}),
         },
         quantity: it.quantity,
       };
@@ -3429,24 +3635,31 @@ app.post("/create-checkout-session", async (req, res) => {
     const paymentMethodTypes =
       rawPaymentMethods.length > 0 ? rawPaymentMethods : ["card"];
 
+    const sessionMetadata = {
+      order_id: orderId,
+      tenant_id: activeTenantId,
+      customer_email: customerEmail || "",
+      utm_source: utmSource,
+      utm_medium: utmMedium,
+      utm_campaign: utmCampaign,
+      utm_content: utmContent,
+      utm_term: utmTerm,
+    };
+
     const session = await stripe.checkout.sessions.create({
-      mode: "payment",
+      mode: checkoutMode,
       payment_method_types: paymentMethodTypes,
       line_items,
       success_url: `${origin}/success.html?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`,
       cancel_url: `${origin}/checkout/cancel?order_id=${orderId}`,
       customer_email: customerEmail || undefined,
       client_reference_id: orderId,
-      metadata: {
-        order_id: orderId,
-        tenant_id: activeTenantId,
-        customer_email: customerEmail || "",
-        utm_source: utmSource,
-        utm_medium: utmMedium,
-        utm_campaign: utmCampaign,
-        utm_content: utmContent,
-        utm_term: utmTerm,
-      },
+      metadata: sessionMetadata,
+      // Copy the metadata onto the subscription so renewal invoices can be
+      // attributed back to the originating order + tenant.
+      ...(checkoutMode === "subscription"
+        ? { subscription_data: { metadata: sessionMetadata } }
+        : {}),
     });
 
     await dbQuery(
@@ -3458,7 +3671,10 @@ app.post("/create-checkout-session", async (req, res) => {
       [
         orderId,
         "stripe_session_created",
-        JSON.stringify({ sessionId: String(session?.id || "") }),
+        JSON.stringify({
+          sessionId: String(session?.id || ""),
+          mode: checkoutMode,
+        }),
       ],
     );
 
@@ -3485,6 +3701,7 @@ app.post("/create-checkout-session", async (req, res) => {
       "Missing price.currency for productId:",
       "Currency mismatch for productId:",
       "Tenant mismatch for checkout session",
+      "Mixed cart:",
     ];
 
     const isClientError = clientErrorPrefixes.some((p) =>

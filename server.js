@@ -1937,7 +1937,15 @@ app.get("/sitemap.xml", (req, res) => {
         return `  <url><loc>${xmlEscape(loc)}</loc><changefreq>weekly</changefreq><priority>0.8</priority>${lastmodXml}</url>`;
       })
       .join("\n");
-    const staticUrls = [
+    const tenantStaticPages = Array.isArray(tenant?.seo?.staticPages)
+      ? tenant.seo.staticPages
+          .map((p) => ({
+            path: String(p?.path || "").trim(),
+            priority: String(p?.priority || "0.8"),
+          }))
+          .filter((p) => p.path.startsWith("/"))
+      : null;
+    const staticUrls = tenantStaticPages || [
       { path: "/", priority: "1.0" },
       { path: "/shop.html", priority: "0.9" },
       { path: "/content/senior-dog-mobility.html", priority: "0.85" },
@@ -2079,6 +2087,16 @@ app.get("/index.html", (req, res) => {
 
 app.get("/roxzone", (req, res) => {
   res.sendFile(path.join(__dirname, "roxzone", "index.html"));
+});
+
+// Clean URLs for Rox Zone content pages: /roxzone/<slug>/ -> roxzone/<slug>.html
+app.get("/roxzone/:slug", (req, res, next) => {
+  const slug = String(req.params.slug || "");
+  if (!/^[a-z0-9-]+$/.test(slug)) return next();
+  const file = path.join(__dirname, "roxzone", `${slug}.html`);
+  if (!fs.existsSync(file)) return next();
+  if (!req.path.endsWith("/")) return res.redirect(301, `/roxzone/${slug}/`);
+  res.sendFile(file);
 });
 
 app.post("/admin/run-import", (req, res) => {

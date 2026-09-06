@@ -132,7 +132,13 @@
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
-        "sameAs": []
+        "sameAs": [],
+        "staticPages": [
+          { "path": "/roxzone/", "priority": "1.0" },
+          { "path": "/roxzone/stations-prep/", "priority": "0.9" },
+          { "path": "/roxzone/run-zone/", "priority": "0.9" },
+          { "path": "/roxzone/events/", "priority": "0.8" }
+        ]
       },
       "offers": {}
     }

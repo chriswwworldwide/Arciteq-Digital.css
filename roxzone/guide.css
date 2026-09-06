@@ -95,6 +95,7 @@
 
 .article {
   max-width: 72ch;
+  min-width: 0;
 }
 
 .article h3 {
@@ -385,4 +386,77 @@
     aspect-ratio: 16 / 10;
     max-height: none;
   }
+}
+
+/* Results leaderboard */
+.results-tools {
+  margin-bottom: 8px;
+}
+.results-search span {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 6px;
+}
+.results-search input {
+  width: 100%;
+  max-width: 420px;
+  min-height: 48px;
+  padding: 10px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 1rem;
+}
+.results-search input:focus {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+.results-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+}
+.results-table th,
+.results-table td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+}
+.results-table th {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.results-table .rank {
+  font-weight: 800;
+  color: var(--pink);
+  width: 2.5em;
+}
+.results-table .athlete {
+  font-weight: 700;
+  white-space: normal;
+  min-width: 9em;
+}
+.results-table .time {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+.results-table .muted {
+  color: var(--ink-3);
+  font-weight: 400;
+}
+.results-empty {
+  background: var(--pink-100);
+  border-radius: 14px;
+  padding: 18px 20px;
 }

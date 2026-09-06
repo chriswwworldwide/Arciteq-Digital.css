@@ -1110,3 +1110,104 @@ footer a:hover {
     padding: 8px 20px 40px;
   }
 }
+
+/* Dina's 3 tips */
+.tips {
+  background: var(--pink-100);
+}
+.tips .lead a {
+  color: var(--pink-600);
+  font-weight: 700;
+}
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 28px;
+}
+.tips-grid details {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.tips-grid summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 20px;
+  min-height: 56px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tips-grid summary::-webkit-details-marker {
+  display: none;
+}
+.tips-grid summary::after {
+  content: "+";
+  color: var(--pink);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.tips-grid details[open] summary::after {
+  content: "–";
+}
+.tips-grid ol {
+  margin: 0;
+  padding: 0 20px 20px 40px;
+  color: #333;
+  line-height: 1.55;
+}
+.tips-grid ol li + li {
+  margin-top: 10px;
+}
+.tips-grid ol li::marker {
+  color: var(--pink);
+  font-weight: 800;
+}
+@media (max-width: 900px) {
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tips .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 32px;
+  align-items: start;
+}
+.tips .eyebrow,
+.tips h3,
+.tips .lead {
+  grid-column: 1 / -1;
+}
+.tips-photo {
+  margin: 28px 0 0;
+}
+.tips-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.tips-grid {
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .tips .wrap {
+    grid-template-columns: 1fr;
+  }
+  .tips-photo img {
+    aspect-ratio: 16 / 10;
+  }
+}

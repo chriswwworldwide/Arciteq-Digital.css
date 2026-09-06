@@ -334,3 +334,55 @@
     gap: 8px;
   }
 }
+
+/* Photo slots — swap the placeholder images for real race shots. */
+.guide-hero .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 36px;
+  align-items: center;
+}
+
+.guide-hero-photo,
+.art-photo {
+  margin: 0;
+}
+
+.guide-hero-photo img,
+.art-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.guide-hero-photo img {
+  aspect-ratio: 4 / 5;
+  max-height: 460px;
+}
+
+.art-photo {
+  margin: 8px 0 40px;
+}
+
+.art-photo img {
+  aspect-ratio: 16 / 9;
+}
+
+.art-photo figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+@media (max-width: 900px) {
+  .guide-hero .wrap {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .guide-hero-photo img {
+    aspect-ratio: 16 / 10;
+    max-height: none;
+  }
+}

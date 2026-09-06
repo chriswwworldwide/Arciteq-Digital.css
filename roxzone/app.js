@@ -205,3 +205,26 @@
     a.rel = "noopener";
   });
 })();
+
+// Founding-member seat counts: roxzone/data/seats.json, hidden until "taken" is set.
+(function () {
+  const slots = document.querySelectorAll("[data-seats]");
+  if (!slots.length) return;
+  fetch("/roxzone/data/seats.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((json) => {
+      if (!json || !json.plans) return;
+      slots.forEach((el) => {
+        const plan = json.plans[el.dataset.seats];
+        if (!plan || typeof plan.taken !== "number" || !plan.capacity) return;
+        const left = Math.max(0, plan.capacity - plan.taken);
+        el.textContent =
+          left === 0
+            ? `All ${plan.capacity} founding seats taken — join the waitlist`
+            : `${left} of ${plan.capacity} founding seats left`;
+        el.classList.toggle("seats-full", left === 0);
+        el.hidden = false;
+      });
+    })
+    .catch(() => {});
+})();

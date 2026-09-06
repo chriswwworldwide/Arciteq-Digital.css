@@ -1254,3 +1254,14 @@ footer a:hover {
     gap: 24px;
   }
 }
+
+.seats {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--pink);
+}
+
+.seats.seats-full {
+  color: var(--ink-3);
+}

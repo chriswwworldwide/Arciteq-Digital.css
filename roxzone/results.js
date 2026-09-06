@@ -3,7 +3,10 @@
   const toc = document.getElementById("results-toc");
   const search = document.getElementById("results-search");
   const updated = document.getElementById("results-updated");
+  const modeInputs = document.querySelectorAll('input[name="results-mode"]');
   if (!root) return;
+  let data = null;
+  let mode = "pb";
 
   function toSeconds(t) {
     const parts = String(t || "")
@@ -20,7 +23,20 @@
     );
   }
 
-  function render(data) {
+  function personalBests(rows) {
+    const best = new Map();
+    rows.forEach((r) => {
+      const key = String(r.athlete || "")
+        .trim()
+        .toLowerCase();
+      const cur = best.get(key);
+      if (!cur || toSeconds(r.time) < toSeconds(cur.time)) best.set(key, r);
+    });
+    return Array.from(best.values());
+  }
+
+  function render() {
+    if (!data) return;
     if (updated && data.updated) {
       updated.textContent = data.updated;
       updated.setAttribute("datetime", data.updated);
@@ -32,9 +48,10 @@
 
     keys.forEach((key) => {
       const div = divisions[key];
-      const rows = (div.results || [])
-        .slice()
-        .sort((a, b) => toSeconds(a.time) - toSeconds(b.time));
+      const all = div.results || [];
+      const rows = (mode === "pb" ? personalBests(all) : all.slice()).sort(
+        (a, b) => toSeconds(a.time) - toSeconds(b.time),
+      );
 
       if (toc) {
         const li = document.createElement("li");
@@ -67,7 +84,13 @@
             .join("")}</tbody></table></div>`;
       }
       art.innerHTML = `<span class="num">${esc(div.label)}</span>
-        <h3>${esc(div.label)} — fastest Indonesians</h3>${body}`;
+        <h3>${esc(div.label)} — ${mode === "pb" ? "personal bests" : "all finishes"}</h3>${body}`;
+      if (rows.length && mode === "pb") {
+        const note = document.createElement("p");
+        note.className = "results-record";
+        note.innerHTML = `Fastest verified Indonesian ${esc(div.label)} time we have: <strong>${esc(rows[0].time)}</strong> — ${esc(rows[0].athlete)}. Know an earlier or faster one? <a href="#fix">Tell us</a>.`;
+        art.appendChild(note);
+      }
       root.appendChild(art);
     });
   }
@@ -80,10 +103,20 @@
   }
 
   if (search) search.addEventListener("input", () => filter(search.value));
+  modeInputs.forEach((input) =>
+    input.addEventListener("change", () => {
+      mode = input.value === "all" ? "all" : "pb";
+      render();
+      if (search) filter(search.value);
+    }),
+  );
 
   fetch("/roxzone/data/results.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
-    .then(render)
+    .then((json) => {
+      data = json;
+      render();
+    })
     .catch(() => {
       root.innerHTML =
         '<p class="results-empty">Results are being updated — check back shortly.</p>';

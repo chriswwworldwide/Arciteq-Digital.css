@@ -117,7 +117,9 @@
           <p class="lead">
             Every Indonesian Hyrox finish we can verify, ranked by time — men,
             women, doubles, mixed and relay. Official chip times, updated after
-            each race. Find your name, find your next target.
+            each race. Hyrox in Indonesia is young and lightly tracked, so we
+            call the top row the fastest <em>verified</em> time, not a national
+            record — if you know a faster one, tell us.
           </p>
           <p class="lead" style="font-size: 0.95rem">
             Last updated <time id="results-updated">—</time> ·
@@ -144,6 +146,17 @@
 
       <div class="article">
         <div class="results-tools">
+          <fieldset class="results-mode">
+            <legend>Show</legend>
+            <label
+              ><input type="radio" name="results-mode" value="pb" checked />
+              Personal bests (one per athlete)</label
+            >
+            <label
+              ><input type="radio" name="results-mode" value="all" /> All
+              finishes</label
+            >
+          </fieldset>
           <label class="results-search">
             <span>Find an athlete</span>
             <input

@@ -148,6 +148,7 @@
         <p>Jump to</p>
         <ol>
           <li><a href="#calculator">Pace calculator</a></li>
+          <li><a href="#target">Next-race target</a></li>
           <li><a href="#pacing">8 × 1 km pacing</a></li>
           <li><a href="#compromised">Compromised running</a></li>
           <li><a href="#heat">Jakarta heat training</a></li>
@@ -228,6 +229,57 @@
               and Roxzone distance move it either way.
               <a href="/roxzone/#ask">Ask Dina</a> for a plan built to your
               number.
+            </p>
+          </div>
+        </article>
+
+        <article class="station calc" id="target">
+          <span class="num">Tool</span>
+          <h3>What should I aim for next race?</h3>
+          <p>
+            Enter your last two Hyrox finish times (oldest first). We'll show
+            your trend and three honest targets for your next race — Jakarta or
+            anywhere else.
+          </p>
+          <form class="calc-form" id="target-form" autocomplete="off">
+            <label>
+              <span>Race before last</span>
+              <input
+                type="text"
+                id="target-a"
+                inputmode="numeric"
+                placeholder="1:38:20"
+                pattern="\d{1,2}:\d{2}(:\d{2})?"
+                required
+              />
+            </label>
+            <label>
+              <span>Last race</span>
+              <input
+                type="text"
+                id="target-b"
+                inputmode="numeric"
+                placeholder="1:31:05"
+                pattern="\d{1,2}:\d{2}(:\d{2})?"
+                required
+              />
+            </label>
+            <button class="btn btn-primary" type="submit">Set my target</button>
+          </form>
+          <div class="calc-out" id="target-out" hidden aria-live="polite">
+            <p id="target-trend"></p>
+            <ul class="spec">
+              <li><strong id="target-safe">—</strong>Safe target (bank it)</li>
+              <li><strong id="target-real">—</strong>Realistic target</li>
+              <li>
+                <strong id="target-stretch">—</strong>Stretch — perfect day
+              </li>
+            </ul>
+            <p class="calc-note">
+              Rule of thumb: half of your last improvement carried forward,
+              capped, because gains shrink as you get faster. Structured
+              training moves the realistic line — that's the
+              <a href="/roxzone/#plans">job of a programme</a>.
             </p>
           </div>
         </article>

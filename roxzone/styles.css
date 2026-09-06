@@ -1211,3 +1211,46 @@ footer a:hover {
     aspect-ratio: 16 / 10;
   }
 }
+
+.capture .chat-line {
+  margin-top: 14px;
+  color: #444;
+}
+.chat-zone-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 8px 14px !important;
+  margin-left: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.merch-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 36px;
+  align-items: center;
+}
+.merch-grid .btn {
+  margin-top: 18px;
+}
+.merch-photo {
+  margin: 0;
+}
+.merch-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 18px;
+}
+@media (max-width: 900px) {
+  .merch-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

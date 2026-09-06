@@ -193,4 +193,15 @@
   } else {
     reveals.forEach((el) => el.classList.add("in"));
   }
+
+  // Chat Zone: becomes a WhatsApp deep-link once data-whatsapp holds Dina's
+  // number in international format (e.g. 628123456789). Empty = fall back to Ask Dina.
+  const CHAT_GREETING = "Hi Dina, I found you on Rox Zone Warriors — ";
+  document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
+    const digits = String(a.dataset.whatsapp || "").replace(/\D/g, "");
+    if (!digits) return;
+    a.href = `https://wa.me/${digits}?text=${encodeURIComponent(CHAT_GREETING)}`;
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
 })();

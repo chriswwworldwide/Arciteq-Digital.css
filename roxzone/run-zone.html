@@ -147,6 +147,7 @@
       <aside class="toc" aria-label="Sections">
         <p>Jump to</p>
         <ol>
+          <li><a href="#calculator">Pace calculator</a></li>
           <li><a href="#pacing">8 × 1 km pacing</a></li>
           <li><a href="#compromised">Compromised running</a></li>
           <li><a href="#heat">Jakarta heat training</a></li>
@@ -155,6 +156,82 @@
       </aside>
 
       <div class="article">
+        <article class="station calc" id="calculator">
+          <span class="num">Tool</span>
+          <h3>5 km → Hyrox pace calculator</h3>
+          <p>
+            Enter your current fresh 5 km time and we'll give you a Hyrox run
+            pace, your total running time, and a realistic finish window
+            depending on how strong you are on the stations.
+          </p>
+          <form class="calc-form" id="calc-form" autocomplete="off">
+            <label>
+              <span>5 km time</span>
+              <span class="calc-time">
+                <input
+                  type="number"
+                  id="calc-min"
+                  min="12"
+                  max="60"
+                  inputmode="numeric"
+                  placeholder="25"
+                  aria-label="minutes"
+                />
+                <b>:</b>
+                <input
+                  type="number"
+                  id="calc-sec"
+                  min="0"
+                  max="59"
+                  inputmode="numeric"
+                  placeholder="00"
+                  aria-label="seconds"
+                />
+              </span>
+            </label>
+            <label>
+              <span>Stations</span>
+              <select id="calc-level">
+                <option value="new">First race — learning the stations</option>
+                <option value="mid" selected>
+                  Trained — stations feel solid
+                </option>
+                <option value="strong">Strong — stations are my weapon</option>
+              </select>
+            </label>
+            <label>
+              <span>Division</span>
+              <select id="calc-div">
+                <option value="open" selected>Women Open</option>
+                <option value="pro">Women Pro</option>
+              </select>
+            </label>
+            <button class="btn btn-primary" type="submit">Calculate</button>
+          </form>
+          <div class="calc-out" id="calc-out" hidden aria-live="polite">
+            <ul class="spec">
+              <li>
+                <strong id="calc-pace">—</strong>Hyrox run pace to hold (all 8
+                runs)
+              </li>
+              <li>
+                <strong id="calc-runs">—</strong>Total running (8 km + Roxzone)
+              </li>
+              <li>
+                <strong id="calc-stations">—</strong>Estimated station time
+              </li>
+              <li><strong id="calc-finish">—</strong>Target finish window</li>
+            </ul>
+            <p class="calc-note">
+              Estimates, not promises: run pace is 5 km pace + 25 s/km; station
+              blocks use typical women's splits at each level. Race carpet, heat
+              and Roxzone distance move it either way.
+              <a href="/roxzone/#ask">Ask Dina</a> for a plan built to your
+              number.
+            </p>
+          </div>
+        </article>
+
         <article class="station" id="pacing">
           <span class="num">Part 01</span>
           <h3>8 × 1 km pacing</h3>
@@ -344,5 +421,6 @@
     </footer>
 
     <script src="/roxzone/app.js" defer></script>
+    <script src="/roxzone/calc.js" defer></script>
   </body>
 </html>

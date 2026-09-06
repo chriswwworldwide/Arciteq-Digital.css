@@ -460,3 +460,55 @@
   border-radius: 14px;
   padding: 18px 20px;
 }
+
+/* Pace calculator */
+.calc-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  align-items: end;
+  margin: 20px 0;
+}
+.calc-form label > span:first-child {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 6px;
+}
+.calc-form input,
+.calc-form select {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 1rem;
+  background: #fff;
+}
+.calc-form input:focus,
+.calc-form select:focus {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+.calc-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.calc-time input {
+  text-align: center;
+}
+.calc-form .btn {
+  min-height: 48px;
+}
+.calc-out .spec strong {
+  font-variant-numeric: tabular-nums;
+}
+.calc-note {
+  font-size: 15px !important;
+  color: var(--ink-3) !important;
+}

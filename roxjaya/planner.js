@@ -207,7 +207,10 @@
         if (!b) return;
         history.replaceState(null, "", `#${b.dataset.slug}`);
         show(b.dataset.slug);
-        root.scrollIntoView({ behavior: "smooth", block: "start" });
+        const nav = document.querySelector(".nav");
+        const offset = (nav ? nav.getBoundingClientRect().height : 0) + 16;
+        const top = root.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
       });
       window.addEventListener("hashchange", () => {
         const s = location.hash.replace(/^#/, "");
@@ -215,6 +218,9 @@
       });
     })
     .catch(() => {
-      root.innerHTML = `<p class="callout">Couldn't load the city guides just now — try again in a moment, or check <a href="https://hyrox.com/events/" rel="noopener">hyrox.com</a> for dates.</p>`;
+      const msg = `<p class="callout">Couldn't load the city guides just now — try again in a moment, or check <a href="https://hyrox.com/events/" rel="noopener">hyrox.com</a> for dates.</p>`;
+      root.innerHTML = msg;
+      if (seasonEl) seasonEl.innerHTML = msg;
+      if (nextEl) nextEl.hidden = true;
     });
 })();

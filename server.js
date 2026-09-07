@@ -33,6 +33,7 @@ import {
   isRenewalInvoice,
 } from "./src/subscriptions.js";
 import { sanitizeProfile, hasProfile } from "./src/lead-profile.js";
+import { validateSubmission, summarizePayloads } from "./src/submissions.js";
 import {
   estimateForProduct,
   shipsFromLabel,
@@ -2781,6 +2782,110 @@ app.post("/api/capture-email", async (req, res) => {
   } catch (err) {
     console.error("Capture email failed", err);
     return res.status(500).json({ error: "Failed to capture email" });
+  }
+});
+
+// Structured customer submissions (race splits, logs, surveys). Generic: the
+// tenant whitelists kinds in tenants.json → submissions.kinds. The response
+// carries the customer's private access token only when it was just issued or
+// when the caller already proved they hold it.
+app.post("/api/submissions", async (req, res) => {
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const tenantId = String(tenant?.tenant_id || "default");
+    const email = normalizeEmail(req.body?.email);
+    if (!email || !isValidEmail(email)) {
+      return res.status(400).json({ error: "Valid email is required" });
+    }
+    const checked = validateSubmission(tenant, req.body);
+    if (checked.error) return res.status(400).json({ error: checked.error });
+    const suppliedToken = String(req.body?.token || "").trim() || null;
+
+    const cust = await dbQuery(
+      "INSERT INTO customers (tenant_id, email, subscribed, access_token) VALUES ($1, $2, false, $3) ON CONFLICT (tenant_id, email) DO UPDATE SET last_seen_at = now(), access_token = COALESCE(customers.access_token, EXCLUDED.access_token), updated_at = now() RETURNING access_token",
+      [tenantId, email, crypto.randomBytes(16).toString("hex")],
+    );
+    const token = cust?.rows?.[0]?.access_token || null;
+
+    const id = crypto.randomUUID();
+    await dbQuery(
+      "INSERT INTO submissions (id, tenant_id, email, kind, payload) VALUES ($1, $2, $3, $4, $5::jsonb)",
+      [id, tenantId, email, checked.kind, JSON.stringify(checked.payload)],
+    );
+    await dbQuery(
+      "INSERT INTO email_events (tenant_id, email, type, data) VALUES ($1, $2, $3, $4::jsonb)",
+      [
+        tenantId,
+        email,
+        "submission",
+        JSON.stringify({ kind: checked.kind, submission_id: id }),
+      ],
+    );
+
+    const prior = await dbQuery(
+      "SELECT count(*)::int AS n FROM submissions WHERE tenant_id = $1 AND lower(email) = lower($2) AND kind = $3",
+      [tenantId, email, checked.kind],
+    );
+    const count = Number(prior?.rows?.[0]?.n || 1);
+    const revealToken =
+      count === 1 || (suppliedToken && suppliedToken === token);
+    return res.json({
+      ok: true,
+      id,
+      count,
+      token: revealToken ? token : null,
+    });
+  } catch (err) {
+    console.error("Submission failed", err);
+    return res.status(500).json({ error: "Failed to save submission" });
+  }
+});
+
+// A customer's own submissions, by private token.
+app.get("/api/submissions", async (req, res) => {
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const tenantId = String(tenant?.tenant_id || "default");
+    const token = String(req.query?.token || "").trim();
+    const kind = String(req.query?.kind || "").trim();
+    if (!token || !kind)
+      return res.status(400).json({ error: "token and kind required" });
+    const rows = await dbQuery(
+      "SELECT s.id, s.payload, s.created_at FROM submissions s JOIN customers c ON c.tenant_id = s.tenant_id AND lower(c.email) = lower(s.email) WHERE c.tenant_id = $1 AND c.access_token = $2 AND s.kind = $3 ORDER BY s.created_at ASC LIMIT 200",
+      [tenantId, token, kind],
+    );
+    if (!rows?.rows?.length)
+      return res.status(404).json({ error: "Not found" });
+    return res.json({ ok: true, items: rows.rows });
+  } catch (err) {
+    console.error("Submissions lookup failed", err);
+    return res.status(500).json({ error: "Failed to load submissions" });
+  }
+});
+
+// Anonymous per-field stats for a kind (median / quartiles), optionally
+// filtered by one string field via ?field=division&value=Women%20Open.
+app.get("/api/submissions/stats", async (req, res) => {
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const tenantId = String(tenant?.tenant_id || "default");
+    const kind = String(req.query?.kind || "").trim();
+    if (!kind) return res.status(400).json({ error: "kind required" });
+    const field = String(req.query?.field || "").trim();
+    const value = String(req.query?.value || "").trim();
+    const rows = await dbQuery(
+      "SELECT payload FROM submissions WHERE tenant_id = $1 AND kind = $2 ORDER BY created_at DESC LIMIT 5000",
+      [tenantId, kind],
+    );
+    const payloads = (rows?.rows || []).map((r) => r.payload);
+    const stats = summarizePayloads(payloads, {
+      filter: field && value ? { [field]: value } : null,
+    });
+    res.set("Cache-Control", "public, max-age=600");
+    return res.json({ ok: true, ...stats });
+  } catch (err) {
+    console.error("Submission stats failed", err);
+    return res.status(500).json({ error: "Failed to load stats" });
   }
 });
 

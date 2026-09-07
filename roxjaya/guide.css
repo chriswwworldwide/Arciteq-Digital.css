@@ -1003,3 +1003,20 @@
     margin: 8px 0 0;
   }
 }
+
+.news-take {
+  margin-top: 8px !important;
+  padding: 10px 12px;
+  border-left: 3px solid var(--pink-600);
+  background: #fff;
+  border-radius: 6px;
+}
+
+.news-src {
+  margin-top: 8px !important;
+  font-size: 13px !important;
+}
+
+.news-src a {
+  color: var(--ink-3);
+}

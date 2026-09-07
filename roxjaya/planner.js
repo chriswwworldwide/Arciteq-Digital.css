@@ -218,7 +218,7 @@
       });
     })
     .catch(() => {
-      const msg = `<p class="callout">Couldn't load the city guides just now — try again in a moment, or check <a href="https://hyrox.com/events/" rel="noopener">hyrox.com</a> for dates.</p>`;
+      const msg = `<p class="callout">Couldn't load the city guides just now — try again in a moment, or check <a href="https://hyrox.com/find-my-race/" rel="noopener">hyrox.com</a> for dates.</p>`;
       root.innerHTML = msg;
       if (seasonEl) seasonEl.innerHTML = msg;
       if (nextEl) nextEl.hidden = true;

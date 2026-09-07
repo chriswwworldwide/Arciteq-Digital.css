@@ -77,6 +77,14 @@
     sponsor: "Sponsor",
     alert: "Heads-up",
   };
+  const EDIT_LABEL = {
+    summary: "Your 2–3 line summary",
+    take: "Dina's take (optional)",
+  };
+  const EDIT_HINT = {
+    summary: "Facts in your own words — what happened, when, where.",
+    take: "One line: what it means for Jakarta athletes.",
+  };
   function renderInbox(inbox) {
     const el = document.getElementById("inbox-list");
     const pending = inbox?.pending || [];
@@ -87,15 +95,27 @@
     el.innerHTML = pending
       .map((i) => {
         const isAlert = i.kind === "alert";
+        const isNews = i.kind === "news";
         const ok = isAlert
           ? "Done"
           : i.apply?.length
-            ? "Approve & publish"
+            ? isNews
+              ? "Publish"
+              : "Approve & publish"
             : "Got it";
+        const fields = (i.editable || [])
+          .map((f) => {
+            const label = EDIT_LABEL[f] || f;
+            const need = f === "summary" ? " required" : "";
+            return `<label class="edit"><span>${esc(label)}</span><textarea name="${esc(f)}" rows="3" maxlength="600"${need} placeholder="${esc(EDIT_HINT[f] || "")}">${esc(i.data?.[f] || "")}</textarea></label>`;
+          })
+          .join("");
         return `<li data-id="${esc(i.id)}">
           <span class="kind">${esc(KIND_LABEL[i.kind] || i.kind)}</span>
           <p class="title">${esc(i.title)}</p>
           ${i.summary ? `<p class="summary">${esc(i.summary)}</p>` : ""}
+          ${isNews && i.data?.sourceName ? `<p class="summary">${esc(i.data.sourceName)} · ${esc(i.data.date || "")}</p>` : ""}
+          ${fields}
           <div class="actions">
             <button class="btn" data-action="approve">${ok}</button>
             ${isAlert ? "" : `<button class="btn btn-ghost" data-action="ignore">Ignore</button>`}
@@ -118,11 +138,20 @@
     if (!b) return;
     const li = b.closest("li[data-id]");
     if (!li) return;
+    const edits = {};
+    for (const t of li.querySelectorAll("textarea[name]")) {
+      edits[t.name] = t.value.trim();
+      if (b.dataset.action === "approve" && t.required && !edits[t.name]) {
+        t.focus();
+        t.reportValidity();
+        return;
+      }
+    }
     li.querySelectorAll("button").forEach((x) => (x.disabled = true));
     api(`/admin/inbox/${encodeURIComponent(li.dataset.id)}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ action: b.dataset.action }),
+      body: JSON.stringify({ action: b.dataset.action, edits }),
     })
       .then((r) => {
         const files = r.applied || [];

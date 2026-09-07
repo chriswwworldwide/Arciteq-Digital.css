@@ -145,6 +145,7 @@
           { "path": "/roxjaya/events/", "priority": "0.8" },
           { "path": "/roxjaya/hyrox-jakarta/", "priority": "0.9" },
           { "path": "/roxjaya/race-planner/", "priority": "0.9" },
+          { "path": "/roxjaya/news/", "priority": "0.8" },
           { "path": "/roxjaya/results/", "priority": "0.9" },
           { "path": "/roxjaya/splits/", "priority": "0.9" }
         ]
@@ -153,7 +154,11 @@
       "analytics": { "pageviews": true },
       "automation": {
         "inbox": "roxjaya/data/inbox.json",
-        "writable": ["roxjaya/data/events.json", "roxjaya/data/cities.json"],
+        "writable": [
+          "roxjaya/data/events.json",
+          "roxjaya/data/cities.json",
+          "roxjaya/data/news.json"
+        ],
         "coachPath": "/roxjaya/coach/",
         "digestTo": ""
       },

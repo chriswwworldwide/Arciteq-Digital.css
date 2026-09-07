@@ -40,6 +40,7 @@ import {
   upsertCandidates,
   pendingItems,
   decide,
+  applyEdits,
   applyPatches,
   buildDigest,
 } from "./src/inbox.js";
@@ -3134,6 +3135,12 @@ app.post("/admin/inbox/:id", express.json(), (req, res) => {
     if (result.error) return res.status(400).json({ error: result.error });
     let applied = { applied: [], skipped: [] };
     if (action === "approve") {
+      applyEdits(result.item, req.body?.edits);
+      if (result.item.kind === "news" && !result.item.summary) {
+        return res
+          .status(400)
+          .json({ error: "Write a short summary before publishing" });
+      }
       applied = applyPatches(result.item, {
         allowedFiles: cfg.writable,
         readJson: (rel) => safeReadJsonFile(path.join(__dirname, rel), null),

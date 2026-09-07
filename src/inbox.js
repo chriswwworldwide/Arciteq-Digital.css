@@ -9,6 +9,9 @@ const KINDS = ["event", "news", "alert", "sponsor"];
 const STATUSES = ["pending", "approved", "ignored"];
 const KEY_RE = /^[a-z0-9][a-z0-9:_./-]{1,119}$/;
 const PATH_RE = /^[A-Za-z0-9_-]+(\.[A-Za-z0-9_-]+)*$/;
+const OPS = ["set", "prepend"];
+const FIELD_RE = /^[a-z][a-zA-Z0-9_]{0,30}$/;
+const LIST_CAP = 200;
 
 function str(v, max) {
   return String(v ?? "")
@@ -42,7 +45,8 @@ function normalizePatch(p) {
   const path = str(p?.path, 120);
   if (!file || !PATH_RE.test(path) || !("value" in (p || {}))) return null;
   if (file.includes("..") || file.startsWith("/")) return null;
-  return { file, path, value: p.value };
+  const op = OPS.includes(p?.op) ? p.op : "set";
+  return { file, path, op, value: p.value };
 }
 
 /** Validate one automated candidate into a storable item, or return null. */
@@ -62,8 +66,33 @@ export function validateCandidate(c) {
     summary: str(c?.summary, 600),
     source: httpUrl(c?.source),
     data: c?.data && typeof c.data === "object" ? c.data : {},
+    editable: (Array.isArray(c?.editable) ? c.editable : [])
+      .map((f) => str(f, 40))
+      .filter((f) => FIELD_RE.test(f))
+      .slice(0, 5),
     apply: patches,
   };
+}
+
+/**
+ * Owner edits before approving (e.g. rewrite a news summary, add their take).
+ * Only fields the candidate declared `editable` are touched; they land on
+ * `item.data` and on every patch whose value is an object with that key.
+ */
+export function applyEdits(item, edits) {
+  if (!item || !edits || typeof edits !== "object") return item;
+  for (const f of item.editable || []) {
+    if (!(f in edits)) continue;
+    const v = str(edits[f], 1200);
+    item.data = { ...(item.data || {}), [f]: v };
+    if (f === "summary") item.summary = v.slice(0, 600);
+    for (const p of item.apply || []) {
+      if (p.value && typeof p.value === "object" && !Array.isArray(p.value)) {
+        p.value = { ...p.value, [f]: v };
+      }
+    }
+  }
+  return item;
 }
 
 /**
@@ -143,6 +172,21 @@ function setPath(obj, dotted, value) {
   cur[parts[parts.length - 1]] = value;
 }
 
+function prependPath(obj, dotted, value) {
+  const parts = dotted.split(".");
+  let cur = obj;
+  for (let i = 0; i < parts.length - 1; i += 1) {
+    const k = parts[i];
+    if (!cur[k] || typeof cur[k] !== "object") cur[k] = {};
+    cur = cur[k];
+  }
+  const last = parts[parts.length - 1];
+  const list = Array.isArray(cur[last]) ? cur[last] : [];
+  const id = value && typeof value === "object" ? value.id : undefined;
+  const rest = id === undefined ? list : list.filter((x) => !x || x.id !== id);
+  cur[last] = [value, ...rest].slice(0, LIST_CAP);
+}
+
 /**
  * Apply an approved item's patches through the given read/write functions.
  * Only files in `allowedFiles` (tenant → automation.writable) may change.
@@ -167,7 +211,10 @@ export function applyPatches(item, { allowedFiles, readJson, writeJson }) {
       skipped.push({ file, reason: "unreadable" });
       continue;
     }
-    for (const p of patches) setPath(json, p.path, p.value);
+    for (const p of patches) {
+      if (p.op === "prepend") prependPath(json, p.path, p.value);
+      else setPath(json, p.path, p.value);
+    }
     writeJson(file, json);
     applied.push(file);
   }

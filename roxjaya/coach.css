@@ -153,6 +153,29 @@
   color: var(--ink-2);
   font-size: 15px;
 }
+.inbox .edit {
+  display: block;
+  margin: 0 0 10px;
+}
+.inbox .edit span {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-bottom: 4px;
+}
+.inbox .edit textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 15px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  resize: vertical;
+}
 .inbox .actions {
   display: flex;
   flex-wrap: wrap;

@@ -24,6 +24,11 @@ jobs:
           SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}
           ADMIN_API_KEY: ${{ secrets.ROXJAYA_ADMIN_KEY }}
         run: node roxjaya/automation/hyrox-sync.js
+      - name: Discover Hyrox Asia news -> approve queue
+        env:
+          SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}
+          ADMIN_API_KEY: ${{ secrets.ROXJAYA_ADMIN_KEY }}
+        run: node roxjaya/automation/news-sync.js
 
   digest:
     runs-on: ubuntu-latest

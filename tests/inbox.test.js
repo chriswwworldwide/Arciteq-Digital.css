@@ -5,9 +5,16 @@ import {
   upsertCandidates,
   pendingItems,
   decide,
+  applyEdits,
   applyPatches,
   buildDigest,
 } from "../src/inbox.js";
+import {
+  parseFeed,
+  selectNews,
+  buildNewsCandidates,
+  MAX_PER_RUN,
+} from "../roxjaya/automation/news-sync.js";
 import {
   parseHyroxDate,
   rangeLabel,
@@ -278,5 +285,141 @@ describe("hyrox-sync parsing", () => {
         today: "2026-11-30",
       }),
     ).toHaveLength(0);
+  });
+});
+
+const rss = (items) =>
+  `<?xml version="1.0"?><rss><channel>${items
+    .map(
+      (i) =>
+        `<item><title>${i.title}</title><link>${i.link}</link><pubDate>${i.date}</pubDate>${
+          i.source ? `<source url="x">${i.source}</source>` : ""
+        }<description>${i.desc || ""}</description></item>`,
+    )
+    .join("")}</channel></rss>`;
+
+describe("news feed", () => {
+  const feed = rss([
+    {
+      title:
+        "Hong Kong Hyrox tickets go on sale Thursday - South China Morning Post",
+      link: "https://news.google.com/rss/articles/abc",
+      date: "Wed, 02 Sep 2026 07:00:00 GMT",
+    },
+    {
+      title: "HYROX athlete dies after Singapore race - Straits Times",
+      link: "https://news.google.com/rss/articles/sad",
+      date: "Tue, 01 Sep 2026 07:00:00 GMT",
+    },
+    {
+      title: "Best sled push tips from a HYROX coach - Men&amp;#39;s Health",
+      link: "https://news.google.com/rss/articles/generic",
+      date: "Tue, 01 Sep 2026 07:00:00 GMT",
+    },
+    {
+      title: "Old Hyrox Bangkok story - Bangkok Post",
+      link: "https://news.google.com/rss/articles/old",
+      date: "Tue, 01 Jun 2026 07:00:00 GMT",
+    },
+    {
+      title: "Not a real link - Foo",
+      link: "javascript:alert(1)",
+      date: "Wed, 02 Sep 2026 07:00:00 GMT",
+    },
+    {
+      title: "Hong Kong Hyrox tickets go on sale Thursday - Some Blog",
+      link: "https://news.google.com/rss/articles/dupe",
+      date: "Wed, 02 Sep 2026 08:00:00 GMT",
+    },
+  ]);
+
+  it("parses RSS, splits Google's publisher suffix and drops bad links", () => {
+    const items = parseFeed(feed, "Google News");
+    expect(items).toHaveLength(5);
+    expect(items[0]).toMatchObject({
+      title: "Hong Kong Hyrox tickets go on sale Thursday",
+      sourceName: "South China Morning Post",
+      date: "2026-09-02",
+      link: "https://news.google.com/rss/articles/abc",
+    });
+    expect(parseFeed("<not xml", "x")).toEqual([]);
+  });
+
+  it("keeps only recent Asia Hyrox stories, skips sensitive ones, dedupes headlines and caps the batch", () => {
+    const items = parseFeed(feed, "Google News");
+    const picked = selectNews(items, { today: "2026-09-03" });
+    expect(picked.map((i) => i.title)).toEqual([
+      "Hong Kong Hyrox tickets go on sale Thursday",
+    ]);
+    const already = selectNews(items, {
+      today: "2026-09-03",
+      published: [{ title: "Hong Kong Hyrox tickets go on sale Thursday" }],
+    });
+    expect(already).toEqual([]);
+    const many = Array.from({ length: 10 }, (_, n) => ({
+      title: `Hyrox Jakarta story ${n}`,
+      link: `https://example.com/${n}`,
+      date: "2026-09-02",
+      sourceName: "x",
+      excerpt: "",
+    }));
+    expect(selectNews(many, { today: "2026-09-03" })).toHaveLength(MAX_PER_RUN);
+  });
+
+  it("news candidates validate, publish only after a summary is written, and prepend into news.json", () => {
+    const [cand] = buildNewsCandidates(
+      selectNews(parseFeed(feed, "Google News"), { today: "2026-09-03" }),
+    );
+    const valid = validateCandidate(cand);
+    expect(valid).toMatchObject({
+      kind: "news",
+      key: "news:2026-09-02-hong-kong-hyrox-tickets-go-on-sale-thursday",
+      editable: ["summary", "take"],
+      summary: "",
+    });
+    expect(valid.apply[0].op).toBe("prepend");
+
+    const { inbox } = upsertCandidates(emptyInbox(), [cand], now);
+    const [item] = pendingItems(inbox);
+    const approved = decide(inbox, item.id, "approve", now);
+    applyEdits(approved.item, {
+      summary: "  HK tickets on sale Thursday.  ",
+      take: "Be at your laptop.",
+      title: "hacked",
+      bogus: "x",
+    });
+    expect(approved.item.summary).toBe("HK tickets on sale Thursday.");
+    expect(approved.item.title).not.toBe("hacked");
+    expect(approved.item.data.bogus).toBeUndefined();
+    expect(approved.item.apply[0].value).toMatchObject({
+      summary: "HK tickets on sale Thursday.",
+      take: "Be at your laptop.",
+    });
+
+    const files = {
+      "roxjaya/data/news.json": {
+        items: [{ id: "older", title: "Older" }],
+      },
+    };
+    const res = applyPatches(approved.item, {
+      allowedFiles: ["roxjaya/data/news.json"],
+      readJson: (f) => files[f],
+      writeJson: (f, j) => (files[f] = j),
+    });
+    expect(res.applied).toEqual(["roxjaya/data/news.json"]);
+    const list = files["roxjaya/data/news.json"].items;
+    expect(list.map((i) => i.id)).toEqual([
+      "2026-09-02-hong-kong-hyrox-tickets-go-on-sale-thursday",
+      "older",
+    ]);
+    expect(list[0].take).toBe("Be at your laptop.");
+
+    // Re-approving the same id replaces rather than duplicates.
+    applyPatches(approved.item, {
+      allowedFiles: ["roxjaya/data/news.json"],
+      readJson: (f) => files[f],
+      writeJson: (f, j) => (files[f] = j),
+    });
+    expect(files["roxjaya/data/news.json"].items).toHaveLength(2);
   });
 });

@@ -35,6 +35,11 @@ import {
 import { sanitizeProfile, hasProfile } from "./src/lead-profile.js";
 import { validateSubmission, summarizePayloads } from "./src/submissions.js";
 import {
+  pageviewsEnabled,
+  validatePageview,
+  summarizePageviews,
+} from "./src/analytics.js";
+import {
   estimateForProduct,
   shipsFromLabel,
   originRegion,
@@ -2886,6 +2891,153 @@ app.get("/api/submissions/stats", async (req, res) => {
   } catch (err) {
     console.error("Submission stats failed", err);
     return res.status(500).json({ error: "Failed to load stats" });
+  }
+});
+
+// Cookie-free page-view beacon. Only for tenants with analytics.pageviews=true.
+// The browser sends path/referrer/utm and a self-made daily visitor hash;
+// 'token' (the customer's private submissions token) lets a returning,
+// already-identified athlete's views stitch onto their customer record.
+app.post("/api/pageview", async (req, res) => {
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    if (!pageviewsEnabled(tenant)) return res.status(204).end();
+    const tenantId = String(tenant?.tenant_id || "default");
+    const checked = validatePageview(req.body, { ownHost: req.headers.host });
+    if (checked.error) return res.status(400).json({ error: checked.error });
+    const token = String(req.body?.token || "").trim();
+    let email = null;
+    if (/^[a-f0-9]{32}$/i.test(token)) {
+      const c = await dbQuery(
+        "SELECT email FROM customers WHERE tenant_id = $1 AND access_token = $2",
+        [tenantId, token],
+      );
+      email = c?.rows?.[0]?.email || null;
+    }
+    const r = checked.row;
+    await dbQuery(
+      "INSERT INTO page_views (tenant_id, path, referrer_host, utm_source, utm_medium, utm_campaign, visitor, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+      [
+        tenantId,
+        r.path,
+        r.referrer_host,
+        r.utm_source,
+        r.utm_medium,
+        r.utm_campaign,
+        r.visitor,
+        email,
+      ],
+    );
+    return res.status(204).end();
+  } catch (err) {
+    console.error("Pageview failed", err);
+    return res.status(204).end();
+  }
+});
+
+function rangeDays(req, fallback = 30) {
+  const n = Number.parseInt(String(req.query?.days || ""), 10);
+  return Number.isFinite(n) && n > 0 ? Math.min(n, 365) : fallback;
+}
+
+// Owner-facing traffic summary for the active tenant.
+app.get("/admin/traffic", async (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const tenantId = String(tenant?.tenant_id || "default");
+    const days = rangeDays(req);
+    const rows = await dbQuery(
+      "SELECT path, referrer_host, utm_source, visitor, email, at FROM page_views WHERE tenant_id = $1 AND at >= now() - ($2::int * interval '1 day') ORDER BY at DESC LIMIT 50000",
+      [tenantId, days],
+    );
+    const summary = summarizePageviews(rows?.rows || [], { top: 15 });
+    return res.json({ ok: true, tenant_id: tenantId, days, ...summary });
+  } catch (err) {
+    console.error("Traffic summary failed", err);
+    return res.status(500).json({ error: "Failed to load traffic" });
+  }
+});
+
+// Owner-facing "who has been where": every stitched person for the tenant with
+// their profile, submissions, orders/subscriptions and the pages they viewed
+// while identified. Consent basis: they gave us their email on this site.
+app.get("/admin/people", async (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const tenantId = String(tenant?.tenant_id || "default");
+    const days = rangeDays(req, 90);
+    const limit = Math.min(
+      Number.parseInt(String(req.query?.limit || "200"), 10) || 200,
+      1000,
+    );
+    const people = await dbQuery(
+      "SELECT email, first_seen_at, last_seen_at, total_orders, total_spend_minor, currency, first_utm_source, first_utm_medium, first_utm_campaign, subscribed, profile FROM customers WHERE tenant_id = $1 AND last_seen_at >= now() - ($2::int * interval '1 day') ORDER BY last_seen_at DESC LIMIT $3",
+      [tenantId, days, limit],
+    );
+    const list = people?.rows || [];
+    if (!list.length) {
+      return res.json({ ok: true, tenant_id: tenantId, days, people: [] });
+    }
+    const emails = list.map((p) => String(p.email).toLowerCase());
+    const [events, subs, views, activeSubs] = await Promise.all([
+      dbQuery(
+        "SELECT lower(email) AS email, type, data, at FROM email_events WHERE tenant_id = $1 AND lower(email) = ANY($2) ORDER BY at DESC LIMIT 5000",
+        [tenantId, emails],
+      ),
+      dbQuery(
+        "SELECT lower(email) AS email, kind, payload, created_at FROM submissions WHERE tenant_id = $1 AND lower(email) = ANY($2) ORDER BY created_at DESC LIMIT 5000",
+        [tenantId, emails],
+      ),
+      dbQuery(
+        "SELECT lower(email) AS email, path, count(*)::int AS views, max(at) AS last_at FROM page_views WHERE tenant_id = $1 AND lower(email) = ANY($2) GROUP BY 1, 2 ORDER BY last_at DESC LIMIT 5000",
+        [tenantId, emails],
+      ),
+      dbQuery(
+        "SELECT lower(customer_email) AS email, status, amount_minor, currency, current_period_end FROM subscriptions WHERE tenant_id = $1 AND lower(customer_email) = ANY($2)",
+        [tenantId, emails],
+      ),
+    ]);
+    const group = (rows) => {
+      const m = new Map();
+      for (const r of rows?.rows || []) {
+        const k = r.email;
+        if (!m.has(k)) m.set(k, []);
+        m.get(k).push(r);
+      }
+      return m;
+    };
+    const ev = group(events);
+    const sb = group(subs);
+    const pv = group(views);
+    const as = group(activeSubs);
+    const out = list.map((p) => {
+      const k = String(p.email).toLowerCase();
+      return {
+        email: p.email,
+        first_seen_at: p.first_seen_at,
+        last_seen_at: p.last_seen_at,
+        total_orders: p.total_orders,
+        total_spend_minor: p.total_spend_minor,
+        currency: p.currency,
+        source: p.first_utm_source || null,
+        medium: p.first_utm_medium || null,
+        campaign: p.first_utm_campaign || null,
+        subscribed: p.subscribed,
+        profile: p.profile || {},
+        subscriptions: (as.get(k) || []).map(({ email: _e, ...rest }) => rest),
+        events: (ev.get(k) || []).map(({ email: _e, ...rest }) => rest),
+        submissions: (sb.get(k) || []).map(({ email: _e, ...rest }) => rest),
+        pages: (pv.get(k) || []).map(({ email: _e, ...rest }) => rest),
+      };
+    });
+    return res.json({ ok: true, tenant_id: tenantId, days, people: out });
+  } catch (err) {
+    console.error("People summary failed", err);
+    return res.status(500).json({ error: "Failed to load people" });
   }
 });
 

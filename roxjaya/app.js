@@ -626,3 +626,60 @@
     form.querySelector("button[type=submit]").disabled = true;
   });
 })();
+
+// Page-view beacon: cookie-free, no personal data. A random visitor id is
+// regenerated every day so "visitors today" works without tracking anyone
+// across days. Athletes who already have a private splits token are stitched
+// onto their own record so Dina can see which pages her leads read.
+(function () {
+  if (/\/coach\/?$/.test(location.pathname)) return;
+  let visitor = "";
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    const raw = JSON.parse(localStorage.getItem("roxjaya.visitor") || "null");
+    if (raw && raw.day === today && /^[a-f0-9]{16}$/.test(raw.id)) {
+      visitor = raw.id;
+    } else {
+      const bytes = new Uint8Array(8);
+      crypto.getRandomValues(bytes);
+      visitor = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join(
+        "",
+      );
+      localStorage.setItem(
+        "roxjaya.visitor",
+        JSON.stringify({ day: today, id: visitor }),
+      );
+    }
+  } catch {
+    visitor = "";
+  }
+  const params = new URLSearchParams(location.search);
+  const utm = {};
+  ["source", "medium", "campaign"].forEach((k) => {
+    const v = params.get("utm_" + k);
+    if (v) utm[k] = v;
+  });
+  let token = "";
+  try {
+    token = localStorage.getItem("roxjaya.splits.token") || "";
+  } catch {
+    token = "";
+  }
+  const body = JSON.stringify({
+    path: location.pathname,
+    referrer: document.referrer,
+    utm,
+    visitor,
+    token,
+  });
+  try {
+    fetch("/api/pageview", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    /* analytics must never break the page */
+  }
+})();

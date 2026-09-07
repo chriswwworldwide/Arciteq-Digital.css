@@ -148,6 +148,7 @@
         ]
       },
       "submissions": { "kinds": ["race_splits", "wall_photo"] },
+      "analytics": { "pageviews": true },
       "offers": {}
     }
   ]

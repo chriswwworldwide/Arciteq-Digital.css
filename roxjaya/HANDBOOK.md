@@ -58,7 +58,7 @@ split saving and the databank medians, wall-photo requests, traffic counting,
 the daily hyrox.com date check (05:15 Jakarta; finds go to "Waiting for your
 OK", nothing publishes until you tap Approve), and the Monday digest email
 (everything that needs you, each line a link into the desk). Results are the
-exception: official results block robots, so a few days after each race the
+exception: official results block robots, so once each race finishes the
 desk reminds you to copy the Indonesian finishers into `results.json`.
 If a number looks wrong, message Chris; don't edit the server.
 

@@ -246,3 +246,62 @@
     })
     .catch(() => {});
 })();
+
+// Results wall + Dina's week from roxzone/data/wall.json (consented entries only; empty lists stay hidden).
+(function () {
+  const section = document.getElementById("wall");
+  if (!section) return;
+  const esc = (v) => String(v || "");
+  fetch("/roxzone/data/wall.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((json) => {
+      if (!json) return;
+      const athletes = Array.isArray(json.athletes) ? json.athletes : [];
+      const weeks = Array.isArray(json.weeks) ? json.weeks.slice(0, 3) : [];
+      if (!athletes.length && !weeks.length) return;
+      const list = document.getElementById("wall-list");
+      athletes.forEach((a) => {
+        const li = document.createElement("li");
+        li.className = "wall-item reveal";
+        const times = document.createElement("div");
+        times.className = "wall-times";
+        if (a.before) {
+          const b = document.createElement("s");
+          b.textContent = esc(a.before);
+          times.appendChild(b);
+        }
+        const after = document.createElement("strong");
+        after.textContent = esc(a.after);
+        times.appendChild(after);
+        const who = document.createElement("div");
+        who.className = "wall-who";
+        const name = document.createElement("h4");
+        name.textContent = `${esc(a.name)} · ${esc(a.division)}`;
+        const meta = document.createElement("p");
+        meta.textContent = [a.event, a.date, a.note]
+          .filter(Boolean)
+          .join(" · ");
+        who.append(name, meta);
+        li.append(times, who);
+        list.appendChild(li);
+      });
+      if (weeks.length) {
+        const wl = document.getElementById("week-list");
+        weeks.forEach((w) => {
+          const li = document.createElement("li");
+          const d = document.createElement("time");
+          d.textContent = esc(w.date);
+          const p = document.createElement("p");
+          p.textContent = esc(w.text);
+          li.append(d, p);
+          wl.appendChild(li);
+        });
+        document.getElementById("week").hidden = false;
+      }
+      section.hidden = false;
+      section
+        .querySelectorAll(".reveal")
+        .forEach((el) => el.classList.add("in"));
+    })
+    .catch(() => {});
+})();

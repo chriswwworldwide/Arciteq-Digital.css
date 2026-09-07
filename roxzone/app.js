@@ -120,7 +120,7 @@
         await capture({ email: leadEmail, profile });
         onboard.hidden = true;
         note.textContent =
-          "Thanks — Dina has your details and will reply with a plan.";
+          "Thanks — Dina has your details and will reply with a plan. Coached athletes get their programme in the TrueCoach app.";
       } catch {
         note.textContent =
           "Couldn't save that just now — your email still went through.";
@@ -223,6 +223,24 @@
             ? `All ${plan.capacity} founding seats taken — join the waitlist`
             : `${left} of ${plan.capacity} founding seats left`;
         el.classList.toggle("seats-full", left === 0);
+        el.hidden = false;
+      });
+    })
+    .catch(() => {});
+})();
+
+// External tool links (TrueCoach etc.): roxzone/data/links.json, hidden until a URL is set.
+(function () {
+  const links = document.querySelectorAll("[data-link]");
+  if (!links.length) return;
+  fetch("/roxzone/data/links.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((json) => {
+      if (!json) return;
+      links.forEach((el) => {
+        const url = json[el.dataset.link];
+        if (typeof url !== "string" || !/^https:\/\//.test(url)) return;
+        el.href = url;
         el.hidden = false;
       });
     })

@@ -645,3 +645,77 @@
   display: inline-flex;
   align-items: center;
 }
+
+/* Split analyser */
+.splits-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.splits-grid label > span {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 6px;
+}
+
+.splits-grid input {
+  width: 100%;
+  min-height: 44px;
+}
+
+.splits-consent {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.splits-consent input {
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+  flex: none;
+  accent-color: var(--pink);
+}
+
+.splits-list {
+  margin: 0 0 24px;
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+.splits-list li {
+  margin: 0 0 12px;
+}
+
+.splits-list a {
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.splits-table .muted {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.splits-table .dev-weak {
+  color: #ff7a7a;
+  font-weight: 700;
+}
+
+.splits-table .dev-strong {
+  color: #7be495;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .splits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

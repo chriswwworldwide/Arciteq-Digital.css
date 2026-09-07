@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Hyrox Split Analyser: paste your race splits, find your weak stations —
+      Rox Zone Warriors
+    </title>
+    <meta
+      name="description"
+      content="Paste your Hyrox run and station splits and get an honest read: which stations cost you the most, whether your runs faded, how you compare with your own past races and with other Indonesian athletes — and exactly what to train."
+    />
+    <link rel="canonical" href="/roxzone/splits/" />
+    <link rel="stylesheet" href="/roxzone/styles.css" />
+    <link rel="stylesheet" href="/roxzone/guide.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "Hyrox Split Analyser",
+            "applicationCategory": "SportsApplication",
+            "operatingSystem": "Web",
+            "description": "Paste your Hyrox splits to find weak stations, run fade and what to train next.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "IDR"
+            },
+            "url": "/roxzone/splits/",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Rox Zone Warriors Jakarta"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Rox Zone Warriors",
+                "item": "/roxzone/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Split Analyser",
+                "item": "/roxzone/splits/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Where do I find my Hyrox splits?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "On results.hyrox.com or hyresult.com, open your own result and the page lists every run and station time plus your Roxzone time. Copy them across in minutes:seconds."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does the analyser decide what my weak station is?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It scales a typical Hyrox split profile to your finish time and checks each run and station against that. Anything more than about 10% slower than expected for someone at your finish time is flagged as a weakness; more than about 8% faster is a strength. Once enough Indonesian athletes have submitted splits, it also shows where you sit against their medians."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who can see my splits?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You and Dina. Your races are only readable through the private link we give you. Other athletes only ever see anonymous group medians, and only once a division has at least five submissions."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="masthead wrap">
+      <a href="/roxzone/" style="color: inherit; text-decoration: none">
+        <h1>R<span class="o">O</span>X ZONE WARRIORS</h1>
+      </a>
+      <p class="city">Jakarta</p>
+    </header>
+
+    <div class="nav">
+      <div class="wrap">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          Menu
+        </button>
+        <ul class="menu" id="menu">
+          <li><a href="/roxzone/">Home</a></li>
+          <li><a href="/roxzone/stations-prep/">Stations Prep</a></li>
+          <li><a href="/roxzone/run-zone/">Run Zone</a></li>
+          <li><a href="/roxzone/fuel-zone/">Fuel Zone</a></li>
+          <li><a href="/roxzone/events/">Upcoming Events</a></li>
+          <li><a href="/roxzone/results/">Results</a></li>
+          <li><a href="/roxzone/splits/">Split Analyser</a></li>
+          <li><a href="/roxzone/#plans">Subscriptions</a></li>
+          <li>
+            <a class="chat-zone" href="/roxzone/#ask"
+              ><span class="dot"></span> Ask Dina</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="guide-hero">
+      <div class="wrap">
+        <div class="guide-hero-text">
+          <ol class="crumbs">
+            <li><a href="/roxzone/">Rox Zone</a></li>
+            <li>Split Analyser</li>
+          </ol>
+          <p class="eyebrow">Split Analyser</p>
+          <h2>
+            Your finish time says <em>what</em>. Your splits say <em>why</em>.
+          </h2>
+          <p class="lead">
+            Paste the run and station times from your result page. We'll show
+            you which stations actually cost you, whether your runs faded, how
+            this race compares with your last ones, where you sit against other
+            Indonesian athletes — and what to train to fix it.
+          </p>
+        </div>
+        <figure class="guide-hero-photo">
+          <img
+            src="/roxzone/images/hero.jpg"
+            alt="Dina pulling a sled in a Hyrox race"
+            width="834"
+            height="780"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <div class="wrap guide">
+      <aside class="toc" aria-label="Sections">
+        <p>Jump to</p>
+        <ol>
+          <li><a href="#enter">Enter your splits</a></li>
+          <li><a href="#analysis">Your analysis</a></li>
+          <li><a href="#history">Your races</a></li>
+          <li><a href="#databank">Indonesian databank</a></li>
+        </ol>
+      </aside>
+
+      <div class="article">
+        <p class="approve-note">
+          Your splits are saved to your athlete record so you can compare races
+          over time. Only you (via your private link) and Dina can see them;
+          everyone else sees anonymous medians only.
+        </p>
+
+        <article class="station calc" id="enter">
+          <span class="num">Step 01</span>
+          <h3>Enter your splits</h3>
+          <p>
+            Times as <b>m:ss</b> (e.g. 5:12). They're on your result page at
+            results.hyrox.com or hyresult.com. Leave Roxzone blank if your
+            result doesn't show it.
+          </p>
+          <form
+            class="calc-form splits-form"
+            id="splits-form"
+            autocomplete="off"
+          >
+            <label>
+              <span>Email (for your private link)</span>
+              <input type="email" name="email" required placeholder="you@…" />
+            </label>
+            <label>
+              <span>Race</span>
+              <input
+                type="text"
+                name="event"
+                required
+                maxlength="60"
+                placeholder="Hyrox Jakarta 2026"
+              />
+            </label>
+            <label>
+              <span>Race date</span>
+              <input type="date" name="race_date" required />
+            </label>
+            <label>
+              <span>Division</span>
+              <select name="division" required>
+                <option value="">Choose…</option>
+                <option>Women Open</option>
+                <option>Women Pro</option>
+                <option>Men Open</option>
+                <option>Men Pro</option>
+                <option>Women Doubles</option>
+                <option>Men Doubles</option>
+                <option>Mixed Doubles</option>
+              </select>
+            </label>
+            <div class="splits-grid" id="splits-grid"></div>
+            <label>
+              <span>Roxzone total (optional)</span>
+              <input
+                type="text"
+                name="roxzone"
+                inputmode="numeric"
+                placeholder="4:10"
+                pattern="\d{1,2}:\d{2}"
+              />
+            </label>
+            <label class="splits-consent">
+              <input type="checkbox" name="consent" required />
+              <span>
+                Save my splits to my athlete record and count them (anonymously)
+                in the Indonesian databank.
+              </span>
+            </label>
+            <button class="btn btn-primary" type="submit">
+              Analyse my race
+            </button>
+          </form>
+          <p class="calc-note" id="splits-note"></p>
+        </article>
+
+        <article class="station" id="analysis" hidden>
+          <span class="num">Step 02</span>
+          <h3>Your analysis</h3>
+          <ul class="spec" id="analysis-summary"></ul>
+          <div class="results-scroll">
+            <table
+              class="results-table splits-table"
+              id="analysis-table"
+            ></table>
+          </div>
+          <h4>Strengths</h4>
+          <ul class="splits-list" id="analysis-strengths"></ul>
+          <h4>Where the time went</h4>
+          <ul class="splits-list" id="analysis-weaknesses"></ul>
+          <h4>What Dina would work on with you</h4>
+          <ol class="splits-list" id="analysis-coaching"></ol>
+          <p class="calc-note">
+            "Expected" is a typical Hyrox split profile scaled to your finish
+            time — a yardstick, not a verdict. Carpet, heat and Roxzone layout
+            move every station.
+          </p>
+        </article>
+
+        <article class="station" id="history" hidden>
+          <span class="num">Step 03</span>
+          <h3>Your races</h3>
+          <p id="history-intro"></p>
+          <div class="results-scroll">
+            <table
+              class="results-table splits-table"
+              id="history-table"
+            ></table>
+          </div>
+          <p class="calc-note">
+            Bookmark your private link:
+            <a id="history-link" href="#history">this page</a>. It's the only
+            way back to your races — we don't do passwords.
+          </p>
+        </article>
+
+        <article class="station" id="databank">
+          <span class="num">Step 04</span>
+          <h3>Indonesian databank</h3>
+          <p id="databank-intro">
+            Every race submitted here builds an anonymous set of Indonesian
+            splits. Once a division has five or more races we show its medians
+            and where you sit against them.
+          </p>
+          <div class="results-scroll">
+            <table
+              class="results-table splits-table"
+              id="databank-table"
+            ></table>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <section class="cta-band">
+      <div class="wrap">
+        <h3>Want the fix, not just the diagnosis?</h3>
+        <p>
+          Coached athletes get their programme built around exactly these
+          numbers — and re-checked after every race.
+        </p>
+        <a class="btn btn-light" href="/roxzone/#plans">See subscriptions</a>
+        <a class="btn btn-primary" href="/roxzone/#ask">Ask Dina</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div>© <span id="year"></span> Rox Zone Warriors Jakarta</div>
+        <nav>
+          <a href="/roxzone/stations-prep/">Stations Prep</a>
+          <a href="/roxzone/run-zone/">Run Zone</a>
+          <a href="/roxzone/fuel-zone/">Fuel Zone</a>
+          <a href="/roxzone/events/">Events</a>
+          <a href="/roxzone/results/">Results</a>
+          <a href="/roxzone/splits/">Split Analyser</a>
+          <a href="/roxzone/#ask">Ask Dina</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/roxzone/app.js" defer></script>
+    <script src="/roxzone/splits.js" defer></script>
+  </body>
+</html>

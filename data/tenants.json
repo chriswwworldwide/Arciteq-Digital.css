@@ -137,6 +137,7 @@
           { "path": "/roxzone/", "priority": "1.0" },
           { "path": "/roxzone/stations-prep/", "priority": "0.9" },
           { "path": "/roxzone/run-zone/", "priority": "0.9" },
+          { "path": "/roxzone/fuel-zone/", "priority": "0.9" },
           { "path": "/roxzone/events/", "priority": "0.8" },
           { "path": "/roxzone/results/", "priority": "0.9" }
         ]

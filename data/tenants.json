@@ -146,6 +146,7 @@
           { "path": "/roxjaya/hyrox-jakarta/", "priority": "0.9" },
           { "path": "/roxjaya/race-planner/", "priority": "0.9" },
           { "path": "/roxjaya/news/", "priority": "0.8" },
+          { "path": "/roxjaya/jakarta-hybrid-scene/", "priority": "0.9" },
           { "path": "/roxjaya/results/", "priority": "0.9" },
           { "path": "/roxjaya/splits/", "priority": "0.9" }
         ]

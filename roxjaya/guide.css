@@ -1020,3 +1020,57 @@
 .news-src a {
   color: var(--ink-3);
 }
+
+/* Jakarta Hybrid Scene */
+.scene-card .kind {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pink-600);
+  margin-bottom: 4px;
+}
+
+.scene-card time.plan-tbc {
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
+.scene-venue {
+  margin-top: 6px !important;
+  color: var(--ink-3);
+  font-size: 14px !important;
+}
+
+.scene-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px !important;
+}
+
+.scene-tags span {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+}
+
+.scene-links {
+  margin-top: 10px !important;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.scene-links a {
+  color: var(--pink-600);
+  font-weight: 700;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}

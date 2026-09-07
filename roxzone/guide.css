@@ -554,3 +554,34 @@
   font-size: 14px;
   color: var(--ink-2, #444);
 }
+
+.carry {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: grid;
+  gap: 14px;
+}
+
+.carry li {
+  padding: 16px 18px;
+  border: 1px solid var(--line, #e6e6ea);
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.carry strong {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 2px;
+}
+
+.carry .for {
+  display: block;
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}

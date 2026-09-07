@@ -727,3 +727,36 @@
   letter-spacing: 0.04em;
   color: var(--ink-3);
 }
+
+.guide-hero .plan-price {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 18px 0 6px;
+}
+
+.guide-hero .plan-price small {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-3);
+  letter-spacing: 0;
+}
+
+.guide-hero .plans-note {
+  text-align: left;
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.guide-hero .seats {
+  margin: 0 0 10px;
+}
+
+.plan .plan-more {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-2);
+}

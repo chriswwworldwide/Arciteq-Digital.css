@@ -64,7 +64,7 @@
       art.id = `div-${key}`;
       let body;
       if (rows.length === 0) {
-        body = `<p class="results-empty">No verified Indonesian results in this division yet. Raced it? <a href="/roxzone/#ask">Send us your time</a>.</p>`;
+        body = `<p class="results-empty">No verified Indonesian results in this division yet. Raced it? <a href="/roxjaya/#ask">Send us your time</a>.</p>`;
       } else {
         body = `<div class="results-scroll"><table class="results-table">
           <thead><tr><th>#</th><th>Athlete</th><th>Time</th><th>Category</th><th>Race</th></tr></thead>
@@ -111,7 +111,7 @@
     }),
   );
 
-  fetch("/roxzone/data/results.json", { cache: "no-cache" })
+  fetch("/roxjaya/data/results.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
     .then((json) => {
       data = json;

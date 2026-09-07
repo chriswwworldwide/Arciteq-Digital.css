@@ -112,9 +112,9 @@
       }
     },
     {
-      "tenant_id": "roxzone",
+      "tenant_id": "roxjaya",
       "vertical": "coaching",
-      "hostnames": ["roxzone.localhost"],
+      "hostnames": ["roxjaya.localhost"],
       "currency": "idr",
       "language": "en",
       "catalog": {
@@ -123,7 +123,7 @@
         "productTypeSlugs": []
       },
       "seo": {
-        "brandName": "Rox Zone Warriors Jakarta",
+        "brandName": "Roxjaya Warriors Jakarta",
         "tagline": "Hyrox coaching, online programming and race prep from Jakarta.",
         "supportEmail": "",
         "about": "Hyrox coaching by Dina — podium athlete and Jakarta personal trainer. Structured programming, station technique and run pacing for women who race.",
@@ -134,17 +134,17 @@
         },
         "sameAs": [],
         "staticPages": [
-          { "path": "/roxzone/", "priority": "1.0" },
-          { "path": "/roxzone/stations-prep/", "priority": "0.9" },
-          { "path": "/roxzone/run-zone/", "priority": "0.9" },
-          { "path": "/roxzone/fuel-zone/", "priority": "0.9" },
-          { "path": "/roxzone/taper-zone/", "priority": "0.9" },
-          { "path": "/roxzone/warrior-program/", "priority": "0.9" },
-          { "path": "/roxzone/hybrid-coaching-jakarta/", "priority": "0.9" },
-          { "path": "/roxzone/elite-race-prep/", "priority": "0.9" },
-          { "path": "/roxzone/events/", "priority": "0.8" },
-          { "path": "/roxzone/results/", "priority": "0.9" },
-          { "path": "/roxzone/splits/", "priority": "0.9" }
+          { "path": "/roxjaya/", "priority": "1.0" },
+          { "path": "/roxjaya/stations-prep/", "priority": "0.9" },
+          { "path": "/roxjaya/run-zone/", "priority": "0.9" },
+          { "path": "/roxjaya/fuel-zone/", "priority": "0.9" },
+          { "path": "/roxjaya/taper-zone/", "priority": "0.9" },
+          { "path": "/roxjaya/warrior-program/", "priority": "0.9" },
+          { "path": "/roxjaya/hybrid-coaching-jakarta/", "priority": "0.9" },
+          { "path": "/roxjaya/elite-race-prep/", "priority": "0.9" },
+          { "path": "/roxjaya/events/", "priority": "0.8" },
+          { "path": "/roxjaya/results/", "priority": "0.9" },
+          { "path": "/roxjaya/splits/", "priority": "0.9" }
         ]
       },
       "submissions": { "kinds": ["race_splits"] },

@@ -55,9 +55,9 @@
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        tenant_id: "roxzone",
+        tenant_id: "roxjaya",
         utm: {
-          utm_source: utm.utm_source || "roxzone",
+          utm_source: utm.utm_source || "roxjaya",
           utm_medium: utm.utm_medium || "ask-dina",
           utm_campaign: utm.utm_campaign || "",
           utm_content: utm.utm_content || "",
@@ -91,7 +91,7 @@
         }
       } catch {
         note.textContent =
-          "Couldn't send just now. DM @roxzonewarriors on Instagram instead.";
+          "Couldn't send just now. DM @roxjayawarriors on Instagram instead.";
       } finally {
         if (btn) btn.disabled = false;
       }
@@ -100,17 +100,17 @@
 
   const PLANS = {
     program: {
-      id: "roxzone-plan-warrior-001",
+      id: "roxjaya-plan-warrior-001",
       name: "Warrior Program",
       cta: "Start the Program",
     },
     hybrid: {
-      id: "roxzone-plan-hybrid-001",
+      id: "roxjaya-plan-hybrid-001",
       name: "Hybrid Coaching",
       cta: "Start Hybrid Coaching",
     },
     elite: {
-      id: "roxzone-plan-elite-001",
+      id: "roxjaya-plan-elite-001",
       name: "Elite Race Prep",
       cta: "Enquire about Elite",
     },
@@ -239,7 +239,7 @@
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            tenant_id: "roxzone",
+            tenant_id: "roxjaya",
             items: [{ id: planId, quantity: 1 }],
             ...utm,
           }),
@@ -288,7 +288,7 @@
 
   // Chat Zone: becomes a WhatsApp deep-link once data-whatsapp holds Dina's
   // number in international format (e.g. 628123456789). Empty = fall back to Ask Dina.
-  const CHAT_GREETING = "Hi Dina, I found you on Rox Zone Warriors — ";
+  const CHAT_GREETING = "Hi Dina, I found you on Roxjaya Warriors — ";
   document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
     const digits = String(a.dataset.whatsapp || "").replace(/\D/g, "");
     if (!digits) return;
@@ -298,11 +298,11 @@
   });
 })();
 
-// Founding-member seat counts: roxzone/data/seats.json, hidden until "taken" is set.
+// Founding-member seat counts: roxjaya/data/seats.json, hidden until "taken" is set.
 (function () {
   const slots = document.querySelectorAll("[data-seats]");
   if (!slots.length) return;
-  fetch("/roxzone/data/seats.json", { cache: "no-cache" })
+  fetch("/roxjaya/data/seats.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       if (!json || !json.plans) return;
@@ -321,11 +321,11 @@
     .catch(() => {});
 })();
 
-// External tool links (TrueCoach etc.): roxzone/data/links.json, hidden until a URL is set.
+// External tool links (TrueCoach etc.): roxjaya/data/links.json, hidden until a URL is set.
 (function () {
   const links = document.querySelectorAll("[data-link]");
   if (!links.length) return;
-  fetch("/roxzone/data/links.json", { cache: "no-cache" })
+  fetch("/roxjaya/data/links.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       if (!json) return;
@@ -339,12 +339,12 @@
     .catch(() => {});
 })();
 
-// Results wall + Dina's week from roxzone/data/wall.json (consented entries only; empty lists stay hidden).
+// Results wall + Dina's week from roxjaya/data/wall.json (consented entries only; empty lists stay hidden).
 (function () {
   const section = document.getElementById("wall");
   if (!section) return;
   const esc = (v) => String(v || "");
-  fetch("/roxzone/data/wall.json", { cache: "no-cache" })
+  fetch("/roxjaya/data/wall.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       if (!json) return;
@@ -398,11 +398,11 @@
     .catch(() => {});
 })();
 
-// Race countdown from roxzone/data/events.json — hidden unless 'next' has a confirmed date.
+// Race countdown from roxjaya/data/events.json — hidden unless 'next' has a confirmed date.
 (function () {
   const box = document.getElementById("countdown");
   if (!box) return;
-  fetch("/roxzone/data/events.json", { cache: "no-cache" })
+  fetch("/roxjaya/data/events.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       const next = json && json.next;

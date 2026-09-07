@@ -4,7 +4,7 @@
   const note = document.getElementById("splits-note");
   const grid = document.getElementById("splits-grid");
   const KIND = "race_splits";
-  const STORE = "roxzone.splits.token";
+  const STORE = "roxjaya.splits.token";
 
   // Segment order as raced. `ref` = typical split (seconds) for a ~80-minute
   // athlete; scaled to the submitted finish time to give "expected".
@@ -82,47 +82,47 @@
   const COACHING = {
     skierg: {
       fix: "SkiErg is a hip-hinge, not an arm pull. Dina fixes the hinge and rhythm on the floor, then builds it with weighted hinges and pull-downs in Strength Zone.",
-      link: "/roxzone/stations-prep/#skierg",
+      link: "/roxjaya/stations-prep/#skierg",
     },
     sled_push: {
       fix: "Low body angle and short, fast steps — plus leg strength: Bulgarian split squats and heavy sled work twice a week.",
-      link: "/roxzone/stations-prep/#sled-push",
+      link: "/roxjaya/stations-prep/#sled-push",
     },
     sled_pull: {
       fix: "Hand-over-hand rope technique and grip endurance. Sled-drag rows and towel pull-ups in Strength Zone; a floor session to stop you sitting down on the rope.",
-      link: "/roxzone/stations-prep/#sled-pull",
+      link: "/roxjaya/stations-prep/#sled-pull",
     },
     burpee_broad_jumps: {
       fix: "Landing with feet already staggered so hands drop straight down, and hip-thrust power for the jump. Usually the biggest single time-save for first-timers.",
-      link: "/roxzone/stations-prep/#burpee-broad-jumps",
+      link: "/roxjaya/stations-prep/#burpee-broad-jumps",
     },
     rowing: {
       fix: "Stroke rate and damper setting for your size, and getting in and out of the straps fast. A 1,000 m row under fatigue is programmed most weeks.",
-      link: "/roxzone/stations-prep/#rowing",
+      link: "/roxjaya/stations-prep/#rowing",
     },
     farmers_carry: {
       fix: "Grip and trunk. Heavy suitcase carries and dead hangs in Strength Zone, and the tempo of the set-down/pick-up.",
-      link: "/roxzone/stations-prep/#farmers-carry",
+      link: "/roxjaya/stations-prep/#farmers-carry",
     },
     sandbag_lunges: {
       fix: "Stride length and breathing rhythm. Bulgarian split squats, walking lunges under load, and a weekly sandbag block.",
-      link: "/roxzone/stations-prep/#sandbag-lunges",
+      link: "/roxjaya/stations-prep/#sandbag-lunges",
     },
     wall_balls: {
       fix: "Squat depth to the line first time, sets that match your breathing, and shoulder endurance from deficit push-ups and thrusters.",
-      link: "/roxzone/stations-prep/#wall-balls",
+      link: "/roxjaya/stations-prep/#wall-balls",
     },
     runs: {
       fix: "Compromised running — run–station–run sessions so your legs know what a run after a sled feels like, and a pace you can hold on run eight.",
-      link: "/roxzone/run-zone/#compromised",
+      link: "/roxjaya/run-zone/#compromised",
     },
     fade: {
       fix: "Pacing: your late runs cost more than any station. Dina sets your run-one pace from your data and builds the aerobic base to hold it.",
-      link: "/roxzone/run-zone/#pacing",
+      link: "/roxjaya/run-zone/#pacing",
     },
     hot_start: {
       fix: "You went out too fast. A first-run cap and a pre-race routine so run one is the slowest run of the day, not the fastest.",
-      link: "/roxzone/run-zone/#pacing",
+      link: "/roxjaya/run-zone/#pacing",
     },
   };
 
@@ -315,7 +315,7 @@
         ),
       );
       const a1 = el("a", "Warrior Program");
-      a1.href = "/roxzone/#plans";
+      a1.href = "/roxjaya/#plans";
       li.appendChild(a1);
       li.appendChild(document.createTextNode(" is built for exactly that."));
       coaching.appendChild(li);
@@ -340,7 +340,7 @@
         ),
       );
       const a1 = el("a", plan);
-      a1.href = "/roxzone/#plans";
+      a1.href = "/roxjaya/#plans";
       li.appendChild(a1);
       li.appendChild(
         document.createTextNode(" — or send Dina these splits and ask."),

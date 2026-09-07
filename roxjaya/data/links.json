@@ -1,0 +1,4 @@
+{
+  "note": "External tools Dina uses. Set 'truecoach' to her client-login URL (e.g. https://app.truecoach.co/) once her account exists; empty string keeps the links hidden. Coaching delivery lives in TrueCoach \u2014 Roxjaya acquires and bills.",
+  "truecoach": ""
+}

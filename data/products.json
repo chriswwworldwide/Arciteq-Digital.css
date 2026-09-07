@@ -899,8 +899,8 @@
       }
     },
     {
-      "productId": "roxzone-plan-warrior-001",
-      "tenant_id": "roxzone",
+      "productId": "roxjaya-plan-warrior-001",
+      "tenant_id": "roxjaya",
       "kind": "service",
       "title": "Warrior Program",
       "description": "Self-serve monthly Hyrox programming: 4 sessions a week, station technique videos and run pacing, delivered weekly.",
@@ -914,12 +914,12 @@
       },
       "seo": {
         "slug": "warrior-program",
-        "canonicalPath": "/roxzone/warrior-program/",
+        "canonicalPath": "/roxjaya/warrior-program/",
         "legacySlugs": []
       },
       "images": [
         {
-          "src": "/roxzone/images/feature.jpg",
+          "src": "/roxjaya/images/feature.jpg",
           "alt": "Warrior Program — Hyrox coaching with Dina in Jakarta",
           "width": 1200,
           "height": 800
@@ -934,7 +934,7 @@
         "intervalCount": 1
       },
       "availability": "https://schema.org/InStock",
-      "brand": "Rox Zone Warriors",
+      "brand": "Roxjaya Warriors",
       "tags": ["hyrox", "program", "online"],
       "marketing_hooks": {
         "emotionalPainPoints": [
@@ -946,8 +946,8 @@
       "attributes": {}
     },
     {
-      "productId": "roxzone-plan-hybrid-001",
-      "tenant_id": "roxzone",
+      "productId": "roxjaya-plan-hybrid-001",
+      "tenant_id": "roxjaya",
       "kind": "service",
       "title": "Hybrid Coaching",
       "description": "Online programming plus two in-person floor sessions a month in Jakarta, weekly check-ins and race planning with Dina.",
@@ -961,12 +961,12 @@
       },
       "seo": {
         "slug": "hybrid-coaching",
-        "canonicalPath": "/roxzone/hybrid-coaching-jakarta/",
+        "canonicalPath": "/roxjaya/hybrid-coaching-jakarta/",
         "legacySlugs": []
       },
       "images": [
         {
-          "src": "/roxzone/images/feature.jpg",
+          "src": "/roxjaya/images/feature.jpg",
           "alt": "Hybrid Coaching — Hyrox coaching with Dina in Jakarta",
           "width": 1200,
           "height": 800
@@ -981,7 +981,7 @@
         "intervalCount": 1
       },
       "availability": "https://schema.org/InStock",
-      "brand": "Rox Zone Warriors",
+      "brand": "Roxjaya Warriors",
       "tags": ["hyrox", "hybrid", "jakarta"],
       "marketing_hooks": {
         "emotionalPainPoints": [
@@ -993,8 +993,8 @@
       "attributes": {}
     },
     {
-      "productId": "roxzone-plan-elite-001",
-      "tenant_id": "roxzone",
+      "productId": "roxjaya-plan-elite-001",
+      "tenant_id": "roxjaya",
       "kind": "service",
       "title": "Elite Race Prep",
       "description": "12-week individualised race build with 1:1 coaching, weekly video review and race-day strategy. Three-month minimum.",
@@ -1008,12 +1008,12 @@
       },
       "seo": {
         "slug": "elite-race-prep",
-        "canonicalPath": "/roxzone/elite-race-prep/",
+        "canonicalPath": "/roxjaya/elite-race-prep/",
         "legacySlugs": []
       },
       "images": [
         {
-          "src": "/roxzone/images/feature.jpg",
+          "src": "/roxjaya/images/feature.jpg",
           "alt": "Elite Race Prep — Hyrox coaching with Dina in Jakarta",
           "width": 1200,
           "height": 800
@@ -1028,7 +1028,7 @@
         "intervalCount": 1
       },
       "availability": "https://schema.org/InStock",
-      "brand": "Rox Zone Warriors",
+      "brand": "Roxjaya Warriors",
       "tags": ["hyrox", "elite", "race-prep"],
       "marketing_hooks": {
         "emotionalPainPoints": [

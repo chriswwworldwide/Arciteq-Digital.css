@@ -1853,7 +1853,7 @@ app.get("/:nicheCategorySlug", (req, res, next) => {
       "stripe",
       "sitemap.xml",
       "robots.txt",
-      "roxzone",
+      "roxjaya",
     ]);
     if (blocked.has(nicheCategorySlug.toLowerCase())) return next();
 
@@ -2086,17 +2086,17 @@ app.get("/index.html", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/roxzone", (req, res) => {
-  res.sendFile(path.join(__dirname, "roxzone", "index.html"));
+app.get("/roxjaya", (req, res) => {
+  res.sendFile(path.join(__dirname, "roxjaya", "index.html"));
 });
 
-// Clean URLs for Rox Zone content pages: /roxzone/<slug>/ -> roxzone/<slug>.html
-app.get("/roxzone/:slug", (req, res, next) => {
+// Clean URLs for Roxjaya content pages: /roxjaya/<slug>/ -> roxjaya/<slug>.html
+app.get("/roxjaya/:slug", (req, res, next) => {
   const slug = String(req.params.slug || "");
   if (!/^[a-z0-9-]+$/.test(slug)) return next();
-  const file = path.join(__dirname, "roxzone", `${slug}.html`);
+  const file = path.join(__dirname, "roxjaya", `${slug}.html`);
   if (!fs.existsSync(file)) return next();
-  if (!req.path.endsWith("/")) return res.redirect(301, `/roxzone/${slug}/`);
+  if (!req.path.endsWith("/")) return res.redirect(301, `/roxjaya/${slug}/`);
   res.sendFile(file);
 });
 

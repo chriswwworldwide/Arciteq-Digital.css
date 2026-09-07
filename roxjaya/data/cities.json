@@ -1,0 +1,350 @@
+{
+  "note": "Asia Race Planner data. Race dates/venues: confirmed only, with the source URL and the date we checked. Hotels, fares and food are pointers with approximate ranges — always labelled with 'checked'. Set meetup to { when, where, note } to show a Warriors meet-up on that city page; null hides it. Prices are for planning only; the athlete checks live prices before booking.",
+  "checked": "2026-09",
+  "home": "jakarta",
+  "cities": [
+    {
+      "slug": "jakarta",
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "flag": "🇮🇩",
+      "tagline": "Home race. Indonesia's first Hyrox drew ~11,200 athletes in June 2026 — the biggest Asia-Pacific debut so far.",
+      "race": {
+        "name": "HYROX Jakarta",
+        "status": "tbc",
+        "dates": null,
+        "expected": "Next edition expected mid-2027 — date not yet announced by HYROX.",
+        "last": { "dates": "27–28 June 2026", "athletes": "~11,200" },
+        "venue": "Nusantara International Convention Exhibition (NICE)",
+        "address": "Jl. M.H. Thamrin, Pantai Indah Kapuk 2 (PIK2), Tangerang, Banten 15214",
+        "source": "https://hyrox.com/events/",
+        "sourceLabel": "hyrox.com event list"
+      },
+      "gettingThere": [
+        "NICE sits in PIK2, north-west of the city on the Banten side — about 30–45 min from Central Jakarta by car off-peak, 60–90 min in traffic. Leave early on race morning.",
+        "Grab/Gojek car is the simplest door-to-door option; set the drop-off pin at the NICE main lobby. Taxi ranks (Bluebird) are outside afterwards.",
+        "From Soekarno-Hatta airport (CGK) it's 25–40 min by toll road — closer than the city centre, so out-of-town athletes can stay near PIK2 without ever crossing Jakarta.",
+        "Parking is available on site but fills by mid-morning on race day; if you're driving, aim to arrive 2 hours before your wave."
+      ],
+      "hotels": [
+        {
+          "area": "PIK / PIK2 (closest)",
+          "picks": "Hotels along Pantai Indah Kapuk and the new PIK2 strip — 10–20 min to the venue.",
+          "range": "Rp 900k – 2.5m / night"
+        },
+        {
+          "area": "Kelapa Gading / Ancol",
+          "picks": "Good mid-range choice with easy northern toll access.",
+          "range": "Rp 600k – 1.5m / night"
+        },
+        {
+          "area": "Central Jakarta (Sudirman / Thamrin)",
+          "picks": "Best for the night after — restaurants, bars, MRT — but budget 60+ min to the venue in traffic.",
+          "range": "Rp 1m – 3.5m / night"
+        }
+      ],
+      "flights": [
+        {
+          "from": "Singapore",
+          "time": "~1h 45m",
+          "airlines": "Garuda, Singapore Airlines, Batik Air, Scoot, AirAsia",
+          "fare": "≈ S$150–350 return"
+        },
+        {
+          "from": "Kuala Lumpur",
+          "time": "~2h",
+          "airlines": "AirAsia, Malaysia Airlines, Batik Air, Garuda",
+          "fare": "≈ RM 350–800 return"
+        },
+        {
+          "from": "Bali (DPS)",
+          "time": "~1h 50m",
+          "airlines": "Garuda, Citilink, Batik Air, Lion, AirAsia",
+          "fare": "≈ Rp 1.2–2.5m return"
+        },
+        {
+          "from": "Surabaya (SUB)",
+          "time": "~1h 30m",
+          "airlines": "Garuda, Citilink, Batik Air, Lion",
+          "fare": "≈ Rp 1–2m return"
+        }
+      ],
+      "food": [
+        "Pre-race carbs the Indonesian way: nasi putih or bubur ayam (skip the sambal the night before), pisang goreng, tempe.",
+        "Race-morning: lontong or plain nasi with ayam bakar/ikan bakar 3–4 hours out; most PIK hotels will do an early breakfast if you ask the night before.",
+        "PIK's Pantjoran and Golf Island strips have dozens of Chinese-Indonesian and Japanese places — easy grilled protein + rice recovery meals within 15 min of NICE.",
+        "Hydration: the venue sells water and ION Water (2026 sponsor); Jakarta heat plus an indoor venue means start hydrating the day before."
+      ],
+      "city": [
+        "Cash isn't needed — QRIS and cards work almost everywhere; get an eSIM (Telkomsel/XL) at CGK.",
+        "MRT runs north–south through Sudirman/Thamrin (Lebak Bulus ↔ Bundaran HI); it doesn't reach PIK — Grab/Gojek for the venue.",
+        "Traffic is the only real logistics risk. Ganjil-genap (odd-even plate) rules apply on main roads weekdays — ride-hail avoids the issue.",
+        "Dress code is relaxed; venue and malls are air-conditioned cold, so bring a layer for the ceremony."
+      ],
+      "nightAfter": [
+        "SCBD / Senopati: Jakarta's restaurant and bar district — book ahead on a race Saturday.",
+        "Kemang: relaxed, expat-friendly bars and late-night eats.",
+        "Recovery version: PIK Avenue or Pantjoran PIK for dinner then an early night — you'll thank yourself on the flight home.",
+        "Sunday: Kota Tua (old town) and the National Monument for the tourists in the group; Ancol beach for sunset."
+      ],
+      "meetup": null,
+      "coachNote": "This is Dina's home race — she coaches athletes to it every season. If you're racing Jakarta, a 12-week Hybrid or Elite block ending on race week is the sweet spot."
+    },
+    {
+      "slug": "singapore",
+      "name": "Singapore",
+      "country": "Singapore",
+      "flag": "🇸🇬",
+      "tagline": "Closest away race from Jakarta — under two hours, no jet lag, English everywhere.",
+      "race": {
+        "name": "HYROX Singapore",
+        "status": "confirmed",
+        "dates": "26–29 November 2026",
+        "start": "2026-11-26",
+        "venue": "Singapore EXPO",
+        "address": "1 Expo Drive, Singapore 486150",
+        "source": "https://hyrox.com/events/",
+        "sourceLabel": "hyrox.com event list"
+      },
+      "gettingThere": [
+        "Singapore EXPO has its own MRT station (Expo, Downtown + East-West lines) — the venue is literally across the road from the exit.",
+        "From Changi Airport it's two MRT stops or a 10-min taxi; from town (Bugis/Marina Bay) about 30–35 min on the Downtown line.",
+        "Grab is reliable and priced sensibly; avoid taxis right after big waves — the MRT is faster."
+      ],
+      "hotels": [
+        {
+          "area": "Changi / Expo",
+          "picks": "Hotels at Changi City Point and Changi Airport — walk or one MRT stop to the venue.",
+          "range": "≈ S$180–320 / night"
+        },
+        {
+          "area": "Bugis / Downtown line",
+          "picks": "Direct MRT to Expo, and you're in town for the night after.",
+          "range": "≈ S$200–400 / night"
+        },
+        {
+          "area": "Paya Lebar / Geylang",
+          "picks": "Cheaper, 15 min to Expo, great hawker food.",
+          "range": "≈ S$120–220 / night"
+        }
+      ],
+      "flights": [
+        {
+          "from": "Jakarta (CGK)",
+          "time": "~1h 45m",
+          "airlines": "Garuda, Singapore Airlines, Batik Air, Scoot, AirAsia, Jetstar",
+          "fare": "≈ Rp 1.5–3.5m return"
+        }
+      ],
+      "food": [
+        "Hawker centres are the athlete's friend: chicken rice, yong tau foo, fish soup, plain noodles — cheap, clean carbs and protein.",
+        "Pre-race dinner: Old Airport Road or Changi Village hawker centres, both near the east-side hotels.",
+        "Race morning: kaya toast + eggs + kopi-C at any Ya Kun/Toast Box from 7am; 7-Eleven at Expo for bananas and isotonic."
+      ],
+      "city": [
+        "Tap in with any contactless card on MRT and buses — no ticket needed.",
+        "It's hot and humid like Jakarta but the venue is aggressively air-conditioned; layer for the wait.",
+        "Everything closes late but alcohol is expensive — budget accordingly for the night after."
+      ],
+      "nightAfter": [
+        "Clarke Quay / Boat Quay: riverside bars, walkable, tourist-friendly.",
+        "Keong Saik / Duxton: better restaurants and cocktail bars, 10 min from Chinatown MRT.",
+        "Recovery option: East Coast Park — cycle or walk the beach on the Sunday, then hawker dinner."
+      ],
+      "meetup": null,
+      "coachNote": "Singapore is the smart 'second race' 5 months after Jakarta: same climate, same time zone, short flight. Dina runs a Singapore-week taper for her Hybrid and Elite athletes."
+    },
+    {
+      "slug": "seoul",
+      "name": "Seoul",
+      "country": "South Korea",
+      "flag": "🇰🇷",
+      "tagline": "Cool-weather racing, a fast venue and the best food of the season.",
+      "race": {
+        "name": "HYROX Seoul",
+        "status": "confirmed",
+        "dates": "13–15 November 2026",
+        "start": "2026-11-13",
+        "venue": "KINTEX",
+        "address": "217-60 Kintex-ro, Ilsanseo-gu, Goyang-si, Gyeonggi-do 10390",
+        "source": "https://hyrox.com/events/",
+        "sourceLabel": "hyrox.com event list"
+      },
+      "gettingThere": [
+        "KINTEX is in Ilsan (Goyang), north-west of Seoul — 45–70 min from central Seoul. Nearest station is Daehwa (Line 3), then a 15–20 min walk or short taxi.",
+        "The GTX-A express line (Kintex station) cuts the trip from Seoul Station / Suseo to about 20 minutes — check it's running on your dates.",
+        "From Incheon airport: airport limousine bus to Ilsan/KINTEX (~60–70 min) or taxi (~60 min, ≈ ₩60–80k). Gimpo airport is closer if you connect via Tokyo/Osaka."
+      ],
+      "hotels": [
+        {
+          "area": "Ilsan / KINTEX",
+          "picks": "A handful of hotels within walking distance of KINTEX — book early, they sell out on race weekends.",
+          "range": "≈ ₩120–250k / night"
+        },
+        {
+          "area": "Hongdae / Mapo",
+          "picks": "Line 2/Line 6 hub with lots of nightlife; ~45 min to KINTEX by subway or taxi.",
+          "range": "≈ ₩100–220k / night"
+        },
+        {
+          "area": "Myeongdong / Jongno",
+          "picks": "Classic central Seoul; direct on Line 3 to Daehwa.",
+          "range": "≈ ₩130–300k / night"
+        }
+      ],
+      "flights": [
+        {
+          "from": "Jakarta (CGK)",
+          "time": "~7h direct",
+          "airlines": "Garuda, Korean Air, Asiana (direct); Singapore Airlines / Malaysia Airlines via SIN/KUL",
+          "fare": "≈ Rp 6–10m return"
+        }
+      ],
+      "food": [
+        "Pre-race: plain rice bowls, gimbap, samgyetang (chicken ginseng soup) — light and easy. Go easy on kimchi and gochujang the night before.",
+        "Race morning: convenience stores (GS25/CU) everywhere for bananas, rice balls and energy bars.",
+        "Recovery: Korean BBQ is the obvious call — lean pork, beef, rice and vegetables. Soju optional."
+      ],
+      "city": [
+        "November is cold (0–10 °C) — bring a proper warm layer for the walk from the station and the post-race chill.",
+        "Get a T-money card (or Wowpass) at the airport for subway, bus and taxis; Naver Map beats Google Maps here.",
+        "eSIM or airport SIM — Korean data is fast and cheap. Papago translates menus well."
+      ],
+      "nightAfter": [
+        "Hongdae for a young, loud night; Itaewon for international bars; Seongsu for the cool-kids cafés on Sunday.",
+        "Gwangjang Market for late-night street food.",
+        "Recovery option: a jjimjilbang (Korean spa) — hot pools, saunas, and it's cheaper than a hotel massage."
+      ],
+      "meetup": null,
+      "coachNote": "Cool air means faster runs — expect 2–4 min off your Jakarta time if your run fitness is there. Dina adjusts the last 3 weeks of training for the cold."
+    },
+    {
+      "slug": "hong-kong",
+      "name": "Hong Kong",
+      "country": "Hong Kong SAR",
+      "flag": "🇭🇰",
+      "tagline": "January racing in mild weather, at a venue you can reach by train from the airport in a few minutes.",
+      "race": {
+        "name": "HYROX Hong Kong",
+        "status": "confirmed",
+        "dates": "7–10 January 2027",
+        "start": "2027-01-07",
+        "venue": "AsiaWorld-Expo",
+        "address": "1 Airport Expo Boulevard, Chek Lap Kok, Lantau",
+        "source": "https://hyrox.com/events/",
+        "sourceLabel": "hyrox.com event list"
+      },
+      "gettingThere": [
+        "AsiaWorld-Expo has its own Airport Express station — one stop (2 min) from the airport, ~28 min from Hong Kong station in Central.",
+        "From Tung Chung (MTR Tung Chung line) it's a 10-min taxi or a bus (S1/S64).",
+        "Taxis from Central/Kowloon are HK$300+; the Airport Express is faster and cheaper for groups (group tickets available)."
+      ],
+      "hotels": [
+        {
+          "area": "Tung Chung / Airport",
+          "picks": "Airport hotels and the Tung Chung Citygate area — 10 min to the venue, outlet mall for shopping.",
+          "range": "≈ HK$900–1,800 / night"
+        },
+        {
+          "area": "Kowloon (Tsim Sha Tsui / Jordan)",
+          "picks": "Kowloon station on the Airport Express; the classic Hong Kong stay.",
+          "range": "≈ HK$800–1,800 / night"
+        },
+        {
+          "area": "Central / Sheung Wan",
+          "picks": "Direct Airport Express; best restaurants and bars for the night after.",
+          "range": "≈ HK$1,000–2,500 / night"
+        }
+      ],
+      "flights": [
+        {
+          "from": "Jakarta (CGK)",
+          "time": "~4h 45m direct",
+          "airlines": "Cathay Pacific, Garuda, HK Express; Singapore Airlines / AirAsia via SIN/KUL",
+          "fare": "≈ Rp 4–7m return"
+        }
+      ],
+      "food": [
+        "Pre-race: plain congee, steamed rice, wonton noodles in clear soup, cha siu rice — easy and everywhere.",
+        "Race morning: 7-Eleven/Circle K at every station; Tung Chung has a big supermarket and bakery chains open early.",
+        "Recovery: dim sum. Also the local Cantonese roast meats and rice — protein and carbs sorted."
+      ],
+      "city": [
+        "Get an Octopus card (or add it to your phone wallet) — trains, buses, ferries, convenience stores.",
+        "January is 14–20 °C and dry: perfect racing weather, but bring a light jacket.",
+        "Hong Kong is dense and walkable; expect stairs and hills — save the legs the day before the race."
+      ],
+      "nightAfter": [
+        "Lan Kwai Fong / SoHo (Central) for bars; Sai Ying Pun and Kennedy Town for a quieter, better-restaurant version.",
+        "Temple Street night market in Kowloon for late food.",
+        "Sunday: Victoria Peak or the Star Ferry — gentle legs, big views."
+      ],
+      "meetup": null,
+      "coachNote": "Hong Kong is a great early-year target: 6 months after Jakarta, mild weather, and a fast indoor course. Dina's Elite athletes often use it as their A-race."
+    },
+    {
+      "slug": "bangkok",
+      "name": "Bangkok",
+      "country": "Thailand",
+      "flag": "🇹🇭",
+      "tagline": "The region's big, buzzy race — Bangkok has hosted the largest Asian Hyrox fields before Jakarta took the record.",
+      "race": {
+        "name": "HYROX Bangkok",
+        "status": "confirmed",
+        "dates": "11–14 February 2027",
+        "start": "2027-02-11",
+        "venue": "Bangkok International Trade & Exhibition Centre (BITEC)",
+        "address": "88 Debaratna Road, Bang Na Tai, Bang Na, Bangkok 10260",
+        "source": "https://hyrox.com/events/",
+        "sourceLabel": "hyrox.com event list"
+      },
+      "gettingThere": [
+        "BITEC connects directly to BTS Bang Na station (Sukhumvit line) via a covered walkway — the train beats traffic every time.",
+        "From Suvarnabhumi airport it's a 20–30 min taxi (≈ ฿250–400) or Airport Rail Link to Phaya Thai then BTS (about 60 min).",
+        "From central Sukhumvit (Asok/Phrom Phong/Thonglor) it's 15–25 min on the BTS."
+      ],
+      "hotels": [
+        {
+          "area": "Bang Na / Udom Suk",
+          "picks": "Hotels around BTS Bang Na and Udom Suk — walk or one stop to BITEC.",
+          "range": "≈ ฿1,500–3,500 / night"
+        },
+        {
+          "area": "Phrom Phong / Thonglor / Ekkamai",
+          "picks": "Best balance: 10–20 min to BITEC on the BTS, and the restaurants and bars for the night after are at your door.",
+          "range": "≈ ฿2,000–5,000 / night"
+        },
+        {
+          "area": "Asok / Nana",
+          "picks": "Budget to mid-range, central, direct BTS.",
+          "range": "≈ ฿1,200–3,000 / night"
+        }
+      ],
+      "flights": [
+        {
+          "from": "Jakarta (CGK)",
+          "time": "~3h 30m direct",
+          "airlines": "Garuda, Thai Airways, Batik Air, Thai Lion, AirAsia (via KUL)",
+          "fare": "≈ Rp 3–5.5m return"
+        }
+      ],
+      "food": [
+        "Pre-race: khao man gai (chicken rice), plain fried rice, clear noodle soups (kuay teow nam sai). Skip the chilli and som tam the night before.",
+        "Race morning: 7-Eleven on every corner — bananas, rice, isotonic; most hotels serve breakfast from 6am.",
+        "Recovery: grilled chicken and sticky rice, pad see ew, mango sticky rice for the sugar. Book the nice Thai dinner for the night after."
+      ],
+      "city": [
+        "February is the pleasant season — 25–33 °C and dry, still hot for running so hydrate like Jakarta.",
+        "Rabbit card for BTS; Grab for everything else. Skip street taxis at rush hour.",
+        "Cards work in hotels and malls; carry some cash for street food and markets."
+      ],
+      "nightAfter": [
+        "Thonglor / Ekkamai: Bangkok's best bars and restaurants, one BTS line from the venue.",
+        "Rooftop bars along Sukhumvit and Silom for the group photo.",
+        "Sunday: Chatuchak weekend market (morning), then a Thai massage — legs will love it."
+      ],
+      "meetup": null,
+      "coachNote": "Dina raced Bangkok (Doubles) before her Jakarta podium — it's her go-to recommendation for a first race abroad: cheap flights, easy venue, huge Indonesian contingent."
+    }
+  ]
+}

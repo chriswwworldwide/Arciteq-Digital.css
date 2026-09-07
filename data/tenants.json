@@ -143,6 +143,8 @@
           { "path": "/roxjaya/hybrid-coaching-jakarta/", "priority": "0.9" },
           { "path": "/roxjaya/elite-race-prep/", "priority": "0.9" },
           { "path": "/roxjaya/events/", "priority": "0.8" },
+          { "path": "/roxjaya/hyrox-jakarta/", "priority": "0.9" },
+          { "path": "/roxjaya/race-planner/", "priority": "0.9" },
           { "path": "/roxjaya/results/", "priority": "0.9" },
           { "path": "/roxjaya/splits/", "priority": "0.9" }
         ]

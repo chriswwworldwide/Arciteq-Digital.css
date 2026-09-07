@@ -34,17 +34,19 @@ Plain English. The same text lives on the private **Coach's desk** page
 
 ## Doing things
 
-| Task                       | Where                                                   | Notes                                                                         |
-| -------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| Reply to a lead            | People → newest first → "Reply by email"                | Within 24 h; mention something specific they wrote.                           |
-| Approve a wall photo       | People (`wall_photo`) + the photo from WhatsApp/IG      | Check consent and nobody identifiable without their OK. Then see below.       |
-| Put a photo on the wall    | `roxjaya/data/gallery.json` + `roxjaya/images/gallery/` | One row: `src`, `caption`, `by`, `event`. Event tabs appear automatically.    |
-| Add race results           | `roxjaya/data/results.json`                             | From results.hyrox.com; one row per finisher under the division. Sorted auto. |
-| Results wall / Dina's week | `roxjaya/data/wall.json`                                | `athletes` only with consent; `weeks` newest first (latest 3 shown).          |
-| Countdown / next race      | `roxjaya/data/events.json` → `next`                     | Confirmed hyrox.com dates only; `null` hides it.                              |
-| Founding seats             | `roxjaya/data/seats.json` → `taken`                     | Real numbers only; `null` hides the line.                                     |
-| TrueCoach login link       | `roxjaya/data/links.json` → `truecoach`                 | Footer "Athlete login" appears once set.                                      |
-| WhatsApp number            | Ask Chris (one server value)                            | Powers the Ask Dina / Send-your-shot buttons.                                 |
+| Task                          | Where                                                   | Notes                                                                                                                     |
+| ----------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Reply to a lead               | People → newest first → "Reply by email"                | Within 24 h; mention something specific they wrote.                                                                       |
+| Approve a wall photo          | People (`wall_photo`) + the photo from WhatsApp/IG      | Check consent and nobody identifiable without their OK. Then see below.                                                   |
+| Put a photo on the wall       | `roxjaya/data/gallery.json` + `roxjaya/images/gallery/` | One row: `src`, `caption`, `by`, `event`. Event tabs appear automatically.                                                |
+| Add race results              | `roxjaya/data/results.json`                             | From results.hyrox.com; one row per finisher under the division. Sorted auto.                                             |
+| Results wall / Dina's week    | `roxjaya/data/wall.json`                                | `athletes` only with consent; `weeks` newest first (latest 3 shown).                                                      |
+| Countdown / next race         | `roxjaya/data/events.json` → `next`                     | Confirmed hyrox.com dates only; `null` hides it. Shows on Events + Jakarta page.                                          |
+| Asia race dates / city guides | `roxjaya/data/cities.json`                              | Per city: `race.status` `confirmed` + `dates` + `start` (YYYY-MM-DD), or `tbc`. Update `checked` when you refresh prices. |
+| Warriors meet-up at a race    | `roxjaya/data/cities.json` → city → `meetup`            | `{ "when", "where", "note" }` shows a pink meet-up box on that city; `null` hides it.                                     |
+| Founding seats                | `roxjaya/data/seats.json` → `taken`                     | Real numbers only; `null` hides the line.                                                                                 |
+| TrueCoach login link          | `roxjaya/data/links.json` → `truecoach`                 | Footer "Athlete login" appears once set.                                                                                  |
+| WhatsApp number               | Ask Chris (one server value)                            | Powers the Ask Dina / Send-your-shot buttons.                                                                             |
 
 Empty fields never break the page — they just hide that bit.
 

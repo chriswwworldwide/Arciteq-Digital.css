@@ -760,3 +760,246 @@
   font-weight: 700;
   color: var(--ink-2);
 }
+
+/* Asia Race Planner */
+.city-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 28px;
+}
+
+.city-tab {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.city-tab small {
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.city-tab.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.plan-city-head h2 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+}
+
+.plan-city-head h2 small {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+
+.plan-race {
+  margin: 24px 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--pink);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+}
+
+.plan-race .eyebrow {
+  margin: 0 0 6px;
+}
+
+.plan-when {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.plan-days {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--pink-100);
+  color: var(--pink-600);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.plan-tbc .plan-last,
+.plan-tbc {
+  font-size: 16px;
+}
+
+.plan-tbc .plan-last {
+  display: block;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+
+.plan-venue {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.plan-source,
+.plan-stamp {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.plan-stamp {
+  margin-top: 24px;
+}
+
+.plan-section {
+  padding: 26px 0 6px;
+  border-top: 1px solid var(--line);
+}
+
+.plan-section h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.plan-list {
+  margin: 0 0 12px;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.plan-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.plan-card {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.plan-card h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.plan-card p {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.plan-range {
+  font-weight: 800;
+  color: var(--pink-600);
+}
+
+.plan-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 12px;
+}
+
+.plan-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 520px;
+}
+
+.plan-table th,
+.plan-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.plan-table th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+
+.plan-meetup {
+  padding: 22px;
+  margin-top: 26px;
+  border: 1px solid var(--pink);
+  border-radius: var(--radius);
+  background: var(--pink-100);
+}
+
+.plan-meetup h3 {
+  margin-top: 0;
+}
+
+.plan-coach .btn {
+  margin: 8px 8px 0 0;
+}
+
+.next-race {
+  margin: 0 0 28px;
+  padding: 22px;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: #fff;
+}
+
+.next-race .eyebrow {
+  color: var(--pink);
+  margin: 0 0 6px;
+}
+
+.next-race h3 {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.next-race a {
+  color: inherit;
+}
+
+.next-race p {
+  margin: 0;
+}
+
+.next-race strong {
+  font-size: 28px;
+  color: var(--pink);
+}
+
+@media (max-width: 600px) {
+  .plan-race {
+    padding: 16px;
+  }
+
+  .plan-when {
+    font-size: 18px;
+  }
+
+  .plan-days {
+    display: block;
+    width: max-content;
+    margin: 8px 0 0;
+  }
+}

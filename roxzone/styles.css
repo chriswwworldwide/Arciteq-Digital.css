@@ -298,6 +298,39 @@ button.btn {
   font-size: 14px;
 }
 
+.plan-note {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--pink);
+  background: var(--pink-soft, #fff0f6);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-2, #444);
+}
+
+.plan-faq {
+  max-width: 760px;
+  margin: 20px auto 0;
+  padding: 4px 18px;
+  border: 1px solid var(--line, #e6e6ea);
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.plan-faq summary {
+  padding: 12px 0;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.plan-faq p {
+  margin: 0 0 16px;
+}
+
 .plans-note.error {
   color: var(--pink-600);
 }

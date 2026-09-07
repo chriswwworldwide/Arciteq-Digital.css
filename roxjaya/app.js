@@ -446,3 +446,183 @@
     })
     .catch(() => {});
 })();
+
+// Warriors Wall: IG-style photos from roxjaya/data/gallery.json, grouped by event
+// (tabs), shown as a tilted polaroid scatter with a lightbox. "Send your shot"
+// saves caption/name/event/consent as a generic submission (kind wall_photo) on
+// the athlete's record, then hands off to WhatsApp/email for the photo itself.
+(function () {
+  const section = document.getElementById("wall-photos");
+  if (!section) return;
+  const grid = document.getElementById("polaroids");
+  const tabs = document.getElementById("event-tabs");
+  const dialog = document.getElementById("lightbox");
+  const options = document.getElementById("event-options");
+  const ALL = "All";
+
+  function polaroid(p, i) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "polaroid reveal";
+    btn.dataset.event = p.event || "";
+    const tilt =
+      typeof p.tilt === "number" ? p.tilt : ((i * 7919) % 11) / 2 - 2.5;
+    btn.style.setProperty("--tilt", `${tilt}deg`);
+    const img = document.createElement("img");
+    img.src = String(p.src || "");
+    img.alt = String(p.alt || p.caption || "");
+    img.loading = "lazy";
+    img.width = 600;
+    img.height = 600;
+    const cap = document.createElement("p");
+    cap.className = "cap";
+    cap.textContent = String(p.caption || "");
+    const by = document.createElement("p");
+    by.className = "by";
+    const who = document.createElement("b");
+    who.textContent = String(p.by || "");
+    by.append(who);
+    if (p.event) by.append(` · ${p.event}`);
+    btn.append(img, cap, by);
+    btn.addEventListener("click", () => open(p));
+    return btn;
+  }
+
+  function open(p) {
+    if (!dialog || typeof dialog.showModal !== "function") return;
+    const img = dialog.querySelector("img");
+    const cap = dialog.querySelector("figcaption");
+    img.src = String(p.src || "");
+    img.alt = String(p.alt || p.caption || "");
+    cap.textContent = String(p.caption || "");
+    const small = document.createElement("small");
+    small.textContent = [p.by, p.event].filter(Boolean).join(" · ");
+    cap.appendChild(small);
+    dialog.showModal();
+  }
+
+  if (dialog) {
+    dialog.querySelector(".lightbox-close").addEventListener("click", () => {
+      dialog.close();
+    });
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  }
+
+  function select(name) {
+    tabs.querySelectorAll("button").forEach((b) => {
+      b.setAttribute(
+        "aria-selected",
+        b.dataset.event === name ? "true" : "false",
+      );
+    });
+    grid.querySelectorAll(".polaroid").forEach((el) => {
+      el.classList.toggle("is-out", name !== ALL && el.dataset.event !== name);
+    });
+  }
+
+  function buildTabs(events) {
+    const counts = new Map();
+    events.forEach((e) => counts.set(e, (counts.get(e) || 0) + 1));
+    const names = [ALL, ...counts.keys()];
+    if (counts.size < 2) {
+      tabs.hidden = true;
+      return;
+    }
+    names.forEach((name) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.role = "tab";
+      b.dataset.event = name;
+      b.textContent = name;
+      if (name !== ALL) {
+        const n = document.createElement("span");
+        n.textContent = String(counts.get(name));
+        b.appendChild(n);
+      }
+      b.addEventListener("click", () => select(name));
+      tabs.appendChild(b);
+    });
+    select(ALL);
+  }
+
+  fetch("/roxjaya/data/gallery.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((json) => {
+      const photos = Array.isArray(json?.photos) ? json.photos : [];
+      if (!photos.length) return;
+      photos.forEach((p, i) => grid.appendChild(polaroid(p, i)));
+      buildTabs(photos.map((p) => String(p.event || "")).filter(Boolean));
+      if (options) {
+        [...new Set(photos.map((p) => p.event).filter(Boolean))].forEach(
+          (e) => {
+            const o = document.createElement("option");
+            o.value = String(e);
+            options.appendChild(o);
+          },
+        );
+      }
+      section.hidden = false;
+      section
+        .querySelectorAll(".reveal")
+        .forEach((el) => el.classList.add("in"));
+    })
+    .catch(() => {});
+
+  // Send your shot
+  const toggle = document.getElementById("send-shot-btn");
+  const form = document.getElementById("shot-form");
+  const note = document.getElementById("shot-note");
+  if (!toggle || !form) return;
+  toggle.addEventListener("click", () => {
+    form.hidden = false;
+    toggle.hidden = true;
+    form.querySelector("textarea").focus();
+  });
+
+  const wa = document.querySelector("a[data-whatsapp]");
+  const waDigits = String(wa?.dataset.whatsapp || "").replace(/\D/g, "");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const payload = {
+      caption: String(data.get("caption") || "").trim(),
+      by: String(data.get("by") || "").trim(),
+      event: String(data.get("event") || "").trim(),
+      consent: data.get("consent") ? "yes" : "no",
+      source: "warriors_wall",
+    };
+    const email = String(data.get("email") || "").trim();
+    note.textContent = "Saving your caption…";
+    let saved = false;
+    try {
+      const res = await fetch("/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, kind: "wall_photo", payload }),
+      });
+      saved = res.ok;
+    } catch {
+      saved = false;
+    }
+    const msg = `Hi Dina — a photo for the Warriors Wall.\nEvent: ${payload.event}\nCaption: ${payload.caption}\nBy: ${payload.by}\nI'm happy for it to go on the site and @roxjaya.`;
+    if (waDigits) {
+      window.open(
+        `https://wa.me/${waDigits}?text=${encodeURIComponent(msg)}`,
+        "_blank",
+        "noopener",
+      );
+      note.textContent = saved
+        ? "Caption saved. WhatsApp is open — attach the photo there and Dina takes it from here."
+        : "WhatsApp is open — attach the photo and send; Dina takes it from here.";
+    } else {
+      note.textContent = saved
+        ? "Caption saved. Send the photo itself to Dina on Instagram (@dinabawden87) or reply to her email — she'll put it up once she's seen it."
+        : "Couldn't save just now — send the photo and your caption to Dina on Instagram (@dinabawden87) and she'll put it up.";
+    }
+    form.querySelector("button[type=submit]").disabled = true;
+  });
+})();

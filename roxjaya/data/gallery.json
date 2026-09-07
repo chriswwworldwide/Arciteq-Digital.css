@@ -1,0 +1,29 @@
+{
+  "note": "Warriors Wall — IG-style photos athletes send in (racing, being silly, with friends). Athletes submit via the form on the home page (caption + name/handle + consent land on their lead record as kind 'wall_photo'; the photo itself arrives on WhatsApp/email). Dina adds a row here once she has the photo and their OK — nothing goes up unmoderated. Newest first. 'src' = path under /roxjaya/images/gallery/ (JPG, max ~1600px wide). 'caption' = the athlete's own words, verbatim. 'by' = name or @handle. 'event' = the event the photo belongs to (e.g. 'Hyrox Jakarta 2026', 'Squad sessions') — the wall groups photos by it, newest event first. 'tilt' optional degrees (-6..6), random if omitted. Empty list hides the section.",
+  "photos": [
+    {
+      "src": "/roxjaya/images/hero.jpg",
+      "alt": "Athlete pushing a sled at a Hyrox race",
+      "caption": "Sled push, 7 weeks pregnant, still smiling (sort of).",
+      "by": "@dinabawden87",
+      "tilt": -3,
+      "event": "Hyrox Jakarta 2026"
+    },
+    {
+      "src": "/roxjaya/images/rope.jpg",
+      "alt": "Athlete resting on the ropes after a Hyrox race",
+      "caption": "Finish line Bangkok. Then we found out: it's a girl.",
+      "by": "Dina",
+      "tilt": 2.5,
+      "event": "Hyrox Bangkok 2025"
+    },
+    {
+      "src": "/roxjaya/images/feature.jpg",
+      "alt": "Athlete mid-station at a Hyrox event",
+      "caption": "Saturday squad. Nobody wanted the sled. Everybody did the sled.",
+      "by": "Warriors squad",
+      "tilt": -1.5,
+      "event": "Squad sessions"
+    }
+  ]
+}

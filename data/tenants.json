@@ -147,7 +147,7 @@
           { "path": "/roxjaya/splits/", "priority": "0.9" }
         ]
       },
-      "submissions": { "kinds": ["race_splits"] },
+      "submissions": { "kinds": ["race_splits", "wall_photo"] },
       "offers": {}
     }
   ]

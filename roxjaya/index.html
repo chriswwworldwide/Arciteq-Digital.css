@@ -155,6 +155,7 @@
               <li><a href="#plans">Race Prep / Elite</a></li>
             </ul>
           </li>
+          <li><a href="#wall-photos">Warriors Wall</a></li>
           <li><a href="#merch">Merchandise</a></li>
           <li>
             <a class="chat-zone" href="#ask" data-whatsapp=""
@@ -847,6 +848,89 @@
       </div>
     </section>
 
+    <section class="block gallery" id="wall-photos" hidden>
+      <div class="wrap">
+        <p class="eyebrow reveal">Warriors Wall</p>
+        <h3 class="reveal">Your shots. Your words.</h3>
+        <p class="lead reveal">
+          Race faces, finish-line tears, the squad being daft. Send yours and it
+          goes up here once Dina has your OK.
+        </p>
+        <div
+          class="event-tabs reveal"
+          id="event-tabs"
+          role="tablist"
+          aria-label="Filter photos by event"
+        ></div>
+        <div class="polaroids" id="polaroids"></div>
+        <div class="send-shot reveal">
+          <button class="btn btn-primary" type="button" id="send-shot-btn">
+            Send your shot
+          </button>
+          <form class="shot-form" id="shot-form" hidden novalidate>
+            <label>
+              Your caption
+              <textarea
+                name="caption"
+                rows="3"
+                maxlength="280"
+                required
+                placeholder="What was happening? Your words, any tone."
+              ></textarea>
+            </label>
+            <div class="shot-row">
+              <label>
+                Name or @handle
+                <input name="by" type="text" maxlength="60" required />
+              </label>
+              <label>
+                Which event?
+                <input
+                  name="event"
+                  type="text"
+                  maxlength="60"
+                  list="event-options"
+                  required
+                  placeholder="Hyrox Jakarta 2026"
+                />
+                <datalist id="event-options"></datalist>
+              </label>
+            </div>
+            <label>
+              Email <span class="opt">(so Dina can reply)</span>
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <label class="check">
+              <input name="consent" type="checkbox" required />
+              <span
+                >I'm in the photo (or everyone in it is happy), and Roxjaya can
+                show it on this page and on @roxjaya. Ask Dina any time to take
+                it down.</span
+              >
+            </label>
+            <div class="shot-actions">
+              <button class="btn btn-primary" type="submit">
+                Next: send the photo
+              </button>
+              <p class="fine" id="shot-note">
+                We save your caption, then open WhatsApp so you can attach the
+                photo. Nothing goes live until Dina approves it.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <dialog class="lightbox" id="lightbox">
+        <button class="lightbox-close" type="button" aria-label="Close">
+          &times;
+        </button>
+        <figure>
+          <img alt="" />
+          <figcaption></figcaption>
+        </figure>
+      </dialog>
+    </section>
+
     <section class="block" id="merch">
       <div class="wrap merch-grid">
         <div>
@@ -882,6 +966,7 @@
           <a href="/roxjaya/events/">Events</a>
           <a href="/roxjaya/results/">Results</a>
           <a href="/roxjaya/splits/">Splits</a>
+          <a href="#wall-photos">Warriors Wall</a>
           <a href="#ask">Ask Dina</a>
           <a data-link="truecoach" target="_blank" rel="noopener" hidden
             >Athlete login (TrueCoach)</a

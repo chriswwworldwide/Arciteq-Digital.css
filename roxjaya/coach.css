@@ -119,6 +119,60 @@
   white-space: nowrap;
 }
 
+.inbox {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: grid;
+  gap: 10px;
+}
+.inbox li {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+.inbox li.is-clear {
+  color: var(--ink-3);
+}
+.inbox .kind {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pink-600);
+  margin-bottom: 4px;
+}
+.inbox .title {
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.inbox .summary {
+  margin: 0 0 10px;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+.inbox .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.inbox .actions .btn {
+  min-height: 44px;
+}
+.inbox .actions a {
+  color: var(--pink-600);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 6px;
+}
+.inbox .done {
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

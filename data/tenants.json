@@ -151,6 +151,12 @@
       },
       "submissions": { "kinds": ["race_splits", "wall_photo"] },
       "analytics": { "pageviews": true },
+      "automation": {
+        "inbox": "roxjaya/data/inbox.json",
+        "writable": ["roxjaya/data/events.json", "roxjaya/data/cities.json"],
+        "coachPath": "/roxjaya/coach/",
+        "digestTo": ""
+      },
       "offers": {}
     }
   ]

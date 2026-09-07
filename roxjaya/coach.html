@@ -68,6 +68,14 @@
       <section class="desk-panel" data-panel="today" hidden>
         <h2>What needs you</h2>
         <ul class="todo" id="todo"></ul>
+        <h3 id="inbox">Waiting for your OK</h3>
+        <p class="hint">
+          Race dates and other finds from the daily check. Nothing goes on the
+          site until you approve it here.
+        </p>
+        <ul class="inbox" id="inbox-list">
+          <li class="is-clear">Loading…</li>
+        </ul>
         <h3>This week at a glance</h3>
         <div class="stats" id="today-stats"></div>
       </section>
@@ -206,8 +214,16 @@
               Only confirmed dates from hyrox.com. Rumours stay off the site.
             </li>
             <li>
-              <code>roxjaya/data/events.json</code> → <i>next</i>: name, date
-              (first race day), link. The countdown switches itself on.
+              Every morning the site checks hyrox.com for Asia dates. New or
+              changed ones appear under <a href="#inbox">Waiting for your OK</a>
+              on Today. Tap “Check source”, then “Approve &amp; publish” — the
+              city guide, season list and Jakarta countdown update themselves.
+              “Ignore” hides it until something about it changes.
+            </li>
+            <li>
+              By hand instead: <code>roxjaya/data/events.json</code> →
+              <i>next</i>: name, date (first race day), link. The countdown
+              switches itself on.
             </li>
             <li>Set <i>next</i> back to <code>null</code> after the race.</li>
             <li>

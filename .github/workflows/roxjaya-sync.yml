@@ -1,0 +1,43 @@
+name: Roxjaya daily check + weekly digest
+
+# Daily: read hyrox.com's Asia-Pacific listing and drop new/changed race dates
+# into Dina's approve queue on the live site. Monday: ask the site to email her
+# the "what needs you" digest. Both skip quietly until the two secrets exist.
+
+on:
+  schedule:
+    - cron: "15 22 * * *" # 05:15 Jakarta, daily
+    - cron: "0 0 * * 1" # 07:00 Jakarta, Mondays
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule' || github.event.schedule == '15 22 * * *'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Discover Asia race dates -> approve queue
+        env:
+          SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}
+          ADMIN_API_KEY: ${{ secrets.ROXJAYA_ADMIN_KEY }}
+        run: node roxjaya/automation/hyrox-sync.js
+
+  digest:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' && github.event.schedule == '0 0 * * 1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Send weekly digest
+        env:
+          SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}
+          ADMIN_API_KEY: ${{ secrets.ROXJAYA_ADMIN_KEY }}
+        run: |
+          if [ -z "$SITE_URL" ] || [ -z "$ADMIN_API_KEY" ]; then
+            echo "ROXJAYA_SITE_URL / ROXJAYA_ADMIN_KEY not set - skipping digest"; exit 0; fi
+          node roxjaya/automation/hyrox-sync.js --digest

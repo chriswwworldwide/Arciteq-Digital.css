@@ -41,7 +41,8 @@ Plain English. The same text lives on the private **Coach's desk** page
 | Put a photo on the wall       | `roxjaya/data/gallery.json` + `roxjaya/images/gallery/` | One row: `src`, `caption`, `by`, `event`. Event tabs appear automatically.                                                |
 | Add race results              | `roxjaya/data/results.json`                             | From results.hyrox.com; one row per finisher under the division. Sorted auto.                                             |
 | Results wall / Dina's week    | `roxjaya/data/wall.json`                                | `athletes` only with consent; `weeks` newest first (latest 3 shown).                                                      |
-| Countdown / next race         | `roxjaya/data/events.json` → `next`                     | Confirmed hyrox.com dates only; `null` hides it. Shows on Events + Jakarta page.                                          |
+| Approve a race date           | Today → "Waiting for your OK" → Approve & publish       | The daily check finds new Asia dates on hyrox.com. Tap "Check source" first; approving updates the site + countdown.      |
+| Countdown / next race         | `roxjaya/data/events.json` → `next`                     | Confirmed hyrox.com dates only; `null` hides it. Shows on Events + Jakarta page. Usually set for you by approving above.  |
 | Asia race dates / city guides | `roxjaya/data/cities.json`                              | Per city: `race.status` `confirmed` + `dates` + `start` (YYYY-MM-DD), or `tbc`. Update `checked` when you refresh prices. |
 | Warriors meet-up at a race    | `roxjaya/data/cities.json` → city → `meetup`            | `{ "when", "where", "note" }` shows a pink meet-up box on that city; `null` hides it.                                     |
 | Founding seats                | `roxjaya/data/seats.json` → `taken`                     | Real numbers only; `null` hides the line.                                                                                 |
@@ -54,7 +55,11 @@ Empty fields never break the page — they just hide that bit.
 
 Payments, subscriptions and renewals, lead capture and plan recommendation,
 split saving and the databank medians, wall-photo requests, traffic counting,
-and (once built) the weekly digest, event-date discovery and results pull.
+the daily hyrox.com date check (05:15 Jakarta; finds go to "Waiting for your
+OK", nothing publishes until you tap Approve), and the Monday digest email
+(everything that needs you, each line a link into the desk). Results are the
+exception: official results block robots, so a few days after each race the
+desk reminds you to copy the Indonesian finishers into `results.json`.
 If a number looks wrong, message Chris; don't edit the server.
 
 ## What still needs setting up (Chris)
@@ -62,6 +67,10 @@ If a number looks wrong, message Chris; don't edit the server.
 - Production database + run migrations 005–008 (`008_add_page_views.sql` is
   the traffic table).
 - `ADMIN_API_KEY` on the server (this is the coach key).
+- GitHub secrets `ROXJAYA_SITE_URL` + `ROXJAYA_ADMIN_KEY` so the daily date
+  check and Monday digest can reach the live site; Dina's email in
+  `tenants.json` → roxjaya → `automation.digestTo` (server needs sendmail or
+  `ALERT_EMAIL_TO` fallback).
 - Stripe or Xendit keys — until then plan buttons say "message Dina".
 - Dina's WhatsApp number, TrueCoach URL, real photos, the exact HYROX
   certificate title, and the 2027 Jakarta date when HYROX publishes it.

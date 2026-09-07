@@ -49,9 +49,12 @@
     return (n / 100).toFixed(2) + " " + String(cur || "").toUpperCase();
   };
 
-  async function api(path) {
+  async function api(path, init) {
     const key = localStorage.getItem(KEY) || "";
-    const r = await fetch(path, { headers: { "x-admin-key": key } });
+    const r = await fetch(path, {
+      ...(init || {}),
+      headers: { ...(init?.headers || {}), "x-admin-key": key },
+    });
     if (r.status === 401) throw new Error("unauthorized");
     if (!r.ok) throw new Error("failed");
     return r.json();
@@ -66,6 +69,79 @@
       history.replaceState(null, "", "#" + tab);
     }
   }
+
+  // ---- Inbox (approve queue) ---------------------------------------------
+  const KIND_LABEL = {
+    event: "Race date",
+    news: "News",
+    sponsor: "Sponsor",
+    alert: "Heads-up",
+  };
+  function renderInbox(inbox) {
+    const el = document.getElementById("inbox-list");
+    const pending = inbox?.pending || [];
+    if (!pending.length) {
+      el.innerHTML = `<li class="is-clear">Nothing waiting — the daily check runs on its own and will list new race dates here.</li>`;
+      return;
+    }
+    el.innerHTML = pending
+      .map((i) => {
+        const isAlert = i.kind === "alert";
+        const ok = isAlert
+          ? "Done"
+          : i.apply?.length
+            ? "Approve & publish"
+            : "Got it";
+        return `<li data-id="${esc(i.id)}">
+          <span class="kind">${esc(KIND_LABEL[i.kind] || i.kind)}</span>
+          <p class="title">${esc(i.title)}</p>
+          ${i.summary ? `<p class="summary">${esc(i.summary)}</p>` : ""}
+          <div class="actions">
+            <button class="btn" data-action="approve">${ok}</button>
+            ${isAlert ? "" : `<button class="btn btn-ghost" data-action="ignore">Ignore</button>`}
+            ${i.source ? `<a href="${esc(i.source)}" target="_blank" rel="noopener">Check source ↗</a>` : ""}
+          </div>
+        </li>`;
+      })
+      .join("");
+  }
+  async function loadInbox() {
+    try {
+      renderInbox(await api("/admin/inbox"));
+    } catch {
+      document.getElementById("inbox-list").innerHTML =
+        `<li class="is-clear">Couldn't load the approve queue just now.</li>`;
+    }
+  }
+  document.getElementById("inbox-list").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-action]");
+    if (!b) return;
+    const li = b.closest("li[data-id]");
+    if (!li) return;
+    li.querySelectorAll("button").forEach((x) => (x.disabled = true));
+    api(`/admin/inbox/${encodeURIComponent(li.dataset.id)}`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ action: b.dataset.action }),
+    })
+      .then((r) => {
+        const files = r.applied || [];
+        li.innerHTML = `<span class="done">${
+          b.dataset.action === "approve"
+            ? files.length
+              ? `Published — live on the site now (${esc(files.map((f) => f.split("/").pop()).join(", "))}).`
+              : "Noted."
+            : "Ignored — you won't be asked again unless it changes."
+        }</span>`;
+      })
+      .catch(() => {
+        li.querySelectorAll("button").forEach((x) => (x.disabled = false));
+        li.insertAdjacentHTML(
+          "beforeend",
+          `<p class="done">That didn't save — try again.</p>`,
+        );
+      });
+  });
 
   // ---- Today -------------------------------------------------------------
   function renderToday() {
@@ -345,6 +421,7 @@
 
   // ---- Boot --------------------------------------------------------------
   async function load() {
+    void loadInbox();
     const [t, p] = await Promise.all([
       api(`/admin/traffic?days=${days}`),
       api("/admin/people?days=365&limit=500"),
@@ -363,6 +440,10 @@
     const q = new URLSearchParams(qs || "").get("q");
     if (q) document.getElementById("people-search").value = q;
     show(["today", "traffic", "people", "howto"].includes(tab) ? tab : "today");
+    if (tab === "inbox") {
+      history.replaceState(null, "", "#inbox");
+      document.getElementById("inbox").scrollIntoView();
+    }
     return load().catch((err) => {
       if (err.message === "unauthorized") {
         localStorage.removeItem(KEY);

@@ -35,6 +35,15 @@ import {
 import { sanitizeProfile, hasProfile } from "./src/lead-profile.js";
 import { validateSubmission, summarizePayloads } from "./src/submissions.js";
 import {
+  emptyInbox,
+  normalizeInbox,
+  upsertCandidates,
+  pendingItems,
+  decide,
+  applyPatches,
+  buildDigest,
+} from "./src/inbox.js";
+import {
   pageviewsEnabled,
   validatePageview,
   summarizePageviews,
@@ -3039,6 +3048,187 @@ app.get("/admin/people", async (req, res) => {
     console.error("People summary failed", err);
     return res.status(500).json({ error: "Failed to load people" });
   }
+});
+
+// ---- Owner inbox (approval queue) + weekly digest -------------------------
+// Tenant opts in via tenants.json → automation: { inbox: "<file>",
+// writable: ["<file>", ...], coachPath: "/x/coach/", digestTo: "a@b" }.
+// Automated jobs POST candidates; the owner approves/ignores from their desk;
+// approving applies the item's JSON patches to the tenant's writable files only.
+
+function tenantAutomation(tenant) {
+  const a = tenant?.automation;
+  const rel = String(a?.inbox || "").trim();
+  if (!rel || rel.includes("..") || rel.startsWith("/")) return null;
+  return {
+    inboxRel: rel,
+    inboxPath: path.join(__dirname, rel),
+    writable: Array.isArray(a?.writable)
+      ? a.writable.map(String).filter((f) => !f.includes(".."))
+      : [],
+    coachPath: String(a?.coachPath || "/"),
+    digestTo: String(a?.digestTo || "").trim(),
+  };
+}
+
+function readInbox(cfg) {
+  return normalizeInbox(safeReadJsonFile(cfg.inboxPath, emptyInbox()));
+}
+
+app.get("/admin/inbox", (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  const tenant = resolveTenantFromRequest(req);
+  const cfg = tenantAutomation(tenant);
+  if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
+  const inbox = readInbox(cfg);
+  const decided = inbox.items
+    .filter((i) => i.status !== "pending")
+    .sort((a, b) => String(b.decidedAt).localeCompare(String(a.decidedAt)))
+    .slice(0, 50);
+  return res.json({
+    ok: true,
+    tenant_id: String(tenant?.tenant_id || "default"),
+    updatedAt: inbox.updatedAt,
+    pending: pendingItems(inbox),
+    decided,
+  });
+});
+
+app.post("/admin/inbox", express.json({ limit: "512kb" }), (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  const tenant = resolveTenantFromRequest(req);
+  const cfg = tenantAutomation(tenant);
+  if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
+  const candidates = Array.isArray(req.body?.candidates)
+    ? req.body.candidates.slice(0, 200)
+    : [];
+  try {
+    const { inbox, added, updated } = upsertCandidates(
+      readInbox(cfg),
+      candidates,
+    );
+    safeWriteJsonFile(cfg.inboxPath, inbox);
+    return res.json({
+      ok: true,
+      added,
+      updated,
+      pending: pendingItems(inbox).length,
+    });
+  } catch (err) {
+    console.error("Inbox upsert failed", err);
+    return res.status(500).json({ error: "Failed to save inbox" });
+  }
+});
+
+app.post("/admin/inbox/:id", express.json(), (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  const tenant = resolveTenantFromRequest(req);
+  const cfg = tenantAutomation(tenant);
+  if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
+  const action = String(req.body?.action || "").toLowerCase();
+  try {
+    const result = decide(readInbox(cfg), req.params.id, action);
+    if (result.error) return res.status(400).json({ error: result.error });
+    let applied = { applied: [], skipped: [] };
+    if (action === "approve") {
+      applied = applyPatches(result.item, {
+        allowedFiles: cfg.writable,
+        readJson: (rel) => safeReadJsonFile(path.join(__dirname, rel), null),
+        writeJson: (rel, json) =>
+          safeWriteJsonFile(path.join(__dirname, rel), json),
+      });
+      result.item.applied = applied;
+    }
+    safeWriteJsonFile(cfg.inboxPath, result.inbox);
+    return res.json({ ok: true, item: result.item, ...applied });
+  } catch (err) {
+    console.error("Inbox decision failed", err);
+    return res.status(500).json({ error: "Failed to update inbox" });
+  }
+});
+
+// Everything that needs the owner this week, as an action list with deep
+// links into their desk. DB counts degrade to zero when no DB is configured.
+async function collectDigest(req, tenant, cfg, days) {
+  const tenantId = String(tenant?.tenant_id || "default");
+  const counts = { leads: 0, wall_photo: 0, race_splits: 0, paid: 0 };
+  try {
+    const [leads, subs, paid] = await Promise.all([
+      dbQuery(
+        "SELECT count(*)::int AS n FROM email_events WHERE tenant_id = $1 AND type = 'lead_captured' AND at >= now() - ($2::int * interval '1 day')",
+        [tenantId, days],
+      ),
+      dbQuery(
+        "SELECT kind, count(*)::int AS n FROM submissions WHERE tenant_id = $1 AND created_at >= now() - ($2::int * interval '1 day') GROUP BY kind",
+        [tenantId, days],
+      ),
+      dbQuery(
+        "SELECT count(*)::int AS n FROM orders WHERE tenant_id = $1 AND status = 'paid' AND created_at >= now() - ($2::int * interval '1 day')",
+        [tenantId, days],
+      ),
+    ]);
+    counts.leads = Number(leads?.rows?.[0]?.n || 0);
+    counts.paid = Number(paid?.rows?.[0]?.n || 0);
+    for (const r of subs?.rows || []) {
+      if (r.kind in counts) counts[r.kind] = Number(r.n || 0);
+    }
+  } catch {
+    counts.db = "unavailable";
+  }
+  const proto = String(
+    req.headers["x-forwarded-proto"] || req.protocol || "https",
+  );
+  const host = String(req.headers.host || "");
+  return buildDigest({
+    brand: String(tenant?.seo?.brandName || tenantId),
+    siteUrl: `${proto}://${host}`,
+    coachPath: cfg.coachPath,
+    days,
+    pending: pendingItems(readInbox(cfg)),
+    counts,
+  });
+}
+
+app.get("/admin/digest", async (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  const tenant = resolveTenantFromRequest(req);
+  const cfg = tenantAutomation(tenant);
+  if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
+  const digest = await collectDigest(req, tenant, cfg, rangeDays(req, 7));
+  return res.json({ ok: true, ...digest });
+});
+
+app.post("/admin/digest/send", async (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  const tenant = resolveTenantFromRequest(req);
+  const cfg = tenantAutomation(tenant);
+  if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
+  const to = cfg.digestTo || alertEmailTo;
+  const digest = await collectDigest(req, tenant, cfg, rangeDays(req, 7));
+  if (!to) {
+    return res.json({
+      ok: true,
+      sent: false,
+      reason: "no_recipient",
+      ...digest,
+    });
+  }
+  const email = await sendAlertEmail({
+    to,
+    subject: digest.subject,
+    body: digest.text,
+  });
+  return res.json({
+    ok: true,
+    sent: Boolean(email.ok),
+    error: email.error || "",
+    ...digest,
+  });
 });
 
 app.get("/api/health", (req, res) => {

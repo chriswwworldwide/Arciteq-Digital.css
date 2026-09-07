@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-07T21:57:58.305Z",
+  "items": [
+    {
+      "id": "event-afyb88yu",
+      "key": "event:hyrox-taipei:2027-03-12",
+      "kind": "event",
+      "title": "HYROX Taipei — 12–14 March 2027",
+      "summary": "New Asia-Pacific race on hyrox.com. Not one of our city guides yet.",
+      "source": "https://hyrox.com/event/hyrox-taipei/",
+      "data": {},
+      "apply": [],
+      "status": "ignored",
+      "createdAt": "2026-09-07T21:56:33.476Z",
+      "updatedAt": "2026-09-07T21:56:33.476Z",
+      "seenAt": "2026-09-07T21:56:33.476Z",
+      "decidedAt": "2026-09-07T21:57:58.305Z"
+    },
+    {
+      "id": "alert-f9n4qnea",
+      "key": "alert:x",
+      "kind": "alert",
+      "title": "Couldn't read dates for HYROX Osaka",
+      "summary": "Page layout changed.",
+      "source": "https://hyrox.com/event/hyrox-osaka/",
+      "data": {},
+      "apply": [],
+      "status": "pending",
+      "createdAt": "2026-09-07T21:56:33.476Z",
+      "updatedAt": "2026-09-07T21:56:33.476Z",
+      "seenAt": "2026-09-07T21:56:33.476Z",
+      "decidedAt": ""
+    }
+  ]
+}

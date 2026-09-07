@@ -98,6 +98,100 @@
     });
   }
 
+  const PLANS = {
+    program: {
+      id: "roxzone-plan-warrior-001",
+      name: "Warrior Program",
+      cta: "Start the Program",
+    },
+    hybrid: {
+      id: "roxzone-plan-hybrid-001",
+      name: "Hybrid Coaching",
+      cta: "Start Hybrid Coaching",
+    },
+    elite: {
+      id: "roxzone-plan-elite-001",
+      name: "Elite Race Prep",
+      cta: "Enquire about Elite",
+    },
+  };
+
+  function recommend(p) {
+    const goal = String(p.goal || "");
+    const exp = String(p.experience || "");
+    const days = String(p.days_per_week || "");
+    const inJakarta = /jakarta|jkt|tangerang|bekasi|depok|bogor/i.test(
+      String(p.city || ""),
+    );
+    const raced = exp === "2–4 races" || exp === "5+ races";
+    let weeksOut = null;
+    if (p.race_date) {
+      const t = new Date(`${p.race_date}T00:00:00`).getTime();
+      if (Number.isFinite(t)) weeksOut = (t - Date.now()) / (7 * 864e5);
+    }
+    if (
+      goal === "Podium / elite" ||
+      (raced && weeksOut !== null && weeksOut <= 16 && weeksOut > 0)
+    ) {
+      return {
+        key: "elite",
+        why:
+          goal === "Podium / elite"
+            ? "You're racing for a place, not a finish — that needs a fully individualised build with pacing and station strategy."
+            : "You've raced before and your race is inside 16 weeks — a dedicated race build gets more out of that window than general programming.",
+      };
+    }
+    if (/pregnan|post-natal/i.test(goal)) {
+      return {
+        key: inJakarta ? "hybrid" : "program",
+        why: inJakarta
+          ? "Training through pregnancy or a comeback is exactly where Dina's own experience counts — floor time for form checks plus weekly video review."
+          : "Dina programmes around your stage and checks your form on video each week; tell her in the notes where you are and she'll adjust.",
+      };
+    }
+    if (days === "2") {
+      return {
+        key: "program",
+        why: "Two sessions a week is best spent on a tight, structured programme you can actually stick to — upgrade when life gives you a third day.",
+      };
+    }
+    if (
+      inJakarta &&
+      (goal === "First Hyrox" ||
+        goal === "Faster time" ||
+        goal === "Doubles / relay")
+    ) {
+      return {
+        key: "hybrid",
+        why: "You're in Jakarta, so two floor sessions a month with Dina fix the station technique that costs first-timers and PB-chasers the most time.",
+      };
+    }
+    return {
+      key: "program",
+      why: "A structured weekly programme with the station library and monthly Q&A covers your goal — and Dina can move you to 1:1 coaching any time.",
+    };
+  }
+
+  function showZone(profile) {
+    const box = document.getElementById("zone-result");
+    if (!box) return null;
+    const rec = recommend(profile);
+    const plan = PLANS[rec.key];
+    document.getElementById("zone-plan").textContent = plan.name;
+    document.getElementById("zone-why").textContent = rec.why;
+    const cta = document.getElementById("zone-cta");
+    cta.textContent = plan.cta;
+    cta.href = "#plans";
+    box.hidden = false;
+    const card = document.querySelector(`[data-plan="${plan.id}"]`);
+    document
+      .querySelectorAll(".plan.recommended")
+      .forEach((el) => el.classList.remove("recommended"));
+    if (card && card.closest(".plan"))
+      card.closest(".plan").classList.add("recommended");
+    return plan.id;
+  }
+
   if (onboard && note) {
     const skip = onboard.querySelector("[data-skip]");
     if (skip) {
@@ -107,25 +201,23 @@
     }
     onboard.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if (!leadEmail) return;
       const data = new FormData(onboard);
       const profile = {};
       data.forEach((v, k) => {
         const s = String(v || "").trim();
         if (s) profile[k] = s;
       });
-      const btn = onboard.querySelector("button[type=submit]");
-      if (btn) btn.disabled = true;
+      const recommended = showZone(profile);
+      if (recommended) profile.recommended_plan = recommended;
+      onboard.hidden = true;
+      if (!leadEmail) return;
       try {
         await capture({ email: leadEmail, profile });
-        onboard.hidden = true;
         note.textContent =
           "Thanks — Dina has your details and will reply with a plan. Coached athletes get their programme in the TrueCoach app.";
       } catch {
         note.textContent =
           "Couldn't save that just now — your email still went through.";
-      } finally {
-        if (btn) btn.disabled = false;
       }
     });
   }

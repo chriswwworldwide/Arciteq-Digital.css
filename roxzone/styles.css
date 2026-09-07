@@ -988,6 +988,29 @@ section.block.alt {
   margin-top: 10px;
 }
 
+.zone-result {
+  margin-top: 22px;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 45, 149, 0.45);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.zone-result h4 {
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.05;
+}
+
+.zone-result p {
+  margin: 0 0 16px;
+}
+
+.plan.recommended {
+  outline: 3px solid var(--pink);
+  outline-offset: 2px;
+}
+
 /* Step 2: short onboarding questionnaire, revealed after the email lands */
 .capture .onboard {
   display: block;

@@ -305,3 +305,52 @@
     })
     .catch(() => {});
 })();
+
+// Race countdown from roxzone/data/events.json — hidden unless 'next' has a confirmed date.
+(function () {
+  const box = document.getElementById("countdown");
+  if (!box) return;
+  fetch("/roxzone/data/events.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((json) => {
+      const next = json && json.next;
+      if (!next || !/^\d{4}-\d{2}-\d{2}$/.test(String(next.date || ""))) return;
+      const target = new Date(`${next.date}T00:00:00+07:00`).getTime();
+      if (!Number.isFinite(target) || target < Date.now()) return;
+      document.getElementById("countdown-name").textContent = String(
+        next.name || "",
+      );
+      const dateEl = document.getElementById("countdown-date");
+      dateEl.dateTime = next.date;
+      dateEl.textContent = new Date(target).toLocaleDateString("en-GB", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        timeZone: "Asia/Jakarta",
+      });
+      if (typeof next.url === "string" && /^https:\/\//.test(next.url)) {
+        const link = document.getElementById("countdown-link");
+        link.href = next.url;
+        link.textContent = "Official race page";
+        link.rel = "noopener";
+        link.target = "_blank";
+      }
+      const tick = () => {
+        const left = Math.max(0, target - Date.now());
+        document.getElementById("cd-days").textContent = String(
+          Math.floor(left / 864e5),
+        );
+        document.getElementById("cd-hours").textContent = String(
+          Math.floor((left % 864e5) / 36e5),
+        );
+        document.getElementById("cd-mins").textContent = String(
+          Math.floor((left % 36e5) / 6e4),
+        );
+      };
+      tick();
+      setInterval(tick, 30000);
+      box.hidden = false;
+    })
+    .catch(() => {});
+})();

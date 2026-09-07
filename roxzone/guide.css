@@ -585,3 +585,63 @@
   letter-spacing: 0.02em;
   margin-bottom: 8px;
 }
+
+.countdown {
+  margin: 0 0 32px;
+  padding: 26px 28px;
+  border-radius: 16px;
+  background: var(--ink, #111);
+  color: #fff;
+}
+
+.countdown .eyebrow {
+  color: var(--pink);
+}
+
+.countdown h3 {
+  margin: 0 0 18px;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.1;
+}
+
+.countdown-nums {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.countdown-nums strong {
+  display: block;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.countdown-nums span {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.countdown-meta {
+  margin: 18px 0 0;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 15px;
+}
+
+.countdown-meta time {
+  color: #fff;
+}
+
+.countdown-meta a {
+  color: var(--pink);
+  font-weight: 700;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}

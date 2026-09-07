@@ -136,7 +136,10 @@ Build blocks (atomic, in order — each ends with a preview check and 3-step bro
    - **Fuel Zone** — DONE: `/roxzone/fuel-zone/` (race week, night before, race morning, during, cramps, recovery, racing abroad; not-medical-advice note; Dina to approve).
    - **Strength Zone** — DONE: carry-over lifts per station on Stations Prep (Bulgarian split squat, trap-bar DL, suitcase carry, hip thrust, etc.); Dina to approve.
    - **TrueCoach delivery** — DECIDED (Chris): coaching delivery lives in TrueCoach (stock video library + Dina's own clips). Plan cards say "delivered in the TrueCoach app"; footer "Athlete login" link reads `roxzone/data/links.json` → set `truecoach` to her login URL once the account exists (hidden until then). Dina to run the free trial first.
-   - Next: results wall / "Dina's week" (dated, consented), race countdown (confirmed dates only), maternity-window wording on Hybrid card/FAQ (floor sessions → video check-in or banked, ~Jan–mid-Mar).
+   - **Maternity window** — DONE: Hybrid card note + "How does coaching work while Dina is pregnant?" FAQ under the plans (floor sessions → live video form reviews or banked, ~Jan–mid-Mar 2027; Program/Online unchanged).
+   - **Results wall + Dina's week** — DONE: home `#wall` section driven by `roxzone/data/wall.json` (`athletes`: consented before/after results; `weeks`: dated notes, latest 3). Section hidden when both lists are empty. Seeded with Dina's own doubles progression only — add clients only with their OK.
+   - **Race countdown** — DONE: `/roxzone/events/` shows a days/hours/min countdown when `roxzone/data/events.json` → `next` has a confirmed `{ name, date, url }`; `null` keeps it hidden. Confirmed dates only.
+   - Next: "start here" quiz → plan recommendation (from the Ask Dina questionnaire), per-plan SEO pages, Athlete Mum page (after Feb), station-split comparison once verified splits exist.
 
 Open decisions (user-gated): confirm public prices (599k / 2.5m / 6m are working hypotheses); real hero stats (podiums, athletes coached); payment entity (UK/SG Stripe vs Xendit); real domain; IG/TikTok handles; event dates. Do not invent any of these.
 

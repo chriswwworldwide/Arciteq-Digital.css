@@ -251,6 +251,9 @@
   color: var(--ink);
 }
 
+.events-list[hidden] {
+  display: none;
+}
 .events-list {
   margin: 0;
   padding: 0;
@@ -1112,4 +1115,26 @@
 .slot-card .taken {
   font-size: 13px;
   color: var(--ink-3);
+}
+
+/* Book Dina */
+.checklist {
+  padding-left: 20px;
+  display: grid;
+  gap: 10px;
+}
+.calc-form textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 1rem;
+  background: #fff;
+  resize: vertical;
+}
+.calc-form textarea:focus {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
 }

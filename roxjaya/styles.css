@@ -1794,3 +1794,35 @@ footer a:hover {
   font-weight: 500;
   color: var(--ink-3);
 }
+
+/* Testimonials (hidden until testimonials.json has a real quote) */
+.quotes {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.quote {
+  margin: 0;
+  padding: 24px 26px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+}
+.quote p {
+  margin: 0 0 14px;
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+.quote p::before {
+  content: "\201C";
+  color: var(--pink);
+  font-weight: 700;
+  margin-right: 2px;
+}
+.quote footer {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.quote footer strong {
+  color: var(--ink);
+}

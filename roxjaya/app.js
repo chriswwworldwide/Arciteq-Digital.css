@@ -683,3 +683,41 @@
     /* analytics must never break the page */
   }
 })();
+
+/* Testimonials: real quotes from roxjaya/data/testimonials.json; the
+   section only appears once there is at least one complete row. */
+(function () {
+  const sec = document.getElementById("athletes-say");
+  const mount = document.getElementById("testimonials");
+  if (!sec || !mount) return;
+  const esc = (s) =>
+    String(s ?? "").replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
+  fetch("/roxjaya/data/testimonials.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) => {
+      const rows = (j?.items || [])
+        .filter((q) => q && String(q.quote || "").trim() && q.name)
+        .slice(0, 3);
+      if (!rows.length) return;
+      mount.innerHTML = rows
+        .map(
+          (q) => `<blockquote class="quote">
+          <p>${esc(q.quote)}</p>
+          <footer><strong>${esc(q.name)}</strong>${q.detail ? " · " + esc(q.detail) : ""}${q.plan ? " · " + esc(q.plan) : ""}</footer>
+        </blockquote>`,
+        )
+        .join("");
+      sec.hidden = false;
+    })
+    .catch(() => {});
+})();

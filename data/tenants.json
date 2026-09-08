@@ -148,6 +148,7 @@
           { "path": "/roxjaya/news/", "priority": "0.8" },
           { "path": "/roxjaya/jakarta-hybrid-scene/", "priority": "0.9" },
           { "path": "/roxjaya/advertise/", "priority": "0.5" },
+          { "path": "/roxjaya/book-dina/", "priority": "0.7" },
           { "path": "/roxjaya/results/", "priority": "0.9" },
           { "path": "/roxjaya/splits/", "priority": "0.9" }
         ]

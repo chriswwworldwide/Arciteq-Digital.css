@@ -141,6 +141,7 @@
     const btn = form.querySelector('button[type="submit"]');
     if (btn) btn.disabled = true;
     note.textContent = "Saving your details\u2026";
+    let detailsSaved = false;
     try {
       const saved = await fetch("/api/submissions", {
         method: "POST",
@@ -151,6 +152,7 @@
         const d = await saved.json().catch(() => ({}));
         throw new Error(String(d?.error || "Couldn\u2019t save your details"));
       }
+      detailsSaved = true;
       note.textContent = "Opening secure checkout\u2026";
       const res = await fetch("/create-checkout-session", {
         method: "POST",
@@ -169,7 +171,9 @@
     } catch (err) {
       note.classList.add("error");
       note.textContent =
-        "Couldn\u2019t start checkout \u2014 your details are saved; message Dina and she\u2019ll finish it by hand. (" +
+        (detailsSaved
+          ? "Couldn\u2019t start checkout \u2014 your details are saved; message Dina and she\u2019ll finish it by hand. ("
+          : "Couldn\u2019t send your details \u2014 message Dina directly and she\u2019ll set it up by hand. (") +
         String(err && err.message ? err.message : "error") +
         ")";
       if (btn) btn.disabled = false;

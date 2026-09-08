@@ -80,10 +80,18 @@
   const EDIT_LABEL = {
     summary: "Your 2–3 line summary",
     take: "Dina's take (optional)",
+    name: "Brand name",
+    url: "Their website (where the logo links)",
+    logo: "Logo image URL (optional)",
+    tagline: "Sponsor's one-liner (you can tidy it)",
   };
   const EDIT_HINT = {
     summary: "Facts in your own words — what happened, when, where.",
     take: "One line: what it means for Jakarta athletes.",
+    name: "As it should appear on the site.",
+    url: "Must start with https:// — check it opens.",
+    logo: "A PNG/SVG link. Leave blank to show the name only.",
+    tagline: "Shown under their logo. Keep it short.",
   };
   function renderInbox(inbox) {
     const el = document.getElementById("inbox-list");
@@ -106,8 +114,10 @@
         const fields = (i.editable || [])
           .map((f) => {
             const label = EDIT_LABEL[f] || f;
-            const need = f === "summary" ? " required" : "";
-            return `<label class="edit"><span>${esc(label)}</span><textarea name="${esc(f)}" rows="3" maxlength="600"${need} placeholder="${esc(EDIT_HINT[f] || "")}">${esc(i.data?.[f] || "")}</textarea></label>`;
+            const need =
+              f === "summary" || f === "url" || f === "name" ? " required" : "";
+            const rows = f === "summary" || f === "take" ? 3 : 1;
+            return `<label class="edit"><span>${esc(label)}</span><textarea name="${esc(f)}" rows="${rows}" maxlength="600"${need} placeholder="${esc(EDIT_HINT[f] || "")}">${esc(i.data?.[f] || "")}</textarea></label>`;
           })
           .join("");
         return `<li data-id="${esc(i.id)}">
@@ -115,6 +125,8 @@
           <p class="title">${esc(i.title)}</p>
           ${i.summary ? `<p class="summary">${esc(i.summary)}</p>` : ""}
           ${isNews && i.data?.sourceName ? `<p class="summary">${esc(i.data.sourceName)} · ${esc(i.data.date || "")}</p>` : ""}
+          ${i.kind === "sponsor" && i.data?.logo ? `<p class="summary"><img src="${esc(i.data.logo)}" alt="Sponsor logo" height="40" loading="lazy" /></p>` : ""}
+          ${i.kind === "sponsor" && i.data?.hint ? `<p class="summary">${esc(i.data.hint)}</p>` : ""}
           ${fields}
           <div class="actions">
             <button class="btn" data-action="approve">${ok}</button>
@@ -310,6 +322,13 @@
       pageLabel,
     );
     table(document.getElementById("traffic-sources"), t.sources, t.views, esc);
+    const out = document.getElementById("traffic-outbound");
+    if (!t.outbound?.length) {
+      out.innerHTML = `<tr><td class="muted">No sponsor clicks yet — nothing shows until a paid sponsor is live.</td></tr>`;
+    } else {
+      const total = t.outbound.reduce((n, r) => n + r.count, 0);
+      table(out, t.outbound, total, esc);
+    }
   }
 
   // ---- People ------------------------------------------------------------

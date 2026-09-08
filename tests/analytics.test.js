@@ -103,6 +103,7 @@ describe("summarizePageviews", () => {
       days: [],
       pages: [],
       sources: [],
+      outbound: [],
     });
   });
 });

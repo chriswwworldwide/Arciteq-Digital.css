@@ -1074,3 +1074,42 @@
   display: inline-flex;
   align-items: center;
 }
+
+/* Advertise page */
+.steps {
+  padding-left: 22px;
+  display: grid;
+  gap: 8px;
+}
+.sponsor-form {
+  align-items: start;
+}
+.sponsor-form .sf-wide {
+  grid-column: 1 / -1;
+}
+.sponsor-form .consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.sponsor-form .consent input {
+  width: 22px;
+  height: 22px;
+  min-height: 0;
+  margin-top: 2px;
+  flex: none;
+}
+.sponsor-form .calc-note.error {
+  color: #b3261e !important;
+}
+.slot-card .price {
+  font-weight: 800;
+  color: var(--ink);
+  margin-top: 4px !important;
+}
+.slot-card .taken {
+  font-size: 13px;
+  color: var(--ink-3);
+}

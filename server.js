@@ -45,6 +45,13 @@ import {
   buildDigest,
 } from "./src/inbox.js";
 import {
+  sponsorItems,
+  sanitizeSponsor,
+  buildSponsorCandidate,
+  extendPartner,
+  addDays,
+} from "./src/sponsors.js";
+import {
   pageviewsEnabled,
   validatePageview,
   summarizePageviews,
@@ -259,6 +266,24 @@ app.post(
               "UPDATE orders SET stripe_subscription_id = $1, updated_at = now() WHERE order_id = $2",
               [subscriptionId, orderId],
             );
+          }
+
+          if (isFirstTimeEvent) {
+            try {
+              await queueSponsorCandidates({
+                tenantId,
+                orderId,
+                email: normalizeEmail(customerEmail),
+              });
+            } catch (spErr) {
+              console.error(
+                "SPONSOR_QUEUE_FAILED",
+                JSON.stringify({
+                  orderId,
+                  message: String(spErr?.message || spErr),
+                }),
+              );
+            }
           }
 
           // Data-stitch: on a first-time paid event, bump the customer's running
@@ -545,15 +570,28 @@ app.post(
                 }),
               ],
             );
+            const periodEnd = isoFromUnix(
+              invoice?.lines?.data?.[0]?.period?.end ?? invoice?.period_end,
+            );
             await dbQuery(
               "UPDATE subscriptions SET status = 'active', current_period_end = COALESCE($2, current_period_end), updated_at = now() WHERE stripe_subscription_id = $1",
-              [
-                subscriptionId,
-                isoFromUnix(
-                  invoice?.lines?.data?.[0]?.period?.end ?? invoice?.period_end,
-                ),
-              ],
+              [subscriptionId, periodEnd],
             );
+            try {
+              renewSponsor({
+                tenantId,
+                orderId: String(known?.order_id || meta?.order_id || ""),
+                periodEnd,
+              });
+            } catch (spErr) {
+              console.error(
+                "SPONSOR_RENEW_FAILED",
+                JSON.stringify({
+                  subscriptionId,
+                  message: String(spErr?.message || spErr),
+                }),
+              );
+            }
             if (email) {
               try {
                 await stitchPaidOrder({
@@ -3076,6 +3114,83 @@ function readInbox(cfg) {
   return normalizeInbox(safeReadJsonFile(cfg.inboxPath, emptyInbox()));
 }
 
+function tenantById(tenantId) {
+  try {
+    return (
+      loadTenantsData().list.find(
+        (t) => String(t?.tenant_id || "default") === String(tenantId),
+      ) || null
+    );
+  } catch {
+    return null;
+  }
+}
+
+// Sponsorship rails: a paid order containing sponsor-slot products drops a
+// `sponsor` candidate into the tenant's inbox (owner approves before anything
+// shows). Sponsor details come from the buyer's latest `sponsor` submission.
+async function queueSponsorCandidates({ tenantId, orderId, email }) {
+  const tenant = tenantById(tenantId);
+  const cfg = tenantAutomation(tenant);
+  const partnersFile = String(tenant?.automation?.partners || "").trim();
+  if (!cfg || !partnersFile || !cfg.writable.includes(partnersFile)) return;
+  const order = await dbQuery(
+    "SELECT items, customer_email FROM orders WHERE order_id = $1",
+    [orderId],
+  );
+  const row = order?.rows?.[0];
+  if (!row) return;
+  const { byId } = loadProductsData();
+  const products = sponsorItems(row.items, byId);
+  if (!products.length) return;
+  const buyer = email || normalizeEmail(row.customer_email);
+  const sub = buyer
+    ? await dbQuery(
+        "SELECT payload FROM submissions WHERE tenant_id = $1 AND lower(email) = lower($2) AND kind = 'sponsor' ORDER BY created_at DESC LIMIT 1",
+        [tenantId, buyer],
+      )
+    : null;
+  const raw = sub?.rows?.[0]?.payload || {};
+  const checked = sanitizeSponsor(raw);
+  const sponsor = checked.sponsor || {
+    name: String(raw?.name || buyer || "Sponsor").slice(0, 60),
+    url: "",
+    logo: "",
+    tagline: "",
+  };
+  const candidates = products
+    .map((product) =>
+      buildSponsorCandidate({
+        orderId,
+        email: buyer,
+        product,
+        sponsor,
+        until: addDays(new Date(), 31),
+        partnersFile,
+      }),
+    )
+    .filter(Boolean);
+  if (!candidates.length) return;
+  const { inbox } = upsertCandidates(readInbox(cfg), candidates);
+  safeWriteJsonFile(cfg.inboxPath, inbox);
+}
+
+// Renewal paid: push the live partner's `until` forward. No owner step —
+// they already approved this sponsor.
+function renewSponsor({ tenantId, orderId, periodEnd }) {
+  if (!orderId) return;
+  const tenant = tenantById(tenantId);
+  const partnersFile = String(tenant?.automation?.partners || "").trim();
+  if (!partnersFile || partnersFile.includes("..")) return;
+  const abs = path.join(__dirname, partnersFile);
+  const json = safeReadJsonFile(abs, null);
+  if (!json) return;
+  const until = periodEnd
+    ? String(periodEnd).slice(0, 10)
+    : addDays(new Date(), 31);
+  if (extendPartner(json, orderId, until)) safeWriteJsonFile(abs, json);
+}
+
 app.get("/admin/inbox", (req, res) => {
   const denied = requireAdmin(req, res);
   if (denied) return denied;
@@ -3140,6 +3255,15 @@ app.post("/admin/inbox/:id", express.json(), (req, res) => {
         return res
           .status(400)
           .json({ error: "Write a short summary before publishing" });
+      }
+      if (result.item.kind === "sponsor") {
+        const p = result.item.apply?.[0]?.value;
+        const check = sanitizeSponsor(p);
+        if (check.error) {
+          return res
+            .status(400)
+            .json({ error: `${check.error} — fix it above, then approve` });
+        }
       }
       applied = applyPatches(result.item, {
         allowedFiles: cfg.writable,

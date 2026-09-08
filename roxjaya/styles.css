@@ -1747,3 +1747,50 @@ footer a:hover {
 .shot-form[hidden] {
   display: none;
 }
+
+/* Partners / sponsors (from partners.json; hidden until a paid row is live) */
+.partners {
+  margin: 8px auto 28px;
+}
+.partners-inline {
+  margin: 0 0 22px;
+}
+.partners-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 10px;
+}
+.partners-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+}
+.partner {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink-2);
+  text-decoration: none;
+  font-weight: 700;
+}
+.partner img {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+}
+.partner span {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-3);
+}

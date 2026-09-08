@@ -73,12 +73,15 @@ function topN(counter, n) {
  * Roll page-view rows ({ path, referrer_host, utm_source, visitor, at }) into
  * an owner-friendly summary. Visitors are counted per day (the browser's
  * visitor token rotates daily), so 'visitors' is a sum of daily uniques.
+ * Paths containing `/out/` are outbound clicks (sponsor/partner links): they
+ * are kept out of the page list and reported separately, uncapped.
  */
 export function summarizePageviews(rows, { top = 10 } = {}) {
   const list = Array.isArray(rows) ? rows : [];
   const byDay = new Map();
   const pages = new Map();
   const sources = new Map();
+  const outbound = new Map();
   let identified = 0;
   for (const r of list) {
     if (!r || typeof r !== "object") continue;
@@ -89,7 +92,13 @@ export function summarizePageviews(rows, { top = 10 } = {}) {
     if (r.visitor) d.visitors.add(String(r.visitor));
     byDay.set(day, d);
     const path = String(r.path || "/");
-    pages.set(path, (pages.get(path) || 0) + 1);
+    const out = path.indexOf("/out/");
+    if (out >= 0) {
+      const id = path.slice(out + 5).replace(/\/+$/, "") || "unknown";
+      outbound.set(id, (outbound.get(id) || 0) + 1);
+    } else {
+      pages.set(path, (pages.get(path) || 0) + 1);
+    }
     const src =
       short(r.utm_source) ||
       (r.referrer_host ? String(r.referrer_host) : null) ||
@@ -107,5 +116,6 @@ export function summarizePageviews(rows, { top = 10 } = {}) {
     days,
     pages: topN(pages, top),
     sources: topN(sources, top),
+    outbound: topN(outbound, 200),
   };
 }

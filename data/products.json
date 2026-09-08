@@ -1038,6 +1038,153 @@
         "ugcAngles": ["Race-day finish photo", "Station PB clip"]
       },
       "attributes": {}
+    },
+    {
+      "productId": "roxjaya-ad-results-001",
+      "tenant_id": "roxjaya",
+      "kind": "service",
+      "title": "Results board sponsor",
+      "description": "Your logo and link on the Indonesia results board and the split analyser — the two pages athletes return to after every race. One sponsor per month.",
+      "nicheCategory": {
+        "slug": "sponsorship",
+        "name": "Sponsorship"
+      },
+      "productType": {
+        "slug": "ad-slot",
+        "name": "Sponsor slot"
+      },
+      "seo": {
+        "slug": "results-board-sponsor",
+        "canonicalPath": "/roxjaya/advertise/#results",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/roxjaya/images/feature.jpg",
+          "alt": "Results board sponsor — Roxjaya Warriors sponsorship",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "price": {
+        "amount": 350000000,
+        "currency": "idr"
+      },
+      "billing": {
+        "interval": "month",
+        "intervalCount": 1
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "Roxjaya Warriors",
+      "tags": ["sponsorship", "hyrox", "jakarta", "results"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Be seen where Jakarta's Hyrox athletes actually look — results, splits and race plans",
+          "Monthly, cancel any time, live within a day of approval"
+        ],
+        "ugcAngles": ["Partner logo on the Indonesia results board"]
+      },
+      "attributes": {
+        "sponsorSlot": "results"
+      }
+    },
+    {
+      "productId": "roxjaya-ad-planner-001",
+      "tenant_id": "roxjaya",
+      "kind": "service",
+      "title": "Race planner sponsor",
+      "description": "Your logo and link across the Asia race planner and the Hyrox Jakarta page — hotels, flights and race-week reading. Ideal for travel, hotel and recovery brands.",
+      "nicheCategory": {
+        "slug": "sponsorship",
+        "name": "Sponsorship"
+      },
+      "productType": {
+        "slug": "ad-slot",
+        "name": "Sponsor slot"
+      },
+      "seo": {
+        "slug": "race-planner-sponsor",
+        "canonicalPath": "/roxjaya/advertise/#planner",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/roxjaya/images/feature.jpg",
+          "alt": "Race planner sponsor — Roxjaya Warriors sponsorship",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "price": {
+        "amount": 250000000,
+        "currency": "idr"
+      },
+      "billing": {
+        "interval": "month",
+        "intervalCount": 1
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "Roxjaya Warriors",
+      "tags": ["sponsorship", "hyrox", "jakarta", "planner"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Be seen where Jakarta's Hyrox athletes actually look — results, splits and race plans",
+          "Monthly, cancel any time, live within a day of approval"
+        ],
+        "ugcAngles": ["Partner logo on the Indonesia results board"]
+      },
+      "attributes": {
+        "sponsorSlot": "planner"
+      }
+    },
+    {
+      "productId": "roxjaya-ad-partner-001",
+      "tenant_id": "roxjaya",
+      "kind": "service",
+      "title": "Community partner",
+      "description": "Your logo in the Partners strip on every Roxjaya page footer plus the Warriors Wall. The entry-level slot for gyms, gear and nutrition brands.",
+      "nicheCategory": {
+        "slug": "sponsorship",
+        "name": "Sponsorship"
+      },
+      "productType": {
+        "slug": "ad-slot",
+        "name": "Sponsor slot"
+      },
+      "seo": {
+        "slug": "community-partner",
+        "canonicalPath": "/roxjaya/advertise/#partner",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/roxjaya/images/feature.jpg",
+          "alt": "Community partner — Roxjaya Warriors sponsorship",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "price": {
+        "amount": 150000000,
+        "currency": "idr"
+      },
+      "billing": {
+        "interval": "month",
+        "intervalCount": 1
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "Roxjaya Warriors",
+      "tags": ["sponsorship", "hyrox", "jakarta", "partner"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Be seen where Jakarta's Hyrox athletes actually look — results, splits and race plans",
+          "Monthly, cancel any time, live within a day of approval"
+        ],
+        "ugcAngles": ["Partner logo on the Indonesia results board"]
+      },
+      "attributes": {
+        "sponsorSlot": "partner"
+      }
     }
   ]
 }

@@ -128,6 +128,7 @@
 .station {
   padding: 36px 0;
   border-top: 1px solid var(--line);
+  scroll-margin-top: 110px;
 }
 
 .station:first-of-type {

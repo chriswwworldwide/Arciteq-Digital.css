@@ -501,8 +501,13 @@
         loginHint.textContent =
           "That key didn't work — check it and try again.";
       } else {
+        const note = `Couldn't load the numbers just now (the site may be running without its database). The How-to tab still works.`;
         document.getElementById("todo").innerHTML =
-          `<li class="is-clear">Couldn't load the numbers just now (the site may be running without its database). The How-to tab still works.</li>`;
+          `<li class="is-clear">${note}</li>`;
+        document.getElementById("traffic-stats").innerHTML =
+          `<p class="muted">${note}</p>`;
+        document.getElementById("people-list").innerHTML =
+          `<p class="muted">${note}</p>`;
       }
     });
   }

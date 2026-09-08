@@ -65,7 +65,7 @@
             <p>${esc(p.description || "")}</p>
             <p class="price">${idr(p.price?.amount)} / month</p>
             ${busy ? '<p class="taken">Taken right now \u2014 book and you go live when it frees up.</p>' : ""}
-            <button class="btn btn-light" type="button" data-pick="${esc(p.id)}">Pick this slot</button>
+            <button class="btn btn-primary" type="button" data-pick="${esc(p.productId)}">Pick this slot</button>
           </div>
         </li>`;
       })
@@ -75,7 +75,7 @@
       products
         .map(
           (p) =>
-            `<option value="${esc(p.id)}">${esc(p.title)} \u2014 ${idr(p.price?.amount)}/mo</option>`,
+            `<option value="${esc(p.productId)}">${esc(p.title)} \u2014 ${idr(p.price?.amount)}/mo</option>`,
         )
         .join("");
   }

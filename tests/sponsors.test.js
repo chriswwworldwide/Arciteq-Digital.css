@@ -186,3 +186,18 @@ describe("sponsors: click reporting", () => {
     expect(s.pages.map((p) => p.key)).toEqual(["/roxjaya/"]);
   });
 });
+
+describe("sponsors: advertise page uses real product ids", () => {
+  it("advertise.js reads productId (the field data/products.json uses)", async () => {
+    const fs = await import("node:fs");
+    const src = fs.readFileSync("roxjaya/advertise.js", "utf8");
+    const products = JSON.parse(fs.readFileSync("data/products.json", "utf8"));
+    const ads = (products.products || products).filter(
+      (p) => p.attributes?.sponsorSlot,
+    );
+    expect(ads.length).toBeGreaterThan(0);
+    for (const p of ads) expect(p.productId).toMatch(/^roxjaya-ad-/);
+    expect(src).toMatch(/data-pick="\$\{esc\(p\.productId\)\}"/);
+    expect(src).not.toMatch(/esc\(p\.id\)/);
+  });
+});

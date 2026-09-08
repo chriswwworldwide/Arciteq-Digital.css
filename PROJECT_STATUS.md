@@ -164,6 +164,24 @@ Direction note:
 
 - We have pivoted away from the “mini‑Amazon” framing. The target experience is curated (limited, quality-controlled catalog), trust-first (clear safety/fit/shipping/returns), and automation-first (dashboards + guardrails so it runs with minimal day-to-day involvement).
 
+### Roxjaya status snapshot (2026-09-08) — read this first when resuming
+
+**Where we are:** every agreed block is built, shell-tested (233/233, lint + type-check clean) and browser-tested (race planner, advertise + Book Dina recorded runs passed) on PR #42, branch `devin/1788474708-roxzone-landing`, latest commit `aa14d78`. Code work is finished; nothing meaningful is left to write. CI red X = empty `SONAR_TOKEN` secret only (owner recovering GitHub 2FA; then add secret + `sonar-project.properties`).
+
+**Built:** home (HYROX Certified Coach badge, hidden-until-real testimonials), 3 plan products (IDR monthly, Stripe subscription mode), per-plan SEO pages, Stations/Run/Taper/Fuel guides, Events + countdown, Results leaderboard, Splits analyser + databank, Warriors Wall (approval-gated), Ask Dina → data-stitch, anonymous analytics + private Coach's desk (`/roxjaya/coach/`), Hyrox Jakarta page + Asia Race Planner (cities.json), Jakarta Hybrid Scene, daily hyrox.com event sync → approval inbox, curated news feed → same inbox, Monday digest email with deep links, sponsorship rails (3 ad-slot products, `/roxjaya/advertise/`, partners.json paid-window, sponsor clicks in desk), Book Dina page (appearances.json + inquiry → People). Handbook: `roxjaya/HANDBOOK.md`.
+
+**Minor code nits (launch-week, not blocking):**
+
+- `partners.js` links reported `target=""` at runtime despite markup setting `_blank` — verify in a browser with a real partner row.
+- Rox Zone legacy `/api/capture` returns 404 (old alias) — remove or redirect.
+- Sponsor-click table populated state untested (needs DB).
+
+**Needs the owner (Chris):** merge PR #42; domain; Postgres + migrations 005–008; Stripe or Xendit live keys; GitHub secrets `ROXJAYA_SITE_URL`, `ROXJAYA_ADMIN_KEY` (= `ADMIN_API_KEY`), `SONAR_TOKEN`; hostnames in `data/tenants.json`.
+
+**Needs Dina (away as of 2026-09-08):** exact certification title (copy says "HYROX Certified Coach" provisionally); 1–3 real client quotes → `roxjaya/data/testimonials.json`; social handles + WhatsApp/contact; TrueCoach URL; digest email → `tenants.json` automation.digestTo; confirmed Hyrox Jakarta date → `events.json`; confirmed appearances → `appearances.json`; sponsor prices sign-off (Rp 3.5m / 2.5m / 1.5m per month); photo/bio sign-off.
+
+**Rule when resuming:** do not rebuild any of the above; pick from the nits or the owner/Dina lists. Current focus has moved to the pet site (content hub v2) on a separate branch off `main`.
+
 ## Visual system (current direction)
 
 The storefront's look is driven by ONE shared template so changes cascade site-wide:

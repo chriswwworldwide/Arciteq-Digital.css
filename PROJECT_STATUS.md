@@ -108,6 +108,19 @@ Direction note:
 
 - We have pivoted away from the “mini‑Amazon” framing. The target experience is curated (limited, quality-controlled catalog), trust-first (clear safety/fit/shipping/returns), and automation-first (dashboards + guardrails so it runs with minimal day-to-day involvement).
 
+### Project 3 (after the pet site): local lead-gen site — fast cash target ~£1,000/month within 1–2 months
+
+Idea (agreed in chat, 2026-09): a site that points people at businesses when they want something — "I want X in [city]" → short request form → the inquiry goes to 2–3 listed businesses that pay per lead (or a flat monthly listing). No stock, no shop; we own the intent and sell it. Fastest money of the three projects because it does not wait on SEO or a catalog.
+
+Shape:
+
+- One niche, one city to start. Candidates (Jakarta, warm via Dina's network): Hyrox/hybrid gyms and PTs, physios, dog groomers/vets/walkers.
+- Traffic from IG/TikTok + local search, not slow SEO; a directory/aggregator page is the funnel, the lead form is the product.
+- Price: Rp 50–150k (£5–15) per qualified lead or a flat monthly listing; 2–3 paying businesses = the £1,000/month target.
+- Reuses what is already built: tenant engine, `/api/submissions` + approval inbox, People/desk view, digest, recurring checkout for listings (same as Roxjaya ad slots). Re-skin, not new engine work.
+
+Open questions (owner): niche, city, price per lead, whether businesses are hand-recruited first (recommended — 5 by WhatsApp before any code).
+
 ## Visual system (current direction)
 
 The storefront's look is driven by ONE shared template so changes cascade site-wide:

@@ -82,6 +82,7 @@ console.log(
 );
 
 const app = express();
+app.set("trust proxy", 1);
 
 const PORT = process.env.PORT || 3000;
 
@@ -2132,6 +2133,8 @@ app.get("/admin/env", (req, res) => {
 // When you visit http://localhost:3000/, send users to the store entry point.
 // The old landing page remains available at /index.html.
 app.get("/", (req, res) => {
+  const tenant = resolveTenantFromRequest(req);
+  if (tenant.tenant_id === "roxjaya") return res.redirect(301, "/roxjaya/");
   return res.redirect(302, "/shop.html");
 });
 

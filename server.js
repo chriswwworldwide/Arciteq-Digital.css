@@ -33,7 +33,11 @@ import {
   isRenewalInvoice,
 } from "./src/subscriptions.js";
 import { sanitizeProfile, hasProfile } from "./src/lead-profile.js";
-import { validateSubmission, summarizePayloads } from "./src/submissions.js";
+import {
+  validateSubmission,
+  summarizePayloads,
+  createRateLimiter,
+} from "./src/submissions.js";
 import {
   emptyInbox,
   normalizeInbox,
@@ -67,6 +71,11 @@ import { freeShippingProgress } from "./src/free-shipping.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const submissionLimiter = createRateLimiter({
+  max: 10,
+  windowMs: 10 * 60 * 1000,
+});
 
 dotenv.config({ path: path.join(__dirname, ".env.local") });
 
@@ -2849,12 +2858,20 @@ app.post("/api/submissions", async (req, res) => {
   try {
     const tenant = resolveTenantFromRequest(req);
     const tenantId = String(tenant?.tenant_id || "default");
+    if (!submissionLimiter.check(`${tenantId}:${req.ip}`).ok) {
+      return res
+        .status(429)
+        .json({ error: "Too many submissions — try again in a few minutes" });
+    }
     const email = normalizeEmail(req.body?.email);
     if (!email || !isValidEmail(email)) {
       return res.status(400).json({ error: "Valid email is required" });
     }
     const checked = validateSubmission(tenant, req.body);
-    if (checked.error) return res.status(400).json({ error: checked.error });
+    if (checked.error) {
+      if (checked.reason === "honeypot") return res.json({ ok: true });
+      return res.status(400).json({ error: checked.error });
+    }
     const suppliedToken = String(req.body?.token || "").trim() || null;
 
     const cust = await dbQuery(

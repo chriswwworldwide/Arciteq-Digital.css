@@ -1827,3 +1827,79 @@ footer a:hover {
 .quote footer strong {
   color: var(--ink);
 }
+
+/* Sticky call-to-action: shown once the hero scrolls out, mobile-first. */
+.sticky-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(17, 17, 17, 0.94);
+  backdrop-filter: blur(6px);
+  transform: translateY(110%);
+  transition: transform 0.25s ease;
+}
+
+.sticky-cta[hidden] {
+  display: flex;
+}
+
+.sticky-cta.is-visible {
+  transform: translateY(0);
+}
+
+.sticky-cta .btn {
+  flex: 1;
+  justify-content: center;
+  text-align: center;
+  min-height: 48px;
+  margin: 0;
+}
+
+body.has-sticky-cta {
+  padding-bottom: 76px;
+}
+
+@media (min-width: 900px) {
+  .sticky-cta {
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+    border-radius: 999px;
+    padding: 8px;
+  }
+
+  .sticky-cta .btn {
+    flex: 0 0 auto;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  body.has-sticky-cta {
+    padding-bottom: 0;
+  }
+}
+
+#pelatih ul {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+#pelatih li a {
+  font-weight: 700;
+}
+
+.hp {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

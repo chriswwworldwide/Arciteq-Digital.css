@@ -9,6 +9,66 @@ import { sanitizeProfile } from "./lead-profile.js";
 
 const KIND_RE = /^[a-z][a-z0-9_]{1,39}$/;
 
+/** Serialised payload cap (bytes). Well above any real form, far below abuse. */
+export const SUBMISSION_MAX_BYTES = 8 * 1024;
+/** Hidden form fields real people never fill in; bots do. */
+export const HONEYPOT_FIELDS = ["website", "url_confirm", "fax"];
+const URL_RE = /https?:\/\/|www\.|\.(com|net|org|io|xyz|ru|cn)\b/gi;
+const SPAM_WORDS =
+  /\b(casino|viagra|cialis|crypto ?signal|forex|loan approval|seo service|backlinks?|escort|porn|betting|slot ?online|judi|togel)\b/i;
+
+/**
+ * Cheap heuristics for the free-text parts of a submission. Returns a reason
+ * string when the payload looks like spam, else null. Pure.
+ */
+export function spamReason(body) {
+  for (const f of HONEYPOT_FIELDS) {
+    const v = body?.[f] ?? body?.payload?.[f];
+    if (typeof v === "string" && v.trim()) return "honeypot";
+  }
+  const texts = Object.values(body?.payload || {})
+    .flatMap((v) => (Array.isArray(v) ? v : [v]))
+    .filter((v) => typeof v === "string");
+  const joined = texts.join(" ");
+  if (!joined) return null;
+  if ((joined.match(URL_RE) || []).length > 2) return "too_many_links";
+  if (SPAM_WORDS.test(joined)) return "blocked_words";
+  const letters = joined.replace(/\s/g, "");
+  if (letters.length >= 40) {
+    const alnum = (letters.match(/[\p{L}\p{N}]/gu) || []).length;
+    if (alnum / letters.length < 0.5) return "gibberish";
+    if (/(.)\1{9,}/.test(letters)) return "repeated_chars";
+  }
+  return null;
+}
+
+/**
+ * Fixed-window per-key limiter (e.g. per IP). Pure apart from its own Map;
+ * `now` is injectable for tests. Entries expire lazily.
+ */
+export function createRateLimiter({
+  max = 10,
+  windowMs = 10 * 60 * 1000,
+} = {}) {
+  const hits = new Map();
+  return {
+    check(key, now = Date.now()) {
+      const k = String(key || "anon");
+      const cur = hits.get(k);
+      if (!cur || now - cur.start >= windowMs) {
+        hits.set(k, { start: now, n: 1 });
+        return { ok: true, remaining: max - 1 };
+      }
+      cur.n += 1;
+      if (hits.size > 5000) {
+        for (const [kk, v] of hits)
+          if (now - v.start >= windowMs) hits.delete(kk);
+      }
+      return { ok: cur.n <= max, remaining: Math.max(0, max - cur.n) };
+    },
+  };
+}
+
 /** Kinds a tenant accepts, from tenants.json → submissions.kinds. */
 export function allowedKinds(tenant) {
   const kinds = tenant?.submissions?.kinds;
@@ -29,8 +89,13 @@ export function validateSubmission(tenant, body) {
   if (!allowedKinds(tenant).includes(kind)) {
     return { error: "Unknown submission kind" };
   }
+  const spam = spamReason(body);
+  if (spam) return { error: "Submission rejected", reason: spam };
   const payload = sanitizeProfile(body?.payload);
   if (!Object.keys(payload).length) return { error: "Empty payload" };
+  if (JSON.stringify(payload).length > SUBMISSION_MAX_BYTES) {
+    return { error: "Submission too large" };
+  }
   return { kind, payload };
 }
 

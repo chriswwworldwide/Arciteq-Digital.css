@@ -4,6 +4,9 @@ import {
   validateSubmission,
   summarizePayloads,
   percentileRank,
+  spamReason,
+  createRateLimiter,
+  SUBMISSION_MAX_BYTES,
 } from "../src/submissions.js";
 
 const tenant = { tenant_id: "t", submissions: { kinds: ["race_splits"] } };
@@ -40,6 +43,67 @@ describe("validateSubmission", () => {
       allowedKinds({ submissions: { kinds: ["ok_1", "Bad", 3] } }),
     ).toEqual(["ok_1"]);
     expect(allowedKinds(null)).toEqual([]);
+  });
+});
+
+describe("spam and abuse guards", () => {
+  it("flags a filled honeypot (top level or inside payload)", () => {
+    expect(spamReason({ website: "x", payload: { a: "hi" } })).toBe("honeypot");
+    expect(spamReason({ payload: { fax: "1", a: "hi" } })).toBe("honeypot");
+    expect(spamReason({ website: "  ", payload: { a: "hi" } })).toBeNull();
+  });
+
+  it("allows normal captions, rejects link dumps, banned words and gibberish", () => {
+    expect(
+      spamReason({ payload: { caption: "Sled push felt strong at PIK2!" } }),
+    ).toBeNull();
+    expect(
+      spamReason({
+        payload: { caption: "see https://a.com https://b.com https://c.com" },
+      }),
+    ).toBe("too_many_links");
+    expect(spamReason({ payload: { caption: "best casino bonus" } })).toBe(
+      "blocked_words",
+    );
+    expect(spamReason({ payload: { caption: "judi slot online murah" } })).toBe(
+      "blocked_words",
+    );
+    expect(
+      spamReason({
+        payload: { caption: "!!!!@@@@####$$$$%%%%^^^^&&&&****(((())))" },
+      }),
+    ).toBe("gibberish");
+    expect(
+      spamReason({
+        payload: { caption: "a".repeat(20) + "zzzzzzzzzzzz" + "b".repeat(20) },
+      }),
+    ).toBe("repeated_chars");
+  });
+
+  it("validateSubmission rejects spam with a reason and oversized payloads", () => {
+    const spam = validateSubmission(tenant, {
+      kind: "race_splits",
+      website: "bot",
+      payload: { run_1: 300 },
+    });
+    expect(spam).toEqual({ error: "Submission rejected", reason: "honeypot" });
+
+    const big = {};
+    for (let i = 0; i < 24; i += 1) big[`f_${i}`] = "sled push row ski erg ".repeat(25);
+    expect(JSON.stringify(big).length).toBeGreaterThan(SUBMISSION_MAX_BYTES);
+    expect(
+      validateSubmission(tenant, { kind: "race_splits", payload: big }),
+    ).toEqual({ error: "Submission too large" });
+  });
+
+  it("rate limiter caps hits per key per window and resets after it", () => {
+    const rl = createRateLimiter({ max: 3, windowMs: 1000 });
+    expect(rl.check("ip1", 0).ok).toBe(true);
+    expect(rl.check("ip1", 10).ok).toBe(true);
+    expect(rl.check("ip1", 20)).toEqual({ ok: true, remaining: 0 });
+    expect(rl.check("ip1", 30).ok).toBe(false);
+    expect(rl.check("ip2", 30).ok).toBe(true);
+    expect(rl.check("ip1", 1001).ok).toBe(true);
   });
 });
 

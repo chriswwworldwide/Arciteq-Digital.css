@@ -602,7 +602,12 @@
       const res = await fetch("/api/submissions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, kind: "wall_photo", payload }),
+        body: JSON.stringify({
+          email,
+          kind: "wall_photo",
+          payload,
+          website: String(data.get("website") || ""),
+        }),
       });
       saved = res.ok;
     } catch {
@@ -720,4 +725,35 @@
       sec.hidden = false;
     })
     .catch(() => {});
+})();
+
+// Sticky "Start training" bar: appears once the hero has scrolled away and
+// hides again while the plans section (its own destination) is on screen.
+(function () {
+  const bar = document.getElementById("sticky-cta");
+  const hero = document.querySelector(".hero");
+  const plans = document.getElementById("plans");
+  if (!bar || !hero || !("IntersectionObserver" in window)) return;
+  bar.hidden = false;
+  document.body.classList.add("has-sticky-cta");
+  let heroVisible = true;
+  let plansVisible = false;
+  const update = () =>
+    bar.classList.toggle("is-visible", !heroVisible && !plansVisible);
+  new IntersectionObserver(
+    (entries) => {
+      heroVisible = entries[0].isIntersecting;
+      update();
+    },
+    { threshold: 0.15 },
+  ).observe(hero);
+  if (plans) {
+    new IntersectionObserver(
+      (entries) => {
+        plansVisible = entries[0].isIntersecting;
+        update();
+      },
+      { threshold: 0.2 },
+    ).observe(plans);
+  }
 })();

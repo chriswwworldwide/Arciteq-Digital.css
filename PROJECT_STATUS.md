@@ -180,6 +180,16 @@ Direction note:
 
 **Needs Dina (away as of 2026-09-08):** exact certification title (copy says "HYROX Certified Coach" provisionally); 1–3 real client quotes → `roxjaya/data/testimonials.json`; social handles + WhatsApp/contact; TrueCoach URL; digest email → `tenants.json` automation.digestTo; confirmed Hyrox Jakarta date → `events.json`; confirmed appearances → `appearances.json`; sponsor prices sign-off (Rp 3.5m / 2.5m / 1.5m per month); photo/bio sign-off.
 
+**Update 2026-09-16 — live on Railway.** Deployed via CLI (project `devoted-passion`, service `roxjaya-web`, Postgres attached, migrations 001–008 applied); `https://roxjaya-web-production.up.railway.app/roxjaya/`. Custom domain `roxjaya.com`/`www` created in Railway, awaiting Chris's Namecheap DNS records; then Google Search Console (Domain property, TXT) + sitemap submit + Bing import. Also shipped: "Forged in Jakarta" wording (Dina born in Purwakarta), Indonesian SEO terms (pelatih HYROX Indonesia, HYROX Jakarta, analisis split HYROX, program latihan HYROX, komunitas/jadwal…) in meta + a Bahasa section, sticky "Start training / Free split analysis" CTA, and submission hardening (honeypot, 10/10-min per tenant+IP rate limit, link/keyword/gibberish filter, 8 KB payload cap). Wall photos still travel via WhatsApp — the 5 MB / JPG-PNG / 3-photo limit is stated copy, enforced by Dina at approval, not a server upload.
+
+**Next Roxjaya block — Training Timeline / Projected Progress (`/roxjaya/timeline/`), requested 2026-09-16:**
+
+- Intake: age, weight, sporting history, self-assessed fitness (A–D with descriptions), sessions/week (1–4), target event (from events.json) or "12 months" horizon; optional custom start date. Dina can offer a short paid/comp assessment session as the intro.
+- Output: week-by-week timeline (build → peak → taper), projected progress **as ranges** with a "typical, not guaranteed" line, milestones, recommended Asia races along the way, division suggestion (Open/Pro/Doubles), taper guide + race-day checklist (kit the night before, arrive an hour earlier than you think, etc.).
+- Branches: <8 weeks runway → finish-strong plan + suggest next race; 1-year view for "where will I be in a year".
+- Conversions: "Lock in this plan" → plan checkout with a timeline discount code; "email me my plan" (lead capture); shareable milestone card; 4-week re-assessment nudge feeding the Coach's desk.
+- Data-driven from `roxjaya/data/progression.json` (rates per level/sessions), reuse splits.js coaching map and events.json. Local files only; engine reuse = submissions + checkout.
+
 **Rule when resuming:** do not rebuild any of the above; pick from the nits or the owner/Dina lists. Current focus has moved to the pet site (content hub v2) on a separate branch off `main`.
 
 ## Visual system (current direction)

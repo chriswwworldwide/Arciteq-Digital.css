@@ -81,6 +81,8 @@ describe("summarizePageviews", () => {
     expect(s.views).toBe(5);
     expect(s.visitors).toBe(3);
     expect(s.identified).toBe(1);
+    expect(s.unique_visitors).toBe(3);
+    expect(s.returning).toBe(0);
     expect(s.days).toEqual([
       { day: "2026-09-01", views: 3, visitors: 2 },
       { day: "2026-09-02", views: 1, visitors: 1 },
@@ -95,10 +97,21 @@ describe("summarizePageviews", () => {
     ]);
   });
 
+  it("counts visitors seen on more than one day as returning", () => {
+    const s = summarizePageviews([
+      ...rows,
+      { path: "/", visitor: "a", at: "2026-09-03T08:00:00Z" },
+    ]);
+    expect(s.unique_visitors).toBe(3);
+    expect(s.returning).toBe(1);
+  });
+
   it("handles empty input", () => {
     expect(summarizePageviews(null)).toEqual({
       views: 0,
       visitors: 0,
+      unique_visitors: 0,
+      returning: 0,
       identified: 0,
       days: [],
       pages: [],

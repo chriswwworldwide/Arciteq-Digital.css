@@ -632,17 +632,17 @@
   });
 })();
 
-// Page-view beacon: cookie-free, no personal data. A random visitor id is
-// regenerated every day so "visitors today" works without tracking anyone
-// across days. Athletes who already have a private splits token are stitched
+// Page-view beacon: cookie-free, no personal data. A random visitor id lives
+// in localStorage for 30 days so returning visitors can be counted without
+// identifying anyone. Athletes who already have a private splits token are stitched
 // onto their own record so Dina can see which pages her leads read.
 (function () {
   if (/\/coach\/?$/.test(location.pathname)) return;
   let visitor = "";
   try {
-    const today = new Date().toISOString().slice(0, 10);
+    const now = Date.now();
     const raw = JSON.parse(localStorage.getItem("roxjaya.visitor") || "null");
-    if (raw && raw.day === today && /^[a-f0-9]{16}$/.test(raw.id)) {
+    if (raw && Number(raw.exp) > now && /^[a-f0-9]{16}$/.test(raw.id)) {
       visitor = raw.id;
     } else {
       const bytes = new Uint8Array(8);
@@ -652,7 +652,7 @@
       );
       localStorage.setItem(
         "roxjaya.visitor",
-        JSON.stringify({ day: today, id: visitor }),
+        JSON.stringify({ exp: now + 30 * 24 * 60 * 60 * 1000, id: visitor }),
       );
     }
   } catch {

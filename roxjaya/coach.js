@@ -292,7 +292,7 @@
   function renderTraffic() {
     const t = traffic || {};
     document.getElementById("traffic-stats").innerHTML = [
-      [t.views || 0, `page views, ${t.days || days} days`],
+      [t.views || 0, `page views, ${days} days`],
       [t.unique_visitors || 0, "unique visitors"],
       [t.returning || 0, "came back on another day"],
       [t.identified || 0, "views by people you know"],

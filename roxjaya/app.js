@@ -402,10 +402,22 @@
 (function () {
   const box = document.getElementById("countdown");
   if (!box) return;
+  const fromPlanner = () =>
+    fetch("/roxjaya/data/cities.json", { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((json) => {
+        const today = new Date().toISOString().slice(0, 10);
+        const races = ((json && json.cities) || [])
+          .map((c) => c.race || {})
+          .filter((r) => r.status === "confirmed" && r.start >= today)
+          .sort((a, b) => a.start.localeCompare(b.start));
+        const r = races[0];
+        return r ? { name: r.name, date: r.start, url: r.source } : null;
+      });
   fetch("/roxjaya/data/events.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : null))
-    .then((json) => {
-      const next = json && json.next;
+    .then((json) => (json && json.next) || fromPlanner())
+    .then((next) => {
       if (!next || !/^\d{4}-\d{2}-\d{2}$/.test(String(next.date || ""))) return;
       const target = new Date(`${next.date}T00:00:00+07:00`).getTime();
       if (!Number.isFinite(target) || target < Date.now()) return;

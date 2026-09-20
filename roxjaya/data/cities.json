@@ -14,7 +14,10 @@
         "status": "tbc",
         "dates": null,
         "expected": "Next edition expected mid-2027 — date not yet announced by HYROX.",
-        "last": { "dates": "27–28 June 2026", "athletes": "~11,200" },
+        "last": {
+          "dates": "27–28 June 2026",
+          "athletes": "~11,200"
+        },
         "venue": "Nusantara International Convention Exhibition (NICE)",
         "address": "Jl. M.H. Thamrin, Pantai Indah Kapuk 2 (PIK2), Tangerang, Banten 15214",
         "source": "https://hyrox.com/events/",
@@ -153,6 +156,85 @@
       ],
       "meetup": null,
       "coachNote": "Singapore is the smart 'second race' 5 months after Jakarta: same climate, same time zone, short flight. Dina runs a Singapore-week taper for her Hybrid and Elite athletes."
+    },
+    {
+      "slug": "kuala-lumpur",
+      "name": "Kuala Lumpur",
+      "country": "Malaysia",
+      "flag": "🇲🇾",
+      "tagline": "Malaysia's first-ever Hyrox and the last Asia-Pacific race of 2026 — a four-day weekend, two hours from Jakarta.",
+      "race": {
+        "name": "AirAsia HYROX Kuala Lumpur",
+        "status": "confirmed",
+        "dates": "10–13 December 2026",
+        "start": "2026-12-10",
+        "venue": "Malaysia International Trade and Exhibition Centre (MITEC)",
+        "address": "8 Jalan Dutamas 2, Kompleks Kerajaan, 50480 Kuala Lumpur",
+        "source": "https://hyrox.com/event/hyrox-kuala-lumpur/",
+        "sourceLabel": "hyrox.com event page"
+      },
+      "gettingThere": [
+        "MITEC sits on Jalan Dutamas next to Mont Kiara and Publika, about 15 min north-west of KL Sentral by car off-peak, 30–40 min in traffic. No train stops at the door — Grab is the way in.",
+        "From KLIA: KLIA Ekspres to KL Sentral (28 min) then Grab 15–20 min, or a Grab/taxi straight from the airport (≈ 50–60 min, ≈ RM 80–120).",
+        "Four race days (Thu–Sun) with divisions spread across them — check which day your division races before you book flights; it's assigned, not chosen.",
+        "Parking is on site but race-day traffic around Dutamas is heavy; if you're driving, arrive 2 hours before your wave."
+      ],
+      "hotels": [
+        {
+          "area": "Mont Kiara / Publika (closest)",
+          "picks": "Serviced apartments and mid-range hotels 5–10 min from MITEC, with cafés and a supermarket for race-morning food.",
+          "range": "≈ RM 250–600 / night"
+        },
+        {
+          "area": "KL Sentral / Bangsar",
+          "picks": "Best balance: airport train link, 15–20 min to the venue, Bangsar's restaurants for the night after.",
+          "range": "≈ RM 300–700 / night"
+        },
+        {
+          "area": "Bukit Bintang / KLCC",
+          "picks": "For the tourists in the group — malls, Jalan Alor, Petronas Towers — budget 30–40 min to MITEC in traffic.",
+          "range": "≈ RM 300–900 / night"
+        }
+      ],
+      "flights": [
+        {
+          "from": "Jakarta (CGK)",
+          "time": "~2h direct",
+          "airlines": "AirAsia (title sponsor), Batik Air, Malaysia Airlines, Garuda",
+          "fare": "≈ Rp 1.5–3m return"
+        },
+        {
+          "from": "Surabaya / Bali",
+          "time": "~2h 30m–3h direct",
+          "airlines": "AirAsia, Batik Air, Malaysia Airlines",
+          "fare": "≈ Rp 1.8–3.5m return"
+        }
+      ],
+      "food": [
+        "Pre-race: nasi lemak without the sambal, chicken rice, roti canai with dhal — easy carbs on every corner.",
+        "Race morning: Publika and Mont Kiara cafés open early; 99 Speedmart and KK Mart for bananas, rice and isotonic.",
+        "Recovery: Bangsar or Jalan Alor for grilled satay, chicken wings and cendol for the sugar.",
+        "Hydration: December is monsoon season — humid 24–32 °C with afternoon downpours — treat it like Jakarta and start the day before."
+      ],
+      "city": [
+        "Bahasa Indonesia works almost everywhere — the easiest away race for language.",
+        "Cards and Touch 'n Go eWallet cover most things; Grab for every trip, LRT/MRT for the city centre.",
+        "Bring a light rain layer for December; the venue is air-conditioned cold.",
+        "No visa needed for Indonesians for short stays — passport with 6 months' validity."
+      ],
+      "nightAfter": [
+        "Bangsar: bars and restaurants ten minutes from KL Sentral — book ahead on race weekend.",
+        "Changkat Bukit Bintang for the louder night; TREC for the very late one.",
+        "Recovery version: Publika for dinner, early night, Batu Caves at sunrise if the legs allow.",
+        "Sunday: KLCC park and the Petronas Towers for the group photo."
+      ],
+      "meetup": null,
+      "coachNote": "Two hours from Jakarta, same language, cheap AirAsia fares — KL is the obvious first race abroad for Indonesian Warriors. A 12-week block from mid-September lands on race week.",
+      "photo": {
+        "src": "/roxjaya/images/cities/kuala-lumpur.jpg",
+        "alt": "Kuala Lumpur skyline at night with the Petronas Towers and KL Tower",
+        "credit": "Photo: Lee Wei, CC BY 2.0"
+      }
     },
     {
       "slug": "seoul",

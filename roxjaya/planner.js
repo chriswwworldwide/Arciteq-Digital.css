@@ -98,7 +98,15 @@
     const stamp = `<p class="plan-stamp">Hotel, fare and food notes are pointers, not quotes — checked ${esc(
       checked,
     )}. Check live prices before you book.</p>`;
+    const photo = c.photo
+      ? `<figure class="plan-city-photo"><img src="${esc(c.photo.src)}" alt="${esc(c.photo.alt || "")}" loading="lazy" width="1600" height="685" />${
+          c.photo.credit
+            ? `<figcaption>${esc(c.photo.credit)}</figcaption>`
+            : ""
+        }</figure>`
+      : "";
     return `<article class="plan-city" id="city-${esc(c.slug)}">
+      ${photo}
       <header class="plan-city-head">
         <h2><span aria-hidden="true">${esc(c.flag || "")}</span> ${esc(c.name)} <small>${esc(c.country)}</small></h2>
         <p class="lead">${esc(c.tagline)}</p>

@@ -1,0 +1,4 @@
+{
+  "note": "Real client quotes only, in the athlete's own words, with their permission. The home page section stays hidden until at least one row has `quote` and `name`. Fields: quote, name, detail (e.g. 'Hyrox Jakarta 2025, 1:21'), plan (optional).",
+  "items": []
+}

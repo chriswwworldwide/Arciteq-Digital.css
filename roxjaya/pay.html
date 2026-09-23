@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pay for your plan — bank transfer to Dina | Roxjaya Warriors</title>
+    <meta
+      name="description"
+      content="Reserve your Roxjaya coaching plan and pay by BCA bank transfer or QRIS. Send Dina the proof and she activates your programme in TrueCoach."
+    />
+    <link rel="canonical" href="/roxjaya/pay/" />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="stylesheet" href="/roxjaya/styles.css" />
+    <link rel="stylesheet" href="/roxjaya/guide.css" />
+  </head>
+  <body>
+    <header class="masthead wrap">
+      <a href="/roxjaya/" style="color: inherit; text-decoration: none">
+        <h1>
+          <span class="wordmark"
+            >R<span class="o">O</span>XJAYA WARRIORS
+            <span class="sig" aria-label="by Dina Rosdiana"
+              ><span class="sig-text">by Dina Rosdiana</span
+              ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+                <path
+                  d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                  fill="currentColor"
+                /></svg
+            ></span>
+          </span>
+        </h1>
+      </a>
+      <p class="city">Jakarta</p>
+    </header>
+
+    <div class="nav">
+      <div class="wrap">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          Menu
+        </button>
+        <ul class="menu" id="menu">
+          <li><a href="/roxjaya/">Home</a></li>
+          <li><a href="/roxjaya/stations-prep/">Stations Prep</a></li>
+          <li><a href="/roxjaya/run-zone/">Run Zone</a></li>
+          <li><a href="/roxjaya/fuel-zone/">Fuel Zone</a></li>
+          <li><a href="/roxjaya/taper-zone/">Taper Zone</a></li>
+          <li><a href="/roxjaya/events/">Upcoming Events</a></li>
+          <li><a href="/roxjaya/race-planner/">Race planner</a></li>
+          <li><a href="/roxjaya/news/">News</a></li>
+          <li><a href="/roxjaya/jakarta-hybrid-scene/">Jakarta scene</a></li>
+          <li><a href="/roxjaya/results/">Results</a></li>
+          <li><a href="/roxjaya/splits/">Split analyser</a></li>
+          <li><a href="/roxjaya/#plans">Subscriptions</a></li>
+          <li>
+            <a class="chat-zone" href="/roxjaya/#ask"
+              ><span class="dot"></span> Ask Dina</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="guide-hero">
+      <div class="wrap">
+        <div class="guide-hero-text">
+          <ol class="crumbs">
+            <li><a href="/roxjaya/">Roxjaya</a></li>
+            <li><a href="/roxjaya/#plans">Subscriptions</a></li>
+            <li>Pay</li>
+          </ol>
+          <p class="eyebrow">Reserve &amp; pay</p>
+          <h2>Pay Dina <em>directly</em> by bank transfer.</h2>
+          <p class="lead">
+            No card gateway, no fees — the way most Jakarta athletes already pay
+            their coach. Reserve your place, transfer to Dina's BCA account with
+            your reference, send her the proof, and your programme goes live in
+            TrueCoach.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap guide">
+      <aside class="toc" aria-label="Steps">
+        <p>Three steps</p>
+        <ol>
+          <li><a href="#reserve">Reserve your place</a></li>
+          <li><a href="#transfer">Make the transfer</a></li>
+          <li><a href="#proof">Send the proof</a></li>
+        </ol>
+      </aside>
+
+      <div class="article">
+        <article class="station" id="reserve">
+          <span class="num">1</span>
+          <h3>Reserve your place</h3>
+          <form class="calc-form sponsor-form" id="pay-form" autocomplete="on">
+            <label class="sf-wide">
+              <span>Plan</span>
+              <select name="plan" id="pay-plan" required>
+                <option value="">Loading plans…</option>
+              </select>
+            </label>
+            <p class="plan-source sf-wide" id="pay-plan-summary"></p>
+            <label>
+              <span>Your name</span>
+              <input
+                type="text"
+                name="name"
+                maxlength="80"
+                required
+                autocomplete="name"
+              />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+            <label>
+              <span>WhatsApp number</span>
+              <input
+                type="tel"
+                name="whatsapp"
+                maxlength="24"
+                required
+                autocomplete="tel"
+                placeholder="+62 812 …"
+              />
+            </label>
+            <label>
+              <span>Anything Dina should know? (optional)</span>
+              <input
+                type="text"
+                name="note"
+                maxlength="200"
+                placeholder="Race date, injuries, gym…"
+              />
+            </label>
+            <input
+              type="text"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+              style="position: absolute; left: -9999px"
+            />
+            <button class="btn btn-primary" type="submit">
+              Reserve &amp; show bank details
+            </button>
+            <p class="calc-note sf-wide" id="pay-note" role="status"></p>
+          </form>
+        </article>
+
+        <article class="station" id="transfer" hidden>
+          <span class="num">2</span>
+          <h3>Make the transfer</h3>
+          <p class="pay-intro">
+            Reference <b id="pay-ref"></b> — put it in the transfer note so Dina
+            can match your payment.
+          </p>
+          <dl class="pay-details" id="pay-details"></dl>
+          <figure class="pay-qris" id="pay-qris" hidden>
+            <img id="pay-qris-img" alt="" width="320" height="320" />
+            <figcaption>
+              Or scan with any Indonesian banking or e-wallet app (QRIS).
+            </figcaption>
+          </figure>
+          <p class="plan-source" id="pay-name-note"></p>
+          <p class="plan-source">
+            Monthly plans renew by the same transfer each month; Dina sends a
+            reminder a few days before. Cancel any time by simply not renewing.
+          </p>
+        </article>
+
+        <article class="station" id="proof" hidden>
+          <span class="num">3</span>
+          <h3>Send the proof</h3>
+          <p>
+            Screenshot the successful transfer and send it to Dina with your
+            reference. She confirms within a day and your TrueCoach invite
+            follows.
+          </p>
+          <p class="pay-actions">
+            <a class="btn btn-primary" id="pay-wa" href="#" hidden
+              >Send proof on WhatsApp</a
+            >
+            <a
+              class="btn btn-ghost"
+              id="pay-ig"
+              href="#"
+              target="_blank"
+              rel="noopener"
+              >DM proof on Instagram</a
+            >
+          </p>
+          <p class="plan-source" id="pay-done"></p>
+        </article>
+      </div>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div>© <span id="year"></span> Roxjaya Warriors Jakarta</div>
+        <nav>
+          <a href="/roxjaya/#plans">Subscriptions</a>
+          <a href="/roxjaya/warrior-program/">Warrior Program</a>
+          <a href="/roxjaya/hybrid-coaching-jakarta/">Hybrid Coaching</a>
+          <a href="/roxjaya/elite-race-prep/">Elite Race Prep</a>
+          <a href="/roxjaya/#ask">Ask Dina</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/roxjaya/app.js" defer></script>
+    <script src="/roxjaya/pay.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+{
+  "note": "Sponsors and partners. Rows land here when Dina approves a paid sponsor on the Coach's desk; `until` is the paid-until date and the site hides a row automatically after it. Delete a row to pull a sponsor early (refund by hand in Stripe). Slots: results | planner | partner.",
+  "items": []
+}

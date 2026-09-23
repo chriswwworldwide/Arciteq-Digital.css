@@ -1,0 +1,87 @@
+{
+  "note": "Jakarta hybrid scene. Dina edits this by hand or approves changes from the Coach's desk. Only list dates you have seen on the organiser's own page; leave `date` empty and use `when` for anything not yet confirmed. `type`: race | sim | brand | venue. `mode`: race | watch | both.",
+  "checked": "2026-09",
+  "items": [
+    {
+      "id": "hyrox-jakarta",
+      "type": "race",
+      "mode": "both",
+      "name": "AirAsia HYROX Jakarta",
+      "organiser": "HYROX Indonesia",
+      "blurb": "The home race. Indonesia's first HYROX drew ~11,200 athletes to NICE, PIK2 in June 2026 — the biggest Asia-Pacific debut so far. Next edition expected mid-2027; the countdown starts the day it's confirmed.",
+      "venue": "Nusantara International Convention Exhibition (NICE), PIK2",
+      "date": "",
+      "when": "Next date TBC — expected mid-2027",
+      "last": "27–28 June 2026",
+      "link": "https://indonesia.hyrox.com/",
+      "guide": "/roxjaya/hyrox-jakarta/",
+      "tags": ["Singles", "Doubles", "Relay", "Pro"]
+    },
+    {
+      "id": "jakarta-hybrid-race-2026",
+      "type": "sim",
+      "mode": "both",
+      "name": "Jakarta Hybrid Race — Indonesia Sports Summit 2026",
+      "organiser": "20FIT Event × Kemenpora",
+      "blurb": "Half-simulation format: run plus all eight stations (SkiErg, sled push, sled pull, burpee broad jump, row, farmers carry, sandbag lunges, wall balls) on official Centr × HYROX kit. Doubles Women/Men, Doubles Pro and Relay, plus Hybrid Training sessions for adults and kids. Free to watch as part of the Summit.",
+      "venue": "Jakarta International Convention Center (JICC), GBK Hall A",
+      "date": "2026-09-11",
+      "dateEnd": "2026-09-13",
+      "when": "11–13 September 2026",
+      "link": "https://indobuddies.com/event/jakarta-hybrid-race-indonesia-sport-summit/",
+      "tags": ["Half sim", "Doubles", "Relay", "Kids"]
+    },
+    {
+      "id": "puma-road-to-hyrox",
+      "type": "brand",
+      "mode": "race",
+      "name": "PUMA Road to HYROX Jakarta",
+      "organiser": "PUMA Indonesia",
+      "blurb": "PUMA (HYROX global partner) ran a ~3-month build-up before the 2026 race: open selection for a PUMA HYROX Team, structured sessions with PUMA Indonesia athletes and full race simulations at 20FIT Arena. Expect it to return ahead of the 2027 race — watch PUMA Indonesia's IG for the selection call.",
+      "venue": "20FIT Arena, Central Jakarta",
+      "date": "",
+      "when": "Returned each race season; 2027 dates TBC",
+      "link": "https://www.idntimes.com/men/attitude/puma-sambut-airasia-hyrox-jakarta-2026-dengan-fitness-racing-gas-00-rqp85-tjl8dk",
+      "tags": ["Free", "Selection", "Simulation"]
+    },
+    {
+      "id": "20fit-arena",
+      "type": "venue",
+      "mode": "race",
+      "name": "20FIT Arena — HYROX Training Club",
+      "organiser": "20FIT",
+      "blurb": "Jakarta's purpose-built HYROX floor: 2,400 m², eight competition-standard stations on Centr and Concept2 kit, Foundation/Engine/Complete classes and bookable full race simulations. The default place to run a timed sim before an away race.",
+      "venue": "Menteng Prada, Jl. Pegangsaan Timur No.15A, Menteng",
+      "date": "",
+      "when": "Weekly classes and bookable sims",
+      "link": "https://arena.20fit.id/",
+      "tags": ["Sims", "Classes", "Book a slot"]
+    },
+    {
+      "id": "fitopia-meruya",
+      "type": "venue",
+      "mode": "race",
+      "name": "Fitopia Hybrid Sport Arena — Meruya",
+      "organiser": "Fitopia 24/7",
+      "blurb": "West Jakarta's first dedicated eight-station hybrid arena inside a 24-hour gym, announced for Q4 2026. Useful for athletes west of the city who currently cross town for sled work.",
+      "venue": "Meruya Utara, Kembangan, Jakarta Barat",
+      "date": "",
+      "when": "Opening Q4 2026 (announced)",
+      "link": "https://fitopia.co.id/",
+      "tags": ["24/7", "Coming soon"]
+    },
+    {
+      "id": "roxjaya-squad-sim",
+      "type": "sim",
+      "mode": "race",
+      "name": "Roxjaya Warriors squad sim",
+      "organiser": "Dina Rosdiana",
+      "blurb": "Dina's own timed simulation for Warriors — full or half race, splits captured for the databank, coaching notes after. Small groups; program members first. Dates land on the Events page and in the digest.",
+      "venue": "Jakarta — venue confirmed per session",
+      "date": "",
+      "when": "Announced per race block",
+      "link": "/roxjaya/events/#meetups",
+      "tags": ["Members", "Splits", "Coaching"]
+    }
+  ]
+}

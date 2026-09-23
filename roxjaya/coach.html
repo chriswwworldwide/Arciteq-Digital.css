@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Coach's desk — Roxjaya Warriors</title>
+    <link rel="stylesheet" href="/roxjaya/styles.css" />
+    <link rel="stylesheet" href="/roxjaya/guide.css" />
+    <link rel="stylesheet" href="/roxjaya/coach.css" />
+  </head>
+  <body>
+    <header class="masthead wrap">
+      <a href="/roxjaya/" style="color: inherit; text-decoration: none">
+        <h1>
+          <span class="wordmark"
+            >R<span class="o">O</span>XJAYA WARRIORS
+            <span class="sig" aria-label="by Dina Rosdiana"
+              ><span class="sig-text">by Dina Rosdiana</span
+              ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+                <path
+                  d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                  fill="currentColor"
+                /></svg
+            ></span>
+          </span>
+        </h1>
+      </a>
+      <p class="city">Coach's desk</p>
+    </header>
+
+    <main class="wrap desk">
+      <section class="desk-login" id="login">
+        <h2>Hi Dina 👋</h2>
+        <p>
+          This page is just for you. Paste the coach key Chris gave you once —
+          this phone/laptop remembers it.
+        </p>
+        <form id="key-form">
+          <input
+            type="password"
+            name="key"
+            placeholder="Coach key"
+            autocomplete="off"
+            required
+          />
+          <button class="btn btn-primary" type="submit">Open my desk</button>
+        </form>
+        <p class="hint" id="login-hint"></p>
+      </section>
+
+      <div class="desk-tabs" role="tablist" hidden id="tabs">
+        <button role="tab" aria-selected="true" data-tab="today">Today</button>
+        <button role="tab" aria-selected="false" data-tab="traffic">
+          Traffic
+        </button>
+        <button role="tab" aria-selected="false" data-tab="people">
+          People
+        </button>
+        <button role="tab" aria-selected="false" data-tab="howto">
+          How to…
+        </button>
+        <button class="desk-logout" type="button" id="logout">
+          Forget key
+        </button>
+      </div>
+
+      <section class="desk-panel" data-panel="today" hidden>
+        <h2>What needs you</h2>
+        <ul class="todo" id="todo"></ul>
+        <h3 id="inbox">Waiting for your OK</h3>
+        <p class="hint">
+          Race dates and other finds from the daily check. Nothing goes on the
+          site until you approve it here.
+        </p>
+        <ul class="inbox" id="inbox-list">
+          <li class="is-clear">Loading…</li>
+        </ul>
+        <h3>This week at a glance</h3>
+        <div class="stats" id="today-stats"></div>
+      </section>
+
+      <section class="desk-panel" data-panel="traffic" hidden>
+        <h2>Traffic</h2>
+        <p class="hint">
+          Who's looking at the site. Nobody is tracked personally — a "visitor"
+          is just a phone or laptop counted once per day.
+        </p>
+        <div class="range">
+          <button class="btn btn-ghost" data-days="7">7 days</button>
+          <button class="btn btn-ghost" data-days="30" aria-pressed="true">
+            30 days
+          </button>
+          <button class="btn btn-ghost" data-days="90">90 days</button>
+        </div>
+        <div class="stats" id="traffic-stats"></div>
+        <div class="chart" id="traffic-chart" aria-label="Views per day"></div>
+        <div class="two-col">
+          <div>
+            <h3>Most-read pages</h3>
+            <table class="desk-table" id="traffic-pages"></table>
+          </div>
+          <div>
+            <h3>Where people came from</h3>
+            <table class="desk-table" id="traffic-sources"></table>
+            <p class="hint">
+              Tip: put
+              <code>?utm_source=ig&amp;utm_campaign=jakarta-top10</code>
+              on the end of a link in your IG bio or story and it shows up here
+              by name.
+            </p>
+          </div>
+          <div>
+            <h3>Sponsor clicks</h3>
+            <table class="desk-table" id="traffic-outbound"></table>
+            <p class="hint">
+              Clicks on each partner's logo or link. This is the number you show
+              a sponsor when they ask if it worked.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="desk-panel" data-panel="people" hidden>
+        <h2>People</h2>
+        <p class="hint">
+          Everyone who has given you their email — through Ask Dina, the split
+          analyser or the Warriors Wall. Tap a name to see their story: what
+          they told you, what they sent, which pages they read, what they've
+          bought.
+        </p>
+        <input
+          class="search"
+          id="people-search"
+          type="search"
+          placeholder="Search by email, goal, city…"
+        />
+        <div id="people-list"></div>
+      </section>
+
+      <section class="desk-panel" data-panel="howto" hidden>
+        <h2>How to run the site (plain English)</h2>
+        <p class="hint">
+          New here? Start with your
+          <a href="/roxjaya/welcome/">welcome guide</a> — what the site is,
+          how you get paid, and how to move gym clients to hybrid.
+        </p>
+        <p class="hint">
+          Almost everything is a small text file Chris (or you, later) edits.
+          Nothing breaks if a field is empty — empty just hides that bit of the
+          page.
+        </p>
+
+        <details open>
+          <summary>Reply to a lead (Ask Dina)</summary>
+          <ol>
+            <li>Open <b>People</b> above — newest at the top.</li>
+            <li>
+              Read their goal, days per week, city and the plan the site
+              suggested ("Your zone").
+            </li>
+            <li>
+              Reply from your own email or WhatsApp within 24 hours. Mention
+              something specific they wrote — that is what converts.
+            </li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Approve a Warriors Wall photo</summary>
+          <ol>
+            <li>
+              The athlete's caption, handle, event and consent arrive in
+              <b>People</b> (kind: <i>wall_photo</i>); the photo itself comes to
+              you on WhatsApp/Instagram.
+            </li>
+            <li>
+              Check it: nobody else identifiable without their OK, no kids.
+            </li>
+            <li>
+              Send Chris the photo + their caption + the event name, or add it
+              to <code>roxjaya/data/gallery.json</code> yourself. The event tab
+              appears automatically.
+            </li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Add results after a race</summary>
+          <ol>
+            <li>
+              Open results.hyrox.com, filter by the event, note every Indonesian
+              finisher (name, chip time, division).
+            </li>
+            <li>
+              Add them to <code>roxjaya/data/results.json</code> under the right
+              division — the page sorts fastest first and the top row becomes
+              "fastest verified Indonesian time".
+            </li>
+            <li>
+              Post "Indonesia's top 10" on IG with the link
+              <code>/roxjaya/results/?utm_source=ig</code> and tag everyone.
+              This is the single most important habit for the site.
+            </li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Add a client to the Results wall / Dina's week</summary>
+          <ol>
+            <li>Ask the client first. Always.</li>
+            <li>
+              <code>roxjaya/data/wall.json</code> → <i>athletes</i>: first name
+              or handle, before/after time, race, month.
+            </li>
+            <li>
+              <i>weeks</i>: a two-line dated note about your week (what you
+              coached, a win). Newest first; the site shows the latest three.
+            </li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Hyrox Asia news (2 minutes a week)</summary>
+          <ol>
+            <li>
+              Each morning the site scans hyrox.com and Asia news for Hyrox
+              stories. At most four a day land under
+              <a href="#inbox">Waiting for your OK</a> as “News”.
+            </li>
+            <li>
+              Tap “Check source” and read it. Type 2–3 lines in your own words
+              (facts only — never copy sentences), add your take if you want,
+              then “Publish”. It appears at the top of
+              <a href="/roxjaya/news/" target="_blank" rel="noopener"
+                >/roxjaya/news/</a
+              >
+              with the source link. No summary, no publish.
+            </li>
+            <li>
+              “Ignore” anything dull or off. Aim for a handful a week — a
+              curated page with your voice is what keeps Google happy; a flood
+              of rewritten news is what gets sites penalised.
+            </li>
+            <li>
+              To fix or remove a published item:
+              <code>roxjaya/data/news.json</code>, newest first.
+            </li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Race dates and the countdown</summary>
+          <ol>
+            <li>
+              Only confirmed dates from hyrox.com. Rumours stay off the site.
+            </li>
+            <li>
+              Every morning the site checks hyrox.com for Asia dates. New or
+              changed ones appear under <a href="#inbox">Waiting for your OK</a>
+              on Today. Tap “Check source”, then “Approve &amp; publish” — the
+              city guide, season list and Jakarta countdown update themselves.
+              “Ignore” hides it until something about it changes.
+            </li>
+            <li>
+              By hand instead: <code>roxjaya/data/events.json</code> →
+              <i>next</i>: name, date (first race day), link. The countdown
+              switches itself on.
+            </li>
+            <li>Set <i>next</i> back to <code>null</code> after the race.</li>
+            <li>
+              Asia races and city guides live in
+              <code>roxjaya/data/cities.json</code>: per city set
+              <i>race.status</i> to <code>confirmed</code> with <i>dates</i> and
+              <i>start</i>, or <code>tbc</code>. Fill a city's <i>meetup</i>
+              (when, where, note) to show a Warriors meet-up on that page.
+            </li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Founding-member seats</summary>
+          <p>
+            <code>roxjaya/data/seats.json</code> — change <i>taken</i> after
+            each Hybrid or Elite signup. Capacity is your real coaching hours;
+            don't inflate it. <code>null</code> hides the line.
+          </p>
+        </details>
+
+        <details>
+          <summary>TrueCoach and WhatsApp links</summary>
+          <p>
+            <code>roxjaya/data/links.json</code> → <i>truecoach</i>: your
+            client-login URL; the footer "Athlete login" appears automatically.
+            Your WhatsApp number goes on the "Ask Dina" buttons — ask Chris to
+            set it once (it's one value).
+          </p>
+        </details>
+
+        <details>
+          <summary>Split analyser & databank</summary>
+          <p>
+            Athletes paste their 16 splits, get an analysis and a private
+            bookmark link to their own races. You see each submission under
+            <b>People</b> (kind: <i>race_splits</i>). The public only ever sees
+            anonymous medians, and only once a division has 5+ races. Every
+            weakness the analysis finds names the guide section and plan you'd
+            use — so these are warm leads.
+          </p>
+        </details>
+
+        <details>
+          <summary>Your weekly IG routine (10 minutes)</summary>
+          <ol>
+            <li>
+              Monday: one guide tip (Stations / Run / Fuel / Taper) with the
+              page link + <code>?utm_source=ig</code>.
+            </li>
+            <li>
+              After every race: results top-10 post, tag athletes; "send me your
+              race photo for the Wall" story with the wall link.
+            </li>
+            <li>
+              Thursday: one client win from the Results wall (with their OK).
+            </li>
+          </ol>
+          <p class="hint">
+            Check <b>Traffic → Where people came from</b> a week later to see
+            which post worked.
+          </p>
+        </details>
+
+        <details>
+          <summary>What you never have to touch</summary>
+          <p>
+            Payments, subscriptions, renewals, leads, split saving, photo
+            requests, traffic counting — all automatic. If something looks wrong
+            here, message Chris; don't edit the server.
+          </p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div>© <span id="year"></span> Roxjaya Warriors Jakarta</div>
+        <nav><a href="/roxjaya/">Back to the site</a></nav>
+      </div>
+    </footer>
+
+    <script src="/roxjaya/app.js" defer></script>
+    <script src="/roxjaya/coach.js" defer></script>
+  </body>
+</html>

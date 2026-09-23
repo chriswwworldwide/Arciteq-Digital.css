@@ -7,7 +7,11 @@
       "currency": "eur",
       "language": "en",
       "catalog": {
-        "nicheCategorySlugs": ["pet-safety-essentials", "senior-pet-care", "smart-monitoring"],
+        "nicheCategorySlugs": [
+          "pet-safety-essentials",
+          "senior-pet-care",
+          "smart-monitoring"
+        ],
         "heroProductIds": [
           "pet-demo-smart-tracker-001",
           "pet-ph-led-collar-light-001",
@@ -83,14 +87,93 @@
         },
         "trustStrip": {
           "items": [
-            { "title": "Delivery", "text": "Free UK delivery over €40." },
-            { "title": "Estimated delivery", "text": "7–15 business days (UK)." },
-            { "title": "Returns", "text": "30-day returns." },
-            { "title": "Support", "text": "Reply within 24 hours." },
-            { "title": "Secure checkout", "text": "Stripe." }
+            {
+              "title": "Delivery",
+              "text": "Free UK delivery over €40."
+            },
+            {
+              "title": "Estimated delivery",
+              "text": "7–15 business days (UK)."
+            },
+            {
+              "title": "Returns",
+              "text": "30-day returns."
+            },
+            {
+              "title": "Support",
+              "text": "Reply within 24 hours."
+            },
+            {
+              "title": "Secure checkout",
+              "text": "Stripe."
+            }
           ]
         }
       }
+    },
+    {
+      "tenant_id": "roxjaya",
+      "vertical": "coaching",
+      "hostnames": ["roxjaya.localhost", "roxjaya.com", "www.roxjaya.com"],
+      "currency": "idr",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Roxjaya Warriors Jakarta",
+        "tagline": "Hyrox coaching, online programming and race prep from Jakarta.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Dina — podium athlete and Jakarta personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Jakarta and online with Dina — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          { "path": "/roxjaya/", "priority": "1.0" },
+          { "path": "/roxjaya/stations-prep/", "priority": "0.9" },
+          { "path": "/roxjaya/run-zone/", "priority": "0.9" },
+          { "path": "/roxjaya/fuel-zone/", "priority": "0.9" },
+          { "path": "/roxjaya/taper-zone/", "priority": "0.9" },
+          { "path": "/roxjaya/warrior-program/", "priority": "0.9" },
+          { "path": "/roxjaya/hybrid-coaching-jakarta/", "priority": "0.9" },
+          { "path": "/roxjaya/elite-race-prep/", "priority": "0.9" },
+          { "path": "/roxjaya/events/", "priority": "0.8" },
+          { "path": "/roxjaya/hyrox-jakarta/", "priority": "0.9" },
+          { "path": "/roxjaya/race-planner/", "priority": "0.9" },
+          { "path": "/roxjaya/news/", "priority": "0.8" },
+          { "path": "/roxjaya/jakarta-hybrid-scene/", "priority": "0.9" },
+          { "path": "/roxjaya/advertise/", "priority": "0.5" },
+          { "path": "/roxjaya/book-dina/", "priority": "0.7" },
+          { "path": "/roxjaya/results/", "priority": "0.9" },
+          { "path": "/roxjaya/splits/", "priority": "0.9" }
+        ]
+      },
+      "submissions": {
+        "kinds": ["race_splits", "wall_photo", "sponsor", "bank_transfer"]
+      },
+      "analytics": { "pageviews": true },
+      "automation": {
+        "inbox": "roxjaya/data/inbox.json",
+        "writable": [
+          "roxjaya/data/events.json",
+          "roxjaya/data/cities.json",
+          "roxjaya/data/news.json",
+          "roxjaya/data/partners.json"
+        ],
+        "partners": "roxjaya/data/partners.json",
+        "coachPath": "/roxjaya/coach/",
+        "digestTo": "dinazumba1987@gmail.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/roxjaya/welcome/",
+        "welcomeIntro": "Hi Dina — this is the first of your Monday emails from roxjaya.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {}
     }
   ]
 }

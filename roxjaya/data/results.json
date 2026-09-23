@@ -1,0 +1,44 @@
+{
+  "updated": "2026-09-06",
+  "note": "Indonesian Hyrox finishers. Times as chip time h:mm:ss. Add rows per division; the page sorts by time. Source: official Hyrox results (results.hyrox.com / hyresult.com).",
+  "divisions": {
+    "women": {
+      "label": "Women Singles (Open & Pro)",
+      "results": [
+        {
+          "athlete": "Dina Rosdiana",
+          "time": "1:31:00",
+          "category": "Pro",
+          "event": "Hyrox Jakarta",
+          "date": "2026-06",
+          "city": "Jakarta"
+        }
+      ]
+    },
+    "men": { "label": "Men Singles (Open & Pro)", "results": [] },
+    "doubles-women": {
+      "label": "Women Doubles",
+      "results": [
+        {
+          "athlete": "Dina Rosdiana & partner",
+          "time": "1:11:20",
+          "category": "Open · 1st AG 35–39",
+          "event": "Hyrox Jakarta",
+          "date": "2026-06",
+          "city": "Jakarta"
+        },
+        {
+          "athlete": "Dina Rosdiana & partner",
+          "time": "1:16:31",
+          "category": "Pro",
+          "event": "Hyrox Bangkok",
+          "date": "2026",
+          "city": "Bangkok"
+        }
+      ]
+    },
+    "doubles-men": { "label": "Men Doubles", "results": [] },
+    "doubles-mixed": { "label": "Mixed Doubles", "results": [] },
+    "relay": { "label": "Relay", "results": [] }
+  }
+}

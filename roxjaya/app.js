@@ -225,10 +225,18 @@
   const planButtons = Array.from(document.querySelectorAll("[data-plan]"));
   const plansNote = document.getElementById("plans-note");
 
+  // Payment is by bank transfer to Dina (Stripe can't onboard an Indonesian
+  // freelancer). The card checkout below stays for the day a gateway exists.
+  const PAY_BY_TRANSFER = true;
+
   planButtons.forEach((btn) => {
     btn.addEventListener("click", async () => {
       const planId = btn.dataset.plan;
       if (!planId) return;
+      if (PAY_BY_TRANSFER) {
+        window.location.href = `/roxjaya/pay/?plan=${encodeURIComponent(planId)}`;
+        return;
+      }
       planButtons.forEach((b) => (b.disabled = true));
       if (plansNote) {
         plansNote.classList.remove("error");

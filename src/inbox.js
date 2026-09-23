@@ -233,6 +233,7 @@ export function buildDigest({
   days = 7,
   pending = [],
   counts = {},
+  traffic = null,
 }) {
   const base = String(siteUrl || "").replace(/\/+$/, "");
   const desk = `${base}${coachPath}`;
@@ -242,6 +243,11 @@ export function buildDigest({
   const news = pending.filter((i) => i.kind === "news");
   const sponsors = pending.filter((i) => i.kind === "sponsor");
   const alerts = pending.filter((i) => i.kind === "alert");
+  if (n("bank_transfer"))
+    actions.push({
+      text: `${n("bank_transfer")} bank transfer${n("bank_transfer") === 1 ? "" : "s"} to check in your account, then invite them to TrueCoach`,
+      href: `${desk}#people?q=bank_transfer`,
+    });
   if (n("wall_photo"))
     actions.push({
       text: `${n("wall_photo")} wall photo${n("wall_photo") === 1 ? "" : "s"} waiting for your OK`,
@@ -283,8 +289,32 @@ export function buildDigest({
   const subject = actions.length
     ? `${brand}: ${actions.length} thing${actions.length === 1 ? "" : "s"} need${actions.length === 1 ? "s" : ""} you this week`
     : `${brand}: nothing needs you this week`;
-  const text = actions.length
+  const body = actions.length
     ? actions.map((a, i) => `${i + 1}. ${a.text}\n   ${a.href}`).join("\n\n")
     : `All quiet over the last ${days} days. Your desk: ${desk}`;
-  return { subject, text, actions, desk };
+  const t = traffic && typeof traffic === "object" ? traffic : null;
+  const stats = t
+    ? [
+        `Site, last ${days} days: ${Number(t.views || 0)} page views from ${Number(t.unique_visitors ?? t.visitors ?? 0)} visitors` +
+          (t.returning ? `, ${Number(t.returning)} came back` : "") +
+          ".",
+        Array.isArray(t.pages) && t.pages.length
+          ? `Most read: ${t.pages
+              .slice(0, 3)
+              .map((p) => `${p.key} (${p.count})`)
+              .join(", ")}.`
+          : "",
+        Array.isArray(t.sources) && t.sources.length
+          ? `Where they came from: ${t.sources
+              .slice(0, 3)
+              .map((s) => `${s.key} (${s.count})`)
+              .join(", ")}.`
+          : "",
+        `Full numbers: ${desk}#traffic`,
+      ]
+        .filter(Boolean)
+        .join("\n")
+    : "";
+  const text = stats ? `${body}\n\n${stats}` : body;
+  return { subject, text, actions, desk, traffic: t };
 }

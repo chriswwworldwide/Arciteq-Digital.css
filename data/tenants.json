@@ -153,7 +153,9 @@
           { "path": "/roxjaya/splits/", "priority": "0.9" }
         ]
       },
-      "submissions": { "kinds": ["race_splits", "wall_photo", "sponsor"] },
+      "submissions": {
+        "kinds": ["race_splits", "wall_photo", "sponsor", "bank_transfer"]
+      },
       "analytics": { "pageviews": true },
       "automation": {
         "inbox": "roxjaya/data/inbox.json",
@@ -165,7 +167,11 @@
         ],
         "partners": "roxjaya/data/partners.json",
         "coachPath": "/roxjaya/coach/",
-        "digestTo": ""
+        "digestTo": "dinazumba1987@gmail.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/roxjaya/welcome/",
+        "welcomeIntro": "Hi Dina — this is the first of your Monday emails from roxjaya.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {}
     }

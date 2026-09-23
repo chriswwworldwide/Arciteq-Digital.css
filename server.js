@@ -1358,7 +1358,58 @@ function safeWriteJsonFile(filePath, value) {
   fs.writeFileSync(filePath, body, "utf8");
 }
 
-function sendAlertEmail({ to, subject, body }) {
+// Transactional mail. Prefers the Resend HTTP API when RESEND_API_KEY is set
+// (Railway has no local MTA); otherwise pipes through /usr/sbin/sendmail.
+async function sendViaResend({ to, subject, body }) {
+  const key = String(process.env.RESEND_API_KEY || "").trim();
+  if (!key) return null;
+  const from = String(
+    process.env.ALERT_EMAIL_FROM || "Roxjaya <desk@roxjaya.com>",
+  ).trim();
+  try {
+    const r = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ from, to: [to], subject, text: body }),
+      signal: AbortSignal.timeout(10000),
+    });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok) {
+      return {
+        ok: false,
+        provider: "resend",
+        error: String(data?.message || `resend ${r.status}`),
+      };
+    }
+    return { ok: true, provider: "resend", id: data?.id || null };
+  } catch (err) {
+    return {
+      ok: false,
+      provider: "resend",
+      error: String(err?.message || "resend failed"),
+    };
+  }
+}
+
+async function sendAlertEmail({ to, subject, body }) {
+  const address = String(to || "").trim();
+  if (!address) return { ok: false, error: "Missing recipient" };
+  const safeSubject = String(subject || "Alert")
+    .replace(/[\r\n]+/g, " ")
+    .slice(0, 200);
+  const viaApi = await sendViaResend({
+    to: address,
+    subject: safeSubject,
+    body: String(body || ""),
+  });
+  if (viaApi) return viaApi;
+  return sendViaSendmail({ to: address, subject: safeSubject, body });
+}
+
+function sendViaSendmail({ to, subject, body }) {
   return new Promise((resolve) => {
     const address = String(to || "").trim();
     if (!address) {
@@ -3127,6 +3178,10 @@ function tenantAutomation(tenant) {
       : [],
     coachPath: String(a?.coachPath || "/"),
     digestTo: String(a?.digestTo || "").trim(),
+    digestDayUtc: Number.isInteger(a?.digestDayUtc) ? a.digestDayUtc : 1,
+    digestHourUtc: Number.isInteger(a?.digestHourUtc) ? a.digestHourUtc : 0,
+    welcomePath: String(a?.welcomePath || "").trim(),
+    welcomeIntro: String(a?.welcomeIntro || "").trim(),
   };
 }
 
@@ -3303,11 +3358,26 @@ app.post("/admin/inbox/:id", express.json(), (req, res) => {
 
 // Everything that needs the owner this week, as an action list with deep
 // links into their desk. DB counts degrade to zero when no DB is configured.
-async function collectDigest(req, tenant, cfg, days) {
+function siteUrlFromRequest(req) {
+  const proto = String(
+    req.headers["x-forwarded-proto"] || req.protocol || "https",
+  );
+  const host = String(req.headers.host || "");
+  return `${proto}://${host}`;
+}
+
+async function collectDigest(siteUrl, tenant, cfg, days) {
   const tenantId = String(tenant?.tenant_id || "default");
-  const counts = { leads: 0, wall_photo: 0, race_splits: 0, paid: 0 };
+  const counts = {
+    leads: 0,
+    wall_photo: 0,
+    race_splits: 0,
+    bank_transfer: 0,
+    paid: 0,
+  };
+  let traffic = null;
   try {
-    const [leads, subs, paid] = await Promise.all([
+    const [leads, subs, paid, views] = await Promise.all([
       dbQuery(
         "SELECT count(*)::int AS n FROM email_events WHERE tenant_id = $1 AND type = 'lead_captured' AND at >= now() - ($2::int * interval '1 day')",
         [tenantId, days],
@@ -3320,7 +3390,14 @@ async function collectDigest(req, tenant, cfg, days) {
         "SELECT count(*)::int AS n FROM orders WHERE tenant_id = $1 AND status = 'paid' AND created_at >= now() - ($2::int * interval '1 day')",
         [tenantId, days],
       ),
+      tenant?.analytics?.pageviews
+        ? dbQuery(
+            "SELECT path, referrer_host, utm_source, visitor, email, at FROM page_views WHERE tenant_id = $1 AND at >= now() - ($2::int * interval '1 day') ORDER BY at DESC LIMIT 50000",
+            [tenantId, days],
+          )
+        : null,
     ]);
+    if (views) traffic = summarizePageviews(views.rows || [], { top: 5 });
     counts.leads = Number(leads?.rows?.[0]?.n || 0);
     counts.paid = Number(paid?.rows?.[0]?.n || 0);
     for (const r of subs?.rows || []) {
@@ -3329,18 +3406,108 @@ async function collectDigest(req, tenant, cfg, days) {
   } catch {
     counts.db = "unavailable";
   }
-  const proto = String(
-    req.headers["x-forwarded-proto"] || req.protocol || "https",
-  );
-  const host = String(req.headers.host || "");
-  return buildDigest({
+  const digest = buildDigest({
     brand: String(tenant?.seo?.brandName || tenantId),
-    siteUrl: `${proto}://${host}`,
+    siteUrl,
     coachPath: cfg.coachPath,
     days,
     pending: pendingItems(readInbox(cfg)),
     counts,
+    traffic,
   });
+  if (cfg.welcomePath && !(await digestSentBefore(tenantId))) {
+    const url = `${String(siteUrl).replace(/\/+$/, "")}${cfg.welcomePath}`;
+    digest.first = true;
+    digest.subject = `${digest.subject.split(":")[0]}: your new website — start here`;
+    digest.text = `${String(cfg.welcomeIntro || "Your welcome guide:").trim()}\n${url}\n\n— This week —\n\n${digest.text}`;
+  }
+  return digest;
+}
+
+async function digestSentBefore(tenantId) {
+  try {
+    const r = await dbQuery(
+      "SELECT 1 FROM email_events WHERE tenant_id = $1 AND type = 'digest_sent' LIMIT 1",
+      [tenantId],
+    );
+    return Boolean(r?.rows?.length);
+  } catch {
+    return true;
+  }
+}
+
+async function lastDigestAt(tenantId) {
+  try {
+    const r = await dbQuery(
+      "SELECT max(at) AS at FROM email_events WHERE tenant_id = $1 AND type = 'digest_sent'",
+      [tenantId],
+    );
+    const at = r?.rows?.[0]?.at;
+    return at ? new Date(at).getTime() : 0;
+  } catch {
+    return Date.now();
+  }
+}
+
+async function sendDigestFor(siteUrl, tenant, cfg, days = 7) {
+  const tenantId = String(tenant?.tenant_id || "default");
+  const to = cfg.digestTo || alertEmailTo;
+  const digest = await collectDigest(siteUrl, tenant, cfg, days);
+  if (!to) return { sent: false, reason: "no_recipient", ...digest };
+  const email = await sendAlertEmail({
+    to,
+    subject: digest.subject,
+    body: digest.text,
+  });
+  if (email.ok) {
+    try {
+      await dbQuery(
+        "INSERT INTO email_events (tenant_id, email, type, data) VALUES ($1, $2, 'digest_sent', $3::jsonb)",
+        [
+          tenantId,
+          to,
+          JSON.stringify({
+            subject: digest.subject,
+            first: Boolean(digest.first),
+            provider: email.provider || "sendmail",
+          }),
+        ],
+      );
+    } catch (err) {
+      console.error("digest_sent record failed", err);
+    }
+  }
+  return { sent: Boolean(email.ok), error: email.error || "", ...digest };
+}
+
+// Weekly digest scheduler: every tenant with automation.digestTo gets the
+// digest on Monday morning (automation.digestHourUtc, default 00:00 UTC =
+// 07:00 Jakarta). Checks hourly; the DB record makes it safe across restarts
+// and multiple instances. Needs PUBLIC_BASE_URL for links.
+async function runDigestSchedulerOnce(now = new Date()) {
+  if (!publicBaseUrl || !String(process.env.DATABASE_URL || "").trim()) return;
+  const day = now.getUTCDay();
+  const hour = now.getUTCHours();
+  for (const tenant of loadTenantsData().list) {
+    const cfg = tenantAutomation(tenant);
+    if (!cfg?.digestTo) continue;
+    if (day !== cfg.digestDayUtc || hour !== cfg.digestHourUtc) continue;
+    const last = await lastDigestAt(String(tenant.tenant_id));
+    if (now.getTime() - last < 6 * 864e5) continue;
+    try {
+      const r = await sendDigestFor(publicBaseUrl, tenant, cfg, 7);
+      console.log(
+        `[digest] ${tenant.tenant_id} -> ${cfg.digestTo}: ${r.sent ? "sent" : "not sent"} ${r.error || ""}`,
+      );
+    } catch (err) {
+      console.error("[digest] failed", tenant.tenant_id, err);
+    }
+  }
+}
+
+function startDigestScheduler() {
+  setTimeout(() => void runDigestSchedulerOnce(), 30 * 1000);
+  setInterval(() => void runDigestSchedulerOnce(), 60 * 60 * 1000);
 }
 
 app.get("/admin/digest", async (req, res) => {
@@ -3349,7 +3516,12 @@ app.get("/admin/digest", async (req, res) => {
   const tenant = resolveTenantFromRequest(req);
   const cfg = tenantAutomation(tenant);
   if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
-  const digest = await collectDigest(req, tenant, cfg, rangeDays(req, 7));
+  const digest = await collectDigest(
+    siteUrlFromRequest(req),
+    tenant,
+    cfg,
+    rangeDays(req, 7),
+  );
   return res.json({ ok: true, ...digest });
 });
 
@@ -3359,27 +3531,13 @@ app.post("/admin/digest/send", async (req, res) => {
   const tenant = resolveTenantFromRequest(req);
   const cfg = tenantAutomation(tenant);
   if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
-  const to = cfg.digestTo || alertEmailTo;
-  const digest = await collectDigest(req, tenant, cfg, rangeDays(req, 7));
-  if (!to) {
-    return res.json({
-      ok: true,
-      sent: false,
-      reason: "no_recipient",
-      ...digest,
-    });
-  }
-  const email = await sendAlertEmail({
-    to,
-    subject: digest.subject,
-    body: digest.text,
-  });
-  return res.json({
-    ok: true,
-    sent: Boolean(email.ok),
-    error: email.error || "",
-    ...digest,
-  });
+  const result = await sendDigestFor(
+    siteUrlFromRequest(req),
+    tenant,
+    cfg,
+    rangeDays(req, 7),
+  );
+  return res.json({ ok: true, ...result });
 });
 
 app.get("/api/health", (req, res) => {
@@ -4356,4 +4514,5 @@ app.post("/create-checkout-session", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Server running → http://localhost:${PORT}/`);
   startHeartbeatScheduler();
+  startDigestScheduler();
 });

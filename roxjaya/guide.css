@@ -1166,3 +1166,74 @@
   outline: 2px solid var(--pink);
   outline-offset: 2px;
 }
+
+/* Pay page: bank-transfer details */
+.pay-details {
+  margin: 12px 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.pay-details > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--line);
+}
+.pay-details > div:first-child {
+  border-top: 0;
+}
+.pay-details dt {
+  color: var(--ink-3);
+  font-size: 14px;
+}
+.pay-details dd {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  word-break: break-all;
+}
+.pay-details .copy {
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.pay-qris {
+  margin: 0 0 16px;
+  text-align: center;
+}
+.pay-qris img {
+  width: min(320px, 80vw);
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.pay-qris figcaption {
+  margin-top: 8px;
+  color: var(--ink-3);
+  font-size: 14px;
+}
+.pay-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 560px) {
+  .pay-details > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

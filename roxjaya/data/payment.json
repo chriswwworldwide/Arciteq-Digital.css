@@ -1,0 +1,35 @@
+{
+  "_note": "Manual bank-transfer payments. Edit here; the pay page reads it live. Set qris.src to an image path once Dina's QRIS screenshot is in roxjaya/images/ and the QR block appears. whatsapp is Dina's number with country code, digits only.",
+  "bank": {
+    "name": "BCA",
+    "accountNumber": "2311992009",
+    "accountName": "Ida Rosdiana",
+    "accountNameNote": "The account is in Dina's legal name — your bank will show 'Ida Rosdiana' when you confirm."
+  },
+  "qris": { "src": "", "alt": "Scan to pay Dina by QRIS" },
+  "whatsapp": "",
+  "instagram": "dinabawden87",
+  "plans": [
+    {
+      "id": "roxjaya-plan-warrior-001",
+      "name": "Warrior Program",
+      "amountIdr": 599000,
+      "per": "per month",
+      "summary": "Weekly programme in the TrueCoach app, station library, community group, monthly Q&A."
+    },
+    {
+      "id": "roxjaya-plan-hybrid-001",
+      "name": "Hybrid Coaching",
+      "amountIdr": 2500000,
+      "per": "per month",
+      "summary": "1:1 online coaching plus two floor sessions a month in Jakarta."
+    },
+    {
+      "id": "roxjaya-plan-elite-001",
+      "name": "Elite Race Prep",
+      "amountIdr": 6000000,
+      "per": "per month, 3-month minimum",
+      "summary": "Fully individualised 12-week race build with pacing and race-day strategy."
+    }
+  ]
+}

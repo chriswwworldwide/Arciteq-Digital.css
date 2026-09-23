@@ -194,6 +194,7 @@
     let photos = 0;
     let splits = 0;
     let paid = 0;
+    let transfers = 0;
     list.forEach((p) => {
       (p.events || []).forEach((e) => {
         const t = new Date(e.at).getTime();
@@ -205,9 +206,17 @@
         if (new Date(s.created_at).getTime() < since) return;
         if (s.kind === "wall_photo") photos += 1;
         if (s.kind === "race_splits") splits += 1;
+        if (s.kind === "bank_transfer") transfers += 1;
       });
     });
     const items = [
+      {
+        n: transfers,
+        text: "bank transfers to check in BCA — then invite them to TrueCoach",
+        link: "#people?q=bank_transfer",
+        cta: "Who paid",
+        clear: "No new transfer reservations this week",
+      },
       {
         n: leads,
         text: "new Ask Dina leads to reply to",
@@ -337,7 +346,7 @@
     if (!q) return true;
     if (q === "paid")
       return (p.total_orders || 0) > 0 || p.subscriptions?.length;
-    if (q === "wall_photo" || q === "race_splits") {
+    if (q === "wall_photo" || q === "race_splits" || q === "bank_transfer") {
       return (p.submissions || []).some((s) => s.kind === q);
     }
     const hay = [
@@ -379,6 +388,9 @@
         const p = s.payload || {};
         if (s.kind === "wall_photo") {
           return `<li>📷 <b>Wall photo</b> (${esc(fmtDate(s.created_at))}) — “${esc(p.caption || "")}” by ${esc(p.by || "?")}, ${esc(p.event || "no event")}, consent: ${esc(p.consent || "?")}</li>`;
+        }
+        if (s.kind === "bank_transfer") {
+          return `<li>🏦 <b>Bank transfer</b> (${esc(fmtDate(s.created_at))}) — ${esc(p.plan_name || p.plan_id || "")}, Rp ${Number(p.amount_idr || 0).toLocaleString("id-ID")}, ref <b>${esc(p.reference || "?")}</b> · ${esc(p.name || "")} · WA ${esc(p.whatsapp || "")}${p.note ? " · “" + esc(p.note) + "”" : ""}</li>`;
         }
         if (s.kind === "race_splits") {
           const total = Number(p.total) || 0;
@@ -451,6 +463,8 @@
           tags.push(`<span class="tag">splits</span>`);
         (p.submissions || []).some((s) => s.kind === "wall_photo") &&
           tags.push(`<span class="tag">wall photo</span>`);
+        (p.submissions || []).some((s) => s.kind === "bank_transfer") &&
+          tags.push(`<span class="tag hot">transfer</span>`);
         if (p.source)
           tags.push(`<span class="tag">via ${esc(p.source)}</span>`);
         const spend = money(p.total_spend_minor, p.currency);

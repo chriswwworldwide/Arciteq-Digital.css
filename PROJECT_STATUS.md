@@ -190,6 +190,12 @@ Direction note:
 - Conversions: "Lock in this plan" → plan checkout with a timeline discount code; "email me my plan" (lead capture); shareable milestone card; 4-week re-assessment nudge feeding the Coach's desk.
 - Data-driven from `roxjaya/data/progression.json` (rates per level/sessions), reuse splits.js coaching map and events.json. Local files only; engine reuse = submissions + checkout.
 
+**Roxjaya backlog added 2026-09-27:**
+
+- Splits analyser email gate: let the athlete enter all splits first, require an email at the "show my results" step (not before), plus a separate opt-in tick-box for Dina's training tips/news so the mailing list is consented (entering an email ≠ marketing consent). Email them a copy of their results. Roxjaya-tenant config only, not an engine-wide requirement.
+- Analytics noise filter in `roxjaya/app.js` beacon: skip when `navigator.webdriver`, UA matches bot/crawler/spider/headless, or `?nolog=1` — so the Coach's desk/Monday digest shows real people (Sept traffic was mostly our own testing + crawlers).
+- On hold (Chris rethinking): WhatsApp (+62 812 1161 1987) + Instagram (@dinabawden87, verified live) contact buttons on home/plan/pay pages.
+
 **Rule when resuming:** do not rebuild any of the above; pick from the nits or the owner/Dina lists. Current focus has moved to the pet site (content hub v2) on a separate branch off `main`.
 
 ## Visual system (current direction)
@@ -535,6 +541,33 @@ Wallet payments impact note (Apple Pay + Google Pay + PayPal): if enabled and us
 
 - Start with curated product lists (20–50 per niche).
 - Upgrade to automated feeds after v1.
+
+## Pet site: launch-before-stock + front-loaded ads (decision, 2026-09-27)
+
+- Put the pet site live on its domain BEFORE products exist (target: Oct 2026, products ~Dec 2026). Real guide/category/about pages, products marked "shop opening soon" with a notify-me email capture. Not a bare coming-soon page (thin, indexes badly). Search Console + sitemap on day one so domain age/crawl history accrue.
+- **Ads rule: front-load, do not drip.** No meaningful spend until products AND ~10 reviews exist. Then one big month (~£500–800, Google Shopping + Meta retargeting on 3–5 best-margin SKUs) to buy first orders, reviews and algorithm data. Months 2–3: retargeting only, ~£100–150/mo. Then £0 unless one SKU shows >3x profit return, in which case scale that SKU only. Ads do not lift SEO directly; the reviews/sales they buy do.
+- Realistic arc (chart: `/home/ubuntu/pet-plan/pet_path_to_2k.png`, regenerate if needed): ~$2k/month net around month 15 (Jan 2028) at ~150 orders/7,000 visits a month, 35% margin. Downside case plateaus $600–900. Biggest single lever is margin: 50–55% (wholesale, hold some stock) pulls $2k forward ~5 months on the same traffic.
+
+## OTHER PROJECTS (separate from the pet engine and Roxjaya — do not lose these)
+
+### Other project A — Local services lead generation (Norwich) — DO SOON (Oct 2026)
+
+- Purpose: fastest realistic side income; ads-arbitrage, not SEO-dependent.
+- Model: one niche per site, Norwich-specific, real content; Google Search / Local Service Ads (£5–15 CPC); sell exclusive leads to 2–3 local trades at £20–60/lead or a monthly retainer.
+- Niche criteria: high job value, urgency (search-and-call, no shopping around), trades already visibly advertising. Candidates: drainage/emergency plumbing, locksmiths, tree surgery, skip hire.
+- Sequence: 1 niche in Oct (bottleneck is finding trades who will pay, not the site), first cash Nov (~£200–400), add 2nd niche once 1st pays. Realistic end-Jan 2027: 2 niches, £600–1,200/mo with £150–300/mo ad spend. £2k+/mo is more like Mar–May 2027 with 3–4 niches. Do NOT launch 4 at once.
+- Build: reuse engine (tenant, forms/submissions, SEO scaffolding) — about a day per site; keep as separate tenants, no pet/Roxjaya coupling.
+- Rejected on review: directories/B2B matchmaking portals (chicken-and-egg, incumbents), equity release/later-life lending leads (FCA promotions, high CPC), cyber/security/waste B2B leads (national brokers; unpaid selling for months).
+- Next step when picked up: shortlist 3 niches with Norwich search volume + CPC and a trade list to pitch.
+
+### Other project B — B2B SaaS — FUTURE
+
+- Better business long-term (recurring, ~90% margin, sellable) but 6–12 months to first paying customer; "B2B SaaS" is a category, not a niche.
+- Rule: do not start from an abstract SaaS goal. Let the idea fall out of the lead-gen conversations with Norwich businesses ("I'd pay for something that just does X"), then build on the engine.
+
+### Other project C — Get Chris a job (workspace: `/home/ubuntu/job-hunt/`)
+
+- Shortlist of 30 approved; packs generated in batches of 10 (PDF + DOCX + HOW_TO_APPLY). Not committed to this repo.
 
 ## Quick troubleshooting
 

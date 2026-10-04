@@ -3,7 +3,7 @@
   "tenants": [
     {
       "tenant_id": "default",
-      "hostnames": ["localhost", "127.0.0.1"],
+      "hostnames": ["localhost", "127.0.0.1", "pawvigil.com", "www.pawvigil.com"],
       "currency": "eur",
       "language": "en",
       "catalog": {

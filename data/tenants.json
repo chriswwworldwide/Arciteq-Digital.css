@@ -3,11 +3,24 @@
   "tenants": [
     {
       "tenant_id": "default",
-      "hostnames": ["localhost", "127.0.0.1", "pawvigil.com", "www.pawvigil.com"],
-      "currency": "eur",
+      "hostnames": [
+        "localhost",
+        "127.0.0.1",
+        "pawvigil.com",
+        "www.pawvigil.com"
+      ],
+      "currency": "gbp",
       "language": "en",
+      "shop": {
+        "status": "opening-soon",
+        "message": "Our shop opens soon — we are finalising stock and pricing. Browse the collection and read our guides in the meantime."
+      },
       "catalog": {
-        "nicheCategorySlugs": ["pet-safety-essentials", "senior-pet-care", "smart-monitoring"],
+        "nicheCategorySlugs": [
+          "pet-safety-essentials",
+          "senior-pet-care",
+          "smart-monitoring"
+        ],
         "heroProductIds": [
           "pet-demo-smart-tracker-001",
           "pet-ph-led-collar-light-001",
@@ -28,13 +41,13 @@
         ]
       },
       "seo": {
-        "brandName": "PawSense Tech & Wellness",
-        "tagline": "Smart pet tech and non-ingestible wellness for calm, comfort, and everyday monitoring.",
-        "supportEmail": "support@pawsense.example",
-        "about": "We curate pet tech and non-ingestible wellness products with a focus on comfort, mobility, and everyday monitoring — built for pet parents who want simple, practical support.",
+        "brandName": "PawVigil",
+        "tagline": "Pet safety, comfort and peace of mind — smart tech and non-ingestible wellness for dogs and cats.",
+        "supportEmail": "hello@pawvigil.com",
+        "about": "PawVigil curates pet safety tech and non-ingestible wellness products with a focus on comfort, mobility and everyday monitoring — built for pet parents who want simple, practical peace of mind.",
         "meta": {
-          "homeDescription": "PawSense Tech & Wellness curates pet tech and non-ingestible wellness for calm, comfort, and everyday monitoring. Shop practical solutions for dogs and cats.",
-          "shopDescription": "Shop pet tech and non-ingestible wellness products curated for comfort, calm, and smart monitoring. Filter by pet type, category, life stage, and size.",
+          "homeDescription": "PawVigil curates pet safety tech and non-ingestible wellness for calm, comfort and everyday monitoring. Guides and practical solutions for dogs and cats. Shop opening soon.",
+          "shopDescription": "Browse pet safety tech and non-ingestible wellness products curated for comfort, calm and smart monitoring. Shop opening soon — read our guides in the meantime.",
           "cartDescription": "Review your cart and checkout securely. All prices are shown in the storefront’s currency."
         },
         "sameAs": []
@@ -42,7 +55,7 @@
       "offers": {
         "freeShipping": {
           "thresholdMinor": 4000,
-          "label": "Free UK delivery over €40"
+          "label": "Free UK delivery over £40"
         },
         "starterKits": {
           "subtitle": "Multi‑pet household? Save automatically when you add 2+ kits.",
@@ -83,11 +96,26 @@
         },
         "trustStrip": {
           "items": [
-            { "title": "Delivery", "text": "Free UK delivery over €40." },
-            { "title": "Estimated delivery", "text": "7–15 business days (UK)." },
-            { "title": "Returns", "text": "30-day returns." },
-            { "title": "Support", "text": "Reply within 24 hours." },
-            { "title": "Secure checkout", "text": "Stripe." }
+            {
+              "title": "Delivery",
+              "text": "Free UK delivery over £40."
+            },
+            {
+              "title": "Estimated delivery",
+              "text": "7–15 business days (UK)."
+            },
+            {
+              "title": "Returns",
+              "text": "30-day returns."
+            },
+            {
+              "title": "Support",
+              "text": "Reply within 24 hours."
+            },
+            {
+              "title": "Secure checkout",
+              "text": "Stripe."
+            }
           ]
         }
       }

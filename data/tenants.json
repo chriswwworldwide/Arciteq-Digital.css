@@ -154,7 +154,7 @@
         ]
       },
       "submissions": {
-        "kinds": ["race_splits", "wall_photo", "sponsor", "bank_transfer"]
+        "kinds": ["race_splits", "wall_photo", "sponsor", "bank_transfer", "date_alert"]
       },
       "analytics": { "pageviews": true },
       "automation": {

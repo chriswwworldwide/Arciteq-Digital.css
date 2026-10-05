@@ -777,3 +777,37 @@
     ).observe(plans);
   }
 })();
+
+// HYROX Jakarta date alert — one email when the official date is published.
+(() => {
+  const form = document.getElementById("date-alert");
+  if (!form) return;
+  const note = form.querySelector("[data-note]");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const email = String(data.get("email") || "").trim();
+    if (note) note.textContent = "Saving…";
+    let saved = false;
+    try {
+      const res = await fetch("/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          kind: "date_alert",
+          payload: { race: "hyrox-jakarta-2027", source: "hyrox-jakarta-page" },
+          website: String(data.get("website") || ""),
+        }),
+      });
+      saved = res.ok;
+    } catch {
+      saved = false;
+    }
+    if (note)
+      note.textContent = saved
+        ? "Done — you'll get one email the day HYROX publishes the Jakarta 2027 date."
+        : "Couldn't save just now — please try again in a minute.";
+    if (saved) form.reset();
+  });
+})();

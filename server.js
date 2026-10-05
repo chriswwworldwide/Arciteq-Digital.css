@@ -1475,7 +1475,15 @@ app.get("/sitemap.xml", (req, res) => {
         return `  <url><loc>${xmlEscape(loc)}</loc><changefreq>weekly</changefreq><priority>0.8</priority>${lastmodXml}</url>`;
       })
       .join("\n");
-    const staticUrls = [
+    const tenantStaticPages = Array.isArray(tenant?.seo?.staticPages)
+      ? tenant.seo.staticPages
+          .map((p) => ({
+            path: String(p?.path || "").trim(),
+            priority: String(p?.priority || "0.8"),
+          }))
+          .filter((p) => p.path.startsWith("/"))
+      : null;
+    const staticUrls = tenantStaticPages || [
       { path: "/", priority: "1.0" },
       { path: "/shop.html", priority: "0.9" },
       { path: "/content/senior-dog-mobility.html", priority: "0.85" },

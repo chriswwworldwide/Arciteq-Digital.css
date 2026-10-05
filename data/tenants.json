@@ -119,6 +119,79 @@
           ]
         }
       }
+    },
+    {
+      "tenant_id": "pupstart",
+      "hostnames": [
+        "pupstarthq.com",
+        "www.pupstarthq.com",
+        "pupstart.localhost"
+      ],
+      "currency": "gbp",
+      "language": "en",
+      "shop": {
+        "status": "opening-soon",
+        "message": "Our shop opens soon — we are finalising puppy and kitten stock. Read the first-year guides in the meantime."
+      },
+      "catalog": {
+        "nicheCategorySlugs": ["puppy-first-year", "kitten-first-year"],
+        "heroProductIds": [
+          "pup-crate-divider-001",
+          "pup-washable-pads-001",
+          "kit-low-entry-litter-tray-001"
+        ]
+      },
+      "seo": {
+        "brandName": "PupStartHQ",
+        "tagline": "Puppy & kitten first-year essentials",
+        "supportEmail": "hello@pupstarthq.com",
+        "about": "PupStartHQ is a UK guide and shop for the first twelve months with a puppy or kitten: crate and toilet training, teething, socialisation and settling in — with non-ingestible kit chosen to make those weeks calmer.",
+        "meta": {
+          "homeDescription": "Puppy and kitten first-year guides and essentials: crate training, toilet training, teething, socialisation and settling a kitten in. UK delivery.",
+          "shopDescription": "Shop puppy and kitten first-year essentials from PupStartHQ: crates, washable training pads, teething toys, first harnesses and kitten starter kit.",
+          "cartDescription": "Your PupStartHQ cart."
+        },
+        "home": {
+          "eyebrow": "PupStartHQ — Puppy & kitten first year",
+          "headline": "The first year, without the guesswork",
+          "lead": "Crate training, toilet training, teething, socialisation and settling in a kitten — practical guides written for first-time owners, plus the handful of non-ingestible essentials that actually help.",
+          "guideHref": "/content/pupstart/puppy-first-week-at-home.html?ref=home-hero",
+          "guideLabel": "Read: your puppy's first week at home",
+          "shopBannerHref": "/content/pupstart/puppy-toilet-training-timeline.html?ref=shop-banner",
+          "shopBannerLabel": "Read our Puppy Toilet Training Timeline",
+          "footer": "PupStartHQ · Puppy & kitten first-year guides and essentials."
+        },
+        "staticPages": [
+          {
+            "path": "/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/shop.html",
+            "priority": "0.9"
+          },
+          {
+            "path": "/content/pupstart/puppy-first-week-at-home.html",
+            "priority": "0.85"
+          },
+          {
+            "path": "/content/pupstart/crate-training-a-puppy.html",
+            "priority": "0.85"
+          },
+          {
+            "path": "/content/pupstart/puppy-toilet-training-timeline.html",
+            "priority": "0.85"
+          },
+          {
+            "path": "/content/pupstart/puppy-socialisation-checklist.html",
+            "priority": "0.85"
+          },
+          {
+            "path": "/content/pupstart/kitten-first-30-days.html",
+            "priority": "0.85"
+          }
+        ]
+      }
     }
   ]
 }

@@ -2906,6 +2906,31 @@ function initAdminOrdersPage() {
   void doFetch();
 }
 
+function renderTenantHome() {
+  const seo = tenant?.seo && typeof tenant.seo === "object" ? tenant.seo : null;
+  const home = seo?.home && typeof seo.home === "object" ? seo.home : null;
+  if (!home) return;
+  const setText = (sel, value) => {
+    const el = document.querySelector(sel);
+    const text = String(value || "").trim();
+    if (el && text) el.textContent = text;
+  };
+  setText(".home-hero .eyebrow", home.eyebrow);
+  setText(".home-hero h2", home.headline);
+  setText(".home-hero .hero-copy > p", home.lead);
+  const guide = document.querySelector(".home-hero .btn-secondary");
+  if (guide && home.guideHref) {
+    guide.setAttribute("href", String(home.guideHref));
+    if (home.guideLabel) guide.textContent = String(home.guideLabel);
+  }
+  const banner = document.querySelector('a[href*="ref=shop-banner"]');
+  if (banner && home.shopBannerHref) {
+    banner.setAttribute("href", String(home.shopBannerHref));
+    if (home.shopBannerLabel) banner.textContent = String(home.shopBannerLabel);
+  }
+  setText("footer > p", home.footer);
+}
+
 function renderTenantAboutSnippet() {
   const seo = tenant?.seo && typeof tenant.seo === "object" ? tenant.seo : null;
   const about = String(seo?.about || "").trim();
@@ -3751,6 +3776,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   renderStarterKits();
   renderKitsLandingPage();
   renderTenantAboutSnippet();
+  renderTenantHome();
 
   const applyHashCategoryFilter = () => {
     const hash = String(globalThis.location.hash || "").replace(/^#/, "");

@@ -2014,6 +2014,7 @@ app.get("/api/tenant", (req, res) => {
   const catalog = tenant?.catalog && typeof tenant.catalog === "object" ? tenant.catalog : null;
   const seo = tenant?.seo && typeof tenant.seo === "object" ? tenant.seo : null;
   const offers = tenant?.offers && typeof tenant.offers === "object" ? tenant.offers : null;
+  const shop = tenant?.shop && typeof tenant.shop === "object" ? tenant.shop : null;
   const rawPaymentMethods = String(process.env.STRIPE_PAYMENT_METHODS || "card")
     .split(",")
     .map((s) => s.trim())
@@ -2026,6 +2027,7 @@ app.get("/api/tenant", (req, res) => {
     catalog,
     seo,
     offers,
+    shop,
     payment_methods: paymentMethods,
   });
 });
@@ -2781,6 +2783,11 @@ app.post("/admin/jobs/abandoned-recovery", async (req, res) => {
 
 app.post("/create-checkout-session", async (req, res) => {
   try {
+    const requestTenant = resolveTenantFromRequest(req);
+    if (String(requestTenant?.shop?.status || "") === "opening-soon") {
+      return res.status(403).json({ error: "This shop is not open for orders yet." });
+    }
+
     if (!stripe) {
       return res.status(500).json({
         error: "STRIPE_SECRET_KEY is not set on the server",

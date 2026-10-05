@@ -510,6 +510,8 @@
     payload.event = String(data.get("event") || "").trim();
     payload.race_date = String(data.get("race_date") || "");
     payload.division = String(data.get("division") || "");
+    payload.name = String(data.get("name") || "").trim();
+    payload.newsletter = data.get("newsletter") ? "yes" : "no";
     const a = analyse(payload);
     payload.run_total = a.rows
       .filter((r) => r.kind === "run")

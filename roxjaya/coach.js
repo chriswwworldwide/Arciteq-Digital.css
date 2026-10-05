@@ -342,8 +342,46 @@
   }
 
   // ---- People ------------------------------------------------------------
+  function personName(p) {
+    const subs = p.submissions || [];
+    for (let i = subs.length - 1; i >= 0; i -= 1) {
+      const n = String(
+        subs[i]?.payload?.name || subs[i]?.payload?.by || "",
+      ).trim();
+      if (n) return n;
+    }
+    return "";
+  }
+
+  function personNewsletter(p) {
+    return (p.submissions || []).some(
+      (s) => String(s?.payload?.newsletter || "") === "yes",
+    );
+  }
+
+  function copyMailingList() {
+    const rows = (people?.people || [])
+      .filter((p) => personNewsletter(p) && p.email)
+      .map((p) => `${personName(p)},${p.email}`);
+    const btn = document.getElementById("people-copy-list");
+    if (!btn) return;
+    if (!rows.length) {
+      btn.textContent = "No newsletter opt-ins yet";
+      return;
+    }
+    navigator.clipboard
+      .writeText(["name,email", ...rows].join("\n"))
+      .then(() => {
+        btn.textContent = `Copied ${rows.length} (name,email)`;
+      })
+      .catch(() => {
+        btn.textContent = "Copy failed — try again";
+      });
+  }
+
   function personMatches(p, q) {
     if (!q) return true;
+    if (q === "newsletter") return personNewsletter(p);
     if (q === "paid")
       return (p.total_orders || 0) > 0 || p.subscriptions?.length;
     if (q === "wall_photo" || q === "race_splits" || q === "bank_transfer") {
@@ -467,9 +505,12 @@
           tags.push(`<span class="tag hot">transfer</span>`);
         if (p.source)
           tags.push(`<span class="tag">via ${esc(p.source)}</span>`);
+        if (personNewsletter(p))
+          tags.push(`<span class="tag">newsletter</span>`);
         const spend = money(p.total_spend_minor, p.currency);
+        const name = personName(p);
         return `<details class="person">
-          <summary><b>${esc(p.email)}</b>${tags.join("")}<span class="when">${esc(ago(p.last_seen_at))}</span></summary>
+          <summary><b>${esc(name ? `${name} · ${p.email}` : p.email)}</b>${tags.join("")}<span class="when">${esc(ago(p.last_seen_at))}</span></summary>
           <div class="body">
             <div><h4>What they told you</h4><ul>${profileList(p.profile)}</ul>
               <a class="reply" href="mailto:${encodeURIComponent(p.email)}?subject=${encodeURIComponent("Your Hyrox plan — Dina (Roxjaya)")}">Reply by email →</a></div>
@@ -494,6 +535,9 @@
     renderToday();
     renderTraffic();
     renderPeople();
+    document
+      .getElementById("people-copy-list")
+      ?.addEventListener("click", copyMailingList);
   }
 
   function openDesk() {

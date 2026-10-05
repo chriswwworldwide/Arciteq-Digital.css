@@ -204,8 +204,25 @@
             autocomplete="off"
           >
             <label>
+              <span>Name</span>
+              <input
+                type="text"
+                name="name"
+                required
+                maxlength="60"
+                autocomplete="name"
+                placeholder="Your name"
+              />
+            </label>
+            <label>
               <span>Email (for your private link)</span>
-              <input type="email" name="email" required placeholder="you@…" />
+              <input
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="you@…"
+              />
             </label>
             <label>
               <span>Race</span>
@@ -250,6 +267,13 @@
               <span>
                 Save my splits to my athlete record and count them (anonymously)
                 in the Indonesian databank.
+              </span>
+            </label>
+            <label class="splits-consent">
+              <input type="checkbox" name="newsletter" checked />
+              <span>
+                Email me Dina's Indonesian HYROX updates — race dates, plans and
+                tips. Unsubscribe any time.
               </span>
             </label>
             <button class="btn btn-primary" type="submit">

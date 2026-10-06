@@ -8,6 +8,12 @@ import fs from "node:fs";
 import crypto from "node:crypto";
 import { dbQuery } from "./db.js";
 import {
+  validateGuide,
+  nearDuplicate,
+  renderGuidePage,
+  renderGuideIndex,
+} from "./src/guides.js";
+import {
   normalizeEmail,
   isValidEmail,
   orderTotalsDelta,
@@ -2007,7 +2013,7 @@ app.get("/admin.html", (req, res) => {
   return res.sendFile(path.join(__dirname, "admin.html"));
 });
 
-app.get("/sitemap.xml", (req, res) => {
+app.get("/sitemap.xml", async (req, res) => {
   try {
     const tenant = resolveTenantFromRequest(req);
     const activeTenantId = String(tenant?.tenant_id || "default");
@@ -2074,7 +2080,24 @@ app.get("/sitemap.xml", (req, res) => {
           `  <url><loc>${xmlEscape(baseUrl + u.path)}</loc><changefreq>weekly</changefreq><priority>${xmlEscape(u.priority)}</priority></url>`,
       )
       .join("\n");
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticXml}\n${productUrls}\n</urlset>`;
+    let guideXml = "";
+    const guideCfg = tenantGuides(tenant);
+    if (guideCfg) {
+      try {
+        guideXml = (await listGuides(activeTenantId))
+          .map((g) => {
+            const lastmod = String(g.updated_at || g.published_at || "").slice(
+              0,
+              10,
+            );
+            return `  <url><loc>${xmlEscape(baseUrl + guideCfg.basePath + g.slug + "/")}</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>${xmlEscape(lastmod)}</lastmod></url>`;
+          })
+          .join("\n");
+      } catch (err) {
+        console.error("sitemap guides failed", err);
+      }
+    }
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticXml}\n${productUrls}\n${guideXml}\n</urlset>`;
     res.set("Content-Type", "application/xml");
     res.send(xml);
   } catch (err) {
@@ -2206,6 +2229,145 @@ app.get("/index.html", (req, res) => {
 app.get("/roxjaya", (req, res) => {
   res.sendFile(path.join(__dirname, "roxjaya", "index.html"));
 });
+
+// ---- Guides (database-backed, written by the fortnightly autopilot) ----
+function tenantGuides(tenant) {
+  const g = tenant?.guides;
+  if (!g || typeof g !== "object" || !g.basePath) return null;
+  return { ...g, basePath: String(g.basePath).replace(/\/?$/, "/") };
+}
+
+let guidesTableReady = false;
+async function ensureGuidesTable() {
+  if (guidesTableReady) return;
+  await dbQuery(
+    fs.readFileSync(
+      path.join(__dirname, "migrations", "009_add_guides.sql"),
+      "utf8",
+    ),
+  );
+  guidesTableReady = true;
+}
+
+async function listGuides(tenantId) {
+  await ensureGuidesTable();
+  const r = await dbQuery(
+    "SELECT id, slug, title, description, eyebrow, lead, body_html, faqs, source, published_at, updated_at FROM guides WHERE tenant_id = $1 AND status = 'published' ORDER BY published_at DESC",
+    [tenantId],
+  );
+  return r?.rows || [];
+}
+
+app.get("/admin/guides", async (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  const tenant = resolveTenantFromRequest(req);
+  if (!tenantGuides(tenant))
+    return res.status(404).json({ error: "Guides not enabled" });
+  try {
+    const guides = await listGuides(String(tenant.tenant_id));
+    return res.json({ guides });
+  } catch (err) {
+    console.error("guides list failed", err);
+    return res.status(500).json({ error: "Failed to list guides" });
+  }
+});
+
+app.post(
+  "/admin/guides",
+  express.json({ limit: "512kb" }),
+  async (req, res) => {
+    const denied = requireAdmin(req, res);
+    if (denied) return denied;
+    const tenant = resolveTenantFromRequest(req);
+    const cfg = tenantGuides(tenant);
+    if (!cfg) return res.status(404).json({ error: "Guides not enabled" });
+    const checked = validateGuide(req.body);
+    if (checked.error) return res.status(400).json({ error: checked.error });
+    const g = checked.guide;
+    try {
+      const tenantId = String(tenant.tenant_id);
+      const existing = await listGuides(tenantId);
+      const dup = nearDuplicate(
+        g,
+        existing.filter((e) => e.slug !== g.slug),
+      );
+      if (dup && !req.body?.force) {
+        return res
+          .status(409)
+          .json({ error: `Too similar to ${dup.slug}`, score: dup.score });
+      }
+      await dbQuery(
+        `INSERT INTO guides (id, tenant_id, slug, title, description, eyebrow, lead, body_html, faqs, source)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9::jsonb, $10)
+       ON CONFLICT (tenant_id, slug) DO UPDATE SET
+         title = EXCLUDED.title, description = EXCLUDED.description, eyebrow = EXCLUDED.eyebrow,
+         lead = EXCLUDED.lead, body_html = EXCLUDED.body_html, faqs = EXCLUDED.faqs,
+         source = EXCLUDED.source, status = 'published', updated_at = now()`,
+        [
+          crypto.randomUUID(),
+          tenantId,
+          g.slug,
+          g.title,
+          g.description,
+          g.eyebrow,
+          g.lead,
+          g.body_html,
+          JSON.stringify(g.faqs),
+          g.source,
+        ],
+      );
+      return res.json({
+        ok: true,
+        slug: g.slug,
+        url: `${cfg.basePath}${g.slug}/`,
+      });
+    } catch (err) {
+      console.error("guide save failed", err);
+      return res.status(500).json({ error: "Failed to save guide" });
+    }
+  },
+);
+
+async function serveGuideIndex(req, res, next) {
+  const tenant = resolveTenantFromRequest(req);
+  const cfg = tenantGuides(tenant);
+  if (!cfg || req.path.replace(/\/?$/, "/") !== cfg.basePath) return next();
+  if (!req.path.endsWith("/")) return res.redirect(301, cfg.basePath);
+  try {
+    const guides = await listGuides(String(tenant.tenant_id));
+    res.set("Cache-Control", "public, max-age=300");
+    return res.type("html").send(renderGuideIndex(guides, cfg));
+  } catch (err) {
+    console.error("guide index failed", err);
+    return next();
+  }
+}
+
+async function serveGuide(req, res, next) {
+  const tenant = resolveTenantFromRequest(req);
+  const cfg = tenantGuides(tenant);
+  const slug = String(req.params.slug || "");
+  if (!cfg || !/^[a-z0-9-]+$/.test(slug)) return next();
+  if (!req.path.startsWith(cfg.basePath)) return next();
+  if (!req.path.endsWith("/"))
+    return res.redirect(301, `${cfg.basePath}${slug}/`);
+  try {
+    const guides = await listGuides(String(tenant.tenant_id));
+    const guide = guides.find((g) => g.slug === slug);
+    if (!guide) return next();
+    res.set("Cache-Control", "public, max-age=300");
+    return res.type("html").send(renderGuidePage(guide, cfg, guides));
+  } catch (err) {
+    console.error("guide page failed", err);
+    return next();
+  }
+}
+
+app.get("/roxjaya/guides", serveGuideIndex);
+app.get("/roxjaya/guides/:slug", serveGuide);
+app.get("/guides", serveGuideIndex);
+app.get("/guides/:slug", serveGuide);
 
 // Clean URLs for Roxjaya content pages: /roxjaya/<slug>/ -> roxjaya/<slug>.html
 app.get("/roxjaya/:slug", (req, res, next) => {

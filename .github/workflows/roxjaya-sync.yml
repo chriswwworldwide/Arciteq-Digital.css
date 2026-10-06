@@ -47,3 +47,19 @@ jobs:
           if [ -z "$SITE_URL" ] || [ -z "$ADMIN_API_KEY" ]; then
             echo "ROXJAYA_SITE_URL / ROXJAYA_ADMIN_KEY not set - skipping digest"; exit 0; fi
           node roxjaya/automation/hyrox-sync.js --digest
+
+  guide-autopilot:
+    # Fortnightly freshness: runs every Monday, the script itself skips if the
+    # newest guide is under 13 days old.
+    if: github.event_name == 'schedule' && github.event.schedule == '0 0 * * 1' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node roxjaya/automation/guide-autopilot.js
+        env:
+          SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}
+          ADMIN_API_KEY: ${{ secrets.ROXJAYA_ADMIN_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

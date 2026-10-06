@@ -15,7 +15,7 @@ import { validateGuide, nearDuplicate } from "../../src/guides.js";
 const SITE_URL = String(process.env.SITE_URL || "").replace(/\/+$/, "");
 const ADMIN_KEY = String(process.env.ADMIN_API_KEY || "");
 const ANTHROPIC_KEY = String(process.env.ANTHROPIC_API_KEY || "");
-const MODEL = process.env.ANTHROPIC_MODEL || "claude-sonnet-4-5";
+const MODEL = process.env.ANTHROPIC_MODEL || "claude-sonnet-5-5";
 const MIN_DAYS = Number(process.env.MIN_DAYS ?? 13);
 const DRY = process.argv.includes("--dry");
 

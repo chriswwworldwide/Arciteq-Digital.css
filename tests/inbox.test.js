@@ -8,6 +8,7 @@ import {
   applyEdits,
   applyPatches,
   buildDigest,
+  autoApprove,
 } from "../src/inbox.js";
 import {
   parseFeed,
@@ -421,5 +422,51 @@ describe("news feed", () => {
       writeJson: (f, j) => (files[f] = j),
     });
     expect(files["roxjaya/data/news.json"].items).toHaveLength(2);
+  });
+});
+
+describe("autoApprove", () => {
+  const seed = () =>
+    upsertCandidates(emptyInbox(), [
+      { key: "event:a", kind: "event", title: "Jakarta date", apply: [] },
+      { key: "news:b", kind: "news", title: "Blank news", summary: "" },
+      {
+        key: "news:c",
+        kind: "news",
+        title: "Real news",
+        summary: "Two lines.",
+      },
+      { key: "sponsor:d", kind: "sponsor", title: "Sponsor" },
+    ]).inbox;
+
+  it("approves only listed kinds and applies patches", () => {
+    const calls = [];
+    const { inbox, approved } = autoApprove(seed(), ["event"], (i) => {
+      calls.push(i.kind);
+      return { applied: ["x"], skipped: [] };
+    });
+    expect(approved.map((i) => i.kind)).toEqual(["event"]);
+    expect(calls).toEqual(["event"]);
+    expect(approved[0].autoApproved).toBe(true);
+    expect(approved[0].applied.applied).toEqual(["x"]);
+    expect(pendingItems(inbox)).toHaveLength(3);
+  });
+
+  it("true approves everything except blank news", () => {
+    const { inbox, approved } = autoApprove(seed(), true, () => ({
+      applied: [],
+      skipped: [],
+    }));
+    expect(approved.map((i) => i.key).sort()).toEqual([
+      "event:a",
+      "news:c",
+      "sponsor:d",
+    ]);
+    expect(pendingItems(inbox).map((i) => i.key)).toEqual(["news:b"]);
+  });
+
+  it("no-op when kinds is empty", () => {
+    const { approved } = autoApprove(seed(), [], () => ({}));
+    expect(approved).toEqual([]);
   });
 });

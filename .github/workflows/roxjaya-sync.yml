@@ -32,7 +32,8 @@ jobs:
 
   digest:
     runs-on: ubuntu-latest
-    if: github.event_name == 'schedule' && github.event.schedule == '0 0 * * 1'
+    # On hold (owner on leave): flip back to the schedule condition to resume.
+    if: false
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

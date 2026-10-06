@@ -166,7 +166,8 @@
           "roxjaya/data/partners.json"
         ],
         "partners": "roxjaya/data/partners.json",
-        "coachPath": "/roxjaya/coach/",
+        "autoApprove": ["event", "news", "alert", "sponsor"],
+      "coachPath": "/roxjaya/coach/",
         "digestTo": "dinazumba1987@gmail.com",
         "digestDayUtc": 1,
         "digestHourUtc": 0,

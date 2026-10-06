@@ -132,6 +132,18 @@ export function selectNews(
   return picked;
 }
 
+/** Feed description as plain text, attributed, so an unedited item can still publish. */
+export function plainExcerpt(html) {
+  const text = String(html || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&[a-z#0-9]+;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!text) return "";
+  return `${text.slice(0, 280)}${text.length > 280 ? "…" : ""} (via source)`;
+}
+
 /** Turn selected stories into inbox candidates with an editable summary/take. */
 export function buildNewsCandidates(items) {
   return items.map((it) => {
@@ -140,13 +152,13 @@ export function buildNewsCandidates(items) {
       key: `news:${id}`,
       kind: "news",
       title: it.title,
-      summary: "",
+      summary: plainExcerpt(it.excerpt),
       source: it.link,
       editable: ["summary", "take"],
       data: {
         date: it.date,
         sourceName: it.sourceName,
-        summary: "",
+        summary: plainExcerpt(it.excerpt),
         take: "",
         hint: "Write 2–3 lines in your own words (facts only), add your take if you like, then Publish.",
       },
@@ -159,7 +171,7 @@ export function buildNewsCandidates(items) {
             id,
             date: it.date,
             title: it.title,
-            summary: "",
+            summary: plainExcerpt(it.excerpt),
             take: "",
             source: it.link,
             sourceName: it.sourceName,

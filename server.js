@@ -47,6 +47,7 @@ import {
   applyEdits,
   applyPatches,
   buildDigest,
+  autoApprove,
 } from "./src/inbox.js";
 import {
   sponsorItems,
@@ -3182,7 +3183,34 @@ function tenantAutomation(tenant) {
     digestHourUtc: Number.isInteger(a?.digestHourUtc) ? a.digestHourUtc : 0,
     welcomePath: String(a?.welcomePath || "").trim(),
     welcomeIntro: String(a?.welcomeIntro || "").trim(),
+    autoApprove:
+      a?.autoApprove === true
+        ? true
+        : Array.isArray(a?.autoApprove)
+          ? a.autoApprove.map(String)
+          : [],
   };
+}
+
+// Owner-free mode: approve pending items of the configured kinds straight
+// away and apply their patches. Decisions stay in the inbox for audit.
+function runAutoApprove(cfg, inbox) {
+  const kinds = cfg.autoApprove;
+  if (kinds !== true && !(Array.isArray(kinds) && kinds.length)) return inbox;
+  const { inbox: next } = autoApprove(inbox, kinds, (item) => {
+    if (item.kind === "sponsor") {
+      const check = sanitizeSponsor(item.apply?.[0]?.value);
+      if (check.error)
+        return { applied: [], skipped: [{ reason: check.error }] };
+    }
+    return applyPatches(item, {
+      allowedFiles: cfg.writable,
+      readJson: (rel) => safeReadJsonFile(path.join(__dirname, rel), null),
+      writeJson: (rel, json) =>
+        safeWriteJsonFile(path.join(__dirname, rel), json),
+    });
+  });
+  return next;
 }
 
 function readInbox(cfg) {
@@ -3247,7 +3275,7 @@ async function queueSponsorCandidates({ tenantId, orderId, email }) {
     .filter(Boolean);
   if (!candidates.length) return;
   const { inbox } = upsertCandidates(readInbox(cfg), candidates);
-  safeWriteJsonFile(cfg.inboxPath, inbox);
+  safeWriteJsonFile(cfg.inboxPath, runAutoApprove(cfg, inbox));
 }
 
 // Renewal paid: push the live partner's `until` forward. No owner step —
@@ -3296,10 +3324,12 @@ app.post("/admin/inbox", express.json({ limit: "512kb" }), (req, res) => {
     ? req.body.candidates.slice(0, 200)
     : [];
   try {
-    const { inbox, added, updated } = upsertCandidates(
-      readInbox(cfg),
-      candidates,
-    );
+    const {
+      inbox: merged,
+      added,
+      updated,
+    } = upsertCandidates(readInbox(cfg), candidates);
+    const inbox = runAutoApprove(cfg, merged);
     safeWriteJsonFile(cfg.inboxPath, inbox);
     return res.json({
       ok: true,

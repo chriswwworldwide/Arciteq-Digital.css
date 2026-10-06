@@ -318,3 +318,27 @@ export function buildDigest({
   const text = stats ? `${body}\n\n${stats}` : body;
   return { subject, text, actions, desk, traffic: t };
 }
+
+/**
+ * Approve every pending item whose kind is in `kinds` without an owner click.
+ * `kinds` is true (all kinds) or an array. News with no summary stays pending
+ * so nothing blank is published. `apply(item)` runs the patches and returns
+ * { applied, skipped }. Returns { inbox, approved: [item...] }.
+ */
+export function autoApprove(inbox, kinds, apply, now = new Date()) {
+  let next = normalizeInbox(inbox);
+  const all = kinds === true;
+  const set = new Set(Array.isArray(kinds) ? kinds.map(String) : []);
+  const approved = [];
+  for (const item of pendingItems(next)) {
+    if (!all && !set.has(item.kind)) continue;
+    if (item.kind === "news" && !item.summary) continue;
+    const r = decide(next, item.id, "approve", now);
+    if (r.error) continue;
+    next = r.inbox;
+    r.item.applied = apply ? apply(r.item) : { applied: [], skipped: [] };
+    r.item.autoApproved = true;
+    approved.push(r.item);
+  }
+  return { inbox: next, approved };
+}

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title id="page-title">Product | PawSense Tech &amp; Wellness</title>
+    <title id="page-title">Product | PawVigil</title>
 
     <!-- ✅ SEO -->
     <meta
@@ -948,7 +948,14 @@
           }
 
           const addToCartBtn = document.getElementById("add-to-cart");
-          if (addToCartBtn) {
+          if (
+            addToCartBtn &&
+            String(tenant?.shop?.status || "") === "opening-soon"
+          ) {
+            addToCartBtn.disabled = true;
+            addToCartBtn.textContent = "Coming soon";
+            addToCartBtn.setAttribute("aria-disabled", "true");
+          } else if (addToCartBtn) {
             addToCartBtn.addEventListener("click", () => {
               const originalLabel = addToCartBtn.textContent;
               addToCartBtn.disabled = true;

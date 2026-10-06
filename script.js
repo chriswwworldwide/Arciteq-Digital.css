@@ -837,7 +837,36 @@ async function loadTenant() {
     payment_methods: Array.isArray(data?.payment_methods)
       ? data.payment_methods
       : ["card"],
+    shop: data?.shop && typeof data.shop === "object" ? data.shop : null,
   };
+}
+
+function isShopOpeningSoon() {
+  return String(tenant?.shop?.status || "") === "opening-soon";
+}
+
+function renderShopStatusBanner() {
+  if (!isShopOpeningSoon()) return;
+  if (document.getElementById("shop-status-banner")) return;
+  const header = document.querySelector("header");
+  if (!header) return;
+  const message =
+    String(tenant?.shop?.message || "").trim() || "Our shop opens soon.";
+  const banner = document.createElement("div");
+  banner.id = "shop-status-banner";
+  banner.setAttribute("role", "status");
+  banner.style.cssText =
+    "background:#fef3c7;color:#78350f;border-bottom:1px solid #fcd34d;padding:10px 16px;text-align:center;font-size:0.95rem;line-height:1.4;";
+  banner.innerHTML = `<strong>Opening soon:</strong> ${sanitizeHTML(message)}`;
+  header.insertAdjacentElement("afterend", banner);
+
+  const checkoutBtn = document.getElementById("checkout-btn");
+  if (checkoutBtn) {
+    checkoutBtn.disabled = true;
+    checkoutBtn.textContent = "Checkout opens soon";
+    checkoutBtn.style.opacity = "0.6";
+    checkoutBtn.style.cursor = "not-allowed";
+  }
 }
 
 function renderTrustStrip() {
@@ -3197,7 +3226,9 @@ function renderProducts() {
 
     // Check availability
     let actionEl = "";
-    if (p.availability === "https://schema.org/InStock") {
+    if (isShopOpeningSoon()) {
+      actionEl = `<span class="out-of-stock" aria-label="${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))} available when the shop opens">Coming soon</span>`;
+    } else if (p.availability === "https://schema.org/InStock") {
       actionEl = `<button aria-label="Add ${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))} to cart" onclick="addToCart('${p.id}')">Add to Cart</button>`;
     } else if (p.availability === "https://schema.org/PreOrder") {
       actionEl = `<button aria-label="Pre-order ${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))}" onclick="addToCart('${p.id}')">Pre-Order</button>`;
@@ -3484,6 +3515,10 @@ function renderCartPage() {
 
 // ============ CHECKOUT (Stripe) ============
 async function checkout() {
+  if (isShopOpeningSoon()) {
+    showNotice("Our shop isn't open for orders yet — check back soon.");
+    return;
+  }
   if (cart.length === 0) {
     showNotice("Your cart is empty!");
     return;
@@ -3711,6 +3746,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   injectSharedHeader();
   ensureAbsoluteCanonical();
   applyTenantSeo();
+  renderShopStatusBanner();
   renderTrustStrip();
   renderStarterKits();
   renderKitsLandingPage();

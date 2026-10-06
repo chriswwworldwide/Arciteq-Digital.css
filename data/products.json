@@ -30,7 +30,7 @@
       ],
       "price": {
         "amount": 12900,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
@@ -96,7 +96,7 @@
       ],
       "price": {
         "amount": 1899,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
@@ -161,7 +161,7 @@
       ],
       "price": {
         "amount": 4499,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
@@ -226,7 +226,7 @@
       ],
       "price": {
         "amount": 2999,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
@@ -291,10 +291,10 @@
       ],
       "price": {
         "amount": 1599,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
-      "brand": "PawSense",
+      "brand": "PawVigil",
       "tags": ["placeholder", "safety", "visibility"],
       "petType": ["Dog"],
       "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
@@ -356,10 +356,10 @@
       ],
       "price": {
         "amount": 1899,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
-      "brand": "PawSense",
+      "brand": "PawVigil",
       "tags": ["placeholder", "safety", "visibility"],
       "petType": ["Dog"],
       "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
@@ -420,10 +420,10 @@
       ],
       "price": {
         "amount": 2899,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
-      "brand": "PawSense",
+      "brand": "PawVigil",
       "tags": ["placeholder", "safety", "visibility"],
       "petType": ["Dog"],
       "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
@@ -482,10 +482,10 @@
       ],
       "price": {
         "amount": 999,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
-      "brand": "PawSense",
+      "brand": "PawVigil",
       "tags": ["placeholder", "safety", "anti-loss"],
       "petType": ["Dog"],
       "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
@@ -546,10 +546,10 @@
       ],
       "price": {
         "amount": 799,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
-      "brand": "PawSense",
+      "brand": "PawVigil",
       "tags": ["placeholder", "safety", "training"],
       "petType": ["Dog"],
       "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
@@ -607,10 +607,10 @@
       ],
       "price": {
         "amount": 1499,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
-      "brand": "PawSense",
+      "brand": "PawVigil",
       "tags": ["placeholder", "safety"],
       "petType": ["Dog"],
       "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
@@ -671,10 +671,10 @@
       ],
       "price": {
         "amount": 699,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
-      "brand": "PawSense",
+      "brand": "PawVigil",
       "tags": ["placeholder", "walks"],
       "petType": ["Dog"],
       "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
@@ -732,7 +732,7 @@
       ],
       "price": {
         "amount": 1299,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
@@ -797,10 +797,10 @@
       ],
       "price": {
         "amount": 2499,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
-      "brand": "PawSense",
+      "brand": "PawVigil",
       "tags": ["imported", "placeholder"],
       "petType": ["Dog", "Cat"],
       "lifeStage": ["Adult", "Senior"],
@@ -864,10 +864,10 @@
       ],
       "price": {
         "amount": 5999,
-        "currency": "eur"
+        "currency": "gbp"
       },
       "availability": "https://schema.org/InStock",
-      "brand": "PawSense",
+      "brand": "PawVigil",
       "tags": ["imported", "placeholder"],
       "petType": ["Dog", "Cat"],
       "lifeStage": ["Adult", "Senior"],

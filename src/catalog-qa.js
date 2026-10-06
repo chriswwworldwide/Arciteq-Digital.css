@@ -29,6 +29,18 @@ const TECH_ATTR_HINTS = [
 const isNonEmptyString = (v) => typeof v === "string" && v.trim().length > 0;
 const isNonEmptyArray = (v) => Array.isArray(v) && v.length > 0;
 
+export const BILLING_INTERVALS = new Set(["day", "week", "month", "year"]);
+
+/** Services (coaching plans, memberships) ship nothing, so the physical-goods rules don't apply. */
+export function isServiceProduct(product) {
+  return String(product?.kind || "").toLowerCase() === "service";
+}
+
+/** Recurring products carry billing.interval; one-off products have no billing block. */
+export function isRecurringProduct(product) {
+  return isNonEmptyString(product?.billing?.interval);
+}
+
 /** Classify a product as tech (needs a safety disclaimer) via type + attributes. */
 export function isTechProduct(product) {
   const typeSlug = String(product?.productType?.slug || "").toLowerCase();
@@ -61,25 +73,40 @@ export function validateProduct(product) {
   if (!isNonEmptyString(p?.price?.currency))
     errors.push("missing price.currency");
 
-  // Required pet layer.
-  if (!isNonEmptyArray(p.petType)) errors.push("missing petType");
-  if (!isNonEmptyArray(p.lifeStage)) errors.push("missing lifeStage");
-  if (!isNonEmptyArray(p.sizeRequirement))
-    errors.push("missing sizeRequirement");
-
-  // Logistics.
-  if (!WAREHOUSE_LOCATIONS.includes(String(p.warehouseLocation || ""))) {
-    errors.push(
-      `warehouseLocation must be one of ${WAREHOUSE_LOCATIONS.join("/")}`,
-    );
+  if (isRecurringProduct(p)) {
+    const interval = String(p.billing.interval).toLowerCase();
+    if (!BILLING_INTERVALS.has(interval)) {
+      errors.push(
+        `billing.interval must be one of ${[...BILLING_INTERVALS].join("/")}`,
+      );
+    }
+    const count = p.billing.intervalCount;
+    if (count !== undefined && (!Number.isInteger(count) || count < 1)) {
+      errors.push("billing.intervalCount must be a positive integer");
+    }
   }
 
-  // Wellness pivot is non-ingestible in v1 → every product needs a materials list.
-  if (!isNonEmptyArray(p.materials)) errors.push("missing materials");
+  if (!isServiceProduct(p)) {
+    // Required pet layer.
+    if (!isNonEmptyArray(p.petType)) errors.push("missing petType");
+    if (!isNonEmptyArray(p.lifeStage)) errors.push("missing lifeStage");
+    if (!isNonEmptyArray(p.sizeRequirement))
+      errors.push("missing sizeRequirement");
 
-  // Tech items must carry a safety disclaimer.
-  if (isTechProduct(p) && !isNonEmptyString(p.safetyDisclaimer)) {
-    errors.push("tech product missing safetyDisclaimer");
+    // Logistics.
+    if (!WAREHOUSE_LOCATIONS.includes(String(p.warehouseLocation || ""))) {
+      errors.push(
+        `warehouseLocation must be one of ${WAREHOUSE_LOCATIONS.join("/")}`,
+      );
+    }
+
+    // Wellness pivot is non-ingestible in v1 → every product needs a materials list.
+    if (!isNonEmptyArray(p.materials)) errors.push("missing materials");
+
+    // Tech items must carry a safety disclaimer.
+    if (isTechProduct(p) && !isNonEmptyString(p.safetyDisclaimer)) {
+      errors.push("tech product missing safetyDisclaimer");
+    }
   }
 
   // SEO.

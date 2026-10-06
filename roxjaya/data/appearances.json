@@ -1,0 +1,4 @@
+{
+  "note": "Where Dina is appearing. Only confirmed, public items. Fields: date (YYYY-MM-DD), title, where, kind (sim|clinic|race|talk|brand|other), link (optional), note (optional). Past dates hide automatically.",
+  "items": []
+}

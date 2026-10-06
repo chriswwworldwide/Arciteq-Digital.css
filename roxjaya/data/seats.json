@@ -1,0 +1,15 @@
+{
+  "note": "Founding-member capacity per coached plan. Dina edits 'taken' after each signup; set 'taken' to null to hide the line for that plan. Capacity is real coaching hours, not a marketing number.",
+  "plans": {
+    "roxjaya-plan-hybrid-001": {
+      "label": "Hybrid",
+      "capacity": 12,
+      "taken": null
+    },
+    "roxjaya-plan-elite-001": {
+      "label": "Elite Race Prep",
+      "capacity": 4,
+      "taken": null
+    }
+  }
+}

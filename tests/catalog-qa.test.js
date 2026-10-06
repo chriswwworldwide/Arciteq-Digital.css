@@ -7,6 +7,8 @@ import {
   validateProduct,
   validateCatalog,
   isTechProduct,
+  isServiceProduct,
+  isRecurringProduct,
   WAREHOUSE_LOCATIONS,
 } from "../src/catalog-qa.js";
 
@@ -131,7 +133,9 @@ describe("validateProduct", () => {
     });
     expect(r.errors).toContain("missing productId");
     expect(r.errors).toContain("missing tenant_id");
-    expect(r.errors).toContain("price.amount must be a positive integer (minor units)");
+    expect(r.errors).toContain(
+      "price.amount must be a positive integer (minor units)",
+    );
     expect(r.errors).toContain("missing price.currency");
     expect(r.errors).toContain("missing images");
     expect(r.productId).toBe("(unknown)");
@@ -175,6 +179,62 @@ describe("validateCatalog", () => {
     const report = validateCatalog(parsed.products);
     // Guardrail: keeps future product additions honest.
     expect(report.ok).toBe(true);
+  });
+});
+
+describe("service + recurring products", () => {
+  const servicePlan = (overrides = {}) => ({
+    productId: "plan-1",
+    tenant_id: "coach",
+    kind: "service",
+    title: "Monthly Program",
+    description: "Programming delivered weekly.",
+    price: { amount: 599000, currency: "idr" },
+    billing: { interval: "month" },
+    seo: { slug: "monthly-program", canonicalPath: "/plans/monthly-program" },
+    images: [{ src: "/i.png", alt: "Monthly program" }],
+    marketing_hooks: { emotionalPainPoints: ["Train with structure"] },
+    ...overrides,
+  });
+
+  it("classifies kind=service and billing.interval", () => {
+    expect(isServiceProduct(servicePlan())).toBe(true);
+    expect(isServiceProduct(validProduct())).toBe(false);
+    expect(isRecurringProduct(servicePlan())).toBe(true);
+    expect(isRecurringProduct(validProduct())).toBe(false);
+  });
+
+  it("skips pet layer, warehouse, materials and safety rules for services", () => {
+    expect(validateProduct(servicePlan()).errors).toEqual([]);
+  });
+
+  it("still enforces price, seo and images for services", () => {
+    const r = validateProduct(
+      servicePlan({ price: { amount: 1.5, currency: "idr" }, images: [] }),
+    );
+    expect(r.errors).toContain(
+      "price.amount must be a positive integer (minor units)",
+    );
+    expect(r.errors).toContain("missing images");
+  });
+
+  it("rejects unknown billing intervals and bad interval counts", () => {
+    expect(
+      validateProduct(servicePlan({ billing: { interval: "fortnight" } }))
+        .errors,
+    ).toContain("billing.interval must be one of day/week/month/year");
+    expect(
+      validateProduct(
+        servicePlan({ billing: { interval: "month", intervalCount: 0 } }),
+      ).errors,
+    ).toContain("billing.intervalCount must be a positive integer");
+  });
+
+  it("physical goods with billing still need the pet layer", () => {
+    const r = validateProduct(
+      validProduct({ billing: { interval: "month" }, petType: [] }),
+    );
+    expect(r.errors).toContain("missing petType");
   });
 });
 

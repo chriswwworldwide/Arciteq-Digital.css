@@ -1,0 +1,15 @@
+{
+  "note": "Results wall + Dina's week. 'athletes': consented client results only \u2014 first name (or handle) as the athlete agreed, before/after times, race, date (YYYY-MM). 'weeks': short dated notes from Dina, newest first; the page shows the latest 3. Empty lists hide their block. Never add anyone without their OK.",
+  "athletes": [
+    {
+      "name": "Dina",
+      "division": "Women Doubles",
+      "before": "1:16:31",
+      "after": "1:11:20",
+      "event": "Hyrox Bangkok \u2192 Hyrox Jakarta",
+      "date": "2026-06",
+      "note": "1st AG 35\u201339, raced 7 weeks pregnant"
+    }
+  ],
+  "weeks": []
+}

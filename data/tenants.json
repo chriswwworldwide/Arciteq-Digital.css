@@ -192,6 +192,206 @@
           }
         ]
       }
+    },
+    {
+      "tenant_id": "roxjaya",
+      "vertical": "coaching",
+      "hostnames": ["roxjaya.localhost", "roxjaya.com", "www.roxjaya.com"],
+      "currency": "idr",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Roxjaya Warriors Jakarta",
+        "tagline": "Hyrox coaching, online programming and race prep from Jakarta.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Dina — podium athlete and Jakarta personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Jakarta and online with Dina — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/roxjaya/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/roxjaya/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/hybrid-coaching-jakarta/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/roxjaya/hyrox-jakarta/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/roxjaya/jakarta-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/roxjaya/book-dina/",
+            "priority": "0.7"
+          },
+          {
+            "path": "/roxjaya/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/roxjaya/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert"
+        ]
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "roxjaya/data/inbox.json",
+        "writable": [
+          "roxjaya/data/events.json",
+          "roxjaya/data/cities.json",
+          "roxjaya/data/news.json",
+          "roxjaya/data/partners.json"
+        ],
+        "partners": "roxjaya/data/partners.json",
+        "autoApprove": ["event", "news", "alert", "sponsor"],
+        "coachPath": "/roxjaya/coach/",
+        "digestTo": "dinazumba1987@gmail.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/roxjaya/welcome/",
+        "welcomeIntro": "Hi Dina — this is the first of your Monday emails from roxjaya.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/roxjaya/guides/",
+        "brand": "Roxjaya Warriors Jakarta",
+        "homePath": "/roxjaya/",
+        "language": "en",
+        "author": {
+          "name": "Dina Rosdiana",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Dina — HYROX Certified Coach, podium athlete, Jakarta personal trainer.",
+        "indexTitle": "HYROX training guides by Dina — Roxjaya Warriors Jakarta",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Jakarta: stations, pacing, race travel across Asia and training in the heat. New guide every fortnight.",
+        "stylesheets": ["/roxjaya/styles.css", "/roxjaya/guide.css"],
+        "scripts": ["/roxjaya/app.js", "/roxjaya/partners.js"],
+        "headerHtml": "<a href=\"/roxjaya/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">R<span class=\"o\">O</span>XJAYA WARRIORS <span class=\"sig\" aria-label=\"by Dina Rosdiana\"><span class=\"sig-text\">by Dina Rosdiana</span></span></span></h1></a><p class=\"city\">Jakarta</p>",
+        "nav": [
+          {
+            "href": "/roxjaya/",
+            "label": "Home"
+          },
+          {
+            "href": "/roxjaya/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/roxjaya/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/roxjaya/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/roxjaya/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/roxjaya/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/roxjaya/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/roxjaya/hyrox-jakarta/",
+            "label": "Hyrox Jakarta"
+          },
+          {
+            "href": "/roxjaya/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/roxjaya/news/",
+            "label": "News"
+          },
+          {
+            "href": "/roxjaya/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/roxjaya/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/roxjaya/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Dina</h3><p>Hybrid coaching in Jakarta or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/roxjaya/hybrid-coaching-jakarta/\">See coaching plans</a></section>"
+      }
     }
   ]
 }

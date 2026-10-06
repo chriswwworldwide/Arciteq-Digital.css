@@ -5,7 +5,7 @@
     {
       "productId": "pet-demo-heatpad-001",
       "tenant_id": "default",
-      "title": "Self-Warming Orthopedic Pet Mat (Demo)",
+      "title": "Self-Warming Orthopedic Pet Mat",
       "description": "Non-ingestible comfort mat designed to help senior pets rest more comfortably.",
       "nicheCategory": {
         "slug": "senior-pet-care",
@@ -71,7 +71,7 @@
     {
       "productId": "pet-demo-joint-topical-001",
       "tenant_id": "default",
-      "title": "Joint Comfort Massage Balm (Non-Ingestible) (Demo)",
+      "title": "Joint Comfort Massage Balm (Non-Ingestible)",
       "description": "Non-ingestible topical balm designed to support comfort for senior pets after walks.",
       "nicheCategory": {
         "slug": "senior-pet-care",
@@ -136,7 +136,7 @@
     {
       "productId": "pet-demo-calming-bed-001",
       "tenant_id": "default",
-      "title": "Calming Bolster Bed for Seniors (Demo)",
+      "title": "Calming Bolster Bed for Seniors",
       "description": "Non-ingestible calming bed with supportive bolsters designed for senior dogs and cats.",
       "nicheCategory": {
         "slug": "senior-pet-care",
@@ -201,7 +201,7 @@
     {
       "productId": "pet-demo-smart-tracker-001",
       "tenant_id": "default",
-      "title": "Smart Activity Tracker Tag (Demo)",
+      "title": "Smart Activity Tracker Tag",
       "description": "Lightweight tracker tag for monitoring your senior pet’s daily activity trends.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -266,7 +266,7 @@
     {
       "productId": "pet-ph-led-collar-light-001",
       "tenant_id": "default",
-      "title": "USB Rechargeable LED Collar Light (Placeholder)",
+      "title": "USB Rechargeable LED Collar Light",
       "description": "Clip-on LED collar light to improve visibility on early-morning and night walks.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -331,7 +331,7 @@
     {
       "productId": "pet-ph-reflective-walk-leash-001",
       "tenant_id": "default",
-      "title": "Reflective Night-Walk Leash (Placeholder)",
+      "title": "Reflective Night-Walk Leash",
       "description": "Reflective leash designed to help you and your dog stay more visible after dark.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -395,7 +395,7 @@
     {
       "productId": "pet-ph-reflective-harness-001",
       "tenant_id": "default",
-      "title": "Reflective No-Pull Harness (Placeholder)",
+      "title": "Reflective No-Pull Harness",
       "description": "Reflective harness for better visibility and steadier control on night walks.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -457,7 +457,7 @@
     {
       "productId": "pet-ph-id-tag-qr-001",
       "tenant_id": "default",
-      "title": "QR Pet ID Tag (Placeholder)",
+      "title": "QR Pet ID Tag",
       "description": "Simple QR ID tag to help someone contact you fast if your dog gets lost.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -521,7 +521,7 @@
     {
       "productId": "pet-ph-training-clicker-001",
       "tenant_id": "default",
-      "title": "Training Clicker (Placeholder)",
+      "title": "Training Clicker",
       "description": "Simple clicker for reinforcing recall and calmer leash habits.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -582,7 +582,7 @@
     {
       "productId": "pet-ph-seatbelt-tether-001",
       "tenant_id": "default",
-      "title": "Car Seatbelt Safety Tether (Placeholder)",
+      "title": "Car Seatbelt Safety Tether",
       "description": "Seatbelt tether to help keep your dog safer and more stable during car rides.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -646,7 +646,7 @@
     {
       "productId": "pet-ph-poop-bag-holder-001",
       "tenant_id": "default",
-      "title": "Clip-On Poop Bag Holder (Placeholder)",
+      "title": "Clip-On Poop Bag Holder",
       "description": "Simple bag holder so you’re not juggling bags on night walks.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -707,7 +707,7 @@
     {
       "productId": "pet-demo-grooming-glove-001",
       "tenant_id": "default",
-      "title": "Gentle Grooming Glove for Seniors (Demo)",
+      "title": "Gentle Grooming Glove for Seniors",
       "description": "Soft grooming glove designed for sensitive senior skin and shorter grooming sessions.",
       "nicheCategory": {
         "slug": "senior-pet-care",
@@ -772,7 +772,7 @@
     {
       "productId": "imp-default-ph-tracker-001",
       "tenant_id": "default",
-      "title": "GPS Activity Tracker Tag (Placeholder)",
+      "title": "GPS Activity Tracker Tag",
       "description": "Placeholder supplier feed item for a lightweight tracker tag.",
       "nicheCategory": {
         "slug": "smart-monitoring",
@@ -839,7 +839,7 @@
         "supplierSku": "ph-camera-001"
       },
       "dedupeKey": "pawsense::indoor-pet-wellness-camera-placeholder",
-      "title": "Indoor Pet Wellness Camera (Placeholder)",
+      "title": "Indoor Pet Wellness Camera",
       "description": "Placeholder supplier feed item for a simple indoor wellness camera.",
       "nicheCategory": {
         "slug": "smart-monitoring",

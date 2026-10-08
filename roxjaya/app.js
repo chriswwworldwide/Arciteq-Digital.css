@@ -294,16 +294,39 @@
     reveals.forEach((el) => el.classList.add("in"));
   }
 
-  // Chat Zone: becomes a WhatsApp deep-link once data-whatsapp holds Dina's
-  // number in international format (e.g. 628123456789). Empty = fall back to Ask Dina.
-  const CHAT_GREETING = "Hi Dina, I found you on Roxjaya Warriors — ";
-  document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
-    const digits = String(a.dataset.whatsapp || "").replace(/\D/g, "");
-    if (!digits) return;
-    a.href = `https://wa.me/${digits}?text=${encodeURIComponent(CHAT_GREETING)}`;
+  // WhatsApp: Dina's number in international format, digits only. Every
+  // .chat-zone link and any a[data-whatsapp] becomes a wa.me deep-link with a
+  // greeting; the floating bubble is added to every page except the coach desk.
+  const ROX_WHATSAPP = "6281211611987";
+  const CHAT_GREETING =
+    "Hi Dina, I found you on Roxjaya Warriors — I'm interested in HYROX coaching. ";
+  const waHref = `https://wa.me/${ROX_WHATSAPP}?text=${encodeURIComponent(CHAT_GREETING)}`;
+  document.querySelectorAll("a[data-whatsapp], a.chat-zone").forEach((a) => {
+    a.dataset.whatsapp = ROX_WHATSAPP;
+    a.href = waHref;
     a.target = "_blank";
     a.rel = "noopener";
+    if (
+      a.classList.contains("chat-zone") &&
+      !a.classList.contains("chat-zone-inline")
+    ) {
+      a.innerHTML = '<span class="dot"></span> WhatsApp Dina';
+    }
   });
+  if (
+    !/\/coach(\.html|\/)?$/.test(location.pathname) &&
+    !document.querySelector(".wa-fab")
+  ) {
+    const fab = document.createElement("a");
+    fab.className = "wa-fab";
+    fab.href = waHref;
+    fab.target = "_blank";
+    fab.rel = "noopener";
+    fab.setAttribute("aria-label", "Message Dina on WhatsApp");
+    fab.innerHTML =
+      '<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.5.7 4.9 2 7L3 29l6.5-2.1a12.7 12.7 0 0 0 6.5 1.8c7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1.3 1.3-3.8-.3-.4a10.4 10.4 0 1 1 9 5zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.2 1.3 3.4c.2.2 2.3 3.5 5.6 4.9 2.8 1.1 3.3.9 3.9.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.3z"/></svg><span>WhatsApp Dina</span>';
+    document.body.appendChild(fab);
+  }
 })();
 
 // Founding-member seat counts: roxjaya/data/seats.json, hidden until "taken" is set.

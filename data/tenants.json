@@ -124,6 +124,7 @@
       "tenant_id": "roxjaya",
       "vertical": "coaching",
       "hostnames": ["roxjaya.localhost", "roxjaya.com", "www.roxjaya.com"],
+      "canonicalHost": "roxjaya.com",
       "currency": "idr",
       "language": "en",
       "catalog": {

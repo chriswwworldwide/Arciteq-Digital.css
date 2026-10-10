@@ -115,6 +115,23 @@ console.log(
 const app = express();
 app.set("trust proxy", 1);
 
+// Per-tenant canonical host: a tenant with `canonicalHost` set (e.g.
+// "roxjaya.com") 301s every other hostname it owns (www.) to it, so Google
+// sees one URL per page instead of splitting the ranking signal.
+app.use((req, res, next) => {
+  const hostname = String(req.headers.host || "")
+    .split(":")[0]
+    .toLowerCase();
+  if (!hostname || hostname === "localhost" || hostname.endsWith(".localhost"))
+    return next();
+  const tenant = resolveTenantFromRequest(req);
+  const canonicalHost = String(tenant?.canonicalHost || "").toLowerCase();
+  if (!canonicalHost || hostname === canonicalHost) return next();
+  const proto =
+    req.secure || req.get("x-forwarded-proto") === "https" ? "https" : "http";
+  return res.redirect(301, `${proto}://${canonicalHost}${req.originalUrl}`);
+});
+
 const PORT = process.env.PORT || 3000;
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;

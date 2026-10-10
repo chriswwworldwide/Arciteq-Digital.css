@@ -23,6 +23,13 @@ const DRY = process.argv.includes("--dry");
 // page. Existing static pages (stations, run, fuel, taper, Jakarta event) are
 // not repeated here.
 export const TOPICS = [
+  // Bahasa/local long-tails first — terms nobody competitive writes for.
+  "Latihan HYROX pemula: program 8 minggu untuk first-timer di Jakarta (Bahasa)",
+  "Hyrox training plan Jakarta: how to structure 12 weeks around heat, traffic and gym access",
+  "Teknik wall ball HYROX (Bahasa): tinggi target, ritme, dan kapan harus break",
+  "HYROX doubles strategy: splitting stations, pacing the runs together and the handover rules",
+  "Hyrox coach Jakarta: what a HYROX Certified Coach actually does for you, online and in person",
+  "Jadwal latihan HYROX seminggu (Bahasa): 3, 4 dan 5 sesi dengan prinsip 80/20",
   "Your first HYROX in Jakarta: a 12-week beginner plan for women who already go to the gym",
   "Wall balls for women: 75 reps without failing — height, rhythm and the 'break before you need to' rule",
   "Sled push and sled pull on a slow carpet: how Asian venues differ and how to adjust pacing",

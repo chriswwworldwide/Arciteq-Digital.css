@@ -5,7 +5,7 @@
     {
       "productId": "pet-demo-heatpad-001",
       "tenant_id": "default",
-      "title": "Self-Warming Orthopedic Pet Mat (Demo)",
+      "title": "Self-Warming Orthopedic Pet Mat",
       "description": "Non-ingestible comfort mat designed to help senior pets rest more comfortably.",
       "nicheCategory": {
         "slug": "senior-pet-care",
@@ -71,7 +71,7 @@
     {
       "productId": "pet-demo-joint-topical-001",
       "tenant_id": "default",
-      "title": "Joint Comfort Massage Balm (Non-Ingestible) (Demo)",
+      "title": "Joint Comfort Massage Balm (Non-Ingestible)",
       "description": "Non-ingestible topical balm designed to support comfort for senior pets after walks.",
       "nicheCategory": {
         "slug": "senior-pet-care",
@@ -136,7 +136,7 @@
     {
       "productId": "pet-demo-calming-bed-001",
       "tenant_id": "default",
-      "title": "Calming Bolster Bed for Seniors (Demo)",
+      "title": "Calming Bolster Bed for Seniors",
       "description": "Non-ingestible calming bed with supportive bolsters designed for senior dogs and cats.",
       "nicheCategory": {
         "slug": "senior-pet-care",
@@ -201,7 +201,7 @@
     {
       "productId": "pet-demo-smart-tracker-001",
       "tenant_id": "default",
-      "title": "Smart Activity Tracker Tag (Demo)",
+      "title": "Smart Activity Tracker Tag",
       "description": "Lightweight tracker tag for monitoring your senior pet’s daily activity trends.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -266,7 +266,7 @@
     {
       "productId": "pet-ph-led-collar-light-001",
       "tenant_id": "default",
-      "title": "USB Rechargeable LED Collar Light (Placeholder)",
+      "title": "USB Rechargeable LED Collar Light",
       "description": "Clip-on LED collar light to improve visibility on early-morning and night walks.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -331,7 +331,7 @@
     {
       "productId": "pet-ph-reflective-walk-leash-001",
       "tenant_id": "default",
-      "title": "Reflective Night-Walk Leash (Placeholder)",
+      "title": "Reflective Night-Walk Leash",
       "description": "Reflective leash designed to help you and your dog stay more visible after dark.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -395,7 +395,7 @@
     {
       "productId": "pet-ph-reflective-harness-001",
       "tenant_id": "default",
-      "title": "Reflective No-Pull Harness (Placeholder)",
+      "title": "Reflective No-Pull Harness",
       "description": "Reflective harness for better visibility and steadier control on night walks.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -457,7 +457,7 @@
     {
       "productId": "pet-ph-id-tag-qr-001",
       "tenant_id": "default",
-      "title": "QR Pet ID Tag (Placeholder)",
+      "title": "QR Pet ID Tag",
       "description": "Simple QR ID tag to help someone contact you fast if your dog gets lost.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -521,7 +521,7 @@
     {
       "productId": "pet-ph-training-clicker-001",
       "tenant_id": "default",
-      "title": "Training Clicker (Placeholder)",
+      "title": "Training Clicker",
       "description": "Simple clicker for reinforcing recall and calmer leash habits.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -582,7 +582,7 @@
     {
       "productId": "pet-ph-seatbelt-tether-001",
       "tenant_id": "default",
-      "title": "Car Seatbelt Safety Tether (Placeholder)",
+      "title": "Car Seatbelt Safety Tether",
       "description": "Seatbelt tether to help keep your dog safer and more stable during car rides.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -646,7 +646,7 @@
     {
       "productId": "pet-ph-poop-bag-holder-001",
       "tenant_id": "default",
-      "title": "Clip-On Poop Bag Holder (Placeholder)",
+      "title": "Clip-On Poop Bag Holder",
       "description": "Simple bag holder so you’re not juggling bags on night walks.",
       "nicheCategory": {
         "slug": "pet-safety-essentials",
@@ -707,7 +707,7 @@
     {
       "productId": "pet-demo-grooming-glove-001",
       "tenant_id": "default",
-      "title": "Gentle Grooming Glove for Seniors (Demo)",
+      "title": "Gentle Grooming Glove for Seniors",
       "description": "Soft grooming glove designed for sensitive senior skin and shorter grooming sessions.",
       "nicheCategory": {
         "slug": "senior-pet-care",
@@ -772,7 +772,7 @@
     {
       "productId": "imp-default-ph-tracker-001",
       "tenant_id": "default",
-      "title": "GPS Activity Tracker Tag (Placeholder)",
+      "title": "GPS Activity Tracker Tag",
       "description": "Placeholder supplier feed item for a lightweight tracker tag.",
       "nicheCategory": {
         "slug": "smart-monitoring",
@@ -839,7 +839,7 @@
         "supplierSku": "ph-camera-001"
       },
       "dedupeKey": "pawsense::indoor-pet-wellness-camera-placeholder",
-      "title": "Indoor Pet Wellness Camera (Placeholder)",
+      "title": "Indoor Pet Wellness Camera",
       "description": "Placeholder supplier feed item for a simple indoor wellness camera.",
       "nicheCategory": {
         "slug": "smart-monitoring",
@@ -896,6 +896,463 @@
       "audit": {
         "createdAt": "2026-05-16T20:18:40.179Z",
         "updatedAt": "2026-05-16T20:18:40.179Z"
+      }
+    },
+    {
+      "productId": "pup-crate-divider-001",
+      "tenant_id": "pupstart",
+      "title": "Puppy Crate with Adjustable Divider",
+      "description": "Fold-flat wire crate with a moveable divider so the crate grows with your puppy — the single most useful piece of toilet- and settle-training kit.",
+      "nicheCategory": {
+        "slug": "puppy-first-year",
+        "name": "Puppy First Year"
+      },
+      "productType": {
+        "slug": "training-kit",
+        "name": "Training Kit"
+      },
+      "seo": {
+        "slug": "puppy-crate-with-divider",
+        "canonicalPath": "/puppy-first-year/puppy-crate-with-divider",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-10.png",
+          "alt": "Puppy Crate with Adjustable Divider",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 6900,
+        "currency": "gbp"
+      },
+      "availability": "https://schema.org/PreOrder",
+      "brand": "PupStartHQ",
+      "tags": ["puppy", "crate", "training"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "shippingOrigin": "UK",
+      "warehouseLocation": "UK",
+      "materials": ["Powder-coated steel", "ABS tray"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Stop night-time accidents in the first fortnight",
+          "Give your puppy a den that feels safe when you leave the room"
+        ],
+        "ugcAngles": [
+          "Puppy asleep in crate on night one",
+          "Divider moved as puppy grows — week 1 vs week 12"
+        ]
+      },
+      "attributes": {
+        "sizes": "24/30/36 inch",
+        "divider": true,
+        "doors": 2
+      },
+      "safetyDisclaimer": "Remove collars and tags before crating. Never leave a puppy crated for longer than age-appropriate (roughly one hour per month of age, max 4 hours).",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": true,
+        "priority": 10
+      },
+      "audit": {
+        "createdAt": "2026-10-04T00:00:00.000Z",
+        "updatedAt": "2026-10-04T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pup-washable-pads-001",
+      "tenant_id": "pupstart",
+      "title": "Washable Puppy Training Pads (2-pack)",
+      "description": "Reusable absorbent pads with a waterproof back — replaces hundreds of disposable pads during toilet training and stops the ‘shredded pad’ game.",
+      "nicheCategory": {
+        "slug": "puppy-first-year",
+        "name": "Puppy First Year"
+      },
+      "productType": {
+        "slug": "training-kit",
+        "name": "Training Kit"
+      },
+      "seo": {
+        "slug": "washable-puppy-training-pads",
+        "canonicalPath": "/puppy-first-year/washable-puppy-training-pads",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-11.png",
+          "alt": "Washable Puppy Training Pads (2-pack)",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 2400,
+        "currency": "gbp"
+      },
+      "availability": "https://schema.org/PreOrder",
+      "brand": "PupStartHQ",
+      "tags": ["puppy", "toilet-training", "washable"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "shippingOrigin": "UK",
+      "warehouseLocation": "UK",
+      "materials": ["Microfibre top", "Polyurethane waterproof layer"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "No more wet patches on the carpet",
+          "Stop buying disposable pads every week"
+        ],
+        "ugcAngles": [
+          "Before/after of the pad spot by the door",
+          "Puppy using the pad unprompted"
+        ]
+      },
+      "attributes": {
+        "size": "80 x 90 cm",
+        "machineWashable": true
+      },
+      "safetyDisclaimer": "Supervise use; discontinue if your puppy chews or ingests fabric.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": true,
+        "priority": 9
+      },
+      "audit": {
+        "createdAt": "2026-10-04T00:00:00.000Z",
+        "updatedAt": "2026-10-04T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pup-teething-set-001",
+      "tenant_id": "pupstart",
+      "title": "Puppy Teething Chew Set (3-piece)",
+      "description": "Three textures of chew-safe rubber for the 3–7 month teething window — freezable ring, textured bone and a soft starter chew.",
+      "nicheCategory": {
+        "slug": "puppy-first-year",
+        "name": "Puppy First Year"
+      },
+      "productType": {
+        "slug": "comfort-play",
+        "name": "Comfort & Play"
+      },
+      "seo": {
+        "slug": "puppy-teething-chew-set",
+        "canonicalPath": "/puppy-first-year/puppy-teething-chew-set",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-12.png",
+          "alt": "Puppy Teething Chew Set (3-piece)",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 1600,
+        "currency": "gbp"
+      },
+      "availability": "https://schema.org/PreOrder",
+      "brand": "PupStartHQ",
+      "tags": ["puppy", "teething", "chew"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten"],
+      "sizeRequirement": ["Small", "Medium"],
+      "shippingOrigin": "UK",
+      "warehouseLocation": "UK",
+      "materials": ["Natural rubber", "Food-grade TPR"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Save your shoes and table legs",
+          "Soothe sore gums without constant nipping"
+        ],
+        "ugcAngles": [
+          "Freezer-ring ‘zonk out’ clip",
+          "Chewed trainer vs chew toy comparison"
+        ]
+      },
+      "attributes": {
+        "freezable": true,
+        "pieces": 3
+      },
+      "safetyDisclaimer": "Supervise chewing. Replace if any piece becomes damaged or small enough to swallow. Not for strong adult chewers.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": true,
+        "priority": 8
+      },
+      "audit": {
+        "createdAt": "2026-10-04T00:00:00.000Z",
+        "updatedAt": "2026-10-04T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pup-first-harness-001",
+      "tenant_id": "pupstart",
+      "title": "Adjustable Puppy Harness & Lead Set",
+      "description": "Y-front harness with four adjustment points and a soft 1.5 m lead — fits from 8 weeks and adjusts through the first growth spurt.",
+      "nicheCategory": {
+        "slug": "puppy-first-year",
+        "name": "Puppy First Year"
+      },
+      "productType": {
+        "slug": "walking",
+        "name": "Walking"
+      },
+      "seo": {
+        "slug": "adjustable-puppy-harness-lead-set",
+        "canonicalPath": "/puppy-first-year/adjustable-puppy-harness-lead-set",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-13.png",
+          "alt": "Adjustable Puppy Harness & Lead Set",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 2200,
+        "currency": "gbp"
+      },
+      "availability": "https://schema.org/PreOrder",
+      "brand": "PupStartHQ",
+      "tags": ["puppy", "harness", "first-walks"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten"],
+      "sizeRequirement": ["Small", "Medium"],
+      "shippingOrigin": "UK",
+      "warehouseLocation": "UK",
+      "materials": ["Nylon webbing", "Mesh padding", "Zinc alloy D-ring"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "First walks that don’t end in a tangle",
+          "Protect a growing neck — no pulling on the collar"
+        ],
+        "ugcAngles": [
+          "First walk after vaccinations",
+          "Harness fit week 10 vs week 20"
+        ]
+      },
+      "attributes": {
+        "sizes": "XS/S/M",
+        "adjustmentPoints": 4
+      },
+      "safetyDisclaimer": "Check fit weekly during growth; two fingers should fit under every strap. Supervise on-lead use.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": true,
+        "priority": 8
+      },
+      "audit": {
+        "createdAt": "2026-10-04T00:00:00.000Z",
+        "updatedAt": "2026-10-04T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "pup-heartbeat-toy-001",
+      "tenant_id": "pupstart",
+      "title": "Snuggle Heartbeat Puppy Comforter",
+      "description": "Plush comforter with a removable battery heartbeat module and optional warming pack — mimics littermates for the first nights alone.",
+      "nicheCategory": {
+        "slug": "puppy-first-year",
+        "name": "Puppy First Year"
+      },
+      "productType": {
+        "slug": "comfort-play",
+        "name": "Comfort & Play"
+      },
+      "seo": {
+        "slug": "snuggle-heartbeat-puppy-comforter",
+        "canonicalPath": "/puppy-first-year/snuggle-heartbeat-puppy-comforter",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-14.png",
+          "alt": "Snuggle Heartbeat Puppy Comforter",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 2800,
+        "currency": "gbp"
+      },
+      "availability": "https://schema.org/PreOrder",
+      "brand": "PupStartHQ",
+      "tags": ["puppy", "settling", "comfort"],
+      "petType": ["Dog"],
+      "lifeStage": ["Puppy/Kitten"],
+      "sizeRequirement": ["Small", "Medium", "Large"],
+      "shippingOrigin": "UK",
+      "warehouseLocation": "UK",
+      "materials": ["Plush polyester", "ABS heartbeat module"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Quieter first nights — for both of you",
+          "Ease the move from the breeder to your home"
+        ],
+        "ugcAngles": [
+          "Night-one sleeping-next-to-the-heartbeat video",
+          "Puppy carrying the toy to bed"
+        ]
+      },
+      "attributes": {
+        "heartbeatModule": true,
+        "warmingPack": true,
+        "machineWashableCover": true
+      },
+      "safetyDisclaimer": "Battery module contains small parts: remove before unsupervised use and replace if the cover is chewed through.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": false,
+        "priority": 7
+      },
+      "audit": {
+        "createdAt": "2026-10-04T00:00:00.000Z",
+        "updatedAt": "2026-10-04T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "kit-low-entry-litter-tray-001",
+      "tenant_id": "pupstart",
+      "title": "Low-Entry Kitten Litter Tray with Rim",
+      "description": "Shallow-entry tray a 9-week-old can climb into, with a lift-off rim that stops scatter — swap to a standard tray at 6 months.",
+      "nicheCategory": {
+        "slug": "kitten-first-year",
+        "name": "Kitten First Year"
+      },
+      "productType": {
+        "slug": "kitten-starter",
+        "name": "Kitten Starter"
+      },
+      "seo": {
+        "slug": "low-entry-kitten-litter-tray",
+        "canonicalPath": "/kitten-first-year/low-entry-kitten-litter-tray",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-15.png",
+          "alt": "Low-Entry Kitten Litter Tray with Rim",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 1400,
+        "currency": "gbp"
+      },
+      "availability": "https://schema.org/PreOrder",
+      "brand": "PupStartHQ",
+      "tags": ["kitten", "litter", "starter"],
+      "petType": ["Cat"],
+      "lifeStage": ["Puppy/Kitten"],
+      "sizeRequirement": ["Small"],
+      "shippingOrigin": "UK",
+      "warehouseLocation": "UK",
+      "materials": ["Polypropylene"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Fewer misses in the first weeks",
+          "Less litter on the floor"
+        ],
+        "ugcAngles": [
+          "Kitten’s first successful tray visit",
+          "Tray placement in the ‘safe room’"
+        ]
+      },
+      "attributes": {
+        "entryHeight": "7 cm",
+        "rim": true
+      },
+      "safetyDisclaimer": "Clean daily. Not suitable for adult cats over 4 kg.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": true,
+        "priority": 9
+      },
+      "audit": {
+        "createdAt": "2026-10-04T00:00:00.000Z",
+        "updatedAt": "2026-10-04T00:00:00.000Z"
+      }
+    },
+    {
+      "productId": "kit-scratch-post-001",
+      "tenant_id": "pupstart",
+      "title": "Kitten Scratching Post & Perch",
+      "description": "60 cm sisal post with a padded perch — tall enough for a full stretch, stable enough not to tip, and exactly what redirects claws away from the sofa.",
+      "nicheCategory": {
+        "slug": "kitten-first-year",
+        "name": "Kitten First Year"
+      },
+      "productType": {
+        "slug": "kitten-starter",
+        "name": "Kitten Starter"
+      },
+      "seo": {
+        "slug": "kitten-scratching-post-perch",
+        "canonicalPath": "/kitten-first-year/kitten-scratching-post-perch",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/images2/screenshot-16.png",
+          "alt": "Kitten Scratching Post & Perch",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "price": {
+        "amount": 2600,
+        "currency": "gbp"
+      },
+      "availability": "https://schema.org/PreOrder",
+      "brand": "PupStartHQ",
+      "tags": ["kitten", "scratching", "starter"],
+      "petType": ["Cat"],
+      "lifeStage": ["Puppy/Kitten"],
+      "sizeRequirement": ["Small", "Medium"],
+      "shippingOrigin": "UK",
+      "warehouseLocation": "UK",
+      "materials": ["Sisal rope", "Plush", "MDF base"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "Save the sofa in month one",
+          "Give a new kitten a spot that is theirs"
+        ],
+        "ugcAngles": [
+          "First scratch on the post instead of the chair",
+          "Kitten asleep on the perch"
+        ]
+      },
+      "attributes": {
+        "height": "60 cm",
+        "baseWidth": "40 cm"
+      },
+      "safetyDisclaimer": "Check stability on carpet; place against a wall for small kittens. Replace sisal if it frays loose.",
+      "linkedConsumables": [],
+      "bundle": null,
+      "flags": {
+        "featured": true,
+        "priority": 8
+      },
+      "audit": {
+        "createdAt": "2026-10-04T00:00:00.000Z",
+        "updatedAt": "2026-10-04T00:00:00.000Z"
       }
     },
     {

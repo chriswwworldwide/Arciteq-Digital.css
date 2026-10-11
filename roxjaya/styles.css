@@ -2091,11 +2091,11 @@ body.has-sticky-cta .wa-fab {
   overflow: clip;
 }
 
-/* The unroll is a WebGL page-curl (hero-curl.js): a canvas sits over the
-   photo and unrolls it like a loose sheet, bottom-right → top-left. While
-   the curl runs the underlying <img> stays hidden; once it lands the
-   canvas fades out and the plain photo + drift take over. Without JS or
-   WebGL nothing here applies and the photo simply shows. */
+/* The reveal is a WebGL pixel-resolve (hero-reveal.js): a canvas sits
+   over the photo and sharpens it out of a lilac mosaic, bottom-right →
+   top-left. While it runs the underlying <img> stays hidden; once it
+   lands the canvas fades out and the plain photo + drift take over.
+   Without JS or WebGL nothing here applies and the photo simply shows. */
 .hero--bleed .hero-img {
   transform-origin: 60% 90%;
   animation:
@@ -2103,7 +2103,7 @@ body.has-sticky-cta .wa-fab {
     hero-drift 18s ease-in-out 3s infinite alternate;
 }
 
-html.curl-live:not(.curl-done) .hero--bleed .hero-img {
+html.reveal-live:not(.reveal-done) .hero--bleed .hero-img {
   opacity: 0;
 }
 

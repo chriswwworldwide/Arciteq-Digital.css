@@ -865,4 +865,4 @@
   });
 })();
 
-// Hero unroll lives in hero-curl.js (a WebGL page-curl over the photo).
+// Hero reveal lives in hero-reveal.js (a WebGL pixel-resolve over the photo).

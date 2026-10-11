@@ -1,15 +1,16 @@
-// hero-curl.js — WebGL "loose parchment" page-curl on the home hero.
-// A canvas overlays the hero <img>; the shader unrolls the photo
-// diagonally (bottom-right first, top-left last) — the curl reads purely
-// through shading: lit crown on the roll, dark underside, cast shadow on
-// the still-unlaid paper ahead. At the end the canvas fades out and the
+// hero-reveal.js — WebGL "lilac mosaic" resolve on the home hero.
+// A canvas overlays the hero <img>; a resolve front sweeps the diagonal
+// (bottom-right first, top-left last): ahead of it the photo sits as a
+// coarse lilac-duotone mosaic — like the shot still buffering on the race
+// screen — and it sharpens to full colour as the front passes, with a
+// lilac glow riding the line. At the end the canvas fades out and the
 // plain <img> takes over (hero-drift resumes). Progressive enhancement:
 // no WebGL / small screen / reduced-motion → the <img> just shows.
 (() => {
   const html = document.documentElement;
   const done = () => {
-    html.classList.remove("curl-live");
-    html.classList.add("curl-done");
+    html.classList.remove("reveal-live");
+    html.classList.add("reveal-done");
   };
   if (
     window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
@@ -35,9 +36,8 @@
     uniform sampler2D u_tex;
     uniform vec4 u_rect;    // x0,y0,x1,y1 of painted image, canvas uv (origin bottom-left)
     uniform float u_prog;
-    const float W0 = 0.16;     // roll tube width at start — fat = loosely rolled
-    const float SW = 0.11;     // how far the roll's shadow reaches ahead
-    const vec3 PARCH = vec3(0.93, 0.86, 0.72);   // parchment back-face
+    const float ZW = 0.34;          // resolve zone width (diagonal units)
+    const vec3 LILAC = vec3(0.66, 0.55, 0.88);   // her kit colour
 
     void main() {
       if (v_uv.x < u_rect.x || v_uv.x > u_rect.z ||
@@ -50,36 +50,34 @@
       vec2 tuv = iuv;                                 // bottom-left origin, y up
       vec2 dir = normalize(vec2(-1.0, 1.0));         // travel toward top-left
       float diag = dot(tuv - 0.5, dir);              // + toward top-left
-      float front = mix(-0.95, 0.95, u_prog);        // roll position
-      float d = diag - front;                        // >0 = still in the roll
-      // The roll is a fat tube of paper — it slims as the sheet pays out
-      float paid = clamp((front + 0.95) / 1.9, 0.0, 1.0);
-      float W = W0 * (0.30 + 0.70 * sqrt(1.0 - paid));
-      vec3 col = vec3(0.0);
-      float a = 0.0;
-      if (d <= 0.0) {
-        // Laid flat — thin contact shadow where the roll meets the table
-        col = texture2D(u_tex, tuv).rgb;
-        col *= 1.0 - 0.28 * exp(d * 60.0);
-        a = 1.0;
-      } else if (d <= W) {
-        // On the roll — the paper tube seen end-on: photo pays out at the
-        // contact line, parchment back-face over the crown, dark underside
-        // tucking under toward the leading edge
-        float u = d / W;
-        float crown = pow(sin(u * 3.14159), 0.75);
-        float sh = 0.30 + 0.85 * crown - 0.30 * smoothstep(0.72, 1.0, u);
-        vec3 paper = PARCH * sh;
-        // thin seam at the very leading edge — the cut edge of the paper
-        paper *= 1.0 - 0.35 * smoothstep(0.94, 1.0, u);
-        vec3 photo = texture2D(u_tex, tuv).rgb * 0.85;
-        col = mix(photo, paper, smoothstep(0.0, 0.09, u));
-        a = 1.0;
-      } else if (d <= W + SW) {
-        // Shadow the roll throws onto the table just ahead of it
-        a = 0.34 * (1.0 - (d - W) / SW);
-      }
-      gl_FragColor = vec4(col, a);
+      float front = mix(-0.95, 0.95, u_prog);        // resolve front
+      float d = diag - front;                        // >0 = still coarse
+      // 0 = fully coarse (far ahead of the front) → 1 = sharp
+      float resolve = clamp(1.0 - d / ZW, 0.0, 1.0);
+      resolve = smoothstep(0.0, 1.0, resolve);
+
+      // Mosaic — ~7 chunky cells far ahead resolving to ~fine at the front.
+      // Cells stay square in image space (image is near-square anyway).
+      float cells = mix(7.0, 220.0, pow(resolve, 1.6));
+      vec2 grid = vec2(cells, cells);
+      vec2 cuv = (floor(tuv * grid) + 0.5) / grid;
+      vec3 col = texture2D(u_tex, cuv).rgb;
+
+      // Grid seams — dark edges between blocks, gone once it's sharp
+      vec2 f = fract(tuv * grid);
+      float s = smoothstep(0.0, 0.045, f.x) * smoothstep(0.0, 0.045, f.y);
+      col *= mix(1.0, 0.70 + 0.30 * s, 1.0 - resolve);
+
+      // Lilac duotone on the unresolved side → full colour once resolved
+      float lum = dot(col, vec3(0.33));
+      vec3 tone = mix(LILAC * (0.32 + lum * 1.6), col, smoothstep(0.35, 0.95, resolve));
+      // and a lilac glow riding the resolve front itself
+      float edge = exp(-abs(d) * 26.0) * 0.5;
+      tone += LILAC * edge * (1.0 - u_prog);
+
+      // Far ahead the photo is a dim mosaic impression over the ambient bg
+      float a = mix(0.68, 1.0, smoothstep(0.0, 0.55, resolve));
+      gl_FragColor = vec4(tone, a);
     }`;
 
   let canvas, gl, prog, uRect, uProg, tex;
@@ -188,14 +186,13 @@
       return done();
     }
 
-    html.classList.add("curl-live");
+    html.classList.add("reveal-live");
     const wrap = section.querySelector(".wrap");
     section.insertBefore(canvas, wrap);
 
-    const DURATION = 3200;
+    const DURATION = 2400;
     const DELAY = 150;
-    // Smoothstep — the roll is pulled at a near-steady pace and eases to a
-    // stop as the last of the sheet lays flat; not a race-and-snap.
+    // Smoothstep — steady resolve, easing off as the last blocks sharpen.
     const ease = (t) => t * t * (3 - 2 * t);
     const start = performance.now() + DELAY;
     const frame = (now) => {

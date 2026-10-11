@@ -11,7 +11,7 @@
   --pink-600: #e0177c;
   --pink-100: #ffe1f0;
   --radius: 14px;
-  --shadow: 0 10px 30px rgba(15, 15, 17, 0.08);
+  --shadow: 0 10px 30px rgba(40, 14, 30, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
 }
 
@@ -512,9 +512,9 @@ button.btn {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(15, 15, 17, 1) 0%,
-    rgba(15, 15, 17, 0) 22%,
-    rgba(15, 15, 17, 0) 100%
+    rgba(40, 14, 30, 1) 0%,
+    rgba(40, 14, 30, 0) 22%,
+    rgba(40, 14, 30, 0) 100%
   );
 }
 
@@ -961,8 +961,8 @@ section.block.alt {
   z-index: -1;
   background: linear-gradient(
     90deg,
-    rgba(15, 15, 17, 0.95) 0%,
-    rgba(15, 15, 17, 0.55) 100%
+    rgba(40, 14, 30, 0.95) 0%,
+    rgba(40, 14, 30, 0.55) 100%
   );
 }
 
@@ -1211,7 +1211,7 @@ footer a:hover {
     grid-row: 1;
     background: linear-gradient(
       180deg,
-      rgba(15, 15, 17, 0) 55%,
+      rgba(40, 14, 30, 0) 55%,
       var(--ink) 100%
     );
   }
@@ -1235,7 +1235,7 @@ footer a:hover {
     position: static;
     background: linear-gradient(
       180deg,
-      rgba(15, 15, 17, 0) 55%,
+      rgba(40, 14, 30, 0) 55%,
       var(--ink) 100%
     );
   }
@@ -1644,7 +1644,7 @@ footer a:hover {
 }
 
 .lightbox::backdrop {
-  background: rgba(15, 15, 17, 0.92);
+  background: rgba(40, 14, 30, 0.92);
 }
 
 .lightbox figure {

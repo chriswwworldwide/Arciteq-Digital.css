@@ -2,6 +2,38 @@
   "note": "Warriors Wall — IG-style photos athletes send in (racing, being silly, with friends). Athletes submit via the form on the home page (caption + name/handle + consent land on their lead record as kind 'wall_photo'; the photo itself arrives on WhatsApp/email). Dina adds a row here once she has the photo and their OK — nothing goes up unmoderated. Newest first. 'src' = path under /roxjaya/images/gallery/ (JPG, max ~1600px wide). 'caption' = the athlete's own words, verbatim. 'by' = name or @handle. 'event' = the event the photo belongs to (e.g. 'Hyrox Jakarta 2026', 'Squad sessions') — the wall groups photos by it, newest event first. 'tilt' optional degrees (-6..6), random if omitted. Empty list hides the section.",
   "photos": [
     {
+      "src": "/roxjaya/images/dina-halfmarathon-pr.jpg",
+      "alt": "Dina mid half-marathon making a heart with her hands, Strava PR badge 1:54:27",
+      "caption": "Half-marathon PB: 1:54:27.",
+      "by": "Dina",
+      "tilt": -1.5,
+      "event": "Road races"
+    },
+    {
+      "src": "/roxjaya/images/dina-sled-zen.jpg",
+      "alt": "Dina meditating on a sled weight stack while a teammate pushes a sled behind her",
+      "caption": "Zen while the sled burns.",
+      "by": "Dina",
+      "tilt": 2,
+      "event": "Jakarta Hybrid Race"
+    },
+    {
+      "src": "/roxjaya/images/squad-athlos.jpg",
+      "alt": "Dina's squad of women athletes posing at an ATHLOS event",
+      "caption": "The squad.",
+      "by": "Warriors squad",
+      "tilt": -2,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/roxjaya/images/dina-race-pair.jpg",
+      "alt": "Dina and a fellow athlete grinning after a hybrid race",
+      "caption": "Post-race smiles.",
+      "by": "Dina",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
       "src": "/roxjaya/images/race-revel.jpg",
       "alt": "Dina and a teammate celebrating at the Race & Revel event",
       "caption": "Race & Revel.",

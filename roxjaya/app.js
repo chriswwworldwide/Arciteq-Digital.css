@@ -334,6 +334,7 @@
   });
   if (
     !/\/coach(\.html|\/)?$/.test(location.pathname) &&
+    !document.getElementById("sticky-cta") &&
     !document.querySelector(".wa-fab")
   ) {
     const fab = document.createElement("a");

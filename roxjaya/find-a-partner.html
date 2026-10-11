@@ -180,6 +180,7 @@
           <li><a href="#how">How it works</a></li>
           <li><a href="#board">Who's looking</a></li>
           <li><a href="#post">Post your card</a></li>
+          <li><a href="#analyse">Prove your pace</a></li>
           <li><a href="#rules">The fine print</a></li>
         </ol>
       </aside>
@@ -366,8 +367,73 @@
           </form>
         </article>
 
-        <article class="station" id="rules">
+        <article class="station" id="analyse">
           <span class="num">Step 05</span>
+          <h3>Prove your pace — drop your splits</h3>
+          <p>
+            Your card asks for an estimate. This is better: enter your last
+            race's splits and MaDin matches you on real numbers, not
+            self-reported confidence. It saves to your athlete record — same
+            place as the <a href="/roxjaya/splits/">split analyser</a> — and
+            your card's pace fills itself in. Never raced? An honest estimate
+            still works; skip this.
+          </p>
+          <form class="calc-form" id="pace-form" autocomplete="off">
+            <label>
+              <span>Email (same as your card)</span>
+              <input
+                type="email"
+                name="pace_email"
+                required
+                autocomplete="email"
+                placeholder="Links the splits to your card"
+              />
+            </label>
+            <label>
+              <span>Event you raced</span>
+              <input
+                type="text"
+                name="event"
+                required
+                maxlength="60"
+                placeholder="Hyrox Jakarta 2026"
+              />
+            </label>
+            <label>
+              <span>Race date</span>
+              <input type="date" name="race_date" required />
+            </label>
+            <label>
+              <span>Division</span>
+              <select name="division" required>
+                <option value="">Choose…</option>
+                <option>Women Open</option>
+                <option>Women Pro</option>
+                <option>Men Open</option>
+                <option>Men Pro</option>
+                <option>Women Doubles</option>
+                <option>Men Doubles</option>
+                <option>Mixed Doubles</option>
+              </select>
+            </label>
+            <div class="splits-grid" id="pace-grid"></div>
+            <label>
+              <span>Roxzone total (optional)</span>
+              <input
+                type="text"
+                name="roxzone"
+                inputmode="numeric"
+                placeholder="4:10"
+                pattern="\d{1,2}:\d{2}"
+              />
+            </label>
+            <button class="btn btn-primary" type="submit">Prove my pace</button>
+            <p class="form-note" id="pace-note" role="status"></p>
+          </form>
+        </article>
+
+        <article class="station" id="rules">
+          <span class="num">Step 06</span>
           <h3>The fine print</h3>
           <ul class="roundup-list">
             <li>

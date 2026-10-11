@@ -188,4 +188,142 @@
 
   fillEvents();
   loadBoard();
+  initPace();
+
+  // ---- "Prove your pace": compact race-splits entry that feeds the same
+  // race_splits pipeline as the split analyser, then fills the card's total.
+  function initPace() {
+    const grid = $("pace-grid");
+    const paceForm = $("pace-form");
+    if (!grid || !paceForm) return;
+    const SEGMENTS = [
+      ["run_1", "Run 1"],
+      ["skierg", "SkiErg"],
+      ["run_2", "Run 2"],
+      ["sled_push", "Sled Push"],
+      ["run_3", "Run 3"],
+      ["sled_pull", "Sled Pull"],
+      ["run_4", "Run 4"],
+      ["burpee_broad_jumps", "Burpee BJs"],
+      ["run_5", "Run 5"],
+      ["rowing", "Rowing"],
+      ["run_6", "Run 6"],
+      ["farmers_carry", "Farmers"],
+      ["run_7", "Run 7"],
+      ["sandbag_lunges", "Lunges"],
+      ["run_8", "Run 8"],
+      ["wall_balls", "Wall Balls"],
+    ];
+    const STORE = "roxjaya.splits.token";
+    const RUN_KEYS = new Set(
+      SEGMENTS.map(([k]) => k).filter((k) => k.startsWith("run_")),
+    );
+    const SPLIT_RE = /^\d{1,2}:\d{2}$/;
+    const splitSec = (v) => {
+      const s = String(v || "").trim();
+      if (!SPLIT_RE.test(s)) return null;
+      const [m, sec] = s.split(":").map(Number);
+      return sec < 60 ? m * 60 + sec : null;
+    };
+    const bandOf = (s) =>
+      !s || s <= 0
+        ? "no time yet"
+        : s < 4200
+          ? "sub-1:10"
+          : s < 4800
+            ? "1:10–1:20"
+            : s < 5400
+              ? "1:20–1:30"
+              : s < 6300
+                ? "1:30–1:45"
+                : s < 7200
+                  ? "1:45–2:00"
+                  : "2:00+";
+
+    SEGMENTS.forEach(([key, label]) => {
+      const lab = document.createElement("label");
+      const span = document.createElement("span");
+      span.textContent = label;
+      const input = document.createElement("input");
+      input.type = "text";
+      input.name = key;
+      input.inputMode = "numeric";
+      input.placeholder = "5:12";
+      input.pattern = "\\d{1,2}:\\d{2}";
+      input.required = true;
+      lab.appendChild(span);
+      lab.appendChild(input);
+      grid.appendChild(lab);
+    });
+
+    // Same email as the card — prefill and keep it synced until they edit it.
+    const cardEmail = form.querySelector('[name="email"]');
+    const paceEmail = paceForm.querySelector('[name="pace_email"]');
+    cardEmail.addEventListener("input", () => {
+      if (!paceEmail.dataset.touched) paceEmail.value = cardEmail.value;
+    });
+    paceEmail.addEventListener("input", () => {
+      paceEmail.dataset.touched = "1";
+    });
+
+    const paceNote = $("pace-note");
+    paceForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      paceNote.textContent = "";
+      const data = new FormData(paceForm);
+      const payload = {};
+      for (const [key, label] of SEGMENTS) {
+        const v = splitSec(data.get(key));
+        if (v == null || v <= 0) {
+          paceNote.textContent = `Check ${label} — use m:ss, e.g. 5:12.`;
+          return;
+        }
+        payload[key] = v;
+      }
+      const rz = splitSec(data.get("roxzone"));
+      if (rz) payload.roxzone = rz;
+      payload.event = String(data.get("event") || "").trim();
+      payload.race_date = String(data.get("race_date") || "");
+      payload.division = String(data.get("division") || "");
+      payload.name = String(
+        form.querySelector('[name="name"]')?.value || "",
+      ).trim();
+      payload.newsletter = "no";
+      payload.run_total = SEGMENTS.filter(([k]) => RUN_KEYS.has(k)).reduce(
+        (s, [k]) => s + payload[k],
+        0,
+      );
+      payload.station_total = SEGMENTS.filter(([k]) => !RUN_KEYS.has(k)).reduce(
+        (s, [k]) => s + payload[k],
+        0,
+      );
+      payload.total = payload.run_total + payload.station_total + (rz || 0);
+
+      paceNote.textContent = "Saving to your athlete record…";
+      try {
+        const token = localStorage.getItem(STORE) || "";
+        const res = await fetch("/api/submissions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: String(data.get("pace_email") || "").trim(),
+            kind: "race_splits",
+            payload,
+            token: token || undefined,
+          }),
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(out.error || "save failed");
+        if (out.token) localStorage.setItem(STORE, out.token);
+        const band = bandOf(payload.total);
+        const mmss = `${Math.floor(payload.total / 60)}:${String(payload.total % 60).padStart(2, "0")}`;
+        const cardTotal = form.querySelector('[name="total"]');
+        if (cardTotal) cardTotal.value = mmss;
+        paceNote.textContent = `Saved — ${mmss} total puts you in the ${band} band, and your card is updated. MaDin sees these real numbers on her desk.`;
+      } catch {
+        paceNote.textContent =
+          "Couldn't save just now — try again in a bit. Your card above still works with an estimate.";
+      }
+    });
+  }
 })();

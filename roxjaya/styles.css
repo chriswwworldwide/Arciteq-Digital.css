@@ -1682,6 +1682,7 @@ footer a:hover {
 }
 
 .shot-form input,
+.shot-form select,
 .shot-form textarea {
   width: 100%;
   min-width: 0;
@@ -1695,6 +1696,18 @@ footer a:hover {
   font-size: 15px;
   text-transform: none;
   letter-spacing: 0;
+}
+
+.shot-form input[type="file"] {
+  padding: 10px 14px;
+}
+
+.shot-preview {
+  max-width: 180px;
+  max-height: 180px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  object-fit: cover;
 }
 
 .shot-form textarea {
@@ -2158,7 +2171,9 @@ body.has-sticky-cta .wa-fab {
    top-left. While it runs the underlying <img> stays hidden; once it
    lands the canvas fades out and the plain photo + drift take over.
    Without JS or WebGL nothing here applies and the photo simply shows. */
-.hero--bleed .hero-img {
+.hero-mask {
+  position: absolute;
+  inset: 0;
   transform-origin: 60% 90%;
   animation:
     hero-enter 2.8s cubic-bezier(0.16, 0.6, 0.3, 1) both,

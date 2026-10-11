@@ -750,6 +750,34 @@ window.roxShare = (function () {
 
   const wa = document.querySelector("a[data-whatsapp]");
   const waDigits = String(wa?.dataset.whatsapp || "").replace(/\D/g, "");
+  const fileInput = form.querySelector("input[name=photo]");
+  const preview = document.getElementById("shot-preview");
+
+  fileInput?.addEventListener("change", () => {
+    const f = fileInput.files?.[0];
+    if (!f || !preview) return;
+    preview.src = URL.createObjectURL(f);
+    preview.hidden = false;
+  });
+
+  // Shrink the photo for the trip — max 1600px JPEG (~300–500 KB). The file
+  // goes to the server as a data URL; it lands as a real image on Dina's
+  // desk, not inside the JSON payload.
+  const shrink = (f) =>
+    new Promise((resolve) => {
+      const im = new Image();
+      im.onload = () => {
+        const s = Math.min(1, 1600 / Math.max(im.width, im.height));
+        const c = document.createElement("canvas");
+        c.width = Math.round(im.width * s);
+        c.height = Math.round(im.height * s);
+        c.getContext("2d").drawImage(im, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(im.src);
+        resolve(c.toDataURL("image/jpeg", 0.82));
+      };
+      im.onerror = () => resolve("");
+      im.src = URL.createObjectURL(f);
+    });
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -763,7 +791,9 @@ window.roxShare = (function () {
       source: "warriors_wall",
     };
     const email = String(data.get("email") || "").trim();
-    note.textContent = "Saving your caption…";
+    const file = fileInput?.files?.[0];
+    note.textContent = "Sending your photo…";
+    const photo = file ? await shrink(file) : "";
     let saved = false;
     try {
       const res = await fetch("/api/submissions", {
@@ -773,6 +803,7 @@ window.roxShare = (function () {
           email,
           kind: "wall_photo",
           payload,
+          photo,
           website: String(data.get("website") || ""),
         }),
       });
@@ -780,6 +811,13 @@ window.roxShare = (function () {
     } catch {
       saved = false;
     }
+    if (saved) {
+      note.textContent =
+        "Got it — photo and caption on Dina's desk. It goes up once she's had a look.";
+      form.querySelector("button[type=submit]").disabled = true;
+      return;
+    }
+    // fallback: caption is typed anyway, so offer the WhatsApp route
     const msg = `Hi Dina — a photo for the Warriors Wall.\nEvent: ${payload.event}\nCaption: ${payload.caption}\nBy: ${payload.by}\nI'm happy for it to go on the site and @roxjaya.`;
     if (waDigits) {
       window.open(
@@ -787,15 +825,12 @@ window.roxShare = (function () {
         "_blank",
         "noopener",
       );
-      note.textContent = saved
-        ? "Caption saved. WhatsApp is open — attach the photo there and Dina takes it from here."
-        : "WhatsApp is open — attach the photo and send; Dina takes it from here.";
+      note.textContent =
+        "Upload didn't go through — WhatsApp is open, send the photo there instead.";
     } else {
-      note.textContent = saved
-        ? "Caption saved. Send the photo itself to Dina on Instagram (@dinabawden87) or reply to her email — she'll put it up once she's seen it."
-        : "Couldn't save just now — send the photo and your caption to Dina on Instagram (@dinabawden87) and she'll put it up.";
+      note.textContent =
+        "Upload didn't go through — send the photo and caption to Dina on Instagram (@dinabawden87) and she'll put it up.";
     }
-    form.querySelector("button[type=submit]").disabled = true;
   });
 })();
 
@@ -1012,27 +1047,21 @@ window.roxShare = (function () {
       y1 = pt + rh;
     g2.fillStyle = "#000";
     g2.fillRect(x0, y0, rw, rh);
-    g2.globalCompositeOperation = "destination-in";
-    const band = (gx, gy, gw, gh, grad) => {
-      g2.fillStyle = grad;
-      g2.fillRect(gx, gy, gw, gh);
+    // destination-out: each band ERASES toward the outer edge — fully clear
+    // at the photo edge, fading to keep at fw/fy in. (destination-in would
+    // erase everything outside each band, leaving an empty mask.)
+    g2.globalCompositeOperation = "destination-out";
+    const edge = (x1g, y1g, x2g, y2g) => {
+      const gr = g2.createLinearGradient(x1g, y1g, x2g, y2g);
+      gr.addColorStop(0, "rgba(0,0,0,1)");
+      gr.addColorStop(1, "rgba(0,0,0,0)");
+      g2.fillStyle = gr;
+      g2.fillRect(0, 0, mc.width, mc.height);
     };
-    let g = g2.createLinearGradient(x0, 0, x0 + fw, 0);
-    g.addColorStop(0, "rgba(0,0,0,0)");
-    g.addColorStop(1, "#000");
-    band(x0, 0, fw, mc.height, g);
-    g = g2.createLinearGradient(x1 - fw, 0, x1, 0);
-    g.addColorStop(0, "#000");
-    g.addColorStop(1, "rgba(0,0,0,0)");
-    band(x1 - fw, 0, fw, mc.height, g);
-    g = g2.createLinearGradient(0, y0, 0, y0 + fy);
-    g.addColorStop(0, "rgba(0,0,0,0)");
-    g.addColorStop(1, "#000");
-    band(0, y0, mc.width, fy, g);
-    g = g2.createLinearGradient(0, y1 - fy, 0, y1);
-    g.addColorStop(0, "#000");
-    g.addColorStop(1, "rgba(0,0,0,0)");
-    band(0, y1 - fy, mc.width, fy, g);
+    edge(x0, 0, x0 + fw, 0); // left: clear at x0, keep by x0+fw
+    edge(x1, 0, x1 - fw, 0); // right
+    edge(0, y0, 0, y0 + fy); // top
+    edge(0, y1, 0, y1 - fy); // bottom
     const url = `url(${mc.toDataURL("image/png")})`;
     img.style.maskImage = img.style.webkitMaskImage = url;
     img.style.maskSize = img.style.webkitMaskSize = "100% 100%";

@@ -274,6 +274,11 @@ export function buildDigest({
       text: `${n("partner_search")} athlete${n("partner_search") === 1 ? "" : "s"} looking for a partner`,
       href: `${desk}#people?q=partner_search`,
     });
+  if (n("race_result"))
+    actions.push({
+      text: `${n("race_result")} finish time${n("race_result") === 1 ? "" : "s"} sent in — verify on the official results, then add to the board`,
+      href: `${desk}#people?q=race_result`,
+    });
   for (const i of events)
     actions.push({
       text: `Race date found: ${i.title} — confirm?`,

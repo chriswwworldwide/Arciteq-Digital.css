@@ -306,7 +306,8 @@
           "sponsor",
           "bank_transfer",
           "date_alert",
-          "partner_search"
+          "partner_search",
+          "race_result"
         ]
       },
       "analytics": {

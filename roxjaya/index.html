@@ -210,14 +210,16 @@
         width="1125"
         height="1080"
       />
-      <img
-        class="hero-img"
-        src="/roxjaya/images/dina-skierg-laugh.jpg"
-        alt="Dina laughing with both arms in the air on the SkiErg mid-race at Hyrox, in her lilac kit"
-        width="1125"
-        height="1080"
-        fetchpriority="high"
-      />
+      <div class="hero-mask">
+        <img
+          class="hero-img"
+          src="/roxjaya/images/dina-skierg-laugh.jpg"
+          alt="Dina laughing with both arms in the air on the SkiErg mid-race at Hyrox, in her lilac kit"
+          width="1125"
+          height="1080"
+          fetchpriority="high"
+        />
+      </div>
       <div class="wrap">
         <span class="kicker"
           >Hyrox · Jakarta · dari lantai Zumba ke podium</span
@@ -1024,6 +1026,12 @@
               Email <span class="opt">(so Dina can reply)</span>
               <input name="email" type="email" autocomplete="email" required />
             </label>
+            <label>
+              The photo
+              <span class="opt">(from your IG post or camera roll)</span>
+              <input name="photo" type="file" accept="image/*" required />
+            </label>
+            <img class="shot-preview" id="shot-preview" alt="" hidden />
             <label class="hp" aria-hidden="true">
               Website
               <input
@@ -1042,13 +1050,11 @@
               >
             </label>
             <div class="shot-actions">
-              <button class="btn btn-primary" type="submit">
-                Next: send the photo
-              </button>
+              <button class="btn btn-primary" type="submit">Send it</button>
               <p class="fine" id="shot-note">
-                We save your caption, then open WhatsApp so you can attach the
-                photo (JPG or PNG, up to 5 MB, max 3 photos per event). Nothing
-                goes live until Dina approves it.
+                Already posted it on IG? Same photo works — pick it here and it
+                lands on Dina's desk with your caption. Nothing goes live until
+                Dina approves it.
               </p>
             </div>
           </form>

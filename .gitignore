@@ -3,3 +3,6 @@ node_modules/
 archive/
 
 .env.local
+
+# Athlete photo uploads (pending Dina's approval) — never commit
+roxjaya/images/gallery/inbox/

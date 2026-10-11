@@ -244,6 +244,99 @@
             >
             — we'll add, fix or remove it within a few days.
           </p>
+          <h4>Raced? Send your time.</h4>
+          <p>
+            If the board missed your finish, tell it here — Dina checks it
+            against the official results and adds it to the right division.
+            <span lang="id">Gas, biar namamu keitung.</span>
+          </p>
+          <form class="shot-form" id="time-form" novalidate>
+            <div class="shot-row">
+              <label>
+                Name <span class="opt">(as it should appear)</span>
+                <input name="athlete" type="text" maxlength="80" required />
+              </label>
+              <label>
+                Email <span class="opt">(so Dina can ask if unsure)</span>
+                <input
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </label>
+            </div>
+            <div class="shot-row">
+              <label>
+                Race
+                <input
+                  name="event"
+                  type="text"
+                  maxlength="80"
+                  placeholder="HYROX Singapore 2026"
+                  required
+                />
+              </label>
+              <label>
+                Division &amp; category
+                <select name="division" required>
+                  <option value="">Pick one…</option>
+                  <option>Women Singles · Open</option>
+                  <option>Women Singles · Pro</option>
+                  <option>Men Singles · Open</option>
+                  <option>Men Singles · Pro</option>
+                  <option>Doubles Women · Open</option>
+                  <option>Doubles Women · Pro</option>
+                  <option>Doubles Men · Open</option>
+                  <option>Doubles Men · Pro</option>
+                  <option>Mixed Doubles · Open</option>
+                  <option>Mixed Doubles · Pro</option>
+                  <option>Relay</option>
+                </select>
+              </label>
+            </div>
+            <div class="shot-row">
+              <label>
+                Chip time <span class="opt">(h:mm:ss)</span>
+                <input
+                  name="time"
+                  type="text"
+                  inputmode="numeric"
+                  maxlength="8"
+                  pattern="[0-9]{1,2}:[0-9]{2}:[0-9]{2}"
+                  placeholder="1:24:36"
+                  required
+                />
+              </label>
+              <label>
+                Result link
+                <span class="opt">(optional — helps Dina verify)</span>
+                <input name="proof_url" type="url" maxlength="200" />
+              </label>
+            </div>
+            <label class="hp" aria-hidden="true">
+              Website
+              <input
+                name="website"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </label>
+            <label class="check">
+              <input name="consent" type="checkbox" required />
+              <span
+                >This is my real finish time and I'm happy for it to be listed
+                on this page under my name.</span
+              >
+            </label>
+            <div class="shot-actions">
+              <button class="btn btn-primary" type="submit">
+                Send your time
+              </button>
+              <p class="fine" id="time-note"></p>
+            </div>
+          </form>
         </article>
       </div>
     </div>

@@ -1350,7 +1350,7 @@ app.get("/admin/ops-trends", async (req, res) => {
   }
 });
 
-app.use(express.json());
+app.use(express.json({ limit: "2mb" }));
 
 function loadProductsData() {
   const filePath = path.join(__dirname, "data", "products.json");
@@ -3476,6 +3476,35 @@ app.post("/api/submissions", async (req, res) => {
     if (!email || !isValidEmail(email)) {
       return res.status(400).json({ error: "Valid email is required" });
     }
+    // Warriors Wall photos travel as a top-level data URL — far bigger than
+    // the payload cap. Decode it to a file under images/gallery/inbox/ and put
+    // the public path in the payload instead (short enough to survive
+    // sanitize limits); Dina reviews it on the desk before it joins the wall.
+    const photoData = String(req.body?.photo || "");
+    if (
+      /^data:image\/(jpeg|jpg|png|webp);base64,/i.test(photoData) &&
+      req.body?.payload &&
+      typeof req.body.payload === "object"
+    ) {
+      try {
+        const buf = Buffer.from(photoData.split(",")[1], "base64");
+        if (buf.length > 1024 && buf.length <= 4 * 1024 * 1024) {
+          const dir = path.join(
+            __dirname,
+            "roxjaya",
+            "images",
+            "gallery",
+            "inbox",
+          );
+          fs.mkdirSync(dir, { recursive: true });
+          const name = `${crypto.randomUUID()}.jpg`;
+          fs.writeFileSync(path.join(dir, name), buf);
+          req.body.payload.photo = `/roxjaya/images/gallery/inbox/${name}`;
+        }
+      } catch (err) {
+        console.error("Wall photo save failed", err);
+      }
+    }
     const checked = validateSubmission(tenant, req.body);
     if (checked.error) {
       if (checked.reason === "honeypot") return res.json({ ok: true });
@@ -3982,6 +4011,7 @@ async function collectDigest(siteUrl, tenant, cfg, days) {
     race_splits: 0,
     bank_transfer: 0,
     partner_search: 0,
+    race_result: 0,
     paid: 0,
   };
   let traffic = null;

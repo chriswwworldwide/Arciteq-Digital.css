@@ -109,9 +109,12 @@
       col *= 1.05;
 
       col *= vShadow;
-      // gaps are transparent — the site's own blurred backdrop shows
-      // between the tiles, so the mosaic melts into it (no hard edge)
-      float a = clamp(u_progress * 5.0, 0.0, 1.0) * mix(1.0, tile, 1.0 - vResolve);
+      // gaps are dark seams of the tile's own colour — NOT transparent:
+      // during the reveal the <img> below is hidden, so see-through gaps
+      // would show the light page background as a bright seam (worst on
+      // mobile, where there's no ambient to blend into)
+      col *= mix(0.55, 1.0, tile);
+      float a = clamp(u_progress * 5.0, 0.0, 1.0);
       // feather the painted edges into what's behind — on desktop that's
       // the ambient (same photo, blurred) so the fade colour-matches itself
       float feat = max(u_feather, 0.0001);

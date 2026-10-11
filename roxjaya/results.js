@@ -218,6 +218,50 @@
     }),
   );
 
+  // "Send your time" — athletes report their own finish; lands as a
+  // race_result submission on the desk. Dina verifies against the official
+  // results and adds the row by hand.
+  const timeForm = document.getElementById("time-form");
+  const timeNote = document.getElementById("time-note");
+  timeForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!timeForm.reportValidity()) return;
+    const data = new FormData(timeForm);
+    const [division, category] = String(data.get("division") || "")
+      .split("·")
+      .map((s) => s.trim());
+    timeNote.textContent = "Sending…";
+    let ok = false;
+    try {
+      const res = await fetch("/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: String(data.get("email") || "").trim(),
+          kind: "race_result",
+          payload: {
+            athlete: String(data.get("athlete") || "").trim(),
+            event: String(data.get("event") || "").trim(),
+            division: division || "",
+            category: category || "",
+            time: String(data.get("time") || "").trim(),
+            proof_url: String(data.get("proof_url") || "").trim(),
+            consent: data.get("consent") ? "yes" : "no",
+            source: "results_board",
+          },
+          website: String(data.get("website") || ""),
+        }),
+      });
+      ok = res.ok;
+    } catch {
+      ok = false;
+    }
+    timeNote.textContent = ok
+      ? "Got it — Dina'll check it against the official results and add it."
+      : "Couldn't send just now — DM your time to @dinabawden87 instead.";
+    if (ok) timeForm.querySelector("button[type=submit]").disabled = true;
+  });
+
   fetch("/roxjaya/data/results.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
     .then((json) => {

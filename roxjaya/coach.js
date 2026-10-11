@@ -384,7 +384,12 @@
     if (q === "newsletter") return personNewsletter(p);
     if (q === "paid")
       return (p.total_orders || 0) > 0 || p.subscriptions?.length;
-    if (q === "wall_photo" || q === "race_splits" || q === "bank_transfer") {
+    if (
+      q === "wall_photo" ||
+      q === "race_splits" ||
+      q === "bank_transfer" ||
+      q === "race_result"
+    ) {
       return (p.submissions || []).some((s) => s.kind === q);
     }
     const hay = [
@@ -425,10 +430,19 @@
       .map((s) => {
         const p = s.payload || {};
         if (s.kind === "wall_photo") {
-          return `<li>📷 <b>Wall photo</b> (${esc(fmtDate(s.created_at))}) — “${esc(p.caption || "")}” by ${esc(p.by || "?")}, ${esc(p.event || "no event")}, consent: ${esc(p.consent || "?")}</li>`;
+          const img = p.photo
+            ? ` — <a href="${esc(p.photo)}" target="_blank" rel="noopener"><b>photo attached</b></a>`
+            : " — photo via WhatsApp/IG";
+          return `<li>📷 <b>Wall photo</b> (${esc(fmtDate(s.created_at))}) — “${esc(p.caption || "")}” by ${esc(p.by || "?")}, ${esc(p.event || "no event")}, consent: ${esc(p.consent || "?")}${img}</li>`;
         }
         if (s.kind === "bank_transfer") {
           return `<li>🏦 <b>Bank transfer</b> (${esc(fmtDate(s.created_at))}) — ${esc(p.plan_name || p.plan_id || "")}, Rp ${Number(p.amount_idr || 0).toLocaleString("id-ID")}, ref <b>${esc(p.reference || "?")}</b> · ${esc(p.name || "")} · WA ${esc(p.whatsapp || "")}${p.note ? " · “" + esc(p.note) + "”" : ""}</li>`;
+        }
+        if (s.kind === "race_result") {
+          const proof = p.proof_url
+            ? ` · <a href="${esc(p.proof_url)}" target="_blank" rel="noopener nofollow">proof ↗</a>`
+            : "";
+          return `<li>🏁 <b>Finish time</b> (${esc(fmtDate(s.created_at))}) — ${esc(p.athlete || "?")}, ${esc(p.division || "")} ${esc(p.category || "")} ${esc(p.time || "?")} at ${esc(p.event || "?")}${proof}</li>`;
         }
         if (s.kind === "race_splits") {
           const total = Number(p.total) || 0;

@@ -314,9 +314,13 @@
     canvas.style.top = `${ir.top - sr.top}px`;
     canvas.style.left = `${ir.left - sr.left}px`;
     canvas.style.width = `${ir.width}px`;
-    canvas.style.height = `${ir.height}px`;
+    // Shave 2px off the bottom — sub-pixel pinning can leave the canvas a
+    // hair below the photo's painted edge, leaking a thin line of mosaic
+    // tiles. The strip it reveals is the dark fade overlay, invisible.
+    const h = Math.max(0, ir.height - 2);
+    canvas.style.height = `${h}px`;
     canvas.width = Math.round(ir.width * dpr);
-    canvas.height = Math.round(ir.height * dpr);
+    canvas.height = Math.round(h * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
     buildMVP();
   };

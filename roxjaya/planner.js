@@ -109,7 +109,7 @@
       <h3>Station 9 — Team Indonesia meetup</h3>
       <p><strong>${esc(m.when)}</strong></p>
       ${m.note ? `<p lang="id">${esc(m.note)}</p>` : ""}
-      <a class="btn btn-primary" href="/roxjaya/#ask">Ikut — kabarin Dina</a>
+      <a class="btn btn-primary" href="/roxjaya/station-9/#rsvp">Ikut — RSVP di sini</a>
       <a class="btn btn-ghost" href="/roxjaya/find-a-partner/#travel">Travelling? Post your trip</a>
     </section>`;
   }

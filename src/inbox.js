@@ -285,6 +285,11 @@ export function buildDigest({
       text: `${n("travel_party")} trip${n("travel_party") === 1 ? "" : "s"} posted to Team Indonesia`,
       href: `${desk}#people?q=travel_party`,
     });
+  if (n("station9_rsvp"))
+    actions.push({
+      text: `${n("station9_rsvp")} RSVP${n("station9_rsvp") === 1 ? "" : "s"} for Station 9 — count heads for the booking`,
+      href: `${desk}#people?q=station9_rsvp`,
+    });
   for (const i of events)
     actions.push({
       text: `Race date found: ${i.title} — confirm?`,

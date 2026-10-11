@@ -294,6 +294,10 @@
             "priority": "0.9"
           },
           {
+            "path": "/roxjaya/station-9/",
+            "priority": "0.8"
+          },
+          {
             "path": "/roxjaya/guides/",
             "priority": "0.8"
           }
@@ -308,6 +312,7 @@
           "date_alert",
           "partner_search",
           "travel_party",
+          "station9_rsvp",
           "race_result"
         ]
       },

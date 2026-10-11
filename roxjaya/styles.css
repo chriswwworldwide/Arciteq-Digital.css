@@ -2239,3 +2239,72 @@ figure.reveal {
 .event-subhead p {
   margin: 0;
 }
+
+/* Weekend roundups + athlete profiles on the results page */
+.roundup {
+  margin: 0 0 20px;
+  padding: 16px 18px;
+  border: 1px solid rgba(15, 15, 17, 0.1);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.roundup-meta {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.roundup-list {
+  margin: 0;
+}
+
+.roundup-take {
+  margin: 10px 0 0;
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+.roundup-take strong {
+  color: var(--pink-600);
+  font-style: normal;
+}
+
+.athlete-link {
+  border: 0;
+  padding: 0;
+  background: none;
+  font: inherit;
+  font-weight: inherit;
+  color: var(--pink-600);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.athlete-modal {
+  max-width: 640px;
+  width: calc(100% - 32px);
+  border: 0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.athlete-modal::backdrop {
+  background: rgba(15, 15, 17, 0.55);
+}
+
+.athlete-modal h3 {
+  margin: 0 0 4px;
+}
+
+.athlete-tag {
+  margin: 0 0 14px;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+
+.athlete-modal .athlete-close {
+  margin-top: 14px;
+}

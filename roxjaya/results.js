@@ -6,6 +6,7 @@
   const modeInputs = document.querySelectorAll('input[name="results-mode"]');
   if (!root) return;
   let data = null;
+  let athletes = null;
   let mode = "pb";
 
   function toSeconds(t) {
@@ -33,6 +34,46 @@
       if (!cur || toSeconds(r.time) < toSeconds(cur.time)) best.set(key, r);
     });
     return Array.from(best.values());
+  }
+
+  function profileFor(name) {
+    if (!athletes) return null;
+    const lower = String(name || "").toLowerCase();
+    let best = null;
+    Object.keys(athletes).forEach((k) => {
+      if (lower.includes(k.toLowerCase()) && (!best || k.length > best.length))
+        best = k;
+    });
+    return best;
+  }
+
+  function athleteCell(r) {
+    const prof = profileFor(r.athlete);
+    return prof
+      ? `<button type="button" class="athlete-link" data-athlete="${esc(prof)}">${esc(r.athlete)}</button>`
+      : esc(r.athlete);
+  }
+
+  function openAthlete(key) {
+    const modal = document.getElementById("athlete-modal");
+    const a = athletes?.[key];
+    if (!modal || !a) return;
+    modal.innerHTML = `<h3>${esc(key)}</h3>
+      <p class="athlete-tag">${esc(a.tag || "")}</p>
+      <div class="results-scroll"><table class="results-table">
+        <thead><tr><th>Race</th><th>Division</th><th>Time</th><th>Note</th></tr></thead>
+        <tbody>${(a.races || [])
+          .map(
+            (r) =>
+              `<tr><td>${esc(r.event || "")}${r.date ? ` <span class="muted">· ${esc(r.date)}</span>` : ""}</td><td>${esc(r.division || "")}</td><td class="time">${esc(r.time || "")}</td><td>${esc(r.note || "")}</td></tr>`,
+          )
+          .join("")}</tbody></table></div>
+      <p class="plan-source">Record trail only — the results we hold verified data for. Full history lives on <a href="https://hyranking.com/hyrox-national-records/indonesia" rel="noopener" target="_blank">hyranking.com</a>.</p>
+      <button type="button" class="btn athlete-close">Close</button>`;
+    modal
+      .querySelector(".athlete-close")
+      .addEventListener("click", () => modal.close());
+    modal.showModal();
   }
 
   function render() {
@@ -75,7 +116,7 @@
                 i,
               ) => `<tr data-name="${esc(String(r.athlete).toLowerCase())}">
               <td class="rank">${i + 1}</td>
-              <td class="athlete">${esc(r.athlete)}</td>
+              <td class="athlete">${athleteCell(r)}</td>
               <td class="time">${esc(r.time)}</td>
               <td>${esc(r.category || "")}</td>
               <td>${esc(r.event || "")}${r.date ? ` <span class="muted">· ${esc(r.date)}</span>` : ""}</td>
@@ -92,6 +133,72 @@
         art.appendChild(note);
       }
       root.appendChild(art);
+    });
+
+    if (toc && document.getElementById("roundups-root")) {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="#roundups">Race weekend roundups</a>`;
+      toc.appendChild(li);
+    }
+  }
+
+  function renderRoundups(items) {
+    const rroot = document.getElementById("roundups-root");
+    if (!rroot) return;
+    const today = new Date().toISOString().slice(0, 10);
+    const rows = (items || [])
+      .filter((n) => n && n.race && (!n.date || String(n.date) <= today))
+      .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+    if (!rows.length) {
+      rroot.innerHTML = `<p class="results-empty">No roundups yet — the first one lands after the next race weekend.</p>`;
+      return;
+    }
+    rroot.innerHTML = rows
+      .map(
+        (n) => `<div class="roundup">
+        <p class="roundup-meta"><strong>${esc(n.race)}</strong>${
+          n.weekend ? ` · ${esc(n.weekend)}` : ""
+        }</p>
+        <ul class="plan-list roundup-list">${(n.highlights || [])
+          .map((h) => `<li>${esc(h)}</li>`)
+          .join("")}</ul>
+        ${
+          n.take
+            ? `<p class="roundup-take"><strong>Dina:</strong> ${esc(n.take)}</p>`
+            : ""
+        }
+        ${
+          n.source
+            ? `<p class="news-src"><a href="${esc(n.source)}" rel="noopener nofollow" target="_blank">${esc(n.sourceName || "Source")} ↗</a></p>`
+            : ""
+        }
+      </div>`,
+      )
+      .join("");
+  }
+
+  fetch("/roxjaya/data/roundups.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
+    .then((json) => renderRoundups(json?.items))
+    .catch(() => {});
+
+  fetch("/roxjaya/data/athletes.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((json) => {
+      athletes = json?.athletes || null;
+      if (data && athletes) render();
+    })
+    .catch(() => {});
+
+  root.addEventListener("click", (e) => {
+    const b = e.target.closest(".athlete-link");
+    if (b) openAthlete(b.dataset.athlete);
+  });
+
+  const modal = document.getElementById("athlete-modal");
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.close();
     });
   }
 

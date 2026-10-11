@@ -2039,3 +2039,124 @@ body.has-sticky-cta .wa-fab {
     display: none;
   }
 }
+
+/* --- Motion layer: quiet life, transform/opacity only --- */
+
+/* White sheen sweeps the signature every few seconds */
+.masthead .sig-text {
+  background: linear-gradient(
+    105deg,
+    var(--pink-600) 42%,
+    #fff0f6 50%,
+    var(--pink-600) 58%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: sig-shine 7s ease-in-out infinite;
+}
+
+@keyframes sig-shine {
+  0% {
+    background-position: 0% 0;
+  }
+  28%,
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* Slow drift on the hero photo so the top of the page breathes */
+.hero--bleed {
+  overflow: clip;
+}
+
+.hero--bleed .hero-img {
+  transform-origin: 58% 42%;
+  animation: hero-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.045);
+  }
+}
+
+/* Stagger: grid children reveal one beat apart instead of all at once */
+:is(.zones, .plans, .events, .polaroids, .quotes, .wall, .tips-grid)
+  > .reveal:nth-child(2) {
+  transition-delay: 70ms;
+}
+:is(.zones, .plans, .events, .polaroids, .quotes, .wall, .tips-grid)
+  > .reveal:nth-child(3) {
+  transition-delay: 140ms;
+}
+:is(.zones, .plans, .events, .polaroids, .quotes, .wall, .tips-grid)
+  > .reveal:nth-child(4) {
+  transition-delay: 210ms;
+}
+:is(.zones, .plans, .events, .polaroids, .quotes, .wall, .tips-grid)
+  > .reveal:nth-child(5) {
+  transition-delay: 280ms;
+}
+:is(.zones, .plans, .events, .polaroids, .quotes, .wall, .tips-grid)
+  > .reveal:nth-child(6) {
+  transition-delay: 350ms;
+}
+:is(.zones, .plans, .events, .polaroids, .quotes, .wall, .tips-grid)
+  > .reveal:nth-child(7) {
+  transition-delay: 420ms;
+}
+:is(.zones, .plans, .events, .polaroids, .quotes, .wall, .tips-grid)
+  > .reveal:nth-child(8) {
+  transition-delay: 490ms;
+}
+
+/* Photos settle in (small zoom) rather than sliding like text */
+figure.reveal {
+  transform: scale(0.97) translateY(10px);
+}
+
+.polaroid.reveal {
+  transform: rotate(var(--tilt)) scale(0.94);
+}
+
+.polaroid.reveal.in {
+  transform: rotate(var(--tilt));
+}
+
+.polaroid.reveal.in:hover,
+.polaroid.reveal.in:focus-visible {
+  transform: rotate(0deg) scale(1.05);
+}
+
+/* WhatsApp bubble takes a breath every ~9s */
+.wa-fab {
+  animation: wa-breathe 9s ease-in-out infinite;
+}
+
+@keyframes wa-breathe {
+  0%,
+  86%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+  93% {
+    transform: scale(1.07);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .masthead .sig-text,
+  .hero--bleed .hero-img,
+  .wa-fab {
+    animation: none;
+  }
+}

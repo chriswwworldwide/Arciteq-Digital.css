@@ -196,6 +196,8 @@ Direction note:
 - Analytics noise filter in `roxjaya/app.js` beacon: skip when `navigator.webdriver`, UA matches bot/crawler/spider/headless, or `?nolog=1` — so the Coach's desk/Monday digest shows real people (Sept traffic was mostly our own testing + crawlers).
 - On hold (Chris rethinking): WhatsApp (+62 812 1161 1987) + Instagram (@dinabawden87, verified live) contact buttons on home/plan/pay pages.
 
+**Update 2026-10-11 — "more human" brand pass (local, pushed to main):** brand pass 1 committed earlier (`7b3747a`: Dina's voice across hero/story/zones/tips/ask + warmer palette). Pass 2 (`580d03a`): hero is now a still frame cut from Dina's IG gender-reveal reel at Hyrox Bangkok ("BOY / GIRL?" visible; IG chrome cropped out — source was a screen recording, so it's a still not the video); story image = RowErg laugh; Warriors Wall +4 new photos; placeholder captions stripped (empty caption renders nothing — Dina fills in her own words). **Asked of Dina:** the original reel video file (hers or @hyroxtha's clean cut) — plan is a tap-to-play "watch the moment" in the story section, NOT an autoplay hero video (sound is the payoff; protects LCP). Also needs her OK to feature the reveal on the site.
+
 **Rule when resuming:** do not rebuild any of the above; pick from the nits or the owner/Dina lists. Current focus has moved to the pet site (content hub v2) on a separate branch off `main`.
 
 ## Visual system (current direction)

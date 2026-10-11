@@ -142,6 +142,10 @@
     canvas = document.createElement("canvas");
     canvas.className = "hero-canvas";
     canvas.setAttribute("aria-hidden", "true");
+    // Never paint the bottom 14px of the canvas — the enter-tilt swings its
+    // corner below the photo row and tiles leak into a thin line. The strip
+    // sits inside the dark fade overlay, so dead space reads as nothing.
+    canvas.style.clipPath = "inset(0 0 14px 0)";
     gl = canvas.getContext("webgl", {
       alpha: true,
       premultipliedAlpha: false,
@@ -314,9 +318,11 @@
     canvas.style.top = `${ir.top - sr.top}px`;
     canvas.style.left = `${ir.left - sr.left}px`;
     canvas.style.width = `${ir.width}px`;
-    // Shave 2px off the bottom — sub-pixel pinning can leave the canvas a
-    // hair below the photo's painted edge, leaking a thin line of mosaic
-    // tiles. The strip it reveals is the dark fade overlay, invisible.
+    // Shave 2px off the bottom AND clip the canvas's own bottom 14px:
+    // the enter animation tilts the canvas -1.2deg, swinging its corner
+    // ~8px below the photo row early in the sweep — a thin wedge of tile
+    // tops under the photo's bottom-right. The dead strip sits inside the
+    // dark ::after fade, so it reads as nothing.
     const h = Math.max(0, ir.height - 2);
     canvas.style.height = `${h}px`;
     canvas.width = Math.round(ir.width * dpr);

@@ -1324,6 +1324,12 @@ footer a:hover {
   .hero--bleed .hero-img {
     object-fit: cover;
     padding: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .hero--bleed .hero-ghost,
+  .hero--bleed .hero-edge {
+    display: none;
   }
   .hero--bleed::after {
     position: static;
@@ -2091,18 +2097,44 @@ body.has-sticky-cta .wa-fab {
   overflow: clip;
 }
 
+/* The unroll, in three synced layers:
+   ghost  = the whole photo as a faint, slightly lifted impression — the
+            not-yet-stuck parchment;
+   img    = the solid photo, mask-swept bottom-right → top-left by app.js;
+   edge   = the curl shading (cast shadow → lit crown → dark underside)
+            riding the roll front, driven by the same rAF. */
+.hero--bleed .hero-ghost {
+  object-fit: contain;
+  object-position: 58% center;
+  padding: 40px 0 56px;
+  opacity: 0.25;
+  filter: blur(2px) saturate(0.92);
+  transform-origin: 82% 88%;
+  animation: ghost-settle 2.8s cubic-bezier(0.16, 0.6, 0.3, 1) both;
+}
+
+@keyframes ghost-settle {
+  0% {
+    transform: translate(-14px, -18px) rotate(-1.1deg) scale(1.015);
+  }
+  100% {
+    transform: none;
+  }
+}
+
 .hero--bleed .hero-img {
   transform-origin: 60% 90%;
-  /* Diagonal mask: stuck region (opaque) lands first at the bottom-right
-     corner and rolls to the top-left. The not-yet-stuck area sits at ~22%
-     alpha — the whole photo is present as an impression from the first
-     frame, and the real photo lands through it. Rest position is fully
-     stuck, so if animation never runs the photo is simply there. */
+  /* Diagonal mask: opaque (stuck) lands first at the bottom-right corner and
+     rolls to the top-left. The 44–56% band is the curl zone — paper
+     mid-unroll, half-visibility — wide because the roll is loose. Rest
+     position is fully stuck, so if animation never runs the photo is
+     simply there. */
   --hero-roll: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.22) 0%,
-    rgba(0, 0, 0, 0.22) 42%,
-    #000 58%,
+    transparent 0%,
+    transparent 44%,
+    rgba(0, 0, 0, 0.5) 50%,
+    #000 56%,
     #000 100%
   );
   -webkit-mask-image: var(--hero-roll);
@@ -2114,8 +2146,8 @@ body.has-sticky-cta .wa-fab {
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   animation:
-    hero-enter 1.8s cubic-bezier(0.3, 0.85, 0.3, 1) both,
-    hero-drift 18s ease-in-out 2s infinite alternate;
+    hero-enter 2.8s cubic-bezier(0.16, 0.6, 0.3, 1) both,
+    hero-drift 18s ease-in-out 3s infinite alternate;
 }
 
 /* With JS running, the mask starts at the ghost end and app.js sweeps it to
@@ -2125,14 +2157,43 @@ html.js .hero--bleed .hero-img {
   mask-position: 0% 0%;
 }
 
+.hero--bleed .hero-edge {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Riding the 135° roll front: soft shadow the lifted paper casts ahead of
+     the roll → bright crown of the curl → dark underside just before the
+     paper lays flat. */
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(26, 9, 17, 0.28) 46%,
+    rgba(26, 9, 17, 0.5) 49.5%,
+    rgba(255, 255, 255, 0.3) 51.5%,
+    rgba(26, 9, 17, 0.32) 54%,
+    transparent 59%,
+    transparent 100%
+  );
+  background-size: 300% 300%;
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+}
+
+html.js .hero--bleed .hero-edge {
+  display: block;
+}
+
 @keyframes hero-enter {
-  /* The mask sweep itself is driven by JS in app.js — older Safari accepts
-     -webkit-mask-position but can't interpolate it inside keyframes. */
+  /* The whole sheet travels a little with the roll — a slow slide from the
+     corner it's unrolling out of, not a drop-and-click. Mask sweep itself
+     is driven by JS in app.js (Safari can't interpolate mask-position). */
   0% {
-    transform: translateY(-8px) rotate(-1deg);
+    transform: translate(10px, 8px) rotate(-1.2deg);
   }
-  55% {
-    transform: translateY(-2px) rotate(-0.3deg);
+  60% {
+    transform: translate(2px, 1px) rotate(-0.25deg);
   }
   100% {
     transform: none;
@@ -2217,8 +2278,13 @@ figure.reveal {
 @media (prefers-reduced-motion: reduce) {
   .masthead .sig-text,
   .hero--bleed .hero-img,
+  .hero--bleed .hero-ghost,
   .wa-fab {
     animation: none;
+  }
+  .hero--bleed .hero-ghost,
+  .hero--bleed .hero-edge {
+    display: none;
   }
 }
 

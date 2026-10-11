@@ -2174,6 +2174,12 @@ body.has-sticky-cta .wa-fab {
 .hero-mask {
   position: absolute;
   inset: 0;
+}
+
+/* Animations live on the <img>, the baked edge-feather mask on .hero-mask —
+   never the same element: Safari drops masked content that shares a
+   compositing path with a transform animation. */
+.hero--bleed .hero-img {
   transform-origin: 60% 90%;
   animation:
     hero-enter 2.8s cubic-bezier(0.16, 0.6, 0.3, 1) both,

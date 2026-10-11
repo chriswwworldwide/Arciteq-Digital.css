@@ -1003,24 +1003,33 @@ window.roxShare = (function () {
 (() => {
   const img = document.querySelector(".hero--bleed .hero-img");
   if (!img) return;
+  // The mask goes on the .hero-mask wrapper — the img carries the enter/drift
+  // transform animations, and Safari won't composite a masked element that
+  // itself (or an ancestor of it) transform-animates. Masked parent + moving
+  // child is the safe arrangement.
+  const maskEl = img.closest(".hero-mask") || img;
   const wide = window.matchMedia("(min-width: 801px)");
   let nt;
   const photo = new Image();
   const clear = () => {
-    img.style.maskImage = img.style.webkitMaskImage = "";
-    img.style.maskSize = img.style.webkitMaskSize = "";
+    maskEl.style.maskImage = maskEl.style.webkitMaskImage = "";
+    maskEl.style.maskSize = maskEl.style.webkitMaskSize = "";
   };
   const mask = () => {
     if (!wide.matches) return clear();
     const iw = photo.naturalWidth,
       ih = photo.naturalHeight;
-    const box = img.getBoundingClientRect();
-    if (!box.width || !box.height || !iw || !ih) return;
+    // canvas size from the wrapper (never transform-animated); the painted
+    // rect from the img's LAYOUT geometry — offset* ignores the drift
+    // animation's scale, getBoundingClientRect would not
+    const box = maskEl.getBoundingClientRect();
+    const cW = img.offsetWidth,
+      cHp = img.offsetHeight;
+    if (!box.width || !box.height || !cW || !cHp || !iw || !ih) return;
     const cs = getComputedStyle(img);
     const pt = parseFloat(cs.paddingTop) || 0;
     const pb = parseFloat(cs.paddingBottom) || 0;
-    const cW = box.width;
-    const cH = box.height - pt - pb;
+    const cH = cHp - pt - pb;
     const s = Math.min(cW / iw, cH / ih);
     const rw = iw * s;
     const rh = ih * s;
@@ -1041,10 +1050,10 @@ window.roxShare = (function () {
     mc.width = Math.round(box.width);
     mc.height = Math.round(box.height);
     const g2 = mc.getContext("2d");
-    const x0 = pos,
-      x1 = pos + rw,
-      y0 = pt,
-      y1 = pt + rh;
+    const x0 = img.offsetLeft + pos,
+      x1 = img.offsetLeft + pos + rw,
+      y0 = img.offsetTop + pt,
+      y1 = img.offsetTop + pt + rh;
     g2.fillStyle = "#000";
     g2.fillRect(x0, y0, rw, rh);
     // destination-out: each band ERASES toward the outer edge — fully clear
@@ -1063,9 +1072,9 @@ window.roxShare = (function () {
     edge(0, y0, 0, y0 + fy); // top
     edge(0, y1, 0, y1 - fy); // bottom
     const url = `url(${mc.toDataURL("image/png")})`;
-    img.style.maskImage = img.style.webkitMaskImage = url;
-    img.style.maskSize = img.style.webkitMaskSize = "100% 100%";
-    img.style.maskRepeat = img.style.webkitMaskRepeat = "no-repeat";
+    maskEl.style.maskImage = maskEl.style.webkitMaskImage = url;
+    maskEl.style.maskSize = maskEl.style.webkitMaskSize = "100% 100%";
+    maskEl.style.maskRepeat = maskEl.style.webkitMaskRepeat = "no-repeat";
   };
   photo.onload = mask;
   photo.src = img.currentSrc || img.src;

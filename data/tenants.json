@@ -286,6 +286,10 @@
             "priority": "0.9"
           },
           {
+            "path": "/roxjaya/doubles/",
+            "priority": "0.9"
+          },
+          {
             "path": "/roxjaya/guides/",
             "priority": "0.8"
           }

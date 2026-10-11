@@ -694,6 +694,12 @@ section.block.alt {
     border-color 0.15s;
 }
 
+.zone--hook {
+  grid-column: 1 / -1;
+  border-color: var(--pink);
+  background: linear-gradient(180deg, var(--paper), #fff5f8);
+}
+
 .zone:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow);

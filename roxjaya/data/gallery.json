@@ -34,28 +34,12 @@
       "event": "Race day"
     },
     {
-      "src": "/roxjaya/images/dina-row-power.jpg",
-      "alt": "Dina pulling hard on the RowErg, lilac kit, race floor behind",
-      "caption": "RowErg, full send.",
-      "by": "Dina",
-      "tilt": 2,
-      "event": "Race day"
-    },
-    {
       "src": "/roxjaya/images/squad-anya.jpg",
       "alt": "Six women from the squad posing together in maroon kits at ATHLOS",
       "caption": "ATHLOS squad, take two.",
       "by": "Warriors squad",
       "tilt": -2.5,
       "event": "Squad sessions"
-    },
-    {
-      "src": "/roxjaya/images/dina-bangkok-reveal.jpg",
-      "alt": "Dina and her doubles partner laughing at the Hyrox Bangkok finish, BOY / GIRL? written on her stomach",
-      "caption": "BOY / GIRL? It's a girl.",
-      "by": "Dina",
-      "tilt": 1.5,
-      "event": "Hyrox Bangkok 2025"
     },
     {
       "src": "/roxjaya/images/dina-halfmarathon-pr.jpg",
@@ -74,22 +58,6 @@
       "event": "Jakarta Hybrid Race"
     },
     {
-      "src": "/roxjaya/images/squad-athlos.jpg",
-      "alt": "Dina's squad of women athletes posing at an ATHLOS event",
-      "caption": "The squad.",
-      "by": "Warriors squad",
-      "tilt": -2,
-      "event": "Squad sessions"
-    },
-    {
-      "src": "/roxjaya/images/dina-race-pair.jpg",
-      "alt": "Dina and a fellow athlete grinning after a hybrid race",
-      "caption": "Post-race smiles.",
-      "by": "Dina",
-      "tilt": 1.5,
-      "event": "Race day"
-    },
-    {
       "src": "/roxjaya/images/race-revel.jpg",
       "alt": "Dina and a teammate celebrating at the Race & Revel event",
       "caption": "Race & Revel.",
@@ -103,22 +71,6 @@
       "caption": "SkiErg.",
       "by": "Dina",
       "tilt": 2,
-      "event": "Race day"
-    },
-    {
-      "src": "/roxjaya/images/dina-skierg-laugh.jpg",
-      "alt": "Dina laughing on the SkiErg mid-race at Hyrox",
-      "caption": "SkiErg — smiling through it.",
-      "by": "Dina",
-      "tilt": -1,
-      "event": "Race day"
-    },
-    {
-      "src": "/roxjaya/images/dina-row-side.jpg",
-      "alt": "Dina laughing on the RowErg at Hyrox",
-      "caption": "RowErg.",
-      "by": "Dina",
-      "tilt": -2,
       "event": "Race day"
     },
     {
@@ -176,14 +128,6 @@
       "by": "Dina",
       "tilt": 2.5,
       "event": "Hyrox Bangkok 2025"
-    },
-    {
-      "src": "/roxjaya/images/feature.jpg",
-      "alt": "Athlete mid-station at a Hyrox event",
-      "caption": "Saturday squad. Nobody wanted the sled. Everybody did the sled.",
-      "by": "Warriors squad",
-      "tilt": -1.5,
-      "event": "Squad sessions"
     }
   ]
 }

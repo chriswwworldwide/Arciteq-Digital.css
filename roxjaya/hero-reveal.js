@@ -94,15 +94,22 @@
     uniform highp float u_progress;
 
     void main() {
-      // mosaic cell count ramps as the paper settles behind the roll —
-      // natural photo colours in chunky blocks, dark seams between them
-      float cells = mix(6.0, 200.0, pow(vResolve, 1.4));
+      // Pixelated reveal à la the Codrops demo: resolution jumps through
+      // discrete steps (4→256 cells) rather than interpolating, and each
+      // tile sits inside its cell with the dark curtain showing between
+      // them — the gaps close as the paper settles and sharpens.
+      float level = floor(mix(2.0, 8.0, vResolve));
+      float cells = exp2(level);
       vec2 cuv = (floor(vUv * cells) + 0.5) / cells;
       vec3 col = texture2D(u_tex, cuv).rgb;
+
       vec2 f = fract(vUv * cells);
-      float s = smoothstep(0.0, 0.05, f.x) * smoothstep(0.0, 0.05, f.y);
-      col *= mix(1.0, 0.40 + 0.60 * s, 1.0 - vResolve);
-      col *= mix(0.50, 1.0, vResolve);
+      float gap = mix(0.015, 0.11, 1.0 - vResolve);   // tile gap as cell fraction
+      float tile = step(gap * 0.5, f.x) * step(f.x, 1.0 - gap * 0.5) *
+                   step(gap * 0.5, f.y) * step(f.y, 1.0 - gap * 0.5);
+      vec3 curtain = vec3(0.10, 0.04, 0.09);          // site ink behind tiles
+      col = mix(curtain, col * 1.05, tile);
+
       col *= vShadow;
       float a = clamp(u_progress * 5.0, 0.0, 1.0);
       gl_FragColor = vec4(col, a);

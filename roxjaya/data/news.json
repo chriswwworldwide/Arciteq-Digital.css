@@ -1,4 +1,45 @@
 {
   "note": "Curated Hyrox Asia news. Items land here only when Dina taps Publish on the Coach's desk; edit or delete rows freely. Newest first.",
-  "items": []
+  "items": [
+    {
+      "date": "2026-09-19",
+      "title": "Indonesian doubles record falls in Mumbai",
+      "summary": "Standy Tjandra and Stephen Kusuma ran 57:43 in Pro Doubles at HYROX Mumbai — a new Indonesian record, three months after taking the Open record on home soil in Jakarta.",
+      "take": "Dua cowok Indo ngangkat bendera di Mumbai. The bar keeps moving — bagus, we like chasing.",
+      "source": "https://hyranking.com/hyrox-national-records/indonesia",
+      "sourceName": "hyranking.com"
+    },
+    {
+      "date": "2026-09-10",
+      "title": "Kuala Lumpur confirmed for December — Malaysia's first HYROX",
+      "summary": "AirAsia HYROX Kuala Lumpur runs 10–13 December at MITEC. Four race days, the closest away race from Jakarta, in a language you already speak.",
+      "take": "Two hours, same language, cheap flights. No excuses left — who's in?",
+      "source": "https://hyrox.com/event/hyrox-kuala-lumpur/",
+      "sourceName": "hyrox.com"
+    },
+    {
+      "date": "2026-09-05",
+      "title": "Seoul and Singapore go back-to-back in November",
+      "summary": "HYROX Seoul runs 13–15 November and AIA HYROX Singapore 26–29 November — two race weekends a fortnight apart, or one very greedy November.",
+      "take": "Cold Seoul air for the PB hunters, then home-region heat in Singapore. Pick one. Or pack for both.",
+      "source": "https://hyrox.com/events/",
+      "sourceName": "hyrox.com event list"
+    },
+    {
+      "date": "2026-08-13",
+      "title": "Gladys Fabiola Christanto sets Indonesian women's Open record in Bangkok",
+      "summary": "1:08:35 at HYROX Bangkok — the fastest Indonesian women's Open time on record. She also holds the Mixed Doubles record with Timothy Tjahja from Hong Kong in May.",
+      "take": "Perempuan Indo makin cepat. The depth is coming — that's the exciting part.",
+      "source": "https://hyranking.com/hyrox-national-records/indonesia",
+      "sourceName": "hyranking.com"
+    },
+    {
+      "date": "2026-06-28",
+      "title": "Jakarta's debut weekend: eight national records on home soil",
+      "summary": "Indonesia's first HYROX at NICE drew one of the biggest Asia-Pacific fields of the season — and home athletes banked national records across Pro, Open, Doubles and Relay divisions.",
+      "take": "Home crowd did that. Wait till next year.",
+      "source": "https://hyranking.com/hyrox-national-records/indonesia",
+      "sourceName": "hyranking.com"
+    }
+  ]
 }

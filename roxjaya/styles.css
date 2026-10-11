@@ -2198,3 +2198,44 @@ figure.reveal {
     animation: none;
   }
 }
+
+/* Race codenames — chip under each city name */
+.city-aka {
+  margin: 4px 0 8px;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+
+.city-nick {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1.5px solid var(--pink-600);
+  border-radius: 999px;
+  color: var(--pink-600);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.events-list h4 .city-nick,
+.event h4 .city-nick {
+  font-size: 0.7rem;
+  padding: 2px 9px;
+  vertical-align: 2px;
+}
+
+.event-subhead {
+  list-style: none;
+  margin: 18px 0 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.event-subhead p {
+  margin: 0;
+}

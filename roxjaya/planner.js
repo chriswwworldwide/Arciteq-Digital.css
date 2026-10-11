@@ -109,7 +109,7 @@
       ${photo}
       <header class="plan-city-head">
         <h2><span aria-hidden="true">${esc(c.flag || "")}</span> ${esc(c.name)} <small>${esc(c.country)}</small></h2>
-        ${c.nickname ? `<p class="city-nick">a.k.a. ${esc(c.nickname)}</p>` : ""}
+        ${c.nickname ? `<p class="city-aka">a.k.a. <span class="city-nick">${esc(c.nickname)}</span></p>` : ""}
         <p class="lead">${esc(c.tagline)}</p>
       </header>
       ${raceBlock(c, checked)}
@@ -130,17 +130,24 @@
     </article>`;
   }
 
-  function renderSeason(cities, home) {
+  function renderSeason(cities, home, alsoOn, alsoTba) {
     if (!seasonEl) return;
     const rows = cities
       .map((c) => ({ c, r: c.race || {} }))
       .filter(({ r }) => r.status === "confirmed" && r.start)
       .sort((a, b) => a.r.start.localeCompare(b.r.start));
-    const tbc = cities.filter((c) => (c.race || {}).status !== "confirmed");
+    const tbc = cities.filter(
+      (c) => c.slug !== home && (c.race || {}).status !== "confirmed",
+    );
     const href = (c) =>
       c.slug === home
         ? "/roxjaya/hyrox-jakarta/"
         : `/roxjaya/race-planner/#${c.slug}`;
+    const alsoRows = (alsoOn || [])
+      .slice()
+      .sort((a, b) =>
+        String(a.start || "").localeCompare(String(b.start || "")),
+      );
     seasonEl.innerHTML =
       rows
         .map(
@@ -159,7 +166,25 @@
           <time>Date TBC</time>
           <div><h4><a href="${href(c)}">${esc(c.race.name)}</a></h4><p>${esc(c.race.expected || "Awaiting the official date.")}</p></div></li>`,
         )
-        .join("");
+        .join("") +
+      (alsoRows.length
+        ? `<li class="event-subhead"><p>More Asia-Pacific races this season</p></li>` +
+          alsoRows
+            .map(
+              (r) => `<li class="event">
+          <time datetime="${esc(r.start || "")}">${esc(r.dates || "Dates TBA")}</time>
+          <div><h4><a href="${esc(r.source || "https://hyrox.com/events/")}" rel="noopener" target="_blank">${esc(r.name)}</a>${
+            r.nickname
+              ? ` <span class="city-nick">${esc(r.nickname)}</span>`
+              : ""
+          }</h4><p>${esc([r.venue, r.note].filter(Boolean).join(" · "))}</p></div></li>`,
+            )
+            .join("")
+        : "") +
+      (alsoTba
+        ? `<li class="event"><time>TBA</time>
+          <div><h4>Also expected back</h4><p>${esc(alsoTba)}</p></div></li>`
+        : "");
     if (nextEl && rows.length) {
       const { c, r } = rows[0];
       nextEl.hidden = false;
@@ -198,7 +223,7 @@
         return;
       }
 
-      renderSeason(cities, home);
+      renderSeason(cities, home, json.alsoOn, json.alsoTba);
       const away = cities.filter((c) => c.slug !== home);
       const fromHash = location.hash.replace(/^#/, "");
       let active = away.some((c) => c.slug === fromHash)

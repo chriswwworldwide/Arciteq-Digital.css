@@ -434,5 +434,41 @@
       "meetup": null,
       "coachNote": "Dina raced Bangkok (Doubles) before her Jakarta podium — it's her go-to recommendation for a first race abroad: cheap flights, easy venue, huge Indonesian contingent."
     }
-  ]
+  ],
+  "alsoOn": [
+    {
+      "name": "HYROX Mumbai",
+      "city": "Mumbai",
+      "flag": "🇮🇳",
+      "nickname": "The Big Bollywood",
+      "dates": "18–20 September 2026",
+      "start": "2026-09-18",
+      "venue": "NESCO Centre, Goregaon",
+      "note": "India's big one — and where the Indonesian Pro Doubles record just fell.",
+      "source": "https://hyrox.com/events/"
+    },
+    {
+      "name": "HYROX Shanghai",
+      "city": "Shanghai",
+      "flag": "🇨🇳",
+      "nickname": "The Big Dumpling",
+      "dates": "31 October – 1 November 2026",
+      "start": "2026-10-31",
+      "venue": "Venue TBA — confirm on hyrox.com",
+      "note": "The biggest of the China stops — long haul from Jakarta.",
+      "source": "https://hyrox.com/events/"
+    },
+    {
+      "name": "HYROX Guangzhou",
+      "city": "Guangzhou",
+      "flag": "🇨🇳",
+      "nickname": "The Big Rice Roll",
+      "dates": "21–22 November 2026",
+      "start": "2026-11-21",
+      "venue": "Venue TBA — confirm on hyrox.com",
+      "note": "Same weekend cluster as Seoul — pick one.",
+      "source": "https://hyrox.com/events/"
+    }
+  ],
+  "alsoTba": "Sydney, Melbourne, Perth, Taipei, Osaka, Chiba, Incheon, Delhi, Bengaluru and Auckland are all expected back — dates land on hyrox.com first."
 }

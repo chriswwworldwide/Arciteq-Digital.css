@@ -186,8 +186,163 @@
     }
   });
 
+  // ---- Team Indonesia travel board: trips land on data/travelboard.json
+  // once MaDin approves them on her desk. Same privacy rule as partner
+  // cards — first name + initial only, intros via WhatsApp.
+  const TRAVEL_MODES = {
+    have: "join me",
+    looking: "looking to join",
+  };
+
+  function waTravel(card) {
+    const msg = `Halo MaDin! I saw ${card.name}'s trip on the travel board — ${card.race}${card.hotel ? `, staying around ${card.hotel}` : ""}. Can you intro us?`;
+    return `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  }
+
+  function renderTravel(items) {
+    const box = $("travel-board");
+    const intro = $("travel-intro");
+    if (!box) return;
+    const today = new Date().toISOString().slice(0, 10);
+    const live = (Array.isArray(items) ? items : []).filter(
+      (c) => c && (!c.until || c.until >= today),
+    );
+    if (!live.length) {
+      intro.textContent =
+        "No trips posted yet — the first one up starts the convoy.";
+      box.innerHTML = "";
+      return;
+    }
+    intro.textContent = `${live.length} trip${live.length === 1 ? "" : "s"} on the board. Name, race, rough plans — that's all anyone sees.`;
+    const byRace = new Map();
+    for (const c of live) {
+      const k = c.race || "Any race";
+      if (!byRace.has(k)) byRace.set(k, []);
+      byRace.get(k).push(c);
+    }
+    box.innerHTML = [...byRace.entries()]
+      .map(
+        ([race, cards]) => `
+        <div class="match-group">
+          <h4>${esc(race)}</h4>
+          ${cards
+            .map(
+              (c) => `
+            <div class="match-card">
+              <div class="match-head">
+                <b>${esc(c.name)}</b>
+                <span class="chip chip-accent">${esc(TRAVEL_MODES[c.mode] || c.mode)}</span>
+                ${c.dates ? `<span class="chip">${esc(c.dates)}</span>` : ""}
+              </div>
+              ${c.hotel ? `<p class="match-note">${esc(c.hotel)}</p>` : ""}
+              ${c.note ? `<p class="match-note">“${esc(c.note)}”</p>` : ""}
+              <div class="match-foot">
+                <span class="match-posted">posted ${esc(c.posted || "")}</span>
+                <a class="btn btn-primary btn-sm" href="${waTravel(c)}" target="_blank" rel="noopener">Ask MaDin to intro us</a>
+              </div>
+            </div>`,
+            )
+            .join("")}
+        </div>`,
+      )
+      .join("");
+  }
+
+  async function loadTravel() {
+    try {
+      const res = await fetch("/roxjaya/data/travelboard.json", {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      renderTravel(data.items);
+    } catch {
+      const intro = $("travel-intro");
+      if (intro)
+        intro.textContent =
+          "The board can't load right now — your trip still reaches MaDin below.";
+    }
+  }
+
+  async function fillTravelRaces() {
+    const sel = $("travel-race-select");
+    if (!sel) return;
+    try {
+      const res = await fetch("/roxjaya/data/cities.json", {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      const cities = Array.isArray(data.cities) ? data.cities : [];
+      const today = new Date().toISOString().slice(0, 10);
+      cities
+        .filter(
+          (c) => c?.race?.name && (!c.race.start || c.race.start >= today),
+        )
+        .forEach((c) => {
+          const o = document.createElement("option");
+          o.value = c.race.name;
+          o.dataset.until =
+            c.race.start || (c.slug === "jakarta" ? "2027-08-01" : "");
+          o.textContent = c.race.dates
+            ? `${c.race.name} — ${c.race.dates}`
+            : `${c.race.name} (date TBC)`;
+          sel.appendChild(o);
+        });
+    } catch {
+      /* fallback option below still works */
+    }
+    const other = document.createElement("option");
+    other.value = "Somewhere else / any race";
+    other.textContent = "Somewhere else / any race";
+    sel.appendChild(other);
+  }
+
+  const travelForm = $("travel-form");
+  const travelNote = $("travel-note");
+  if (travelForm)
+    travelForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      travelNote.textContent = "";
+      const data = new FormData(travelForm);
+      const payload = {
+        name: String(data.get("name") || "").trim(),
+        whatsapp: String(data.get("whatsapp") || "").trim(),
+        race: String(data.get("race") || ""),
+        mode: String(data.get("mode") || ""),
+        dates: String(data.get("dates") || "").trim(),
+        hotel: String(data.get("hotel") || "").trim(),
+        note: String(data.get("note") || "").trim(),
+        until: travelForm.querySelector("#travel-race-select option:checked")
+          ?.dataset?.until,
+        consent: data.get("consent") ? "yes" : "no",
+      };
+      travelNote.textContent = "Sending your trip to MaDin's desk…";
+      try {
+        const res = await fetch("/api/submissions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: String(data.get("email") || "").trim(),
+            kind: "travel_party",
+            payload,
+          }),
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(out.error || "save failed");
+        travelForm.reset();
+        travelNote.textContent =
+          payload.consent === "yes"
+            ? "Got it — your trip is on MaDin's desk. She lists every approved one herself, so give her a day or two."
+            : "Got it — private trip sent. MaDin will reach out if someone matches your plans.";
+      } catch {
+        travelNote.textContent =
+          "Couldn't send just now — try again in a bit, or message MaDin directly on WhatsApp.";
+      }
+    });
+
   fillEvents();
   loadBoard();
+  fillTravelRaces();
+  loadTravel();
   initPace();
 
   // ---- "Prove your pace": compact race-splits entry that feeds the same

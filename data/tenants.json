@@ -307,6 +307,7 @@
           "bank_transfer",
           "date_alert",
           "partner_search",
+          "travel_party",
           "race_result"
         ]
       },
@@ -320,10 +321,12 @@
           "roxjaya/data/cities.json",
           "roxjaya/data/news.json",
           "roxjaya/data/partners.json",
-          "roxjaya/data/matchboard.json"
+          "roxjaya/data/matchboard.json",
+          "roxjaya/data/travelboard.json"
         ],
         "partners": "roxjaya/data/partners.json",
         "matchboard": "roxjaya/data/matchboard.json",
+        "travelboard": "roxjaya/data/travelboard.json",
         "autoApprove": ["event", "news", "alert", "sponsor"],
         "coachPath": "/roxjaya/coach/",
         "digestTo": "dinazumba1987@gmail.com",

@@ -182,6 +182,7 @@
           <li><a href="#board">Who's looking</a></li>
           <li><a href="#post">Post your card</a></li>
           <li><a href="#analyse">Prove your pace</a></li>
+          <li><a href="#travel">Travel together</a></li>
           <li><a href="#rules">The fine print</a></li>
         </ol>
       </aside>
@@ -433,8 +434,119 @@
           </form>
         </article>
 
-        <article class="station" id="rules">
+        <article class="station" id="travel">
           <span class="num">Step 06</span>
+          <h3>Team Indonesia — travel together</h3>
+          <p>
+            Udah booking flight sama hotel buat race berikutnya? Post your trip
+            — orang lain bisa ikutan: same flight, same hotel, split a room,
+            atau sekedar bareng ke venue. Belum booking apa-apa? Post anyway —
+            join trip orang yang udah jalan. MaDin yang nyambungin, nomor lo
+            aman di mejanya.
+          </p>
+          <p id="travel-intro">
+            Trips Dina has approved. Name, race, rough plans — nothing else.
+          </p>
+          <div id="travel-board" aria-live="polite"></div>
+          <form class="calc-form" id="travel-form" autocomplete="off">
+            <label>
+              <span>Name</span>
+              <input
+                type="text"
+                name="name"
+                required
+                maxlength="60"
+                autocomplete="name"
+                placeholder="Your name — only first + initial shows"
+              />
+            </label>
+            <label>
+              <span>Email (private)</span>
+              <input
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="Only MaDin sees this"
+              />
+            </label>
+            <label>
+              <span>WhatsApp (private, optional)</span>
+              <input
+                type="tel"
+                name="whatsapp"
+                maxlength="20"
+                autocomplete="tel"
+                placeholder="62… — faster intros"
+              />
+            </label>
+            <label>
+              <span>Race you're travelling to</span>
+              <select name="race" id="travel-race-select" required>
+                <option value="">Pick a race…</option>
+              </select>
+            </label>
+            <label>
+              <span>Your situation</span>
+              <select name="mode" required>
+                <option value="">Pick one…</option>
+                <option value="have">
+                  Got flights / hotel booked — join me
+                </option>
+                <option value="looking">
+                  Still planning — looking to join someone
+                </option>
+              </select>
+            </label>
+            <label>
+              <span>Rough dates (e.g. "fly Thu, back Mon")</span>
+              <input
+                type="text"
+                name="dates"
+                maxlength="60"
+                placeholder="Out Thu 4 Dec, back Mon 8 — rough is fine"
+              />
+            </label>
+            <label>
+              <span>Hotel / area (optional)</span>
+              <input
+                type="text"
+                name="hotel"
+                maxlength="80"
+                placeholder="e.g. Booked near Bang Na — or still looking"
+              />
+            </label>
+            <label>
+              <span>One line about the trip (max 140)</span>
+              <textarea
+                name="note"
+                maxlength="140"
+                rows="2"
+                placeholder="e.g. Twin room booked, second bed going cheap — non-snorer preferred. Kidding. Mostly."
+              ></textarea>
+            </label>
+            <label class="consent">
+              <input type="checkbox" name="consent" checked />
+              <span
+                >List my trip on the public board — first name and plans
+                only.</span
+              >
+            </label>
+            <input
+              type="text"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              class="hp"
+              aria-hidden="true"
+            />
+            <button type="submit" class="btn btn-primary">Post my trip</button>
+            <p class="form-note" id="travel-note" role="status"></p>
+          </form>
+        </article>
+
+        <article class="station" id="rules">
+          <span class="num">Step 07</span>
           <h3>The fine print</h3>
           <ul class="roundup-list">
             <li>

@@ -88,6 +88,83 @@ export function publicCard({ email, payload, now = new Date() }) {
   };
 }
 
+const TRAVEL_MODES = {
+  have: "got plans — join me",
+  looking: "still planning — join you",
+};
+
+/** The row the public sees on the travel board: no email, no phone. */
+export function travelCard({ email, payload, now = new Date() }) {
+  const p = payload || {};
+  const mode = TRAVEL_MODES[str(p.mode, 12)] ? str(p.mode, 12) : "";
+  const name = displayName(p.name);
+  const race = str(p.race || p.event, 60);
+  if (!name || !mode || !race) return null;
+  const id = `tv-${crypto
+    .createHash("sha256")
+    .update(`${String(email || "").toLowerCase()}:${race}`)
+    .digest("hex")
+    .slice(0, 10)}`;
+  return {
+    id,
+    name,
+    race,
+    mode,
+    dates: str(p.dates, 60),
+    hotel: str(p.hotel, 80),
+    note: str(p.note, 140),
+    posted: now.toISOString().slice(0, 10),
+    until: untilFor(p, now),
+  };
+}
+
+/**
+ * The approval-inbox candidate for a `travel_party` submission — same consent
+ * pattern as partner cards: approve lists the public card, no-consent stays a
+ * private desk note the owner can intro by hand.
+ */
+export function buildTravelCandidate({ email, payload, boardFile }) {
+  if (!boardFile) return null;
+  const p = payload || {};
+  const card = travelCard({ email, payload: p });
+  const consent = str(p.consent, 4) === "yes";
+  if (consent && !card) return null;
+  const who = card?.name || displayName(p.name) || "An athlete";
+  const where = str(p.race || p.event, 60) || "a race";
+  const mode = TRAVEL_MODES[str(p.mode, 12)] || str(p.mode, 12) || "?";
+  return {
+    key: `travel:${crypto
+      .createHash("sha256")
+      .update(`${String(email || "").toLowerCase()}:${where}`)
+      .digest("hex")
+      .slice(0, 16)}`,
+    kind: "travel",
+    title: `${who} — ${mode}, ${where}`,
+    summary:
+      `${str(p.dates, 60)}${p.hotel ? ` · ${str(p.hotel, 80)}` : ""}` +
+      (p.note ? ` — "${str(p.note, 140)}"` : "") +
+      (consent ? "" : " · private card (no board listing)"),
+    data: {
+      email: String(email || ""),
+      whatsapp: str(p.whatsapp, 30),
+      name: str(p.name, 60),
+      race: where,
+      mode,
+      dates: str(p.dates, 60),
+      hotel: str(p.hotel, 80),
+      note: str(p.note, 300),
+      consent,
+      hint: consent
+        ? "Approve to list their trip (first name only — no contact). When someone wants to join, you connect them on WhatsApp."
+        : "They didn't ask for a board listing — intro them privately if you spot a match. Approving changes nothing public.",
+    },
+    apply:
+      consent && card
+        ? [{ file: boardFile, path: "items", op: "prepend", value: card }]
+        : [],
+  };
+}
+
 /**
  * The approval-inbox candidate for a partner_search submission. With consent
  * the patch prepends the public card; without it the candidate still reaches

@@ -2074,17 +2074,22 @@ body.has-sticky-cta .wa-fab {
 }
 
 .hero--bleed .hero-img {
-  transform-origin: 58% 42%;
+  transform-origin: 90% 95%;
   animation:
-    hero-enter 1.2s cubic-bezier(0.22, 1, 0.36, 1) both,
-    hero-drift 18s ease-in-out 1.4s infinite alternate;
+    hero-enter 1.5s cubic-bezier(0.22, 1, 0.36, 1) both,
+    hero-drift 18s ease-in-out 1.7s infinite alternate;
 }
 
+/* Rolls in from the right pivoting near the bottom corner: the bottom edge
+   leads, the top corner trails outside the frame, then it settles flat */
 @keyframes hero-enter {
-  from {
-    transform: translate(6%, -2.5%) rotate(2deg) scale(1.03);
+  0% {
+    transform: translateX(50%) rotate(-10deg);
   }
-  to {
+  70% {
+    transform: translateX(0) rotate(1deg);
+  }
+  100% {
     transform: none;
   }
 }

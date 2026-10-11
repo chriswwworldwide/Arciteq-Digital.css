@@ -10,20 +10,44 @@
       "event": "Squad sessions"
     },
     {
-      "src": "/roxjaya/images/dina-ropes.jpg",
-      "alt": "Dina catching her breath over battle ropes under a FOREVER FASTER banner",
-      "caption": "Ropes don't forgive.",
+      "src": "/roxjaya/images/dina-sled-zen.jpg",
+      "alt": "Dina meditating on a sled weight stack while a teammate pushes a sled behind her",
+      "caption": "Zen while the sled burns.",
       "by": "Dina",
       "tilt": 2,
-      "event": "Squad sessions"
+      "event": "Jakarta Hybrid Race"
     },
     {
-      "src": "/roxjaya/images/dina-skibestie.jpg",
-      "alt": "Dina and her training partner grinning at the camera, pink kit, post-workout sweat",
-      "caption": "Just me and my skibestie.",
+      "src": "/roxjaya/images/dina-heck-pair.jpg",
+      "alt": "Dina laughing with a fellow athlete in a Heck Hybrid Fitness shirt at the race expo",
+      "caption": "Expo crew.",
       "by": "Dina",
-      "tilt": -1,
-      "event": "Squad sessions"
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/roxjaya/images/podium.jpg",
+      "alt": "Dina on the podium, 1st place doubles",
+      "caption": "1st place, doubles.",
+      "by": "Dina",
+      "tilt": 2,
+      "event": "Race day"
+    },
+    {
+      "src": "/roxjaya/images/hero.jpg",
+      "alt": "Athlete pushing a sled at a Hyrox race",
+      "caption": "Sled push, 7 weeks pregnant, still smiling (sort of).",
+      "by": "@dinabawden87",
+      "tilt": -3,
+      "event": "Hyrox Jakarta 2026"
+    },
+    {
+      "src": "/roxjaya/images/dina-halfmarathon-pr.jpg",
+      "alt": "Dina mid half-marathon making a heart with her hands, Strava PR badge 1:54:27",
+      "caption": "Half-marathon PB: 1:54:27.",
+      "by": "Dina",
+      "tilt": -1.5,
+      "event": "Road races"
     }
   ]
 }

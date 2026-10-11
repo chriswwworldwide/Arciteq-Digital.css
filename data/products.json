@@ -1360,7 +1360,7 @@
       "tenant_id": "roxjaya",
       "kind": "service",
       "title": "Rookie Crew",
-      "description": "Beginner-friendly HYROX group in Jakarta: one coached group session a week, starter programme in the TrueCoach app and the crew WhatsApp group. Rolling start — join any time, no experience needed.",
+      "description": "Beginner-friendly HYROX group in Jakarta: one coached group session a week, a monthly crew meetup, starter programme in the TrueCoach app and the crew WhatsApp group. Rolling start — join any time, no experience needed.",
       "nicheCategory": {
         "slug": "plans",
         "name": "Coaching Plans"
@@ -1383,7 +1383,7 @@
         }
       ],
       "price": {
-        "amount": 75000000,
+        "amount": 85000000,
         "currency": "idr"
       },
       "billing": {

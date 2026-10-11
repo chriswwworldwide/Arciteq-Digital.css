@@ -163,7 +163,7 @@
     seasonEl.innerHTML =
       rows
         .map(
-          ({ c, r }) => `<li class="event">
+          ({ c, r }, i) => `<li class="event" data-i="${i}">
           <time datetime="${esc(r.start)}">${esc(r.dates)}</time>
           <div><h4><a href="${href(c)}">${esc(r.name)}</a>${
             c.nickname
@@ -173,7 +173,7 @@
             daysUntil(r.start) > 0
               ? `${daysUntil(r.start)} days to go`
               : "this week"
-          }</p></div></li>`,
+          }<button class="share-btn" type="button" aria-label="Share race">Share</button></p></div></li>`,
         )
         .join("") +
         tbc
@@ -207,6 +207,16 @@
           : "") ||
       `<li class="event"><time>Break</time>
         <div><h4>Between seasons</h4><p>No confirmed Asia-Pacific dates right now — new races land on <a href="https://hyrox.com/events/" rel="noopener" target="_blank">hyrox.com</a> first, and we update the board when they do.</p></div></li>`;
+    seasonEl.querySelectorAll(".share-btn").forEach((btn) =>
+      btn.addEventListener("click", () => {
+        const { c, r } = rows[Number(btn.closest("li").dataset.i)];
+        window.roxShare?.(btn, {
+          title: r.name,
+          text: `${r.name} — ${r.dates} di ${r.venue}. Siapa ikut?`,
+          url: `${location.origin}${href(c)}`,
+        });
+      }),
+    );
     if (nextEl && rows.length) {
       const { c, r } = rows[0];
       nextEl.hidden = false;

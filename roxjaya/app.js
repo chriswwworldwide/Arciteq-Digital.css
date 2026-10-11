@@ -520,6 +520,91 @@
     .catch(() => {});
 })();
 
+// Share helper — one handler, three homes: news items, race rows, Warriors Wall
+// photos. Mobile: Web Share API, with the real image file for IG/WhatsApp when
+// the browser supports sharing files. Otherwise a small popover offers a
+// prefilled WhatsApp message, copy link, and (for photos) a download.
+window.roxShare = (function () {
+  let pop = null;
+  const onDoc = (e) => {
+    if (pop && !pop.contains(e.target)) closePop();
+  };
+  function closePop() {
+    pop?.remove();
+    pop = null;
+    document.removeEventListener("click", onDoc);
+  }
+  function popover(anchor, { text, url, fileUrl }) {
+    closePop();
+    pop = document.createElement("div");
+    pop.className = "share-pop";
+    const wa = document.createElement("a");
+    wa.className = "share-opt";
+    wa.href = `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`.trim())}`;
+    wa.target = "_blank";
+    wa.rel = "noopener";
+    wa.textContent = "Kirim di WhatsApp";
+    const cp = document.createElement("button");
+    cp.type = "button";
+    cp.className = "share-opt";
+    cp.textContent = "Copy link";
+    cp.addEventListener("click", () => {
+      navigator.clipboard?.writeText(url).then(
+        () => (cp.textContent = "Copied ✓"),
+        () => (cp.textContent = url),
+      );
+    });
+    pop.append(wa, cp);
+    if (fileUrl) {
+      const dl = document.createElement("a");
+      dl.className = "share-opt";
+      dl.href = fileUrl;
+      dl.target = "_blank";
+      dl.rel = "noopener";
+      dl.textContent = "Download foto";
+      pop.appendChild(dl);
+    }
+    document.body.appendChild(pop);
+    const r = anchor.getBoundingClientRect();
+    const x = Math.min(
+      r.left + window.scrollX,
+      window.scrollX + document.documentElement.clientWidth - 200,
+    );
+    pop.style.top = `${r.bottom + window.scrollY + 6}px`;
+    pop.style.left = `${Math.max(x, window.scrollX + 8)}px`;
+    setTimeout(() => document.addEventListener("click", onDoc), 0);
+  }
+  return function roxShare(anchor, { title, text, url, fileUrl }) {
+    const abs = url ? new URL(url, location.href).href : location.href;
+    if (navigator.canShare && fileUrl) {
+      return fetch(fileUrl)
+        .then((r) => (r.ok ? r.blob() : Promise.reject(new Error("img"))))
+        .then((blob) => {
+          const file = new File(
+            [blob],
+            fileUrl.split("/").pop() || "roxjaya.jpg",
+            { type: blob.type || "image/jpeg" },
+          );
+          if (navigator.canShare({ files: [file] }))
+            return navigator
+              .share({ files: [file], title, text })
+              .catch(() => {});
+          if (navigator.share)
+            return navigator.share({ title, text, url: abs }).catch(() => {});
+          return popover(anchor, { text, url: abs, fileUrl });
+        })
+        .catch(() => {
+          if (navigator.share)
+            return navigator.share({ title, text, url: abs }).catch(() => {});
+          return popover(anchor, { text, url: abs, fileUrl });
+        });
+    }
+    if (navigator.share)
+      return navigator.share({ title, text, url: abs }).catch(() => {});
+    return popover(anchor, { text, url: abs, fileUrl });
+  };
+})();
+
 // Warriors Wall: IG-style photos from roxjaya/data/gallery.json, grouped by event
 // (tabs), shown as a tilted polaroid scatter with a lightbox. "Send your shot"
 // saves caption/name/event/consent as a generic submission (kind wall_photo) on
@@ -571,6 +656,15 @@
     const small = document.createElement("small");
     small.textContent = [p.by, p.event].filter(Boolean).join(" · ");
     cap.appendChild(small);
+    const share = dialog.querySelector(".lightbox-share");
+    if (share)
+      share.onclick = () =>
+        window.roxShare(share, {
+          title: "Roxjaya Warriors",
+          text: String(p.caption || "Roxjaya Warriors Jakarta"),
+          url: `${location.origin}/roxjaya/#wall-photos`,
+          fileUrl: p.src,
+        });
     dialog.showModal();
   }
 

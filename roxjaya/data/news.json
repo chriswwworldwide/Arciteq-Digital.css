@@ -1,19 +1,19 @@
 {
-  "note": "Curated Hyrox Asia news. Items land here only when Dina taps Publish on the Coach's desk; edit or delete rows freely. Newest first. Items dated in the future auto-publish on their date — the feed rolls weekly through the season without anyone touching it.",
+  "note": "Curated Hyrox Asia news. Items land here only when Dina taps Publish on the Coach's desk; edit or delete rows freely. Newest first. Items dated in the future auto-publish on their date — the feed rolls weekly through the season without anyone touching it. Voice: 'title' stays punchy English; 'summary' and 'take' are Dina's Jakartan.",
   "items": [
     {
       "date": "2026-12-14",
       "title": "That's a wrap on 2026 — the season resets",
-      "summary": "Kuala Lumpur closed the Asia-Pacific season on 13 December. From here the story turns to 2027: Hong Kong in January, Bangkok in February, and the big one — Jakarta's second edition.",
-      "take": "Musim pertama selesai. Now we build for the home race — this time with a crowd that knows what Hyrox is.",
+      "summary": "Musim Asia-Pacific 2026 resmi tutup di Kuala Lumpur 13 Desember. Sekarang ceritanya pindah ke 2027: Hong Kong Januari, Bangkok Februari, dan yang paling gede — edisi kedua Jakarta.",
+      "take": "Musim pertama selesai. Sekarang kita bangun buat home race — kali ini penontonnya udah tau HYROX itu apa.",
       "source": "https://hyrox.com/events/",
       "sourceName": "hyrox.com"
     },
     {
       "date": "2026-12-07",
       "title": "KL race week: the last start line of 2026",
-      "summary": "AirAsia HYROX Kuala Lumpur opens Thursday at MITEC — four race days, and the biggest Indonesian travelling contingent of the season is expected.",
-      "take": "Two hours from home, same language. If you're racing — gaspol. If you're watching — the results board updates after.",
+      "summary": "AirAsia HYROX Kuala Lumpur buka Kamis di MITEC — empat hari race, dan kontingen Indonesia yang terbang diprediksi paling gede musim ini.",
+      "take": "Dua jam dari rumah, bahasa sama. Kalau lo race — gaspol. Kalau nonton — papan hasilnya di-update abis ini.",
       "source": "https://hyrox.com/event/hyrox-kuala-lumpur/",
       "sourceName": "hyrox.com",
       "link": "/roxjaya/race-planner/#kuala-lumpur",
@@ -22,8 +22,8 @@
     {
       "date": "2026-11-23",
       "title": "Singapore race week: the Little Red Dot calls",
-      "summary": "AIA HYROX Singapore runs 26–29 November at Singapore EXPO — three-plus days of racing, and the closest thing to a second home race for Jakarta athletes.",
-      "take": "Under two hours, no jet lag, air-con venue. The smart second race — and the hawker centres are carb-loading on easy mode.",
+      "summary": "AIA HYROX Singapore jalan 26–29 November di Singapore EXPO — tiga hari lebih race, dan basically home race kedua buat atlet Jakarta.",
+      "take": "Di bawah dua jam, nggak ada jet lag, venue ber-AC. Race kedua paling masuk akal — dan hawker centre itu carb-loading mode gampang.",
       "source": "https://hyrox.com/events/",
       "sourceName": "hyrox.com",
       "link": "/roxjaya/race-planner/#singapore",
@@ -32,8 +32,8 @@
     {
       "date": "2026-11-09",
       "title": "Seoul race week: cold air, fast times",
-      "summary": "HYROX Seoul runs 13–15 November at KINTEX — the season's cool-weather race. November in Goyang runs 0–10 °C, which is exactly why PBs go there to happen.",
-      "take": "Cold air means faster splits — but pack a proper jacket, the post-race chill is real. Kram di Seoul hits different.",
+      "summary": "HYROX Seoul jalan 13–15 November di KINTEX — race paling adem musim ini. November di Goyang itu 0–10 °C, makanya PB suka pecah di sana.",
+      "take": "Udara dingin = split lebih kenceng — tapi bawa jaket beneran, abis race kedinginannya nampol. Kram di Seoul tuh beda rasanya.",
       "source": "https://hyrox.com/events/",
       "sourceName": "hyrox.com",
       "link": "/roxjaya/race-planner/#seoul",
@@ -42,16 +42,16 @@
     {
       "date": "2026-10-31",
       "title": "Shanghai race week: the Big Dumpling races",
-      "summary": "HYROX Shanghai runs this weekend — the biggest of China's stops this season and a long-haul trip for anyone flying from Jakarta.",
-      "take": "Far for a weekend race, but if you're doing a China double this is the anchor. Watching from the results board this time.",
+      "summary": "HYROX Shanghai jalan minggu ini — stop China paling gede musim ini, dan lumayan jauh buat yang terbang dari Jakarta.",
+      "take": "Jauh buat race weekend, tapi kalau mau China double ini anchor-nya. Musim ini nonton dari papan hasil dulu aja.",
       "source": "https://hyrox.com/events/",
       "sourceName": "hyrox.com"
     },
     {
       "date": "2026-10-17",
       "title": "The November–December block: three races in seven weeks",
-      "summary": "Seoul (13–15 Nov), Singapore (26–29 Nov), Kuala Lumpur (10–13 Dec) — the densest stretch of the APAC calendar. One taper can cover two of them if you plan it right.",
-      "take": "Pick an A-race and a B-race, don't try to peak three times. That's what the 12-week block is for — tanya aja.",
+      "summary": "Seoul (13–15 Nov), Singapore (26–29 Nov), Kuala Lumpur (10–13 Des) — stretch APAC paling padat, tiga race dalam tujuh minggu. Satu taper bisa nge-cover dua kalau planning-nya bener.",
+      "take": "Pilih satu A-race satu B-race, jangan coba peak tiga kali. Blok 12 minggu ada buat itu — tanya aja.",
       "source": "https://hyrox.com/events/",
       "sourceName": "hyrox.com",
       "link": "/roxjaya/race-planner/",
@@ -60,8 +60,8 @@
     {
       "date": "2026-10-03",
       "title": "Ten weeks to KL — the window is open",
-      "summary": "Kuala Lumpur on 10 December is ten weeks out — exactly one race-prep block. For first-timers, it's also the friendliest away race on the calendar: two hours, Bahasa works, cheap flights.",
-      "take": "Start this week and you land race-ready with days to spare. Start next month and you're cramming — pilih yang mana?",
+      "summary": "Kuala Lumpur 10 Desember tinggal sepuluh minggu — pas satu blok race-prep. Buat first-timer, ini away race paling ramah di kalender: dua jam, Bahasa masuk, tiket murah.",
+      "take": "Mulai minggu ini dan lo sampe race-ready dengan hari sisa. Mulai bulan depan dan lo mepet — pilih yang mana?",
       "source": "https://hyrox.com/event/hyrox-kuala-lumpur/",
       "sourceName": "hyrox.com",
       "link": "/roxjaya/race-planner/#kuala-lumpur",
@@ -70,24 +70,24 @@
     {
       "date": "2026-09-26",
       "title": "Mumbai weekend: the full Indonesian picture",
-      "summary": "Beyond the new Pro Doubles record, Mumbai confirmed the pattern of this season — Indonesian athletes are travelling, entering more divisions, and finishing near the front.",
-      "take": "Last year we were the new kids. Now people check the INA flag in the start list. Beda banget rasanya.",
+      "summary": "Selain rekor Pro Doubles, Mumbai ngebuktiin pola musim ini — atlet Indonesia makin sering terbang, masuk lebih banyak divisi, dan finish di depan.",
+      "take": "Tahun lalu kita anak baru. Sekarang orang ngecek bendera INA di start list. Beda banget rasanya.",
       "source": "https://hyranking.com/hyrox-national-records/indonesia",
       "sourceName": "hyranking.com"
     },
     {
       "date": "2026-09-19",
       "title": "Indonesian doubles record falls in Mumbai",
-      "summary": "Standy Tjandra and Stephen Kusuma ran 57:43 in Pro Doubles at HYROX Mumbai — a new Indonesian record, three months after taking the Open record on home soil in Jakarta.",
-      "take": "Dua cowok Indo ngangkat bendera di Mumbai. The bar keeps moving — bagus, we like chasing.",
+      "summary": "Standy Tjandra sama Stephen Kusuma lari 57:43 di Pro Doubles HYROX Mumbai — rekor Indonesia baru, tiga bulan setelah pecahin rekor Open di kandang sendiri, Jakarta.",
+      "take": "Dua cowok Indo ngangkat bendera di Mumbai. Bar-nya naik terus — bagus, kita suka ngejar.",
       "source": "https://hyranking.com/hyrox-national-records/indonesia",
       "sourceName": "hyranking.com"
     },
     {
       "date": "2026-09-10",
       "title": "Kuala Lumpur confirmed for December — Malaysia's first HYROX",
-      "summary": "AirAsia HYROX Kuala Lumpur runs 10–13 December at MITEC. Four race days, the closest away race from Jakarta, in a language you already speak.",
-      "take": "Two hours, same language, cheap flights. No excuses left — who's in?",
+      "summary": "AirAsia HYROX Kuala Lumpur fix 10–13 Desember di MITEC. Empat hari race, away race paling deket dari Jakarta, dan bahasanya udah lo kuasai.",
+      "take": "Dua jam, bahasa sama, tiket murah. Alasan apalagi yang mau dipake?",
       "source": "https://hyrox.com/event/hyrox-kuala-lumpur/",
       "sourceName": "hyrox.com",
       "link": "/roxjaya/race-planner/#kuala-lumpur",
@@ -96,8 +96,8 @@
     {
       "date": "2026-09-05",
       "title": "Seoul and Singapore go back-to-back in November",
-      "summary": "HYROX Seoul runs 13–15 November and AIA HYROX Singapore 26–29 November — two race weekends a fortnight apart, or one very greedy November.",
-      "take": "Cold Seoul air for the PB hunters, then home-region heat in Singapore. Pick one. Or pack for both.",
+      "summary": "HYROX Seoul 13–15 November, terus AIA HYROX Singapore 26–29 November — dua race weekend selisih dua minggu. Ambisius? Bisa. Waras? Belum tentu.",
+      "take": "Seoul dingin buat pemburu PB, terus panas home-region di Singapore. Pilih satu. Atau packing buat dua-duanya.",
       "source": "https://hyrox.com/events/",
       "sourceName": "hyrox.com",
       "link": "/roxjaya/race-planner/",
@@ -106,16 +106,16 @@
     {
       "date": "2026-08-13",
       "title": "Gladys Fabiola Christanto sets Indonesian women's Open record in Bangkok",
-      "summary": "1:08:35 at HYROX Bangkok — the fastest Indonesian women's Open time on record. She also holds the Mixed Doubles record with Timothy Tjahja from Hong Kong in May.",
-      "take": "Perempuan Indo makin cepat. The depth is coming — that's the exciting part.",
+      "summary": "1:08:35 di HYROX Bangkok — catatan Open putri Indonesia tercepat sepanjang masa. Dia juga pegang rekor Mixed Doubles bareng Timothy Tjahja dari Hong Kong Mei lalu.",
+      "take": "Perempuan Indo makin cepet. Kedalamannya mulai ada — itu bagian serunya.",
       "source": "https://hyranking.com/hyrox-national-records/indonesia",
       "sourceName": "hyranking.com"
     },
     {
       "date": "2026-06-28",
       "title": "Jakarta's debut weekend: eight national records on home soil",
-      "summary": "Indonesia's first HYROX at NICE drew one of the biggest Asia-Pacific fields of the season — and home athletes banked national records across Pro, Open, Doubles and Relay divisions.",
-      "take": "Home crowd did that. Wait till next year.",
+      "summary": "HYROX pertama di Indonesia di NICE — salah satu field Asia-Pacific paling gede musim ini — dan atlet rumah bawa pulang rekor nasional di divisi Pro, Open, Doubles, sama Relay.",
+      "take": "Penonton tuan rumah yang bikin itu. Tunggu tahun depan aja.",
       "source": "https://hyranking.com/hyrox-national-records/indonesia",
       "sourceName": "hyranking.com"
     }

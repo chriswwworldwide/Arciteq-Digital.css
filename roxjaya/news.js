@@ -39,23 +39,33 @@
   function render(items) {
     if (!items.length) {
       list.innerHTML =
-        '<li class="event"><time>Soon</time><div><p>Nothing published yet — Dina adds a handful of items a week once the season gets going.</p></div></li>';
+        '<li class="event"><time>Soon</time><div><p lang="id">Belum ada yang terbit — Dina nambahin segenggam item tiap minggu pas musim jalan.</p></div></li>';
       return;
     }
     list.innerHTML = items
-      .map((n) => {
+      .map((n, i) => {
         const src = n.source
           ? `<a href="${esc(n.source)}" rel="noopener nofollow" target="_blank">${esc(n.sourceName || host(n.source) || "Source")} ↗</a>`
           : "";
         const take = n.take
-          ? `<p class="news-take"><strong>Dina's take:</strong> ${esc(n.take)}</p>`
+          ? `<p class="news-take" lang="id"><strong>Kata Dina:</strong> ${esc(n.take)}</p>`
           : "";
         const guide = n.link
           ? `<p class="news-src"><a href="${esc(n.link)}">${esc(n.linkLabel || "Race guide →")}</a></p>`
           : "";
-        return `<li class="event"><time datetime="${esc(n.date || "")}">${esc(when(n.date))}</time><div><h4>${esc(n.title)}</h4><p>${esc(n.summary)}</p>${take}<p class="news-src">${guide} ${src}</p></div></li>`;
+        return `<li class="event" data-i="${i}"><time datetime="${esc(n.date || "")}">${esc(when(n.date))}</time><div><h4>${esc(n.title)}</h4><p lang="id">${esc(n.summary)}</p>${take}<p class="news-src">${guide} ${src}<button class="share-btn" type="button">Share</button></p></div></li>`;
       })
       .join("");
+    list.querySelectorAll(".share-btn").forEach((btn) =>
+      btn.addEventListener("click", () => {
+        const n = items[Number(btn.closest("li").dataset.i)];
+        window.roxShare?.(btn, {
+          title: n.title,
+          text: `${n.title} — ${n.take || n.summary}`,
+          url: `${location.origin}/roxjaya/news/`,
+        });
+      }),
+    );
   }
 
   fetch("/roxjaya/data/news.json", { cache: "no-cache" })
@@ -72,6 +82,6 @@
     })
     .catch(() => {
       list.innerHTML =
-        '<li class="event"><time>Hmm</time><div><p>Couldn\'t load the news just now — try again in a moment.</p></div></li>';
+        '<li class="event"><time>Hmm</time><div><p lang="id">Nggak bisa load beritanya sekarang — coba lagi bentar ya.</p></div></li>';
     });
 })();

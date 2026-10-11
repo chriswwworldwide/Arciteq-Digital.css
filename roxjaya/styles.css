@@ -1788,6 +1788,68 @@ footer a:hover {
   cursor: pointer;
 }
 
+.lightbox-share {
+  position: fixed;
+  top: 14px;
+  right: 72px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 22px;
+  background: var(--pink);
+  color: var(--ink);
+  font: 700 15px/1 var(--font);
+  cursor: pointer;
+}
+
+.share-btn {
+  margin-left: 10px;
+  padding: 2px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 700 12px/1.4 var(--font);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.share-btn:active {
+  background: var(--pink);
+  border-color: var(--pink);
+}
+
+.share-pop {
+  position: absolute;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  padding: 6px;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+.share-opt {
+  display: block;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink);
+  font: 700 14px/1.2 var(--font);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.share-opt:hover,
+.share-opt:focus-visible {
+  background: var(--pink);
+  outline: none;
+}
+
 @media (max-width: 640px) {
   .polaroids {
     gap: 22px 12px;

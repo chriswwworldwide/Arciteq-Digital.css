@@ -50,7 +50,10 @@
         const take = n.take
           ? `<p class="news-take"><strong>Dina's take:</strong> ${esc(n.take)}</p>`
           : "";
-        return `<li class="event"><time datetime="${esc(n.date || "")}">${esc(when(n.date))}</time><div><h4>${esc(n.title)}</h4><p>${esc(n.summary)}</p>${take}<p class="news-src">${src}</p></div></li>`;
+        const guide = n.link
+          ? `<p class="news-src"><a href="${esc(n.link)}">${esc(n.linkLabel || "Race guide →")}</a></p>`
+          : "";
+        return `<li class="event"><time datetime="${esc(n.date || "")}">${esc(when(n.date))}</time><div><h4>${esc(n.title)}</h4><p>${esc(n.summary)}</p>${take}<p class="news-src">${guide} ${src}</p></div></li>`;
       })
       .join("");
   }

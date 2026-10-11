@@ -58,8 +58,12 @@
   fetch("/roxjaya/data/news.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : Promise.reject(new Error("load"))))
     .then((json) => {
+      const today = new Date().toISOString().slice(0, 10);
       const items = (Array.isArray(json?.items) ? json.items : [])
-        .filter((n) => n && n.title && n.summary)
+        .filter(
+          (n) =>
+            n && n.title && n.summary && (!n.date || String(n.date) <= today),
+        )
         .sort((a, b) => String(b.date).localeCompare(String(a.date)));
       render(items);
     })

@@ -40,7 +40,11 @@
     if (r.status === "confirmed" && r.start) {
       const d = daysUntil(r.start);
       when = `<p class="plan-when"><strong>${esc(r.dates)}</strong>${
-        d > 0 ? ` <span class="plan-days">${d} days to go</span>` : ""
+        d > 0
+          ? ` <span class="plan-days">${d} days to go</span>`
+          : d > -4
+            ? ` <span class="plan-days">race week</span>`
+            : ` <span class="plan-days">raced — see the <a href="/roxjaya/results/">results board</a></span>`
       }</p>`;
     } else {
       when = `<p class="plan-when plan-tbc"><strong>Date TBC</strong> ${esc(r.expected || "")}${
@@ -134,7 +138,10 @@
     if (!seasonEl) return;
     const rows = cities
       .map((c) => ({ c, r: c.race || {} }))
-      .filter(({ r }) => r.status === "confirmed" && r.start)
+      .filter(
+        ({ r }) =>
+          r.status === "confirmed" && r.start && daysUntil(r.start) > -4,
+      )
       .sort((a, b) => a.r.start.localeCompare(b.r.start));
     const tbc = cities.filter(
       (c) => c.slug !== home && (c.race || {}).status !== "confirmed",
@@ -144,6 +151,7 @@
         ? "/roxjaya/hyrox-jakarta/"
         : `/roxjaya/race-planner/#${c.slug}`;
     const alsoRows = (alsoOn || [])
+      .filter((r) => !r.start || daysUntil(r.start) > -4)
       .slice()
       .sort((a, b) =>
         String(a.start || "").localeCompare(String(b.start || "")),
@@ -160,31 +168,33 @@
           }</p></div></li>`,
         )
         .join("") +
-      tbc
-        .map(
-          (c) => `<li class="event">
+        tbc
+          .map(
+            (c) => `<li class="event">
           <time>Date TBC</time>
           <div><h4><a href="${href(c)}">${esc(c.race.name)}</a></h4><p>${esc(c.race.expected || "Awaiting the official date.")}</p></div></li>`,
-        )
-        .join("") +
-      (alsoRows.length
-        ? `<li class="event-subhead"><p>More Asia-Pacific races this season</p></li>` +
-          alsoRows
-            .map(
-              (r) => `<li class="event">
+          )
+          .join("") +
+        (alsoRows.length
+          ? `<li class="event-subhead"><p>More Asia-Pacific races this season</p></li>` +
+            alsoRows
+              .map(
+                (r) => `<li class="event">
           <time datetime="${esc(r.start || "")}">${esc(r.dates || "Dates TBA")}</time>
           <div><h4><a href="${esc(r.source || "https://hyrox.com/events/")}" rel="noopener" target="_blank">${esc(r.name)}</a>${
             r.nickname
               ? ` <span class="city-nick">${esc(r.nickname)}</span>`
               : ""
           }</h4><p>${esc([r.venue, r.note].filter(Boolean).join(" · "))}</p></div></li>`,
-            )
-            .join("")
-        : "") +
-      (alsoTba
-        ? `<li class="event"><time>TBA</time>
+              )
+              .join("")
+          : "") +
+        (alsoTba
+          ? `<li class="event"><time>TBA</time>
           <div><h4>Also expected back</h4><p>${esc(alsoTba)}</p></div></li>`
-        : "");
+          : "") ||
+      `<li class="event"><time>Break</time>
+        <div><h4>Between seasons</h4><p>No confirmed Asia-Pacific dates right now — new races land on <a href="https://hyrox.com/events/" rel="noopener" target="_blank">hyrox.com</a> first, and we update the board when they do.</p></div></li>`;
     if (nextEl && rows.length) {
       const { c, r } = rows[0];
       nextEl.hidden = false;

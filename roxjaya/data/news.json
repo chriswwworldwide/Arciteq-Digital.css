@@ -1,6 +1,70 @@
 {
-  "note": "Curated Hyrox Asia news. Items land here only when Dina taps Publish on the Coach's desk; edit or delete rows freely. Newest first.",
+  "note": "Curated Hyrox Asia news. Items land here only when Dina taps Publish on the Coach's desk; edit or delete rows freely. Newest first. Items dated in the future auto-publish on their date — the feed rolls weekly through the season without anyone touching it.",
   "items": [
+    {
+      "date": "2026-12-14",
+      "title": "That's a wrap on 2026 — the season resets",
+      "summary": "Kuala Lumpur closed the Asia-Pacific season on 13 December. From here the story turns to 2027: Hong Kong in January, Bangkok in February, and the big one — Jakarta's second edition.",
+      "take": "Musim pertama selesai. Now we build for the home race — this time with a crowd that knows what Hyrox is.",
+      "source": "https://hyrox.com/events/",
+      "sourceName": "hyrox.com"
+    },
+    {
+      "date": "2026-12-07",
+      "title": "KL race week: the last start line of 2026",
+      "summary": "AirAsia HYROX Kuala Lumpur opens Thursday at MITEC — four race days, and the biggest Indonesian travelling contingent of the season is expected.",
+      "take": "Two hours from home, same language. If you're racing — gaspol. If you're watching — the results board updates after.",
+      "source": "https://hyrox.com/event/hyrox-kuala-lumpur/",
+      "sourceName": "hyrox.com"
+    },
+    {
+      "date": "2026-11-23",
+      "title": "Singapore race week: the Little Red Dot calls",
+      "summary": "AIA HYROX Singapore runs 26–29 November at Singapore EXPO — three-plus days of racing, and the closest thing to a second home race for Jakarta athletes.",
+      "take": "Under two hours, no jet lag, air-con venue. The smart second race — and the hawker centres are carb-loading on easy mode.",
+      "source": "https://hyrox.com/events/",
+      "sourceName": "hyrox.com"
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Seoul race week: cold air, fast times",
+      "summary": "HYROX Seoul runs 13–15 November at KINTEX — the season's cool-weather race. November in Goyang runs 0–10 °C, which is exactly why PBs go there to happen.",
+      "take": "Cold air means faster splits — but pack a proper jacket, the post-race chill is real. Kram di Seoul hits different.",
+      "source": "https://hyrox.com/events/",
+      "sourceName": "hyrox.com"
+    },
+    {
+      "date": "2026-10-31",
+      "title": "Shanghai race week: the Big Dumpling races",
+      "summary": "HYROX Shanghai runs this weekend — the biggest of China's stops this season and a long-haul trip for anyone flying from Jakarta.",
+      "take": "Far for a weekend race, but if you're doing a China double this is the anchor. Watching from the results board this time.",
+      "source": "https://hyrox.com/events/",
+      "sourceName": "hyrox.com"
+    },
+    {
+      "date": "2026-10-17",
+      "title": "The November–December block: three races in seven weeks",
+      "summary": "Seoul (13–15 Nov), Singapore (26–29 Nov), Kuala Lumpur (10–13 Dec) — the densest stretch of the APAC calendar. One taper can cover two of them if you plan it right.",
+      "take": "Pick an A-race and a B-race, don't try to peak three times. That's what the 12-week block is for — tanya aja.",
+      "source": "https://hyrox.com/events/",
+      "sourceName": "hyrox.com"
+    },
+    {
+      "date": "2026-10-03",
+      "title": "Ten weeks to KL — the window is open",
+      "summary": "Kuala Lumpur on 10 December is ten weeks out — exactly one race-prep block. For first-timers, it's also the friendliest away race on the calendar: two hours, Bahasa works, cheap flights.",
+      "take": "Start this week and you land race-ready with days to spare. Start next month and you're cramming — pilih yang mana?",
+      "source": "https://hyrox.com/event/hyrox-kuala-lumpur/",
+      "sourceName": "hyrox.com"
+    },
+    {
+      "date": "2026-09-26",
+      "title": "Mumbai weekend: the full Indonesian picture",
+      "summary": "Beyond the new Pro Doubles record, Mumbai confirmed the pattern of this season — Indonesian athletes are travelling, entering more divisions, and finishing near the front.",
+      "take": "Last year we were the new kids. Now people check the INA flag in the start list. Beda banget rasanya.",
+      "source": "https://hyranking.com/hyrox-national-records/indonesia",
+      "sourceName": "hyranking.com"
+    },
     {
       "date": "2026-09-19",
       "title": "Indonesian doubles record falls in Mumbai",
@@ -23,7 +87,7 @@
       "summary": "HYROX Seoul runs 13–15 November and AIA HYROX Singapore 26–29 November — two race weekends a fortnight apart, or one very greedy November.",
       "take": "Cold Seoul air for the PB hunters, then home-region heat in Singapore. Pick one. Or pack for both.",
       "source": "https://hyrox.com/events/",
-      "sourceName": "hyrox.com event list"
+      "sourceName": "hyrox.com"
     },
     {
       "date": "2026-08-13",

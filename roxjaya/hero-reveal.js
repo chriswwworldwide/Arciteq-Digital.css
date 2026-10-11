@@ -1,11 +1,14 @@
-// hero-reveal.js — WebGL "lilac mosaic" resolve on the home hero.
-// A canvas overlays the hero <img>; a resolve front sweeps the diagonal
-// (bottom-right first, top-left last): ahead of it the photo sits as a
-// coarse lilac-duotone mosaic — like the shot still buffering on the race
-// screen — and it sharpens to full colour as the front passes, with a
-// lilac glow riding the line. At the end the canvas fades out and the
-// plain <img> takes over (hero-drift resumes). Progressive enhancement:
-// no WebGL / small screen / reduced-motion → the <img> just shows.
+// hero-reveal.js — WebGL unroll-and-resolve on the home hero.
+// A canvas overlays the hero <img>. The photo starts wrapped into a
+// spiral scroll at the top-left corner (real mesh deformation — the
+// vertex shader is ported from Yuriy Artyukh's Codrops "Unrolling
+// Images" demo) and physically unrolls diagonally to the bottom-right.
+// As each strip of paper lays flat it lands as a coarse mosaic of the
+// photo — dark seams, dimmed blocks — that sharpens to full resolution
+// just behind the roll front (the Codrops "Revealing WebGL Images"
+// pixel-resolve). At the end the canvas fades out and the plain <img>
+// takes over (hero-drift resumes). Progressive enhancement: no WebGL /
+// small screen / reduced-motion → the <img> just shows.
 (() => {
   const html = document.documentElement;
   const done = () => {
@@ -22,65 +25,90 @@
   const img = section && section.querySelector(".hero-img");
   if (!img) return done();
 
+  // Ported from akella/UnrollingImages (Codrops) — the plane is deformed
+  // into a spiral scroll; `u_progress` pays it out along the `u_angle`
+  // diagonal. vResolve trails the front so the fragment side can settle
+  // the freshly laid paper from mosaic to sharp.
   const VS = `
-    attribute vec2 a_pos;
-    varying vec2 v_uv;
+    attribute vec3 a_pos;
+    attribute vec2 a_uv;
+    uniform mat4 u_mvp;
+    uniform float u_progress;
+    uniform float u_angle;
+    varying vec2 vUv;
+    varying float vShadow;
+    varying float vResolve;
+    const float pi = 3.14159265359;
+
+    mat4 rotationMatrix(vec3 axis, float angle) {
+      axis = normalize(axis);
+      float s = sin(angle);
+      float c = cos(angle);
+      float oc = 1.0 - c;
+      return mat4(
+        oc*axis.x*axis.x + c,          oc*axis.x*axis.y - axis.z*s,   oc*axis.z*axis.x + axis.y*s,   0.0,
+        oc*axis.x*axis.y + axis.z*s,   oc*axis.y*axis.y + c,          oc*axis.y*axis.z - axis.x*s,   0.0,
+        oc*axis.z*axis.x - axis.y*s,   oc*axis.y*axis.z + axis.x*s,   oc*axis.z*axis.z + c,          0.0,
+        0.0,                           0.0,                           0.0,                           1.0);
+    }
+    vec3 rotate(vec3 v, vec3 axis, float angle) {
+      return (rotationMatrix(axis, angle) * vec4(v, 1.0)).xyz;
+    }
+
     void main() {
-      v_uv = a_pos * 0.5 + 0.5;
-      gl_Position = vec4(a_pos, 0.0, 1.0);
+      vUv = a_uv;
+      vec3 newposition = a_pos;
+      float rad = 0.1;
+      float rolls = 5.0;
+
+      // measure the vertex along the unroll axis (rotate into roll space)
+      newposition = rotate(newposition - vec3(-.5,.5,0.), vec3(0.,0.,1.), -u_angle) + vec3(-.5,.5,0.);
+      float offs = (newposition.x + 0.5) / (sin(u_angle) + cos(u_angle));
+      float tProgress = clamp((u_progress - offs*0.99) / 0.01, 0., 1.);
+      vShadow = clamp((u_progress - offs*0.95) / 0.05, 0.7, 1.);
+      // the mosaic trail: a wide band of paper settling behind the roll —
+      // u_progress runs past 1 so the last-laid corner finishes resolving
+      // after the roll has emptied
+      vResolve = clamp((u_progress - offs*0.99) / 0.38, 0.0, 1.0);
+
+      // wrap the sheet into spiral turns, shrinking along the roll
+      newposition.z = rad + rad*(1. - offs/2.) * sin(-offs*rolls*pi - 0.5*pi);
+      newposition.x = -0.5 + rad*(1. - offs/2.) * cos(-offs*rolls*pi + 0.5*pi);
+      newposition = rotate(newposition - vec3(-.5,.5,0.), vec3(0.,0.,1.), u_angle) + vec3(-.5,.5,0.);
+      // and unwind it as progress sweeps
+      newposition = rotate(newposition - vec3(-.5,0.5,rad), vec3(sin(u_angle),cos(u_angle),0.), -pi*u_progress*rolls);
+      newposition += vec3(
+        -.5 + u_progress*cos(u_angle)*(sin(u_angle)+cos(u_angle)),
+        0.5 - u_progress*sin(u_angle)*(sin(u_angle)+cos(u_angle)),
+        rad*(1. - u_progress/2.));
+      vec3 finalposition = mix(newposition, a_pos, tProgress);
+      gl_Position = u_mvp * vec4(finalposition, 1.0);
     }`;
 
   const FS = `
     precision mediump float;
-    varying vec2 v_uv;
+    varying vec2 vUv;
+    varying float vShadow;
+    varying float vResolve;
     uniform sampler2D u_tex;
-    uniform vec4 u_rect;    // x0,y0,x1,y1 of painted image, canvas uv (origin bottom-left)
-    uniform float u_prog;
-    const float ZW = 0.34;          // resolve zone width (diagonal units)
-    const vec3 LILAC = vec3(0.66, 0.55, 0.88);   // her kit colour
+    uniform highp float u_progress;
 
     void main() {
-      if (v_uv.x < u_rect.x || v_uv.x > u_rect.z ||
-          v_uv.y < u_rect.y || v_uv.y > u_rect.w) {
-        gl_FragColor = vec4(0.0);
-        return;
-      }
-      vec2 iuv = vec2((v_uv.x - u_rect.x) / (u_rect.z - u_rect.x),
-                      (v_uv.y - u_rect.y) / (u_rect.w - u_rect.y));
-      vec2 tuv = iuv;                                 // bottom-left origin, y up
-      vec2 dir = normalize(vec2(-1.0, 1.0));         // travel toward top-left
-      float diag = dot(tuv - 0.5, dir);              // + toward top-left
-      float front = mix(-0.95, 0.95, u_prog);        // resolve front
-      float d = diag - front;                        // >0 = still coarse
-      // 0 = fully coarse (far ahead of the front) → 1 = sharp
-      float resolve = clamp(1.0 - d / ZW, 0.0, 1.0);
-      resolve = smoothstep(0.0, 1.0, resolve);
-
-      // Mosaic — ~7 chunky cells far ahead resolving to ~fine at the front.
-      // Cells stay square in image space (image is near-square anyway).
-      float cells = mix(7.0, 220.0, pow(resolve, 1.6));
-      vec2 grid = vec2(cells, cells);
-      vec2 cuv = (floor(tuv * grid) + 0.5) / grid;
+      // mosaic cell count ramps as the paper settles behind the roll —
+      // natural photo colours in chunky blocks, dark seams between them
+      float cells = mix(6.0, 200.0, pow(vResolve, 1.4));
+      vec2 cuv = (floor(vUv * cells) + 0.5) / cells;
       vec3 col = texture2D(u_tex, cuv).rgb;
-
-      // Grid seams — dark edges between blocks, gone once it's sharp
-      vec2 f = fract(tuv * grid);
-      float s = smoothstep(0.0, 0.045, f.x) * smoothstep(0.0, 0.045, f.y);
-      col *= mix(1.0, 0.70 + 0.30 * s, 1.0 - resolve);
-
-      // Lilac duotone on the unresolved side → full colour once resolved
-      float lum = dot(col, vec3(0.33));
-      vec3 tone = mix(LILAC * (0.32 + lum * 1.6), col, smoothstep(0.35, 0.95, resolve));
-      // and a lilac glow riding the resolve front itself
-      float edge = exp(-abs(d) * 26.0) * 0.5;
-      tone += LILAC * edge * (1.0 - u_prog);
-
-      // Far ahead the photo is a dim mosaic impression over the ambient bg
-      float a = mix(0.68, 1.0, smoothstep(0.0, 0.55, resolve));
-      gl_FragColor = vec4(tone, a);
+      vec2 f = fract(vUv * cells);
+      float s = smoothstep(0.0, 0.05, f.x) * smoothstep(0.0, 0.05, f.y);
+      col *= mix(1.0, 0.40 + 0.60 * s, 1.0 - vResolve);
+      col *= mix(0.50, 1.0, vResolve);
+      col *= vShadow;
+      float a = clamp(u_progress * 5.0, 0.0, 1.0);
+      gl_FragColor = vec4(col, a);
     }`;
 
-  let canvas, gl, prog, uRect, uProg, tex;
+  let canvas, gl, uMVP, uProgress, uAngle, uProg2, tex, indexCount;
   try {
     canvas = document.createElement("canvas");
     canvas.className = "hero-canvas";
@@ -101,53 +129,124 @@
       }
       return s;
     };
-    prog = gl.createProgram();
+    const prog = gl.createProgram();
     gl.attachShader(prog, compile(gl.VERTEX_SHADER, VS));
     gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FS));
     gl.linkProgram(prog);
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error("link");
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS))
+      throw new Error(gl.getProgramInfoLog(prog) || "link");
     gl.useProgram(prog);
 
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(
-      gl.ARRAY_BUFFER,
-      new Float32Array([-1, -1, 3, -1, -1, 3]),
-      gl.STATIC_DRAW,
-    );
+    // Grid mesh over the unit plane — dense enough for smooth spiral wraps
+    const SEG = 120;
+    const verts = new Float32Array((SEG + 1) * (SEG + 1) * 5);
+    const idx = new Uint16Array(SEG * SEG * 6);
+    let vi = 0;
+    for (let y = 0; y <= SEG; y++) {
+      for (let x = 0; x <= SEG; x++) {
+        const u = x / SEG - 0.5;
+        const v = 0.5 - y / SEG;
+        verts[vi++] = u;
+        verts[vi++] = v;
+        verts[vi++] = 0;
+        verts[vi++] = x / SEG;
+        verts[vi++] = 1 - y / SEG;
+      }
+    }
+    let ii = 0;
+    for (let y = 0; y < SEG; y++) {
+      for (let x = 0; x < SEG; x++) {
+        const a = y * (SEG + 1) + x;
+        const b = a + 1;
+        const c = a + SEG + 1;
+        const d = c + 1;
+        idx[ii++] = a;
+        idx[ii++] = c;
+        idx[ii++] = b;
+        idx[ii++] = b;
+        idx[ii++] = c;
+        idx[ii++] = d;
+      }
+    }
+    indexCount = idx.length;
+    const vb = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, vb);
+    gl.bufferData(gl.ARRAY_BUFFER, verts, gl.STATIC_DRAW);
     const aPos = gl.getAttribLocation(prog, "a_pos");
+    const aUv = gl.getAttribLocation(prog, "a_uv");
     gl.enableVertexAttribArray(aPos);
-    gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(aUv);
+    gl.vertexAttribPointer(aPos, 3, gl.FLOAT, false, 20, 0);
+    gl.vertexAttribPointer(aUv, 2, gl.FLOAT, false, 20, 12);
+    const ib = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ib);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, idx, gl.STATIC_DRAW);
 
-    uRect = gl.getUniformLocation(prog, "u_rect");
-    uProg = gl.getUniformLocation(prog, "u_prog");
+    uMVP = gl.getUniformLocation(prog, "u_mvp");
+    uProgress = gl.getUniformLocation(prog, "u_progress");
+    uAngle = gl.getUniformLocation(prog, "u_angle");
+    uProg2 = gl.getUniformLocation(prog, "u_prog");
+    gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     gl.clearColor(0, 0, 0, 0);
-  } catch {
+    gl.uniform1f(uAngle, Math.PI / 4); // unrolls top-left → bottom-right
+  } catch (e) {
+    console.warn("hero-reveal:", e);
     return done();
   }
 
-  // Painted rect of the <img> (object-fit: contain, 58% center, padding
-  // 40px top / 56px bottom) expressed in canvas uv, origin bottom-left.
-  const imageRect = () => {
-    const cw = canvas.width;
-    const ch = canvas.height;
-    if (!cw || !ch) return null;
+  // MVP: world units = canvas CSS px, origin centre, y up — same trick as
+  // the source demo (fov picked so 1 world unit ≈ 1 screen px at z=0).
+  let mvp = null;
+  const buildMVP = () => {
+    const W = img.clientWidth;
+    const H = img.clientHeight;
+    if (!W || !H) return;
     const padT = 40,
-      padB = 56,
-      padL = 0,
-      padR = 0;
-    const cW = cw - padL - padR;
-    const cH = ch - padT - padB;
+      padB = 56;
+    const cW = W;
+    const cH = H - padT - padB;
     const iw = img.naturalWidth || 1125;
     const ih = img.naturalHeight || 1080;
     const s = Math.min(cW / iw, cH / ih);
-    const w = iw * s,
-      h = ih * s;
-    const x = padL + (cW - w) * 0.58;
-    const yTop = padT + (cH - h) * 0.5;
-    return [x / cw, (ch - yTop - h) / ch, (x + w) / cw, (ch - yTop) / ch];
+    const rw = iw * s;
+    const rh = ih * s;
+    const rx = (cW - rw) * 0.58 + rw / 2 - W / 2; // rect centre, world x
+    const ry = H / 2 - (padT + (cH - rh) * 0.5 + rh / 2); // world y (y up)
+
+    const camZ = 400;
+    const fov = 2 * Math.atan(H / 2 / camZ);
+    const near = 50,
+      far = 1500;
+    const f = 1 / Math.tan(fov / 2);
+    const aspect = W / H;
+    const P = [
+      f / aspect,
+      0,
+      0,
+      0,
+      0,
+      f,
+      0,
+      0,
+      0,
+      0,
+      (far + near) / (near - far),
+      -1,
+      0,
+      0,
+      (2 * far * near) / (near - far),
+      0,
+    ];
+    // model = translate(rect centre) * scale(rect w, rect h, rect w/2)
+    const M = [rw, 0, 0, 0, 0, rh, 0, 0, 0, 0, rw / 2, 0, rx, ry, -camZ, 1];
+    // mvp = P * M (column-major)
+    const o = new Array(16).fill(0);
+    for (let c = 0; c < 4; c++)
+      for (let r = 0; r < 4; r++)
+        for (let k = 0; k < 4; k++) o[c * 4 + r] += P[k * 4 + r] * M[c * 4 + k];
+    mvp = new Float32Array(o);
   };
 
   const size = () => {
@@ -161,6 +260,7 @@
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
+    buildMVP();
   };
 
   const tex2d = new Image();
@@ -182,7 +282,8 @@
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    } catch {
+    } catch (e) {
+      console.warn("hero-reveal:", e);
       return done();
     }
 
@@ -190,18 +291,21 @@
     const wrap = section.querySelector(".wrap");
     section.insertBefore(canvas, wrap);
 
-    const DURATION = 2400;
-    const DELAY = 150;
-    // Smoothstep — steady resolve, easing off as the last blocks sharpen.
-    const ease = (t) => t * t * (3 - 2 * t);
+    const DURATION = 3400;
+    const DELAY = 200;
+    // power2.out like the source demo — the roll decelerates as it empties.
+    // Progress overshoots to 1.35 so the mosaic keeps settling after the
+    // roll has finished laying the sheet (~74% through the sweep).
+    const ease = (t) => 1 - Math.pow(1 - t, 2);
     const start = performance.now() + DELAY;
     const frame = (now) => {
       const t = Math.max(0, Math.min(1, (now - start) / DURATION));
-      const r = imageRect();
-      if (r) gl.uniform4fv(uRect, r);
-      gl.uniform1f(uProg, ease(t));
-      gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      const p = ease(t) * 1.35;
+      if (mvp) gl.uniformMatrix4fv(uMVP, false, mvp);
+      gl.uniform1f(uProgress, p);
+      gl.uniform1f(uProg2, p);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      gl.drawElements(gl.TRIANGLES, indexCount, gl.UNSIGNED_SHORT, 0);
       if (t < 1) return requestAnimationFrame(frame);
       // Hand back to the plain <img> — fade the canvas out, then drop it.
       canvas.style.transition = "opacity .35s ease";

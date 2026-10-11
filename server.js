@@ -1921,14 +1921,22 @@ function resolveTenantFromRequest(req) {
   return { tenant_id: "default", currency: "eur", language: "en" };
 }
 
-// Disable all browser caching during local development
+// Cache policy: HTML/API stay uncached (fresh content after deploys); static
+// assets get a short cache + ETag revalidation so repeat views don't
+// re-download styles, scripts and images on every visit.
+const STATIC_ASSET_RE =
+  /\.(css|js|png|jpe?g|webp|avif|svg|ico|woff2?|mp4|webm|json)$/i;
 app.use((req, res, next) => {
-  res.setHeader(
-    "Cache-Control",
-    "no-store, no-cache, must-revalidate, private",
-  );
-  res.setHeader("Pragma", "no-cache");
-  res.setHeader("Expires", "0");
+  if (STATIC_ASSET_RE.test(req.path)) {
+    res.setHeader("Cache-Control", "public, max-age=300, must-revalidate");
+  } else {
+    res.setHeader(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate, private",
+    );
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+  }
   next();
 });
 

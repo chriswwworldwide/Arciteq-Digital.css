@@ -1313,7 +1313,7 @@ footer a:hover {
   }
   .hero--bleed img {
     position: static;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
     height: auto;
     max-height: 70vh;
     object-position: 65% 45%;
@@ -2118,18 +2118,23 @@ body.has-sticky-cta .wa-fab {
     hero-drift 18s ease-in-out 2s infinite alternate;
 }
 
+/* With JS running, the mask starts at the ghost end and app.js sweeps it to
+   fully-stuck — without JS it rests opaque, so the photo always shows. */
+html.js .hero--bleed .hero-img {
+  -webkit-mask-position: 0% 0%;
+  mask-position: 0% 0%;
+}
+
 @keyframes hero-enter {
+  /* The mask sweep itself is driven by JS in app.js — older Safari accepts
+     -webkit-mask-position but can't interpolate it inside keyframes. */
   0% {
-    -webkit-mask-position: 0% 0%;
-    mask-position: 0% 0%;
     transform: translateY(-8px) rotate(-1deg);
   }
   55% {
     transform: translateY(-2px) rotate(-0.3deg);
   }
   100% {
-    -webkit-mask-position: 100% 100%;
-    mask-position: 100% 100%;
     transform: none;
   }
 }

@@ -864,3 +864,24 @@
     if (saved) form.reset();
   });
 })();
+
+// Hero unroll: the diagonal "paper settling" mask sweep. Older Safari accepts
+// -webkit-mask-position but can't interpolate it inside @keyframes, so the
+// sweep is driven here instead. With JS off or reduced-motion, the mask rests
+// fully opaque and the photo simply shows.
+(() => {
+  const img = document.querySelector(".hero--bleed .hero-img");
+  if (!img || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+    return;
+  const DURATION = 1800;
+  const ease = (t) => 1 - Math.pow(1 - t, 3); // easeOutCubic — settling, not sliding
+  const start = performance.now();
+  const step = (now) => {
+    const t = Math.min(1, (now - start) / DURATION);
+    const pos = `${(ease(t) * 100).toFixed(2)}%`;
+    img.style.webkitMaskPosition = `${pos} ${pos}`;
+    img.style.maskPosition = `${pos} ${pos}`;
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+})();

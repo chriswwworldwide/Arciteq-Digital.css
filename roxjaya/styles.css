@@ -903,13 +903,22 @@ section.block.alt {
 
 .plan-crew {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) auto;
+  grid-template-columns: 150px minmax(0, 1.5fr) auto;
   gap: 24px;
   align-items: center;
   margin: 40px 0 28px;
   border-style: dashed;
   border-color: var(--pink);
   background: var(--pink-100);
+}
+
+.crew-photo {
+  width: 150px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 6px);
+  transform: rotate(-2deg);
+  box-shadow: var(--shadow);
 }
 
 .plan-crew .crew-line {
@@ -1240,6 +1249,9 @@ footer a:hover {
   }
   .plan-crew {
     grid-template-columns: 1fr;
+  }
+  .crew-photo {
+    width: 120px;
   }
   .plan-crew .crew-side {
     justify-items: start;

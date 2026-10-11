@@ -6,6 +6,7 @@
     {
       "slug": "jakarta",
       "name": "Jakarta",
+      "nickname": "The Big Durian",
       "country": "Indonesia",
       "flag": "🇮🇩",
       "tagline": "Home race. Indonesia's first Hyrox drew ~11,200 athletes in June 2026 — the biggest Asia-Pacific debut so far.",
@@ -96,6 +97,7 @@
     {
       "slug": "singapore",
       "name": "Singapore",
+      "nickname": "The Little Red Dot",
       "country": "Singapore",
       "flag": "🇸🇬",
       "tagline": "Closest away race from Jakarta — under two hours, no jet lag, English everywhere.",
@@ -160,6 +162,7 @@
     {
       "slug": "kuala-lumpur",
       "name": "Kuala Lumpur",
+      "nickname": "The Little Durian",
       "country": "Malaysia",
       "flag": "🇲🇾",
       "tagline": "Malaysia's first-ever Hyrox and the last Asia-Pacific race of 2026 — a four-day weekend, two hours from Jakarta.",
@@ -239,6 +242,7 @@
     {
       "slug": "seoul",
       "name": "Seoul",
+      "nickname": "The Big Kimchi",
       "country": "South Korea",
       "flag": "🇰🇷",
       "tagline": "Cool-weather racing, a fast venue and the best food of the season.",
@@ -303,6 +307,7 @@
     {
       "slug": "hong-kong",
       "name": "Hong Kong",
+      "nickname": "The Big Dim Sum",
       "country": "Hong Kong SAR",
       "flag": "🇭🇰",
       "tagline": "January racing in mild weather, at a venue you can reach by train from the airport in a few minutes.",
@@ -367,6 +372,7 @@
     {
       "slug": "bangkok",
       "name": "Bangkok",
+      "nickname": "The Big Mango",
       "country": "Thailand",
       "flag": "🇹🇭",
       "tagline": "The region's big, buzzy race — Bangkok has hosted the largest Asian Hyrox fields before Jakarta took the record.",

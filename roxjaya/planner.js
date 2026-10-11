@@ -109,6 +109,7 @@
       ${photo}
       <header class="plan-city-head">
         <h2><span aria-hidden="true">${esc(c.flag || "")}</span> ${esc(c.name)} <small>${esc(c.country)}</small></h2>
+        ${c.nickname ? `<p class="city-nick">a.k.a. ${esc(c.nickname)}</p>` : ""}
         <p class="lead">${esc(c.tagline)}</p>
       </header>
       ${raceBlock(c, checked)}

@@ -865,28 +865,4 @@
   });
 })();
 
-// Hero unroll: the diagonal "loose parchment" sweep — mask edge + curl
-// shadow ride together across the photo. Older Safari accepts
-// -webkit-mask-position but can't interpolate it inside @keyframes, so the
-// sweep is driven here instead. With JS off or reduced-motion, the mask
-// rests fully opaque and the photo simply shows.
-(() => {
-  const img = document.querySelector(".hero--bleed .hero-img");
-  const edge = document.querySelector(".hero--bleed .hero-edge");
-  if (!img || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-    return;
-  const DURATION = 2800;
-  // Matches the CSS cubic-bezier(0.16, 0.6, 0.3, 1) roughly: eases in a
-  // touch then decelerates as the paper lays flat.
-  const ease = (t) => 1 - Math.pow(1 - t, 4);
-  const start = performance.now();
-  const step = (now) => {
-    const t = Math.min(1, (now - start) / DURATION);
-    const pos = `${(ease(t) * 100).toFixed(2)}%`;
-    img.style.webkitMaskPosition = `${pos} ${pos}`;
-    img.style.maskPosition = `${pos} ${pos}`;
-    if (edge) edge.style.backgroundPosition = `${pos} ${pos}`;
-    if (t < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-})();
+// Hero unroll lives in hero-curl.js (a WebGL page-curl over the photo).

@@ -118,6 +118,11 @@
   }
 
   const PLANS = {
+    crew: {
+      id: "roxjaya-plan-crew-001",
+      name: "Rookie Crew",
+      cta: "Join the Crew",
+    },
     program: {
       id: "roxjaya-plan-warrior-001",
       name: "Warrior Program",
@@ -166,6 +171,12 @@
         why: inJakarta
           ? "Training through pregnancy or a comeback is exactly where Dina's own experience counts — floor time for form checks plus weekly video review."
           : "Dina programmes around your stage and checks your form on video each week; tell her in the notes where you are and she'll adjust.",
+      };
+    }
+    if (inJakarta && exp === "Never raced") {
+      return {
+        key: "crew",
+        why: "You've never raced and you're in Jakarta — that's exactly who the Rookie Crew is for: a weekly group session at your own pace, and a crew that grows as people join. No experience needed.",
       };
     }
     if (days === "2") {
@@ -318,7 +329,7 @@
   // greeting; the floating bubble is added to every page except the coach desk.
   const ROX_WHATSAPP = "6281211611987";
   const CHAT_GREETING =
-    "Hi Dina, I found you on Roxjaya Warriors — I'm interested in HYROX coaching. ";
+    "Halo MaDin! I found you on Roxjaya Warriors — I'm interested in HYROX coaching. ";
   const waHref = `https://wa.me/${ROX_WHATSAPP}?text=${encodeURIComponent(CHAT_GREETING)}`;
   document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
     a.dataset.whatsapp = ROX_WHATSAPP;

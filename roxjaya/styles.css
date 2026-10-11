@@ -602,6 +602,21 @@ button.btn {
   object-position: 55% 30%;
 }
 
+/* Desktop: show the whole photo over a blurred stretch of itself —
+   a near-square image cropped by a wide hero loses her head otherwise */
+.hero--bleed .hero-amb {
+  object-fit: cover;
+  object-position: 55% 30%;
+  filter: blur(48px) brightness(0.55) saturate(1.15);
+  transform: scale(1.15);
+}
+
+.hero--bleed .hero-img {
+  object-fit: contain;
+  object-position: 58% center;
+  padding: 40px 0 56px;
+}
+
 .hero--bleed::after {
   position: absolute;
   inset: 0;
@@ -884,6 +899,36 @@ section.block.alt {
   content: "— ";
   color: var(--pink);
   font-weight: 700;
+}
+
+.plan-crew {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) auto;
+  gap: 24px;
+  align-items: center;
+  margin: 40px 0 28px;
+  border-style: dashed;
+  border-color: var(--pink);
+  background: var(--pink-100);
+}
+
+.plan-crew .crew-line {
+  margin: 0 0 10px;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.plan-crew .crew-note {
+  margin: 0;
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+.plan-crew .crew-side {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+  text-align: right;
 }
 
 /* Events */
@@ -1193,6 +1238,13 @@ footer a:hover {
     grid-template-columns: 1fr;
     max-width: 520px;
   }
+  .plan-crew {
+    grid-template-columns: 1fr;
+  }
+  .plan-crew .crew-side {
+    justify-items: start;
+    text-align: left;
+  }
 }
 
 @media (max-width: 800px) {
@@ -1235,6 +1287,13 @@ footer a:hover {
     height: auto;
     max-height: 70vh;
     object-position: 65% 45%;
+  }
+  .hero--bleed .hero-amb {
+    display: none;
+  }
+  .hero--bleed .hero-img {
+    object-fit: cover;
+    padding: 0;
   }
   .hero--bleed::after {
     position: static;

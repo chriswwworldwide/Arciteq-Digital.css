@@ -11,6 +11,13 @@
   "instagram": "dinabawden87",
   "plans": [
     {
+      "id": "roxjaya-plan-crew-001",
+      "name": "Rookie Crew",
+      "amountIdr": 750000,
+      "per": "per month",
+      "summary": "Weekly beginner group session in Jakarta, starter programme in the TrueCoach app, crew WhatsApp group. Rolling start — join any time, no experience needed."
+    },
+    {
       "id": "roxjaya-plan-warrior-001",
       "name": "Warrior Program",
       "amountIdr": 599000,

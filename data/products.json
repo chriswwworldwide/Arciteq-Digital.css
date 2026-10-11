@@ -1356,6 +1356,53 @@
       }
     },
     {
+      "productId": "roxjaya-plan-crew-001",
+      "tenant_id": "roxjaya",
+      "kind": "service",
+      "title": "Rookie Crew",
+      "description": "Beginner-friendly HYROX group in Jakarta: one coached group session a week, starter programme in the TrueCoach app and the crew WhatsApp group. Rolling start — join any time, no experience needed.",
+      "nicheCategory": {
+        "slug": "plans",
+        "name": "Coaching Plans"
+      },
+      "productType": {
+        "slug": "coaching-plan",
+        "name": "Coaching Plan"
+      },
+      "seo": {
+        "slug": "rookie-crew",
+        "canonicalPath": "/roxjaya/",
+        "legacySlugs": []
+      },
+      "images": [
+        {
+          "src": "/roxjaya/images/feature.jpg",
+          "alt": "Rookie Crew — beginner-friendly HYROX group sessions in Jakarta",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "price": {
+        "amount": 75000000,
+        "currency": "idr"
+      },
+      "billing": {
+        "interval": "month",
+        "intervalCount": 1
+      },
+      "availability": "https://schema.org/InStock",
+      "brand": "Roxjaya Warriors",
+      "tags": ["hyrox", "beginner", "group", "jakarta"],
+      "marketing_hooks": {
+        "emotionalPainPoints": [
+          "HYROX looks fun but you don't know where to start — start here, at your pace",
+          "Train with a crew, not alone — the group grows as people join"
+        ],
+        "ugcAngles": ["First-session crew photo", "First HYROX finish"]
+      },
+      "attributes": {}
+    },
+    {
       "productId": "roxjaya-plan-warrior-001",
       "tenant_id": "roxjaya",
       "kind": "service",

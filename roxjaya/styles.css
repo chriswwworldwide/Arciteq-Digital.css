@@ -1321,6 +1321,15 @@ footer a:hover {
   .hero--bleed .hero-amb {
     display: none;
   }
+  /* The mask wrapper is desktop-only positioning — on phones it must stay in
+     the grid: row 1 with the ::after fade overlaying it, copy in row 2 —
+     exactly where the bare <img> used to sit. Extra specificity beats the
+     unprefixed .hero-mask rule that ships later in this file. */
+  .hero--bleed .hero-mask {
+    position: static;
+    grid-row: 1;
+    grid-column: 1;
+  }
   .hero--bleed .hero-img {
     object-fit: cover;
     padding: 0;

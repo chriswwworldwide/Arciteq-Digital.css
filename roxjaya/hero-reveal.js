@@ -103,7 +103,7 @@
       vec3 col = texture2D(u_tex, cuv).rgb;
 
       vec2 f = fract(vUv * cells);
-      float gap = mix(0.015, 0.11, 1.0 - vResolve);   // tile gap as cell fraction
+      float gap = mix(0.0, 0.11, 1.0 - vResolve);     // gap closes fully as it sharpens
       float tile = step(gap * 0.5, f.x) * step(f.x, 1.0 - gap * 0.5) *
                    step(gap * 0.5, f.y) * step(f.y, 1.0 - gap * 0.5);
       col *= 1.05;
@@ -112,8 +112,10 @@
       // gaps are dark seams of the tile's own colour — NOT transparent:
       // during the reveal the <img> below is hidden, so see-through gaps
       // would show the light page background as a bright seam (worst on
-      // mobile, where there's no ambient to blend into)
-      col *= mix(0.55, 1.0, tile);
+      // mobile, where there's no ambient to blend into). The seam also
+      // fades as the paper resolves, so no grid lingers over the photo.
+      float seam = mix(1.0, 0.55, 1.0 - vResolve);
+      col *= mix(seam, 1.0, tile);
       float a = clamp(u_progress * 5.0, 0.0, 1.0);
       // feather the painted edges into what's behind — on desktop that's
       // the ambient (same photo, blurred) so the fade colour-matches itself

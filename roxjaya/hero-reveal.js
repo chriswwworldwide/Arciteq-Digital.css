@@ -15,10 +15,7 @@
     html.classList.remove("reveal-live");
     html.classList.add("reveal-done");
   };
-  if (
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-    window.matchMedia("(max-width: 800px)").matches
-  )
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
     return done();
 
   const section = document.querySelector(".hero--bleed");
@@ -92,6 +89,8 @@
     varying float vResolve;
     uniform sampler2D u_tex;
     uniform highp float u_progress;
+    uniform vec4 u_uv;      // xy = crop offset, zw = crop scale (cover fit)
+    uniform float u_feather;
 
     void main() {
       // Pixelated reveal à la the Codrops demo: resolution jumps through
@@ -100,7 +99,7 @@
       // them — the gaps close as the paper settles and sharpens.
       float level = floor(mix(2.0, 8.0, vResolve));
       float cells = exp2(level);
-      vec2 cuv = (floor(vUv * cells) + 0.5) / cells;
+      vec2 cuv = u_uv.xy + ((floor(vUv * cells) + 0.5) / cells) * u_uv.zw;
       vec3 col = texture2D(u_tex, cuv).rgb;
 
       vec2 f = fract(vUv * cells);
@@ -113,10 +112,27 @@
       // gaps are transparent — the site's own blurred backdrop shows
       // between the tiles, so the mosaic melts into it (no hard edge)
       float a = clamp(u_progress * 5.0, 0.0, 1.0) * mix(1.0, tile, 1.0 - vResolve);
+      // feather the painted edges into what's behind — on desktop that's
+      // the ambient (same photo, blurred) so the fade colour-matches itself
+      float feat = max(u_feather, 0.0001);
+      a *= smoothstep(0.0, feat, vUv.x) * smoothstep(0.0, feat, 1.0 - vUv.x) *
+           smoothstep(0.0, feat, vUv.y) * smoothstep(0.0, feat, 1.0 - vUv.y);
       gl_FragColor = vec4(col, a);
     }`;
 
-  let canvas, gl, uMVP, uProgress, uAngle, uProg2, tex, indexCount;
+  let canvas,
+    gl,
+    uMVP,
+    uProgress,
+    uAngle,
+    uProg2,
+    uUv,
+    uFeather,
+    tex,
+    indexCount;
+  const uvCrop = new Float32Array(4); // off.x, off.y, scale.x, scale.y
+  uvCrop.set([0, 0, 1, 1]);
+  const small = window.matchMedia("(max-width: 800px)").matches;
   try {
     canvas = document.createElement("canvas");
     canvas.className = "hero-canvas";
@@ -194,6 +210,8 @@
     uProgress = gl.getUniformLocation(prog, "u_progress");
     uAngle = gl.getUniformLocation(prog, "u_angle");
     uProg2 = gl.getUniformLocation(prog, "u_prog");
+    uUv = gl.getUniformLocation(prog, "u_uv");
+    uFeather = gl.getUniformLocation(prog, "u_feather");
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
@@ -206,22 +224,47 @@
 
   // MVP: world units = canvas CSS px, origin centre, y up — same trick as
   // the source demo (fov picked so 1 world unit ≈ 1 screen px at z=0).
+  // Reads the img's real geometry (object-fit, object-position, padding)
+  // so it works for the desktop contain/letterbox layout AND the mobile
+  // cover-cropped square.
   let mvp = null;
   const buildMVP = () => {
     const W = img.clientWidth;
     const H = img.clientHeight;
     if (!W || !H) return;
-    const padT = 40,
-      padB = 56;
-    const cW = W;
-    const cH = H - padT - padB;
-    const iw = img.naturalWidth || 1125;
-    const ih = img.naturalHeight || 1080;
-    const s = Math.min(cW / iw, cH / ih);
-    const rw = iw * s;
-    const rh = ih * s;
-    const rx = (cW - rw) * 0.58 + rw / 2 - W / 2; // rect centre, world x
-    const ry = H / 2 - (padT + (cH - rh) * 0.5 + rh / 2); // world y (y up)
+    const cs = getComputedStyle(img);
+    const pt = parseFloat(cs.paddingTop) || 0;
+    const pb = parseFloat(cs.paddingBottom) || 0;
+    const pl = parseFloat(cs.paddingLeft) || 0;
+    const pr = parseFloat(cs.paddingRight) || 0;
+    const cW = W - pl - pr;
+    const cH = H - pt - pb;
+    const iw = tex2d.naturalWidth || 1125;
+    const ih = tex2d.naturalHeight || 1080;
+    const cover = cs.objectFit === "cover";
+    const s = cover ? Math.max(cW / iw, cH / ih) : Math.min(cW / iw, cH / ih);
+    const pw = iw * s;
+    const ph = ih * s;
+    const [pxs = "50%", pys = "50%"] = String(cs.objectPosition || "50% 50%")
+      .trim()
+      .split(/\s+/);
+    const pos = (v) =>
+      v === "center" ? 0.5 : v.endsWith("%") ? parseFloat(v) / 100 : 0.5;
+    const fx = pos(pxs);
+    const fy = pos(pys);
+    // the plane = what's visibly painted: the letterboxed rect for contain,
+    // the whole content box for cover (texture is cropped via u_uv)
+    const rw = cover ? cW : pw;
+    const rh = cover ? cH : ph;
+    const rx0 = cover ? pl : pl + (cW - pw) * fx;
+    const ry0 = cover ? pt : pt + (cH - ph) * fy;
+    const rx = rx0 + rw / 2 - W / 2; // rect centre, world x
+    const ry = H / 2 - (ry0 + rh / 2); // world y (y up)
+    uvCrop.set(
+      cover
+        ? [((pw - cW) * fx) / pw, ((ph - cH) * fy) / ph, cW / pw, cH / ph]
+        : [0, 0, 1, 1],
+    );
 
     const camZ = 400;
     const fov = 2 * Math.atan(H / 2 / camZ);
@@ -259,14 +302,16 @@
 
   const size = () => {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const w = img.clientWidth,
-      h = img.clientHeight;
-    canvas.style.width = `${w}px`;
-    canvas.style.height = `${h}px`;
-    canvas.style.position = "absolute";
-    canvas.style.inset = "0";
-    canvas.width = Math.round(w * dpr);
-    canvas.height = Math.round(h * dpr);
+    // pin the canvas exactly over the img's box — the img is absolute on
+    // desktop but a static grid child on mobile
+    const sr = section.getBoundingClientRect();
+    const ir = img.getBoundingClientRect();
+    canvas.style.top = `${ir.top - sr.top}px`;
+    canvas.style.left = `${ir.left - sr.left}px`;
+    canvas.style.width = `${ir.width}px`;
+    canvas.style.height = `${ir.height}px`;
+    canvas.width = Math.round(ir.width * dpr);
+    canvas.height = Math.round(ir.height * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
     buildMVP();
   };
@@ -312,6 +357,9 @@
       if (mvp) gl.uniformMatrix4fv(uMVP, false, mvp);
       gl.uniform1f(uProgress, p);
       gl.uniform1f(uProg2, p);
+      gl.uniform4fv(uUv, uvCrop);
+      // feather only where there's an ambient backdrop to melt into
+      gl.uniform1f(uFeather, small ? 0 : 0.025);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.drawElements(gl.TRIANGLES, indexCount, gl.UNSIGNED_SHORT, 0);
       if (t < 1) return requestAnimationFrame(frame);

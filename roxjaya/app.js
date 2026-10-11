@@ -866,3 +866,61 @@
 })();
 
 // Hero reveal lives in hero-reveal.js (a WebGL pixel-resolve over the photo).
+
+// Feather the hero photo's painted edges so the blurred ambient (the same
+// photo, defocused) bleeds through — the hard line disappears by colour-
+// matching itself. Desktop only: the mobile photo bleeds to the section
+// edges by design.
+(() => {
+  const img = document.querySelector(".hero--bleed .hero-img");
+  if (!img) return;
+  const wide = window.matchMedia("(min-width: 801px)");
+  let nt;
+  const photo = new Image();
+  const clear = () => {
+    img.style.maskImage = img.style.webkitMaskImage = "";
+    img.style.maskComposite = img.style.webkitMaskComposite = "";
+  };
+  const mask = () => {
+    if (!wide.matches) return clear();
+    const iw = photo.naturalWidth,
+      ih = photo.naturalHeight;
+    const box = img.getBoundingClientRect();
+    if (!box.width || !box.height || !iw || !ih) return;
+    const cs = getComputedStyle(img);
+    const pt = parseFloat(cs.paddingTop) || 0;
+    const pb = parseFloat(cs.paddingBottom) || 0;
+    const cW = box.width;
+    const cH = box.height - pt - pb;
+    const s = Math.min(cW / iw, cH / ih);
+    const rw = iw * s;
+    const rh = ih * s;
+    const [px = "50%"] = String(cs.objectPosition || "50%")
+      .trim()
+      .split(/\s+/);
+    const pos =
+      px === "center"
+        ? (cW - rw) / 2
+        : px.endsWith("%")
+          ? (parseFloat(px) / 100) * (cW - rw)
+          : (cW - rw) / 2;
+    const fw = Math.max(14, rw * 0.03);
+    const fy = Math.max(12, rh * 0.025);
+    const pctW = (v) => ((v / box.width) * 100).toFixed(2);
+    const pctH = (v) => ((v / box.height) * 100).toFixed(2);
+    const xg = `linear-gradient(to right, transparent ${pctW(pos)}%, #000 ${pctW(pos + fw)}%, #000 ${pctW(pos + rw - fw)}%, transparent ${pctW(pos + rw)}%)`;
+    const yg = `linear-gradient(to bottom, transparent ${pctH(pt)}%, #000 ${pctH(pt + fy)}%, #000 ${pctH(pt + rh - fy)}%, transparent ${pctH(pt + rh)}%)`;
+    img.style.maskImage = `${xg}, ${yg}`;
+    img.style.maskComposite = "intersect";
+    img.style.webkitMaskImage = `${xg}, ${yg}`;
+    img.style.webkitMaskComposite = "source-in";
+  };
+  photo.onload = mask;
+  photo.src = img.currentSrc || img.src;
+  const rerun = () => {
+    clearTimeout(nt);
+    nt = setTimeout(mask, 150);
+  };
+  window.addEventListener("resize", rerun);
+  wide.addEventListener("change", rerun);
+})();

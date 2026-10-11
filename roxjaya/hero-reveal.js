@@ -352,6 +352,10 @@
     const ease = (t) => 1 - Math.pow(1 - t, 2);
     const start = performance.now() + DELAY;
     const frame = (now) => {
+      // Re-pin the canvas to the img's live rect every frame — webfont
+      // swaps or the URL bar collapsing can shift layout mid-sweep, and a
+      // stale canvas leaves a mosaic strip + a jump at handoff
+      size();
       const t = Math.max(0, Math.min(1, (now - start) / DURATION));
       const p = ease(t) * 1.35;
       if (mvp) gl.uniformMatrix4fv(uMVP, false, mvp);

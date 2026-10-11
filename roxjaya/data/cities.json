@@ -35,17 +35,20 @@
         {
           "area": "PIK / PIK2 (closest)",
           "picks": "Hotel-hotel di PIK dan strip baru PIK2 — 10–20 menit ke venue. Paling aman buat race morning.",
-          "range": "Rp 900k – 2.5m / night"
+          "range": "Rp 900k – 2.5m / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Pantai%20Indah%20Kapuk%2C%20Jakarta"
         },
         {
           "area": "Kelapa Gading / Ancol",
           "picks": "Mid-range yang enak, akses tol utara gampang.",
-          "range": "Rp 600k – 1.5m / night"
+          "range": "Rp 600k – 1.5m / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Kelapa%20Gading%2C%20Jakarta"
         },
         {
           "area": "Central Jakarta (Sudirman / Thamrin)",
           "picks": "Paling seru buat malem abis race — resto, bar, MRT — tapi siap-siap 60+ menit ke venue.",
-          "range": "Rp 1m – 3.5m / night"
+          "range": "Rp 1m – 3.5m / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Sudirman%2C%20Jakarta"
         }
       ],
       "flights": [
@@ -93,7 +96,11 @@
         "Minggunya: Kota Tua dan Monas buat yang mau ngetrip, atau sunset-an di Ancol."
       ],
       "meetup": null,
-      "coachNote": "Ini home race gue — tiap season gue bawa atlet ke sini. Kalau lo race Jakarta, block Hybrid atau Elite 12 minggu yang habis pas race week itu sweet spot-nya."
+      "coachNote": "Ini home race gue — tiap season gue bawa atlet ke sini. Kalau lo race Jakarta, block Hybrid atau Elite 12 minggu yang habis pas race week itu sweet spot-nya.",
+      "indoMeetup": {
+        "when": "Tiap tiga bulan — resto, terus dance floor",
+        "note": "Edisi kandang: semua level — atlet, peserta, sama yang baru kepo HYROX. Makan bareng, cerita race, terus yang masih punya kaki lanjut nge-dance. Badan remuk? Duduk aja — gosip tetep jalan."
+      }
     },
     {
       "slug": "singapore",
@@ -121,17 +128,20 @@
         {
           "area": "Changi / Expo",
           "picks": "Hotels at Changi City Point and Changi Airport — walk or one MRT stop to the venue.",
-          "range": "≈ S$180–320 / night"
+          "range": "≈ S$180–320 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Singapore%20EXPO%2C%20Singapore"
         },
         {
           "area": "Bugis / Downtown line",
           "picks": "Direct MRT to Expo, and you're in town for the night after.",
-          "range": "≈ S$200–400 / night"
+          "range": "≈ S$200–400 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Bugis%2C%20Singapore"
         },
         {
           "area": "Paya Lebar / Geylang",
           "picks": "Cheaper, 15 min to Expo, great hawker food.",
-          "range": "≈ S$120–220 / night"
+          "range": "≈ S$120–220 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Paya%20Lebar%2C%20Singapore"
         }
       ],
       "flights": [
@@ -158,7 +168,11 @@
         "Recovery option: East Coast Park — cycle or walk the beach on the Sunday, then hawker dinner."
       ],
       "meetup": null,
-      "coachNote": "Singapore is the smart 'second race' 5 months after Jakarta: same climate, same time zone, short flight. Dina runs a Singapore-week taper for her Hybrid and Elite athletes."
+      "coachNote": "Singapore is the smart 'second race' 5 months after Jakarta: same climate, same time zone, short flight. Dina runs a Singapore-week taper for her Hybrid and Elite athletes.",
+      "indoMeetup": {
+        "when": "Minggu malam, habis race",
+        "note": "Makan bareng orang Indo — resto rame, bukan fine dining. Abis itu: yang mau balik hotel silakan, yang mau nge-dance ikut gue. Titik kumpul diumumin di grup menjelang race week."
+      }
     },
     {
       "slug": "kuala-lumpur",
@@ -187,17 +201,20 @@
         {
           "area": "Mont Kiara / Publika (closest)",
           "picks": "Serviced apartments and mid-range hotels 5–10 min from MITEC, with cafés and a supermarket for race-morning food.",
-          "range": "≈ RM 250–600 / night"
+          "range": "≈ RM 250–600 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Mont%20Kiara%2C%20Kuala%20Lumpur"
         },
         {
           "area": "KL Sentral / Bangsar",
           "picks": "Best balance: airport train link, 15–20 min to the venue, Bangsar's restaurants for the night after.",
-          "range": "≈ RM 300–700 / night"
+          "range": "≈ RM 300–700 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=KL%20Sentral%2C%20Kuala%20Lumpur"
         },
         {
           "area": "Bukit Bintang / KLCC",
           "picks": "For the tourists in the group — malls, Jalan Alor, Petronas Towers — budget 30–40 min to MITEC in traffic.",
-          "range": "≈ RM 300–900 / night"
+          "range": "≈ RM 300–900 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Bukit%20Bintang%2C%20Kuala%20Lumpur"
         }
       ],
       "flights": [
@@ -238,6 +255,10 @@
         "src": "/roxjaya/images/cities/kuala-lumpur.jpg",
         "alt": "Kuala Lumpur skyline at night with the Petronas Towers and KL Tower",
         "credit": "Photo: Lee Wei, CC BY 2.0"
+      },
+      "indoMeetup": {
+        "when": "Minggu malam, habis race",
+        "note": "Makan bareng squad Indo — ini practically home turf: bahasa sama, makanannya udah kita kenal. Lanjut nge-dance buat yang kakinya masih berfungsi. Titik kumpul diumumin di grup."
       }
     },
     {
@@ -266,17 +287,20 @@
         {
           "area": "Ilsan / KINTEX",
           "picks": "A handful of hotels within walking distance of KINTEX — book early, they sell out on race weekends.",
-          "range": "≈ ₩120–250k / night"
+          "range": "≈ ₩120–250k / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Ilsan%2C%20Goyang"
         },
         {
           "area": "Hongdae / Mapo",
           "picks": "Line 2/Line 6 hub with lots of nightlife; ~45 min to KINTEX by subway or taxi.",
-          "range": "≈ ₩100–220k / night"
+          "range": "≈ ₩100–220k / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Hongdae%2C%20Seoul"
         },
         {
           "area": "Myeongdong / Jongno",
           "picks": "Classic central Seoul; direct on Line 3 to Daehwa.",
-          "range": "≈ ₩130–300k / night"
+          "range": "≈ ₩130–300k / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Myeongdong%2C%20Seoul"
         }
       ],
       "flights": [
@@ -303,7 +327,11 @@
         "Recovery option: a jjimjilbang (Korean spa) — hot pools, saunas, and it's cheaper than a hotel massage."
       ],
       "meetup": null,
-      "coachNote": "Cool air means faster runs — expect 2–4 min off your Jakarta time if your run fitness is there. Dina adjusts the last 3 weeks of training for the cold."
+      "coachNote": "Cool air means faster runs — expect 2–4 min off your Jakarta time if your run fitness is there. Dina adjusts the last 3 weeks of training for the cold.",
+      "indoMeetup": {
+        "when": "Minggu malam, habis race",
+        "note": "Anget-angetan abis race di suhu 5°C — BBQ Korea bareng orang Indo, terus yang masih kuat lanjut goyang. Jaket wajib. Energi optional."
+      }
     },
     {
       "slug": "hong-kong",
@@ -331,17 +359,20 @@
         {
           "area": "Tung Chung / Airport",
           "picks": "Airport hotels and the Tung Chung Citygate area — 10 min to the venue, outlet mall for shopping.",
-          "range": "≈ HK$900–1,800 / night"
+          "range": "≈ HK$900–1,800 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Tung%20Chung%2C%20Hong%20Kong"
         },
         {
           "area": "Kowloon (Tsim Sha Tsui / Jordan)",
           "picks": "Kowloon station on the Airport Express; the classic Hong Kong stay.",
-          "range": "≈ HK$800–1,800 / night"
+          "range": "≈ HK$800–1,800 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Tsim%20Sha%20Tsui%2C%20Hong%20Kong"
         },
         {
           "area": "Central / Sheung Wan",
           "picks": "Direct Airport Express; best restaurants and bars for the night after.",
-          "range": "≈ HK$1,000–2,500 / night"
+          "range": "≈ HK$1,000–2,500 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Central%2C%20Hong%20Kong"
         }
       ],
       "flights": [
@@ -368,7 +399,11 @@
         "Sunday: Victoria Peak or the Star Ferry — gentle legs, big views."
       ],
       "meetup": null,
-      "coachNote": "Hong Kong is a great early-year target: 6 months after Jakarta, mild weather, and a fast indoor course. Dina's Elite athletes often use it as their A-race."
+      "coachNote": "Hong Kong is a great early-year target: 6 months after Jakarta, mild weather, and a fast indoor course. Dina's Elite athletes often use it as their A-race.",
+      "indoMeetup": {
+        "when": "Minggu malam, habis race",
+        "note": "Dim sum terakhir sebelum pulang — makan bareng orang Indo, cerita race, lanjut nge-dance kalau kaki masih nurut."
+      }
     },
     {
       "slug": "bangkok",
@@ -396,17 +431,20 @@
         {
           "area": "Bang Na / Udom Suk",
           "picks": "Hotels around BTS Bang Na and Udom Suk — walk or one stop to BITEC.",
-          "range": "≈ ฿1,500–3,500 / night"
+          "range": "≈ ฿1,500–3,500 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Bang%20Na%2C%20Bangkok"
         },
         {
           "area": "Phrom Phong / Thonglor / Ekkamai",
           "picks": "Best balance: 10–20 min to BITEC on the BTS, and the restaurants and bars for the night after are at your door.",
-          "range": "≈ ฿2,000–5,000 / night"
+          "range": "≈ ฿2,000–5,000 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Thonglor%2C%20Bangkok"
         },
         {
           "area": "Asok / Nana",
           "picks": "Budget to mid-range, central, direct BTS.",
-          "range": "≈ ฿1,200–3,000 / night"
+          "range": "≈ ฿1,200–3,000 / night",
+          "link": "https://www.booking.com/searchresults.html?ss=Asok%2C%20Bangkok"
         }
       ],
       "flights": [
@@ -433,7 +471,11 @@
         "Sunday: Chatuchak weekend market (morning), then a Thai massage — legs will love it."
       ],
       "meetup": null,
-      "coachNote": "Dina raced Bangkok (Doubles) before her Jakarta podium — it's her go-to recommendation for a first race abroad: cheap flights, easy venue, huge Indonesian contingent."
+      "coachNote": "Dina raced Bangkok (Doubles) before her Jakarta podium — it's her go-to recommendation for a first race abroad: cheap flights, easy venue, huge Indonesian contingent.",
+      "indoMeetup": {
+        "when": "Minggu malam, habis race",
+        "note": "Makan bareng squad Indo — Bangkok ini setengah kandang buat yang sering ke sini. Resto rame, lanjut dance buat yang berani."
+      }
     }
   ],
   "alsoOn": [

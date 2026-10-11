@@ -22,6 +22,7 @@
     sim: "Simulasi",
     brand: "Brand event",
     venue: "Tempat latihan",
+    meetup: "Meetup",
   };
   const FILTERS = [
     ["all", "Semua"],

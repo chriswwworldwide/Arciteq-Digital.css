@@ -71,6 +71,19 @@
       "tags": ["24/7", "Coming soon"]
     },
     {
+      "id": "team-indonesia-meetup",
+      "type": "meetup",
+      "mode": "both",
+      "name": "Team Indonesia meetup",
+      "organiser": "Roxjaya Warriors",
+      "blurb": "Tiap tiga bulan di Jakarta: makan bareng atlet, peserta, sama yang baru kepo HYROX — lanjut nge-dance buat yang sanggup. Dateng aja, nggak usah jago dulu.",
+      "venue": "Jakarta — resto diumumin per edisi",
+      "date": "",
+      "when": "Tiap tiga bulan — tanggal muncul di sini",
+      "link": "/roxjaya/events/#meetups",
+      "tags": ["Social", "All levels"]
+    },
+    {
       "id": "roxjaya-squad-sim",
       "type": "sim",
       "mode": "race",

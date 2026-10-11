@@ -72,6 +72,11 @@
           <h4>${esc(h.area)}</h4>
           <p>${esc(h.picks)}</p>
           <p class="plan-range">${esc(h.range)}</p>
+          ${
+            h.link
+              ? `<p class="plan-link"><a href="${esc(h.link)}" target="_blank" rel="nofollow sponsored noopener">Search stays here →</a></p>`
+              : ""
+          }
         </div>`,
       )
       .join("")}</div>`;
@@ -95,6 +100,16 @@
       <p><strong>${esc(m.when)}</strong>${m.where ? ` · ${esc(m.where)}` : ""}</p>
       ${m.note ? `<p>${esc(m.note)}</p>` : ""}
       <a class="btn btn-primary" href="/roxjaya/#ask">Tell Dina you're coming</a>
+    </section>`;
+  }
+
+  function indoMeetupBlock(m) {
+    if (!m || !m.when) return "";
+    return `<section class="plan-section plan-meetup" id="indo-meetup">
+      <h3>Team Indonesia meetup</h3>
+      <p><strong>${esc(m.when)}</strong></p>
+      ${m.note ? `<p lang="id">${esc(m.note)}</p>` : ""}
+      <a class="btn btn-primary" href="/roxjaya/#ask">Ikut — kabarin Dina</a>
     </section>`;
   }
 
@@ -124,6 +139,7 @@
       <section class="plan-section" id="city"><h3>Around the city</h3>${list(c.city, c.cityLang)}</section>
       <section class="plan-section" id="night-after"><h3>The night after</h3>${list(c.nightAfter, c.cityLang)}</section>
       ${meetupBlock(c.meetup)}
+      ${indoMeetupBlock(c.indoMeetup)}
       ${
         c.coachNote
           ? `<div class="callout plan-coach"><p><strong>Dina's note.</strong> ${

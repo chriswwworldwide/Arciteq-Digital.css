@@ -1,44 +1,59 @@
 # Dina's voice — writing guide
 
-Harvested 2026-10-11 from public sources (anonymous IG scrape is login-walled now):
-her Threads/IG caption snippets, a 3-min iMSPORT TV interview (youtu.be/mEa4_FL1puM,
-auto-transcript at /tmp/dina-interview-id.txt), LinkedIn posts, press bios.
+Sources: ~25 real IG captions (uploaded 2026-10-11), Threads/IG caption snippets,
+3-min iMSPORT TV interview (youtu.be/mEa4_FL1puM), LinkedIn posts, press bios.
 
 ## Register
 
-- **Pronouns: "aku", "kalian", "-mu/-ku" suffixes — NOT gue/lo.** Verified spoken
-  ("aku kan bodybuilder"). Do not switch to gue/lo.
-- **She self-narrates as "Mama"** — "Maafkan Mama'mu yang masih pecicilan ga mau
-  diem" (apologising to her unborn baby for being restless). The mama-who-races
-  persona is her signature; use it where a generic site would say "coach".
-- **Code-switching is per-sentence, not per-word.** English for the feat/status
-  line ("Still a HYBRID girl with same Energy"), Bahasa for feelings/personal
-  stuff (baby, home, emotions). On the site: Bahasa carries warmth/story,
-  English carries mechanics.
-- **Particles/fillers:** "jadi" (constantly), "banget", "kan", "nggak/ga",
-  "sekiranya", "terus", "pecicilan". Sentences run on, spoken-style.
-- **Emoji + caps energy in writing:** caps for emphasis ("JUST", "Energy"),
-  clusters of 👶🏼💕🎀🔥🐣. Site stays text-only, but the *energy* means playful
-  exclamation and warmth are on-brand.
-- **Sundanese spice:** light touches only — "teh/teteh" (sis — brandable, she IS
-  the teh), "atuh", "sok", "geura" all read mainstream in Jakarta. Avoid deep
-  Sundanese (da, kumaha) — loses expats and non-Sundanese readers.
-- Imperfect English is part of the charm ("will worth for You") — keep the
-  site's English clean though; quirks belong in quoted/attributed lines only.
+- **Three gears, shifted by mood — never mid-sentence:**
+  - Meme/chat voice: "gw" + full gaul ("ya udah lah gw asikkk joget sendirian aja")
+  - Coaching/speaking voice: "aku" — **the site voice** (verified on video)
+  - Serious/educational posts: formal "Saya/Kalian"
+- **Self-name: "MaDin"** (Mama + Dina) — what she calls herself AND what her
+  athletes call her ("Bagaimana MaDinnnn???"). Use it instead of "Mama Dina".
+- **Code-switching is per-sentence and load-bearing:** Bahasa carries heart —
+  community, gratitude, feelings, tired jokes. English carries status — results,
+  memes, quotable lines. Give her English punchlines airtime.
+- **Particles:** banget, sih, kok, lah, deh, aja, ga/nggak, ellipsis trails
+  ("....."), hashtag-as-punchline (#malesdramagajelas, #khayalanbabu).
+- **Sundanese = seasoning + self-translation.** "beud", "ka batur", the Teh pun,
+  "asal ulah goreng hate ka batur" — she adds a "Translate:" line so nobody's
+  lost. Model for site copy: flavour word + immediate context. Never deep
+  Sundanese for meaning-critical copy.
+- Emoji-dense, caps for emphasis, imperfect-but-charming English in posts —
+  site English stays clean; quirks only in attributed quotes.
 
-## Real caption samples (keep for calibration)
+## Personality (what the site must sell)
 
-- "Kepada calon anak'ku nanti : Maafkan Mama'mu yang masih pecicilan ga mau
-  diem ini 💛🌻🐣"
-- "Still a HYBRID girl with same Energy🔥 JUST with a tiny teammate on
-  board….🤰🏼👶🏼🎀🌸 #BabyInside Team 🐣🐣 Triple Race : Podium 3 🥉"
-- "Working out while pregnant is a different type of discipline♥️ You do it
-  B'cos You know it will worth for You and Baby! Mama just growing another
-  little Athlete now 👶🏼💕🎀🍒"
+- **Achievement wrapped in self-deprecation** — podium AND "Cinderella losing
+  her shoe doing sled push", "tenaga sisa 3%, ide challenge 100%". Elite and a
+  klutz, proudly. Never elite-unreachable.
+- **Community & joy first — this is her real pitch.** Racing is "pengen
+  bersosialisasi ketemu temen-temen & stress relief", "bukan kebut-kebutan
+  ngejar PB". Podium is a bonus, not the point.
+- **Resilience as curiosity:** "KAPOK?? Ya Enggalahhh, malah makin penasaran".
+- **Women-power + gratitude:** "orang-orang Baik", athletes hyping each other,
+  "I want to be a woman who own East Strength & West Confidence".
+- **Honest suffering, funny delivery:** cramps, "gw battle sm pikiran sendiri",
+  "fully tired", "males balesin chat" — real, unglamorous, comic.
+- **Playful host:** caption games, GOJEK giveaways, "Tebak sepatu" polls.
+
+## Her verbatim lines (safe to echo)
+
+- "Don't be too serious"
+- "Student Happy, Coach pun Tenang"
+- "Biar tetep kuat & waras" (stay strong & sane)
+- "Start small. Move your body. Enjoy the journey."
+- "Karena pengen bersosialisasi ketemu temen-temen & stress relief aja"
+- "Bukan kebut-kebutan ngejar PB"
+- "KAPOK?? Ya Enggalahhh, malah makin penasaran"
+- "On fire" / "ATHLETE MODE ON ACTIVATE"
 
 ## Site copy rules
 
-- Hero/story/section heads: Dina's register (aku + gaul + Mama energy).
-- Cards, buttons, forms, stats: clean English.
-- Facts always first-person-plausible — she'd claim a podium, not a spec.
+- Hero/story/section heads: MaDin's register (aku + gaul + mama-pecicilan
+  energy + her mottos).
+- Cards, buttons, forms, stats: clean English — but sprinkle her English
+  punchlines where they'd live naturally.
+- Sell community/fun first, performance second — matching how she sells it.
 - Nothing she'd never say: no "maximize", no corporate wellness-speak.

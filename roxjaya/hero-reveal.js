@@ -107,11 +107,12 @@
       float gap = mix(0.015, 0.11, 1.0 - vResolve);   // tile gap as cell fraction
       float tile = step(gap * 0.5, f.x) * step(f.x, 1.0 - gap * 0.5) *
                    step(gap * 0.5, f.y) * step(f.y, 1.0 - gap * 0.5);
-      vec3 curtain = vec3(0.10, 0.04, 0.09);          // site ink behind tiles
-      col = mix(curtain, col * 1.05, tile);
+      col *= 1.05;
 
       col *= vShadow;
-      float a = clamp(u_progress * 5.0, 0.0, 1.0);
+      // gaps are transparent — the site's own blurred backdrop shows
+      // between the tiles, so the mosaic melts into it (no hard edge)
+      float a = clamp(u_progress * 5.0, 0.0, 1.0) * mix(1.0, tile, 1.0 - vResolve);
       gl_FragColor = vec4(col, a);
     }`;
 

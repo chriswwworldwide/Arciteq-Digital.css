@@ -1,0 +1,191 @@
+// match.js — Find a Partner: fills the race dropdown from cities.json,
+// renders the approved public board from data/matchboard.json, and posts
+// partner_search submissions. Contact details never reach the board —
+// intros go through MaDin on WhatsApp.
+(() => {
+  const KIND = "partner_search";
+  const WA = "6281211611987";
+  const FORMATS = {
+    open: "Open doubles",
+    pro: "Pro doubles",
+    mixed: "Mixed doubles",
+    relay: "Relay (team of 4)",
+    buddies: "Training & race trips",
+  };
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) =>
+    String(s ?? "").replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
+
+  // "1:28" / "88:00" / "95" -> seconds. A Hyrox total is 60–150 min, so a
+  // single-colon entry reads as h:mm when the first part is short, mm:ss
+  // when it isn't. Blank is fine — the card just shows "no time yet".
+  const toSec = (v) => {
+    const s = String(v || "").trim();
+    if (!s) return null;
+    if (/^\d+$/.test(s)) return Number(s) * 60;
+    const m = s.match(/^(\d{1,3}):(\d{1,2})$/);
+    if (!m) return NaN;
+    const a = Number(m[1]);
+    const b = Number(m[2]);
+    return a <= 9 ? a * 3600 + b * 60 : a * 60 + b;
+  };
+
+  async function fillEvents() {
+    const sel = $("event-select");
+    try {
+      const res = await fetch("/roxjaya/data/cities.json", {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      const cities = Array.isArray(data.cities) ? data.cities : [];
+      const today = new Date().toISOString().slice(0, 10);
+      cities
+        .filter(
+          (c) => c?.race?.name && (!c.race.start || c.race.start >= today),
+        )
+        .forEach((c) => {
+          const o = document.createElement("option");
+          o.value = c.race.name;
+          o.dataset.until =
+            c.race.start || (c.slug === "jakarta" ? "2027-08-01" : "");
+          o.textContent = c.race.dates
+            ? `${c.race.name} — ${c.race.dates}`
+            : `${c.race.name} (date TBC)`;
+          sel.appendChild(o);
+        });
+    } catch {
+      /* dropdown still gets the fallback below */
+    }
+    const other = document.createElement("option");
+    other.value = "Somewhere else / any race";
+    other.textContent = "Somewhere else / any race";
+    sel.appendChild(other);
+  }
+
+  function waLink(card) {
+    const fmt = FORMATS[card.format] || card.format;
+    const msg = `Halo MaDin! I saw ${card.name}'s card on Find a Partner — ${fmt}${card.event ? ` for ${card.event}` : ""}. Can you intro us?`;
+    return `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  }
+
+  function renderBoard(items) {
+    const box = $("match-board");
+    const intro = $("board-intro");
+    const today = new Date().toISOString().slice(0, 10);
+    const live = (Array.isArray(items) ? items : []).filter(
+      (c) => c && (!c.until || c.until >= today),
+    );
+    if (!live.length) {
+      intro.textContent =
+        "The board is empty — which means the first card posted gets the most eyes. Be the brave one.";
+      box.innerHTML = "";
+      return;
+    }
+    intro.textContent = `${live.length} athlete${live.length === 1 ? "" : "s"} looking right now. First name, pace, what they're after — that's all anyone sees.`;
+    const byEvent = new Map();
+    for (const c of live) {
+      const k = c.event || "Any race";
+      if (!byEvent.has(k)) byEvent.set(k, []);
+      byEvent.get(k).push(c);
+    }
+    box.innerHTML = [...byEvent.entries()]
+      .map(
+        ([event, cards]) => `
+        <div class="match-group">
+          <h4>${esc(event)}</h4>
+          ${cards
+            .map(
+              (c) => `
+            <div class="match-card">
+              <div class="match-head">
+                <b>${esc(c.name)}</b>
+                ${c.gender ? `<span class="chip">${esc(c.gender)}</span>` : ""}
+                <span class="chip chip-accent">${esc(FORMATS[c.format] || c.format)}</span>
+                <span class="chip">${esc(c.pace)}</span>
+              </div>
+              ${c.note ? `<p class="match-note">“${esc(c.note)}”</p>` : ""}
+              <div class="match-foot">
+                <span class="match-posted">posted ${esc(c.posted || "")}</span>
+                <a class="btn btn-primary btn-sm" href="${waLink(c)}" target="_blank" rel="noopener">Ask MaDin to intro us</a>
+              </div>
+            </div>`,
+            )
+            .join("")}
+        </div>`,
+      )
+      .join("");
+  }
+
+  async function loadBoard() {
+    try {
+      const res = await fetch("/roxjaya/data/matchboard.json", {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      renderBoard(data.items);
+    } catch {
+      $("board-intro").textContent =
+        "The board can't load right now — your card still reaches MaDin below.";
+    }
+  }
+
+  const form = $("partner-form");
+  const note = $("form-note");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    note.textContent = "";
+    const data = new FormData(form);
+    const total = toSec(data.get("total"));
+    if (Number.isNaN(total)) {
+      note.textContent =
+        "Check the total — use h:mm or mm:ss, e.g. 1:28 or 88:00. Or leave it blank.";
+      return;
+    }
+    const payload = {
+      name: String(data.get("name") || "").trim(),
+      whatsapp: String(data.get("whatsapp") || "").trim(),
+      gender: String(data.get("gender") || ""),
+      event: String(data.get("event") || ""),
+      format: String(data.get("format") || ""),
+      total: total || undefined,
+      until: form.querySelector("#event-select option:checked")?.dataset?.until,
+      note: String(data.get("note") || "").trim(),
+      consent: data.get("consent") ? "yes" : "no",
+    };
+    note.textContent = "Sending your card to MaDin's desk…";
+    try {
+      const res = await fetch("/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: String(data.get("email") || "").trim(),
+          kind: KIND,
+          payload,
+        }),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(out.error || "save failed");
+      form.reset();
+      note.textContent =
+        payload.consent === "yes"
+          ? "Got it — your card is on MaDin's desk. She lists every approved card herself, so give her a day or two."
+          : "Got it — private card sent. MaDin will reach out if she spots a match for you.";
+    } catch {
+      note.textContent =
+        "Couldn't send just now — try again in a bit, or message MaDin directly on WhatsApp.";
+    }
+  });
+
+  fillEvents();
+  loadBoard();
+})();

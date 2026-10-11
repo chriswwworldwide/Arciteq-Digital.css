@@ -290,6 +290,10 @@
             "priority": "0.9"
           },
           {
+            "path": "/roxjaya/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
             "path": "/roxjaya/guides/",
             "priority": "0.8"
           }
@@ -301,7 +305,8 @@
           "wall_photo",
           "sponsor",
           "bank_transfer",
-          "date_alert"
+          "date_alert",
+          "partner_search"
         ]
       },
       "analytics": {
@@ -313,9 +318,11 @@
           "roxjaya/data/events.json",
           "roxjaya/data/cities.json",
           "roxjaya/data/news.json",
-          "roxjaya/data/partners.json"
+          "roxjaya/data/partners.json",
+          "roxjaya/data/matchboard.json"
         ],
         "partners": "roxjaya/data/partners.json",
+        "matchboard": "roxjaya/data/matchboard.json",
         "autoApprove": ["event", "news", "alert", "sponsor"],
         "coachPath": "/roxjaya/coach/",
         "digestTo": "dinazumba1987@gmail.com",

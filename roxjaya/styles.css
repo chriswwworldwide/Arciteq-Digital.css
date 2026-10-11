@@ -296,6 +296,24 @@ a.wordmark {
   }
 }
 
+.match-zone {
+  margin-left: 8px;
+  background: var(--pink) !important;
+  color: var(--paper) !important;
+  padding: 10px 18px !important;
+}
+
+.match-zone:hover {
+  background: var(--pink-600) !important;
+}
+
+@media (max-width: 900px) {
+  .match-zone {
+    margin: 6px 0 0;
+    justify-content: center !important;
+  }
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;

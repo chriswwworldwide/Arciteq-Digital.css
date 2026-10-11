@@ -5,7 +5,7 @@
 // patches to tenant data files the tenant has declared writable. Pure helpers
 // plus one small file-IO function; no network.
 
-const KINDS = ["event", "news", "alert", "sponsor"];
+const KINDS = ["event", "news", "alert", "sponsor", "partner"];
 const STATUSES = ["pending", "approved", "ignored"];
 const KEY_RE = /^[a-z0-9][a-z0-9:_./-]{1,119}$/;
 const PATH_RE = /^[A-Za-z0-9_-]+(\.[A-Za-z0-9_-]+)*$/;
@@ -243,6 +243,7 @@ export function buildDigest({
   const news = pending.filter((i) => i.kind === "news");
   const sponsors = pending.filter((i) => i.kind === "sponsor");
   const alerts = pending.filter((i) => i.kind === "alert");
+  const partners = pending.filter((i) => i.kind === "partner");
   if (n("bank_transfer"))
     actions.push({
       text: `${n("bank_transfer")} bank transfer${n("bank_transfer") === 1 ? "" : "s"} to check in your account, then invite them to TrueCoach`,
@@ -268,6 +269,11 @@ export function buildDigest({
       text: `${n("race_splits")} race split${n("race_splits") === 1 ? "" : "s"} analysed`,
       href: `${desk}#people?q=race_splits`,
     });
+  if (n("partner_search"))
+    actions.push({
+      text: `${n("partner_search")} athlete${n("partner_search") === 1 ? "" : "s"} looking for a partner`,
+      href: `${desk}#people?q=partner_search`,
+    });
   for (const i of events)
     actions.push({
       text: `Race date found: ${i.title} — confirm?`,
@@ -281,6 +287,11 @@ export function buildDigest({
   for (const i of sponsors)
     actions.push({
       text: `Sponsor request: ${i.title} — approve?`,
+      href: `${desk}#inbox`,
+    });
+  for (const i of partners)
+    actions.push({
+      text: `Partner card: ${i.title} — list them?`,
       href: `${desk}#inbox`,
     });
   for (const i of alerts)

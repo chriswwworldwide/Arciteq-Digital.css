@@ -77,6 +77,7 @@ import {
   extendPartner,
   addDays,
 } from "./src/sponsors.js";
+import { buildPartnerCandidate } from "./src/match.js";
 import {
   pageviewsEnabled,
   validatePageview,
@@ -3495,6 +3496,14 @@ app.post("/api/submissions", async (req, res) => {
       ],
     );
 
+    if (checked.kind === "partner_search") {
+      try {
+        queuePartnerCandidate({ tenant, email, payload: checked.payload });
+      } catch (err) {
+        console.error("Partner candidate failed", err);
+      }
+    }
+
     const prior = await dbQuery(
       "SELECT count(*)::int AS n FROM submissions WHERE tenant_id = $1 AND lower(email) = lower($2) AND kind = $3",
       [tenantId, email, checked.kind],
@@ -3826,6 +3835,19 @@ async function queueSponsorCandidates({ tenantId, orderId, email }) {
   safeWriteJsonFile(cfg.inboxPath, runAutoApprove(cfg, inbox));
 }
 
+// Partner matching: a `partner_search` submission queues a `partner`
+// candidate so the owner approves a sanitised board card. Contact details
+// stay in the inbox data (desk only); intros happen over WhatsApp.
+function queuePartnerCandidate({ tenant, email, payload }) {
+  const cfg = tenantAutomation(tenant);
+  const boardFile = String(tenant?.automation?.matchboard || "").trim();
+  if (!cfg || !boardFile || !cfg.writable.includes(boardFile)) return;
+  const candidate = buildPartnerCandidate({ email, payload, boardFile });
+  if (!candidate) return;
+  const { inbox } = upsertCandidates(readInbox(cfg), [candidate]);
+  safeWriteJsonFile(cfg.inboxPath, runAutoApprove(cfg, inbox));
+}
+
 // Renewal paid: push the live partner's `until` forward. No owner step —
 // they already approved this sponsor.
 function renewSponsor({ tenantId, orderId, periodEnd }) {
@@ -3951,6 +3973,7 @@ async function collectDigest(siteUrl, tenant, cfg, days) {
     wall_photo: 0,
     race_splits: 0,
     bank_transfer: 0,
+    partner_search: 0,
     paid: 0,
   };
   let traffic = null;

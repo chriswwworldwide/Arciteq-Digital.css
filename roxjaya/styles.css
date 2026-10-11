@@ -2060,11 +2060,11 @@ body.has-sticky-cta .wa-fab {
 
 @keyframes sig-shine {
   0% {
-    background-position: 0% 0;
+    background-position: 100% 0;
   }
   28%,
   100% {
-    background-position: 100% 0;
+    background-position: 0% 0;
   }
 }
 
@@ -2074,22 +2074,44 @@ body.has-sticky-cta .wa-fab {
 }
 
 .hero--bleed .hero-img {
-  transform-origin: 90% 95%;
+  transform-origin: 60% 90%;
+  /* Diagonal mask: stuck region (opaque) lands first at the bottom-right
+     corner and rolls to the top-left. The not-yet-stuck area sits at ~22%
+     alpha — the whole photo is present as an impression from the first
+     frame, and the real photo lands through it. Rest position is fully
+     stuck, so if animation never runs the photo is simply there. */
+  --hero-roll: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.22) 42%,
+    #000 58%,
+    #000 100%
+  );
+  -webkit-mask-image: var(--hero-roll);
+  mask-image: var(--hero-roll);
+  -webkit-mask-size: 300% 300%;
+  mask-size: 300% 300%;
+  -webkit-mask-position: 100% 100%;
+  mask-position: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   animation:
-    hero-enter 1.5s cubic-bezier(0.22, 1, 0.36, 1) both,
-    hero-drift 18s ease-in-out 1.7s infinite alternate;
+    hero-enter 1.8s cubic-bezier(0.3, 0.85, 0.3, 1) both,
+    hero-drift 18s ease-in-out 2s infinite alternate;
 }
 
-/* Rolls in from the right pivoting near the bottom corner: the bottom edge
-   leads, the top corner trails outside the frame, then it settles flat */
 @keyframes hero-enter {
   0% {
-    transform: translateX(50%) rotate(-10deg);
+    -webkit-mask-position: 0% 0%;
+    mask-position: 0% 0%;
+    transform: translateY(-8px) rotate(-1deg);
   }
-  70% {
-    transform: translateX(0) rotate(1deg);
+  55% {
+    transform: translateY(-2px) rotate(-0.3deg);
   }
   100% {
+    -webkit-mask-position: 100% 100%;
+    mask-position: 100% 100%;
     transform: none;
   }
 }

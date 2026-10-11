@@ -599,7 +599,7 @@ button.btn {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 55% 58%;
+  object-position: 55% 30%;
 }
 
 .hero--bleed::after {

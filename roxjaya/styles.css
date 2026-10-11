@@ -2075,7 +2075,18 @@ body.has-sticky-cta .wa-fab {
 
 .hero--bleed .hero-img {
   transform-origin: 58% 42%;
-  animation: hero-drift 18s ease-in-out infinite alternate;
+  animation:
+    hero-enter 1.2s cubic-bezier(0.22, 1, 0.36, 1) both,
+    hero-drift 18s ease-in-out 1.4s infinite alternate;
+}
+
+@keyframes hero-enter {
+  from {
+    transform: translate(6%, -2.5%) rotate(2deg) scale(1.03);
+  }
+  to {
+    transform: none;
+  }
 }
 
 @keyframes hero-drift {

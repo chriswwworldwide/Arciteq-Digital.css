@@ -367,6 +367,12 @@
   max-height: 460px;
 }
 
+/* Pair shots: the taller athlete's head sits at the frame's top edge —
+   anchor to the top so the crop trims legs, not heads */
+.guide-hero-photo.pair img {
+  object-position: 50% 0%;
+}
+
 .art-photo {
   margin: 8px 0 40px;
 }
@@ -389,6 +395,10 @@
   .guide-hero-photo img {
     aspect-ratio: 16 / 10;
     max-height: none;
+  }
+  /* A pair photo needs the height — 16/10 would amputate */
+  .guide-hero-photo.pair img {
+    aspect-ratio: 1 / 1;
   }
 }
 

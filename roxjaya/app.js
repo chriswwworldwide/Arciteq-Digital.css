@@ -879,7 +879,7 @@
   const photo = new Image();
   const clear = () => {
     img.style.maskImage = img.style.webkitMaskImage = "";
-    img.style.maskComposite = img.style.webkitMaskComposite = "";
+    img.style.maskSize = img.style.webkitMaskSize = "";
   };
   const mask = () => {
     if (!wide.matches) return clear();
@@ -904,16 +904,45 @@
         : px.endsWith("%")
           ? (parseFloat(px) / 100) * (cW - rw)
           : (cW - rw) / 2;
-    const fw = Math.max(14, rw * 0.03);
-    const fy = Math.max(12, rh * 0.025);
-    const pctW = (v) => ((v / box.width) * 100).toFixed(2);
-    const pctH = (v) => ((v / box.height) * 100).toFixed(2);
-    const xg = `linear-gradient(to right, transparent ${pctW(pos)}%, #000 ${pctW(pos + fw)}%, #000 ${pctW(pos + rw - fw)}%, transparent ${pctW(pos + rw)}%)`;
-    const yg = `linear-gradient(to bottom, transparent ${pctH(pt)}%, #000 ${pctH(pt + fy)}%, #000 ${pctH(pt + rh - fy)}%, transparent ${pctH(pt + rh)}%)`;
-    img.style.maskImage = `${xg}, ${yg}`;
-    img.style.maskComposite = "intersect";
-    img.style.webkitMaskImage = `${xg}, ${yg}`;
-    img.style.webkitMaskComposite = "source-in";
+    // Bake a single-layer feather mask matching the shader's 0.025 edge
+    // fade — one mask image, no compositing (works in every Safari).
+    const fw = rw * 0.025;
+    const fy = rh * 0.025;
+    const mc = document.createElement("canvas");
+    mc.width = Math.round(box.width);
+    mc.height = Math.round(box.height);
+    const g2 = mc.getContext("2d");
+    const x0 = pos,
+      x1 = pos + rw,
+      y0 = pt,
+      y1 = pt + rh;
+    g2.fillStyle = "#000";
+    g2.fillRect(x0, y0, rw, rh);
+    g2.globalCompositeOperation = "destination-in";
+    const band = (gx, gy, gw, gh, grad) => {
+      g2.fillStyle = grad;
+      g2.fillRect(gx, gy, gw, gh);
+    };
+    let g = g2.createLinearGradient(x0, 0, x0 + fw, 0);
+    g.addColorStop(0, "rgba(0,0,0,0)");
+    g.addColorStop(1, "#000");
+    band(x0, 0, fw, mc.height, g);
+    g = g2.createLinearGradient(x1 - fw, 0, x1, 0);
+    g.addColorStop(0, "#000");
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    band(x1 - fw, 0, fw, mc.height, g);
+    g = g2.createLinearGradient(0, y0, 0, y0 + fy);
+    g.addColorStop(0, "rgba(0,0,0,0)");
+    g.addColorStop(1, "#000");
+    band(0, y0, mc.width, fy, g);
+    g = g2.createLinearGradient(0, y1 - fy, 0, y1);
+    g.addColorStop(0, "#000");
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    band(0, y1 - fy, mc.width, fy, g);
+    const url = `url(${mc.toDataURL("image/png")})`;
+    img.style.maskImage = img.style.webkitMaskImage = url;
+    img.style.maskSize = img.style.webkitMaskSize = "100% 100%";
+    img.style.maskRepeat = img.style.webkitMaskRepeat = "no-repeat";
   };
   photo.onload = mask;
   photo.src = img.currentSrc || img.src;

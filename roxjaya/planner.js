@@ -20,8 +20,8 @@
           "'": "&#39;",
         })[c],
     );
-  const list = (items) =>
-    `<ul class="plan-list">${(items || []).map((i) => `<li>${esc(i)}</li>`).join("")}</ul>`;
+  const list = (items, lang) =>
+    `<ul class="plan-list"${lang ? ` lang="${lang}"` : ""}>${(items || []).map((i) => `<li>${esc(i)}</li>`).join("")}</ul>`;
   const fmtDate = (iso) =>
     new Date(`${iso}T00:00:00+07:00`).toLocaleDateString("en-GB", {
       day: "numeric",
@@ -117,16 +117,20 @@
         <p class="lead">${esc(c.tagline)}</p>
       </header>
       ${raceBlock(c, checked)}
-      <section class="plan-section" id="getting-there"><h3>Venue &amp; getting there</h3>${list(c.gettingThere)}</section>
+      <section class="plan-section" id="getting-there"><h3>Venue &amp; getting there</h3>${list(c.gettingThere, c.cityLang)}</section>
       <section class="plan-section" id="hotels"><h3>Where to stay</h3>${hotelsBlock(c.hotels)}</section>
       <section class="plan-section" id="flights"><h3>Flights</h3>${flightsBlock(c.flights)}</section>
-      <section class="plan-section" id="food"><h3>Athlete-friendly eating</h3>${list(c.food)}</section>
-      <section class="plan-section" id="city"><h3>Around the city</h3>${list(c.city)}</section>
-      <section class="plan-section" id="night-after"><h3>The night after</h3>${list(c.nightAfter)}</section>
+      <section class="plan-section" id="food"><h3>Athlete-friendly eating</h3>${list(c.food, c.cityLang)}</section>
+      <section class="plan-section" id="city"><h3>Around the city</h3>${list(c.city, c.cityLang)}</section>
+      <section class="plan-section" id="night-after"><h3>The night after</h3>${list(c.nightAfter, c.cityLang)}</section>
       ${meetupBlock(c.meetup)}
       ${
         c.coachNote
-          ? `<div class="callout plan-coach"><p><strong>Dina's note.</strong> ${esc(c.coachNote)}</p>
+          ? `<div class="callout plan-coach"><p><strong>Dina's note.</strong> ${
+              c.cityLang
+                ? `<span lang="${esc(c.cityLang)}">${esc(c.coachNote)}</span>`
+                : esc(c.coachNote)
+            }</p>
           <p><a class="btn btn-primary" href="/roxjaya/#plans">Train for ${esc(c.name)} with Dina</a> <a class="btn" href="/roxjaya/taper-zone/">Taper Zone guide</a></p></div>`
           : ""
       }
@@ -161,7 +165,11 @@
         .map(
           ({ c, r }) => `<li class="event">
           <time datetime="${esc(r.start)}">${esc(r.dates)}</time>
-          <div><h4><a href="${href(c)}">${esc(r.name)}</a></h4><p>${esc(r.venue)} · ${
+          <div><h4><a href="${href(c)}">${esc(r.name)}</a>${
+            c.nickname
+              ? ` <span class="city-nick">${esc(c.nickname)}</span>`
+              : ""
+          }</h4><p>${esc(r.venue)} · ${
             daysUntil(r.start) > 0
               ? `${daysUntil(r.start)} days to go`
               : "this week"
@@ -172,7 +180,11 @@
           .map(
             (c) => `<li class="event">
           <time>Date TBC</time>
-          <div><h4><a href="${href(c)}">${esc(c.race.name)}</a></h4><p>${esc(c.race.expected || "Awaiting the official date.")}</p></div></li>`,
+          <div><h4><a href="${href(c)}">${esc(c.race.name)}</a>${
+            c.nickname
+              ? ` <span class="city-nick">${esc(c.nickname)}</span>`
+              : ""
+          }</h4><p>${esc(c.race.expected || "Awaiting the official date.")}</p></div></li>`,
           )
           .join("") +
         (alsoRows.length

@@ -7,9 +7,10 @@
       "slug": "jakarta",
       "name": "Jakarta",
       "nickname": "The Big Durian",
+      "cityLang": "id",
       "country": "Indonesia",
       "flag": "🇮🇩",
-      "tagline": "Home race. Indonesia's first Hyrox drew ~11,200 athletes in June 2026 — the biggest Asia-Pacific debut so far.",
+      "tagline": "Home race. HYROX pertama di Indonesia — ~11,200 atlet di June 2026, debut Asia-Pacific terbesar sejauh ini.",
       "race": {
         "name": "HYROX Jakarta",
         "status": "tbc",
@@ -25,25 +26,25 @@
         "sourceLabel": "hyrox.com event list"
       },
       "gettingThere": [
-        "NICE sits in PIK2, north-west of the city on the Banten side — about 30–45 min from Central Jakarta by car off-peak, 60–90 min in traffic. Leave early on race morning.",
-        "Grab/Gojek car is the simplest door-to-door option; set the drop-off pin at the NICE main lobby. Taxi ranks (Bluebird) are outside afterwards.",
-        "From Soekarno-Hatta airport (CGK) it's 25–40 min by toll road — closer than the city centre, so out-of-town athletes can stay near PIK2 without ever crossing Jakarta.",
-        "Parking is available on site but fills by mid-morning on race day; if you're driving, aim to arrive 2 hours before your wave."
+        "NICE ada di PIK2, barat-laut Jakarta sisi Banten — 30–45 menit dari Sudirman kalau jalanan lagi baik, 60–90 menit kalau macet. Dan ini Jakarta — selalu hitung yang macet. Berangkat lebih pagi dari yang lo pikir perlu.",
+        "Grab atau Gojek paling gampang — set drop-off pin di lobby utama NICE. Pulangnya tinggal ke pangkalan Bluebird di luar.",
+        "Dari bandara CGK cuma 25–40 menit via tol — malah lebih deket dari tengah kota. Yang terbang dari luar kota bisa stay di PIK2 aja, nggak usah masuk Jakarta sama sekali.",
+        "Parkir ada, tapi penuh sebelum jam 9 pas race day. Bawa mobil? Dateng 2 jam sebelum wave lo."
       ],
       "hotels": [
         {
           "area": "PIK / PIK2 (closest)",
-          "picks": "Hotels along Pantai Indah Kapuk and the new PIK2 strip — 10–20 min to the venue.",
+          "picks": "Hotel-hotel di PIK dan strip baru PIK2 — 10–20 menit ke venue. Paling aman buat race morning.",
           "range": "Rp 900k – 2.5m / night"
         },
         {
           "area": "Kelapa Gading / Ancol",
-          "picks": "Good mid-range choice with easy northern toll access.",
+          "picks": "Mid-range yang enak, akses tol utara gampang.",
           "range": "Rp 600k – 1.5m / night"
         },
         {
           "area": "Central Jakarta (Sudirman / Thamrin)",
-          "picks": "Best for the night after — restaurants, bars, MRT — but budget 60+ min to the venue in traffic.",
+          "picks": "Paling seru buat malem abis race — resto, bar, MRT — tapi siap-siap 60+ menit ke venue.",
           "range": "Rp 1m – 3.5m / night"
         }
       ],
@@ -74,25 +75,25 @@
         }
       ],
       "food": [
-        "Pre-race carbs the Indonesian way: nasi putih or bubur ayam (skip the sambal the night before), pisang goreng, tempe.",
-        "Race-morning: lontong or plain nasi with ayam bakar/ikan bakar 3–4 hours out; most PIK hotels will do an early breakfast if you ask the night before.",
-        "PIK's Pantjoran and Golf Island strips have dozens of Chinese-Indonesian and Japanese places — easy grilled protein + rice recovery meals within 15 min of NICE.",
-        "Hydration: the venue sells water and ION Water (2026 sponsor); Jakarta heat plus an indoor venue means start hydrating the day before."
+        "Carbo-loading ala kita: nasi putih atau bubur ayam — sambalnya skip dulu semalem, percaya coach. Pisang goreng sama tempe aman.",
+        "Race morning: lontong atau nasi + ayam bakar/ikan bakar, 3–4 jam sebelum start. Hotel PIK biasanya mau nyiapin early breakfast kalau lo minta dari semalem.",
+        "Pantjoran PIK sama Golf Island penuh tempat makan Chinese-Indo dan Jepang — gampang cari protein bakar + nasi buat recovery, 15 menit dari NICE.",
+        "Venue jual air dan ION Water (sponsor 2026), tapi Jakarta itu panas walau indoor — elektrolit dari H-1, jangan tunggu haus."
       ],
       "city": [
-        "Cash isn't needed — QRIS and cards work almost everywhere; get an eSIM (Telkomsel/XL) at CGK.",
-        "MRT runs north–south through Sudirman/Thamrin (Lebak Bulus ↔ Bundaran HI); it doesn't reach PIK — Grab/Gojek for the venue.",
-        "Traffic is the only real logistics risk. Ganjil-genap (odd-even plate) rules apply on main roads weekdays — ride-hail avoids the issue.",
-        "Dress code is relaxed; venue and malls are air-conditioned cold, so bring a layer for the ceremony."
+        "Cash nggak perlu — QRIS jalan di mana-mana. Beli eSIM Telkomsel atau XL langsung di bandara.",
+        "MRT jalan utara–selatan lewat Sudirman–Thamrin, tapi nggak nyampe PIK — ke venue tetap Grab/Gojek ya.",
+        "Macet itu satu-satunya risiko beneran. Weekdays ada ganjil-genap di jalan utama — ojek online aman, nggak kena aturan plat.",
+        "Dress code santai aja. Tapi venue sama mall AC-nya dingin banget — bawa layer buat ceremony."
       ],
       "nightAfter": [
-        "SCBD / Senopati: Jakarta's restaurant and bar district — book ahead on a race Saturday.",
-        "Kemang: relaxed, expat-friendly bars and late-night eats.",
-        "Recovery version: PIK Avenue or Pantjoran PIK for dinner then an early night — you'll thank yourself on the flight home.",
-        "Sunday: Kota Tua (old town) and the National Monument for the tourists in the group; Ancol beach for sunset."
+        "SCBD/Senopati: pusatnya resto dan bar — booking dari jauh-jauh hari kalau Sabtu abis race.",
+        "Kemang: lebih santai, bar dan makan malam sampe larut.",
+        "Versi recovery: makan di PIK Avenue atau Pantjoran terus langsung tidur — badan lo berterima kasih di flight pulang.",
+        "Minggunya: Kota Tua dan Monas buat yang mau ngetrip, atau sunset-an di Ancol."
       ],
       "meetup": null,
-      "coachNote": "This is Dina's home race — she coaches athletes to it every season. If you're racing Jakarta, a 12-week Hybrid or Elite block ending on race week is the sweet spot."
+      "coachNote": "Ini home race gue — tiap season gue bawa atlet ke sini. Kalau lo race Jakarta, block Hybrid atau Elite 12 minggu yang habis pas race week itu sweet spot-nya."
     },
     {
       "slug": "singapore",

@@ -2,6 +2,14 @@
   "note": "Warriors Wall — IG-style photos athletes send in (racing, being silly, with friends). Athletes submit via the form on the home page (caption + name/handle + consent land on their lead record as kind 'wall_photo'; the photo itself arrives on WhatsApp/email). Dina adds a row here once she has the photo and their OK — nothing goes up unmoderated. Newest first. 'src' = path under /roxjaya/images/gallery/ (JPG, max ~1600px wide). 'caption' = the athlete's own words, verbatim. 'by' = name or @handle. 'event' = the event the photo belongs to (e.g. 'Hyrox Jakarta 2026', 'Squad sessions') — the wall groups photos by it, newest event first. 'tilt' optional degrees (-6..6), random if omitted. Empty list hides the section.",
   "photos": [
     {
+      "src": "/roxjaya/images/dina-ropes.jpg",
+      "alt": "Dina catching her breath over battle ropes under a FOREVER FASTER banner",
+      "caption": "Ropes don't forgive.",
+      "by": "Dina",
+      "tilt": 2,
+      "event": "Squad sessions"
+    },
+    {
       "src": "/roxjaya/images/dina-skibestie.jpg",
       "alt": "Dina and her training partner grinning at the camera, pink kit, post-workout sweat",
       "caption": "Just me and my skibestie.",

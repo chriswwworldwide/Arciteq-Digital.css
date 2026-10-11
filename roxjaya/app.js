@@ -11,10 +11,21 @@
     });
   }
 
+  function closeMenu() {
+    if (!menu) return;
+    menu.classList.remove("open");
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
+    closeAll();
+  }
+
   if (toggle && menu) {
     toggle.addEventListener("click", () => {
       const open = menu.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(open));
+    });
+
+    menu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", closeMenu);
     });
   }
 
@@ -27,9 +38,17 @@
     });
   });
 
-  document.addEventListener("click", () => closeAll());
+  document.addEventListener("click", (e) => {
+    closeAll();
+    if (menu && menu.classList.contains("open") && !e.target.closest(".nav")) {
+      closeMenu();
+    }
+  });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeAll();
+    if (e.key === "Escape") {
+      closeAll();
+      closeMenu();
+    }
   });
 
   const params = new URLSearchParams(window.location.search);

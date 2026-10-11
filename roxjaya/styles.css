@@ -72,6 +72,11 @@ a {
   display: inline-block;
 }
 
+a.wordmark {
+  color: inherit;
+  text-decoration: none;
+}
+
 .masthead .sig {
   position: absolute;
   right: -0.35em;

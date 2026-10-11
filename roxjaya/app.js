@@ -320,7 +320,7 @@
   const CHAT_GREETING =
     "Hi Dina, I found you on Roxjaya Warriors — I'm interested in HYROX coaching. ";
   const waHref = `https://wa.me/${ROX_WHATSAPP}?text=${encodeURIComponent(CHAT_GREETING)}`;
-  document.querySelectorAll("a[data-whatsapp], a.chat-zone").forEach((a) => {
+  document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
     a.dataset.whatsapp = ROX_WHATSAPP;
     a.href = waHref;
     a.target = "_blank";
@@ -334,7 +334,6 @@
   });
   if (
     !/\/coach(\.html|\/)?$/.test(location.pathname) &&
-    !document.getElementById("sticky-cta") &&
     !document.querySelector(".wa-fab")
   ) {
     const fab = document.createElement("a");

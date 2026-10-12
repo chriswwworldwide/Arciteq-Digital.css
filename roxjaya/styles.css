@@ -314,6 +314,16 @@ a.wordmark {
   }
 }
 
+/* Station 9 — last menu item, pink text to pull the eye */
+.s9-zone {
+  color: var(--pink-600) !important;
+}
+
+.s9-zone:hover {
+  color: var(--pink) !important;
+  background: var(--pink-100) !important;
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
@@ -2201,13 +2211,6 @@ body.has-sticky-cta .wa-fab {
 
 html.reveal-live:not(.reveal-done) .hero--bleed .hero-img {
   opacity: 0;
-}
-
-/* Cross-fade the handoff — the canvas fades out over 350ms, so the img
-   eases in over the same window instead of snapping (the bottom strip the
-   canvas never paints would pop otherwise). */
-.hero--bleed .hero-img {
-  transition: opacity 0.35s ease;
 }
 
 .hero-canvas {

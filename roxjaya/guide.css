@@ -387,6 +387,24 @@
   color: var(--ink-3);
 }
 
+.station-photo {
+  margin: 18px 0 10px;
+}
+
+.station-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.station-photo figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
 @media (max-width: 900px) {
   .guide-hero .wrap {
     grid-template-columns: 1fr;

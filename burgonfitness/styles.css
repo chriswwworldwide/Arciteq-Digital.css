@@ -652,9 +652,11 @@ button.btn {
 .hero--bleed .hero-img {
   object-fit: contain;
   /* Full-size photo pinned to the section's right edge; the headline
-     stays out of her face by being smaller, not by shrinking the photo */
+     stays out of her face by being smaller, not by shrinking the photo.
+     Small padding — she should run near edge-to-edge, not float in a
+     frame (contain means vertical room buys width too). */
   object-position: 100% center;
-  padding: 40px 0 56px;
+  padding: 14px 0 18px;
 }
 
 .hero--bleed::after {

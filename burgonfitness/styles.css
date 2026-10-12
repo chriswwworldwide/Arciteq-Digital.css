@@ -644,20 +644,54 @@ button.btn {
 /* Desktop: show the whole photo over a blurred stretch of itself —
    a near-square image cropped by a wide hero loses her head otherwise */
 .hero--bleed .hero-amb {
-  display: none;
+  object-fit: cover;
+  object-position: 55% 30%;
+  filter: blur(48px) brightness(0.55) saturate(1.15);
+  transform: scale(1.15);
 }
 
 .hero--bleed .hero-img {
-  object-fit: cover;
-  /* Photo fills the whole hero; --hero-focus keeps the subject clear of
-     the bottom-left copy and is set per tenant on :root. */
-  object-position: var(--hero-focus, 50% 30%);
-  padding: 0;
+  object-fit: contain;
+  /* Full-size photo pinned to the section's right edge; the headline
+     stays out of her face by being smaller, not by shrinking the photo */
+  object-position: 100% center;
+  padding: 40px 0 56px;
 }
 
 .hero--bleed::after {
   position: absolute;
   inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(40, 14, 30, 0.05) 0%,
+      rgba(40, 14, 30, 0.2) 45%,
+      rgba(40, 14, 30, 0.86) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(40, 14, 30, 0.82) 0%,
+      rgba(40, 14, 30, 0.35) 45%,
+      rgba(40, 14, 30, 0) 68%
+    );
+}
+
+/* hero--full: photo covers the whole hero (no amb letterbox, no edge
+   feather), the reveal unrolls across the full background. Opt-in per
+   tenant — keep .hero--bleed on the element so the reveal JS hooks it. */
+.hero--bleed.hero--full .hero-amb {
+  display: none;
+}
+
+.hero--bleed.hero--full .hero-img {
+  object-fit: cover;
+  /* --hero-focus keeps the subject clear of the bottom-left copy and is
+     set per tenant on :root. */
+  object-position: var(--hero-focus, 50% 30%);
+  padding: 0;
+}
+
+.hero--bleed.hero--full::after {
   background:
     linear-gradient(
       180deg,
@@ -2236,8 +2270,18 @@ body.has-sticky-cta .wa-fab {
   inset: 0;
 }
 
-/* Full-bleed cover hero: no edge-feather — the ::after gradient scrim
-   keeps the bottom-left copy legible over the photo. */
+/* Desktop only: melt the photo's left edge into its own ambient blur —
+   the headline tail can graze the fade without ever touching a hard
+   crop. Mobile's mask stays unmasked (its own grid row + rules).
+   hero--full opts out: the photo covers the whole hero, so a left-edge
+   feather would erase half the shot — the ::after scrim carries
+   legibility there instead. */
+@media (min-width: 801px) {
+  .hero--bleed:not(.hero--full) .hero-mask {
+    -webkit-mask-image: linear-gradient(90deg, transparent calc(100% - 780px), #000 calc(100% - 590px));
+    mask-image: linear-gradient(90deg, transparent calc(100% - 780px), #000 calc(100% - 590px));
+  }
+}
 
 /* Animations live on the <img>, the baked edge-feather mask on .hero-mask —
    never the same element: Safari drops masked content that shares a

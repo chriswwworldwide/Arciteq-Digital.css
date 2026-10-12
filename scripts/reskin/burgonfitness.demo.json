@@ -484,6 +484,10 @@
     {
       "pattern": ":root\\s*\\{",
       "replace": ":root{\n  --hero-focus: 60% 32%;"
+    },
+    {
+      "pattern": "class=\"hero hero--bleed\"",
+      "replace": "class=\"hero hero--bleed hero--full\""
     }
   ],
   "stripSections": [

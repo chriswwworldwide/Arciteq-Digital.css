@@ -186,7 +186,7 @@
     }
   });
 
-  // ---- Team the UK travel board: trips land on data/travelboard.json
+  // ---- Team Burgon Fitness travel board: trips land on data/travelboard.json
   // once Hannah approves them on her desk. Same privacy rule as partner
   // cards — first name + initial only, intros via WhatsApp.
   const TRAVEL_MODES = {

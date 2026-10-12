@@ -164,6 +164,10 @@
       "British"
     ],
     [
+      "Team Indonesia",
+      "Team Burgon Fitness"
+    ],
+    [
       "Indonesia",
       "the UK"
     ],
@@ -230,10 +234,6 @@
     [
       "data-city=\"london\"",
       "data-city=\"manchester\""
-    ],
-    [
-      "Team Indonesia",
-      "Team Burgon Fitness"
     ]
   ],
   "copyOverrides": [

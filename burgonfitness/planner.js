@@ -106,7 +106,7 @@
   function indoMeetupBlock(m) {
     if (!m || !m.when) return "";
     return `<section class="plan-section plan-meetup" id="indo-meetup">
-      <h3>Station 9 — Team the UK meetup</h3>
+      <h3>Station 9 — Team Burgon Fitness meetup</h3>
       <p><strong>${esc(m.when)}</strong></p>
       ${m.note ? `<p>${esc(m.note)}</p>` : ""}
       <a class="btn btn-primary" href="/burgonfitness/station-9/#rsvp">Ikut — RSVP di sini</a>

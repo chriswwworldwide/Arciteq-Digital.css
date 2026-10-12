@@ -122,7 +122,10 @@
       float gap = mix(0.0, 0.11, 1.0 - resolve);     // gap closes fully as it sharpens
       float tile = step(gap * 0.5, f.x) * step(f.x, 1.0 - gap * 0.5) *
                    step(gap * 0.5, f.y) * step(f.y, 1.0 - gap * 0.5);
-      col *= 1.05;
+      // the +5% lift compensates the dark seams while tiles are apart —
+      // applied unconditionally it makes the landed sheet brighter than the
+      // DOM img beneath, so the crossfade shows a darker second image
+      col *= mix(1.05, 1.0, resolve);
 
       col *= vShadow;
       // The still-rolled face samples the same texture — on the full-width
@@ -285,6 +288,7 @@
     comp.width = cw;
     comp.height = ch;
     const c = comp.getContext("2d");
+    c.imageSmoothingQuality = "high";
     const iw = tex2d.naturalWidth || 1125;
     const ih = tex2d.naturalHeight || 1080;
 
@@ -351,6 +355,7 @@
     lay.width = cw;
     lay.height = ch;
     const lc = lay.getContext("2d");
+    lc.imageSmoothingQuality = "high"; // match the browser's CSS image scaling
     lc.drawImage(tex2d, px * dpr, py * dpr, pw * dpr, ph * dpr);
     lc.globalCompositeOperation = "destination-out";
     const g = lc.createLinearGradient((W - 780) * dpr, 0, (W - 590) * dpr, 0);

@@ -364,11 +364,23 @@
     // roll has finished laying the sheet (~74% through the sweep).
     const ease = (t) => 1 - Math.pow(1 - t, 2);
     const start = performance.now() + DELAY;
+    // Re-pin the canvas to the img's rect — but only when it genuinely
+    // moved. getBoundingClientRect returns fractional values that can
+    // oscillate sub-pixel frame to frame, and rebuilding the plane off a
+    // jittering rect makes the landing shimmer.
+    let lastPin = "";
+    const pin = () => {
+      const ir = img.getBoundingClientRect();
+      const key =
+        `${Math.round(ir.left)}|${Math.round(ir.top)}|` +
+        `${Math.round(ir.width)}|${Math.round(ir.height)}`;
+      if (key !== lastPin) {
+        lastPin = key;
+        size();
+      }
+    };
     const frame = (now) => {
-      // Re-pin the canvas to the img's live rect every frame — webfont
-      // swaps or the URL bar collapsing can shift layout mid-sweep, and a
-      // stale canvas leaves a mosaic strip + a jump at handoff
-      size();
+      pin();
       const t = Math.max(0, Math.min(1, (now - start) / DURATION));
       const p = ease(t) * 1.35;
       if (mvp) gl.uniformMatrix4fv(uMVP, false, mvp);

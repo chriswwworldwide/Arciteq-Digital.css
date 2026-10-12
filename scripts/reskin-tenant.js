@@ -42,7 +42,9 @@ const {
   extraPairs = [],
   copyOverrides = [],
   stripSections = [],
+  excludePatterns = [],
 } = cfg;
+const excludeRes = excludePatterns.map((re) => new RegExp(re));
 
 const src = path.join(root, "roxjaya");
 const dst = path.join(root, slug);
@@ -60,7 +62,8 @@ fs.cpSync(src, dst, {
     !p.endsWith(".DS_Store") &&
     !p.endsWith("HANDBOOK.md") &&
     !p.endsWith("VOICE.md") &&
-    !p.includes("/automation"),
+    !p.includes("/automation") &&
+    !excludeRes.some((re) => re.test(p)),
 });
 
 // ---- 2. substitutions (order matters) -------------------------------------

@@ -56,7 +56,8 @@
   "pageRenames": {
     "hyrox-jakarta": "hyrox-norwich",
     "jakarta-hybrid-scene": "norwich-hybrid-scene",
-    "hybrid-coaching-jakarta": "hyrox-coaching-norwich"
+    "hybrid-coaching-jakarta": "hyrox-coaching-norwich",
+    "book-dina": "book"
   },
   "metaKeywords": "hyrox gym norwich, hyrox training norfolk, hyrox coach norwich, hyrox simulation uk, functional fitness norwich, hyrox community uk",
   "htmlTitle": "HYROX Gym Norwich — Hustle Performance Centre | Training, Sims & Community",
@@ -273,6 +274,114 @@
     [
       "Bobby, head coach",
       "The Hustle crew after a race-day community run"
+    ],
+    [
+      "images/dina-burpee.jpg",
+      "images/gallery/six-am-crew.jpg"
+    ],
+    [
+      "images/dina-farmers-pro.jpg",
+      "images/rope.jpg"
+    ],
+    [
+      "images/dina-farmers-walk.jpg",
+      "images/squad-athlos.jpg"
+    ],
+    [
+      "images/dina-heck-pair.jpg",
+      "images/gallery/crew-race-day.jpg"
+    ],
+    [
+      "images/dina-lunges.jpg",
+      "images/dina-station-lean.jpg"
+    ],
+    [
+      "images/dina-lunges-black.jpg",
+      "images/gallery/train-recover.jpg"
+    ],
+    [
+      "images/dina-row-shaka.jpg",
+      "images/wallball.jpg"
+    ],
+    [
+      "images/dina-row-side2.jpg",
+      "images/gallery/blakely-winners.jpg"
+    ],
+    [
+      "images/dina-skierg-arms.jpg",
+      "images/dina-skierg-laugh.jpg"
+    ],
+    [
+      "images/dina-skierg-pull.jpg",
+      "images/gallery/crew-hyrox-wall.jpg"
+    ],
+    [
+      "images/dina-sledpull.jpg",
+      "images/rope.jpg"
+    ],
+    [
+      "images/dina-sledpush-dark.jpg",
+      "images/dina-coaching.jpg"
+    ],
+    [
+      "images/dina-sledpush-front.jpg",
+      "images/race-revel.jpg"
+    ],
+    [
+      "images/dina-sledpush-low.jpg",
+      "images/wallball.jpg"
+    ],
+    [
+      "images/dina-wallball.jpg",
+      "images/wallball.jpg"
+    ],
+    [
+      "images/coach.jpg",
+      "images/dina-avatar.jpg"
+    ],
+    [
+      "images/doubles.jpg",
+      "images/dina-race-pair.jpg"
+    ],
+    [
+      "images/feature.jpg",
+      "images/gallery/crew-hyrox-wall.jpg"
+    ],
+    [
+      "images/hero-alt.jpg",
+      "images/gallery/six-am-crew.jpg"
+    ],
+    [
+      "images/kb-carry.jpg",
+      "images/rope.jpg"
+    ],
+    [
+      "images/podium.jpg",
+      "images/gallery/blakely-winners.jpg"
+    ],
+    [
+      "images/run.jpg",
+      "images/race-revel.jpg"
+    ],
+    [
+      "images/skierg.jpg",
+      "images/dina-skierg-laugh.jpg"
+    ],
+    [
+      "images/sled-top.jpg",
+      "images/dina-coaching.jpg"
+    ],
+    [
+      "images/station10-dance.jpg",
+      "images/gallery/crew-race-day.jpg"
+    ],
+    [
+      "images/station9-dinner.jpg",
+      "images/gallery/train-recover.jpg"
+    ],
+    [
+      "Book Bobby",
+      "Book a session"
     ]
   ],
   "copyOverrides": [
@@ -908,5 +1017,10 @@
       ]
     }
   },
-  "imageOverrides": "scripts/reskin/hustle-assets"
+  "imageOverrides": "scripts/reskin/hustle-assets",
+  "excludePatterns": [
+    "images/dina-",
+    "images/gallery/",
+    "images/(squad-anya|carry|coach|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station9-dinner|station10-dance)\\.jpg$"
+  ]
 }

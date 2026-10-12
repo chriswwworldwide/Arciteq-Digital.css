@@ -1,6 +1,6 @@
-/* Book Bobby: upcoming appearances from appearances.json (confirmed only,
+/* Book a session: upcoming appearances from appearances.json (confirmed only,
    past ones hide) + an inquiry form that lands in the same lead flow as
-   Ask Bobby, tagged source=book-dina so it stands out on the desk. */
+   Ask Bobby, tagged source=book so it stands out on the desk. */
 (function () {
   "use strict";
   const esc = (s) =>
@@ -78,7 +78,7 @@
     const fd = new FormData(form);
     const email = String(fd.get("email") || "").trim();
     const profile = {
-      source: "book-dina",
+      source: "book",
       org_type: String(fd.get("org_type") || ""),
       format: String(fd.get("format") || ""),
       org: String(fd.get("org") || "").trim(),
@@ -100,7 +100,7 @@
           message: String(fd.get("message") || "").trim(),
           utm: {
             utm_source: q.get("utm_source") || "hustle",
-            utm_medium: q.get("utm_medium") || "book-dina",
+            utm_medium: q.get("utm_medium") || "book",
             utm_campaign: q.get("utm_campaign") || "",
             utm_content: q.get("utm_content") || "",
             utm_term: q.get("utm_term") || "",

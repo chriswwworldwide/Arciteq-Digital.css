@@ -893,13 +893,13 @@
   padding: 0 0 0 16px;
   border-left: 3px solid var(--pink);
   font-style: italic;
-  color: var(--pink-600);
 }
 
 .plan-dina p {
   margin: 0 0 4px;
   font-size: 15px;
   line-height: 1.55;
+  color: var(--pink);
 }
 
 .plan-dina p::before {

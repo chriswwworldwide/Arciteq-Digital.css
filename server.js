@@ -4031,6 +4031,7 @@ async function collectDigest(siteUrl, tenant, cfg, days) {
     bank_transfer: 0,
     partner_search: 0,
     race_result: 0,
+    predictor: 0,
     paid: 0,
   };
   let traffic = null;

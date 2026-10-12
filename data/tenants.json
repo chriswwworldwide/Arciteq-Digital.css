@@ -313,8 +313,13 @@
           "partner_search",
           "travel_party",
           "station9_rsvp",
-          "race_result"
+          "race_result",
+          "predictor"
         ]
+      },
+      "features": {
+        "predictor": false,
+        "chatbot": false
       },
       "analytics": {
         "pageviews": true

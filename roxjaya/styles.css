@@ -2472,3 +2472,56 @@ figure.reveal {
 .athlete-modal .athlete-close {
   margin-top: 14px;
 }
+
+/* Predictor result card (unlisted page until launch) */
+.pred-total {
+  text-align: center;
+  margin: 4px 0 18px;
+}
+.pred-eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+.pred-time {
+  margin: 2px 0 0;
+  font-size: clamp(2.6rem, 8vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--pink);
+}
+.pred-range {
+  margin: 6px 0 0;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+.pred-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 14px;
+}
+.pred-table td {
+  padding: 9px 4px;
+  border-bottom: 1px solid var(--pink-100);
+  font-size: 0.95rem;
+}
+.pred-table td:first-child {
+  color: var(--ink-2);
+}
+.pred-table td:nth-child(2) {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.pred-table td:last-child {
+  color: var(--ink-3);
+  font-size: 0.85rem;
+  text-align: right;
+}
+.pred-table tr:last-child td {
+  border-bottom: 0;
+}
+.pred-line {
+  margin: 0 0 10px;
+}

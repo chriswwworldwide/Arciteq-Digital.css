@@ -290,6 +290,11 @@ export function buildDigest({
       text: `${n("station9_rsvp")} RSVP${n("station9_rsvp") === 1 ? "" : "s"} for Station 9 — count heads for the booking`,
       href: `${desk}#people?q=station9_rsvp`,
     });
+  if (n("predictor"))
+    actions.push({
+      text: `${n("predictor")} athlete${n("predictor") === 1 ? "" : "s"} ran the race predictor — warm leads, worth a hello`,
+      href: `${desk}#people?q=predictor`,
+    });
   for (const i of events)
     actions.push({
       text: `Race date found: ${i.title} — confirm?`,

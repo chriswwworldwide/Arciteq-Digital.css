@@ -231,7 +231,14 @@ if (!base) {
 }
 let t = JSON.parse(JSON.stringify(base));
 t.tenant_id = slug;
-t.hostnames = [`${slug}.localhost`, `demo-${slug}.localhost`];
+const demoDomain = String(process.env.DEMO_BASE_DOMAIN || "")
+  .trim()
+  .toLowerCase();
+t.hostnames = [
+  `${slug}.localhost`,
+  `demo-${slug}.localhost`,
+  ...(demoDomain ? [`${slug}.${demoDomain}`, `demo-${slug}.${demoDomain}`] : []),
+];
 t.canonicalHost = `${slug}.localhost`;
 if (email) t.seo.supportEmail = email;
 let tStr = JSON.stringify(t);

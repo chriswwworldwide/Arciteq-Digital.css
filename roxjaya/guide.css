@@ -383,7 +383,7 @@
 
 .art-photo figcaption {
   margin-top: 8px;
-  font-size: 13px;
+  font-size: 11px;
   color: var(--ink-3);
 }
 
@@ -401,7 +401,7 @@
 
 .station-photo figcaption {
   margin-top: 8px;
-  font-size: 13px;
+  font-size: 11px;
   color: var(--ink-3);
 }
 
@@ -888,6 +888,42 @@
   background: var(--paper-2);
 }
 
+.plan-dina {
+  margin: 14px 0 0;
+  padding: 0 0 0 16px;
+  border-left: 3px solid var(--pink);
+  font-style: italic;
+  color: var(--pink-600);
+}
+
+.plan-dina p {
+  margin: 0 0 4px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.plan-dina p::before {
+  content: "\201C";
+  color: var(--pink);
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+.plan-dina p::after {
+  content: "\201D";
+  color: var(--pink);
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.plan-dina cite {
+  display: block;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
 .plan-race .eyebrow {
   margin: 0 0 6px;
 }
@@ -1260,7 +1296,7 @@
 .pay-qris figcaption {
   margin-top: 8px;
   color: var(--ink-3);
-  font-size: 14px;
+  font-size: 11px;
 }
 .pay-actions {
   display: flex;

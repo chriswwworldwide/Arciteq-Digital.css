@@ -34,7 +34,7 @@
       (new Date(`${iso}T00:00:00+07:00`).getTime() - Date.now()) / 864e5,
     );
 
-  function raceBlock(c, checked) {
+  function raceBlock(c) {
     const r = c.race || {};
     let when;
     if (r.status === "confirmed" && r.start) {
@@ -61,7 +61,7 @@
       <p class="plan-venue"><strong>${esc(r.venue || "")}</strong><br />${esc(r.address || "")}</p>
       <p class="plan-source">Source: <a href="${esc(r.source || "https://hyrox.com")}" rel="noopener" target="_blank">${esc(
         r.sourceLabel || "hyrox.com",
-      )}</a> · checked ${esc(checked)}. Confirm on the official page before booking.</p>
+      )}</a> — confirm on the official page before booking.</p>
     </div>`;
   }
 
@@ -114,10 +114,8 @@
     </section>`;
   }
 
-  function renderCity(c, checked) {
-    const stamp = `<p class="plan-stamp">Hotel, fare and food notes are pointers, not quotes — checked ${esc(
-      checked,
-    )}. Check live prices before you book.</p>`;
+  function renderCity(c) {
+    const stamp = `<p class="plan-stamp">Hotel, fare and food notes are pointers, not quotes — check live prices before you book.</p>`;
     const photo = c.photo
       ? `<figure class="plan-city-photo"><img src="${esc(c.photo.src)}" alt="${esc(c.photo.alt || "")}" loading="lazy" width="1600" height="685" />${
           c.photo.credit
@@ -131,8 +129,9 @@
         <h2><span aria-hidden="true">${esc(c.flag || "")}</span> ${esc(c.name)} <small>${esc(c.country)}</small></h2>
         ${c.nickname ? `<p class="city-aka">a.k.a. <span class="city-nick">${esc(c.nickname)}</span></p>` : ""}
         <p class="lead">${esc(c.tagline)}</p>
+        ${c.dinaSays ? `<blockquote class="plan-dina"><p>${esc(c.dinaSays)}</p><cite>— Dina</cite></blockquote>` : ""}
       </header>
-      ${raceBlock(c, checked)}
+      ${raceBlock(c)}
       <section class="plan-section" id="getting-there"><h3>Venue &amp; getting there</h3>${list(c.gettingThere, c.cityLang)}</section>
       <section class="plan-section" id="hotels"><h3>Where to stay</h3>${hotelsBlock(c.hotels)}</section>
       <section class="plan-section" id="flights"><h3>Flights</h3>${flightsBlock(c.flights)}</section>
@@ -260,14 +259,13 @@
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       const cities = Array.isArray(json?.cities) ? json.cities : [];
-      const checked = String(json?.checked || "");
       const home = String(json?.home || "jakarta");
       if (!cities.length) throw new Error("no cities");
 
       if (only) {
         const c = cities.find((x) => x.slug === only);
         root.innerHTML = c
-          ? renderCity(c, checked)
+          ? renderCity(c)
           : `<p class="callout">City guide coming soon.</p>`;
         return;
       }
@@ -281,7 +279,7 @@
       const show = (slug) => {
         active = slug;
         const c = away.find((x) => x.slug === slug) || away[0];
-        root.innerHTML = renderCity(c, checked);
+        root.innerHTML = renderCity(c);
         renderTabs(cities, home, active);
       };
       show(active);

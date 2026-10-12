@@ -1,5 +1,5 @@
 {
-  "note": "Asia Race Planner data. Race dates/venues: confirmed only, with the source URL and the date we checked. Hotels, fares and food are pointers with approximate ranges — always labelled with 'checked'. Set meetup to { when, where, note } to show a Warriors meet-up on that city page; null hides it. Prices are for planning only; the athlete checks live prices before booking.",
+  "note": "Asia Race Planner data. Race dates/venues: confirmed only, with the source URL and the date we checked (the 'checked' field is maintenance metadata — it is not rendered). Hotels, fares and food are pointers with approximate ranges. Set meetup to { when, where, note } to show a Warriors meet-up on that city page; null hides it. Prices are for planning only; the athlete checks live prices before booking.",
   "checked": "2026-09",
   "home": "jakarta",
   "cities": [
@@ -11,6 +11,7 @@
       "country": "Indonesia",
       "flag": "🇮🇩",
       "tagline": "Home race. HYROX pertama di Indonesia — ~11,200 atlet di June 2026, debut Asia-Pacific terbesar sejauh ini.",
+      "dinaSays": "This is our house. The heat, the crowd, the macet on the way to PIK — you trained in all of it. Everyone else is visiting; you're just going to work.",
       "race": {
         "name": "HYROX Jakarta",
         "status": "tbc",
@@ -109,6 +110,7 @@
       "country": "Singapore",
       "flag": "🇸🇬",
       "tagline": "Closest away race from Jakarta — under two hours, no jet lag, English everywhere.",
+      "dinaSays": "Two hours from home and everything just works — MRT to the venue door, hawker carbs, no excuses. The only painful part is the bar prices after.",
       "race": {
         "name": "HYROX Singapore",
         "status": "confirmed",
@@ -181,6 +183,7 @@
       "country": "Malaysia",
       "flag": "🇲🇾",
       "tagline": "Malaysia's first-ever Hyrox and the last Asia-Pacific race of 2026 — a four-day weekend, two hours from Jakarta.",
+      "dinaSays": "KL is basically home with a different flag — same language, same food, same humidity. If you've never raced abroad, start here and stop overthinking.",
       "race": {
         "name": "AirAsia HYROX Kuala Lumpur",
         "status": "confirmed",
@@ -268,6 +271,7 @@
       "country": "South Korea",
       "flag": "🇰🇷",
       "tagline": "Cool-weather racing, a fast venue and the best food of the season.",
+      "dinaSays": "Seven hours on a plane so your lungs can finally meet cold air — worth it. You'll PB, then eat your bodyweight in Korean BBQ. Jaket wajib.",
       "race": {
         "name": "HYROX Seoul",
         "status": "confirmed",
@@ -340,6 +344,7 @@
       "country": "Hong Kong SAR",
       "flag": "🇭🇰",
       "tagline": "January racing in mild weather, at a venue you can reach by train from the airport in a few minutes.",
+      "dinaSays": "The venue has its own airport express stop. Land, race, dim sum — the most efficient race trip of the season, and the January weather is polite.",
       "race": {
         "name": "HYROX Hong Kong",
         "status": "confirmed",
@@ -412,6 +417,7 @@
       "country": "Thailand",
       "flag": "🇹🇭",
       "tagline": "The region's big, buzzy race — Bangkok has hosted the largest Asian Hyrox fields before Jakarta took the record.",
+      "dinaSays": "I podiumed in Jakarta but I learned to race in Bangkok. Big crowd, easy logistics, and half the cheering will be Indonesian anyway. Mango sticky rice is legal performance enhancement.",
       "race": {
         "name": "HYROX Bangkok",
         "status": "confirmed",

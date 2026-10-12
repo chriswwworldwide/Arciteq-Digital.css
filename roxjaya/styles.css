@@ -38,6 +38,13 @@ img {
   max-width: 100%;
 }
 
+/* Captions are metadata, not copy — keep them visibly quieter than body
+   text (attribution lines, photo notes). Specific styles still win. */
+figcaption {
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -641,8 +648,13 @@ button.btn {
 
 .hero--bleed .hero-img {
   object-fit: contain;
-  /* pushed right so the headline column sits on the dark fade, not on her */
-  object-position: 74% center;
+  /* Photo lives in a right-hand column — the headline is full-width by
+     design, so bounding the img box keeps its left edge off the text.
+     Explicit width (not auto): the width/height attrs give the img an
+     intrinsic ratio, so auto resolves from height and overflows right. */
+  left: auto;
+  width: 34%;
+  object-position: 100% center;
   padding: 40px 0 56px;
 }
 
@@ -2219,6 +2231,16 @@ body.has-sticky-cta .wa-fab {
 .hero-mask {
   position: absolute;
   inset: 0;
+}
+
+/* Desktop only: melt the photo's left edge into its own ambient blur —
+   the headline tail can graze the fade without ever touching a hard
+   crop. Mobile's mask stays unmasked (its own grid row + rules). */
+@media (min-width: 801px) {
+  .hero--bleed .hero-mask {
+    -webkit-mask-image: linear-gradient(90deg, transparent 55%, #000 72%);
+    mask-image: linear-gradient(90deg, transparent 55%, #000 72%);
+  }
 }
 
 /* Animations live on the <img>, the baked edge-feather mask on .hero-mask —

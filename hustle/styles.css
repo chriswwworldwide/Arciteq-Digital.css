@@ -10,6 +10,8 @@
   --pink: #e0242e;
   --pink-600: #b0171f;
   --pink-100: #fde4e5;
+  --ncfc-green: #009739;
+  --ncfc-gold: #fff200;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(40, 14, 30, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
@@ -2525,3 +2527,11 @@ figure.reveal {
 .pred-line {
   margin: 0 0 10px;
 }
+
+/* NCFC regional-partner accent — canary + green, light touch */
+.masthead .sig { color: var(--ncfc-green); }
+.masthead .sig-text { background-image: linear-gradient(105deg, var(--ncfc-green) 42%, #dff3d9 50%, var(--ncfc-green) 58%); }
+.kicker { color: var(--ncfc-green); }
+.zone .num { color: var(--ncfc-green); }
+.stats strong { color: var(--ncfc-green); }
+.plan .tag { background: var(--ncfc-gold); border-color: var(--ncfc-gold); color: #14532d; }

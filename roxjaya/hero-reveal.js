@@ -93,19 +93,29 @@
     uniform vec4 u_uv;      // xy = crop offset, zw = crop scale (cover fit)
     uniform float u_feather;
     uniform float u_seam;
+    uniform vec4 u_photo;   // photo rect in sheet uv (fullRoll); else 0,0,1,1
+    uniform float u_pmargin;
 
     void main() {
+      // fullRoll: the ambient area is just a blurred backdrop — running the
+      // mosaic resolve on it renders a blocky dark version of the photo
+      // beside the real one (the "shadow image"). Only the photo's own rect
+      // gets the pixelated settle; ambient sharpens as it lays flat.
+      vec2 pd = max(max(u_photo.xy - vUv, vUv - u_photo.zw), 0.0);
+      float inPhoto = 1.0 - smoothstep(0.0, u_pmargin, length(pd));
+      float resolve = max(vResolve, 1.0 - inPhoto);
+
       // Pixelated reveal à la the Codrops demo: resolution jumps through
       // discrete steps (4→256 cells) rather than interpolating, and each
       // tile sits inside its cell with the dark curtain showing between
       // them — the gaps close as the paper settles and sharpens.
-      float level = floor(mix(2.0, 8.0, vResolve));
+      float level = floor(mix(2.0, 8.0, resolve));
       float cells = exp2(level);
       vec2 cuv = u_uv.xy + ((floor(vUv * cells) + 0.5) / cells) * u_uv.zw;
       vec3 col = texture2D(u_tex, cuv).rgb;
 
       vec2 f = fract(vUv * cells);
-      float gap = mix(0.0, 0.11, 1.0 - vResolve);     // gap closes fully as it sharpens
+      float gap = mix(0.0, 0.11, 1.0 - resolve);     // gap closes fully as it sharpens
       float tile = step(gap * 0.5, f.x) * step(f.x, 1.0 - gap * 0.5) *
                    step(gap * 0.5, f.y) * step(f.y, 1.0 - gap * 0.5);
       col *= 1.05;
@@ -116,7 +126,7 @@
       // would show the light page background as a bright seam (worst on
       // mobile, where there's no ambient to blend into). The seam also
       // fades as the paper resolves, so no grid lingers over the photo.
-      float seam = mix(1.0, u_seam, 1.0 - vResolve);
+      float seam = mix(1.0, u_seam, 1.0 - resolve);
       col *= mix(seam, 1.0, tile);
       float a = clamp(u_progress * 5.0, 0.0, 1.0);
       // feather the painted edges into what's behind — on desktop that's
@@ -137,6 +147,8 @@
     uFeather,
     uDim,
     uSeam,
+    uPhoto,
+    uPmargin,
     tex,
     indexCount;
   const uvCrop = new Float32Array(4); // off.x, off.y, scale.x, scale.y
@@ -227,6 +239,8 @@
     uFeather = gl.getUniformLocation(prog, "u_feather");
     uDim = gl.getUniformLocation(prog, "u_dim");
     uSeam = gl.getUniformLocation(prog, "u_seam");
+    uPhoto = gl.getUniformLocation(prog, "u_photo");
+    uPmargin = gl.getUniformLocation(prog, "u_pmargin");
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
@@ -237,6 +251,8 @@
     // Halve both — the roll keeps its shading, the ambient stays clean.
     gl.uniform1f(uDim, fullRoll ? 0.85 : 0.7);
     gl.uniform1f(uSeam, fullRoll ? 0.75 : 0.55);
+    gl.uniform4f(uPhoto, 0, 0, 1, 1); // classic: whole sheet is the photo
+    gl.uniform1f(uPmargin, 0.03);
   } catch (e) {
     console.warn("hero-reveal:", e);
     return done();
@@ -306,6 +322,17 @@
     const ph = ih * s2;
     const px = (cW - pw) * 1.0;
     const py = pt + (cH - ph) * 0.5;
+
+    // photo rect in sheet uv (texture is y-flipped on upload) — the
+    // fragment shader only mosaics inside it, so the ambient can't render
+    // as a blocky shadow beside the real pic
+    gl.uniform4f(
+      uPhoto,
+      px / W,
+      1 - (py + ph) / H,
+      (px + pw) / W,
+      1 - py / H,
+    );
 
     // photo layer on its own canvas so the feather only fades the photo,
     // revealing the ambient beneath — same composite as the masked DOM

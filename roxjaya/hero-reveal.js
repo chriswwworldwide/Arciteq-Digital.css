@@ -32,6 +32,7 @@
     uniform mat4 u_mvp;
     uniform float u_progress;
     uniform float u_angle;
+    uniform float u_dim;
     varying vec2 vUv;
     varying float vShadow;
     varying float vResolve;
@@ -62,7 +63,7 @@
       newposition = rotate(newposition - vec3(-.5,.5,0.), vec3(0.,0.,1.), -u_angle) + vec3(-.5,.5,0.);
       float offs = (newposition.x + 0.5) / (sin(u_angle) + cos(u_angle));
       float tProgress = clamp((u_progress - offs*0.99) / 0.01, 0., 1.);
-      vShadow = clamp((u_progress - offs*0.95) / 0.05, 0.7, 1.);
+      vShadow = clamp((u_progress - offs*0.95) / 0.05, u_dim, 1.);
       // the mosaic trail: a wide band of paper settling behind the roll —
       // u_progress runs past 1 so the last-laid corner finishes resolving
       // after the roll has emptied
@@ -91,6 +92,7 @@
     uniform highp float u_progress;
     uniform vec4 u_uv;      // xy = crop offset, zw = crop scale (cover fit)
     uniform float u_feather;
+    uniform float u_seam;
 
     void main() {
       // Pixelated reveal à la the Codrops demo: resolution jumps through
@@ -114,7 +116,7 @@
       // would show the light page background as a bright seam (worst on
       // mobile, where there's no ambient to blend into). The seam also
       // fades as the paper resolves, so no grid lingers over the photo.
-      float seam = mix(1.0, 0.55, 1.0 - vResolve);
+      float seam = mix(1.0, u_seam, 1.0 - vResolve);
       col *= mix(seam, 1.0, tile);
       float a = clamp(u_progress * 5.0, 0.0, 1.0);
       // feather the painted edges into what's behind — on desktop that's
@@ -133,6 +135,8 @@
     uProg2,
     uUv,
     uFeather,
+    uDim,
+    uSeam,
     tex,
     indexCount;
   const uvCrop = new Float32Array(4); // off.x, off.y, scale.x, scale.y
@@ -221,11 +225,18 @@
     uProg2 = gl.getUniformLocation(prog, "u_prog");
     uUv = gl.getUniformLocation(prog, "u_uv");
     uFeather = gl.getUniformLocation(prog, "u_feather");
+    uDim = gl.getUniformLocation(prog, "u_dim");
+    uSeam = gl.getUniformLocation(prog, "u_seam");
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     gl.clearColor(0, 0, 0, 0);
     gl.uniform1f(uAngle, Math.PI / 4); // unrolls top-left → bottom-right
+    // fullRoll: the sheet spans ambient + photo, so the Codrops trailing
+    // dim + dark seams would read as a cast shadow beside the picture.
+    // Halve both — the roll keeps its shading, the ambient stays clean.
+    gl.uniform1f(uDim, fullRoll ? 0.85 : 0.7);
+    gl.uniform1f(uSeam, fullRoll ? 0.75 : 0.55);
   } catch (e) {
     console.warn("hero-reveal:", e);
     return done();

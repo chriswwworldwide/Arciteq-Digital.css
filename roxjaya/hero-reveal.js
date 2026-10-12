@@ -266,7 +266,7 @@
     gl.uniform1f(uSeam, fullRoll ? 0.75 : 0.55);
     gl.uniform4f(uPhoto, 0, 0, 1, 1); // classic: whole sheet is the photo
     gl.uniform1f(uPmargin, 0.03);
-    gl.uniform1f(uTube, fullRoll ? 0.35 : 1.0);
+    gl.uniform1f(uTube, fullRoll ? 0.12 : 1.0);
   } catch (e) {
     console.warn("hero-reveal:", e);
     return done();
@@ -350,7 +350,10 @@
     );
 
     // photo layer on its own canvas so the feather only fades the photo,
-    // revealing the ambient beneath — same composite as the masked DOM
+    // revealing the ambient beneath. Must mirror app.js's dynamic mask on
+    // .hero-mask: destination-out gradients at ALL FOUR painted edges, 2.5%
+    // deep — NOT the old 190px stylesheet zone, which was overridden inline
+    // and would bake a long soft "shadow" band the DOM never shows.
     const lay = document.createElement("canvas");
     lay.width = cw;
     lay.height = ch;
@@ -358,11 +361,23 @@
     lc.imageSmoothingQuality = "high"; // match the browser's CSS image scaling
     lc.drawImage(tex2d, px * dpr, py * dpr, pw * dpr, ph * dpr);
     lc.globalCompositeOperation = "destination-out";
-    const g = lc.createLinearGradient((W - 780) * dpr, 0, (W - 590) * dpr, 0);
-    g.addColorStop(0, "rgba(0,0,0,1)");
-    g.addColorStop(1, "rgba(0,0,0,0)");
-    lc.fillStyle = g;
-    lc.fillRect(0, 0, cw, ch);
+    const fw = pw * dpr * 0.025;
+    const fh = ph * dpr * 0.025;
+    const ex = px * dpr,
+      ey = py * dpr,
+      ew = pw * dpr,
+      eh = ph * dpr;
+    const edge = (x1, y1, x2, y2) => {
+      const gr = lc.createLinearGradient(x1, y1, x2, y2);
+      gr.addColorStop(0, "rgba(0,0,0,1)");
+      gr.addColorStop(1, "rgba(0,0,0,0)");
+      lc.fillStyle = gr;
+      lc.fillRect(0, 0, cw, ch);
+    };
+    edge(ex, 0, ex + fw, 0); // left
+    edge(ex + ew, 0, ex + ew - fw, 0); // right
+    edge(0, ey, 0, ey + fh); // top
+    edge(0, ey + eh, 0, ey + eh - fh); // bottom
     c.drawImage(lay, 0, 0);
     return comp;
   };

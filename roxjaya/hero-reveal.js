@@ -261,21 +261,39 @@
     const iw = tex2d.naturalWidth || 1125;
     const ih = tex2d.naturalHeight || 1080;
 
-    // ambient: cover-fit at the same object-position as .hero-amb, drawn
-    // through a tiny buffer for a soft blur, then darkened (~brightness .55)
+    // ambient: match .hero-amb exactly — cover-fit at 55%/30%, then the
+    // CSS scale(1.15) about centre (so the blurred copy lands where the
+    // DOM's does), then the same filter chain. An unzoomed or under-blurred
+    // bake reads as a dark ghost figure beside the sharp photo.
     const ambS = Math.max(cw / iw, ch / ih);
-    const ambW = iw * ambS;
-    const ambH = ih * ambS;
-    const ambX = (cw - ambW) * 0.55;
-    const ambY = (ch - ambH) * 0.3;
-    const sm = document.createElement("canvas");
-    sm.width = Math.max(2, Math.round(cw / 12));
-    sm.height = Math.max(2, Math.round(ch / 12));
-    const sc = sm.getContext("2d");
-    sc.drawImage(tex2d, ambX / 12, ambY / 12, ambW / 12, ambH / 12);
-    c.drawImage(sm, 0, 0, cw, ch);
-    c.fillStyle = "rgba(20, 7, 15, 0.45)";
-    c.fillRect(0, 0, cw, ch);
+    const ambW = iw * ambS * 1.15;
+    const ambH = ih * ambS * 1.15;
+    const ambX = cw / 2 + ((cw - iw * ambS) * 0.55 - cw / 2) * 1.15;
+    const ambY = ch / 2 + ((ch - ih * ambS) * 0.3 - ch / 2) * 1.15;
+    c.filter = `blur(${48 * dpr}px) brightness(0.55) saturate(1.15)`;
+    if (c.filter !== "none") {
+      // overshoot the draw rect so the blur doesn't pull in transparent
+      // fringes at the canvas edges
+      const m = Math.ceil(96 * dpr);
+      c.drawImage(
+        tex2d,
+        ambX - m,
+        ambY - m * (ambH / ambW),
+        ambW + 2 * m,
+        ambH + 2 * m * (ambH / ambW),
+      );
+      c.filter = "none";
+    } else {
+      c.filter = "none";
+      const sm = document.createElement("canvas");
+      sm.width = Math.max(2, Math.round(cw / 16));
+      sm.height = Math.max(2, Math.round(ch / 16));
+      const sc = sm.getContext("2d");
+      sc.drawImage(tex2d, ambX / 16, ambY / 16, ambW / 16, ambH / 16);
+      c.drawImage(sm, 0, 0, cw, ch);
+      c.fillStyle = "rgba(0, 0, 0, 0.45)";
+      c.fillRect(0, 0, cw, ch);
+    }
 
     // photo: contain-fit, padding 14/18, right-pinned — mirrors the CSS
     const cs = getComputedStyle(img);

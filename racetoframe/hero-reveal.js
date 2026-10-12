@@ -305,21 +305,50 @@
     mvp = new Float32Array(o);
   };
 
+  // offset* are pure layout values — they ignore the img's enter/drift
+  // transforms AND scroll, so the canvas pins to where the photo actually
+  // lays out and stays dead still while the hidden img's entrance
+  // animation plays underneath. Pinning to getBoundingClientRect instead
+  // made the canvas chase the rotating bounding box: 23 re-pins during
+  // the 2.8s enter, each rebuilding the plane — a visible shudder.
+  const layoutBox = (el, parent) => {
+    let x = 0,
+      y = 0,
+      n = el;
+    while (n && n !== parent) {
+      x += n.offsetLeft;
+      y += n.offsetTop;
+      n = n.offsetParent;
+    }
+    return n === parent
+      ? { x, y, w: el.offsetWidth, h: el.offsetHeight }
+      : null;
+  };
+
   const size = () => {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    // pin the canvas exactly over the img's box, relative to whatever is
-    // its containing block (section on desktop, the mask wrapper on mobile)
-    const pr = canvas.parentElement.getBoundingClientRect();
-    const ir = img.getBoundingClientRect();
-    canvas.style.top = `${ir.top - pr.top}px`;
-    canvas.style.left = `${ir.left - pr.left}px`;
-    canvas.style.width = `${ir.width}px`;
+    const parent = canvas.parentElement;
+    let lb = layoutBox(img, parent);
+    if (!lb) {
+      // fallback: parent isn't in the img's offset chain — use rects
+      const pr = parent.getBoundingClientRect();
+      const ir = img.getBoundingClientRect();
+      lb = {
+        x: ir.left - pr.left,
+        y: ir.top - pr.top,
+        w: ir.width,
+        h: ir.height,
+      };
+    }
+    canvas.style.top = `${lb.y}px`;
+    canvas.style.left = `${lb.x}px`;
+    canvas.style.width = `${lb.w}px`;
     // Pin to the img's exact rect — shrinking the canvas squashes the photo
     // and the bottom visibly clicks down at handoff. Edge leak is handled
     // by the 14px clip-path on the canvas instead.
-    canvas.style.height = `${ir.height}px`;
-    canvas.width = Math.round(ir.width * dpr);
-    canvas.height = Math.round(ir.height * dpr);
+    canvas.style.height = `${lb.h}px`;
+    canvas.width = Math.round(lb.w * dpr);
+    canvas.height = Math.round(lb.h * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
     buildMVP();
   };
@@ -364,16 +393,15 @@
     // roll has finished laying the sheet (~74% through the sweep).
     const ease = (t) => 1 - Math.pow(1 - t, 2);
     const start = performance.now() + DELAY;
-    // Re-pin the canvas to the img's rect — but only when it genuinely
-    // moved. getBoundingClientRect returns fractional values that can
-    // oscillate sub-pixel frame to frame, and rebuilding the plane off a
-    // jittering rect makes the landing shimmer.
+    // Re-pin only when the img's LAYOUT box genuinely moves (resize,
+    // reflow) — never for transforms or scroll, which can't affect where
+    // the canvas sits inside its parent.
     let lastPin = "";
     const pin = () => {
-      const ir = img.getBoundingClientRect();
-      const key =
-        `${Math.round(ir.left)}|${Math.round(ir.top)}|` +
-        `${Math.round(ir.width)}|${Math.round(ir.height)}`;
+      const lb = layoutBox(img, canvas.parentElement);
+      const key = lb
+        ? `${lb.x}|${lb.y}|${lb.w}|${lb.h}`
+        : `${img.offsetWidth}|${img.offsetHeight}`;
       if (key !== lastPin) {
         lastPin = key;
         size();

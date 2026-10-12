@@ -1,5 +1,6 @@
 {
   "slug": "burgonfitness",
+  "heroFull": true,
   "brand": "Burgon Fitness",
   "brandUpper": "BURGON FITNESS",
   "brandShort": "Burgon",
@@ -484,10 +485,6 @@
     {
       "pattern": ":root\\s*\\{",
       "replace": ":root{\n  --hero-focus: 60% 32%;"
-    },
-    {
-      "pattern": "class=\"hero hero--bleed\"",
-      "replace": "class=\"hero hero--bleed hero--full\""
     },
     {
       "pattern": "· dari lantai Zumba ke podium",

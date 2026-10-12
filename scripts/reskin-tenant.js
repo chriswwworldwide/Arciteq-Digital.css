@@ -63,6 +63,48 @@ const excludeRes = excludePatterns.map((re) => new RegExp(re));
 const src = path.join(root, "roxjaya");
 const dst = path.join(root, slug);
 const buildV = Date.now();
+
+// Injected into a tenant's styles.css when config sets "heroFull": true —
+// photo covers the whole hero (no amb letterbox, no edge feather) so the
+// WebGL reveal unrolls across the full background. Kept out of the shared
+// source so the flagship's classic hero stays untouched.
+const HERO_FULL_CSS = `/* hero--full: photo covers the whole hero; reveal unrolls across the
+   full background. Opt-in per tenant via "heroFull": true. */
+.hero--bleed.hero--full .hero-amb {
+  display: none;
+}
+
+.hero--bleed.hero--full .hero-img {
+  object-fit: cover;
+  /* --hero-focus keeps the subject clear of the bottom-left copy and is
+     set per tenant on :root. */
+  object-position: var(--hero-focus, 50% 30%);
+  padding: 0;
+}
+
+.hero--bleed.hero--full::after {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(40, 14, 30, 0.05) 0%,
+      rgba(40, 14, 30, 0.2) 45%,
+      rgba(40, 14, 30, 0.86) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(40, 14, 30, 0.88) 0%,
+      rgba(40, 14, 30, 0.5) 45%,
+      rgba(40, 14, 30, 0.12) 75%,
+      rgba(40, 14, 30, 0) 100%
+    );
+}
+
+@media (min-width: 801px) {
+  .hero--bleed.hero--full .hero-mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}`;
 if (slug === "roxjaya" || slug.startsWith("..")) {
   console.error("bad slug");
   process.exit(1);
@@ -179,6 +221,17 @@ for (const file of walk(dst)) {
       ),
       `$1?v=${buildV}"`,
     );
+  }
+  // heroFull opt-in: photo covers the whole hero so the reveal unrolls
+  // across the entire background (keeps .hero--bleed so the JS hooks it)
+  if (cfg.heroFull) {
+    if (file.endsWith("styles.css")) s += `\n${HERO_FULL_CSS}\n`;
+    if (file.endsWith("index.html")) {
+      s = s.replace(
+        'class="hero hero--bleed"',
+        'class="hero hero--bleed hero--full"',
+      );
+    }
   }
   // drop whole sections that only make sense in the source market
   for (const id of stripSections) {

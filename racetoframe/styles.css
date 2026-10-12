@@ -673,38 +673,6 @@ button.btn {
     );
 }
 
-/* hero--full: photo covers the whole hero (no amb letterbox, no edge
-   feather), the reveal unrolls across the full background. Opt-in per
-   tenant — keep .hero--bleed on the element so the reveal JS hooks it. */
-.hero--bleed.hero--full .hero-amb {
-  display: none;
-}
-
-.hero--bleed.hero--full .hero-img {
-  object-fit: cover;
-  /* --hero-focus keeps the subject clear of the bottom-left copy and is
-     set per tenant on :root. */
-  object-position: var(--hero-focus, 50% 30%);
-  padding: 0;
-}
-
-.hero--bleed.hero--full::after {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(40, 14, 30, 0.05) 0%,
-      rgba(40, 14, 30, 0.2) 45%,
-      rgba(40, 14, 30, 0.86) 100%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(40, 14, 30, 0.88) 0%,
-      rgba(40, 14, 30, 0.5) 45%,
-      rgba(40, 14, 30, 0.12) 75%,
-      rgba(40, 14, 30, 0) 100%
-    );
-}
-
 .hero--bleed .wrap {
   position: relative;
   width: min(1180px, 100% - 40px);
@@ -1373,7 +1341,7 @@ footer a:hover {
     aspect-ratio: 1 / 1;
     height: auto;
     max-height: 70vh;
-    object-position: var(--hero-focus, 65% 45%);
+    object-position: 65% 45%;
   }
   .hero--bleed .hero-amb {
     display: none;
@@ -2269,12 +2237,9 @@ body.has-sticky-cta .wa-fab {
 
 /* Desktop only: melt the photo's left edge into its own ambient blur —
    the headline tail can graze the fade without ever touching a hard
-   crop. Mobile's mask stays unmasked (its own grid row + rules).
-   hero--full opts out: the photo covers the whole hero, so a left-edge
-   feather would erase half the shot — the ::after scrim carries
-   legibility there instead. */
+   crop. Mobile's mask stays unmasked (its own grid row + rules). */
 @media (min-width: 801px) {
-  .hero--bleed:not(.hero--full) .hero-mask {
+  .hero--bleed .hero-mask {
     -webkit-mask-image: linear-gradient(90deg, transparent calc(100% - 780px), #000 calc(100% - 590px));
     mask-image: linear-gradient(90deg, transparent calc(100% - 780px), #000 calc(100% - 590px));
   }
@@ -2562,4 +2527,42 @@ figure.reveal {
 }
 .pred-line {
   margin: 0 0 10px;
+}
+
+/* hero--full: photo covers the whole hero; reveal unrolls across the
+   full background. Opt-in per tenant via "heroFull": true. */
+.hero--bleed.hero--full .hero-amb {
+  display: none;
+}
+
+.hero--bleed.hero--full .hero-img {
+  object-fit: cover;
+  /* --hero-focus keeps the subject clear of the bottom-left copy and is
+     set per tenant on :root. */
+  object-position: var(--hero-focus, 50% 30%);
+  padding: 0;
+}
+
+.hero--bleed.hero--full::after {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(40, 14, 30, 0.05) 0%,
+      rgba(40, 14, 30, 0.2) 45%,
+      rgba(40, 14, 30, 0.86) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(40, 14, 30, 0.88) 0%,
+      rgba(40, 14, 30, 0.5) 45%,
+      rgba(40, 14, 30, 0.12) 75%,
+      rgba(40, 14, 30, 0) 100%
+    );
+}
+
+@media (min-width: 801px) {
+  .hero--bleed.hero--full .hero-mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
 }

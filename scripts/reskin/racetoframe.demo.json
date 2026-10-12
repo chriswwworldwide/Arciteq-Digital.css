@@ -1,5 +1,6 @@
 {
   "slug": "racetoframe",
+  "heroFull": true,
   "brand": "Race to Frame",
   "brandUpper": "RACE TO FRAME",
   "brandShort": "G&H",
@@ -431,10 +432,6 @@
     {
       "pattern": ":root\\s*\\{",
       "replace": ":root{\n  --hero-focus: 50% 35%;"
-    },
-    {
-      "pattern": "class=\"hero hero--bleed\"",
-      "replace": "class=\"hero hero--bleed hero--full\""
     },
     {
       "pattern": "· dari lantai Zumba ke podium",

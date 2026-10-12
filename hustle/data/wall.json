@@ -1,15 +1,33 @@
 {
-  "note": "Results wall + Bobby's week. 'athletes': consented client results only \u2014 first name (or handle) as the athlete agreed, before/after times, race, date (YYYY-MM). 'weeks': short dated notes from Bobby, newest first; the page shows the latest 3. Empty lists hide their block. Never add anyone without their OK.",
+  "note": "Results wall + coach's week. 'athletes': consented client results only — first name (or handle) as agreed, before/after times, race, date (YYYY-MM). 'weeks': short dated notes, newest first; page shows latest 3. Empty lists hide their block. DEMO SEED — never add anyone without their OK.",
   "athletes": [
     {
-      "name": "Bobby",
-      "division": "Women Doubles",
-      "before": "1:16:31",
-      "after": "1:11:20",
-      "event": "Hyrox Bangkok \u2192 Hyrox Norwich",
-      "date": "2026-06",
-      "note": "1st AG 35\u201339, raced 7 weeks pregnant"
+      "name": "Sam",
+      "division": "Men Open",
+      "before": "1:24:10",
+      "after": "1:17:44",
+      "event": "HYROX Manchester → HYROX London",
+      "date": "2026-09",
+      "note": "First sub-1:20 — wall balls finally held together"
+    },
+    {
+      "name": "Emma",
+      "division": "Women Open",
+      "before": "1:21:30",
+      "after": "1:14:52",
+      "event": "HYROX Birmingham",
+      "date": "2026-08",
+      "note": "Top-10 age group, second race ever"
     }
   ],
-  "weeks": []
+  "weeks": [
+    {
+      "date": "2026-09-22",
+      "note": "Six PBs at London. The boring Tuesdays won again."
+    },
+    {
+      "date": "2026-09-15",
+      "note": "Taper week — mobility block and early nights, nothing clever."
+    }
+  ]
 }

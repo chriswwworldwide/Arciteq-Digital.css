@@ -68,6 +68,14 @@
       "caption": "House rules: good vibes, community, no egos. Written on the wall.",
       "by": "Hustle",
       "event": "The gym"
+    },
+    {
+      "src": "/hustle/images/gallery/street-race.jpg",
+      "alt": "Hustle runner racing down a packed high street, crowd behind the barriers",
+      "caption": "High street takeover. Norwich turns out when the crew races.",
+      "by": "Hustle",
+      "tilt": -1,
+      "event": "Race day"
     }
   ]
 }

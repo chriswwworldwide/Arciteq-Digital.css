@@ -1,0 +1,39 @@
+{
+  "_note": "DEMO SEED — manual bank-transfer payments for the Hustle demo. Edit here; the pay page reads it live. whatsapp is the coach's number with country code, digits only.",
+  "bank": {
+    "name": "Barclays",
+    "accountNumber": "00000000",
+    "sortCode": "00-00-00",
+    "accountName": "Hustle Performance Centre Ltd",
+    "accountNameNote": "Demo details — swap for the real account before any live use."
+  },
+  "qris": {
+    "src": "",
+    "alt": "Payment link from Hustle"
+  },
+  "whatsapp": "447701385444",
+  "instagram": "hustle_norwich",
+  "plans": [
+    {
+      "id": "hbf-plan-program-001",
+      "name": "HYROX Program",
+      "amountIdr": 89,
+      "per": "per month",
+      "summary": "Hannah's signature program — weekly sessions, station progressions and community group. The one Team GBR athletes use."
+    },
+    {
+      "id": "hbf-plan-sim-001",
+      "name": "Monthly Sim Entry",
+      "amountIdr": 35,
+      "per": "per event",
+      "summary": "Full HYROX simulation at Pyramid Performance — real timing, real atmosphere, no travel."
+    },
+    {
+      "id": "hbf-plan-121-001",
+      "name": "1:1 Coaching",
+      "amountIdr": 180,
+      "per": "per month",
+      "summary": "Weekly PT with Hannah plus your program dialled in for your next race."
+    }
+  ]
+}

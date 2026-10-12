@@ -30,12 +30,11 @@
     doubles: { station: 0.92, label: "Doubles" },
   };
   const VENUE = {
-    jakarta: { mod: 1.03, note: "Heat tax — arena heat costs real minutes." },
-    singapore: { mod: 1.025, note: "Muggy even indoors. Singapore does what it does." },
-    "kuala-lumpur": { mod: 1.02, note: "KL humidity — familiar territory, still a tax." },
-    bangkok: { mod: 1.02, note: "Warm and loud — the crowd carries you through it." },
-    "hong-kong": { mod: 0.995, note: "January weather is polite — nearly free time." },
-    seoul: { mod: 0.985, note: "Cold air is free PB. Jaket wajib." },
+    london: { mod: 1.0, note: "ExCeL aircon is kind — no excuses here." },
+    manchester: { mod: 1.0, note: "Flat, fast, friendly — PB territory." },
+    birmingham: { mod: 1.01, note: "NEC halls run warm — the crowd makes up for it." },
+    cardiff: { mod: 1.0, note: "Compact venue — the noise stays close." },
+    glasgow: { mod: 0.99, note: "Scottish air is free PB. Layers for the queue." },
   };
   const MONTHS = {
     january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,

@@ -1,0 +1,67 @@
+{
+  "note": "DEMO SEED — photos pulled from G&H's IG for the walk-in mockup. Replace with real member photos on launch.",
+  "photos": [
+    {
+      "src": "/racetoframe/images/gallery/crew-hyrox-wall.jpg",
+      "alt": "The G&H crew under the big HYROX letters at the Performance Centre",
+      "caption": "The whole lot of them. Every single one started somewhere.",
+      "by": "G&H",
+      "tilt": -1.5,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/racetoframe/images/gallery/crew-race-day.jpg",
+      "alt": "G&H crew in race bibs outside a Cheltenham church after a local race",
+      "caption": "Race day crew. Half of them didn't know each other a year ago.",
+      "by": "G&H",
+      "tilt": 2,
+      "event": "Race day"
+    },
+    {
+      "src": "/racetoframe/images/gallery/six-am-crew.jpg",
+      "alt": "Early morning session — rowers and coaches in golden light",
+      "caption": "6AM hits different. Every week, same crew.",
+      "by": "G&H",
+      "tilt": 1,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/racetoframe/images/gallery/train-recover.jpg",
+      "alt": "Train hard, recover properly — session and sauna split shot",
+      "caption": "Train hard. Recover properly. Repeat weekly.",
+      "by": "G&H",
+      "tilt": -2,
+      "event": "Performance Centre"
+    },
+    {
+      "src": "/racetoframe/images/gallery/blakely-winners.jpg",
+      "alt": "G&H women's team holding the Blakely Apex winner board",
+      "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
+      "by": "G&H",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/racetoframe/images/gallery/church-crew.jpg",
+      "alt": "The G&H crew in race bibs outside a Cheltenham church on race day",
+      "caption": "Race-day crew, Cheltenham 10k. The church bells were optional.",
+      "by": "G&H",
+      "event": "Race day"
+    },
+    {
+      "src": "/racetoframe/images/gallery/values-wall.jpg",
+      "alt": "The G&H values wall inside the Performance Centre",
+      "caption": "House rules: good vibes, community, no egos. Written on the wall.",
+      "by": "G&H",
+      "event": "The gym"
+    },
+    {
+      "src": "/racetoframe/images/gallery/street-race.jpg",
+      "alt": "Runner racing down a packed high street, crowd behind the barriers",
+      "caption": "Every high street turns into a stadium on race day.",
+      "by": "G&H",
+      "tilt": -1,
+      "event": "Race day"
+    }
+  ]
+}

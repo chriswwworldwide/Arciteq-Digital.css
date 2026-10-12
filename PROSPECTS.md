@@ -61,6 +61,12 @@ Two pitch lanes:
    address, dated Squarespace, personal brand, £89/mo programs. Organised a
    fitness-business networking event Sept 2025 — thinks like an organiser.
    IG @hannahburgon_pt · hannahburgonfitness.com
+   Site intel: business est. Mar 2019, site built ~May 2020 (Squarespace CDN
+   timestamp), ©2022 footer. Predates her entire HYROX career — pitch is
+   "you've outgrown this," NOT "your site is bad" (it's worked fine for her;
+   criticising it puts her on defence). The gap is infrastructure, not looks:
+   sims run off Gmail, no community space, no results/event tooling — things
+   Squarespace can't do at any price.
 2. **Hustle** — opened Performance Centre ~Jul/Aug 2026 after documented build.
    Official HYROX affiliate, 5 session types, sims since Jan 2024 (60 athletes).
    Pays a social media manager = live marketing budget; running £1/day trial.
@@ -98,6 +104,34 @@ Two pitch lanes:
 - M Club Stoke — corporate £1m play, enterprise pitch, park
 - Simon Graham (Farnborough) — best existing site, weak pitch
 - HIIT Gyms (London NW6) — chain, needs owner-level access
+
+## The Roxjaya-clone business
+
+What we're actually selling is roxjaya, productised — the same engine,
+reskinned per prospect in under an hour via `scripts/reskin-tenant.js` +
+a per-tenant config + an assets folder. Three tenant shapes proven so far:
+
+- **Gym/community** (Hustle) — facility-led: sims, memberships, values wall
+- **Ecommerce-adjacent** (Race to Frame) — existing Shopify store stays,
+  community layer wraps around it; products embedded as live links
+- **Personal coach** (Hannah Burgon) — the original roxjaya shape:
+  personality-led, programs + events, community tooling underneath
+
+**The photo gap is the product gap.** Dina's IG is half of why the flagship
+looks alive — most prospects won't have a Dina. Two consequences:
+
+- Sales line for weak-photo prospects: "we make what you already post look
+  like this" (the template does the heavy lifting — proven on Hustle's
+  scraped shots).
+- New launch-kit add-on: **community shot list** — the 6 photos every
+  tenant needs (packed floor, coach mid-cue, post-class group, race-day
+  crew, celebration shot, quiet-recovery). Cheap to produce, +30% perceived
+  site quality on day one. Price into launch kit or sell at £50–100.
+
+Reskin discipline: config + assets are source of truth; generated tenant
+dirs are outputs. `sharedPack` in config pulls market-level cleanup
+(UK language/data sweep) so every tenant inherits it — don't duplicate
+fixes per config.
 
 ## Pricing model
 

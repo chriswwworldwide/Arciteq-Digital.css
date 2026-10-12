@@ -1,0 +1,98 @@
+{
+  "note": "UK HYROX scene — demo seed. Coach edits by hand or approves from the desk. type: race|sim|brand|venue|meetup. mode: race|watch|both. `date` empty + `when` for unconfirmed.",
+  "checked": "2026-10",
+  "items": [
+    {
+      "id": "hyrox-london",
+      "type": "race",
+      "mode": "both",
+      "name": "HYROX London",
+      "organiser": "HYROX",
+      "blurb": "The big one. ExCeL gets loud, the doubles queues get long and half the UK scene is either racing or watching. Book hotels the week tickets drop — the Docklands fills fast.",
+      "venue": "ExCeL London",
+      "date": "",
+      "when": "December + May editions — exact weekends on hyrox.com",
+      "last": "",
+      "link": "https://hyrox.com/events/",
+      "guide": "",
+      "tags": [
+        "home-race"
+      ]
+    },
+    {
+      "id": "hyrox-birmingham",
+      "type": "race",
+      "mode": "both",
+      "name": "HYROX Birmingham",
+      "organiser": "HYROX",
+      "blurb": "NEC weekend — flat, fast and easy to get to from everywhere. The default 'first away race' for most of the crew.",
+      "venue": "NEC Birmingham",
+      "date": "",
+      "when": "Autumn edition — dates TBC",
+      "last": "",
+      "link": "https://hyrox.com/events/",
+      "guide": "",
+      "tags": []
+    },
+    {
+      "id": "hyrox-manchester",
+      "type": "race",
+      "mode": "both",
+      "name": "HYROX Manchester",
+      "organiser": "HYROX",
+      "blurb": "Manchester Central — compact venue, the noise stays close to the floor. Northern crews show up in numbers.",
+      "venue": "Manchester Central",
+      "date": "",
+      "when": "Early 2027 window",
+      "last": "",
+      "link": "https://hyrox.com/events/",
+      "guide": "",
+      "tags": []
+    },
+    {
+      "id": "hyrox-glasgow",
+      "type": "race",
+      "mode": "both",
+      "name": "HYROX Glasgow",
+      "organiser": "HYROX",
+      "blurb": "Scottish debut for most people — worth the trip for the crowd alone. Pack layers for the queue outside.",
+      "venue": "SEC Glasgow",
+      "date": "",
+      "when": "Spring 2027 window",
+      "last": "",
+      "link": "https://hyrox.com/events/",
+      "guide": "",
+      "tags": []
+    },
+    {
+      "id": "hyrox-cardiff",
+      "type": "race",
+      "mode": "both",
+      "name": "HYROX Cardiff",
+      "organiser": "HYROX",
+      "blurb": "Smaller venue, friendlier field — a good first 'proper' race if London feels big. Centre hotels are cheap mid-week.",
+      "venue": "Cardiff",
+      "date": "",
+      "when": "Autumn 2026 window",
+      "last": "",
+      "link": "https://hyrox.com/events/",
+      "guide": "",
+      "tags": []
+    },
+    {
+      "id": "squad-sim",
+      "type": "sim",
+      "mode": "race",
+      "name": "Squad race simulation",
+      "organiser": "In-house",
+      "blurb": "Timed sims — full or half format, splits logged for the databank, debrief over coffee after. Small groups; members get first slots. Dates land on the events board.",
+      "venue": "In-house",
+      "date": "",
+      "when": "Roughly monthly",
+      "last": "",
+      "link": "",
+      "guide": "",
+      "tags": []
+    }
+  ]
+}

@@ -15,32 +15,32 @@
   "instagram": "hustle_norwich",
   "plans": [
     {
-      "id": "hustle-plan-crew-001",
-      "name": "Rookie Crew",
-      "amountIdr": 850000,
-      "per": "per month",
-      "summary": "Weekly beginner group session in Norwich, monthly meetup (class, then coffee), starter programme in the Hustle app, crew WhatsApp group. Rolling start — join any time, no experience needed."
+      "id": "hustle-plan-trial-001",
+      "name": "3-Day Trial",
+      "amountIdr": 30,
+      "per": "one-off — 3 days",
+      "summary": "Three days of everything: HYROX sessions, boxing, strength, open gym. The standard 'come and see' — most people stay."
     },
     {
-      "id": "hustle-plan-warrior-001",
-      "name": "Warrior Program",
-      "amountIdr": 599000,
+      "id": "hustle-plan-all-001",
+      "name": "All-Access",
+      "amountIdr": 55,
       "per": "per month",
-      "summary": "Weekly programme in the Hustle app, station library, community group, monthly Q&A."
+      "summary": "Unlimited sessions: HYROX squad, boxing, strength, open gym, plus the crew WhatsApp and Saturday sims."
     },
     {
-      "id": "hustle-plan-hybrid-001",
-      "name": "Hybrid Coaching",
-      "amountIdr": 2500000,
+      "id": "hustle-plan-hyrox-001",
+      "name": "HYROX Squad",
+      "amountIdr": 40,
       "per": "per month",
-      "summary": "1:1 online coaching plus two floor sessions a month in Norwich."
+      "summary": "Two coached HYROX sessions a week, station technique work, and race-sim priority booking."
     },
     {
-      "id": "hustle-plan-elite-001",
-      "name": "Elite Race Prep",
-      "amountIdr": 6000000,
-      "per": "per month, 3-month minimum",
-      "summary": "Fully individualised 12-week race build with pacing and race-day strategy."
+      "id": "hustle-plan-121-001",
+      "name": "1:1 Coaching",
+      "amountIdr": 150,
+      "per": "per month",
+      "summary": "One PT session a week with Bobby or a coach, plus your programme in the app."
     }
   ]
 }

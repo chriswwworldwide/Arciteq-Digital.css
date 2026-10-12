@@ -192,6 +192,14 @@
       "the UK"
     ],
     [
+      "Asia-Pacific",
+      "UK & Ireland"
+    ],
+    [
+      "Asian",
+      "British"
+    ],
+    [
       "Asia",
       "the UK"
     ],
@@ -274,110 +282,6 @@
     [
       "Bobby, head coach",
       "The Hustle crew after a race-day community run"
-    ],
-    [
-      "images/dina-burpee.jpg",
-      "images/gallery/six-am-crew.jpg"
-    ],
-    [
-      "images/dina-farmers-pro.jpg",
-      "images/rope.jpg"
-    ],
-    [
-      "images/dina-farmers-walk.jpg",
-      "images/squad-athlos.jpg"
-    ],
-    [
-      "images/dina-heck-pair.jpg",
-      "images/gallery/crew-race-day.jpg"
-    ],
-    [
-      "images/dina-lunges.jpg",
-      "images/dina-station-lean.jpg"
-    ],
-    [
-      "images/dina-lunges-black.jpg",
-      "images/gallery/train-recover.jpg"
-    ],
-    [
-      "images/dina-row-shaka.jpg",
-      "images/wallball.jpg"
-    ],
-    [
-      "images/dina-row-side2.jpg",
-      "images/gallery/blakely-winners.jpg"
-    ],
-    [
-      "images/dina-skierg-arms.jpg",
-      "images/dina-skierg-laugh.jpg"
-    ],
-    [
-      "images/dina-skierg-pull.jpg",
-      "images/gallery/crew-hyrox-wall.jpg"
-    ],
-    [
-      "images/dina-sledpull.jpg",
-      "images/rope.jpg"
-    ],
-    [
-      "images/dina-sledpush-dark.jpg",
-      "images/dina-coaching.jpg"
-    ],
-    [
-      "images/dina-sledpush-front.jpg",
-      "images/race-revel.jpg"
-    ],
-    [
-      "images/dina-sledpush-low.jpg",
-      "images/wallball.jpg"
-    ],
-    [
-      "images/dina-wallball.jpg",
-      "images/wallball.jpg"
-    ],
-    [
-      "images/coach.jpg",
-      "images/dina-avatar.jpg"
-    ],
-    [
-      "images/doubles.jpg",
-      "images/dina-race-pair.jpg"
-    ],
-    [
-      "images/feature.jpg",
-      "images/gallery/crew-hyrox-wall.jpg"
-    ],
-    [
-      "images/hero-alt.jpg",
-      "images/gallery/six-am-crew.jpg"
-    ],
-    [
-      "images/kb-carry.jpg",
-      "images/rope.jpg"
-    ],
-    [
-      "images/podium.jpg",
-      "images/gallery/blakely-winners.jpg"
-    ],
-    [
-      "images/run.jpg",
-      "images/race-revel.jpg"
-    ],
-    [
-      "images/skierg.jpg",
-      "images/dina-skierg-laugh.jpg"
-    ],
-    [
-      "images/sled-top.jpg",
-      "images/dina-coaching.jpg"
-    ],
-    [
-      "images/station10-dance.jpg",
-      "images/gallery/crew-race-day.jpg"
-    ],
-    [
-      "images/station9-dinner.jpg",
-      "images/gallery/train-recover.jpg"
     ],
     [
       "Book Bobby",
@@ -914,32 +818,32 @@
       "instagram": "hustle_norwich",
       "plans": [
         {
-          "id": "hustle-plan-crew-001",
-          "name": "Rookie Crew",
-          "amountIdr": 850000,
-          "per": "per month",
-          "summary": "Weekly beginner group session in Norwich, monthly meetup (class, then coffee), starter programme in the Hustle app, crew WhatsApp group. Rolling start — join any time, no experience needed."
+          "id": "hustle-plan-trial-001",
+          "name": "3-Day Trial",
+          "amountIdr": 30,
+          "per": "one-off — 3 days",
+          "summary": "Three days of everything: HYROX sessions, boxing, strength, open gym. The standard 'come and see' — most people stay."
         },
         {
-          "id": "hustle-plan-warrior-001",
-          "name": "Warrior Program",
-          "amountIdr": 599000,
+          "id": "hustle-plan-all-001",
+          "name": "All-Access",
+          "amountIdr": 55,
           "per": "per month",
-          "summary": "Weekly programme in the Hustle app, station library, community group, monthly Q&A."
+          "summary": "Unlimited sessions: HYROX squad, boxing, strength, open gym, plus the crew WhatsApp and Saturday sims."
         },
         {
-          "id": "hustle-plan-hybrid-001",
-          "name": "Hybrid Coaching",
-          "amountIdr": 2500000,
+          "id": "hustle-plan-hyrox-001",
+          "name": "HYROX Squad",
+          "amountIdr": 40,
           "per": "per month",
-          "summary": "1:1 online coaching plus two floor sessions a month in Norwich."
+          "summary": "Two coached HYROX sessions a week, station technique work, and race-sim priority booking."
         },
         {
-          "id": "hustle-plan-elite-001",
-          "name": "Elite Race Prep",
-          "amountIdr": 6000000,
-          "per": "per month, 3-month minimum",
-          "summary": "Fully individualised 12-week race build with pacing and race-day strategy."
+          "id": "hustle-plan-121-001",
+          "name": "1:1 Coaching",
+          "amountIdr": 150,
+          "per": "per month",
+          "summary": "One PT session a week with Bobby or a coach, plus your programme in the app."
         }
       ]
     },
@@ -1013,6 +917,14 @@
           "caption": "House rules: good vibes, community, no egos. Written on the wall.",
           "by": "Hustle",
           "event": "The gym"
+        },
+        {
+          "src": "/hustle/images/gallery/street-race.jpg",
+          "alt": "Hustle runner racing down a packed high street, crowd behind the barriers",
+          "caption": "High street takeover. Norwich turns out when the crew races.",
+          "by": "Hustle",
+          "tilt": -1,
+          "event": "Race day"
         }
       ]
     }
@@ -1022,5 +934,7 @@
     "images/dina-",
     "images/gallery/",
     "images/(squad-anya|carry|coach|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station9-dinner|station10-dance)\\.jpg$"
-  ]
+  ],
+  "currency": "gbp",
+  "sharedPack": "scripts/reskin/shared-packs/uk.json"
 }

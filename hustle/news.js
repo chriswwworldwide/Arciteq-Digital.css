@@ -39,7 +39,7 @@
   function render(items) {
     if (!items.length) {
       list.innerHTML =
-        '<li class="event"><time>Soon</time><div><p>Belum ada yang terbit — Bobby nambahin segenggam item tiap minggu pas musim jalan.</p></div></li>';
+        '<li class="event"><time>Soon</time><div><p>Nothing published yet — new items land most weeks during the season.</p></div></li>';
       return;
     }
     list.innerHTML = items

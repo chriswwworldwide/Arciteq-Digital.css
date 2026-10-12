@@ -1,0 +1,116 @@
+{
+  "updated": "2026-09-21",
+  "note": "Crew finishers — DEMO SEED, replace with real verified results. Times as chip time h:mm:ss. Sources: official HYROX results + national records.",
+  "divisions": {
+    "women": {
+      "label": "Women Singles (Open & Pro)",
+      "results": [
+        {
+          "athlete": "Emma Clarke",
+          "time": "1:14:52",
+          "category": "Open",
+          "event": "HYROX Birmingham",
+          "date": "2026-08",
+          "city": "Birmingham"
+        },
+        {
+          "athlete": "Sophie Turner",
+          "time": "1:19:33",
+          "category": "Open · first race",
+          "event": "HYROX London",
+          "date": "2026-09",
+          "city": "London"
+        },
+        {
+          "athlete": "Jess Warner",
+          "time": "1:09:47",
+          "category": "Pro",
+          "event": "HYROX Manchester",
+          "date": "2026-06",
+          "city": "Manchester"
+        }
+      ]
+    },
+    "men": {
+      "label": "Men Singles (Open & Pro)",
+      "results": [
+        {
+          "athlete": "Ollie Marsh",
+          "time": "1:05:58",
+          "category": "Open",
+          "event": "HYROX London",
+          "date": "2026-09",
+          "city": "London"
+        },
+        {
+          "athlete": "Dan Reeves",
+          "time": "1:11:24",
+          "category": "Open · first race",
+          "event": "HYROX Birmingham",
+          "date": "2026-08",
+          "city": "Birmingham"
+        },
+        {
+          "athlete": "Kieran Doyle",
+          "time": "1:02:16",
+          "category": "Pro",
+          "event": "HYROX Glasgow",
+          "date": "2026-04",
+          "city": "Glasgow"
+        }
+      ]
+    },
+    "doubles-women": {
+      "label": "Women Doubles",
+      "results": [
+        {
+          "athlete": "Emma & Sophie",
+          "time": "1:08:12",
+          "category": "Open",
+          "event": "HYROX London",
+          "date": "2026-09",
+          "city": "London"
+        }
+      ]
+    },
+    "doubles-men": {
+      "label": "Men Doubles",
+      "results": [
+        {
+          "athlete": "Ollie & Dan",
+          "time": "1:01:44",
+          "category": "Open",
+          "event": "HYROX Birmingham",
+          "date": "2026-08",
+          "city": "Birmingham"
+        }
+      ]
+    },
+    "doubles-mixed": {
+      "label": "Mixed Doubles",
+      "results": [
+        {
+          "athlete": "Jess & Kieran",
+          "time": "1:02:31",
+          "category": "Open",
+          "event": "HYROX London",
+          "date": "2026-09",
+          "city": "London"
+        }
+      ]
+    },
+    "relay": {
+      "label": "Team Relay",
+      "results": [
+        {
+          "athlete": "Squad A",
+          "time": "1:02:05",
+          "category": "Relay",
+          "event": "HYROX Manchester",
+          "date": "2026-06",
+          "city": "Manchester"
+        }
+      ]
+    }
+  }
+}

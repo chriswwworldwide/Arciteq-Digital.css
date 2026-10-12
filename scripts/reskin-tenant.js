@@ -15,6 +15,19 @@ if (!cfgPath) {
   process.exit(1);
 }
 const cfg = JSON.parse(fs.readFileSync(cfgPath, "utf8"));
+// optional shared market pack — pairs/overrides/seeds every tenant in the
+// market needs (e.g. source-language cleanup). Tenant config wins conflicts.
+if (cfg.sharedPack) {
+  const sp = JSON.parse(
+    fs.readFileSync(path.join(root, cfg.sharedPack), "utf8"),
+  );
+  cfg.extraPairs = [...(sp.extraPairs || []), ...(cfg.extraPairs || [])];
+  cfg.copyOverrides = [
+    ...(sp.copyOverrides || []),
+    ...(cfg.copyOverrides || []),
+  ];
+  cfg.seedFiles = { ...(sp.seedFiles || {}), ...(cfg.seedFiles || {}) };
+}
 const {
   slug,
   brand,
@@ -39,6 +52,7 @@ const {
   pageRenames = {},
   htmlTitle = "",
   metaDescription = "",
+  currency = "idr",
   extraPairs = [],
   copyOverrides = [],
   stripSections = [],
@@ -213,11 +227,16 @@ for (const [f, build] of Object.entries(seed)) {
     JSON.stringify(build(f), null, 2) + "\n",
   );
 }
-// whole-file data seeds from config (e.g. a market's race calendar)
+// whole-file data seeds from config (e.g. a market's race calendar).
+// A string value "@path" reads shared seed JSON relative to the repo root.
 for (const [f, content] of Object.entries(cfg.seedFiles || {})) {
+  const data =
+    typeof content === "string" && content.startsWith("@")
+      ? JSON.parse(fs.readFileSync(path.join(root, content.slice(1)), "utf8"))
+      : content;
   fs.writeFileSync(
     path.join(dst, "data", f),
-    JSON.stringify(content, null, 2) + "\n",
+    JSON.stringify(data, null, 2) + "\n",
   );
 }
 
@@ -255,7 +274,15 @@ tStr = tStr
   .join(city)
   .split("dinazumba1987@gmail.com")
   .join(email || "demo@example.com");
+for (const [a, b] of Object.entries(pageRenames))
+  tStr = tStr.split(a).join(b);
 t = JSON.parse(tStr);
+t.currency = currency;
+if (t.guides && t.guides.headerHtml) {
+  t.guides.headerHtml = t.guides.headerHtml
+    .split('R<span class="o">O</span>XJAYA WARRIORS')
+    .join(wordmarkHtml);
+}
 t.features = features;
 t.channels = channels;
 t.demo = true;

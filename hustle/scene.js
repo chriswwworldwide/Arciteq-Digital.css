@@ -60,7 +60,7 @@
     );
     root.innerHTML = shown.length
       ? shown.map((i) => card(i)).join("")
-      : `<li class="event"><time>—</time><div><p>Belum ada di list ini.</p></div></li>`;
+      : `<li class="event"><time>—</time><div><p>Nothing on the list yet.</p></div></li>`;
   }
 
   fetch("/hustle/data/scene.json", { cache: "no-cache" })

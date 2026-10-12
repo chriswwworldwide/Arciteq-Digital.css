@@ -144,7 +144,7 @@
     const goal = String(p.goal || "");
     const exp = String(p.experience || "");
     const days = String(p.days_per_week || "");
-    const inNorwich = /jakarta|jkt|tangerang|bekasi|depok|bogor/i.test(
+    const inNorwich = /london|jkt|tangerang|bekasi|depok|bogor/i.test(
       String(p.city || ""),
     );
     const raced = exp === "2–4 races" || exp === "5+ races";

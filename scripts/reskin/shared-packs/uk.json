@@ -1,0 +1,341 @@
+{
+  "extraPairs": [
+    [
+      "\"IDR\"",
+      "\"GBP\""
+    ],
+    [
+      "Kuala Lumpur",
+      "Manchester"
+    ],
+    [
+      "Hong Kong",
+      "Cardiff"
+    ],
+    [
+      "Singapore",
+      "London"
+    ],
+    [
+      "Bangkok",
+      "Birmingham"
+    ],
+    [
+      "Seoul",
+      "Glasgow"
+    ],
+    [
+      "every the UK-Pacific weekend",
+      "every UK race weekend"
+    ],
+    [
+      "the UK-Pacific",
+      "British"
+    ],
+    [
+      "the UKn",
+      "British"
+    ],
+    [
+      "Jaket wajib",
+      "Pack layers anyway"
+    ],
+    [
+      "Belum ada di list ini.",
+      "Nothing on the list yet."
+    ],
+    [
+      "data-city=\"jakarta\"",
+      "data-city=\"london\""
+    ],
+    [
+      "jakarta-top10",
+      "uk-crew"
+    ],
+    [
+      "Singapore · Seoul · Hong Kong · Bangkok",
+      "London · Birmingham · Manchester · Cardiff · Glasgow"
+    ],
+    [
+      "HYROX Singapore 2026",
+      "HYROX London 2026"
+    ],
+    [
+      "jakarta",
+      "london"
+    ],
+    [
+      "hyrox-national-records/indonesia",
+      "hyrox-national-records"
+    ],
+    [
+      "images/dina-avatar.jpg",
+      "images/avatar.jpg"
+    ],
+    [
+      "images/dina-bangkok-reveal.jpg",
+      "images/hero-reveal.jpg"
+    ],
+    [
+      "images/dina-bio.jpg",
+      "images/bio.jpg"
+    ],
+    [
+      "images/dina-burpee.jpg",
+      "images/station-lean.jpg"
+    ],
+    [
+      "images/dina-coaching.jpg",
+      "images/coaching.jpg"
+    ],
+    [
+      "images/dina-farmers-pro.jpg",
+      "images/carry.jpg"
+    ],
+    [
+      "images/dina-farmers-walk.jpg",
+      "images/carry.jpg"
+    ],
+    [
+      "images/dina-finish-arms.jpg",
+      "images/finish.jpg"
+    ],
+    [
+      "images/dina-finish-face.jpg",
+      "images/finish.jpg"
+    ],
+    [
+      "images/dina-halfmarathon-pr.jpg",
+      "images/race-revel.jpg"
+    ],
+    [
+      "images/dina-heck-pair.jpg",
+      "images/race-pair.jpg"
+    ],
+    [
+      "images/dina-lunges-black.jpg",
+      "images/station-lean.jpg"
+    ],
+    [
+      "images/dina-lunges.jpg",
+      "images/station-lean.jpg"
+    ],
+    [
+      "images/dina-race-pair.jpg",
+      "images/race-pair.jpg"
+    ],
+    [
+      "images/dina-row-shaka.jpg",
+      "images/rope.jpg"
+    ],
+    [
+      "images/dina-row-side2.jpg",
+      "images/rope.jpg"
+    ],
+    [
+      "images/dina-skierg-arms.jpg",
+      "images/skierg-laugh.jpg"
+    ],
+    [
+      "images/dina-skierg-laugh.jpg",
+      "images/skierg-laugh.jpg"
+    ],
+    [
+      "images/dina-skierg-pull.jpg",
+      "images/skierg-laugh.jpg"
+    ],
+    [
+      "images/dina-sled-zen.jpg",
+      "images/station-lean.jpg"
+    ],
+    [
+      "images/dina-sledpull.jpg",
+      "images/rope.jpg"
+    ],
+    [
+      "images/dina-sledpush-dark.jpg",
+      "images/coaching.jpg"
+    ],
+    [
+      "images/dina-sledpush-front.jpg",
+      "images/carry.jpg"
+    ],
+    [
+      "images/dina-sledpush-low.jpg",
+      "images/carry.jpg"
+    ],
+    [
+      "images/dina-station-lean.jpg",
+      "images/station-lean.jpg"
+    ],
+    [
+      "images/dina-wallball.jpg",
+      "images/wallball.jpg"
+    ],
+    [
+      "images/station9-dinner.jpg",
+      "images/squad-athlos.jpg"
+    ],
+    [
+      "images/station10-dance.jpg",
+      "images/finish.jpg"
+    ],
+    [
+      "images/squad-anya.jpg",
+      "images/squad-athlos.jpg"
+    ],
+    [
+      "images/hero.jpg",
+      "images/hero-reveal.jpg"
+    ],
+    [
+      "images/hero-alt.jpg",
+      "images/hero-reveal.jpg"
+    ],
+    [
+      "images/kb-carry.jpg",
+      "images/carry.jpg"
+    ],
+    [
+      "images/podium.jpg",
+      "images/finish.jpg"
+    ],
+    [
+      "images/run.jpg",
+      "images/race-revel.jpg"
+    ],
+    [
+      "images/doubles.jpg",
+      "images/race-pair.jpg"
+    ],
+    [
+      "images/feature.jpg",
+      "images/coaching.jpg"
+    ],
+    [
+      "images/sled-top.jpg",
+      "images/coaching.jpg"
+    ],
+    [
+      "images/skierg.jpg",
+      "images/skierg-laugh.jpg"
+    ],
+    [
+      "images/coach.jpg",
+      "images/avatar.jpg"
+    ]
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "const VENUE = \\{[\\s\\S]*?\\};",
+      "replace": "const VENUE = {\n    london: { mod: 1.0, note: \"ExCeL aircon is kind — no excuses here.\" },\n    manchester: { mod: 1.0, note: \"Flat, fast, friendly — PB territory.\" },\n    birmingham: { mod: 1.01, note: \"NEC halls run warm — the crowd makes up for it.\" },\n    cardiff: { mod: 1.0, note: \"Compact venue — the noise stays close.\" },\n    glasgow: { mod: 0.99, note: \"Scottish air is free PB. Layers for the queue.\" },\n  };"
+    },
+    {
+      "pattern": "<h2>Apa yang lagi rame[^<]*<em>[^<]*</em>[^<]*</h2>",
+      "replace": "<h2>What's moving in <em>UK HYROX</em> — two lines each.</h2>"
+    },
+    {
+      "pattern": "Belum ada yang terbit[^<]*",
+      "replace": "Nothing published yet — new items land most weeks during the season."
+    },
+    {
+      "pattern": "Jadwal HYROX \\w+ 2027[^\"]*",
+      "replace": "HYROX race dates, venue and how to enter"
+    },
+    {
+      "pattern": "Jadwal HYROX \\w+ dan the UK\\.",
+      "replace": "The UK HYROX calendar."
+    },
+    {
+      "pattern": "city planners for London, Birmingham, Hong\\s+Kong and Seoul[^<]*|city planners for Singapore, Bangkok, Hong\\s+Kong and Seoul[^<]*",
+      "replace": "city guides for London, Manchester, Birmingham and Glasgow — hotels, trains, food, the night after."
+    },
+    {
+      "pattern": "<strong>TBA</strong><span>London</span></div>\\s*<div>\\s*<h4>HYROX London</h4>\\s*<p>[^<]*</p>",
+      "replace": "<strong>TBA</strong><span>London</span></div>\n            <div>\n              <h4>HYROX London</h4>\n              <p>\n                The home weekend — biggest venue, loudest crowd. Crew cohort\n                with pacing plans built for ExCeL.\n              </p>"
+    },
+    {
+      "pattern": "Flying to London, Birmingham or Manchester\\?[^<]*|Flying to Singapore, Bangkok or KL\\?[^<]*",
+      "replace": "Racing away? Land the day before, keep race-day-minus-one for legs up, and pack your own gels — the expo always runs out."
+    },
+    {
+      "pattern": "Birmingham,\\s*London, Manchester: fly Friday, race Sunday[^<]*|Bangkok,\\s*Singapore, KL: fly Friday, race Sunday[^<]*",
+      "replace": "London, Birmingham, Manchester: travel the day before, race the next — race-morning trains are the original PB-killer."
+    },
+    {
+      "pattern": "Many \\w+ athletes race Birmingham, London, Kuala Lumpur or Hong\\s*Kong[^<]*|Many \\w+ athletes race Bangkok, Singapore, Kuala Lumpur or Hong\\s*Kong[^<]*",
+      "replace": "Plenty of the crew race away — Dublin, Berlin, Amsterdam and the usual Euro weekends."
+    },
+    {
+      "pattern": "Hyrox the UK race planner:[^<]*",
+      "replace": "HYROX UK race planner: London, Birmingham, Manchester, Cardiff, Glasgow — dates, venues, travel and where to stay."
+    },
+    {
+      "pattern": "Plan your next Hyrox race abroad from \\w+:[^\"]*",
+      "replace": "Plan your next HYROX race weekend: confirmed UK 2026/27 dates, venues, travel, where to stay and the night after."
+    },
+    {
+      "pattern": "London \\(under 2 hours\\)[^\"]*|Singapore \\(under 2 hours\\)[^\"]*",
+      "replace": "Birmingham and Manchester are the easiest by train for most of the country; London, Cardiff and Glasgow take a little longer. Confirmed 2026/27 dates are listed on this page with their official source."
+    },
+    {
+      "pattern": "London \\(under 2 h\\)[^<]*|Singapore \\(under 2 h\\)[^<]*",
+      "replace": "Birmingham and Manchester are the easiest by train for most UK athletes; London, Cardiff and Glasgow take a little longer. All five are on this page with confirmed 2026/27 dates."
+    },
+    {
+      "pattern": "London, Kuala Lumpur and Birmingham are all short direct flights[^\"]*|Singapore, Kuala Lumpur and Bangkok are all short direct flights[^\"]*",
+      "replace": "London, Birmingham, Manchester, Cardiff and Glasgow are the core UK season. Check hyrox.com for the current season's confirmed dates."
+    },
+    {
+      "pattern": "London, Kuala Lumpur and Birmingham — short direct flights and[^<]*|Singapore, Kuala Lumpur and Bangkok — short direct flights and[^<]*",
+      "replace": "London, Birmingham, Manchester, Cardiff and Glasgow — short hops for most UK athletes, and the fixtures every UK season builds around."
+    },
+    {
+      "pattern": "London — and the coaching itself moves to your phone|Singapore — and the coaching itself moves to your phone",
+      "replace": "Manchester — and the coaching itself moves to your phone"
+    },
+    {
+      "pattern": "city guides \\(Hong Kong, Bangkok,\\s*Singapore, KL…\\)|city guides \\(Cardiff, Birmingham,\\s*London, Manchester…\\)",
+      "replace": "city guides (London, Birmingham, Manchester…)"
+    },
+    {
+      "pattern": "Athletes racing Birmingham, London or Manchester are coached the same way|Athletes racing Bangkok, Singapore or KL are coached the same way",
+      "replace": "Athletes racing away from home are coached the same way"
+    },
+    {
+      "pattern": "/jakarta\\|jkt\\|tangerang\\|bekasi\\|depok\\|bogor/i",
+      "replace": "/norwich|stockport|cheltenham|london|birmingham|manchester|cardiff|glasgow|leeds|liverpool/i"
+    },
+    {
+      "pattern": "Lagi bikin sim atau kompetisi hybrid di \\w+ yang belum masuk[\\s\\S]*?masuk list\\.",
+      "replace": "Running a sim or hybrid comp that isn't listed? Send the organiser link and dates — it goes straight on the list."
+    },
+    {
+      "pattern": "soal artinya buat yang latihan di \\w+\\.",
+      "replace": "and what it means for your training."
+    },
+    {
+      "pattern": "Race baru, hasil, aturan yang berubah[\\s\\S]*?\\w+\\.",
+      "replace": "New races, results, rule changes and the bigger gossip — a handful every week: short summary, original source, and the coach's take on what it means for your training."
+    },
+    {
+      "pattern": "alt=\"A cosy, warmly lit[^\"]*\"",
+      "replace": "alt=\"The whole crew after a session — all abilities, all welcome\""
+    },
+    {
+      "pattern": "alt=\"A packed club dance floor[^\"]*\"",
+      "replace": "alt=\"Arms up at the finish line — the celebration is the point\""
+    },
+    {
+      "pattern": "<figcaption>\\s*Photo:[^<]*<a[\\s\\S]*?</a\\s*>\\s*</figcaption>",
+      "replace": ""
+    }
+  ],
+  "seedFiles": {
+    "scene.json": "@scripts/reskin/shared-seeds/uk-scene.json",
+    "roundups.json": "@scripts/reskin/shared-seeds/uk-roundups.json",
+    "results.json": "@scripts/reskin/shared-seeds/uk-results.json",
+    "wall.json": "@scripts/reskin/shared-seeds/uk-wall.json",
+    "athletes.json": "@scripts/reskin/shared-seeds/uk-athletes.json"
+  }
+}

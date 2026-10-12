@@ -204,7 +204,7 @@
           )
           .join("") +
         (alsoRows.length
-          ? `<li class="event-subhead"><p>More the UK-Pacific races this season</p></li>` +
+          ? `<li class="event-subhead"><p>More UK & Ireland races this season</p></li>` +
             alsoRows
               .map(
                 (r) => `<li class="event">
@@ -222,7 +222,7 @@
           <div><h4>Also expected back</h4><p>${esc(alsoTba)}</p></div></li>`
           : "") ||
       `<li class="event"><time>Break</time>
-        <div><h4>Between seasons</h4><p>No confirmed the UK-Pacific dates right now — new races land on <a href="https://hyrox.com/events/" rel="noopener" target="_blank">hyrox.com</a> first, and we update the board when they do.</p></div></li>`;
+        <div><h4>Between seasons</h4><p>No confirmed UK & Ireland dates right now — new races land on <a href="https://hyrox.com/events/" rel="noopener" target="_blank">hyrox.com</a> first, and we update the board when they do.</p></div></li>`;
     seasonEl.querySelectorAll(".share-btn").forEach((btn) =>
       btn.addEventListener("click", () => {
         const { c, r } = rows[Number(btn.closest("li").dataset.i)];
@@ -259,7 +259,7 @@
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       const cities = Array.isArray(json?.cities) ? json.cities : [];
-      const home = String(json?.home || "jakarta");
+      const home = String(json?.home || "london");
       if (!cities.length) throw new Error("no cities");
 
       if (only) {

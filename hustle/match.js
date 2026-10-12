@@ -57,7 +57,7 @@
           const o = document.createElement("option");
           o.value = c.race.name;
           o.dataset.until =
-            c.race.start || (c.slug === "jakarta" ? "2027-08-01" : "");
+            c.race.start || (c.slug === "london" ? "2027-08-01" : "");
           o.textContent = c.race.dates
             ? `${c.race.name} — ${c.race.dates}`
             : `${c.race.name} (date TBC)`;
@@ -281,7 +281,7 @@
           const o = document.createElement("option");
           o.value = c.race.name;
           o.dataset.until =
-            c.race.start || (c.slug === "jakarta" ? "2027-08-01" : "");
+            c.race.start || (c.slug === "london" ? "2027-08-01" : "");
           o.textContent = c.race.dates
             ? `${c.race.name} — ${c.race.dates}`
             : `${c.race.name} (date TBC)`;

@@ -68,7 +68,7 @@
               `<tr><td>${esc(r.event || "")}${r.date ? ` <span class="muted">· ${esc(r.date)}</span>` : ""}</td><td>${esc(r.division || "")}</td><td class="time">${esc(r.time || "")}</td><td>${esc(r.note || "")}</td></tr>`,
           )
           .join("")}</tbody></table></div>
-      <p class="plan-source">Record trail only — the results we hold verified data for. Full history lives on <a href="https://hyranking.com/hyrox-national-records/indonesia" rel="noopener" target="_blank">hyranking.com</a>.</p>
+      <p class="plan-source">Record trail only — the results we hold verified data for. Full history lives on <a href="https://hyranking.com/hyrox-national-records" rel="noopener" target="_blank">hyranking.com</a>.</p>
       <button type="button" class="btn athlete-close">Close</button>`;
     modal
       .querySelector(".athlete-close")

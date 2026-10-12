@@ -2,6 +2,8 @@
 
 This is a living list of opportunities to push the project toward profitability through nudges, SEO, and automation. Revisit it when planning the next block.
 
+> **Session start:** check the "Chat notes" section in `BILLIONS.md` — it defines our conversation tone (dry British sarcasm, banter in Q&A, humour suspended during debugging/complex work).
+
 ## On-site nudges and lifecycle
 
 We have one abandoned-cart nudge. Still missing:

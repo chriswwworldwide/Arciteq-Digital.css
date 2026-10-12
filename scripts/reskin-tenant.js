@@ -62,6 +62,7 @@ const excludeRes = excludePatterns.map((re) => new RegExp(re));
 
 const src = path.join(root, "roxjaya");
 const dst = path.join(root, slug);
+const buildV = Date.now();
 if (slug === "roxjaya" || slug.startsWith("..")) {
   console.error("bad slug");
   process.exit(1);
@@ -168,6 +169,13 @@ for (const file of walk(dst)) {
   // per-demo copy fixes: regex find → replace
   for (const o of copyOverrides) {
     s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
+  }
+  // cache-bust tenant css/js so browsers can't serve stale hero/styles
+  if (file.endsWith(".html")) {
+    s = s.replace(
+      new RegExp(`((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))"`, "g"),
+      `$1?v=${buildV}"`,
+    );
   }
   // drop whole sections that only make sense in the source market
   for (const id of stripSections) {

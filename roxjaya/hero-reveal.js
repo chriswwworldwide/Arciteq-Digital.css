@@ -64,7 +64,9 @@
       newposition = rotate(newposition - vec3(-.5,.5,0.), vec3(0.,0.,1.), -u_angle) + vec3(-.5,.5,0.);
       float offs = (newposition.x + 0.5) / (sin(u_angle) + cos(u_angle));
       float tProgress = clamp((u_progress - offs*0.99) / 0.01, 0., 1.);
-      vTube = tProgress;
+      // curled paper reads as dark scroll, not a second copy of the image:
+      // pow keeps the dim on through the mid-unwrap, image emerges at ~flat
+      vTube = pow(tProgress, 6.0);
       vShadow = clamp((u_progress - offs*0.95) / 0.05, u_dim, 1.);
       // the mosaic trail: a wide band of paper settling behind the roll —
       // u_progress runs past 1 so the last-laid corner finishes resolving
@@ -258,6 +260,9 @@
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     gl.clearColor(0, 0, 0, 0);
+    // fullRoll only: opaque brand-ink clear so where the sheet hasn't laid
+    // yet the page shows flat colour, never the DOM beneath
+    if (fullRoll) gl.clearColor(0.102, 0.039, 0.078, 1);
     gl.uniform1f(uAngle, Math.PI / 4); // unrolls top-left → bottom-right
     // fullRoll: the sheet spans ambient + photo, so the Codrops trailing
     // dim + dark seams would read as a cast shadow beside the picture.
@@ -549,6 +554,12 @@
     }
 
     html.classList.add("reveal-live");
+    // fullRoll: the DOM layer must not show through the sheet — the page
+    // already carries the pic twice (.hero-amb blurred backdrop + .hero-img)
+    // and the composite bakes both in, so a visible DOM copy under a
+    // not-yet-laid sheet is literally a second image. Hide the whole layer;
+    // the canvas is cleared opaque so the un-laid region is flat ink.
+    if (fullRoll) html.classList.add("reveal-full");
 
     const DURATION = 3400;
     const DELAY = 200;

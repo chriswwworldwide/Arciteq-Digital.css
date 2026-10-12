@@ -154,3 +154,62 @@ Read the failure mode before the verdict:
   issue, not product.
 - The first cohort is the best-fit list by design; if they won't buy,
   the long tail won't.
+
+## Market map (weighted, Oct 2026)
+
+Weights: access ×3, language ×3, coach density ×2, market size ×2,
+price tolerance ×1, whitespace ×1 (max 60).
+
+| Market | Total | Verdict |
+|---|---|---|
+| UK | 57 | Launch market — access advantage (walk-ins, timezone, English, boutique gyms), not biggest prize |
+| USA | 46 | Biggest prize, worst access — enter via case-study inbound after UK/AUS proof |
+| Australia | 45 | Sleeper #2 — English, WA/IG-native, Jakarta timezone overlap, concentrated scene saturates fast |
+| Germany | 38 | Structural prize, gated by language localisation — third market after validation |
+| Canada | 37 | Never primary — rides US coattails |
+
+Advantage durability: UK first-mover ≈ 6–12 months before copycats;
+moat deepens only via client community data lock-in. Order of effort:
+UK now → AUS after first case study → USA inbound → Germany post-localisation.
+
+## Add-on menu (month-2 upsells, not day-one pitch)
+
+Rule: every add-on < half a member fee (£99/mo → £15–45 digestible).
+
+| Add-on | Price | Sells |
+|---|---|---|
+| Receptionist bot | +£30/mo | 11pm logistics answers, hands personal to WhatsApp (~£5–10 our cost) |
+| Community launch kit | £200 one-off | Seeded board, first events, announcement posts — kills empty-board risk |
+| Booking integration | £150 one-off | bsport/TeamUp/Glofox piped in — priced as labor |
+| Predictor Pro readout | £7/report (athlete pays, coach keeps ~30%) | Turns clients into our salespeople |
+| Content concierge | +£40/mo | We write their roundups from results they send |
+| Second location | +50% of tier | Near-zero cost, pure margin |
+| Custom domain + email | £100 one-off | Table stakes |
+
+Free on purpose: base predictor, share tools, boards — traffic + demo
+engines. Land cheap, expand inside (bolt-on → kit → bot → upgrade ≈ £95/mo).
+
+## Income model v3 (with add-on uptake)
+
+Per month: adds front-loaded (strong→weak cohort), ~8–9 net clients year 1,
+one churn. One-offs = setup + kits + integrations (~60%/40%/50% attach).
+MRR = £55 base/client + ~£20/mo per mature client (3+ months: bot 35%,
+concierge 15%, tier upgrades, predictor-pro drip).
+
+| Month | Clients | One-offs £ | MRR £ |
+|---|---|---|---|
+| Nov | 1 | 700 | 55 |
+| Dec | 3 | 1,010 | 165 |
+| Jan | 4 | 580 | 220 |
+| Feb | 5 | 630 | 275 | ← kill gate
+| Mar | 5 | 320 | 295 |
+| Apr | 6 | 370 | 335 |
+| May | 6 | 320 | 382 |
+| Jun | 6 | 0 | 395 |
+| Jul | 7 | 450 | 450 |
+| Aug | 7 | 400 | 463 |
+| Sep | 8 | 650 | 518 |
+| Oct | 9 | 700 | 586 |
+
+Year 1 ≈ £10,600 (one-offs ~60%). Exit ~£586/mo run-rate, ARPU ~£65.
+Two humps: warm-list peak Nov–Jan, dip Mar–Aug, referral engine Sep+.

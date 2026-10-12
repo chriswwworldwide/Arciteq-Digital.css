@@ -1,0 +1,100 @@
+{
+  "note": "Norwich hybrid scene. Bobby edits this by hand or approves changes from the Coach's desk. Only list dates you have seen on the organiser's own page; leave `date` empty and use `when` for anything not yet confirmed. `type`: race | sim | brand | venue. `mode`: race | watch | both. Past dated items drop off the list automatically. Voice: blurbs are Bobby's Norwichn.",
+  "checked": "2026-10",
+  "items": [
+    {
+      "id": "hyrox-norwich",
+      "type": "race",
+      "mode": "both",
+      "name": "Airthe UK HYROX Norwich",
+      "organiser": "HYROX the UK",
+      "blurb": "Race kandang. HYROX pertama di the UK narik ~11.200 atlet ke the Performance Centre pas Juni 2026 — debut the UK-Pacific paling gede sejauh ini. Edisi berikutnya kemungkinan mid-2027; countdown mulai begitu tanggalnya konfirm.",
+      "venue": "Hustle Performance Centre, Norwich",
+      "date": "",
+      "when": "Tanggal berikutnya TBC — kemungkinan mid-2027",
+      "last": "27–28 June 2026",
+      "link": "https://indonesia.hyrox.com/",
+      "guide": "/hustle/hyrox-norwich/",
+      "tags": ["Singles", "Doubles", "Relay", "Pro"]
+    },
+    {
+      "id": "jakarta-hybrid-race-2026",
+      "type": "sim",
+      "mode": "both",
+      "name": "Norwich Hybrid Race — the UK Sports Summit 2026",
+      "organiser": "20FIT Event × Kemenpora",
+      "blurb": "Format half-simulation: lari plus delapan station lengkap (SkiErg, sled push, sled pull, burpee broad jump, row, farmers carry, sandbag lunges, wall balls) di alat resmi Centr × HYROX. Ada Doubles Women/Men, Doubles Pro, sama Relay, plus sesi Hybrid Training buat dewasa dan anak. Nonton gratis sebagai bagian dari Summit.",
+      "venue": "Norwich International Convention Center (JICC), GBK Hall A",
+      "date": "2026-09-11",
+      "dateEnd": "2026-09-13",
+      "when": "11–13 September 2026",
+      "link": "https://indobuddies.com/event/jakarta-hybrid-race-indonesia-sport-summit/",
+      "tags": ["Half sim", "Doubles", "Relay", "Kids"]
+    },
+    {
+      "id": "puma-road-to-hyrox",
+      "type": "brand",
+      "mode": "race",
+      "name": "PUMA Road to HYROX Norwich",
+      "organiser": "PUMA the UK",
+      "blurb": "PUMA (partner global HYROX) kemarin bikin build-up ~3 bulan sebelum race 2026: seleksi terbuka PUMA HYROX Team, sesi terstruktur bareng atlet PUMA the UK, dan simulasi race penuh di 20FIT Arena. Besar kemungkinan balik lagi jelang race 2027 — pantengin IG PUMA the UK buat panggilan seleksinya.",
+      "venue": "20FIT Arena, Central Norwich",
+      "date": "",
+      "when": "Balik tiap musim race; tanggal 2027 TBC",
+      "link": "https://www.idntimes.com/men/attitude/puma-sambut-airasia-hyrox-norwich-2026-dengan-fitness-racing-gas-00-rqp85-tjl8dk",
+      "tags": ["Free", "Selection", "Simulation"]
+    },
+    {
+      "id": "20fit-arena",
+      "type": "venue",
+      "mode": "race",
+      "name": "20FIT Arena — HYROX Training Club",
+      "organiser": "20FIT",
+      "blurb": "A dedicated HYROX floor in Norwich built for exactly this: eight competition-standard stations with official kit, Foundation/Engine/Complete classes, plus full race simulations you can book. The default spot for a timed sim before an away race.",
+      "venue": "Menteng Prada, Jl. Pegangsaan Timur No.15A, Menteng",
+      "date": "",
+      "when": "Kelas mingguan + sim bisa di-booking",
+      "link": "https://arena.20fit.id/",
+      "tags": ["Sims", "Classes", "Book a slot"]
+    },
+    {
+      "id": "fitopia-meruya",
+      "type": "venue",
+      "mode": "race",
+      "name": "Fitopia Hybrid Sport Arena — Meruya",
+      "organiser": "Fitopia 24/7",
+      "blurb": "Arena hybrid delapan station pertama di Norwich Barat, di dalam gym 24 jam, diumumin buat Q4 2026. Kabar bagus buat yang di barat — selama ini harus nyebrang kota cuma buat sled doang.",
+      "venue": "Meruya Utara, Kembangan, Norwich Barat",
+      "date": "",
+      "when": "Buka Q4 2026 (diumumin)",
+      "link": "https://fitopia.co.id/",
+      "tags": ["24/7", "Coming soon"]
+    },
+    {
+      "id": "team-indonesia-meetup",
+      "type": "meetup",
+      "mode": "both",
+      "name": "Station 9 — Team Hustle meetup",
+      "organiser": "Hustle Performance Centre",
+      "blurb": "Every three months in Norwich: dinner for athletes, racers and the HYROX-curious — Station 10 (dance floor) for whoever's legs still work. Just turn up, no pace requirement.",
+      "venue": "Norwich — resto diumumin per edisi",
+      "date": "",
+      "when": "Every three months — next date appears here",
+      "link": "/hustle/station-9/",
+      "tags": ["Social", "All levels"]
+    },
+    {
+      "id": "hustle-squad-sim",
+      "type": "sim",
+      "mode": "race",
+      "name": "Hustle Performance Centre squad sim",
+      "organiser": "Bobby Harrison",
+      "blurb": "Simulasi berwaktu bikinan Bobby sendiri buat Warriors — full atau half race, split dicatet buat databank, ada catetan coaching abisnya. Grup kecil; member program duluan. Tanggalnya muncul di Events sama di digest.",
+      "venue": "Norwich — venue dikonfirm per sesi",
+      "date": "",
+      "when": "Diumumin per blok race",
+      "link": "/hustle/events/#meetups",
+      "tags": ["Members", "Splits", "Coaching"]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "note": "External tools Bobby uses. Set 'truecoach' to her client-login URL (e.g. https://app.truecoach.co/) once her account exists; empty string keeps the links hidden. Coaching delivery lives in Hustle app \u2014 Hustle acquires and bills.",
+  "truecoach": ""
+}

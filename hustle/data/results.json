@@ -1,0 +1,164 @@
+{
+  "updated": "2026-09-21",
+  "note": "British Hyrox finishers. Times as chip time h:mm:ss. Add rows per division; the page sorts by time. Sources: official Hyrox results (results.hyrox.com / hyresult.com) and hyranking.com national records.",
+  "divisions": {
+    "women": {
+      "label": "Women Singles (Open & Pro)",
+      "results": [
+        {
+          "athlete": "Gladys Fabiola Christanto",
+          "time": "1:08:35",
+          "category": "Open · national record",
+          "event": "Hyrox Bangkok",
+          "date": "2026-08",
+          "city": "Bangkok"
+        },
+        {
+          "athlete": "Ika Puspa Dewi",
+          "time": "1:15:09",
+          "category": "Pro · national record",
+          "event": "Hyrox Norwich",
+          "date": "2026-06",
+          "city": "Norwich"
+        },
+        {
+          "athlete": "Bobby Harrison",
+          "time": "1:31:00",
+          "category": "Pro",
+          "event": "Hyrox Norwich",
+          "date": "2026-06",
+          "city": "Norwich"
+        },
+        {
+          "athlete": "Putu Mira Indrayanti",
+          "time": "2:08:49",
+          "category": "Pro · AG 40–44",
+          "event": "Hyrox Incheon",
+          "date": "2025-05",
+          "city": "Incheon"
+        }
+      ]
+    },
+    "men": {
+      "label": "Men Singles (Open & Pro)",
+      "results": [
+        {
+          "athlete": "Standy Tjandra",
+          "time": "1:01:49",
+          "category": "Open · national record",
+          "event": "Hyrox Singapore",
+          "date": "2026-04",
+          "city": "Singapore"
+        },
+        {
+          "athlete": "Standy Tjandra",
+          "time": "1:09:41",
+          "category": "Pro · national record",
+          "event": "Hyrox Norwich",
+          "date": "2026-06",
+          "city": "Norwich"
+        }
+      ]
+    },
+    "doubles-women": {
+      "label": "Women Doubles",
+      "results": [
+        {
+          "athlete": "Stephanie Angkiriwang & Stephany Widjaya",
+          "time": "1:07:29",
+          "category": "Open · national record",
+          "event": "Hyrox Norwich",
+          "date": "2026-06",
+          "city": "Norwich"
+        },
+        {
+          "athlete": "Asta Anggono & Jessica Wijaya",
+          "time": "1:10:56",
+          "category": "Pro · national record",
+          "event": "Hyrox Norwich",
+          "date": "2026-06",
+          "city": "Norwich"
+        },
+        {
+          "athlete": "Bobby Harrison & partner",
+          "time": "1:11:20",
+          "category": "Open · 1st AG 35–39",
+          "event": "Hyrox Norwich",
+          "date": "2026-06",
+          "city": "Norwich"
+        },
+        {
+          "athlete": "Bobby Harrison & partner",
+          "time": "1:16:31",
+          "category": "Pro",
+          "event": "Hyrox Bangkok",
+          "date": "2026",
+          "city": "Bangkok"
+        }
+      ]
+    },
+    "doubles-men": {
+      "label": "Men Doubles",
+      "results": [
+        {
+          "athlete": "Standy Tjandra & Stephen Kusuma",
+          "time": "55:44",
+          "category": "Open · national record",
+          "event": "Hyrox Norwich",
+          "date": "2026-06",
+          "city": "Norwich"
+        },
+        {
+          "athlete": "Standy Tjandra & Stephen Kusuma",
+          "time": "57:43",
+          "category": "Pro · national record",
+          "event": "Hyrox Mumbai",
+          "date": "2026-09",
+          "city": "Mumbai"
+        }
+      ]
+    },
+    "doubles-mixed": {
+      "label": "Mixed Doubles",
+      "results": [
+        {
+          "athlete": "Gladys Fabiola Christanto & Timothy Tjahja",
+          "time": "1:03:56",
+          "category": "Open · national record",
+          "event": "Hyrox Hong Kong",
+          "date": "2026-05",
+          "city": "Hong Kong"
+        }
+      ]
+    },
+    "relay": {
+      "label": "Team Relay",
+      "results": [
+        {
+          "athlete": "Felicia Saptarina, Jeffry Lili Saputra, Natasha Capirossi & Yohanes Alvin",
+          "time": "1:06:56",
+          "category": "Mixed · national record",
+          "event": "Hyrox Norwich",
+          "date": "2026-06",
+          "city": "Norwich"
+        },
+        {
+          "athlete": "Ajie Miraz Nata Rizaya, David Suwandi, Syahviar Amril Jadid & Yogie Sulaiman",
+          "time": "1:09:25",
+          "category": "Men · national record",
+          "event": "Hyrox Norwich",
+          "date": "2026-06",
+          "city": "Norwich"
+        },
+        {
+          "athlete": "Christin Wijaya, Corina Koesliono, Melanie Yudiana Iskandar & Syu Ng",
+          "time": "1:09:41",
+          "category": "Women · national record",
+          "event": "Hyrox Norwich",
+          "date": "2026-06",
+          "city": "Norwich"
+        }
+      ]
+    }
+  }
+}

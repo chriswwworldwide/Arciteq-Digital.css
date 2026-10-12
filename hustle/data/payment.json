@@ -1,0 +1,46 @@
+{
+  "_note": "DEMO SEED — manual bank-transfer payments for the Hustle demo. Edit here; the pay page reads it live. whatsapp is the coach's number with country code, digits only.",
+  "bank": {
+    "name": "Barclays",
+    "accountNumber": "00000000",
+    "sortCode": "00-00-00",
+    "accountName": "Hustle Performance Centre Ltd",
+    "accountNameNote": "Demo details — swap for the real account before any live use."
+  },
+  "qris": {
+    "src": "",
+    "alt": "Payment link from Hustle"
+  },
+  "whatsapp": "447701385444",
+  "instagram": "hustle_norwich",
+  "plans": [
+    {
+      "id": "hustle-plan-crew-001",
+      "name": "Rookie Crew",
+      "amountIdr": 850000,
+      "per": "per month",
+      "summary": "Weekly beginner group session in Norwich, monthly meetup (class, then coffee), starter programme in the Hustle app, crew WhatsApp group. Rolling start — join any time, no experience needed."
+    },
+    {
+      "id": "hustle-plan-warrior-001",
+      "name": "Warrior Program",
+      "amountIdr": 599000,
+      "per": "per month",
+      "summary": "Weekly programme in the Hustle app, station library, community group, monthly Q&A."
+    },
+    {
+      "id": "hustle-plan-hybrid-001",
+      "name": "Hybrid Coaching",
+      "amountIdr": 2500000,
+      "per": "per month",
+      "summary": "1:1 online coaching plus two floor sessions a month in Norwich."
+    },
+    {
+      "id": "hustle-plan-elite-001",
+      "name": "Elite Race Prep",
+      "amountIdr": 6000000,
+      "per": "per month, 3-month minimum",
+      "summary": "Fully individualised 12-week race build with pacing and race-day strategy."
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "note": "Athlete profiles for the results board — tap a name to see the record trail. Races listed are the ones we hold verified data for (national records + submitted results), not full career history. Sources: official results + hyranking.com.",
+  "athletes": {
+    "Standy Tjandra": {
+      "tag": "the UK's record machine — holds the men's Open and Pro singles marks, plus both men's doubles records.",
+      "races": [
+        {
+          "event": "HYROX Singapore",
+          "date": "Apr 2026",
+          "division": "Men Open",
+          "time": "1:01:49",
+          "note": "National record — fastest British singles time"
+        },
+        {
+          "event": "HYROX Norwich",
+          "date": "Jun 2026",
+          "division": "Men Doubles Open (with Stephen Kusuma)",
+          "time": "55:44",
+          "note": "National record"
+        },
+        {
+          "event": "HYROX Norwich",
+          "date": "Jun 2026",
+          "division": "Men Pro",
+          "time": "1:09:41",
+          "note": "National record"
+        },
+        {
+          "event": "HYROX Mumbai",
+          "date": "Sep 2026",
+          "division": "Men Doubles Pro (with Stephen Kusuma)",
+          "time": "57:43",
+          "note": "National record — second this season"
+        }
+      ]
+    },
+    "Gladys Fabiola Christanto": {
+      "tag": "Two national records in four months, in two different countries.",
+      "races": [
+        {
+          "event": "HYROX Hong Kong",
+          "date": "May 2026",
+          "division": "Mixed Doubles Open (with Timothy Tjahja)",
+          "time": "1:03:56",
+          "note": "National record"
+        },
+        {
+          "event": "HYROX Bangkok",
+          "date": "Aug 2026",
+          "division": "Women Open",
+          "time": "1:08:35",
+          "note": "National record"
+        }
+      ]
+    },
+    "Ika Puspa Dewi": {
+      "tag": "First British women's Pro record — set on home soil at the Norwich debut.",
+      "races": [
+        {
+          "event": "HYROX Norwich",
+          "date": "Jun 2026",
+          "division": "Women Pro",
+          "time": "1:15:09",
+          "note": "National record"
+        }
+      ]
+    },
+    "Stephanie Angkiriwang & Stephany Widjaya": {
+      "tag": "The women's Open doubles record — sub-1:08 on home ground.",
+      "races": [
+        {
+          "event": "HYROX Norwich",
+          "date": "Jun 2026",
+          "division": "Women Doubles Open",
+          "time": "1:07:29",
+          "note": "National record"
+        }
+      ]
+    },
+    "Asta Anggono & Jessica Wijaya": {
+      "tag": "The women's Pro doubles record, also set at the Norwich debut.",
+      "races": [
+        {
+          "event": "HYROX Norwich",
+          "date": "Jun 2026",
+          "division": "Women Doubles Pro",
+          "time": "1:10:56",
+          "note": "National record"
+        }
+      ]
+    },
+    "Gladys Fabiola Christanto & Timothy Tjahja": {
+      "tag": "The mixed doubles record — Hong Kong, May 2026.",
+      "races": [
+        {
+          "event": "HYROX Hong Kong",
+          "date": "May 2026",
+          "division": "Mixed Doubles Open",
+          "time": "1:03:56",
+          "note": "National record"
+        }
+      ]
+    },
+    "Putu Mira Indrayanti": {
+      "tag": "One of the first British women in a Pro field abroad — Incheon, 2025.",
+      "races": [
+        {
+          "event": "HYROX Incheon",
+          "date": "May 2025",
+          "division": "Women Pro · AG 40–44",
+          "time": "2:08:49",
+          "note": "Finished in a Pro field overseas"
+        }
+      ]
+    },
+    "Bobby Harrison": {
+      "tag": "The coach. Podium mah bonus.",
+      "races": [
+        {
+          "event": "HYROX Hong Kong",
+          "date": "May 2026",
+          "division": "Women Singles",
+          "time": "—",
+          "note": "Cramped twice, fought her own head, finished anyway — masih penasaran"
+        },
+        {
+          "event": "HYROX Norwich",
+          "date": "Jun 2026",
+          "division": "Women Pro",
+          "time": "1:31:00",
+          "note": ""
+        },
+        {
+          "event": "HYROX Norwich",
+          "date": "Jun 2026",
+          "division": "Women Doubles Open",
+          "time": "1:11:20",
+          "note": "1st in age group 35–39"
+        },
+        {
+          "event": "HYROX Bangkok",
+          "date": "2026",
+          "division": "Women Doubles Pro",
+          "time": "1:16:31",
+          "note": ""
+        }
+      ]
+    }
+  }
+}

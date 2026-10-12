@@ -2017,6 +2017,10 @@ app.get("/:nicheCategorySlug", (req, res, next) => {
       "robots.txt",
       "roxjaya",
     ]);
+    // Coaching site tenants get their own /<site>/ routes — never collections.
+    for (const t of loadTenantsData().list) {
+      if (t?.vertical === "coaching") blocked.add(String(t.tenant_id));
+    }
     if (blocked.has(nicheCategorySlug.toLowerCase())) return next();
 
     const tenant = resolveTenantFromRequest(req);
@@ -2261,7 +2265,8 @@ app.get("/admin/env", (req, res) => {
 // The old landing page remains available at /index.html.
 app.get("/", (req, res) => {
   const tenant = resolveTenantFromRequest(req);
-  if (tenant.tenant_id === "roxjaya") return res.redirect(301, "/roxjaya/");
+  if (tenant.vertical === "coaching" || tenant.tenant_id === "roxjaya")
+    return res.redirect(301, `/${tenant.tenant_id}/`);
   return res.redirect(302, "/shop.html");
 });
 
@@ -2269,9 +2274,31 @@ app.get("/index.html", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/roxjaya", (req, res) => {
-  res.sendFile(path.join(__dirname, "roxjaya", "index.html"));
-});
+// Site tenants (roxjaya + reskin demos): /<site>/ -> <site>/index.html.
+// Registered per tenant so demo slugs can't shadow platform routes.
+for (const siteTenant of loadTenantsData().list.filter(
+  (t) => t?.vertical === "coaching",
+)) {
+  const site = String(siteTenant.tenant_id || "");
+  if (
+    !/^[a-z0-9-]+$/.test(site) ||
+    !fs.existsSync(path.join(__dirname, site, "index.html"))
+  )
+    continue;
+  app.get(`/${site}`, (req, res) => {
+    res.sendFile(path.join(__dirname, site, "index.html"));
+  });
+  app.get(`/${site}/guides`, serveGuideIndex);
+  app.get(`/${site}/guides/:slug`, serveGuide);
+  app.get(`/${site}/:slug`, (req, res, next) => {
+    const slug = String(req.params.slug || "");
+    if (!/^[a-z0-9-]+$/.test(slug)) return next();
+    const file = path.join(__dirname, site, `${slug}.html`);
+    if (!fs.existsSync(file)) return next();
+    if (!req.path.endsWith("/")) return res.redirect(301, `/${site}/${slug}/`);
+    res.sendFile(file);
+  });
+}
 
 // ---- Guides (database-backed, written by the fortnightly autopilot) ----
 function tenantGuides(tenant) {
@@ -2756,20 +2783,8 @@ async function serveGuide(req, res, next) {
   }
 }
 
-app.get("/roxjaya/guides", serveGuideIndex);
-app.get("/roxjaya/guides/:slug", serveGuide);
 app.get("/guides", serveGuideIndex);
 app.get("/guides/:slug", serveGuide);
-
-// Clean URLs for Roxjaya content pages: /roxjaya/<slug>/ -> roxjaya/<slug>.html
-app.get("/roxjaya/:slug", (req, res, next) => {
-  const slug = String(req.params.slug || "");
-  if (!/^[a-z0-9-]+$/.test(slug)) return next();
-  const file = path.join(__dirname, "roxjaya", `${slug}.html`);
-  if (!fs.existsSync(file)) return next();
-  if (!req.path.endsWith("/")) return res.redirect(301, `/roxjaya/${slug}/`);
-  res.sendFile(file);
-});
 
 app.post("/admin/run-import", (req, res) => {
   const denied = requireAdmin(req, res);

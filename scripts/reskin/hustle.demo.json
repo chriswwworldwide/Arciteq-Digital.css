@@ -160,7 +160,7 @@
     ],
     [
       "Hyrox · Norwich · dari lantai Zumba ke podium",
-      "Hyrox · Norwich · from Tuesday classes to race day"
+      "Fitness · Family · Community"
     ],
     [
       "The Big Durian",
@@ -370,7 +370,7 @@
     },
     {
       "pattern": "<div class=\"stats\">[\\s\\S]*?Hyrox races</span></div>\\s*</div>",
-      "replace": "<div class=\"stats\">\n          <div>\n            <strong>60+</strong><span>Athletes at the last in-house HYROX sim</span>\n          </div>\n          <div>\n            <strong>2</strong><span>Locations — Norwich &amp; Wymondham</span>\n          </div>\n          <div><strong>HYROX</strong><span>Official affiliate gym</span></div>\n        </div>"
+      "replace": "<div class=\"stats\">\n          <div>\n            <strong>60+</strong><span>Athletes at the last in-house HYROX sim</span>\n          </div>\n          <div>\n            <strong>2</strong><span>Locations — Norwich &amp; Wymondham</span>\n          </div>\n          <div><strong>HYROX</strong><span>Official affiliate gym</span></div>\n          <div><strong>NCFC</strong><span>Regional partner — Norwich City FC</span></div>\n        </div>"
     },
     {
       "pattern": "Kapan HYROX Norwich 2027 dan bagaimana cara daftar \\(tiket\\)\\?",
@@ -467,6 +467,10 @@
     {
       "pattern": "\"Lantai HYROX di Norwich[^\"]*\"",
       "replace": "\"A dedicated HYROX floor in Norwich built for exactly this: eight competition-standard stations with official kit, Foundation/Engine/Complete classes, plus full race simulations you can book. The default spot for a timed sim before an away race.\""
+    },
+    {
+      "pattern": "Monthly coaching that fits around your life[^<]*",
+      "replace": "Group training for all abilities — from first-timer classes to full race prep. New here? Try 3 days for £30."
     }
   ],
   "stripSections": [

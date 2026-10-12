@@ -798,6 +798,30 @@
           "by": "Hannah",
           "tilt": -1,
           "event": "Race day"
+        },
+        {
+          "src": "/burgonfitness/images/gallery/finish-run.jpg",
+          "alt": "Hannah sprinting through the HYROX finish gantry, crowd behind the barriers",
+          "caption": "That finish-gantry feeling. You can't buy it — you have to earn it.",
+          "by": "Hannah",
+          "tilt": 2,
+          "event": "HYROX finish"
+        },
+        {
+          "src": "/burgonfitness/images/gallery/bike.jpg",
+          "alt": "Hannah mid-ride on the road bike, yellow helmet",
+          "caption": "Cross-training day. The engine doesn't only run indoors.",
+          "by": "Hannah",
+          "tilt": -2,
+          "event": "Off-season"
+        },
+        {
+          "src": "/burgonfitness/images/gallery/deadlift.jpg",
+          "alt": "Hannah pulling a heavy barbell deadlift at Pyramid",
+          "caption": "Strength first. HYROX rewards the ones who can move weight tired.",
+          "by": "Hannah",
+          "tilt": 1,
+          "event": "Strength"
         }
       ]
     }

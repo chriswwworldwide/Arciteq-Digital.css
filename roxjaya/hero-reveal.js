@@ -36,6 +36,7 @@
     varying vec2 vUv;
     varying float vShadow;
     varying float vResolve;
+    varying float vTube;
     const float pi = 3.14159265359;
 
     mat4 rotationMatrix(vec3 axis, float angle) {
@@ -63,6 +64,7 @@
       newposition = rotate(newposition - vec3(-.5,.5,0.), vec3(0.,0.,1.), -u_angle) + vec3(-.5,.5,0.);
       float offs = (newposition.x + 0.5) / (sin(u_angle) + cos(u_angle));
       float tProgress = clamp((u_progress - offs*0.99) / 0.01, 0., 1.);
+      vTube = tProgress;
       vShadow = clamp((u_progress - offs*0.95) / 0.05, u_dim, 1.);
       // the mosaic trail: a wide band of paper settling behind the roll —
       // u_progress runs past 1 so the last-laid corner finishes resolving
@@ -88,6 +90,7 @@
     varying vec2 vUv;
     varying float vShadow;
     varying float vResolve;
+    varying float vTube;
     uniform sampler2D u_tex;
     uniform highp float u_progress;
     uniform vec4 u_uv;      // xy = crop offset, zw = crop scale (cover fit)
@@ -95,6 +98,7 @@
     uniform float u_seam;
     uniform vec4 u_photo;   // photo rect in sheet uv (fullRoll); else 0,0,1,1
     uniform float u_pmargin;
+    uniform float u_tube;   // dimming of the still-rolled face
 
     void main() {
       // fullRoll: the ambient area is just a blurred backdrop — running the
@@ -121,6 +125,10 @@
       col *= 1.05;
 
       col *= vShadow;
+      // The still-rolled face samples the same texture — on the full-width
+      // sheet it reads as a second copy of the picture riding ahead of the
+      // roll. Dim it into a dark scroll; laid paper is untouched (vTube→1).
+      col *= mix(u_tube, 1.0, vTube);
       // gaps are dark seams of the tile's own colour — NOT transparent:
       // during the reveal the <img> below is hidden, so see-through gaps
       // would show the light page background as a bright seam (worst on
@@ -149,6 +157,7 @@
     uSeam,
     uPhoto,
     uPmargin,
+    uTube,
     tex,
     indexCount;
   const uvCrop = new Float32Array(4); // off.x, off.y, scale.x, scale.y
@@ -241,6 +250,7 @@
     uSeam = gl.getUniformLocation(prog, "u_seam");
     uPhoto = gl.getUniformLocation(prog, "u_photo");
     uPmargin = gl.getUniformLocation(prog, "u_pmargin");
+    uTube = gl.getUniformLocation(prog, "u_tube");
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
@@ -253,6 +263,7 @@
     gl.uniform1f(uSeam, fullRoll ? 0.75 : 0.55);
     gl.uniform4f(uPhoto, 0, 0, 1, 1); // classic: whole sheet is the photo
     gl.uniform1f(uPmargin, 0.03);
+    gl.uniform1f(uTube, fullRoll ? 0.35 : 1.0);
   } catch (e) {
     console.warn("hero-reveal:", e);
     return done();

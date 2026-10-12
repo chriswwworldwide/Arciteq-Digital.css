@@ -1329,6 +1329,10 @@ footer a:hover {
     position: static;
     grid-row: 1;
     grid-column: 1;
+    /* Clip drift overhang — the 1→1.02 scale pulse lets the photo's bottom
+       edge wander across the row boundary, leaving a hairline seam that
+       blinks in and out with the drift. */
+    overflow: hidden;
   }
   .hero--bleed .hero-img {
     object-fit: cover;

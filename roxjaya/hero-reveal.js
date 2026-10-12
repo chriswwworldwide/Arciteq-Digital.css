@@ -326,6 +326,12 @@
 
   const tex2d = new Image();
   tex2d.onload = () => {
+    // Mount inside the mask wrapper BEFORE size() — it reads the parent's
+    // rect to position the canvas. On mobile its overflow:hidden clips the
+    // tilted canvas exactly at the photo's bottom edge (killing the corner
+    // leak without a dead strip); on desktop it shares the baked feather
+    // mask.
+    (section.querySelector(".hero-mask") || section).appendChild(canvas);
     try {
       size();
       tex = gl.createTexture();
@@ -345,15 +351,11 @@
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
     } catch (e) {
       console.warn("hero-reveal:", e);
+      canvas.remove();
       return done();
     }
 
     html.classList.add("reveal-live");
-    // Inside the mask wrapper: on mobile its overflow:hidden clips the
-    // tilted canvas exactly at the photo's bottom edge (killing the corner
-    // leak without a dead strip, so the whole photo fades in evenly at
-    // handoff); on desktop it shares the baked feather mask.
-    (section.querySelector(".hero-mask") || section).appendChild(canvas);
 
     const DURATION = 3400;
     const DELAY = 200;

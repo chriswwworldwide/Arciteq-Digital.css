@@ -17,23 +17,23 @@
     {
       "id": "rtf-frame-finisher-001",
       "name": "Finisher Patch Frame",
-      "amountIdr": 26,
       "per": "one-off",
-      "summary": "Your finisher patch, mounted with your race photo and name plaque. The classic."
+      "summary": "Your finisher patch, mounted with your race photo and name plaque. The classic.",
+      "amountGbp": 26
     },
     {
       "id": "rtf-frame-podium-001",
       "name": "Podium Flag Frame",
-      "amountIdr": 73,
       "per": "one-off",
-      "summary": "The big one — podium flag, medal slot and photo. For the weekends that actually mattered."
+      "summary": "The big one — podium flag, medal slot and photo. For the weekends that actually mattered.",
+      "amountGbp": 73
     },
     {
       "id": "rtf-gift-001",
       "name": "Gift Card",
-      "amountIdr": 50,
       "per": "one-off",
-      "summary": "For the racer in your life who won't stop talking about their splits."
+      "summary": "For the racer in your life who won't stop talking about their splits.",
+      "amountGbp": 50
     }
   ]
 }

@@ -11,7 +11,7 @@
       "country": "United Kingdom",
       "flag": "🇬🇧",
       "tagline": "The big one. Multiple HYROX weekends a year and the fastest-selling tickets in the UK calendar.",
-      "dinaSays": "Closest major race to us — two hours on the train and you're on the start line. Half the crew has raced here; the other half is about to.",
+      "coachSays": "Closest major race to us — two hours on the train and you're on the start line. Half the crew has raced here; the other half is about to.",
       "race": {
         "name": "HYROX London",
         "status": "tbc",
@@ -71,7 +71,7 @@
       "country": "United Kingdom",
       "flag": "🇬🇧",
       "tagline": "The UK's biggest HYROX residency — multiple days, tens of thousands of athletes.",
-      "dinaSays": "Eleven days of racing — if you can't find a wave that fits, that's on you. Worth the trip for the crowd alone.",
+      "coachSays": "Eleven days of racing — if you can't find a wave that fits, that's on you. Worth the trip for the crowd alone.",
       "race": {
         "name": "HYROX Manchester",
         "status": "tbc",
@@ -123,7 +123,7 @@
       "country": "United Kingdom",
       "flag": "🇬🇧",
       "tagline": "NEC-scale HYROX — huge hall, huge field.",
-      "dinaSays": "Big-arena energy. The NEC crowd makes you feel like a pro even when your sled disagrees.",
+      "coachSays": "Big-arena energy. The NEC crowd makes you feel like a pro even when your sled disagrees.",
       "race": {
         "name": "HYROX Birmingham",
         "status": "tbc",
@@ -175,7 +175,7 @@
       "country": "United Kingdom",
       "flag": "🇬🇧",
       "tagline": "Welsh HYROX — a loud arena and a proper race-weekend city.",
-      "dinaSays": "Long trip, worth it. Cardiff on race weekend is a city that actually notices you're there.",
+      "coachSays": "Long trip, worth it. Cardiff on race weekend is a city that actually notices you're there.",
       "race": {
         "name": "HYROX Cardiff",
         "status": "tbc",
@@ -226,7 +226,7 @@
       "country": "United Kingdom",
       "flag": "🇬🇧",
       "tagline": "Scottish HYROX at the SEC — the furthest trip and the friendliest crowd.",
-      "dinaSays": "A proper expedition for us — fly it, don't sit on a train for seven hours.",
+      "coachSays": "A proper expedition for us — fly it, don't sit on a train for seven hours.",
       "race": {
         "name": "HYROX Glasgow",
         "status": "tbc",

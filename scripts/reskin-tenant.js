@@ -278,6 +278,7 @@ tStr = tStr
   .join(email || "demo@example.com");
 for (const [a, b] of Object.entries(pageRenames))
   tStr = tStr.split(a).join(b);
+for (const [a, b] of extraPairs) tStr = tStr.split(a).join(b);
 t = JSON.parse(tStr);
 t.currency = currency;
 if (t.guides && t.guides.headerHtml) {

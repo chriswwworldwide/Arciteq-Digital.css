@@ -129,7 +129,7 @@
         <h2><span aria-hidden="true">${esc(c.flag || "")}</span> ${esc(c.name)} <small>${esc(c.country)}</small></h2>
         ${c.nickname ? `<p class="city-aka">a.k.a. <span class="city-nick">${esc(c.nickname)}</span></p>` : ""}
         <p class="lead">${esc(c.tagline)}</p>
-        ${c.dinaSays ? `<blockquote class="plan-dina"><p>${esc(c.dinaSays)}</p><cite>— Hannah</cite></blockquote>` : ""}
+        ${c.coachSays ? `<blockquote class="plan-coach"><p>${esc(c.coachSays)}</p><cite>— Hannah</cite></blockquote>` : ""}
       </header>
       ${raceBlock(c)}
       <section class="plan-section" id="getting-there"><h3>Venue &amp; getting there</h3>${list(c.gettingThere, c.cityLang)}</section>

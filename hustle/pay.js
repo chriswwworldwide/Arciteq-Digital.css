@@ -16,7 +16,7 @@
           "'": "&#39;",
         })[c],
     );
-  const rupiah = (n) => "£" + Number(n || 0).toLocaleString("en-GB");
+  const gbpPrice = (n) => "£" + Number(n || 0).toLocaleString("en-GB");
 
   const form = document.getElementById("pay-form");
   const select = document.getElementById("pay-plan");
@@ -31,7 +31,7 @@
     const plan = (cfg?.plans || []).find((p) => p.id === select.value);
     if (!summary) return;
     summary.textContent = plan
-      ? `${rupiah(plan.amountIdr)} ${plan.per}. ${plan.summary || ""}`
+      ? `${gbpPrice(plan.amountGbp)} ${plan.per}. ${plan.summary || ""}`
       : "";
   }
 
@@ -45,7 +45,7 @@
         plans
           .map(
             (p) =>
-              `<option value="${esc(p.id)}">${esc(p.name)} — ${esc(rupiah(p.amountIdr))} ${esc(p.per)}</option>`,
+              `<option value="${esc(p.id)}">${esc(p.name)} — ${esc(gbpPrice(p.amountGbp))} ${esc(p.per)}</option>`,
           )
           .join("");
       if (plans.some((p) => p.id === wanted)) select.value = wanted;
@@ -83,7 +83,7 @@
         String(bank.accountNumber || "").replace(/\s/g, ""),
       ),
       row("Account name", bank.accountName || ""),
-      row("Amount", rupiah(plan.amountIdr), String(plan.amountIdr)),
+      row("Amount", gbpPrice(plan.amountGbp), String(plan.amountGbp)),
       row("Transfer note", ref, ref),
     ].join("");
     details.querySelectorAll("[data-copy]").forEach((b) => {
@@ -108,7 +108,7 @@
       qris.hidden = false;
     }
 
-    const msg = `Hi Bobby — I've reserved ${plan.name} (${rupiah(plan.amountIdr)}). Reference ${ref}. Transfer proof attached. Email: ${email}`;
+    const msg = `Hi Bobby — I've reserved ${plan.name} (${gbpPrice(plan.amountGbp)}). Reference ${ref}. Transfer proof attached. Email: ${email}`;
     const wa = document.getElementById("pay-wa");
     const digits = String(cfg.whatsapp || "").replace(/\D/g, "");
     if (wa && digits) {
@@ -148,7 +148,7 @@
     const payload = {
       plan_id: plan.id,
       plan_name: plan.name,
-      amount_idr: Number(plan.amountIdr),
+      amount_gbp: Number(plan.amountGbp),
       reference: ref,
       name: String(fd.get("name") || "").trim(),
       whatsapp: String(fd.get("whatsapp") || "").trim(),

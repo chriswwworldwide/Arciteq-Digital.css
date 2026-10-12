@@ -1,5 +1,5 @@
 {
-  "note": "DEMO SEED — UK race planner data for the Hustle demo. Dates/venues are placeholders from public HYROX listings; refresh from hyrox.com before real use.",
+  "note": "DEMO SEED — UK race planner data for the Burgon Fitness demo. Dates/venues are placeholders from public HYROX listings; refresh from hyrox.com before real use.",
   "checked": "2026-11",
   "home": "london",
   "cities": [
@@ -11,7 +11,7 @@
       "country": "United Kingdom",
       "flag": "🇬🇧",
       "tagline": "The big one. Multiple HYROX weekends a year and the fastest-selling tickets in the UK calendar.",
-      "dinaSays": "Closest major race to us — two hours on the train and you're on the start line. Half the crew has raced here; the other half is about to.",
+      "coachSays": "Closest major race to us — two hours on the train and you're on the start line. Half the crew has raced here; the other half is about to.",
       "race": {
         "name": "HYROX London",
         "status": "tbc",
@@ -27,7 +27,7 @@
         "sourceLabel": "hyrox.com event list"
       },
       "gettingThere": [
-        "Norwich to London Liverpool Street is about 1h 50m — book advance singles early, race weekend fills up.",
+        "Stockport to London Euston is about 2h direct — book advance singles early, race weekend fills up.",
         "Olympia is a short walk from Kensington (Olympia) station or Barons Court on the Piccadilly line.",
         "Driving? Race-weekend parking around Kensington is painful and pricey — the train wins."
       ],
@@ -71,7 +71,7 @@
       "country": "United Kingdom",
       "flag": "🇬🇧",
       "tagline": "The UK's biggest HYROX residency — multiple days, tens of thousands of athletes.",
-      "dinaSays": "Eleven days of racing — if you can't find a wave that fits, that's on you. Worth the trip for the crowd alone.",
+      "coachSays": "Eleven days of racing — if you can't find a wave that fits, that's on you. Worth the trip for the crowd alone.",
       "race": {
         "name": "HYROX Manchester",
         "status": "tbc",
@@ -87,7 +87,7 @@
         "sourceLabel": "hyrox.com event list"
       },
       "gettingThere": [
-        "Norwich to Manchester Piccadilly is around 4h 30m with one change — an overnighter makes sense.",
+        "Stockport to Manchester Piccadilly is ten minutes — easiest away race on the calendar.",
         "Manchester Central is ten minutes on foot from Deansgate station."
       ],
       "hotels": [
@@ -123,7 +123,7 @@
       "country": "United Kingdom",
       "flag": "🇬🇧",
       "tagline": "NEC-scale HYROX — huge hall, huge field.",
-      "dinaSays": "Big-arena energy. The NEC crowd makes you feel like a pro even when your sled disagrees.",
+      "coachSays": "Big-arena energy. The NEC crowd makes you feel like a pro even when your sled disagrees.",
       "race": {
         "name": "HYROX Birmingham",
         "status": "tbc",
@@ -139,7 +139,7 @@
         "sourceLabel": "hyrox.com event list"
       },
       "gettingThere": [
-        "Birmingham International station is inside the NEC campus — trains via one change from Norwich, ~3h.",
+        "Birmingham International station is inside the NEC campus — direct trains from Stockport in about 1h 20m.",
         "Driving is easy — the NEC is built for it, parking on site."
       ],
       "hotels": [
@@ -175,7 +175,7 @@
       "country": "United Kingdom",
       "flag": "🇬🇧",
       "tagline": "Welsh HYROX — a loud arena and a proper race-weekend city.",
-      "dinaSays": "Long trip, worth it. Cardiff on race weekend is a city that actually notices you're there.",
+      "coachSays": "Long trip, worth it. Cardiff on race weekend is a city that actually notices you're there.",
       "race": {
         "name": "HYROX Cardiff",
         "status": "tbc",
@@ -191,7 +191,7 @@
         "sourceLabel": "hyrox.com event list"
       },
       "gettingThere": [
-        "Cardiff Central station is a ten-minute walk from the arena — trains via one change, ~4h from Norwich."
+        "Cardiff Central station is a ten-minute walk from the arena — direct trains from Stockport in about 3h."
       ],
       "hotels": [
         {
@@ -226,7 +226,7 @@
       "country": "United Kingdom",
       "flag": "🇬🇧",
       "tagline": "Scottish HYROX at the SEC — the furthest trip and the friendliest crowd.",
-      "dinaSays": "A proper expedition for us — fly it, don't sit on a train for seven hours.",
+      "coachSays": "A proper expedition for us — fly it, don't sit on a train for seven hours.",
       "race": {
         "name": "HYROX Glasgow",
         "status": "tbc",

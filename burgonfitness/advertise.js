@@ -26,7 +26,7 @@
     planner: "Race planner + Hyrox Stockport page",
     partner: "Community partner (every page)",
   };
-  const idr = (amount) =>
+  const gbp = (amount) =>
     "£" + Math.round(Number(amount || 0) / 100).toLocaleString("en-US");
 
   function utmParams() {
@@ -63,7 +63,7 @@
           <div>
             <h4>${esc(p.title)}</h4>
             <p>${esc(p.description || "")}</p>
-            <p class="price">${idr(p.price?.amount)} / month</p>
+            <p class="price">${gbp(p.price?.amount)} / month</p>
             ${busy ? '<p class="taken">Taken right now \u2014 book and you go live when it frees up.</p>' : ""}
             <button class="btn btn-primary" type="button" data-pick="${esc(p.productId)}">Pick this slot</button>
           </div>
@@ -75,7 +75,7 @@
       products
         .map(
           (p) =>
-            `<option value="${esc(p.productId)}">${esc(p.title)} \u2014 ${idr(p.price?.amount)}/mo</option>`,
+            `<option value="${esc(p.productId)}">${esc(p.title)} \u2014 ${gbp(p.price?.amount)}/mo</option>`,
         )
         .join("");
   }

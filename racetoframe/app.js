@@ -77,7 +77,7 @@
         tenant_id: "racetoframe",
         utm: {
           utm_source: utm.utm_source || "racetoframe",
-          utm_medium: utm.utm_medium || "ask-dina",
+          utm_medium: utm.utm_medium || "ask-coach",
           utm_campaign: utm.utm_campaign || "",
           utm_content: utm.utm_content || "",
           utm_term: utm.utm_term || "",

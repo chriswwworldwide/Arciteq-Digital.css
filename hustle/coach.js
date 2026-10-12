@@ -436,7 +436,7 @@
           return `<li>📷 <b>Wall photo</b> (${esc(fmtDate(s.created_at))}) — “${esc(p.caption || "")}” by ${esc(p.by || "?")}, ${esc(p.event || "no event")}, consent: ${esc(p.consent || "?")}${img}</li>`;
         }
         if (s.kind === "bank_transfer") {
-          return `<li>🏦 <b>Bank transfer</b> (${esc(fmtDate(s.created_at))}) — ${esc(p.plan_name || p.plan_id || "")}, £${Number(p.amount_idr || 0).toLocaleString("en-GB")}, ref <b>${esc(p.reference || "?")}</b> · ${esc(p.name || "")} · WA ${esc(p.whatsapp || "")}${p.note ? " · “" + esc(p.note) + "”" : ""}</li>`;
+          return `<li>🏦 <b>Bank transfer</b> (${esc(fmtDate(s.created_at))}) — ${esc(p.plan_name || p.plan_id || "")}, £${Number(p.amount_gbp || 0).toLocaleString("en-GB")}, ref <b>${esc(p.reference || "?")}</b> · ${esc(p.name || "")} · WA ${esc(p.whatsapp || "")}${p.note ? " · “" + esc(p.note) + "”" : ""}</li>`;
         }
         if (s.kind === "race_result") {
           const proof = p.proof_url

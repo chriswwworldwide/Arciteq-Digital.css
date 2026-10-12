@@ -223,6 +223,58 @@
     [
       "images/coach.jpg",
       "images/avatar.jpg"
+    ],
+    [
+      "amountIdr",
+      "amountGbp"
+    ],
+    [
+      "amount_idr",
+      "amount_gbp"
+    ],
+    [
+      "const rupiah",
+      "const gbpPrice"
+    ],
+    [
+      "rupiah(",
+      "gbpPrice("
+    ],
+    [
+      "const idr",
+      "const gbp"
+    ],
+    [
+      "idr(",
+      "gbp("
+    ],
+    [
+      "dinaSays",
+      "coachSays"
+    ],
+    [
+      "plan-dina",
+      "plan-coach"
+    ],
+    [
+      "ask-dina",
+      "ask-coach"
+    ],
+    [
+      "race travel across Asia and training in the heat",
+      "race travel across the UK and training through winter"
+    ],
+    [
+      "heat and humidity without wrecking",
+      "summer heat without wrecking"
+    ],
+    [
+      "in the tropics",
+      "abroad"
+    ],
+    [
+      " humidity",
+      " halls get warm"
     ]
   ],
   "copyOverrides": [

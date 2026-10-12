@@ -138,6 +138,10 @@
   const uvCrop = new Float32Array(4); // off.x, off.y, scale.x, scale.y
   uvCrop.set([0, 0, 1, 1]);
   const small = window.matchMedia("(max-width: 800px)").matches;
+  // data-hero-roll="full": the sheet covers the WHOLE section (ambient
+  // blur + photo baked into one texture — a single piece, no stitched
+  // edges). Desktop only; mobile keeps the img-pinned roll.
+  const fullRoll = !small && section.dataset.heroRoll === "full";
   try {
     canvas = document.createElement("canvas");
     canvas.className = "hero-canvas";
@@ -232,10 +236,69 @@
   // Reads the img's real geometry (object-fit, object-position, padding)
   // so it works for the desktop contain/letterbox layout AND the mobile
   // cover-cropped square.
+  // fullRoll: composite the whole hero into ONE texture — ambient layer
+  // (cover-fit, blurred via downsample-upsample, darkened) plus the photo
+  // drawn contain-fit at its painted rect with the left-edge feather baked
+  // in. Single sheet, so there are no seams to misbehave mid-roll.
+  const buildFullTex = (W, H, dpr) => {
+    const cw = Math.max(2, Math.round(W * dpr));
+    const ch = Math.max(2, Math.round(H * dpr));
+    const comp = document.createElement("canvas");
+    comp.width = cw;
+    comp.height = ch;
+    const c = comp.getContext("2d");
+    const iw = tex2d.naturalWidth || 1125;
+    const ih = tex2d.naturalHeight || 1080;
+
+    // ambient: cover-fit at the same object-position as .hero-amb, drawn
+    // through a tiny buffer for a soft blur, then darkened (~brightness .55)
+    const ambS = Math.max(cw / iw, ch / ih);
+    const ambW = iw * ambS;
+    const ambH = ih * ambS;
+    const ambX = (cw - ambW) * 0.55;
+    const ambY = (ch - ambH) * 0.3;
+    const sm = document.createElement("canvas");
+    sm.width = Math.max(2, Math.round(cw / 12));
+    sm.height = Math.max(2, Math.round(ch / 12));
+    const sc = sm.getContext("2d");
+    sc.drawImage(tex2d, ambX / 12, ambY / 12, ambW / 12, ambH / 12);
+    c.drawImage(sm, 0, 0, cw, ch);
+    c.fillStyle = "rgba(20, 7, 15, 0.45)";
+    c.fillRect(0, 0, cw, ch);
+
+    // photo: contain-fit, padding 14/18, right-pinned — mirrors the CSS
+    const cs = getComputedStyle(img);
+    const pt = parseFloat(cs.paddingTop) || 0;
+    const pb = parseFloat(cs.paddingBottom) || 0;
+    const cW = W;
+    const cH = H - pt - pb;
+    const s2 = Math.min(cW / iw, cH / ih);
+    const pw = iw * s2;
+    const ph = ih * s2;
+    const px = (cW - pw) * 1.0;
+    const py = pt + (cH - ph) * 0.5;
+
+    // photo layer on its own canvas so the feather only fades the photo,
+    // revealing the ambient beneath — same composite as the masked DOM
+    const lay = document.createElement("canvas");
+    lay.width = cw;
+    lay.height = ch;
+    const lc = lay.getContext("2d");
+    lc.drawImage(tex2d, px * dpr, py * dpr, pw * dpr, ph * dpr);
+    lc.globalCompositeOperation = "destination-out";
+    const g = lc.createLinearGradient((W - 780) * dpr, 0, (W - 590) * dpr, 0);
+    g.addColorStop(0, "rgba(0,0,0,1)");
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    lc.fillStyle = g;
+    lc.fillRect(0, 0, cw, ch);
+    c.drawImage(lay, 0, 0);
+    return comp;
+  };
+
   let mvp = null;
   const buildMVP = () => {
-    const W = img.clientWidth;
-    const H = img.clientHeight;
+    const W = fullRoll ? section.clientWidth : img.clientWidth;
+    const H = fullRoll ? section.clientHeight : img.clientHeight;
     if (!W || !H) return;
     const cs = getComputedStyle(img);
     const pt = parseFloat(cs.paddingTop) || 0;
@@ -258,15 +321,16 @@
     const fx = pos(pxs);
     const fy = pos(pys);
     // the plane = what's visibly painted: the letterboxed rect for contain,
-    // the whole content box for cover (texture is cropped via u_uv)
-    const rw = cover ? cW : pw;
-    const rh = cover ? cH : ph;
-    const rx0 = cover ? pl : pl + (cW - pw) * fx;
-    const ry0 = cover ? pt : pt + (cH - ph) * fy;
+    // the whole content box for cover — and the whole section for fullRoll,
+    // where the baked texture already contains ambient + photo
+    const rw = fullRoll ? W : cover ? cW : pw;
+    const rh = fullRoll ? H : cover ? cH : ph;
+    const rx0 = fullRoll ? 0 : cover ? pl : pl + (cW - pw) * fx;
+    const ry0 = fullRoll ? 0 : cover ? pt : pt + (cH - ph) * fy;
     const rx = rx0 + rw / 2 - W / 2; // rect centre, world x
     const ry = H / 2 - (ry0 + rh / 2); // world y (y up)
     uvCrop.set(
-      cover
+      !fullRoll && cover
         ? [((pw - cW) * fx) / pw, ((ph - cH) * fy) / ph, cW / pw, cH / ph]
         : [0, 0, 1, 1],
     );
@@ -328,7 +392,10 @@
   const size = () => {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const parent = canvas.parentElement;
-    let lb = layoutBox(img, parent);
+    // fullRoll covers the whole section; classic pins to the img's layout box
+    let lb = fullRoll
+      ? { x: 0, y: 0, w: section.clientWidth, h: section.clientHeight }
+      : layoutBox(img, parent);
     if (!lb) {
       // fallback: parent isn't in the img's offset chain — use rects
       const pr = parent.getBoundingClientRect();
@@ -359,20 +426,30 @@
     // rect to position the canvas. On mobile its overflow:hidden clips the
     // tilted canvas exactly at the photo's bottom edge (killing the corner
     // leak without a dead strip); on desktop it shares the baked feather
-    // mask.
-    (section.querySelector(".hero-mask") || section).appendChild(canvas);
+    // mask. fullRoll mounts on the section itself, before .wrap, so the
+    // sheet covers the whole hero but stays under the headline copy.
+    const host = section.querySelector(".hero-mask") || section;
+    if (fullRoll) {
+      const wrap = section.querySelector(".wrap");
+      section.insertBefore(canvas, wrap || null);
+    } else {
+      host.appendChild(canvas);
+    }
     try {
       size();
       tex = gl.createTexture();
       gl.bindTexture(gl.TEXTURE_2D, tex);
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       gl.texImage2D(
         gl.TEXTURE_2D,
         0,
         gl.RGBA,
         gl.RGBA,
         gl.UNSIGNED_BYTE,
-        tex2d,
+        fullRoll
+          ? buildFullTex(section.clientWidth, section.clientHeight, dpr)
+          : tex2d,
       );
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
@@ -398,7 +475,9 @@
     // the canvas sits inside its parent.
     let lastPin = "";
     const pin = () => {
-      const lb = layoutBox(img, canvas.parentElement);
+      const lb = fullRoll
+        ? { w: section.clientWidth, h: section.clientHeight, x: 0, y: 0 }
+        : layoutBox(img, canvas.parentElement);
       const key = lb
         ? `${lb.x}|${lb.y}|${lb.w}|${lb.h}`
         : `${img.offsetWidth}|${img.offsetHeight}`;

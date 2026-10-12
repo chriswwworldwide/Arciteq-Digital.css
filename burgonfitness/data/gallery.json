@@ -1,79 +1,51 @@
 {
-  "note": "DEMO SEED — photos pulled from Hustle's IG for the walk-in mockup. Replace with real member photos on launch.",
+  "note": "DEMO SEED — photos pulled from Hannah's IG for the walk-in mockup. Replace with real member photos on launch.",
   "photos": [
     {
-      "src": "/hustle/images/gallery/crew-hyrox-wall.jpg",
-      "alt": "The Hustle crew under the big HYROX letters at the Performance Centre",
-      "caption": "The whole lot of them. Every single one started somewhere.",
-      "by": "Hustle",
+      "src": "/burgonfitness/images/finish.jpg",
+      "alt": "Hannah on the Warsaw podium holding the first-place banner",
+      "caption": "First place, Pro Women, Warsaw. The banner says it all.",
+      "by": "Hannah",
       "tilt": -1.5,
-      "event": "Squad sessions"
+      "event": "HYROX Warsaw"
     },
     {
-      "src": "/hustle/images/gallery/crew-race-day.jpg",
-      "alt": "Hustle crew in race bibs outside a Norwich church after a local race",
-      "caption": "Race day crew. Half of them didn't know each other a year ago.",
-      "by": "Hustle",
+      "src": "/burgonfitness/images/squad-athlos.jpg",
+      "alt": "The Burgon Fitness crew on the orange turf at a Stockport sim",
+      "caption": "Sim day at Pyramid. Everyone in this photo started as a beginner.",
+      "by": "Hannah",
       "tilt": 2,
-      "event": "Race day"
+      "event": "Monthly sim"
     },
     {
-      "src": "/hustle/images/gallery/six-am-crew.jpg",
-      "alt": "Early morning session — rowers and coaches in golden light",
-      "caption": "6AM hits different. Every week, same crew.",
-      "by": "Hustle",
+      "src": "/burgonfitness/images/gallery/pyramid-floor.jpg",
+      "alt": "Athletes mid-session on the Pyramid Performance floor",
+      "caption": "Saturday sims — real timing, real atmosphere, no travel to London.",
+      "by": "Hannah",
       "tilt": 1,
-      "event": "Squad sessions"
+      "event": "Pyramid Performance"
     },
     {
-      "src": "/hustle/images/gallery/train-recover.jpg",
-      "alt": "Train hard, recover properly — session and sauna split shot",
-      "caption": "Train hard. Recover properly. Repeat weekly.",
-      "by": "Hustle",
+      "src": "/burgonfitness/images/gallery/club-tee.jpg",
+      "alt": "The Burgon Fitness HYROX CLUB tee",
+      "caption": "The club tee. Earned, not given.",
+      "by": "Hannah",
       "tilt": -2,
-      "event": "Performance Centre"
+      "event": "Merch"
     },
     {
-      "src": "/hustle/images/gallery/blakely-winners.jpg",
-      "alt": "Hustle women's team holding the Blakely Apex winner board",
-      "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
-      "by": "Hustle",
+      "src": "/burgonfitness/images/gallery/race-car.jpg",
+      "alt": "Hannah on the Burgon Fitness-sponsored race car",
+      "caption": "Spot the logo. Local sponsor, race-car fast.",
+      "by": "Hannah",
       "tilt": 1.5,
-      "event": "Race day"
+      "event": "Sponsor"
     },
     {
-      "src": "/hustle/images/gallery/ncfc-shirts.jpg",
-      "alt": "Hustle home and away shirts laid on the Carrow Road pitch",
-      "caption": "On the Ball, City. Official NCFC regional partners, 2025-26.",
-      "by": "Hustle",
-      "event": "NCFC partnership"
-    },
-    {
-      "src": "/hustle/images/gallery/ncfc-seat.jpg",
-      "alt": "Yellow Hustle number 7 shirt draped over a Carrow Road seat",
-      "caption": "Canary colours, Hustle name. Some things were just meant to be.",
-      "by": "Hustle",
-      "event": "NCFC partnership"
-    },
-    {
-      "src": "/hustle/images/gallery/church-crew.jpg",
-      "alt": "The Hustle crew in race bibs outside a Norwich church on race day",
-      "caption": "Race-day crew, Norwich 10k. The church bells were optional.",
-      "by": "Hustle",
-      "event": "Race day"
-    },
-    {
-      "src": "/hustle/images/gallery/values-wall.jpg",
-      "alt": "The Hustle values wall inside the Performance Centre",
-      "caption": "House rules: good vibes, community, no egos. Written on the wall.",
-      "by": "Hustle",
-      "event": "The gym"
-    },
-    {
-      "src": "/burgonfitness/images/gallery/street-race.jpg",
-      "alt": "Runner racing down a packed high street, crowd behind the barriers",
-      "caption": "Race day on the high street — the whole town shows up.",
-      "by": "Burgon",
+      "src": "/burgonfitness/images/gallery/finish-tunnel.jpg",
+      "alt": "The HYROX finish tunnel before the crowds",
+      "caption": "The last thing you see before the floor goes loud.",
+      "by": "Hannah",
       "tilt": -1,
       "event": "Race day"
     }

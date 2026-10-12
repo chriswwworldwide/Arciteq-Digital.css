@@ -192,9 +192,11 @@ for (const [a, b] of Object.entries(pageRenames)) {
 }
 
 // ---- 2c. image overrides — demo assets cloned over the source imagery ------
-// cfg.imageOverrides = dir relative to repo root, mirrored onto <slug>/
-if (cfg.imageOverrides) {
-  const assets = path.join(root, cfg.imageOverrides);
+// cfg.imageOverrides = dir (or list of dirs) relative to repo root, mirrored
+// onto <slug>/ in order — later dirs win, so per-tenant photos can overlay a
+// shared placeholder pack.
+for (const dir of [cfg.imageOverrides].flat().filter(Boolean)) {
+  const assets = path.join(root, dir);
   if (fs.existsSync(assets)) {
     fs.cpSync(assets, dst, { recursive: true });
   }

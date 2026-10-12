@@ -233,6 +233,20 @@ for (const file of walk(dst)) {
       );
     }
   }
+  // broadcastDemo opt-in: the bulletin page flips from the locked teaser to
+  // the playable demo player, and gets linked in nav + footer (the source
+  // site keeps it hidden/locked — direct URL only, like the predictor).
+  if (cfg.broadcastDemo && file.endsWith(".html")) {
+    s = s.replace('data-broadcast="locked"', 'data-broadcast="live"');
+    s = s.replace(
+      `class="s9-zone" href="/${slug}/station-9/">Station 9</a></li>`,
+      `class="s9-zone" href="/${slug}/station-9/">Station 9</a></li>\n          <li><a href="/${slug}/broadcast/">Broadcast</a></li>`,
+    );
+    s = s.replace(
+      `<a href="/${slug}/station-9/">Station 9</a>`,
+      `<a href="/${slug}/station-9/">Station 9</a>\n          <a href="/${slug}/broadcast/">Broadcast</a>`,
+    );
+  }
   // drop whole sections that only make sense in the source market
   for (const id of stripSections) {
     s = s.replace(

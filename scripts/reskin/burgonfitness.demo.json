@@ -436,15 +436,15 @@
     },
     {
       "pattern": "(<li><a href=\"/burgonfitness/splits/\">Split [Aa]nalyser</a></li>)",
-      "replace": "$1\\n          <li><a href=\"/burgonfitness/predictor/\">Race Predictor</a></li>"
+      "replace": "$1\n          <li><a href=\"/burgonfitness/predictor/\">Race Predictor</a></li>"
     },
     {
       "pattern": "(<a href=\"/burgonfitness/splits/\">Splits</a>)",
-      "replace": "$1\\n          <a href=\"/burgonfitness/predictor/\">Race Predictor</a>"
+      "replace": "$1\n          <a href=\"/burgonfitness/predictor/\">Race Predictor</a>"
     },
     {
       "pattern": "<a href=\"/burgonfitness/splits/\">Split Analyser</a>(?!</li>)",
-      "replace": "<a href=\"/burgonfitness/splits/\">Split Analyser</a>\\n          <a href=\"/burgonfitness/predictor/\">Race Predictor</a>"
+      "replace": "<a href=\"/burgonfitness/splits/\">Split Analyser</a>\n          <a href=\"/burgonfitness/predictor/\">Race Predictor</a>"
     },
     {
       "pattern": "(<h3>SkiErg — 1000 m</h3>[\\s\\S]*?)src=\"/burgonfitness/images/skierg-laugh.jpg\"\\s*alt=\"[^\"]*\"\\s*width=\"\\d+\"\\s*height=\"\\d+\"",
@@ -464,7 +464,7 @@
     },
     {
       "pattern": "(<h3>Rowing — 1000 m</h3>[\\s\\S]*?)src=\"/burgonfitness/images/[^\"]+\\.jpg\"[^>]*?alt=\"[^\"]*\"",
-      "replace": "\\1src=\"/burgonfitness/images/gallery/row.jpg\" alt=\"Hannah mid-pull on the rower, effort face\""
+      "replace": "$1src=\"/burgonfitness/images/gallery/row.jpg\" alt=\"Hannah mid-pull on the rower, effort face\""
     },
     {
       "pattern": "(<h3>Farmers Carry — 200 m</h3>[\\s\\S]*?)src=\"/burgonfitness/images/carry.jpg\"\\s*alt=\"[^\"]*\"\\s*width=\"\\d+\"\\s*height=\"\\d+\"",
@@ -904,6 +904,41 @@
           "event": "Strength"
         }
       ]
+    },
+    "bulletin.json": {
+      "schemaVersion": 1,
+      "weekOf": "2026-10-12",
+      "items": [
+        {
+          "type": "pb",
+          "text": "Two PBs at Saturday's session — Carla took ten seconds off her farmers carry and Josh finally broke the sled."
+        },
+        {
+          "type": "welcome",
+          "text": "Welcome to Priya and Dan, straight in at Tuesday — first session nerves don't survive the warm-up here."
+        },
+        {
+          "type": "birthday",
+          "text": "Josh turns forty on Friday — cake after Sunday run club, bring your knees."
+        },
+        {
+          "type": "deadline",
+          "text": "Manchester race entries close Sunday night — names on the board by then or it's next round."
+        },
+        {
+          "type": "gossip",
+          "text": "Six of you are eyeing the same Birmingham weekend — the travel board's open, pair up before the trains go up."
+        },
+        {
+          "type": "signoff",
+          "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; I'll bring the coffee and croissants on the way in.",
+          "followUp": {
+            "when": "Tuesday",
+            "board": "the wall",
+            "text": "The pic: me and Katie, coffee and croissants after the 7am. I keep my promises."
+          }
+        }
+      ]
     }
   },
   "imageOverrides": [
@@ -915,5 +950,6 @@
     "images/gallery/",
     "images/(squad-anya|carry|coach|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station9-dinner|station10-dance)\\.jpg$"
   ],
-  "sharedPack": "scripts/reskin/shared-packs/uk.json"
+  "sharedPack": "scripts/reskin/shared-packs/uk.json",
+  "broadcastDemo": true
 }

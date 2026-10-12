@@ -2542,6 +2542,208 @@ figure.reveal {
 .stats strong { color: var(--ncfc-green); }
 .plan .tag { background: var(--ncfc-gold); border-color: var(--ncfc-gold); color: #14532d; }
 
+/* ---------- Broadcast — weekly community bulletin ----------
+   body[data-broadcast=locked] = frosted teaser (source site),
+   body[data-broadcast=live]   = playable demo (tenant demos).
+   The card renders data/bulletin.json — the stitched engagement feed. */
+.bc-card {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--pink-100);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(40, 14, 30, 0.06);
+  overflow: hidden;
+}
+.bc-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.bc-mic {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--pink);
+  color: var(--paper);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  flex: none;
+}
+.bc-title {
+  font-weight: 800;
+}
+.bc-sub {
+  color: var(--ink-3);
+  font-size: 0.85rem;
+}
+.bc-eq {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+  height: 18px;
+  margin-left: auto;
+}
+.bc-eq i {
+  width: 3px;
+  height: 6px;
+  background: var(--pink);
+  border-radius: 2px;
+  transform-origin: bottom;
+}
+.bc-eq i:nth-child(2) {
+  height: 12px;
+}
+.bc-eq i:nth-child(3) {
+  height: 16px;
+}
+.bc-eq i:nth-child(4) {
+  height: 9px;
+}
+.bc-speaking .bc-eq i {
+  animation: bc-eq 0.7s ease-in-out infinite;
+}
+.bc-speaking .bc-eq i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.bc-speaking .bc-eq i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.bc-speaking .bc-eq i:nth-child(4) {
+  animation-delay: 0.45s;
+}
+@keyframes bc-eq {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1.5);
+  }
+}
+.bc-script {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.bc-script li {
+  padding: 10px 0;
+  border-top: 1px solid var(--pink-100);
+  transition:
+    opacity 0.3s,
+    filter 0.3s;
+}
+.bc-type {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pink-600);
+  background: var(--pink-100);
+  border-radius: 20px;
+  padding: 2px 9px;
+  margin-right: 8px;
+  vertical-align: 2px;
+}
+.bc-signoff .bc-line {
+  font-style: italic;
+}
+.bc-steps {
+  margin: 14px 0 0;
+  padding-left: 22px;
+}
+.bc-steps li {
+  margin-bottom: 12px;
+}
+
+/* live demo mode: lines dim until read */
+body[data-broadcast=live] .bc-script li {
+  opacity: 0.38;
+}
+body[data-broadcast=live] .bc-script li.bc-now,
+body[data-broadcast=live] .bc-script li.bc-read {
+  opacity: 1;
+}
+body[data-broadcast=live] .bc-script li.bc-now {
+  color: var(--ink);
+}
+.bc-livebar {
+  display: none;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+body[data-broadcast=live] .bc-livebar {
+  display: flex;
+}
+.bc-note {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+/* locked mode: first lines readable, rest frosted under the lock */
+.bc-lock {
+  display: none;
+}
+body[data-broadcast=locked] .bc-script li:nth-child(n + 3) {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+body[data-broadcast=locked] .bc-lock {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(
+    180deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.75) 62%,
+    rgba(255, 255, 255, 0.92) 100%
+  );
+  text-align: center;
+}
+.bc-lock-ico {
+  font-size: 22px;
+}
+.bc-lock p {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  max-width: 40ch;
+  margin: 0 auto;
+}
+
+/* the promised follow-up — the pic that lands on the board as receipts */
+.bc-followup {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px dashed var(--pink-600);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: var(--pink-100);
+}
+.bc-fu-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pink-600);
+  flex: none;
+}
+.bc-fu-text {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
 /* hero--full: photo covers the whole hero; reveal unrolls across the
    full background. Opt-in per tenant via "heroFull": true. */
 .hero--bleed.hero--full .hero-amb {

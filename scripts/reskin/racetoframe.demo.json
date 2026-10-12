@@ -367,7 +367,7 @@
     },
     {
       "pattern": "PIK/PIK2 for closeness, Kelapa Gading for value, Sudirman/Thamrin[\\s\\S]*?(</li>|\\.)",
-      "replace": "Near the venue for closeness, the city centre for the night after\\1"
+      "replace": "Near the venue for closeness, the city centre for the night after$1"
     },
     {
       "pattern": "scan with any British banking or e-wallet app \\(QRIS\\)",
@@ -419,15 +419,15 @@
     },
     {
       "pattern": "(<li><a href=\"/racetoframe/splits/\">Split [Aa]nalyser</a></li>)",
-      "replace": "\\1\\n          <li><a href=\"/racetoframe/predictor/\">Race Predictor</a></li>"
+      "replace": "$1\n          <li><a href=\"/racetoframe/predictor/\">Race Predictor</a></li>"
     },
     {
       "pattern": "(<a href=\"/racetoframe/splits/\">Splits</a>)",
-      "replace": "\\1\\n          <a href=\"/racetoframe/predictor/\">Race Predictor</a>"
+      "replace": "$1\n          <a href=\"/racetoframe/predictor/\">Race Predictor</a>"
     },
     {
       "pattern": "<a href=\"/racetoframe/splits/\">Split Analyser</a>(?!</li>)",
-      "replace": "<a href=\"/racetoframe/splits/\">Split Analyser</a>\\n          <a href=\"/racetoframe/predictor/\">Race Predictor</a>"
+      "replace": "<a href=\"/racetoframe/splits/\">Split Analyser</a>\n          <a href=\"/racetoframe/predictor/\">Race Predictor</a>"
     },
     {
       "pattern": ":root\\s*\\{",
@@ -834,6 +834,41 @@
           "event": "Race day"
         }
       ]
+    },
+    "bulletin.json": {
+      "schemaVersion": 1,
+      "weekOf": "2026-10-12",
+      "items": [
+        {
+          "type": "pb",
+          "text": "PB alert — Sam took forty seconds off his last sim and Lucy owned the lunges like they owed her money."
+        },
+        {
+          "type": "welcome",
+          "text": "Two new racers joined the frame this week — say hello before the start line does."
+        },
+        {
+          "type": "birthday",
+          "text": "Gregor's birthday Thursday — he's banned himself from cake, we're overruled."
+        },
+        {
+          "type": "deadline",
+          "text": "The Berlin trip closes Sunday — seats are shared so speak now or hold your travel."
+        },
+        {
+          "type": "gossip",
+          "text": "Three of you are plotting the same race weekend — the board's there for exactly this."
+        },
+        {
+          "type": "signoff",
+          "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; we'll bring the coffee and croissants on the way in.",
+          "followUp": {
+            "when": "Tuesday",
+            "board": "the frame",
+            "text": "The pic: us and Katie, coffee and croissants after the 7am. We keep our promises."
+          }
+        }
+      ]
     }
   },
   "imageOverrides": "scripts/reskin/hustle-assets",
@@ -843,5 +878,6 @@
     "images/(squad-anya|carry|coach|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station9-dinner|station10-dance)\\.jpg$"
   ],
   "currency": "gbp",
-  "sharedPack": "scripts/reskin/shared-packs/uk.json"
+  "sharedPack": "scripts/reskin/shared-packs/uk.json",
+  "broadcastDemo": true
 }

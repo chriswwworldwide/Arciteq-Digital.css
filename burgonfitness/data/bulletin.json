@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "weekOf": "2026-10-12",
+  "items": [
+    {
+      "type": "pb",
+      "text": "Two PBs at Saturday's session — Carla took ten seconds off her farmers carry and Josh finally broke the sled."
+    },
+    {
+      "type": "welcome",
+      "text": "Welcome to Priya and Dan, straight in at Tuesday — first session nerves don't survive the warm-up here."
+    },
+    {
+      "type": "birthday",
+      "text": "Josh turns forty on Friday — cake after Sunday run club, bring your knees."
+    },
+    {
+      "type": "deadline",
+      "text": "Manchester race entries close Sunday night — names on the board by then or it's next round."
+    },
+    {
+      "type": "gossip",
+      "text": "Six of you are eyeing the same Birmingham weekend — the travel board's open, pair up before the trains go up."
+    },
+    {
+      "type": "signoff",
+      "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; I'll bring the coffee and croissants on the way in.",
+      "followUp": {
+        "when": "Tuesday",
+        "board": "the wall",
+        "text": "The pic: me and Katie, coffee and croissants after the 7am. I keep my promises."
+      }
+    }
+  ]
+}

@@ -444,7 +444,7 @@
     },
     {
       "pattern": "PIK/PIK2 for closeness, Kelapa Gading for value, Sudirman/Thamrin[\\s\\S]*?(</li>|\\.)",
-      "replace": "Near the venue for closeness, the city centre for the night after\\1"
+      "replace": "Near the venue for closeness, the city centre for the night after$1"
     },
     {
       "pattern": "content=\"Reserve your Hustle coaching plan[^\"]*\"",
@@ -512,15 +512,15 @@
     },
     {
       "pattern": "(<li><a href=\"/hustle/splits/\">Split [Aa]nalyser</a></li>)",
-      "replace": "\\1\\n          <li><a href=\"/hustle/predictor/\">Race Predictor</a></li>"
+      "replace": "$1\n          <li><a href=\"/hustle/predictor/\">Race Predictor</a></li>"
     },
     {
       "pattern": "(<a href=\"/hustle/splits/\">Splits</a>)",
-      "replace": "\\1\\n          <a href=\"/hustle/predictor/\">Race Predictor</a>"
+      "replace": "$1\n          <a href=\"/hustle/predictor/\">Race Predictor</a>"
     },
     {
       "pattern": "<a href=\"/hustle/splits/\">Split Analyser</a>(?!</li>)",
-      "replace": "<a href=\"/hustle/splits/\">Split Analyser</a>\\n          <a href=\"/hustle/predictor/\">Race Predictor</a>"
+      "replace": "<a href=\"/hustle/splits/\">Split Analyser</a>\n          <a href=\"/hustle/predictor/\">Race Predictor</a>"
     },
     {
       "pattern": ":root\\s*\\{",
@@ -944,6 +944,41 @@
           "event": "Race day"
         }
       ]
+    },
+    "bulletin.json": {
+      "schemaVersion": 1,
+      "weekOf": "2026-10-12",
+      "items": [
+        {
+          "type": "pb",
+          "text": "Four PBs this week — Tom's SkiErg finally behaved and Aisha made the row look easy."
+        },
+        {
+          "type": "welcome",
+          "text": "Three new starters on Thursday — if you see a lost face, you're the welcome committee now."
+        },
+        {
+          "type": "birthday",
+          "text": "Big five-oh for Mel on Saturday — she's requested wall balls instead of cake. We're doing both."
+        },
+        {
+          "type": "deadline",
+          "text": "London entries close Wednesday — the sheet's by the desk, put your name down."
+        },
+        {
+          "type": "gossip",
+          "text": "Half the morning crew is talking about a doubles team-up — partner board's live, claim your lane."
+        },
+        {
+          "type": "signoff",
+          "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; I'll bring the coffee and croissants on the way in.",
+          "followUp": {
+            "when": "Tuesday",
+            "board": "the wall",
+            "text": "The pic: me and Katie, coffee and croissants after the 7am. I keep my promises."
+          }
+        }
+      ]
     }
   },
   "imageOverrides": "scripts/reskin/hustle-assets",
@@ -953,5 +988,6 @@
     "images/(squad-anya|carry|coach|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station9-dinner|station10-dance)\\.jpg$"
   ],
   "currency": "gbp",
-  "sharedPack": "scripts/reskin/shared-packs/uk.json"
+  "sharedPack": "scripts/reskin/shared-packs/uk.json",
+  "broadcastDemo": true
 }

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "note": "Weekly community bulletin — the Broadcast reads from this feed. Items are stitched from engagement data: PBs, birthdays, race deadlines, new joiners, gossip. The pipeline that writes this weekly comes later; today it's seeded.",
+  "weekOf": "2026-10-12",
+  "items": [
+    {
+      "type": "pb",
+      "text": "Three PBs at Saturday's sim — Maya finally cracked the sled and Rio owned the wall balls."
+    },
+    {
+      "type": "welcome",
+      "text": "Two new faces joined Tuesday's class — say hi if you spot them."
+    },
+    {
+      "type": "birthday",
+      "text": "Maya turns thirty this week — cake after Tuesday's class is not optional."
+    },
+    {
+      "type": "deadline",
+      "text": "Jakarta race entries close Friday — if your name's not on the list yet, that one's on you now."
+    },
+    {
+      "type": "gossip",
+      "text": "Four of the crew are eyeing the same race weekend — the travel board's waiting, pair up before flights go up."
+    },
+    {
+      "type": "signoff",
+      "text": "And Katie — happy birthday for Tuesday. Your 7am session's in the book; I'll bring the coffee and croissants on the way in.",
+      "followUp": {
+        "when": "Tuesday",
+        "board": "the wall",
+        "text": "The pic: me and Katie, coffee and croissants after the 7am. I keep my promises."
+      }
+    }
+  ]
+}

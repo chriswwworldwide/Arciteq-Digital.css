@@ -345,6 +345,23 @@
   loadTravel();
   initPace();
 
+  // Boards refresh themselves: re-poll every minute and whenever the tab
+  // comes back into view, so an approved card swaps the "empty" panel for
+  // real entries without anyone needing to reload — and expired cards drop
+  // back off the same way.
+  setInterval(() => {
+    if (!document.hidden) {
+      loadBoard();
+      loadTravel();
+    }
+  }, 60 * 1000);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      loadBoard();
+      loadTravel();
+    }
+  });
+
   // ---- "Prove your pace": compact race-splits entry that feeds the same
   // race_splits pipeline as the split analyser, then fills the card's total.
   function initPace() {

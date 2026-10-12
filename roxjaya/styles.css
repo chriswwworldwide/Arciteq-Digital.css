@@ -641,7 +641,8 @@ button.btn {
 
 .hero--bleed .hero-img {
   object-fit: contain;
-  object-position: 58% center;
+  /* pushed right so the headline column sits on the dark fade, not on her */
+  object-position: 74% center;
   padding: 40px 0 56px;
 }
 
@@ -655,7 +656,12 @@ button.btn {
       rgba(40, 14, 30, 0.2) 45%,
       rgba(40, 14, 30, 0.86) 100%
     ),
-    linear-gradient(90deg, rgba(40, 14, 30, 0.5) 0%, rgba(40, 14, 30, 0) 60%);
+    linear-gradient(
+      90deg,
+      rgba(40, 14, 30, 0.82) 0%,
+      rgba(40, 14, 30, 0.35) 45%,
+      rgba(40, 14, 30, 0) 68%
+    );
 }
 
 .hero--bleed .wrap {

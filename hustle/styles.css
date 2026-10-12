@@ -2744,6 +2744,25 @@ body[data-broadcast=locked] .bc-lock {
   color: var(--ink-2);
 }
 
+/* ---------- Diary — the coach's week ---------- */
+.diary-day {
+  margin: 22px 0 4px;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+}
+.diary-day:first-child {
+  margin-top: 8px;
+}
+.diary-note {
+  color: var(--ink-3);
+  font-size: 0.88rem;
+}
+.diary-today time {
+  color: var(--pink-600);
+  font-weight: 800;
+}
+
 /* hero--full: photo covers the whole hero; reveal unrolls across the
    full background. Opt-in per tenant via "heroFull": true. */
 .hero--bleed.hero--full .hero-amb {

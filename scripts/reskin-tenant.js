@@ -240,11 +240,11 @@ for (const file of walk(dst)) {
     s = s.replace('data-broadcast="locked"', 'data-broadcast="live"');
     s = s.replace(
       `class="s9-zone" href="/${slug}/station-9/">Station 9</a></li>`,
-      `class="s9-zone" href="/${slug}/station-9/">Station 9</a></li>\n          <li><a href="/${slug}/broadcast/">Broadcast</a></li>`,
+      `class="s9-zone" href="/${slug}/station-9/">Station 9</a></li>\n          <li><a href="/${slug}/broadcast/">Broadcast</a></li>\n          <li><a href="/${slug}/diary/">Diary</a></li>`,
     );
     s = s.replace(
       `<a href="/${slug}/station-9/">Station 9</a>`,
-      `<a href="/${slug}/station-9/">Station 9</a>\n          <a href="/${slug}/broadcast/">Broadcast</a>`,
+      `<a href="/${slug}/station-9/">Station 9</a>\n          <a href="/${slug}/broadcast/">Broadcast</a>\n          <a href="/${slug}/diary/">Diary</a>`,
     );
   }
   // drop whole sections that only make sense in the source market

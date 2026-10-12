@@ -869,6 +869,46 @@
           }
         }
       ]
+    },
+    "diary.json": {
+      "schemaVersion": 1,
+      "sessions": [
+        {
+          "date": "2026-10-12",
+          "time": "18:30",
+          "type": "Session",
+          "who": "Crew",
+          "note": "Sled and lunges block"
+        },
+        {
+          "date": "2026-10-13",
+          "time": "07:00",
+          "type": "1:1",
+          "who": "Katie",
+          "note": "Her birthday — coffee and croissants after. We will not be forgetting the croissants."
+        },
+        {
+          "date": "2026-10-15",
+          "time": "18:30",
+          "type": "Session",
+          "who": "Crew",
+          "note": "Row intervals, then trip planning"
+        },
+        {
+          "date": "2026-10-17",
+          "time": "10:00",
+          "type": "Sim + coffee",
+          "who": "Berlin hopefuls",
+          "note": "Stations then the Berlin list gets argued over"
+        },
+        {
+          "date": "2026-10-18",
+          "time": "11:00",
+          "type": "Review",
+          "who": "Sam",
+          "note": "Pace chart walkthrough"
+        }
+      ]
     }
   },
   "imageOverrides": "scripts/reskin/hustle-assets",

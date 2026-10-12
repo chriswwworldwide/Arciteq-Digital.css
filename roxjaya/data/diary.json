@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "note": "Coach's bookings diary — the week's sessions. The bulletin pipeline stitches items from here (sessions, 1:1s, what's owed) alongside the boards. Seeded for now; the booking flow writes this later.",
+  "sessions": [
+    {
+      "date": "2026-10-12",
+      "time": "18:00",
+      "type": "Group session",
+      "who": "Evening crew",
+      "note": "12 booked — sled focus"
+    },
+    {
+      "date": "2026-10-13",
+      "time": "07:00",
+      "type": "1:1",
+      "who": "Katie",
+      "note": "Her birthday — coffee and croissants after. Do not forget the croissants."
+    },
+    {
+      "date": "2026-10-13",
+      "time": "18:30",
+      "type": "Group session",
+      "who": "Evening crew",
+      "note": "New joiners' second week — keep it kind"
+    },
+    {
+      "date": "2026-10-15",
+      "time": "06:30",
+      "type": "Run club",
+      "who": "Open",
+      "note": "Easy 5k, coffee after"
+    },
+    {
+      "date": "2026-10-17",
+      "time": "09:00",
+      "type": "Sim morning",
+      "who": "Race prep cohort",
+      "note": "Full station run-through — bring race shoes"
+    },
+    {
+      "date": "2026-10-18",
+      "time": "10:30",
+      "type": "1:1 review",
+      "who": "Rio",
+      "note": "Wall ball technique — video review"
+    }
+  ]
+}

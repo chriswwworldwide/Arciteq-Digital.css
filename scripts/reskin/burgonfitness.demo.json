@@ -432,6 +432,18 @@
     {
       "pattern": "vec3 col = texture2D\\(u_tex, cuv\\)\\.rgb;",
       "replace": "vec3 col = texture2D(u_tex, cuv).rgb;\n      // Burgon accent: unresolved mosaic tiles checkerboard volt/charcoal,\n      // fading back to the real photo as the paper resolves.\n      float lum = dot(col, vec3(0.299, 0.587, 0.114));\n      float chk = mod(floor(vUv.x * cells) + floor(vUv.y * cells), 2.0);\n      vec3 burg = mix(vec3(0.86, 0.95, 0.31), vec3(0.09, 0.09, 0.10), chk);\n      col = mix(burg * (0.4 + 0.8 * lum), col, vResolve);"
+    },
+    {
+      "pattern": "(<li><a href=\"/burgonfitness/splits/\">Split [Aa]nalyser</a></li>)",
+      "replace": "\\1\\n          <li><a href=\"/burgonfitness/predictor/\">Race Predictor</a></li>"
+    },
+    {
+      "pattern": "(<a href=\"/burgonfitness/splits/\">Splits</a>)",
+      "replace": "\\1\\n          <a href=\"/burgonfitness/predictor/\">Race Predictor</a>"
+    },
+    {
+      "pattern": "<a href=\"/burgonfitness/splits/\">Split Analyser</a>(?!</li>)",
+      "replace": "<a href=\"/burgonfitness/splits/\">Split Analyser</a>\\n          <a href=\"/burgonfitness/predictor/\">Race Predictor</a>"
     }
   ],
   "stripSections": [

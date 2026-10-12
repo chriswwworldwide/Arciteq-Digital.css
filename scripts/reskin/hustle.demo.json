@@ -508,6 +508,18 @@
     {
       "pattern": "Eyes on the target line the whole time\\. Looking at the ball is\\s+how you drop it on rep 68\\.",
       "replace": "Eyes on the target line the whole time — On the Ball, City. Looking at the ball is how you drop it on rep 68."
+    },
+    {
+      "pattern": "(<li><a href=\"/hustle/splits/\">Split [Aa]nalyser</a></li>)",
+      "replace": "\\1\\n          <li><a href=\"/hustle/predictor/\">Race Predictor</a></li>"
+    },
+    {
+      "pattern": "(<a href=\"/hustle/splits/\">Splits</a>)",
+      "replace": "\\1\\n          <a href=\"/hustle/predictor/\">Race Predictor</a>"
+    },
+    {
+      "pattern": "<a href=\"/hustle/splits/\">Split Analyser</a>(?!</li>)",
+      "replace": "<a href=\"/hustle/splits/\">Split Analyser</a>\\n          <a href=\"/hustle/predictor/\">Race Predictor</a>"
     }
   ],
   "stripSections": [

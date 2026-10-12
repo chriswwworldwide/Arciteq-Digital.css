@@ -415,6 +415,18 @@
     {
       "pattern": "<div class=\"stats\">[\\s\\S]*?Hyrox races</span></div>\\s*</div>",
       "replace": "<div class=\"stats\">\n          <div>\n            <strong>Gymshark</strong><span>Sponsored athletes — with DFYNE</span>\n          </div>\n          <div>\n            <strong>~Every</strong><span>Weekend at a HYROX race somewhere in Europe</span>\n          </div>\n          <div><strong>2024</strong><span>Race to Frame founded</span></div>\n        </div>"
+    },
+    {
+      "pattern": "(<li><a href=\"/racetoframe/splits/\">Split [Aa]nalyser</a></li>)",
+      "replace": "\\1\\n          <li><a href=\"/racetoframe/predictor/\">Race Predictor</a></li>"
+    },
+    {
+      "pattern": "(<a href=\"/racetoframe/splits/\">Splits</a>)",
+      "replace": "\\1\\n          <a href=\"/racetoframe/predictor/\">Race Predictor</a>"
+    },
+    {
+      "pattern": "<a href=\"/racetoframe/splits/\">Split Analyser</a>(?!</li>)",
+      "replace": "<a href=\"/racetoframe/splits/\">Split Analyser</a>\\n          <a href=\"/racetoframe/predictor/\">Race Predictor</a>"
     }
   ],
   "stripSections": [

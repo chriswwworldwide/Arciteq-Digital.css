@@ -133,6 +133,15 @@ dirs are outputs. `sharedPack` in config pulls market-level cleanup
 (UK language/data sweep) so every tenant inherits it — don't duplicate
 fixes per config.
 
+**The end-state intake is a web form, not me.** The config JSON I write by
+hand *is* the product — the form just captures the same fields (brand,
+coach, city, colours, offer/prices, three voice questions, 5–10 labelled
+photos). Form → JSON → `reskin-tenant.js` → preview link. v1: internal
+tool I fill after a walk-in/DM. v2: self-serve on the platform site
+(see BILLIONS.md — "Station 9"), paywall = publish. Until the form
+exists, keep writing configs by hand — every config written defines a
+field the form needs.
+
 ## Pricing model
 
 - UK: setup £300–800 + £40–80/mo; multi-site higher

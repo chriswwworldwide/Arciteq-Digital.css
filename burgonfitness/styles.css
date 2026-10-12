@@ -10,6 +10,8 @@
   --pink: #17171a;
   --pink-600: #000000;
   --pink-100: #efefef;
+  --volt: #dcf24f;
+  --volt-ink: #5f7a00;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(40, 14, 30, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
@@ -2204,6 +2206,8 @@ body.has-sticky-cta .wa-fab {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
   animation: sig-shine 7s ease-in-out infinite;
 }
 
@@ -2525,3 +2529,12 @@ figure.reveal {
 .pred-line {
   margin: 0 0 10px;
 }
+
+/* Burgon accent — volt, light touch over the monochrome base */
+.masthead .sig { color: var(--volt-ink); }
+.masthead .sig-text { background-image: linear-gradient(105deg, var(--volt-ink) 42%, #f4ffd4 50%, var(--volt-ink) 58%); }
+.kicker { color: var(--volt-ink); }
+.eyebrow { color: var(--volt-ink); }
+.zone .num { color: var(--volt-ink); }
+.stats strong { color: var(--volt-ink); }
+.plan .tag { background: var(--volt); border-color: var(--volt); color: #17171a; }

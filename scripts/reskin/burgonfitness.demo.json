@@ -234,6 +234,10 @@
     [
       "data-city=\"london\"",
       "data-city=\"manchester\""
+    ],
+    [
+      "--pink-100: #ffe1f0;",
+      "--pink-100: #efefef;\n  --volt: #dcf24f;\n  --volt-ink: #5f7a00;"
     ]
   ],
   "copyOverrides": [
@@ -420,6 +424,14 @@
     {
       "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
       "replace": "<p class=\"eyebrow\">Meet Hannah</p>\n          <h3>Hannah. Everyday people, impossible goals, done anyway.</h3>\n          <p class=\"lead\">\n            My purpose: I coach everyday people to become the strongest,\n            fittest versions of themselves — achieving goals they once\n            thought impossible. MSc sport nutrition, BSc sport science,\n            six years coaching, and my own race experience — World\n            Championship competitor, 1hr 12 Pro — all in the room with you.\n          </p>\n          <p class=\"quote\">\n            \"I’ll celebrate your wins and help you through the tough spots\n            — every step of the way. And I make sessions FUN.\"\n          </p>"
+    },
+    {
+      "pattern": "\\.pred-line \\{\\s*margin: 0 0 10px;\\s*\\}",
+      "replace": "$&\n\n/* Burgon accent — volt, light touch over the monochrome base */\n.masthead .sig { color: var(--volt-ink); }\n.masthead .sig-text { background-image: linear-gradient(105deg, var(--volt-ink) 42%, #f4ffd4 50%, var(--volt-ink) 58%); }\n.kicker { color: var(--volt-ink); }\n.eyebrow { color: var(--volt-ink); }\n.zone .num { color: var(--volt-ink); }\n.stats strong { color: var(--volt-ink); }\n.plan .tag { background: var(--volt); border-color: var(--volt); color: #17171a; }"
+    },
+    {
+      "pattern": "vec3 col = texture2D\\(u_tex, cuv\\)\\.rgb;",
+      "replace": "vec3 col = texture2D(u_tex, cuv).rgb;\n      // Burgon accent: unresolved mosaic tiles checkerboard volt/charcoal,\n      // fading back to the real photo as the paper resolves.\n      float lum = dot(col, vec3(0.299, 0.587, 0.114));\n      float chk = mod(floor(vUv.x * cells) + floor(vUv.y * cells), 2.0);\n      vec3 burg = mix(vec3(0.86, 0.95, 0.31), vec3(0.09, 0.09, 0.10), chk);\n      col = mix(burg * (0.4 + 0.8 * lum), col, vResolve);"
     }
   ],
   "stripSections": [

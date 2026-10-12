@@ -2204,6 +2204,8 @@ body.has-sticky-cta .wa-fab {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
   animation: sig-shine 7s ease-in-out infinite;
 }
 

@@ -218,6 +218,38 @@ is the most crowded channel in e-commerce, and speed alone doesn't
 close without a case study. Pawsense must produce numbers, or the first
 commerce client *becomes* the case study.
 
+## Idea log — consumer outriggers (cheap experiments, never the core)
+
+### Outrigger #2 — personalized AI newscaster
+
+The pitch: pick the news you want, an anchor reads it — and knows you.
+"It's Katie's birthday — happy birthday from all of us here at the
+desk." The audience personalization (birthday sign-offs, your town,
+your team) is the emotional hook nobody else has.
+
+Validation: Channel 1 (channel1.ai) is literally building this —
+personalized virtual anchors, adaptive story depth. Viral pilot
+(#2 video on Crackle that weekend, 5M Twitter impressions day 1) but
+their consumer product (Project Exo) still hasn't shipped ~2 years
+later. Real broadcasters already run AI anchors (Aaj Tak Sana, Mexico
+NAT, Doordarshan). So the idea is real — and it's a funded race where
+the bottleneck is content licensing, not avatar tech.
+
+Walls: BBC-style branding/content = trademark + licensing problem.
+Video avatars cost real $/min/user. Deepfake optics — an app that puts
+words in a newscaster's mouth is misinformation-shaped by design.
+
+The moat version: **weekly community newscast per tenant, read in the
+coach's voice/avatar.** "Three PBs at Saturday's sim, Maya turns 30
+Sunday, Jakarta entries close Friday." We already own the data
+(scene/events/results/matchboard) and there are zero rights issues —
+it's the gym's own community. Content automation no website builder
+offers; audio-first is cheap, avatar later. Same engine, owned
+audience.
+
+Decision: consumer version = outrigger idea, parked. Tenant bulletin =
+real feature candidate after the voice engine exists.
+
 ## Open questions
 
 - Station 9 site — build next (it's another reskin: our own brand)

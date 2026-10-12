@@ -2203,6 +2203,13 @@ html.reveal-live:not(.reveal-done) .hero--bleed .hero-img {
   opacity: 0;
 }
 
+/* Cross-fade the handoff — the canvas fades out over 350ms, so the img
+   eases in over the same window instead of snapping (the bottom strip the
+   canvas never paints would pop otherwise). */
+.hero--bleed .hero-img {
+  transition: opacity 0.35s ease;
+}
+
 .hero-canvas {
   position: absolute;
   inset: 0;

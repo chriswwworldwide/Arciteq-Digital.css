@@ -318,15 +318,12 @@
     canvas.style.top = `${ir.top - sr.top}px`;
     canvas.style.left = `${ir.left - sr.left}px`;
     canvas.style.width = `${ir.width}px`;
-    // Shave 2px off the bottom AND clip the canvas's own bottom 14px:
-    // the enter animation tilts the canvas -1.2deg, swinging its corner
-    // ~8px below the photo row early in the sweep — a thin wedge of tile
-    // tops under the photo's bottom-right. The dead strip sits inside the
-    // dark ::after fade, so it reads as nothing.
-    const h = Math.max(0, ir.height - 2);
-    canvas.style.height = `${h}px`;
+    // Pin to the img's exact rect — shrinking the canvas squashes the photo
+    // and the bottom visibly clicks down at handoff. Edge leak is handled
+    // by the 14px clip-path on the canvas instead.
+    canvas.style.height = `${ir.height}px`;
     canvas.width = Math.round(ir.width * dpr);
-    canvas.height = Math.round(h * dpr);
+    canvas.height = Math.round(ir.height * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
     buildMVP();
   };

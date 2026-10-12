@@ -141,6 +141,10 @@ const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 const stripeWebhookSecret = String(
   process.env.STRIPE_WEBHOOK_SECRET || "",
 ).trim();
+// Stripe Tax requires the account to have the Tax capability enabled —
+// flip on once the merchant account activates it.
+const automaticTaxEnabled =
+  String(process.env.STRIPE_AUTOMATIC_TAX || "").trim() === "1";
 const alertEmailTo = String(process.env.ALERT_EMAIL_TO || "").trim();
 const alertHeartbeatMinutesRaw = Number(process.env.ALERT_HEARTBEAT_MINUTES);
 const alertHeartbeatMinutes =
@@ -245,6 +249,18 @@ app.post(
         const amountTotal = Number.isInteger(session?.amount_total)
           ? session.amount_total
           : null;
+        const amountDiscount = Number.isInteger(
+          session?.total_details?.amount_discount,
+        )
+          ? session.total_details.amount_discount
+          : null;
+        const amountTax = Number.isInteger(session?.total_details?.amount_tax)
+          ? session.total_details.amount_tax
+          : null;
+        const discountCode = String(
+          session?.total_details?.breakdown?.discounts?.[0]?.discount
+            ?.promotion_code || session?.metadata?.discount_code || "",
+        );
 
         if (orderId) {
           const upsert = await dbQuery(
@@ -263,6 +279,31 @@ app.post(
           );
 
           const upserted = Array.isArray(upsert?.rows) ? upsert.rows[0] : null;
+          if (amountDiscount !== null || amountTax !== null || discountCode) {
+            await dbQuery(
+              "UPDATE orders SET amount_discount = $1, amount_tax = $2, discount_code = NULLIF($3, ''), updated_at = now() WHERE order_id = $4",
+              [amountDiscount, amountTax, discountCode, orderId],
+            );
+          }
+          try {
+            await ensureCommerceTables();
+            await dbQuery(
+              "INSERT INTO inventory_movements (tenant_id, product_id, delta, reason, order_id) SELECT tenant_id, product_id, 0, 'capture', order_id FROM inventory_movements WHERE tenant_id = $1 AND order_id = $2 AND reason = 'reserve'",
+              [tenantId, orderId],
+            );
+            const normEmail = normalizeEmail(customerEmail);
+            if (normEmail) {
+              const token = await ensureAccountToken(tenantId, normEmail);
+              if (token) {
+                await dbQuery(
+                  "INSERT INTO order_events (order_id, type, data) VALUES ($1, 'account_token_issued', $2::jsonb)",
+                  [orderId, JSON.stringify({ email: normEmail })],
+                );
+              }
+            }
+          } catch (invErr) {
+            console.error("post-payment commerce hooks failed", invErr);
+          }
           if (upserted?.order_id && String(upserted?.status || "") === "paid") {
             console.log(
               "ORDER_PAID",
@@ -481,6 +522,12 @@ app.post(
             "UPDATE orders SET status = $1, stripe_payment_intent_id = COALESCE(NULLIF($2, ''), stripe_payment_intent_id), updated_at = now() WHERE stripe_checkout_session_id = $3 AND status = $4",
             [nextStatus, paymentIntentId, sessionId, "pending"],
           );
+        }
+        try {
+          await ensureCommerceTables();
+          await releaseReservation(tenantId, orderId || null, "restore");
+        } catch (invErr) {
+          console.error("stock restore on checkout end failed", invErr);
         }
       } else if (stripeEventType === "payment_intent.payment_failed") {
         const paymentIntent = event?.data?.object;
@@ -2186,7 +2233,7 @@ app.post("/checkout/cancel", express.json(), async (req, res) => {
     }
 
     const update = await dbQuery(
-      "UPDATE orders SET status = 'abandoned', updated_at = now() WHERE order_id = $1 AND status = 'pending' RETURNING order_id",
+      "UPDATE orders SET status = 'abandoned', updated_at = now() WHERE order_id = $1 AND status = 'pending' RETURNING order_id, tenant_id",
       [orderId],
     );
 
@@ -2200,6 +2247,16 @@ app.post("/checkout/cancel", express.json(), async (req, res) => {
           JSON.stringify({ at: new Date().toISOString() }),
         ],
       );
+      try {
+        await ensureCommerceTables();
+        await releaseReservation(
+          String(update.rows[0].tenant_id || "default"),
+          orderId,
+          "restore",
+        );
+      } catch (invErr) {
+        console.error("stock restore on cancel failed", invErr);
+      }
     }
 
     return res.json({ ok: true, updated });
@@ -2214,7 +2271,7 @@ app.get("/checkout/cancel", async (req, res) => {
     const orderId = String(req.query?.order_id || "").trim();
     if (orderId) {
       const update = await dbQuery(
-        "UPDATE orders SET status = 'abandoned', updated_at = now() WHERE order_id = $1 AND status = 'pending' RETURNING order_id",
+        "UPDATE orders SET status = 'abandoned', updated_at = now() WHERE order_id = $1 AND status = 'pending' RETURNING order_id, tenant_id",
         [orderId],
       );
 
@@ -2228,6 +2285,16 @@ app.get("/checkout/cancel", async (req, res) => {
             JSON.stringify({ at: new Date().toISOString() }),
           ],
         );
+        try {
+          await ensureCommerceTables();
+          await releaseReservation(
+            String(update.rows[0].tenant_id || "default"),
+            orderId,
+            "restore",
+          );
+        } catch (invErr) {
+          console.error("stock restore on cancel failed", invErr);
+        }
       }
     }
 
@@ -2235,6 +2302,181 @@ app.get("/checkout/cancel", async (req, res) => {
   } catch (err) {
     console.error("GET /checkout/cancel failed", err);
     return res.redirect(302, "/cart.html");
+  }
+});
+
+// ---- Storefront stock: /api/stock?ids=a,b,c ------------------------------
+app.get("/api/stock", async (req, res) => {
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const tenantId = String(
+      req.query?.tenant_id || tenant?.tenant_id || "default",
+    );
+    await seedInventory(tenantId);
+    const ids = String(req.query?.ids || "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .slice(0, 200);
+    const r = ids.length
+      ? await dbQuery(
+          "SELECT product_id, stock FROM inventory WHERE tenant_id = $1 AND product_id = ANY($2)",
+          [tenantId, ids],
+        )
+      : await dbQuery(
+          "SELECT product_id, stock FROM inventory WHERE tenant_id = $1",
+          [tenantId],
+        );
+    const stock = {};
+    for (const row of r?.rows || []) stock[row.product_id] = row.stock;
+    return res.json({ stock });
+  } catch (err) {
+    console.error("/api/stock failed", err);
+    return res.status(500).json({ error: "Stock lookup failed" });
+  }
+});
+
+// ---- Admin: discount codes via Stripe coupons + promotion codes ----------
+app.post("/admin/discounts", express.json(), async (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  try {
+    if (!stripe) {
+      return res.status(500).json({ error: "STRIPE_SECRET_KEY is not set" });
+    }
+    const code = String(req.body?.code || "")
+      .trim()
+      .toUpperCase();
+    const percentOff = Number(req.body?.percent_off) || null;
+    const amountOff = Number.isInteger(req.body?.amount_off)
+      ? req.body.amount_off
+      : null;
+    const currency = String(req.body?.currency || "gbp").toLowerCase();
+    if (!code || (!percentOff && !amountOff)) {
+      return res.status(400).json({
+        error: "Provide code plus percent_off or amount_off (minor units)",
+      });
+    }
+    const coupon = await stripe.coupons.create({
+      ...(percentOff ? { percent_off: percentOff } : {}),
+      ...(amountOff ? { amount_off: amountOff, currency } : {}),
+      duration: "once",
+      name: code,
+    });
+    const promo = await stripe.promotionCodes.create({
+      coupon: coupon.id,
+      code,
+    });
+    return res.json({ ok: true, code: promo.code, couponId: coupon.id });
+  } catch (err) {
+    console.error("/admin/discounts failed", err);
+    return res.status(500).json({ error: String(err?.message || err) });
+  }
+});
+
+// ---- Admin: inventory levels ----------------------------------------------
+app.get("/admin/inventory", async (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  try {
+    const tenantId = String(req.query?.tenant_id || "default");
+    await seedInventory(tenantId);
+    const r = await dbQuery(
+      "SELECT product_id, stock, updated_at FROM inventory WHERE tenant_id = $1 ORDER BY product_id",
+      [tenantId],
+    );
+    return res.json({ inventory: r?.rows || [] });
+  } catch (err) {
+    console.error("/admin/inventory failed", err);
+    return res.status(500).json({ error: "Inventory lookup failed" });
+  }
+});
+
+app.post("/admin/inventory", express.json(), async (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+  try {
+    const tenantId = String(req.body?.tenant_id || "default");
+    const productId = String(req.body?.product_id || "").trim();
+    const stock = req.body?.stock;
+    const adjust = Number.isInteger(req.body?.adjust) ? req.body.adjust : null;
+    if (!productId || (!Number.isInteger(stock) && adjust === null)) {
+      return res
+        .status(400)
+        .json({ error: "Provide product_id plus stock (absolute) or adjust" });
+    }
+    await ensureCommerceTables();
+    if (Number.isInteger(stock)) {
+      await dbQuery(
+        "INSERT INTO inventory (tenant_id, product_id, stock) VALUES ($1, $2, $3) ON CONFLICT (tenant_id, product_id) DO UPDATE SET stock = $3, updated_at = now()",
+        [tenantId, productId, stock],
+      );
+      await dbQuery(
+        "INSERT INTO inventory_movements (tenant_id, product_id, delta, reason) VALUES ($1, $2, $3, 'manual')",
+        [tenantId, productId, stock],
+      );
+    } else {
+      await moveStock(tenantId, productId, adjust, "manual", null);
+    }
+    const level = await stockFor(tenantId, productId);
+    return res.json({ ok: true, product_id: productId, stock: level });
+  } catch (err) {
+    console.error("POST /admin/inventory failed", err);
+    return res.status(500).json({ error: "Inventory update failed" });
+  }
+});
+
+// ---- Customer account pages (private token, order history) -----------------
+app.get("/account/:token", async (req, res) => {
+  try {
+    await ensureCommerceTables();
+    const token = String(req.params.token || "").slice(0, 120);
+    const c = await dbQuery(
+      "SELECT tenant_id, email, total_orders, total_spend_minor, currency FROM customers WHERE account_token = $1 LIMIT 1",
+      [token],
+    );
+    const customer = c?.rows?.[0];
+    if (!customer) {
+      return res.status(404).type("text/plain").send("Account not found");
+    }
+    const orders =
+      (
+        await dbQuery(
+          "SELECT order_id, status, currency, amount_total, amount_discount, amount_tax, items, created_at FROM orders WHERE tenant_id = $1 AND customer_email = $2 AND status = 'paid' ORDER BY created_at DESC LIMIT 100",
+          [customer.tenant_id, customer.email],
+        )
+      )?.rows || [];
+    res.setHeader("X-Robots-Tag", "noindex");
+    return res.type("html").send(renderAccountPage(customer, orders));
+  } catch (err) {
+    console.error("/account failed", err);
+    return res.status(500).type("text/plain").send("Account unavailable");
+  }
+});
+
+// Request the account link by email — always 200 so it can't probe accounts.
+app.post("/api/account/link", express.json(), async (req, res) => {
+  try {
+    const email = normalizeEmail(req.body?.email);
+    if (email) {
+      await ensureCommerceTables();
+      const token = await ensureAccountToken(
+        String(req.body?.tenant_id || "default"),
+        email,
+      );
+      if (token) {
+        const origin = req.headers.origin || `http://localhost:${PORT}`;
+        await sendViaResend({
+          to: email,
+          subject: "Your account link",
+          body: `Your orders and account: ${origin}/account/${token}\n\nKeep this link private — it's your sign-in.`,
+        });
+      }
+    }
+    return res.json({ ok: true });
+  } catch (err) {
+    console.error("/api/account/link failed", err);
+    return res.json({ ok: true });
   }
 });
 
@@ -4892,6 +5134,164 @@ app.post("/admin/jobs/abandoned-recovery", async (req, res) => {
   }
 });
 
+// ---- Commerce gaps: inventory, discounts, tax, customer accounts --------
+let commerceTablesReady = false;
+async function ensureCommerceTables() {
+  if (commerceTablesReady) return;
+  await dbQuery(
+    fs.readFileSync(
+      path.join(__dirname, "migrations", "011_commerce_gaps.sql"),
+      "utf8",
+    ),
+  );
+  commerceTablesReady = true;
+}
+
+// Seed inventory rows from products.json `stock` field for the given tenant.
+// Products without a `stock` field have no row → unlimited stock.
+async function seedInventory(tenantId) {
+  await ensureCommerceTables();
+  const { list } = loadProductsData();
+  for (const p of list) {
+    if (String(p?.tenant_id || "default") !== tenantId) continue;
+    if (!Number.isInteger(p?.stock)) continue;
+    await dbQuery(
+      "INSERT INTO inventory (tenant_id, product_id, stock) VALUES ($1, $2, $3) ON CONFLICT (tenant_id, product_id) DO NOTHING",
+      [tenantId, String(p.productId), p.stock],
+    );
+  }
+}
+
+async function stockFor(tenantId, productId) {
+  const r = await dbQuery(
+    "SELECT stock FROM inventory WHERE tenant_id = $1 AND product_id = $2",
+    [tenantId, productId],
+  );
+  return r?.rows?.[0]?.stock ?? null;
+}
+
+async function moveStock(tenantId, productId, delta, reason, orderId) {
+  await dbQuery(
+    "INSERT INTO inventory (tenant_id, product_id, stock) VALUES ($1, $2, $3) ON CONFLICT (tenant_id, product_id) DO UPDATE SET stock = inventory.stock + $3, updated_at = now()",
+    [tenantId, productId, delta],
+  );
+  await dbQuery(
+    "INSERT INTO inventory_movements (tenant_id, product_id, delta, reason, order_id) VALUES ($1, $2, $3, $4, $5)",
+    [tenantId, productId, delta, reason, orderId || null],
+  );
+}
+
+// Reserve stock at checkout start for tracked products. Throws on shortage.
+async function reserveStock(tenantId, normalizedItems, orderId) {
+  for (const it of normalizedItems) {
+    const tracked = await stockFor(tenantId, it.productId);
+    if (tracked === null) continue; // untracked = unlimited
+    if (tracked < it.quantity) {
+      const err = new Error(
+        `Not enough stock for ${it.title} (${tracked} left)`,
+      );
+      err.statusCode = 409;
+      throw err;
+    }
+  }
+  for (const it of normalizedItems) {
+    const tracked = await stockFor(tenantId, it.productId);
+    if (tracked === null) continue;
+    await moveStock(tenantId, it.productId, -it.quantity, "reserve", orderId);
+  }
+}
+
+// Idempotent: if the order was already captured (paid) or restored, do
+// nothing — a stray late webhook must not inflate stock.
+async function releaseReservation(tenantId, orderId, reason) {
+  if (!orderId) return;
+  const done = await dbQuery(
+    "SELECT 1 FROM inventory_movements WHERE tenant_id = $1 AND order_id = $2 AND reason IN ('restore', 'capture') LIMIT 1",
+    [tenantId, orderId],
+  );
+  if (done?.rows?.length) return;
+  const r = await dbQuery(
+    "SELECT product_id, -SUM(delta) AS held FROM inventory_movements WHERE tenant_id = $1 AND order_id = $2 AND reason = 'reserve' GROUP BY product_id",
+    [tenantId, orderId],
+  );
+  for (const row of r?.rows || []) {
+    const held = Number(row.held) || 0;
+    if (held > 0) await moveStock(tenantId, row.product_id, held, reason, orderId);
+  }
+}
+
+function renderAccountPage(customer, orders) {
+  const esc = (s) =>
+    String(s ?? "").replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+  const money = (minor, cur) =>
+    minor == null
+      ? "—"
+      : new Intl.NumberFormat("en-GB", {
+          style: "currency",
+          currency: String(cur || "gbp").toUpperCase(),
+        }).format(minor / 100);
+  const rows = orders
+    .map((o) => {
+      const items = (() => {
+        try {
+          const arr = Array.isArray(o.items)
+            ? o.items
+            : JSON.parse(o.items || "[]");
+          if (!arr.length) return "—";
+          return arr
+            .map((i) => `${esc(i.title)} ×${Number(i.quantity) || 1}`)
+            .join("<br>");
+        } catch {
+          return "—";
+        }
+      })();
+      const when = o.created_at
+        ? new Date(o.created_at).toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          })
+        : "";
+      const bits = [
+        `<td>${items}</td>`,
+        `<td>${esc(when)}</td>`,
+        `<td>${esc(o.status)}</td>`,
+        `<td>${money(o.amount_total, o.currency)}</td>`,
+      ];
+      if (o.amount_discount)
+        bits.splice(3, 0, `<td>−${money(o.amount_discount, o.currency)}</td>`);
+      else bits.splice(3, 0, "<td>—</td>");
+      return `<tr>${bits.join("")}</tr>`;
+    })
+    .join("");
+  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Your account</title><style>
+    body{font-family:system-ui,sans-serif;max-width:720px;margin:32px auto;padding:0 16px;color:#191a1c}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    td,th{padding:10px 8px;border-bottom:1px solid #e7e2de;text-align:left;vertical-align:top}
+    th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a8580}
+    h1{font-size:22px} .muted{color:#8a8580;font-size:13px}
+  </style></head><body>
+  <h1>Your account</h1>
+  <p class="muted">${esc(customer.email)} · ${Number(customer.total_orders) || 0} orders</p>
+  ${orders.length ? `<table><tr><th>Items</th><th>Date</th><th>Status</th><th>Discount</th><th>Total</th></tr>${rows}</table>` : `<p class="muted">No orders yet.</p>`}
+  </body></html>`;
+}
+
+async function ensureAccountToken(tenantId, email) {
+  if (!email) return null;
+  const existing = await dbQuery(
+    "SELECT account_token FROM customers WHERE tenant_id = $1 AND email = $2",
+    [tenantId, email],
+  );
+  const token =
+    existing?.rows?.[0]?.account_token || crypto.randomBytes(24).toString("hex");
+  await dbQuery(
+    "UPDATE customers SET account_token = $1, updated_at = now() WHERE tenant_id = $2 AND email = $3",
+    [token, tenantId, email],
+  );
+  return token;
+}
+
 app.post("/create-checkout-session", async (req, res) => {
   try {
     const requestTenant = resolveTenantFromRequest(req);
@@ -5045,6 +5445,8 @@ app.post("/create-checkout-session", async (req, res) => {
             name: it.title,
           },
           unit_amount: it.unitAmount,
+          // UK consumer prices are quoted VAT-inclusive; Stripe Tax nets it out.
+          ...(automaticTaxEnabled ? { tax_behavior: "inclusive" } : {}),
           ...(it.recurring ? { recurring: it.recurring } : {}),
         },
         quantity: it.quantity,
@@ -5061,42 +5463,47 @@ app.post("/create-checkout-session", async (req, res) => {
     const origin = req.headers.origin || `http://localhost:${PORT}`;
 
     const orderId = crypto.randomUUID();
-    await dbQuery(
-      "INSERT INTO orders (order_id, tenant_id, status, currency, amount_subtotal, amount_total, customer_email, items, utm_source, utm_medium, utm_campaign, utm_content, utm_term) VALUES ($1, $2, $3, $4, $5, $6, NULLIF($7, ''), $8::jsonb, NULLIF($9, ''), NULLIF($10, ''), NULLIF($11, ''), NULLIF($12, ''), NULLIF($13, ''))",
-      [
-        orderId,
-        activeTenantId,
-        "pending",
-        expectedCurrency,
-        amountSubtotal,
-        amountTotal,
-        customerEmail,
-        JSON.stringify(normalizedItems),
-        utmSource,
-        utmMedium,
-        utmCampaign,
-        utmContent,
-        utmTerm,
-      ],
-    );
-    await dbQuery(
-      "INSERT INTO order_events (order_id, type, data) VALUES ($1, $2, $3::jsonb)",
-      [
-        orderId,
-        "checkout_initiated",
-        JSON.stringify({
-          origin,
+    await seedInventory(activeTenantId);
+    await reserveStock(activeTenantId, normalizedItems, orderId);
+    // Anything failing after the reservation must hand the stock back —
+    // Stripe will never fire a webhook for a session that was never created.
+    try {
+      await dbQuery(
+        "INSERT INTO orders (order_id, tenant_id, status, currency, amount_subtotal, amount_total, customer_email, items, utm_source, utm_medium, utm_campaign, utm_content, utm_term) VALUES ($1, $2, $3, $4, $5, $6, NULLIF($7, ''), $8::jsonb, NULLIF($9, ''), NULLIF($10, ''), NULLIF($11, ''), NULLIF($12, ''), NULLIF($13, ''))",
+        [
+          orderId,
+          activeTenantId,
+          "pending",
+          expectedCurrency,
+          amountSubtotal,
+          amountTotal,
           customerEmail,
-          utm: {
-            utm_source: utmSource,
-            utm_medium: utmMedium,
-            utm_campaign: utmCampaign,
-            utm_content: utmContent,
-            utm_term: utmTerm,
-          },
-        }),
-      ],
-    );
+          JSON.stringify(normalizedItems),
+          utmSource,
+          utmMedium,
+          utmCampaign,
+          utmContent,
+          utmTerm,
+        ],
+      );
+      await dbQuery(
+        "INSERT INTO order_events (order_id, type, data) VALUES ($1, $2, $3::jsonb)",
+        [
+          orderId,
+          "checkout_initiated",
+          JSON.stringify({
+            origin,
+            customerEmail,
+            utm: {
+              utm_source: utmSource,
+              utm_medium: utmMedium,
+              utm_campaign: utmCampaign,
+              utm_content: utmContent,
+              utm_term: utmTerm,
+            },
+          }),
+        ],
+      );
 
     const rawPaymentMethods = String(
       process.env.STRIPE_PAYMENT_METHODS || "card",
@@ -5122,6 +5529,8 @@ app.post("/create-checkout-session", async (req, res) => {
       mode: checkoutMode,
       payment_method_types: paymentMethodTypes,
       line_items,
+      allow_promotion_codes: true,
+      ...(automaticTaxEnabled ? { automatic_tax: { enabled: true } } : {}),
       success_url: `${origin}/success.html?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`,
       cancel_url: `${origin}/checkout/cancel?order_id=${orderId}`,
       customer_email: customerEmail || undefined,
@@ -5134,21 +5543,28 @@ app.post("/create-checkout-session", async (req, res) => {
         : {}),
     });
 
-    await dbQuery(
-      "UPDATE orders SET stripe_checkout_session_id = $1, updated_at = now() WHERE order_id = $2",
-      [String(session?.id || ""), orderId],
-    );
-    await dbQuery(
-      "INSERT INTO order_events (order_id, type, data) VALUES ($1, $2, $3::jsonb)",
-      [
-        orderId,
-        "stripe_session_created",
-        JSON.stringify({
-          sessionId: String(session?.id || ""),
-          mode: checkoutMode,
-        }),
-      ],
-    );
+      await dbQuery(
+        "UPDATE orders SET stripe_checkout_session_id = $1, updated_at = now() WHERE order_id = $2",
+        [String(session?.id || ""), orderId],
+      );
+      await dbQuery(
+        "INSERT INTO order_events (order_id, type, data) VALUES ($1, $2, $3::jsonb)",
+        [
+          orderId,
+          "stripe_session_created",
+          JSON.stringify({
+            sessionId: String(session?.id || ""),
+            mode: checkoutMode,
+          }),
+        ],
+      );
+    } catch (innerErr) {
+      await releaseReservation(activeTenantId, orderId, "restore").catch(
+        (relErr) =>
+          console.error("stock release after checkout failure failed", relErr),
+      );
+      throw innerErr;
+    }
 
     return res.json({ sessionUrl: session.url });
   } catch (err) {
@@ -5181,6 +5597,9 @@ app.post("/create-checkout-session", async (req, res) => {
     );
     if (isClientError) {
       return res.status(400).json({ error: message });
+    }
+    if (Number.isInteger(err?.statusCode)) {
+      return res.status(err.statusCode).json({ error: message });
     }
 
     const looksLikeStripeError = Boolean(stripeType || stripeCode);

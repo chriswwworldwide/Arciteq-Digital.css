@@ -5,7 +5,7 @@ const scene = JSON.parse(
   readFileSync(new URL("../roxjaya/data/scene.json", import.meta.url), "utf8"),
 );
 
-const TYPES = ["race", "sim", "brand", "venue"];
+const TYPES = ["race", "sim", "brand", "venue", "meetup"];
 const MODES = ["race", "watch", "both"];
 
 describe("roxjaya/data/scene.json", () => {

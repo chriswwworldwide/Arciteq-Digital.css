@@ -34,13 +34,27 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
-      "tags": ["demo", "senior", "comfort"],
-      "petType": ["Dog"],
-      "lifeStage": ["Senior"],
-      "sizeRequirement": ["Medium", "Large"],
+      "tags": [
+        "demo",
+        "senior",
+        "comfort"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": ["Memory foam", "Polyester cover"],
+      "materials": [
+        "Memory foam",
+        "Polyester cover"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Help your senior pet settle and sleep more comfortably",
@@ -66,7 +80,8 @@
       "audit": {
         "createdAt": "2026-04-28T00:00:00.000Z",
         "updatedAt": "2026-04-28T00:00:00.000Z"
-      }
+      },
+      "stock": 4
     },
     {
       "productId": "pet-demo-joint-topical-001",
@@ -100,13 +115,30 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
-      "tags": ["demo", "senior", "topical"],
-      "petType": ["Dog", "Cat"],
-      "lifeStage": ["Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "demo",
+        "senior",
+        "topical"
+      ],
+      "petType": [
+        "Dog",
+        "Cat"
+      ],
+      "lifeStage": [
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["Beeswax", "Plant oils", "Vitamin E"],
+      "materials": [
+        "Beeswax",
+        "Plant oils",
+        "Vitamin E"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Help your senior pet feel more comfortable after gentle exercise",
@@ -131,7 +163,8 @@
       "audit": {
         "createdAt": "2026-04-28T00:00:00.000Z",
         "updatedAt": "2026-04-28T00:00:00.000Z"
-      }
+      },
+      "stock": 25
     },
     {
       "productId": "pet-demo-calming-bed-001",
@@ -165,13 +198,28 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
-      "tags": ["demo", "senior", "calming"],
-      "petType": ["Cat"],
-      "lifeStage": ["Senior"],
-      "sizeRequirement": ["Small", "Medium"],
+      "tags": [
+        "demo",
+        "senior",
+        "calming"
+      ],
+      "petType": [
+        "Cat"
+      ],
+      "lifeStage": [
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium"
+      ],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": ["Memory foam", "Polyester", "Non-slip base"],
+      "materials": [
+        "Memory foam",
+        "Polyester",
+        "Non-slip base"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Help your senior pet feel safe and settled while you’re busy",
@@ -230,13 +278,29 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
-      "tags": ["demo", "senior", "tech"],
-      "petType": ["Dog", "Cat"],
-      "lifeStage": ["Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "demo",
+        "senior",
+        "tech"
+      ],
+      "petType": [
+        "Dog",
+        "Cat"
+      ],
+      "lifeStage": [
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "US",
       "warehouseLocation": "US",
-      "materials": ["ABS plastic", "Silicone"],
+      "materials": [
+        "ABS plastic",
+        "Silicone"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Spot routine changes early so you can support your senior pet",
@@ -295,13 +359,30 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawVigil",
-      "tags": ["placeholder", "safety", "visibility"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "placeholder",
+        "safety",
+        "visibility"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten",
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["ABS plastic", "Silicone"],
+      "materials": [
+        "ABS plastic",
+        "Silicone"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Feel calmer on night walks",
@@ -360,13 +441,31 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawVigil",
-      "tags": ["placeholder", "safety", "visibility"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "placeholder",
+        "safety",
+        "visibility"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten",
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["Nylon", "Reflective thread", "Zinc alloy"],
+      "materials": [
+        "Nylon",
+        "Reflective thread",
+        "Zinc alloy"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Less anxiety on dark streets",
@@ -424,19 +523,40 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawVigil",
-      "tags": ["placeholder", "safety", "visibility"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "placeholder",
+        "safety",
+        "visibility"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten",
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["Nylon", "Polyester", "Plastic buckles"],
+      "materials": [
+        "Nylon",
+        "Polyester",
+        "Plastic buckles"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Feel safer when your dog gets excited",
           "More control without yanking"
         ],
-        "ugcAngles": ["Fit check photo", "Before/after calmer walk clip"]
+        "ugcAngles": [
+          "Fit check photo",
+          "Before/after calmer walk clip"
+        ]
       },
       "attributes": {
         "reflective": true,
@@ -486,13 +606,29 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawVigil",
-      "tags": ["placeholder", "safety", "anti-loss"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "placeholder",
+        "safety",
+        "anti-loss"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten",
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["Stainless steel"],
+      "materials": [
+        "Stainless steel"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Get your dog home faster",
@@ -550,19 +686,39 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawVigil",
-      "tags": ["placeholder", "safety", "training"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "placeholder",
+        "safety",
+        "training"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten",
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["ABS plastic", "Stainless steel"],
+      "materials": [
+        "ABS plastic",
+        "Stainless steel"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Feel more in control on walks",
           "Build a recall you can trust"
         ],
-        "ugcAngles": ["Short training clip", "Before/after calm walk moment"]
+        "ugcAngles": [
+          "Short training clip",
+          "Before/after calm walk moment"
+        ]
       },
       "attributes": {
         "lightweight": true
@@ -611,13 +767,29 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawVigil",
-      "tags": ["placeholder", "safety"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "placeholder",
+        "safety"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten",
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["Nylon", "Zinc alloy"],
+      "materials": [
+        "Nylon",
+        "Zinc alloy"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Feel calmer driving with your dog",
@@ -675,15 +847,33 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawVigil",
-      "tags": ["placeholder", "walks"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten", "Adult", "Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "placeholder",
+        "walks"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten",
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["Silicone"],
+      "materials": [
+        "Silicone"
+      ],
       "marketing_hooks": {
-        "emotionalPainPoints": ["Less fuss on walks", "Hands-free and calmer"],
+        "emotionalPainPoints": [
+          "Less fuss on walks",
+          "Hands-free and calmer"
+        ],
         "ugcAngles": [
           "Photo clipped to lead",
           "Short clip showing how it holds"
@@ -736,13 +926,26 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "SeniorPetCare",
-      "tags": ["demo", "senior", "grooming"],
-      "petType": ["Dog"],
-      "lifeStage": ["Senior"],
-      "sizeRequirement": ["Small"],
+      "tags": [
+        "demo",
+        "senior",
+        "grooming"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["Silicone", "Polyester"],
+      "materials": [
+        "Silicone",
+        "Polyester"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Make grooming gentle for a pet that doesn’t tolerate long sessions",
@@ -801,13 +1004,29 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawVigil",
-      "tags": ["imported", "placeholder"],
-      "petType": ["Dog", "Cat"],
-      "lifeStage": ["Adult", "Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "imported",
+        "placeholder"
+      ],
+      "petType": [
+        "Dog",
+        "Cat"
+      ],
+      "lifeStage": [
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["ABS plastic", "Silicone"],
+      "materials": [
+        "ABS plastic",
+        "Silicone"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Spot routine changes early",
@@ -868,13 +1087,29 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "PawVigil",
-      "tags": ["imported", "placeholder"],
-      "petType": ["Dog", "Cat"],
-      "lifeStage": ["Adult", "Senior"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "imported",
+        "placeholder"
+      ],
+      "petType": [
+        "Dog",
+        "Cat"
+      ],
+      "lifeStage": [
+        "Adult",
+        "Senior"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "EU",
       "warehouseLocation": "EU",
-      "materials": ["ABS plastic", "Aluminium"],
+      "materials": [
+        "ABS plastic",
+        "Aluminium"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Spot routine changes early",
@@ -930,13 +1165,28 @@
       },
       "availability": "https://schema.org/PreOrder",
       "brand": "PupStartHQ",
-      "tags": ["puppy", "crate", "training"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "puppy",
+        "crate",
+        "training"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": ["Powder-coated steel", "ABS tray"],
+      "materials": [
+        "Powder-coated steel",
+        "ABS tray"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Stop night-time accidents in the first fortnight",
@@ -996,13 +1246,28 @@
       },
       "availability": "https://schema.org/PreOrder",
       "brand": "PupStartHQ",
-      "tags": ["puppy", "toilet-training", "washable"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "puppy",
+        "toilet-training",
+        "washable"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": ["Microfibre top", "Polyurethane waterproof layer"],
+      "materials": [
+        "Microfibre top",
+        "Polyurethane waterproof layer"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "No more wet patches on the carpet",
@@ -1061,13 +1326,27 @@
       },
       "availability": "https://schema.org/PreOrder",
       "brand": "PupStartHQ",
-      "tags": ["puppy", "teething", "chew"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten"],
-      "sizeRequirement": ["Small", "Medium"],
+      "tags": [
+        "puppy",
+        "teething",
+        "chew"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium"
+      ],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": ["Natural rubber", "Food-grade TPR"],
+      "materials": [
+        "Natural rubber",
+        "Food-grade TPR"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Save your shoes and table legs",
@@ -1126,13 +1405,28 @@
       },
       "availability": "https://schema.org/PreOrder",
       "brand": "PupStartHQ",
-      "tags": ["puppy", "harness", "first-walks"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten"],
-      "sizeRequirement": ["Small", "Medium"],
+      "tags": [
+        "puppy",
+        "harness",
+        "first-walks"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium"
+      ],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": ["Nylon webbing", "Mesh padding", "Zinc alloy D-ring"],
+      "materials": [
+        "Nylon webbing",
+        "Mesh padding",
+        "Zinc alloy D-ring"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "First walks that don’t end in a tangle",
@@ -1191,13 +1485,28 @@
       },
       "availability": "https://schema.org/PreOrder",
       "brand": "PupStartHQ",
-      "tags": ["puppy", "settling", "comfort"],
-      "petType": ["Dog"],
-      "lifeStage": ["Puppy/Kitten"],
-      "sizeRequirement": ["Small", "Medium", "Large"],
+      "tags": [
+        "puppy",
+        "settling",
+        "comfort"
+      ],
+      "petType": [
+        "Dog"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": ["Plush polyester", "ABS heartbeat module"],
+      "materials": [
+        "Plush polyester",
+        "ABS heartbeat module"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Quieter first nights — for both of you",
@@ -1257,13 +1566,25 @@
       },
       "availability": "https://schema.org/PreOrder",
       "brand": "PupStartHQ",
-      "tags": ["kitten", "litter", "starter"],
-      "petType": ["Cat"],
-      "lifeStage": ["Puppy/Kitten"],
-      "sizeRequirement": ["Small"],
+      "tags": [
+        "kitten",
+        "litter",
+        "starter"
+      ],
+      "petType": [
+        "Cat"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten"
+      ],
+      "sizeRequirement": [
+        "Small"
+      ],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": ["Polypropylene"],
+      "materials": [
+        "Polypropylene"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Fewer misses in the first weeks",
@@ -1322,13 +1643,28 @@
       },
       "availability": "https://schema.org/PreOrder",
       "brand": "PupStartHQ",
-      "tags": ["kitten", "scratching", "starter"],
-      "petType": ["Cat"],
-      "lifeStage": ["Puppy/Kitten"],
-      "sizeRequirement": ["Small", "Medium"],
+      "tags": [
+        "kitten",
+        "scratching",
+        "starter"
+      ],
+      "petType": [
+        "Cat"
+      ],
+      "lifeStage": [
+        "Puppy/Kitten"
+      ],
+      "sizeRequirement": [
+        "Small",
+        "Medium"
+      ],
       "shippingOrigin": "UK",
       "warehouseLocation": "UK",
-      "materials": ["Sisal rope", "Plush", "MDF base"],
+      "materials": [
+        "Sisal rope",
+        "Plush",
+        "MDF base"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Save the sofa in month one",
@@ -1392,13 +1728,21 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "Roxjaya Warriors",
-      "tags": ["hyrox", "beginner", "group", "jakarta"],
+      "tags": [
+        "hyrox",
+        "beginner",
+        "group",
+        "jakarta"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "HYROX looks fun but you don't know where to start — start here, at your pace",
           "Train with a crew, not alone — the group grows as people join"
         ],
-        "ugcAngles": ["First-session crew photo", "First HYROX finish"]
+        "ugcAngles": [
+          "First-session crew photo",
+          "First HYROX finish"
+        ]
       },
       "attributes": {}
     },
@@ -1439,13 +1783,20 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "Roxjaya Warriors",
-      "tags": ["hyrox", "program", "online"],
+      "tags": [
+        "hyrox",
+        "program",
+        "online"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Stop guessing what to train — follow a plan built by a podium athlete",
           "Fit Hyrox prep around work, heat and real life"
         ],
-        "ugcAngles": ["Race-day finish photo", "Station PB clip"]
+        "ugcAngles": [
+          "Race-day finish photo",
+          "Station PB clip"
+        ]
       },
       "attributes": {}
     },
@@ -1486,13 +1837,20 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "Roxjaya Warriors",
-      "tags": ["hyrox", "hybrid", "jakarta"],
+      "tags": [
+        "hyrox",
+        "hybrid",
+        "jakarta"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Keep the coach, drop the commute — half the floor hours, all the accountability",
           "Technique fixed in person, volume done on your schedule"
         ],
-        "ugcAngles": ["Race-day finish photo", "Station PB clip"]
+        "ugcAngles": [
+          "Race-day finish photo",
+          "Station PB clip"
+        ]
       },
       "attributes": {}
     },
@@ -1533,13 +1891,20 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "Roxjaya Warriors",
-      "tags": ["hyrox", "elite", "race-prep"],
+      "tags": [
+        "hyrox",
+        "elite",
+        "race-prep"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Turn a finish into a podium with a plan built around your splits",
           "Race-day strategy from someone who has stood on the box"
         ],
-        "ugcAngles": ["Race-day finish photo", "Station PB clip"]
+        "ugcAngles": [
+          "Race-day finish photo",
+          "Station PB clip"
+        ]
       },
       "attributes": {}
     },
@@ -1580,13 +1945,20 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "Roxjaya Warriors",
-      "tags": ["sponsorship", "hyrox", "jakarta", "results"],
+      "tags": [
+        "sponsorship",
+        "hyrox",
+        "jakarta",
+        "results"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Be seen where Jakarta's Hyrox athletes actually look — results, splits and race plans",
           "Monthly, cancel any time, live within a day of approval"
         ],
-        "ugcAngles": ["Partner logo on the Indonesia results board"]
+        "ugcAngles": [
+          "Partner logo on the Indonesia results board"
+        ]
       },
       "attributes": {
         "sponsorSlot": "results"
@@ -1629,13 +2001,20 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "Roxjaya Warriors",
-      "tags": ["sponsorship", "hyrox", "jakarta", "planner"],
+      "tags": [
+        "sponsorship",
+        "hyrox",
+        "jakarta",
+        "planner"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Be seen where Jakarta's Hyrox athletes actually look — results, splits and race plans",
           "Monthly, cancel any time, live within a day of approval"
         ],
-        "ugcAngles": ["Partner logo on the Indonesia results board"]
+        "ugcAngles": [
+          "Partner logo on the Indonesia results board"
+        ]
       },
       "attributes": {
         "sponsorSlot": "planner"
@@ -1678,13 +2057,20 @@
       },
       "availability": "https://schema.org/InStock",
       "brand": "Roxjaya Warriors",
-      "tags": ["sponsorship", "hyrox", "jakarta", "partner"],
+      "tags": [
+        "sponsorship",
+        "hyrox",
+        "jakarta",
+        "partner"
+      ],
       "marketing_hooks": {
         "emotionalPainPoints": [
           "Be seen where Jakarta's Hyrox athletes actually look — results, splits and race plans",
           "Monthly, cancel any time, live within a day of approval"
         ],
-        "ugcAngles": ["Partner logo on the Indonesia results board"]
+        "ugcAngles": [
+          "Partner logo on the Indonesia results board"
+        ]
       },
       "attributes": {
         "sponsorSlot": "partner"

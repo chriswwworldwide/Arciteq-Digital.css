@@ -14,6 +14,19 @@ function getTenantId() {
   return String(tenant?.tenant_id || "default");
 }
 
+// Live stock levels from /api/stock — keyed by productId, populated once per
+// page load. Products absent from the map are untracked (unlimited stock).
+const stockLevels = {};
+async function loadStockLevels() {
+  try {
+    const r = await fetch(`/api/stock?tenant_id=${getTenantId()}`);
+    const d = await r.json();
+    Object.assign(stockLevels, d?.stock || {});
+  } catch {
+    /* stock display is progressive enhancement */
+  }
+}
+
 // Demo assets under /images2/ are off-brand pre-pivot stills. Never show them
 // as product photography — fall back to a branded placeholder instead.
 function isDemoImg(src) {
@@ -3148,6 +3161,25 @@ function addToCart(productId) {
     }
   }
 
+  // Live stock cap — don't let the cart exceed what's on the shelf.
+  const liveStock = Object.hasOwn(stockLevels, String(id))
+    ? Number(stockLevels[String(id)])
+    : null;
+  if (liveStock !== null) {
+    const inCart =
+      Number(
+        readCartFromStorage().find((i) => String(i?.id || "") === id)?.qty,
+      ) || 0;
+    if (inCart + 1 > liveStock) {
+      showNotice(
+        liveStock === 0
+          ? `${product?.name || "That item"} is out of stock.`
+          : `Only ${liveStock} in stock.`,
+      );
+      return;
+    }
+  }
+
   const next = readCartFromStorage();
   const item = next.find((i) => String(i?.id || "") === id);
   if (item) item.qty = Number(item.qty || 0) + 1;
@@ -3249,12 +3281,21 @@ function renderProducts() {
     const card = document.createElement("article");
     card.className = "product";
 
-    // Check availability
+    // Check availability — live stock level wins over the static flag
+    const liveStock = Object.hasOwn(stockLevels, String(p.id))
+      ? Number(stockLevels[String(p.id)])
+      : null;
     let actionEl = "";
     if (isShopOpeningSoon()) {
       actionEl = `<span class="out-of-stock" aria-label="${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))} available when the shop opens">Coming soon</span>`;
+    } else if (liveStock === 0) {
+      actionEl = `<span class="out-of-stock" aria-label="Out of stock for ${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))}">Out of Stock</span>`;
     } else if (p.availability === "https://schema.org/InStock") {
-      actionEl = `<button aria-label="Add ${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))} to cart" onclick="addToCart('${p.id}')">Add to Cart</button>`;
+      const lowNote =
+        liveStock !== null && liveStock <= 5
+          ? ` <span class="stock-note" style="font-size:11px;color:#a8552f">Only ${liveStock} left</span>`
+          : "";
+      actionEl = `<button aria-label="Add ${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))} to cart" onclick="addToCart('${p.id}')">Add to Cart</button>${lowNote}`;
     } else if (p.availability === "https://schema.org/PreOrder") {
       actionEl = `<button aria-label="Pre-order ${sanitizeHTML((globalThis.pawDisplayTitle || String)(p.name))}" onclick="addToCart('${p.id}')">Pre-Order</button>`;
     } else {
@@ -3795,6 +3836,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   applyHashCategoryFilter();
   renderProducts();
+  loadStockLevels().then(() => {
+    renderProducts();
+    renderCartPage();
+  });
   updateCartBadge();
   renderCartPage();
   initAdminOrdersPage();

@@ -21,11 +21,11 @@
     race: "Race resmi",
     sim: "Simulasi",
     brand: "Brand event",
-    venue: "Tempat latihan",
+    venue: "Training venue",
     meetup: "Meetup",
   };
   const FILTERS = [
-    ["all", "Semua"],
+    ["all", "All"],
     ["race", "Ikutan"],
     ["watch", "Nontonin"],
   ];
@@ -48,7 +48,7 @@
         ${(i.tags || []).length ? `<p class="scene-tags">${i.tags.map((t) => `<span>${esc(t)}</span>`).join("")}</p>` : ""}
         <p class="scene-links">
           ${i.link ? `<a href="${esc(i.link)}"${ext ? ' rel="noopener nofollow" target="_blank"' : ""}>${ext ? "Halaman penyelenggara ↗" : "Detail"}</a>` : ""}
-          ${i.guide ? `<a href="${esc(i.guide)}">Guide kita</a>` : ""}
+          ${i.guide ? `<a href="${esc(i.guide)}">Our guide</a>` : ""}
         </p>
       </div>
     </li>`;
@@ -95,6 +95,6 @@
       });
     })
     .catch(() => {
-      root.innerHTML = `<li class="event"><time>Hmm</time><div><p>Nggak bisa load scene-nya sekarang — coba lagi bentar ya.</p></div></li>`;
+      root.innerHTML = `<li class="event"><time>Hmm</time><div><p>Scene failed to load — try again in a bit.</p></div></li>`;
     });
 })();

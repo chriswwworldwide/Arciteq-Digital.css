@@ -48,7 +48,7 @@
           ? `<a href="${esc(n.source)}" rel="noopener nofollow" target="_blank">${esc(n.sourceName || host(n.source) || "Source")} ↗</a>`
           : "";
         const take = n.take
-          ? `<p class="news-take"><strong>Kata Hannah:</strong> ${esc(n.take)}</p>`
+          ? `<p class="news-take"><strong>Hannah's take:</strong> ${esc(n.take)}</p>`
           : "";
         const guide = n.link
           ? `<p class="news-src"><a href="${esc(n.link)}">${esc(n.linkLabel || "Race guide →")}</a></p>`
@@ -82,6 +82,6 @@
     })
     .catch(() => {
       list.innerHTML =
-        '<li class="event"><time>Hmm</time><div><p>Nggak bisa load beritanya sekarang — coba lagi bentar ya.</p></div></li>';
+        '<li class="event"><time>Hmm</time><div><p>News failed to load — try again in a bit.</p></div></li>';
     });
 })();

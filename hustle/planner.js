@@ -109,7 +109,7 @@
       <h3>Station 9 — Team Hustle meetup</h3>
       <p><strong>${esc(m.when)}</strong></p>
       ${m.note ? `<p>${esc(m.note)}</p>` : ""}
-      <a class="btn btn-primary" href="/hustle/station-9/#rsvp">Ikut — RSVP di sini</a>
+      <a class="btn btn-primary" href="/hustle/station-9/#rsvp">Join — RSVP here</a>
       <a class="btn btn-ghost" href="/hustle/find-a-partner/#travel">Travelling? Post your trip</a>
     </section>`;
   }
@@ -228,7 +228,7 @@
         const { c, r } = rows[Number(btn.closest("li").dataset.i)];
         window.roxShare?.(btn, {
           title: r.name,
-          text: `${r.name} — ${r.dates} di ${r.venue}. Siapa ikut?`,
+          text: `${r.name} — ${r.dates} at ${r.venue}. Who's in?`,
           url: `${location.origin}${href(c)}`,
         });
       }),

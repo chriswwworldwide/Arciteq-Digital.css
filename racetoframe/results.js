@@ -164,7 +164,7 @@
           .join("")}</ul>
         ${
           n.take
-            ? `<p class="roundup-take"><strong>Kata Gregor & Hattie:</strong> ${esc(n.take)}</p>`
+            ? `<p class="roundup-take"><strong>Gregor & Hattie's take:</strong> ${esc(n.take)}</p>`
             : ""
         }
         ${

@@ -43,7 +43,7 @@
         </div>`;
       } else {
         card.innerHTML = `<p>
-          <strong>Tiapo tiga bulan — edisi berikutnya restonya masih dipilihin G&H.</strong>
+          <strong>Every three months — the next venue gets picked soon.</strong>
           The venue lands here (and in the crew WhatsApp group) once it's booked.
           RSVP below so there's a chair with your name on it either way.
         </p>`;

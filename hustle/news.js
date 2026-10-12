@@ -82,6 +82,6 @@
     })
     .catch(() => {
       list.innerHTML =
-        '<li class="event"><time>Hmm</time><div><p>Nggak bisa load beritanya sekarang — coba lagi bentar ya.</p></div></li>';
+        '<li class="event"><time>Hmm</time><div><p>News failed to load — try again in a bit.</p></div></li>';
     });
 })();

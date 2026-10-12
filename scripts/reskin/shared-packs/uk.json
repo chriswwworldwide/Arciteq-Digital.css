@@ -275,6 +275,42 @@
     [
       " humidity",
       " halls get warm"
+    ],
+    [
+      "Ada race, station, atau target? Tanya aja.",
+      "Got a race, a station or a target? Just ask."
+    ],
+    [
+      "Analisis split HYROX gratis untuk atlet Indonesia.",
+      "Free HYROX split analysis for UK athletes."
+    ],
+    [
+      "Program latihan HYROX online dari pelatih HYROX Indonesia.",
+      "Online HYROX coaching from a certified UK coach."
+    ],
+    [
+      "Nggak bisa load beritanya sekarang — coba lagi bentar ya.",
+      "News failed to load — try again in a bit."
+    ],
+    [
+      "Nggak bisa load scene-nya sekarang — coba lagi bentar ya.",
+      "Scene failed to load — try again in a bit."
+    ],
+    [
+      "Tempat latihan",
+      "Training venue"
+    ],
+    [
+      "[\"all\", \"Semua\"]",
+      "[\"all\", \"All\"]"
+    ],
+    [
+      "Guide kita",
+      "Our guide"
+    ],
+    [
+      "Ikut — RSVP di sini",
+      "Join — RSVP here"
     ]
   ],
   "copyOverrides": [
@@ -381,6 +417,66 @@
     {
       "pattern": "<figcaption>\\s*Photo:[^<]*<a[\\s\\S]*?</a\\s*>\\s*</figcaption>",
       "replace": ""
+    },
+    {
+      "pattern": " Lebih nyaman pakai[\\s\\S]*?Bahasa the UK\\.",
+      "replace": ""
+    },
+    {
+      "pattern": "Belum ada yang terbit — \\w+( & \\w+)? nambahin segenggam item tiap minggu pas musim jalan\\.",
+      "replace": "Nothing published yet — a handful of items lands each week in season."
+    },
+    {
+      "pattern": "Tiapo tiga bulan[\\s\\S]*?dipilihin [^<.]+\\.",
+      "replace": "Every three months — the next venue gets picked soon."
+    },
+    {
+      "pattern": "Kapan HYROX (\\w+) 2027 dan bagaimana cara daftar \\(tiket\\)\\?",
+      "replace": "When is HYROX $1 2027 and how do I register for tickets?"
+    },
+    {
+      "pattern": " \\(lokasi HYROX \\w+\\)",
+      "replace": ""
+    },
+    {
+      "pattern": " \\(pelatih HYROX\\s+\\w+\\)",
+      "replace": ""
+    },
+    {
+      "pattern": " \\(program latihan HYROX\\), Rp\\s*599k/month",
+      "replace": ""
+    },
+    {
+      "pattern": " \\(jadwal HYROX the UK\\)",
+      "replace": ""
+    },
+    {
+      "pattern": "\"jadwal HYROX (?:Asia|the UK)\"",
+      "replace": "\"HYROX race calendar\""
+    },
+    {
+      "pattern": "Hyrox (\\w+) &amp; the UK race calendar",
+      "replace": "Hyrox UK &amp; $1 race calendar"
+    },
+    {
+      "pattern": "\"description\": \"HYROX the UK — Hyrox coaching, program latihan online, analisis split and race prep from (\\w+)\\.\"",
+      "replace": "\"description\": \"HYROX coaching in $1 — online training program, split analysis and race prep from $1.\""
+    },
+    {
+      "pattern": "<strong>Kata ([^<]+?):</strong>",
+      "replace": "<strong>$1's take:</strong>"
+    },
+    {
+      "pattern": "Yang ([^<]+?) pilihin sendiri",
+      "replace": "Hand-picked by $1"
+    },
+    {
+      "pattern": "\\$\\{r\\.dates\\} di \\$\\{r\\.venue\\}\\. Siapa ikut\\?",
+      "replace": "${r.dates} at ${r.venue}. Who's in?"
+    },
+    {
+      "pattern": ">Kata ([^<]+)<",
+      "replace": ">$1 says<"
     }
   ],
   "seedFiles": {

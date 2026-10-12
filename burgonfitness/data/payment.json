@@ -15,25 +15,32 @@
   "instagram": "hannahburgon_pt",
   "plans": [
     {
-      "id": "hbf-plan-program-001",
-      "name": "HYROX Program",
+      "id": "hbf-plan-121-001",
+      "name": "1:1 Personal Training",
+      "amountGbp": 180,
       "per": "per month",
-      "summary": "Hannah's signature program — weekly sessions, station progressions and community group. The one Team GBR athletes use.",
-      "amountGbp": 89
+      "summary": "Weekly 1:1 with Hannah — supportive, person-centred, no judgement. She pushes you to your full potential and makes it fun."
+    },
+    {
+      "id": "hbf-plan-online-001",
+      "name": "Online Coaching",
+      "amountGbp": 89,
+      "per": "per month",
+      "summary": "Programming, nutrition guidance and check-ins from anywhere. MSc sport nutrition baked in — race prep to everyday goals."
     },
     {
       "id": "hbf-plan-sim-001",
-      "name": "Monthly Sim Entry",
+      "name": "HYROX Sim Entry",
+      "amountGbp": 35,
       "per": "per event",
-      "summary": "Full HYROX simulation at Pyramid Performance — real timing, real atmosphere, no travel.",
-      "amountGbp": 35
+      "summary": "Monthly HYROX simulation at Pyramid Performance — real timing, real atmosphere, no travel to London."
     },
     {
-      "id": "hbf-plan-121-001",
-      "name": "1:1 Coaching",
+      "id": "hbf-plan-group-001",
+      "name": "Small Group Sessions",
+      "amountGbp": 60,
       "per": "per month",
-      "summary": "Weekly PT with Hannah plus your program dialled in for your next race.",
-      "amountGbp": 180
+      "summary": "Small group training with the crew — same coaching energy, shared graft. Corporate and event sessions also available."
     }
   ]
 }

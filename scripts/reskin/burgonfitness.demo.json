@@ -411,15 +411,15 @@
     },
     {
       "pattern": "<div class=\"stats\">[\\s\\S]*?Hyrox races</span></div>\\s*</div>",
-      "replace": "<div class=\"stats\">\n          <div>\n            <strong>3×</strong><span>HYROX World Championships qualifier</span>\n          </div>\n          <div>\n            <strong>Team GBR</strong><span>Competed at elite level</span>\n          </div>\n          <div><strong>Monthly</strong><span>HYROX sims at Pyramid Performance</span></div>\n        </div>"
+      "replace": "<div class=\"stats\">\n          <div>\n            <strong>1hr 12</strong><span>HYROX Pro PB — World Champs competitor</span>\n          </div>\n          <div>\n            <strong>MSc + BSc</strong><span>Sport nutrition and sport science</span>\n          </div>\n          <div><strong>Monthly</strong><span>HYROX sims at Pyramid Performance</span></div>\n        </div>"
     },
     {
       "pattern": "Aku \\w+[\\s\\S]*?Yang penting berani memulai\\.",
-      "replace": "I'm Hannah — PT since 2019, three-time HYROX Worlds qualifier, based at Pyramid Performance in Stockport. Training for real life: real schedules, real graft, your real first race. Never raced? Even better. You just have to start."
+      "replace": "I'm Hannah — I help driven people become stronger and fitter in under 90 days. World Championship competitor, 1hr 12 Pro. MSc sport nutrition, BSc sport science, six years of coaching — and I make sessions FUN. Never raced? Even better. You just have to start."
     },
     {
       "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"eyebrow\">Meet Hannah</p>\n          <h3>Hannah. From a Stockport PT studio to three HYROX Worlds.</h3>\n          <p class=\"lead\">\n            Strength coach first — then HYROX happened. Three World\n            Championships qualifications, monthly sims the members kept\n            asking for, and a merch line on top, because of course there is.\n            Still coaches the Tuesday class like it’s a final.\n          </p>\n          <p class=\"quote\">\n            \"The best accomplishments come from finding strength from within.\"\n          </p>"
+      "replace": "<p class=\"eyebrow\">Meet Hannah</p>\n          <h3>Hannah. Everyday people, impossible goals, done anyway.</h3>\n          <p class=\"lead\">\n            My purpose: I coach everyday people to become the strongest,\n            fittest versions of themselves — achieving goals they once\n            thought impossible. MSc sport nutrition, BSc sport science,\n            six years coaching, and my own race experience — World\n            Championship competitor, 1hr 12 Pro — all in the room with you.\n          </p>\n          <p class=\"quote\">\n            \"I’ll celebrate your wins and help you through the tough spots\n            — every step of the way. And I make sessions FUN.\"\n          </p>"
     }
   ],
   "stripSections": [
@@ -730,25 +730,32 @@
       "instagram": "hannahburgon_pt",
       "plans": [
         {
-          "id": "hbf-plan-program-001",
-          "name": "HYROX Program",
+          "id": "hbf-plan-121-001",
+          "name": "1:1 Personal Training",
+          "amountGbp": 180,
           "per": "per month",
-          "summary": "Hannah's signature program — weekly sessions, station progressions and community group. The one Team GBR athletes use.",
-          "amountGbp": 89
+          "summary": "Weekly 1:1 with Hannah — supportive, person-centred, no judgement. She pushes you to your full potential and makes it fun."
+        },
+        {
+          "id": "hbf-plan-online-001",
+          "name": "Online Coaching",
+          "amountGbp": 89,
+          "per": "per month",
+          "summary": "Programming, nutrition guidance and check-ins from anywhere. MSc sport nutrition baked in — race prep to everyday goals."
         },
         {
           "id": "hbf-plan-sim-001",
-          "name": "Monthly Sim Entry",
+          "name": "HYROX Sim Entry",
+          "amountGbp": 35,
           "per": "per event",
-          "summary": "Full HYROX simulation at Pyramid Performance — real timing, real atmosphere, no travel.",
-          "amountGbp": 35
+          "summary": "Monthly HYROX simulation at Pyramid Performance — real timing, real atmosphere, no travel to London."
         },
         {
-          "id": "hbf-plan-121-001",
-          "name": "1:1 Coaching",
+          "id": "hbf-plan-group-001",
+          "name": "Small Group Sessions",
+          "amountGbp": 60,
           "per": "per month",
-          "summary": "Weekly PT with Hannah plus your program dialled in for your next race.",
-          "amountGbp": 180
+          "summary": "Small group training with the crew — same coaching energy, shared graft. Corporate and event sessions also available."
         }
       ]
     },

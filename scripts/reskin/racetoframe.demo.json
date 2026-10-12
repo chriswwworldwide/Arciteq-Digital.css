@@ -427,6 +427,10 @@
     {
       "pattern": "<a href=\"/racetoframe/splits/\">Split Analyser</a>(?!</li>)",
       "replace": "<a href=\"/racetoframe/splits/\">Split Analyser</a>\\n          <a href=\"/racetoframe/predictor/\">Race Predictor</a>"
+    },
+    {
+      "pattern": ":root\\s*\\{",
+      "replace": ":root{\n  --hero-focus: 50% 35%;"
     }
   ],
   "stripSections": [

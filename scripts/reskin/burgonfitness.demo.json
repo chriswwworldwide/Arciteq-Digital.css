@@ -379,7 +379,7 @@
     },
     {
       "pattern": "PIK/PIK2 for closeness, Kelapa Gading for value, Sudirman/Thamrin[\\s\\S]*?(</li>|\\.)",
-      "replace": "Near the venue for closeness, the city centre for the night after\\1"
+      "replace": "Near the venue for closeness, the city centre for the night after$1"
     },
     {
       "pattern": "scan with any British banking or e-wallet app \\(QRIS\\)",
@@ -435,15 +435,55 @@
     },
     {
       "pattern": "(<li><a href=\"/burgonfitness/splits/\">Split [Aa]nalyser</a></li>)",
-      "replace": "\\1\\n          <li><a href=\"/burgonfitness/predictor/\">Race Predictor</a></li>"
+      "replace": "$1\\n          <li><a href=\"/burgonfitness/predictor/\">Race Predictor</a></li>"
     },
     {
       "pattern": "(<a href=\"/burgonfitness/splits/\">Splits</a>)",
-      "replace": "\\1\\n          <a href=\"/burgonfitness/predictor/\">Race Predictor</a>"
+      "replace": "$1\\n          <a href=\"/burgonfitness/predictor/\">Race Predictor</a>"
     },
     {
       "pattern": "<a href=\"/burgonfitness/splits/\">Split Analyser</a>(?!</li>)",
       "replace": "<a href=\"/burgonfitness/splits/\">Split Analyser</a>\\n          <a href=\"/burgonfitness/predictor/\">Race Predictor</a>"
+    },
+    {
+      "pattern": "(<h3>SkiErg — 1000 m</h3>[\\s\\S]*?)src=\"/burgonfitness/images/skierg-laugh.jpg\"\\s*alt=\"[^\"]*\"\\s*width=\"\\d+\"\\s*height=\"\\d+\"",
+      "replace": "$1src=\"/burgonfitness/images/race-pair.jpg\" alt=\"Hannah mid-run between stations at a HYROX race, effort face in the dark arena\" width=\"620\" height=\"700\""
+    },
+    {
+      "pattern": "(<h3>Sled Push — 4 × 12\\.5 m</h3>[\\s\\S]*?)src=\"/burgonfitness/images/carry.jpg\"\\s*alt=\"[^\"]*\"\\s*width=\"\\d+\"\\s*height=\"\\d+\"",
+      "replace": "$1src=\"/burgonfitness/images/rope.jpg\" alt=\"Hannah low and braced on the sled push posts mid-drive\" width=\"619\" height=\"900\""
+    },
+    {
+      "pattern": "(<h3>Sled Pull — 4 × 12\\.5 m</h3>[\\s\\S]*?)src=\"/burgonfitness/images/rope.jpg\"\\s*alt=\"[^\"]*\"\\s*width=\"\\d+\"\\s*height=\"\\d+\"",
+      "replace": "$1src=\"/burgonfitness/images/gallery/finish-tunnel.jpg\" alt=\"Hannah hauling a plate through an outdoor race station, full effort\" width=\"990\" height=\"840\""
+    },
+    {
+      "pattern": "(<h3>Burpee Broad Jumps — 80 m</h3>[\\s\\S]*?)src=\"/burgonfitness/images/station-lean.jpg\"\\s*alt=\"[^\"]*\"\\s*width=\"\\d+\"\\s*height=\"\\d+\"",
+      "replace": "$1src=\"/burgonfitness/images/station-lean.jpg\" alt=\"Hannah mid goblet squat — building the leg drive for burpee broad jumps\" width=\"990\" height=\"840\""
+    },
+    {
+      "pattern": "(<h3>Rowing — 1000 m</h3>[\\s\\S]*?)src=\"/burgonfitness/images/[^\"]+\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "\\1src=\"/burgonfitness/images/gallery/row.jpg\" alt=\"Hannah mid-pull on the rower, effort face\""
+    },
+    {
+      "pattern": "(<h3>Farmers Carry — 200 m</h3>[\\s\\S]*?)src=\"/burgonfitness/images/carry.jpg\"\\s*alt=\"[^\"]*\"\\s*width=\"\\d+\"\\s*height=\"\\d+\"",
+      "replace": "$1src=\"/burgonfitness/images/carry.jpg\" alt=\"Hannah mid-stride on the farmers carry with competition kettlebells\" width=\"365\" height=\"410\""
+    },
+    {
+      "pattern": "(<h3>Sandbag Lunges — 100 m</h3>[\\s\\S]*?)src=\"/burgonfitness/images/station-lean.jpg\"\\s*alt=\"[^\"]*\"\\s*width=\"\\d+\"\\s*height=\"\\d+\"",
+      "replace": "$1src=\"/burgonfitness/images/gallery/deadlift.jpg\" alt=\"Hannah mid deadlift — the leg strength behind the sandbag lunges\" width=\"860\" height=\"880\""
+    },
+    {
+      "pattern": "(<h3>Wall Balls — 75 / 100 reps</h3>[\\s\\S]*?)src=\"/burgonfitness/images/wallball.jpg\"\\s*alt=\"[^\"]*\"\\s*width=\"\\d+\"\\s*height=\"\\d+\"",
+      "replace": "$1src=\"/burgonfitness/images/station-lean.jpg\" alt=\"Hannah mid goblet squat — the squat pattern behind every wall ball rep\" width=\"990\" height=\"840\""
+    },
+    {
+      "pattern": "(<figure class=\"tips-photo[\\s\\S]*?)src=\"/burgonfitness/images/wallball\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"/burgonfitness/images/station-lean.jpg\" alt=\"Hannah mid goblet squat in the gym\""
+    },
+    {
+      "pattern": ":root\\s*\\{",
+      "replace": ":root{\n  --hero-focus: 60% 32%;"
     }
   ],
   "stripSections": [

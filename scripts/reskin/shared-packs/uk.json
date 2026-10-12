@@ -477,6 +477,14 @@
     {
       "pattern": ">Kata ([^<]+)<",
       "replace": ">$1 says<"
+    },
+    {
+      "pattern": "(<h3>Rowing — 1000 m</h3>[\\s\\S]*?)src=\"(/[\\w-]+/images/)rope\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"$2wallball.jpg\" alt=\"The squad mid rowing warm-up in the gym\""
+    },
+    {
+      "pattern": "(<h3>Wall Balls — 75 / 100 reps</h3>[\\s\\S]*?)src=\"(/[\\w-]+/images/)wallball\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"$2carry.jpg\" alt=\"Mid overhead press — the pressing pattern behind wall balls\""
     }
   ],
   "seedFiles": {

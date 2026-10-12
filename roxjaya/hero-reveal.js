@@ -142,10 +142,6 @@
     canvas = document.createElement("canvas");
     canvas.className = "hero-canvas";
     canvas.setAttribute("aria-hidden", "true");
-    // Never paint the bottom 14px of the canvas — the enter-tilt swings its
-    // corner below the photo row and tiles leak into a thin line. The strip
-    // sits inside the dark fade overlay, so dead space reads as nothing.
-    canvas.style.clipPath = "inset(0 0 14px 0)";
     gl = canvas.getContext("webgl", {
       alpha: true,
       premultipliedAlpha: false,
@@ -311,12 +307,12 @@
 
   const size = () => {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    // pin the canvas exactly over the img's box — the img is absolute on
-    // desktop but a static grid child on mobile
-    const sr = section.getBoundingClientRect();
+    // pin the canvas exactly over the img's box, relative to whatever is
+    // its containing block (section on desktop, the mask wrapper on mobile)
+    const pr = canvas.parentElement.getBoundingClientRect();
     const ir = img.getBoundingClientRect();
-    canvas.style.top = `${ir.top - sr.top}px`;
-    canvas.style.left = `${ir.left - sr.left}px`;
+    canvas.style.top = `${ir.top - pr.top}px`;
+    canvas.style.left = `${ir.left - pr.left}px`;
     canvas.style.width = `${ir.width}px`;
     // Pin to the img's exact rect — shrinking the canvas squashes the photo
     // and the bottom visibly clicks down at handoff. Edge leak is handled
@@ -353,8 +349,11 @@
     }
 
     html.classList.add("reveal-live");
-    const wrap = section.querySelector(".wrap");
-    section.insertBefore(canvas, wrap);
+    // Inside the mask wrapper: on mobile its overflow:hidden clips the
+    // tilted canvas exactly at the photo's bottom edge (killing the corner
+    // leak without a dead strip, so the whole photo fades in evenly at
+    // handoff); on desktop it shares the baked feather mask.
+    (section.querySelector(".hero-mask") || section).appendChild(canvas);
 
     const DURATION = 3400;
     const DELAY = 200;

@@ -1336,13 +1336,29 @@ footer a:hover {
      exactly where the bare <img> used to sit. Extra specificity beats the
      unprefixed .hero-mask rule that ships later in this file. */
   .hero--bleed .hero-mask {
-    position: static;
+    /* relative (not static): keeps it a grid item AND makes it the
+       containing block for the reveal canvas + the edge fade below */
+    position: relative;
     grid-row: 1;
     grid-column: 1;
     /* Clip drift overhang — the 1→1.02 scale pulse lets the photo's bottom
        edge wander across the row boundary, leaving a hairline seam that
        blinks in and out with the drift. */
     overflow: hidden;
+  }
+
+  /* The photo's bottom edge lands on a fractional pixel, so its last row
+     antialiases into a faint dashed hairline that flickers as the drift
+     moves it. A small ink fade at the mask's bottom swallows the seam. */
+  .hero--bleed .hero-mask::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 12px;
+    background: linear-gradient(180deg, transparent, var(--ink));
+    pointer-events: none;
   }
   .hero--bleed .hero-img {
     object-fit: cover;

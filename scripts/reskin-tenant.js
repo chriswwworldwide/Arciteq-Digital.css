@@ -173,7 +173,10 @@ for (const file of walk(dst)) {
   // cache-bust tenant css/js so browsers can't serve stale hero/styles
   if (file.endsWith(".html")) {
     s = s.replace(
-      new RegExp(`((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))"`, "g"),
+      new RegExp(
+        `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`,
+        "g",
+      ),
       `$1?v=${buildV}"`,
     );
   }

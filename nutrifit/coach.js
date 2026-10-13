@@ -293,7 +293,7 @@
       "/nutrifit/fuel-zone/": "Fuel Zone",
       "/nutrifit/taper-zone/": "Taper Zone",
       "/nutrifit/warrior-program/": "Warrior Program page",
-      "/nutrifit/hyrox-coaching-norwich/": "Hybrid Coaching page",
+      "/nutrifit/hyrox-coaching-liverpool/": "Hybrid Coaching page",
       "/nutrifit/elite-race-prep/": "Elite Race Prep page",
     };
     return esc(names[path] || path);

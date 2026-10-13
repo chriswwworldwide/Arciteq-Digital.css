@@ -293,7 +293,7 @@
       "/hyroxdoncaster/fuel-zone/": "Fuel Zone",
       "/hyroxdoncaster/taper-zone/": "Taper Zone",
       "/hyroxdoncaster/warrior-program/": "Warrior Program page",
-      "/hyroxdoncaster/hyrox-coaching-norwich/": "Hybrid Coaching page",
+      "/hyroxdoncaster/hyrox-coaching-doncaster/": "Hybrid Coaching page",
       "/hyroxdoncaster/elite-race-prep/": "Elite Race Prep page",
     };
     return esc(names[path] || path);

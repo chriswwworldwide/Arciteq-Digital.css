@@ -293,7 +293,7 @@
       "/fennellfitness/fuel-zone/": "Fuel Zone",
       "/fennellfitness/taper-zone/": "Taper Zone",
       "/fennellfitness/warrior-program/": "Warrior Program page",
-      "/fennellfitness/hyrox-coaching-norwich/": "Hybrid Coaching page",
+      "/fennellfitness/hyrox-coaching-bedford/": "Hybrid Coaching page",
       "/fennellfitness/elite-race-prep/": "Elite Race Prep page",
     };
     return esc(names[path] || path);

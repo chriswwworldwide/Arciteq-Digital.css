@@ -978,7 +978,7 @@ window.roxShare = (function () {
         body: JSON.stringify({
           email,
           kind: "date_alert",
-          payload: { race: "hyrox-norwich-2027", source: "hyrox-norwich-page" },
+          payload: { race: "hyrox-doncaster-2027", source: "hyrox-doncaster-page" },
           website: String(data.get("website") || ""),
         }),
       });

@@ -293,7 +293,7 @@
       "/kore/fuel-zone/": "Fuel Zone",
       "/kore/taper-zone/": "Taper Zone",
       "/kore/warrior-program/": "Warrior Program page",
-      "/kore/hyrox-coaching-norwich/": "Hybrid Coaching page",
+      "/kore/hyrox-coaching-newport/": "Hybrid Coaching page",
       "/kore/elite-race-prep/": "Elite Race Prep page",
     };
     return esc(names[path] || path);

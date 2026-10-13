@@ -293,7 +293,7 @@
       "/pacegym/fuel-zone/": "Fuel Zone",
       "/pacegym/taper-zone/": "Taper Zone",
       "/pacegym/warrior-program/": "Warrior Program page",
-      "/pacegym/hyrox-coaching-norwich/": "Hybrid Coaching page",
+      "/pacegym/hyrox-coaching-chichester/": "Hybrid Coaching page",
       "/pacegym/elite-race-prep/": "Elite Race Prep page",
     };
     return esc(names[path] || path);

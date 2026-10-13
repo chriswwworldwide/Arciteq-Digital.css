@@ -293,7 +293,7 @@
       "/htcfisher/fuel-zone/": "Fuel Zone",
       "/htcfisher/taper-zone/": "Taper Zone",
       "/htcfisher/warrior-program/": "Warrior Program page",
-      "/htcfisher/hyrox-coaching-norwich/": "Hybrid Coaching page",
+      "/htcfisher/hyrox-coaching-christchurch/": "Hybrid Coaching page",
       "/htcfisher/elite-race-prep/": "Elite Race Prep page",
     };
     return esc(names[path] || path);

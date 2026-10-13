@@ -293,7 +293,7 @@
       "/gym64/fuel-zone/": "Fuel Zone",
       "/gym64/taper-zone/": "Taper Zone",
       "/gym64/warrior-program/": "Warrior Program page",
-      "/gym64/hyrox-coaching-norwich/": "Hybrid Coaching page",
+      "/gym64/hyrox-coaching-glenrothes/": "Hybrid Coaching page",
       "/gym64/elite-race-prep/": "Elite Race Prep page",
     };
     return esc(names[path] || path);

@@ -62,11 +62,29 @@ out at **£3–7M ARR**. The niche is the wedge, not the prize.
 
 | Years | Stage | Shape | Money |
 |---|---|---|---|
-| 0–1 | Validation | UK HYROX, 15–30 clients, proof gyms pay | £10–40k |
-| 1–2 | Niche domination | UK+AUS HYROX, self-serve live | £100–300k/yr |
-| 2–4 | Category expansion | All boutique fitness (~30–60k gyms) | £1–10M ARR |
+| 0–0.5 | Validation | UK HYROX blitz — 100+ demo pitches (build is no longer the constraint), 20–50 clients, conversion-rate proof | £15–60k |
+| 0.5–1.5 | Niche domination | UK+EU HYROX, self-serve live, remote-close motion proven | £100–400k/yr |
+| 1.5–4 | Category expansion | All boutique fitness (~30–60k gyms) | £1–10M ARR |
 | 4–7 | Platform | What gyms *run on* — member graph, payments | £10–50M ARR |
 | 7–12 | Billion or bust | Default OS for an industry segment | £125M+ ARR |
+
+**Revision (post-factory proof):** the original 0–1 year assumed builds
+paced the pipeline — wrong. Seven full tenant demos shipped in ~20
+minutes of machine time; ~30 pitch-ready sites in 3 days is now
+conservative, and Europe becomes a *weeks* decision, not a year-two
+one — the reskin machinery is already language-proven (extraPairs
+carried Bahasa→English; a German/French/Spanish pack is config work,
+not engineering). The binding constraint moved entirely to three
+things: **conversion** (assume 10–20% of warmed demo pitches until real
+data says otherwise — a great site is proof, not a signature),
+**close-mode** (train-visit drop-ins are high-conviction but ~1/day;
+EU scale needs the remote close — demo link + video call — to actually
+work), and **retention load** (every yes is a site you now host,
+monitor and keep alive — automation before volume, or churn eats the
+arc). Revised honest ceiling for year one: 40–80 paying tenants if
+conversion holds, which lands the niche-domination ARR a full year
+early — *if* the first ten demos convert at all. Sequence stays:
+Hannah → Bobby → the seven → blitz.
 
 The billionaire fork is ~year 3, and requires the product to mutate
 twice: sites → community OS → industry infrastructure. "Very rich"

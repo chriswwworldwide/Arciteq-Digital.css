@@ -626,3 +626,18 @@ Still open (next blocks):
 - `STRIPE_AUTOMATIC_TAX=1` is still off until merchant accounts enable it; `amount_tax` stays 0 until then.
 
 Local server note: `npm start` runs on **:3000** with no env (ADMIN_API_KEY/DATABASE_URL unset → admin endpoints return 500 locally, by design). A previous :3100 instance carried the env — killed during restart; restart with env vars set if needed.
+
+## Review fixes (Opus review pass, Oct 2026)
+
+Commits `db76c7d`, `f467d2d`. Findings + fixes:
+
+- **Static leak closed** — the static handler served the whole repo (server code, PROSPECTS/BILLIONS docs, migrations, alerts ledger with customer emails). Now guarded by `src/static-guard.js` (allow-list for public root `/data/` files; 31 tests). If anything public ever 404s, add it to `PUBLIC_ROOT_DATA_FILES` there.
+- **Account-link poisoning closed** — links built from tenant hostname / `PUBLIC_BASE_URL`, never `Origin`; known customers only; rate-limited.
+- **Path-mounted tenants work** — `resolveTenantForPublicWrite` lets `domain.com/<tenant>/` pages capture leads, submissions, pageviews and run checkout under the right tenant (claim must match the page path; a real tenant hostname always wins).
+- **Webhooks** — `stripe_events.processed_at`: retries after failures re-run properly; processing errors → 500. Delayed payments stay pending until `async_payment_succeeded`. Refunded orders can't be flipped back to paid.
+- **Fulfilment** is `orders.fulfilled_at` (status stays `paid`) so revenue/tax/account views keep counting it.
+- **Renewals** — retry-safe order id, tax + payment intent recorded, unknown tenant → `unattributed` (escalated), never `default`.
+
+**Deploy checklist:** run `node scripts/migrate.js` (applies 013 + 014; the server also self-applies 011–014 on first commerce use). Set `PUBLIC_BASE_URL` in production so emailed links point at the real domain for tenants without a hostname yet.
+
+**Known, deliberately left:** `/api/shipping-estimate` + `/api/free-shipping-progress` have no frontend caller yet (tested modules, cart-nudge features waiting to be wired); checkout success URL still derives from `Origin` (only affects the requester's own session); `server.js` split into modules (webhooks / email / ops / admin / seo / commerce) is a future refactor, not started.

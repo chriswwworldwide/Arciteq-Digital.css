@@ -230,7 +230,7 @@
   // data-hero-roll="full": the sheet covers the WHOLE section (ambient
   // blur + photo baked into one texture — a single piece, no stitched
   // edges). Desktop only; mobile keeps the img-pinned roll.
-  const fullRoll = !small && section.dataset.heroRoll === "full";
+  const fullRoll = section.dataset.heroRoll === "full";
   dbgBadge(
     `small=${small} attr=${section.dataset.heroRoll} fullRoll=${fullRoll}\nua=${navigator.userAgent.match(/Version\/[\d.]+|Edg\/[\d.]+|Chrome\/[\d.]+|Firefox\/[\d.]+/)?.[0] || "?"}`,
   );
@@ -421,28 +421,47 @@
     }
     }
 
-    // photo: contain-fit, padding 14/18, right-pinned — mirrors the CSS
+    // photo: painted where CSS actually puts it — the img's own layout
+    // box minus padding, with its real object-fit/object-position.
+    // Desktop = contain, right-pinned; mobile = cover full-width square
+    // at a 65%/45% focal point.
+    const ib = layoutBox(img, section) || { x: 0, y: 0, w: W, h: H };
     const cs = getComputedStyle(img);
     const pt = parseFloat(cs.paddingTop) || 0;
     const pb = parseFloat(cs.paddingBottom) || 0;
-    const cW = W;
-    const cH = H - pt - pb;
-    const s2 = Math.min(cW / iw, cH / ih);
+    const pl = parseFloat(cs.paddingLeft) || 0;
+    const pr = parseFloat(cs.paddingRight) || 0;
+    const bx = ib.x + pl;
+    const by = ib.y + pt;
+    const cW = ib.w - pl - pr;
+    const cH = ib.h - pt - pb;
+    const cover = cs.objectFit === "cover";
+    const s2 = cover
+      ? Math.max(cW / iw, cH / ih)
+      : Math.min(cW / iw, cH / ih);
     const pw = iw * s2;
     const ph = ih * s2;
-    const px = (cW - pw) * 1.0;
-    const py = pt + (cH - ph) * 0.5;
+    const [pxs = "50%", pys = "50%"] = String(
+      cs.objectPosition || "50% 50%",
+    )
+      .trim()
+      .split(/\s+/);
+    const pos = (v) =>
+      v === "center" ? 0.5 : v.endsWith("%") ? parseFloat(v) / 100 : 0.5;
+    const px = bx + (cW - pw) * pos(pxs);
+    const py = by + (cH - ph) * pos(pys);
 
+    // visible rect = where the drawn image intersects the content box
+    // (contain: the image; cover: the box) — the shader uses it for
+    // inPhoto tests
+    const vx0 = Math.max(bx, px);
+    const vy0 = Math.max(by, py);
+    const vx1 = Math.min(bx + cW, px + pw);
+    const vy1 = Math.min(by + cH, py + ph);
     // photo rect in sheet uv (texture is y-flipped on upload) — the
     // fragment shader only mosaics inside it, so the ambient can't render
     // as a blocky shadow beside the real pic
-    gl.uniform4f(
-      uPhoto,
-      px / W,
-      1 - (py + ph) / H,
-      (px + pw) / W,
-      1 - py / H,
-    );
+    gl.uniform4f(uPhoto, vx0 / W, 1 - vy1 / H, vx1 / W, 1 - vy0 / H);
 
     // photo layer on its own canvas so the feather only fades the photo,
     // revealing the ambient beneath. Must mirror app.js's dynamic mask on
@@ -454,14 +473,21 @@
     lay.height = ch;
     const lc = lay.getContext("2d");
     lc.imageSmoothingQuality = "high"; // match the browser's CSS image scaling
+    // clip cover-fit overflow to the content box (mobile crops the photo)
+    lc.save();
+    lc.beginPath();
+    lc.rect(bx * dpr, by * dpr, cW * dpr, cH * dpr);
+    lc.clip();
     lc.drawImage(tex2d, px * dpr, py * dpr, pw * dpr, ph * dpr);
+    lc.restore();
     lc.globalCompositeOperation = "destination-out";
-    const fw = pw * dpr * 0.025;
-    const fh = ph * dpr * 0.025;
-    const ex = px * dpr,
-      ey = py * dpr,
-      ew = pw * dpr,
-      eh = ph * dpr;
+    // DOM edge treatment differs by breakpoint: desktop feathers all four
+    // sides ~2.5% (matches the baked mask); mobile only has the mask's
+    // 12px ink fade along the bottom — sides stay hard (overflow:hidden).
+    const ex = vx0 * dpr,
+      ey = vy0 * dpr,
+      ew = (vx1 - vx0) * dpr,
+      eh = (vy1 - vy0) * dpr;
     const edge = (x1, y1, x2, y2) => {
       const gr = lc.createLinearGradient(x1, y1, x2, y2);
       gr.addColorStop(0, "rgba(0,0,0,1)");
@@ -469,10 +495,16 @@
       lc.fillStyle = gr;
       lc.fillRect(0, 0, cw, ch);
     };
-    edge(ex, 0, ex + fw, 0); // left
-    edge(ex + ew, 0, ex + ew - fw, 0); // right
-    edge(0, ey, 0, ey + fh); // top
-    edge(0, ey + eh, 0, ey + eh - fh); // bottom
+    if (small) {
+      edge(0, ey + eh, 0, ey + eh - 14 * dpr); // bottom only
+    } else {
+      const fw = ew * 0.025;
+      const fh = eh * 0.025;
+      edge(ex, 0, ex + fw, 0); // left
+      edge(ex + ew, 0, ex + ew - fw, 0); // right
+      edge(0, ey, 0, ey + fh); // top
+      edge(0, ey + eh, 0, ey + eh - fh); // bottom
+    }
     c.drawImage(lay, 0, 0);
     // Power-of-two pad: WebGL1 only mipmaps POT textures, and without
     // mipmaps the photo aliases ("bitmappy") while the sheet is still

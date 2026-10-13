@@ -1070,7 +1070,9 @@ window.roxShare = (function () {
     edge(x0, 0, x0 + fw, 0); // left: clear at x0, keep by x0+fw
     edge(x1, 0, x1 - fw, 0); // right
     edge(0, y0, 0, y0 + fy); // top
-    edge(0, y1, 0, y1 - fy); // bottom
+    // bottom fades ~3x deeper — a hard photo→ink line reads during the
+    // hero-reveal sweep; the sheet bake uses the same 0.08 depth
+    edge(0, y1, 0, y1 - Math.max(fy, rh * 0.08)); // bottom
     const url = `url(${mc.toDataURL("image/png")})`;
     maskEl.style.maskImage = maskEl.style.webkitMaskImage = url;
     maskEl.style.maskSize = maskEl.style.webkitMaskSize = "100% 100%";

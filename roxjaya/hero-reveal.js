@@ -144,7 +144,13 @@
       // them — the gaps close as the paper settles and sharpens.
       float level = floor(mix(2.0, 8.0, resolve));
       float cells = exp2(level);
-      vec2 cuv = u_uv.xy + ((floor(vUv * cells) + 0.5) / cells) * u_uv.zw;
+      // fullRoll samples the texture straight — the 256-cell snap is
+      // exactly the "bitmappy till it settles" look; mosaic is a classic-
+      // mode effect only
+      vec2 cuv =
+        u_full > 0.5
+          ? u_uv.xy + vUv * u_uv.zw
+          : u_uv.xy + ((floor(vUv * cells) + 0.5) / cells) * u_uv.zw;
       vec3 col = texture2D(u_tex, cuv).rgb;
 
       vec2 f = fract(vUv * cells);
@@ -496,14 +502,18 @@
       lc.fillRect(0, 0, cw, ch);
     };
     if (small) {
-      edge(0, ey + eh, 0, ey + eh - 14 * dpr); // bottom only
+      // mobile: bottom-only fade, deep enough that no line reads as the
+      // wave crosses the photo→ink boundary (DOM mask gets the same)
+      edge(0, ey + eh, 0, ey + eh - eh * 0.15);
     } else {
       const fw = ew * 0.025;
       const fh = eh * 0.025;
       edge(ex, 0, ex + fw, 0); // left
       edge(ex + ew, 0, ex + ew - fw, 0); // right
       edge(0, ey, 0, ey + fh); // top
-      edge(0, ey + eh, 0, ey + eh - fh); // bottom
+      // bottom fades ~3x deeper — the sweep highlights a hard line where
+      // the photo meets ink, so it needs a real gradient, not a fringe
+      edge(0, ey + eh, 0, ey + eh - eh * 0.08);
     }
     c.drawImage(lay, 0, 0);
     // Power-of-two pad: WebGL1 only mipmaps POT textures, and without

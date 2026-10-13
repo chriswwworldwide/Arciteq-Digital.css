@@ -1365,14 +1365,16 @@ footer a:hover {
 
   /* The photo's bottom edge lands on a fractional pixel, so its last row
      antialiases into a faint dashed hairline that flickers as the drift
-     moves it. A small ink fade at the mask's bottom swallows the seam. */
+     moves it. A deep ink fade at the mask's bottom swallows the seam —
+     and matches the hero-reveal bake's bottom fade, so no line reads
+     where photo meets background. */
   .hero--bleed .hero-mask::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 12px;
+    height: 15%;
     background: linear-gradient(180deg, transparent, var(--ink));
     pointer-events: none;
   }

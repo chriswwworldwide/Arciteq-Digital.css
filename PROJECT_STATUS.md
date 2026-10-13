@@ -607,3 +607,22 @@ Wallet payments impact note (Apple Pay + Google Pay + PayPal): if enabled and us
   - Confirm .env.local exists and contains STRIPE*SECRET_KEY=sk_test*...
   - Restart npm start
   - Retry: shop.html -> add to cart -> cart.html -> checkout
+
+## Multi-tenant commerce — build status (Nov 2026 session)
+
+Shipped this session (all on `main`):
+
+- **Order-confirmation emails** — `sendOrderConfirmation` fires from both `ORDER_PAID` webhook paths, tenant-branded From line (brand name + platform mailbox), deduped via `email_events` type `order_confirmation` so Stripe retries can't double-send. Best-effort: mail failure never fails the webhook.
+- **`GET /admin/tax-report`** — paid-order aggregation by tenant+currency: subtotal, discounts, tax, totals (minor units), order counts. `?tenant=all` platform view, `?group=month`, `?format=csv`, `?from/?to`. Same `requireAdmin` auth.
+- **Platform billing v1** — migration `012_platform_billing.sql` + `GET/POST /admin/platform-payments`. Records what tenants pay us (setup/subscription/addon; bank transfer/cash/stripe method field). `?aggregate=1` rollup for MRR-style reads.
+- **Refunds** — `charge.refunded` webhook: full refunds mark order `refunded` (drops out of the paid-only tax report); partial refunds keep `paid` + log a flagged order event. Branded refund notice emails, same dedup pattern.
+- **Working rules added to AGENTS.md** — verify-don't-recall + use-the-reference, with the hero-effect saga as the worked example.
+
+Still open (next blocks):
+
+- Stripe checkout for platform billing (tenant-facing payment link for setup fee + £60/mo) — needs product/price config, build gated on env.
+- Payment-failed customer email (order `failed` → retry link) — partially covered by cart nudges today.
+- Fulfilment/shipping emails — needs a fulfilment flow first.
+- `STRIPE_AUTOMATIC_TAX=1` is still off until merchant accounts enable it; `amount_tax` stays 0 until then.
+
+Local server note: `npm start` runs on **:3000** with no env (ADMIN_API_KEY/DATABASE_URL unset → admin endpoints return 500 locally, by design). A previous :3100 instance carried the env — killed during restart; restart with env vars set if needed.

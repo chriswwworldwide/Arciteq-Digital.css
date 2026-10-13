@@ -611,6 +611,10 @@
     // power2.out like the source demo — the roll decelerates as it empties.
     // Progress overshoots to 1.35 so the mosaic keeps settling after the
     // roll has finished laying the sheet (~74% through the sweep).
+    // fullRoll uses near-linear progress instead: power2.out crosses the
+    // ambient half in the first ~0.7s while the front is fastest, leaving
+    // ~2.5s of action over the photo — reads as "photo-only roll". A
+    // steady front makes the whole-hero sweep actually visible.
     const ease = (t) => 1 - Math.pow(1 - t, 2);
     const start = performance.now() + DELAY;
     // Re-pin only when the img's LAYOUT box genuinely moves (resize,
@@ -634,7 +638,7 @@
       const t = hold
         ? 0.45
         : Math.max(0, Math.min(1, (now - start) / DURATION));
-      const p = ease(t) * 1.35;
+      const p = (fullRoll ? t : ease(t)) * 1.35;
       if (mvp) gl.uniformMatrix4fv(uMVP, false, mvp);
       gl.uniform1f(uProgress, p);
       gl.uniform1f(uProg2, p);

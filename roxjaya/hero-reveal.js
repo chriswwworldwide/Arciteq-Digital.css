@@ -734,6 +734,28 @@
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.drawElements(gl.TRIANGLES, indexCount, gl.UNSIGNED_SHORT, 0);
       if (t < 1 || hold) return requestAnimationFrame(frame);
+      // Race-finish popper: confetti pop from both bottom corners as the
+      // sheet settles into the page. Respects reduced-motion.
+      if (
+        fullRoll &&
+        typeof window.confetti === "function" &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        const pink = ["#ff2ea6", "#ff7ad0", "#ffffff", "#ffd2ef"];
+        const burst = { spread: 70, colors: pink, scalar: 1.1 };
+        window.confetti({
+          ...burst,
+          particleCount: 60,
+          angle: 60,
+          origin: { x: 0, y: 0.95 },
+        });
+        window.confetti({
+          ...burst,
+          particleCount: 60,
+          angle: 120,
+          origin: { x: 1, y: 0.95 },
+        });
+      }
       // Hand back to the plain <img> — fade the canvas out, then drop it.
       canvas.style.transition = "opacity .35s ease";
       canvas.style.opacity = "0";

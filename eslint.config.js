@@ -9,6 +9,12 @@ import js from "@eslint/js";
 import globals from "globals";
 
 export default [
+  // ✅ Global ignores — vendored third-party bundles must not be linted
+  // (this applies to every config block, including configs.recommended)
+  {
+    ignores: ["**/*.browser.js"]
+  },
+
   // ✅ Base ESLint recommended rules
   js.configs.recommended,
 
@@ -27,6 +33,7 @@ export default [
       "public_backup_*/**",
       "**/*.min.js",
       "**/*.bundle.js",
+      "**/*.browser.js",
       "**/*.json",
       "**/*.html",
       "eslint.config.js"

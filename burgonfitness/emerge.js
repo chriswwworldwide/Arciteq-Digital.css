@@ -22,7 +22,6 @@
     const section = document.querySelector(".hero--bleed");
     const mask = section && section.querySelector(".hero-mask");
     const img = mask && mask.querySelector(".hero-img");
-    const amb = section && section.querySelector(".hero-amb");
     if (!section || !mask || !img) return;
 
     const VS = `
@@ -338,22 +337,23 @@
       }
     `;
 
-    // Bake the settled hero into one texture: ambient backdrop + photo at
-    // its real layout box/fit/focal, with the mask's edge feather — so a
-    // finished effect is pixel-identical to the DOM it hands back to.
-    const bake = () => {
-      const rect = mask.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const c = document.createElement("canvas");
-      c.width = Math.max(2, Math.round(rect.width * dpr));
-      c.height = Math.max(2, Math.round(rect.height * dpr));
-      const ctx = c.getContext("2d");
-      ctx.scale(dpr, dpr);
-      const ink = getComputedStyle(document.body).backgroundColor || "#0b070b";
-      ctx.fillStyle = ink;
-      ctx.fillRect(0, 0, rect.width, rect.height);
-
-      const posFrac = (v) => {
+    // Mount the canvas exactly over the photo's painted rect (its content
+    // box resolved through live object-fit/object-position) and texture it
+    // with the raw <img> — the identical path to the standalone demo. The
+    // mask's own feather/clip applies to the canvas automatically.
+    const start = () => {
+      const ics = getComputedStyle(img);
+      const mb = mask.getBoundingClientRect();
+      const ib = img.getBoundingClientRect();
+      const pl = parseFloat(ics.paddingLeft) || 0;
+      const pr = parseFloat(ics.paddingRight) || 0;
+      const pt = parseFloat(ics.paddingTop) || 0;
+      const pb = parseFloat(ics.paddingBottom) || 0;
+      const bx = ib.left - mb.left + pl;
+      const by = ib.top - mb.top + pt;
+      const bw = ib.width - pl - pr;
+      const bh = ib.height - pt - pb;
+      const posF = (v) => {
         const t = String(v).trim().split(/\s+/);
         const f = (s) =>
           s === "left" || s === "top"
@@ -365,78 +365,33 @@
                 : 0.5;
         return [f(t[0]), f(t[1])];
       };
-      const drawFit = (c2, src, bx, by, bw, bh, fit, fx, fy, scale) => {
-        const iw = src.naturalWidth,
-          ih = src.naturalHeight;
-        const s =
-          (fit === "contain"
-            ? Math.min(bw / iw, bh / ih)
-            : Math.max(bw / iw, bh / ih)) * (scale || 1);
-        const dw = iw * s,
-          dh = ih * s;
-        c2.drawImage(src, bx + fx * (bw - dw), by + fy * (bh - dh), dw, dh);
-      };
+      const [ofx, ofy] = posF(ics.objectPosition);
+      const iw = img.naturalWidth,
+        ih = img.naturalHeight;
+      const s =
+        ics.objectFit === "contain"
+          ? Math.min(bw / iw, bh / ih)
+          : Math.max(bw / iw, bh / ih);
+      const dw = iw * s,
+        dh = ih * s;
+      const px = bx + ofx * (bw - dw),
+        py = by + ofy * (bh - dh);
 
-      const ambVisible = amb && getComputedStyle(amb).display !== "none";
-      if (ambVisible) {
-        const cs = getComputedStyle(amb);
-        const [fx, fy] = posFrac(cs.objectPosition);
-        ctx.filter = cs.filter; // Safari ignores ctx.filter — amb falls
-        // back to unblurred, acceptable in a demo
-        drawFit(ctx, amb, 0, 0, rect.width, rect.height, "cover", fx, fy, 1.15);
-        ctx.filter = "none";
-      }
-
-      // photo layer: its content box (box minus padding), live fit + focal
-      const ics = getComputedStyle(img);
-      const ib = img.getBoundingClientRect();
-      const mb = mask.getBoundingClientRect();
-      const pl = parseFloat(ics.paddingLeft) || 0;
-      const pr = parseFloat(ics.paddingRight) || 0;
-      const pt = parseFloat(ics.paddingTop) || 0;
-      const pb = parseFloat(ics.paddingBottom) || 0;
-      const bx = ib.left - mb.left + pl;
-      const by = ib.top - mb.top + pt;
-      const bw = ib.width - pl - pr;
-      const bh = ib.height - pt - pb;
-      const [fx, fy] = posFrac(ics.objectPosition);
-      const layer = document.createElement("canvas");
-      layer.width = c.width;
-      layer.height = c.height;
-      const lctx = layer.getContext("2d");
-      lctx.scale(dpr, dpr);
-      drawFit(lctx, img, bx, by, bw, bh, ics.objectFit, fx, fy);
-      // desktop .hero-mask feather: transparent → opaque across the band
-      // 780px→590px from the right edge (mirrors the CSS mask-image)
-      if (window.innerWidth > 800) {
-        lctx.globalCompositeOperation = "destination-in";
-        const g = lctx.createLinearGradient(rect.width - 780, 0, rect.width - 590, 0);
-        g.addColorStop(0, "rgba(0,0,0,0)");
-        g.addColorStop(1, "rgba(0,0,0,1)");
-        lctx.fillStyle = g;
-        lctx.fillRect(0, 0, rect.width - 590, rect.height);
-      } else {
-        // mobile mask::after — 12px ink fade along the bottom edge
-        lctx.globalCompositeOperation = "destination-out";
-        const g = lctx.createLinearGradient(0, rect.height - 12, 0, rect.height);
-        g.addColorStop(0, "rgba(0,0,0,0)");
-        g.addColorStop(1, "rgba(0,0,0,1)");
-        lctx.fillStyle = g;
-        lctx.fillRect(0, rect.height - 12, rect.width, 12);
-      }
-      ctx.drawImage(layer, 0, 0, rect.width, rect.height);
-      return c;
-    };
-
-    const start = () => {
-      const rect = mask.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const canvas = document.createElement("canvas");
-      canvas.className = "hero-canvas emerge-canvas";
+      canvas.className = "emerge-canvas";
       canvas.style.cssText =
-        "position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none";
-      canvas.width = Math.round(rect.width * dpr);
-      canvas.height = Math.round(rect.height * dpr);
+        "position:absolute;pointer-events:none;z-index:2;left:" +
+        px +
+        "px;top:" +
+        py +
+        "px;width:" +
+        dw +
+        "px;height:" +
+        dh +
+        "px";
+      canvas.width = Math.max(2, Math.round(dw * dpr));
+      canvas.height = Math.max(2, Math.round(dh * dpr));
       mask.appendChild(canvas);
       const gl = canvas.getContext("webgl", {
         alpha: true,
@@ -477,7 +432,7 @@
       const tex = gl.createTexture();
       gl.bindTexture(gl.TEXTURE_2D, tex);
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, bake());
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
@@ -496,20 +451,19 @@
         uElSize = u("uElementSize"),
         uTex = u("uTexture");
       gl.uniform3f(uFill, 0.95, 0.95, 0.97);
-      gl.uniform2f(uTexSize, canvas.width, canvas.height);
-      gl.uniform2f(uElSize, rect.width, rect.height);
+      gl.uniform2f(uTexSize, iw, ih);
+      gl.uniform2f(uElSize, dw, dh);
       gl.uniform1i(uTex, 0);
       gl.uniform1fv(
         uPixels,
         Float32Array.from({ length: 36 }, () => Math.random() * 0.5 + 0.5),
       );
 
-      // DOM hidden for the run; restored at the end (or on any bail)
+      // Photo hidden for the run — the blurred ambient stays up as the
+      // dark stage; restored at the end (or on any bail)
       img.style.visibility = "hidden";
-      if (amb) amb.style.visibility = "hidden";
       const restore = () => {
         img.style.visibility = "";
-        if (amb) amb.style.visibility = "";
       };
 
       let tag = null;

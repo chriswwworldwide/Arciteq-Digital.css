@@ -147,11 +147,11 @@
 
       col *= vShadow;
       // The ambient half carries no mosaic, so flat-tone paper lands
-      // identical to the page — the sweep is invisible there ("very
-      // transparent"). Freshly-laid ambient arrives BRIGHT and settles
-      // down to tone: a light wave trailing the roll across the left
-      // half, impossible to miss on the dark hero.
-      col *= mix(1.55, 1.0, mix(vResolve, 1.0, inPhoto));
+      // identical to the page — the sweep is invisible there. Freshly-laid
+      // ambient arrives bright AND rose-tinted, settling to tone: a
+      // coloured light wave trailing the roll, unmissable on the dark hero.
+      float fresh = (1.0 - vResolve) * (1.0 - inPhoto);
+      col = mix(col, vec3(1.0, 0.16, 0.62), fresh); // MAX for visibility check — dial back once confirmed
       // The still-rolled face samples the same texture — on the full-width
       // sheet it reads as a second copy of the picture riding ahead of the
       // roll. Dim it into a dark scroll; laid paper is untouched (vTube→1).

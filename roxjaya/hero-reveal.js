@@ -157,15 +157,14 @@
       // straight through the photo to the right edge, no demarcation.
       float fresh = (1.0 - vResolve) * u_full;
       col = mix(col, vec3(1.0, 0.16, 0.62), fresh);
-      // shimmer: a soft rosy sheen lifting the whole fresh band —
-      // the broad glow the glints sit on
-      col += vec3(0.55, 0.14, 0.38) * fresh * fresh * 0.5;
+      // shimmer: broad rosy glow lifting the whole fresh band —
+      // the wash the glints sit on. MAX POWER pass.
+      col += vec3(1.0, 0.4, 0.8) * fresh * 1.0;
       // sparkle: fine diagonal glints drifting with the sweep.
-      // MAX POWER pass — dial down next round if it's too much.
       float glint = smoothstep(
-        0.55, 1.0,
-        sin((vUv.x - vUv.y) * 120.0 + u_progress * 26.0));
-      col += vec3(1.0, 0.72, 0.95) * glint * fresh * 0.9;
+        0.35, 1.0,
+        sin((vUv.x - vUv.y) * 140.0 + u_progress * 30.0));
+      col += vec3(1.0, 0.85, 1.0) * glint * fresh * 1.2;
       // The still-rolled face samples the same texture — on the full-width
       // sheet it reads as a second copy of the picture riding ahead of the
       // roll. Dim it into a dark scroll; laid paper is untouched (vTube→1).

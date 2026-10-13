@@ -118,6 +118,15 @@
     uniform float u_pmargin;
     uniform float u_tube;   // dimming of the still-rolled face
     uniform float u_full;   // 1 in fullRoll — no mosaic, wave covers sheet
+    uniform highp float u_time; // seconds — drives the sparkle twinkle
+
+    // Dave Hoskins hash — deterministic per-cell random, the standard
+    // sparkle/glitter building block
+    float hash21(vec2 p) {
+      p = fract(p * vec2(234.34, 435.345));
+      p += dot(p, p + 34.23);
+      return fract(p.x * p.y);
+    }
 
     void main() {
       // fullRoll: the ambient area is just a blurred backdrop — running the
@@ -157,14 +166,27 @@
       // straight through the photo to the right edge, no demarcation.
       float fresh = (1.0 - vResolve) * u_full;
       col = mix(col, vec3(1.0, 0.16, 0.62), fresh);
-      // shimmer: broad rosy glow lifting the whole fresh band —
-      // the wash the glints sit on. MAX POWER pass.
-      col += vec3(1.0, 0.4, 0.8) * fresh * 1.0;
-      // sparkle: fine diagonal glints drifting with the sweep.
-      float glint = smoothstep(
-        0.35, 1.0,
-        sin((vUv.x - vUv.y) * 140.0 + u_progress * 30.0));
-      col += vec3(1.0, 0.85, 1.0) * glint * fresh * 1.2;
+      // shimmer — the canonical sweep: a bright band hugging the roll
+      // front (skeleton-shimmer style) over a soft lift across all
+      // freshly-laid paper.
+      float band = (1.0 - smoothstep(0.0, 0.4, vResolve)) * u_full;
+      col += vec3(1.0, 0.5, 0.85) * band * 0.8;
+      col += vec3(0.9, 0.25, 0.6) * fresh * 0.5;
+      // sparkle — the Comeau recipe ported into the sheet so the stars
+      // deform with the paper: a jittered grid of four-point stars
+      // (crossed gaussian flares) twinkling in/out at random phases,
+      // alive only on freshly-laid paper.
+      vec2 sg = vUv * 60.0;
+      vec2 cell = floor(sg);
+      vec2 sp = (vec2(hash21(cell + 17.0), hash21(cell + 31.0)) - 0.5) * 0.55;
+      vec2 sd = fract(sg) - 0.5 - sp;
+      float star = exp(-28.0 * sd.y * sd.y) * exp(-4.0 * sd.x * sd.x)
+                 + exp(-28.0 * sd.x * sd.x) * exp(-4.0 * sd.y * sd.y)
+                 + exp(-90.0 * dot(sd, sd)) * 0.7;
+      float tw = 0.5 + 0.5 * sin(u_time * (3.0 + hash21(cell) * 5.0)
+                                 + hash21(cell) * 6.2831);
+      float on = step(hash21(cell + 5.0), 0.4); // ~40% of cells hold a star
+      col += vec3(1.0, 0.9, 1.0) * star * tw * on * fresh * 1.6;
       // The still-rolled face samples the same texture — on the full-width
       // sheet it reads as a second copy of the picture riding ahead of the
       // roll. Dim it into a dark scroll; laid paper is untouched (vTube→1).
@@ -199,6 +221,7 @@
     uPmargin,
     uTube,
     uFull,
+    uTime,
     tex,
     indexCount;
   const uvCrop = new Float32Array(4); // off.x, off.y, scale.x, scale.y
@@ -299,6 +322,7 @@
     uPmargin = gl.getUniformLocation(prog, "u_pmargin");
     uTube = gl.getUniformLocation(prog, "u_tube");
     uFull = gl.getUniformLocation(prog, "u_full");
+    uTime = gl.getUniformLocation(prog, "u_time");
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
@@ -704,6 +728,7 @@
       gl.uniform1f(uProgress, p);
       gl.uniform1f(uProg2, p);
       gl.uniform4fv(uUv, uvCrop);
+      gl.uniform1f(uTime, now * 0.001);
       // feather only where there's an ambient backdrop to melt into
       gl.uniform1f(uFeather, small ? 0 : 0.025);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);

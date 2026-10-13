@@ -697,7 +697,7 @@ button.btn {
 
 .hero--bleed h2 em {
   font-style: normal;
-  color: var(--pink);
+  color: var(--pink-100);
 }
 
 .hero--bleed p {

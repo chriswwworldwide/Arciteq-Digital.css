@@ -452,7 +452,9 @@
         uTexSize = u("uTextureSize"),
         uElSize = u("uElementSize"),
         uTex = u("uTexture");
-      gl.uniform3f(uFill, 0.95, 0.95, 0.97);
+      gl.uniform3f(uFill, 0.02, 0.01, 0.016); // dark plum — the Codrops
+      // fill band reads as emerging-from-black, not a white slab (shader
+      // gamma-brightens output, so this lands around #2a1c26)
       gl.uniform2f(uTexSize, iw, ih);
       gl.uniform2f(uElSize, dw, dh);
       gl.uniform1i(uTex, 0);
@@ -462,10 +464,16 @@
       );
 
       // Photo hidden for the run — the blurred ambient stays up as the
-      // dark stage; restored at the end (or on any bail)
+      // dark stage; restored at the end (or on any bail). Animations are
+      // parked while hidden and restarted as drift-only on restore, so
+      // the DOM photo lands at the same pose the canvas settled at
+      // (hero-enter already played on load; replaying it here would
+      // double-animate the re-entry).
       img.style.visibility = "hidden";
+      img.style.animation = "none";
       const restore = () => {
         img.style.visibility = "";
+        img.style.animation = "hero-drift 18s ease-in-out 0s infinite alternate";
       };
 
       let tag = null;

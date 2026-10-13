@@ -95,6 +95,10 @@ export function idPphFinal({ year, monthlyGrossMinor, taxpayer = "individual" })
   }
   const ytdTaxMinor = months.reduce((s, x) => s + x.taxMinor, 0);
   const ceilingPct = cumulative / ID_RULES.ceilingMinor;
+  let status = "under_allowance";
+  if (cumulative > ID_RULES.ceilingMinor) status = "over_ceiling";
+  else if (ceilingPct >= 0.8) status = "near_ceiling";
+  else if (cumulative > allowance) status = "paying";
   return {
     months,
     ytdGrossMinor: cumulative,
@@ -103,14 +107,7 @@ export function idPphFinal({ year, monthlyGrossMinor, taxpayer = "individual" })
     allowanceRemainingMinor: Math.max(0, allowance - cumulative),
     ceilingMinor: ID_RULES.ceilingMinor,
     ceilingPct,
-    status:
-      cumulative > ID_RULES.ceilingMinor
-        ? "over_ceiling"
-        : ceilingPct >= 0.8
-          ? "near_ceiling"
-          : cumulative > allowance
-            ? "paying"
-            : "under_allowance",
+    status,
   };
 }
 
@@ -142,16 +139,20 @@ export function nextMtdDeadline(isoDate) {
 
 export function gbVatStatus(rolling12Minor) {
   const pct = (Number(rolling12Minor) || 0) / GB_RULES.vatThresholdMinor;
+  let status = "ok";
+  if (pct > 1) status = "over";
+  else if (pct >= 0.9) status = "near";
+  else if (pct >= 0.75) status = "watch";
   return {
     thresholdMinor: GB_RULES.vatThresholdMinor,
     rolling12Minor: Number(rolling12Minor) || 0,
     pct,
-    status: pct > 1 ? "over" : pct >= 0.9 ? "near" : pct >= 0.75 ? "watch" : "ok",
+    status,
   };
 }
 
 // MTD threshold in force for a tax year starting on `taxYearStart`.
 export function mtdThresholdFor(taxYearStart) {
   const applicable = GB_RULES.mtdThresholds.filter((t) => t.from <= taxYearStart);
-  return applicable.length ? applicable[applicable.length - 1].overMinor : null;
+  return applicable.at(-1)?.overMinor ?? null;
 }

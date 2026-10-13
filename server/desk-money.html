@@ -60,7 +60,8 @@ __MASTHEAD__
     <h2>Money</h2>
     <p>Paste your desk key once — this phone/laptop remembers it.</p>
     <form id="key-form">
-      <input type="password" name="key" placeholder="Desk key" autocomplete="off" required />
+      <label for="desk-key" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Desk key</label>
+      <input id="desk-key" type="password" name="key" placeholder="Desk key" autocomplete="off" required />
       <button class="btn btn-primary" type="submit">Open</button>
     </form>
     <p class="hint" id="login-hint"></p>
@@ -84,16 +85,20 @@ __MASTHEAD__
     <section class="m-card">
       <h3>This year</h3>
       <div class="m-tiles" id="tiles"></div>
-      <div class="m-scroll"><table class="m-table" id="months"></table></div>
+      <div class="m-scroll"><table class="m-table" id="months">
+        <thead><tr><th scope="col">Month</th><th scope="col">In</th><th scope="col">Out</th><th scope="col">Left</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
     </section>
 
     <section class="m-card">
       <h3>Add money in or out</h3>
       <form id="entry-form">
-        <div class="m-toggle" role="group" aria-label="Money in or out">
+        <fieldset class="m-toggle" style="border:0;margin:0;padding:0">
+          <legend style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Money in or out</legend>
           <button type="button" data-dir="income" aria-pressed="true">Money in</button>
           <button type="button" data-dir="expense" aria-pressed="false">Money out</button>
-        </div>
+        </fieldset>
         <div class="m-form">
           <div><label for="e-amount">Amount (__CURSYMBOL__)</label>
             <input id="e-amount" name="amount" type="number" min="0" step="any" inputmode="decimal" required /></div>

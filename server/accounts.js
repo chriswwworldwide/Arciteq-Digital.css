@@ -58,8 +58,10 @@ const clean = (v, max) => {
 // Validates a new ledger entry. Returns { entry } or { error }.
 export function validateEntry(body, { currency }) {
   const b = body && typeof body === "object" ? body : {};
-  const direction = b.direction === "expense" ? "expense" : b.direction === "income" ? "income" : null;
-  if (!direction) return { error: "direction must be income or expense" };
+  if (b.direction !== "income" && b.direction !== "expense") {
+    return { error: "direction must be income or expense" };
+  }
+  const direction = b.direction;
   const allowed = direction === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
   if (!allowed.includes(b.category)) return { error: "invalid category" };
   if (!isoDate(b.entry_date)) return { error: "entry_date must be YYYY-MM-DD" };
@@ -104,7 +106,7 @@ export function reservationAmountMinor(payload) {
 export function csvCell(value) {
   let s = String(value ?? "");
   if (/^[=+\-@\t\r]/.test(s)) s = `'${s}`;
-  return `"${s.replace(/"/g, '""')}"`;
+  return `"${s.replaceAll('"', '""')}"`;
 }
 
 const majorUnits = (minor, currency) => {

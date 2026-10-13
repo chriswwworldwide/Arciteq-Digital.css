@@ -509,7 +509,7 @@ app.post(
 
         if (orderId) {
           const updated = await dbQuery(
-            "UPDATE orders SET status = $1, stripe_checkout_session_id = COALESCE(NULLIF($2, ''), stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(NULLIF($3, ''), stripe_payment_intent_id), updated_at = now() WHERE tenant_id = $4 AND order_id = $5 AND status = $6 RETURNING order_id",
+            "UPDATE orders SET status = $1, stripe_checkout_session_id = COALESCE(NULLIF($2, ''), stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(NULLIF($3, ''), stripe_payment_intent_id), updated_at = now() WHERE tenant_id = $4 AND order_id = $5 AND status = $6 RETURNING order_id, tenant_id, customer_email",
             [
               nextStatus,
               sessionId,
@@ -539,12 +539,37 @@ app.post(
                 stripeEventId,
               ],
             );
+            if (nextStatus === "failed") {
+              try {
+                await sendPaymentFailedNotice({
+                  tenantId: String(updatedRow.tenant_id || tenantId),
+                  orderId: String(updatedRow.order_id),
+                  email: String(updatedRow.customer_email || ""),
+                });
+              } catch (mailErr) {
+                console.error("payment failed email failed", mailErr);
+              }
+            }
           }
         } else if (sessionId) {
-          await dbQuery(
-            "UPDATE orders SET status = $1, stripe_payment_intent_id = COALESCE(NULLIF($2, ''), stripe_payment_intent_id), updated_at = now() WHERE stripe_checkout_session_id = $3 AND status = $4",
+          const updated = await dbQuery(
+            "UPDATE orders SET status = $1, stripe_payment_intent_id = COALESCE(NULLIF($2, ''), stripe_payment_intent_id), updated_at = now() WHERE stripe_checkout_session_id = $3 AND status = $4 RETURNING order_id, tenant_id, customer_email",
             [nextStatus, paymentIntentId, sessionId, "pending"],
           );
+          const updatedRow = Array.isArray(updated?.rows)
+            ? updated.rows[0]
+            : null;
+          if (updatedRow?.order_id && nextStatus === "failed") {
+            try {
+              await sendPaymentFailedNotice({
+                tenantId: String(updatedRow.tenant_id || tenantId),
+                orderId: String(updatedRow.order_id),
+                email: String(updatedRow.customer_email || ""),
+              });
+            } catch (mailErr) {
+              console.error("payment failed email failed", mailErr);
+            }
+          }
         }
         try {
           await ensureCommerceTables();
@@ -556,10 +581,24 @@ app.post(
         const paymentIntent = event?.data?.object;
         const paymentIntentId = String(paymentIntent?.id || "");
         if (paymentIntentId) {
-          await dbQuery(
-            "UPDATE orders SET status = $1, updated_at = now() WHERE stripe_payment_intent_id = $2 AND status = $3",
+          const failed = await dbQuery(
+            "UPDATE orders SET status = $1, updated_at = now() WHERE stripe_payment_intent_id = $2 AND status = $3 RETURNING order_id, tenant_id, customer_email",
             ["failed", paymentIntentId, "pending"],
           );
+          const failedRow = Array.isArray(failed?.rows)
+            ? failed.rows[0]
+            : null;
+          if (failedRow?.order_id) {
+            try {
+              await sendPaymentFailedNotice({
+                tenantId: String(failedRow.tenant_id || ""),
+                orderId: String(failedRow.order_id),
+                email: String(failedRow.customer_email || ""),
+              });
+            } catch (mailErr) {
+              console.error("payment failed email failed", mailErr);
+            }
+          }
         }
       } else if (stripeEventType === "charge.refunded") {
         const charge = event?.data?.object;
@@ -1711,55 +1750,50 @@ function sendViaSendmail({ to, subject, body }) {
   });
 }
 
-// Customer-facing order confirmation, sent once per paid order. From-line
-// carries the tenant's brand (the mailbox stays the platform's verified
-// address); every attempt is logged to email_events so webhook retries can
+// Customer-facing order emails (confirmation, refund, payment-failed,
+// shipped). One helper owns tenant branding on the From line (the
+// tenant's brand name + the platform's verified mailbox), email_events
+// logging, and per-(tenant, order, type) dedup so webhook retries can
 // never double-send.
-async function sendOrderConfirmation({
+async function sendBrandedOrderEmail({
   tenantId,
   orderId,
   email,
-  amountTotal,
-  currency,
+  type,
+  subject,
+  bodyLines,
 }) {
   const address = normalizeEmail(email);
   if (!address) return { ok: false, error: "no recipient" };
   const tid = String(tenantId || "");
   const oid = String(orderId || "");
+  const evtType = String(type || "order_email");
   if (!tid || !oid) return { ok: false, error: "missing order ref" };
 
   const prior = await dbQuery(
-    "SELECT 1 FROM email_events WHERE tenant_id = $1 AND order_id = $2 AND type = 'order_confirmation' AND data->>'ok' = 'true' LIMIT 1",
-    [tid, oid],
+    "SELECT 1 FROM email_events WHERE tenant_id = $1 AND order_id = $2 AND type = $3 AND data->>'ok' = 'true' LIMIT 1",
+    [tid, oid, evtType],
   );
   if (prior?.rowCount > 0) return { ok: true, skipped: "already_sent" };
 
   const tenant = (loadTenantsData().list || []).find((t) => t.slug === tid);
   const brand = String(tenant?.seo?.brandName || tid);
-  const amount = Number.isInteger(amountTotal)
-    ? `${(amountTotal / 100).toFixed(2)} ${String(currency || "gbp").toUpperCase()}`
-    : "";
   const baseFrom = String(
     process.env.ALERT_EMAIL_FROM || "Roxjaya <desk@roxjaya.com>",
   ).trim();
   const mailbox = baseFrom.match(/<([^>]+)>/);
   const from = mailbox ? `${brand} <${mailbox[1]}>` : baseFrom;
 
-  const body = [
-    `Thanks for your order from ${brand}!`,
-    "",
-    `Order: ${oid}`,
-    amount ? `Total: ${amount}` : null,
-    "",
-    "This is your confirmation — keep it for your records.",
-    "Questions? Just reply to this email.",
-  ]
-    .filter((l) => l !== null)
+  const body = (Array.isArray(bodyLines) ? bodyLines : [])
+    .filter((l) => l !== null && l !== undefined)
+    .map((l) =>
+      String(l).replaceAll("{brand}", brand).replaceAll("{order}", oid),
+    )
     .join("\n");
 
   const result = await sendAlertEmail({
     to: address,
-    subject: `Order confirmed — ${brand}`,
+    subject: `${String(subject || "Order update")} — ${brand}`,
     body,
     from,
   });
@@ -1768,7 +1802,7 @@ async function sendOrderConfirmation({
     [
       tid,
       address,
-      "order_confirmation",
+      evtType,
       oid,
       JSON.stringify({
         ok: Boolean(result?.ok),
@@ -1780,71 +1814,85 @@ async function sendOrderConfirmation({
   return result;
 }
 
-// Refund notice — same dedup + tenant-branding rules as order
-// confirmation, fired from the charge.refunded webhook branch.
-async function sendRefundNotice({
-  tenantId,
-  orderId,
-  email,
-  amountTotal,
-  currency,
-}) {
-  const address = normalizeEmail(email);
-  if (!address) return { ok: false, error: "no recipient" };
-  const tid = String(tenantId || "");
-  const oid = String(orderId || "");
-  if (!tid || !oid) return { ok: false, error: "missing order ref" };
-
-  const prior = await dbQuery(
-    "SELECT 1 FROM email_events WHERE tenant_id = $1 AND order_id = $2 AND type = 'refund' AND data->>'ok' = 'true' LIMIT 1",
-    [tid, oid],
-  );
-  if (prior?.rowCount > 0) return { ok: true, skipped: "already_sent" };
-
-  const tenant = (loadTenantsData().list || []).find((t) => t.slug === tid);
-  const brand = String(tenant?.seo?.brandName || tid);
-  const amount = Number.isInteger(amountTotal)
+function moneyLabel(amountTotal, currency) {
+  return Number.isInteger(amountTotal)
     ? `${(amountTotal / 100).toFixed(2)} ${String(currency || "gbp").toUpperCase()}`
     : "";
-  const baseFrom = String(
-    process.env.ALERT_EMAIL_FROM || "Roxjaya <desk@roxjaya.com>",
-  ).trim();
-  const mailbox = baseFrom.match(/<([^>]+)>/);
-  const from = mailbox ? `${brand} <${mailbox[1]}>` : baseFrom;
+}
 
-  const body = [
-    `Your refund from ${brand} has been processed.`,
-    "",
-    `Order: ${oid}`,
-    amount ? `Amount refunded: ${amount}` : null,
-    "",
-    "It can take a few days to appear on your statement.",
-    "Questions? Just reply to this email.",
-  ]
-    .filter((l) => l !== null)
-    .join("\n");
-
-  const result = await sendAlertEmail({
-    to: address,
-    subject: `Refund processed — ${brand}`,
-    body,
-    from,
-  });
-  await dbQuery(
-    "INSERT INTO email_events (tenant_id, email, type, order_id, data) VALUES ($1, $2, $3, $4, $5::jsonb)",
-    [
-      tid,
-      address,
-      "refund",
-      oid,
-      JSON.stringify({
-        ok: Boolean(result?.ok),
-        provider: result?.provider || "sendmail",
-        error: result?.error || null,
-      }),
+function sendOrderConfirmation({ tenantId, orderId, email, amountTotal, currency }) {
+  const amount = moneyLabel(amountTotal, currency);
+  return sendBrandedOrderEmail({
+    tenantId,
+    orderId,
+    email,
+    type: "order_confirmation",
+    subject: "Order confirmed",
+    bodyLines: [
+      "Thanks for your order from {brand}!",
+      "",
+      "Order: {order}",
+      amount ? `Total: ${amount}` : null,
+      "",
+      "This is your confirmation — keep it for your records.",
+      "Questions? Just reply to this email.",
     ],
-  );
-  return result;
+  });
+}
+
+function sendRefundNotice({ tenantId, orderId, email, amountTotal, currency }) {
+  const amount = moneyLabel(amountTotal, currency);
+  return sendBrandedOrderEmail({
+    tenantId,
+    orderId,
+    email,
+    type: "refund",
+    subject: "Refund processed",
+    bodyLines: [
+      "Your refund from {brand} has been processed.",
+      "",
+      "Order: {order}",
+      amount ? `Amount refunded: ${amount}` : null,
+      "",
+      "It can take a few days to appear on your statement.",
+      "Questions? Just reply to this email.",
+    ],
+  });
+}
+
+function sendPaymentFailedNotice({ tenantId, orderId, email }) {
+  return sendBrandedOrderEmail({
+    tenantId,
+    orderId,
+    email,
+    type: "payment_failed",
+    subject: "Payment didn't go through",
+    bodyLines: [
+      "Your payment for order {order} at {brand} didn't go through — no charge was taken.",
+      "",
+      "If you still want it, run the checkout again or just reply to this email and we'll sort it.",
+      "",
+      "Order: {order}",
+    ],
+  });
+}
+
+function sendOrderShippedNotice({ tenantId, orderId, email, tracking }) {
+  return sendBrandedOrderEmail({
+    tenantId,
+    orderId,
+    email,
+    type: "order_shipped",
+    subject: "Order on its way",
+    bodyLines: [
+      "Your order from {brand} is on its way!",
+      "",
+      "Order: {order}",
+      tracking ? `Tracking: ${tracking}` : null,
+      "",
+      "Questions? Just reply to this email.",
+    ],
+  });
 }
 
 function buildAlertEmail({ tenantId, alert }) {
@@ -2346,6 +2394,50 @@ async function runExceptionSweep({ tenant, now }) {
       message: `${failedCount} failed order(s) in the last hour — check Stripe dashboard.`,
       data: { failed_1h: failedCount },
     });
+  }
+
+  // 7. Data retention — once per 24h per tenant, prune high-volume tables
+  //    that grow forever. Windows are deliberately generous; this is
+  //    housekeeping, not compliance erasure.
+  const lastRetentionAt = new Date(store.lastRetentionAt || 0).getTime();
+  if (tsNow.getTime() - lastRetentionAt >= 24 * 60 * 60 * 1000) {
+    const pruned = {};
+    try {
+      const pv = await dbQuery(
+        "DELETE FROM page_views WHERE tenant_id = $1 AND at < now() - interval '180 days'",
+        [activeTenantId],
+      );
+      pruned.page_views = pv?.rowCount || 0;
+    } catch (pvErr) {
+      console.error("retention prune page_views failed", pvErr);
+    }
+    try {
+      const se = await dbQuery(
+        "DELETE FROM stripe_events WHERE created_at < now() - interval '180 days'",
+        [],
+      );
+      pruned.stripe_events = se?.rowCount || 0;
+    } catch (seErr) {
+      console.error("retention prune stripe_events failed", seErr);
+    }
+    try {
+      const ee = await dbQuery(
+        "DELETE FROM email_events WHERE tenant_id = $1 AND at < now() - interval '365 days'",
+        [activeTenantId],
+      );
+      pruned.email_events = ee?.rowCount || 0;
+    } catch (eeErr) {
+      console.error("retention prune email_events failed", eeErr);
+    }
+    store.lastRetentionAt = tsNow.toISOString();
+    if (Object.values(pruned).some((n) => n > 0)) {
+      await record({
+        check: "retention_pruned",
+        action: "auto_fixed",
+        message: "Retention sweep pruned old rows.",
+        data: pruned,
+      });
+    }
   }
 
   store.schemaVersion = 1;
@@ -5786,6 +5878,134 @@ app.get("/admin/orders/:orderId", async (req, res) => {
       .json({ error: String(err?.message || "Failed to load order") });
   }
 });
+
+// Mark a paid order fulfilled (shipped/delivered) — clears the
+// "paid order stuck" alert and sends the customer a shipped notice.
+app.post(
+  "/admin/orders/:orderId/fulfil",
+  express.json(),
+  async (req, res) => {
+    const denied = requireAdmin(req, res);
+    if (denied) return denied;
+
+    try {
+      const tenant = resolveTenantFromRequest(req);
+      const activeTenantId = String(tenant?.tenant_id || "default");
+      const orderId = String(req.params?.orderId || "").trim();
+      const tracking = String(req.body?.tracking || "").slice(0, 200);
+      if (!orderId) return res.status(400).json({ error: "Missing orderId" });
+
+      const updated = await dbQuery(
+        "UPDATE orders SET status = 'fulfilled', updated_at = now() WHERE tenant_id = $1 AND order_id = $2 AND status = 'paid' RETURNING order_id, customer_email",
+        [activeTenantId, orderId],
+      );
+      const row = Array.isArray(updated?.rows) ? updated.rows[0] : null;
+      if (!row) {
+        return res
+          .status(404)
+          .json({ error: "Order not found or not in paid status" });
+      }
+
+      await dbQuery(
+        "INSERT INTO order_events (order_id, type, data) VALUES ($1, 'fulfilled', $2::jsonb)",
+        [orderId, JSON.stringify({ tracking: tracking || null })],
+      );
+      try {
+        await sendOrderShippedNotice({
+          tenantId: activeTenantId,
+          orderId,
+          email: String(row.customer_email || ""),
+          tracking: tracking || null,
+        });
+      } catch (mailErr) {
+        console.error("shipped email failed", mailErr);
+      }
+      return res.json({ ok: true, order_id: orderId, status: "fulfilled" });
+    } catch (err) {
+      console.error("/admin/orders/:orderId/fulfil failed", err);
+      return res
+        .status(500)
+        .json({ error: String(err?.message || "Failed to fulfil order") });
+    }
+  },
+);
+
+// Issue a refund through Stripe — the charge.refunded webhook then flips
+// the order to refunded and emails the customer. Partial refunds pass
+// `amount` (integer minor units); omit for a full refund.
+app.post(
+  "/admin/orders/:orderId/refund",
+  express.json(),
+  async (req, res) => {
+    const denied = requireAdmin(req, res);
+    if (denied) return denied;
+    if (!stripe) {
+      return res
+        .status(500)
+        .json({ error: "STRIPE_SECRET_KEY is not set on the server" });
+    }
+
+    try {
+      const tenant = resolveTenantFromRequest(req);
+      const activeTenantId = String(tenant?.tenant_id || "default");
+      const orderId = String(req.params?.orderId || "").trim();
+      if (!orderId) return res.status(400).json({ error: "Missing orderId" });
+
+      const orderResult = await dbQuery(
+        "SELECT order_id, status, stripe_payment_intent_id, amount_total, currency FROM orders WHERE tenant_id = $1 AND order_id = $2",
+        [activeTenantId, orderId],
+      );
+      const order = orderResult.rows?.[0];
+      if (!order) return res.status(404).json({ error: "Order not found" });
+      if (String(order.status) !== "paid") {
+        return res
+          .status(400)
+          .json({ error: `Cannot refund order in status '${order.status}'` });
+      }
+      const paymentIntentId = String(order.stripe_payment_intent_id || "");
+      if (!paymentIntentId) {
+        return res
+          .status(400)
+          .json({ error: "Order has no payment intent to refund" });
+      }
+
+      const amountRaw = Number(req.body?.amount);
+      const params = { payment_intent: paymentIntentId };
+      if (Number.isInteger(amountRaw) && amountRaw > 0) {
+        if (amountRaw > Number(order.amount_total || 0)) {
+          return res
+            .status(400)
+            .json({ error: "Refund amount exceeds order total" });
+        }
+        params.amount = amountRaw;
+      }
+
+      const refund = await stripe.refunds.create(params);
+      await dbQuery(
+        "INSERT INTO order_events (order_id, type, data) VALUES ($1, 'refund_initiated', $2::jsonb)",
+        [
+          orderId,
+          JSON.stringify({
+            refundId: String(refund?.id || ""),
+            amount: refund?.amount ?? null,
+            partial: Boolean(params.amount),
+          }),
+        ],
+      );
+      return res.json({
+        ok: true,
+        order_id: orderId,
+        refund_id: String(refund?.id || ""),
+        amount: refund?.amount ?? null,
+      });
+    } catch (err) {
+      console.error("/admin/orders/:orderId/refund failed", err);
+      return res
+        .status(500)
+        .json({ error: String(err?.message || "Failed to issue refund") });
+    }
+  },
+);
 
 app.post("/admin/jobs/abandoned-recovery", async (req, res) => {
   const denied = requireAdmin(req, res);

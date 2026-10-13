@@ -784,16 +784,26 @@
         !window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ) {
         const pink = ["#ff2ea6", "#ff7ad0", "#ffffff", "#ffd2ef"];
-        const burst = { spread: 70, colors: pink, scalar: 1.1 };
+        // a fixed burst covers a phone but reads as a weak corner
+        // firework on a wide desktop — scale count/spread/velocity so
+        // the pop crosses the page
+        const wide = window.innerWidth > 800;
+        const burst = {
+          colors: pink,
+          scalar: 1.1,
+          spread: wide ? 100 : 70,
+          startVelocity: wide ? 75 : 45,
+          ticks: wide ? 280 : 200,
+        };
         window.confetti({
           ...burst,
-          particleCount: 60,
+          particleCount: wide ? 170 : 60,
           angle: 60,
           origin: { x: 0, y: 0.95 },
         });
         window.confetti({
           ...burst,
-          particleCount: 60,
+          particleCount: wide ? 170 : 60,
           angle: 120,
           origin: { x: 1, y: 0.95 },
         });

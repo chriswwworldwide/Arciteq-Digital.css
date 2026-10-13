@@ -641,3 +641,13 @@ Commits `db76c7d`, `f467d2d`. Findings + fixes:
 **Deploy checklist:** run `node scripts/migrate.js` (applies 013 + 014; the server also self-applies 011–014 on first commerce use). Set `PUBLIC_BASE_URL` in production so emailed links point at the real domain for tenants without a hostname yet.
 
 **Known, deliberately left:** `/api/shipping-estimate` + `/api/free-shipping-progress` have no frontend caller yet (tested modules, cart-nudge features waiting to be wired); checkout success URL still derives from `Origin` (only affects the requester's own session); `server.js` split into modules (webhooks / email / ops / admin / seo / commerce) is a future refactor, not started.
+
+## Station 9 HQ + local Postgres (Oct 2026)
+
+**HQ** — internal control panel at `/hq` (admin key, saved per device; `noindex`). Pipeline by stage, contacts with tap-to-WhatsApp/IG/email, timeline (notes/DMs/calls, auto-logged stage changes and payments), money (record setup/monthly payments → `platform_payments`), and each linked client site's leads, page views and escalated site issues. Summary tiles: live clients, MRR, cash this month/all-time, follow-ups due, site issues. Code: `server/hq.js` (first module split out of `server.js`), page `hq.html`, schema `migrations/015_hq.sql`, tests `tests/hq.test.js`.
+
+**Local database** — Postgres 17 via Homebrew, runs as a background service (`brew services start|stop postgresql@17`). Database `roxjaya`; `.env.local` (gitignored, owner-only) holds `DATABASE_URL`, `ADMIN_API_KEY`, `PUBLIC_BASE_URL`. Apply schema: `node scripts/migrate.js` (idempotent). Shell: `/opt/homebrew/opt/postgresql@17/bin/psql -d roxjaya`.
+
+**Production** still needs its own Postgres (Railway: add the Postgres plugin to the project, which sets `DATABASE_URL`), plus `ADMIN_API_KEY` and `PUBLIC_BASE_URL` env vars, then run migrations. That step needs the Railway account owner.
+
+`data/alerts.json` and `data/exceptions.json` are now runtime ledgers (gitignored, may contain customer emails); the server recreates them if missing.

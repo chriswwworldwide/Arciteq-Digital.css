@@ -113,3 +113,10 @@ Two separate things control whether you get prompted:
 2. **Cloud sessions (app.devin.ai, Slack, ACP).** These never show per-command approval buttons; the agent runs commands, starts local servers, and commits on its own. `.devin/config.json` does not apply there, so it is expected behaviour that nothing asks you to click Accept.
 
 Practical upshot: you can hand over a block of work and walk away in either place. Approval is only ever needed for the deny/ask cases above, or when the agent needs something only you have (a secret, a production setting).
+
+## Local dev quick reference
+
+- Server: `npm start` → http://localhost:3000 (env from `.env.local`, gitignored).
+- Database: local Postgres 17 (`brew services start postgresql@17`), db `roxjaya`; schema via `node scripts/migrate.js` (safe to re-run).
+- Checks before commit (also run by the pre-commit hook): `npm run lint`, `npm run type-check`; tests: `npx vitest run`.
+- Internal control panel: http://localhost:3000/hq (admin key is in `.env.local`).

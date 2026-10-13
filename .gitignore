@@ -12,3 +12,7 @@ coverage/
 
 # macOS junk
 .DS_Store
+
+# Runtime ops ledgers (written by the heartbeat; may contain customer emails)
+data/alerts.json
+data/exceptions.json

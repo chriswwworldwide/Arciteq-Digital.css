@@ -55,6 +55,7 @@ import {
 } from "./src/subscriptions.js";
 import { sanitizeProfile, hasProfile } from "./src/lead-profile.js";
 import { isPrivateStaticPath } from "./src/static-guard.js";
+import { createHqRouter } from "./server/hq.js";
 import {
   validateSubmission,
   summarizePayloads,
@@ -2815,6 +2816,7 @@ app.get("/:nicheCategorySlug", (req, res, next) => {
       "sitemap.xml",
       "robots.txt",
       "roxjaya",
+      "hq",
     ]);
     // Coaching site tenants get their own /<site>/ routes — never collections.
     for (const t of loadTenantsData().list) {
@@ -5755,6 +5757,26 @@ app.post(
   },
 );
 
+// Station 9 HQ — internal control panel (pipeline, contacts, money, site
+// health). API in server/hq.js; page at /hq.
+app.use(
+  createHqRouter({
+    dbQuery,
+    requireAdmin,
+    ensureTables: ensureCommerceTables,
+    loadTenants: () => loadTenantsData().list,
+    readExceptions: () => {
+      const store = safeReadJsonFile(exceptionsFilePath, { exceptions: [] });
+      return Array.isArray(store?.exceptions) ? store.exceptions : [];
+    },
+  }),
+);
+
+app.get("/hq", (req, res) => {
+  res.setHeader("X-Robots-Tag", "noindex, nofollow");
+  return res.sendFile(path.join(__dirname, "hq.html"));
+});
+
 app.post("/admin/orders/cleanup-stale", async (req, res) => {
   const denied = requireAdmin(req, res);
   if (denied) return denied;
@@ -6290,6 +6312,7 @@ async function ensureCommerceTables() {
         "012_platform_billing.sql",
         "013_fulfilment_and_indexes.sql",
         "014_webhook_processing.sql",
+        "015_hq.sql",
       ]) {
         await dbQuery(
           fs.readFileSync(path.join(__dirname, "migrations", file), "utf8"),

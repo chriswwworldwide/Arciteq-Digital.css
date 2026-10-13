@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#111418" />
+<title>Station 9 HQ</title>
+<style>
+  :root {
+    --bg: #111418; --panel: #1a1f26; --line: #2a313b; --text: #e8ecf1;
+    --muted: #8b95a3; --accent: #ffb238; --good: #4cc38a; --bad: #ff6b6b;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; border: 0; border-radius: 10px; padding: 10px 14px;
+    background: var(--line); min-height: 44px; }
+  button.primary { background: var(--accent); color: #1b1300; font-weight: 600; }
+  button.ghost { background: transparent; border: 1px solid var(--line); }
+  input, select, textarea { width: 100%; background: #0d1014; border: 1px solid var(--line);
+    border-radius: 10px; padding: 10px 12px; min-height: 44px; }
+  textarea { min-height: 90px; resize: vertical; }
+  label { display: block; font-size: 12px; color: var(--muted); margin: 10px 0 4px; }
+  header { position: sticky; top: 0; z-index: 5; background: var(--bg);
+    border-bottom: 1px solid var(--line); padding: 12px 16px calc(12px) ;
+    padding-top: max(12px, env(safe-area-inset-top)); display: flex; gap: 10px; align-items: center; }
+  header h1 { font-size: 18px; margin: 0; flex: 1; }
+  header h1 span { color: var(--accent); }
+  main { padding: 16px; max-width: 1200px; margin: 0 auto; padding-bottom: 80px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; }
+  .tile b { display: block; font-size: 22px; }
+  .tile small { color: var(--muted); }
+  .tile.alert b { color: var(--bad); }
+  .toolbar { display: flex; gap: 8px; margin: 16px 0 10px; flex-wrap: wrap; }
+  .toolbar input { flex: 1; min-width: 160px; }
+  .chips { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+  .chip { white-space: nowrap; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 999px; padding: 8px 12px; min-height: 40px; }
+  .chip.on { background: var(--accent); color: #1b1300; border-color: var(--accent); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin-top: 10px; }
+  .card { text-align: left; background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 14px; display: block; width: 100%; }
+  .card h3 { margin: 0 0 2px; font-size: 16px; }
+  .card .sub { color: var(--muted); font-size: 13px; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; align-items: center; }
+  .pill { font-size: 12px; padding: 3px 8px; border-radius: 999px; background: var(--line); }
+  .pill.live { background: rgba(76,195,138,.18); color: var(--good); }
+  .pill.lost { color: var(--muted); }
+  .pill.won { background: rgba(255,178,56,.18); color: var(--accent); }
+  .overdue { color: var(--bad); }
+  .stat { font-size: 12px; color: var(--muted); }
+  .stat b { color: var(--text); }
+  .empty { color: var(--muted); padding: 30px 0; text-align: center; }
+  /* Detail panel: full screen on phones, side sheet on desktop */
+  .sheet { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: none; z-index: 20; }
+  .sheet.open { display: block; }
+  .sheet-body { position: absolute; inset: 0; background: var(--bg); overflow-y: auto;
+    padding: 16px; padding-top: max(16px, env(safe-area-inset-top)); padding-bottom: 60px; }
+  @media (min-width: 900px) {
+    .sheet-body { left: auto; width: 560px; border-left: 1px solid var(--line); }
+  }
+  .sheet-head { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
+  .sheet-head h2 { flex: 1; margin: 0; font-size: 20px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; }
+  section.box { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 12px 14px; margin-top: 14px; }
+  section.box h4 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .contact { display: flex; gap: 8px; flex-wrap: wrap; }
+  .contact a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px;
+    border-radius: 10px; background: var(--line); color: var(--text); text-decoration: none; }
+  .timeline { list-style: none; margin: 8px 0 0; padding: 0; }
+  .timeline li { border-top: 1px solid var(--line); padding: 8px 0; font-size: 14px; }
+  .timeline time { display: block; font-size: 12px; color: var(--muted); }
+  .msg { position: fixed; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); transform: translateX(-50%);
+    background: var(--panel); border: 1px solid var(--line); padding: 10px 16px; border-radius: 10px; z-index: 40; display: none; }
+  .msg.show { display: block; }
+  .msg.err { border-color: var(--bad); color: var(--bad); }
+  #gate { max-width: 420px; margin: 15vh auto; padding: 20px; }
+</style>
+</head>
+<body>
+<div id="gate" hidden>
+  <h1>Station 9 <span style="color:var(--accent)">HQ</span></h1>
+  <p class="stat">Enter the admin key to continue. It's saved on this device only.</p>
+  <label for="key">Admin key</label>
+  <input id="key" type="password" autocomplete="current-password" />
+  <div class="row"><button class="primary" id="key-save" type="button">Unlock</button></div>
+</div>
+
+<div id="app" hidden>
+  <header>
+    <h1>Station 9 <span>HQ</span></h1>
+    <button class="primary" id="add" type="button">+ Gym</button>
+    <button class="ghost" id="lock" type="button" aria-label="Lock">Lock</button>
+  </header>
+  <main>
+    <div class="tiles" id="tiles"></div>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search name, coach, city" />
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="cards" id="cards"></div>
+  </main>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true">
+  <div class="sheet-body" id="sheet-body"></div>
+</div>
+<div class="msg" id="msg"></div>
+
+<script>
+(() => {
+  const STAGES = ["prospect","contacted","demo_sent","call_booked","won","live","paused","lost"];
+  const STAGE_LABEL = { prospect: "Prospect", contacted: "Contacted", demo_sent: "Demo sent",
+    call_booked: "Call booked", won: "Won", live: "Live", paused: "Paused", lost: "Lost" };
+  const $ = (id) => document.getElementById(id);
+  const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const money = (minor, cur) => minor == null || minor === "" ? "—" :
+    new Intl.NumberFormat("en-GB", { style: "currency", currency: String(cur || "gbp").toUpperCase(),
+      maximumFractionDigits: Number(minor) % 100 ? 2 : 0 }).format(Number(minor) / 100);
+  const sumList = (rows) => rows && rows.length ? rows.map((r) => money(r.amount, r.currency)).join(" + ") : "£0";
+  const today = () => new Date().toISOString().slice(0, 10);
+  const fmtDate = (d) => d ? new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
+  const fmtWhen = (d) => d ? new Date(d).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
+
+  let key = localStorage.getItem("hqKey") || "";
+  let stageFilter = "";
+  let tenants = [];
+  let searchTimer = null;
+
+  function toast(text, isErr) {
+    const m = $("msg");
+    m.textContent = text; m.className = "msg show" + (isErr ? " err" : "");
+    clearTimeout(toast.t); toast.t = setTimeout(() => (m.className = "msg"), 2600);
+  }
+
+  async function api(path, opts = {}) {
+    const res = await fetch(path, {
+      ...opts,
+      headers: { "Content-Type": "application/json", "x-admin-key": key, ...(opts.headers || {}) },
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.status === 401) { lock(); throw new Error("Wrong key"); }
+    if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+    return data;
+  }
+
+  function lock() {
+    localStorage.removeItem("hqKey"); key = "";
+    $("app").hidden = true; $("gate").hidden = false; closeSheet();
+  }
+
+  async function unlock() {
+    $("gate").hidden = true; $("app").hidden = false;
+    try {
+      tenants = (await api("/admin/hq/tenants")).tenants || [];
+      await refresh();
+    } catch (err) { toast(err.message, true); }
+  }
+
+  async function refresh() {
+    const q = $("search").value.trim();
+    const qs = new URLSearchParams();
+    if (stageFilter) qs.set("stage", stageFilter);
+    if (q) qs.set("q", q);
+    const [summary, list] = await Promise.all([
+      api("/admin/hq/summary"),
+      api("/admin/hq/gyms?" + qs.toString()),
+    ]);
+    renderTiles(summary);
+    renderChips(summary.by_stage);
+    renderCards(list.gyms || []);
+  }
+
+  function renderTiles(s) {
+    const live = s.by_stage.live || 0;
+    const pipeline = ["contacted","demo_sent","call_booked"].reduce((n, k) => n + (s.by_stage[k] || 0), 0);
+    $("tiles").innerHTML = [
+      `<div class="tile"><b>${live}</b><small>Live clients</small></div>`,
+      `<div class="tile"><b>${esc(sumList(s.mrr))}</b><small>Monthly recurring</small></div>`,
+      `<div class="tile"><b>${esc(sumList(s.cash_this_month))}</b><small>Taken this month</small></div>`,
+      `<div class="tile"><b>${esc(sumList(s.cash_total))}</b><small>Taken all-time</small></div>`,
+      `<div class="tile"><b>${pipeline}</b><small>In conversation</small></div>`,
+      `<div class="tile ${s.follow_ups_due ? "alert" : ""}"><b>${s.follow_ups_due}</b><small>Follow-ups due</small></div>`,
+      `<div class="tile ${s.escalations_7d ? "alert" : ""}"><b>${s.escalations_7d}</b><small>Site issues (7d)</small></div>`,
+    ].join("");
+  }
+
+  function renderChips(byStage) {
+    const total = Object.values(byStage).reduce((a, b) => a + b, 0);
+    const chip = (val, label, n) =>
+      `<button type="button" class="chip ${stageFilter === val ? "on" : ""}" data-stage="${val}">${esc(label)} · ${n}</button>`;
+    $("chips").innerHTML = chip("", "All", total) + STAGES.map((s) => chip(s, STAGE_LABEL[s], byStage[s] || 0)).join("");
+  }
+
+  function renderCards(gyms) {
+    if (!gyms.length) {
+      $("cards").innerHTML = `<div class="empty">No gyms here yet. Tap “+ Gym” to add your first.</div>`;
+      return;
+    }
+    $("cards").innerHTML = gyms.map((g) => {
+      const overdue = g.next_action_at && String(g.next_action_at).slice(0, 10) <= today();
+      const site = g.tenant_id ? `<span class="stat">Site <b>/${esc(g.tenant_id)}/</b></span>` : "";
+      return `<button type="button" class="card" data-id="${g.id}">
+        <h3>${esc(g.name)}</h3>
+        <div class="sub">${esc([g.coach, g.city].filter(Boolean).join(" · ") || "—")}</div>
+        <div class="row">
+          <span class="pill ${esc(g.stage)}">${esc(STAGE_LABEL[g.stage] || g.stage)}</span>
+          ${g.score != null ? `<span class="stat">Score <b>${esc(g.score)}</b></span>` : ""}
+          ${g.escalations_7d ? `<span class="pill" style="color:var(--bad)">⚠ ${g.escalations_7d}</span>` : ""}
+        </div>
+        ${g.next_action ? `<div class="row ${overdue ? "overdue" : "stat"}">→ ${esc(g.next_action)}${g.next_action_at ? ` · ${esc(fmtDate(g.next_action_at))}` : ""}</div>` : ""}
+        <div class="row">
+          ${g.monthly_minor != null ? `<span class="stat"><b>${esc(money(g.monthly_minor, g.currency))}</b>/mo</span>` : ""}
+          ${Number(g.paid_total_minor) ? `<span class="stat">Paid <b>${esc(money(g.paid_total_minor, g.currency))}</b></span>` : ""}
+          ${g.tenant_id ? `<span class="stat">Leads 30d <b>${g.leads_30d}</b></span><span class="stat">Views <b>${g.views_30d}</b></span>` : ""}
+          ${site}
+        </div>
+      </button>`;
+    }).join("");
+  }
+
+  function field(name, label, value, type = "text", extra = "") {
+    return `<div><label for="f-${name}">${esc(label)}</label>
+      <input id="f-${name}" name="${name}" type="${type}" value="${esc(value ?? "")}" ${extra} /></div>`;
+  }
+
+  function gymForm(g) {
+    const tenantOpts = `<option value="">— no site yet —</option>` + tenants.map((t) =>
+      `<option value="${esc(t.tenant_id)}" ${g.tenant_id === t.tenant_id ? "selected" : ""}>${esc(t.brand)} (/${esc(t.tenant_id)}/)</option>`).join("");
+    const stageOpts = STAGES.map((s) => `<option value="${s}" ${g.stage === s ? "selected" : ""}>${STAGE_LABEL[s]}</option>`).join("");
+    const pounds = (m) => m == null ? "" : (Number(m) / 100).toString();
+    return `<form id="gym-form">
+      ${field("name", "Gym name *", g.name, "text", "required")}
+      <div class="grid2">
+        ${field("coach", "Coach / owner", g.coach)}
+        ${field("city", "City", g.city)}
+      </div>
+      <div class="grid2">
+        <div><label for="f-stage">Stage</label><select id="f-stage" name="stage">${stageOpts}</select></div>
+        <div><label for="f-lane">Pitch lane</label><select id="f-lane" name="lane">
+          <option value="">—</option>
+          <option value="replace" ${g.lane === "replace" ? "selected" : ""}>Replace</option>
+          <option value="bolt_on" ${g.lane === "bolt_on" ? "selected" : ""}>Bolt-on</option>
+        </select></div>
+      </div>
+      <div class="grid2">
+        ${field("score", "Score (0–31)", g.score, "number", 'min="0" max="100" inputmode="numeric"')}
+        <div><label for="f-tenant_id">Their site</label><select id="f-tenant_id" name="tenant_id">${tenantOpts}</select></div>
+      </div>
+      <div class="grid2">
+        ${field("setup_fee", "Setup fee (£)", pounds(g.setup_fee_minor), "number", 'min="0" step="0.01" inputmode="decimal"')}
+        ${field("monthly", "Monthly (£)", pounds(g.monthly_minor), "number", 'min="0" step="0.01" inputmode="decimal"')}
+      </div>
+      <div class="grid2">
+        ${field("instagram", "Instagram handle", g.instagram)}
+        ${field("whatsapp", "WhatsApp (with country code)", g.whatsapp, "tel")}
+      </div>
+      <div class="grid2">
+        ${field("email", "Email", g.email, "email")}
+        ${field("website", "Current website", g.website, "url")}
+      </div>
+      ${field("next_action", "Next action", g.next_action)}
+      ${field("next_action_at", "Next action date", g.next_action_at ? String(g.next_action_at).slice(0, 10) : "", "date")}
+      <div><label for="f-notes">Notes</label><textarea id="f-notes" name="notes">${esc(g.notes || "")}</textarea></div>
+      <div class="row"><button class="primary" type="submit">Save</button></div>
+    </form>`;
+  }
+
+  function formPayload(form) {
+    const fd = new FormData(form);
+    const out = {};
+    for (const k of ["name","coach","city","stage","lane","tenant_id","instagram","whatsapp","email","website","next_action","next_action_at","notes"]) {
+      out[k] = String(fd.get(k) ?? "").trim();
+    }
+    out.score = String(fd.get("score") ?? "").trim() === "" ? null : Number(fd.get("score"));
+    const toMinor = (v) => String(v ?? "").trim() === "" ? null : Math.round(Number(v) * 100);
+    out.setup_fee_minor = toMinor(fd.get("setup_fee"));
+    out.monthly_minor = toMinor(fd.get("monthly"));
+    return out;
+  }
+
+  function openSheet(html) {
+    $("sheet-body").innerHTML = html;
+    $("sheet").classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeSheet() {
+    $("sheet").classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  function openNew() {
+    openSheet(`<div class="sheet-head"><h2>New gym</h2>
+      <button type="button" class="ghost" data-close>Close</button></div>
+      ${gymForm({ stage: "prospect" })}`);
+    $("gym-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        const { id } = await api("/admin/hq/gyms", { method: "POST", body: JSON.stringify(formPayload(e.target)) });
+        toast("Gym added");
+        await refresh();
+        openGym(id);
+      } catch (err) { toast(err.message, true); }
+    });
+  }
+
+  async function openGym(id) {
+    let data;
+    try { data = await api(`/admin/hq/gyms/${id}`); } catch (err) { return toast(err.message, true); }
+    const g = data.gym;
+    const wa = String(g.whatsapp || "").replace(/[^\d]/g, "");
+    const ig = String(g.instagram || "").replace(/^@/, "");
+    const contacts = [
+      wa ? `<a href="https://wa.me/${esc(wa)}" target="_blank" rel="noopener">WhatsApp</a>` : "",
+      ig ? `<a href="https://instagram.com/${esc(ig)}" target="_blank" rel="noopener">Instagram</a>` : "",
+      g.email ? `<a href="mailto:${esc(g.email)}">Email</a>` : "",
+      g.website ? `<a href="${esc(/^https?:\/\//.test(g.website) ? g.website : "https://" + g.website)}" target="_blank" rel="noopener">Their website</a>` : "",
+      g.tenant_id ? `<a href="/${esc(g.tenant_id)}/" target="_blank" rel="noopener">Our site</a>` : "",
+    ].filter(Boolean).join("") || `<span class="stat">No contact details yet.</span>`;
+
+    const payments = (data.payments || []).map((p) =>
+      `<li><b>${esc(money(p.amount, p.currency))}</b> · ${esc(p.kind)} · ${esc(String(p.method).replace("_", " "))}${p.status !== "paid" ? ` · ${esc(p.status)}` : ""}
+       ${p.note ? `<br>${esc(p.note)}` : ""}<time>${esc(fmtWhen(p.created_at))}</time></li>`).join("");
+    const activity = (data.activity || []).map((a) =>
+      `<li><span class="pill">${esc(a.kind)}</span> ${esc(a.body)}<time>${esc(fmtWhen(a.at))}</time></li>`).join("");
+    const issues = (data.escalations || []).map((e) =>
+      `<li>${esc(e.message)}<time>${esc(fmtWhen(e.createdAt))}</time></li>`).join("");
+
+    openSheet(`<div class="sheet-head"><h2>${esc(g.name)}</h2>
+        <button type="button" class="ghost" data-close>Close</button></div>
+      <div class="contact">${contacts}</div>
+
+      ${g.tenant_id ? `<section class="box"><h4>Their site · last 30 days</h4>
+        <div class="row">
+          <span class="stat">Leads <b>${g.leads_30d}</b></span>
+          <span class="stat">Page views <b>${g.views_30d}</b></span>
+          <span class="stat">Paid us <b>${esc(money(g.paid_total_minor, g.currency))}</b></span>
+          ${g.last_paid_at ? `<span class="stat">Last payment <b>${esc(fmtDate(g.last_paid_at))}</b></span>` : ""}
+        </div>
+        ${issues ? `<ul class="timeline">${issues}</ul>` : `<div class="stat" style="margin-top:6px">No site issues in the last 30 days.</div>`}
+      </section>` : ""}
+
+      <section class="box"><h4>Add to timeline</h4>
+        <form id="act-form">
+          <div class="grid2">
+            <div><label for="a-kind">Type</label><select id="a-kind" name="kind">
+              <option value="note">Note</option><option value="dm">DM</option><option value="call">Call</option>
+              <option value="email">Email</option><option value="meeting">Meeting</option></select></div>
+            <div></div>
+          </div>
+          <label for="a-body">What happened</label><textarea id="a-body" name="body" required></textarea>
+          <div class="row"><button class="primary" type="submit">Add</button></div>
+        </form>
+        <ul class="timeline">${activity}</ul>
+      </section>
+
+      <section class="box"><h4>Money</h4>
+        ${g.tenant_id ? `<form id="pay-form">
+          <div class="grid2">
+            ${field("amount", "Amount (£)", "", "number", 'min="0.01" step="0.01" inputmode="decimal" required')}
+            <div><label for="p-kind">For</label><select id="p-kind" name="kind">
+              <option value="setup">Setup fee</option><option value="subscription">Monthly</option>
+              <option value="addon">Add-on</option><option value="other">Other</option></select></div>
+          </div>
+          <div class="grid2">
+            <div><label for="p-method">Paid by</label><select id="p-method" name="method">
+              <option value="bank_transfer">Bank transfer</option><option value="stripe">Stripe</option>
+              <option value="cash">Cash</option><option value="other">Other</option></select></div>
+            ${field("note", "Note", "")}
+          </div>
+          <div class="row"><button class="primary" type="submit">Record payment</button></div>
+        </form>` : `<div class="stat">Link this gym to its site (below) to record payments.</div>`}
+        ${payments ? `<ul class="timeline">${payments}</ul>` : ""}
+      </section>
+
+      <section class="box"><h4>Details</h4>${gymForm(g)}</section>`);
+
+    $("gym-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        await api(`/admin/hq/gyms/${id}`, { method: "PATCH", body: JSON.stringify(formPayload(e.target)) });
+        toast("Saved"); await refresh(); openGym(id);
+      } catch (err) { toast(err.message, true); }
+    });
+    $("act-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      try {
+        await api(`/admin/hq/gyms/${id}/activity`, { method: "POST",
+          body: JSON.stringify({ kind: fd.get("kind"), body: fd.get("body") }) });
+        toast("Added"); await refresh(); openGym(id);
+      } catch (err) { toast(err.message, true); }
+    });
+    const pay = $("pay-form");
+    if (pay) pay.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      try {
+        await api(`/admin/hq/gyms/${id}/payments`, { method: "POST", body: JSON.stringify({
+          amount: Math.round(Number(fd.get("amount")) * 100),
+          kind: fd.get("kind"), method: fd.get("method"), note: fd.get("note") }) });
+        toast("Payment recorded"); await refresh(); openGym(id);
+      } catch (err) { toast(err.message, true); }
+    });
+  }
+
+  $("key-save").addEventListener("click", () => {
+    key = $("key").value.trim();
+    if (!key) return;
+    localStorage.setItem("hqKey", key);
+    unlock();
+  });
+  $("key").addEventListener("keydown", (e) => { if (e.key === "Enter") $("key-save").click(); });
+  $("lock").addEventListener("click", lock);
+  $("add").addEventListener("click", openNew);
+  $("chips").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-stage]");
+    if (!b) return;
+    stageFilter = b.dataset.stage;
+    refresh().catch((err) => toast(err.message, true));
+  });
+  $("cards").addEventListener("click", (e) => {
+    const c = e.target.closest("[data-id]");
+    if (c) openGym(c.dataset.id);
+  });
+  $("search").addEventListener("input", () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => refresh().catch((err) => toast(err.message, true)), 250);
+  });
+  $("sheet").addEventListener("click", (e) => {
+    if (e.target.id === "sheet" || e.target.closest("[data-close]")) closeSheet();
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSheet(); });
+
+  if (key) unlock(); else $("gate").hidden = false;
+})();
+</script>
+</body>
+</html>

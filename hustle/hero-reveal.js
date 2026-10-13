@@ -21,6 +21,9 @@
   const section = document.querySelector(".hero--bleed");
   const img = section && section.querySelector(".hero-img");
   if (!img) return done();
+  // ?fx=0-3 / ?fx=demo are owned by emerge.js (Codrops emerge shader) —
+  // bail so the roll doesn't fight it.
+  if (window.__emerge) return done();
 
   // Ported from akella/UnrollingImages (Codrops) — the plane is deformed
   // into a spiral scroll; `u_progress` pays it out along the `u_angle`

@@ -37,6 +37,12 @@
     dbgBadge("exit: no .hero-img");
     return done();
   }
+  // ?fx=0-3 / ?fx=demo are owned by emerge.js (Codrops emerge shader) —
+  // bail so the roll doesn't fight it.
+  if (window.__emerge) {
+    dbgBadge("exit: emerge owns ?fx");
+    return done();
+  }
 
   // Ported from akella/UnrollingImages (Codrops) — the plane is deformed
   // into a spiral scroll; `u_progress` pays it out along the `u_angle`

@@ -11,16 +11,32 @@
 // small screen / reduced-motion → the <img> just shows.
 (() => {
   const html = document.documentElement;
+  // ?revdebug=info pins a badge on the hero reporting which path the
+  // script took — for diagnosing browsers we can't remote-inspect.
+  const dbgParam = new URLSearchParams(location.search).get("revdebug");
+  const dbgBadge = (msg) => {
+    if (dbgParam !== "info") return;
+    const b = document.createElement("div");
+    b.style.cssText =
+      "position:absolute;z-index:999;top:6px;left:6px;background:rgba(0,0,0,.85);color:#7f7;font:11px/1.5 monospace;padding:4px 8px;white-space:pre";
+    b.textContent = msg;
+    (document.querySelector(".hero--bleed") || document.body).appendChild(b);
+  };
   const done = () => {
     html.classList.remove("reveal-live");
     html.classList.add("reveal-done");
   };
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    dbgBadge("exit: reduced-motion");
     return done();
+  }
 
   const section = document.querySelector(".hero--bleed");
   const img = section && section.querySelector(".hero-img");
-  if (!img) return done();
+  if (!img) {
+    dbgBadge("exit: no .hero-img");
+    return done();
+  }
 
   // Ported from akella/UnrollingImages (Codrops) — the plane is deformed
   // into a spiral scroll; `u_progress` pays it out along the `u_angle`
@@ -172,6 +188,9 @@
   // blur + photo baked into one texture — a single piece, no stitched
   // edges). Desktop only; mobile keeps the img-pinned roll.
   const fullRoll = !small && section.dataset.heroRoll === "full";
+  dbgBadge(
+    `small=${small} attr=${section.dataset.heroRoll} fullRoll=${fullRoll}\nua=${navigator.userAgent.match(/Version\/[\d.]+|Edg\/[\d.]+|Chrome\/[\d.]+|Firefox\/[\d.]+/)?.[0] || "?"}`,
+  );
   try {
     canvas = document.createElement("canvas");
     canvas.className = "hero-canvas";
@@ -181,7 +200,10 @@
       premultipliedAlpha: false,
       antialias: true,
     });
-    if (!gl) return done();
+    if (!gl) {
+      dbgBadge("exit: no webgl context");
+      return done();
+    }
 
     const compile = (type, src) => {
       const s = gl.createShader(type);
@@ -276,6 +298,7 @@
     gl.uniform1f(uTube, fullRoll ? 0.12 : 1.0);
   } catch (e) {
     console.warn("hero-reveal:", e);
+    dbgBadge("setup catch: " + e.message);
     return done();
   }
 
@@ -562,6 +585,7 @@
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
     } catch (e) {
       console.warn("hero-reveal:", e);
+      dbgBadge("onload catch: " + e.message);
       canvas.remove();
       return done();
     }

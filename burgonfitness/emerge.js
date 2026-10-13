@@ -452,9 +452,9 @@
         uTexSize = u("uTextureSize"),
         uElSize = u("uElementSize"),
         uTex = u("uTexture");
-      gl.uniform3f(uFill, 0.02, 0.01, 0.016); // dark plum — the Codrops
-      // fill band reads as emerging-from-black, not a white slab (shader
-      // gamma-brightens output, so this lands around #2a1c26)
+      gl.uniform3f(uFill, 0.004, 0.002, 0.0035); // stage-matched plum —
+      // the shader gamma-brightens, so the fill band lands around #150f13
+      // and reads as the dark stage itself, not a sheet over it
       gl.uniform2f(uTexSize, iw, ih);
       gl.uniform2f(uElSize, dw, dh);
       gl.uniform1i(uTex, 0);
@@ -473,10 +473,10 @@
       img.style.animation = "none";
       const restore = () => {
         img.style.visibility = "";
-        // 2.2s still beat so the settle reads as locked before the
-        // ambient drift resumes (same as a plain page load)
-        img.style.animation =
-          "hero-drift 18s ease-in-out 2.2s infinite alternate";
+        // Frozen for fx sessions — hero-enter ends at transform:none so
+        // this lands exactly on the canvas pose, and no drift resume
+        // means no micro-movement after the settle
+        img.style.animation = "none";
       };
 
       let tag = null;

@@ -157,6 +157,15 @@
       // straight through the photo to the right edge, no demarcation.
       float fresh = (1.0 - vResolve) * u_full;
       col = mix(col, vec3(1.0, 0.16, 0.62), fresh);
+      // shimmer: a soft rosy sheen lifting the whole fresh band —
+      // the broad glow the glints sit on
+      col += vec3(0.55, 0.14, 0.38) * fresh * fresh * 0.5;
+      // sparkle: fine diagonal glints drifting with the sweep.
+      // MAX POWER pass — dial down next round if it's too much.
+      float glint = smoothstep(
+        0.55, 1.0,
+        sin((vUv.x - vUv.y) * 120.0 + u_progress * 26.0));
+      col += vec3(1.0, 0.72, 0.95) * glint * fresh * 0.9;
       // The still-rolled face samples the same texture — on the full-width
       // sheet it reads as a second copy of the picture riding ahead of the
       // roll. Dim it into a dark scroll; laid paper is untouched (vTube→1).
@@ -442,7 +451,15 @@
     edge(0, ey, 0, ey + fh); // top
     edge(0, ey + eh, 0, ey + eh - fh); // bottom
     c.drawImage(lay, 0, 0);
-    return comp;
+    // Power-of-two pad: WebGL1 only mipmaps POT textures, and without
+    // mipmaps the photo aliases ("bitmappy") while the sheet is still
+    // angled mid-unroll. Upscale-to-POT keeps UV mapping identical.
+    const pw2 = (v) => 2 ** Math.ceil(Math.log2(Math.max(2, v)));
+    const pot = document.createElement("canvas");
+    pot.width = pw2(cw);
+    pot.height = pw2(ch);
+    pot.getContext("2d").drawImage(comp, 0, 0, pot.width, pot.height);
+    return pot;
   };
 
   let mvp = null;
@@ -605,6 +622,29 @@
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      // fullRoll texture is POT (buildFullTex pads it) — mipmaps +
+      // anisotropy smooth the angled mid-roll sampling; NPOT classic
+      // texture can't mipmap in WebGL1 and is left as-is.
+      if (fullRoll) {
+        gl.generateMipmap(gl.TEXTURE_2D);
+        gl.texParameteri(
+          gl.TEXTURE_2D,
+          gl.TEXTURE_MIN_FILTER,
+          gl.LINEAR_MIPMAP_LINEAR,
+        );
+        const aniso =
+          gl.getExtension("EXT_texture_filter_anisotropic") ||
+          gl.getExtension("WEBKIT_EXT_texture_filter_anisotropic") ||
+          gl.getExtension("MOZ_EXT_texture_filter_anisotropic");
+        if (aniso) {
+          const max = gl.getParameter(aniso.MAX_TEXTURE_MAX_ANISOTROPY_EXT);
+          gl.texParameterf(
+            gl.TEXTURE_2D,
+            aniso.TEXTURE_MAX_ANISOTROPY_EXT,
+            Math.min(8, max || 1),
+          );
+        }
+      }
     } catch (e) {
       console.warn("hero-reveal:", e);
       dbgBadge("onload catch: " + e.message);

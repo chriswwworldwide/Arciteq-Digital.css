@@ -600,6 +600,14 @@
 
     const DURATION = 3400;
     const DELAY = 200;
+    // ?revdebug=hold freezes the roll at ~45% and outlines the canvas —
+    // shows exactly what area the sheet covers and what it looks like
+    // mid-flight on the actual browser.
+    const hold = dbgParam === "hold";
+    if (hold) {
+      canvas.style.outline = "2px solid #f0f";
+      canvas.style.outlineOffset = "-2px";
+    }
     // power2.out like the source demo — the roll decelerates as it empties.
     // Progress overshoots to 1.35 so the mosaic keeps settling after the
     // roll has finished laying the sheet (~74% through the sweep).
@@ -623,7 +631,9 @@
     };
     const frame = (now) => {
       pin();
-      const t = Math.max(0, Math.min(1, (now - start) / DURATION));
+      const t = hold
+        ? 0.45
+        : Math.max(0, Math.min(1, (now - start) / DURATION));
       const p = ease(t) * 1.35;
       if (mvp) gl.uniformMatrix4fv(uMVP, false, mvp);
       gl.uniform1f(uProgress, p);
@@ -633,7 +643,7 @@
       gl.uniform1f(uFeather, small ? 0 : 0.025);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.drawElements(gl.TRIANGLES, indexCount, gl.UNSIGNED_SHORT, 0);
-      if (t < 1) return requestAnimationFrame(frame);
+      if (t < 1 || hold) return requestAnimationFrame(frame);
       // Hand back to the plain <img> — fade the canvas out, then drop it.
       canvas.style.transition = "opacity .35s ease";
       canvas.style.opacity = "0";

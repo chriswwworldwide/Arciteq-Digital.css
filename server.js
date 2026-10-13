@@ -54,6 +54,7 @@ import {
   isRenewalInvoice,
 } from "./src/subscriptions.js";
 import { sanitizeProfile, hasProfile } from "./src/lead-profile.js";
+import { isPrivateStaticPath } from "./src/static-guard.js";
 import {
   validateSubmission,
   summarizePayloads,
@@ -224,15 +225,28 @@ app.post(
         return res.status(400).json({ error: "Missing Stripe event id" });
       }
 
-      const eventInsert = await dbQuery(
-        "INSERT INTO stripe_events (stripe_event_id, type, payload) VALUES ($1, $2, $3) ON CONFLICT (stripe_event_id) DO NOTHING RETURNING stripe_event_id",
+      await ensureCommerceTables();
+      await dbQuery(
+        "INSERT INTO stripe_events (stripe_event_id, type, payload) VALUES ($1, $2, $3) ON CONFLICT (stripe_event_id) DO NOTHING",
         [stripeEventId, stripeEventType, event],
       );
-      const isFirstTimeEvent =
-        Array.isArray(eventInsert?.rows) && eventInsert.rows.length > 0;
+      // "First time" means not yet successfully processed — a retry after a
+      // failed attempt still runs the once-only side effects.
+      const eventState = await dbQuery(
+        "SELECT processed_at FROM stripe_events WHERE stripe_event_id = $1",
+        [stripeEventId],
+      );
+      const isFirstTimeEvent = !eventState?.rows?.[0]?.processed_at;
 
-      if (stripeEventType === "checkout.session.completed") {
+      if (
+        stripeEventType === "checkout.session.completed" ||
+        stripeEventType === "checkout.session.async_payment_succeeded"
+      ) {
         const session = event?.data?.object;
+        // Delayed payment methods complete the session before money lands
+        // (payment_status 'unpaid'); those orders stay pending until
+        // async_payment_succeeded arrives.
+        const isPaidNow = String(session?.payment_status || "") !== "unpaid";
         const sessionId = String(session?.id || "");
         const rawPaymentIntent = session?.payment_intent;
         const paymentIntentId =
@@ -268,11 +282,11 @@ app.post(
 
         if (orderId) {
           const upsert = await dbQuery(
-            "INSERT INTO orders (order_id, tenant_id, status, currency, amount_subtotal, amount_total, stripe_checkout_session_id, stripe_payment_intent_id, customer_email, items) VALUES ($1, $2, $3, $4, $5, $6, NULLIF($7, ''), NULLIF($8, ''), NULLIF($9, ''), '[]'::jsonb) ON CONFLICT (order_id) DO UPDATE SET status = EXCLUDED.status, currency = COALESCE(NULLIF(EXCLUDED.currency, ''), orders.currency), amount_subtotal = EXCLUDED.amount_subtotal, amount_total = EXCLUDED.amount_total, stripe_checkout_session_id = COALESCE(EXCLUDED.stripe_checkout_session_id, orders.stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(EXCLUDED.stripe_payment_intent_id, orders.stripe_payment_intent_id), customer_email = COALESCE(EXCLUDED.customer_email, orders.customer_email), updated_at = now() RETURNING order_id, tenant_id, status, currency, amount_total, customer_email",
+            "INSERT INTO orders (order_id, tenant_id, status, currency, amount_subtotal, amount_total, stripe_checkout_session_id, stripe_payment_intent_id, customer_email, items) VALUES ($1, $2, $3, $4, $5, $6, NULLIF($7, ''), NULLIF($8, ''), NULLIF($9, ''), '[]'::jsonb) ON CONFLICT (order_id) DO UPDATE SET status = CASE WHEN orders.status IN ('refunded', 'paid') THEN orders.status ELSE EXCLUDED.status END, currency = COALESCE(NULLIF(EXCLUDED.currency, ''), orders.currency), amount_subtotal = EXCLUDED.amount_subtotal, amount_total = EXCLUDED.amount_total, stripe_checkout_session_id = COALESCE(EXCLUDED.stripe_checkout_session_id, orders.stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(EXCLUDED.stripe_payment_intent_id, orders.stripe_payment_intent_id), customer_email = COALESCE(EXCLUDED.customer_email, orders.customer_email), updated_at = now() RETURNING order_id, tenant_id, status, currency, amount_total, customer_email",
             [
               orderId,
               tenantId,
-              "paid",
+              isPaidNow ? "paid" : "pending",
               currency,
               amountSubtotal,
               amountTotal,
@@ -290,13 +304,16 @@ app.post(
             );
           }
           try {
-            await ensureCommerceTables();
-            await dbQuery(
-              "INSERT INTO inventory_movements (tenant_id, product_id, delta, reason, order_id) SELECT tenant_id, product_id, 0, 'capture', order_id FROM inventory_movements WHERE tenant_id = $1 AND order_id = $2 AND reason = 'reserve'",
-              [tenantId, orderId],
-            );
+            // Capture only once money has actually landed, and only once —
+            // an unpaid async session must still be able to release stock.
+            if (isPaidNow) {
+              await dbQuery(
+                "INSERT INTO inventory_movements (tenant_id, product_id, delta, reason, order_id) SELECT tenant_id, product_id, 0, 'capture', order_id FROM inventory_movements m WHERE m.tenant_id = $1 AND m.order_id = $2 AND m.reason = 'reserve' AND NOT EXISTS (SELECT 1 FROM inventory_movements c WHERE c.tenant_id = m.tenant_id AND c.order_id = m.order_id AND c.reason IN ('capture', 'restore'))",
+                [tenantId, orderId],
+              );
+            }
             const normEmail = normalizeEmail(customerEmail);
-            if (normEmail) {
+            if (normEmail && isPaidNow && isFirstTimeEvent) {
               const token = await ensureAccountToken(tenantId, normEmail);
               if (token) {
                 await dbQuery(
@@ -348,7 +365,7 @@ app.post(
             "INSERT INTO order_events (order_id, type, data) SELECT $1, $2, $3::jsonb WHERE NOT EXISTS (SELECT 1 FROM order_events WHERE order_id = $1 AND type = $2 AND data->>'stripeEventId' = $4)",
             [
               orderId,
-              "stripe.checkout.session.completed",
+              `stripe.${stripeEventType}`,
               JSON.stringify(eventData),
               stripeEventId,
             ],
@@ -374,7 +391,7 @@ app.post(
             );
           }
 
-          if (isFirstTimeEvent) {
+          if (isFirstTimeEvent && isPaidNow) {
             try {
               await queueSponsorCandidates({
                 tenantId,
@@ -395,7 +412,7 @@ app.post(
           // Data-stitch: on a first-time paid event, bump the customer's running
           // totals, mark any open captured cart as converted (attributing which
           // nudge won), and log a unified order_completed funnel event.
-          if (customerEmail && isFirstTimeEvent) {
+          if (customerEmail && isFirstTimeEvent && isPaidNow) {
             // Data-stitch is best-effort analytics: never let it turn a paid
             // checkout into a failed webhook response.
             try {
@@ -417,9 +434,9 @@ app.post(
               );
             }
           }
-        } else if (sessionId) {
+        } else if (sessionId && isPaidNow) {
           const updated = await dbQuery(
-            "UPDATE orders SET status = $1, currency = COALESCE(NULLIF($2, ''), currency), amount_subtotal = $3, amount_total = $4, stripe_checkout_session_id = COALESCE(NULLIF($5, ''), stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(NULLIF($6, ''), stripe_payment_intent_id), customer_email = COALESCE(NULLIF($7, ''), customer_email), updated_at = now() WHERE stripe_checkout_session_id = $5 RETURNING order_id, tenant_id, status, currency, amount_total, customer_email",
+            "UPDATE orders SET status = $1, currency = COALESCE(NULLIF($2, ''), currency), amount_subtotal = $3, amount_total = $4, stripe_checkout_session_id = COALESCE(NULLIF($5, ''), stripe_checkout_session_id), stripe_payment_intent_id = COALESCE(NULLIF($6, ''), stripe_payment_intent_id), customer_email = COALESCE(NULLIF($7, ''), customer_email), updated_at = now() WHERE stripe_checkout_session_id = $5 AND status <> 'refunded' RETURNING order_id, tenant_id, status, currency, amount_total, customer_email",
             [
               "paid",
               currency,
@@ -719,9 +736,19 @@ app.post(
             [subscriptionId],
           );
           const known = Array.isArray(existing?.rows) ? existing.rows[0] : null;
+          // Hong Kong attribution rule: recurring revenue must stay with the
+          // originating tenant. Never silently file it under "default" —
+          // "unattributed" is visible in the tax report and escalated by
+          // the exception sweep.
           const tenantId = String(
-            meta?.tenant_id || known?.tenant_id || "default",
+            meta?.tenant_id || known?.tenant_id || "unattributed",
           );
+          if (tenantId === "unattributed") {
+            console.error(
+              "RENEWAL_TENANT_UNKNOWN",
+              JSON.stringify({ subscriptionId, stripeEventId }),
+            );
+          }
           const email = normalizeEmail(
             invoice?.customer_email ||
               known?.customer_email ||
@@ -759,16 +786,40 @@ app.post(
           } else if (isRenewalInvoice(invoice) && isFirstTimeEvent) {
             // Each renewal becomes its own paid order so revenue, customer
             // totals and the admin dashboard see it like any other sale.
-            const renewalOrderId = crypto.randomUUID();
+            // Order id derives from the invoice, so a retried event can never
+            // create a second renewal order. Tax + payment intent are kept so
+            // renewals show in the tax report and can be refunded.
+            const renewalOrderId = invoiceId
+              ? `renewal_${invoiceId}`
+              : crypto.randomUUID();
+            const rawInvoicePi = invoice?.payment_intent;
+            const invoicePaymentIntentId =
+              typeof rawInvoicePi === "string"
+                ? rawInvoicePi
+                : String(rawInvoicePi?.id || "");
+            const invoiceTax = Number.isInteger(invoice?.tax)
+              ? invoice.tax
+              : Array.isArray(invoice?.total_tax_amounts)
+                ? invoice.total_tax_amounts.reduce(
+                    (sum, t) => sum + (Number(t?.amount) || 0),
+                    0,
+                  )
+                : null;
+            const invoiceSubtotal = Number.isInteger(invoice?.subtotal)
+              ? invoice.subtotal
+              : amountPaid;
             await dbQuery(
-              "INSERT INTO orders (order_id, tenant_id, status, currency, amount_subtotal, amount_total, customer_email, items, stripe_subscription_id) VALUES ($1, $2, 'paid', $3, $4, $4, NULLIF($5, ''), '[]'::jsonb, $6)",
+              "INSERT INTO orders (order_id, tenant_id, status, currency, amount_subtotal, amount_total, amount_tax, customer_email, items, stripe_subscription_id, stripe_payment_intent_id) VALUES ($1, $2, 'paid', $3, $4, $5, $6, NULLIF($7, ''), '[]'::jsonb, $8, NULLIF($9, '')) ON CONFLICT (order_id) DO NOTHING",
               [
                 renewalOrderId,
                 tenantId,
                 currency,
+                invoiceSubtotal,
                 amountPaid,
+                invoiceTax,
                 email,
                 subscriptionId,
+                invoicePaymentIntentId,
               ],
             );
             await dbQuery(
@@ -837,10 +888,21 @@ app.post(
         }
       }
 
+      await dbQuery(
+        "UPDATE stripe_events SET processed_at = now() WHERE stripe_event_id = $1",
+        [stripeEventId],
+      );
       return res.json({ received: true });
     } catch (err) {
       const message = String(err?.message || "Webhook error");
-      return res.status(400).json({ error: message });
+      // Bad signature = permanent rejection (400). Anything else is a
+      // processing failure: 500 tells Stripe to retry, and because
+      // processed_at stays empty the retry re-runs the full handler.
+      if (err?.type === "StripeSignatureVerificationError") {
+        return res.status(400).json({ error: message });
+      }
+      console.error("STRIPE_WEBHOOK_FAILED", message);
+      return res.status(500).json({ error: "Webhook processing failed" });
     }
   },
 );
@@ -2406,7 +2468,24 @@ async function runExceptionSweep({ tenant, now }) {
     });
   }
 
-  // 7. Data retention — once per 24h per tenant, prune high-volume tables
+  // 7. Renewal revenue that couldn't be traced to a tenant (HK attribution
+  //    rule). Platform-wide, so only checked from the default tenant's pass.
+  if (activeTenantId === "default") {
+    const unattributed = await dbQuery(
+      "SELECT order_id, stripe_subscription_id, amount_total, currency, created_at FROM orders WHERE tenant_id = 'unattributed' ORDER BY created_at DESC LIMIT 20",
+      [],
+    );
+    if ((unattributed?.rows || []).length > 0) {
+      await record({
+        check: "unattributed_revenue",
+        action: "escalated",
+        message: `${unattributed.rows.length} renewal order(s) could not be attributed to a tenant — fix the subscription metadata and reassign.`,
+        data: { orders: unattributed.rows },
+      });
+    }
+  }
+
+  // 8. Data retention — once per 24h per tenant, prune high-volume tables
   //    that grow forever. Windows are deliberately generous; this is
   //    housekeeping, not compliance erasure.
   const retentionMap =
@@ -2896,30 +2975,6 @@ app.get("/robots.txt", (req, res) => {
 // Disable the default index.html behavior so our explicit "/" route can redirect.
 // Private files (server code, docs, migrations, ops ledgers, internal data)
 // skip the static handler entirely and fall through to the routes / 404.
-const PUBLIC_ROOT_DATA_FILES = new Set([
-  "/data/products.json",
-  "/data/reviews.json",
-  "/data/supplier-assignments.json",
-  "/data/suppliers.json",
-  "/data/tenants.json",
-  "/data/category-faqs.json",
-]);
-const PRIVATE_STATIC_RE = [
-  /\.(md|sql|sh|log|plist|properties|lock|ts|map)$/i,
-  /^\/(migrations|scripts|server|middleware|tests|src|archive|coverage|node_modules)\//i,
-  /^\/api\/.*\.js$/i,
-  /^\/(server|db|vitest\.config|eslint\.config|service-worker-build)\.js$/i,
-  /^\/(package|package-lock|tsconfig)\.json$/i,
-  /^\/(_redirects|sonar-project\.properties|\.snyk)$/i,
-  /^\/[^/]+\/data\/inbox\.json$/i,
-];
-function isPrivateStaticPath(p) {
-  const pathName = String(p || "").toLowerCase();
-  if (pathName.startsWith("/data/") && !PUBLIC_ROOT_DATA_FILES.has(pathName)) {
-    return true;
-  }
-  return PRIVATE_STATIC_RE.some((re) => re.test(pathName));
-}
 const serveStatic = express.static(__dirname, { index: false });
 app.use((req, res, next) => {
   let pathName = req.path;
@@ -5266,13 +5321,6 @@ app.get("/api/health", (req, res) => {
   }
 });
 
-app.get("/robots.txt", (req, res) => {
-  const baseUrl = getBaseUrl(req);
-  res.setHeader("Content-Type", "text/plain; charset=utf-8");
-  return res.send(
-    `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${baseUrl}/sitemap.xml\n`,
-  );
-});
 
 app.get("/sitemap.xml", (req, res) => {
   try {
@@ -6094,7 +6142,14 @@ app.post(
         params.amount = amountRaw;
       }
 
-      const refund = await stripe.refunds.create(params);
+      // A double-click or retried request must not stack a second refund.
+      // A genuinely separate partial refund of the same amount can pass its
+      // own idempotency_key.
+      const idempotencyKey = String(
+        req.body?.idempotency_key ||
+          `refund_${activeTenantId}_${orderId}_${params.amount || "full"}`,
+      ).slice(0, 255);
+      const refund = await stripe.refunds.create(params, { idempotencyKey });
       await dbQuery(
         "INSERT INTO order_events (order_id, type, data) VALUES ($1, 'refund_initiated', $2::jsonb)",
         [
@@ -6222,18 +6277,31 @@ app.post("/admin/jobs/abandoned-recovery", async (req, res) => {
 
 // ---- Commerce gaps: inventory, discounts, tax, customer accounts --------
 let commerceTablesReady = false;
+let commerceTablesPromise = null;
 async function ensureCommerceTables() {
   if (commerceTablesReady) return;
-  for (const file of [
-    "011_commerce_gaps.sql",
-    "012_platform_billing.sql",
-    "013_fulfilment_and_indexes.sql",
-  ]) {
-    await dbQuery(
-      fs.readFileSync(path.join(__dirname, "migrations", file), "utf8"),
-    );
+  // One shared in-flight run, so concurrent first requests (webhook +
+  // heartbeat at boot) never race the same DDL. A failure clears it so
+  // the next call retries.
+  if (!commerceTablesPromise) {
+    commerceTablesPromise = (async () => {
+      for (const file of [
+        "011_commerce_gaps.sql",
+        "012_platform_billing.sql",
+        "013_fulfilment_and_indexes.sql",
+        "014_webhook_processing.sql",
+      ]) {
+        await dbQuery(
+          fs.readFileSync(path.join(__dirname, "migrations", file), "utf8"),
+        );
+      }
+      commerceTablesReady = true;
+    })().catch((err) => {
+      commerceTablesPromise = null;
+      throw err;
+    });
   }
-  commerceTablesReady = true;
+  await commerceTablesPromise;
 }
 
 // Seed inventory rows from products.json `stock` field for the given tenant.

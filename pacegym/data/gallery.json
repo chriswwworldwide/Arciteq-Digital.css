@@ -1,0 +1,81 @@
+{
+  "note": "DEMO SEED — photos pulled from Pace's IG for the walk-in mockup. Replace with real member photos on launch.",
+  "photos": [
+    {
+      "src": "/pacegym/images/gallery/crew-hyrox-wall.jpg",
+      "alt": "The Pace crew under the big HYROX letters at the gym",
+      "caption": "The whole lot of them. Every single one started somewhere.",
+      "by": "Pace",
+      "tilt": -1.5,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/pacegym/images/gallery/crew-race-day.jpg",
+      "alt": "Pace crew in race bibs outside a Chichester church after a local race",
+      "caption": "Race day crew. Half of them didn't know each other a year ago.",
+      "by": "Pace",
+      "tilt": 2,
+      "event": "Race day"
+    },
+    {
+      "src": "/pacegym/images/gallery/six-am-crew.jpg",
+      "alt": "Early morning session — rowers and coaches in golden light",
+      "caption": "6AM hits different. Every week, same crew.",
+      "by": "Pace",
+      "tilt": 1,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/pacegym/images/gallery/train-recover.jpg",
+      "alt": "Train hard, recover properly — session and sauna split shot",
+      "caption": "Train hard. Recover properly. Repeat weekly.",
+      "by": "Pace",
+      "tilt": -2,
+      "event": "Performance Centre"
+    },
+    {
+      "src": "/pacegym/images/gallery/blakely-winners.jpg",
+      "alt": "Pace women's team holding the Blakely Apex winner board",
+      "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
+      "by": "Pace",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/pacegym/images/gallery/ncfc-shirts.jpg",
+      "alt": "Pace home and away shirts laid on the Carrow Road pitch",
+      "caption": "On the Ball, City. Official NCFC regional partners, 2025-26.",
+      "by": "Pace",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/pacegym/images/gallery/ncfc-seat.jpg",
+      "alt": "Yellow Pace number 7 shirt draped over a Carrow Road seat",
+      "caption": "Canary colours, Pace name. Some things were just meant to be.",
+      "by": "Pace",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/pacegym/images/gallery/church-crew.jpg",
+      "alt": "The Pace crew in race bibs outside a Chichester church on race day",
+      "caption": "Race-day crew, Chichester 10k. The church bells were optional.",
+      "by": "Pace",
+      "event": "Race day"
+    },
+    {
+      "src": "/pacegym/images/gallery/values-wall.jpg",
+      "alt": "The Pace values wall inside the gym",
+      "caption": "House rules: good vibes, community, no egos. Written on the wall.",
+      "by": "Pace",
+      "event": "The gym"
+    },
+    {
+      "src": "/pacegym/images/gallery/street-race.jpg",
+      "alt": "Pace runner racing down a packed high street, crowd behind the barriers",
+      "caption": "High street takeover. Chichester turns out when the crew races.",
+      "by": "Pace",
+      "tilt": -1,
+      "event": "Race day"
+    }
+  ]
+}

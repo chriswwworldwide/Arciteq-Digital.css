@@ -1,0 +1,81 @@
+{
+  "note": "DEMO SEED — photos pulled from NutriFit's IG for the walk-in mockup. Replace with real member photos on launch.",
+  "photos": [
+    {
+      "src": "/nutrifit/images/gallery/crew-hyrox-wall.jpg",
+      "alt": "The NutriFit crew under the big HYROX letters at the studio",
+      "caption": "The whole lot of them. Every single one started somewhere.",
+      "by": "NutriFit",
+      "tilt": -1.5,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/nutrifit/images/gallery/crew-race-day.jpg",
+      "alt": "NutriFit crew in race bibs outside a Liverpool church after a local race",
+      "caption": "Race day crew. Half of them didn't know each other a year ago.",
+      "by": "NutriFit",
+      "tilt": 2,
+      "event": "Race day"
+    },
+    {
+      "src": "/nutrifit/images/gallery/six-am-crew.jpg",
+      "alt": "Early morning session — rowers and coaches in golden light",
+      "caption": "6AM hits different. Every week, same crew.",
+      "by": "NutriFit",
+      "tilt": 1,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/nutrifit/images/gallery/train-recover.jpg",
+      "alt": "Train hard, recover properly — session and sauna split shot",
+      "caption": "Train hard. Recover properly. Repeat weekly.",
+      "by": "NutriFit",
+      "tilt": -2,
+      "event": "Performance Centre"
+    },
+    {
+      "src": "/nutrifit/images/gallery/blakely-winners.jpg",
+      "alt": "NutriFit women's team holding the Blakely Apex winner board",
+      "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
+      "by": "NutriFit",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/nutrifit/images/gallery/ncfc-shirts.jpg",
+      "alt": "NutriFit home and away shirts laid on the Carrow Road pitch",
+      "caption": "On the Ball, City. Official NCFC regional partners, 2025-26.",
+      "by": "NutriFit",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/nutrifit/images/gallery/ncfc-seat.jpg",
+      "alt": "Yellow NutriFit number 7 shirt draped over a Carrow Road seat",
+      "caption": "Canary colours, NutriFit name. Some things were just meant to be.",
+      "by": "NutriFit",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/nutrifit/images/gallery/church-crew.jpg",
+      "alt": "The NutriFit crew in race bibs outside a Liverpool church on race day",
+      "caption": "Race-day crew, Liverpool 10k. The church bells were optional.",
+      "by": "NutriFit",
+      "event": "Race day"
+    },
+    {
+      "src": "/nutrifit/images/gallery/values-wall.jpg",
+      "alt": "The NutriFit values wall inside the studio",
+      "caption": "House rules: good vibes, community, no egos. Written on the wall.",
+      "by": "NutriFit",
+      "event": "The gym"
+    },
+    {
+      "src": "/nutrifit/images/gallery/street-race.jpg",
+      "alt": "NutriFit runner racing down a packed high street, crowd behind the barriers",
+      "caption": "High street takeover. Liverpool turns out when the crew races.",
+      "by": "NutriFit",
+      "tilt": -1,
+      "event": "Race day"
+    }
+  ]
+}

@@ -1,0 +1,1026 @@
+{
+  "slug": "kore",
+  "heroFull": true,
+  "brand": "KORE",
+  "brandUpper": "KORE",
+  "brandShort": "KORE",
+  "wordmarkHtml": "K<span class=\"o\">O</span>RE",
+  "coachFirst": "Coach",
+  "coachFull": "the KORE coaching team",
+  "coachNick": "Coach",
+  "city": "Newport",
+  "whatsapp": "447000000000",
+  "email": "",
+  "instagramUrl": "https://www.instagram.com/",
+  "instagramHandle": "TODO",
+  "greeting": "Hi Coach! Found you on KORE — I'm interested in HYROX training. ",
+  "colors": {
+    "pink": "#0891b2",
+    "pink600": "#0e7490",
+    "pink100": "#cffafe"
+  },
+  "features": {
+    "predictor": true,
+    "chatbot": false
+  },
+  "channels": [
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/"
+    }
+  ],
+  "cityRemap": {
+    "Jakarta": "Newport",
+    "Indonesia": "United Kingdom",
+    "Indonesian": "British",
+    "Singapore": "London",
+    "Kuala Lumpur": "Manchester",
+    "Seoul": "Glasgow",
+    "Hong Kong": "Birmingham",
+    "Bangkok": "Cardiff",
+    "PIK": "KORE",
+    "macet": "M4 traffic"
+  },
+  "seedEventsNext": {
+    "name": "HYROX London",
+    "date": "2026-12-02",
+    "url": "https://hyrox.com/events/"
+  },
+  "pageRenames": {
+    "hyrox-jakarta": "hyrox-norwich",
+    "jakarta-hybrid-scene": "norwich-hybrid-scene",
+    "hybrid-coaching-jakarta": "hyrox-coaching-norwich",
+    "book-dina": "book"
+  },
+  "metaKeywords": "hyrox newport, hyrox training newport wales, kore newport, hyrox coach south wales",
+  "htmlTitle": "KORE Newport — HYROX Training & Community",
+  "metaDescription": "KORE in Newport: HYROX training, packed classes, partner boards and a crew that shows up.",
+  "extraPairs": [
+    [
+      "Pilih kelemahanmu. Kita ubah jadi split tercepatmu — tanpa drama.",
+      "Pick your weakness. We'll turn it into your fastest split — no drama."
+    ],
+    [
+      "Punya tiket, nggak punya partner?",
+      "Got a ticket, need a partner?"
+    ],
+    [
+      "share the KL trip",
+      "share the London trip"
+    ],
+    [
+      "Coach intros you herself.",
+      "Coach makes the intro himself."
+    ],
+    [
+      "Pilih zonamu. Batal kapan saja, nggak baper.",
+      "Pick your zone. Cancel any time, no drama."
+    ],
+    [
+      "Rp 850k",
+      "£45"
+    ],
+    [
+      "Rp 599k",
+      "£35"
+    ],
+    [
+      "Rp 2.5m",
+      "£120"
+    ],
+    [
+      "Rp 6m",
+      "£250"
+    ],
+    [
+      "cancel kapan aja",
+      "cancel any time"
+    ],
+    [
+      "Team Indonesia",
+      "Team KORE"
+    ],
+    [
+      "makan bareng",
+      "eating together"
+    ],
+    [
+      "Kata Coach",
+      "Coach's playbook"
+    ],
+    [
+      "Yang nggak ada di rulebook.",
+      "The stuff that's not in the rulebook."
+    ],
+    [
+      "Gas, biar namamu keitung.",
+      "Go on, get your name counted."
+    ],
+    [
+      "Kabar HYROX Asia",
+      "HYROX UK news"
+    ],
+    [
+      "Lagi ngambil yang terbaru…",
+      "Fetching the latest…"
+    ],
+    [
+      "Bisikin Coach",
+      "Tip off Coach"
+    ],
+    [
+      "Baca soal race. Terus ikutan race-nya.",
+      "Read about races. Then go run one."
+    ],
+    [
+      "TrueCoach",
+      "KORE app"
+    ],
+    [
+      "Jadwal, Lokasi, Tiket",
+      "Venue, Tickets"
+    ],
+    [
+      "Lagi ngambil scene-nya…",
+      "Loading the scene…"
+    ],
+    [
+      "Sim dulu. Race belakangan. Podium bonus.",
+      "Sim first. Race later. Podium's a bonus."
+    ],
+    [
+      "Setiap meter race, kita bedah pelan-pelan.",
+      "Every metre of the race, we break it down."
+    ],
+    [
+      "Hyrox · Newport · dari lantai Zumba ke podium",
+      "Fitness · Family · Community"
+    ],
+    [
+      "The Big Durian",
+      "The Fine City"
+    ],
+    [
+      "NICE, PIK2",
+      "KORE"
+    ],
+    [
+      "NICE PIK2",
+      "KORE"
+    ],
+    [
+      "Indonesia's",
+      "the UK's"
+    ],
+    [
+      "Indonesian rupiah",
+      "pounds sterling"
+    ],
+    [
+      "Indonesian",
+      "British"
+    ],
+    [
+      "Indonesia",
+      "the UK"
+    ],
+    [
+      "Asia-Pacific",
+      "UK & Ireland"
+    ],
+    [
+      "Asian",
+      "British"
+    ],
+    [
+      "Asia",
+      "the UK"
+    ],
+    [
+      "\"Rp \" +",
+      "\"£\" +"
+    ],
+    [
+      "toLocaleString(\"id-ID\")",
+      "toLocaleString(\"en-GB\")"
+    ],
+    [
+      "Tiapo tiga bulan — edisi berikutnya restonya masih dipilihin Coach.",
+      "Every three months — Coach picks the next venue."
+    ],
+    [
+      "Muka habis finish. Masih nggak percaya.",
+      "Finish-line face. Still can't believe it."
+    ],
+    [
+      "Tiap tiga bulan di Newport: eating together atlet, peserta, sama yang baru kepo HYROX — Station 10 (dance floor) buat yang sanggup. Dateng aja, nggak usah jago dulu.",
+      "Every three months in Newport: dinner for athletes, racers and the HYROX-curious — Station 10 (dance floor) for whoever's legs still work. Just turn up, no pace requirement."
+    ],
+    [
+      "Tiap tiga bulan — tanggal muncul di sini",
+      "Every three months — next date appears here"
+    ],
+    [
+      "Halo Coach!",
+      "Hi Coach!"
+    ],
+    [
+      "Halo KORE!",
+      "Hi KORE!"
+    ],
+    [
+      "e.g. 20FIT Kemang",
+      "e.g. PureGym Newport"
+    ],
+    [
+      "BCA bank transfer",
+      "bank transfer"
+    ],
+    [
+      "BCA app",
+      "banking app"
+    ],
+    [
+      "Rp ${",
+      "£${"
+    ],
+    [
+      "Pelatih HYROX the UK di Newport.",
+      ""
+    ],
+    [
+      "Pelatih HYROX",
+      "HYROX"
+    ],
+    [
+      "your BCA",
+      "your bank"
+    ],
+    [
+      "PIK humidity",
+      "arena heat"
+    ],
+    [
+      "to check in BCA",
+      "to check"
+    ],
+    [
+      "a QRIS code from your banking app",
+      "a payment link from your banking app"
+    ],
+    [
+      "the KORE coaching team coaching a session at KORE in Newport",
+      "KORE x Newport City FC — official regional partner scarf in canary colours"
+    ],
+    [
+      "Coach, head coach",
+      "The KORE crew after a race-day community run"
+    ],
+    [
+      "Book Coach",
+      "Book a session"
+    ]
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
+      "replace": "<p class=\"eyebrow\">Meet the crew</p>\n          <h3>KORE. From Tuesday-night classes to KORE.</h3>\n          <p class=\"lead\">\n            Started as a handful of classes around Newport —\n            HYROX, boxing, strength — now it's a dedicated performance centre\n            with simulations, a full race floor and a crew that shows up\n            every week. Run by Coach and the coaches you'll actually train\n            with.\n          </p>\n          <p class=\"quote\">\n            \"HYROX isn't about who's strongest — it's about who keeps showing\n            up. That's the whole game.\"\n          </p>"
+    },
+    {
+      "pattern": "<ul>\\s*<li>\\s*Podium and 1st in age group[\\s\\S]*?</ul>",
+      "replace": "<ul>\n            <li>Official HYROX affiliate — Newport</li>\n            <li>Regular in-house HYROX simulations (60+ athletes at the last one)</li>\n            <li>HYROX-certified coaching across strength, engine and race prep</li>\n          </ul>"
+    },
+    {
+      "pattern": "alt=\"Coach and her doubles partner[^\"]*\"",
+      "replace": "alt=\"the KORE coaching team coaching a session at KORE in Newport\""
+    },
+    {
+      "pattern": "<p class=\"crew-line\">[\\s\\S]*?</p>",
+      "replace": "<p class=\"crew-line\">\n              Never raced and not sure where to start? Start here. One group\n              session a week in Newport — start whenever, your own pace, nobody\n              judging. Then once a month there's a meetup: class first, then\n              coffee, food and gossip — and honestly, that's the important\n              part. Sit with crew who've done it and see your next step in the\n              flesh.\n            </p>"
+    },
+    {
+      "pattern": "<p class=\"crew-note\">[\\s\\S]*?</p>",
+      "replace": "<p class=\"crew-note\">\n              Weekly group session · monthly meetup — class first, then coffee\n              and treats (the important part, honestly) · starter programme in\n              the app · crew WhatsApp group. Walkers welcome — the podium's a\n              bonus.\n            </p>"
+    },
+    {
+      "pattern": "Pay by bank transfer \\(BCA\\) or QRIS[\\s\\S]*?needed\\.",
+      "replace": "Pay by bank transfer or direct debit — no card needed."
+    },
+    {
+      "pattern": "<p class=\"plan-note\">[\\s\\S]*?</p>",
+      "replace": "<p class=\"plan-note\">\n              Travelling or carrying a knock? Floor sessions can switch to\n              video form reviews, or bank them for when you're back — your\n              call, no loss.\n            </p>"
+    },
+    {
+      "pattern": "<details class=\"plan-faq reveal\">[\\s\\S]*?</details>",
+      "replace": "<details class=\"plan-faq reveal\">\n          <summary>How do floor sessions work?</summary>\n          <p>\n            Floor sessions run at KORE in Newport — coached,\n            capped in size, and built around your programme. Can't make one?\n            Swap it for a video form review that week. Your programme,\n            check-ins and reviews carry on in the app and WhatsApp regardless.\n          </p>\n        </details>"
+    },
+    {
+      "pattern": "Belum berani race\\?[\\s\\S]*?seru\\.",
+      "replace": "Not ready to race? Come watch with the crew — free, still a great day out."
+    },
+    {
+      "pattern": "Tiga hal per station[\\s\\S]*?masuk sini\\.",
+      "replace": "Three things per station that Coach actually does on race day — including the embarrassing ones. Spot a gap? <a href=\"#ask\">Ask Coach</a> — it might make the list."
+    },
+    {
+      "pattern": "content=\"Punya tiket[^\"]*\"",
+      "replace": "content=\"Got a race ticket, need a partner? Post your card on the KORE match board — first name and pace only — and we intro you to a HYROX partner at your level. Open, pro and mixed doubles, relay teams and race-trip company across the UK.\""
+    },
+    {
+      "pattern": "Punya tiket, <em>nggak</em> punya partner\\.",
+      "replace": "Got a ticket, <em>need</em> a partner?"
+    },
+    {
+      "pattern": "Udah booking flight sama hotel[\\s\\S]*?mejanya\\.",
+      "replace": "Booked flights and a hotel for your next race? Post your trip — others can join in: same flight, same hotel, split a room, or just travel to the venue together. Nothing booked yet? Post anyway — join someone's trip. Coach makes the intro, your number stays private."
+    },
+    {
+      "pattern": "content=\"Delapan stasiun kelar[^\"]*\"",
+      "replace": "content=\"Eight stations done — one more: dinner. Station 9 is the Team KORE dinner: quarterly in Newport for athletes, participants and the HYROX-curious, plus Sunday-evening editions after away races. Station 10 (the dance floor) is optional. RSVP so there's a chair for you.\""
+    },
+    {
+      "pattern": "Delapan stasiun kelar\\. <em>Satu lagi:</em> makan\\.",
+      "replace": "Eight stations down. <em>One more:</em> dinner."
+    },
+    {
+      "pattern": "Station 9 itu meja makan[\\s\\S]*?Yang penting rame\\.",
+      "replace": "Station 9 is the dinner table. Every three months in Newport — athletes, racers and the HYROX-curious are all welcome. And every away-race weekend, Sunday night after the run: a busy restaurant, race stories, laughing. Not fine dining. Loud is the point."
+    },
+    {
+      "pattern": "HYROX itu delapan stasiun[\\s\\S]*?rencana\\.",
+      "replace": "HYROX has eight stations. Station 9 is the ninth — a dinner table full of people who get why your legs are wrecked. No pace requirement, no partner needed, don't even need to have raced. If you're just curious you're the most welcome of all — sit down, eat, hear the stories, leave with a plan."
+    },
+    {
+      "pattern": "Yang kakinya masih berfungsi[\\s\\S]*?menang\\.",
+      "replace": "Legs still working? Carry on to the dance floor. Legs not working? Sit down — the gossip continues either way. Both count as winning."
+    },
+    {
+      "pattern": "an Indonesian\\s+flag in the results",
+      "replace": "a KORE shirt in the results"
+    },
+    {
+      "pattern": "Makan bareng atlet, peserta[\\s\\S]*?edisi\\.",
+      "replace": "Dinner with athletes, racers and the HYROX-curious — a laid-back restaurant, race chat, then Station 10 (dancing) for legs that still work. Broken bodies welcome to just sit — the gossip carries on. Venue announced per edition."
+    },
+    {
+      "pattern": "Apa yang lagi rame di <em>Asia</em>, dua baris aja\\.",
+      "replace": "What's buzzing in <em>HYROX</em>, two lines at a time."
+    },
+    {
+      "pattern": "Race baru, hasil, aturan yang berubah[\\s\\S]*?Newport\\.",
+      "replace": "New races, results, rule changes and the bigger gossip — a handful every week: short summary, original source, and Coach's take on what it means for training in Newport."
+    },
+    {
+      "pattern": "Ringkasan punya kita;[\\s\\S]*?kelewat\\?",
+      "replace": "Summaries are ours; the facts and full stories belong to the linked sources. Missed something?"
+    },
+    {
+      "pattern": "Pilih start line lo di planner[\\s\\S]*?minggunya\\.",
+      "replace": "Pick your start line in the planner, then let Coach build your 12 weeks."
+    },
+    {
+      "pattern": "Aku Coach[\\s\\S]*?Yang penting berani memulai\\.",
+      "replace": "We're KORE — started as Tuesday-night classes around Newport\n          and Cardiff, now Newport's dedicated HYROX performance centre.\n          HYROX, boxing, strength, the lot — training for real life: real\n          schedules, real effort, your real first race. Never raced before?\n          Even better. You just have to start."
+    },
+    {
+      "pattern": "<div class=\"stats\">[\\s\\S]*?Hyrox races</span></div>\\s*</div>",
+      "replace": "<div class=\"stats\">\n          <div>\n            <strong>60+</strong><span>Athletes at the last in-house HYROX sim</span>\n          </div>\n          <div>\n            <strong>2</strong><span>Locations — Newport &amp; Cardiff</span>\n          </div>\n          <div><strong>HYROX</strong><span>Official affiliate gym</span></div>\n          <div><strong>NCFC</strong><span>Regional partner — Newport City FC</span></div>\n        </div>"
+    },
+    {
+      "pattern": "Kapan HYROX Newport 2027 dan bagaimana cara daftar \\(tiket\\)\\?",
+      "replace": "When is HYROX Newport 2027 and how do I register (tickets)?"
+    },
+    {
+      "pattern": "Jadwal HYROX Newport 2027 belum diumumkan[^\"]*",
+      "replace": "The HYROX Newport 2027 schedule hasn't been announced by HYROX yet. Registration and tickets open on hyrox.com once the official date drops; slots usually sell out within weeks. Leave your email on this page for same-day notification."
+    },
+    {
+      "pattern": "<span lang=\"id\"\\s*>[\\s\\S]*?Indonesia\\.</span\\s*>",
+      "replace": ""
+    },
+    {
+      "pattern": "Apa yang bisa lo ikutan di <em>kota sendiri</em>\\.",
+      "replace": "What you can join <em>in your own city</em>."
+    },
+    {
+      "pattern": "Race resmi, simulasi[\\s\\S]*?berarti\\s*layak\\.",
+      "replace": "Official races, simulations, brand events, and training spots that actually have the stations — everything you need to stay race-ready at home. Coach curates it: if it's listed here, it's worth your time."
+    },
+    {
+      "pattern": "Lagi bikin sim atau kompetisi hybrid di Newport yang belum masuk[\\s\\S]*?masuk list\\.",
+      "replace": "Running a sim or hybrid comp in Newport that's not listed? <a href=\"/kore/#ask\">Tip off Coach</a> — send the organiser link and dates, it goes straight on the list."
+    },
+    {
+      "pattern": "Warriors dapet sim berwaktu[\\s\\S]*?hari-H\\.",
+      "replace": "KORE members get timed sims and split breakdowns before every race block — so race day holds no surprises."
+    },
+    {
+      "pattern": " Jadwal HYROX Newport dan Asia\\.",
+      "replace": ""
+    },
+    {
+      "pattern": " Pelatih HYROX Indonesia di Newport\\.",
+      "replace": ""
+    },
+    {
+      "pattern": "RSVP — biar ada kursi buat lo",
+      "replace": "RSVP — so there's a chair for you"
+    },
+    {
+      "pattern": " lang=\"id\"",
+      "replace": ""
+    },
+    {
+      "pattern": "\"text\": \"PIK/PIK2 is closest[^\"]*\"",
+      "replace": "\"text\": \"Stay near the venue for a stress-free race morning; the city centre is best for the night after but allow an hour to get across in traffic.\""
+    },
+    {
+      "pattern": "PIK/PIK2 for closeness, Kelapa Gading for value, Sudirman/Thamrin[\\s\\S]*?(</li>|\\.)",
+      "replace": "Near the venue for closeness, the city centre for the night after$1"
+    },
+    {
+      "pattern": "content=\"Reserve your KORE coaching plan[^\"]*\"",
+      "replace": "content=\"Reserve your KORE coaching plan and pay by bank transfer. Send us the proof and we activate your programme in the KORE app.\""
+    },
+    {
+      "pattern": "scan with any British banking or e-wallet app \\(QRIS\\)",
+      "replace": "pay by bank transfer"
+    },
+    {
+      "pattern": "a QRIS code from your BCA app",
+      "replace": "a payment link from your banking app"
+    },
+    {
+      "pattern": "\"name\": \"Where is the Hyrox Newport venue \\(lokasi HYROX Newport\\)\\?\"",
+      "replace": "\"name\": \"Where is the venue?\""
+    },
+    {
+      "pattern": "\"text\": \"Nusantara International Convention Exhibition[^\"]*\"",
+      "replace": "\"text\": \"Race venues vary by city — check the official listing on hyrox.com for the address and door times. Allow an hour to get across town on race weekend.\""
+    },
+    {
+      "pattern": "Nusantara International Convention Exhibition \\(NICE\\) in PIK2,[\\s\\S]*?airport\\.",
+      "replace": "Venue details vary by city — the official listing on hyrox.com has the address and door times. Allow an hour to get across town on race weekend."
+    },
+    {
+      "pattern": "Reserve your place, transfer to Coach's BCA account with[\\s\\S]*?KORE app\\.",
+      "replace": "Reserve your place, transfer to the KORE account with your reference, send us the proof, and your programme goes live in the KORE app."
+    },
+    {
+      "pattern": "\"Udah dibilang kan[^\"]*\"",
+      "replace": "\"Told you — the Newport record was no fluke. These two race like they've been at this level for years; British doubles really is world-class now. Everyone else is playing catch-up.\""
+    },
+    {
+      "pattern": "\"1:01:49\\. Weekend panas[^\"]*\"",
+      "replace": "\"1:01:49. Hot weekend, nothing to help you. If you're training for London — that's the number stuck to the fridge now.\""
+    },
+    {
+      "pattern": "\"venue\": \"Nusantara[^\"]*\"",
+      "replace": "\"venue\": \"KORE, Newport\""
+    },
+    {
+      "pattern": "\"Lantai HYROX di Newport[^\"]*\"",
+      "replace": "\"A dedicated HYROX floor in Newport built for exactly this: eight competition-standard stations with official kit, Foundation/Engine/Complete classes, plus full race simulations you can book. The default spot for a timed sim before an away race.\""
+    },
+    {
+      "pattern": "Monthly coaching that fits around your life[^<]*",
+      "replace": "Group training for all abilities — from first-timer classes to full race prep. New here? Try 3 days for £30."
+    },
+    {
+      "pattern": "--pink-100: #fde4e5;",
+      "replace": "--pink-100: #fde4e5;\n  --ncfc-green: #166534;\n  --ncfc-gold: #fff200;"
+    },
+    {
+      "pattern": "\\.pred-line \\{\\s*margin: 0 0 10px;\\s*\\}",
+      "replace": "$&\n\n/* NCFC regional-partner accent — canary + green, light touch */\n.masthead .sig { color: var(--ncfc-green); }\n.masthead .sig-text { background-image: linear-gradient(105deg, var(--ncfc-green) 42%, #dff3d9 50%, var(--ncfc-green) 58%); }\n.kicker { color: var(--ncfc-green); }\n.zone .num { color: var(--ncfc-green); }\n.stats strong { color: var(--ncfc-green); }\n.plan .tag { background: var(--ncfc-gold); border-color: var(--ncfc-gold); color: #14532d; }"
+    },
+    {
+      "pattern": "vec3 col = texture2D\\(u_tex, cuv\\)\\.rgb;",
+      "replace": "vec3 col = texture2D(u_tex, cuv).rgb;\n      // NCFC accent: unresolved mosaic tiles checkerboard canary/green,\n      // fading back to the real photo as the paper resolves.\n      float lum = dot(col, vec3(0.299, 0.587, 0.114));\n      float chk = mod(floor(vUv.x * cells) + floor(vUv.y * cells), 2.0);\n      vec3 ncfc = mix(vec3(1.0, 0.89, 0.05), vec3(0.0, 0.55, 0.24), chk);\n      col = mix(ncfc * (0.4 + 0.8 * lum), col, vResolve);"
+    },
+    {
+      "pattern": "Eyes on the target line the whole time\\. Looking at the ball is\\s+how you drop it on rep 68\\.",
+      "replace": "Eyes on the target line the whole time — On the Ball, City. Looking at the ball is how you drop it on rep 68."
+    },
+    {
+      "pattern": "(<li><a href=\"/kore/splits/\">Split [Aa]nalyser</a></li>)",
+      "replace": "$1\n          <li><a href=\"/kore/predictor/\">Race Predictor</a></li>"
+    },
+    {
+      "pattern": "(<a href=\"/kore/splits/\">Splits</a>)",
+      "replace": "$1\n          <a href=\"/kore/predictor/\">Race Predictor</a>"
+    },
+    {
+      "pattern": "<a href=\"/kore/splits/\">Split Analyser</a>(?!</li>)",
+      "replace": "<a href=\"/kore/splits/\">Split Analyser</a>\n          <a href=\"/kore/predictor/\">Race Predictor</a>"
+    },
+    {
+      "pattern": ":root\\s*\\{",
+      "replace": ":root{\n  --hero-focus: 50% 35%;"
+    }
+  ],
+  "stripSections": [
+    "pelatih"
+  ],
+  "seedFiles": {
+    "cities.json": {
+      "note": "DEMO SEED — UK race planner data for the KORE demo. Dates/venues are placeholders from public HYROX listings; refresh from hyrox.com before real use.",
+      "checked": "2026-11",
+      "home": "london",
+      "cities": [
+        {
+          "slug": "london",
+          "name": "London",
+          "nickname": "The Smoke",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "🇬🇧",
+          "tagline": "The big one. Multiple HYROX weekends a year and the fastest-selling tickets in the UK calendar.",
+          "coachSays": "Closest major race to us — two hours on the train and you're on the start line. Half the crew has raced here; the other half is about to.",
+          "race": {
+            "name": "HYROX London",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected — dates land on hyrox.com first and sell out fast.",
+            "last": {
+              "dates": "May 2026",
+              "athletes": "~12,000"
+            },
+            "venue": "Olympia London",
+            "address": "Hammersmith Rd, London W14 8UX",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Newport to London Liverpool Street is about 1h 50m — book advance singles early, race weekend fills up.",
+            "Olympia is a short walk from Kensington (Olympia) station or Barons Court on the Piccadilly line.",
+            "Driving? Race-weekend parking around Kensington is painful and pricey — the train wins."
+          ],
+          "hotels": [
+            {
+              "area": "Kensington / Hammersmith (closest)",
+              "picks": "Walk-to-venue options — the stress-free race morning.",
+              "range": "£120 – £220 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Olympia%20London"
+            },
+            {
+              "area": "Earl's Court",
+              "picks": "Cheaper beds ten minutes from the venue.",
+              "range": "£80 – £140 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Earls%20Court%20London"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Race morning: porridge or a bagel 3–4 hours out. Familiar food only — race day is not the day to experiment."
+          ],
+          "city": [
+            "Contactless or Oyster everywhere on the Tube — no cash needed.",
+            "London HYROX weekends sell out hotels near the venue — book when tickets drop, not after."
+          ],
+          "nightAfter": [
+            "Kensington and Hammersmith pubs do a roaring post-race trade — Sunday roast is basically mandatory."
+          ],
+          "meetup": null,
+          "coachNote": "This is the crew's home race — we take a proper contingent. If you're racing London, a 12-week block ending on race week is the sweet spot.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: whoever's racing finds the dinner. Pub booked near the venue, all levels welcome, race stories compulsory."
+          }
+        },
+        {
+          "slug": "manchester",
+          "name": "Manchester",
+          "nickname": "The Rainy City",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "🇬🇧",
+          "tagline": "The UK's biggest HYROX residency — multiple days, tens of thousands of athletes.",
+          "coachSays": "Eleven days of racing — if you can't find a wave that fits, that's on you. Worth the trip for the crowd alone.",
+          "race": {
+            "name": "HYROX Manchester",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next residency expected — check hyrox.com for the announced block.",
+            "last": {
+              "dates": "January 2026",
+              "athletes": "~30,000 across the residency"
+            },
+            "venue": "Manchester Central",
+            "address": "Petersfield, Manchester M2 3GX",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Newport to Manchester Piccadilly is around 4h 30m with one change — an overnighter makes sense.",
+            "Manchester Central is ten minutes on foot from Deansgate station."
+          ],
+          "hotels": [
+            {
+              "area": "Deansgate / city centre",
+              "picks": "Walk everywhere, food on the doorstep.",
+              "range": "£80 – £150 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Manchester%20Central"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Northern Quarter for carbs the night before — pasta options everywhere."
+          ],
+          "city": [
+            "Stay near Deansgate and you won't need transport at all."
+          ],
+          "nightAfter": [
+            "Northern Quarter — the obvious post-race dinner territory."
+          ],
+          "meetup": null,
+          "coachNote": "The multi-day format means we can get several crews through in one weekend — good first away race.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner near the venue, all welcome."
+          }
+        },
+        {
+          "slug": "birmingham",
+          "name": "Birmingham",
+          "nickname": "Brum",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "🇬🇧",
+          "tagline": "NEC-scale HYROX — huge hall, huge field.",
+          "coachSays": "Big-arena energy. The NEC crowd makes you feel like a pro even when your sled disagrees.",
+          "race": {
+            "name": "HYROX Birmingham",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected — dates land on hyrox.com.",
+            "last": {
+              "dates": "October 2026",
+              "athletes": "~15,000"
+            },
+            "venue": "NEC Birmingham",
+            "address": "North Ave, Marston Green, Birmingham B40 1NT",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Birmingham International station is inside the NEC campus — trains via one change from Newport, ~3h.",
+            "Driving is easy — the NEC is built for it, parking on site."
+          ],
+          "hotels": [
+            {
+              "area": "NEC / Birmingham International",
+              "picks": "On-campus hotels mean a five-minute walk to your wave.",
+              "range": "£90 – £160 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=NEC%20Birmingham"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Resorts World next door covers pre-race dinner."
+          ],
+          "city": [
+            "The NEC campus is self-contained — you won't see much of Birmingham itself unless you plan to."
+          ],
+          "nightAfter": [
+            "Resorts World — restaurants five minutes from the hall."
+          ],
+          "meetup": null,
+          "coachNote": "Easiest logistics of the UK races — venue, hotel and dinner all within five minutes of each other.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner at Resorts World, all welcome."
+          }
+        },
+        {
+          "slug": "cardiff",
+          "name": "Cardiff",
+          "nickname": "The Diff",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "🇬🇧",
+          "tagline": "Welsh HYROX — a loud arena and a proper race-weekend city.",
+          "coachSays": "Long trip, worth it. Cardiff on race weekend is a city that actually notices you're there.",
+          "race": {
+            "name": "HYROX Cardiff",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected — dates land on hyrox.com.",
+            "last": {
+              "dates": "June 2026",
+              "athletes": "~9,000"
+            },
+            "venue": "Utilita Arena Cardiff",
+            "address": "Mary Ann St, Cardiff CF10 2EQ",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Cardiff Central station is a ten-minute walk from the arena — trains via one change, ~4h from Newport."
+          ],
+          "hotels": [
+            {
+              "area": "City centre",
+              "picks": "Everything's walkable — venue, food, the lot.",
+              "range": "£70 – £130 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Cardiff%20city%20centre"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Carbs on St Mary Street — you won't struggle."
+          ],
+          "city": [
+            "Compact centre — book central and forget taxis."
+          ],
+          "nightAfter": [
+            "St Mary Street for the post-race feed."
+          ],
+          "meetup": null,
+          "coachNote": "Furthest of the UK trips — we usually make a weekend of it.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner in the city centre, all welcome."
+          }
+        },
+        {
+          "slug": "glasgow",
+          "name": "Glasgow",
+          "nickname": "The Dear Green Place",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "🇬🇧",
+          "tagline": "Scottish HYROX at the SEC — the furthest trip and the friendliest crowd.",
+          "coachSays": "A proper expedition for us — fly it, don't sit on a train for seven hours.",
+          "race": {
+            "name": "HYROX Glasgow",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected — dates land on hyrox.com.",
+            "last": {
+              "dates": "March 2026",
+              "athletes": "~8,000"
+            },
+            "venue": "SEC Glasgow",
+            "address": "Exhibition Way, Glasgow G3 8YW",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Fly via a connection, or London direct — much easier than the 7h train."
+          ],
+          "hotels": [
+            {
+              "area": "Finnieston / SEC",
+              "picks": "Walk to the venue and the best food street in town.",
+              "range": "£80 – £150 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=SEC%20Glasgow"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Finnieston is Glasgow's food strip — pick anywhere."
+          ],
+          "city": [
+            "Cold even in spring — pack layers for queuing outside."
+          ],
+          "nightAfter": [
+            "Finnieston for dinner, done."
+          ],
+          "meetup": null,
+          "coachNote": "Only worth it as a committed trip — but as a crew weekend it's brilliant.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner in Finnieston, all welcome."
+          }
+        }
+      ],
+      "alsoOn": [
+        {
+          "name": "HYROX Dublin",
+          "city": "Dublin",
+          "flag": "🇮🇪",
+          "nickname": "The Pale",
+          "dates": "check hyrox.com",
+          "start": null,
+          "venue": "RDS",
+          "note": "Short hop and a huge atmosphere — Dublin weekends sell out early.",
+          "source": "https://hyrox.com/events/"
+        }
+      ],
+      "alsoTba": "Bristol, Leeds and Edinburgh are all expected back — dates land on hyrox.com first."
+    },
+    "payment.json": {
+      "_note": "DEMO SEED — manual bank-transfer payments for the KORE demo. Edit here; the pay page reads it live. whatsapp is the coach's number with country code, digits only.",
+      "bank": {
+        "name": "Barclays",
+        "accountNumber": "00000000",
+        "sortCode": "00-00-00",
+        "accountName": "KORE Ltd",
+        "accountNameNote": "Demo details — swap for the real account before any live use."
+      },
+      "qris": {
+        "src": "",
+        "alt": "Payment link from KORE"
+      },
+      "whatsapp": "447701385444",
+      "instagram": "kore",
+      "plans": [
+        {
+          "id": "hustle-plan-trial-001",
+          "name": "3-Day Trial",
+          "per": "one-off — 3 days",
+          "summary": "Three days of everything: HYROX sessions, boxing, strength, open gym. The standard 'come and see' — most people stay.",
+          "amountGbp": 30
+        },
+        {
+          "id": "hustle-plan-all-001",
+          "name": "All-Access",
+          "per": "per month",
+          "summary": "Unlimited sessions: HYROX squad, boxing, strength, open gym, plus the crew WhatsApp and Saturday sims.",
+          "amountGbp": 55
+        },
+        {
+          "id": "hustle-plan-hyrox-001",
+          "name": "HYROX Squad",
+          "per": "per month",
+          "summary": "Two coached HYROX sessions a week, station technique work, and race-sim priority booking.",
+          "amountGbp": 40
+        },
+        {
+          "id": "hustle-plan-121-001",
+          "name": "1:1 Coaching",
+          "per": "per month",
+          "summary": "One PT session a week with Coach or a coach, plus your programme in the app.",
+          "amountGbp": 150
+        }
+      ]
+    },
+    "gallery.json": {
+      "note": "DEMO SEED — photos pulled from KORE's IG for the walk-in mockup. Replace with real member photos on launch.",
+      "photos": [
+        {
+          "src": "/kore/images/gallery/crew-hyrox-wall.jpg",
+          "alt": "The KORE crew under the big HYROX letters at KORE",
+          "caption": "The whole lot of them. Every single one started somewhere.",
+          "by": "KORE",
+          "tilt": -1.5,
+          "event": "Squad sessions"
+        },
+        {
+          "src": "/kore/images/gallery/crew-race-day.jpg",
+          "alt": "KORE crew in race bibs outside a Newport church after a local race",
+          "caption": "Race day crew. Half of them didn't know each other a year ago.",
+          "by": "KORE",
+          "tilt": 2,
+          "event": "Race day"
+        },
+        {
+          "src": "/kore/images/gallery/six-am-crew.jpg",
+          "alt": "Early morning session — rowers and coaches in golden light",
+          "caption": "6AM hits different. Every week, same crew.",
+          "by": "KORE",
+          "tilt": 1,
+          "event": "Squad sessions"
+        },
+        {
+          "src": "/kore/images/gallery/train-recover.jpg",
+          "alt": "Train hard, recover properly — session and sauna split shot",
+          "caption": "Train hard. Recover properly. Repeat weekly.",
+          "by": "KORE",
+          "tilt": -2,
+          "event": "Performance Centre"
+        },
+        {
+          "src": "/kore/images/gallery/blakely-winners.jpg",
+          "alt": "KORE women's team holding the Blakely Apex winner board",
+          "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
+          "by": "KORE",
+          "tilt": 1.5,
+          "event": "Race day"
+        },
+        {
+          "src": "/kore/images/gallery/ncfc-shirts.jpg",
+          "alt": "KORE home and away shirts laid on the Carrow Road pitch",
+          "caption": "On the Ball, City. Official NCFC regional partners, 2025-26.",
+          "by": "KORE",
+          "event": "NCFC partnership"
+        },
+        {
+          "src": "/kore/images/gallery/ncfc-seat.jpg",
+          "alt": "Yellow KORE number 7 shirt draped over a Carrow Road seat",
+          "caption": "Canary colours, KORE name. Some things were just meant to be.",
+          "by": "KORE",
+          "event": "NCFC partnership"
+        },
+        {
+          "src": "/kore/images/gallery/church-crew.jpg",
+          "alt": "The KORE crew in race bibs outside a Newport church on race day",
+          "caption": "Race-day crew, Newport 10k. The church bells were optional.",
+          "by": "KORE",
+          "event": "Race day"
+        },
+        {
+          "src": "/kore/images/gallery/values-wall.jpg",
+          "alt": "The KORE values wall inside KORE",
+          "caption": "House rules: good vibes, community, no egos. Written on the wall.",
+          "by": "KORE",
+          "event": "The gym"
+        },
+        {
+          "src": "/kore/images/gallery/street-race.jpg",
+          "alt": "KORE runner racing down a packed high street, crowd behind the barriers",
+          "caption": "High street takeover. Newport turns out when the crew races.",
+          "by": "KORE",
+          "tilt": -1,
+          "event": "Race day"
+        }
+      ]
+    },
+    "bulletin.json": {
+      "schemaVersion": 1,
+      "weekOf": "2026-10-12",
+      "items": [
+        {
+          "type": "pb",
+          "text": "Four PBs this week — Tom's SkiErg finally behaved and Aisha made the row look easy."
+        },
+        {
+          "type": "welcome",
+          "text": "Three new starters on Thursday — if you see a lost face, you're the welcome committee now."
+        },
+        {
+          "type": "birthday",
+          "text": "Big five-oh for Mel on Saturday — she's requested wall balls instead of cake. We're doing both."
+        },
+        {
+          "type": "deadline",
+          "text": "London entries close Wednesday — the sheet's by the desk, put your name down."
+        },
+        {
+          "type": "gossip",
+          "text": "Half the morning crew is talking about a doubles team-up — partner board's live, claim your lane."
+        },
+        {
+          "type": "signoff",
+          "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; I'll bring the coffee and croissants on the way in.",
+          "followUp": {
+            "when": "Tuesday",
+            "board": "the wall",
+            "text": "The pic: me and Katie, coffee and croissants after the 7am. I keep my promises."
+          }
+        }
+      ]
+    },
+    "diary.json": {
+      "schemaVersion": 1,
+      "sessions": [
+        {
+          "date": "2026-10-12",
+          "time": "17:30",
+          "type": "Group session",
+          "who": "Evening crew",
+          "note": "SkiErg intervals — Tom seeks revenge"
+        },
+        {
+          "date": "2026-10-13",
+          "time": "07:00",
+          "type": "1:1",
+          "who": "Katie",
+          "note": "Her birthday — coffee and croissants after. Do not forget the croissants."
+        },
+        {
+          "date": "2026-10-14",
+          "time": "06:45",
+          "type": "Morning crew",
+          "who": "Open",
+          "note": "Wall balls. Mel has opinions about this"
+        },
+        {
+          "date": "2026-10-15",
+          "time": "18:00",
+          "type": "Group session",
+          "who": "Evening crew",
+          "note": "Doubles pairing night — board claims open"
+        },
+        {
+          "date": "2026-10-17",
+          "time": "09:30",
+          "type": "Sim Saturday",
+          "who": "Race prep",
+          "note": "Full run-through"
+        }
+      ]
+    }
+  },
+  "imageOverrides": "scripts/reskin/hustle-assets",
+  "excludePatterns": [
+    "images/dina-",
+    "images/gallery/",
+    "images/(squad-anya|carry|coach|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station9-dinner|station10-dance)\\.jpg$"
+  ],
+  "currency": "gbp",
+  "sharedPack": "scripts/reskin/shared-packs/uk.json",
+  "broadcastDemo": true,
+  "_prospectNote": "PROSPECT KORE Newport — bolt-on, opened Feb 2026, 132 at launch. TODO: coach name, IG, WhatsApp, photos."
+}

@@ -1,0 +1,46 @@
+{
+  "_note": "DEMO SEED — manual bank-transfer payments for the KORE demo. Edit here; the pay page reads it live. whatsapp is the coach's number with country code, digits only.",
+  "bank": {
+    "name": "Barclays",
+    "accountNumber": "00000000",
+    "sortCode": "00-00-00",
+    "accountName": "KORE Ltd",
+    "accountNameNote": "Demo details — swap for the real account before any live use."
+  },
+  "qris": {
+    "src": "",
+    "alt": "Payment link from KORE"
+  },
+  "whatsapp": "447701385444",
+  "instagram": "kore",
+  "plans": [
+    {
+      "id": "hustle-plan-trial-001",
+      "name": "3-Day Trial",
+      "per": "one-off — 3 days",
+      "summary": "Three days of everything: HYROX sessions, boxing, strength, open gym. The standard 'come and see' — most people stay.",
+      "amountGbp": 30
+    },
+    {
+      "id": "hustle-plan-all-001",
+      "name": "All-Access",
+      "per": "per month",
+      "summary": "Unlimited sessions: HYROX squad, boxing, strength, open gym, plus the crew WhatsApp and Saturday sims.",
+      "amountGbp": 55
+    },
+    {
+      "id": "hustle-plan-hyrox-001",
+      "name": "HYROX Squad",
+      "per": "per month",
+      "summary": "Two coached HYROX sessions a week, station technique work, and race-sim priority booking.",
+      "amountGbp": 40
+    },
+    {
+      "id": "hustle-plan-121-001",
+      "name": "1:1 Coaching",
+      "per": "per month",
+      "summary": "One PT session a week with Coach or a coach, plus your programme in the app.",
+      "amountGbp": 150
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sessions": [
+    {
+      "date": "2026-10-12",
+      "time": "17:30",
+      "type": "Group session",
+      "who": "Evening crew",
+      "note": "SkiErg intervals — Tom seeks revenge"
+    },
+    {
+      "date": "2026-10-13",
+      "time": "07:00",
+      "type": "1:1",
+      "who": "Katie",
+      "note": "Her birthday — coffee and croissants after. Do not forget the croissants."
+    },
+    {
+      "date": "2026-10-14",
+      "time": "06:45",
+      "type": "Morning crew",
+      "who": "Open",
+      "note": "Wall balls. Mel has opinions about this"
+    },
+    {
+      "date": "2026-10-15",
+      "time": "18:00",
+      "type": "Group session",
+      "who": "Evening crew",
+      "note": "Doubles pairing night — board claims open"
+    },
+    {
+      "date": "2026-10-17",
+      "time": "09:30",
+      "type": "Sim Saturday",
+      "who": "Race prep",
+      "note": "Full run-through"
+    }
+  ]
+}

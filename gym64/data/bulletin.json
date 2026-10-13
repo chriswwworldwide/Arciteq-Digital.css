@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "weekOf": "2026-10-12",
+  "items": [
+    {
+      "type": "pb",
+      "text": "Four PBs this week — Tom's SkiErg finally behaved and Aisha made the row look easy."
+    },
+    {
+      "type": "welcome",
+      "text": "Three new starters on Thursday — if you see a lost face, you're the welcome committee now."
+    },
+    {
+      "type": "birthday",
+      "text": "Big five-oh for Mel on Saturday — she's requested wall balls instead of cake. We're doing both."
+    },
+    {
+      "type": "deadline",
+      "text": "London entries close Wednesday — the sheet's by the desk, put your name down."
+    },
+    {
+      "type": "gossip",
+      "text": "Half the morning crew is talking about a doubles team-up — partner board's live, claim your lane."
+    },
+    {
+      "type": "signoff",
+      "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; I'll bring the coffee and croissants on the way in.",
+      "followUp": {
+        "when": "Tuesday",
+        "board": "the wall",
+        "text": "The pic: me and Katie, coffee and croissants after the 7am. I keep my promises."
+      }
+    }
+  ]
+}

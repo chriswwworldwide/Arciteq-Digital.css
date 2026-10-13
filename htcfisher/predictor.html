@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>
+      HYROX race-time predictor — commit your number | HTC Christchurch
+    </title>
+    <meta
+      name="description"
+      content="Tell us what you think you'll run at your next HYROX. We'll tell you what you'll actually run — here and at your next three races."
+    />
+    <link rel="stylesheet" href="/htcfisher/styles.css?v=1791907123658" />
+    <link rel="stylesheet" href="/htcfisher/guide.css?v=1791907123658" />
+  </head>
+  <body>
+    <header class="masthead wrap">
+      <a href="/htcfisher/" style="color: inherit; text-decoration: none">
+        <h1>
+          <span class="wordmark"
+            >HT<span class="o">C</span> CHRISTCHURCH
+            <span class="sig" aria-label="by Ross Fisher"
+              ><span class="sig-text">by Ross Fisher</span
+              ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+                <path
+                  d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                  fill="currentColor"
+                /></svg
+            ></span>
+          </span>
+        </h1>
+      </a>
+      <p class="city">Christchurch</p>
+    </header>
+
+    <section class="guide-hero">
+      <div class="wrap">
+        <div class="guide-hero-text">
+          <ol class="crumbs">
+            <li><a href="/htcfisher/">HTC</a></li>
+            <li>Race-time predictor</li>
+          </ol>
+          <p class="eyebrow">Put your number on the line</p>
+          <h2>You say your time. We say the truth.</h2>
+          <p class="lead">
+            Commit your predicted finish for your next race — then we&rsquo;ll tell
+            you what you&rsquo;ll actually run there and at your next three. Fill in
+            the full dossier for a scarier answer. Hair colour is mandatory.
+            (It isn&rsquo;t. But tell us anyway.)
+          </p>
+          <p class="byline">
+            By Ross — HYROX Certified Coach, podium athlete, part-time oracle.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap guide">
+      <div class="article">
+        <article class="station" id="stake">
+          <span class="num">Step 01</span>
+          <h3>The stake</h3>
+          <form class="calc-form" id="predict-form" autocomplete="off">
+            <label>
+              <span>Your target race</span>
+              <select name="race" id="race-select" required>
+                <option value="">Loading races…</option>
+              </select>
+            </label>
+            <label>
+              <span>Your predicted finish (h:mm or mm:ss)</span>
+              <input
+                type="text"
+                name="mypred"
+                inputmode="numeric"
+                maxlength="6"
+                required
+                placeholder="e.g. 1:30 or 88:00 — no pressure"
+              />
+            </label>
+            <label>
+              <span>Division</span>
+              <select name="division" required>
+                <option value="">Pick one…</option>
+                <option value="open">Open</option>
+                <option value="pro">Pro (heavier sleds + wall balls)</option>
+                <option value="doubles">Doubles</option>
+              </select>
+            </label>
+            <label>
+              <span>Recent benchmark</span>
+              <select name="bench" id="bench" required>
+                <option value="">Pick one…</option>
+                <option value="5k">5K time</option>
+                <option value="10k">10K time</option>
+                <option value="none">No recent race — guess from fitness</option>
+              </select>
+            </label>
+            <label id="bench-time-row">
+              <span>Your time (mm:ss)</span>
+              <input
+                type="text"
+                name="benchtime"
+                inputmode="numeric"
+                maxlength="5"
+                placeholder="e.g. 24:30"
+              />
+            </label>
+            <label id="fitness-row" hidden>
+              <span>Honest fitness check</span>
+              <select name="fitness">
+                <option value="">Pick one…</option>
+                <option value="30">I run sometimes — 5K around 30 min</option>
+                <option value="24">I&rsquo;m fit — 5K around 24 min</option>
+                <option value="20">I&rsquo;m quick — 5K around 20 min</option>
+              </select>
+            </label>
+            <label>
+              <span>Stations — honest version</span>
+              <select name="stations" required>
+                <option value="">Pick one…</option>
+                <option value="weak">The stations scare me</option>
+                <option value="balanced">I&rsquo;m balanced — no heroics, no disasters</option>
+                <option value="strong">Stations are my strength</option>
+              </select>
+            </label>
+
+            <fieldset class="dossier">
+              <legend>The full dossier — optional, but scarier</legend>
+              <label>
+                <span>Age</span>
+                <input type="number" name="age" min="16" max="90" placeholder="Years" />
+              </label>
+              <label>
+                <span>Male or female</span>
+                <select name="sex">
+                  <option value="">Prefer not to say</option>
+                  <option value="f">Female</option>
+                  <option value="m">Male</option>
+                </select>
+              </label>
+              <label>
+                <span>Height (cm)</span>
+                <input type="number" name="height" min="120" max="230" placeholder="e.g. 168" />
+              </label>
+              <label>
+                <span>Weight now (kg)</span>
+                <input type="number" name="weight" min="35" max="200" step="0.1" placeholder="e.g. 62" />
+              </label>
+              <label>
+                <span>Weight a year ago (kg)</span>
+                <input type="number" name="weight_ago" min="35" max="200" step="0.1" placeholder="The trajectory matters more than the number" />
+              </label>
+              <label>
+                <span>VO2 max (if you know it)</span>
+                <input type="number" name="vo2" min="20" max="80" placeholder="ml/kg/min" />
+              </label>
+              <p class="form-note">
+                No lab? Estimate it: Cooper 12-minute run test, your watch&rsquo;s
+                VO2 number, or resting HR — 15.3 × (max HR ÷ resting HR) is a
+                decent shortcut. Or skip it entirely.
+              </p>
+              <label>
+                <span>Wrist circumference (cm)</span>
+                <input type="number" name="wrist" min="10" max="30" step="0.1" placeholder="Frame size — for the sled&rsquo;s benefit" />
+              </label>
+              <label>
+                <span>Calf circumference (cm)</span>
+                <input type="number" name="calf" min="25" max="60" step="0.1" placeholder="Wall ball country" />
+              </label>
+              <label>
+                <span>Relationship status</span>
+                <select name="status">
+                  <option value="">Prefer not to say</option>
+                  <option value="single">Single</option>
+                  <option value="married">Married</option>
+                  <option value="complicated">It&rsquo;s complicated</option>
+                </select>
+              </label>
+              <label>
+                <span>Hair colour</span>
+                <select name="hair">
+                  <option value="">Prefer not to say</option>
+                  <option value="black">Black</option>
+                  <option value="brown">Brown</option>
+                  <option value="blonde">Blonde</option>
+                  <option value="red">Red</option>
+                  <option value="grey">Grey — earned</option>
+                  <option value="none">No comment (shaved)</option>
+                </select>
+              </label>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary">
+              Judge my number
+            </button>
+            <p class="form-note" id="predict-note" role="status"></p>
+          </form>
+        </article>
+
+        <article class="station" id="result" hidden>
+          <span class="num">Step 02</span>
+          <h3>The verdict</h3>
+          <div id="result-card" aria-live="polite"></div>
+          <form class="calc-form" id="send-form" autocomplete="off">
+            <label>
+              <span>Email it to yourself (optional)</span>
+              <input
+                type="email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@…"
+              />
+            </label>
+            <button type="submit" class="btn btn-ghost">
+              Send me my split card
+            </button>
+            <p class="form-note" id="send-note" role="status"></p>
+          </form>
+        </article>
+
+        <article class="station" id="fineprint">
+          <span class="num">Step 03</span>
+          <h3>The fine print</h3>
+          <ul class="roundup-list">
+            <li>
+              This is an estimate from typical division patterns, not a promise.
+              Race day has opinions of its own — heat, crowd, and whether you
+              respected the sled.
+            </li>
+            <li>
+              Hair colour is not a real input. The algorithm collected it
+              anyway, for science.
+            </li>
+            <li>
+              Your email only ever reaches Ross&rsquo;s desk. No lists, no spam —
+              a split card and maybe a hello.
+            </li>
+          </ul>
+          <p>
+            <a class="btn btn-primary" href="/htcfisher/#ask">Ask Ross</a>
+            <a class="btn btn-ghost" href="/htcfisher/splits/"
+              >Already raced? Analyse real splits</a
+            >
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div>© <span id="year"></span> HTC Christchurch</div>
+      </div>
+    </footer>
+
+    <script src="/htcfisher/app.js?v=1791907123658" defer></script>
+    <script src="/htcfisher/predictor.js?v=1791907123658" defer></script>
+  </body>
+</html>

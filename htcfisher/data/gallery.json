@@ -1,0 +1,81 @@
+{
+  "note": "DEMO SEED — photos pulled from HTC's IG for the walk-in mockup. Replace with real member photos on launch.",
+  "photos": [
+    {
+      "src": "/htcfisher/images/gallery/crew-hyrox-wall.jpg",
+      "alt": "The HTC crew under the big HYROX letters at HTC",
+      "caption": "The whole lot of them. Every single one started somewhere.",
+      "by": "HTC",
+      "tilt": -1.5,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/htcfisher/images/gallery/crew-race-day.jpg",
+      "alt": "HTC crew in race bibs outside a Christchurch church after a local race",
+      "caption": "Race day crew. Half of them didn't know each other a year ago.",
+      "by": "HTC",
+      "tilt": 2,
+      "event": "Race day"
+    },
+    {
+      "src": "/htcfisher/images/gallery/six-am-crew.jpg",
+      "alt": "Early morning session — rowers and coaches in golden light",
+      "caption": "6AM hits different. Every week, same crew.",
+      "by": "HTC",
+      "tilt": 1,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/htcfisher/images/gallery/train-recover.jpg",
+      "alt": "Train hard, recover properly — session and sauna split shot",
+      "caption": "Train hard. Recover properly. Repeat weekly.",
+      "by": "HTC",
+      "tilt": -2,
+      "event": "Performance Centre"
+    },
+    {
+      "src": "/htcfisher/images/gallery/blakely-winners.jpg",
+      "alt": "HTC women's team holding the Blakely Apex winner board",
+      "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
+      "by": "HTC",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/htcfisher/images/gallery/ncfc-shirts.jpg",
+      "alt": "HTC home and away shirts laid on the Carrow Road pitch",
+      "caption": "On the Ball, City. Official NCFC regional partners, 2025-26.",
+      "by": "HTC",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/htcfisher/images/gallery/ncfc-seat.jpg",
+      "alt": "Yellow HTC number 7 shirt draped over a Carrow Road seat",
+      "caption": "Canary colours, HTC name. Some things were just meant to be.",
+      "by": "HTC",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/htcfisher/images/gallery/church-crew.jpg",
+      "alt": "The HTC crew in race bibs outside a Christchurch church on race day",
+      "caption": "Race-day crew, Christchurch 10k. The church bells were optional.",
+      "by": "HTC",
+      "event": "Race day"
+    },
+    {
+      "src": "/htcfisher/images/gallery/values-wall.jpg",
+      "alt": "The HTC values wall inside HTC",
+      "caption": "House rules: good vibes, community, no egos. Written on the wall.",
+      "by": "HTC",
+      "event": "The gym"
+    },
+    {
+      "src": "/htcfisher/images/gallery/street-race.jpg",
+      "alt": "HTC runner racing down a packed high street, crowd behind the barriers",
+      "caption": "High street takeover. Christchurch turns out when the crew races.",
+      "by": "HTC",
+      "tilt": -1,
+      "event": "Race day"
+    }
+  ]
+}

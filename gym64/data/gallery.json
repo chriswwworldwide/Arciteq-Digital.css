@@ -1,0 +1,81 @@
+{
+  "note": "DEMO SEED — photos pulled from Gym64's IG for the walk-in mockup. Replace with real member photos on launch.",
+  "photos": [
+    {
+      "src": "/gym64/images/gallery/crew-hyrox-wall.jpg",
+      "alt": "The Gym64 crew under the big HYROX letters at the gym",
+      "caption": "The whole lot of them. Every single one started somewhere.",
+      "by": "Gym64",
+      "tilt": -1.5,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/gym64/images/gallery/crew-race-day.jpg",
+      "alt": "Gym64 crew in race bibs outside a Glenrothes church after a local race",
+      "caption": "Race day crew. Half of them didn't know each other a year ago.",
+      "by": "Gym64",
+      "tilt": 2,
+      "event": "Race day"
+    },
+    {
+      "src": "/gym64/images/gallery/six-am-crew.jpg",
+      "alt": "Early morning session — rowers and coaches in golden light",
+      "caption": "6AM hits different. Every week, same crew.",
+      "by": "Gym64",
+      "tilt": 1,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/gym64/images/gallery/train-recover.jpg",
+      "alt": "Train hard, recover properly — session and sauna split shot",
+      "caption": "Train hard. Recover properly. Repeat weekly.",
+      "by": "Gym64",
+      "tilt": -2,
+      "event": "Performance Centre"
+    },
+    {
+      "src": "/gym64/images/gallery/blakely-winners.jpg",
+      "alt": "Gym64 women's team holding the Blakely Apex winner board",
+      "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
+      "by": "Gym64",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/gym64/images/gallery/ncfc-shirts.jpg",
+      "alt": "Gym64 home and away shirts laid on the Carrow Road pitch",
+      "caption": "On the Ball, City. Official NCFC regional partners, 2025-26.",
+      "by": "Gym64",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/gym64/images/gallery/ncfc-seat.jpg",
+      "alt": "Yellow Gym64 number 7 shirt draped over a Carrow Road seat",
+      "caption": "Canary colours, Gym64 name. Some things were just meant to be.",
+      "by": "Gym64",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/gym64/images/gallery/church-crew.jpg",
+      "alt": "The Gym64 crew in race bibs outside a Glenrothes church on race day",
+      "caption": "Race-day crew, Glenrothes 10k. The church bells were optional.",
+      "by": "Gym64",
+      "event": "Race day"
+    },
+    {
+      "src": "/gym64/images/gallery/values-wall.jpg",
+      "alt": "The Gym64 values wall inside the gym",
+      "caption": "House rules: good vibes, community, no egos. Written on the wall.",
+      "by": "Gym64",
+      "event": "The gym"
+    },
+    {
+      "src": "/gym64/images/gallery/street-race.jpg",
+      "alt": "Gym64 runner racing down a packed high street, crowd behind the barriers",
+      "caption": "High street takeover. Glenrothes turns out when the crew races.",
+      "by": "Gym64",
+      "tilt": -1,
+      "event": "Race day"
+    }
+  ]
+}

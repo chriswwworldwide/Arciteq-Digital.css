@@ -1,0 +1,5 @@
+{
+  "note": "Station 9 next-edition card. Coach sets `next` when the resto is picked — null hides the date card and the page just says the rhythm. `away` lists upcoming race-weekend editions (optional, can stay empty).",
+  "next": null,
+  "away": []
+}

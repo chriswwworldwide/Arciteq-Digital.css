@@ -1,0 +1,81 @@
+{
+  "note": "DEMO SEED — photos pulled from KORE's IG for the walk-in mockup. Replace with real member photos on launch.",
+  "photos": [
+    {
+      "src": "/kore/images/gallery/crew-hyrox-wall.jpg",
+      "alt": "The KORE crew under the big HYROX letters at KORE",
+      "caption": "The whole lot of them. Every single one started somewhere.",
+      "by": "KORE",
+      "tilt": -1.5,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/kore/images/gallery/crew-race-day.jpg",
+      "alt": "KORE crew in race bibs outside a Newport church after a local race",
+      "caption": "Race day crew. Half of them didn't know each other a year ago.",
+      "by": "KORE",
+      "tilt": 2,
+      "event": "Race day"
+    },
+    {
+      "src": "/kore/images/gallery/six-am-crew.jpg",
+      "alt": "Early morning session — rowers and coaches in golden light",
+      "caption": "6AM hits different. Every week, same crew.",
+      "by": "KORE",
+      "tilt": 1,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/kore/images/gallery/train-recover.jpg",
+      "alt": "Train hard, recover properly — session and sauna split shot",
+      "caption": "Train hard. Recover properly. Repeat weekly.",
+      "by": "KORE",
+      "tilt": -2,
+      "event": "Performance Centre"
+    },
+    {
+      "src": "/kore/images/gallery/blakely-winners.jpg",
+      "alt": "KORE women's team holding the Blakely Apex winner board",
+      "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
+      "by": "KORE",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/kore/images/gallery/ncfc-shirts.jpg",
+      "alt": "KORE home and away shirts laid on the Carrow Road pitch",
+      "caption": "On the Ball, City. Official NCFC regional partners, 2025-26.",
+      "by": "KORE",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/kore/images/gallery/ncfc-seat.jpg",
+      "alt": "Yellow KORE number 7 shirt draped over a Carrow Road seat",
+      "caption": "Canary colours, KORE name. Some things were just meant to be.",
+      "by": "KORE",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/kore/images/gallery/church-crew.jpg",
+      "alt": "The KORE crew in race bibs outside a Newport church on race day",
+      "caption": "Race-day crew, Newport 10k. The church bells were optional.",
+      "by": "KORE",
+      "event": "Race day"
+    },
+    {
+      "src": "/kore/images/gallery/values-wall.jpg",
+      "alt": "The KORE values wall inside KORE",
+      "caption": "House rules: good vibes, community, no egos. Written on the wall.",
+      "by": "KORE",
+      "event": "The gym"
+    },
+    {
+      "src": "/kore/images/gallery/street-race.jpg",
+      "alt": "KORE runner racing down a packed high street, crowd behind the barriers",
+      "caption": "High street takeover. Newport turns out when the crew races.",
+      "by": "KORE",
+      "tilt": -1,
+      "event": "Race day"
+    }
+  ]
+}

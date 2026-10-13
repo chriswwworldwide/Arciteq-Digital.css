@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Hyrox Split Analyser: paste your race splits, find your weak stations
+      (analisis split HYROX) — HTC Christchurch
+    </title>
+    <meta
+      name="description"
+      content="Paste your Hyrox run and station splits and get an honest read: which stations cost you the most, whether your runs faded, how you compare with your own past races and with other British athletes — and exactly what to train. Free HYROX split analysis for UK athletes."
+    />
+    <link rel="canonical" href="https://htcfisher.localhost/htcfisher/splits/" />
+    <link rel="stylesheet" href="/htcfisher/styles.css?v=1791907123658" />
+    <link rel="stylesheet" href="/htcfisher/guide.css?v=1791907123658" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "Hyrox Split Analyser",
+            "applicationCategory": "SportsApplication",
+            "operatingSystem": "Web",
+            "description": "Paste your Hyrox splits to find weak stations, run fade and what to train next.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "GBP"
+            },
+            "url": "/htcfisher/splits/",
+            "publisher": {
+              "@type": "Organization",
+              "name": "HTC Christchurch"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "HTC Christchurch",
+                "item": "/htcfisher/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Split Analyser",
+                "item": "/htcfisher/splits/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Where do I find my Hyrox splits?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "On results.hyrox.com or hyresult.com, open your own result and the page lists every run and station time plus your Roxzone time. Copy them across in minutes:seconds."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does the analyser decide what my weak station is?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It scales a typical Hyrox split profile to your finish time and checks each run and station against that. Anything more than about 10% slower than expected for someone at your finish time is flagged as a weakness; more than about 8% faster is a strength. Once enough British athletes have submitted splits, it also shows where you sit against their medians."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who can see my splits?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You and Ross. Your races are only readable through the private link we give you. Other athletes only ever see anonymous group medians, and only once a division has at least five submissions."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="masthead wrap">
+      <a href="/htcfisher/" style="color: inherit; text-decoration: none">
+        <h1>
+          <span class="wordmark"
+            >HT<span class="o">C</span> CHRISTCHURCH
+            <span class="sig" aria-label="by Ross Fisher"
+              ><span class="sig-text">by Ross Fisher</span
+              ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+                <path
+                  d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                  fill="currentColor"
+                /></svg
+            ></span>
+          </span>
+        </h1>
+      </a>
+      <p class="city">Christchurch</p>
+    </header>
+
+    <div class="nav">
+      <div class="wrap">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          Menu
+        </button>
+        <ul class="menu" id="menu">
+          <li><a href="/htcfisher/">Home</a></li>
+          <li>
+            <a class="match-zone" href="/htcfisher/find-a-partner/"
+              >Find Your Race Mate</a
+            >
+          </li>
+          <li><a href="/htcfisher/stations-prep/">Stations Prep</a></li>
+          <li><a href="/htcfisher/run-zone/">Run Zone</a></li>
+          <li><a href="/htcfisher/fuel-zone/">Fuel Zone</a></li>
+          <li><a href="/htcfisher/taper-zone/">Taper Zone</a></li>
+          <li><a href="/htcfisher/events/">Upcoming Events</a></li>
+          <li><a href="/htcfisher/race-planner/">Race planner</a></li>
+          <li><a href="/htcfisher/news/">News</a></li>
+          <li><a href="/htcfisher/norwich-hybrid-scene/">Christchurch scene</a></li>
+          <li><a href="/htcfisher/results/">Results</a></li>
+          <li><a href="/htcfisher/splits/">Split Analyser</a></li>
+          <li><a href="/htcfisher/predictor/">Race Predictor</a></li>
+          <li><a href="/htcfisher/#plans">Subscriptions</a></li>
+          <li>
+            <a class="chat-zone" href="/htcfisher/#ask"
+              ><span class="dot"></span> Ask Ross</a
+            >
+          </li>
+          <li><a class="s9-zone" href="/htcfisher/station-9/">Station 9</a></li>
+          <li><a href="/htcfisher/broadcast/">Broadcast</a></li>
+          <li><a href="/htcfisher/diary/">Diary</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="guide-hero">
+      <div class="wrap">
+        <div class="guide-hero-text">
+          <ol class="crumbs">
+            <li><a href="/htcfisher/">HTC</a></li>
+            <li>Split Analyser</li>
+          </ol>
+          <p class="eyebrow">Split Analyser</p>
+          <h2>
+            Your finish time says <em>what</em>. Your splits say <em>why</em>.
+          </h2>
+          <p class="lead">
+            Paste the run and station times from your result page. We'll show
+            you which stations actually cost you, whether your runs faded, how
+            this race compares with your last ones, where you sit against other
+            British athletes — and what to train to fix it.
+          </p>
+          <p class="lead">
+            <b>Racing doubles or relay?</b> Put in your partner's splits too and
+            find out who should take which station.
+            <a href="/htcfisher/doubles/">It might not be what you think →</a>
+          </p>
+          <p class="byline">
+            By Ross — HYROX Group Coach, podium athlete, Christchurch personal
+            trainer.
+          </p>
+        </div>
+        <figure class="guide-hero-photo">
+          <img
+            src="/htcfisher/images/rope.jpg"
+            alt="Ross mid-pull on the RowErg, side view"
+            width="714"
+            height="962"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <div class="wrap guide">
+      <aside class="toc" aria-label="Sections">
+        <p>Jump to</p>
+        <ol>
+          <li><a href="#enter">Enter your splits</a></li>
+          <li><a href="#analysis">Your analysis</a></li>
+          <li><a href="#history">Your races</a></li>
+          <li><a href="#databank">British databank</a></li>
+          <li><a href="/htcfisher/doubles/">Doubles &amp; relay planner</a></li>
+        </ol>
+      </aside>
+
+      <div class="article">
+        <div
+          class="partners partners-inline"
+          data-partners="results"
+          data-label="Split analyser supported by"
+          hidden
+        ></div>
+        <p class="approve-note">
+          Your splits are saved to your athlete record so you can compare races
+          over time. Only you (via your private link) and Ross can see them;
+          everyone else sees anonymous medians only.
+        </p>
+
+        <article class="station calc" id="enter">
+          <span class="num">Step 01</span>
+          <h3>Enter your splits</h3>
+          <p>
+            Times as <b>m:ss</b> (e.g. 5:12). They're on your result page at
+            results.hyrox.com or hyresult.com. Leave Roxzone blank if your
+            result doesn't show it.
+          </p>
+          <form
+            class="calc-form splits-form"
+            id="splits-form"
+            autocomplete="off"
+          >
+            <label>
+              <span>Name</span>
+              <input
+                type="text"
+                name="name"
+                required
+                maxlength="60"
+                autocomplete="name"
+                placeholder="Your name"
+              />
+            </label>
+            <label>
+              <span>Email (for your private link)</span>
+              <input
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="you@…"
+              />
+            </label>
+            <label>
+              <span>Race</span>
+              <input
+                type="text"
+                name="event"
+                required
+                maxlength="60"
+                placeholder="Hyrox Christchurch 2026"
+              />
+            </label>
+            <label>
+              <span>Race date</span>
+              <input type="date" name="race_date" required />
+            </label>
+            <label>
+              <span>Division</span>
+              <select name="division" required>
+                <option value="">Choose…</option>
+                <option>Women Open</option>
+                <option>Women Pro</option>
+                <option>Men Open</option>
+                <option>Men Pro</option>
+                <option>Women Doubles</option>
+                <option>Men Doubles</option>
+                <option>Mixed Doubles</option>
+              </select>
+            </label>
+            <div class="splits-grid" id="splits-grid"></div>
+            <label>
+              <span>Roxzone total (optional)</span>
+              <input
+                type="text"
+                name="roxzone"
+                inputmode="numeric"
+                placeholder="4:10"
+                pattern="\d{1,2}:\d{2}"
+              />
+            </label>
+            <label class="splits-consent">
+              <input type="checkbox" name="consent" required />
+              <span>
+                Save my splits to my athlete record and count them (anonymously)
+                in the British databank.
+              </span>
+            </label>
+            <label class="splits-consent">
+              <input type="checkbox" name="newsletter" checked />
+              <span>
+                Email me Ross's British HYROX updates — race dates, plans and
+                tips. Unsubscribe any time.
+              </span>
+            </label>
+            <button class="btn btn-primary" type="submit">
+              Analyse my race
+            </button>
+          </form>
+          <p class="calc-note" id="splits-note"></p>
+        </article>
+
+        <article class="station" id="analysis" hidden>
+          <span class="num">Step 02</span>
+          <h3>Your analysis</h3>
+          <ul class="spec" id="analysis-summary"></ul>
+          <div class="results-scroll">
+            <table
+              class="results-table splits-table"
+              id="analysis-table"
+            ></table>
+          </div>
+          <h4>Strengths</h4>
+          <ul class="splits-list" id="analysis-strengths"></ul>
+          <h4>Where the time went</h4>
+          <ul class="splits-list" id="analysis-weaknesses"></ul>
+          <h4>What Ross would work on with you</h4>
+          <ol class="splits-list" id="analysis-coaching"></ol>
+          <p class="calc-note">
+            "Expected" is a typical Hyrox split profile scaled to your finish
+            time — a yardstick, not a verdict. Carpet, heat and Roxzone layout
+            move every station.
+          </p>
+        </article>
+
+        <article class="station" id="history" hidden>
+          <span class="num">Step 03</span>
+          <h3>Your races</h3>
+          <p id="history-intro"></p>
+          <div class="results-scroll">
+            <table
+              class="results-table splits-table"
+              id="history-table"
+            ></table>
+          </div>
+          <p class="calc-note">
+            Bookmark your private link:
+            <a id="history-link" href="#history">this page</a>. It's the only
+            way back to your races — we don't do passwords.
+          </p>
+        </article>
+
+        <article class="station" id="databank">
+          <span class="num">Step 04</span>
+          <h3>British databank</h3>
+          <p id="databank-intro">
+            Every race submitted here builds an anonymous set of British
+            splits. Once a division has five or more races we show its medians
+            and where you sit against them.
+          </p>
+          <div class="results-scroll">
+            <table
+              class="results-table splits-table"
+              id="databank-table"
+            ></table>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <section class="cta-band">
+      <div class="wrap">
+        <h3>Want the fix, not just the diagnosis?</h3>
+        <p>
+          Coached athletes get their programme built around exactly these
+          numbers — and re-checked after every race.
+        </p>
+        <a class="btn btn-light" href="/htcfisher/#plans">See subscriptions</a>
+        <a class="btn btn-primary" href="/htcfisher/#ask">Ask Ross</a>
+      </div>
+    </section>
+
+    <div
+      class="wrap partners"
+      data-partners="partner"
+      data-label="Partners"
+      hidden
+    ></div>
+
+    <footer>
+      <div class="wrap">
+        <div>© <span id="year"></span> HTC Christchurch</div>
+        <nav>
+          <a href="/htcfisher/stations-prep/">Stations Prep</a>
+          <a href="/htcfisher/run-zone/">Run Zone</a>
+          <a href="/htcfisher/fuel-zone/">Fuel Zone</a>
+          <a href="/htcfisher/taper-zone/">Taper Zone</a>
+          <a href="/htcfisher/events/">Events</a>
+          <a href="/htcfisher/hyrox-norwich/">Hyrox Christchurch</a>
+          <a href="/htcfisher/race-planner/">Race planner</a>
+          <a href="/htcfisher/news/">News</a>
+          <a href="/htcfisher/norwich-hybrid-scene/">Christchurch scene</a>
+          <a href="/htcfisher/station-9/">Station 9</a>
+          <a href="/htcfisher/broadcast/">Broadcast</a>
+          <a href="/htcfisher/diary/">Diary</a>
+          <a href="/htcfisher/results/">Results</a>
+          <a href="/htcfisher/splits/">Split Analyser</a>
+          <a href="/htcfisher/predictor/">Race Predictor</a>
+          <a href="/htcfisher/find-a-partner/">Find a Partner</a>
+          <a href="/htcfisher/#ask">Ask Ross</a>
+          <a href="/htcfisher/book/">Book a session</a>
+          <a href="/htcfisher/advertise/">Advertise</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/htcfisher/app.js?v=1791907123658" defer></script>
+    <script src="/htcfisher/partners.js?v=1791907123658" defer></script>
+    <script src="/htcfisher/splits.js?v=1791907123658" defer></script>
+  </body>
+</html>

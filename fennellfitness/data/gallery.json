@@ -1,0 +1,81 @@
+{
+  "note": "DEMO SEED — photos pulled from Fennell's IG for the walk-in mockup. Replace with real member photos on launch.",
+  "photos": [
+    {
+      "src": "/fennellfitness/images/gallery/crew-hyrox-wall.jpg",
+      "alt": "The Fennell crew under the big HYROX letters at the unit",
+      "caption": "The whole lot of them. Every single one started somewhere.",
+      "by": "Fennell",
+      "tilt": -1.5,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/fennellfitness/images/gallery/crew-race-day.jpg",
+      "alt": "Fennell crew in race bibs outside a Bedford church after a local race",
+      "caption": "Race day crew. Half of them didn't know each other a year ago.",
+      "by": "Fennell",
+      "tilt": 2,
+      "event": "Race day"
+    },
+    {
+      "src": "/fennellfitness/images/gallery/six-am-crew.jpg",
+      "alt": "Early morning session — rowers and coaches in golden light",
+      "caption": "6AM hits different. Every week, same crew.",
+      "by": "Fennell",
+      "tilt": 1,
+      "event": "Squad sessions"
+    },
+    {
+      "src": "/fennellfitness/images/gallery/train-recover.jpg",
+      "alt": "Train hard, recover properly — session and sauna split shot",
+      "caption": "Train hard. Recover properly. Repeat weekly.",
+      "by": "Fennell",
+      "tilt": -2,
+      "event": "Performance Centre"
+    },
+    {
+      "src": "/fennellfitness/images/gallery/blakely-winners.jpg",
+      "alt": "Fennell women's team holding the Blakely Apex winner board",
+      "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
+      "by": "Fennell",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/fennellfitness/images/gallery/ncfc-shirts.jpg",
+      "alt": "Fennell home and away shirts laid on the Carrow Road pitch",
+      "caption": "On the Ball, City. Official NCFC regional partners, 2025-26.",
+      "by": "Fennell",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/fennellfitness/images/gallery/ncfc-seat.jpg",
+      "alt": "Yellow Fennell number 7 shirt draped over a Carrow Road seat",
+      "caption": "Canary colours, Fennell name. Some things were just meant to be.",
+      "by": "Fennell",
+      "event": "NCFC partnership"
+    },
+    {
+      "src": "/fennellfitness/images/gallery/church-crew.jpg",
+      "alt": "The Fennell crew in race bibs outside a Bedford church on race day",
+      "caption": "Race-day crew, Bedford 10k. The church bells were optional.",
+      "by": "Fennell",
+      "event": "Race day"
+    },
+    {
+      "src": "/fennellfitness/images/gallery/values-wall.jpg",
+      "alt": "The Fennell values wall inside the unit",
+      "caption": "House rules: good vibes, community, no egos. Written on the wall.",
+      "by": "Fennell",
+      "event": "The gym"
+    },
+    {
+      "src": "/fennellfitness/images/gallery/street-race.jpg",
+      "alt": "Fennell runner racing down a packed high street, crowd behind the barriers",
+      "caption": "High street takeover. Bedford turns out when the crew races.",
+      "by": "Fennell",
+      "tilt": -1,
+      "event": "Race day"
+    }
+  ]
+}

@@ -1208,6 +1208,1735 @@
         }
       ],
       "demo": true
+    },
+    {
+      "tenant_id": "pacegym",
+      "vertical": "coaching",
+      "hostnames": [
+        "pacegym.localhost",
+        "demo-pacegym.localhost"
+      ],
+      "canonicalHost": "pacegym.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Pace Gym",
+        "tagline": "Hyrox coaching, online programming and race prep from Chichester.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Simon — podium athlete and Chichester personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Chichester and online with Simon — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/pacegym/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/pacegym/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/hyrox-coaching-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/pacegym/hyrox-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/pacegym/norwich-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/pacegym/book/",
+            "priority": "0.7"
+          },
+          {
+            "path": "/pacegym/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/pacegym/station-9/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/pacegym/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "pacegym/data/inbox.json",
+        "writable": [
+          "pacegym/data/events.json",
+          "pacegym/data/cities.json",
+          "pacegym/data/news.json",
+          "pacegym/data/partners.json",
+          "pacegym/data/matchboard.json",
+          "pacegym/data/travelboard.json"
+        ],
+        "partners": "pacegym/data/partners.json",
+        "matchboard": "pacegym/data/matchboard.json",
+        "travelboard": "pacegym/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/pacegym/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/pacegym/welcome/",
+        "welcomeIntro": "Hi Simon — this is the first of your Monday emails from pacegym.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/pacegym/guides/",
+        "brand": "Pace Gym",
+        "homePath": "/pacegym/",
+        "language": "en",
+        "author": {
+          "name": "Simon Wenham",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Simon — HYROX Certified Coach, podium athlete, Chichester personal trainer.",
+        "indexTitle": "HYROX training guides by Simon — Pace Gym",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Chichester: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/pacegym/styles.css",
+          "/pacegym/guide.css"
+        ],
+        "scripts": [
+          "/pacegym/app.js",
+          "/pacegym/partners.js"
+        ],
+        "headerHtml": "<a href=\"/pacegym/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">P<span class=\"o\">A</span>CE GYM <span class=\"sig\" aria-label=\"by Simon Wenham\"><span class=\"sig-text\">by Simon Wenham</span></span></span></h1></a><p class=\"city\">Chichester</p>",
+        "nav": [
+          {
+            "href": "/pacegym/",
+            "label": "Home"
+          },
+          {
+            "href": "/pacegym/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/pacegym/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/pacegym/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/pacegym/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/pacegym/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/pacegym/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/pacegym/hyrox-norwich/",
+            "label": "Hyrox Chichester"
+          },
+          {
+            "href": "/pacegym/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/pacegym/news/",
+            "label": "News"
+          },
+          {
+            "href": "/pacegym/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/pacegym/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/pacegym/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Simon</h3><p>Hybrid coaching in Chichester or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/pacegym/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "hyroxdoncaster",
+      "vertical": "coaching",
+      "hostnames": [
+        "hyroxdoncaster.localhost",
+        "demo-hyroxdoncaster.localhost"
+      ],
+      "canonicalHost": "hyroxdoncaster.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "HYROX Doncaster",
+        "tagline": "Hyrox coaching, online programming and race prep from Doncaster.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Nigel — podium athlete and Doncaster personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Doncaster and online with Nigel — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/hyroxdoncaster/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/hyroxdoncaster/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/hyrox-coaching-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/hyroxdoncaster/hyrox-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/hyroxdoncaster/norwich-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/hyroxdoncaster/book/",
+            "priority": "0.7"
+          },
+          {
+            "path": "/hyroxdoncaster/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hyroxdoncaster/station-9/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/hyroxdoncaster/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "hyroxdoncaster/data/inbox.json",
+        "writable": [
+          "hyroxdoncaster/data/events.json",
+          "hyroxdoncaster/data/cities.json",
+          "hyroxdoncaster/data/news.json",
+          "hyroxdoncaster/data/partners.json",
+          "hyroxdoncaster/data/matchboard.json",
+          "hyroxdoncaster/data/travelboard.json"
+        ],
+        "partners": "hyroxdoncaster/data/partners.json",
+        "matchboard": "hyroxdoncaster/data/matchboard.json",
+        "travelboard": "hyroxdoncaster/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/hyroxdoncaster/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/hyroxdoncaster/welcome/",
+        "welcomeIntro": "Hi Nigel — this is the first of your Monday emails from hyroxdoncaster.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/hyroxdoncaster/guides/",
+        "brand": "HYROX Doncaster",
+        "homePath": "/hyroxdoncaster/",
+        "language": "en",
+        "author": {
+          "name": "Nigel",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Nigel — HYROX Certified Coach, podium athlete, Doncaster personal trainer.",
+        "indexTitle": "HYROX training guides by Nigel — HYROX Doncaster",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Doncaster: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/hyroxdoncaster/styles.css",
+          "/hyroxdoncaster/guide.css"
+        ],
+        "scripts": [
+          "/hyroxdoncaster/app.js",
+          "/hyroxdoncaster/partners.js"
+        ],
+        "headerHtml": "<a href=\"/hyroxdoncaster/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">HYROX D<span class=\"o\">O</span>NCASTER <span class=\"sig\" aria-label=\"by Nigel\"><span class=\"sig-text\">by Nigel</span></span></span></h1></a><p class=\"city\">Doncaster</p>",
+        "nav": [
+          {
+            "href": "/hyroxdoncaster/",
+            "label": "Home"
+          },
+          {
+            "href": "/hyroxdoncaster/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/hyroxdoncaster/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/hyroxdoncaster/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/hyroxdoncaster/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/hyroxdoncaster/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/hyroxdoncaster/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/hyroxdoncaster/hyrox-norwich/",
+            "label": "Hyrox Doncaster"
+          },
+          {
+            "href": "/hyroxdoncaster/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/hyroxdoncaster/news/",
+            "label": "News"
+          },
+          {
+            "href": "/hyroxdoncaster/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/hyroxdoncaster/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/hyroxdoncaster/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Nigel</h3><p>Hybrid coaching in Doncaster or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/hyroxdoncaster/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "htcfisher",
+      "vertical": "coaching",
+      "hostnames": [
+        "htcfisher.localhost",
+        "demo-htcfisher.localhost"
+      ],
+      "canonicalHost": "htcfisher.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "HTC Christchurch",
+        "tagline": "Hyrox coaching, online programming and race prep from Christchurch.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Ross — podium athlete and Christchurch personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Christchurch and online with Ross — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/htcfisher/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/htcfisher/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/hyrox-coaching-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/htcfisher/hyrox-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/htcfisher/norwich-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/htcfisher/book/",
+            "priority": "0.7"
+          },
+          {
+            "path": "/htcfisher/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/htcfisher/station-9/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/htcfisher/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "htcfisher/data/inbox.json",
+        "writable": [
+          "htcfisher/data/events.json",
+          "htcfisher/data/cities.json",
+          "htcfisher/data/news.json",
+          "htcfisher/data/partners.json",
+          "htcfisher/data/matchboard.json",
+          "htcfisher/data/travelboard.json"
+        ],
+        "partners": "htcfisher/data/partners.json",
+        "matchboard": "htcfisher/data/matchboard.json",
+        "travelboard": "htcfisher/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/htcfisher/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/htcfisher/welcome/",
+        "welcomeIntro": "Hi Ross — this is the first of your Monday emails from htcfisher.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/htcfisher/guides/",
+        "brand": "HTC Christchurch",
+        "homePath": "/htcfisher/",
+        "language": "en",
+        "author": {
+          "name": "Ross Fisher",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Ross — HYROX Certified Coach, podium athlete, Christchurch personal trainer.",
+        "indexTitle": "HYROX training guides by Ross — HTC Christchurch",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Christchurch: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/htcfisher/styles.css",
+          "/htcfisher/guide.css"
+        ],
+        "scripts": [
+          "/htcfisher/app.js",
+          "/htcfisher/partners.js"
+        ],
+        "headerHtml": "<a href=\"/htcfisher/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">HT<span class=\"o\">C</span> CHRISTCHURCH <span class=\"sig\" aria-label=\"by Ross Fisher\"><span class=\"sig-text\">by Ross Fisher</span></span></span></h1></a><p class=\"city\">Christchurch</p>",
+        "nav": [
+          {
+            "href": "/htcfisher/",
+            "label": "Home"
+          },
+          {
+            "href": "/htcfisher/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/htcfisher/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/htcfisher/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/htcfisher/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/htcfisher/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/htcfisher/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/htcfisher/hyrox-norwich/",
+            "label": "Hyrox Christchurch"
+          },
+          {
+            "href": "/htcfisher/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/htcfisher/news/",
+            "label": "News"
+          },
+          {
+            "href": "/htcfisher/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/htcfisher/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/htcfisher/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Ross</h3><p>Hybrid coaching in Christchurch or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/htcfisher/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "gym64",
+      "vertical": "coaching",
+      "hostnames": [
+        "gym64.localhost",
+        "demo-gym64.localhost"
+      ],
+      "canonicalHost": "gym64.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Gym64",
+        "tagline": "Hyrox coaching, online programming and race prep from Glenrothes.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Coach — podium athlete and Glenrothes personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Glenrothes and online with Coach — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/gym64/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/gym64/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/hyrox-coaching-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/gym64/hyrox-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/gym64/norwich-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/gym64/book/",
+            "priority": "0.7"
+          },
+          {
+            "path": "/gym64/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/gym64/station-9/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/gym64/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "gym64/data/inbox.json",
+        "writable": [
+          "gym64/data/events.json",
+          "gym64/data/cities.json",
+          "gym64/data/news.json",
+          "gym64/data/partners.json",
+          "gym64/data/matchboard.json",
+          "gym64/data/travelboard.json"
+        ],
+        "partners": "gym64/data/partners.json",
+        "matchboard": "gym64/data/matchboard.json",
+        "travelboard": "gym64/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/gym64/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/gym64/welcome/",
+        "welcomeIntro": "Hi Coach — this is the first of your Monday emails from gym64.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/gym64/guides/",
+        "brand": "Gym64",
+        "homePath": "/gym64/",
+        "language": "en",
+        "author": {
+          "name": "the Gym64 coaching team",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Coach — HYROX Certified Coach, podium athlete, Glenrothes personal trainer.",
+        "indexTitle": "HYROX training guides by Coach — Gym64",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Glenrothes: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/gym64/styles.css",
+          "/gym64/guide.css"
+        ],
+        "scripts": [
+          "/gym64/app.js",
+          "/gym64/partners.js"
+        ],
+        "headerHtml": "<a href=\"/gym64/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">GYM<span class=\"o\">64</span> <span class=\"sig\" aria-label=\"by the Gym64 coaching team\"><span class=\"sig-text\">by the Gym64 coaching team</span></span></span></h1></a><p class=\"city\">Glenrothes</p>",
+        "nav": [
+          {
+            "href": "/gym64/",
+            "label": "Home"
+          },
+          {
+            "href": "/gym64/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/gym64/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/gym64/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/gym64/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/gym64/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/gym64/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/gym64/hyrox-norwich/",
+            "label": "Hyrox Glenrothes"
+          },
+          {
+            "href": "/gym64/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/gym64/news/",
+            "label": "News"
+          },
+          {
+            "href": "/gym64/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/gym64/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/gym64/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Glenrothes or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/gym64/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "nutrifit",
+      "vertical": "coaching",
+      "hostnames": [
+        "nutrifit.localhost",
+        "demo-nutrifit.localhost"
+      ],
+      "canonicalHost": "nutrifit.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "NutriFit Gym",
+        "tagline": "Hyrox coaching, online programming and race prep from Liverpool.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Coach — podium athlete and Liverpool personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Liverpool and online with Coach — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/nutrifit/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/nutrifit/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/hyrox-coaching-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/nutrifit/hyrox-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/nutrifit/norwich-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/nutrifit/book/",
+            "priority": "0.7"
+          },
+          {
+            "path": "/nutrifit/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/nutrifit/station-9/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/nutrifit/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "nutrifit/data/inbox.json",
+        "writable": [
+          "nutrifit/data/events.json",
+          "nutrifit/data/cities.json",
+          "nutrifit/data/news.json",
+          "nutrifit/data/partners.json",
+          "nutrifit/data/matchboard.json",
+          "nutrifit/data/travelboard.json"
+        ],
+        "partners": "nutrifit/data/partners.json",
+        "matchboard": "nutrifit/data/matchboard.json",
+        "travelboard": "nutrifit/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/nutrifit/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/nutrifit/welcome/",
+        "welcomeIntro": "Hi Coach — this is the first of your Monday emails from nutrifit.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/nutrifit/guides/",
+        "brand": "NutriFit Gym",
+        "homePath": "/nutrifit/",
+        "language": "en",
+        "author": {
+          "name": "the NutriFit coaching team",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Coach — HYROX Certified Coach, podium athlete, Liverpool personal trainer.",
+        "indexTitle": "HYROX training guides by Coach — NutriFit Gym",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Liverpool: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/nutrifit/styles.css",
+          "/nutrifit/guide.css"
+        ],
+        "scripts": [
+          "/nutrifit/app.js",
+          "/nutrifit/partners.js"
+        ],
+        "headerHtml": "<a href=\"/nutrifit/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">NUTRI<span class=\"o\">FIT</span> GYM <span class=\"sig\" aria-label=\"by the NutriFit coaching team\"><span class=\"sig-text\">by the NutriFit coaching team</span></span></span></h1></a><p class=\"city\">Liverpool</p>",
+        "nav": [
+          {
+            "href": "/nutrifit/",
+            "label": "Home"
+          },
+          {
+            "href": "/nutrifit/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/nutrifit/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/nutrifit/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/nutrifit/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/nutrifit/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/nutrifit/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/nutrifit/hyrox-norwich/",
+            "label": "Hyrox Liverpool"
+          },
+          {
+            "href": "/nutrifit/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/nutrifit/news/",
+            "label": "News"
+          },
+          {
+            "href": "/nutrifit/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/nutrifit/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/nutrifit/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Liverpool or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/nutrifit/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "kore",
+      "vertical": "coaching",
+      "hostnames": [
+        "kore.localhost",
+        "demo-kore.localhost"
+      ],
+      "canonicalHost": "kore.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "KORE",
+        "tagline": "Hyrox coaching, online programming and race prep from Newport.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Coach — podium athlete and Newport personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Newport and online with Coach — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/kore/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/kore/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/hyrox-coaching-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/kore/hyrox-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/kore/norwich-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/kore/book/",
+            "priority": "0.7"
+          },
+          {
+            "path": "/kore/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/kore/station-9/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/kore/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "kore/data/inbox.json",
+        "writable": [
+          "kore/data/events.json",
+          "kore/data/cities.json",
+          "kore/data/news.json",
+          "kore/data/partners.json",
+          "kore/data/matchboard.json",
+          "kore/data/travelboard.json"
+        ],
+        "partners": "kore/data/partners.json",
+        "matchboard": "kore/data/matchboard.json",
+        "travelboard": "kore/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/kore/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/kore/welcome/",
+        "welcomeIntro": "Hi Coach — this is the first of your Monday emails from kore.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/kore/guides/",
+        "brand": "KORE",
+        "homePath": "/kore/",
+        "language": "en",
+        "author": {
+          "name": "the KORE coaching team",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Coach — HYROX Certified Coach, podium athlete, Newport personal trainer.",
+        "indexTitle": "HYROX training guides by Coach — KORE",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Newport: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/kore/styles.css",
+          "/kore/guide.css"
+        ],
+        "scripts": [
+          "/kore/app.js",
+          "/kore/partners.js"
+        ],
+        "headerHtml": "<a href=\"/kore/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">K<span class=\"o\">O</span>RE <span class=\"sig\" aria-label=\"by the KORE coaching team\"><span class=\"sig-text\">by the KORE coaching team</span></span></span></h1></a><p class=\"city\">Newport</p>",
+        "nav": [
+          {
+            "href": "/kore/",
+            "label": "Home"
+          },
+          {
+            "href": "/kore/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/kore/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/kore/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/kore/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/kore/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/kore/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/kore/hyrox-norwich/",
+            "label": "Hyrox Newport"
+          },
+          {
+            "href": "/kore/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/kore/news/",
+            "label": "News"
+          },
+          {
+            "href": "/kore/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/kore/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/kore/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Newport or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/kore/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "fennellfitness",
+      "vertical": "coaching",
+      "hostnames": [
+        "fennellfitness.localhost",
+        "demo-fennellfitness.localhost"
+      ],
+      "canonicalHost": "fennellfitness.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Fennell Fitness",
+        "tagline": "Hyrox coaching, online programming and race prep from Bedford.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Dan — podium athlete and Bedford personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Bedford and online with Dan — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/fennellfitness/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/fennellfitness/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/hyrox-coaching-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/fennellfitness/hyrox-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/fennellfitness/norwich-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/fennellfitness/book/",
+            "priority": "0.7"
+          },
+          {
+            "path": "/fennellfitness/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/fennellfitness/station-9/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/fennellfitness/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "fennellfitness/data/inbox.json",
+        "writable": [
+          "fennellfitness/data/events.json",
+          "fennellfitness/data/cities.json",
+          "fennellfitness/data/news.json",
+          "fennellfitness/data/partners.json",
+          "fennellfitness/data/matchboard.json",
+          "fennellfitness/data/travelboard.json"
+        ],
+        "partners": "fennellfitness/data/partners.json",
+        "matchboard": "fennellfitness/data/matchboard.json",
+        "travelboard": "fennellfitness/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/fennellfitness/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/fennellfitness/welcome/",
+        "welcomeIntro": "Hi Dan — this is the first of your Monday emails from fennellfitness.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/fennellfitness/guides/",
+        "brand": "Fennell Fitness",
+        "homePath": "/fennellfitness/",
+        "language": "en",
+        "author": {
+          "name": "Dan Fennell",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Dan — HYROX Certified Coach, podium athlete, Bedford personal trainer.",
+        "indexTitle": "HYROX training guides by Dan — Fennell Fitness",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Bedford: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/fennellfitness/styles.css",
+          "/fennellfitness/guide.css"
+        ],
+        "scripts": [
+          "/fennellfitness/app.js",
+          "/fennellfitness/partners.js"
+        ],
+        "headerHtml": "<a href=\"/fennellfitness/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">F<span class=\"o\">E</span>NNELL FITNESS <span class=\"sig\" aria-label=\"by Dan Fennell\"><span class=\"sig-text\">by Dan Fennell</span></span></span></h1></a><p class=\"city\">Bedford</p>",
+        "nav": [
+          {
+            "href": "/fennellfitness/",
+            "label": "Home"
+          },
+          {
+            "href": "/fennellfitness/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/fennellfitness/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/fennellfitness/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/fennellfitness/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/fennellfitness/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/fennellfitness/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/fennellfitness/hyrox-norwich/",
+            "label": "Hyrox Bedford"
+          },
+          {
+            "href": "/fennellfitness/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/fennellfitness/news/",
+            "label": "News"
+          },
+          {
+            "href": "/fennellfitness/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/fennellfitness/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/fennellfitness/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Dan</h3><p>Hybrid coaching in Bedford or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/fennellfitness/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/"
+        }
+      ],
+      "demo": true
     }
   ]
 }

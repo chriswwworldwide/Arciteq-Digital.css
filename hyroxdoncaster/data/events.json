@@ -1,0 +1,8 @@
+{
+  "note": "Next confirmed race for the countdown on /hyroxdoncaster/events/. Set 'next' to { name, date (YYYY-MM-DD, race day 1), url } once Hyrox publishes it; null keeps the countdown hidden. Confirmed dates only.",
+  "next": {
+    "name": "HYROX London",
+    "date": "2026-12-02",
+    "url": "https://hyrox.com/events/"
+  }
+}

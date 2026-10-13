@@ -1,6 +1,6 @@
 /* Advertise with Fennell: list sponsor slots from products.json, save the
    sponsor's brand details as a `sponsor` submission, then hand off to the
-   normal checkout. Nothing goes live until Dan approves on her desk. */
+   normal checkout. Nothing goes live until Dan approves on his desk. */
 (function () {
   "use strict";
   const list = document.getElementById("slot-list");

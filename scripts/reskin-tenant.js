@@ -280,6 +280,21 @@ for (const dir of [cfg.imageOverrides].flat().filter(Boolean)) {
   }
 }
 
+// cfg.overrideExclude = regex patterns; any file copied in by an override dir
+// whose path (relative to <slug>/) matches is deleted. Lets a shared asset
+// pack ship minus tenant-inappropriate photos (e.g. club-branded shots).
+const overrideRes = (cfg.overrideExclude || []).map((re) => new RegExp(re));
+if (overrideRes.length) {
+  const walk = (d) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const p = path.join(d, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (overrideRes.some((re) => re.test(path.relative(dst, p)))) fs.rmSync(p);
+    }
+  };
+  walk(dst);
+}
+
 // ---- 3. seed data files ---------------------------------------------------
 const note = (f) => {
   try {

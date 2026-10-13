@@ -1,0 +1,129 @@
+{
+  "note": "Receptionist answers — the 10 questions Gym64 gets asked most. Instant answers in the Ask section; anything else goes to the inbox.",
+  "items": [
+    {
+      "q": "How much is membership?",
+      "keywords": [
+        "price",
+        "cost",
+        "membership",
+        "how much",
+        "plans",
+        "expensive",
+        "monthly",
+        "pay"
+      ],
+      "a": "Depends how you want to train: 3-Day Trial — £30 (one-off — 3 days). All-Access — £55 (per month). HYROX Squad — £40 (per month). 1:1 Coaching — £150 (per month). Rolling monthly, no lock-in — details on the plans section below."
+    },
+    {
+      "q": "Is there a trial?",
+      "keywords": [
+        "trial",
+        "taster",
+        "try",
+        "free",
+        "first session",
+        "test"
+      ],
+      "a": "Yes — the 3-Day Trial gives you the full run of the place: sessions, open gym, the lot. Most people who try a week stay."
+    },
+    {
+      "q": "I've never done HYROX — can beginners join?",
+      "keywords": [
+        "beginner",
+        "never done",
+        "new",
+        "first time",
+        "unfit",
+        "start"
+      ],
+      "a": "That's most of the room, honestly. Every station scales, nobody's watching your numbers, and Coach will tell you the same: show up twice a week and the rest takes care of itself."
+    },
+    {
+      "q": "What actually is HYROX?",
+      "keywords": [
+        "what is",
+        "hyrox",
+        "format",
+        "rules",
+        "stations",
+        "race"
+      ],
+      "a": "An indoor fitness race: eight 1km runs with a workout station between each — SkiErg, sled push, sled pull, burpee broad jumps, row, farmers carry, lunges, wall balls. Open, Pro, Doubles and Relay divisions, so everyone can race."
+    },
+    {
+      "q": "Where are you based?",
+      "keywords": [
+        "where",
+        "location",
+        "address",
+        "based",
+        "parking",
+        "directions",
+        "find you"
+      ],
+      "a": "We're in Glenrothes — exact session locations go out in the member group each week, and the site has the details under Events. Parking's never been an issue."
+    },
+    {
+      "q": "When are the sessions?",
+      "keywords": [
+        "when",
+        "times",
+        "timetable",
+        "schedule",
+        "sessions",
+        "classes",
+        "morning",
+        "evening"
+      ],
+      "a": "Session times are on the diary page and go out weekly in the group — typically early morning and evening slots so it fits around work. Check the diary or just ask."
+    },
+    {
+      "q": "Do you run HYROX sim days?",
+      "keywords": [
+        "sim",
+        "simulation",
+        "sim day",
+        "practice race",
+        "test run",
+        "tryout"
+      ],
+      "a": "Yes — full race simulations with real timing and transitions, the closest thing to race day without the ticket. Members get first shout; dates land on the events page."
+    },
+    {
+      "q": "Do you do 1:1 coaching?",
+      "keywords": [
+        "1:1",
+        "pt",
+        "personal training",
+        "one to one",
+        "private",
+        "individual"
+      ],
+      "a": "Yes — 1:1 coaching is on the plans. Technique work, race prep, or just faster progress than group sessions alone. Message Coach directly and you'll get a straight answer on whether it's worth it for you."
+    },
+    {
+      "q": "Can I cancel any time?",
+      "keywords": [
+        "cancel",
+        "contract",
+        "lock",
+        "commitment",
+        "quit",
+        "leave"
+      ],
+      "a": "Rolling monthly — cancel whenever, no exit forms, no guilt-trip retention script. If you leave, the door stays open."
+    },
+    {
+      "q": "I'm looking for a doubles partner",
+      "keywords": [
+        "partner",
+        "doubles",
+        "pair",
+        "teammate",
+        "race with"
+      ],
+      "a": "Post a card on the find-a-partner board — pace band, race target, one line about you. Coach matches people by hand, because doubles is chemistry, not just split times."
+    }
+  ]
+}

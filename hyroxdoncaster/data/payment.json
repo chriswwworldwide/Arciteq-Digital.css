@@ -11,32 +11,32 @@
     "src": "",
     "alt": "Payment link from HYROX Doncaster"
   },
-  "whatsapp": "447701385444",
+  "whatsapp": "447000000000",
   "instagram": "hyroxdoncaster",
   "plans": [
     {
-      "id": "hustle-plan-trial-001",
+      "id": "hyroxdoncaster-plan-trial-001",
       "name": "3-Day Trial",
       "per": "one-off — 3 days",
-      "summary": "Three days of everything: HYROX sessions, boxing, strength, open gym. The standard 'come and see' — most people stay.",
+      "summary": "Three days of everything: HYROX sessions, conditioning, strength, open gym. The standard 'come and see' — most people stay.",
       "amountGbp": 30
     },
     {
-      "id": "hustle-plan-all-001",
+      "id": "hyroxdoncaster-plan-all-001",
       "name": "All-Access",
       "per": "per month",
-      "summary": "Unlimited sessions: HYROX squad, boxing, strength, open gym, plus the crew WhatsApp and Saturday sims.",
+      "summary": "Unlimited sessions: HYROX squad, conditioning, strength, open gym, plus the crew WhatsApp and Saturday sims.",
       "amountGbp": 55
     },
     {
-      "id": "hustle-plan-hyrox-001",
+      "id": "hyroxdoncaster-plan-hyrox-001",
       "name": "HYROX Squad",
       "per": "per month",
       "summary": "Two coached HYROX sessions a week, station technique work, and race-sim priority booking.",
       "amountGbp": 40
     },
     {
-      "id": "hustle-plan-121-001",
+      "id": "hyroxdoncaster-plan-121-001",
       "name": "1:1 Coaching",
       "per": "per month",
       "summary": "One PT session a week with Nigel or a coach, plus your programme in the app.",

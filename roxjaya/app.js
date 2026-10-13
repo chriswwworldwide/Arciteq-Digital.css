@@ -88,6 +88,57 @@
     if (!res.ok) throw new Error(String(res.status));
   }
 
+  // FAQ receptionist — the 10 questions every gym gets asked, answered
+  // instantly from data/faq.json. Anything it can't match still lands in
+  // the coach's inbox via the normal capture below.
+  const faqQuick = document.getElementById("faq-quick");
+  const faqChips = document.getElementById("faq-chips");
+  const faqAnswer = document.getElementById("faq-answer");
+  let faqItems = [];
+  const showFaq = (item) => {
+    if (!faqAnswer) return;
+    faqAnswer.hidden = false;
+    faqAnswer.innerHTML = `<strong>${item.q}</strong><p>${item.a}</p>`;
+    faqChips?.querySelectorAll("button").forEach((b) =>
+      b.classList.toggle("on", b.dataset.q === item.q)
+    );
+  };
+  const matchFaq = (txt) => {
+    const t = ` ${String(txt || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ")} `;
+    let best = null;
+    let score = 0;
+    for (const item of faqItems) {
+      const s = (item.keywords || []).reduce(
+        (n, k) => n + (t.includes(k.toLowerCase()) ? 1 : 0),
+        0
+      );
+      if (s > score) {
+        score = s;
+        best = item;
+      }
+    }
+    return score >= 2 ? best : null;
+  };
+  if (faqQuick && faqChips && faqAnswer) {
+    fetch("/roxjaya/data/faq.json", { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        faqItems = (data && data.items) || [];
+        if (!faqItems.length) return;
+        faqQuick.hidden = false;
+        for (const item of faqItems) {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "faq-chip";
+          b.dataset.q = item.q;
+          b.textContent = item.q;
+          b.addEventListener("click", () => showFaq(item));
+          faqChips.appendChild(b);
+        }
+      })
+      .catch(() => {});
+  }
+
   if (form && note) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -102,6 +153,11 @@
           message: String(data.get("question") || ""),
         });
         note.textContent = "Got it — Dina will reply to your inbox.";
+        const hit = matchFaq(data.get("question"));
+        if (hit) {
+          faqQuick.hidden = false;
+          showFaq(hit);
+        }
         form.reset();
         if (onboard) {
           onboard.hidden = false;

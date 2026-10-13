@@ -1133,6 +1133,58 @@ section.block.alt {
   margin-top: 10px;
 }
 
+.faq-quick {
+  margin-bottom: 18px;
+}
+
+.faq-quick-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 10px;
+}
+
+.faq-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.faq-chip {
+  font: inherit;
+  font-size: 13px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+}
+
+.faq-chip.on {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #fff;
+}
+
+.faq-answer {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border-left: 3px solid var(--pink);
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.faq-answer strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
 .zone-result {
   margin-top: 22px;
   padding: 24px;
@@ -2533,14 +2585,6 @@ figure.reveal {
 .pred-line {
   margin: 0 0 10px;
 }
-
-/* NCFC regional-partner accent — canary + green, light touch */
-.masthead .sig { color: var(--ncfc-green); }
-.masthead .sig-text { background-image: linear-gradient(105deg, var(--ncfc-green) 42%, #dff3d9 50%, var(--ncfc-green) 58%); }
-.kicker { color: var(--ncfc-green); }
-.zone .num { color: var(--ncfc-green); }
-.stats strong { color: var(--ncfc-green); }
-.plan .tag { background: var(--ncfc-gold); border-color: var(--ncfc-gold); color: #14532d; }
 
 /* ---------- Broadcast — weekly community bulletin ----------
    body[data-broadcast=locked] = frosted teaser (source site),

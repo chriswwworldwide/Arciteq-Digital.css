@@ -11,8 +11,8 @@
   "city": "Liverpool",
   "whatsapp": "447000000000",
   "email": "",
-  "instagramUrl": "https://www.instagram.com/",
-  "instagramHandle": "TODO",
+  "instagramUrl": "https://www.instagram.com/nutrifit/",
+  "instagramHandle": "nutrifit",
   "greeting": "Hi Coach! Found you on NutriFit Gym — I'm interested in HYROX training. ",
   "colors": {
     "pink": "#16a34a",
@@ -269,22 +269,234 @@
       "a payment link from your banking app"
     ],
     [
-      "the NutriFit coaching team coaching a session at NutriFit Gym in Liverpool",
-      "NutriFit x Liverpool City FC — official regional partner scarf in canary colours"
-    ],
-    [
       "Coach, head coach",
       "The NutriFit crew after a race-day community run"
     ],
     [
       "Book Coach",
       "Book a session"
+    ],
+    [
+      "makes intros herself",
+      "make intros themselves"
+    ],
+    [
+      "she'll intro you herself",
+      "they'll intro you themselves"
+    ],
+    [
+      "she'll take your card down",
+      "they'll take your card down"
+    ],
+    [
+      "reads every card herself",
+      "read every card themselves"
+    ],
+    [
+      "and she'll see your",
+      "and they'll see your"
+    ],
+    [
+      "she would use",
+      "they would use"
+    ],
+    [
+      "she books for the RSVPs she has",
+      "they book for the RSVPs they have"
+    ],
+    [
+      "the RSVPs she has",
+      "the RSVPs they have"
+    ],
+    [
+      "the numbers she has",
+      "the numbers they have"
+    ],
+    [
+      "she'll say which",
+      "they'll say which"
+    ],
+    [
+      "without her OK",
+      "without their OK"
+    ],
+    [
+      "if she spots a match",
+      "if they spot a match"
+    ],
+    [
+      "on her desk",
+      "on their desk"
+    ],
+    [
+      "on her device",
+      "on their device"
+    ],
+    [
+      "she'll set you up",
+      "they'll set you up"
+    ],
+    [
+      "she replies within",
+      "they reply within"
+    ],
+    [
+      "in her lilac kit",
+      "in race kit"
+    ],
+    [
+      "in her HYROX race kit",
+      "in HYROX race kit"
+    ],
+    [
+      "her doubles partner",
+      "their doubles partner"
+    ],
+    [
+      "on her shoulders",
+      "on their shoulders"
+    ],
+    [
+      "What she does",
+      "What they do"
+    ],
+    [
+      "She races this circuit",
+      "They race this circuit"
+    ],
+    [
+      "she races this circuit",
+      "they race this circuit"
+    ],
+    [
+      "she knows who'd actually",
+      "they know who'd actually"
+    ],
+    [
+      "she knows who would actually",
+      "they know who would actually"
+    ],
+    [
+      "She lists every approved card herself, so give her a day",
+      "They list every approved card themselves, so give them a day"
+    ],
+    [
+      "She lists every approved one herself, so give her a day",
+      "They list every approved one themselves, so give them a day"
+    ],
+    [
+      "she wouldn't put in front of",
+      "they wouldn't put in front of"
+    ],
+    [
+      "She confirms within",
+      "They confirm within"
+    ],
+    [
+      "It's her voice in your pocket",
+      "It's their voice in your pocket"
+    ],
+    [
+      "the coffee she's bringing",
+      "the coffee they're bringing"
+    ],
+    [
+      "the weeks she's away",
+      "the weeks they're away"
+    ],
+    [
+      "tell her you're coming",
+      "tell them you're coming"
+    ],
+    [
+      "she's back on the floor",
+      "they're back on the floor"
+    ],
+    [
+      "and she'll reply personally",
+      "and they'll reply personally"
+    ],
+    [
+      "has done it herself, twice, pregnant.",
+      "has raced it — twice."
+    ],
+    [
+      "Where she'll be",
+      "Where they'll be"
+    ],
+    [
+      "Tell her what",
+      "Tell them what"
+    ],
+    [
+      "If she thinks it fits",
+      "If they think it fits"
+    ],
+    [
+      "she connects you",
+      "they connect you"
+    ],
+    [
+      "she'll put it up",
+      "they'll put it up"
+    ],
+    [
+      "tell her in the notes",
+      "tell them in the notes"
+    ],
+    [
+      "she'll adjust",
+      "they'll adjust"
+    ],
+    [
+      "she's had a look",
+      "they've had a look"
+    ],
+    [
+      "she's still enjoying herself",
+      "they're still enjoying themselves"
+    ],
+    [
+      "she'll edit as her programming evolves",
+      "they'll edit as the programming evolves"
+    ],
+    [
+      "in her race belt",
+      "in their race belt"
+    ],
+    [
+      "and she'll",
+      "and they'll"
+    ],
+    [
+      "intro you herself",
+      "intro you themselves"
+    ],
+    [
+      "would use herself",
+      "would use themselves"
+    ],
+    [
+      "she'll know where to find you",
+      "they'll know where to find you"
+    ],
+    [
+      "would use\n            herself.",
+      "would use\n            themselves."
+    ],
+    [
+      "her client-login",
+      "their client-login"
+    ],
+    [
+      "once her account exists",
+      "once the account exists"
     ]
   ],
   "copyOverrides": [
     {
       "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"eyebrow\">Meet the crew</p>\n          <h3>NutriFit. From Tuesday-night classes to the studio.</h3>\n          <p class=\"lead\">\n            Started as a handful of classes around Liverpool —\n            HYROX, boxing, strength — now it's a dedicated performance centre\n            with simulations, a full race floor and a crew that shows up\n            every week. Run by Coach and the coaches you'll actually train\n            with.\n          </p>\n          <p class=\"quote\">\n            \"HYROX isn't about who's strongest — it's about who keeps showing\n            up. That's the whole game.\"\n          </p>"
+      "replace": "<p class=\"eyebrow\">Meet the crew</p>\n          <h3>NutriFit. From Tuesday-night classes to the studio.</h3>\n          <p class=\"lead\">\n            Started as a handful of classes around Liverpool —\n            HYROX, conditioning, strength — now it's a dedicated performance centre\n            with simulations, a full race floor and a crew that shows up\n            every week. Run by Coach and the coaches you'll actually train\n            with.\n          </p>\n          <p class=\"quote\">\n            \"HYROX isn't about who's strongest — it's about who keeps showing\n            up. That's the whole game.\"\n          </p>"
     },
     {
       "pattern": "<ul>\\s*<li>\\s*Podium and 1st in age group[\\s\\S]*?</ul>",
@@ -380,11 +592,7 @@
     },
     {
       "pattern": "Aku Coach[\\s\\S]*?Yang penting berani memulai\\.",
-      "replace": "We're NutriFit — started as Tuesday-night classes around Liverpool\n          and Wirral, now Liverpool's dedicated HYROX performance centre.\n          HYROX, boxing, strength, the lot — training for real life: real\n          schedules, real effort, your real first race. Never raced before?\n          Even better. You just have to start."
-    },
-    {
-      "pattern": "<div class=\"stats\">[\\s\\S]*?Hyrox races</span></div>\\s*</div>",
-      "replace": "<div class=\"stats\">\n          <div>\n            <strong>60+</strong><span>Athletes at the last in-house HYROX sim</span>\n          </div>\n          <div>\n            <strong>2</strong><span>Locations — Liverpool &amp; Wirral</span>\n          </div>\n          <div><strong>HYROX</strong><span>Official affiliate gym</span></div>\n          <div><strong>NCFC</strong><span>Regional partner — Liverpool City FC</span></div>\n        </div>"
+      "replace": "We're NutriFit — started as Tuesday-night classes around Liverpool\n          and Wirral, now Liverpool's dedicated HYROX performance centre.\n          HYROX, conditioning, strength, the lot — training for real life: real\n          schedules, real effort, your real first race. Never raced before?\n          Even better. You just have to start."
     },
     {
       "pattern": "Kapan HYROX Liverpool 2027 dan bagaimana cara daftar \\(tiket\\)\\?",
@@ -485,18 +693,6 @@
     {
       "pattern": "Monthly coaching that fits around your life[^<]*",
       "replace": "Group training for all abilities — from first-timer classes to full race prep. New here? Try 3 days for £30."
-    },
-    {
-      "pattern": "--pink-100: #fde4e5;",
-      "replace": "--pink-100: #fde4e5;\n  --ncfc-green: #166534;\n  --ncfc-gold: #fff200;"
-    },
-    {
-      "pattern": "\\.pred-line \\{\\s*margin: 0 0 10px;\\s*\\}",
-      "replace": "$&\n\n/* NCFC regional-partner accent — canary + green, light touch */\n.masthead .sig { color: var(--ncfc-green); }\n.masthead .sig-text { background-image: linear-gradient(105deg, var(--ncfc-green) 42%, #dff3d9 50%, var(--ncfc-green) 58%); }\n.kicker { color: var(--ncfc-green); }\n.zone .num { color: var(--ncfc-green); }\n.stats strong { color: var(--ncfc-green); }\n.plan .tag { background: var(--ncfc-gold); border-color: var(--ncfc-gold); color: #14532d; }"
-    },
-    {
-      "pattern": "vec3 col = texture2D\\(u_tex, cuv\\)\\.rgb;",
-      "replace": "vec3 col = texture2D(u_tex, cuv).rgb;\n      // NCFC accent: unresolved mosaic tiles checkerboard canary/green,\n      // fading back to the real photo as the paper resolves.\n      float lum = dot(col, vec3(0.299, 0.587, 0.114));\n      float chk = mod(floor(vUv.x * cells) + floor(vUv.y * cells), 2.0);\n      vec3 ncfc = mix(vec3(1.0, 0.89, 0.05), vec3(0.0, 0.55, 0.24), chk);\n      col = mix(ncfc * (0.4 + 0.8 * lum), col, vResolve);"
     },
     {
       "pattern": "Eyes on the target line the whole time\\. Looking at the ball is\\s+how you drop it on rep 68\\.",
@@ -823,32 +1019,32 @@
         "src": "",
         "alt": "Payment link from NutriFit"
       },
-      "whatsapp": "447701385444",
+      "whatsapp": "447000000000",
       "instagram": "nutrifit",
       "plans": [
         {
-          "id": "hustle-plan-trial-001",
+          "id": "nutrifit-plan-trial-001",
           "name": "3-Day Trial",
           "per": "one-off — 3 days",
-          "summary": "Three days of everything: HYROX sessions, boxing, strength, open gym. The standard 'come and see' — most people stay.",
+          "summary": "Three days of everything: HYROX sessions, conditioning, strength, open gym. The standard 'come and see' — most people stay.",
           "amountGbp": 30
         },
         {
-          "id": "hustle-plan-all-001",
+          "id": "nutrifit-plan-all-001",
           "name": "All-Access",
           "per": "per month",
-          "summary": "Unlimited sessions: HYROX squad, boxing, strength, open gym, plus the crew WhatsApp and Saturday sims.",
+          "summary": "Unlimited sessions: HYROX squad, conditioning, strength, open gym, plus the crew WhatsApp and Saturday sims.",
           "amountGbp": 55
         },
         {
-          "id": "hustle-plan-hyrox-001",
+          "id": "nutrifit-plan-hyrox-001",
           "name": "HYROX Squad",
           "per": "per month",
           "summary": "Two coached HYROX sessions a week, station technique work, and race-sim priority booking.",
           "amountGbp": 40
         },
         {
-          "id": "hustle-plan-121-001",
+          "id": "nutrifit-plan-121-001",
           "name": "1:1 Coaching",
           "per": "per month",
           "summary": "One PT session a week with Coach or a coach, plus your programme in the app.",
@@ -898,20 +1094,6 @@
           "by": "NutriFit",
           "tilt": 1.5,
           "event": "Race day"
-        },
-        {
-          "src": "/nutrifit/images/gallery/ncfc-shirts.jpg",
-          "alt": "NutriFit home and away shirts laid on the Carrow Road pitch",
-          "caption": "On the Ball, City. Official NCFC regional partners, 2025-26.",
-          "by": "NutriFit",
-          "event": "NCFC partnership"
-        },
-        {
-          "src": "/nutrifit/images/gallery/ncfc-seat.jpg",
-          "alt": "Yellow NutriFit number 7 shirt draped over a Carrow Road seat",
-          "caption": "Canary colours, NutriFit name. Some things were just meant to be.",
-          "by": "NutriFit",
-          "event": "NCFC partnership"
         },
         {
           "src": "/nutrifit/images/gallery/church-crew.jpg",
@@ -1011,16 +1193,149 @@
           "note": "Full run-through"
         }
       ]
+    },
+    "faq.json": {
+      "note": "Receptionist answers — the 10 questions NutriFit Gym gets asked most. Instant answers in the Ask section; anything else goes to the inbox.",
+      "items": [
+        {
+          "q": "How much is membership?",
+          "keywords": [
+            "price",
+            "cost",
+            "membership",
+            "how much",
+            "plans",
+            "expensive",
+            "monthly",
+            "pay"
+          ],
+          "a": "Depends how you want to train: 3-Day Trial — £30 (one-off — 3 days). All-Access — £55 (per month). HYROX Squad — £40 (per month). 1:1 Coaching — £150 (per month). Rolling monthly, no lock-in — details on the plans section below."
+        },
+        {
+          "q": "Is there a trial?",
+          "keywords": [
+            "trial",
+            "taster",
+            "try",
+            "free",
+            "first session",
+            "test"
+          ],
+          "a": "Yes — the 3-Day Trial gives you the full run of the place: sessions, open gym, the lot. Most people who try a week stay."
+        },
+        {
+          "q": "I've never done HYROX — can beginners join?",
+          "keywords": [
+            "beginner",
+            "never done",
+            "new",
+            "first time",
+            "unfit",
+            "start"
+          ],
+          "a": "That's most of the room, honestly. Every station scales, nobody's watching your numbers, and Coach will tell you the same: show up twice a week and the rest takes care of itself."
+        },
+        {
+          "q": "What actually is HYROX?",
+          "keywords": [
+            "what is",
+            "hyrox",
+            "format",
+            "rules",
+            "stations",
+            "race"
+          ],
+          "a": "An indoor fitness race: eight 1km runs with a workout station between each — SkiErg, sled push, sled pull, burpee broad jumps, row, farmers carry, lunges, wall balls. Open, Pro, Doubles and Relay divisions, so everyone can race."
+        },
+        {
+          "q": "Where are you based?",
+          "keywords": [
+            "where",
+            "location",
+            "address",
+            "based",
+            "parking",
+            "directions",
+            "find you"
+          ],
+          "a": "We're in Liverpool — exact session locations go out in the member group each week, and the site has the details under Events. Parking's never been an issue."
+        },
+        {
+          "q": "When are the sessions?",
+          "keywords": [
+            "when",
+            "times",
+            "timetable",
+            "schedule",
+            "sessions",
+            "classes",
+            "morning",
+            "evening"
+          ],
+          "a": "Session times are on the diary page and go out weekly in the group — typically early morning and evening slots so it fits around work. Check the diary or just ask."
+        },
+        {
+          "q": "Do you run HYROX sim days?",
+          "keywords": [
+            "sim",
+            "simulation",
+            "sim day",
+            "practice race",
+            "test run",
+            "tryout"
+          ],
+          "a": "Yes — full race simulations with real timing and transitions, the closest thing to race day without the ticket. Members get first shout; dates land on the events page."
+        },
+        {
+          "q": "Do you do 1:1 coaching?",
+          "keywords": [
+            "1:1",
+            "pt",
+            "personal training",
+            "one to one",
+            "private",
+            "individual"
+          ],
+          "a": "Yes — 1:1 coaching is on the plans. Technique work, race prep, or just faster progress than group sessions alone. Message Coach directly and you'll get a straight answer on whether it's worth it for you."
+        },
+        {
+          "q": "Can I cancel any time?",
+          "keywords": [
+            "cancel",
+            "contract",
+            "lock",
+            "commitment",
+            "quit",
+            "leave"
+          ],
+          "a": "Rolling monthly — cancel whenever, no exit forms, no guilt-trip retention script. If you leave, the door stays open."
+        },
+        {
+          "q": "I'm looking for a doubles partner",
+          "keywords": [
+            "partner",
+            "doubles",
+            "pair",
+            "teammate",
+            "race with"
+          ],
+          "a": "Post a card on the find-a-partner board — pace band, race target, one line about you. Coach matches people by hand, because doubles is chemistry, not just split times."
+        }
+      ]
     }
   },
   "imageOverrides": "scripts/reskin/hustle-assets",
   "excludePatterns": [
     "images/dina-",
     "images/gallery/",
-    "images/(squad-anya|carry|coach|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station9-dinner|station10-dance)\\.jpg$"
+    "images/(squad-anya|carry|coach|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station9-dinner|station10-dance)\\.jpg$",
+    "images/cities"
   ],
   "currency": "gbp",
   "sharedPack": "scripts/reskin/shared-packs/uk.json",
   "broadcastDemo": true,
-  "_prospectNote": "PROSPECT NutriFit Gym Liverpool — bolt-on only, digitally savvy, own app. TODO: coach name, IG, WhatsApp, photos."
+  "_prospectNote": "PROSPECT NutriFit Gym Liverpool — bolt-on only, digitally savvy, own app. TODO: coach name, IG, WhatsApp, photos.",
+  "overrideExclude": [
+    "ncfc-"
+  ]
 }

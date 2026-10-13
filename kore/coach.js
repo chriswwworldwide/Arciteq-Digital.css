@@ -1,6 +1,6 @@
 // Coach's desk: Coach's private view of traffic + people, built on the engine's
 // admin endpoints (/admin/traffic, /admin/people). The coach key is the
-// server's ADMIN_API_KEY, kept in localStorage on her device only.
+// server's ADMIN_API_KEY, kept in localStorage on their device only.
 // Deep links: /kore/coach/#traffic, #people, #people?q=someone@x.com, #howto.
 (function () {
   const KEY = "kore.coach.key";

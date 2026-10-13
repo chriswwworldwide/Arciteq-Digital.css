@@ -88,6 +88,57 @@
     if (!res.ok) throw new Error(String(res.status));
   }
 
+  // FAQ receptionist — the 10 questions every gym gets asked, answered
+  // instantly from data/faq.json. Anything it can't match still lands in
+  // the coach's inbox via the normal capture below.
+  const faqQuick = document.getElementById("faq-quick");
+  const faqChips = document.getElementById("faq-chips");
+  const faqAnswer = document.getElementById("faq-answer");
+  let faqItems = [];
+  const showFaq = (item) => {
+    if (!faqAnswer) return;
+    faqAnswer.hidden = false;
+    faqAnswer.innerHTML = `<strong>${item.q}</strong><p>${item.a}</p>`;
+    faqChips?.querySelectorAll("button").forEach((b) =>
+      b.classList.toggle("on", b.dataset.q === item.q)
+    );
+  };
+  const matchFaq = (txt) => {
+    const t = ` ${String(txt || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ")} `;
+    let best = null;
+    let score = 0;
+    for (const item of faqItems) {
+      const s = (item.keywords || []).reduce(
+        (n, k) => n + (t.includes(k.toLowerCase()) ? 1 : 0),
+        0
+      );
+      if (s > score) {
+        score = s;
+        best = item;
+      }
+    }
+    return score >= 2 ? best : null;
+  };
+  if (faqQuick && faqChips && faqAnswer) {
+    fetch("/racetoframe/data/faq.json", { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        faqItems = (data && data.items) || [];
+        if (!faqItems.length) return;
+        faqQuick.hidden = false;
+        for (const item of faqItems) {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "faq-chip";
+          b.dataset.q = item.q;
+          b.textContent = item.q;
+          b.addEventListener("click", () => showFaq(item));
+          faqChips.appendChild(b);
+        }
+      })
+      .catch(() => {});
+  }
+
   if (form && note) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -102,6 +153,11 @@
           message: String(data.get("question") || ""),
         });
         note.textContent = "Got it — Gregor & Hattie will reply to your inbox.";
+        const hit = matchFaq(data.get("question"));
+        if (hit) {
+          faqQuick.hidden = false;
+          showFaq(hit);
+        }
         form.reset();
         if (onboard) {
           onboard.hidden = false;
@@ -1070,7 +1126,9 @@ window.roxShare = (function () {
     edge(x0, 0, x0 + fw, 0); // left: clear at x0, keep by x0+fw
     edge(x1, 0, x1 - fw, 0); // right
     edge(0, y0, 0, y0 + fy); // top
-    edge(0, y1, 0, y1 - fy); // bottom
+    // bottom fades ~3x deeper — a hard photo→ink line reads during the
+    // hero-reveal sweep; the sheet bake uses the same 0.08 depth
+    edge(0, y1, 0, y1 - Math.max(fy, rh * 0.08)); // bottom
     const url = `url(${mc.toDataURL("image/png")})`;
     maskEl.style.maskImage = maskEl.style.webkitMaskImage = url;
     maskEl.style.maskSize = maskEl.style.webkitMaskSize = "100% 100%";

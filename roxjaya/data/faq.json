@@ -1,0 +1,55 @@
+{
+  "note": "Receptionist answers — the 10 questions Dina gets asked most by HYROX athletes in Jakarta. Shown instantly in the Ask section; anything else still goes to her inbox.",
+  "items": [
+    {
+      "q": "Berapa harga coaching-nya?",
+      "keywords": ["harga", "berapa", "price", "cost", "membership", "bayar", "mahal", "biaya"],
+      "a": "Tergantung levelnya: Warrior Program Rp 599rb/bulan (programme di app), Rookie Crew Rp 850rb/bulan (sesi grup mingguan di Jakarta + komunitas), Hybrid Coaching Rp 2,5jt/bulan (1:1 + dua sesi floor), Elite Race Prep Rp 6jt/bulan. Semua ada di halaman Plans — transfer BCA atau QRIS."
+    },
+    {
+      "q": "Aku belum pernah HYROX, bisa ikut?",
+      "keywords": ["pemula", "beginner", "belum pernah", "first time", "pertama", "bisa ikut", "newbie", "gapernah"],
+      "a": "Justru itu yang Rookie Crew buat — hampir semua member mulai dari nol. Sesi pertama pasti berat, tapi semua gerakan bisa di-scale. Nggak ada yang nilai kamu di sini; yang penting datang lagi minggu depan."
+    },
+    {
+      "q": "HYROX itu sebenarnya apa sih?",
+      "keywords": ["apa itu", "what is", "hyrox apa", "format", "rules", "peraturan"],
+      "a": "Race fitness indoor: 8 kali lari 1 km, diselang 8 station — SkiErg, sled push, sled pull, burpee broad jumps, rowing, farmers carry, lunges, wall balls. Semua orang bisa ikut, ada kategori Open, Pro, Doubles, dan Relay."
+    },
+    {
+      "q": "Di mana lokasi latihannya?",
+      "keywords": ["lokasi", "dimana", "di mana", "where", "alamat", "gym", "kemang", "tempat"],
+      "a": "Sesi floor biasanya di Kemang, Jakarta Selatan — detail lokasi persis dibagikan di grup WhatsApp member tiap minggu. Untuk program online (Warrior Program), kamu bisa latihan di gym mana pun."
+    },
+    {
+      "q": "Kapan HYROX Jakarta berikutnya?",
+      "keywords": ["kapan", "when", "race", "jadwal race", "tanggal", "pik2", "nice", "event", "jakarta race"],
+      "a": "HYROX Jakarta digelar di NICE, PIK2 — cek halaman Race Planner untuk tanggal terbaru dan rencana perjalanan crew. Tiket race dijual di situs resmi HYROX dan biasanya cepat habis; join dulu biar nggak ketinggalan info."
+    },
+    {
+      "q": "Gimana cara ikut sim day?",
+      "keywords": ["sim", "simulasi", "sim day", "latihan race", "practice", "try out", "test run"],
+      "a": "Sim day = simulasi race penuh bareng crew — timing resmi, transisi beneran, rasanya 90% race day. Member dapat prioritas; slot dibuka lewat WhatsApp grup dan halaman Events. Datang 30 menit lebih awal buat briefing."
+    },
+    {
+      "q": "Bisa cari partner doubles di sini?",
+      "keywords": ["partner", "doubles", "dobel", "teman race", "pair", "bareng"],
+      "a": "Bisa — itu fungsi Find-a-Partner board. Post kartumu (pace, format, race target), dan aku yang cocokin manual kalau ada yang pas. Doubles itu soal chemistry, bukan cuma split time."
+    },
+    {
+      "q": "Ada program untuk race di luar negeri?",
+      "keywords": ["luar negeri", "kl", "kuala lumpur", "singapore", "travel", "trip", "asia", "abroad"],
+      "a": "Ada — crew sering terbang bareng ke race Asia (KL, Singapore, dst). Cek Travel Board buat join trip yang sudah ada atau posting rencanamu. Koordinasi hotel dan flight bareng bikin jauh lebih murah."
+    },
+    {
+      "q": "Coaching-nya pakai Bahasa atau English?",
+      "keywords": ["bahasa", "english", "language", "inggris", "bilingual"],
+      "a": "Dua-duanya — cue di floor campur, tapi kamu boleh tanya dan dijawab dalam Bahasa Indonesia atau English, mana pun yang bikin kamu paling paham. Program di app tersedia dua bahasa."
+    },
+    {
+      "q": "Gimana cara mulai / booking sesi pertama?",
+      "keywords": ["mulai", "start", "booking", "daftar", "join", "gabung", "sign up", "trial", "coba"],
+      "a": "Paling gampang: isi form Ask di halaman ini atau DM Instagram @roxjayawarriors — aku balas personal, bukan bot. Ceritain targetmu, terus kita tentuin plan yang pas. Sesi pertama tinggal datang, sisanya aku yang urus."
+    }
+  ]
+}

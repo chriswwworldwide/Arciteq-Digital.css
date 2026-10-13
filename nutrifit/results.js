@@ -258,7 +258,7 @@
     }
     timeNote.textContent = ok
       ? "Got it — Coach'll check it against the official results and add it."
-      : "Couldn't send just now — DM your time to @TODO instead.";
+      : "Couldn't send just now — DM your time to @nutrifit instead.";
     if (ok) timeForm.querySelector("button[type=submit]").disabled = true;
   });
 

@@ -445,261 +445,6 @@
       }
     },
     {
-      "tenant_id": "hustle",
-      "vertical": "coaching",
-      "hostnames": [
-        "hustle.localhost",
-        "demo-hustle.localhost"
-      ],
-      "canonicalHost": "hustle.localhost",
-      "currency": "gbp",
-      "language": "en",
-      "catalog": {
-        "nicheCategorySlugs": [],
-        "heroProductIds": [],
-        "productTypeSlugs": []
-      },
-      "seo": {
-        "brandName": "Hustle Performance Centre",
-        "tagline": "Hyrox coaching, online programming and race prep from Norwich.",
-        "supportEmail": "hello@doyouhustle.co.uk",
-        "about": "Hyrox coaching by Bobby — podium athlete and Norwich personal trainer. Structured programming, station technique and run pacing for women who race.",
-        "meta": {
-          "homeDescription": "Hyrox coaching in Norwich and online with Bobby — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
-          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
-          "cartDescription": "Review your plan and subscribe securely."
-        },
-        "sameAs": [],
-        "staticPages": [
-          {
-            "path": "/hustle/",
-            "priority": "1.0"
-          },
-          {
-            "path": "/hustle/stations-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/run-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/fuel-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/taper-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/warrior-program/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/hyrox-coaching-norwich/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/elite-race-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/events/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/hustle/hyrox-norwich/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/race-planner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/news/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/hustle/norwich-hybrid-scene/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/advertise/",
-            "priority": "0.5"
-          },
-          {
-            "path": "/hustle/book/",
-            "priority": "0.7"
-          },
-          {
-            "path": "/hustle/results/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/splits/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/doubles/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/find-a-partner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/hustle/station-9/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/hustle/guides/",
-            "priority": "0.8"
-          }
-        ]
-      },
-      "submissions": {
-        "kinds": [
-          "race_splits",
-          "wall_photo",
-          "sponsor",
-          "bank_transfer",
-          "date_alert",
-          "partner_search",
-          "travel_party",
-          "station9_rsvp",
-          "race_result",
-          "predictor"
-        ]
-      },
-      "features": {
-        "predictor": true,
-        "chatbot": false
-      },
-      "analytics": {
-        "pageviews": true
-      },
-      "automation": {
-        "inbox": "hustle/data/inbox.json",
-        "writable": [
-          "hustle/data/events.json",
-          "hustle/data/cities.json",
-          "hustle/data/news.json",
-          "hustle/data/partners.json",
-          "hustle/data/matchboard.json",
-          "hustle/data/travelboard.json"
-        ],
-        "partners": "hustle/data/partners.json",
-        "matchboard": "hustle/data/matchboard.json",
-        "travelboard": "hustle/data/travelboard.json",
-        "autoApprove": [
-          "event",
-          "news",
-          "alert",
-          "sponsor"
-        ],
-        "coachPath": "/hustle/coach/",
-        "digestTo": "hello@doyouhustle.co.uk",
-        "digestDayUtc": 1,
-        "digestHourUtc": 0,
-        "welcomePath": "/hustle/welcome/",
-        "welcomeIntro": "Hi Bobby — this is the first of your Monday emails from hustle.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
-      },
-      "offers": {},
-      "guides": {
-        "basePath": "/hustle/guides/",
-        "brand": "Hustle Performance Centre",
-        "homePath": "/hustle/",
-        "language": "en",
-        "author": {
-          "name": "Bobby Harrison",
-          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
-        },
-        "byline": "By Bobby — HYROX Certified Coach, podium athlete, Norwich personal trainer.",
-        "indexTitle": "HYROX training guides by Bobby — Hustle Performance Centre",
-        "indexHeading": "HYROX training guides",
-        "indexDescription": "Practical HYROX guides from Norwich: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
-        "stylesheets": [
-          "/hustle/styles.css",
-          "/hustle/guide.css"
-        ],
-        "scripts": [
-          "/hustle/app.js",
-          "/hustle/partners.js"
-        ],
-        "headerHtml": "<a href=\"/hustle/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">H<span class=\"o\">U</span>STLE <span class=\"sig\" aria-label=\"by Bobby Harrison\"><span class=\"sig-text\">by Bobby Harrison</span></span></span></h1></a><p class=\"city\">Norwich</p>",
-        "nav": [
-          {
-            "href": "/hustle/",
-            "label": "Home"
-          },
-          {
-            "href": "/hustle/stations-prep/",
-            "label": "Stations Prep"
-          },
-          {
-            "href": "/hustle/run-zone/",
-            "label": "Run Zone"
-          },
-          {
-            "href": "/hustle/fuel-zone/",
-            "label": "Fuel Zone"
-          },
-          {
-            "href": "/hustle/taper-zone/",
-            "label": "Taper Zone"
-          },
-          {
-            "href": "/hustle/guides/",
-            "label": "Guides"
-          },
-          {
-            "href": "/hustle/events/",
-            "label": "Upcoming Events"
-          },
-          {
-            "href": "/hustle/hyrox-norwich/",
-            "label": "Hyrox Norwich"
-          },
-          {
-            "href": "/hustle/race-planner/",
-            "label": "Race planner"
-          },
-          {
-            "href": "/hustle/news/",
-            "label": "News"
-          },
-          {
-            "href": "/hustle/results/",
-            "label": "Results"
-          },
-          {
-            "href": "/hustle/splits/",
-            "label": "Split analyser"
-          },
-          {
-            "href": "/hustle/#plans",
-            "label": "Subscriptions"
-          }
-        ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Bobby</h3><p>Hybrid coaching in Norwich or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/hustle/hyrox-coaching-norwich/\">See coaching plans</a></section>"
-      },
-      "channels": [
-        {
-          "label": "Instagram @hustle_norwich",
-          "url": "https://www.instagram.com/hustle_norwich/"
-        },
-        {
-          "label": "Instagram @hustle_wymondham",
-          "url": "https://www.instagram.com/hustle_wymondham/"
-        },
-        {
-          "label": "Facebook community",
-          "url": "https://www.facebook.com/hustlenr7"
-        }
-      ],
-      "demo": true
-    },
-    {
       "tenant_id": "racetoframe",
       "vertical": "coaching",
       "hostnames": [
@@ -1261,7 +1006,7 @@
             "priority": "0.9"
           },
           {
-            "path": "/pacegym/hyrox-coaching-norwich/",
+            "path": "/pacegym/hyrox-coaching-chichester/",
             "priority": "0.9"
           },
           {
@@ -1273,7 +1018,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/pacegym/hyrox-norwich/",
+            "path": "/pacegym/hyrox-chichester/",
             "priority": "0.9"
           },
           {
@@ -1285,7 +1030,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/pacegym/norwich-hybrid-scene/",
+            "path": "/pacegym/chichester-hybrid-scene/",
             "priority": "0.9"
           },
           {
@@ -1422,7 +1167,7 @@
             "label": "Upcoming Events"
           },
           {
-            "href": "/pacegym/hyrox-norwich/",
+            "href": "/pacegym/hyrox-chichester/",
             "label": "Hyrox Chichester"
           },
           {
@@ -1446,7 +1191,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Simon</h3><p>Hybrid coaching in Chichester or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/pacegym/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Simon</h3><p>Hybrid coaching in Chichester or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/pacegym/hyrox-coaching-chichester/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -1508,7 +1253,7 @@
             "priority": "0.9"
           },
           {
-            "path": "/hyroxdoncaster/hyrox-coaching-norwich/",
+            "path": "/hyroxdoncaster/hyrox-coaching-doncaster/",
             "priority": "0.9"
           },
           {
@@ -1520,7 +1265,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/hyroxdoncaster/hyrox-norwich/",
+            "path": "/hyroxdoncaster/hyrox-doncaster/",
             "priority": "0.9"
           },
           {
@@ -1532,7 +1277,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/hyroxdoncaster/norwich-hybrid-scene/",
+            "path": "/hyroxdoncaster/doncaster-hybrid-scene/",
             "priority": "0.9"
           },
           {
@@ -1669,7 +1414,7 @@
             "label": "Upcoming Events"
           },
           {
-            "href": "/hyroxdoncaster/hyrox-norwich/",
+            "href": "/hyroxdoncaster/hyrox-doncaster/",
             "label": "Hyrox Doncaster"
           },
           {
@@ -1693,7 +1438,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Nigel</h3><p>Hybrid coaching in Doncaster or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/hyroxdoncaster/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Nigel</h3><p>Hybrid coaching in Doncaster or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/hyroxdoncaster/hyrox-coaching-doncaster/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -1755,7 +1500,7 @@
             "priority": "0.9"
           },
           {
-            "path": "/htcfisher/hyrox-coaching-norwich/",
+            "path": "/htcfisher/hyrox-coaching-christchurch/",
             "priority": "0.9"
           },
           {
@@ -1767,7 +1512,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/htcfisher/hyrox-norwich/",
+            "path": "/htcfisher/hyrox-christchurch/",
             "priority": "0.9"
           },
           {
@@ -1779,7 +1524,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/htcfisher/norwich-hybrid-scene/",
+            "path": "/htcfisher/christchurch-hybrid-scene/",
             "priority": "0.9"
           },
           {
@@ -1916,7 +1661,7 @@
             "label": "Upcoming Events"
           },
           {
-            "href": "/htcfisher/hyrox-norwich/",
+            "href": "/htcfisher/hyrox-christchurch/",
             "label": "Hyrox Christchurch"
           },
           {
@@ -1940,7 +1685,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Ross</h3><p>Hybrid coaching in Christchurch or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/htcfisher/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Ross</h3><p>Hybrid coaching in Christchurch or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/htcfisher/hyrox-coaching-christchurch/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -2002,7 +1747,7 @@
             "priority": "0.9"
           },
           {
-            "path": "/gym64/hyrox-coaching-norwich/",
+            "path": "/gym64/hyrox-coaching-glenrothes/",
             "priority": "0.9"
           },
           {
@@ -2014,7 +1759,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/gym64/hyrox-norwich/",
+            "path": "/gym64/hyrox-glenrothes/",
             "priority": "0.9"
           },
           {
@@ -2026,7 +1771,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/gym64/norwich-hybrid-scene/",
+            "path": "/gym64/glenrothes-hybrid-scene/",
             "priority": "0.9"
           },
           {
@@ -2163,7 +1908,7 @@
             "label": "Upcoming Events"
           },
           {
-            "href": "/gym64/hyrox-norwich/",
+            "href": "/gym64/hyrox-glenrothes/",
             "label": "Hyrox Glenrothes"
           },
           {
@@ -2187,7 +1932,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Glenrothes or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/gym64/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Glenrothes or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/gym64/hyrox-coaching-glenrothes/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -2249,7 +1994,7 @@
             "priority": "0.9"
           },
           {
-            "path": "/nutrifit/hyrox-coaching-norwich/",
+            "path": "/nutrifit/hyrox-coaching-liverpool/",
             "priority": "0.9"
           },
           {
@@ -2261,7 +2006,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/nutrifit/hyrox-norwich/",
+            "path": "/nutrifit/hyrox-liverpool/",
             "priority": "0.9"
           },
           {
@@ -2273,7 +2018,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/nutrifit/norwich-hybrid-scene/",
+            "path": "/nutrifit/liverpool-hybrid-scene/",
             "priority": "0.9"
           },
           {
@@ -2410,7 +2155,7 @@
             "label": "Upcoming Events"
           },
           {
-            "href": "/nutrifit/hyrox-norwich/",
+            "href": "/nutrifit/hyrox-liverpool/",
             "label": "Hyrox Liverpool"
           },
           {
@@ -2434,7 +2179,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Liverpool or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/nutrifit/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Liverpool or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/nutrifit/hyrox-coaching-liverpool/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -2496,7 +2241,7 @@
             "priority": "0.9"
           },
           {
-            "path": "/kore/hyrox-coaching-norwich/",
+            "path": "/kore/hyrox-coaching-newport/",
             "priority": "0.9"
           },
           {
@@ -2508,7 +2253,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/kore/hyrox-norwich/",
+            "path": "/kore/hyrox-newport/",
             "priority": "0.9"
           },
           {
@@ -2520,7 +2265,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/kore/norwich-hybrid-scene/",
+            "path": "/kore/newport-hybrid-scene/",
             "priority": "0.9"
           },
           {
@@ -2657,7 +2402,7 @@
             "label": "Upcoming Events"
           },
           {
-            "href": "/kore/hyrox-norwich/",
+            "href": "/kore/hyrox-newport/",
             "label": "Hyrox Newport"
           },
           {
@@ -2681,7 +2426,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Newport or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/kore/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Newport or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/kore/hyrox-coaching-newport/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -2743,7 +2488,7 @@
             "priority": "0.9"
           },
           {
-            "path": "/fennellfitness/hyrox-coaching-norwich/",
+            "path": "/fennellfitness/hyrox-coaching-bedford/",
             "priority": "0.9"
           },
           {
@@ -2755,7 +2500,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/fennellfitness/hyrox-norwich/",
+            "path": "/fennellfitness/hyrox-bedford/",
             "priority": "0.9"
           },
           {
@@ -2767,7 +2512,7 @@
             "priority": "0.8"
           },
           {
-            "path": "/fennellfitness/norwich-hybrid-scene/",
+            "path": "/fennellfitness/bedford-hybrid-scene/",
             "priority": "0.9"
           },
           {
@@ -2904,7 +2649,7 @@
             "label": "Upcoming Events"
           },
           {
-            "href": "/fennellfitness/hyrox-norwich/",
+            "href": "/fennellfitness/hyrox-bedford/",
             "label": "Hyrox Bedford"
           },
           {
@@ -2928,12 +2673,267 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Dan</h3><p>Hybrid coaching in Bedford or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/fennellfitness/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Dan</h3><p>Hybrid coaching in Bedford or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/fennellfitness/hyrox-coaching-bedford/\">See coaching plans</a></section>"
       },
       "channels": [
         {
           "label": "Instagram",
           "url": "https://www.instagram.com/"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "hustle",
+      "vertical": "coaching",
+      "hostnames": [
+        "hustle.localhost",
+        "demo-hustle.localhost"
+      ],
+      "canonicalHost": "hustle.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Hustle Performance Centre",
+        "tagline": "Hyrox coaching, online programming and race prep from Norwich.",
+        "supportEmail": "hello@doyouhustle.co.uk",
+        "about": "Hyrox coaching by Bobby — podium athlete and Norwich personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Norwich and online with Bobby — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/hustle/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/hustle/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/hyrox-coaching-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/hustle/hyrox-norwich/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/hustle/norwich-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/hustle/book/",
+            "priority": "0.7"
+          },
+          {
+            "path": "/hustle/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/hustle/station-9/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/hustle/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "hustle/data/inbox.json",
+        "writable": [
+          "hustle/data/events.json",
+          "hustle/data/cities.json",
+          "hustle/data/news.json",
+          "hustle/data/partners.json",
+          "hustle/data/matchboard.json",
+          "hustle/data/travelboard.json"
+        ],
+        "partners": "hustle/data/partners.json",
+        "matchboard": "hustle/data/matchboard.json",
+        "travelboard": "hustle/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/hustle/coach/",
+        "digestTo": "hello@doyouhustle.co.uk",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/hustle/welcome/",
+        "welcomeIntro": "Hi Bobby — this is the first of your Monday emails from hustle.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/hustle/guides/",
+        "brand": "Hustle Performance Centre",
+        "homePath": "/hustle/",
+        "language": "en",
+        "author": {
+          "name": "Bobby Harrison",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Bobby — HYROX Certified Coach, podium athlete, Norwich personal trainer.",
+        "indexTitle": "HYROX training guides by Bobby — Hustle Performance Centre",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Norwich: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/hustle/styles.css",
+          "/hustle/guide.css"
+        ],
+        "scripts": [
+          "/hustle/app.js",
+          "/hustle/partners.js"
+        ],
+        "headerHtml": "<a href=\"/hustle/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">H<span class=\"o\">U</span>STLE <span class=\"sig\" aria-label=\"by Bobby Harrison\"><span class=\"sig-text\">by Bobby Harrison</span></span></span></h1></a><p class=\"city\">Norwich</p>",
+        "nav": [
+          {
+            "href": "/hustle/",
+            "label": "Home"
+          },
+          {
+            "href": "/hustle/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/hustle/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/hustle/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/hustle/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/hustle/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/hustle/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/hustle/hyrox-norwich/",
+            "label": "Hyrox Norwich"
+          },
+          {
+            "href": "/hustle/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/hustle/news/",
+            "label": "News"
+          },
+          {
+            "href": "/hustle/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/hustle/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/hustle/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Bobby</h3><p>Hybrid coaching in Norwich or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/hustle/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "Instagram @hustle_norwich",
+          "url": "https://www.instagram.com/hustle_norwich/"
+        },
+        {
+          "label": "Instagram @hustle_wymondham",
+          "url": "https://www.instagram.com/hustle_wymondham/"
+        },
+        {
+          "label": "Facebook community",
+          "url": "https://www.facebook.com/hustlenr7"
         }
       ],
       "demo": true

@@ -346,7 +346,7 @@
         if (!res.ok) throw new Error(out.error || "save failed");
         e.target.reset();
         note.textContent =
-          "Done — split card's with Simon. If the number needs talking through, she'll know where to find you.";
+          "Done — split card's with Simon. If the number needs talking through, he'll know where to find you.";
       } catch {
         note.textContent = "Couldn't send just now — try again in a bit.";
       }

@@ -114,7 +114,7 @@
     } catch {
       note.classList.add("error");
       note.textContent =
-        "Couldn\u2019t send just now \u2014 message Simon on Instagram (@TODO) instead.";
+        "Couldn\u2019t send just now \u2014 message Simon on Instagram (@pacegym) instead.";
       if (btn) btn.disabled = false;
     }
   });

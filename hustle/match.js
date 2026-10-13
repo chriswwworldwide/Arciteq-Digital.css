@@ -178,8 +178,8 @@
       form.reset();
       note.textContent =
         payload.consent === "yes"
-          ? "Got it — your card is on Bobby's desk. She lists every approved card herself, so give her a day or two."
-          : "Got it — private card sent. Bobby will reach out if she spots a match for you.";
+          ? "Got it — your card is on Bobby's desk. He lists every approved card himself, so give him a day or two."
+          : "Got it — private card sent. Bobby will reach out if he spots a match for you.";
     } catch {
       note.textContent =
         "Couldn't send just now — try again in a bit, or message Bobby directly on WhatsApp.";
@@ -187,7 +187,7 @@
   });
 
   // ---- Team Hustle travel board: trips land on data/travelboard.json
-  // once Bobby approves them on her desk. Same privacy rule as partner
+  // once Bobby approves them on his desk. Same privacy rule as partner
   // cards — first name + initial only, intros via WhatsApp.
   const TRAVEL_MODES = {
     have: "join me",
@@ -331,7 +331,7 @@
         travelForm.reset();
         travelNote.textContent =
           payload.consent === "yes"
-            ? "Got it — your trip is on Bobby's desk. She lists every approved one herself, so give her a day or two."
+            ? "Got it — your trip is on Bobby's desk. He lists every approved one himself, so give him a day or two."
             : "Got it — private trip sent. Bobby will reach out if someone matches your plans.";
       } catch {
         travelNote.textContent =
@@ -491,7 +491,7 @@
         const mmss = `${Math.floor(payload.total / 60)}:${String(payload.total % 60).padStart(2, "0")}`;
         const cardTotal = form.querySelector('[name="total"]');
         if (cardTotal) cardTotal.value = mmss;
-        paceNote.textContent = `Saved — ${mmss} total puts you in the ${band} band, and your card is updated. Bobby sees these real numbers on her desk.`;
+        paceNote.textContent = `Saved — ${mmss} total puts you in the ${band} band, and your card is updated. Bobby sees these real numbers on his desk.`;
       } catch {
         paceNote.textContent =
           "Couldn't save just now — try again in a bit. Your card above still works with an estimate.";

@@ -1,4 +1,4 @@
 {
-  "note": "External tools Coach uses. Set 'truecoach' to her client-login URL (e.g. https://app.truecoach.co/) once her account exists; empty string keeps the links hidden. Coaching delivery lives in Gym64 app \u2014 Gym64 acquires and bills.",
+  "note": "External tools Coach uses. Set 'truecoach' to their client-login URL (e.g. https://app.truecoach.co/) once the account exists; empty string keeps the links hidden. Coaching delivery lives in Gym64 app \u2014 Gym64 acquires and bills.",
   "truecoach": ""
 }

@@ -1,6 +1,6 @@
 // Coach's desk: Nigel's private view of traffic + people, built on the engine's
 // admin endpoints (/admin/traffic, /admin/people). The coach key is the
-// server's ADMIN_API_KEY, kept in localStorage on her device only.
+// server's ADMIN_API_KEY, kept in localStorage on his device only.
 // Deep links: /hyroxdoncaster/coach/#traffic, #people, #people?q=someone@x.com, #howto.
 (function () {
   const KEY = "hyroxdoncaster.coach.key";

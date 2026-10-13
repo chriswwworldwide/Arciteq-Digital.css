@@ -1,6 +1,6 @@
 /* Advertise with KORE: list sponsor slots from products.json, save the
    sponsor's brand details as a `sponsor` submission, then hand off to the
-   normal checkout. Nothing goes live until Coach approves on her desk. */
+   normal checkout. Nothing goes live until Coach approves on their desk. */
 (function () {
   "use strict";
   const list = document.getElementById("slot-list");

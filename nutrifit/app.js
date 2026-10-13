@@ -88,6 +88,57 @@
     if (!res.ok) throw new Error(String(res.status));
   }
 
+  // FAQ receptionist — the 10 questions every gym gets asked, answered
+  // instantly from data/faq.json. Anything it can't match still lands in
+  // the coach's inbox via the normal capture below.
+  const faqQuick = document.getElementById("faq-quick");
+  const faqChips = document.getElementById("faq-chips");
+  const faqAnswer = document.getElementById("faq-answer");
+  let faqItems = [];
+  const showFaq = (item) => {
+    if (!faqAnswer) return;
+    faqAnswer.hidden = false;
+    faqAnswer.innerHTML = `<strong>${item.q}</strong><p>${item.a}</p>`;
+    faqChips?.querySelectorAll("button").forEach((b) =>
+      b.classList.toggle("on", b.dataset.q === item.q)
+    );
+  };
+  const matchFaq = (txt) => {
+    const t = ` ${String(txt || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ")} `;
+    let best = null;
+    let score = 0;
+    for (const item of faqItems) {
+      const s = (item.keywords || []).reduce(
+        (n, k) => n + (t.includes(k.toLowerCase()) ? 1 : 0),
+        0
+      );
+      if (s > score) {
+        score = s;
+        best = item;
+      }
+    }
+    return score >= 2 ? best : null;
+  };
+  if (faqQuick && faqChips && faqAnswer) {
+    fetch("/nutrifit/data/faq.json", { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        faqItems = (data && data.items) || [];
+        if (!faqItems.length) return;
+        faqQuick.hidden = false;
+        for (const item of faqItems) {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "faq-chip";
+          b.dataset.q = item.q;
+          b.textContent = item.q;
+          b.addEventListener("click", () => showFaq(item));
+          faqChips.appendChild(b);
+        }
+      })
+      .catch(() => {});
+  }
+
   if (form && note) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -102,6 +153,11 @@
           message: String(data.get("question") || ""),
         });
         note.textContent = "Got it — Coach will reply to your inbox.";
+        const hit = matchFaq(data.get("question"));
+        if (hit) {
+          faqQuick.hidden = false;
+          showFaq(hit);
+        }
         form.reset();
         if (onboard) {
           onboard.hidden = false;
@@ -170,7 +226,7 @@
         key: inLiverpool ? "hybrid" : "program",
         why: inLiverpool
           ? "Training through pregnancy or a comeback is exactly where Coach's own experience counts — floor time for form checks plus weekly video review."
-          : "Coach programmes around your stage and checks your form on video each week; tell her in the notes where you are and she'll adjust.",
+          : "Coach programmes around your stage and checks your form on video each week; tell them in the notes where you are and they'll adjust.",
       };
     }
     if (inLiverpool && exp === "Never raced") {
@@ -291,7 +347,7 @@
         if (plansNote) {
           plansNote.classList.add("error");
           plansNote.textContent =
-            "Checkout isn't open yet — send Coach a message below and she'll set you up. (" +
+            "Checkout isn't open yet — send Coach a message below and they'll set you up. (" +
             String(err && err.message ? err.message : "error") +
             ")";
         }
@@ -813,7 +869,7 @@ window.roxShare = (function () {
     }
     if (saved) {
       note.textContent =
-        "Got it — photo and caption on Coach's desk. It goes up once she's had a look.";
+        "Got it — photo and caption on Coach's desk. It goes up once they've had a look.";
       form.querySelector("button[type=submit]").disabled = true;
       return;
     }
@@ -829,7 +885,7 @@ window.roxShare = (function () {
         "Upload didn't go through — WhatsApp is open, send the photo there instead.";
     } else {
       note.textContent =
-        "Upload didn't go through — send the photo and caption to Coach on Instagram (@TODO) and she'll put it up.";
+        "Upload didn't go through — send the photo and caption to Coach on Instagram (@nutrifit) and they'll put it up.";
     }
   });
 })();

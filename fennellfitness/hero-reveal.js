@@ -207,12 +207,6 @@
           ? u_uv.xy + vUv * u_uv.zw
           : u_uv.xy + ((floor(vUv * cells) + 0.5) / cells) * u_uv.zw;
       vec3 col = texture2D(u_tex, cuv).rgb;
-      // NCFC accent: unresolved mosaic tiles checkerboard canary/green,
-      // fading back to the real photo as the paper resolves.
-      float lum = dot(col, vec3(0.299, 0.587, 0.114));
-      float chk = mod(floor(vUv.x * cells) + floor(vUv.y * cells), 2.0);
-      vec3 ncfc = mix(vec3(1.0, 0.89, 0.05), vec3(0.0, 0.55, 0.24), chk);
-      col = mix(ncfc * (0.4 + 0.8 * lum), col, vResolve);
 
       vec2 f = fract(vUv * cells);
       float gap = mix(0.0, 0.11, 1.0 - resolve);     // gap closes fully as it sharpens

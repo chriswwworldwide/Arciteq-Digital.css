@@ -88,6 +88,57 @@
     if (!res.ok) throw new Error(String(res.status));
   }
 
+  // FAQ receptionist — the 10 questions every gym gets asked, answered
+  // instantly from data/faq.json. Anything it can't match still lands in
+  // the coach's inbox via the normal capture below.
+  const faqQuick = document.getElementById("faq-quick");
+  const faqChips = document.getElementById("faq-chips");
+  const faqAnswer = document.getElementById("faq-answer");
+  let faqItems = [];
+  const showFaq = (item) => {
+    if (!faqAnswer) return;
+    faqAnswer.hidden = false;
+    faqAnswer.innerHTML = `<strong>${item.q}</strong><p>${item.a}</p>`;
+    faqChips?.querySelectorAll("button").forEach((b) =>
+      b.classList.toggle("on", b.dataset.q === item.q)
+    );
+  };
+  const matchFaq = (txt) => {
+    const t = ` ${String(txt || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ")} `;
+    let best = null;
+    let score = 0;
+    for (const item of faqItems) {
+      const s = (item.keywords || []).reduce(
+        (n, k) => n + (t.includes(k.toLowerCase()) ? 1 : 0),
+        0
+      );
+      if (s > score) {
+        score = s;
+        best = item;
+      }
+    }
+    return score >= 2 ? best : null;
+  };
+  if (faqQuick && faqChips && faqAnswer) {
+    fetch("/hustle/data/faq.json", { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        faqItems = (data && data.items) || [];
+        if (!faqItems.length) return;
+        faqQuick.hidden = false;
+        for (const item of faqItems) {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "faq-chip";
+          b.dataset.q = item.q;
+          b.textContent = item.q;
+          b.addEventListener("click", () => showFaq(item));
+          faqChips.appendChild(b);
+        }
+      })
+      .catch(() => {});
+  }
+
   if (form && note) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -102,6 +153,11 @@
           message: String(data.get("question") || ""),
         });
         note.textContent = "Got it — Bobby will reply to your inbox.";
+        const hit = matchFaq(data.get("question"));
+        if (hit) {
+          faqQuick.hidden = false;
+          showFaq(hit);
+        }
         form.reset();
         if (onboard) {
           onboard.hidden = false;
@@ -170,7 +226,7 @@
         key: inNorwich ? "hybrid" : "program",
         why: inNorwich
           ? "Training through pregnancy or a comeback is exactly where Bobby's own experience counts — floor time for form checks plus weekly video review."
-          : "Bobby programmes around your stage and checks your form on video each week; tell her in the notes where you are and she'll adjust.",
+          : "Bobby programmes around your stage and checks your form on video each week; tell him in the notes where you are and he'll adjust.",
       };
     }
     if (inNorwich && exp === "Never raced") {
@@ -291,7 +347,7 @@
         if (plansNote) {
           plansNote.classList.add("error");
           plansNote.textContent =
-            "Checkout isn't open yet — send Bobby a message below and she'll set you up. (" +
+            "Checkout isn't open yet — send Bobby a message below and he'll set you up. (" +
             String(err && err.message ? err.message : "error") +
             ")";
         }
@@ -813,7 +869,7 @@ window.roxShare = (function () {
     }
     if (saved) {
       note.textContent =
-        "Got it — photo and caption on Bobby's desk. It goes up once she's had a look.";
+        "Got it — photo and caption on Bobby's desk. It goes up once he's had a look.";
       form.querySelector("button[type=submit]").disabled = true;
       return;
     }
@@ -829,7 +885,7 @@ window.roxShare = (function () {
         "Upload didn't go through — WhatsApp is open, send the photo there instead.";
     } else {
       note.textContent =
-        "Upload didn't go through — send the photo and caption to Bobby on Instagram (@hustle_norwich) and she'll put it up.";
+        "Upload didn't go through — send the photo and caption to Bobby on Instagram (@hustle_norwich) and he'll put it up.";
     }
   });
 })();
@@ -1070,7 +1126,9 @@ window.roxShare = (function () {
     edge(x0, 0, x0 + fw, 0); // left: clear at x0, keep by x0+fw
     edge(x1, 0, x1 - fw, 0); // right
     edge(0, y0, 0, y0 + fy); // top
-    edge(0, y1, 0, y1 - fy); // bottom
+    // bottom fades ~3x deeper — a hard photo→ink line reads during the
+    // hero-reveal sweep; the sheet bake uses the same 0.08 depth
+    edge(0, y1, 0, y1 - Math.max(fy, rh * 0.08)); // bottom
     const url = `url(${mc.toDataURL("image/png")})`;
     maskEl.style.maskImage = maskEl.style.webkitMaskImage = url;
     maskEl.style.maskSize = maskEl.style.webkitMaskSize = "100% 100%";

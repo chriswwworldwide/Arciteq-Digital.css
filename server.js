@@ -321,6 +321,17 @@ app.post(
                 isFirstTimeEvent,
               }),
             );
+            try {
+              await sendOrderConfirmation({
+                tenantId: String(upserted.tenant_id || ""),
+                orderId: String(upserted.order_id),
+                email: String(upserted.customer_email || ""),
+                amountTotal: upserted.amount_total,
+                currency: upserted.currency,
+              });
+            } catch (mailErr) {
+              console.error("order confirmation email failed", mailErr);
+            }
           }
 
           const eventData = {
@@ -436,6 +447,18 @@ app.post(
                 isFirstTimeEvent,
               }),
             );
+
+            try {
+              await sendOrderConfirmation({
+                tenantId: String(updatedRow.tenant_id || ""),
+                orderId: String(updatedRow.order_id),
+                email: String(updatedRow.customer_email || ""),
+                amountTotal: updatedRow.amount_total,
+                currency: updatedRow.currency,
+              });
+            } catch (mailErr) {
+              console.error("order confirmation email failed", mailErr);
+            }
 
             const stitchEmail = normalizeEmail(updatedRow.customer_email);
             if (stitchEmail && isFirstTimeEvent) {
@@ -1447,11 +1470,11 @@ function safeWriteJsonFile(filePath, value) {
 
 // Transactional mail. Prefers the Resend HTTP API when RESEND_API_KEY is set
 // (Railway has no local MTA); otherwise pipes through /usr/sbin/sendmail.
-async function sendViaResend({ to, subject, body }) {
+async function sendViaResend({ to, subject, body, from }) {
   const key = String(process.env.RESEND_API_KEY || "").trim();
   if (!key) return null;
-  const from = String(
-    process.env.ALERT_EMAIL_FROM || "Roxjaya <desk@roxjaya.com>",
+  const sender = String(
+    from || process.env.ALERT_EMAIL_FROM || "Roxjaya <desk@roxjaya.com>",
   ).trim();
   try {
     const r = await fetch("https://api.resend.com/emails", {
@@ -1460,7 +1483,7 @@ async function sendViaResend({ to, subject, body }) {
         Authorization: `Bearer ${key}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ from, to: [to], subject, text: body }),
+      body: JSON.stringify({ from: sender, to: [to], subject, text: body }),
       signal: AbortSignal.timeout(10000),
     });
     const data = await r.json().catch(() => ({}));
@@ -1481,7 +1504,7 @@ async function sendViaResend({ to, subject, body }) {
   }
 }
 
-async function sendAlertEmail({ to, subject, body }) {
+async function sendAlertEmail({ to, subject, body, from }) {
   const address = String(to || "").trim();
   if (!address) return { ok: false, error: "Missing recipient" };
   const safeSubject = String(subject || "Alert")
@@ -1491,6 +1514,7 @@ async function sendAlertEmail({ to, subject, body }) {
     to: address,
     subject: safeSubject,
     body: String(body || ""),
+    from,
   });
   if (viaApi) return viaApi;
   return sendViaSendmail({ to: address, subject: safeSubject, body });
@@ -1569,6 +1593,75 @@ function sendViaSendmail({ to, subject, body }) {
       });
     }
   });
+}
+
+// Customer-facing order confirmation, sent once per paid order. From-line
+// carries the tenant's brand (the mailbox stays the platform's verified
+// address); every attempt is logged to email_events so webhook retries can
+// never double-send.
+async function sendOrderConfirmation({
+  tenantId,
+  orderId,
+  email,
+  amountTotal,
+  currency,
+}) {
+  const address = normalizeEmail(email);
+  if (!address) return { ok: false, error: "no recipient" };
+  const tid = String(tenantId || "");
+  const oid = String(orderId || "");
+  if (!tid || !oid) return { ok: false, error: "missing order ref" };
+
+  const prior = await dbQuery(
+    "SELECT 1 FROM email_events WHERE tenant_id = $1 AND order_id = $2 AND type = 'order_confirmation' AND data->>'ok' = 'true' LIMIT 1",
+    [tid, oid],
+  );
+  if (prior?.rowCount > 0) return { ok: true, skipped: "already_sent" };
+
+  const tenant = (loadTenantsData().list || []).find((t) => t.slug === tid);
+  const brand = String(tenant?.seo?.brandName || tid);
+  const amount = Number.isInteger(amountTotal)
+    ? `${(amountTotal / 100).toFixed(2)} ${String(currency || "gbp").toUpperCase()}`
+    : "";
+  const baseFrom = String(
+    process.env.ALERT_EMAIL_FROM || "Roxjaya <desk@roxjaya.com>",
+  ).trim();
+  const mailbox = baseFrom.match(/<([^>]+)>/);
+  const from = mailbox ? `${brand} <${mailbox[1]}>` : baseFrom;
+
+  const body = [
+    `Thanks for your order from ${brand}!`,
+    "",
+    `Order: ${oid}`,
+    amount ? `Total: ${amount}` : null,
+    "",
+    "This is your confirmation — keep it for your records.",
+    "Questions? Just reply to this email.",
+  ]
+    .filter((l) => l !== null)
+    .join("\n");
+
+  const result = await sendAlertEmail({
+    to: address,
+    subject: `Order confirmed — ${brand}`,
+    body,
+    from,
+  });
+  await dbQuery(
+    "INSERT INTO email_events (tenant_id, email, type, order_id, data) VALUES ($1, $2, $3, $4, $5::jsonb)",
+    [
+      tid,
+      address,
+      "order_confirmation",
+      oid,
+      JSON.stringify({
+        ok: Boolean(result?.ok),
+        provider: result?.provider || "sendmail",
+        error: result?.error || null,
+      }),
+    ],
+  );
+  return result;
 }
 
 function buildAlertEmail({ tenantId, alert }) {

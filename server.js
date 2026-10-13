@@ -2180,10 +2180,12 @@ app.get("/sitemap.xml", async (req, res) => {
       try {
         guideXml = (await listGuides(activeTenantId))
           .map((g) => {
-            const lastmod = String(g.updated_at || g.published_at || "").slice(
-              0,
-              10,
-            );
+            // pg returns JS Dates — String(date).slice(0,10) yields the
+            // invalid "Tue Oct 06"; sitemap lastmod must be ISO YYYY-MM-DD
+            const d = g.updated_at || g.published_at;
+            const dd = d ? new Date(d) : null;
+            const lastmod =
+              dd && !isNaN(dd) ? dd.toISOString().slice(0, 10) : "";
             return `  <url><loc>${xmlEscape(baseUrl + guideCfg.basePath + g.slug + "/")}</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>${xmlEscape(lastmod)}</lastmod></url>`;
           })
           .join("\n");

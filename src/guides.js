@@ -22,6 +22,13 @@ export function escapeHtml(s) {
     .replace(/"/g, "&quot;");
 }
 
+// pg returns JS Date objects — String(d).slice(0,10) yields "Tue Oct 06",
+// which is invalid in sitemaps and structured data. Emit ISO YYYY-MM-DD.
+export function guideDate(v) {
+  const d = v ? new Date(v) : null;
+  return d && !isNaN(d) ? d.toISOString().slice(0, 10) : "";
+}
+
 export function slugify(s) {
   return String(s || "")
     .toLowerCase()
@@ -163,12 +170,10 @@ export function renderGuidePage(guide, cfg, others = []) {
   const url = `${base}${guide.slug}/`;
   const brand = cfg.brand || "Guides";
   const author = cfg.author || {};
-  const updated = String(guide.updated_at || guide.published_at || "").slice(
-    0,
-    10,
-  );
-  const published = String(guide.published_at || "").slice(0, 10);
+  const updated = guideDate(guide.updated_at || guide.published_at);
+  const published = guideDate(guide.published_at);
   const { html: body, items: toc } = tocFromBody(guide.body_html);
+
   const faqs = Array.isArray(guide.faqs) ? guide.faqs : [];
   const ld = {
     "@context": "https://schema.org",
@@ -302,7 +307,7 @@ export function renderGuideIndex(guides, cfg) {
   const items = guides
     .map(
       (g) =>
-        `<li><a href="${base}${escapeHtml(g.slug)}/"><strong>${escapeHtml(g.title)}</strong></a><br />${escapeHtml(g.description)} <small>· ${escapeHtml(String(g.updated_at || g.published_at || "").slice(0, 10))}</small></li>`,
+        `<li><a href="${base}${escapeHtml(g.slug)}/"><strong>${escapeHtml(g.title)}</strong></a><br />${escapeHtml(g.description)} <small>· ${escapeHtml(guideDate(g.updated_at || g.published_at))}</small></li>`,
     )
     .join("");
   const title = cfg.indexTitle || `Guides — ${brand}`;

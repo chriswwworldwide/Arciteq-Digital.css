@@ -20,7 +20,7 @@ vi.mock("pg", () => {
       this.ended = true;
     }
   }
-  return { default: { Pool } };
+  return { default: { Pool, types: { setTypeParser: vi.fn() } } };
 });
 
 describe("db helpers without DATABASE_URL", () => {

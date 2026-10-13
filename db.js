@@ -1,5 +1,10 @@
 import pg from "pg";
 
+// Plain DATE columns (entry_date, next_action_at, period_start/end) stay as
+// "YYYY-MM-DD" strings. By default pg turns them into local-midnight Date
+// objects, which shift back a day when serialised to UTC during BST.
+pg.types.setTypeParser(1082, (value) => value);
+
 let pool = null;
 let poolDatabaseUrl = "";
 

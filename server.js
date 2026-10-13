@@ -55,7 +55,10 @@ import {
 } from "./src/subscriptions.js";
 import { sanitizeProfile, hasProfile } from "./src/lead-profile.js";
 import { isPrivateStaticPath } from "./src/static-guard.js";
+import { accountingProfile } from "./src/tax-rules.js";
 import { createHqRouter } from "./server/hq.js";
+import { createDeskAuth } from "./server/desk-auth.js";
+import { createAccountsRouter } from "./server/accounts.js";
 import {
   validateSubmission,
   summarizePayloads,
@@ -2703,6 +2706,62 @@ function resolveTenantForPublicWrite(req, claimedTenantId) {
     : byHost;
 }
 
+// Desk access (coach desks + Money page): platform admin key → any site
+// (by ?tenant= or the desk page path); a per-site desk key → that site only.
+const requireDeskAccess = createDeskAuth({
+  dbQuery,
+  adminApiKey,
+  ensureTables: ensureCommerceTables,
+  loadTenants: () => loadTenantsData().list,
+  resolveTenantFromPage: (req) => resolveTenantForPublicWrite(req, null),
+});
+
+// Money page for a site desk: one shared template, branded with the
+// site's own stylesheet and the masthead from its coach desk.
+const deskMoneyTemplate = fs.readFileSync(
+  path.join(__dirname, "server", "desk-money.html"),
+  "utf8",
+);
+const escapeHtml = (v) =>
+  String(v).replace(
+    /[&<>"']/g,
+    (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+  );
+function renderDeskMoney(tenant) {
+  const site = String(tenant?.tenant_id || "");
+  const profile = accountingProfile(tenant);
+  let masthead = "";
+  try {
+    const coach = fs.readFileSync(path.join(__dirname, site, "coach.html"), "utf8");
+    masthead = (coach.match(/<header class="masthead[\s\S]*?<\/header>/) || [""])[0]
+      .replace(/Coach(?:&#39;|')s desk/g, "Money");
+  } catch {
+    masthead = "";
+  }
+  const brand = String(tenant?.seo?.brandName || site);
+  const symbol =
+    profile.currency === "idr"
+      ? "Rp"
+      : profile.currency === "gbp"
+        ? "£"
+        : profile.currency.toUpperCase();
+  const config = {
+    tenantId: site,
+    brand,
+    currency: profile.currency,
+    country: profile.country,
+    vatRegistered: profile.vatRegistered,
+    keyName: `${site}.coach.key`,
+  };
+  return deskMoneyTemplate
+    .replaceAll("__TENANT__", site)
+    .replaceAll("__BRAND__", escapeHtml(brand))
+    .replaceAll("__CURSYMBOL__", symbol)
+    .replace("__MASTHEAD__", () => masthead)
+    .replace("__CONFIG__", () => JSON.stringify(config).replace(/</g, "\\u003c"));
+}
+
 // Base URL for links we email out. Comes from server config only — the
 // tenant's first real (non-localhost) hostname, else PUBLIC_BASE_URL —
 // never from request headers, which the requester controls.
@@ -3305,6 +3364,11 @@ for (const siteTenant of loadTenantsData().list.filter(
     continue;
   app.get(`/${site}`, (req, res) => {
     res.sendFile(path.join(__dirname, site, "index.html"));
+  });
+  app.get(`/${site}/money`, (req, res) => {
+    if (!req.path.endsWith("/")) return res.redirect(301, `/${site}/money/`);
+    res.setHeader("X-Robots-Tag", "noindex, nofollow");
+    return res.type("html").send(renderDeskMoney(siteTenant));
   });
   app.get(`/${site}/guides`, serveGuideIndex);
   app.get(`/${site}/guides/:slug`, serveGuide);
@@ -4696,10 +4760,10 @@ function rangeDays(req, fallback = 30) {
 
 // Owner-facing traffic summary for the active tenant.
 app.get("/admin/traffic", async (req, res) => {
-  const denied = requireAdmin(req, res);
-  if (denied) return denied;
   try {
-    const tenant = resolveTenantFromRequest(req);
+    const access = await requireDeskAccess(req, res);
+    if (!access) return undefined;
+    const tenant = access.tenant;
     const tenantId = String(tenant?.tenant_id || "default");
     const days = rangeDays(req);
     const rows = await dbQuery(
@@ -4718,10 +4782,10 @@ app.get("/admin/traffic", async (req, res) => {
 // their profile, submissions, orders/subscriptions and the pages they viewed
 // while identified. Consent basis: they gave us their email on this site.
 app.get("/admin/people", async (req, res) => {
-  const denied = requireAdmin(req, res);
-  if (denied) return denied;
   try {
-    const tenant = resolveTenantFromRequest(req);
+    const access = await requireDeskAccess(req, res);
+    if (!access) return undefined;
+    const tenant = access.tenant;
     const tenantId = String(tenant?.tenant_id || "default");
     const days = rangeDays(req, 90);
     const limit = Math.min(
@@ -4953,10 +5017,13 @@ function renewSponsor({ tenantId, orderId, periodEnd }) {
   if (extendPartner(json, orderId, until)) safeWriteJsonFile(abs, json);
 }
 
-app.get("/admin/inbox", (req, res) => {
-  const denied = requireAdmin(req, res);
-  if (denied) return denied;
-  const tenant = resolveTenantFromRequest(req);
+app.get("/admin/inbox", async (req, res) => {
+  const access = await requireDeskAccess(req, res).catch(() => {
+    res.status(500).json({ error: "Desk access check failed" });
+    return null;
+  });
+  if (!access) return undefined;
+  const tenant = access.tenant;
   const cfg = tenantAutomation(tenant);
   if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
   const inbox = readInbox(cfg);
@@ -5002,10 +5069,13 @@ app.post("/admin/inbox", express.json({ limit: "512kb" }), (req, res) => {
   }
 });
 
-app.post("/admin/inbox/:id", express.json(), (req, res) => {
-  const denied = requireAdmin(req, res);
-  if (denied) return denied;
-  const tenant = resolveTenantFromRequest(req);
+app.post("/admin/inbox/:id", express.json(), async (req, res) => {
+  const access = await requireDeskAccess(req, res).catch(() => {
+    res.status(500).json({ error: "Desk access check failed" });
+    return null;
+  });
+  if (!access) return undefined;
+  const tenant = access.tenant;
   const cfg = tenantAutomation(tenant);
   if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
   const action = String(req.body?.action || "").toLowerCase();
@@ -5772,6 +5842,15 @@ app.use(
   }),
 );
 
+// Coach/gym books (Money page API). Desk-key scoped; see server/accounts.js.
+app.use(
+  createAccountsRouter({
+    dbQuery,
+    requireDeskAccess,
+    ensureTables: ensureCommerceTables,
+  }),
+);
+
 app.get("/hq", (req, res) => {
   res.setHeader("X-Robots-Tag", "noindex, nofollow");
   return res.sendFile(path.join(__dirname, "hq.html"));
@@ -6313,6 +6392,7 @@ async function ensureCommerceTables() {
         "013_fulfilment_and_indexes.sql",
         "014_webhook_processing.sql",
         "015_hq.sql",
+        "016_accounts.sql",
       ]) {
         await dbQuery(
           fs.readFileSync(path.join(__dirname, "migrations", file), "utf8"),

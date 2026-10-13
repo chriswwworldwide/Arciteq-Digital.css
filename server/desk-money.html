@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Money — __BRAND__</title>
+<link rel="stylesheet" href="/__TENANT__/styles.css" />
+<link rel="stylesheet" href="/__TENANT__/guide.css" />
+<link rel="stylesheet" href="/__TENANT__/coach.css" />
+<style>
+  .money { padding: 24px 0 84px; }
+  .money .back { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink-3); text-decoration: none; font-weight: 600; }
+  .m-card { border: 1px solid var(--line); border-radius: var(--radius, 14px); background: var(--paper); padding: 18px; margin: 16px 0; }
+  .m-card h3 { margin: 0 0 6px; }
+  .m-sub { color: var(--ink-3); font-size: .92rem; line-height: 1.5; margin: 4px 0 0; }
+  .m-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 10px; }
+  .m-tile { border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: var(--paper-2, transparent); }
+  .m-tile b { display: block; font-size: 1.25rem; }
+  .m-tile small { color: var(--ink-3); }
+  .m-bar { height: 10px; border-radius: 999px; background: var(--paper-2, #eee); border: 1px solid var(--line); overflow: hidden; margin: 10px 0 4px; }
+  .m-bar span { display: block; height: 100%; background: var(--ink); }
+  .m-bar.warn span { background: #d98a00; }
+  .m-bar.bad span { background: #c0392b; }
+  .m-flag { border-left: 4px solid var(--ink); padding: 8px 12px; margin: 12px 0 0; background: var(--paper-2, transparent); border-radius: 6px; }
+  .m-flag.warn { border-color: #d98a00; }
+  .m-flag.bad { border-color: #c0392b; }
+  .m-table { width: 100%; border-collapse: collapse; font-size: .95rem; margin-top: 8px; }
+  .m-table th, .m-table td { text-align: right; padding: 8px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  .m-table th:first-child, .m-table td:first-child { text-align: left; }
+  .m-table tfoot td { font-weight: 700; }
+  .m-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .m-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .m-form label { display: block; font-size: .82rem; color: var(--ink-3); margin-bottom: 4px; }
+  .m-form input, .m-form select { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: var(--paper); color: inherit; box-sizing: border-box; }
+  .m-form .full { grid-column: 1 / -1; }
+  .m-toggle { display: flex; gap: 6px; }
+  .m-toggle button, .m-btn { min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font: inherit; font-weight: 600; cursor: pointer; color: inherit; }
+  .m-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .m-list { list-style: none; margin: 8px 0 0; padding: 0; }
+  .m-list li { display: flex; gap: 10px; align-items: flex-start; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .m-list .who { font-weight: 600; }
+  .m-list .meta { color: var(--ink-3); font-size: .86rem; }
+  .m-amt { font-weight: 700; white-space: nowrap; }
+  .m-amt.out { color: #c0392b; }
+  .m-actions { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .m-msg { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 10px; display: none; z-index: 50; }
+  .m-msg.show { display: block; }
+  .m-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .m-head select { min-height: 44px; border: 1px solid var(--line); border-radius: 10px; padding: 0 10px; font: inherit; background: var(--paper); color: inherit; }
+  @media (max-width: 560px) { .m-form { grid-template-columns: 1fr; } .m-hide-sm { display: none; } }
+</style>
+</head>
+<body>
+__MASTHEAD__
+<main class="wrap desk money">
+  <a class="back" href="/__TENANT__/coach/">← Back to my desk</a>
+
+  <section class="desk-login" id="login" hidden>
+    <h2>Money</h2>
+    <p>Paste your desk key once — this phone/laptop remembers it.</p>
+    <form id="key-form">
+      <input type="password" name="key" placeholder="Desk key" autocomplete="off" required />
+      <button class="btn btn-primary" type="submit">Open</button>
+    </form>
+    <p class="hint" id="login-hint"></p>
+  </section>
+
+  <div id="app" hidden>
+    <div class="m-head">
+      <h2 style="margin:0">Money</h2>
+      <select id="year" aria-label="Year"></select>
+    </div>
+    <p class="m-sub">Everything coming in and going out, your tax guide, and one file for your accountant.</p>
+
+    <section class="m-card" id="tax"></section>
+
+    <section class="m-card" id="pending-card" hidden>
+      <h3>Payments to confirm</h3>
+      <p class="m-sub">People who reserved a place by bank transfer. Check your bank app, then tap <b>Paid</b> (it goes into your books) or <b>Not paid</b>.</p>
+      <ul class="m-list" id="pending"></ul>
+    </section>
+
+    <section class="m-card">
+      <h3>This year</h3>
+      <div class="m-tiles" id="tiles"></div>
+      <div class="m-scroll"><table class="m-table" id="months"></table></div>
+    </section>
+
+    <section class="m-card">
+      <h3>Add money in or out</h3>
+      <form id="entry-form">
+        <div class="m-toggle" role="group" aria-label="Money in or out">
+          <button type="button" data-dir="income" aria-pressed="true">Money in</button>
+          <button type="button" data-dir="expense" aria-pressed="false">Money out</button>
+        </div>
+        <div class="m-form">
+          <div><label for="e-amount">Amount (__CURSYMBOL__)</label>
+            <input id="e-amount" name="amount" type="number" min="0" step="any" inputmode="decimal" required /></div>
+          <div><label for="e-date">Date</label><input id="e-date" name="entry_date" type="date" required /></div>
+          <div><label for="e-cat">What for</label><select id="e-cat" name="category"></select></div>
+          <div><label for="e-method">Paid by</label><select id="e-method" name="method"></select></div>
+          <div><label for="e-who">Who</label><input id="e-who" name="counterparty" maxlength="120" placeholder="Member, shop, venue…" /></div>
+          <div><label for="e-desc">Note</label><input id="e-desc" name="description" maxlength="300" /></div>
+          <div id="tax-field" hidden><label for="e-tax">VAT included (__CURSYMBOL__)</label>
+            <input id="e-tax" name="tax" type="number" min="0" step="any" inputmode="decimal" /></div>
+          <div class="full"><button class="btn btn-primary" type="submit">Save</button></div>
+        </div>
+      </form>
+    </section>
+
+    <section class="m-card">
+      <div class="m-head"><h3 style="margin:0">Recent</h3>
+        <button class="m-btn" type="button" id="export">Download for my accountant</button></div>
+      <p class="m-sub">The download is a spreadsheet (CSV) of the whole year — every payment in and out, including website sales.</p>
+      <ul class="m-list" id="entries"></ul>
+    </section>
+  </div>
+</main>
+<div class="m-msg" id="msg" role="status"></div>
+<script id="desk-config" type="application/json">__CONFIG__</script>
+<script>
+(() => {
+  const cfg = JSON.parse(document.getElementById("desk-config").textContent);
+  const $ = (id) => document.getElementById(id);
+  const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const isID = cfg.country === "ID";
+  const cur = String(cfg.currency || "gbp").toUpperCase();
+  const money = (minor) => {
+    const n = Number(minor || 0) / 100;
+    if (cur === "IDR") return "Rp " + Math.round(n).toLocaleString("id-ID");
+    return new Intl.NumberFormat("en-GB", { style: "currency", currency: cur }).format(n);
+  };
+  const short = (minor) => {
+    const n = Number(minor || 0) / 100;
+    if (cur !== "IDR") return money(minor);
+    if (n >= 1e9) return "Rp " + (n / 1e9).toLocaleString("id-ID", { maximumFractionDigits: 2 }) + " M";
+    if (n >= 1e6) return "Rp " + (n / 1e6).toLocaleString("id-ID", { maximumFractionDigits: 1 }) + " jt";
+    return money(minor);
+  };
+  const fmtDate = (d) => d ? new Date(String(d).slice(0, 10) + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
+  const monthName = (ym) => new Date(ym + "-15T12:00:00").toLocaleDateString("en-GB", { month: "short" });
+  const today = () => new Date().toISOString().slice(0, 10);
+  const pct = (x) => Math.round(x * 100) + "%";
+
+  const CATS = {
+    income: [["membership", isID ? "Membership (iuran)" : "Membership"], ["coaching", "Coaching / PT"],
+      ["class_pass", "Class pass / drop-in"], ["event", isID ? "Event / race trip" : "Event / race trip"],
+      ["merch", "Merch"], ["sponsorship", "Sponsorship"], ["other_income", "Other income"]],
+    expense: [["venue", isID ? "Venue / rent (sewa)" : "Venue / rent"], ["equipment", "Equipment"],
+      ["travel", "Travel"], ["race_fees", "Race fees"], ["marketing", "Marketing"],
+      ["software", "Apps / software"], ["staff", "Staff / assistant coach"], ["other_expense", "Other cost"]],
+  };
+  const CAT_LABEL = Object.fromEntries([...CATS.income, ...CATS.expense, ["site_sales", "Website sales"]]);
+  const METHODS = isID
+    ? [["qris", "QRIS"], ["bank_transfer", "Bank transfer"], ["cash", "Cash"], ["card", "Card"], ["other", "Other"]]
+    : [["bank_transfer", "Bank transfer"], ["card", "Card"], ["direct_debit", "Direct debit"], ["cash", "Cash"], ["stripe", "Stripe"], ["other", "Other"]];
+  const METHOD_LABEL = Object.fromEntries([...METHODS, ["stripe", "Website (card)"], ["direct_debit", "Direct debit"], ["qris", "QRIS"]]);
+
+  let key = localStorage.getItem(cfg.keyName) || "";
+  let direction = "income";
+  let year = new Date().getFullYear();
+
+  function toast(t) { const m = $("msg"); m.textContent = t; m.className = "m-msg show"; clearTimeout(toast.t); toast.t = setTimeout(() => (m.className = "m-msg"), 2600); }
+
+  async function api(path, init = {}) {
+    const r = await fetch(path, { ...init, headers: { "Content-Type": "application/json", "x-admin-key": key, ...(init.headers || {}) } });
+    if (r.status === 401) { showLogin("That key didn't work — check it with Chris."); throw new Error("unauthorized"); }
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(data.error || "Something went wrong");
+    return data;
+  }
+
+  function showLogin(hint) {
+    localStorage.removeItem(cfg.keyName); key = "";
+    $("app").hidden = true; $("login").hidden = false;
+    $("login-hint").textContent = hint || "";
+  }
+
+  function fillSelect(el, pairs) { el.innerHTML = pairs.map(([v, l]) => `<option value="${v}">${esc(l)}</option>`).join(""); }
+  function setDirection(dir) {
+    direction = dir;
+    document.querySelectorAll("[data-dir]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.dir === dir)));
+    fillSelect($("e-cat"), CATS[dir]);
+    $("tax-field").hidden = !(cfg.vatRegistered && dir === "income");
+  }
+
+  function renderTax(t) {
+    const el = $("tax");
+    const sourceLinks = (t.sources || []).map((s, i) =>
+      `<a href="${esc(s)}" target="_blank" rel="noopener">${esc(new URL(s).hostname.replace(/^www\./, ""))}${t.sources.length > 1 ? ` (${i + 1})` : ""}</a>`).join(", ");
+    const foot = `<p class="m-sub" style="margin-top:12px">Estimate only — not tax advice. Rules checked ${esc(fmtDate(t.checked))}${sourceLinks ? ` from ${sourceLinks}` : ""}. Confirm with your ${isID ? "konsultan pajak" : "accountant"}.</p>`;
+    if (t.country === "ID") {
+      const isInd = t.taxpayer === "individual";
+      const thisMonth = t.months.find((m) => m.month === today().slice(0, 7));
+      const owing = t.months.filter((m) => m.taxMinor > 0);
+      const used = isInd ? Math.min(1, t.ytdGrossMinor / t.allowanceMinor) : 1;
+      const msg = {
+        under_allowance: ["", `You're under the Rp500 juta tax-free amount for ${year} — nothing to pay yet. Keep recording everything so you know the month you cross it.`],
+        paying: ["warn", `You've passed Rp500 juta this year. Each month, pay 0.5% of that month's takings by the 15th of the next month.`],
+        near_ceiling: ["warn", `Takings are over 80% of Rp4.8 miliar — above that, the 0.5% scheme stops applying. Talk to a konsultan pajak now.`],
+        over_ceiling: ["bad", `Takings are over Rp4.8 miliar this year — the 0.5% UMKM scheme no longer applies. Talk to a konsultan pajak.`],
+      }[t.status];
+      el.innerHTML = `<h3>Tax guide — PPh Final UMKM (0.5%)</h3>
+        <p class="m-sub">Indonesia's small-business tax: 0.5% of your gross takings (omzet). ${isInd ? "As an individual (orang pribadi), your first Rp500 juta each year is tax-free." : ""} Costs don't reduce it — it's worked out on takings.</p>
+        <div class="m-tiles">
+          <div class="m-tile"><b>${esc(short(t.ytdGrossMinor))}</b><small>Takings ${year} so far</small></div>
+          ${isInd ? `<div class="m-tile"><b>${esc(short(t.allowanceRemainingMinor))}</b><small>Tax-free left</small></div>` : ""}
+          <div class="m-tile"><b>${esc(money(t.ytdTaxMinor))}</b><small>Estimated tax ${year}</small></div>
+          ${thisMonth ? `<div class="m-tile"><b>${esc(money(thisMonth.taxMinor))}</b><small>This month · pay by ${esc(fmtDate(thisMonth.dueDate))}</small></div>` : ""}
+        </div>
+        ${isInd ? `<div class="m-bar ${used >= 1 ? "warn" : ""}" aria-hidden="true"><span style="width:${Math.round(used * 100)}%"></span></div>
+        <p class="m-sub">${pct(Math.min(used, 1))} of the Rp500 juta tax-free amount used.</p>` : ""}
+        ${msg ? `<div class="m-flag ${msg[0]}">${esc(msg[1])}</div>` : ""}
+        ${owing.length ? `<div class="m-scroll"><table class="m-table"><thead><tr><th>Month</th><th>Takings</th><th>Tax (est.)</th><th>Pay by</th></tr></thead><tbody>
+          ${owing.map((m) => `<tr><td>${esc(monthName(m.month))}</td><td>${esc(short(m.grossMinor))}</td><td>${esc(money(m.taxMinor))}</td><td>${esc(fmtDate(m.dueDate))}</td></tr>`).join("")}
+          </tbody></table></div>` : ""}
+        ${foot}`;
+      return;
+    }
+    if (t.country === "GB") {
+      const ty = t.taxYear;
+      let vatHtml;
+      if (t.vatRegistered) {
+        vatHtml = `<div class="m-tile"><b>${esc(money(t.vat.collectedThisTaxYearMinor))}</b><small>VAT collected ${esc(ty.label)}</small></div>`;
+      } else {
+        const v = t.vat;
+        const cls = v.status === "over" ? "bad" : v.status === "near" || v.status === "watch" ? "warn" : "";
+        const text = {
+          ok: "Comfortably under the VAT threshold.",
+          watch: "Getting closer to the VAT threshold — worth a chat with your accountant.",
+          near: "Over 90% of the VAT threshold. Plan for VAT registration now.",
+          over: "Over £90,000 in the last 12 months: you must register for VAT within 30 days of the end of the month you went over.",
+        }[v.status];
+        vatHtml = `</div><h3 style="margin-top:16px">VAT threshold</h3>
+          <p class="m-sub">Takings over the last 12 months: <b>${esc(money(v.rolling12Minor))}</b> of £90,000 (${pct(v.pct)}).</p>
+          <div class="m-bar ${cls}" aria-hidden="true"><span style="width:${Math.min(100, Math.round(v.pct * 100))}%"></span></div>
+          <div class="m-flag ${cls}">${esc(text)}</div><div>`;
+      }
+      el.innerHTML = `<h3>Tax guide — UK</h3>
+        <p class="m-sub">Your figures for the ${esc(ty.label)} tax year (from ${esc(fmtDate(ty.start))}).</p>
+        <div class="m-tiles">
+          <div class="m-tile"><b>${esc(money(ty.incomeMinor))}</b><small>Money in</small></div>
+          <div class="m-tile"><b>${esc(money(ty.expenseMinor))}</b><small>Money out</small></div>
+          <div class="m-tile"><b>${esc(money(ty.profitMinor))}</b><small>Profit so far</small></div>
+          ${vatHtml}
+        </div>
+        <h3 style="margin-top:16px">Making Tax Digital</h3>
+        <p class="m-sub">Sole traders with qualifying income over ${esc(money(t.mtd.thresholdMinor || 5000000))} must keep digital records and send quarterly updates (the threshold drops to £30,000 from April 2027 and £20,000 from April 2028). Next quarterly deadline: <b>${esc(fmtDate(t.mtd.nextDeadline))}</b> — only if you're signed up. Your download below has everything your accountant needs.</p>
+        ${foot}`;
+      return;
+    }
+    el.innerHTML = `<h3>Tax guide</h3><p class="m-sub">No country tax guide set up for this site yet — your download below still has every figure your accountant needs.</p>`;
+  }
+
+  function renderOverview(o) {
+    renderTax(o.tax);
+    $("tiles").innerHTML = `
+      <div class="m-tile"><b>${esc(short(o.totals.income))}</b><small>Money in ${o.year}</small></div>
+      <div class="m-tile"><b>${esc(short(o.totals.expense))}</b><small>Money out ${o.year}</small></div>
+      <div class="m-tile"><b>${esc(short(o.totals.profit))}</b><small>Left over</small></div>`;
+    const rows = o.months.map((m) => {
+      const inc = m.income + m.siteSales;
+      return `<tr><td>${esc(monthName(m.month))}</td><td>${inc ? esc(short(inc)) : "—"}</td><td>${m.expense ? esc(short(m.expense)) : "—"}</td><td>${inc || m.expense ? esc(short(inc - m.expense)) : "—"}</td></tr>`;
+    }).join("");
+    $("months").innerHTML = `<thead><tr><th>Month</th><th>In</th><th>Out</th><th>Left</th></tr></thead><tbody>${rows}</tbody>
+      <tfoot><tr><td>Total</td><td>${esc(short(o.totals.income))}</td><td>${esc(short(o.totals.expense))}</td><td>${esc(short(o.totals.profit))}</td></tr></tfoot>`;
+  }
+
+  function renderPending(items) {
+    $("pending-card").hidden = !items.length;
+    $("pending").innerHTML = items.map((p) => `<li data-id="${p.id}">
+      <div><div class="who">${esc(p.name || p.email || "Someone")}</div>
+        <div class="meta">${esc(p.plan)}${p.reference ? ` · ref ${esc(p.reference)}` : ""} · ${esc(fmtDate(p.created_at))}${p.whatsapp ? ` · <a href="https://wa.me/${esc(String(p.whatsapp).replace(/\D/g, ""))}" target="_blank" rel="noopener">WhatsApp</a>` : ""}</div></div>
+      <div style="text-align:right"><div class="m-amt">${p.amount_minor ? esc(money(p.amount_minor)) : "—"}</div>
+        <div class="m-actions"><button class="m-btn" type="button" data-act="confirm">Paid ✓</button><button class="m-btn" type="button" data-act="dismiss">Not paid</button></div></div>
+    </li>`).join("");
+  }
+
+  function renderEntries(entries) {
+    if (!entries.length) { $("entries").innerHTML = `<li><span class="meta">Nothing recorded for ${year} yet.</span></li>`; return; }
+    $("entries").innerHTML = entries.map((e) => {
+      const out = e.direction === "expense";
+      const canVoid = e.source_table === "ledger";
+      return `<li><div><div class="who">${esc(CAT_LABEL[e.category] || e.category)}${e.counterparty ? ` · ${esc(e.counterparty)}` : ""}</div>
+        <div class="meta">${esc(fmtDate(e.entry_date))}${e.method ? ` · ${esc(METHOD_LABEL[e.method] || e.method)}` : ""}${e.description ? ` · ${esc(e.description)}` : ""}</div></div>
+        <div style="text-align:right"><div class="m-amt ${out ? "out" : ""}">${out ? "−" : "+"}${esc(money(e.amount_minor))}</div>
+        ${canVoid ? `<div class="m-actions"><button class="m-btn" type="button" data-void="${esc(e.id)}">Remove</button></div>` : ""}</div></li>`;
+    }).join("");
+  }
+
+  async function load() {
+    const [o, pending, list] = await Promise.all([
+      api(`/desk/accounts/overview?year=${year}`),
+      api("/desk/accounts/pending-payments"),
+      api(`/desk/accounts/entries?from=${year}-01-01&to=${year}-12-31&limit=60`),
+    ]);
+    renderOverview(o); renderPending(pending.items || []); renderEntries(list.entries || []);
+  }
+
+  async function start() {
+    $("login").hidden = true; $("app").hidden = false;
+    const y = new Date().getFullYear();
+    $("year").innerHTML = [y, y - 1, y - 2].map((v) => `<option value="${v}">${v}</option>`).join("");
+    try { await load(); } catch (err) { if (err.message !== "unauthorized") toast(err.message); }
+  }
+
+  const toMinor = (v) => String(v ?? "").trim() === "" ? null : Math.round(Number(v) * 100);
+
+  fillSelect($("e-method"), METHODS);
+  setDirection("income");
+  $("e-date").value = today();
+  document.querySelectorAll("[data-dir]").forEach((b) => b.addEventListener("click", () => setDirection(b.dataset.dir)));
+  $("year").addEventListener("change", (e) => { year = Number(e.target.value); load().catch((err) => toast(err.message)); });
+
+  $("entry-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    try {
+      await api("/desk/accounts/entries", { method: "POST", body: JSON.stringify({
+        direction, category: fd.get("category"), entry_date: fd.get("entry_date"),
+        amount_minor: toMinor(fd.get("amount")), tax_minor: toMinor(fd.get("tax")),
+        method: fd.get("method"), counterparty: fd.get("counterparty"), description: fd.get("description") }) });
+      e.target.reset(); $("e-date").value = today(); setDirection(direction);
+      toast("Saved"); await load();
+    } catch (err) { if (err.message !== "unauthorized") toast(err.message); }
+  });
+
+  $("pending").addEventListener("click", async (e) => {
+    const b = e.target.closest("[data-act]"); if (!b) return;
+    const li = b.closest("[data-id]");
+    const act = b.dataset.act;
+    if (act === "dismiss" && !confirm("Mark this reservation as not paid?")) return;
+    b.disabled = true;
+    try {
+      await api(`/desk/accounts/pending-payments/${li.dataset.id}/${act}`, { method: "POST", body: JSON.stringify({ entry_date: today() }) });
+      toast(act === "confirm" ? "Added to your books" : "Removed"); await load();
+    } catch (err) { b.disabled = false; if (err.message !== "unauthorized") toast(err.message); }
+  });
+
+  $("entries").addEventListener("click", async (e) => {
+    const b = e.target.closest("[data-void]"); if (!b) return;
+    if (!confirm("Remove this entry from your books?")) return;
+    try { await api(`/desk/accounts/entries/${b.dataset.void}/void`, { method: "POST", body: JSON.stringify({ reason: "removed by owner" }) });
+      toast("Removed"); await load(); } catch (err) { if (err.message !== "unauthorized") toast(err.message); }
+  });
+
+  $("export").addEventListener("click", async () => {
+    try {
+      const r = await fetch(`/desk/accounts/export.csv?from=${year}-01-01&to=${year}-12-31`, { headers: { "x-admin-key": key } });
+      if (!r.ok) throw new Error("Download failed");
+      const blob = await r.blob();
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `${cfg.tenantId}-accounts-${year}.csv`;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    } catch (err) { toast(err.message); }
+  });
+
+  $("key-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    key = String(new FormData(e.target).get("key") || "").trim();
+    if (!key) return;
+    localStorage.setItem(cfg.keyName, key);
+    start();
+  });
+
+  if (key) start(); else showLogin();
+})();
+</script>
+</body>
+</html>

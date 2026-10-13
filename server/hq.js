@@ -4,6 +4,7 @@
 // leads/health. Admin-key only. Mounted from server.js.
 
 import express from "express";
+import { hashDeskKey, newDeskKey } from "./desk-auth.js";
 
 export const HQ_STAGES = [
   "prospect",
@@ -280,7 +281,7 @@ export function createHqRouter({
       const g = await dbQuery(`${gymRollupSql} WHERE g.id = $1`, [id]);
       const gym = g.rows?.[0];
       if (!gym) return res.status(404).json({ error: "Gym not found" });
-      const [activity, payments] = await Promise.all([
+      const [activity, payments, deskKey] = await Promise.all([
         dbQuery(
           "SELECT id, kind, body, at FROM hq_activity WHERE gym_id = $1 ORDER BY at DESC LIMIT 200",
           [id],
@@ -291,10 +292,17 @@ export function createHqRouter({
               [gym.tenant_id],
             )
           : Promise.resolve({ rows: [] }),
+        gym.tenant_id
+          ? dbQuery(
+              "SELECT created_at, last_used_at FROM desk_keys WHERE tenant_id = $1 AND revoked_at IS NULL ORDER BY created_at DESC LIMIT 1",
+              [gym.tenant_id],
+            )
+          : Promise.resolve({ rows: [] }),
       ]);
       return res.json({
         ok: true,
         gym,
+        desk_key: deskKey.rows?.[0] || null,
         activity: activity.rows,
         payments: payments.rows,
         escalations: escalationsFor(gym.tenant_id, 30),
@@ -409,6 +417,42 @@ export function createHqRouter({
       return res.json({ ok: true });
     } catch (err) {
       return fail(res, "record payment", err);
+    }
+  });
+
+  // Issue the gym's desk key: opens only their own Coach desk + Money page.
+  // Any previous key stops working. The plain key is returned once only.
+  router.post("/admin/hq/gyms/:id/desk-key", async (req, res) => {
+    try {
+      const id = Number(req.params.id);
+      if (!Number.isInteger(id)) return res.status(400).json({ error: "bad id" });
+      const g = await dbQuery("SELECT tenant_id FROM hq_gyms WHERE id = $1", [id]);
+      const tenantId = g.rows?.[0]?.tenant_id;
+      if (!g.rows?.[0]) return res.status(404).json({ error: "Gym not found" });
+      if (!tenantId) {
+        return res.status(400).json({ error: "Link this gym to its site first" });
+      }
+      await dbQuery(
+        "UPDATE desk_keys SET revoked_at = now() WHERE tenant_id = $1 AND revoked_at IS NULL",
+        [tenantId],
+      );
+      const key = newDeskKey();
+      await dbQuery(
+        "INSERT INTO desk_keys (tenant_id, key_hash, label) VALUES ($1, $2, $3)",
+        [tenantId, hashDeskKey(key), "issued from HQ"],
+      );
+      await dbQuery(
+        "INSERT INTO hq_activity (gym_id, kind, body) VALUES ($1, 'note', 'New desk key issued (old key stopped working)')",
+        [id],
+      );
+      return res.json({
+        ok: true,
+        key,
+        desk_path: `/${tenantId}/coach/`,
+        money_path: `/${tenantId}/money/`,
+      });
+    } catch (err) {
+      return fail(res, "issue desk key", err);
     }
   });
 

@@ -651,3 +651,14 @@ Commits `db76c7d`, `f467d2d`. Findings + fixes:
 **Production** still needs its own Postgres (Railway: add the Postgres plugin to the project, which sets `DATABASE_URL`), plus `ADMIN_API_KEY` and `PUBLIC_BASE_URL` env vars, then run migrations. That step needs the Railway account owner.
 
 `data/alerts.json` and `data/exceptions.json` are now runtime ledgers (gitignored, may contain customer emails); the server recreates them if missing.
+
+## Gym desks: Money & tax page + per-gym keys (Oct 2026)
+
+- **Per-gym desk keys** (`server/desk-auth.js`, table `desk_keys`): each gym's key opens only its own Coach desk + Money page, whatever the request claims. Issued/replaced from HQ (gym → "Their desk" → Make desk key; shown once, copy or send on WhatsApp). The platform `ADMIN_API_KEY` still opens any desk. The old desks used the master key and resolved the site by hostname — both fixed (desks now also work on shared-domain `/<site>/` links).
+- **Money page** at `/<site>/money/` on all 11 sites (shared template `server/desk-money.html`, branded with each site's stylesheet + desk masthead; "Money" button added to every desk's tab bar, source included so regeneration keeps it). Money in/out, monthly table, bank-transfer reservations to confirm (Paid → books; Not paid), remove entries (voided, never deleted), accountant CSV (formula-injection safe). Paid website orders included automatically.
+- **Tax guides** (`src/tax-rules.js`, rules checked 13 Oct 2026 against official sources, cited in code + on the page):
+  - Indonesia (Dina): PPh Final UMKM 0.5% of gross takings, first Rp500 juta/yr tax-free for individuals, Rp4.8 miliar ceiling, pay by the 15th of next month (PP 55/2022 + PP 20/2026, PMK 81/2024). Per-month estimate + due dates.
+  - UK gyms: rolling-12-month takings vs £90k VAT threshold (watch/near/over), tax-year income/costs/profit, MTD thresholds (£50k/£30k/£20k) + next quarterly deadline.
+  - Per-site override in `tenants.json`: `"accounting": { "country", "currency", "taxpayer": "individual|pt_perorangan", "vatRegistered": true }`.
+- Schema: `migrations/016_accounts.sql`. Plain DATE columns now come back as `YYYY-MM-DD` strings (db.js) — fixes a BST off-by-one-day bug.
+- Tests: `tests/tax-rules.test.js` (incl. DJP's own worked example), `tests/accounts.test.js`.

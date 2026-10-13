@@ -346,6 +346,18 @@
         ${issues ? `<ul class="timeline">${issues}</ul>` : `<div class="stat" style="margin-top:6px">No site issues in the last 30 days.</div>`}
       </section>` : ""}
 
+      ${g.tenant_id ? `<section class="box"><h4>Their desk (dashboard)</h4>
+        <div class="stat">${data.desk_key
+          ? `Desk key active since <b>${esc(fmtDate(data.desk_key.created_at))}</b>${data.desk_key.last_used_at ? ` · last used ${esc(fmtWhen(data.desk_key.last_used_at))}` : " · not used yet"}`
+          : "No desk key yet — make one and send it to them."}</div>
+        <div class="contact" style="margin-top:8px">
+          <a href="/${esc(g.tenant_id)}/coach/" target="_blank" rel="noopener">Coach desk</a>
+          <a href="/${esc(g.tenant_id)}/money/" target="_blank" rel="noopener">Money page</a>
+        </div>
+        <div class="row"><button type="button" class="ghost" id="desk-key">${data.desk_key ? "Replace desk key" : "Make desk key"}</button></div>
+        <div id="desk-key-out"></div>
+      </section>` : ""}
+
       <section class="box"><h4>Add to timeline</h4>
         <form id="act-form">
           <div class="grid2">
@@ -395,6 +407,23 @@
         await api(`/admin/hq/gyms/${id}/activity`, { method: "POST",
           body: JSON.stringify({ kind: fd.get("kind"), body: fd.get("body") }) });
         toast("Added"); await refresh(); openGym(id);
+      } catch (err) { toast(err.message, true); }
+    });
+    const deskBtn = $("desk-key");
+    if (deskBtn) deskBtn.addEventListener("click", async () => {
+      if (data.desk_key && !confirm("Their current desk key will stop working. Make a new one?")) return;
+      try {
+        const r = await api(`/admin/hq/gyms/${id}/desk-key`, { method: "POST", body: "{}" });
+        const origin = location.origin;
+        const msg = `Your private desk: ${origin}${r.desk_path}\nMoney & tax page: ${origin}${r.money_path}\nYour key (paste it once on each device): ${r.key}`;
+        $("desk-key-out").innerHTML = `<label>Copy this now — it won't be shown again</label>
+          <textarea readonly id="desk-key-text">${esc(msg)}</textarea>
+          <div class="row"><button type="button" class="primary" id="desk-key-copy">Copy</button>
+          ${g.whatsapp ? `<a class="ghost" style="display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:10px;border:1px solid var(--line);color:var(--text);text-decoration:none" href="https://wa.me/${esc(String(g.whatsapp).replace(/\D/g, ""))}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Send on WhatsApp</a>` : ""}</div>`;
+        $("desk-key-copy").addEventListener("click", async () => {
+          try { await navigator.clipboard.writeText(msg); toast("Copied"); }
+          catch { $("desk-key-text").select(); toast("Select and copy"); }
+        });
       } catch (err) { toast(err.message, true); }
     });
     const pay = $("pay-form");

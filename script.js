@@ -1169,7 +1169,6 @@ function renderKitsLandingPage() {
   });
 
   const currency = String(tenant?.currency || "eur");
-  const brandName = String(tenant?.seo?.brandName || "").trim() || "Shop";
   const heading = kitIdFilter
     ? visibleKits[0]?.title
       ? String(visibleKits[0].title)

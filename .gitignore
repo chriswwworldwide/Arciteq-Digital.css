@@ -6,3 +6,9 @@ archive/
 
 # Athlete photo uploads (pending Dina's approval) — never commit
 roxjaya/images/gallery/inbox/
+
+# Coverage output (regenerated locally)
+coverage/
+
+# macOS junk
+.DS_Store

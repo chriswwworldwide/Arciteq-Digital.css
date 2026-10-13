@@ -332,8 +332,10 @@
           gl_FragColor = color;
         }
 
-        // gamma brightening removed — the canvas must land identical to
-        // the DOM photo it hands back to (the DOM img renders raw sRGB)
+        // codrops gamma lift during the reveal, converging to raw sRGB at
+        // settle so the canvas lands identical to the DOM photo (no dark
+        // click at handoff)
+        gl_FragColor.rgb = pow(gl_FragColor.rgb,vec3(mix(1./2.2,1.0,smoothstep(0.55,1.,uProgress))));
 
       }
     `;
@@ -453,8 +455,9 @@
         uTexSize = u("uTextureSize"),
         uElSize = u("uElementSize"),
         uTex = u("uTexture");
-      gl.uniform3f(uFill, 0.082, 0.059, 0.075); // ~#150f13 stage plum —
-      // no gamma lift now, so the fill band renders as the stage itself
+      gl.uniform3f(uFill, 0.004, 0.002, 0.0035); // stage-matched plum —
+      // the shader gamma-brightens, so the fill band lands around #150f13
+      // and reads as the dark stage itself, not a sheet over it
       gl.uniform2f(uTexSize, iw, ih);
       gl.uniform2f(uElSize, dw, dh);
       gl.uniform1i(uTex, 0);

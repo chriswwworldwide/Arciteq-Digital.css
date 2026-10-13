@@ -99,6 +99,10 @@ const submissionLimiter = createRateLimiter({
   max: 10,
   windowMs: 10 * 60 * 1000,
 });
+const accountLinkLimiter = createRateLimiter({
+  max: 3,
+  windowMs: 15 * 60 * 1000,
+});
 
 dotenv.config({ path: path.join(__dirname, ".env.local") });
 
@@ -1776,7 +1780,9 @@ async function sendBrandedOrderEmail({
   );
   if (prior?.rowCount > 0) return { ok: true, skipped: "already_sent" };
 
-  const tenant = (loadTenantsData().list || []).find((t) => t.slug === tid);
+  const tenant = (loadTenantsData().list || []).find(
+    (t) => String(t?.tenant_id || "") === tid,
+  );
   const brand = String(tenant?.seo?.brandName || tid);
   const baseFrom = String(
     process.env.ALERT_EMAIL_FROM || "Roxjaya <desk@roxjaya.com>",
@@ -2097,7 +2103,7 @@ async function evaluateAndRecordAlerts({ tenant, now }) {
     tsNow.getTime() - paidStaleHours * 60 * 60 * 1000,
   );
   const stuckPaid = await dbQuery(
-    "SELECT order_id, created_at, updated_at, customer_email, amount_total, currency FROM orders WHERE tenant_id=$1 AND status='paid' AND updated_at < $2 ORDER BY updated_at ASC LIMIT 10",
+    "SELECT order_id, created_at, updated_at, customer_email, amount_total, currency FROM orders WHERE tenant_id=$1 AND status='paid' AND fulfilled_at IS NULL AND updated_at < $2 ORDER BY updated_at ASC LIMIT 10",
     [activeTenantId, paidStaleBefore.toISOString()],
   );
   const stuck = Array.isArray(stuckPaid?.rows) ? stuckPaid.rows : [];
@@ -2307,7 +2313,11 @@ async function runExceptionSweep({ tenant, now }) {
   //    (idempotent); escalate only if still missing after 24h.
   const missingConfirm = await dbQuery(
     `SELECT order_id, customer_email, amount_total, currency, created_at FROM orders
-     WHERE tenant_id = $1 AND status = 'paid' AND created_at < now() - interval '15 minutes'
+     WHERE tenant_id = $1 AND status = 'paid'
+       AND created_at < now() - interval '15 minutes'
+       AND created_at > now() - interval '3 days'
+       AND stripe_checkout_session_id IS NOT NULL
+       AND customer_email IS NOT NULL AND customer_email <> ''
        AND NOT EXISTS (
          SELECT 1 FROM email_events e
          WHERE e.tenant_id = orders.tenant_id AND e.order_id = orders.order_id
@@ -2399,7 +2409,11 @@ async function runExceptionSweep({ tenant, now }) {
   // 7. Data retention — once per 24h per tenant, prune high-volume tables
   //    that grow forever. Windows are deliberately generous; this is
   //    housekeeping, not compliance erasure.
-  const lastRetentionAt = new Date(store.lastRetentionAt || 0).getTime();
+  const retentionMap =
+    store.lastRetentionAt && typeof store.lastRetentionAt === "object"
+      ? store.lastRetentionAt
+      : {};
+  const lastRetentionAt = new Date(retentionMap[activeTenantId] || 0).getTime();
   if (tsNow.getTime() - lastRetentionAt >= 24 * 60 * 60 * 1000) {
     const pruned = {};
     try {
@@ -2411,14 +2425,17 @@ async function runExceptionSweep({ tenant, now }) {
     } catch (pvErr) {
       console.error("retention prune page_views failed", pvErr);
     }
-    try {
-      const se = await dbQuery(
-        "DELETE FROM stripe_events WHERE created_at < now() - interval '180 days'",
-        [],
-      );
-      pruned.stripe_events = se?.rowCount || 0;
-    } catch (seErr) {
-      console.error("retention prune stripe_events failed", seErr);
+    // stripe_events is platform-wide, so only the default tenant prunes it.
+    if (activeTenantId === "default") {
+      try {
+        const se = await dbQuery(
+          "DELETE FROM stripe_events WHERE created_at < now() - interval '180 days'",
+          [],
+        );
+        pruned.stripe_events = se?.rowCount || 0;
+      } catch (seErr) {
+        console.error("retention prune stripe_events failed", seErr);
+      }
     }
     try {
       const ee = await dbQuery(
@@ -2429,7 +2446,8 @@ async function runExceptionSweep({ tenant, now }) {
     } catch (eeErr) {
       console.error("retention prune email_events failed", eeErr);
     }
-    store.lastRetentionAt = tsNow.toISOString();
+    retentionMap[activeTenantId] = tsNow.toISOString();
+    store.lastRetentionAt = retentionMap;
     if (Object.values(pruned).some((n) => n > 0)) {
       await record({
         check: "retention_pruned",
@@ -2455,6 +2473,7 @@ async function runHeartbeatOnce() {
   heartbeatState.lastCreatedCount = 0;
 
   try {
+    await ensureCommerceTables();
     const tenantsPath = path.join(__dirname, "data", "tenants.json");
     const tenantsData = safeReadJsonFile(tenantsPath, { tenants: [] });
     const list = Array.isArray(tenantsData?.tenants) ? tenantsData.tenants : [];
@@ -2570,6 +2589,56 @@ function resolveTenantFromRequest(req) {
 
   if (match?.tenant_id) return match;
   return { tenant_id: "default", currency: "eur", language: "en" };
+}
+
+// Path-mounted tenants (e.g. yourdomain.com/pacegym/) share a hostname, so
+// the Host header alone resolves them to "default". When the host gives no
+// specific tenant, accept a client-claimed tenant_id ONLY if it is a real
+// registered tenant AND the page it came from (Referer) is under that
+// tenant's path. A host-resolved tenant always wins over any claim.
+function resolveTenantForPublicWrite(req, claimedTenantId) {
+  const byHost = resolveTenantFromRequest(req);
+  if (byHost?.tenant_id !== "default") return byHost;
+  let refPath = "";
+  try {
+    refPath = new URL(String(req.headers.referer || "")).pathname;
+  } catch {
+    refPath = "";
+  }
+  // No explicit claim → the first path segment of the page is the claim.
+  const claimed =
+    String(claimedTenantId || "").trim() ||
+    String(refPath.split("/")[1] || "").trim();
+  if (!claimed || claimed === "default") return byHost;
+  let tenants = [];
+  try {
+    tenants = loadTenantsData().list;
+  } catch {
+    tenants = [];
+  }
+  const match = tenants.find((t) => String(t?.tenant_id || "") === claimed);
+  if (!match) return byHost;
+  return refPath === `/${claimed}` || refPath.startsWith(`/${claimed}/`)
+    ? match
+    : byHost;
+}
+
+// Base URL for links we email out. Comes from server config only — the
+// tenant's first real (non-localhost) hostname, else PUBLIC_BASE_URL —
+// never from request headers, which the requester controls.
+function trustedBaseUrlForTenant(tenantId) {
+  let tenants = [];
+  try {
+    tenants = loadTenantsData().list;
+  } catch {
+    tenants = [];
+  }
+  const t = tenants.find((x) => String(x?.tenant_id || "") === tenantId);
+  const host = (Array.isArray(t?.hostnames) ? t.hostnames : [])
+    .map((h) => String(h || "").toLowerCase())
+    .find((h) => h && !h.includes("localhost") && !/^\d+\.\d+\.\d+\.\d+$/.test(h));
+  if (host) return `https://${host}`;
+  return String(publicBaseUrl || `http://localhost:${PORT}`).replace(/\/$/, "");
 }
 
 // Cache policy: HTML/API stay uncached (fresh content after deploys); static
@@ -2823,9 +2892,45 @@ app.get("/robots.txt", (req, res) => {
   res.send(text);
 });
 
-// Serve everything in this folder (HTML, CSS, JS, images, etc.)
+// Serve the site's public files (HTML, CSS, JS, images, etc.)
 // Disable the default index.html behavior so our explicit "/" route can redirect.
-app.use(express.static(__dirname, { index: false }));
+// Private files (server code, docs, migrations, ops ledgers, internal data)
+// skip the static handler entirely and fall through to the routes / 404.
+const PUBLIC_ROOT_DATA_FILES = new Set([
+  "/data/products.json",
+  "/data/reviews.json",
+  "/data/supplier-assignments.json",
+  "/data/suppliers.json",
+  "/data/tenants.json",
+  "/data/category-faqs.json",
+]);
+const PRIVATE_STATIC_RE = [
+  /\.(md|sql|sh|log|plist|properties|lock|ts|map)$/i,
+  /^\/(migrations|scripts|server|middleware|tests|src|archive|coverage|node_modules)\//i,
+  /^\/api\/.*\.js$/i,
+  /^\/(server|db|vitest\.config|eslint\.config|service-worker-build)\.js$/i,
+  /^\/(package|package-lock|tsconfig)\.json$/i,
+  /^\/(_redirects|sonar-project\.properties|\.snyk)$/i,
+  /^\/[^/]+\/data\/inbox\.json$/i,
+];
+function isPrivateStaticPath(p) {
+  const pathName = String(p || "").toLowerCase();
+  if (pathName.startsWith("/data/") && !PUBLIC_ROOT_DATA_FILES.has(pathName)) {
+    return true;
+  }
+  return PRIVATE_STATIC_RE.some((re) => re.test(pathName));
+}
+const serveStatic = express.static(__dirname, { index: false });
+app.use((req, res, next) => {
+  let pathName = req.path;
+  try {
+    pathName = decodeURIComponent(req.path);
+  } catch {
+    return next();
+  }
+  if (isPrivateStaticPath(pathName)) return next();
+  return serveStatic(req, res, next);
+});
 
 app.get("/health", (req, res) => {
   return res.json({ ok: true });
@@ -3061,21 +3166,29 @@ app.get("/account/:token", async (req, res) => {
 });
 
 // Request the account link by email — always 200 so it can't probe accounts.
+// The link's domain comes from server config (tenant hostname or
+// PUBLIC_BASE_URL), never from request headers, so it can't be pointed at
+// an attacker's site; rate-limited per IP and per address.
 app.post("/api/account/link", express.json(), async (req, res) => {
   try {
     const email = normalizeEmail(req.body?.email);
-    if (email) {
+    const tenantId = String(req.body?.tenant_id || "default");
+    const allowed =
+      accountLinkLimiter.check(`ip:${req.ip}`).ok &&
+      (!email || accountLinkLimiter.check(`email:${email}`).ok);
+    if (email && allowed) {
       await ensureCommerceTables();
-      const token = await ensureAccountToken(
-        String(req.body?.tenant_id || "default"),
-        email,
+      const known = await dbQuery(
+        "SELECT 1 FROM customers WHERE tenant_id = $1 AND email = $2",
+        [tenantId, email],
       );
+      const token =
+        known?.rowCount > 0 ? await ensureAccountToken(tenantId, email) : null;
       if (token) {
-        const origin = req.headers.origin || `http://localhost:${PORT}`;
         await sendViaResend({
           to: email,
           subject: "Your account link",
-          body: `Your orders and account: ${origin}/account/${token}\n\nKeep this link private — it's your sign-in.`,
+          body: `Your orders and account: ${trustedBaseUrlForTenant(tenantId)}/account/${token}\n\nKeep this link private — it's your sign-in.`,
         });
       }
     }
@@ -4254,7 +4367,7 @@ app.get("/api/related-products", (req, res) => {
 
 app.post("/api/capture-email", async (req, res) => {
   try {
-    const tenant = resolveTenantFromRequest(req);
+    const tenant = resolveTenantForPublicWrite(req, req.body?.tenant_id);
     const tenantId = String(tenant?.tenant_id || "default");
     const email = normalizeEmail(req.body?.email);
     const cart = Array.isArray(req.body?.cart) ? req.body.cart : [];
@@ -4328,7 +4441,7 @@ app.post("/api/capture-email", async (req, res) => {
 // when the caller already proved they hold it.
 app.post("/api/submissions", async (req, res) => {
   try {
-    const tenant = resolveTenantFromRequest(req);
+    const tenant = resolveTenantForPublicWrite(req, req.body?.tenant_id);
     const tenantId = String(tenant?.tenant_id || "default");
     if (!submissionLimiter.check(`${tenantId}:${req.ip}`).ok) {
       return res
@@ -4484,7 +4597,7 @@ app.get("/api/submissions/stats", async (req, res) => {
 // already-identified athlete's views stitch onto their customer record.
 app.post("/api/pageview", async (req, res) => {
   try {
-    const tenant = resolveTenantFromRequest(req);
+    const tenant = resolveTenantForPublicWrite(req, req.body?.tenant_id);
     if (!pageviewsEnabled(tenant)) return res.status(204).end();
     const tenantId = String(tenant?.tenant_id || "default");
     const checked = validatePageview(req.body, { ownHost: req.headers.host });
@@ -5895,15 +6008,16 @@ app.post(
       const tracking = String(req.body?.tracking || "").slice(0, 200);
       if (!orderId) return res.status(400).json({ error: "Missing orderId" });
 
+      await ensureCommerceTables();
       const updated = await dbQuery(
-        "UPDATE orders SET status = 'fulfilled', updated_at = now() WHERE tenant_id = $1 AND order_id = $2 AND status = 'paid' RETURNING order_id, customer_email",
-        [activeTenantId, orderId],
+        "UPDATE orders SET fulfilled_at = now(), fulfilment_tracking = NULLIF($3, ''), updated_at = now() WHERE tenant_id = $1 AND order_id = $2 AND status = 'paid' AND fulfilled_at IS NULL RETURNING order_id, customer_email",
+        [activeTenantId, orderId, tracking],
       );
       const row = Array.isArray(updated?.rows) ? updated.rows[0] : null;
       if (!row) {
-        return res
-          .status(404)
-          .json({ error: "Order not found or not in paid status" });
+        return res.status(404).json({
+          error: "Order not found, not paid, or already fulfilled",
+        });
       }
 
       await dbQuery(
@@ -5920,7 +6034,7 @@ app.post(
       } catch (mailErr) {
         console.error("shipped email failed", mailErr);
       }
-      return res.json({ ok: true, order_id: orderId, status: "fulfilled" });
+      return res.json({ ok: true, order_id: orderId, fulfilled: true });
     } catch (err) {
       console.error("/admin/orders/:orderId/fulfil failed", err);
       return res
@@ -6110,12 +6224,15 @@ app.post("/admin/jobs/abandoned-recovery", async (req, res) => {
 let commerceTablesReady = false;
 async function ensureCommerceTables() {
   if (commerceTablesReady) return;
-  await dbQuery(
-    fs.readFileSync(
-      path.join(__dirname, "migrations", "011_commerce_gaps.sql"),
-      "utf8",
-    ),
-  );
+  for (const file of [
+    "011_commerce_gaps.sql",
+    "012_platform_billing.sql",
+    "013_fulfilment_and_indexes.sql",
+  ]) {
+    await dbQuery(
+      fs.readFileSync(path.join(__dirname, "migrations", file), "utf8"),
+    );
+  }
   commerceTablesReady = true;
 }
 
@@ -6266,7 +6383,7 @@ async function ensureAccountToken(tenantId, email) {
 
 app.post("/create-checkout-session", async (req, res) => {
   try {
-    const requestTenant = resolveTenantFromRequest(req);
+    const requestTenant = resolveTenantForPublicWrite(req, req.body?.tenant_id);
     if (String(requestTenant?.shop?.status || "") === "opening-soon") {
       return res
         .status(403)
@@ -6301,7 +6418,7 @@ app.post("/create-checkout-session", async (req, res) => {
       ? rawCustomerEmail
       : "";
 
-    const resolvedTenant = resolveTenantFromRequest(req);
+    const resolvedTenant = resolveTenantForPublicWrite(req, tenant_id);
     const resolvedTenantId = String(resolvedTenant?.tenant_id || "default");
     const expectedCurrency = String(
       resolvedTenant?.currency || "",

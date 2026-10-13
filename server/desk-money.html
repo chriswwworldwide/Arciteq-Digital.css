@@ -122,7 +122,7 @@ __MASTHEAD__
     </section>
   </div>
 </main>
-<div class="m-msg" id="msg" role="status"></div>
+<output class="m-msg" id="msg"></output>
 <script id="desk-config" type="application/json">__CONFIG__</script>
 <script>
 (() => {
@@ -151,7 +151,7 @@ __MASTHEAD__
 
   const CATS = {
     income: [["membership", isID ? "Membership (iuran)" : "Membership"], ["coaching", "Coaching / PT"],
-      ["class_pass", "Class pass / drop-in"], ["event", isID ? "Event / race trip" : "Event / race trip"],
+      ["class_pass", "Class pass / drop-in"], ["event", "Event / race trip"],
       ["merch", "Merch"], ["sponsorship", "Sponsorship"], ["other_income", "Other income"]],
     expense: [["venue", isID ? "Venue / rent (sewa)" : "Venue / rent"], ["equipment", "Equipment"],
       ["travel", "Travel"], ["race_fees", "Race fees"], ["marketing", "Marketing"],
@@ -170,7 +170,7 @@ __MASTHEAD__
   function toast(t) { const m = $("msg"); m.textContent = t; m.className = "m-msg show"; clearTimeout(toast.t); toast.t = setTimeout(() => (m.className = "m-msg"), 2600); }
 
   async function api(path, init = {}) {
-    const r = await fetch(path, { ...init, headers: { "Content-Type": "application/json", "x-admin-key": key, ...(init.headers || {}) } });
+    const r = await fetch(path, { ...init, headers: { "Content-Type": "application/json", "x-admin-key": key, ...init.headers } });
     if (r.status === 401) { showLogin("That key didn't work — check it with Chris."); throw new Error("unauthorized"); }
     const data = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(data.error || "Something went wrong");
@@ -231,7 +231,7 @@ __MASTHEAD__
         vatHtml = `<div class="m-tile"><b>${esc(money(t.vat.collectedThisTaxYearMinor))}</b><small>VAT collected ${esc(ty.label)}</small></div>`;
       } else {
         const v = t.vat;
-        const cls = v.status === "over" ? "bad" : v.status === "near" || v.status === "watch" ? "warn" : "";
+        const cls = { over: "bad", near: "warn", watch: "warn" }[v.status] || "";
         const text = {
           ok: "Comfortably under the VAT threshold.",
           watch: "Getting closer to the VAT threshold — worth a chat with your accountant.",

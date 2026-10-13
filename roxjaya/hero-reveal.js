@@ -186,7 +186,7 @@
       float tw = 0.5 + 0.5 * sin(u_time * (3.0 + hash21(cell) * 5.0)
                                  + hash21(cell) * 6.2831);
       float on = step(hash21(cell + 5.0), 0.22); // ~22% of cells hold a star
-      col += vec3(1.0, 0.9, 1.0) * star * tw * on * fresh * 0.6;
+      col += vec3(1.0, 0.9, 1.0) * star * tw * on * fresh * 0.3;
       // The still-rolled face samples the same texture — on the full-width
       // sheet it reads as a second copy of the picture riding ahead of the
       // roll. Dim it into a dark scroll; laid paper is untouched (vTube→1).

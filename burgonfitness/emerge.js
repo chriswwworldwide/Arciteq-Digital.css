@@ -343,16 +343,18 @@
     // mask's own feather/clip applies to the canvas automatically.
     const start = () => {
       const ics = getComputedStyle(img);
-      const mb = mask.getBoundingClientRect();
-      const ib = img.getBoundingClientRect();
+      // offset* gives the layout box relative to the mask (offsetParent)
+      // and ignores the hero-drift transform — getBoundingClientRect
+      // would bake the live pulse into our mount and the settled DOM
+      // photo would land in a slightly different spot
       const pl = parseFloat(ics.paddingLeft) || 0;
       const pr = parseFloat(ics.paddingRight) || 0;
       const pt = parseFloat(ics.paddingTop) || 0;
       const pb = parseFloat(ics.paddingBottom) || 0;
-      const bx = ib.left - mb.left + pl;
-      const by = ib.top - mb.top + pt;
-      const bw = ib.width - pl - pr;
-      const bh = ib.height - pt - pb;
+      const bx = img.offsetLeft + pl;
+      const by = img.offsetTop + pt;
+      const bw = img.offsetWidth - pl - pr;
+      const bh = img.offsetHeight - pt - pb;
       const posF = (v) => {
         const t = String(v).trim().split(/\s+/);
         const f = (s) =>
@@ -506,7 +508,9 @@
           }
           acc += P.dur;
         }
-        if (ph.pause || el < 0) {
+        // stay hidden until the reveal front is actually moving —
+        // uProgress≈0 renders a full white sheet for some effects
+        if (ph.pause || el < 0 || (!ph.hold && lt < 0.08)) {
           canvas.style.opacity = "0";
           if (tag) tag.textContent = "";
         } else {
@@ -518,7 +522,7 @@
           gl.clear(gl.COLOR_BUFFER_BIT);
           gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
         }
-        if (el < total + 500) return requestAnimationFrame(frame);
+        if (el < total + 150) return requestAnimationFrame(frame);
         canvas.remove();
         if (tag) tag.remove();
         restore();

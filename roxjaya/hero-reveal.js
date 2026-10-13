@@ -330,7 +330,15 @@
     // ?revdebug=amb re-enables the blurred bake for comparisons.
     const dbg = new URLSearchParams(location.search).get("revdebug");
     if (dbg !== "amb") {
-      c.fillStyle = "#1a0a14";
+      // Paper needs a faint diagonal sheen — flat fill identical to the
+      // page plum makes the laid sheet invisible on the ambient half
+      // ("very transparent, can't make it out"). A subtle tone sweep
+      // reads as paper without carrying any image content.
+      const sheen = c.createLinearGradient(0, 0, cw * 0.9, ch);
+      sheen.addColorStop(0, "#2a1330");
+      sheen.addColorStop(0.55, "#1f0e22");
+      sheen.addColorStop(1, "#150812");
+      c.fillStyle = sheen;
       c.fillRect(0, 0, cw, ch);
     } else {
     const ambS = Math.max(cw / iw, ch / ih);

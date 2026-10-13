@@ -260,9 +260,11 @@
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     gl.clearColor(0, 0, 0, 0);
-    // fullRoll only: opaque brand-ink clear so where the sheet hasn't laid
-    // yet the page shows flat colour, never the DOM beneath
-    if (fullRoll) gl.clearColor(0.102, 0.039, 0.078, 1);
+    // fullRoll only: opaque clear so where the sheet hasn't laid yet the
+    // page never shows the DOM beneath. Darker than the sheet's flat-ink
+    // face so the roll front is actually VISIBLE sweeping the full width —
+    // plum-on-plum read as "the roll only happens over the photo".
+    if (fullRoll) gl.clearColor(0.045, 0.016, 0.04, 1);
     gl.uniform1f(uAngle, Math.PI / 4); // unrolls top-left → bottom-right
     // fullRoll: the sheet spans ambient + photo, so the Codrops trailing
     // dim + dark seams would read as a cast shadow beside the picture.

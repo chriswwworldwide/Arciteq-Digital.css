@@ -561,6 +561,59 @@ app.post(
             ["failed", paymentIntentId, "pending"],
           );
         }
+      } else if (stripeEventType === "charge.refunded") {
+        const charge = event?.data?.object;
+        const rawPi = charge?.payment_intent;
+        const paymentIntentId =
+          typeof rawPi === "string"
+            ? rawPi
+            : String(rawPi?.id || "");
+        if (paymentIntentId) {
+          // charge.refunded === true means fully refunded; a partial refund
+          // still logs an order event but keeps the order paid so the tax
+          // report counts the retained amount correctly.
+          const fullyRefunded = charge?.refunded === true;
+          const refunded = fullyRefunded
+            ? await dbQuery(
+                "UPDATE orders SET status = $1, updated_at = now() WHERE stripe_payment_intent_id = $2 AND status = $3 RETURNING order_id, tenant_id, customer_email, amount_total, currency",
+                ["refunded", paymentIntentId, "paid"],
+              )
+            : await dbQuery(
+                "SELECT order_id, tenant_id, customer_email, amount_total, currency FROM orders WHERE stripe_payment_intent_id = $1 AND status = 'paid'",
+                [paymentIntentId],
+              );
+          const refundedRow = Array.isArray(refunded?.rows)
+            ? refunded.rows[0]
+            : null;
+          if (refundedRow?.order_id) {
+            await dbQuery(
+              "INSERT INTO order_events (order_id, type, data) SELECT $1, $2, $3::jsonb WHERE NOT EXISTS (SELECT 1 FROM order_events WHERE order_id = $1 AND type = $2 AND data->>'stripeEventId' = $4)",
+              [
+                String(refundedRow.order_id),
+                "refund",
+                JSON.stringify({
+                  stripeEventId,
+                  paymentIntentId,
+                  chargeId: String(charge?.id || ""),
+                  amountRefunded: charge?.amount_refunded ?? null,
+                  partial: !fullyRefunded,
+                }),
+                stripeEventId,
+              ],
+            );
+            try {
+              await sendRefundNotice({
+                tenantId: String(refundedRow.tenant_id || ""),
+                orderId: String(refundedRow.order_id),
+                email: String(refundedRow.customer_email || ""),
+                amountTotal: charge?.amount_refunded ?? refundedRow.amount_total,
+                currency: refundedRow.currency,
+              });
+            } catch (mailErr) {
+              console.error("refund email failed", mailErr);
+            }
+          }
+        }
       } else if (
         stripeEventType === "customer.subscription.created" ||
         stripeEventType === "customer.subscription.updated" ||
@@ -1653,6 +1706,73 @@ async function sendOrderConfirmation({
       tid,
       address,
       "order_confirmation",
+      oid,
+      JSON.stringify({
+        ok: Boolean(result?.ok),
+        provider: result?.provider || "sendmail",
+        error: result?.error || null,
+      }),
+    ],
+  );
+  return result;
+}
+
+// Refund notice — same dedup + tenant-branding rules as order
+// confirmation, fired from the charge.refunded webhook branch.
+async function sendRefundNotice({
+  tenantId,
+  orderId,
+  email,
+  amountTotal,
+  currency,
+}) {
+  const address = normalizeEmail(email);
+  if (!address) return { ok: false, error: "no recipient" };
+  const tid = String(tenantId || "");
+  const oid = String(orderId || "");
+  if (!tid || !oid) return { ok: false, error: "missing order ref" };
+
+  const prior = await dbQuery(
+    "SELECT 1 FROM email_events WHERE tenant_id = $1 AND order_id = $2 AND type = 'refund' AND data->>'ok' = 'true' LIMIT 1",
+    [tid, oid],
+  );
+  if (prior?.rowCount > 0) return { ok: true, skipped: "already_sent" };
+
+  const tenant = (loadTenantsData().list || []).find((t) => t.slug === tid);
+  const brand = String(tenant?.seo?.brandName || tid);
+  const amount = Number.isInteger(amountTotal)
+    ? `${(amountTotal / 100).toFixed(2)} ${String(currency || "gbp").toUpperCase()}`
+    : "";
+  const baseFrom = String(
+    process.env.ALERT_EMAIL_FROM || "Roxjaya <desk@roxjaya.com>",
+  ).trim();
+  const mailbox = baseFrom.match(/<([^>]+)>/);
+  const from = mailbox ? `${brand} <${mailbox[1]}>` : baseFrom;
+
+  const body = [
+    `Your refund from ${brand} has been processed.`,
+    "",
+    `Order: ${oid}`,
+    amount ? `Amount refunded: ${amount}` : null,
+    "",
+    "It can take a few days to appear on your statement.",
+    "Questions? Just reply to this email.",
+  ]
+    .filter((l) => l !== null)
+    .join("\n");
+
+  const result = await sendAlertEmail({
+    to: address,
+    subject: `Refund processed — ${brand}`,
+    body,
+    from,
+  });
+  await dbQuery(
+    "INSERT INTO email_events (tenant_id, email, type, order_id, data) VALUES ($1, $2, $3, $4, $5::jsonb)",
+    [
+      tid,
+      address,
+      "refund",
       oid,
       JSON.stringify({
         ok: Boolean(result?.ok),

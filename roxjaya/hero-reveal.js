@@ -296,16 +296,18 @@
     c.imageSmoothingQuality = "high";
     const iw = tex2d.naturalWidth || 1125;
     const ih = tex2d.naturalHeight || 1080;
-    // debug bisect: ?revdebug=flat skips the blurred-photo ambient entirely
+    // ambient: flat ink, NOT a blurred copy of the pic. Any readable copy
+    // baked here reads as a second image on the rolling sheet — and
+    // approximating .hero-amb's CSS filter stack can never be pixel-exact
+    // across browsers (ctx.filter support, resampling), so a visible
+    // mismatch is guaranteed somewhere. The DOM's own blurred ambient fades
+    // in underneath at handoff and carries the look from there.
+    // ?revdebug=amb re-enables the blurred bake for comparisons.
     const dbg = new URLSearchParams(location.search).get("revdebug");
-    if (dbg === "flat") {
+    if (dbg !== "amb") {
       c.fillStyle = "#1a0a14";
       c.fillRect(0, 0, cw, ch);
     } else {
-    // ambient: match .hero-amb exactly — cover-fit at 55%/30%, then the
-    // CSS scale(1.15) about centre (so the blurred copy lands where the
-    // DOM's does), then the same filter chain. An unzoomed or under-blurred
-    // bake reads as a dark ghost figure beside the sharp photo.
     const ambS = Math.max(cw / iw, ch / ih);
     const ambW = iw * ambS * 1.15;
     const ambH = ih * ambS * 1.15;

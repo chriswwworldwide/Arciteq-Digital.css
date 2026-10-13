@@ -133,6 +133,14 @@ dirs are outputs. `sharedPack` in config pulls market-level cleanup
 (UK language/data sweep) so every tenant inherits it — don't duplicate
 fixes per config.
 
+**Hero-effect choice = the buy-in moment.** Every reskin demo should
+offer the prospect 2–3 hero entrances to pick from (e.g. via `?fx=`
+preview links — roll+sparkle for the celebrants, slit-in/wipe for the
+starker brands). The minute a prospect is debating "which one's more
+me", they've effectively bought it — the choice makes it theirs. Build
+the effect picker into the intake form when it lands (v2): the selected
+effect lands in the tenant config alongside colours and voice.
+
 **The end-state intake is a web form, not me.** The config JSON I write by
 hand *is* the product — the form just captures the same fields (brand,
 coach, city, colours, offer/prices, three voice questions, 5–10 labelled

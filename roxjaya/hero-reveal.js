@@ -49,6 +49,7 @@
     uniform float u_progress;
     uniform float u_angle;
     uniform float u_dim;
+    uniform float u_fx; // 1 = displace preview: flat quad, dissolve in FS
     varying vec2 vUv;
     varying float vShadow;
     varying float vResolve;
@@ -72,6 +73,14 @@
 
     void main() {
       vUv = a_uv;
+      if (u_fx > 0.5) {
+        // flat sheet covering the section — the reveal lives in the FS
+        vShadow = 1.0;
+        vResolve = 1.0;
+        vTube = 1.0;
+        gl_Position = u_mvp * vec4(a_pos, 1.0);
+        return;
+      }
       vec3 newposition = a_pos;
       float rad = 0.1;
       float rolls = 5.0;
@@ -118,6 +127,7 @@
     uniform float u_pmargin;
     uniform float u_tube;   // dimming of the still-rolled face
     uniform float u_full;   // 1 in fullRoll — no mosaic, wave covers sheet
+    uniform highp float u_fx; // 1 = displace preview: noise-dissolve reveal
     uniform highp float u_time; // seconds — drives the sparkle twinkle
 
     // Dave Hoskins hash — deterministic per-cell random, the standard
@@ -127,8 +137,47 @@
       p += dot(p, p + 34.23);
       return fract(p.x * p.y);
     }
+    // smooth value noise for the dissolve field
+    float vnoise(vec2 p) {
+      vec2 i = floor(p);
+      vec2 f = fract(p);
+      f = f * f * (3.0 - 2.0 * f);
+      return mix(
+        mix(hash21(i), hash21(i + vec2(1.0, 0.0)), f.x),
+        mix(hash21(i + vec2(0.0, 1.0)), hash21(i + vec2(1.0, 1.0)), f.x),
+        f.y);
+    }
 
     void main() {
+      // ?fx=displace preview — the Codrops "revealing WebGL images"
+      // family: the photo resolves out of the page through a distorted
+      // noise front. Flat quad; no roll, no wave, no sparkle.
+      if (u_fx > 0.5) {
+        // diagonal sweep TL→BR (same direction as the roll) — the noise
+        // warps the front so it reads organic, not a straight wipe
+        float sweep = (vUv.x + vUv.y) * 0.5;
+        float n =
+          vnoise(vUv * 6.0) * 0.75 + vnoise(vUv * 22.0) * 0.25;
+        float f = sweep * 0.55 + n * 0.45;
+        float d = 1.0 - smoothstep(u_progress - 0.05, u_progress + 0.15, f);
+        // distortion concentrated on the reveal edge — the developing
+        // moment where the front is passing
+        float edge =
+          smoothstep(0.0, 0.2, d) * (1.0 - smoothstep(0.2, 0.5, d));
+        vec2 duv =
+          vUv +
+          (vec2(vnoise(vUv * 14.0 + 3.7), vnoise(vUv * 14.0 + 9.1)) - 0.5) *
+            edge * 0.18;
+        vec3 dc = texture2D(u_tex, u_uv.xy + duv * u_uv.zw).rgb;
+        dc *= mix(0.35, 1.0, d) + edge * 0.5; // dim inside, bloom on edge
+        float a2 = clamp(u_progress * 4.0, 0.0, 1.0) * d;
+        float fe = max(u_feather, 0.0001);
+        a2 *= smoothstep(0.0, fe, vUv.x) * smoothstep(0.0, fe, 1.0 - vUv.x) *
+              smoothstep(0.0, fe, vUv.y) * smoothstep(0.0, fe, 1.0 - vUv.y);
+        gl_FragColor = vec4(dc, a2);
+        return;
+      }
+
       // fullRoll: the ambient area is just a blurred backdrop — running the
       // mosaic resolve on it renders a blocky dark version of the photo
       // beside the real one (the "shadow image"). And even the photo's own
@@ -228,6 +277,7 @@
     uTube,
     uFull,
     uTime,
+    uFx,
     tex,
     indexCount;
   const uvCrop = new Float32Array(4); // off.x, off.y, scale.x, scale.y
@@ -237,6 +287,26 @@
   // blur + photo baked into one texture — a single piece, no stitched
   // edges). Desktop only; mobile keeps the img-pinned roll.
   const fullRoll = section.dataset.heroRoll === "full";
+  // ?fx= preview modes — tenant entrance demos. slit = CSS clip-path
+  // entrance on the photo; displace = WebGL noise-dissolve handled
+  // in-shader via u_fx. Anything else falls through to the normal roll.
+  const fx = new URLSearchParams(location.search).get("fx");
+  const heroMask = section.querySelector(".hero-mask");
+  // slit + demo share the CSS clip-path entrance — a slanted sliver
+  // widening to the full frame (diagonal, matching the roll's travel)
+  if (fx === "slit" || fx === "demo") {
+    const st = document.createElement("style");
+    st.textContent =
+      ".hero--bleed .hero-mask.fx-slit{animation:fx-slit 1.15s cubic-bezier(.7,0,.2,1) .2s both}" +
+      "@keyframes fx-slit{" +
+      "from{clip-path:polygon(52% -5%,72% -5%,48% 105%,28% 105%)}" +
+      "to{clip-path:polygon(0 -5%,100% -5%,100% 105%,0 105%)}}";
+    document.head.appendChild(st);
+    if (fx === "slit") {
+      if (heroMask) heroMask.classList.add("fx-slit");
+      return done();
+    }
+  }
   dbgBadge(
     `small=${small} attr=${section.dataset.heroRoll} fullRoll=${fullRoll}\nua=${navigator.userAgent.match(/Version\/[\d.]+|Edg\/[\d.]+|Chrome\/[\d.]+|Firefox\/[\d.]+/)?.[0] || "?"}`,
   );
@@ -329,6 +399,7 @@
     uTube = gl.getUniformLocation(prog, "u_tube");
     uFull = gl.getUniformLocation(prog, "u_full");
     uTime = gl.getUniformLocation(prog, "u_time");
+    uFx = gl.getUniformLocation(prog, "u_fx");
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
@@ -337,7 +408,7 @@
     // page never shows the DOM beneath. Darker than the sheet's flat-ink
     // face so the roll front is actually VISIBLE sweeping the full width —
     // plum-on-plum read as "the roll only happens over the photo".
-    if (fullRoll) gl.clearColor(0.045, 0.016, 0.04, 1);
+    if (fullRoll && fx !== "displace") gl.clearColor(0.045, 0.016, 0.04, 1);
     gl.uniform1f(uAngle, Math.PI / 4); // unrolls top-left → bottom-right
     // fullRoll: the sheet spans ambient + photo, so the Codrops trailing
     // dim + dark seams would read as a cast shadow beside the picture.
@@ -348,6 +419,7 @@
     gl.uniform1f(uPmargin, 0.03);
     gl.uniform1f(uTube, fullRoll ? 0.12 : 1.0);
     gl.uniform1f(uFull, fullRoll ? 1 : 0);
+    gl.uniform1f(uFx, fx === "displace" ? 1 : 0);
   } catch (e) {
     console.warn("hero-reveal:", e);
     dbgBadge("setup catch: " + e.message);
@@ -744,6 +816,30 @@
     // steady front makes the whole-hero sweep actually visible.
     const ease = (t) => 1 - Math.pow(1 - t, 2);
     const start = performance.now() + DELAY;
+    // ?fx=demo — the sales loop: three entrances play back-to-back with
+    // clean-page pauses between, each labelled so a prospect can compare
+    // (choosing = buying). slit is a DOM clip-path phase; displace + roll
+    // run in GL. Everything sweeps top-left → bottom-right.
+    const PHASES =
+      fx === "demo"
+        ? [
+            { fx: "slit", label: "1 / 3 · slit in", dur: 1500 },
+            { fx: "pause", dur: 1600 },
+            { fx: "displace", label: "2 / 3 · dissolve", dur: 2600 },
+            { fx: "pause", dur: 1600 },
+            { fx: "roll", label: "3 / 3 · the roll", dur: 3400 },
+          ]
+        : null;
+    let demoTag = null;
+    if (PHASES) {
+      demoTag = document.createElement("div");
+      demoTag.style.cssText =
+        "position:absolute;left:16px;bottom:14px;z-index:60;" +
+        "background:rgba(0,0,0,.55);color:#fff;padding:6px 12px;" +
+        "border-radius:99px;font:600 11px/1 system-ui,sans-serif;" +
+        "letter-spacing:.14em;text-transform:uppercase;pointer-events:none";
+      section.appendChild(demoTag);
+    }
     // Re-pin only when the img's LAYOUT box genuinely moves (resize,
     // reflow) — never for transforms or scroll, which can't affect where
     // the canvas sits inside its parent.
@@ -762,24 +858,68 @@
     };
     const frame = (now) => {
       pin();
-      const t = hold
-        ? 0.45
-        : Math.max(0, Math.min(1, (now - start) / DURATION));
-      const p = (fullRoll ? t : ease(t)) * 1.35;
+      let t;
+      let fxNow = fx;
+      if (PHASES) {
+        const el = now - start;
+        let acc = 0;
+        let ph = null;
+        for (const P of PHASES) {
+          if (el < acc + P.dur) {
+            ph = P;
+            break;
+          }
+          acc += P.dur;
+        }
+        if (!ph) {
+          // demo over — hand the page back
+          canvas.style.transition = "opacity .35s ease";
+          canvas.style.opacity = "0";
+          if (demoTag) demoTag.remove();
+          setTimeout(() => canvas.remove(), 400);
+          return done();
+        }
+        t = Math.min(1, (el - acc) / ph.dur);
+        if (ph.fx === "pause" || ph.fx === "slit") {
+          // DOM-side phase: settled page visible; slit animates the mask
+          canvas.style.opacity = "0";
+          html.classList.remove("reveal-live");
+          if (ph.fx === "slit" && heroMask)
+            heroMask.classList.add("fx-slit");
+          if (demoTag) demoTag.textContent = ph.label || "";
+          return requestAnimationFrame(frame);
+        }
+        // GL phase — canvas back on top, DOM img hidden again
+        canvas.style.opacity = "1";
+        html.classList.add("reveal-live");
+        if (heroMask) heroMask.classList.remove("fx-slit");
+        fxNow = ph.fx;
+        if (demoTag) demoTag.textContent = ph.label || "";
+      } else {
+        t = hold
+          ? 0.45
+          : Math.max(0, Math.min(1, (now - start) / DURATION));
+      }
+      const p =
+        fxNow === "displace"
+          ? ease(t) * 1.15
+          : (fullRoll ? t : ease(t)) * 1.35;
       if (mvp) gl.uniformMatrix4fv(uMVP, false, mvp);
       gl.uniform1f(uProgress, p);
       gl.uniform1f(uProg2, p);
+      gl.uniform1f(uFx, fxNow === "displace" ? 1 : 0);
       gl.uniform4fv(uUv, uvCrop);
       gl.uniform1f(uTime, now * 0.001);
       // feather only where there's an ambient backdrop to melt into
       gl.uniform1f(uFeather, small ? 0 : 0.025);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.drawElements(gl.TRIANGLES, indexCount, gl.UNSIGNED_SHORT, 0);
-      if (t < 1 || hold) return requestAnimationFrame(frame);
+      if (t < 1 || hold || PHASES) return requestAnimationFrame(frame);
       // Race-finish popper: confetti pop from both bottom corners as the
       // sheet settles into the page. Respects reduced-motion.
       if (
         fullRoll &&
+        !fx &&
         typeof window.confetti === "function" &&
         !window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ) {

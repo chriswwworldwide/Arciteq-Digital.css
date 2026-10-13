@@ -117,15 +117,17 @@
     uniform vec4 u_photo;   // photo rect in sheet uv (fullRoll); else 0,0,1,1
     uniform float u_pmargin;
     uniform float u_tube;   // dimming of the still-rolled face
+    uniform float u_full;   // 1 in fullRoll — no mosaic, wave covers sheet
 
     void main() {
       // fullRoll: the ambient area is just a blurred backdrop — running the
       // mosaic resolve on it renders a blocky dark version of the photo
-      // beside the real one (the "shadow image"). Only the photo's own rect
-      // gets the pixelated settle; ambient sharpens as it lays flat.
+      // beside the real one (the "shadow image"). And even the photo's own
+      // mosaic reads as "bitmappy" during laydown — in full mode the sheet
+      // renders clean throughout; the classic img-pinned roll keeps it.
       vec2 pd = max(max(u_photo.xy - vUv, vUv - u_photo.zw), 0.0);
       float inPhoto = 1.0 - smoothstep(0.0, u_pmargin, length(pd));
-      float resolve = max(vResolve, 1.0 - inPhoto);
+      float resolve = max(vResolve, mix(1.0 - inPhoto, 1.0, u_full));
 
       // Pixelated reveal à la the Codrops demo: resolution jumps through
       // discrete steps (4→256 cells) rather than interpolating, and each
@@ -150,8 +152,11 @@
       // identical to the page — the sweep is invisible there. Freshly-laid
       // ambient arrives bright AND rose-tinted, settling to tone: a
       // coloured light wave trailing the roll, unmissable on the dark hero.
-      float fresh = (1.0 - vResolve) * (1.0 - inPhoto);
-      col = mix(col, vec3(1.0, 0.16, 0.62), fresh); // MAX for visibility check — dial back once confirmed
+      // The pink settle wave: paper arrives hot pink and settles to tone
+      // as the trail passes. In fullRoll it washes the WHOLE sheet —
+      // straight through the photo to the right edge, no demarcation.
+      float fresh = (1.0 - vResolve) * u_full;
+      col = mix(col, vec3(1.0, 0.16, 0.62), fresh);
       // The still-rolled face samples the same texture — on the full-width
       // sheet it reads as a second copy of the picture riding ahead of the
       // roll. Dim it into a dark scroll; laid paper is untouched (vTube→1).
@@ -185,6 +190,7 @@
     uPhoto,
     uPmargin,
     uTube,
+    uFull,
     tex,
     indexCount;
   const uvCrop = new Float32Array(4); // off.x, off.y, scale.x, scale.y
@@ -284,6 +290,7 @@
     uPhoto = gl.getUniformLocation(prog, "u_photo");
     uPmargin = gl.getUniformLocation(prog, "u_pmargin");
     uTube = gl.getUniformLocation(prog, "u_tube");
+    uFull = gl.getUniformLocation(prog, "u_full");
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
@@ -302,6 +309,7 @@
     gl.uniform4f(uPhoto, 0, 0, 1, 1); // classic: whole sheet is the photo
     gl.uniform1f(uPmargin, 0.03);
     gl.uniform1f(uTube, fullRoll ? 0.12 : 1.0);
+    gl.uniform1f(uFull, fullRoll ? 1 : 0);
   } catch (e) {
     console.warn("hero-reveal:", e);
     dbgBadge("setup catch: " + e.message);

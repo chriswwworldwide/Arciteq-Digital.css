@@ -296,7 +296,12 @@
     c.imageSmoothingQuality = "high";
     const iw = tex2d.naturalWidth || 1125;
     const ih = tex2d.naturalHeight || 1080;
-
+    // debug bisect: ?revdebug=flat skips the blurred-photo ambient entirely
+    const dbg = new URLSearchParams(location.search).get("revdebug");
+    if (dbg === "flat") {
+      c.fillStyle = "#1a0a14";
+      c.fillRect(0, 0, cw, ch);
+    } else {
     // ambient: match .hero-amb exactly — cover-fit at 55%/30%, then the
     // CSS scale(1.15) about centre (so the blurred copy lands where the
     // DOM's does), then the same filter chain. An unzoomed or under-blurred
@@ -306,8 +311,12 @@
     const ambH = ih * ambS * 1.15;
     const ambX = cw / 2 + ((cw - iw * ambS) * 0.55 - cw / 2) * 1.15;
     const ambY = ch / 2 + ((ch - ih * ambS) * 0.3 - ch / 2) * 1.15;
-    c.filter = `blur(${48 * dpr}px) brightness(0.55) saturate(1.15)`;
-    if (c.filter !== "none") {
+    // Detect REAL ctx.filter support BEFORE assigning — where unsupported,
+    // `c.filter = ...` just sets a plain property, the string reads back
+    // non-"none", and the ambient draws UNFILTERED: a bright full-size copy
+    // of the photo next to the sharp one (the ghost image).
+    if (typeof c.filter === "string") {
+      c.filter = `blur(${48 * dpr}px) brightness(0.55) saturate(1.15)`;
       // overshoot the draw rect so the blur doesn't pull in transparent
       // fringes at the canvas edges
       const m = Math.ceil(96 * dpr);
@@ -320,7 +329,6 @@
       );
       c.filter = "none";
     } else {
-      c.filter = "none";
       const sm = document.createElement("canvas");
       sm.width = Math.max(2, Math.round(cw / 16));
       sm.height = Math.max(2, Math.round(ch / 16));
@@ -329,6 +337,7 @@
       c.drawImage(sm, 0, 0, cw, ch);
       c.fillStyle = "rgba(0, 0, 0, 0.45)";
       c.fillRect(0, 0, cw, ch);
+    }
     }
 
     // photo: contain-fit, padding 14/18, right-pinned — mirrors the CSS

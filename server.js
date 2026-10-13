@@ -4845,6 +4845,98 @@ app.get("/admin/orders", async (req, res) => {
   }
 });
 
+// Accountant-facing tax/VAT report over paid orders. Defaults to the
+// resolved tenant (what /admin/orders sees); tenant=all gives the platform
+// a per-tenant breakdown. ?group=month splits rows per calendar month and
+// format=csv exports for spreadsheet/accounting import. All amounts are
+// integer minor units.
+app.get("/admin/tax-report", async (req, res) => {
+  const denied = requireAdmin(req, res);
+  if (denied) return denied;
+
+  try {
+    const tenant = resolveTenantFromRequest(req);
+    const activeTenantId = String(tenant?.tenant_id || "default");
+    const tenantQuery = String(req.query?.tenant || "").trim();
+    const groupByMonth = String(req.query?.group || "").trim() === "month";
+
+    const params = [];
+    const where = ["status = 'paid'"];
+    const scopeAll = tenantQuery === "all";
+    const tenantFilter = scopeAll ? "" : tenantQuery || activeTenantId;
+    if (tenantFilter) {
+      params.push(tenantFilter);
+      where.push(`tenant_id = $${params.length}`);
+    }
+    const from = String(req.query?.from || "").trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(from)) {
+      params.push(from);
+      where.push(`created_at >= $${params.length}::date`);
+    }
+    const to = String(req.query?.to || "").trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(to)) {
+      params.push(to);
+      where.push(`created_at < ($${params.length}::date + interval '1 day')`);
+    }
+
+    const monthExpr = groupByMonth
+      ? "to_char(date_trunc('month', created_at), 'YYYY-MM') AS period,"
+      : "'' AS period,";
+
+    const result = await dbQuery(
+      `SELECT ${monthExpr} tenant_id, currency,
+              COUNT(*)::int AS paid_orders,
+              COALESCE(SUM(amount_subtotal), 0)::bigint AS amount_subtotal,
+              COALESCE(SUM(amount_discount), 0)::bigint AS amount_discount,
+              COALESCE(SUM(amount_tax), 0)::bigint AS amount_tax,
+              COALESCE(SUM(amount_total), 0)::bigint AS amount_total
+       FROM orders
+       WHERE ${where.join(" AND ")}
+       GROUP BY ${groupByMonth ? "date_trunc('month', created_at)," : ""} tenant_id, currency
+       ORDER BY ${groupByMonth ? "period DESC," : ""} tenant_id, currency`,
+      params,
+    );
+
+    const format = String(req.query?.format || "json").trim();
+    if (format === "csv") {
+      const header =
+        "period,tenant_id,currency,paid_orders,amount_subtotal,amount_discount,amount_tax,amount_total";
+      const lines = result.rows.map((r) =>
+        [
+          r.period,
+          r.tenant_id,
+          r.currency,
+          r.paid_orders,
+          r.amount_subtotal,
+          r.amount_discount,
+          r.amount_tax,
+          r.amount_total,
+        ].join(","),
+      );
+      res.setHeader("Content-Type", "text/csv; charset=utf-8");
+      res.setHeader(
+        "Content-Disposition",
+        'attachment; filename="tax-report.csv"',
+      );
+      return res.send([header, ...lines].join("\n") + "\n");
+    }
+
+    return res.json({
+      ok: true,
+      scope: scopeAll ? "all" : tenantFilter,
+      from: from || null,
+      to: to || null,
+      note: "amounts are integer minor units; paid orders only",
+      rows: result.rows,
+    });
+  } catch (err) {
+    console.error("/admin/tax-report failed", err);
+    return res
+      .status(500)
+      .json({ error: String(err?.message || "Failed to build tax report") });
+  }
+});
+
 app.post("/admin/orders/cleanup-stale", async (req, res) => {
   const denied = requireAdmin(req, res);
   if (denied) return denied;

@@ -473,7 +473,10 @@
       img.style.animation = "none";
       const restore = () => {
         img.style.visibility = "";
-        img.style.animation = "hero-drift 18s ease-in-out 0s infinite alternate";
+        // 2.2s still beat so the settle reads as locked before the
+        // ambient drift resumes (same as a plain page load)
+        img.style.animation =
+          "hero-drift 18s ease-in-out 2.2s infinite alternate";
       };
 
       let tag = null;

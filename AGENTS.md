@@ -4,6 +4,15 @@ This is a living list of opportunities to push the project toward profitability 
 
 > **Session start:** check the "Chat notes" section in `BILLIONS.md` — it defines our conversation tone (dry British sarcasm, banter in Q&A, humour suspended during debugging/complex work).
 
+## Working rules (hard-won, keep these)
+
+These exist because the same two failure patterns keep costing hours. Follow them even when the guess feels certain — the guesses that feel like memory are the worst ones.
+
+1. **Verify, don't recall.** Never state a fact from memory when a tool call can check it — quote the file, the doc, the curl output. This applies most of all to things Devin itself wrote earlier (prices, config values, port numbers), which feel like established fact and aren't. A confident guess and a verified fact look identical in the transcript; only the wrong ones get found, later, expensively.
+2. **Use the reference, don't reinvent it.** For non-trivial UI/effect work, find the established open-source implementation first and build from that. Hand-rolled is only acceptable if it clearly beats the reference — "it renders" is not beating it. Correctness that can't be checked by compiling (does it *look* like the real effect?) needs the reference implementation, not a bespoke approximation.
+
+**Worked example — the hero pic effect saga (Nov 2026):** roughly two hours went in circles hand-rolling shimmer/sparkle/mosaic hero-reveal effects. Every iteration passed "does it compile/render" and failed "does it look like the real thing" — a check only the user's eyes could run. The fix that landed was building on the actual Codrops/open-source implementation that had been available from the start. Lesson: when the goal is "look like X", start from X's implementation, not from a guess at its recipe.
+
 ## On-site nudges and lifecycle
 
 We have one abandoned-cart nudge. Still missing:

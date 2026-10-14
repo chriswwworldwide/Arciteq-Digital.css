@@ -68,6 +68,15 @@ const buildV = Date.now();
 // photo covers the whole hero (no amb letterbox, no edge feather) so the
 // WebGL reveal unrolls across the full background. Kept out of the shared
 // source so the flagship's classic hero stays untouched.
+const DEMO_NAV_CSS = `@media (min-width: 901px) {
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    width: 100%;
+    justify-content: center;
+  }
+}`;
+
 const HERO_FULL_CSS = `/* hero--full: photo covers the whole hero; reveal unrolls across the
    full background. Opt-in per tenant via "heroFull": true. */
 .hero--bleed.hero--full .hero-amb {
@@ -169,6 +178,83 @@ const extraChannels = channels
   )
   .join("");
 
+const localScene = pageRenames["jakarta-hybrid-scene"] || "jakarta-hybrid-scene";
+const localGuide = pageRenames["hyrox-jakarta"] || "hyrox-jakarta";
+const coachingPage =
+  pageRenames["hybrid-coaching-jakarta"] || "hybrid-coaching-jakarta";
+const salesMenu = `        <ul class="menu" id="menu">
+          <li><a href="/${slug}/predictor/">Race Predictor</a></li>
+          <li><a href="/${slug}/splits/">Split Analyser</a></li>
+          <li><a class="match-zone" href="/${slug}/find-a-partner/">Find a Race Mate</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true">
+              <img class="avatar" src="/${slug}/images/avatar.jpg" alt="" width="30" height="30" />
+              Ask ${coachFirst} <span class="caret"></span>
+            </button>
+            <ul class="sub">
+              <li><a href="/${slug}/#tips">${coachFirst}'s 3 tips</a></li>
+              <li><a href="/${slug}/#ask">Ask a question</a></li>
+              <li><a href="/${slug}/#story">${coachFirst}'s story</a></li>
+              <li><a href="/${slug}/#plans">Book a 1:1 call</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true">Train With ${coachFirst} <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/${slug}/#plans">Coaching plans</a></li>
+              <li><a href="/${slug}/${coachingPage}/">Hybrid coaching</a></li>
+              <li><a href="/${slug}/elite-race-prep/">Elite race prep</a></li>
+              <li><a href="/${slug}/events/#cohorts">12-week cohorts</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true">UK Race Planner <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/${slug}/race-planner/">UK race planner</a></li>
+              <li><a href="/${slug}/events/#races">Race calendar</a></li>
+              <li><a href="/${slug}/${localGuide}/">Hyrox ${city} guide</a></li>
+              <li><a href="/${slug}/news/">UK Hyrox news</a></li>
+            </ul>
+          </li>
+          <li><a href="/${slug}/${localScene}/">${city} Scene</a></li>
+          <li><a href="/${slug}/results/">Results Board</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true">Stations Prep <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/${slug}/stations-prep/">All eight stations</a></li>
+              <li><a href="/${slug}/run-zone/">Run training &amp; pace calculator</a></li>
+              <li><a href="/${slug}/fuel-zone/">Race nutrition</a></li>
+              <li><a href="/${slug}/taper-zone/">Final two-week taper</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true">Station 9 <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/${slug}/station-9/">Station 9 meetups</a></li>
+              <li><a href="/${slug}/broadcast/">Weekly broadcast</a></li>
+              <li><a href="/${slug}/diary/">This week's diary</a></li>
+              <li><a href="/${slug}/#wall-photos">Warriors Wall</a></li>
+              <li><a href="/${slug}/#merch">Merchandise</a></li>
+              <li><a href="/${slug}/#ask">Chat Zone</a></li>
+            </ul>
+          </li>
+        </ul>`;
+
+function replaceMenu(s) {
+  const marker = '<ul class="menu" id="menu">';
+  const start = s.indexOf(marker);
+  if (start < 0) return s;
+  const tags = /<\/?ul\b[^>]*>/g;
+  tags.lastIndex = start;
+  let depth = 0;
+  let match;
+  while ((match = tags.exec(s))) {
+    depth += match[0].startsWith("</") ? -1 : 1;
+    if (depth === 0) return s.slice(0, start) + salesMenu + s.slice(tags.lastIndex);
+  }
+  return s;
+}
+
 let touched = 0;
 for (const file of walk(dst)) {
   let s = fs.readFileSync(file, "utf8");
@@ -212,6 +298,8 @@ for (const file of walk(dst)) {
   for (const o of copyOverrides) {
     s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
   }
+  if (file.endsWith(".html")) s = replaceMenu(s);
+  if (file.endsWith("styles.css")) s += `\n${DEMO_NAV_CSS}\n`;
   // cache-bust tenant css/js so browsers can't serve stale hero/styles
   if (file.endsWith(".html")) {
     s = s.replace(

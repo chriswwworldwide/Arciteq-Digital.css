@@ -77,6 +77,15 @@ const DEMO_NAV_CSS = `@media (min-width: 901px) {
   }
 }`;
 
+const HERO_RIGHT_FADE_CSS = `@media (min-width: 801px) {
+  .hero--bleed.hero--full::after {
+    background:
+      linear-gradient(270deg, rgba(15, 15, 17, 1) 0%, rgba(15, 15, 17, 0.75) 12%, rgba(15, 15, 17, 0.35) 28%, rgba(15, 15, 17, 0) 50%),
+      linear-gradient(180deg, rgba(40, 14, 30, 0.05) 0%, rgba(40, 14, 30, 0.2) 45%, rgba(40, 14, 30, 0.86) 100%),
+      linear-gradient(90deg, rgba(40, 14, 30, 0.88) 0%, rgba(40, 14, 30, 0.5) 45%, rgba(40, 14, 30, 0.12) 75%, rgba(40, 14, 30, 0) 100%);
+  }
+}`;
+
 const HERO_FULL_CSS = `/* hero--full: photo covers the whole hero; reveal unrolls across the
    full background. Opt-in per tenant via "heroFull": true. */
 .hero--bleed.hero--full .hero-amb {
@@ -299,7 +308,10 @@ for (const file of walk(dst)) {
     s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
   }
   if (file.endsWith(".html")) s = replaceMenu(s);
-  if (file.endsWith("styles.css")) s += `\n${DEMO_NAV_CSS}\n`;
+  if (file.endsWith("styles.css")) {
+    s += `\n${DEMO_NAV_CSS}\n`;
+    if (cfg.heroRightFade) s += `\n${HERO_RIGHT_FADE_CSS}\n`;
+  }
   // cache-bust tenant css/js so browsers can't serve stale hero/styles
   if (file.endsWith(".html")) {
     s = s.replace(

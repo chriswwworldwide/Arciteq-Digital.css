@@ -2819,15 +2819,6 @@ body[data-broadcast=locked] .bc-lock {
   }
 }
 
-@media (min-width: 801px) {
-  .hero--bleed.hero--full::after {
-    background:
-      linear-gradient(270deg, rgba(15, 15, 17, 1) 0%, rgba(15, 15, 17, 0.75) 12%, rgba(15, 15, 17, 0.35) 28%, rgba(15, 15, 17, 0) 50%),
-      linear-gradient(180deg, rgba(40, 14, 30, 0.05) 0%, rgba(40, 14, 30, 0.2) 45%, rgba(40, 14, 30, 0.86) 100%),
-      linear-gradient(90deg, rgba(40, 14, 30, 0.88) 0%, rgba(40, 14, 30, 0.5) 45%, rgba(40, 14, 30, 0.12) 75%, rgba(40, 14, 30, 0) 100%);
-  }
-}
-
 /* hero--full: photo covers the whole hero; reveal unrolls across the
    full background. Opt-in per tenant via "heroFull": true. */
 .hero--bleed.hero--full .hero-amb {
@@ -2863,5 +2854,12 @@ body[data-broadcast=locked] .bc-lock {
   .hero--bleed.hero--full .hero-mask {
     -webkit-mask-image: none;
     mask-image: none;
+  }
+}
+
+@media (min-width: 801px) {
+  .hero--bleed.hero--full .hero-mask {
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 64%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 64%, transparent 100%);
   }
 }

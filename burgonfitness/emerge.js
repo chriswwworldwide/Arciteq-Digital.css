@@ -386,7 +386,7 @@
       const canvas = document.createElement("canvas");
       canvas.className = "emerge-canvas";
       canvas.style.cssText =
-        "position:absolute;pointer-events:none;z-index:2;left:" +
+        "position:absolute;pointer-events:none;z-index:0;left:" +
         px +
         "px;top:" +
         py +

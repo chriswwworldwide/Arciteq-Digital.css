@@ -56,6 +56,13 @@ import {
 import { sanitizeProfile, hasProfile } from "./src/lead-profile.js";
 import { isPrivateStaticPath } from "./src/static-guard.js";
 import { accountingProfile } from "./src/tax-rules.js";
+import {
+  loadProductsData,
+  loadReviewsData,
+  loadTenantsData,
+  safeReadJsonFile,
+  safeWriteJsonFile,
+} from "./server/data-files.js";
 import { createHqRouter } from "./server/hq.js";
 import { createDeskAuth } from "./server/desk-auth.js";
 import { createAccountsRouter } from "./server/accounts.js";
@@ -1646,52 +1653,6 @@ app.get("/admin/ops-trends", async (req, res) => {
 });
 
 app.use(express.json({ limit: "2mb" }));
-
-function loadProductsData() {
-  const filePath = path.join(__dirname, "data", "products.json");
-  const raw = fs.readFileSync(filePath, "utf8");
-  const parsed = JSON.parse(raw);
-  const list = Array.isArray(parsed?.products) ? parsed.products : [];
-  const generatedAt = parsed?.generatedAt ? String(parsed.generatedAt) : "";
-
-  const byId = new Map();
-  for (const p of list) {
-    if (p?.productId) byId.set(String(p.productId), p);
-  }
-
-  return { list, byId, generatedAt };
-}
-
-function loadReviewsData() {
-  const filePath = path.join(__dirname, "data", "reviews.json");
-  const raw = fs.readFileSync(filePath, "utf8");
-  const parsed = JSON.parse(raw);
-  const list = Array.isArray(parsed?.reviews) ? parsed.reviews : [];
-  const generatedAt = parsed?.generatedAt ? String(parsed.generatedAt) : "";
-  return { list, generatedAt };
-}
-
-function loadTenantsData() {
-  const filePath = path.join(__dirname, "data", "tenants.json");
-  const raw = fs.readFileSync(filePath, "utf8");
-  const parsed = JSON.parse(raw);
-  const list = Array.isArray(parsed?.tenants) ? parsed.tenants : [];
-  return { list };
-}
-
-function safeReadJsonFile(filePath, fallback) {
-  try {
-    const raw = fs.readFileSync(filePath, "utf8");
-    return JSON.parse(raw);
-  } catch {
-    return fallback;
-  }
-}
-
-function safeWriteJsonFile(filePath, value) {
-  const body = JSON.stringify(value, null, 2) + "\n";
-  fs.writeFileSync(filePath, body, "utf8");
-}
 
 // Transactional mail. Prefers the Resend HTTP API when RESEND_API_KEY is set
 // (Railway has no local MTA); otherwise pipes through /usr/sbin/sendmail.

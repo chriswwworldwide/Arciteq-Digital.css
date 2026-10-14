@@ -392,6 +392,7 @@
 }
 
 .station-photo img {
+  object-position: 50% 22%;
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;

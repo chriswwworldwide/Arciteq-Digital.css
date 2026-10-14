@@ -705,3 +705,26 @@ Rule for modules: **never read `process.env` at load time** (server.js loads `.e
 - A second *distinct* `checkout.session.completed` event for an already-paid order would re-run the customer-totals stitch (Stripe normally sends one per session; low risk). Making the stitch idempotent per order would close it.
 - `server/routes.js` and `server/sponsor-visuals.js` are empty placeholder files from before — safe to delete when convenient.
 - Fixed: Twilio receptionist now fails closed in production when `TWILIO_AUTH_TOKEN` is missing (set `NODE_ENV=production` on Railway).
+
+## HANDOVER — 14 Oct 2026 (start here in a new session)
+
+**State:** everything committed on `main`, lint/types/tests green (382 tests). Local Postgres running (`brew services start postgresql@17`), db `roxjaya`, `.env.local` holds DATABASE_URL / ADMIN_API_KEY / PUBLIC_BASE_URL. Server: `npm start` → :3000. HQ: `/hq` (admin key in `.env.local`).
+
+**Built recently:** HQ control panel; per-gym desk keys; Money page on all 11 sites (ledger, bank/booking CSV import incl. BCA, reservation auto-confirm, UK VAT/MTD + Indonesia PPh Final guides, record-keeping rules + all-years download); `npm run backup`; server.js refactor (6,880 → ~210 lines, 26 modules in `server/`, ~51% faster responses). Safety net for any server change: `tools/verify-refactor.sh` (baselines in /tmp — regenerate if /tmp was cleared: see "Server architecture" section above).
+
+**Waiting on Chris:**
+1. **Railway:** add Postgres (+ backups on), set `ADMIN_API_KEY`, `PUBLIC_BASE_URL`, `NODE_ENV=production`; then run `node scripts/migrate.js` and smoke-test HQ + desks live.
+2. **Full-size IG screenshots** per gym, AirDropped to a Mac folder (pasting into chat shrinks them to 295px — too small). HTC Christchurch first.
+3. Real handles for KORE, HYROX Doncaster, Fennell Fitness.
+
+**Prospect handles:** Hannah @hannahburgon_pt · Hustle @hustle_norwich/@hustle_wymondham · Dina @dinabawden87 · HTC @hyroxchristchurch + @coachrossfish (confirmed) · Race to Frame @gregorandhattie · Pace @pace_gym_uk (verify) · Gym64 @gym_64 · NutriFit @nutrifitgym.uk · KORE / Doncaster / Fennell not found.
+
+**HTC Christchurch (Ross "Fish" Fisher) — now #2 prospect after Hannah. Research done, demo not yet updated (`scripts/reskin/htcfisher.demo.json`):**
+- Site: hyroxtrainingclubchristchurch.co.uk (Wix, 1.09 MB / 74 scripts, no structured data; ours ~44 KB / 7 scripts). Good copy + his own lap-pace calculator — pitch as bolt-on "crew home", never knock his site; he posts about authenticity, so no hype.
+- Facts: ex-national swimmer, Ironman, proud dad; solo 1:24:34 → 1:10:32; doubles 0:59:19 Dublin (with Steve); L1 HYROX coach, 60+ athletes. Based ROXBOX/GTC Health Club inside Advantage Padel, Unit 20 Christchurch Business Park, Radar Way, Mudeford BH23 4FL. Prices: online £150/mo, doubles £100 each, drop-in £15; membership via GTC. Timetable: Mon Rebel, Tue/Wed Lift + Run Club, Thu Engine (doubles), Sun Hyrox Community Sesh 8–9am; new "HYROX Lite" class.
+- Community (from IG): Málaga 2026 crew trip ("PBs, sun, sangria… we'll be back next year! Who's joining us?"), Manchester/Glasgow crews, good-luck posts naming members (@gangeellie, @michellewesthorpe81), weekend round-ups, "Sunday Service", group runs. Voice: short, punchy, emojis 🤣🫶💥☝️, "HTCC crew", self-deprecating honesty.
+- Member stories on his site: Rachel, Nick & Sam (-7 min), Dee (first Hyrox in Málaga), Michelle & Ellie (podium), Katie (CrossFit → half marathon).
+
+**Known follow-ups (low risk):** payment_intent.payment_failed can't match orders; data-stitch not idempotent per order; empty `server/routes.js` + `server/sponsor-visuals.js` (delete with OK).
+
+**Model tip:** Adaptive for normal work, SWE-2 (free) for simple edits, Opus only for big/risky refactors.

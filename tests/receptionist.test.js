@@ -194,6 +194,14 @@ describe("receptionist", () => {
       verifyTwilioSignature("tok", url, { ...params, From: "+4400" }, sig),
     ).toBe(false);
     expect(verifyTwilioSignature("", url, params, "")).toBe(true);
+    const savedEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = "production";
+    try {
+      // Production with no token must reject, never wave requests through.
+      expect(verifyTwilioSignature("", url, params, "")).toBe(false);
+    } finally {
+      process.env.NODE_ENV = savedEnv;
+    }
   });
 
   it("renders a dashboard", () => {

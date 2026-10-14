@@ -278,7 +278,9 @@ export function twilioSignature(authToken, url, params = {}) {
 }
 
 export function verifyTwilioSignature(authToken, url, params, header) {
-  if (!authToken) return true;
+  // No token: allowed for local development only. In production a missing
+  // token must fail closed, or anyone could fake calls (and trigger SMS).
+  if (!authToken) return String(process.env.NODE_ENV || "") !== "production";
   const expected = Buffer.from(twilioSignature(authToken, url, params));
   const given = Buffer.from(String(header || ""));
   return (

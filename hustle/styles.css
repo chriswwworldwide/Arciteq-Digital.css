@@ -2817,6 +2817,15 @@ body[data-broadcast=locked] .bc-lock {
   font-weight: 800;
 }
 
+@media (min-width: 901px) {
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* hero--full: photo covers the whole hero; reveal unrolls across the
    full background. Opt-in per tenant via "heroFull": true. */
 .hero--bleed.hero--full .hero-amb {

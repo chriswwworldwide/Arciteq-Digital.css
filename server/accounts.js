@@ -17,6 +17,7 @@ import {
   ID_RULES,
   GB_RULES,
 } from "../src/tax-rules.js";
+import { buildImportRows, importFingerprint } from "../src/csv-import.js";
 
 export const INCOME_CATEGORIES = [
   "membership",
@@ -108,6 +109,21 @@ export function csvCell(value) {
   if (/^[=+\-@\t\r]/.test(s)) s = `'${s}`;
   return `"${s.replaceAll('"', '""')}"`;
 }
+
+// Column choices from the review screen: whole numbers ≥ -1 only.
+function sanitiseMapping(m) {
+  const col = (v) => (Number.isInteger(Number(v)) && Number(v) >= -1 && Number(v) < 200 ? Number(v) : -1);
+  return {
+    date: col(m.date),
+    description: col(m.description),
+    amount: col(m.amount),
+    credit: col(m.credit),
+    debit: col(m.debit),
+    flow: col(m.flow),
+  };
+}
+
+const daysBetween = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
 
 const majorUnits = (minor, currency) => {
   const n = Number(minor || 0) / 100;
@@ -476,6 +492,233 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
         );
         throw err;
       }
+    }),
+  );
+
+  // ---- Import from a bank statement / booking-app export -----------------
+  // Re-run on both preview and commit: the server always re-parses the file
+  // itself, so amounts can't be tampered with between the two steps.
+  async function analyseImport({ tenantId, csv, mapping, order }) {
+    const text = String(csv || "");
+    if (!text.trim()) return { error: "Choose a CSV file first." };
+    if (text.length > 1_800_000) return { error: "That file is too big — export a shorter date range." };
+    const built = buildImportRows(text, {
+      mapping: mapping && typeof mapping === "object" ? sanitiseMapping(mapping) : undefined,
+      order: order === "mdy" || order === "dmy" ? order : undefined,
+    });
+    if (built.error) return built;
+    const rows = built.rows.map((r) => ({
+      ...r,
+      import_hash: importFingerprint(tenantId, r, r.occurrence),
+    }));
+    if (!rows.length) return { ...built, rows: [] };
+
+    const dates = rows.map((r) => r.date).sort();
+    const [imported, manual, pending] = await Promise.all([
+      dbQuery(
+        `SELECT import_hash FROM ledger_entries
+          WHERE tenant_id = $1 AND voided_at IS NULL AND import_hash = ANY($2::text[])`,
+        [tenantId, rows.map((r) => r.import_hash)],
+      ),
+      dbQuery(
+        `SELECT entry_date, direction, amount_minor FROM ledger_entries
+          WHERE tenant_id = $1 AND voided_at IS NULL AND import_hash IS NULL
+            AND entry_date BETWEEN $2::date AND $3::date`,
+        [tenantId, dates[0], dates.at(-1)],
+      ),
+      dbQuery(
+        `SELECT s.id, s.payload, s.email, s.created_at FROM submissions s
+          WHERE s.tenant_id = $1 AND s.kind = 'bank_transfer'
+            AND s.created_at > now() - interval '180 days'
+            AND NOT EXISTS (SELECT 1 FROM submission_reviews r
+                             WHERE r.tenant_id = s.tenant_id AND r.submission_id = s.id)`,
+        [tenantId],
+      ),
+    ]);
+    const importedSet = new Set((imported.rows || []).map((r) => r.import_hash));
+    const manualCounts = new Map();
+    for (const m of manual.rows || []) {
+      const k = `${m.entry_date}|${m.direction}|${m.amount_minor}`;
+      manualCounts.set(k, (manualCounts.get(k) || 0) + 1);
+    }
+    const reservations = (pending.rows || []).map((s) => {
+      const p = s.payload && typeof s.payload === "object" ? s.payload : {};
+      return {
+        id: s.id,
+        name: String(p.name || s.email || ""),
+        plan: String(p.plan_name || ""),
+        reference: String(p.reference || "").trim(),
+        amount_minor: reservationAmountMinor(p),
+        created: new Date(s.created_at).toISOString().slice(0, 10),
+      };
+    });
+    const usedReservations = new Set();
+
+    const analysed = rows.map((r) => {
+      let status = "new";
+      if (importedSet.has(r.import_hash)) status = "already_imported";
+      else if (r.category === "site_payout") status = "stripe_payout";
+      else {
+        const k = `${r.date}|${r.direction}|${r.amount_minor}`;
+        const n = manualCounts.get(k) || 0;
+        if (n > 0) {
+          status = "possible_duplicate";
+          manualCounts.set(k, n - 1);
+        }
+      }
+      let reservation = null;
+      if (r.direction === "income" && status !== "already_imported") {
+        const desc = r.description.toLowerCase();
+        const sameAmount = reservations.filter(
+          (x) => !usedReservations.has(x.id) && x.amount_minor === r.amount_minor,
+        );
+        const byRef = sameAmount.find((x) => x.reference && desc.includes(x.reference.toLowerCase()));
+        const byDate = sameAmount.filter((x) => x.created <= r.date && daysBetween(x.created, r.date) <= 14);
+        const pick = byRef || (byDate.length === 1 ? byDate[0] : null);
+        if (pick) {
+          usedReservations.add(pick.id);
+          reservation = {
+            id: pick.id,
+            name: pick.name,
+            plan: pick.plan,
+            reference: pick.reference,
+            strength: byRef ? "reference" : "amount_and_date",
+          };
+          // The bank row IS the reservation payment, not an extra one.
+          if (status === "possible_duplicate") status = "new";
+        }
+      }
+      return {
+        line: r.line,
+        date: r.date,
+        description: r.description,
+        direction: r.direction,
+        amount_minor: r.amount_minor,
+        category: r.category === "site_payout" ? "other_income" : r.category,
+        status,
+        include: status === "new",
+        reservation,
+        import_hash: r.import_hash,
+      };
+    });
+    return {
+      headers: built.headers,
+      mapping: built.mapping,
+      order: built.order,
+      period: built.period,
+      rows: analysed,
+      skipped: built.skipped,
+    };
+  }
+
+  router.post(
+    "/desk/accounts/import/preview",
+    withAccess(async (req, res, { tenantId, profile }) => {
+      const result = await analyseImport({
+        tenantId,
+        csv: req.body?.csv,
+        mapping: req.body?.mapping,
+        order: req.body?.order,
+      });
+      if (result.error) return res.status(400).json({ error: result.error });
+      return res.json({
+        ok: true,
+        currency: profile.currency,
+        ...result,
+        rows: result.rows.map(({ import_hash: _h, ...r }) => r),
+      });
+    }),
+  );
+
+  router.post(
+    "/desk/accounts/import/commit",
+    withAccess(async (req, res, { tenantId, profile }) => {
+      const result = await analyseImport({
+        tenantId,
+        csv: req.body?.csv,
+        mapping: req.body?.mapping,
+        order: req.body?.order,
+      });
+      if (result.error) return res.status(400).json({ error: result.error });
+      const method = METHODS.includes(req.body?.method) ? req.body.method : "bank_transfer";
+      const choices = new Map(
+        (Array.isArray(req.body?.rows) ? req.body.rows : []).map((c) => [Number(c?.line), c]),
+      );
+
+      const counts = { imported: 0, reservations: 0, skipped_duplicates: 0, not_selected: 0 };
+      for (const row of result.rows) {
+        const choice = choices.get(row.line);
+        if (!choice?.include) {
+          counts.not_selected += 1;
+          continue;
+        }
+        if (row.status === "already_imported") {
+          counts.skipped_duplicates += 1;
+          continue;
+        }
+        const allowed = row.direction === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
+        const category = allowed.includes(choice.category) ? choice.category : row.category;
+
+        // Matched bank-transfer reservation: confirm it with this bank row.
+        let submissionId = null;
+        let description = row.description;
+        let counterparty = null;
+        if (row.reservation && choice.confirm_reservation !== false) {
+          const claimed = await dbQuery(
+            `INSERT INTO submission_reviews (tenant_id, submission_id, status)
+             VALUES ($1, $2, 'confirmed') ON CONFLICT DO NOTHING RETURNING submission_id`,
+            [tenantId, row.reservation.id],
+          );
+          if (claimed.rows?.[0]) {
+            submissionId = row.reservation.id;
+            description = row.reservation.plan || description;
+            counterparty = row.reservation.name || null;
+          }
+        }
+
+        const inserted = await dbQuery(
+          `INSERT INTO ledger_entries
+             (tenant_id, entry_date, direction, category, description, counterparty,
+              amount_minor, currency, method, reference, source, submission_id, import_hash)
+           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,'import',$11,$12)
+           ON CONFLICT (tenant_id, import_hash) WHERE import_hash IS NOT NULL AND voided_at IS NULL
+           DO NOTHING RETURNING id`,
+          [
+            tenantId,
+            row.date,
+            row.direction,
+            submissionId ? "membership" : category,
+            clean(description, 300),
+            counterparty,
+            row.amount_minor,
+            profile.currency,
+            method,
+            submissionId ? clean(row.reservation.reference, 80) : null,
+            submissionId,
+            row.import_hash,
+          ],
+        );
+        const entryId = inserted.rows?.[0]?.id;
+        if (!entryId) {
+          counts.skipped_duplicates += 1;
+          if (submissionId) {
+            await dbQuery(
+              "DELETE FROM submission_reviews WHERE tenant_id = $1 AND submission_id = $2 AND entry_id IS NULL",
+              [tenantId, submissionId],
+            );
+          }
+          continue;
+        }
+        counts.imported += 1;
+        if (submissionId) {
+          counts.reservations += 1;
+          await dbQuery(
+            "UPDATE submission_reviews SET entry_id = $3 WHERE tenant_id = $1 AND submission_id = $2",
+            [tenantId, submissionId, entryId],
+          );
+        }
+      }
+      return res.json({ ok: true, ...counts });
     }),
   );
 

@@ -662,3 +662,11 @@ Commits `db76c7d`, `f467d2d`. Findings + fixes:
   - Per-site override in `tenants.json`: `"accounting": { "country", "currency", "taxpayer": "individual|pt_perorangan", "vatRegistered": true }`.
 - Schema: `migrations/016_accounts.sql`. Plain DATE columns now come back as `YYYY-MM-DD` strings (db.js) — fixes a BST off-by-one-day bug.
 - Tests: `tests/tax-rules.test.js` (incl. DJP's own worked example), `tests/accounts.test.js`.
+
+## Money page: import from bank / booking app (Oct 2026)
+
+Every site's Money page (`/<site>/money/`, shared template — all 11 sites incl. Dina's) has **"Import from your bank or booking app"**: pick a CSV, review, tap Add. Covers payments that never touch the website (direct debits, transfers, cash paid in).
+- Engine `src/csv-import.js` (36 tests): UK exports (signed Amount, or Money in/Money out / Credit/Debit columns, DD/MM/YYYY) and KlikBCA/myBCA (account/period preamble, `'DD/MM` dates with the year from the Period line incl. Dec→Jan, CR/DB flow column or "… CR" suffix, `PEND` rows skipped until cleared, totals ignored); booking/payments-app exports via generic column guessing; Indonesian/UK number formats; auto-categories by keyword.
+- Server re-parses the file on commit (client numbers never trusted). Duplicates blocked by a fingerprint (`ledger_entries.import_hash`, migration 017) so overlapping statements never double-count; hand-entered payments with the same date+amount are flagged; **Stripe payouts are flagged and unticked** because website sales are already counted from orders.
+- **Bank-transfer reservations auto-match** (reference in the bank description, or same amount within 14 days): importing Dina's BCA statement confirms the reservation and books it in one go.
+- Wrong columns? "Columns look wrong? Fix them" lets the owner remap + switch day/month order, then re-check.

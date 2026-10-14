@@ -6393,6 +6393,7 @@ async function ensureCommerceTables() {
         "014_webhook_processing.sql",
         "015_hq.sql",
         "016_accounts.sql",
+        "017_ledger_import.sql",
       ]) {
         await dbQuery(
           fs.readFileSync(path.join(__dirname, "migrations", file), "utf8"),

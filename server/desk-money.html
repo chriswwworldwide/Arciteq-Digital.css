@@ -114,6 +114,33 @@ __MASTHEAD__
       </form>
     </section>
 
+    <section class="m-card" id="import-card">
+      <h3>Import from your bank or booking app</h3>
+      <p class="m-sub">Payments that didn't come through the website — direct debits, transfers, cash paid in. Download a <b>CSV</b> statement from your bank<span id="i-bank-hint"></span> or your booking app, then pick it here. Nothing is saved until you check it and tap Add.</p>
+      <div class="m-form">
+        <div><label for="i-file">Statement file (CSV)</label>
+          <input id="i-file" type="file" accept=".csv,text/csv,text/plain" /></div>
+        <div><label for="i-method">These payments came in by</label><select id="i-method"></select></div>
+      </div>
+      <div id="i-review" hidden>
+        <details id="i-cols" style="margin-top:12px">
+          <summary style="cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600">Columns look wrong? Fix them</summary>
+          <div class="m-form" id="i-map"></div>
+          <div class="m-form">
+            <div><label for="i-order">Dates are written</label><select id="i-order">
+              <option value="dmy">Day first (31/12/2026)</option><option value="mdy">Month first (12/31/2026)</option></select></div>
+            <div style="display:flex;align-items:flex-end"><button class="m-btn" type="button" id="i-recheck">Re-check file</button></div>
+          </div>
+        </details>
+        <p class="m-sub" id="i-summary"></p>
+        <ul class="m-list" id="i-rows" style="max-height:520px;overflow-y:auto"></ul>
+        <div class="row" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <button class="btn btn-primary" type="button" id="i-commit">Add to my books</button>
+          <button class="m-btn" type="button" id="i-cancel">Cancel</button>
+        </div>
+      </div>
+    </section>
+
     <section class="m-card">
       <div class="m-head"><h3 style="margin:0">Recent</h3>
         <button class="m-btn" type="button" id="export">Download for my accountant</button></div>
@@ -362,6 +389,112 @@ __MASTHEAD__
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(a.href), 2000);
     } catch (err) { toast(err.message); }
+  });
+
+  // ---- Import from bank / booking app ----
+  const imp = { csv: "", preview: null };
+  const STATUS = {
+    new: ["", ""],
+    already_imported: ["Already in your books", "Imported before — skipped so it isn't counted twice."],
+    possible_duplicate: ["Maybe already added", "You've a hand-entered payment with the same date and amount — tick only if this is a different one."],
+    stripe_payout: ["Website payout", "Looks like a Stripe payout — your website sales are already counted, so this would count them twice."],
+  };
+  const COLS = [["date", "Date"], ["description", "Description"], ["amount", "Amount (one column)"],
+    ["credit", "Money in"], ["debit", "Money out"], ["flow", "CR / DB column"]];
+  $("i-bank-hint").textContent = isID ? " (myBCA / KlikBCA: Mutasi Rekening → download CSV)" : "";
+  fillSelect($("i-method"), METHODS);
+  $("i-method").value = "bank_transfer";
+
+  function renderMapping(p) {
+    const opts = [["-1", "— none —"], ...p.headers.map((h, i) => [String(i), h || `Column ${i + 1}`])];
+    $("i-map").innerHTML = COLS.map(([k, label]) => `<div><label for="map-${k}">${esc(label)}</label>
+      <select id="map-${k}" data-col="${k}">${opts.map(([v, l]) => `<option value="${esc(v)}" ${String(p.mapping[k]) === v ? "selected" : ""}>${esc(l)}</option>`).join("")}</select></div>`).join("");
+    $("i-order").value = p.order || "dmy";
+  }
+
+  function renderImport(p) {
+    $("i-review").hidden = false;
+    renderMapping(p);
+    const counts = p.rows.reduce((c, r) => ((c[r.status] = (c[r.status] || 0) + 1), c), {});
+    const matched = p.rows.filter((r) => r.reservation).length;
+    const parts = [`${p.rows.length} payments found`];
+    if (counts.new) parts.push(`${counts.new} new`);
+    if (counts.already_imported) parts.push(`${counts.already_imported} already in your books`);
+    if (matched) parts.push(`${matched} match a reservation`);
+    if (p.skipped.length) parts.push(`${p.skipped.length} lines skipped (pending, totals or blank)`);
+    $("i-summary").textContent = parts.join(" · ") + ".";
+    const rank = { new: 0, possible_duplicate: 1, stripe_payout: 2, already_imported: 3 };
+    const ordered = [...p.rows].sort((a, b) => (rank[a.status] ?? 9) - (rank[b.status] ?? 9));
+    $("i-rows").innerHTML = ordered.map((r) => {
+      const out = r.direction === "expense";
+      const [badge, why] = STATUS[r.status] || ["", ""];
+      const cats = CATS[r.direction].map(([v, l]) => `<option value="${v}" ${v === r.category ? "selected" : ""}>${esc(l)}</option>`).join("");
+      const res = r.reservation ? `<div class="meta">✓ Matches ${esc(r.reservation.name)}'s ${esc(r.reservation.plan)} reservation${r.reservation.reference ? ` (ref ${esc(r.reservation.reference)})` : ""} — it'll be confirmed too</div>` : "";
+      return `<li data-line="${r.line}">
+        <label style="display:flex;gap:10px;align-items:flex-start;flex:1;min-width:0">
+          <input type="checkbox" ${r.include ? "checked" : ""} ${r.status === "already_imported" ? "disabled" : ""} style="width:22px;height:22px;margin-top:2px;flex:none" aria-label="Include this payment" />
+          <span style="min-width:0"><span class="who">${esc(fmtDate(r.date))}</span>
+            <span class="meta" style="display:block;word-break:break-word">${esc(r.description || "—")}</span>
+            ${badge ? `<span class="meta" style="display:block;color:#b36b00"><b>${esc(badge)}</b> — ${esc(why)}</span>` : ""}${res}</span>
+        </label>
+        <div style="text-align:right;flex:none">
+          <div class="m-amt ${out ? "out" : ""}">${out ? "−" : "+"}${esc(money(r.amount_minor))}</div>
+          ${r.reservation || r.status === "already_imported" ? "" : `<select aria-label="Category" style="min-height:40px;max-width:150px;margin-top:4px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--paper);color:inherit">${cats}</select>`}
+        </div></li>`;
+    }).join("") || `<li><span class="meta">No payments found in that file.</span></li>`;
+    updateCommitLabel();
+  }
+
+  function updateCommitLabel() {
+    const n = [...$("i-rows").querySelectorAll("input[type=checkbox]")].filter((c) => c.checked && !c.disabled).length;
+    $("i-commit").textContent = n ? `Add ${n} to my books` : "Nothing selected";
+    $("i-commit").disabled = !n;
+  }
+
+  function currentMapping() {
+    const m = {};
+    $("i-map").querySelectorAll("[data-col]").forEach((s) => { m[s.dataset.col] = Number(s.value); });
+    return m;
+  }
+
+  async function previewImport(withMapping) {
+    const body = { csv: imp.csv };
+    if (withMapping) { body.mapping = currentMapping(); body.order = $("i-order").value; }
+    try {
+      imp.preview = await api("/desk/accounts/import/preview", { method: "POST", body: JSON.stringify(body) });
+      renderImport(imp.preview);
+    } catch (err) { if (err.message !== "unauthorized") toast(err.message); }
+  }
+
+  function resetImport() {
+    imp.csv = ""; imp.preview = null;
+    $("i-file").value = ""; $("i-review").hidden = true; $("i-rows").innerHTML = "";
+  }
+
+  $("i-file").addEventListener("change", async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 1_800_000) { toast("That file is too big — export a shorter date range."); return resetImport(); }
+    imp.csv = await file.text();
+    previewImport(false);
+  });
+  $("i-recheck").addEventListener("click", () => previewImport(true));
+  $("i-cancel").addEventListener("click", resetImport);
+  $("i-rows").addEventListener("change", (e) => { if (e.target.type === "checkbox") updateCommitLabel(); });
+  $("i-commit").addEventListener("click", async () => {
+    if (!imp.preview) return;
+    const rows = [...$("i-rows").querySelectorAll("li[data-line]")].map((li) => ({
+      line: Number(li.dataset.line),
+      include: li.querySelector("input[type=checkbox]").checked,
+      category: li.querySelector("select")?.value,
+    }));
+    $("i-commit").disabled = true;
+    try {
+      const r = await api("/desk/accounts/import/commit", { method: "POST", body: JSON.stringify({
+        csv: imp.csv, mapping: imp.preview.mapping, order: imp.preview.order, method: $("i-method").value, rows }) });
+      toast(`Added ${r.imported}${r.reservations ? ` · ${r.reservations} reservation${r.reservations > 1 ? "s" : ""} confirmed` : ""}${r.skipped_duplicates ? ` · ${r.skipped_duplicates} already there` : ""}`);
+      resetImport(); await load();
+    } catch (err) { $("i-commit").disabled = false; if (err.message !== "unauthorized") toast(err.message); }
   });
 
   $("key-form").addEventListener("submit", (e) => {

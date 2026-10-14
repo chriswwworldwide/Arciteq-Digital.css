@@ -12,7 +12,7 @@
 // exactly on the settled page. No WebGL / reduced-motion → page shows.
 (() => {
   const fx = new URLSearchParams(location.search).get("fx");
-  const demo = fx === "demo";
+  const demo = fx === "demo" || fx === null;
   const solo = /^[0-3]$/.test(fx || "") ? Number(fx) : null;
   if (!demo && solo === null) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;

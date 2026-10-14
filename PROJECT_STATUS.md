@@ -706,7 +706,48 @@ Rule for modules: **never read `process.env` at load time** (server.js loads `.e
 - `server/routes.js` and `server/sponsor-visuals.js` are empty placeholder files from before — safe to delete when convenient.
 - Fixed: Twilio receptionist now fails closed in production when `TWILIO_AUTH_TOKEN` is missing (set `NODE_ENV=production` on Railway).
 
-## HANDOVER — 14 Oct 2026 (start here in a new session)
+## HANDOVER — 15 Oct 2026 (START HERE — supersedes the 14 Oct handover below it)
+
+Read this section only. Everything a new session needs is here; do not go searching the rest of the plan.
+
+### 0. Where things live (so nobody hunts for the repo again)
+- **GitHub:** `chriswwworldwide/desir-noir.css` (GitHub also calls it `Arciteq-Digital.css` — same repo, pushes redirect). Branch of record: `main`.
+- **Chris's Mac clone:** `~/Desktop/roxjaya` (folder is called *roxjaya* even though it is the whole engine). To open it in Terminal: Spotlight → "Terminal" → type `cd ~/Desktop/roxjaya` → Enter. If Chris says work was done "in another window", ask him to run `git push origin main` there before concluding it is lost.
+- **Devin's clone (this box):** `/home/ubuntu/repos/dn-main`. Older clone `/home/ubuntu/repos/desir-noir-css` also exists — ignore it.
+- **Ross's raw material (HTC):** now IN the repo at `scripts/reskin/htcfisher-assets/source/` — 38 photos (`htc-01..38.jpg`), `contact.jpg` contact sheet, `ROSS_VOICE.md` (his IG voice sheet), `captions/cap-01..24.png` (IG caption screenshots, event-matched to the photos: Málaga, Glasgow, Manchester, Istanbul, Cardiff, gym, beach BBQ).
+- **Run locally:** `npm ci` once, then `PORT=3000 npm start` → `http://localhost:3000/<slug>/` (e.g. `/htcfisher/`, `/racetoframe/`). Preview URL for Chris = the Devin preview chip / `https://3000--<session-id>.preview.devinapps.com/htcfisher/` (he must be signed in to app.devin.ai). He just wants the URL, nothing else.
+- **Chris:** non-coder. Plain British English, numbered click-by-click steps, exact button names. Never deploy to Railway without him saying so. Standing rule: once a change is agreed, merge to main without asking.
+
+### 1. The big picture — how the three things fit
+1. **The engine (Global).** One Node/Express multi-tenant codebase. `server.js` + `server/` modules, Postgres, Stripe, `data/tenants.json` = the list of every site and which hostnames map to which folder. Shared templates/CSS/JS live in `roxjaya/` — **Roxjaya is the master copy that every gym site is generated from.**
+2. **Roxjaya (Dina's site, roxjaya.com, live on Railway).** Dina Rosdiana's HYROX coaching brand in Jakarta. Bahasa-first, personal, women-friendly. It is where every feature is built first: Split Analyser, race predictor (`roxjaya/predictor.js` + `predictor.html`), guides autopilot, coach desk, Money page, HQ at `/hq`. Brand pass (make the front door *her*, not corporate) is planned but not started — see task 87 / memory.
+3. **The gym demo sites (Local reskins of Roxjaya).** `node scripts/reskin-tenant.js scripts/reskin/<slug>.demo.json` copies `roxjaya/` → `<slug>/`, swaps brand/colours/copy/photos (per-tenant assets in `scripts/reskin/<slug>-assets/`, layered over `hustle-assets` placeholders), registers the tenant. Built so far (11 incl. Roxjaya): `racetoframe` (Hannah Burgon, **the perfected model — copy her, not Dina**), `hustle`, `burgonfitness`, `pacegym`, `hyroxdoncaster`, `gym64`, `nutrifit`, `kore`, `fennellfitness`, `htcfisher` (HTC Christchurch / Ross Fisher — #2 prospect, the one we are polishing now). The business play (BILLIONS.md): demo-first cold pitches to UK HYROX gyms/coaches, £300–500 one-off or £40–60/mo. So: **features built in Roxjaya flow down to every gym site on the next regenerate; anything gym-specific stays in its `.demo.json` + assets folder.**
+
+Rule of thumb: editing `roxjaya/*` or `server/*` = Global (affects all 11 sites, explain impact); editing `scripts/reskin/<slug>.demo.json` or `<slug>-assets/` = Local.
+
+### 2. Exactly where we stopped (HTC Christchurch fixes, branch `devin/1791989144-htc-fixes`, pushed)
+Chris reviewed the HTC demo and asked for three fixes, then a new preview URL. Status:
+
+**Done (in the branch, regenerated, NOT yet eyeballed in a browser):**
+- Station photos de-duplicated in `htcfisher/stations-prep.html`: new files `sled-push.jpg` (htc-19), `burpee.jpg` (htc-34), `rowing.jpg` (htc-30), `wallballs.jpg` (htc-36), `gym-crew.jpg` (htc-15); `coaching.jpg` now htc-38; `race-pair.jpg` now htc-22 (was a duplicate of the hero, htc-08). Wired via `extraPairs` in `scripts/reskin/htcfisher.demo.json` (src+alt string swaps).
+- Hero effect: HTC `emerge.js` was already identical to Hannah's; the only difference was Hannah's page shows the 4-effect roll. `extraPairs` now changes `const demo = fx === "demo";` → `|| fx === null` so HTC auto-plays the four effects on load like Hannah's. **Verify this visually against `/racetoframe/` and copy whatever still differs — Chris wants "a straight lift from Hannah's page".**
+- Station 9 venue photos downloaded (Pexels, free licence): `venue-restaurant.jpg` (pexels 32795634, candlelit table) and `venue-nightclub.jpg` (pexels 5191133, dance floor) in `scripts/reskin/htcfisher-assets/images/`.
+
+**Not done / next steps, in order:**
+1. **Station 9 swap is failing.** `extraPairs` run against the *source* `roxjaya/` files **before** `roxjaya`→`htcfisher` path renaming, so pairs must match the Roxjaya source strings (`src="/roxjaya/images/...` + Dina's alt text), not the HTC output. The two Station-9 pairs and two station pairs (`rowing`, `wallballs` → still show `carry.jpg`/`wallball.jpg`) were written against HTC output and matched nothing. Fix: open `roxjaya/station-9.html` (~line 165 and ~218) and `roxjaya/stations-prep.html` (lines 352, 444) and copy the exact source strings into the pairs. Then check `grep -c venue- htcfisher/station-9.html` > 0. (The pairs that DID work matched because the racetoframe parent config had already renamed those slots.)
+2. Chris would prefer venues "he'll know" — Christchurch/Bournemouth. Can't get royalty-free shots of specific venues; keep generic good-looking ones and say so.
+3. Regenerate: `node scripts/reskin-tenant.js scripts/reskin/htcfisher.demo.json`, then **restore `data/tenants.json` formatting** (script rewrites the whole file): `git show HEAD:data/tenants.json > data/tenants.json` is fine when no tenant change is needed.
+4. Eyeball: `/htcfisher/` desktop + 390px mobile (hero shows Ross, 4 effects roll, menu fits), `/htcfisher/stations-prep.html` (no repeated photos, right station), `/htcfisher/station-9.html` (restaurant + club photos). Playwright works over CDP: `chromium.connectOverCDP("http://localhost:29229")` with `playwright-core`.
+5. `npm run lint`, `npm run type-check`, `npx vitest run`; PR; merge; give Chris the preview URL. Known: CI "Lint + Format" is red on main already (prettier SyntaxError in every tenant's `hyrox-<city>.html` — shared template bug, not ours; fix separately if asked). SonarCloud always red (no token).
+
+### 3. Then (agreed, not started)
+- **Race predictor as a standard feature.** `predictor.js`/`predictor.html` already exist in Roxjaya and are copied into all 10 gym tenants by the reskin — so the work is: (a) check it is linked in nav/home on every site and actually works per tenant, (b) make sure it is on Hannah's (`racetoframe`), (c) **Dina's site too** (Chris asked explicitly — check `roxjaya/predictor.html` is wired into nav and Bahasa copy is right), (d) add it to the pitch — the "deck" is the pitch copy in `BILLIONS.md` (lines ~14–25, "three live demos as proof") and `PROSPECTS.md`; there is no separate slide deck file.
+- Homepage tier cards on HTC still say Warrior/Hybrid/Elite with made-up prices; real prices (£15 drop-in, £35.99 pack, £100 doubles, £150/mo online) are on the pay page. Fix once Ross says what he sells.
+
+### 4. Credits note
+Chris burned ~$60 in about an hour on 15 Oct. The cause is almost certainly this very long session (weeks of history, ~60 pasted images) — every reply re-reads all of it. **Start fresh sessions for new blocks of work; do not resume the old one.**
+
+## HANDOVER — 14 Oct 2026 (older — superseded above)
 
 **State:** everything committed on `main`, lint/types/tests green (382 tests). Local Postgres running (`brew services start postgresql@17`), db `roxjaya`, `.env.local` holds DATABASE_URL / ADMIN_API_KEY / PUBLIC_BASE_URL. Server: `npm start` → :3000. HQ: `/hq` (admin key in `.env.local`).
 

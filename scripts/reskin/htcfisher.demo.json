@@ -61,6 +61,34 @@
   "metaDescription": "HYROX Training Club Christchurch — Dorset's only HYROX-only club. Coached classes at ROXBOX (GTC, Mudeford), race-grade kit, Sunday Community Sesh, online coaching with Ross Fisher.",
   "extraPairs": [
     [
+      "src=\"/htcfisher/images/carry.jpg\"\n            alt=\"Ross low over the sled poles",
+      "src=\"/htcfisher/images/sled-push.jpg\"\n            alt=\"Ross low over the sled poles"
+    ],
+    [
+      "src=\"/htcfisher/images/station-lean.jpg\"\n            alt=\"Ross mid broad jump",
+      "src=\"/htcfisher/images/burpee.jpg\"\n            alt=\"Ross mid broad jump"
+    ],
+    [
+      "src=\"/htcfisher/images/wallball.jpg\" alt=\"The squad mid rowing warm-up in the gym\"",
+      "src=\"/htcfisher/images/rowing.jpg\" alt=\"Rowing — the station where pacing wins\""
+    ],
+    [
+      "src=\"/htcfisher/images/carry.jpg\" alt=\"Mid overhead press",
+      "src=\"/htcfisher/images/wallballs.jpg\" alt=\"Mid overhead press"
+    ],
+    [
+      "src=\"/htcfisher/images/squad-athlos.jpg\"\n            alt=\"The whole crew after a session — all abilities, all welcome\"",
+      "src=\"/htcfisher/images/venue-restaurant.jpg\"\n            alt=\"Candlelit dinner table — Station 9, where the crew ends the night\""
+    ],
+    [
+      "src=\"/htcfisher/images/finish.jpg\"\n              alt=\"Arms up at the finish line — the celebration is the point\"",
+      "src=\"/htcfisher/images/venue-nightclub.jpg\"\n              alt=\"Dance floor lights — Station 10, optional, always\""
+    ],
+    [
+      "const demo = fx === \"demo\";",
+      "const demo = fx === \"demo\" || fx === null;"
+    ],
+    [
       "[\"#ff2ea6\", \"#ff7ad0\", \"#ffffff\", \"#ffd2ef\"]",
       "[\"#0d9488\", \"#2dd4bf\", \"#ffffff\", \"#ccfbf1\"]"
     ],

@@ -13,7 +13,7 @@
 (() => {
   const fx = new URLSearchParams(location.search).get("fx");
   const demo = fx === "demo";
-  const solo = /^[0-3]$/.test(fx || "") ? Number(fx) : null;
+  const solo = fx === null ? 2 : /^[0-3]$/.test(fx || "") ? Number(fx) : null;
   if (!demo && solo === null) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   window.__emerge = true; // hero-reveal.js checks this and stands down

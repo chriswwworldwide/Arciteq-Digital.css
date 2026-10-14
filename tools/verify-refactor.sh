@@ -38,3 +38,13 @@ if ! diff -u /tmp/webhook.before.txt /tmp/webhook.after.txt; then
   echo "❌ WEBHOOK OUTCOME CHANGED"; exit 1
 fi
 echo "✅ webhook: identical DB outcome for all signed events"
+
+if curl -s -o /dev/null http://localhost:3200/health; then
+  # the heartbeat's first run is 10s after start; compare after it has run
+  for _ in $(seq 1 30); do
+    curl -s -H "x-admin-key: $KEY" http://localhost:3000/admin/heartbeat | grep -q '"lastOk":true' && break; sleep 1
+  done
+  node tools/compare-base.js
+else
+  echo "ℹ️  pre-refactor server not running on :3200 — skipped old-vs-new check"
+fi

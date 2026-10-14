@@ -61,6 +61,10 @@
   "metaDescription": "HYROX coaching with 3x Worlds qualifier Hannah Burgon — online programming, monthly sims at Pyramid Performance Stockport, and the crew that races together.",
   "extraPairs": [
     [
+      "gl_FragColor.rgb = pow(gl_FragColor.rgb,vec3(mix(1./2.2,1.0,smoothstep(0.55,1.,uProgress))));",
+      "gl_FragColor.rgb = pow(gl_FragColor.rgb, vec3(1.0));"
+    ],
+    [
       "position:absolute;pointer-events:none;z-index:2;left:",
       "position:absolute;pointer-events:none;z-index:0;left:"
     ],

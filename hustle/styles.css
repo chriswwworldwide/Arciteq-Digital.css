@@ -8,11 +8,9 @@
   --paper: #fffdfb;
   --paper-2: #fbf3ee;
   --line: #efe3e3;
-  --pink: #e0242e;
-  --pink-600: #b0171f;
-  --pink-100: #fde4e5;
-  --ncfc-green: #166534;
-  --ncfc-gold: #fff200;
+  --pink: #166534;
+  --pink-600: #14532d;
+  --pink-100: #f0fdf4;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(40, 14, 30, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
@@ -61,6 +59,8 @@ a {
 .o {
   color: var(--pink);
 }
+
+.masthead .wordmark .o { color: #facc15; }
 
 /* ---------- Masthead ---------- */
 .masthead {

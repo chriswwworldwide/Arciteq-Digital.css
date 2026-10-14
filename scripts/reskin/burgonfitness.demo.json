@@ -16,9 +16,9 @@
   "email": "hannahburgonpt@gmail.com",
   "currency": "gbp",
   "colors": {
-    "pink": "#17171a",
-    "pink600": "#000000",
-    "pink100": "#efefef"
+    "pink": "#dc2626",
+    "pink600": "#991b1b",
+    "pink100": "#fee2e2"
   },
   "features": {
     "predictor": true,
@@ -242,7 +242,7 @@
     ],
     [
       "--pink-100: #ffe1f0;",
-      "--pink-100: #efefef;\n  --volt: #dcf24f;\n  --volt-ink: #5f7a00;"
+      "--pink-100: #fee2e2;\n  --volt: #dc2626;\n  --volt-ink: #991b1b;"
     ],
     [
       ".hero--bleed h2 em {\n  font-style: normal;\n  color: var(--pink);",

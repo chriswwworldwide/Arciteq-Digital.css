@@ -15,9 +15,9 @@
   "instagramHandle": "hustle_norwich",
   "greeting": "Hi Hustle! I found you on the site — I'm interested in HYROX training.",
   "colors": {
-    "pink": "#e0242e",
-    "pink600": "#b0171f",
-    "pink100": "#fde4e5"
+    "pink": "#166534",
+    "pink600": "#14532d",
+    "pink100": "#f0fdf4"
   },
   "features": {
     "predictor": true,
@@ -741,6 +741,10 @@
     {
       "pattern": "<a href=\"/hustle/splits/\">Split Analyser</a>(?!</li>)",
       "replace": "<a href=\"/hustle/splits/\">Split Analyser</a>\n          <a href=\"/hustle/predictor/\">Race Predictor</a>"
+    },
+    {
+      "pattern": "(\\.o \\{\\s*color: var\\(--pink\\);\\s*\\})",
+      "replace": "$1\n\n.masthead .wordmark .o { color: #facc15; }"
     },
     {
       "pattern": ":root\\s*\\{",

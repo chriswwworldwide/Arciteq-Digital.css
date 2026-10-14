@@ -65,6 +65,10 @@
   "metaDescription": "Hustle Performance Centre in Norwich: HYROX training, race simulations, partner boards and a crew that shows up. Official HYROX affiliate — Norwich & Wymondham.",
   "extraPairs": [
     [
+      "const solo = /^[0-3]$/.test(fx || \"\") ? Number(fx) : null;",
+      "const solo = fx === null ? 2 : /^[0-3]$/.test(fx || \"\") ? Number(fx) : null;"
+    ],
+    [
       "Pilih kelemahanmu. Kita ubah jadi split tercepatmu — tanpa drama.",
       "Pick your weakness. We'll turn it into your fastest split — no drama."
     ],

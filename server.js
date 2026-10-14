@@ -8,7 +8,7 @@ import fs from "node:fs";
 import crypto from "node:crypto";
 import { dbQuery } from "./db.js";
 import { normalizeEmail } from "./src/data-stitch.js";
-import { getBaseUrl, xmlEscape } from "./src/product-utils.js";
+import { xmlEscape } from "./src/product-utils.js";
 import { isRecurringProduct } from "./src/catalog-qa.js";
 import { isPrivateStaticPath } from "./src/static-guard.js";
 import {
@@ -909,95 +909,6 @@ app.get("/api/health", (req, res) => {
   }
 });
 
-
-app.get("/sitemap.xml", (req, res) => {
-  try {
-    const tenant = resolveTenantFromRequest(req);
-    const activeTenantId = String(tenant?.tenant_id || "default");
-    const baseUrl = getBaseUrl(req);
-
-    const allowedNiches = Array.isArray(tenant?.catalog?.nicheCategorySlugs)
-      ? tenant.catalog.nicheCategorySlugs.map((s) =>
-          String(s || "").toLowerCase(),
-        )
-      : null;
-    const allowedProductTypes = Array.isArray(tenant?.catalog?.productTypeSlugs)
-      ? tenant.catalog.productTypeSlugs.map((s) =>
-          String(s || "").toLowerCase(),
-        )
-      : null;
-
-    let productsData = { list: [], generatedAt: "" };
-    try {
-      productsData = loadProductsData();
-    } catch {
-      productsData = { list: [], generatedAt: "" };
-    }
-
-    const urls = [];
-    urls.push("/");
-    urls.push("/shop.html");
-
-    urls.push("/kits/dog.html");
-    urls.push("/kits/cat.html");
-    urls.push("/kits/night-walk-safety-dog.html");
-    urls.push("/kits/senior-dog-comfort.html");
-
-    if (allowedNiches && allowedNiches.length > 0) {
-      for (const slug of allowedNiches) {
-        if (slug) urls.push(`/${slug}`);
-      }
-    }
-
-    const tenantProducts = Array.isArray(productsData?.list)
-      ? productsData.list
-          .filter((p) => String(p?.tenant_id || "default") === activeTenantId)
-          .filter((p) => {
-            if (!allowedNiches || allowedNiches.length === 0) return true;
-            const slug = String(p?.nicheCategory?.slug || "").toLowerCase();
-            return allowedNiches.includes(slug);
-          })
-          .filter((p) => {
-            if (!allowedProductTypes || allowedProductTypes.length === 0)
-              return true;
-            const slug = String(p?.productType?.slug || "").toLowerCase();
-            return allowedProductTypes.includes(slug);
-          })
-      : [];
-
-    for (const p of tenantProducts) {
-      const canonicalPath = String(p?.seo?.canonicalPath || "");
-      if (canonicalPath) urls.push(canonicalPath);
-    }
-
-    const lastmod = productsData?.generatedAt
-      ? String(productsData.generatedAt).slice(0, 10)
-      : "";
-
-    const body = urls
-      .filter(Boolean)
-      .map((u) => {
-        const loc = xmlEscape(`${baseUrl}${u}`);
-        const lastmodTag = lastmod
-          ? `<lastmod>${xmlEscape(lastmod)}</lastmod>`
-          : "";
-        return `<url><loc>${loc}</loc>${lastmodTag}</url>`;
-      })
-      .join("");
-
-    const xml =
-      `<?xml version="1.0" encoding="UTF-8"?>` +
-      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${body}</urlset>`;
-
-    res.setHeader("Content-Type", "application/xml; charset=utf-8");
-    return res.send(xml);
-  } catch (err) {
-    return res
-      .status(500)
-      .type("text/plain")
-      .send(err?.message || "Failed to build sitemap");
-  }
-});
 
 app.get("/:nicheCategorySlug/:productSlug", (req, res, next) => {
   try {

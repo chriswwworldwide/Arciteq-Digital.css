@@ -62,6 +62,10 @@
   "metaDescription": "HYROX Training Club Christchurch — Dorset's only HYROX-only club. Coached classes at ROXBOX (GTC, Mudeford), race-grade kit, Sunday Community Sesh, online coaching with Ross Fisher.",
   "extraPairs": [
     [
+      "gl_FragColor.rgb = pow(gl_FragColor.rgb,vec3(mix(1./2.2,1.0,smoothstep(0.55,1.,uProgress))));",
+      "gl_FragColor.rgb = pow(gl_FragColor.rgb, vec3(1.0));"
+    ],
+    [
       "const solo = /^[0-3]$/.test(fx || \"\") ? Number(fx) : null;",
       "const solo = fx === null ? 2 : /^[0-3]$/.test(fx || \"\") ? Number(fx) : null;"
     ],

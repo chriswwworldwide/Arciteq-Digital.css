@@ -66,6 +66,10 @@
   "metaDescription": "Hustle Performance Centre in Norwich: HYROX training, race simulations, partner boards and a crew that shows up. Official HYROX affiliate — Norwich & Wymondham.",
   "extraPairs": [
     [
+      "gl_FragColor.rgb = pow(gl_FragColor.rgb,vec3(mix(1./2.2,1.0,smoothstep(0.55,1.,uProgress))));",
+      "gl_FragColor.rgb = pow(gl_FragColor.rgb, vec3(1.0));"
+    ],
+    [
       "const solo = /^[0-3]$/.test(fx || \"\") ? Number(fx) : null;",
       "const solo = fx === null ? 2 : /^[0-3]$/.test(fx || \"\") ? Number(fx) : null;"
     ],

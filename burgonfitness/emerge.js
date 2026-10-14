@@ -335,7 +335,7 @@
         // codrops gamma lift during the reveal, converging to raw sRGB at
         // settle so the canvas lands identical to the DOM photo (no dark
         // click at handoff)
-        gl_FragColor.rgb = pow(gl_FragColor.rgb,vec3(mix(1./2.2,1.0,smoothstep(0.55,1.,uProgress))));
+        gl_FragColor.rgb = pow(gl_FragColor.rgb, vec3(1.0));
 
       }
     `;

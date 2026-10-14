@@ -4,16 +4,16 @@
   "brand": "HTC Christchurch",
   "brandUpper": "HTC CHRISTCHURCH",
   "brandShort": "HTC",
-  "wordmarkHtml": "HT<span class=\"o\">C</span> CHRISTCHURCH",
+  "wordmarkHtml": "HYROX TRAINING <span class=\"o\">CLUB</span>",
   "coachFirst": "Ross",
   "coachFull": "Ross Fisher",
   "coachNick": "Ross",
   "city": "Christchurch",
   "whatsapp": "447000000000",
   "email": "",
-  "instagramUrl": "https://www.instagram.com/htcfisher/",
-  "instagramHandle": "htcfisher",
-  "greeting": "Hi Ross! Found you on HTC Christchurch — I'm interested in HYROX training. ",
+  "instagramUrl": "https://www.instagram.com/hyroxchristchurch/",
+  "instagramHandle": "hyroxchristchurch",
+  "greeting": "Hi Ross! Found you on HTC Christchurch — I'd like to come to a session. ",
   "colors": {
     "pink": "#0d9488",
     "pink600": "#0f766e",
@@ -26,7 +26,11 @@
   "channels": [
     {
       "label": "Instagram",
-      "url": "https://www.instagram.com/"
+      "url": "https://www.instagram.com/hyroxchristchurch/"
+    },
+    {
+      "label": "Coach Ross",
+      "url": "https://www.instagram.com/coachrossfish/"
     }
   ],
   "cityRemap": {
@@ -54,8 +58,12 @@
   },
   "metaKeywords": "hyrox christchurch, hyrox training dorset, hyrox coach christchurch, hybrid training club dorset",
   "htmlTitle": "HTC Christchurch — HYROX Training Club | Ross Fisher Coaching",
-  "metaDescription": "HTC Christchurch with Ross Fisher: HYROX coaching, race prep, travel boards and results for a 60+ athlete squad.",
+  "metaDescription": "HYROX Training Club Christchurch — Dorset's only HYROX-only club. Coached classes at ROXBOX (GTC, Mudeford), race-grade kit, Sunday Community Sesh, online coaching with Ross Fisher.",
   "extraPairs": [
+    [
+      "[\"#ff2ea6\", \"#ff7ad0\", \"#ffffff\", \"#ffd2ef\"]",
+      "[\"#0d9488\", \"#2dd4bf\", \"#ffffff\", \"#ccfbf1\"]"
+    ],
     [
       "Pilih kelemahanmu. Kita ubah jadi split tercepatmu — tanpa drama.",
       "Pick your weakness. We'll turn it into your fastest split — no drama."
@@ -496,23 +504,23 @@
   "copyOverrides": [
     {
       "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"eyebrow\">Meet the crew</p>\n          <h3>HTC. From Tuesday-night classes to HTC.</h3>\n          <p class=\"lead\">\n            Started as a handful of classes around Christchurch —\n            HYROX, conditioning, strength — now it's a dedicated performance centre\n            with simulations, a full race floor and a crew that shows up\n            every week. Run by Ross and the coaches you'll actually train\n            with.\n          </p>\n          <p class=\"quote\">\n            \"HYROX isn't about who's strongest — it's about who keeps showing\n            up. That's the whole game.\"\n          </p>"
+      "replace": "<p class=\"eyebrow\">Meet the crew</p>\n          <h3>HTCC. Christchurch's first and only HYROX-only club.</h3>\n          <p class=\"lead\">\n            It's not just a club — it's friends &amp; family. A crew that trains\n            together at ROXBOX in Mudeford, travels to races together (Málaga,\n            Glasgow, Manchester, Cardiff…) and ends up in the same bar after.\n            Run by Ross — Level 1 HYROX Performance Coach, three seasons, 14\n            races, 60+ athletes coached, 2 podiums.\n          </p>\n          <p class=\"quote\">\n            \"Authenticity is a deep value of mine &amp; it's harder to come by\n            these days. I love this sport — it's become my passion and my\n            entire living.\"\n          </p>"
     },
     {
       "pattern": "<ul>\\s*<li>\\s*Podium and 1st in age group[\\s\\S]*?</ul>",
-      "replace": "<ul>\n            <li>Official HYROX affiliate — Christchurch</li>\n            <li>Regular in-house HYROX simulations (60+ athletes at the last one)</li>\n            <li>HYROX-certified coaching across strength, engine and race prep</li>\n          </ul>"
+      "replace": "<ul>\n            <li>Level 1 HYROX Performance Coach — 10+ years coaching, ex-national swimmer, Ironman</li>\n            <li>Solo 1:24:34 → 1:10:32 · Doubles 0:59:19 (Dublin, with Steve)</li>\n            <li>3 seasons · 14 races · 60+ athletes coached · 2 podiums</li>\n          </ul>"
     },
     {
       "pattern": "alt=\"Ross and her doubles partner[^\"]*\"",
-      "replace": "alt=\"Ross Fisher coaching a session at HTC Christchurch in Christchurch\""
+      "replace": "alt=\"Ross Fisher coaching the Sunday Community Sesh at ROXBOX, Christchurch\""
     },
     {
       "pattern": "<p class=\"crew-line\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"crew-line\">\n              Never raced and not sure where to start? Start here. One group\n              session a week in Christchurch — start whenever, your own pace, nobody\n              judging. Then once a month there's a meetup: class first, then\n              coffee, food and gossip — and honestly, that's the important\n              part. Sit with crew who've done it and see your next step in the\n              flesh.\n            </p>"
+      "replace": "<p class=\"crew-line\">\n              Never raced? Hooked already? Either way, start at the Sunday\n              Community Sesh — 8am, race-style, the most popular hour of the\n              week. Then pick your weeknights: Rebel, Lift, Engine, Run Club.\n              Nobody's judging. Everyone here was new once — then they got\n              hooked from that first race.\n            </p>"
     },
     {
       "pattern": "<p class=\"crew-note\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"crew-note\">\n              Weekly group session · monthly meetup — class first, then coffee\n              and treats (the important part, honestly) · starter programme in\n              the app · crew WhatsApp group. Walkers welcome — the podium's a\n              bonus.\n            </p>"
+      "replace": "<p class=\"crew-note\">\n              Sunday Service 8–9am · Rebel, Lift, Engine &amp; Run Club through\n              the week · race trips together · crew WhatsApp · £15 drop-in,\n              non-members welcome. Join us — or be left in the dust.\n            </p>"
     },
     {
       "pattern": "Pay by bank transfer \\(BCA\\) or QRIS[\\s\\S]*?needed\\.",
@@ -520,11 +528,11 @@
     },
     {
       "pattern": "<p class=\"plan-note\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"plan-note\">\n              Travelling or carrying a knock? Floor sessions can switch to\n              video form reviews, or bank them for when you're back — your\n              call, no loss.\n            </p>"
+      "replace": "<p class=\"plan-note\">\n              Away for work or carrying a knock? Classes don't expire week to\n              week — use your pack when you're back. Online coaching carries on\n              wherever you are.\n            </p>"
     },
     {
       "pattern": "<details class=\"plan-faq reveal\">[\\s\\S]*?</details>",
-      "replace": "<details class=\"plan-faq reveal\">\n          <summary>How do floor sessions work?</summary>\n          <p>\n            Floor sessions run at HTC in Christchurch — coached,\n            capped in size, and built around your programme. Can't make one?\n            Swap it for a video form review that week. Your programme,\n            check-ins and reviews carry on in the app and WhatsApp regardless.\n          </p>\n        </details>"
+      "replace": "<details class=\"plan-faq reveal\">\n          <summary>How do classes work?</summary>\n          <p>\n            Classes run at ROXBOX — the HYROX floor inside GTC Health Clubs,\n            Advantage Padel, Christchurch Business Park, Mudeford BH23 4FL.\n            Race-grade kit, room for 32. GTC base membership plus a class pack\n            (4, 8, 12 or 16), or £15 drop-in if you're not a member. Book in\n            the GTC app.\n          </p>\n        </details>"
     },
     {
       "pattern": "Belum berani race\\?[\\s\\S]*?seru\\.",
@@ -592,7 +600,7 @@
     },
     {
       "pattern": "Aku Ross[\\s\\S]*?Yang penting berani memulai\\.",
-      "replace": "We're HTC — started as Tuesday-night classes around Christchurch\n          and Bournemouth, now Christchurch's dedicated HYROX performance centre.\n          HYROX, conditioning, strength, the lot — training for real life: real\n          schedules, real effort, your real first race. Never raced before?\n          Even better. You just have to start."
+      "replace": "We're HTCC — HYROX Training Club Christchurch. Started with a\n          handful of us in Christchurch, now a crew of 60+ with a new home at\n          ROXBOX, new race-grade kit, and a habit of turning race weekends\n          into trips. Beginners to podium-chasers, same floor, same Sunday\n          Service. You've smashed your training — now come smash a race."
     },
     {
       "pattern": "Kapan HYROX Christchurch 2027 dan bagaimana cara daftar \\(tiket\\)\\?",
@@ -688,15 +696,15 @@
     },
     {
       "pattern": "\"Lantai HYROX di Christchurch[^\"]*\"",
-      "replace": "\"A dedicated HYROX floor in Christchurch built for exactly this: eight competition-standard stations with official kit, Foundation/Engine/Complete classes, plus full race simulations you can book. The default spot for a timed sim before an away race.\""
+      "replace": "\"ROXBOX at GTC Health Clubs, Mudeford — Christchurch's HYROX floor: race-grade kit, room for 32, Rebel/Lift/Engine/Run Club through the week and the Sunday Community Sesh. The default spot for a timed sim before an away race.\""
     },
     {
       "pattern": "Monthly coaching that fits around your life[^<]*",
-      "replace": "Group training for all abilities — from first-timer classes to full race prep. New here? Try 3 days for £30."
+      "replace": "Coached HYROX classes six days a week at ROXBOX, Mudeford — first-timers to podium-chasers. Not a member? £15 drop-in, just turn up."
     },
     {
       "pattern": "Eyes on the target line the whole time\\. Looking at the ball is\\s+how you drop it on rep 68\\.",
-      "replace": "Eyes on the target line the whole time — On the Ball, City. Looking at the ball is how you drop it on rep 68."
+      "replace": "Eyes on the target line the whole time. Looking at the ball is how you drop it on rep 68 — ask anyone on the Sunday Sesh."
     },
     {
       "pattern": "(<li><a href=\"/htcfisher/splits/\">Split [Aa]nalyser</a></li>)",
@@ -712,7 +720,7 @@
     },
     {
       "pattern": ":root\\s*\\{",
-      "replace": ":root{\n  --hero-focus: 50% 35%;"
+      "replace": ":root{\n  --hero-focus: 50% 68%;"
     }
   ],
   "stripSections": [
@@ -1012,7 +1020,7 @@
         "name": "Barclays",
         "accountNumber": "00000000",
         "sortCode": "00-00-00",
-        "accountName": "HTC Christchurch Ltd",
+        "accountName": "HYROX Training Club Christchurch",
         "accountNameNote": "Demo details — swap for the real account before any live use."
       },
       "qris": {
@@ -1020,101 +1028,117 @@
         "alt": "Payment link from HTC"
       },
       "whatsapp": "447000000000",
-      "instagram": "htcfisher",
+      "instagram": "hyroxchristchurch",
       "plans": [
         {
-          "id": "htcfisher-plan-trial-001",
-          "name": "3-Day Trial",
-          "per": "one-off — 3 days",
-          "summary": "Three days of everything: HYROX sessions, conditioning, strength, open gym. The standard 'come and see' — most people stay.",
-          "amountGbp": 30
+          "id": "htcfisher-plan-dropin-001",
+          "name": "Drop-in",
+          "per": "one-off — one class",
+          "summary": "Not a GTC member? £15 gets you any class on the timetable. Sunday Community Sesh is the usual first one.",
+          "amountGbp": 15
         },
         {
-          "id": "htcfisher-plan-all-001",
-          "name": "All-Access",
-          "per": "per month",
-          "summary": "Unlimited sessions: HYROX squad, conditioning, strength, open gym, plus the crew WhatsApp and Saturday sims.",
-          "amountGbp": 55
+          "id": "htcfisher-plan-pack4-001",
+          "name": "4-Class Pack",
+          "per": "one-off — 4 classes",
+          "summary": "Four coached HTCC classes, any mix of Rebel, Lift, Engine, Run Club or Sunday Sesh. Needs GTC base membership (£44.10/mo). 8, 12 and 16 packs also available.",
+          "amountGbp": 35.99
         },
         {
-          "id": "htcfisher-plan-hyrox-001",
-          "name": "HYROX Squad",
-          "per": "per month",
-          "summary": "Two coached HYROX sessions a week, station technique work, and race-sim priority booking.",
-          "amountGbp": 40
+          "id": "htcfisher-plan-doubles-001",
+          "name": "Doubles Coaching",
+          "per": "per month, each",
+          "summary": "Programme built around you and your partner — split strategy, handovers, pacing. Priced per athlete.",
+          "amountGbp": 100
         },
         {
-          "id": "htcfisher-plan-121-001",
-          "name": "1:1 Coaching",
+          "id": "htcfisher-plan-online-001",
+          "name": "Online Coaching",
           "per": "per month",
-          "summary": "One PT session a week with Ross or a coach, plus your programme in the app.",
+          "summary": "12–16 week periodised plan on TrainingPeaks, Garmin/Apple Watch synced, load tracked. Check-ins week 1 and 3, six-week review call, race strategy and fuelling.",
           "amountGbp": 150
         }
       ]
     },
     "gallery.json": {
-      "note": "DEMO SEED — photos pulled from HTC's IG for the walk-in mockup. Replace with real member photos on launch.",
+      "note": "DEMO SEED — photos and captions from @hyroxchristchurch / @coachrossfish. Confirm usage with Ross before launch.",
       "photos": [
         {
-          "src": "/htcfisher/images/gallery/crew-hyrox-wall.jpg",
-          "alt": "The HTC crew under the big HYROX letters at HTC",
-          "caption": "The whole lot of them. Every single one started somewhere.",
-          "by": "HTC",
+          "src": "/htcfisher/images/gallery/malaga-crew.jpg",
+          "alt": "HTCC crew on the race floor at HYROX Málaga",
+          "caption": "An unforgettable weekend full of PBs, sun, sangria and more laughs than I've had in a while. We'll be back next year — who's joining us?",
+          "by": "HTCC",
           "tilt": -1.5,
-          "event": "Squad sessions"
+          "event": "Málaga"
         },
         {
-          "src": "/htcfisher/images/gallery/crew-race-day.jpg",
-          "alt": "HTC crew in race bibs outside a Christchurch church after a local race",
-          "caption": "Race day crew. Half of them didn't know each other a year ago.",
-          "by": "HTC",
+          "src": "/htcfisher/images/gallery/malaga-three.jpg",
+          "alt": "Three HTCC athletes grinning after racing in Málaga",
+          "caption": "Dee's first ever HYROX. Hooked right from that first race.",
+          "by": "HTCC",
           "tilt": 2,
-          "event": "Race day"
+          "event": "Málaga"
         },
         {
-          "src": "/htcfisher/images/gallery/six-am-crew.jpg",
-          "alt": "Early morning session — rowers and coaches in golden light",
-          "caption": "6AM hits different. Every week, same crew.",
-          "by": "HTC",
+          "src": "/htcfisher/images/gallery/istanbul-podium.jpg",
+          "alt": "Michelle and Ellie with the Union flag on the podium at HYROX Istanbul",
+          "caption": "Michelle & Ellie — podium, Istanbul. Keep setting the standard.",
+          "by": "HTCC",
           "tilt": 1,
-          "event": "Squad sessions"
+          "event": "Istanbul"
         },
         {
-          "src": "/htcfisher/images/gallery/train-recover.jpg",
-          "alt": "Train hard, recover properly — session and sauna split shot",
-          "caption": "Train hard. Recover properly. Repeat weekly.",
-          "by": "HTC",
+          "src": "/htcfisher/images/gallery/glasgow-doors.jpg",
+          "alt": "Ross outside the HYROX Glasgow entrance",
+          "caption": "Glasgow. Just enjoy it they say. But don't underestimate the challenge.",
+          "by": "Coach Ross",
           "tilt": -2,
-          "event": "Performance Centre"
+          "event": "Glasgow"
         },
         {
-          "src": "/htcfisher/images/gallery/blakely-winners.jpg",
-          "alt": "HTC women's team holding the Blakely Apex winner board",
-          "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
-          "by": "HTC",
+          "src": "/htcfisher/images/gallery/glasgow-oxworld.jpg",
+          "alt": "HTCC crew at the OX World stand in Glasgow",
+          "caption": "Crew at Glasgow. Half of them didn't know each other a year ago.",
+          "by": "HTCC",
           "tilt": 1.5,
+          "event": "Glasgow"
+        },
+        {
+          "src": "/htcfisher/images/gallery/doubles-finish.jpg",
+          "alt": "A doubles pair celebrating at the finish",
+          "caption": "You've smashed your training — now go smash this race. They did.",
+          "by": "HTCC",
           "event": "Race day"
         },
         {
-          "src": "/htcfisher/images/gallery/church-crew.jpg",
-          "alt": "The HTC crew in race bibs outside a Christchurch church on race day",
-          "caption": "Race-day crew, Christchurch 10k. The church bells were optional.",
-          "by": "HTC",
-          "event": "Race day"
+          "src": "/htcfisher/images/gallery/crew-kit.jpg",
+          "alt": "HTCC crew in club kit at ROXBOX",
+          "caption": "New home, new race-grade kit, expansion of the tribe. Taking it up a level this season.",
+          "by": "HTCC",
+          "event": "ROXBOX"
         },
         {
-          "src": "/htcfisher/images/gallery/values-wall.jpg",
-          "alt": "The HTC values wall inside HTC",
-          "caption": "House rules: good vibes, community, no egos. Written on the wall.",
-          "by": "HTC",
-          "event": "The gym"
-        },
-        {
-          "src": "/htcfisher/images/gallery/street-race.jpg",
-          "alt": "HTC runner racing down a packed high street, crowd behind the barriers",
-          "caption": "High street takeover. Christchurch turns out when the crew races.",
-          "by": "HTC",
+          "src": "/htcfisher/images/gallery/race-day-pair.jpg",
+          "alt": "Two HTCC athletes before the start",
+          "caption": "Race-day nerves are compulsory. So is the photo.",
+          "by": "HTCC",
           "tilt": -1,
+          "event": "Race day"
+        },
+        {
+          "src": "/htcfisher/images/gallery/crew-faces.jpg",
+          "alt": "HTCC members in club tees after a group run",
+          "caption": "Sunny springy group runs. Run Club, Tuesdays and Wednesdays.",
+          "by": "HTCC",
+          "tilt": 1,
+          "event": "Run Club"
+        },
+        {
+          "src": "/htcfisher/images/gallery/crew-selfie.jpg",
+          "alt": "Post-race crew selfie",
+          "caption": "It's not just a club — it's friends & family.",
+          "by": "HTCC",
+          "tilt": -1.5,
           "event": "Race day"
         }
       ]
@@ -1125,31 +1149,27 @@
       "items": [
         {
           "type": "pb",
-          "text": "Four PBs this week — Tom's SkiErg finally behaved and Aisha made the row look easy."
+          "text": "PBs all over Málaga — sun, sangria and a few people still walking funny. Worth it."
         },
         {
           "type": "welcome",
-          "text": "Three new starters on Thursday — if you see a lost face, you're the welcome committee now."
-        },
-        {
-          "type": "birthday",
-          "text": "Big five-oh for Mel on Saturday — she's requested wall balls instead of cake. We're doing both."
+          "text": "New faces at Sunday Service — if you see someone lost by the sleds, you're the welcome committee now."
         },
         {
           "type": "deadline",
-          "text": "London entries close Wednesday — the sheet's by the desk, put your name down."
+          "text": "Next race trip is filling up — put your name on the board and we'll sort the hotel together."
         },
         {
           "type": "gossip",
-          "text": "Half the morning crew is talking about a doubles team-up — partner board's live, claim your lane."
+          "text": "Thursday Engine is where the doubles pairs are quietly forming. Partner board's live, claim your lane."
         },
         {
           "type": "signoff",
-          "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; I'll bring the coffee and croissants on the way in.",
+          "text": "Stay tuned for more & stay authentic. See you Sunday, 8am. — Ross",
           "followUp": {
-            "when": "Tuesday",
+            "when": "Sunday",
             "board": "the wall",
-            "text": "The pic: me and Katie, coffee and croissants after the 7am. I keep my promises."
+            "text": "Sunday Service, done. Coffee after, as promised."
           }
         }
       ]
@@ -1209,7 +1229,7 @@
             "monthly",
             "pay"
           ],
-          "a": "Depends how you want to train: 3-Day Trial — £30 (one-off — 3 days). All-Access — £55 (per month). HYROX Squad — £40 (per month). 1:1 Coaching — £150 (per month). Rolling monthly, no lock-in — details on the plans section below."
+          "a": "Drop-in is £15 for non-members. Members: GTC base membership £44.10/mo plus a class pack — 4 classes £35.99 (8, 12, 16 packs too), so from about £80/mo. Online coaching with Ross is £150/mo; doubles coaching £100 each."
         },
         {
           "q": "Is there a trial?",
@@ -1221,7 +1241,7 @@
             "first session",
             "test"
           ],
-          "a": "Yes — the 3-Day Trial gives you the full run of the place: sessions, open gym, the lot. Most people who try a week stay."
+          "a": "Easiest way in is a £15 drop-in — Sunday Community Sesh at 8am is the one most people try first. Non-members welcome."
         },
         {
           "q": "I've never done HYROX — can beginners join?",
@@ -1258,7 +1278,7 @@
             "directions",
             "find you"
           ],
-          "a": "We're in Christchurch — exact session locations go out in the member group each week, and the site has the details under Events. Parking's never been an issue."
+          "a": "ROXBOX at GTC Health Clubs, inside Advantage Padel — Unit 20, Christchurch Business Park, Radar Way, Mudeford, Christchurch BH23 4FL. Free parking on site."
         },
         {
           "q": "When are the sessions?",
@@ -1272,7 +1292,7 @@
             "morning",
             "evening"
           ],
-          "a": "Session times are on the diary page and go out weekly in the group — typically early morning and evening slots so it fits around work. Check the diary or just ask."
+          "a": "Mon Rebel 6:15am & 6:30pm · Tue Lift 6:15am, Run Club 6:30pm · Wed Run Club 6:15am, Lift 6:30pm · Thu Engine 6:15am & 6:30pm · Sun HYROX Community Sesh 8–9am."
         },
         {
           "q": "Do you run HYROX sim days?",
@@ -1324,7 +1344,10 @@
       ]
     }
   },
-  "imageOverrides": "scripts/reskin/hustle-assets",
+  "imageOverrides": [
+    "scripts/reskin/hustle-assets",
+    "scripts/reskin/htcfisher-assets"
+  ],
   "excludePatterns": [
     "images/dina-",
     "images/gallery/",

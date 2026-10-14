@@ -4,7 +4,7 @@
     "name": "Barclays",
     "accountNumber": "00000000",
     "sortCode": "00-00-00",
-    "accountName": "HTC Christchurch Ltd",
+    "accountName": "HYROX Training Club Christchurch",
     "accountNameNote": "Demo details — swap for the real account before any live use."
   },
   "qris": {
@@ -12,34 +12,34 @@
     "alt": "Payment link from HTC"
   },
   "whatsapp": "447000000000",
-  "instagram": "htcfisher",
+  "instagram": "hyroxchristchurch",
   "plans": [
     {
-      "id": "htcfisher-plan-trial-001",
-      "name": "3-Day Trial",
-      "per": "one-off — 3 days",
-      "summary": "Three days of everything: HYROX sessions, conditioning, strength, open gym. The standard 'come and see' — most people stay.",
-      "amountGbp": 30
+      "id": "htcfisher-plan-dropin-001",
+      "name": "Drop-in",
+      "per": "one-off — one class",
+      "summary": "Not a GTC member? £15 gets you any class on the timetable. Sunday Community Sesh is the usual first one.",
+      "amountGbp": 15
     },
     {
-      "id": "htcfisher-plan-all-001",
-      "name": "All-Access",
-      "per": "per month",
-      "summary": "Unlimited sessions: HYROX squad, conditioning, strength, open gym, plus the crew WhatsApp and Saturday sims.",
-      "amountGbp": 55
+      "id": "htcfisher-plan-pack4-001",
+      "name": "4-Class Pack",
+      "per": "one-off — 4 classes",
+      "summary": "Four coached HTCC classes, any mix of Rebel, Lift, Engine, Run Club or Sunday Sesh. Needs GTC base membership (£44.10/mo). 8, 12 and 16 packs also available.",
+      "amountGbp": 35.99
     },
     {
-      "id": "htcfisher-plan-hyrox-001",
-      "name": "HYROX Squad",
-      "per": "per month",
-      "summary": "Two coached HYROX sessions a week, station technique work, and race-sim priority booking.",
-      "amountGbp": 40
+      "id": "htcfisher-plan-doubles-001",
+      "name": "Doubles Coaching",
+      "per": "per month, each",
+      "summary": "Programme built around you and your partner — split strategy, handovers, pacing. Priced per athlete.",
+      "amountGbp": 100
     },
     {
-      "id": "htcfisher-plan-121-001",
-      "name": "1:1 Coaching",
+      "id": "htcfisher-plan-online-001",
+      "name": "Online Coaching",
       "per": "per month",
-      "summary": "One PT session a week with Ross or a coach, plus your programme in the app.",
+      "summary": "12–16 week periodised plan on TrainingPeaks, Garmin/Apple Watch synced, load tracked. Check-ins week 1 and 3, six-week review call, race strategy and fuelling.",
       "amountGbp": 150
     }
   ]

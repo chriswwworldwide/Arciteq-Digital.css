@@ -4,31 +4,27 @@
   "items": [
     {
       "type": "pb",
-      "text": "Four PBs this week — Tom's SkiErg finally behaved and Aisha made the row look easy."
+      "text": "PBs all over Málaga — sun, sangria and a few people still walking funny. Worth it."
     },
     {
       "type": "welcome",
-      "text": "Three new starters on Thursday — if you see a lost face, you're the welcome committee now."
-    },
-    {
-      "type": "birthday",
-      "text": "Big five-oh for Mel on Saturday — she's requested wall balls instead of cake. We're doing both."
+      "text": "New faces at Sunday Service — if you see someone lost by the sleds, you're the welcome committee now."
     },
     {
       "type": "deadline",
-      "text": "London entries close Wednesday — the sheet's by the desk, put your name down."
+      "text": "Next race trip is filling up — put your name on the board and we'll sort the hotel together."
     },
     {
       "type": "gossip",
-      "text": "Half the morning crew is talking about a doubles team-up — partner board's live, claim your lane."
+      "text": "Thursday Engine is where the doubles pairs are quietly forming. Partner board's live, claim your lane."
     },
     {
       "type": "signoff",
-      "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; I'll bring the coffee and croissants on the way in.",
+      "text": "Stay tuned for more & stay authentic. See you Sunday, 8am. — Ross",
       "followUp": {
-        "when": "Tuesday",
+        "when": "Sunday",
         "board": "the wall",
-        "text": "The pic: me and Katie, coffee and croissants after the 7am. I keep my promises."
+        "text": "Sunday Service, done. Coffee after, as promised."
       }
     }
   ]

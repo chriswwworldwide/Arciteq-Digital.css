@@ -258,7 +258,7 @@
     }
     timeNote.textContent = ok
       ? "Got it — Ross'll check it against the official results and add it."
-      : "Couldn't send just now — DM your time to @htcfisher instead.";
+      : "Couldn't send just now — DM your time to @hyroxchristchurch instead.";
     if (ok) timeForm.querySelector("button[type=submit]").disabled = true;
   });
 

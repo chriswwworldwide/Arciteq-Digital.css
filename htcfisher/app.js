@@ -385,7 +385,7 @@
   // greeting; the floating bubble is added to every page except the coach desk.
   const ROX_WHATSAPP = "447000000000";
   const CHAT_GREETING =
-    "Hi Ross! Found you on HTC Christchurch — I'm interested in HYROX training. ";
+    "Hi Ross! Found you on HTC Christchurch — I'd like to come to a session. ";
   const waHref = `https://wa.me/${ROX_WHATSAPP}?text=${encodeURIComponent(CHAT_GREETING)}`;
   document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
     a.dataset.whatsapp = ROX_WHATSAPP;
@@ -885,7 +885,7 @@ window.roxShare = (function () {
         "Upload didn't go through — WhatsApp is open, send the photo there instead.";
     } else {
       note.textContent =
-        "Upload didn't go through — send the photo and caption to Ross on Instagram (@htcfisher) and he'll put it up.";
+        "Upload didn't go through — send the photo and caption to Ross on Instagram (@hyroxchristchurch) and he'll put it up.";
     }
   });
 })();

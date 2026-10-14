@@ -929,7 +929,7 @@
         typeof window.confetti === "function" &&
         !window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ) {
-        const pink = ["#ff2ea6", "#ff7ad0", "#ffffff", "#ffd2ef"];
+        const pink = ["#0d9488", "#2dd4bf", "#ffffff", "#ccfbf1"];
         // a fixed burst covers a phone but reads as a weak corner
         // firework on a wide desktop — scale count/spread/velocity so
         // the pop crosses the page

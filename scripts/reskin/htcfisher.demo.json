@@ -69,26 +69,6 @@
       "src=\"/htcfisher/images/burpee.jpg\"\n            alt=\"Ross mid broad jump"
     ],
     [
-      "src=\"/htcfisher/images/wallball.jpg\" alt=\"The squad mid rowing warm-up in the gym\"",
-      "src=\"/htcfisher/images/rowing.jpg\" alt=\"Rowing — the station where pacing wins\""
-    ],
-    [
-      "src=\"/htcfisher/images/carry.jpg\" alt=\"Mid overhead press",
-      "src=\"/htcfisher/images/wallballs.jpg\" alt=\"Mid overhead press"
-    ],
-    [
-      "src=\"/htcfisher/images/squad-athlos.jpg\"\n            alt=\"The whole crew after a session — all abilities, all welcome\"",
-      "src=\"/htcfisher/images/venue-restaurant.jpg\"\n            alt=\"Candlelit dinner table — Station 9, where the crew ends the night\""
-    ],
-    [
-      "src=\"/htcfisher/images/finish.jpg\"\n              alt=\"Arms up at the finish line — the celebration is the point\"",
-      "src=\"/htcfisher/images/venue-nightclub.jpg\"\n              alt=\"Dance floor lights — Station 10, optional, always\""
-    ],
-    [
-      "const demo = fx === \"demo\";",
-      "const demo = fx === \"demo\" || fx === null;"
-    ],
-    [
       "[\"#ff2ea6\", \"#ff7ad0\", \"#ffffff\", \"#ffd2ef\"]",
       "[\"#0d9488\", \"#2dd4bf\", \"#ffffff\", \"#ccfbf1\"]"
     ],
@@ -531,6 +511,38 @@
   ],
   "copyOverrides": [
     {
+      "pattern": "src=\"/htcfisher/images/coaching\\.jpg\"(\\s*)alt=\"Ross laughing mid-lunge[^\"]*\"(\\s*)width=\"\\d+\"(\\s*)height=\"\\d+\"",
+      "replace": "src=\"/htcfisher/images/gym-crew.jpg\"$1alt=\"The HTC Christchurch crew under the club banner at ROXBOX\"$2width=\"1024\"$3height=\"903\""
+    },
+    {
+      "pattern": "src=\"/htcfisher/images/skierg-laugh\\.jpg\"(\\s*)alt=\"Ross at full extension on the SkiErg[^\"]*\"(\\s*)width=\"\\d+\"(\\s*)height=\"\\d+\"",
+      "replace": "src=\"/htcfisher/images/skierg.jpg\"$1alt=\"Ross pulling on the SkiErg in the race arena\"$2width=\"857\"$3height=\"1024\""
+    },
+    {
+      "pattern": "src=\"/htcfisher/images/burpee\\.jpg\"(\\s*)alt=\"Ross mid broad jump[^\"]*\"(\\s*)width=\"\\d+\"(\\s*)height=\"\\d+\"",
+      "replace": "src=\"/htcfisher/images/burpee.jpg\"$1style=\"object-position: 50% 4%\"$1alt=\"Ross mid-leap on the HYROX floor, fists up\"$2width=\"600\"$3height=\"1021\""
+    },
+    {
+      "pattern": "src=\"/htcfisher/images/wallball\\.jpg\" alt=\"The squad mid rowing warm-up in the gym\"",
+      "replace": "src=\"/htcfisher/images/rowing.jpg\" alt=\"Rowing — the station where pacing wins\""
+    },
+    {
+      "pattern": "src=\"/htcfisher/images/carry\\.jpg\"(\\s*)alt=\"Ross mid-stride on the farmers carry[^\"]*\"(\\s*)width=\"\\d+\"(\\s*)height=\"\\d+\"",
+      "replace": "src=\"/htcfisher/images/farmers.jpg\"$1style=\"object-position: 50% 4%\"$1alt=\"Ross on the farmers carry in his HTC Christchurch vest, competition kettlebells in hand\"$2width=\"1024\"$3height=\"933\""
+    },
+    {
+      "pattern": "src=\"/htcfisher/images/carry\\.jpg\" alt=\"Mid overhead press[^\"]*\"",
+      "replace": "src=\"/htcfisher/images/wallballs.jpg\" alt=\"Ross at full overhead extension in the arena — the wall-ball finish position\""
+    },
+    {
+      "pattern": "src=\"/htcfisher/images/squad-athlos\\.jpg\"\\s*alt=\"The whole crew after a session[^\"]*\"\\s*width=\"\\d+\"\\s*height=\"\\d+\"\\s*/>\\s*</figure>",
+      "replace": "src=\"/htcfisher/images/venue-noisy-lobster.jpg\"\n            alt=\"The Noisy Lobster on Avon Beach, Mudeford\"\n            width=\"1500\"\n            height=\"999\"\n          />\n          <figcaption>\n            Photo: Steve Daniels, Geograph,\n            <a\n              href=\"https://creativecommons.org/licenses/by-sa/2.0/\"\n              rel=\"license noopener\"\n              >CC BY-SA 2.0</a\n            >\n          </figcaption>\n        </figure>"
+    },
+    {
+      "pattern": "src=\"/htcfisher/images/finish\\.jpg\"(\\s*)alt=\"Arms up at the finish line — the celebration is the point\"",
+      "replace": "src=\"/htcfisher/images/venue-nightclub.jpg\"$1alt=\"Dance floor lights — Station 10, optional, always\""
+    },
+    {
       "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
       "replace": "<p class=\"eyebrow\">Meet the crew</p>\n          <h3>HTCC. Christchurch's first and only HYROX-only club.</h3>\n          <p class=\"lead\">\n            It's not just a club — it's friends &amp; family. A crew that trains\n            together at ROXBOX in Mudeford, travels to races together (Málaga,\n            Glasgow, Manchester, Cardiff…) and ends up in the same bar after.\n            Run by Ross — Level 1 HYROX Performance Coach, three seasons, 14\n            races, 60+ athletes coached, 2 podiums.\n          </p>\n          <p class=\"quote\">\n            \"Authenticity is a deep value of mine &amp; it's harder to come by\n            these days. I love this sport — it's become my passion and my\n            entire living.\"\n          </p>"
     },
@@ -745,6 +757,10 @@
     {
       "pattern": "<a href=\"/htcfisher/splits/\">Split Analyser</a>(?!</li>)",
       "replace": "<a href=\"/htcfisher/splits/\">Split Analyser</a>\n          <a href=\"/htcfisher/predictor/\">Race Predictor</a>"
+    },
+    {
+      "pattern": "\\.station-photo img \\{",
+      "replace": ".station-photo img {\n  object-position: 50% 22%;"
     },
     {
       "pattern": ":root\\s*\\{",

@@ -678,3 +678,30 @@ Every site's Money page (`/<site>/money/`, shared template — all 11 sites incl
 - Nothing financial is ever pruned (retention sweep only touches page views, Stripe event logs, email logs). Removed entries are voided, not deleted.
 - HQ → gym → "Download all their records" for offboarding: send it to a leaving gym.
 - **Backups:** `npm run backup` → `backups/roxjaya-YYYY-MM-DD.sql.gz` (pg_dump, gzip, keeps 35 days; folder gitignored, owner-only perms, blocked from the website). Restore tested into a scratch DB. Production: enable the host's database backups too and copy these files off-server.
+
+## Server architecture (after the Oct 2026 refactor)
+
+`server.js` went from 6,880 lines to ~210 lines of **wiring only**: read settings → shared live state → middleware and routers mounted in the exact order requests must meet them (order matters; see the warning at the top of the file). All logic lives in `server/` (engines + route modules) and `src/` (pure, unit-tested helpers).
+
+| Module | What it owns |
+|---|---|
+| `server/data-files.js` | products/reviews/tenants JSON (cached per on-disk version), safe read/write |
+| `server/tenancy.js` | admin auth (constant-time), tenant resolution (hostname / shared-domain page path), trusted base URL |
+| `server/middleware.js` | canonical host redirect, 5xx tracking, cache policy, guarded static files |
+| `server/email.js` | all outgoing email (Resend/sendmail), branded order emails, alert email builder |
+| `server/commerce.js` | schema bootstrap, stock reserve/capture/release, account tokens + page, data stitch |
+| `server/ops.js` | alerts, exceptions sweep, retention, heartbeat (live state linked via `attachOpsState`) |
+| `server/stripe-webhook.js` | the Stripe webhook |
+| `server/checkout.js` · `shop.js` · `catalog.js` · `product-pages.js` · `seo.js` | storefront |
+| `server/sites.js` · `guides.js` · `desk-money.js` · `desk-auth.js` · `accounts.js` · `leads.js` · `inbox.js` | coaching sites, desks, Money page, leads, owner inbox + digest |
+| `server/hq.js` · `admin-ops.js` · `admin-billing.js` · `admin-orders.js` · `health.js` · `receptionist.js` | HQ + platform admin, health, phone receptionist |
+
+Rule for modules: **never read `process.env` at load time** (server.js loads `.env.local` after imports run) — read at call time, or receive the value from server.js when mounted.
+
+**Refactor safety net (`tools/`)** — run `tools/verify-refactor.sh` after any server change: route-order snapshot (149 routes), 300-probe HTTP behaviour snapshot, 19 signed Stripe events replayed with the DB outcome diffed, full tests + lint, and (if the pre-refactor code is running on :3200) 41 POST/admin requests compared old-vs-new. Baselines live in `/tmp/*.before.txt` (regenerate deliberately when behaviour is *meant* to change). Helpers: `move-functions.js` / `extract-routes.js` (parser-based moves), `prune-imports.js`.
+
+**Found during the refactor, not changed (behaviour kept identical; candidates for a follow-up):**
+- `payment_intent.payment_failed` can't match checkout orders (the payment intent id is only stored on completion) — failed card attempts rely on session expiry instead.
+- A second *distinct* `checkout.session.completed` event for an already-paid order would re-run the customer-totals stitch (Stripe normally sends one per session; low risk). Making the stitch idempotent per order would close it.
+- `server/routes.js` and `server/sponsor-visuals.js` are empty placeholder files from before — safe to delete when convenient.
+- Fixed: Twilio receptionist now fails closed in production when `TWILIO_AUTH_TOKEN` is missing (set `NODE_ENV=production` on Railway).

@@ -54,7 +54,6 @@ import {
 } from "./src/subscriptions.js";
 import { sanitizeProfile, hasProfile } from "./src/lead-profile.js";
 import { isPrivateStaticPath } from "./src/static-guard.js";
-import { accountingProfile } from "./src/tax-rules.js";
 import {
   loadProductsData,
   loadReviewsData,
@@ -71,6 +70,13 @@ import {
   sendOrderShippedNotice,
   buildAlertEmail,
 } from "./server/email.js";
+import {
+  requireAdmin,
+  resolveTenantFromRequest,
+  resolveTenantForPublicWrite,
+  trustedBaseUrlForTenant,
+} from "./server/tenancy.js";
+import { renderDeskMoney } from "./server/desk-money.js";
 import { createHqRouter } from "./server/hq.js";
 import { createDeskAuth } from "./server/desk-auth.js";
 import { createAccountsRouter } from "./server/accounts.js";
@@ -2181,23 +2187,6 @@ function startHeartbeatScheduler() {
   }, ms);
 }
 
-function requireAdmin(req, res) {
-  if (!adminApiKey) {
-    return res
-      .status(500)
-      .json({ error: "ADMIN_API_KEY is not set on the server" });
-  }
-
-  const provided = String(
-    req.headers["x-admin-key"] || req.headers["x-admin-api-key"] || "",
-  );
-  if (!provided || provided !== adminApiKey) {
-    return res.status(401).json({ error: "Unauthorized" });
-  }
-
-  return null;
-}
-
 // Data-stitching: apply a paid order to the single-customer-view record,
 // mark the matching captured cart converted (recording which nudge won), and
 // log a unified order_completed funnel event. Idempotency is the caller's job
@@ -2232,59 +2221,6 @@ async function stitchPaidOrder({
     ],
   );
 }
-function resolveTenantFromRequest(req) {
-  const hostHeader = String(req.headers.host || "");
-  const hostname = hostHeader.split(":")[0].toLowerCase();
-
-  let tenants = [];
-  try {
-    tenants = loadTenantsData().list;
-  } catch {
-    tenants = [];
-  }
-
-  const match = tenants.find((t) =>
-    Array.isArray(t?.hostnames)
-      ? t.hostnames.map((h) => String(h).toLowerCase()).includes(hostname)
-      : false,
-  );
-
-  if (match?.tenant_id) return match;
-  return { tenant_id: "default", currency: "eur", language: "en" };
-}
-
-// Path-mounted tenants (e.g. yourdomain.com/pacegym/) share a hostname, so
-// the Host header alone resolves them to "default". When the host gives no
-// specific tenant, accept a client-claimed tenant_id ONLY if it is a real
-// registered tenant AND the page it came from (Referer) is under that
-// tenant's path. A host-resolved tenant always wins over any claim.
-function resolveTenantForPublicWrite(req, claimedTenantId) {
-  const byHost = resolveTenantFromRequest(req);
-  if (byHost?.tenant_id !== "default") return byHost;
-  let refPath = "";
-  try {
-    refPath = new URL(String(req.headers.referer || "")).pathname;
-  } catch {
-    refPath = "";
-  }
-  // No explicit claim → the first path segment of the page is the claim.
-  const claimed =
-    String(claimedTenantId || "").trim() ||
-    String(refPath.split("/")[1] || "").trim();
-  if (!claimed || claimed === "default") return byHost;
-  let tenants = [];
-  try {
-    tenants = loadTenantsData().list;
-  } catch {
-    tenants = [];
-  }
-  const match = tenants.find((t) => String(t?.tenant_id || "") === claimed);
-  if (!match) return byHost;
-  return refPath === `/${claimed}` || refPath.startsWith(`/${claimed}/`)
-    ? match
-    : byHost;
-}
-
 // Desk access (coach desks + Money page): platform admin key → any site
 // (by ?tenant= or the desk page path); a per-site desk key → that site only.
 const requireDeskAccess = createDeskAuth({
@@ -2294,70 +2230,6 @@ const requireDeskAccess = createDeskAuth({
   loadTenants: () => loadTenantsData().list,
   resolveTenantFromPage: (req) => resolveTenantForPublicWrite(req, null),
 });
-
-// Money page for a site desk: one shared template, branded with the
-// site's own stylesheet and the masthead from its coach desk.
-const deskMoneyTemplate = fs.readFileSync(
-  path.join(__dirname, "server", "desk-money.html"),
-  "utf8",
-);
-const escapeHtml = (v) =>
-  String(v).replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
-  );
-function renderDeskMoney(tenant) {
-  const site = String(tenant?.tenant_id || "");
-  const profile = accountingProfile(tenant);
-  let masthead = "";
-  try {
-    const coach = fs.readFileSync(path.join(__dirname, site, "coach.html"), "utf8");
-    masthead = (coach.match(/<header class="masthead[\s\S]*?<\/header>/) || [""])[0]
-      .replace(/Coach(?:&#39;|')s desk/g, "Money");
-  } catch {
-    masthead = "";
-  }
-  const brand = String(tenant?.seo?.brandName || site);
-  const symbol =
-    profile.currency === "idr"
-      ? "Rp"
-      : profile.currency === "gbp"
-        ? "£"
-        : profile.currency.toUpperCase();
-  const config = {
-    tenantId: site,
-    brand,
-    currency: profile.currency,
-    country: profile.country,
-    vatRegistered: profile.vatRegistered,
-    keyName: `${site}.coach.key`,
-  };
-  return deskMoneyTemplate
-    .replaceAll("__TENANT__", site)
-    .replaceAll("__BRAND__", escapeHtml(brand))
-    .replaceAll("__CURSYMBOL__", symbol)
-    .replace("__MASTHEAD__", () => masthead)
-    .replace("__CONFIG__", () => JSON.stringify(config).replace(/</g, "\\u003c"));
-}
-
-// Base URL for links we email out. Comes from server config only — the
-// tenant's first real (non-localhost) hostname, else PUBLIC_BASE_URL —
-// never from request headers, which the requester controls.
-function trustedBaseUrlForTenant(tenantId) {
-  let tenants = [];
-  try {
-    tenants = loadTenantsData().list;
-  } catch {
-    tenants = [];
-  }
-  const t = tenants.find((x) => String(x?.tenant_id || "") === tenantId);
-  const host = (Array.isArray(t?.hostnames) ? t.hostnames : [])
-    .map((h) => String(h || "").toLowerCase())
-    .find((h) => h && !h.includes("localhost") && !/^\d+\.\d+\.\d+\.\d+$/.test(h));
-  if (host) return `https://${host}`;
-  return String(publicBaseUrl || `http://localhost:${PORT}`).replace(/\/$/, "");
-}
 
 // Cache policy: HTML/API stay uncached (fresh content after deploys); static
 // assets get a short cache + ETag revalidation so repeat views don't

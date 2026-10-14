@@ -84,6 +84,19 @@ const HERO_RIGHT_FADE_CSS = `@media (min-width: 801px) {
   }
 }`;
 
+const HERO_EDGE_COVER_CSS = `@media (min-width: 801px) {
+  .hero--bleed.hero--full .hero-mask {
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 38%, rgba(0, 0, 0, 0.96) 48%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.55) 73%, rgba(0, 0, 0, 0.28) 86%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 38%, rgba(0, 0, 0, 0.96) 48%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.55) 73%, rgba(0, 0, 0, 0.28) 86%, transparent 100%);
+  }
+  .hero--bleed.hero--full::after {
+    background:
+      linear-gradient(90deg, rgba(15, 15, 17, 0) 42%, rgba(15, 15, 17, 0.25) 50%, rgba(15, 15, 17, 0.55) 60%, rgba(15, 15, 17, 0.82) 68%, rgba(15, 15, 17, 1) 75%, rgba(15, 15, 17, 1) 100%),
+      linear-gradient(180deg, rgba(40, 14, 30, 0.05) 0%, rgba(40, 14, 30, 0.2) 45%, rgba(40, 14, 30, 0.86) 100%),
+      linear-gradient(90deg, rgba(40, 14, 30, 0.88) 0%, rgba(40, 14, 30, 0.5) 45%, rgba(40, 14, 30, 0.12) 75%, rgba(40, 14, 30, 0) 100%);
+  }
+}`;
+
 const HERO_FULL_CSS = `/* hero--full: photo covers the whole hero; reveal unrolls across the
    full background. Opt-in per tenant via "heroFull": true. */
 .hero--bleed.hero--full .hero-amb {
@@ -330,6 +343,9 @@ for (const file of walk(dst)) {
   }
   if (cfg.heroRightFade && file.endsWith("styles.css")) {
     s += `\n${HERO_RIGHT_FADE_CSS}\n`;
+  }
+  if (cfg.heroEdgeCover && file.endsWith("styles.css")) {
+    s += `\n${HERO_EDGE_COVER_CSS}\n`;
   }
   // broadcastDemo opt-in: the bulletin page flips from the locked teaser to
   // the playable demo player, and gets linked in nav + footer (the source

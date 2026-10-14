@@ -2,6 +2,7 @@
   "slug": "htcfisher",
   "heroFull": true,
   "heroRightFade": true,
+  "heroEdgeCover": true,
   "brand": "HTC Christchurch",
   "brandUpper": "HTC CHRISTCHURCH",
   "brandShort": "HTC",

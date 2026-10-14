@@ -1,6 +1,7 @@
 {
   "slug": "hustle",
   "heroFull": true,
+  "heroRightFade": true,
   "brand": "Hustle Performance Centre",
   "brandUpper": "HUSTLE",
   "brandShort": "Hustle",
@@ -715,18 +716,6 @@
       "replace": "Group training for all abilities — from first-timer classes to full race prep. New here? Try 3 days for £30."
     },
     {
-      "pattern": "--pink-100: #fde4e5;",
-      "replace": "--pink-100: #fde4e5;\n  --ncfc-green: #166534;\n  --ncfc-gold: #fff200;"
-    },
-    {
-      "pattern": "\\.pred-line \\{\\s*margin: 0 0 10px;\\s*\\}",
-      "replace": "$&\n\n/* NCFC regional-partner accent — canary + green, light touch */\n.masthead .sig { color: var(--ncfc-green); }\n.masthead .sig-text { background-image: linear-gradient(105deg, var(--ncfc-green) 42%, #dff3d9 50%, var(--ncfc-green) 58%); }\n.kicker { color: var(--ncfc-green); }\n.zone .num { color: var(--ncfc-green); }\n.stats strong { color: var(--ncfc-green); }\n.plan .tag { background: var(--ncfc-gold); border-color: var(--ncfc-gold); color: #14532d; }"
-    },
-    {
-      "pattern": "vec3 col = texture2D\\(u_tex, cuv\\)\\.rgb;",
-      "replace": "vec3 col = texture2D(u_tex, cuv).rgb;\n      // NCFC accent: unresolved mosaic tiles checkerboard canary/green,\n      // fading back to the real photo as the paper resolves.\n      float lum = dot(col, vec3(0.299, 0.587, 0.114));\n      float chk = mod(floor(vUv.x * cells) + floor(vUv.y * cells), 2.0);\n      vec3 ncfc = mix(vec3(1.0, 0.89, 0.05), vec3(0.0, 0.55, 0.24), chk);\n      col = mix(ncfc * (0.4 + 0.8 * lum), col, vResolve);"
-    },
-    {
       "pattern": "Eyes on the target line the whole time\\. Looking at the ball is\\s+how you drop it on rep 68\\.",
       "replace": "Eyes on the target line the whole time — On the Ball, City. Looking at the ball is how you drop it on rep 68."
     },
@@ -744,7 +733,7 @@
     },
     {
       "pattern": "(\\.o \\{\\s*color: var\\(--pink\\);\\s*\\})",
-      "replace": "$1\n\n.masthead .wordmark .o { color: #facc15; }"
+      "replace": "$1\n\n.masthead .wordmark .o { color: #facc15; }\n.masthead .sig { left: 100%; right: auto; top: 55%; bottom: auto; width: max-content; font-size: 0.34em; color: var(--pink-600); }"
     },
     {
       "pattern": ":root\\s*\\{",

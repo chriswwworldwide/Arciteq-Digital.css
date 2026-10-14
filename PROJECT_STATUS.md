@@ -747,7 +747,7 @@ Chris reviewed the HTC demo and asked for three fixes, then a new preview URL. S
 5. `npm run lint`, `npm run type-check`, `npx vitest run`; PR; merge; give Chris the preview URL. Known: CI "Lint + Format" is red on main already (prettier SyntaxError in every tenant's `hyrox-<city>.html` — shared template bug, not ours; fix separately if asked). SonarCloud always red (no token).
 
 ### 3. Then (agreed, not started)
-- **Race predictor as a standard feature.** `predictor.js`/`predictor.html` already exist in Roxjaya and are copied into all 10 gym tenants by the reskin — so the work is: (a) check it is linked in nav/home on every site and actually works per tenant, (b) make sure it is on Hannah's (`racetoframe`), (c) **Dina's site too** (Chris asked explicitly — check `roxjaya/predictor.html` is wired into nav and Bahasa copy is right), (d) add it to the pitch — the "deck" is the pitch copy in `BILLIONS.md` (lines ~14–25, "three live demos as proof") and `PROSPECTS.md`; there is no separate slide deck file.
+- **NEXT REMINDER — unlock and wire the race predictor for Dina.** `predictor.js`/`predictor.html` already exist in Roxjaya but Dina's tenant setting is off and nothing links to it. Switch it on, add it to her nav/home, and check the Bahasa copy. The predictor is now prominent in the generated gym-demo navigation; Hannah's site is `burgonfitness` (not `racetoframe`, which is Gregor & Hattie). Then add the feature to the pitch copy in `BILLIONS.md` and `PROSPECTS.md`.
 - Homepage tier cards on HTC still say Warrior/Hybrid/Elite with made-up prices; real prices (£15 drop-in, £35.99 pack, £100 doubles, £150/mo online) are on the pay page. Fix once Ross says what he sells.
 
 ### 4. Credits note

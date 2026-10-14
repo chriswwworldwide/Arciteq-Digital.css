@@ -6394,6 +6394,7 @@ async function ensureCommerceTables() {
         "015_hq.sql",
         "016_accounts.sql",
         "017_ledger_import.sql",
+        "018_ledger_exports.sql",
       ]) {
         await dbQuery(
           fs.readFileSync(path.join(__dirname, "migrations", file), "utf8"),

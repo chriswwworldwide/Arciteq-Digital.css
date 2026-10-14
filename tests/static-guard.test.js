@@ -18,6 +18,8 @@ describe("isPrivateStaticPath", () => {
     "/data/local_import_stderr.log",
     "/roxjaya/data/inbox.json",
     "/api/newsletter-open.js",
+    "/backups/roxjaya-2026-10-14.sql.gz",
+    "/anything.dump",
     "/DATA/alerts.json",
     "/SERVER.JS",
   ])("blocks %s", (p) => {

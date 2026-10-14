@@ -6,7 +6,19 @@ import {
   nextMtdDeadline,
   gbVatStatus,
   mtdThresholdFor,
+  ukKeepUntil,
+  idKeepUntil,
 } from "../src/tax-rules.js";
+
+describe("record keeping", () => {
+  it("matches gov.uk's example: 2022/23 records kept until end of January 2029", () => {
+    expect(ukKeepUntil(2022)).toBe("2029-01-31");
+    expect(ukKeepUntil(2026)).toBe("2033-01-31");
+  });
+  it("keeps Indonesian records for 10 years", () => {
+    expect(idKeepUntil(2026)).toBe("2036-12-31");
+  });
+});
 
 const rp = (n) => n * 100; // rupiah → minor units
 

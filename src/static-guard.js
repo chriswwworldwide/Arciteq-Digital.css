@@ -14,7 +14,8 @@ export const PUBLIC_ROOT_DATA_FILES = new Set([
 
 const PRIVATE_STATIC_RE = [
   /\.(md|sql|sh|log|plist|properties|lock|ts|map)$/i,
-  /^\/(migrations|scripts|server|middleware|tests|src|archive|coverage|node_modules)\//i,
+  /^\/(migrations|scripts|server|middleware|tests|src|archive|coverage|node_modules|backups)\//i,
+  /\.(gz|dump|bak)$/i,
   /^\/api\/.*\.js$/i,
   /^\/(server|db|vitest\.config|eslint\.config|service-worker-build)\.js$/i,
   /^\/(package|package-lock|tsconfig)\.json$/i,

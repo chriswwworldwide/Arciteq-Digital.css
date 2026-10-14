@@ -355,7 +355,9 @@
           <a href="/${esc(g.tenant_id)}/coach/" target="_blank" rel="noopener">Coach desk</a>
           <a href="/${esc(g.tenant_id)}/money/" target="_blank" rel="noopener">Money page</a>
         </div>
-        <div class="row"><button type="button" class="ghost" id="desk-key">${data.desk_key ? "Replace desk key" : "Make desk key"}</button></div>
+        <div class="row"><button type="button" class="ghost" id="desk-key">${data.desk_key ? "Replace desk key" : "Make desk key"}</button>
+          <button type="button" class="ghost" id="records-dl">Download all their records</button></div>
+        <div class="stat" style="margin-top:6px">If they leave, send them this file — their books stay theirs. (UK: keep 5 yrs after the 31 Jan deadline · Indonesia: 10 yrs.)</div>
         <div id="desk-key-out"></div>
       </section>` : ""}
 
@@ -408,6 +410,18 @@
         await api(`/admin/hq/gyms/${id}/activity`, { method: "POST",
           body: JSON.stringify({ kind: fd.get("kind"), body: fd.get("body") }) });
         toast("Added"); await refresh(); openGym(id);
+      } catch (err) { toast(err.message, true); }
+    });
+    const recBtn = $("records-dl");
+    if (recBtn) recBtn.addEventListener("click", async () => {
+      try {
+        const r = await fetch(`/desk/accounts/export.csv?tenant=${encodeURIComponent(g.tenant_id)}&all=1`, { headers: { "x-admin-key": key } });
+        if (!r.ok) throw new Error("Download failed");
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(await r.blob());
+        a.download = `${g.tenant_id}-records-all-years.csv`;
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 2000);
       } catch (err) { toast(err.message, true); }
     });
     const deskBtn = $("desk-key");

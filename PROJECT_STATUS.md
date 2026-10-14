@@ -670,3 +670,11 @@ Every site's Money page (`/<site>/money/`, shared template — all 11 sites incl
 - Server re-parses the file on commit (client numbers never trusted). Duplicates blocked by a fingerprint (`ledger_entries.import_hash`, migration 017) so overlapping statements never double-count; hand-entered payments with the same date+amount are flagged; **Stripe payouts are flagged and unticked** because website sales are already counted from orders.
 - **Bank-transfer reservations auto-match** (reference in the bank description, or same amount within 14 days): importing Dina's BCA statement confirms the reservation and books it in one go.
 - Wrong columns? "Columns look wrong? Fix them" lets the owner remap + switch day/month order, then re-check.
+
+## Record keeping rules (UK + Indonesia) + backups (Oct 2026)
+
+- Rules in `src/tax-rules.js` (`RETENTION_RULES`, sources cited): **UK** self-employed keep records ≥5 years after the 31 January filing deadline (2026/27 → until 31 Jan 2033, matches gov.uk's example); **Indonesia** 10 years, kept *in Indonesia* at the taxpayer's home/business (UU 28/2007 KUP art. 28(11)) — so the owner's downloaded file is the legal copy.
+- Money page **"Keeping your records"** card: the site's country rule + keep-until date, a reminder until the owner downloads their own copy of the last finished period (ID: last calendar year; UK: last tax year), "Download {period}" and "Download all years". Year picker lists every year since the first record (was a fixed 3). Downloads are logged (`ledger_exports`, migration 018); our admin downloads don't clear the owner's reminder.
+- Nothing financial is ever pruned (retention sweep only touches page views, Stripe event logs, email logs). Removed entries are voided, not deleted.
+- HQ → gym → "Download all their records" for offboarding: send it to a leaving gym.
+- **Backups:** `npm run backup` → `backups/roxjaya-YYYY-MM-DD.sql.gz` (pg_dump, gzip, keeps 35 days; folder gitignored, owner-only perms, blocked from the website). Restore tested into a scratch DB. Production: enable the host's database backups too and copy these files off-server.

@@ -43,6 +43,36 @@ export const GB_RULES = {
   ],
 };
 
+// How long records must be kept.
+// UK self-employed: at least 5 years after the 31 January Self Assessment
+// deadline for the tax year (gov.uk/self-employed-records). Indonesia:
+// books, records and source documents — including electronically kept ones
+// — must be kept for 10 years, in Indonesia, at the taxpayer's place of
+// business or residence (UU 28/2007 KUP, art. 28(11)).
+export const RETENTION_RULES = {
+  GB: {
+    years: 5,
+    sources: ["https://www.gov.uk/self-employed-records/how-long-to-keep-your-records"],
+  },
+  ID: {
+    years: 10,
+    keepInCountry: true,
+    sources: ["https://pasal.id/peraturan/uu/uu-no-28-tahun-2007/pasal-28"],
+  },
+};
+
+// UK: records for the tax year starting 6 April `startYear` must be kept
+// until at least 31 January, 5 years after that year's filing deadline.
+// e.g. 2026/27 → deadline 31 Jan 2028 → keep until 31 Jan 2033.
+export function ukKeepUntil(startYear) {
+  return `${Number(startYear) + 7}-01-31`;
+}
+
+// Indonesia: 10 years; counted conservatively from the end of the year.
+export function idKeepUntil(year) {
+  return `${Number(year) + 10}-12-31`;
+}
+
 const COUNTRY_BY_CURRENCY = { idr: "ID", gbp: "GB" };
 
 // Accounting profile for a tenant: explicit `accounting` block in

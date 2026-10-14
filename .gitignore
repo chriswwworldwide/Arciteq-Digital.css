@@ -16,3 +16,6 @@ coverage/
 # Runtime ops ledgers (written by the heartbeat; may contain customer emails)
 data/alerts.json
 data/exceptions.json
+
+# Database backups (npm run backup) — never commit
+backups/

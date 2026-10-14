@@ -76,6 +76,8 @@ __MASTHEAD__
 
     <section class="m-card" id="tax"></section>
 
+    <section class="m-card" id="records-card" hidden></section>
+
     <section class="m-card" id="pending-card" hidden>
       <h3>Payments to confirm</h3>
       <p class="m-sub">People who reserved a place by bank transfer. Check your bank app, then tap <b>Paid</b> (it goes into your books) or <b>Not paid</b>.</p>
@@ -286,7 +288,41 @@ __MASTHEAD__
     el.innerHTML = `<h3>Tax guide</h3><p class="m-sub">No country tax guide set up for this site yet — your download below still has every figure your accountant needs.</p>`;
   }
 
+  function syncYears(years) {
+    const sel = $("year");
+    const want = (years && years.length ? years : [new Date().getFullYear()]).map(String);
+    const have = [...sel.options].map((o) => o.value);
+    if (want.join() === have.join()) return;
+    sel.innerHTML = want.map((v) => `<option value="${v}">${v}</option>`).join("");
+    sel.value = String(year);
+  }
+
+  function renderRecords(r) {
+    const card = $("records-card");
+    if (!r) { card.hidden = true; return; }
+    card.hidden = false;
+    const lp = r.last_period;
+    const until = r.retention ? fmtDate(r.retention.keepUntil) : "";
+    const src = (r.retention?.sources || []).map((s) =>
+      `<a href="${esc(s)}" target="_blank" rel="noopener">${esc(new URL(s).hostname.replace(/^www\./, ""))}</a>`).join(", ");
+    let rule = "Download a copy of each year for your accountant and your own files.";
+    if (cfg.country === "ID") {
+      rule = `Indonesian tax law says keep your records for <b>10 years, in Indonesia</b> — at home or where you run your business. Everything stays safe here too, but your legal copy is the file you download: save it on your own phone or laptop and keep it.${lp ? ` Your ${esc(lp.label)} records: keep until at least <b>${esc(until)}</b>.` : ""}`;
+    } else if (cfg.country === "GB") {
+      rule = `HMRC says keep your records for at least <b>5 years after the 31 January filing deadline</b>.${lp ? ` Your ${esc(lp.label)} records: keep until at least <b>${esc(until)}</b>.` : ""} Everything stays here too — download a copy each year for your accountant and your own files.`;
+    }
+    card.innerHTML = `<h3>Keeping your records</h3>
+      <p class="m-sub">${rule}${src ? ` Source: ${src}.` : ""}</p>
+      ${r.needs_saving && lp ? `<div class="m-flag warn">You haven't saved your copy of <b>${esc(lp.label)}</b> yet — download it now and keep it somewhere safe.</div>` : ""}
+      <div class="m-actions" style="justify-content:flex-start;margin-top:12px">
+        ${lp ? `<button class="m-btn" type="button" data-dl="${esc(lp.from)}|${esc(lp.to)}|${esc(lp.label.replace(/[^\w]+/g, "-"))}">Download ${esc(lp.label)}</button>` : ""}
+        <button class="m-btn" type="button" data-dl="all">Download all years${r.first_date ? ` (since ${esc(fmtDate(r.first_date))})` : ""}</button>
+      </div>`;
+  }
+
   function renderOverview(o) {
+    syncYears(o.records?.years);
+    renderRecords(o.records);
     renderTax(o.tax);
     $("tiles").innerHTML = `
       <div class="m-tile"><b>${esc(short(o.totals.income))}</b><small>Money in ${o.year}</small></div>
@@ -333,8 +369,7 @@ __MASTHEAD__
 
   async function start() {
     $("login").hidden = true; $("app").hidden = false;
-    const y = new Date().getFullYear();
-    $("year").innerHTML = [y, y - 1, y - 2].map((v) => `<option value="${v}">${v}</option>`).join("");
+    syncYears([new Date().getFullYear()]);
     try { await load(); } catch (err) { if (err.message !== "unauthorized") toast(err.message); }
   }
 
@@ -378,17 +413,26 @@ __MASTHEAD__
       toast("Removed"); await load(); } catch (err) { if (err.message !== "unauthorized") toast(err.message); }
   });
 
-  $("export").addEventListener("click", async () => {
+  async function download(query, label) {
     try {
-      const r = await fetch(`/desk/accounts/export.csv?from=${year}-01-01&to=${year}-12-31`, { headers: { "x-admin-key": key } });
+      const r = await fetch(`/desk/accounts/export.csv?${query}`, { headers: { "x-admin-key": key } });
       if (!r.ok) throw new Error("Download failed");
       const blob = await r.blob();
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = `${cfg.tenantId}-accounts-${year}.csv`;
+      a.download = `${cfg.tenantId}-records-${label}.csv`;
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      await load();
     } catch (err) { toast(err.message); }
+  }
+  $("export").addEventListener("click", () => download(`from=${year}-01-01&to=${year}-12-31`, String(year)));
+  $("records-card").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-dl]");
+    if (!b) return;
+    if (b.dataset.dl === "all") return download("all=1", "all-years");
+    const [from, to, label] = b.dataset.dl.split("|");
+    return download(`from=${from}&to=${to}`, label);
   });
 
   // ---- Import from bank / booking app ----

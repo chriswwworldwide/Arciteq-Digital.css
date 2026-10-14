@@ -16,6 +16,9 @@ import {
   TAX_RULES_CHECKED,
   ID_RULES,
   GB_RULES,
+  RETENTION_RULES,
+  ukKeepUntil,
+  idKeepUntil,
 } from "../src/tax-rules.js";
 import { buildImportRows, importFingerprint } from "../src/csv-import.js";
 
@@ -130,8 +133,66 @@ const majorUnits = (minor, currency) => {
   return String(currency).toLowerCase() === "idr" ? String(Math.round(n)) : n.toFixed(2);
 };
 
+// Record-keeping picture for the Money page: which years can be downloaded,
+// the country's keeping rule, and whether the owner has saved their own
+// copy of the last finished period. Pure so it can be unit-tested.
+export function recordsInfo({ country, firstDate, today, exports }) {
+  const nowYear = Number(today.slice(0, 4));
+  const firstYear = firstDate ? Number(String(firstDate).slice(0, 4)) : nowYear;
+  const years = [];
+  for (let y = nowYear; y >= Math.min(firstYear, nowYear); y -= 1) years.push(y);
+
+  const covered = (from, to) =>
+    exports.some((e) => e.role === "coach" && String(e.period_from) <= from && String(e.period_to) >= to);
+
+  let lastPeriod = null;
+  let retention = null;
+  if (country === "ID") {
+    const y = nowYear - 1;
+    lastPeriod = { label: String(y), from: `${y}-01-01`, to: `${y}-12-31` };
+    retention = {
+      years: RETENTION_RULES.ID.years,
+      keepInCountry: true,
+      keepUntil: idKeepUntil(y),
+      sources: RETENTION_RULES.ID.sources,
+    };
+  } else if (country === "GB") {
+    const ty = ukTaxYear(today);
+    const start = Number(ty.start.slice(0, 4)) - 1;
+    lastPeriod = {
+      label: `${start}/${String(start + 1).slice(2)} tax year`,
+      from: `${start}-04-06`,
+      to: `${start + 1}-04-05`,
+    };
+    retention = {
+      years: RETENTION_RULES.GB.years,
+      keepUntil: ukKeepUntil(start),
+      sources: RETENTION_RULES.GB.sources,
+    };
+  }
+  const hadRecords = Boolean(firstDate) && lastPeriod && String(firstDate) <= lastPeriod.to;
+  return {
+    first_date: firstDate || null,
+    years,
+    retention,
+    last_period: lastPeriod,
+    needs_saving: Boolean(hadRecords && !covered(lastPeriod.from, lastPeriod.to)),
+  };
+}
+
 export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables }) {
   const router = express.Router();
+
+  async function firstRecordDate(tenantId, currency) {
+    const r = await dbQuery(
+      `SELECT to_char(LEAST(
+          (SELECT MIN(entry_date) FROM ledger_entries WHERE tenant_id = $1 AND currency = $2 AND voided_at IS NULL),
+          (SELECT MIN(created_at)::date FROM orders WHERE tenant_id = $1 AND currency = $2 AND status = 'paid')
+        ), 'YYYY-MM-DD') AS first`,
+      [tenantId, currency],
+    );
+    return r.rows?.[0]?.first || null;
+  }
 
   // Every route: resolve the caller's site, never trust a client tenant.
   const withAccess = (handler) => async (req, res) => {
@@ -314,6 +375,17 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
         totals: { ...totals, profit: totals.income - totals.expense },
         categories,
         pending_payments: pending.rows?.[0]?.n || 0,
+        records: recordsInfo({
+          country: profile.country,
+          firstDate: await firstRecordDate(tenantId, cur),
+          today: nowIso,
+          exports: (
+            await dbQuery(
+              "SELECT to_char(period_from, 'YYYY-MM-DD') AS period_from, to_char(period_to, 'YYYY-MM-DD') AS period_to, role FROM ledger_exports WHERE tenant_id = $1 ORDER BY created_at DESC LIMIT 200",
+              [tenantId],
+            )
+          ).rows || [],
+        }),
         tax,
       });
     }),
@@ -724,10 +796,15 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
 
   router.get(
     "/desk/accounts/export.csv",
-    withAccess(async (req, res, { tenantId, tenant, profile }) => {
+    withAccess(async (req, res, { tenantId, tenant, profile, role }) => {
       const year = new Date().getUTCFullYear();
-      const from = isoDate(req.query?.from) ? req.query.from : `${year}-01-01`;
-      const to = isoDate(req.query?.to) ? req.query.to : `${year}-12-31`;
+      let from = isoDate(req.query?.from) ? req.query.from : `${year}-01-01`;
+      let to = isoDate(req.query?.to) ? req.query.to : `${year}-12-31`;
+      if (String(req.query?.all || "") === "1") {
+        const first = await firstRecordDate(tenantId, profile.currency);
+        from = first || `${year}-01-01`;
+        to = new Date().toISOString().slice(0, 10);
+      }
       const result = await dbQuery(
         `SELECT * FROM (
            SELECT entry_date AS date, direction, category, description, counterparty,
@@ -762,6 +839,10 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
           majorUnits(r.tax_minor, profile.currency),
           r.source,
         ].map(csvCell).join(","),
+      );
+      await dbQuery(
+        "INSERT INTO ledger_exports (tenant_id, period_from, period_to, role, rows) VALUES ($1, $2, $3, $4, $5)",
+        [tenantId, from, to, role, lines.length],
       );
       const brand = String(tenant?.seo?.brandName || tenantId).replace(/[^\w-]+/g, "-");
       res.setHeader("Content-Type", "text/csv; charset=utf-8");

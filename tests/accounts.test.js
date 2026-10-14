@@ -3,7 +3,37 @@ import {
   validateEntry,
   reservationAmountMinor,
   csvCell,
+  recordsInfo,
 } from "../server/accounts.js";
+
+describe("recordsInfo", () => {
+  it("Indonesia: every year since the first record, 10-year rule, reminds until the owner saves last year", () => {
+    const base = { country: "ID", firstDate: "2024-03-10", today: "2026-10-14" };
+    const r = recordsInfo({ ...base, exports: [] });
+    expect(r.years).toEqual([2026, 2025, 2024]);
+    expect(r.retention).toMatchObject({ years: 10, keepInCountry: true, keepUntil: "2035-12-31" });
+    expect(r.last_period).toMatchObject({ from: "2025-01-01", to: "2025-12-31" });
+    expect(r.needs_saving).toBe(true);
+    // Our own (admin) download doesn't count as the owner's copy.
+    expect(recordsInfo({ ...base, exports: [{ role: "admin", period_from: "2024-01-01", period_to: "2026-10-14" }] }).needs_saving).toBe(true);
+    // The owner's all-years download covers it; a download of a different year doesn't.
+    expect(recordsInfo({ ...base, exports: [{ role: "coach", period_from: "2024-03-10", period_to: "2026-10-14" }] }).needs_saving).toBe(false);
+    expect(recordsInfo({ ...base, exports: [{ role: "coach", period_from: "2026-01-01", period_to: "2026-12-31" }] }).needs_saving).toBe(true);
+  });
+
+  it("UK: last finished tax year and HMRC keep-until date", () => {
+    const r = recordsInfo({ country: "GB", firstDate: "2025-01-05", today: "2026-10-14", exports: [] });
+    expect(r.last_period).toMatchObject({ label: "2025/26 tax year", from: "2025-04-06", to: "2026-04-05" });
+    expect(r.retention.keepUntil).toBe("2032-01-31");
+    expect(r.needs_saving).toBe(true);
+  });
+
+  it("doesn't nag a brand-new business with nothing in the last period", () => {
+    const r = recordsInfo({ country: "ID", firstDate: "2026-09-01", today: "2026-10-14", exports: [] });
+    expect(r.needs_saving).toBe(false);
+    expect(r.years).toEqual([2026]);
+  });
+});
 import { createDeskAuth, hashDeskKey, newDeskKey } from "../server/desk-auth.js";
 
 describe("validateEntry", () => {

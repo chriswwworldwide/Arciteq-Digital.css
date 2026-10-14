@@ -32,3 +32,9 @@ fi
 
 npx vitest run 2>&1 | grep -E "Test Files|Tests " | sed 's/\x1b\[[0-9;]*m//g'
 npx eslint server.js server/ src/ --max-warnings=999 >/dev/null && echo "✅ lint clean"
+
+tools/webhook-check.sh /tmp/webhook.after.txt >/dev/null
+if ! diff -u /tmp/webhook.before.txt /tmp/webhook.after.txt; then
+  echo "❌ WEBHOOK OUTCOME CHANGED"; exit 1
+fi
+echo "✅ webhook: identical DB outcome for all signed events"

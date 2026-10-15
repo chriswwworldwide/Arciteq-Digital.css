@@ -917,6 +917,14 @@
     {
       "pattern": "aspect-ratio: 1 / 1;\\s*\\n\\s*height: auto;\\s*\\n\\s*max-height: 70vh;\\s*\\n\\s*object-position: 65% 45%;",
       "replace": "aspect-ratio: 1 / 1;\n    height: auto;\n    max-height: 70vh;\n    object-position: 50% 0%;"
+    },
+    {
+      "pattern": "src=\"/hyroxdoncaster/images/squad-athlos\\.jpg\"\\s*\\n\\s*alt=\"The whole crew after a session — all abilities, all welcome\"",
+      "replace": "src=\"/hyroxdoncaster/images/venue-restaurant.jpg\"\n            alt=\"Restaurant table set for dinner — Station 9 picks a different venue each time\""
+    },
+    {
+      "pattern": "src=\"/hyroxdoncaster/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Arms up at the finish line — the celebration is the point\"",
+      "replace": "src=\"/hyroxdoncaster/images/venue-nightclub.jpg\"\n              alt=\"Dance floor lights — Station 10, optional, always\""
     }
   ],
   "stripSections": [

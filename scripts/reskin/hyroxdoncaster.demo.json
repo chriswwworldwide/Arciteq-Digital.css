@@ -1,8 +1,5 @@
 {
   "slug": "hyroxdoncaster",
-  "heroFull": true,
-  "heroRightFade": true,
-  "heroEdgeCover": true,
   "singleIntroOffer": true,
   "localRaceGuide": false,
   "merchandise": false,
@@ -875,7 +872,15 @@
     },
     {
       "pattern": ":root\\s*\\{",
-      "replace": ":root{\n  --hero-focus: 62% 8%;"
+      "replace": ":root{\n  --hero-focus: 62% 0%;\n  --hero-focus-m: 50% 15%;"
+    },
+    {
+      "pattern": "\\.hero--bleed \\.hero-img \\{\\s*object-fit: cover;\\s*/\\* desktop bounds the photo",
+      "replace": ".hero--bleed .hero-img {\n    object-fit: cover;\n    object-position: var(--hero-focus-m, 50% 30%);\n    /* desktop bounds the photo"
+    },
+    {
+      "pattern": "aspect-ratio: 1 / 1;\\s*\\n\\s*height: auto;\\s*\\n\\s*max-height: 70vh;\\s*\\n\\s*object-position: 65% 45%;",
+      "replace": "aspect-ratio: 1 / 1;\n    height: auto;\n    max-height: 70vh;\n    object-position: 50% 0%;"
     }
   ],
   "stripSections": [

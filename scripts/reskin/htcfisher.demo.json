@@ -769,6 +769,14 @@
       "replace": "<a href=\"/htcfisher/splits/\">Split Analyser</a>\n          <a href=\"/htcfisher/predictor/\">Race Predictor</a>"
     },
     {
+      "pattern": "<div class=\"stats\">[\\s\\S]*?</div>\\s*</div>\\s*</section>",
+      "replace": "<div class=\"stats\">\n          <div><strong>14+</strong><span>HYROX races across three seasons</span></div>\n          <div><strong>60+</strong><span>athletes coached</span></div>\n          <div><strong>Level 1</strong><span>HYROX Performance Coach</span></div>\n        </div>\n      </div>\n    </section>"
+    },
+    {
+      "pattern": "<details>\\s*<summary>Training pregnant</summary>[\\s\\S]*?</details>",
+      "replace": ""
+    },
+    {
       "pattern": "\\.station-photo img \\{",
       "replace": ".station-photo img {\n  object-position: 50% 22%;"
     },

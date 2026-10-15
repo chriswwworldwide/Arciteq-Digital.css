@@ -517,6 +517,18 @@
     [
       "once her account exists",
       "once his account exists"
+    ],
+    [
+      "--paper: #fffdfb;",
+      "--paper: #f8fbfa;"
+    ],
+    [
+      "--paper-2: #fbf3ee;",
+      "--paper-2: #eef6f4;"
+    ],
+    [
+      "--line: #efe3e3;",
+      "--line: #d9e8e5;"
     ]
   ],
   "copyOverrides": [

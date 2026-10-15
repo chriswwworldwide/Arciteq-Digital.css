@@ -8,9 +8,9 @@
   --paper: #fffdfb;
   --paper-2: #fbf3ee;
   --line: #efe3e3;
-  --pink: #20b8e6;
-  --pink-600: #087da5;
-  --pink-100: #ddf6fd;
+  --pink: #0d9488;
+  --pink-600: #0f766e;
+  --pink-100: #ccfbf1;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(40, 14, 30, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
@@ -2851,5 +2851,25 @@ body[data-broadcast=locked] .bc-lock {
   .hero--bleed.hero--full .hero-mask {
     -webkit-mask-image: none;
     mask-image: none;
+  }
+}
+
+@media (min-width: 801px) {
+  .hero--bleed.hero--full .hero-mask {
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 64%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 64%, transparent 100%);
+  }
+}
+
+@media (min-width: 801px) {
+  .hero--bleed.hero--full .hero-mask {
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 38%, rgba(0, 0, 0, 0.96) 48%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.55) 73%, rgba(0, 0, 0, 0.28) 86%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 38%, rgba(0, 0, 0, 0.96) 48%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.55) 73%, rgba(0, 0, 0, 0.28) 86%, transparent 100%);
+  }
+  .hero--bleed.hero--full::after {
+    background:
+      linear-gradient(90deg, rgba(15, 15, 17, 0) 42%, rgba(15, 15, 17, 0.25) 50%, rgba(15, 15, 17, 0.55) 60%, rgba(15, 15, 17, 0.82) 68%, rgba(15, 15, 17, 1) 75%, rgba(15, 15, 17, 1) 100%),
+      linear-gradient(180deg, rgba(40, 14, 30, 0.05) 0%, rgba(40, 14, 30, 0.2) 45%, rgba(40, 14, 30, 0.86) 100%),
+      linear-gradient(90deg, rgba(40, 14, 30, 0.88) 0%, rgba(40, 14, 30, 0.5) 45%, rgba(40, 14, 30, 0.12) 75%, rgba(40, 14, 30, 0) 100%);
   }
 }

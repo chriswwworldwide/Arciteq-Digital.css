@@ -1,6 +1,8 @@
 {
   "slug": "hyroxdoncaster",
   "heroFull": true,
+  "heroRightFade": true,
+  "heroEdgeCover": true,
   "singleIntroOffer": true,
   "localRaceGuide": false,
   "merchandise": false,
@@ -20,9 +22,9 @@
   "instagramHandle": "hyrox_doncaster",
   "greeting": "Hi Nigel! Found you on HYROX Doncaster — I'm interested in HYROX training. ",
   "colors": {
-    "pink": "#20b8e6",
-    "pink600": "#087da5",
-    "pink100": "#ddf6fd"
+    "pink": "#0d9488",
+    "pink600": "#0f766e",
+    "pink100": "#ccfbf1"
   },
   "features": {
     "predictor": true,

@@ -371,6 +371,11 @@ for (const file of walk(dst)) {
     );
   }
   // drop whole sections that only make sense in the source market
+  // colour/system pairs re-run after appended blocks (heroFull, fades, edge
+  // cover) — those inject their own literals which otherwise escape tenant
+  // colour remaps
+  for (const [a, b] of pairs) s = s.split(a).join(b);
+
   for (const id of stripSections) {
     s = s.replace(
       new RegExp(

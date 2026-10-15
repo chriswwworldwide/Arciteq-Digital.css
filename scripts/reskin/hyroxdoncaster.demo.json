@@ -863,7 +863,7 @@
     },
     {
       "pattern": ":root\\s*\\{",
-      "replace": ":root{\n  --hero-focus: 62% 45%;"
+      "replace": ":root{\n  --hero-focus: 62% 8%;"
     }
   ],
   "stripSections": [

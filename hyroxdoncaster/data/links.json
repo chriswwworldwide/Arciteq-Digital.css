@@ -1,4 +1,4 @@
 {
-  "note": "External tools Nigel uses. Set 'truecoach' to his client-login URL (e.g. https://app.truecoach.co/) once his account exists; empty string keeps the links hidden. Coaching delivery lives in HYROX Doncaster app \u2014 HYROX Doncaster acquires and bills.",
+  "note": "External tools Nigel uses. Set 'truecoach' to his client-login URL (e.g. https://app.truecoach.co/) once his account exists; empty string keeps the links hidden. Coaching delivery lives in coaching platform \u2014 HYROX Doncaster acquires and bills.",
   "truecoach": ""
 }

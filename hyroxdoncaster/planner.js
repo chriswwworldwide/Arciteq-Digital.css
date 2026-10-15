@@ -168,7 +168,7 @@
     );
     const href = (c) =>
       c.slug === home
-        ? "/hyroxdoncaster/hyrox-doncaster/"
+        ? "/hyroxdoncaster/events/"
         : `/hyroxdoncaster/race-planner/#${c.slug}`;
     const alsoRows = (alsoOn || [])
       .filter((r) => !r.start || daysUntil(r.start) > -4)
@@ -247,7 +247,7 @@
     tabsEl.innerHTML = cities
       .map((c) =>
         c.slug === home
-          ? `<a class="city-tab" href="/hyroxdoncaster/hyrox-doncaster/">${esc(c.flag || "")} ${esc(c.name)} <small>home race →</small></a>`
+          ? `<a class="city-tab" href="/hyroxdoncaster/events/">${esc(c.flag || "")} ${esc(c.name)} <small>home race →</small></a>`
           : `<button type="button" class="city-tab${c.slug === active ? " is-active" : ""}" data-slug="${esc(c.slug)}" aria-pressed="${
               c.slug === active
             }">${esc(c.flag || "")} ${esc(c.name)}</button>`,

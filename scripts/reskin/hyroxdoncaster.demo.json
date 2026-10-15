@@ -1,23 +1,28 @@
 {
   "slug": "hyroxdoncaster",
   "heroFull": true,
+  "singleIntroOffer": true,
+  "localRaceGuide": false,
+  "merchandise": false,
+  "coachTipsLabel": "Station tips",
+  "wallLabel": "Crew Wall",
   "brand": "HYROX Doncaster",
   "brandUpper": "HYROX DONCASTER",
   "brandShort": "HYROX Doncaster",
   "wordmarkHtml": "HYROX D<span class=\"o\">O</span>NCASTER",
   "coachFirst": "Nigel",
-  "coachFull": "Nigel",
+  "coachFull": "Nigel Wood",
   "coachNick": "Nigel",
   "city": "Doncaster",
-  "whatsapp": "447000000000",
+  "whatsapp": "447742353825",
   "email": "",
-  "instagramUrl": "https://www.instagram.com/hyroxdoncaster/",
-  "instagramHandle": "hyroxdoncaster",
+  "instagramUrl": "https://www.instagram.com/hyrox_doncaster/",
+  "instagramHandle": "hyrox_doncaster",
   "greeting": "Hi Nigel! Found you on HYROX Doncaster — I'm interested in HYROX training. ",
   "colors": {
-    "pink": "#ea580c",
-    "pink600": "#c2410c",
-    "pink100": "#ffedd5"
+    "pink": "#20b8e6",
+    "pink600": "#087da5",
+    "pink100": "#ddf6fd"
   },
   "features": {
     "predictor": true,
@@ -25,8 +30,12 @@
   },
   "channels": [
     {
-      "label": "Instagram",
-      "url": "https://www.instagram.com/"
+      "label": "Instagram @hyrox_doncaster",
+      "url": "https://www.instagram.com/hyrox_doncaster/"
+    },
+    {
+      "label": "Official website",
+      "url": "https://www.hyroxdoncaster.com/"
     }
   ],
   "cityRemap": {
@@ -54,8 +63,24 @@
   },
   "metaKeywords": "hyrox gym doncaster, hyrox training doncaster, hyrox simulation south yorkshire, hyrox coach doncaster",
   "htmlTitle": "HYROX Doncaster — Dedicated HYROX Gym | Training, Sims & Community",
-  "metaDescription": "HYROX Doncaster: dedicated HYROX training, race simulations, partner boards and community.",
+  "metaDescription": "HYROX Doncaster in Kirk Sandall: a six-week introduction, 17 coached sessions each week, movement coaching, full simulations and a welcoming local community.",
   "extraPairs": [
+    [
+      "gl_FragColor.rgb = pow(gl_FragColor.rgb,vec3(mix(1./2.2,1.0,smoothstep(0.55,1.,uProgress))));",
+      "gl_FragColor.rgb = pow(gl_FragColor.rgb, vec3(1.0));"
+    ],
+    [
+      "const solo = /^[0-3]$/.test(fx || \"\") ? Number(fx) : null;",
+      "const solo = fx === null ? 2 : /^[0-3]$/.test(fx || \"\") ? Number(fx) : null;"
+    ],
+    [
+      "\"/hyroxdoncaster/hyrox-doncaster/\"",
+      "\"/hyroxdoncaster/events/\""
+    ],
+    [
+      "See subscriptions",
+      "See the 6-week intro"
+    ],
     [
       "Pilih kelemahanmu. Kita ubah jadi split tercepatmu — tanpa drama.",
       "Pick your weakness. We'll turn it into your fastest split — no drama."
@@ -134,7 +159,7 @@
     ],
     [
       "TrueCoach",
-      "HYROX Doncaster app"
+      "coaching platform"
     ],
     [
       "Jadwal, Lokasi, Tiket",
@@ -154,11 +179,11 @@
     ],
     [
       "Hyrox · Doncaster · dari lantai Zumba ke podium",
-      "Fitness · Family · Community"
+      "The Home of Hard Work · Kirk Sandall"
     ],
     [
       "The Big Durian",
-      "The Fine City"
+      "Donny"
     ],
     [
       "NICE, PIK2",
@@ -418,7 +443,7 @@
     ],
     [
       "has done it herself, twice, pregnant.",
-      "has raced it himself — twice."
+      "knows exactly where the next training block belongs."
     ],
     [
       "Where she'll be",
@@ -548,7 +573,7 @@
     },
     {
       "pattern": "content=\"Delapan stasiun kelar[^\"]*\"",
-      "replace": "content=\"Eight stations done — one more: dinner. Station 9 is the Team HYROX Doncaster dinner: quarterly in Doncaster for athletes, participants and the HYROX-curious, plus Sunday-evening editions after away races. Station 10 (the dance floor) is optional. RSVP so there's a chair for you.\""
+      "replace": "content=\"Private feature preview: Station 9 could give the HYROX Doncaster community one place to organise dinners, race-weekend meetups and RSVPs. No events shown are live until the gym approves them.\""
     },
     {
       "pattern": "Delapan stasiun kelar\\. <em>Satu lagi:</em> makan\\.",
@@ -556,11 +581,11 @@
     },
     {
       "pattern": "Station 9 itu meja makan[\\s\\S]*?Yang penting rame\\.",
-      "replace": "Station 9 is the dinner table. Every three months in Doncaster — athletes, racers and the HYROX-curious are all welcome. And every away-race weekend, Sunday night after the run: a busy restaurant, race stories, laughing. Not fine dining. Loud is the point."
+      "replace": "In this preview, Station 9 is the table after training: a simple place to organise a Doncaster dinner or an away-race meetup, collect real RSVPs and keep the details out of a buried group-chat thread."
     },
     {
       "pattern": "HYROX itu delapan stasiun[\\s\\S]*?rencana\\.",
-      "replace": "HYROX has eight stations. Station 9 is the ninth — a dinner table full of people who get why your legs are wrecked. No pace requirement, no partner needed, don't even need to have raced. If you're just curious you're the most welcome of all — sit down, eat, hear the stories, leave with a plan."
+      "replace": "HYROX has eight stations. Station 9 is the community layer this platform could add: meals, race-trip meetups and the conversations that turn people in the same class into an actual crew."
     },
     {
       "pattern": "Yang kakinya masih berfungsi[\\s\\S]*?menang\\.",
@@ -612,7 +637,7 @@
     },
     {
       "pattern": "Race resmi, simulasi[\\s\\S]*?berarti\\s*layak\\.",
-      "replace": "Official races, simulations, brand events, and training spots that actually have the stations — everything you need to stay race-ready at home. Nigel curates it: if it's listed here, it's worth your time."
+      "replace": "Official races, simulations and local training spots in one place. In the live version Nigel can approve what appears, so the Doncaster scene stays useful rather than becoming another abandoned listings page."
     },
     {
       "pattern": "Lagi bikin sim atau kompetisi hybrid di Doncaster yang belum masuk[\\s\\S]*?masuk list\\.",
@@ -648,7 +673,7 @@
     },
     {
       "pattern": "content=\"Reserve your HYROX Doncaster coaching plan[^\"]*\"",
-      "replace": "content=\"Reserve your HYROX Doncaster coaching plan and pay by bank transfer. Send us the proof and we activate your programme in the HYROX Doncaster app.\""
+      "replace": "content=\"Private pitch preview — no payment is accepted. Contact HYROX Doncaster for current programmes and prices.\""
     },
     {
       "pattern": "scan with any British banking or e-wallet app \\(QRIS\\)",
@@ -672,7 +697,7 @@
     },
     {
       "pattern": "Reserve your place, transfer to Nigel's BCA account with[\\s\\S]*?HYROX Doncaster app\\.",
-      "replace": "Reserve your place, transfer to the HYROX Doncaster account with your reference, send us the proof, and your programme goes live in the HYROX Doncaster app."
+      "replace": "This is a private pitch preview and does not accept payment. Contact HYROX Doncaster directly for current programmes and prices."
     },
     {
       "pattern": "\"Udah dibilang kan[^\"]*\"",
@@ -711,14 +736,153 @@
       "replace": "<a href=\"/hyroxdoncaster/splits/\">Split Analyser</a>\n          <a href=\"/hyroxdoncaster/predictor/\">Race Predictor</a>"
     },
     {
+      "pattern": "We're HYROX Doncaster — started as Tuesday-night classes[\\s\\S]*?You just have to start\\.",
+      "replace": "We're HYROX Doncaster — the first HYROX partner gym in Doncaster. Seventeen coached sessions each week, every movement taught properly, and a room full of Doncaster folk who know that showing up is the hard bit. First race or faster race, start with six guided weeks."
+    },
+    {
+      "pattern": "<div class=\"stats\">[\\s\\S]*?</div>\\s*</div>\\s*</section>",
+      "replace": "<div class=\"stats\">\n          <div><strong>17</strong><span>coached sessions every week</span></div>\n          <div><strong>6 weeks</strong><span>guided introduction — no experience needed</span></div>\n          <div><strong>8 stations</strong><span>technique, safe lifting and race preparation</span></div>\n        </div>\n      </div>\n    </section>"
+    },
+    {
+      "pattern": "<p class=\"eyebrow\">Meet the crew</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
+      "replace": "<p class=\"eyebrow\">Meet the crew</p>\n          <h3>The Home of Hard Work.</h3>\n          <p class=\"lead\">\n            HYROX Doncaster is a dedicated training floor in Kirk Sandall: beginners, returning racers and PB chasers training side by side. The six-week introduction teaches every movement from the ground up; full simulations test it under race conditions.\n          </p>\n          <p class=\"quote\">\n            \"No egos, no judgement — just a friendly community that makes showing up the best part of your week.\"\n          </p>"
+    },
+    {
+      "pattern": "<ul>\\s*<li>Official HYROX affiliate — Doncaster[\\s\\S]*?</ul>",
+      "replace": "<ul>\n            <li>Doncaster's first HYROX partner gym</li>\n            <li>17 coached sessions each week</li>\n            <li>Full HYROX simulations with real-time coaching and technique fixes</li>\n          </ul>"
+    },
+    {
+      "pattern": "<section class=\"block\" id=\"plans\">[\\s\\S]*?</section>",
+      "replace": "<section class=\"block\" id=\"plans\">\n      <div class=\"wrap\">\n        <p class=\"eyebrow reveal\">Start here</p>\n        <h3 class=\"reveal\">Six weeks. No guesswork.</h3>\n        <p class=\"lead reveal\">The current introduction is six guided weeks for Doncaster folk who are ready to get fitter, stronger or properly prepared for HYROX. No experience needed — just a willingness to show up.</p>\n        <div class=\"plan plan-crew reveal\">\n          <img class=\"crew-photo\" src=\"/hyroxdoncaster/images/squad-athlos.jpg\" alt=\"HYROX Doncaster members together after training\" loading=\"lazy\" />\n          <div class=\"crew-copy\">\n            <span class=\"tag\">6-week introduction</span>\n            <h4>Train. Community. Support. Results.</h4>\n            <ul>\n              <li>Unlimited access to 17 coached sessions each week</li>\n              <li>Every movement demonstrated, coached and corrected</li>\n              <li>Fitness training scaled to your current level</li>\n              <li>Practical nutrition guidance</li>\n              <li>A friendly community — no egos, no judgement</li>\n            </ul>\n          </div>\n          <div class=\"crew-side\">\n            <div class=\"per\">Limited places keep the coaching personal</div>\n            <a class=\"btn btn-primary\" href=\"https://www.hyroxdoncaster.com/\" target=\"_blank\" rel=\"noopener\">Check the next start</a>\n          </div>\n        </div>\n        <p class=\"plans-note\">Current prices and start dates come directly from HYROX Doncaster.</p>\n      </div>\n    </section>"
+    },
+    {
+      "pattern": "<section class=\"block alt\" id=\"events\">[\\s\\S]*?</section>",
+      "replace": "<section class=\"block alt\" id=\"events\">\n      <div class=\"wrap\">\n        <p class=\"eyebrow reveal\">Test the work</p>\n        <h3 class=\"reveal\">Full HYROX simulations.</h3>\n        <p class=\"lead reveal\">Members and non-members can test themselves under race conditions, with real-time coaching, technique tweaks and fault fixes that could save minutes on race day.</p>\n        <div class=\"events\">\n          <div class=\"event reveal\">\n            <div class=\"date\"><strong>SIM</strong><span>Doncaster</span></div>\n            <div><h4>Claim your patch. Test your limits.</h4><p>Solo, doubles and pro categories are announced by the gym. Places are limited and previous simulations have sold quickly.</p></div>\n            <a class=\"btn btn-ghost\" href=\"https://www.instagram.com/hyrox_doncaster/\" target=\"_blank\" rel=\"noopener\">See current dates</a>\n          </div>\n        </div>\n      </div>\n    </section>"
+    },
+    {
+      "pattern": "Form checks, race strategy, training through pregnancy — ask[\\s\\S]*?directly, get a real answer\\.",
+      "replace": "First race, faster race, movement technique or where to start — ask directly and get a straight answer."
+    },
+    {
+      "pattern": "8 × 1 km with heavy legs\\. Compromised-running sessions built for[\\s\\S]*?Doncaster halls get warm\\.",
+      "replace": "Eight kilometres under fatigue. Build the engine, learn the pace and stop the stations wrecking the next run."
+    },
+    {
+      "pattern": "(<h3>SkiErg — 1000 m</h3>[\\s\\S]*?)src=\"/hyroxdoncaster/images/skierg-laugh\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"/hyroxdoncaster/images/ski.jpg\" alt=\"HYROX Doncaster athlete driving the SkiErg handles down\""
+    },
+    {
+      "pattern": "(<h3>Sled Push — 4 × 12\\.5 m</h3>[\\s\\S]*?)src=\"/hyroxdoncaster/images/carry\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"/hyroxdoncaster/images/sled-push.jpg\" alt=\"HYROX Doncaster athlete driving a loaded sled\""
+    },
+    {
+      "pattern": "(<h3>Sled Pull — 4 × 12\\.5 m</h3>[\\s\\S]*?)src=\"/hyroxdoncaster/images/rope\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"/hyroxdoncaster/images/sled-pull.jpg\" alt=\"HYROX Doncaster athlete pulling the sled rope hand over hand\""
+    },
+    {
+      "pattern": "(<h3>Burpee Broad Jumps — 80 m</h3>[\\s\\S]*?)src=\"/hyroxdoncaster/images/station-lean\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"/hyroxdoncaster/images/burpee.jpg\" alt=\"HYROX Doncaster athlete mid broad jump\""
+    },
+    {
+      "pattern": "(<h3>Rowing — 1000 m</h3>[\\s\\S]*?)src=\"/hyroxdoncaster/images/wallball\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"/hyroxdoncaster/images/rowing.jpg\" alt=\"HYROX Doncaster athlete pulling through a RowErg stroke\""
+    },
+    {
+      "pattern": "(<h3>Farmers Carry — 200 m</h3>[\\s\\S]*?)src=\"/hyroxdoncaster/images/carry\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"/hyroxdoncaster/images/farmers-carry.jpg\" alt=\"HYROX Doncaster athlete carrying competition kettlebells\""
+    },
+    {
+      "pattern": "(<h3>Sandbag Lunges — 100 m</h3>[\\s\\S]*?)src=\"/hyroxdoncaster/images/station-lean\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"/hyroxdoncaster/images/sandbag-lunges.jpg\" alt=\"Athlete carrying a sandbag onto the shoulders — generic station image\""
+    },
+    {
+      "pattern": "(<h3>Wall Balls — 75 / 100 reps</h3>[\\s\\S]*?)src=\"/hyroxdoncaster/images/carry\\.jpg\"[^>]*?alt=\"[^\"]*\"",
+      "replace": "$1src=\"/hyroxdoncaster/images/wall-balls.jpg\" alt=\"HYROX Doncaster athlete at the bottom of a wall-ball squat\""
+    },
+    {
+      "pattern": "[ \\t]*<a href=\"/hyroxdoncaster/(?:warrior-program|hyrox-coaching-doncaster|elite-race-prep|hyrox-doncaster|pay)/\">[^<]*</a>\\s*",
+      "replace": "\n          "
+    },
+    {
+      "pattern": ">Subscriptions</a>",
+      "replace": ">6-week introduction</a>"
+    },
+    {
+      "pattern": "Warriors Wall",
+      "replace": "Crew Wall"
+    },
+    {
+      "pattern": "Gym lifts that make stations faster — without doing the station",
+      "replace": "Strength work behind the stations"
+    },
+    {
+      "pattern": "You can't push a sled every day\\. These are the lifts Nigel programmes[\\s\\S]*?daily station grinding\\.",
+      "replace": "This demo shows how a coaching library can connect gym lifts to the race stations they support. The final exercise selection and programming would be agreed with Nigel before launch."
+    },
+    {
+      "pattern": "Nigel's list — he'll edit as his programming evolves\\. Ask about any[\\s\\S]*?Ask Nigel</a>\\.",
+      "replace": "Illustrative library — not presented as Nigel's current programme. <a href=\"/hyroxdoncaster/#ask\">Ask Nigel</a> about the work he actually prescribes."
+    },
+    {
+      "pattern": "[ \\t]*<details>\\s*<summary>Heat & travel</summary>[\\s\\S]*?</details>\\s*",
+      "replace": ""
+    },
+    {
+      "pattern": "[ \\t]*<details>\\s*<summary>Training pregnant</summary>[\\s\\S]*?</details>\\s*",
+      "replace": ""
+    },
+    {
+      "pattern": "Eyes on the target line the whole time — On the Ball, City\\. Looking at the ball is how you drop it on rep 68\\.",
+      "replace": "Eyes on the target line and let the ball drop back into your hands — chasing it wastes the next rep."
+    },
+    {
+      "pattern": "(<section class=\"block alt\" id=\"story\">[\\s\\S]*?<img\\s+)src=\"/hyroxdoncaster/images/hero-reveal\\.jpg\"",
+      "replace": "$1src=\"/hyroxdoncaster/images/bio.jpg\""
+    },
+    {
+      "pattern": "Every British Hyrox finish we can verify, ranked by time — men,[\\s\\S]*?if you know a faster one, tell us\\.",
+      "replace": "A working preview of the results board Station 9 can run for the UK scene: searchable divisions, personal bests and verified chip times. The entries shown here are demonstration data until HYROX Doncaster approves a live results feed."
+    },
+    {
+      "pattern": "Last updated <time id=\"results-updated\">—</time>",
+      "replace": "Preview data · Last updated <time id=\"results-updated\">—</time>"
+    },
+    {
+      "pattern": "alt=\"Nigel on the podium, 1st place doubles\"",
+      "replace": "alt=\"HYROX Doncaster athlete celebrating after a race\""
+    },
+    {
+      "pattern": "alt=\"Nigel laughing with both arms in the air on the SkiErg[^\"]*\"",
+      "replace": "alt=\"HYROX Doncaster members together on the gym floor\""
+    },
+    {
+      "pattern": "alt=\"Nigel and his doubles partner[^\"]*\"",
+      "replace": "alt=\"HYROX Doncaster coach with an athlete after an event\""
+    },
+    {
       "pattern": ":root\\s*\\{",
-      "replace": ":root{\n  --hero-focus: 50% 35%;"
+      "replace": ":root{\n  --hero-focus: 50% 45%;"
     }
   ],
   "stripSections": [
-    "pelatih"
+    "pelatih",
+    "merch"
   ],
   "seedFiles": {
+    "wall.json": {
+      "note": "PRIVATE PITCH PREVIEW — add only consented, verified HYROX Doncaster results after launch.",
+      "athletes": [],
+      "weeks": []
+    },
+    "bulletin.json": {
+      "schemaVersion": 1,
+      "weekOf": null,
+      "items": []
+    },
+    "diary.json": {
+      "schemaVersion": 1,
+      "sessions": []
+    },
     "cities.json": {
       "note": "DEMO SEED — UK race planner data for the HYROX Doncaster demo. Dates/venues are placeholders from public HYROX listings; refresh from hyrox.com before real use.",
       "checked": "2026-11",
@@ -1019,8 +1183,8 @@
         "src": "",
         "alt": "Payment link from HYROX Doncaster"
       },
-      "whatsapp": "447000000000",
-      "instagram": "hyroxdoncaster",
+      "whatsapp": "447742353825",
+      "instagram": "hyrox_doncaster",
       "plans": [
         {
           "id": "hyroxdoncaster-plan-trial-001",
@@ -1053,68 +1217,84 @@
       ]
     },
     "gallery.json": {
-      "note": "DEMO SEED — photos pulled from HYROX Doncaster's IG for the walk-in mockup. Replace with real member photos on launch.",
+      "note": "PRIVATE PITCH PREVIEW — public HYROX Doncaster photos supplied by Chris. Confirm member consent and final captions with Nigel before launch.",
       "photos": [
         {
-          "src": "/hyroxdoncaster/images/gallery/crew-hyrox-wall.jpg",
-          "alt": "The HYROX Doncaster crew under the big HYROX letters at the unit",
-          "caption": "The whole lot of them. Every single one started somewhere.",
+          "src": "/hyroxdoncaster/images/gallery/doncaster-96.jpg",
+          "alt": "HYROX Doncaster members together on the gym floor",
+          "caption": "The crew. Different starting points, same room.",
           "by": "HYROX Doncaster",
           "tilt": -1.5,
-          "event": "Squad sessions"
+          "event": "Community"
         },
         {
-          "src": "/hyroxdoncaster/images/gallery/crew-race-day.jpg",
-          "alt": "HYROX Doncaster crew in race bibs outside a Doncaster church after a local race",
-          "caption": "Race day crew. Half of them didn't know each other a year ago.",
-          "by": "HYROX Doncaster",
-          "tilt": 2,
-          "event": "Race day"
-        },
-        {
-          "src": "/hyroxdoncaster/images/gallery/six-am-crew.jpg",
-          "alt": "Early morning session — rowers and coaches in golden light",
-          "caption": "6AM hits different. Every week, same crew.",
-          "by": "HYROX Doncaster",
-          "tilt": 1,
-          "event": "Squad sessions"
-        },
-        {
-          "src": "/hyroxdoncaster/images/gallery/train-recover.jpg",
-          "alt": "Train hard, recover properly — session and sauna split shot",
-          "caption": "Train hard. Recover properly. Repeat weekly.",
-          "by": "HYROX Doncaster",
-          "tilt": -2,
-          "event": "Performance Centre"
-        },
-        {
-          "src": "/hyroxdoncaster/images/gallery/blakely-winners.jpg",
-          "alt": "HYROX Doncaster women's team holding the Blakely Apex winner board",
-          "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
+          "src": "/hyroxdoncaster/images/gallery/doncaster-84.jpg",
+          "alt": "HYROX Doncaster group after a coached session",
+          "caption": "Doncaster folk putting the work in together.",
           "by": "HYROX Doncaster",
           "tilt": 1.5,
-          "event": "Race day"
+          "event": "Training"
         },
         {
-          "src": "/hyroxdoncaster/images/gallery/church-crew.jpg",
-          "alt": "The HYROX Doncaster crew in race bibs outside a Doncaster church on race day",
-          "caption": "Race-day crew, Doncaster 10k. The church bells were optional.",
-          "by": "HYROX Doncaster",
-          "event": "Race day"
-        },
-        {
-          "src": "/hyroxdoncaster/images/gallery/values-wall.jpg",
-          "alt": "The HYROX Doncaster values wall inside the unit",
-          "caption": "House rules: good vibes, community, no egos. Written on the wall.",
-          "by": "HYROX Doncaster",
-          "event": "The gym"
-        },
-        {
-          "src": "/hyroxdoncaster/images/gallery/street-race.jpg",
-          "alt": "HYROX Doncaster runner racing down a packed high street, crowd behind the barriers",
-          "caption": "High street takeover. Doncaster turns out when the crew races.",
+          "src": "/hyroxdoncaster/images/gallery/doncaster-83.jpg",
+          "alt": "Coach and athlete together at HYROX Doncaster",
+          "caption": "Coached properly. Supported properly.",
           "by": "HYROX Doncaster",
           "tilt": -1,
+          "event": "Coaching"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-90.jpg",
+          "alt": "HYROX Doncaster athletes training inside the gym",
+          "caption": "No egos. No judgement. Get the work done.",
+          "by": "HYROX Doncaster",
+          "tilt": 2,
+          "event": "Training"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-103.jpg",
+          "alt": "Women from the HYROX Doncaster community together after training",
+          "caption": "Everyone starts somewhere.",
+          "by": "HYROX Doncaster",
+          "event": "Community"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-105.jpg",
+          "alt": "Coach and athlete together after a HYROX event",
+          "caption": "The coaching carries through to race day.",
+          "by": "HYROX Doncaster",
+          "tilt": -1.5,
+          "event": "Race day"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-98.jpg",
+          "alt": "HYROX Doncaster athlete with a race result",
+          "caption": "Show up ready. See the result.",
+          "by": "HYROX Doncaster",
+          "tilt": 1,
+          "event": "Results"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-99.jpg",
+          "alt": "HYROX Doncaster athlete celebrating a completed race",
+          "caption": "Everyone's a winner when they step beyond the comfort zone.",
+          "by": "HYROX Doncaster",
+          "tilt": -2,
+          "event": "Race day"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-107.jpg",
+          "alt": "HYROX Doncaster athlete holding a result board",
+          "caption": "The clock tells the truth. Then the next block starts.",
+          "by": "HYROX Doncaster",
+          "tilt": 1.5,
+          "event": "Results"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-125.jpg",
+          "alt": "HYROX Doncaster athletes competing inside a HYROX arena",
+          "caption": "Train together. Put it to work under the lights.",
+          "by": "HYROX Doncaster",
           "event": "Race day"
         }
       ]
@@ -1209,7 +1389,7 @@
             "monthly",
             "pay"
           ],
-          "a": "Depends how you want to train: 3-Day Trial — £30 (one-off — 3 days). All-Access — £55 (per month). HYROX Squad — £40 (per month). 1:1 Coaching — £150 (per month). Rolling monthly, no lock-in — details on the plans section below."
+          "a": "HYROX Doncaster publishes current prices with each six-week intake. Use the official website or message the gym directly for the next start date and price."
         },
         {
           "q": "Is there a trial?",
@@ -1221,7 +1401,7 @@
             "first session",
             "test"
           ],
-          "a": "Yes — the 3-Day Trial gives you the full run of the place: sessions, open gym, the lot. Most people who try a week stay."
+          "a": "The current public starting point is a six-week introduction with limited places. Ask the gym directly if you need a shorter taster before committing."
         },
         {
           "q": "I've never done HYROX — can beginners join?",
@@ -1233,7 +1413,7 @@
             "unfit",
             "start"
           ],
-          "a": "That's most of the room, honestly. Every station scales, nobody's watching your numbers, and Nigel will tell you the same: show up twice a week and the rest takes care of itself."
+          "a": "Yes. The six-week introduction needs no previous HYROX experience. Movements are demonstrated, coached and scaled to your current level — no egos, no judgement."
         },
         {
           "q": "What actually is HYROX?",
@@ -1258,7 +1438,7 @@
             "directions",
             "find you"
           ],
-          "a": "We're in Doncaster — exact session locations go out in the member group each week, and the site has the details under Events. Parking's never been an issue."
+          "a": "Unit 9, Guildhall Industrial Estate, Kirk Sandall, Doncaster DN3 1QR. Check directly with the gym for arrival and parking instructions."
         },
         {
           "q": "When are the sessions?",
@@ -1272,7 +1452,7 @@
             "morning",
             "evening"
           ],
-          "a": "Session times are on the diary page and go out weekly in the group — typically early morning and evening slots so it fits around work. Check the diary or just ask."
+          "a": "The current website states 17 coached sessions each week. Use the official HYROX Doncaster website or Instagram for the live timetable."
         },
         {
           "q": "Do you run HYROX sim days?",
@@ -1284,7 +1464,7 @@
             "test run",
             "tryout"
           ],
-          "a": "Yes — full race simulations with real timing and transitions, the closest thing to race day without the ticket. Members get first shout; dates land on the events page."
+          "a": "Yes. Full simulations are open in announced categories to members and non-members, with real-time coaching, technique tweaks and race-condition practice. Dates are posted by the gym."
         },
         {
           "q": "Do you do 1:1 coaching?",
@@ -1296,7 +1476,7 @@
             "private",
             "individual"
           ],
-          "a": "Yes — 1:1 coaching is on the plans. Technique work, race prep, or just faster progress than group sessions alone. Message Nigel directly and you'll get a straight answer on whether it's worth it for you."
+          "a": "Public posts confirm personal training is available. Message HYROX Doncaster directly to ask about current 1:1 availability and the right starting point."
         },
         {
           "q": "Can I cancel any time?",
@@ -1308,7 +1488,7 @@
             "quit",
             "leave"
           ],
-          "a": "Rolling monthly — cancel whenever, no exit forms, no guilt-trip retention script. If you leave, the door stays open."
+          "a": "Ask HYROX Doncaster for the current membership and cancellation terms before joining; this preview does not invent contract details."
         },
         {
           "q": "I'm looking for a doubles partner",
@@ -1319,13 +1499,17 @@
             "teammate",
             "race with"
           ],
-          "a": "Post a card on the find-a-partner board — pace band, race target, one line about you. Nigel matches people by hand, because doubles is chemistry, not just split times."
+          "a": "Post a private card on the demo partner board with your pace band and target race. On launch, the gym would approve introductions without publishing phone numbers."
         }
       ]
     }
   },
-  "imageOverrides": "scripts/reskin/hustle-assets",
+  "imageOverrides": [
+    "scripts/reskin/hustle-assets",
+    "scripts/reskin/hyroxdoncaster-assets"
+  ],
   "excludePatterns": [
+    "(warrior-program|hybrid-coaching-jakarta|elite-race-prep|pay|hyrox-jakarta)\\.html$",
     "images/dina-",
     "images/gallery/",
     "images/(squad-anya|carry|coach|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station9-dinner|station10-dance)\\.jpg$",
@@ -1334,7 +1518,7 @@
   "currency": "gbp",
   "sharedPack": "scripts/reskin/shared-packs/uk.json",
   "broadcastDemo": true,
-  "_prospectNote": "PROSPECT HYROX Doncaster / Nigel — replace lane, one-page funnel today. TODO: surname, IG, WhatsApp, photos.",
+  "_prospectNote": "PROSPECT HYROX Doncaster / Nigel — replace lane. Public IG photos and voice captured 15 Oct 2026; phone and Kirk Sandall address verified. Prices deliberately omitted pending Nigel.",
   "overrideExclude": [
     "ncfc-"
   ]

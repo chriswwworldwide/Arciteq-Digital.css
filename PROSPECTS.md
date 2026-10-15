@@ -47,7 +47,7 @@ Two pitch lanes:
 | 1 | Hannah Burgon Fitness | Stockport | Replace | ~10/16 | ~20/31 | £600 + £60/mo | Research done |
 | 2 | Hustle (Bobby Harrison) | Norwich + Wymondham | Bolt-on | ~8/16 | ~18/31 | £300 + £70/mo | **WALK-IN FIRST** |
 | 3 | Pace Gym (Simon Wenham) | Chichester | Bolt-on/build | — | ~16/31 | £300 + £50/mo | Verify site/IG |
-| 4 | Hyrox Doncaster (Nigel) | Doncaster | Replace | ~7/16 | ~13/31 | £800 + £75/mo | Verify IG/races |
+| 4 | Hyrox Doncaster (Nigel Wood) | Doncaster | Replace | ~7/16 | ~13/31 | £800 + £75/mo | **Demo built — review/pitch next** |
 | 5 | Ross Fisher — HTC Christchurch | Dorset | Bolt-on | ~8/16 | ~15/31 | £500 + £70/mo | DM |
 | 6 | Gym64 | Glenrothes | Bolt-on | ~6/16 | ~12/31 | £500 + £60/mo | DM |
 | 7 | NutriFit Gym | Liverpool | Bolt-on | — | ~14/31 | £400 + £60/mo | Verify |

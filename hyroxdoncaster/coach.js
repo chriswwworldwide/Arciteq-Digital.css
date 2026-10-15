@@ -212,7 +212,7 @@
     const items = [
       {
         n: transfers,
-        text: "bank transfers to check — then invite them to HYROX Doncaster app",
+        text: "bank transfers to check — then invite them to coaching platform",
         link: "#people?q=bank_transfer",
         cta: "Who paid",
         clear: "No new transfer reservations this week",
@@ -226,7 +226,7 @@
       },
       {
         n: photos,
-        text: "Warriors Wall photos waiting for your OK",
+        text: "Crew Wall photos waiting for your OK",
         link: "#people?q=wall_photo",
         cta: "Review",
         clear: "No new wall photos",
@@ -240,7 +240,7 @@
       },
       {
         n: paid,
-        text: "new payments — welcome them in HYROX Doncaster app",
+        text: "new payments — welcome them in coaching platform",
         link: "#people?q=paid",
         cta: "See",
         clear: "No new payments this week",

@@ -505,6 +505,14 @@
     {
       "pattern": "· dari lantai Zumba ke podium",
       "replace": "· podium-tested coaching"
+    },
+    {
+      "pattern": "src=\"/burgonfitness/images/squad-athlos\\.jpg\"\\s*\\n\\s*alt=\"The whole crew after a session — all abilities, all welcome\"",
+      "replace": "src=\"/burgonfitness/images/venue-restaurant.jpg\"\n            alt=\"Restaurant table set for dinner — Station 9 picks a different venue each time\""
+    },
+    {
+      "pattern": "src=\"/burgonfitness/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Arms up at the finish line — the celebration is the point\"",
+      "replace": "src=\"/burgonfitness/images/venue-nightclub.jpg\"\n              alt=\"Dance floor lights — Station 10, optional, always\""
     }
   ],
   "stripSections": [

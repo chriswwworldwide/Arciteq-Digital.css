@@ -491,6 +491,54 @@
     [
       "once her account exists",
       "once the account exists"
+    ],
+    [
+      "rgba(255, 45, 149",
+      "rgba(124, 58, 237"
+    ],
+    [
+      "rgba(224, 23, 124",
+      "rgba(124, 58, 237"
+    ],
+    [
+      "rgba(40, 14, 30",
+      "rgba(14, 6, 28"
+    ],
+    [
+      "#fff0f6",
+      "#efeaf8"
+    ],
+    [
+      "#fff5f8",
+      "#efeaf8"
+    ],
+    [
+      "#2a1330",
+      "#0e061c"
+    ],
+    [
+      "#1f0e22",
+      "#090413"
+    ],
+    [
+      "#150812",
+      "#07030e"
+    ],
+    [
+      "\"#ff2ea6\", \"#ff7ad0\", \"#ffffff\", \"#ffd2ef\"",
+      "\"#7c3aed\", \"#e98dff\", \"#ffffff\", \"#dfc8ff\""
+    ],
+    [
+      "--paper: #fffdfb;",
+      "--paper: #f9f8fb;"
+    ],
+    [
+      "--paper-2: #fbf3ee;",
+      "--paper-2: #f2eff7;"
+    ],
+    [
+      "--line: #efe3e3;",
+      "--line: #e0dbe8;"
     ]
   ],
   "copyOverrides": [

@@ -465,9 +465,9 @@
       // ("very transparent, can't make it out"). A subtle tone sweep
       // reads as paper without carrying any image content.
       const sheen = c.createLinearGradient(0, 0, cw * 0.9, ch);
-      sheen.addColorStop(0, "#2a1330");
-      sheen.addColorStop(0.55, "#1f0e22");
-      sheen.addColorStop(1, "#150812");
+      sheen.addColorStop(0, "#04211d");
+      sheen.addColorStop(0.55, "#031917");
+      sheen.addColorStop(1, "#02100e");
       c.fillStyle = sheen;
       c.fillRect(0, 0, cw, ch);
     } else {

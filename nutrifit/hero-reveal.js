@@ -465,9 +465,9 @@
       // ("very transparent, can't make it out"). A subtle tone sweep
       // reads as paper without carrying any image content.
       const sheen = c.createLinearGradient(0, 0, cw * 0.9, ch);
-      sheen.addColorStop(0, "#2a1330");
-      sheen.addColorStop(0.55, "#1f0e22");
-      sheen.addColorStop(1, "#150812");
+      sheen.addColorStop(0, "#021308");
+      sheen.addColorStop(0.55, "#010d05");
+      sheen.addColorStop(1, "#010904");
       c.fillStyle = sheen;
       c.fillRect(0, 0, cw, ch);
     } else {
@@ -929,7 +929,7 @@
         typeof window.confetti === "function" &&
         !window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ) {
-        const pink = ["#ff2ea6", "#ff7ad0", "#ffffff", "#ffd2ef"];
+        const pink = ["#16a34a", "#5affa3", "#ffffff", "#bbedcd"];
         // a fixed burst covers a phone but reads as a weak corner
         // firework on a wide desktop — scale count/spread/velocity so
         // the pop crosses the page

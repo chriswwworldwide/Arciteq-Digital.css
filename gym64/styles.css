@@ -5,14 +5,14 @@
   --ink: #0f0f11;
   --ink-2: #3a3a40;
   --ink-3: #7a7a85;
-  --paper: #fffdfb;
-  --paper-2: #fbf3ee;
-  --line: #efe3e3;
+  --paper: #f9f8fb;
+  --paper-2: #f2eff7;
+  --line: #e0dbe8;
   --pink: #7c3aed;
   --pink-600: #6d28d9;
   --pink-100: #ede9fe;
   --radius: 14px;
-  --shadow: 0 10px 30px rgba(40, 14, 30, 0.08);
+  --shadow: 0 10px 30px rgba(14, 6, 28, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
 }
 
@@ -259,7 +259,7 @@ a.wordmark {
   height: 8px;
   border-radius: 50%;
   background: var(--pink);
-  box-shadow: 0 0 0 3px rgba(255, 45, 149, 0.25);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.25);
 }
 
 .chat-zone:hover .dot {
@@ -378,7 +378,7 @@ button.btn {
   margin: 0 0 12px;
   padding: 10px 12px;
   border-left: 3px solid var(--pink);
-  background: var(--pink-soft, #fff0f6);
+  background: var(--pink-soft, #efeaf8);
   font-size: 13px;
   line-height: 1.5;
   color: var(--ink-2, #444);
@@ -435,7 +435,7 @@ button.btn {
   margin-top: 40px;
   padding: 24px 26px;
   border-radius: 14px;
-  background: var(--pink-soft, #fff0f6);
+  background: var(--pink-soft, #efeaf8);
 }
 
 .week ul {
@@ -553,9 +553,9 @@ button.btn {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(40, 14, 30, 1) 0%,
-    rgba(40, 14, 30, 0) 22%,
-    rgba(40, 14, 30, 0) 100%
+    rgba(14, 6, 28, 1) 0%,
+    rgba(14, 6, 28, 0) 22%,
+    rgba(14, 6, 28, 0) 100%
   );
 }
 
@@ -663,15 +663,15 @@ button.btn {
   background:
     linear-gradient(
       180deg,
-      rgba(40, 14, 30, 0.05) 0%,
-      rgba(40, 14, 30, 0.2) 45%,
-      rgba(40, 14, 30, 0.86) 100%
+      rgba(14, 6, 28, 0.05) 0%,
+      rgba(14, 6, 28, 0.2) 45%,
+      rgba(14, 6, 28, 0.86) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(40, 14, 30, 0.82) 0%,
-      rgba(40, 14, 30, 0.35) 45%,
-      rgba(40, 14, 30, 0) 68%
+      rgba(14, 6, 28, 0.82) 0%,
+      rgba(14, 6, 28, 0.35) 45%,
+      rgba(14, 6, 28, 0) 68%
     );
 }
 
@@ -762,7 +762,7 @@ section.block.alt {
 .zone--hook {
   grid-column: 1 / -1;
   border-color: var(--pink);
-  background: linear-gradient(180deg, var(--paper), #fff5f8);
+  background: linear-gradient(180deg, var(--paper), #efeaf8);
 }
 
 .zone:hover {
@@ -887,7 +887,7 @@ section.block.alt {
 
 .plan.featured {
   border-color: var(--pink);
-  box-shadow: 0 16px 40px rgba(255, 45, 149, 0.14);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.14);
 }
 
 .plan .tag {
@@ -1065,8 +1065,8 @@ section.block.alt {
   z-index: -1;
   background: linear-gradient(
     90deg,
-    rgba(40, 14, 30, 0.95) 0%,
-    rgba(40, 14, 30, 0.55) 100%
+    rgba(14, 6, 28, 0.95) 0%,
+    rgba(14, 6, 28, 0.55) 100%
   );
 }
 
@@ -1083,7 +1083,7 @@ section.block.alt {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--pink);
-  box-shadow: 0 0 0 4px rgba(255, 45, 149, 0.25);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.25);
 }
 
 .capture .wrap {
@@ -1189,7 +1189,7 @@ section.block.alt {
   margin-top: 22px;
   padding: 24px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 45, 149, 0.45);
+  border: 1px solid rgba(124, 58, 237, 0.45);
   background: rgba(0, 0, 0, 0.35);
 }
 
@@ -1214,7 +1214,7 @@ section.block.alt {
   margin-top: 22px;
   padding: 22px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 45, 149, 0.45);
+  border: 1px solid rgba(124, 58, 237, 0.45);
   background: rgba(0, 0, 0, 0.35);
 }
 
@@ -1377,7 +1377,7 @@ footer a:hover {
     grid-row: 1;
     background: linear-gradient(
       180deg,
-      rgba(40, 14, 30, 0) 55%,
+      rgba(14, 6, 28, 0) 55%,
       var(--ink) 100%
     );
   }
@@ -1442,7 +1442,7 @@ footer a:hover {
     position: static;
     background: linear-gradient(
       180deg,
-      rgba(40, 14, 30, 0) 55%,
+      rgba(14, 6, 28, 0) 55%,
       var(--ink) 100%
     );
   }
@@ -1709,7 +1709,7 @@ footer a:hover {
   width: 64px;
   height: 22px;
   margin-left: -32px;
-  background: rgba(224, 23, 124, 0.35);
+  background: rgba(124, 58, 237, 0.35);
   transform: rotate(calc(var(--tilt) * -1.5));
   border-radius: 2px;
 }
@@ -1864,7 +1864,7 @@ footer a:hover {
 }
 
 .lightbox::backdrop {
-  background: rgba(40, 14, 30, 0.92);
+  background: rgba(14, 6, 28, 0.92);
 }
 
 .lightbox figure {
@@ -2253,7 +2253,7 @@ body.has-sticky-cta .wa-fab {
   background: linear-gradient(
     105deg,
     var(--pink-600) 42%,
-    #fff0f6 50%,
+    #efeaf8 50%,
     var(--pink-600) 58%
   );
   background-size: 300% 100%;
@@ -2596,7 +2596,7 @@ figure.reveal {
   border: 1px solid var(--pink-100);
   border-radius: 14px;
   padding: 22px;
-  box-shadow: 0 10px 30px rgba(40, 14, 30, 0.06);
+  box-shadow: 0 10px 30px rgba(14, 6, 28, 0.06);
   overflow: hidden;
 }
 .bc-head {
@@ -2834,16 +2834,16 @@ body[data-broadcast=locked] .bc-lock {
   background:
     linear-gradient(
       180deg,
-      rgba(40, 14, 30, 0.05) 0%,
-      rgba(40, 14, 30, 0.2) 45%,
-      rgba(40, 14, 30, 0.86) 100%
+      rgba(14, 6, 28, 0.05) 0%,
+      rgba(14, 6, 28, 0.2) 45%,
+      rgba(14, 6, 28, 0.86) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(40, 14, 30, 0.88) 0%,
-      rgba(40, 14, 30, 0.5) 45%,
-      rgba(40, 14, 30, 0.12) 75%,
-      rgba(40, 14, 30, 0) 100%
+      rgba(14, 6, 28, 0.88) 0%,
+      rgba(14, 6, 28, 0.5) 45%,
+      rgba(14, 6, 28, 0.12) 75%,
+      rgba(14, 6, 28, 0) 100%
     );
 }
 

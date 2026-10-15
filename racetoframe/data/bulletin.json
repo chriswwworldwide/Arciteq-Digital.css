@@ -1,35 +1,4 @@
 {
-  "schemaVersion": 1,
-  "weekOf": "2026-10-12",
-  "items": [
-    {
-      "type": "pb",
-      "text": "PB alert — Sam took forty seconds off his last sim and Lucy owned the lunges like they owed her money."
-    },
-    {
-      "type": "welcome",
-      "text": "Two new racers joined the frame this week — say hello before the start line does."
-    },
-    {
-      "type": "birthday",
-      "text": "Gregor's birthday Thursday — he's banned himself from cake, we're overruled."
-    },
-    {
-      "type": "deadline",
-      "text": "The Berlin trip closes Sunday — seats are shared so speak now or hold your travel."
-    },
-    {
-      "type": "gossip",
-      "text": "Three of you are plotting the same race weekend — the board's there for exactly this."
-    },
-    {
-      "type": "signoff",
-      "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; we'll bring the coffee and croissants on the way in.",
-      "followUp": {
-        "when": "Tuesday",
-        "board": "the frame",
-        "text": "The pic: us and Katie, coffee and croissants after the 7am. We keep our promises."
-      }
-    }
-  ]
+  "note": "PRIVATE PITCH PREVIEW.",
+  "items": []
 }

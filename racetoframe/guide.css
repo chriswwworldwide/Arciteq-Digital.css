@@ -582,7 +582,7 @@
   margin: 0 0 24px;
   padding: 12px 16px;
   border-left: 3px solid var(--pink);
-  background: var(--pink-soft, #f5f5f6);
+  background: var(--pink-soft, #eff6ff);
   font-size: 14px;
   color: var(--ink-2, #444);
 }
@@ -1125,7 +1125,7 @@
   color: var(--ink-3);
 }
 
-/* Cheltenham Hybrid Scene */
+/* UK Hybrid Scene */
 .scene-card .kind {
   display: block;
   font-size: 12px;

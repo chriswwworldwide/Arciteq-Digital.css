@@ -5,14 +5,14 @@
   --ink: #0f0f11;
   --ink-2: #3a3a40;
   --ink-3: #7a7a85;
-  --paper: #fbfbfc;
-  --paper-2: #f4f4f6;
-  --line: #e2e2e6;
-  --pink: #1c1c1e;
-  --pink-600: #000000;
-  --pink-100: #f2f2f2;
+  --paper: #f8faff;
+  --paper-2: #eef3fc;
+  --line: #dbe4f0;
+  --pink: #2563eb;
+  --pink-600: #1d4ed8;
+  --pink-100: #dbeafe;
   --radius: 14px;
-  --shadow: 0 10px 30px rgba(3, 3, 3, 0.08);
+  --shadow: 0 10px 30px rgba(8, 20, 45, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
 }
 
@@ -259,7 +259,7 @@ a.wordmark {
   height: 8px;
   border-radius: 50%;
   background: var(--pink);
-  box-shadow: 0 0 0 3px rgba(28, 28, 30, 0.25);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
 }
 
 .chat-zone:hover .dot {
@@ -322,7 +322,7 @@ a.wordmark {
   }
 }
 
-/* Station 9 — last menu item, pink text to pull the eye */
+/* the ninth station — last menu item, pink text to pull the eye */
 .s9-zone {
   color: var(--pink-600) !important;
 }
@@ -378,7 +378,7 @@ button.btn {
   margin: 0 0 12px;
   padding: 10px 12px;
   border-left: 3px solid var(--pink);
-  background: var(--pink-soft, #f5f5f6);
+  background: var(--pink-soft, #eff6ff);
   font-size: 13px;
   line-height: 1.5;
   color: var(--ink-2, #444);
@@ -435,7 +435,7 @@ button.btn {
   margin-top: 40px;
   padding: 24px 26px;
   border-radius: 14px;
-  background: var(--pink-soft, #f5f5f6);
+  background: var(--pink-soft, #eff6ff);
 }
 
 .week ul {
@@ -553,9 +553,9 @@ button.btn {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(3, 3, 3, 1) 0%,
-    rgba(3, 3, 3, 0) 22%,
-    rgba(3, 3, 3, 0) 100%
+    rgba(8, 20, 45, 1) 0%,
+    rgba(8, 20, 45, 0) 22%,
+    rgba(8, 20, 45, 0) 100%
   );
 }
 
@@ -663,15 +663,15 @@ button.btn {
   background:
     linear-gradient(
       180deg,
-      rgba(3, 3, 3, 0.05) 0%,
-      rgba(3, 3, 3, 0.2) 45%,
-      rgba(3, 3, 3, 0.86) 100%
+      rgba(8, 20, 45, 0.05) 0%,
+      rgba(8, 20, 45, 0.2) 45%,
+      rgba(8, 20, 45, 0.86) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(3, 3, 3, 0.82) 0%,
-      rgba(3, 3, 3, 0.35) 45%,
-      rgba(3, 3, 3, 0) 68%
+      rgba(8, 20, 45, 0.82) 0%,
+      rgba(8, 20, 45, 0.35) 45%,
+      rgba(8, 20, 45, 0) 68%
     );
 }
 
@@ -762,7 +762,7 @@ section.block.alt {
 .zone--hook {
   grid-column: 1 / -1;
   border-color: var(--pink);
-  background: linear-gradient(180deg, var(--paper), #f5f5f6);
+  background: linear-gradient(180deg, var(--paper), #eff6ff);
 }
 
 .zone:hover {
@@ -887,7 +887,7 @@ section.block.alt {
 
 .plan.featured {
   border-color: var(--pink);
-  box-shadow: 0 16px 40px rgba(28, 28, 30, 0.14);
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.14);
 }
 
 .plan .tag {
@@ -1065,8 +1065,8 @@ section.block.alt {
   z-index: -1;
   background: linear-gradient(
     90deg,
-    rgba(3, 3, 3, 0.95) 0%,
-    rgba(3, 3, 3, 0.55) 100%
+    rgba(8, 20, 45, 0.95) 0%,
+    rgba(8, 20, 45, 0.55) 100%
   );
 }
 
@@ -1083,7 +1083,7 @@ section.block.alt {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--pink);
-  box-shadow: 0 0 0 4px rgba(28, 28, 30, 0.25);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
 }
 
 .capture .wrap {
@@ -1189,7 +1189,7 @@ section.block.alt {
   margin-top: 22px;
   padding: 24px;
   border-radius: 20px;
-  border: 1px solid rgba(28, 28, 30, 0.45);
+  border: 1px solid rgba(37, 99, 235, 0.45);
   background: rgba(0, 0, 0, 0.35);
 }
 
@@ -1214,7 +1214,7 @@ section.block.alt {
   margin-top: 22px;
   padding: 22px;
   border-radius: 20px;
-  border: 1px solid rgba(28, 28, 30, 0.45);
+  border: 1px solid rgba(37, 99, 235, 0.45);
   background: rgba(0, 0, 0, 0.35);
 }
 
@@ -1287,7 +1287,7 @@ section.block.alt {
 
 /* Footer */
 footer {
-  padding: 40px 0;
+  padding: 40px 0 96px;
   border-top: 1px solid var(--line);
   color: var(--ink-3);
   font-size: 14px;
@@ -1377,7 +1377,7 @@ footer a:hover {
     grid-row: 1;
     background: linear-gradient(
       180deg,
-      rgba(3, 3, 3, 0) 55%,
+      rgba(8, 20, 45, 0) 55%,
       var(--ink) 100%
     );
   }
@@ -1442,7 +1442,7 @@ footer a:hover {
     position: static;
     background: linear-gradient(
       180deg,
-      rgba(3, 3, 3, 0) 55%,
+      rgba(8, 20, 45, 0) 55%,
       var(--ink) 100%
     );
   }
@@ -1661,7 +1661,7 @@ footer a:hover {
   color: var(--ink-3);
 }
 
-/* Warriors Wall — polaroid scatter */
+/* The G&amp;H Wall — polaroid scatter */
 .gallery {
   background: var(--paper-2);
   overflow: hidden;
@@ -1709,7 +1709,7 @@ footer a:hover {
   width: 64px;
   height: 22px;
   margin-left: -32px;
-  background: rgba(28, 28, 30, 0.35);
+  background: rgba(37, 99, 235, 0.35);
   transform: rotate(calc(var(--tilt) * -1.5));
   border-radius: 2px;
 }
@@ -1864,7 +1864,7 @@ footer a:hover {
 }
 
 .lightbox::backdrop {
-  background: rgba(3, 3, 3, 0.92);
+  background: rgba(8, 20, 45, 0.92);
 }
 
 .lightbox figure {
@@ -2198,14 +2198,14 @@ body.has-sticky-cta {
 }
 
 .btn-wa {
-  background: #25d366;
-  color: #0b1a10;
-  border-color: #25d366;
+  background: #1c1c1e;
+  color: #ffffff;
+  border-color: #1c1c1e;
 }
 
 .btn-wa:hover {
-  background: #1ebe5b;
-  color: #0b1a10;
+  background: #1d4ed8;
+  color: #ffffff;
 }
 
 .wa-fab {
@@ -2219,15 +2219,15 @@ body.has-sticky-cta {
   min-height: 52px;
   padding: 0 18px 0 14px;
   border-radius: 999px;
-  background: #25d366;
-  color: #0b1a10;
+  background: #1c1c1e;
+  color: #ffffff;
   font-weight: 700;
   text-decoration: none;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .wa-fab:hover {
-  background: #1ebe5b;
+  background: #1d4ed8;
 }
 
 body.has-sticky-cta .wa-fab {
@@ -2253,7 +2253,7 @@ body.has-sticky-cta .wa-fab {
   background: linear-gradient(
     105deg,
     var(--pink-600) 42%,
-    #f5f5f6 50%,
+    #eff6ff 50%,
     var(--pink-600) 58%
   );
   background-size: 300% 100%;
@@ -2306,24 +2306,7 @@ body.has-sticky-cta .wa-fab {
    compositing path with a transform animation. */
 .hero--bleed .hero-img {
   transform-origin: 60% 90%;
-  animation:
-    hero-enter 2.8s cubic-bezier(0.16, 0.6, 0.3, 1) both,
-    hero-drift 18s ease-in-out 4.4s infinite alternate;
-}
-
-html.reveal-live:not(.reveal-done) .hero--bleed .hero-img {
-  opacity: 0;
-}
-
-.hero-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  /* No hero-enter slide here — the canvas re-pins to the img each frame
-     and a simultaneous CSS translate/rotate reads as a jitter on top of
-     the shader's own diagonal travel. The img keeps its enter+drift. */
+  animation: none;
 }
 
 @keyframes hero-enter {
@@ -2596,7 +2579,7 @@ figure.reveal {
   border: 1px solid var(--pink-100);
   border-radius: 14px;
   padding: 22px;
-  box-shadow: 0 10px 30px rgba(3, 3, 3, 0.06);
+  box-shadow: 0 10px 30px rgba(8, 20, 45, 0.06);
   overflow: hidden;
 }
 .bc-head {
@@ -2813,43 +2796,5 @@ body[data-broadcast=locked] .bc-lock {
     grid-template-columns: repeat(5, max-content);
     width: 100%;
     justify-content: center;
-  }
-}
-
-/* hero--full: photo covers the whole hero; reveal unrolls across the
-   full background. Opt-in per tenant via "heroFull": true. */
-.hero--bleed.hero--full .hero-amb {
-  display: none;
-}
-
-.hero--bleed.hero--full .hero-img {
-  object-fit: cover;
-  /* --hero-focus keeps the subject clear of the bottom-left copy and is
-     set per tenant on :root. */
-  object-position: var(--hero-focus, 50% 30%);
-  padding: 0;
-}
-
-.hero--bleed.hero--full::after {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(3, 3, 3, 0.05) 0%,
-      rgba(3, 3, 3, 0.2) 45%,
-      rgba(3, 3, 3, 0.86) 100%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(3, 3, 3, 0.88) 0%,
-      rgba(3, 3, 3, 0.5) 45%,
-      rgba(3, 3, 3, 0.12) 75%,
-      rgba(3, 3, 3, 0) 100%
-    );
-}
-
-@media (min-width: 801px) {
-  .hero--bleed.hero--full .hero-mask {
-    -webkit-mask-image: none;
-    mask-image: none;
   }
 }

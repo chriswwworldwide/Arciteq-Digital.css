@@ -4,7 +4,7 @@
 // intros go through G&H on WhatsApp.
 (() => {
   const KIND = "partner_search";
-  const WA = "447000000000";
+  const WA = "";
   const FORMATS = {
     open: "Open doubles",
     pro: "Pro doubles",

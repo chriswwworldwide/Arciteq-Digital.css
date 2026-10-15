@@ -118,3 +118,67 @@ creator-tier builds for margin + proof, local clones as repeatable filler.
 - High bar: with 370k followers, a rough clone actively hurts. Polish or
   don't send.
 - Shopify creds/domain access only AFTER they respond positively.
+
+## Pitch session notes (build + send plan)
+
+### Outreach timing — agreed logic
+
+- G&H run a race-weekend business: Fri–Sun they're travelling/racing/
+  running the stall. In that window they see messages but park them.
+- Send pitch any time; do not expect a considered reply until Mon–Wed.
+- **Nudge Tuesday PM** — first evening they'll actually sit with it.
+  One line, no re-pitch ("just bumping this — happy to show it live").
+  Leaves Wed–Thu for a call before the deadline.
+- Optional light **Thursday "closing this out"** second touch for
+  non-repliers — deadline pressure converts stragglers.
+- Demo must be live by Sunday night, ahead of all of it.
+
+### Demo state at pitch time
+
+- Tenant verified clean: 0 dead internal links (38 fixed — dead
+  book-dina links on 12 pages now → coaching.html; footer links to
+  excluded pages repointed), lint clean, type-check clean, 376 tests pass.
+- Menu: Shop / Coaching / Find a race-mate / Mailing list / Podcast /
+  Race Tools (Predictor, Split analyser, Results board, Stations prep,
+  Run zone, Race calendar) / Community (Meetups, Tell your story,
+  Ask G&H, Partner offers). Zones row kept on homepage too.
+- Imagery: all-G&H assets on brand pages; faceless royalty-free stock
+  (real HYROX race shots) on stations-prep. Dina's leaked rope.jpg
+  purged; promo-overlay images out of hero slots; repeats cut down.
+  Balance fixed — Hattie run shot high on homepage vs Gregor's hero.
+- Voice swept to first person throughout ("Brands we actually use").
+- Dina's stats/CV fully replaced with verified G&H facts (Cardiff flags,
+  sub-60s, SheBuilds/Sculpt & Shape/GJ, Race to Frame 2024,
+  Gymshark + DFYNE). Lying alts and JSON-LD jobTitle fixed.
+- Results board + roundups carry subtle "Sample entries" notes —
+  honest without shouting.
+
+### The Money Desk — built, live, linked
+
+- `/racetoframe/desk.html` — footer link "The desk", password-free for
+  demo, noindex. Synthetic Race to Frame ledger (Shopify payouts,
+  coaching, affiliate income vs stock/postage/travel/stall/software/
+  accountant), add/delete entries, receipt photo upload + thumbnails,
+  month/category/search filters, tax set-aside (~20%, plain English —
+  deliberately NOT "VAT"), CSV export for accountant.
+- Browser-local only (localStorage) — nothing leaves the machine, no
+  accounts, no server. Safe by construction.
+- Pitch line it enables: "the platform runs the boring bits of the
+  business too" — stickiness, not just a website.
+- Honest automation story (use verbatim if asked):
+  - Shopify sales → auto-importable for real later (Shopify API/webhooks).
+    "Your shop fills this in itself."
+  - Coaching payments → same via Stripe/checkout webhook.
+  - Affiliate payouts + expenses → stay manual (bank transfer, no API);
+    one entry a month, snap a receipt photo.
+  - Desk is deliberately dumb: ledger + receipts + tax cushion + CSV.
+    Not Xero, never claims to be.
+
+### Open items before/at send
+
+- Deploy tenant to live URL (station9studio.co.uk/racetoframe/) by
+  Sunday night.
+- Footer floating buttons fixed (96px dead zone) — verify on mobile.
+- If they engage: ask for Shopify creds/domain access only after a
+  positive reply, per existing rule.
+- Not committed yet — commit once final preview check done.

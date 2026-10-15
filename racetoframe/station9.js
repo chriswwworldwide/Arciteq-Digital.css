@@ -1,4 +1,4 @@
-// station9.js — Station 9 page: next-edition card from data/station9.json
+// station9.js — the ninth station page: next-edition card from data/station9.json
 // and the RSVP form (kind "station9_rsvp" → G&H's desk; numbers for the
 // resto booking). Nothing here is public — RSVPs are private.
 (() => {
@@ -44,7 +44,7 @@
       } else {
         card.innerHTML = `<p>
           <strong>Every three months — the next venue gets picked soon.</strong>
-          The venue lands here (and in the crew WhatsApp group) once it's booked.
+          The venue lands here (and in the crew broadcast list) once it's booked.
           RSVP below so there's a chair with your name on it either way.
         </p>`;
       }
@@ -52,7 +52,7 @@
 
     if (sel) {
       const opts = [
-        next?.label || "Next home edition — Cheltenham",
+        next?.label || "Next home edition — UK",
         ...away.map((a) => a?.label).filter(Boolean),
         "An away-race edition — I'll say which race",
         "Keep me posted for any edition",
@@ -94,7 +94,7 @@
         if (!res.ok) throw new Error(out.error || "save failed");
         form.reset();
         note.textContent =
-          "Done — you're on the list. Venue lands in the crew WhatsApp group once the table's booked. Station 10 shoes optional.";
+          "Done — you're on the list. Venue lands in the crew broadcast list once the table's booked. Station 10 shoes optional.";
       } catch {
         note.textContent =
           "Couldn't send just now — try again in a bit, or message G&H on WhatsApp.";

@@ -59,3 +59,13 @@ but ideal as "latest post" cards and the primary voice/voice-humour reference.
 - Coaching/action: gh-22, gh-31, gh-42, gh-48.
 - Personality/fun: gh-32.
 - "Latest from the feed" cards: caption screenshots.
+
+## Shopify audit (15 Oct 2026)
+
+- 36 products live at racetoframe.com. Catalogue saved to shopify-catalogue.json.
+- Collections: all, all-minus-keyrings, hyrox-frames, hybrid-frames, hybrid-nw,
+  hybrid-x, keyring, medal-frames, podium-frames, tryka.
+- Price bands: keyrings £11.99–14.99, finisher/patch frames £25.99–34.99,
+  bundles £46.99–51.99, podium flags £72.99, Worlds finisher £34.99.
+- Product images available on Shopify CDN (self-host a selection in assets).
+- Buy buttons should deep-link to racetoframe.com/products/<handle>.

@@ -279,7 +279,8 @@ function replaceMenu(s) {
   let match;
   while ((match = tags.exec(s))) {
     depth += match[0].startsWith("</") ? -1 : 1;
-    if (depth === 0) return s.slice(0, start) + salesMenu + s.slice(tags.lastIndex);
+    if (depth === 0)
+      return s.slice(0, start) + (cfg.menu || salesMenu) + s.slice(tags.lastIndex);
   }
   return s;
 }
@@ -461,6 +462,28 @@ for (const [f, content] of Object.entries(cfg.seedFiles || {})) {
     path.join(dst, "data", f),
     JSON.stringify(data, null, 2) + "\n",
   );
+}
+
+// cfg.pageFiles: brand-new tenant pages ("shop.html": "@path/to/seed.html" or
+// inline HTML). Written in target copy; tenant pairs, regex overrides, menu
+// and cache-busting are applied so they render like first-class pages.
+for (const [f, spec] of Object.entries(cfg.pageFiles || {})) {
+  let s = spec.startsWith("@")
+    ? fs.readFileSync(path.join(root, spec.slice(1)), "utf8")
+    : spec;
+  for (const [a, b] of pairs) s = s.split(a).join(b);
+  for (const o of copyOverrides) {
+    s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
+  }
+  s = s.replace(
+    new RegExp(
+      `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`,
+      "g",
+    ),
+    `$1?v=${buildV}"`,
+  );
+  s = replaceMenu(s);
+  fs.writeFileSync(path.join(dst, f), s);
 }
 
 // ---- 4. register tenant ----------------------------------------------------

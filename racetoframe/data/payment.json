@@ -1,39 +1,42 @@
 {
-  "_note": "DEMO SEED — manual bank-transfer payments for the G&H demo. Edit here; the pay page reads it live. whatsapp is the coach's number with country code, digits only.",
+  "_note": "Manual bank-transfer payments. Edit here; the pay page reads it live. Set qris.src to an image path once Gregor & Hattie's QRIS screenshot is in racetoframe/images/ and the QR block appears. whatsapp is Gregor & Hattie's number with country code, digits only.",
   "bank": {
-    "name": "Barclays",
-    "accountNumber": "00000000",
-    "sortCode": "00-00-00",
-    "accountName": "Race to Frame Ltd",
-    "accountNameNote": "Demo details — swap for the real account before any live use."
+    "name": "BCA",
+    "accountNumber": "2311992009",
+    "accountName": "Ida Rosdiana",
+    "accountNameNote": "The account is in Gregor & Hattie's legal name — your bank will show 'Ida Rosdiana' when you confirm."
   },
-  "qris": {
-    "src": "",
-    "alt": "Payment link from G&H"
-  },
-  "whatsapp": "447701385444",
-  "instagram": "racetoframe",
+  "qris": { "src": "", "alt": "Scan to pay Gregor & Hattie by QRIS" },
+  "whatsapp": "",
+  "instagram": "gregorandhattie",
   "plans": [
     {
-      "id": "rtf-frame-finisher-001",
-      "name": "Finisher Patch Frame",
-      "per": "one-off",
-      "summary": "Your finisher patch, mounted with your race photo and name plaque. The classic.",
-      "amountGbp": 26
+      "id": "racetoframe-plan-crew-001",
+      "name": "Rookie Crew",
+      "amountGbp": 850000,
+      "per": "per month",
+      "summary": "Weekly beginner group session in UK, monthly meetup (class, then coffee), starter programme in the TrueCoach app, crew broadcast list. Rolling start — join any time, no experience needed."
     },
     {
-      "id": "rtf-frame-podium-001",
-      "name": "Podium Flag Frame",
-      "per": "one-off",
-      "summary": "The big one — podium flag, medal slot and photo. For the weekends that actually mattered.",
-      "amountGbp": 73
+      "id": "racetoframe-plan-warrior-001",
+      "name": "Warrior Program",
+      "amountGbp": 599000,
+      "per": "per month",
+      "summary": "Weekly programme in the TrueCoach app, station library, community group, monthly Q&A."
     },
     {
-      "id": "rtf-gift-001",
-      "name": "Gift Card",
-      "per": "one-off",
-      "summary": "For the racer in your life who won't stop talking about their splits.",
-      "amountGbp": 50
+      "id": "racetoframe-plan-hybrid-001",
+      "name": "Hybrid Coaching",
+      "amountGbp": 2500000,
+      "per": "per month",
+      "summary": "1:1 online coaching plus two floor sessions a month in UK."
+    },
+    {
+      "id": "racetoframe-plan-elite-001",
+      "name": "Elite Race Prep",
+      "amountGbp": 6000000,
+      "per": "per month, 3-month minimum",
+      "summary": "Fully individualised 12-week race build with pacing and race-day strategy."
     }
   ]
 }

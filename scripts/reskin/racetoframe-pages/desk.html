@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>The desk — money in, money out | Gregor &amp; Hattie</title>
+    <meta
+      name="description"
+      content="Private money desk: ledger, receipts, tax estimate and CSV export."
+    />
+    <link rel="stylesheet" href="/racetoframe/styles.css" />
+    <link rel="stylesheet" href="/racetoframe/guide.css" />
+    <style>
+      .desk-banner {
+        background: var(--paper-2);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0.8rem 1.1rem;
+        font-size: 0.9rem;
+        color: var(--ink-mute);
+        margin-bottom: 1.4rem;
+      }
+      .desk-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 0.9rem;
+        margin: 1.2rem 0 1.6rem;
+      }
+      .stat-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        padding: 0.9rem 1.1rem;
+      }
+      .stat-card .k {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-mute);
+      }
+      .stat-card .v {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-top: 0.2rem;
+      }
+      .stat-card .v.in { color: #15803d; }
+      .stat-card .v.out { color: #b91c1c; }
+      .ledger {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      .ledger th, .ledger td {
+        text-align: left;
+        padding: 0.55rem 0.5rem;
+        border-bottom: 1px solid var(--line);
+      }
+      .ledger th {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-mute);
+      }
+      .ledger td.amt { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+      .ledger td.amt.in { color: #15803d; font-weight: 600; }
+      .ledger td.amt.out { color: #b91c1c; }
+      .ledger .cat {
+        font-size: 0.75rem;
+        background: var(--paper-2);
+        border-radius: 999px;
+        padding: 0.15rem 0.55rem;
+        white-space: nowrap;
+      }
+      .rcpt {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 6px;
+        object-fit: cover;
+        border: 1px solid var(--line);
+        vertical-align: middle;
+      }
+      .desk-tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        align-items: end;
+        margin: 1rem 0;
+      }
+      .desk-tools label { font-size: 0.8rem; color: var(--ink-mute); display: flex; flex-direction: column; gap: 0.25rem; }
+      .desk-tools input, .desk-tools select {
+        font: inherit;
+        padding: 0.45rem 0.6rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+      .entry-form {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        padding: 1.1rem 1.2rem 1.3rem;
+        margin: 1.4rem 0 2rem;
+      }
+      .entry-form h4 { margin: 0 0 0.8rem; }
+      .entry-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.7rem;
+        align-items: end;
+      }
+      .entry-grid label { font-size: 0.8rem; color: var(--ink-mute); display: flex; flex-direction: column; gap: 0.25rem; }
+      .entry-grid input, .entry-grid select {
+        font: inherit;
+        padding: 0.45rem 0.6rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .dir-toggle { display: flex; gap: 0.4rem; }
+      .dir-toggle button {
+        flex: 1;
+        font: inherit;
+        padding: 0.45rem 0.4rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        cursor: pointer;
+      }
+      .dir-toggle button.sel-in { border-color: #15803d; background: #f0fdf4; color: #15803d; font-weight: 600; }
+      .dir-toggle button.sel-out { border-color: #b91c1c; background: #fef2f2; color: #b91c1c; font-weight: 600; }
+      .tax-panel {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        padding: 1.1rem 1.2rem 1.3rem;
+        margin-top: 2rem;
+      }
+      .tax-panel h4 { margin: 0 0 0.6rem; }
+      .tax-rows p { display: flex; justify-content: space-between; margin: 0.35rem 0; font-size: 0.92rem; }
+      .tax-rows .tot { border-top: 1px solid var(--line); padding-top: 0.5rem; font-weight: 700; }
+      .empty-hint { color: var(--ink-mute); font-size: 0.85rem; }
+      @media (max-width: 700px) {
+        .ledger th:nth-child(3), .ledger td:nth-child(3) { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="masthead wrap">
+      <a href="/racetoframe/" style="color: inherit; text-decoration: none">
+        <h1>
+          <span class="wordmark"
+            >GREG<span class="o">O</span>R &amp; HATTIE
+            <span class="sig" aria-label="Race to Frame"
+              ><span class="sig-text">Race to Frame</span
+              ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+                <path
+                  d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                  fill="currentColor"
+                /></svg
+            ></span>
+          </span>
+        </h1>
+      </a>
+      <p class="city">The desk</p>
+    </header>
+
+    <div class="nav">
+      <div class="wrap">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          Menu
+        </button>
+        <ul class="menu" id="menu"></ul>
+      </div>
+    </div>
+
+    <section class="guide-hero">
+      <div class="wrap">
+        <div class="guide-hero-text">
+          <ol class="crumbs">
+            <li><a href="/racetoframe/">Gregor &amp; Hattie</a></li>
+            <li>The desk</li>
+          </ol>
+          <p class="eyebrow">Money in, money out</p>
+          <h2>The desk.</h2>
+          <p class="lead">
+            Every pound in and out, receipts attached, tax estimated, and a
+            CSV your accountant will actually open. One screen, no spreadsheet.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div>
+        <p class="desk-banner">
+          <strong>Demo desk.</strong> These are sample numbers for a typical
+          Race to Frame month — add, delete and export to try it. A real desk
+          sits behind a login and can pull straight from the shop.
+        </p>
+
+        <div class="desk-stats" id="stats"></div>
+
+        <div class="desk-tools">
+          <label>
+            Month
+            <select id="f-month">
+              <option value="">All months</option>
+            </select>
+          </label>
+          <label>
+            Category
+            <select id="f-cat">
+              <option value="">All categories</option>
+            </select>
+          </label>
+          <label>
+            Search
+            <input type="search" id="f-q" placeholder="shopify, travel, gymshark…" />
+          </label>
+          <button class="btn btn-ghost" type="button" id="csv-btn">
+            Export CSV for accountant
+          </button>
+        </div>
+
+        <table class="ledger" id="ledger">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>What</th>
+              <th>Category</th>
+              <th>Receipt</th>
+              <th style="text-align: right">Amount</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="ledger-body"></tbody>
+        </table>
+        <p class="empty-hint" id="empty-hint" hidden>
+          Nothing matches — clear the filters or add an entry below.
+        </p>
+
+        <div class="entry-form">
+          <h4>Add an entry</h4>
+          <div class="entry-grid">
+            <label>
+              Date
+              <input type="date" id="e-date" />
+            </label>
+            <label>
+              What was it?
+              <input type="text" id="e-desc" placeholder="Shopify payout, train to Leeds…" />
+            </label>
+            <label>
+              Category
+              <select id="e-cat"></select>
+            </label>
+            <label>
+              Amount (£)
+              <input type="number" id="e-amt" min="0" step="0.01" placeholder="0.00" />
+            </label>
+            <label>
+              Receipt (photo)
+              <input type="file" id="e-rcpt" accept="image/*" />
+            </label>
+            <label>
+              Direction
+              <span class="dir-toggle">
+                <button type="button" id="dir-in" class="sel-in">Money in</button>
+                <button type="button" id="dir-out">Money out</button>
+              </span>
+            </label>
+            <button class="btn btn-primary" type="button" id="e-add">
+              Add entry
+            </button>
+          </div>
+        </div>
+
+        <div class="tax-panel">
+          <h4>Tax snapshot</h4>
+          <div class="tax-rows" id="tax-rows"></div>
+          <p class="empty-hint">
+            Rough rule of thumb only — set aside about a fifth of what comes
+            in and let your accountant do the real maths.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const CATS = [
+        "Shop sales",
+        "Coaching",
+        "Affiliate",
+        "Podcast",
+        "Stock & materials",
+        "Postage & packaging",
+        "Software",
+        "Travel & events",
+        "Ads & marketing",
+        "Other",
+      ];
+      const SEED = [
+        { d: "2026-10-02", w: "Shopify payout — patch frames (wk 40)", c: "Shop sales", a: 412.36, dir: "in" },
+        { d: "2026-10-03", w: "SheBuilds 1:1 — October block", c: "Coaching", a: 450.0, dir: "in" },
+        { d: "2026-10-05", w: "Sculpt & Shape — new intake ×3", c: "Coaching", a: 597.0, dir: "in" },
+        { d: "2026-10-06", w: "Frame stock & pine materials", c: "Stock & materials", a: -386.0, dir: "out" },
+        { d: "2026-10-07", w: "Royal Mail postage batch", c: "Postage & packaging", a: -94.2, dir: "out" },
+        { d: "2026-10-09", w: "Gymshark affiliate payout", c: "Affiliate", a: 86.4, dir: "in" },
+        { d: "2026-10-09", w: "Shopify plan", c: "Software", a: -25.0, dir: "out" },
+        { d: "2026-10-11", w: "Shopify payout — patch frames (wk 41)", c: "Shop sales", a: 388.74, dir: "in" },
+        { d: "2026-10-12", w: "Train + hotel, Leeds race weekend", c: "Travel & events", a: -142.8, dir: "out" },
+        { d: "2026-10-12", w: "Stall fee — HYROX Leeds", c: "Travel & events", a: -75.0, dir: "out" },
+        { d: "2026-10-13", w: "TRYKA ticket commission", c: "Affiliate", a: 118.0, dir: "in" },
+        { d: "2026-10-15", w: "Packaging restock", c: "Postage & packaging", a: -45.0, dir: "out" },
+        { d: "2026-10-16", w: "GJ programming — client block", c: "Coaching", a: 300.0, dir: "in" },
+        { d: "2026-10-17", w: "DFYNE affiliate payout", c: "Affiliate", a: 61.15, dir: "in" },
+        { d: "2026-10-18", w: "Shopify payout — patch frames (wk 42)", c: "Shop sales", a: 455.02, dir: "in" },
+        { d: "2026-10-19", w: "Instagram boost — stall weekend", c: "Ads & marketing", a: -60.0, dir: "out" },
+        { d: "2026-10-20", w: "Linktree + podcast hosting", c: "Software", a: -14.5, dir: "out" },
+        { d: "2026-10-22", w: "Accountant — quarterly review", c: "Other", a: -80.0, dir: "out" },
+      ];
+      const LS = "gh-desk-ledger";
+      let rows;
+      try {
+        rows = JSON.parse(localStorage.getItem(LS)) || SEED.map((r) => ({ ...r }));
+      } catch (e) {
+        rows = SEED.map((r) => ({ ...r }));
+      }
+      const save = () => localStorage.setItem(LS, JSON.stringify(rows));
+      const fmt = (n) =>
+        (n < 0 ? "−£" : "£") + Math.abs(n).toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const $ = (id) => document.getElementById(id);
+      let dir = "in";
+
+      $("dir-in").onclick = () => {
+        dir = "in";
+        $("dir-in").className = "sel-in";
+        $("dir-out").className = "";
+      };
+      $("dir-out").onclick = () => {
+        dir = "out";
+        $("dir-out").className = "sel-out";
+        $("dir-in").className = "";
+      };
+
+      const cats = $("e-cat");
+      CATS.forEach((c) => cats.add(new Option(c, c)));
+      $("e-date").valueAsDate = new Date();
+
+      function fillFilters() {
+        const months = [...new Set(rows.map((r) => r.d.slice(0, 7)))].sort().reverse();
+        const fm = $("f-month");
+        const cur = fm.value;
+        fm.innerHTML = '<option value="">All months</option>';
+        months.forEach((m) => fm.add(new Option(m, m)));
+        fm.value = cur;
+        const fc = $("f-cat");
+        const cur2 = fc.value;
+        fc.innerHTML = '<option value="">All categories</option>';
+        CATS.forEach((c) => fc.add(new Option(c, c)));
+        fc.value = cur2;
+      }
+
+      function view() {
+        const m = $("f-month").value,
+          c = $("f-cat").value,
+          q = $("f-q").value.toLowerCase();
+        return rows.filter(
+          (r) =>
+            (!m || r.d.startsWith(m)) &&
+            (!c || r.c === c) &&
+            (!q || r.w.toLowerCase().includes(q))
+        );
+      }
+
+      function render() {
+        const v = view().sort((a, b) => b.d.localeCompare(a.d));
+        const tb = $("ledger-body");
+        tb.innerHTML = "";
+        let inn = 0,
+          out = 0;
+        v.forEach((r, i) => {
+          if (r.a > 0) inn += r.a;
+          else out += -r.a;
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td>${r.d}</td><td></td><td><span class="cat"></span></td><td></td><td class="amt ${r.a > 0 ? "in" : "out"}">${fmt(r.a)}</td><td></td>`;
+          tr.children[1].textContent = r.w;
+          tr.children[2].firstChild.textContent = r.c;
+          if (r.rcpt) {
+            const im = document.createElement("img");
+            im.src = r.rcpt;
+            im.className = "rcpt";
+            im.alt = "receipt";
+            tr.children[3].appendChild(im);
+          }
+          const del = document.createElement("button");
+          del.textContent = "×";
+          del.title = "Delete";
+          del.style.cssText = "border:0;background:none;color:var(--ink-mute);cursor:pointer;font-size:1.1rem";
+          del.onclick = () => {
+            if (!confirm("Delete this entry?")) return;
+            rows.splice(rows.indexOf(r), 1);
+            save();
+            fillFilters();
+            render();
+          };
+          tr.children[5].appendChild(del);
+          tb.appendChild(tr);
+        });
+        $("empty-hint").hidden = v.length > 0;
+        const s = $("stats");
+        const net = inn - out;
+        const vat = inn * 0.2;
+        s.innerHTML = "";
+        const cards = [
+          ["Money in", fmt(inn), "in"],
+          ["Money out", fmt(out), "out"],
+          ["Net", fmt(net), net >= 0 ? "in" : "out"],
+          ["Tax set-aside (~20%)", fmt(vat), ""],
+          ["Entries", String(v.length), ""],
+        ];
+        cards.forEach(([k, val, cls]) => {
+          const d = document.createElement("div");
+          d.className = "stat-card";
+          d.innerHTML = `<div class="k">${k}</div><div class="v ${cls}">${val}</div>`;
+          s.appendChild(d);
+        });
+        const byCat = {};
+        v.forEach((r) => (byCat[r.c] = (byCat[r.c] || 0) + r.a));
+        const t = $("tax-rows");
+        t.innerHTML = "";
+        Object.entries(byCat)
+          .sort((a, b) => b[1] - a[1])
+          .forEach(([c, a]) => {
+            const p = document.createElement("p");
+            p.innerHTML = `<span></span><span>${fmt(a)}</span>`;
+            p.firstChild.textContent = c;
+            t.appendChild(p);
+          });
+        const tp = document.createElement("p");
+        tp.className = "tot";
+        tp.innerHTML = `<span>Estimated set-aside for tax</span><span>${fmt(vat)}</span>`;
+        t.appendChild(tp);
+      }
+
+      $("e-add").onclick = () => {
+        const w = $("e-desc").value.trim(),
+          amt = parseFloat($("e-amt").value),
+          f = $("e-rcpt").files[0];
+        if (!w || !amt) return;
+        const finish = (rcpt) => {
+          rows.push({
+            d: $("e-date").value || new Date().toISOString().slice(0, 10),
+            w,
+            c: $("e-cat").value,
+            a: dir === "in" ? Math.abs(amt) : -Math.abs(amt),
+            dir,
+            rcpt,
+          });
+          save();
+          fillFilters();
+          render();
+          $("e-desc").value = "";
+          $("e-amt").value = "";
+          $("e-rcpt").value = "";
+        };
+        if (f) {
+          const rd = new FileReader();
+          rd.onload = () => {
+            const im = new Image();
+            im.onload = () => {
+              const cv = document.createElement("canvas");
+              const sc = Math.min(1, 480 / Math.max(im.width, im.height));
+              cv.width = im.width * sc;
+              cv.height = im.height * sc;
+              cv.getContext("2d").drawImage(im, 0, 0, cv.width, cv.height);
+              finish(cv.toDataURL("image/jpeg", 0.7));
+            };
+            im.src = rd.result;
+          };
+          rd.readAsDataURL(f);
+        } else finish();
+      };
+
+      $("csv-btn").onclick = () => {
+        const lines = ["date,description,category,direction,amount_gbp"];
+        view()
+          .sort((a, b) => a.d.localeCompare(b.d))
+          .forEach((r) =>
+            lines.push(
+              [r.d, '"' + r.w.replace(/"/g, '""') + '"', r.c, r.a > 0 ? "in" : "out", Math.abs(r.a).toFixed(2)].join(",")
+            )
+          );
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([lines.join("\n")], { type: "text/csv" }));
+        a.download = "desk-ledger.csv";
+        a.click();
+      };
+
+      ["f-month", "f-cat", "f-q"].forEach((id) => ($(id).oninput = render));
+      fillFilters();
+      render();
+    </script>
+  </body>
+</html>

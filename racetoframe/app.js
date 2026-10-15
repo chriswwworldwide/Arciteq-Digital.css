@@ -200,7 +200,7 @@
     const goal = String(p.goal || "");
     const exp = String(p.experience || "");
     const days = String(p.days_per_week || "");
-    const inCheltenham = /london|jkt|tangerang|bekasi|depok|bogor/i.test(
+    const inUK = /london|jkt|tangerang|bekasi|depok|bogor/i.test(
       String(p.city || ""),
     );
     const raced = exp === "2–4 races" || exp === "5+ races";
@@ -223,16 +223,16 @@
     }
     if (/pregnan|post-natal/i.test(goal)) {
       return {
-        key: inCheltenham ? "hybrid" : "program",
-        why: inCheltenham
+        key: inUK ? "hybrid" : "program",
+        why: inUK
           ? "Training through pregnancy or a comeback is exactly where Gregor & Hattie's own experience counts — floor time for form checks plus weekly video review."
           : "Gregor & Hattie programmes around your stage and checks your form on video each week; tell her in the notes where you are and she'll adjust.",
       };
     }
-    if (inCheltenham && exp === "Never raced") {
+    if (inUK && exp === "Never raced") {
       return {
         key: "crew",
-        why: "You've never raced and you're in Cheltenham — that's exactly who the Rookie Crew is for: a weekly group session at your own pace, and a crew that grows as people join. No experience needed.",
+        why: "You've never raced and you're in UK — that's exactly who the Rookie Crew is for: a weekly group session at your own pace, and a crew that grows as people join. No experience needed.",
       };
     }
     if (days === "2") {
@@ -242,14 +242,14 @@
       };
     }
     if (
-      inCheltenham &&
+      inUK &&
       (goal === "First Hyrox" ||
         goal === "Faster time" ||
         goal === "Doubles / relay")
     ) {
       return {
         key: "hybrid",
-        why: "You're in Cheltenham, so two floor sessions a month with Gregor & Hattie fix the station technique that costs first-timers and PB-chasers the most time.",
+        why: "You're in UK, so two floor sessions a month with Gregor & Hattie fix the station technique that costs first-timers and PB-chasers the most time.",
       };
     }
     return {
@@ -383,10 +383,10 @@
   // WhatsApp: Gregor & Hattie's number in international format, digits only. Every
   // .chat-zone link and any a[data-whatsapp] becomes a wa.me deep-link with a
   // greeting; the floating bubble is added to every page except the coach desk.
-  const ROX_WHATSAPP = "447000000000";
+  const ROX_WHATSAPP = "";
   const CHAT_GREETING =
-    "Hey G&H! Found you on Race to Frame — I'm in for the next race crew. ";
-  const waHref = `https://wa.me/${ROX_WHATSAPP}?text=${encodeURIComponent(CHAT_GREETING)}`;
+    "";
+  const waHref = "https://www.instagram.com/gregorandhattie/";
   document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
     a.dataset.whatsapp = ROX_WHATSAPP;
     a.href = waHref;
@@ -396,7 +396,7 @@
       a.classList.contains("chat-zone") &&
       !a.classList.contains("chat-zone-inline")
     ) {
-      a.innerHTML = '<span class="dot"></span> WhatsApp Gregor & Hattie';
+      a.innerHTML = '<span class="dot"></span> DM Gregor &amp; Hattie';
     }
   });
   if (
@@ -408,9 +408,9 @@
     fab.href = waHref;
     fab.target = "_blank";
     fab.rel = "noopener";
-    fab.setAttribute("aria-label", "Message Gregor & Hattie on WhatsApp");
+    fab.setAttribute("aria-label", "Message Gregor & Hattie on Instagram");
     fab.innerHTML =
-      '<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.5.7 4.9 2 7L3 29l6.5-2.1a12.7 12.7 0 0 0 6.5 1.8c7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1.3 1.3-3.8-.3-.4a10.4 10.4 0 1 1 9 5zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.2 1.3 3.4c.2.2 2.3 3.5 5.6 4.9 2.8 1.1 3.3.9 3.9.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.3z"/></svg><span>WhatsApp Gregor & Hattie</span>';
+      '<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.5.7 4.9 2 7L3 29l6.5-2.1a12.7 12.7 0 0 0 6.5 1.8c7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1.3 1.3-3.8-.3-.4a10.4 10.4 0 1 1 9 5zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.2 1.3 3.4c.2.2 2.3 3.5 5.6 4.9 2.8 1.1 3.3.9 3.9.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.3z"/></svg><span>Message G&amp;H</span>';
     document.body.appendChild(fab);
   }
 })();
@@ -548,7 +548,7 @@
         day: "numeric",
         month: "long",
         year: "numeric",
-        timeZone: "the UK/Cheltenham",
+        timeZone: "the UK/UK",
       });
       if (typeof next.url === "string" && /^https:\/\//.test(next.url)) {
         const link = document.getElementById("countdown-link");
@@ -576,7 +576,7 @@
     .catch(() => {});
 })();
 
-// Share helper — one handler, three homes: news items, race rows, Warriors Wall
+// Share helper — one handler, three homes: news items, race rows, The G&amp;H Wall
 // photos. Mobile: Web Share API, with the real image file for IG/WhatsApp when
 // the browser supports sharing files. Otherwise a small popover offers a
 // prefilled WhatsApp message, copy link, and (for photos) a download.
@@ -661,7 +661,7 @@ window.roxShare = (function () {
   };
 })();
 
-// Warriors Wall: IG-style photos from racetoframe/data/gallery.json, grouped by event
+// The G&amp;H Wall: IG-style photos from racetoframe/data/gallery.json, grouped by event
 // (tabs), shown as a tilted polaroid scatter with a lightbox. "Send your shot"
 // saves caption/name/event/consent as a generic submission (kind wall_photo) on
 // the athlete's record, then hands off to WhatsApp/email for the photo itself.
@@ -716,8 +716,8 @@ window.roxShare = (function () {
     if (share)
       share.onclick = () =>
         window.roxShare(share, {
-          title: "Race to Frame",
-          text: String(p.caption || "Race to Frame"),
+          title: "Gregor & Hattie",
+          text: String(p.caption || "Gregor & Hattie"),
           url: `${location.origin}/racetoframe/#wall-photos`,
           fileUrl: p.src,
         });
@@ -874,7 +874,7 @@ window.roxShare = (function () {
       return;
     }
     // fallback: caption is typed anyway, so offer the WhatsApp route
-    const msg = `Hi Gregor & Hattie — a photo for the Warriors Wall.\nEvent: ${payload.event}\nCaption: ${payload.caption}\nBy: ${payload.by}\nI'm happy for it to go on the site and @racetoframe.`;
+    const msg = `Hi Gregor & Hattie — a photo for the The G&amp;H Wall.\nEvent: ${payload.event}\nCaption: ${payload.caption}\nBy: ${payload.by}\nI'm happy for it to go on the site and @racetoframe.`;
     if (waDigits) {
       window.open(
         `https://wa.me/${waDigits}?text=${encodeURIComponent(msg)}`,
@@ -885,7 +885,7 @@ window.roxShare = (function () {
         "Upload didn't go through — WhatsApp is open, send the photo there instead.";
     } else {
       note.textContent =
-        "Upload didn't go through — send the photo and caption to Gregor & Hattie on Instagram (@racetoframe) and she'll put it up.";
+        "Upload didn't go through — send the photo and caption to Gregor & Hattie on Instagram (@gregorandhattie) and she'll put it up.";
     }
   });
 })();
@@ -1016,7 +1016,7 @@ window.roxShare = (function () {
   }
 })();
 
-// HYROX Cheltenham date alert — one email when the official date is published.
+// HYROX UK date alert — one email when the official date is published.
 (() => {
   const form = document.getElementById("date-alert");
   if (!form) return;
@@ -1034,7 +1034,7 @@ window.roxShare = (function () {
         body: JSON.stringify({
           email,
           kind: "date_alert",
-          payload: { race: "hyrox-cheltenham-2027", source: "hyrox-cheltenham-page" },
+          payload: { race: "hyrox-london-2027", source: "hyrox-london-page" },
           website: String(data.get("website") || ""),
         }),
       });
@@ -1044,7 +1044,7 @@ window.roxShare = (function () {
     }
     if (note)
       note.textContent = saved
-        ? "Done — you'll get one email the day HYROX publishes the Cheltenham 2027 date."
+        ? "Done — you'll get one email the day HYROX publishes the UK 2027 date."
         : "Couldn't save just now — please try again in a minute.";
     if (saved) form.reset();
   });

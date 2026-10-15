@@ -1,4 +1,4 @@
-// Cheltenham Hybrid Scene — renders racetoframe/data/scene.json with a Race it /
+// UK Hybrid Scene — renders racetoframe/data/scene.json with a Race it /
 // Watch it / All filter. Dated items sort first (soonest), then undated.
 (function () {
   const root = document.getElementById("scene-list");

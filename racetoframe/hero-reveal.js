@@ -226,13 +226,13 @@
       // as the trail passes. In fullRoll it washes the WHOLE sheet —
       // straight through the photo to the right edge, no demarcation.
       float fresh = (1.0 - vResolve) * u_full;
-      col = mix(col, vec3(1.0, 0.16, 0.62), fresh);
+      col = mix(col, vec3(0.145, 0.388, 0.922), fresh);
       // shimmer — the canonical sweep: a bright band hugging the roll
       // front (skeleton-shimmer style) over a soft lift across all
       // freshly-laid paper.
       float band = (1.0 - smoothstep(0.0, 0.4, vResolve)) * u_full;
-      col += vec3(1.0, 0.5, 0.85) * band * 0.8;
-      col += vec3(0.9, 0.25, 0.6) * fresh * 0.5;
+      col += vec3(0.576, 0.773, 0.992) * band * 0.8;
+      col += vec3(0.114, 0.306, 0.847) * fresh * 0.5;
       // sparkle — the Comeau recipe ported into the sheet so the stars
       // deform with the paper: a jittered grid of four-point stars
       // (crossed gaussian flares) twinkling in/out at random phases,
@@ -247,7 +247,7 @@
       float tw = 0.5 + 0.5 * sin(u_time * (3.0 + hash21(cell) * 5.0)
                                  + hash21(cell) * 6.2831);
       float on = step(hash21(cell + 5.0), 0.22); // ~22% of cells hold a star
-      col += vec3(1.0, 0.9, 1.0) * star * tw * on * fresh * 0.3;
+      col += vec3(0.859, 0.918, 0.996) * star * tw * on * fresh * 0.3;
       // The still-rolled face samples the same texture — on the full-width
       // sheet it reads as a second copy of the picture riding ahead of the
       // roll. Dim it into a dark scroll; laid paper is untouched (vTube→1).
@@ -465,9 +465,9 @@
       // ("very transparent, can't make it out"). A subtle tone sweep
       // reads as paper without carrying any image content.
       const sheen = c.createLinearGradient(0, 0, cw * 0.9, ch);
-      sheen.addColorStop(0, "#030303");
-      sheen.addColorStop(0.55, "#020202");
-      sheen.addColorStop(1, "#010101");
+      sheen.addColorStop(0, "#0b1c3f");
+      sheen.addColorStop(0.55, "#081530");
+      sheen.addColorStop(1, "#040d1e");
       c.fillStyle = sheen;
       c.fillRect(0, 0, cw, ch);
     } else {
@@ -929,7 +929,7 @@
         typeof window.confetti === "function" &&
         !window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ) {
-        const pink = ["#1c1c1e", "#636366", "#ffffff", "#bdbdbe"];
+        const pink = ["#2563eb", "#93c5fd", "#ffffff", "#bfdbfe"];
         // a fixed burst covers a phone but reads as a weak corner
         // firework on a wide desktop — scale count/spread/velocity so
         // the pop crosses the page

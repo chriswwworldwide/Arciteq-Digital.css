@@ -4,7 +4,7 @@
 // intros go through Nigel on WhatsApp.
 (() => {
   const KIND = "partner_search";
-  const WA = "447000000000";
+  const WA = "447742353825";
   const FORMATS = {
     open: "Open doubles",
     pro: "Pro doubles",

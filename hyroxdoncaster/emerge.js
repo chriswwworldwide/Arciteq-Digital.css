@@ -13,7 +13,7 @@
 (() => {
   const fx = new URLSearchParams(location.search).get("fx");
   const demo = fx === "demo";
-  const solo = /^[0-3]$/.test(fx || "") ? Number(fx) : null;
+  const solo = fx === null ? 2 : /^[0-3]$/.test(fx || "") ? Number(fx) : null;
   if (!demo && solo === null) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   window.__emerge = true; // hero-reveal.js checks this and stands down
@@ -335,7 +335,7 @@
         // codrops gamma lift during the reveal, converging to raw sRGB at
         // settle so the canvas lands identical to the DOM photo (no dark
         // click at handoff)
-        gl_FragColor.rgb = pow(gl_FragColor.rgb,vec3(mix(1./2.2,1.0,smoothstep(0.55,1.,uProgress))));
+        gl_FragColor.rgb = pow(gl_FragColor.rgb, vec3(1.0));
 
       }
     `;

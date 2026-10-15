@@ -202,6 +202,20 @@ const localScene = pageRenames["jakarta-hybrid-scene"] || "jakarta-hybrid-scene"
 const localGuide = pageRenames["hyrox-jakarta"] || "hyrox-jakarta";
 const coachingPage =
   pageRenames["hybrid-coaching-jakarta"] || "hybrid-coaching-jakarta";
+const trainingLinks = cfg.singleIntroOffer
+  ? `              <li><a href="/${slug}/#plans">6-week introduction</a></li>
+              <li><a href="/${slug}/#plans">17 coached sessions each week</a></li>
+              <li><a href="/${slug}/#events">Full simulations</a></li>`
+  : `              <li><a href="/${slug}/#plans">Coaching plans</a></li>
+              <li><a href="/${slug}/${coachingPage}/">Hybrid coaching</a></li>
+              <li><a href="/${slug}/elite-race-prep/">Elite race prep</a></li>
+              <li><a href="/${slug}/events/#cohorts">12-week cohorts</a></li>`;
+const localGuideLink = cfg.localRaceGuide === false
+  ? ""
+  : `              <li><a href="/${slug}/${localGuide}/">Hyrox ${city} guide</a></li>\n`;
+const merchandiseLink = cfg.merchandise === false
+  ? ""
+  : `              <li><a href="/${slug}/#merch">Merchandise</a></li>\n`;
 const salesMenu = `        <ul class="menu" id="menu">
           <li><a href="/${slug}/predictor/">Race Predictor</a></li>
           <li><a href="/${slug}/splits/">Split Analyser</a></li>
@@ -212,7 +226,7 @@ const salesMenu = `        <ul class="menu" id="menu">
               Ask ${coachFirst} <span class="caret"></span>
             </button>
             <ul class="sub">
-              <li><a href="/${slug}/#tips">${coachFirst}'s 3 tips</a></li>
+              <li><a href="/${slug}/#tips">${cfg.coachTipsLabel || `${coachFirst}'s 3 tips`}</a></li>
               <li><a href="/${slug}/#ask">Ask a question</a></li>
               <li><a href="/${slug}/#story">${coachFirst}'s story</a></li>
               <li><a href="/${slug}/#plans">Book a 1:1 call</a></li>
@@ -221,10 +235,7 @@ const salesMenu = `        <ul class="menu" id="menu">
           <li>
             <button aria-expanded="false" aria-haspopup="true">Train With ${coachFirst} <span class="caret"></span></button>
             <ul class="sub">
-              <li><a href="/${slug}/#plans">Coaching plans</a></li>
-              <li><a href="/${slug}/${coachingPage}/">Hybrid coaching</a></li>
-              <li><a href="/${slug}/elite-race-prep/">Elite race prep</a></li>
-              <li><a href="/${slug}/events/#cohorts">12-week cohorts</a></li>
+${trainingLinks}
             </ul>
           </li>
           <li>
@@ -232,8 +243,7 @@ const salesMenu = `        <ul class="menu" id="menu">
             <ul class="sub">
               <li><a href="/${slug}/race-planner/">UK race planner</a></li>
               <li><a href="/${slug}/events/#races">Race calendar</a></li>
-              <li><a href="/${slug}/${localGuide}/">Hyrox ${city} guide</a></li>
-              <li><a href="/${slug}/news/">UK Hyrox news</a></li>
+${localGuideLink}              <li><a href="/${slug}/news/">UK Hyrox news</a></li>
             </ul>
           </li>
           <li><a href="/${slug}/${localScene}/">${city} Scene</a></li>
@@ -253,9 +263,8 @@ const salesMenu = `        <ul class="menu" id="menu">
               <li><a href="/${slug}/station-9/">Station 9 meetups</a></li>
               <li><a href="/${slug}/broadcast/">Weekly broadcast</a></li>
               <li><a href="/${slug}/diary/">This week's diary</a></li>
-              <li><a href="/${slug}/#wall-photos">Warriors Wall</a></li>
-              <li><a href="/${slug}/#merch">Merchandise</a></li>
-              <li><a href="/${slug}/#ask">Chat Zone</a></li>
+              <li><a href="/${slug}/#wall-photos">${cfg.wallLabel || "Warriors Wall"}</a></li>
+${merchandiseLink}              <li><a href="/${slug}/#ask">Chat Zone</a></li>
             </ul>
           </li>
         </ul>`;
@@ -365,7 +374,7 @@ for (const file of walk(dst)) {
   for (const id of stripSections) {
     s = s.replace(
       new RegExp(
-        `<section[^>]*id="${id}"[^>]*>[\\s\\S]*?</section>`,
+        `[ \\t]*<section[^>]*id="${id}"[^>]*>[\\s\\S]*?</section>`,
         "",
       ),
       "",

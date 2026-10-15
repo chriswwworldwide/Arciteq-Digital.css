@@ -300,7 +300,7 @@
       try {
         await capture({ email: leadEmail, profile });
         note.textContent =
-          "Thanks — Nigel has your details and will reply with a plan. Coached athletes get their programme in the HYROX Doncaster app app.";
+          "Thanks — Nigel has your details and will reply with a plan. Coached athletes get their programme in the coaching platform app.";
       } catch {
         note.textContent =
           "Couldn't save that just now — your email still went through.";
@@ -383,7 +383,7 @@
   // WhatsApp: Nigel's number in international format, digits only. Every
   // .chat-zone link and any a[data-whatsapp] becomes a wa.me deep-link with a
   // greeting; the floating bubble is added to every page except the coach desk.
-  const ROX_WHATSAPP = "447000000000";
+  const ROX_WHATSAPP = "447742353825";
   const CHAT_GREETING =
     "Hi Nigel! Found you on HYROX Doncaster — I'm interested in HYROX training. ";
   const waHref = `https://wa.me/${ROX_WHATSAPP}?text=${encodeURIComponent(CHAT_GREETING)}`;
@@ -438,7 +438,7 @@
     .catch(() => {});
 })();
 
-// External tool links (HYROX Doncaster app etc.): hyroxdoncaster/data/links.json, hidden until a URL is set.
+// External tool links (coaching platform etc.): hyroxdoncaster/data/links.json, hidden until a URL is set.
 (function () {
   const links = document.querySelectorAll("[data-link]");
   if (!links.length) return;
@@ -576,7 +576,7 @@
     .catch(() => {});
 })();
 
-// Share helper — one handler, three homes: news items, race rows, Warriors Wall
+// Share helper — one handler, three homes: news items, race rows, Crew Wall
 // photos. Mobile: Web Share API, with the real image file for IG/WhatsApp when
 // the browser supports sharing files. Otherwise a small popover offers a
 // prefilled WhatsApp message, copy link, and (for photos) a download.
@@ -661,7 +661,7 @@ window.roxShare = (function () {
   };
 })();
 
-// Warriors Wall: IG-style photos from hyroxdoncaster/data/gallery.json, grouped by event
+// Crew Wall: IG-style photos from hyroxdoncaster/data/gallery.json, grouped by event
 // (tabs), shown as a tilted polaroid scatter with a lightbox. "Send your shot"
 // saves caption/name/event/consent as a generic submission (kind wall_photo) on
 // the athlete's record, then hands off to WhatsApp/email for the photo itself.
@@ -874,7 +874,7 @@ window.roxShare = (function () {
       return;
     }
     // fallback: caption is typed anyway, so offer the WhatsApp route
-    const msg = `Hi Nigel — a photo for the Warriors Wall.\nEvent: ${payload.event}\nCaption: ${payload.caption}\nBy: ${payload.by}\nI'm happy for it to go on the site and @hyroxdoncaster.`;
+    const msg = `Hi Nigel — a photo for the Crew Wall.\nEvent: ${payload.event}\nCaption: ${payload.caption}\nBy: ${payload.by}\nI'm happy for it to go on the site and @hyroxdoncaster.`;
     if (waDigits) {
       window.open(
         `https://wa.me/${waDigits}?text=${encodeURIComponent(msg)}`,
@@ -885,7 +885,7 @@ window.roxShare = (function () {
         "Upload didn't go through — WhatsApp is open, send the photo there instead.";
     } else {
       note.textContent =
-        "Upload didn't go through — send the photo and caption to Nigel on Instagram (@hyroxdoncaster) and he'll put it up.";
+        "Upload didn't go through — send the photo and caption to Nigel on Instagram (@hyrox_doncaster) and he'll put it up.";
     }
   });
 })();

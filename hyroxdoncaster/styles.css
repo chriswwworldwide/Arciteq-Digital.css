@@ -1,16 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Allura&display=swap");
 
 :root{
-  --hero-focus: 50% 35%;
+  --hero-focus: 50% 45%;
   --ink: #0f0f11;
   --ink-2: #3a3a40;
   --ink-3: #7a7a85;
   --paper: #fffdfb;
   --paper-2: #fbf3ee;
   --line: #efe3e3;
-  --pink: #ea580c;
-  --pink-600: #c2410c;
-  --pink-100: #ffedd5;
+  --pink: #20b8e6;
+  --pink-600: #087da5;
+  --pink-100: #ddf6fd;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(40, 14, 30, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
@@ -1661,7 +1661,7 @@ footer a:hover {
   color: var(--ink-3);
 }
 
-/* Warriors Wall — polaroid scatter */
+/* Crew Wall — polaroid scatter */
 .gallery {
   background: var(--paper-2);
   overflow: hidden;

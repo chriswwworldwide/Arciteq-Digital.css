@@ -91,9 +91,11 @@ Two pitch lanes:
    cheap deal.
 9. **Fennell Fitness** — dedicated HYROX coaching brand, phone-and-email ops,
    small operation.
-10. **Gregor & Hattie** — certified coaches, Gymshark-sponsored, 700k-view
-    TikToks, sell programs via link-in-bio. Need storefront + predictor lead
-    magnet, not boards. Different product shape — flag as variant work.
+10. **Gregor & Hattie** — certified coaches, Gymshark-sponsored, ~370k TikTok
+    followers, Race to Frame Shopify store, podcast, multiple coaching arms.
+    Full dossier + pricing in **`GREGORHATTIE.md`** — reference template for
+    the whole creator-commerce tier. Not a city-gym clone; umbrella
+    brand + Shopify-retained funnel. £995 + £129/mo recommended.
 
 ## Watchlist / parked
 

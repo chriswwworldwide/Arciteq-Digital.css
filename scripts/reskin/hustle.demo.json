@@ -532,6 +532,34 @@
     [
       "#fff5f8",
       "#f1f9f2"
+    ],
+    [
+      "#2a1330",
+      "#0a1f0f"
+    ],
+    [
+      "#1f0e22",
+      "#071709"
+    ],
+    [
+      "#150812",
+      "#040f06"
+    ],
+    [
+      "\"#ff2ea6\", \"#ff7ad0\", \"#ffffff\", \"#ffd2ef\"",
+      "\"#166534\", \"#4ade80\", \"#ffffff\", \"#bbf7d0\""
+    ],
+    [
+      "--paper: #fffdfb;",
+      "--paper: #f7f8f8;"
+    ],
+    [
+      "--paper-2: #fbf3ee;",
+      "--paper-2: #edf1ef;"
+    ],
+    [
+      "--line: #efe3e3;",
+      "--line: #d9dedb;"
     ]
   ],
   "copyOverrides": [

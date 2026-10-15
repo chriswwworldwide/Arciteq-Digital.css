@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Allura&display=swap");
 
 :root{
-  --hero-focus: 62% 8%;
+  --hero-focus: 62% 0%;
+  --hero-focus-m: 50% 15%;
   --ink: #0f0f11;
   --ink-2: #3a3a40;
   --ink-3: #7a7a85;
@@ -1395,7 +1396,7 @@ footer a:hover {
     aspect-ratio: 1 / 1;
     height: auto;
     max-height: 70vh;
-    object-position: 65% 45%;
+    object-position: 50% 0%;
   }
   .hero--bleed .hero-amb {
     display: none;
@@ -1433,6 +1434,7 @@ footer a:hover {
   }
   .hero--bleed .hero-img {
     object-fit: cover;
+    object-position: var(--hero-focus-m, 50% 30%);
     /* desktop bounds the photo to a right column; mobile is full width
        again — without this the img renders thumbnail-sized */
     width: 100%;
@@ -2813,63 +2815,5 @@ body[data-broadcast=locked] .bc-lock {
     grid-template-columns: repeat(5, max-content);
     width: 100%;
     justify-content: center;
-  }
-}
-
-/* hero--full: photo covers the whole hero; reveal unrolls across the
-   full background. Opt-in per tenant via "heroFull": true. */
-.hero--bleed.hero--full .hero-amb {
-  display: none;
-}
-
-.hero--bleed.hero--full .hero-img {
-  object-fit: cover;
-  /* --hero-focus keeps the subject clear of the bottom-left copy and is
-     set per tenant on :root. */
-  object-position: var(--hero-focus, 50% 30%);
-  padding: 0;
-}
-
-.hero--bleed.hero--full::after {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(40, 14, 30, 0.05) 0%,
-      rgba(40, 14, 30, 0.2) 45%,
-      rgba(40, 14, 30, 0.86) 100%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(40, 14, 30, 0.88) 0%,
-      rgba(40, 14, 30, 0.5) 45%,
-      rgba(40, 14, 30, 0.12) 75%,
-      rgba(40, 14, 30, 0) 100%
-    );
-}
-
-@media (min-width: 801px) {
-  .hero--bleed.hero--full .hero-mask {
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-}
-
-@media (min-width: 801px) {
-  .hero--bleed.hero--full .hero-mask {
-    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 64%, transparent 100%);
-    mask-image: linear-gradient(90deg, #000 0%, #000 64%, transparent 100%);
-  }
-}
-
-@media (min-width: 801px) {
-  .hero--bleed.hero--full .hero-mask {
-    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 38%, rgba(0, 0, 0, 0.96) 48%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.55) 73%, rgba(0, 0, 0, 0.28) 86%, transparent 100%);
-    mask-image: linear-gradient(90deg, #000 0%, #000 38%, rgba(0, 0, 0, 0.96) 48%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.55) 73%, rgba(0, 0, 0, 0.28) 86%, transparent 100%);
-  }
-  .hero--bleed.hero--full::after {
-    background:
-      linear-gradient(90deg, rgba(15, 15, 17, 0) 42%, rgba(15, 15, 17, 0.25) 50%, rgba(15, 15, 17, 0.55) 60%, rgba(15, 15, 17, 0.82) 68%, rgba(15, 15, 17, 1) 75%, rgba(15, 15, 17, 1) 100%),
-      linear-gradient(180deg, rgba(40, 14, 30, 0.05) 0%, rgba(40, 14, 30, 0.2) 45%, rgba(40, 14, 30, 0.86) 100%),
-      linear-gradient(90deg, rgba(40, 14, 30, 0.88) 0%, rgba(40, 14, 30, 0.5) 45%, rgba(40, 14, 30, 0.12) 75%, rgba(40, 14, 30, 0) 100%);
   }
 }

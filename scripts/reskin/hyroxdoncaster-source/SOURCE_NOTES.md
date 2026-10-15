@@ -33,6 +33,11 @@ Use "folk" sparingly, not as a verbal gimmick. The voice is plain-speaking and d
 - Public captions show full HYROX simulations open to members and non-members, with real-time coaching and technique corrections.
 - Do not publish prices that have not been verified directly with Nigel.
 
+## Hero mapping
+
+- Main hero: photo 77, front-on sled-rope pull. It is the strongest action image in the supplied Doncaster batch.
+- Photo 96 remains the main community/gallery group image.
+
 ## Station mapping
 
 - SkiErg: photo 80.

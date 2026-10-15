@@ -518,6 +518,18 @@
     [
       "once her account exists",
       "once his account exists"
+    ],
+    [
+      "--paper: #fffdfb;",
+      "--paper: #f8fbfa;"
+    ],
+    [
+      "--paper-2: #fbf3ee;",
+      "--paper-2: #eef6f4;"
+    ],
+    [
+      "--line: #efe3e3;",
+      "--line: #d9e8e5;"
     ]
   ],
   "copyOverrides": [
@@ -878,12 +890,78 @@
     },
     "bulletin.json": {
       "schemaVersion": 1,
-      "weekOf": null,
-      "items": []
+      "weekOf": "2026-10-12",
+      "items": [
+        {
+          "type": "pb",
+          "text": "Four PBs this week — Tom's SkiErg finally behaved and Aisha made the row look easy."
+        },
+        {
+          "type": "welcome",
+          "text": "Three new starters on Thursday — if you see a lost face, you're the welcome committee now."
+        },
+        {
+          "type": "birthday",
+          "text": "Big five-oh for Mel on Saturday — she's requested wall balls instead of cake. We're doing both."
+        },
+        {
+          "type": "deadline",
+          "text": "London entries close Wednesday — the sheet's by the desk, put your name down."
+        },
+        {
+          "type": "gossip",
+          "text": "Half the morning crew is talking about a doubles team-up — partner board's live, claim your lane."
+        },
+        {
+          "type": "signoff",
+          "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; I'll bring the coffee and croissants on the way in.",
+          "followUp": {
+            "when": "Tuesday",
+            "board": "the wall",
+            "text": "The pic: me and Katie, coffee and croissants after the 7am. I keep my promises."
+          }
+        }
+      ]
     },
     "diary.json": {
       "schemaVersion": 1,
-      "sessions": []
+      "sessions": [
+        {
+          "date": "2026-10-12",
+          "time": "17:30",
+          "type": "Group session",
+          "who": "Evening crew",
+          "note": "SkiErg intervals — Tom seeks revenge"
+        },
+        {
+          "date": "2026-10-13",
+          "time": "07:00",
+          "type": "1:1",
+          "who": "Katie",
+          "note": "Her birthday — coffee and croissants after. Do not forget the croissants."
+        },
+        {
+          "date": "2026-10-14",
+          "time": "06:45",
+          "type": "Morning crew",
+          "who": "Open",
+          "note": "Wall balls. Mel has opinions about this"
+        },
+        {
+          "date": "2026-10-15",
+          "time": "18:00",
+          "type": "Group session",
+          "who": "Evening crew",
+          "note": "Doubles pairing night — board claims open"
+        },
+        {
+          "date": "2026-10-17",
+          "time": "09:30",
+          "type": "Sim Saturday",
+          "who": "Race prep",
+          "note": "Full run-through"
+        }
+      ]
     },
     "cities.json": {
       "note": "DEMO SEED — UK race planner data for the HYROX Doncaster demo. Dates/venues are placeholders from public HYROX listings; refresh from hyrox.com before real use.",
@@ -1298,81 +1376,6 @@
           "caption": "Train together. Put it to work under the lights.",
           "by": "HYROX Doncaster",
           "event": "Race day"
-        }
-      ]
-    },
-    "bulletin.json": {
-      "schemaVersion": 1,
-      "weekOf": "2026-10-12",
-      "items": [
-        {
-          "type": "pb",
-          "text": "Four PBs this week — Tom's SkiErg finally behaved and Aisha made the row look easy."
-        },
-        {
-          "type": "welcome",
-          "text": "Three new starters on Thursday — if you see a lost face, you're the welcome committee now."
-        },
-        {
-          "type": "birthday",
-          "text": "Big five-oh for Mel on Saturday — she's requested wall balls instead of cake. We're doing both."
-        },
-        {
-          "type": "deadline",
-          "text": "London entries close Wednesday — the sheet's by the desk, put your name down."
-        },
-        {
-          "type": "gossip",
-          "text": "Half the morning crew is talking about a doubles team-up — partner board's live, claim your lane."
-        },
-        {
-          "type": "signoff",
-          "text": "And Katie — happy birthday for Tuesday. Your 7am's in the book; I'll bring the coffee and croissants on the way in.",
-          "followUp": {
-            "when": "Tuesday",
-            "board": "the wall",
-            "text": "The pic: me and Katie, coffee and croissants after the 7am. I keep my promises."
-          }
-        }
-      ]
-    },
-    "diary.json": {
-      "schemaVersion": 1,
-      "sessions": [
-        {
-          "date": "2026-10-12",
-          "time": "17:30",
-          "type": "Group session",
-          "who": "Evening crew",
-          "note": "SkiErg intervals — Tom seeks revenge"
-        },
-        {
-          "date": "2026-10-13",
-          "time": "07:00",
-          "type": "1:1",
-          "who": "Katie",
-          "note": "Her birthday — coffee and croissants after. Do not forget the croissants."
-        },
-        {
-          "date": "2026-10-14",
-          "time": "06:45",
-          "type": "Morning crew",
-          "who": "Open",
-          "note": "Wall balls. Mel has opinions about this"
-        },
-        {
-          "date": "2026-10-15",
-          "time": "18:00",
-          "type": "Group session",
-          "who": "Evening crew",
-          "note": "Doubles pairing night — board claims open"
-        },
-        {
-          "date": "2026-10-17",
-          "time": "09:30",
-          "type": "Sim Saturday",
-          "who": "Race prep",
-          "note": "Full run-through"
         }
       ]
     },

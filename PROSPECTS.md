@@ -117,6 +117,46 @@ a per-tenant config + an assets folder. Three tenant shapes proven so far:
 - **Personal coach** (Hannah Burgon) — the original roxjaya shape:
   personality-led, programs + events, community tooling underneath
 
+### Saved Instagram pitch — approved 15 Oct 2026
+
+Keep the message below as the standard coach/club pitch. Personalise the reason
+for selecting them, their identity line, the feature list, city, deadline and
+link. Keep the complete Instagram message below 1,000 characters. Put the link
+on its own line with a blank line either side. Add **“The same link works on
+desktop too.”** beside the link note when space permits; if the DM is already
+near the limit, shorten elsewhere rather than sending a second sales bubble.
+
+> Hi [coach] — slightly unusual message. I’m Chris, founder of Station 9. I
+> build exclusive local platforms for selected HYROX coaches, one per city —
+> and you were my first choice for [city] because of [specific, verified
+> reasons: race credibility, sims, community].
+>
+> I’ve built a working [brand] preview around [their real identity line], with
+> a race predictor, split analyser, partner finder and local race hub:
+>
+> [preview link]
+>
+> The same link works on desktop too.
+>
+> I hope you don’t mind — I used some public photos and information to make it
+> feel genuinely yours. It’s unlaunched and not indexed by Google.
+>
+> The preview is free with no obligation. If you like it, the [city] version
+> would be an exclusive paid service, with a one-off setup and affordable
+> monthly fee. We’d refine the details together, then I’d handle the technical
+> side. It will stay online and reserved for you until [date], then I’ll take
+> it down.
+>
+> I’d genuinely love to know what you think.
+>
+> Chris
+
+Pitch rules: do not claim an established network or outside backing; Station 9
+is building its founding group. Do not say a public preview is private. Use
+“unlaunched” and the truthful current indexing status. Acknowledge use of public
+photos without saying “scraped” or “farmed”. The exclusivity deadline must be
+real and the preview must actually come down if they decline or do not reply.
+
 **The photo gap is the product gap.** Dina's IG is half of why the flagship
 looks alive — most prospects won't have a Dina. Two consequences:
 

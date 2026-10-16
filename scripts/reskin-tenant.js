@@ -172,6 +172,15 @@ if (cfg.mode === "chassis") {
       s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
     if (file.endsWith(".html")) {
       if (cfg.menu) s = replaceMenu(s); // chassis pages already carry a menu
+      if (cfg.htmlTitle && file.endsWith("index.html")) {
+        s = s.replace(/<title>[\s\S]*?<\/title>/, `<title>${cfg.htmlTitle}</title>`);
+      }
+      if (cfg.metaDescription && file.endsWith("index.html")) {
+        s = s.replace(
+          /(name="description"\s+content=")[^"]*(")/,
+          `$1${cfg.metaDescription}$2`,
+        );
+      }
       s = s.replace(
         new RegExp(
           `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`,

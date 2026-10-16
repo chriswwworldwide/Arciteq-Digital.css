@@ -318,6 +318,66 @@ product with a reskinned race-tools layer — viable, slightly thinner
 demo. Expands the addressable pool well beyond the ~30–80 creator /
 hundreds-of-gyms HYROX-only estimate.
 
+## The chassis pipeline — done, committed (2a4bec0, devin/gh-dossier)
+
+The "clone" machine is real now. End state: scan → pull → build → QC → pitch.
+
+- **`scripts/build-chassis.js`** — regenerates Josh, copies to `chassis/`,
+  swaps every Josh-string for `{{TOKEN}}` (recipe: `chassis.tokens.json`),
+  strips dead files (7 dead js/css + 5 orphaned data jsons), emits
+  `images/REQUIRED.md` (31 slots) + a tokenised `tenant.record.json`.
+  **Fails loudly if any persona string survives.** No ghosts — this is the
+  thing we could never do to Dina's site because you can't grep for
+  "sentences about being pregnant."
+- **`mode:"chassis"` in `reskin-tenant.js`** — config = ~60 lines: tokens,
+  assets dir, `heroMode`, optional `news` array + `copyOverrides`. Fails on
+  unfilled tokens AND missing referenced images. Tenant record built from
+  the tokenised template — never touches the roxjaya record.
+- **Hero = one attribute.** `data-hero-mode="full|ambient"` on `.hero--bleed`;
+  CSS selectors + app.js mask check both key off it. The three hidden
+  switches are dead.
+- **Voice is contractual.** `{{VOICE_DOUBLES_HOOK}}`, `{{VOICE_WEDDING}}`,
+  `{{VOICE_NEWS_TAKE}}`, `{{TAGLINE}}`, `{{HERO_TITLE_HTML}}` are required
+  tokens; `cfg.news` carries 3 owner-voice feed items; chassis ships 3
+  generic ones so the feed never launches empty. All copy gender-neutral
+  by default (13 he/his/she/her leftovers neutralised + one Dina "her"
+  found in links.json). Division names (Men/Women) stay — HYROX categories.
+- **Test tenant:** `mayaokafor` (fictional, ambient hero) — all pages 200,
+  zero tokens, zero ghosts, lint/type-check clean.
+
+**IG prospect tooling:**
+- `scripts/ig-pull.py` — full-res post images + caption .txt via the logged-in
+  Chrome session (instaloader + browser_cookie3; venv at /tmp/igenv).
+  Carousels auto-split. Re-run safe.
+- `scripts/ig-scan.py` — ranks handles: followers, cadence, engagement rate,
+  link-in-bio tool detection (the fragmentation we replace), coaching
+  keywords in bio + captions → score. `--csv` for spreadsheet mode.
+  Verified: joshharrisonfit scores 11/13 (linktree + coaching caps + engaged).
+- gallery-dl/yt-dlp both failed (IG broke their profile GraphQL endpoints);
+  instaloader's `load_session` is the working path.
+
+**Safety:** ran off station9.studio session. Plan: dedicated burner account,
+created on desktop, warmed up (follow/like/browse a few days) before heavy
+scanning. New accounts are MORE fragile than aged ones — warm first.
+
+**Throughput estimate:** machine side ~30–50 drafts/day; bottleneck is photo
+curation — except Devin can classify pulled images into contract slots
+(sled push vs rope pull etc, proven on Josh's audit), so human time lands
+at ~5–10 min QC/site → ~15–25 pitch-ready/day ceiling. Funnel reality:
+~30 scanned → ~8 buildable → ~5–8 pitched/day.
+
+**Market sequencing:** exhaust HYROX-adjacent creators (anyone coaching
+athletes who race — the tools land as-is), then adjacent niches reuse the
+chassis with a token flavour pack (CrossFit boxes, running coaches).
+Each buyer becomes a node: footer credit + cross-linked community features
+= a network a Linktree can't copy. Move markets when reply rate drops,
+not when lists empty.
+
+**Honest gaps:** Josh/G&H stay on pair-mode until they buy (migrating
+working demos risks regressions for zero gain — migrate at purchase).
+token map will leak a few strings on tenant #1; expect one patch round.
+Deeper symbol-level dead-code pass inside app.js/styles.css deferred.
+
 ## Chat notes
 
 - **Tone: dry British sarcasm, on tap.** Not sitcom energy — deadpan,

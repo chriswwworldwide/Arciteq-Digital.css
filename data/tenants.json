@@ -3216,6 +3216,269 @@
         }
       ],
       "demo": true
+    },
+    {
+      "tenant_id": "mayaokafor",
+      "vertical": "coaching",
+      "hostnames": [
+        "mayaokafor.localhost",
+        "demo-mayaokafor.localhost"
+      ],
+      "canonicalHost": "mayaokafor.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Maya Okafor",
+        "tagline": "Hyrox coaching, online programming and race prep from Somerset.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Maya — podium athlete and Somerset personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Somerset and online with Maya — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/mayaokafor/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/mayaokafor/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/mayaokafor/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/mayaokafor/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/mayaokafor/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/mayaokafor/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/mayaokafor/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/mayaokafor/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "mayaokafor/data/inbox.json",
+        "writable": [
+          "mayaokafor/data/events.json",
+          "mayaokafor/data/cities.json",
+          "mayaokafor/data/news.json",
+          "mayaokafor/data/partners.json",
+          "mayaokafor/data/matchboard.json",
+          "mayaokafor/data/travelboard.json"
+        ],
+        "partners": "mayaokafor/data/partners.json",
+        "matchboard": "mayaokafor/data/matchboard.json",
+        "travelboard": "mayaokafor/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/mayaokafor/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/mayaokafor/welcome/",
+        "welcomeIntro": "Hi Maya — this is the first of your Monday emails from mayaokafor.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/mayaokafor/guides/",
+        "brand": "Maya Okafor",
+        "homePath": "/mayaokafor/",
+        "language": "en",
+        "author": {
+          "name": "Maya Okafor",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Maya — HYROX Certified Coach, podium athlete, Somerset personal trainer.",
+        "indexTitle": "HYROX training guides by Maya — Maya Okafor",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Somerset: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/mayaokafor/styles.css",
+          "/mayaokafor/guide.css"
+        ],
+        "scripts": [
+          "/mayaokafor/app.js",
+          "/mayaokafor/partners.js"
+        ],
+        "headerHtml": "<a href=\"/mayaokafor/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">MAYA OKAF<span class=\"o\">O</span>R <span class=\"sig\" aria-label=\"by Maya Okafor\"><span class=\"sig-text\">by Maya Okafor</span></span></span></h1></a><p class=\"city\">Somerset</p>",
+        "nav": [
+          {
+            "href": "/mayaokafor/",
+            "label": "Home"
+          },
+          {
+            "href": "/mayaokafor/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/mayaokafor/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/mayaokafor/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/mayaokafor/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/mayaokafor/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/mayaokafor/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/mayaokafor/hyrox-london/",
+            "label": "Hyrox Somerset"
+          },
+          {
+            "href": "/mayaokafor/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/mayaokafor/news/",
+            "label": "News"
+          },
+          {
+            "href": "/mayaokafor/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/mayaokafor/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/mayaokafor/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Maya</h3><p>Hybrid coaching in Somerset or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/mayaokafor/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @mayaokaforfit",
+          "url": "https://www.tiktok.com/@mayaokaforfit"
+        },
+        {
+          "label": "YouTube — MAYAFARRISONFIT",
+          "url": "https://www.youtube.com/@mayaokaforfit"
+        },
+        {
+          "label": "Forge Club @forge.club",
+          "url": "https://www.instagram.com/forge.club/"
+        },
+        {
+          "label": "Forge Club 365",
+          "url": "https://example.com/store"
+        },
+        {
+          "label": "All links",
+          "url": "https://linktr.ee/mayaokaforfit"
+        }
+      ],
+      "demo": true
     }
   ]
 }

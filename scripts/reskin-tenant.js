@@ -33,11 +33,11 @@ const {
   brand,
   brandUpper,
   brandShort = brand,
-  wordmarkHtml = brandUpper || brand.toUpperCase(),
+  wordmarkHtml = brandUpper || (brand || "").toUpperCase(),
   coachFirst,
   coachFull,
   coachNick = coachFirst,
-  city,
+  city = "",
   whatsapp,
   instagramUrl,
   instagramHandle,
@@ -135,9 +135,172 @@ const HERO_FULL_CSS = `/* hero--full: photo covers the whole hero; reveal unroll
     mask-image: none;
   }
 }`;
-if (slug === "roxjaya" || slug.startsWith("..")) {
+if (slug === "roxjaya" || slug.startsWith("..") || slug === "chassis") {
   console.error("bad slug");
   process.exit(1);
+}
+
+// ==================== chassis mode =========================================
+// cfg.mode === "chassis": build from the neutral master in chassis/ — no
+// source-persona pairs at all. The config supplies tokens (one value per
+// {{TOKEN}} in the master), an assets dir, and the usual optional hooks
+// (copyOverrides, stripSections, pageFiles, seedFiles, extraCss, menu, hero).
+// Any {{TOKEN}} left unfilled after the pass = loud failure.
+if (cfg.mode === "chassis") {
+  const chassisDir = path.join(root, "chassis");
+  if (!fs.existsSync(chassisDir)) {
+    console.error("chassis/ missing — run: node scripts/build-chassis.js");
+    process.exit(1);
+  }
+  fs.rmSync(dst, { recursive: true, force: true });
+  fs.cpSync(chassisDir, dst, {
+    recursive: true,
+    filter: (p) => !p.endsWith(".DS_Store") && !p.endsWith("tenant.record.json"),
+  });
+
+  const tokenPairs = Object.entries(cfg.tokens || {}).map(([k, v]) => [
+    `{{${k}}}`,
+    v,
+  ]);
+  const heroMode = cfg.heroMode || "full"; // "full" | "ambient"
+
+  for (const file of walk(dst)) {
+    let s = fs.readFileSync(file, "utf8");
+    const before = s;
+    for (const [a, b] of tokenPairs) s = s.split(a).join(b);
+    for (const o of copyOverrides)
+      s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
+    if (file.endsWith(".html")) {
+      if (cfg.menu) s = replaceMenu(s); // chassis pages already carry a menu
+      s = s.replace(
+        new RegExp(
+          `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`,
+          "g",
+        ),
+        `$1?v=${buildV}"`,
+      );
+      // the whole hero contract is this one attribute — CSS + JS both key off it
+      s = s.replace('data-hero-mode="full"', `data-hero-mode="${heroMode}"`);
+    }
+    if (file.endsWith("styles.css")) {
+      s += `\n${DEMO_NAV_CSS}\n`;
+      if (cfg.extraCss) s += `\n${cfg.extraCss}\n`;
+    }
+    for (const id of stripSections) {
+      s = s.replace(
+        new RegExp(`[ \\t]*<section[^>]*id="${id}"[^>]*>[\\s\\S]*?</section>`, ""),
+        "",
+      );
+    }
+    if (s !== before) fs.writeFileSync(file, s);
+  }
+
+  // assets: cfg.assets = dir(s) mirrored onto <slug>/ (photos, media)
+  for (const dir of [cfg.assets].flat().filter(Boolean)) {
+    const a = path.join(root, dir);
+    if (fs.existsSync(a)) fs.cpSync(a, dst, { recursive: true });
+  }
+
+  // seedFiles same as pair mode
+  for (const [f, content] of Object.entries(cfg.seedFiles || {})) {
+    const data =
+      typeof content === "string" && content.startsWith("@")
+        ? JSON.parse(fs.readFileSync(path.join(root, content.slice(1)), "utf8"))
+        : content;
+    fs.writeFileSync(path.join(dst, "data", f), JSON.stringify(data, null, 2) + "\n");
+  }
+
+  // cfg.news: owner's-voice feed items — replaces the chassis sample items
+  if (Array.isArray(cfg.news) && cfg.news.length) {
+    fs.writeFileSync(
+      path.join(dst, "data", "news.json"),
+      JSON.stringify({ note: "Owner-voice feed — edit via config.", items: cfg.news }, null, 2) + "\n",
+    );
+  }
+
+  // pageFiles same as pair mode
+  for (const [f, spec] of Object.entries(cfg.pageFiles || {})) {
+    let s = spec.startsWith("@")
+      ? fs.readFileSync(path.join(root, spec.slice(1)), "utf8")
+      : spec;
+    for (const [a, b] of tokenPairs) s = s.split(a).join(b);
+    for (const o of copyOverrides)
+      s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
+    s = s.replace(
+      new RegExp(`((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`, "g"),
+      `$1?v=${buildV}"`,
+    );
+    if (cfg.menu) s = replaceMenu(s);
+    fs.writeFileSync(path.join(dst, f), s);
+  }
+
+  // fail loudly on unfilled tokens — the inverse of the persona-leak check
+  const missing = new Set();
+  const scan = (d) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const p = path.join(d, e.name);
+      if (e.isDirectory()) scan(p);
+      else if (/\.(html|js|css|json)$/.test(e.name))
+        for (const m of fs.readFileSync(p, "utf8").matchAll(/\{\{([A-Z_]+)\}\}/g))
+          missing.add(`${m[1]}  (${path.relative(dst, p)})`);
+    }
+  };
+  scan(dst);
+  if (missing.size) {
+    console.error("\nUNFILLED TOKENS — add these to cfg.tokens:");
+    for (const m of [...missing].sort()) console.error("  " + m);
+    process.exit(1);
+  }
+
+  // every referenced image must exist in the tenant — broken imgs are
+  // silent persona leaks the same way leftover strings are
+  const missingImgs = new Set();
+  const scanImgs = (d) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const p = path.join(d, e.name);
+      if (e.isDirectory()) scanImgs(p);
+      else if (/\.(html|js|json)$/.test(e.name))
+        for (const m of fs
+          .readFileSync(p, "utf8")
+          .matchAll(/images\/[a-z0-9/_-]+\.(?:jpe?g|png|webp)/g))
+          if (!fs.existsSync(path.join(dst, m[0]))) missingImgs.add(m[0]);
+    }
+  };
+  scanImgs(dst);
+  if (missingImgs.size) {
+    console.error("\nMISSING IMAGES — drop these in cfg.assets (see chassis/images/REQUIRED.md):");
+    for (const m of [...missingImgs].sort()) console.error("  " + m);
+    process.exit(1);
+  }
+
+  // register from the tokenised record template — never the roxjaya record
+  const tenantsFile = path.join(root, "data", "tenants.json");
+  const tenants = JSON.parse(fs.readFileSync(tenantsFile, "utf8"));
+  let tStr = fs.readFileSync(path.join(chassisDir, "tenant.record.json"), "utf8");
+  for (const [a, b] of tokenPairs) {
+    // tokens sit inside JSON strings — escape \ and " so the fill stays valid
+    const safe = String(b).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+    tStr = tStr.split(a).join(safe);
+  }
+  const t = JSON.parse(tStr);
+  t.tenant_id = slug;
+  const demoDomain = String(process.env.DEMO_BASE_DOMAIN || "").trim().toLowerCase();
+  t.hostnames = [
+    `${slug}.localhost`,
+    `demo-${slug}.localhost`,
+    ...(demoDomain ? [`${slug}.${demoDomain}`, `demo-${slug}.${demoDomain}`] : []),
+  ];
+  t.canonicalHost = `${slug}.localhost`;
+  t.currency = cfg.currency || "gbp";
+  t.demo = true;
+  tenants.tenants = tenants.tenants.filter((x) => x.tenant_id !== slug);
+  tenants.tenants.push(t);
+  fs.writeFileSync(tenantsFile, JSON.stringify(tenants, null, 2) + "\n");
+
+  console.log(`chassis build done → ${slug}/  (hero: ${heroMode})`);
+  console.log(`tenant "${slug}" registered — hostnames: ${t.hostnames.join(", ")}`);
+  console.log(`open http://localhost:3000/${slug}/`);
+  process.exit(0);
 }
 
 // ---- 1. copy --------------------------------------------------------------

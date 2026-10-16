@@ -49,12 +49,53 @@ same flag, and treat bake gradient/scrim strength as a single token.
 ## Status
 
 - [x] Direction agreed
-- [ ] joshharrison/ browser review by user (in progress)
-- [ ] Fork to chassis/ + tokenise
-- [ ] Image contract + REQUIRED.md
-- [ ] Code review pass
-- [ ] Chassis mode in reskin-tenant.js
-- [ ] Regenerate a test tenant and diff-compare against a hand-built demo
+- [x] joshharrison/ browser review by user (in progress)
+- [x] Fork to chassis/ + tokenise — `node scripts/build-chassis.js`
+  (recipe: `scripts/reskin/chassis.tokens.json`; regenerates Josh, tokenises,
+  strips dead files, fails loudly on persona leaks)
+- [x] Image contract — `chassis/images/REQUIRED.md` (auto-generated, 31 slots)
+- [x] Dead files stripped — alt.css, coach.css, hero-reveal.js, scene.js,
+  doubles.js, diary.js, confetti.browser.js (verified unlinked)
+- [x] Chassis mode in reskin-tenant.js — `"mode": "chassis"` + `tokens` map +
+  `assets` dir + `heroMode`; fails loudly on unfilled `{{TOKENS}}`; tenant
+  record cloned from `chassis/tenant.record.json` (never the roxjaya record)
+- [x] Hero contract — single `data-hero-mode="full|ambient"` attribute on
+  `.hero--bleed`; CSS selectors + app.js mask check both key off it
+- [x] Test tenant generated — `mayaokafor` (fictional, ambient hero):
+  all pages 200, zero tokens left, zero Josh-ghosts, images resolve
+- [x] Voice slots marked — humour moments are explicit tokens, not inherited
+  phrasing: `{{VOICE_DOUBLES_HOOK}}` (mixed-doubles line on find-a-partner),
+  `{{VOICE_WEDDING}}` (card-removal joke), `{{VOICE_NEWS_TAKE}}` (third news
+  item's take). Plus `cfg.news` — an array of feed items in the owner's voice;
+  chassis ships 3 sample items by default so the feed never launches empty.
+- [ ] Visual browser review of a chassis tenant (both hero modes)
+
+## Voice & personality map — where a creator's character lives
+
+Required voice tokens (build fails if unfilled): `{{TAGLINE}}`,
+`{{HERO_TITLE_HTML}}`, `{{VOICE_DOUBLES_HOOK}}`, `{{VOICE_WEDDING}}`,
+`{{VOICE_NEWS_TAKE}}`. The feed itself: `cfg.news` = 3 items in the
+owner's voice (title / summary / take / link) — chassis ships 3 generic
+samples otherwise.
+
+Optional personality spots — already gender/persona-neutral in the
+chassis; override per tenant via `copyOverrides` if the creator's voice
+wants something different:
+
+| Spot | File | Current hed/copy |
+| --- | --- | --- |
+| Hero motto | index.html | `{{HERO_TITLE_HTML}}` + `{{TAGLINE}}` |
+| Story hed | index.html | "{{COACH_NAME}}. {{SEASON_START}} to …" — stat-led, fine as-is |
+| Rulebook hed | index.html | "The stuff that's not in the rulebook." |
+| Matchmaker copy | find-a-partner.html | voice tokens + "The coach is the matchmaker, not an algorithm" |
+| Crew hed | race-crew.html | "Eight stations done — one more: dinner." |
+| Desk intro | desk.html | generic ledger copy |
+| Coach tone | desk.js/coaching.html | demo framing lines |
+
+Gender rule: all copy is gender-neutral by default; division names
+(Men / Women / Women's Pro) stay — they're HYROX categories, not persona.
+A config wanting a deliberately gendered voice does it through the voice
+tokens and copyOverrides, never by editing the chassis.
 
 ## Open follow-ups
 

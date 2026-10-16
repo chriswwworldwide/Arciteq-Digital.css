@@ -4,6 +4,7 @@
   "heroMode": "full",
   "assets": "scripts/reskin/chassis-demo-assets",
   "currency": "gbp",
+  "menu": "        <ul class=\"menu\" id=\"menu\">\n          <li><a href=\"/station9/\">Home</a></li>\n          <li>\n            <button aria-expanded=\"false\" aria-haspopup=\"true\">The Platform <span class=\"caret\"></span></button>\n            <ul class=\"sub\">\n              <li><a href=\"/station9/predictor.html\">Race predictor</a></li>\n              <li><a href=\"/station9/splits.html\">Split analyser</a></li>\n              <li><a href=\"/station9/find-a-partner.html\">Race-mate board</a></li>\n              <li><a href=\"/station9/results.html\">Results board</a></li>\n              <li><a href=\"/station9/stations-prep.html\">Stations prep</a></li>\n              <li><a href=\"/station9/events.html\">Race calendar</a></li>\n            </ul>\n          </li>\n          <li><a href=\"/station9/news.html\">News</a></li>\n          <li><a href=\"/station9/#story\">About</a></li>\n          <li><a href=\"/station9/#ask\">Work with us</a></li>\n          <li><a href=\"/station9/list.html\">Join the list</a></li>\n        </ul>",
   "tokens": {
     "SLUG": "station9",
     "COACH_NAME": "Station 9",
@@ -21,7 +22,6 @@
     "REGION_LC": "uk",
     "TAGLINE": "the platform behind the coaches",
     "HERO_TITLE_HTML": "Your coaching.<br /><em>Your platform.</em>",
-
     "APPLY_URL": "https://station9.studio",
     "PROGRAMMES_URL": "https://station9.studio",
     "STORE_URL": "https://station9.studio",
@@ -31,7 +31,6 @@
     "TIKTOK_URL": "https://www.tiktok.com/@station9studio",
     "THREADS_URL": "https://www.threads.com/@station9studio",
     "LINKTREE_URL": "https://station9.studio",
-
     "DOUBLES_PARTNER": "the network",
     "PB_VENUE": "London",
     "PB_VENUE_LC": "london",
@@ -43,7 +42,6 @@
     "PB_HALF": "athletes",
     "PB_OPEN": "one platform",
     "SEASON_START": "Day one",
-
     "PARTNER_GYM": "creators",
     "PARTNER_GYM_LC": "creators",
     "PARTNER_SUPP": "coaches",
@@ -52,14 +50,12 @@
     "PARTNER_KIT_LC": "athletes",
     "GYM_CODE": "S9",
     "PHOTO_BUDDY": "the team",
-
     "ACCENT": "#ff3b3b",
     "ACCENT_DARK": "#d92626",
     "ACCENT_SOFT": "#2a1414",
-
-    "VOICE_DOUBLES_HOOK": "The network does the matching — coaches keep the relationship.",
+    "VOICE_DOUBLES_HOOK": "The network does the matching \u2014 coaches keep the relationship.",
     "VOICE_WEDDING": "the platform remembers so you don't have to.",
-    "VOICE_NEWS_TAKE": "Every coach on Station 9 brings their athletes with them — and every athlete makes the next coach's site better.",
+    "VOICE_NEWS_TAKE": "Every coach on Station 9 brings their athletes with them \u2014 and every athlete makes the next coach's site better.",
     "SOCIAL_HANDLE_UPPER": "STATION9STUDIO"
   },
   "news": [
@@ -69,23 +65,28 @@
       "summary": "Link-in-bio tools list links. A Station 9 site runs the business: coaching, programmes, race tools, community and the money desk.",
       "take": "The difference isn't the features. It's that everything a creator's audience needs lives in one place, under their brand.",
       "link": "/station9/coaching.html",
-      "linkLabel": "What a Station 9 site does →"
+      "linkLabel": "What a Station 9 site does \u2192"
     },
     {
       "date": "2026-09-20",
       "title": "The race tools nobody else ships",
-      "summary": "Race predictor, split analyser, station prep, race-mate boards — tools built for hybrid athletes, not generic widgets.",
+      "summary": "Race predictor, split analyser, station prep, race-mate boards \u2014 tools built for hybrid athletes, not generic widgets.",
       "take": "A calculator that knows what wall balls do to your run splits isn't a gimmick. It's the reason athletes keep coming back.",
       "link": "/station9/predictor.html",
-      "linkLabel": "Try the predictor →"
+      "linkLabel": "Try the predictor \u2192"
     },
     {
       "date": "2026-09-05",
       "title": "Where the athletes' data lives",
-      "summary": "Every athlete on a Station 9 site gets one account across the network — their cards, RSVPs and results follow them, not the site.",
-      "take": "Coaches keep their athletes. The network just makes every community bigger — that's the deal, written into the contract.",
+      "summary": "Every athlete on a Station 9 site gets one account across the network \u2014 their cards, RSVPs and results follow them, not the site.",
+      "take": "Coaches keep their athletes. The network just makes every community bigger \u2014 that's the deal, written into the contract.",
       "link": "/station9/find-a-partner.html",
-      "linkLabel": "See the race-mate board →"
+      "linkLabel": "See the race-mate board \u2192"
     }
+  ],
+  "stripSections": [
+    "plans",
+    "merch",
+    "tips"
   ]
 }

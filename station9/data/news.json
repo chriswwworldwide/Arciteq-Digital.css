@@ -1,0 +1,29 @@
+{
+  "note": "Owner-voice feed — edit via config.",
+  "items": [
+    {
+      "date": "2026-10-01",
+      "title": "Why a coach's site isn't a Linktree",
+      "summary": "Link-in-bio tools list links. A Station 9 site runs the business: coaching, programmes, race tools, community and the money desk.",
+      "take": "The difference isn't the features. It's that everything a creator's audience needs lives in one place, under their brand.",
+      "link": "/station9/coaching.html",
+      "linkLabel": "What a Station 9 site does →"
+    },
+    {
+      "date": "2026-09-20",
+      "title": "The race tools nobody else ships",
+      "summary": "Race predictor, split analyser, station prep, race-mate boards — tools built for hybrid athletes, not generic widgets.",
+      "take": "A calculator that knows what wall balls do to your run splits isn't a gimmick. It's the reason athletes keep coming back.",
+      "link": "/station9/predictor.html",
+      "linkLabel": "Try the predictor →"
+    },
+    {
+      "date": "2026-09-05",
+      "title": "Where the athletes' data lives",
+      "summary": "Every athlete on a Station 9 site gets one account across the network — their cards, RSVPs and results follow them, not the site.",
+      "take": "Coaches keep their athletes. The network just makes every community bigger — that's the deal, written into the contract.",
+      "link": "/station9/find-a-partner.html",
+      "linkLabel": "See the race-mate board →"
+    }
+  ]
+}

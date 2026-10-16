@@ -3479,6 +3479,269 @@
         }
       ],
       "demo": true
+    },
+    {
+      "tenant_id": "station9",
+      "vertical": "coaching",
+      "hostnames": [
+        "station9.localhost",
+        "demo-station9.localhost"
+      ],
+      "canonicalHost": "station9.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Station 9",
+        "tagline": "Hyrox coaching, online programming and race prep from the UK.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Station 9 — podium athlete and the UK personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in the UK and online with Station 9 — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/station9/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/station9/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/station9/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/station9/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/station9/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/station9/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/station9/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "station9/data/inbox.json",
+        "writable": [
+          "station9/data/events.json",
+          "station9/data/cities.json",
+          "station9/data/news.json",
+          "station9/data/partners.json",
+          "station9/data/matchboard.json",
+          "station9/data/travelboard.json"
+        ],
+        "partners": "station9/data/partners.json",
+        "matchboard": "station9/data/matchboard.json",
+        "travelboard": "station9/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/station9/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/station9/welcome/",
+        "welcomeIntro": "Hi Station 9 — this is the first of your Monday emails from station9.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/station9/guides/",
+        "brand": "Station 9",
+        "homePath": "/station9/",
+        "language": "en",
+        "author": {
+          "name": "Station 9",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Station 9 — HYROX Certified Coach, podium athlete, the UK personal trainer.",
+        "indexTitle": "HYROX training guides by Station 9 — Station 9",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from the UK: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/station9/styles.css",
+          "/station9/guide.css"
+        ],
+        "scripts": [
+          "/station9/app.js",
+          "/station9/partners.js"
+        ],
+        "headerHtml": "<a href=\"/station9/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">STATION <span class=\"o\">9</span> <span class=\"sig\" aria-label=\"by Station 9\"><span class=\"sig-text\">by Station 9</span></span></span></h1></a><p class=\"city\">the UK</p>",
+        "nav": [
+          {
+            "href": "/station9/",
+            "label": "Home"
+          },
+          {
+            "href": "/station9/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/station9/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/station9/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/station9/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/station9/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/station9/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/station9/hyrox-london/",
+            "label": "Hyrox the UK"
+          },
+          {
+            "href": "/station9/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/station9/news/",
+            "label": "News"
+          },
+          {
+            "href": "/station9/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/station9/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/station9/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Station 9</h3><p>Hybrid coaching in the UK or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/station9/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @station9fit",
+          "url": "https://www.tiktok.com/@station9studio"
+        },
+        {
+          "label": "YouTube — STATION9STUDIO",
+          "url": "https://www.youtube.com/@station9studio"
+        },
+        {
+          "label": "Station 9 @station9.studio",
+          "url": "https://www.instagram.com/station9.studio/"
+        },
+        {
+          "label": "Station 9 365",
+          "url": "https://station9.studio"
+        },
+        {
+          "label": "All links",
+          "url": "https://station9.studio"
+        }
+      ],
+      "demo": true
     }
   ]
 }

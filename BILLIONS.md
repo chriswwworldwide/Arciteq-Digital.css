@@ -455,3 +455,54 @@ Station 9 owns the network.
   like Hannah
 - The second mutation — what "industry OS" looks like is a £10M-business
   problem; noted, not solved
+
+## Fallback track: white-label agency supply (decided — stays in drawer)
+
+If the direct-coach pitch path fails, the asset is still sellable: agencies
+can sell the sites; we build them in ~15 min off a client's Instagram.
+Structure agreed as a fallback deal, not a live track:
+
+- **Capacity retainer:** £500–£1,500/mo (never under £400). £750–1,000 is
+  the defensible opening position. Non-refundable, paid whether they sell
+  or not — it reserves our availability, and filters out window-shoppers.
+- **Per-sale cut:** 20–30% of the sale price (of *sale price*, not their
+  fantasy internal cost). At ~£2k/site that's £400–600 to us per build.
+- **Support bound:** retainer covers availability; revisions capped
+  (e.g. 2 rounds per site, then hourly). White-label profit dies in
+  unbounded tweaks.
+- **Minimum term:** 3–6 months — otherwise they take one site, learn the
+  speed, and walk.
+- **We own the engine.** They license the output; the chassis, tokens and
+  tooling stay ours. Sites either migrate to them at a price or stay on
+  our hosting at MRR — never handed over free.
+- **Income shape:** 3 sites/mo ≈ £2.5k/mo; 2 agencies at 4 sites each ≈
+  £6k/mo. Real money fast, but zero network, zero enterprise value.
+
+**Decision: sequence, don't run both.** Agency work and the platform
+compete for the same hours and pull the chassis in opposite directions
+(variety vs sameness). White-label also sells away the "Station 9" brand
+accumulation the network thesis needs. Tripwire to pull this out of the
+drawer: month-1 pitch conversion < ~3% = agencies become the customer,
+platform becomes the side bet. Inbound agency interest is still worth one
+coffee — real pull beats the plan. If ever forced to run both: agencies
+live on the legacy pair-mode engine, the platform keeps the chassis +
+tenants. Never let an agency client touch Station 9's infrastructure.
+
+## Perspective note (Nov 2026)
+
+The "suspiciously easy" two days weren't zero→ecosystem — they were the
+mountain-top view of ~14 months: ecommerce build since Aug 2025, Dina's
+site as the accidental product research, Josh's site compressing it into
+a pipeline. The chassis exists because every creator site is the same
+organism in different skin — tokenisation is only possible because the
+organism is already understood. Unproven ≠ unbuilt: sales conversion,
+paying-tenant ops and churn are the untested legs, not the platform.
+
+## Open questions
+
+- Station 9 site — live at / (apex) + /station9/, studio copy pass done;
+  remaining: real photography/assets, deeper-page copy polish
+- Storefront parameterisation scope — what it takes to reskin Pawsense
+  like Hannah
+- The second mutation — what "industry OS" looks like is a £10M-business
+  problem; noted, not solved

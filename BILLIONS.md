@@ -268,6 +268,56 @@ audience.
 Decision: consumer version = outrigger idea, parked. Tenant bulletin =
 real feature candidate after the voice engine exists.
 
+### Outrigger #3 — sell the build service to agencies, not products to gyms
+
+The pitch (as floated): agencies survive on cold DMs + homepage mockup
+PDFs; we can ship a working reskin in under an hour. Sell them the
+leverage.
+
+Verdict — **parked, stay direct.** Three real problems:
+
+1. Agencies smart enough to buy this are smart enough to see the engine
+   and want it in-house. Revealing the turnaround speed starts a
+   "hire/acquire/rebuild" negotiation, not a subscription.
+2. Agencies buy capability, not outcomes — they'd want tooling, docs,
+   SLAs. That's a B2B software pivot, not a pitch tweak; their roadmap
+   becomes ours.
+3. The direct model hasn't been tested yet (zero paying gym clients at
+   time of writing). Abandoning the thesis on the first serious
+   prospect isn't a pivot, it's a guess.
+
+Middle path worth keeping: **freelance designers/marketers** who win
+gym work and need a site built could pay a project fee per reskin —
+productised freelancing, doesn't cannibalise the recurring play.
+
+Revisit if: the go/no-go gates in PROSPECTS.md trigger with zero
+closes, OR the template economics prove out and agencies reappear as a
+*channel*, not the buyer. Pickaxe stays ours until the hole's dug.
+
+### Outrigger #4 — rival race brands chasing HYROX
+
+The pitch (as floated): race formats trying to gain footing against
+HYROX need to look bigger than they are — our engine (events, results,
+leaderboards, community, desk) is exactly the kit that makes an upstart
+league look established. Buyer = the league itself, white-label, not
+the gyms.
+
+Verdict — **parked, enterprise arm.** Real fit, but it's a different
+sale: B2B/white-label, longer cycle, handful of brands not a market.
+Not a pipeline — a nice high-ticket bolt-on once the gym playbook has
+case studies to point at. Revisit when a rival format (ATHX, DEKA,
+whatever's ascendant) is visibly scaling and under-tooled.
+
+Related pool note (bigger than the outrigger): coaches straddle sports.
+G&H-types coach athletes who race HYROX, Spartan, DEKA, CrossFit — the
+platform's coaching/community/shop/desk core is race-format-agnostic.
+So the real prospect pool isn't "HYROX gyms," it's "hybrid-fitness
+coaches with a community." HYROX stays the sharpest pitch (predictor +
+stations prep land as-is); Spartan/CrossFit coaches are the same
+product with a reskinned race-tools layer — viable, slightly thinner
+demo. Expands the addressable pool well beyond the ~30–80 creator /
+hundreds-of-gyms HYROX-only estimate.
+
 ## Chat notes
 
 - **Tone: dry British sarcasm, on tap.** Not sitcom energy — deadpan,

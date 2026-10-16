@@ -97,6 +97,34 @@ Two pitch lanes:
     the whole creator-commerce tier. Not a city-gym clone; umbrella
     brand + Shopify-retained funnel. £995 + £129/mo recommended.
 
+## Creator-commerce tier — watchlist (G&H shape)
+
+Pipeline for the funnel variant proven by the G&H build: creator audience
++ coaching + product/affiliate revenue, currently routed through a
+Linktree. Verified names, UK, added Oct 2026.
+
+Strict-shape tier (~12 confirmed):
+
+| Prospect | Audience | Business | Fit / note |
+|---|---|---|---|
+| **Josh Harrison** (@joshharrisonfit) | ~96k IG, Gymshark | 1:1 coaching + programs (@hybrid.hub) + clothing brand | Closest G&H clone — linktree-routed, solo not couple |
+| **James Kelly & Georgie Vesely** | Elite 15 WR-holder | hybridhub YouTube + coaching | Couple like G&H; elite credibility |
+| **Zara Piergianni** (@coachedbyzara) | Elite 15 | "Coached by Zara" online coaching | Named brand already — easy demo |
+| **Ciaran Parkinson** (@ciaran_fit4rox) | Official HYROX ambassador | FIT4ROX programmes + FB community | Ambassador status = reach; FB group = migration pitch |
+| **Matt Plowman** | HYROX coach, sub-60 | Coaching (day job: financial adviser) | Smaller; G&H podcast guest = warm intro path |
+| **Simon & Gemma Lunn** | Mixed-doubles couple | Phoenix Fitness Chard + Somerset Cheesecakery | Bridge to gym tier — two businesses, one desk |
+| **Kat Parnell** | Elite 15 | Coaching £200/mo + programming subs | Has polished site — pitch is consolidation, harder door |
+| **Jade Skillen** | Top UK coach | 350+ athletes coached, own platform | Established — only pitchable as upgrade |
+| **Jake Dearden** | UK top male, big sponsors | Master trainer | Huge audience, thin platform — good fit, hard access |
+
+Too big / parked: Zoe Rae (380k TikTok, agency-protected), Lucy Davis
+(864k, MyCoach app + Millar Agency — doesn't need us).
+
+Pool maths: strict shape ≈ 12–20 UK; expanding to Elite 15 athletes
+with coaching side-hustles + 10–50k hybrid creators ≈ 50–90 total.
+Enough for a year of 1–2-pitch days before widening to
+Spartan/CrossFit-adjacent coaches (see BILLIONS.md outriggers).
+
 ## Watchlist / parked
 
 - J13 Fitness (Worsley) — overlaps Hannah's patch

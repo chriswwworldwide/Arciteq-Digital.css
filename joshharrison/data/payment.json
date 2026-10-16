@@ -1,0 +1,42 @@
+{
+  "_note": "Manual bank-transfer payments. Edit here; the pay page reads it live. Set qris.src to an image path once Josh's QRIS screenshot is in joshharrison/images/ and the QR block appears. whatsapp is Josh's number with country code, digits only.",
+  "bank": {
+    "name": "BCA",
+    "accountNumber": "2311992009",
+    "accountName": "Ida Rosdiana",
+    "accountNameNote": "The account is in Josh's legal name — your bank will show 'Ida Rosdiana' when you confirm."
+  },
+  "qris": { "src": "", "alt": "Scan to pay Josh by QRIS" },
+  "whatsapp": "",
+  "instagram": "joshharrisonfit",
+  "plans": [
+    {
+      "id": "joshharrison-plan-crew-001",
+      "name": "Rookie Crew",
+      "amountGbp": 850000,
+      "per": "per month",
+      "summary": "Weekly beginner group session in Worcestershire, monthly meetup (class, then coffee), starter programme in the TrueCoach app, crew broadcast list. Rolling start — join any time, no experience needed."
+    },
+    {
+      "id": "joshharrison-plan-warrior-001",
+      "name": "Warrior Program",
+      "amountGbp": 599000,
+      "per": "per month",
+      "summary": "Weekly programme in the TrueCoach app, station library, community group, monthly Q&A."
+    },
+    {
+      "id": "joshharrison-plan-hybrid-001",
+      "name": "Hybrid Coaching",
+      "amountGbp": 2500000,
+      "per": "per month",
+      "summary": "1:1 online coaching plus two floor sessions a month in Worcestershire."
+    },
+    {
+      "id": "joshharrison-plan-elite-001",
+      "name": "Elite Race Prep",
+      "amountGbp": 6000000,
+      "per": "per month, 3-month minimum",
+      "summary": "Fully individualised 12-week race build with pacing and race-day strategy."
+    }
+  ]
+}

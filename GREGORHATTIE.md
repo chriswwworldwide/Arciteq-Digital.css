@@ -153,6 +153,17 @@ creator-tier builds for margin + proof, local clones as repeatable filler.
 - Results board + roundups carry subtle "Sample entries" notes —
   honest without shouting.
 
+### Channel advantage (why DM beats everything else)
+
+- Pitching as a follower — IG mutuals, in their turf. Insider credibility:
+  "a follower built you this" reads as community generosity, not sales.
+- Agency pitches can't survive the channel: you can't attach a PDF to an
+  IG DM, so they're forced into cold email/calls — where they look like
+  every other agency.
+- Our pitch is a link in a DM — one tap and they're inside their own
+  working site, in the app they already live in. The demo IS the pitch;
+  nothing has to be imagined.
+
 ### The Money Desk — built, live, linked
 
 - `/racetoframe/desk.html` — footer link "The desk", password-free for

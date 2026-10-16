@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>The Desk — money, in one place | Josh Harrison</title>
+    <meta
+      name="description"
+      content="A private money desk demo for the Josh Harrison site — coaching, programmes, affiliate income and race costs in one place. Sample data."
+    />
+    <link rel="stylesheet" href="/joshharrison/styles.css" />
+    <link rel="stylesheet" href="/joshharrison/guide.css" />
+    <style>
+      .desk-wrap {
+        padding: 48px 0 84px;
+      }
+      .desk-disclaimer {
+        background: var(--paper-2);
+        border: 1px dashed var(--line);
+        border-radius: 12px;
+        padding: 0.8rem 1.1rem;
+        font-size: 0.85rem;
+        color: var(--ink-3);
+        margin: 0 0 1.4rem;
+      }
+      .desk-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 1rem;
+        margin: 0 0 1.6rem;
+      }
+      .desk-stat {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1rem 1.1rem;
+        background: #fff;
+      }
+      .desk-stat .ds-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      .desk-stat .ds-value {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-top: 0.2rem;
+      }
+      .desk-stat .ds-value.pos {
+        color: #1a7f4e;
+      }
+      .desk-stat .ds-value.neg {
+        color: var(--pink);
+      }
+      .desk-tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        align-items: center;
+        margin: 0 0 1.2rem;
+      }
+      .desk-tools select,
+      .desk-tools input[type="text"],
+      .desk-tools input[type="month"] {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        font: inherit;
+        font-size: 0.9rem;
+        background: #fff;
+      }
+      .desk-tools .spacer {
+        flex: 1;
+      }
+      .desk-add {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.7rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1.1rem 1.2rem;
+        background: var(--paper-2);
+        margin: 0 0 1.6rem;
+      }
+      .desk-add input,
+      .desk-add select {
+        padding: 0.55rem 0.8rem;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        font: inherit;
+        font-size: 0.9rem;
+        width: 100%;
+        background: #fff;
+      }
+      .desk-add .wide {
+        grid-column: 1 / -1;
+      }
+      .desk-add .actions {
+        grid-column: 1 / -1;
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+      }
+      .desk-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+      }
+      .desk-row {
+        display: grid;
+        grid-template-columns: 92px 1fr auto auto;
+        gap: 0.8rem;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        background: #fff;
+      }
+      .desk-row .dr-date {
+        font-size: 0.8rem;
+        color: var(--ink-3);
+      }
+      .desk-row .dr-desc {
+        font-size: 0.95rem;
+      }
+      .desk-row .dr-desc small {
+        display: block;
+        color: var(--ink-3);
+        font-size: 0.75rem;
+      }
+      .desk-row .dr-cat {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--ink-3);
+      }
+      .desk-row .dr-amt {
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .desk-row .dr-amt.in {
+        color: #1a7f4e;
+      }
+      .desk-row .dr-amt.out {
+        color: var(--pink);
+      }
+      .desk-row .dr-del {
+        border: none;
+        background: none;
+        color: var(--ink-3);
+        cursor: pointer;
+        font-size: 1rem;
+        padding: 0.2rem 0.4rem;
+      }
+      .desk-row .dr-del:hover {
+        color: var(--pink);
+      }
+      .desk-empty {
+        text-align: center;
+        color: var(--ink-3);
+        padding: 2.4rem 1rem;
+        border: 1px dashed var(--line);
+        border-radius: 12px;
+      }
+      @media (max-width: 640px) {
+        .desk-row {
+          grid-template-columns: 1fr auto;
+        }
+        .desk-row .dr-date,
+        .desk-row .dr-cat {
+          grid-column: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="masthead wrap">
+      <a href="/joshharrison/" style="color: inherit; text-decoration: none">
+        <h1>
+          <span class="wordmark"
+            >JOSH HARRIS<span class="o">O</span>N
+            <span class="sig" aria-label="Hybrid Hub"
+              ><span class="sig-text">Hybrid Hub</span
+              ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+                <path
+                  d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                  fill="currentColor"
+                /></svg
+            ></span>
+          </span>
+        </h1>
+      </a>
+      <p class="city">The Desk</p>
+    </header>
+
+    <div class="nav">
+      <div class="wrap">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          Menu
+        </button>
+        <ul class="menu" id="menu"></ul>
+      </div>
+    </div>
+
+    <section class="guide-hero">
+      <div class="wrap">
+        <div class="guide-hero-text">
+          <ol class="crumbs">
+            <li><a href="/joshharrison/">Josh Harrison</a></li>
+            <li>The Desk</li>
+          </ol>
+          <p class="eyebrow">The business side</p>
+          <h2>The Desk.</h2>
+          <p class="lead">
+            Coaching income, programme payments, affiliate money, race costs —
+            one running ledger instead of five spreadsheets and a screenshot
+            folder. This is what "a business, not a Linktree" actually means.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap desk-wrap">
+      <div class="article" style="max-width: none">
+        <p class="desk-disclaimer">
+          <b>Sample data.</b> Everything below is illustrative demo figures —
+          not Josh's real numbers. In the live version only Josh sees this
+          page, on his own login.
+        </p>
+
+        <div class="desk-stats" id="desk-stats"></div>
+
+        <div class="desk-tools">
+          <select id="f-type" aria-label="Filter by type">
+            <option value="">All types</option>
+            <option value="in">Money in</option>
+            <option value="out">Money out</option>
+          </select>
+          <select id="f-cat" aria-label="Filter by category">
+            <option value="">All categories</option>
+          </select>
+          <input type="month" id="f-month" aria-label="Filter by month" />
+          <input
+            type="text"
+            id="f-q"
+            placeholder="Search…"
+            aria-label="Search entries"
+          />
+          <span class="spacer"></span>
+          <button class="btn btn-ghost" id="export-csv" type="button">
+            Export CSV
+          </button>
+        </div>
+
+        <form class="desk-add" id="desk-add">
+          <input type="date" id="a-date" required aria-label="Date" />
+          <select id="a-type" aria-label="Type">
+            <option value="in">Money in</option>
+            <option value="out">Money out</option>
+          </select>
+          <select id="a-cat" aria-label="Category"></select>
+          <input
+            type="number"
+            id="a-amt"
+            step="0.01"
+            min="0"
+            placeholder="£0.00"
+            required
+            aria-label="Amount"
+          />
+          <input
+            class="wide"
+            type="text"
+            id="a-desc"
+            placeholder="What was it? (e.g. 1:1 client — March block)"
+            required
+            aria-label="Description"
+          />
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">Add entry</button>
+            <button class="btn btn-ghost" id="reset-demo" type="button">
+              Reset demo data
+            </button>
+          </div>
+        </form>
+
+        <div class="desk-list" id="desk-list"></div>
+        <div class="desk-empty" id="desk-empty" hidden>
+          Nothing matches those filters.
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div>© <span id="year"></span> Josh Harrison</div>
+        <nav>
+          <a href="/joshharrison/coaching.html">Coaching</a>
+          <a href="/joshharrison/watch.html">Watch</a>
+          <a href="/joshharrison/partners.html">Partners</a>
+          <a href="/joshharrison/desk.html">The desk</a>
+          <a href="https://www.instagram.com/joshharrisonfit/" target="_blank" rel="noopener">Instagram</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="/joshharrison/app.js" defer></script>
+    <script>
+      (function () {
+        var KEY = "jh-desk-v1";
+        var CATS = {
+          in: [
+            "1:1 coaching",
+            "Group programmes",
+            "Affiliate income",
+            "Content / brand work",
+            "Clothing (HH365)",
+            "Other",
+          ],
+          out: [
+            "Race entry & travel",
+            "Software & tools",
+            "Kit & equipment",
+            "Accountant & tax",
+            "Content costs",
+            "Other",
+          ],
+        };
+        var SEED = [
+          { d: "2026-03-03", t: "in", c: "1:1 coaching", a: 540, x: "Three athletes — March blocks" },
+          { d: "2026-03-06", t: "in", c: "Group programmes", a: 812, x: "FITR cohort — spring block" },
+          { d: "2026-03-10", t: "out", c: "Race entry & travel", a: 296, x: "Bologna flights + entry" },
+          { d: "2026-03-14", t: "in", c: "Affiliate income", a: 214, x: "Gymshark code payout" },
+          { d: "2026-03-18", t: "out", c: "Software & tools", a: 87, x: "FITR + hosting + editing apps" },
+          { d: "2026-03-21", t: "in", c: "Content / brand work", a: 1200, x: "Event content day — Birmingham" },
+          { d: "2026-03-25", t: "out", c: "Kit & equipment", a: 260, x: "Alphafly rotation" },
+          { d: "2026-03-28", t: "out", c: "Accountant & tax", a: 150, x: "Quarterly filing" },
+          { d: "2026-03-30", t: "in", c: "Clothing (HH365)", a: 960, x: "March drop — first weekend" },
+          { d: "2026-04-02", t: "in", c: "1:1 coaching", a: 720, x: "Four athletes — April blocks" },
+          { d: "2026-04-05", t: "out", c: "Content costs", a: 180, x: "BTS shoot — track session" },
+          { d: "2026-04-09", t: "in", c: "Affiliate income", a: 168, x: "Myprotein code payout" },
+        ];
+        function load() {
+          try {
+            var raw = localStorage.getItem(KEY);
+            if (raw) return JSON.parse(raw);
+          } catch (e) {}
+          return SEED.slice();
+        }
+        function save(rows) {
+          try {
+            localStorage.setItem(KEY, JSON.stringify(rows));
+          } catch (e) {}
+        }
+        var rows = load();
+        var £ = function (n) {
+          return "£" + n.toLocaleString("en-GB", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+        };
+        var catIn = document.getElementById("a-cat");
+        var typeSel = document.getElementById("a-type");
+        function fillCats(sel, t) {
+          sel.innerHTML = "";
+          CATS[t].forEach(function (c) {
+            var o = document.createElement("option");
+            o.value = c;
+            o.textContent = c;
+            sel.appendChild(o);
+          });
+        }
+        fillCats(catIn, "in");
+        typeSel.addEventListener("change", function () {
+          fillCats(catIn, typeSel.value);
+        });
+        var fCat = document.getElementById("f-cat");
+        CATS.in.concat(CATS.out).forEach(function (c) {
+          if (fCat.querySelector('option[value="' + c + '"]')) return;
+          var o = document.createElement("option");
+          o.value = c;
+          o.textContent = c;
+          fCat.appendChild(o);
+        });
+        function filtered() {
+          var t = document.getElementById("f-type").value;
+          var c = fCat.value;
+          var m = document.getElementById("f-month").value;
+          var q = document.getElementById("f-q").value.toLowerCase();
+          return rows.filter(function (r) {
+            if (t && r.t !== t) return false;
+            if (c && r.c !== c) return false;
+            if (m && r.d.slice(0, 7) !== m) return false;
+            if (q && r.x.toLowerCase().indexOf(q) === -1) return false;
+            return true;
+          });
+        }
+        function render() {
+          var inn = rows.filter(function (r) { return r.t === "in"; }).reduce(function (s, r) { return s + r.a; }, 0);
+          var out = rows.filter(function (r) { return r.t === "out"; }).reduce(function (s, r) { return s + r.a; }, 0);
+          var net = inn - out;
+          document.getElementById("desk-stats").innerHTML =
+            '<div class="desk-stat"><div class="ds-label">Money in</div><div class="ds-value pos">' + £(inn) + '</div></div>' +
+            '<div class="desk-stat"><div class="ds-label">Money out</div><div class="ds-value neg">' + £(out) + '</div></div>' +
+            '<div class="desk-stat"><div class="ds-label">Net</div><div class="ds-value ' + (net >= 0 ? "pos" : "neg") + '">' + £(net) + '</div></div>' +
+            '<div class="desk-stat"><div class="ds-label">Est. tax set-aside (20%)</div><div class="ds-value">' + £(Math.max(0, net) * 0.2) + '</div></div>';
+          var list = document.getElementById("desk-list");
+          var rows2 = filtered().sort(function (a, b) { return a.d < b.d ? 1 : -1; });
+          list.innerHTML = "";
+          document.getElementById("desk-empty").hidden = rows2.length > 0;
+          rows2.forEach(function (r) {
+            var i = rows.indexOf(r);
+            var div = document.createElement("div");
+            div.className = "desk-row";
+            div.innerHTML =
+              '<span class="dr-date">' + r.d + '</span>' +
+              '<span class="dr-desc">' + r.x.replace(/</g, "&lt;") + '<small>' + r.c + "</small></span>" +
+              '<span class="dr-amt ' + (r.t === "in" ? "in" : "out") + '">' + (r.t === "in" ? "+" : "−") + £(r.a) + "</span>" +
+              '<button class="dr-del" type="button" aria-label="Delete entry" data-i="' + i + '">×</button>';
+            list.appendChild(div);
+          });
+        }
+        document.getElementById("desk-add").addEventListener("submit", function (e) {
+          e.preventDefault();
+          rows.push({
+            d: document.getElementById("a-date").value,
+            t: typeSel.value,
+            c: catIn.value,
+            a: parseFloat(document.getElementById("a-amt").value) || 0,
+            x: document.getElementById("a-desc").value,
+          });
+          save(rows);
+          e.target.reset();
+          fillCats(catIn, "in");
+          render();
+        });
+        document.getElementById("desk-list").addEventListener("click", function (e) {
+          var b = e.target.closest(".dr-del");
+          if (!b) return;
+          rows.splice(parseInt(b.dataset.i, 10), 1);
+          save(rows);
+          render();
+        });
+        ["f-type", "f-cat", "f-month", "f-q"].forEach(function (id) {
+          document.getElementById(id).addEventListener("input", render);
+        });
+        document.getElementById("reset-demo").addEventListener("click", function () {
+          rows = SEED.slice();
+          save(rows);
+          render();
+        });
+        document.getElementById("export-csv").addEventListener("click", function () {
+          var head = "date,type,category,amount,description\n";
+          var body = filtered()
+            .map(function (r) {
+              return [r.d, r.t, '"' + r.c + '"', r.a.toFixed(2), '"' + r.x.replace(/"/g, '""') + '"'].join(",");
+            })
+            .join("\n");
+          var blob = new Blob([head + body], { type: "text/csv" });
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "jh-desk.csv";
+          a.click();
+        });
+        document.getElementById("a-date").valueAsDate = new Date();
+        render();
+      })();
+    </script>
+  </body>
+</html>

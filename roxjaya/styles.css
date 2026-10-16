@@ -2218,19 +2218,24 @@ body.has-sticky-cta {
   min-height: 52px;
   padding: 0 18px 0 14px;
   border-radius: 999px;
-  background: #25d366;
-  color: #0b1a10;
+  background: var(--pink);
+  color: #fff;
   font-weight: 700;
   text-decoration: none;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .wa-fab:hover {
-  background: #1ebe5b;
+  background: var(--pink-600);
 }
 
+/* While the accent sticky CTA is on screen the FAB steps back to a quiet
+   surface — one signature-colour element at a time, no matching pills. */
 body.has-sticky-cta .wa-fab {
   bottom: calc(88px + env(safe-area-inset-bottom));
+  background: var(--paper-2);
+  color: var(--ink);
+  border: 1px solid var(--line);
 }
 
 @media (max-width: 600px) {
@@ -2395,7 +2400,7 @@ figure.reveal {
   }
   93% {
     transform: scale(1.07);
-    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   }
 }
 

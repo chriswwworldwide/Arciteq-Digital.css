@@ -106,8 +106,10 @@ const HERO_FULL_CSS = `/* hero--full: photo covers the whole hero; reveal unroll
 .hero--bleed.hero--full .hero-img {
   object-fit: cover;
   /* --hero-focus keeps the subject clear of the bottom-left copy and is
-     set per tenant on :root. */
+     set per tenant on :root. A small lift keeps dark photos reading as a
+     hero image rather than a dimmed background. */
   object-position: var(--hero-focus, 50% 30%);
+  filter: brightness(1.22) contrast(1.02);
   padding: 0;
 }
 
@@ -115,16 +117,15 @@ const HERO_FULL_CSS = `/* hero--full: photo covers the whole hero; reveal unroll
   background:
     linear-gradient(
       180deg,
-      rgba(40, 14, 30, 0.05) 0%,
-      rgba(40, 14, 30, 0.2) 45%,
-      rgba(40, 14, 30, 0.86) 100%
+      rgba(40, 14, 30, 0) 0%,
+      rgba(40, 14, 30, 0.02) 60%,
+      rgba(40, 14, 30, 0.18) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(40, 14, 30, 0.88) 0%,
-      rgba(40, 14, 30, 0.5) 45%,
-      rgba(40, 14, 30, 0.12) 75%,
-      rgba(40, 14, 30, 0) 100%
+      rgba(40, 14, 30, 0.2) 0%,
+      rgba(40, 14, 30, 0.07) 35%,
+      rgba(40, 14, 30, 0) 50%
     );
 }
 
@@ -347,7 +348,7 @@ for (const file of walk(dst)) {
     if (file.endsWith("index.html")) {
       s = s.replace(
         'class="hero hero--bleed"',
-        'class="hero hero--bleed hero--full"',
+        'class="hero hero--bleed hero--full" data-hero-roll="full"',
       );
     }
   }

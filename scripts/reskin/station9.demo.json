@@ -227,9 +227,101 @@
     {
       "pattern": "<a class=\"btn btn-light\" href=\"/station9/splits/\">Free split analysis</a>",
       "replace": "<a class=\"btn btn-light\" href=\"/station9/splits/\">Try the split analyser</a>"
+    },
+    {
+      "pattern": "\\s*<a href=\"#plans\">Subscriptions</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "<a href=\"#ask\">Ask Station 9</a>",
+      "replace": "<a href=\"#ask\">Talk to us</a>"
+    },
+    {
+      "pattern": "<a href=\"/station9/#ask\">Ask Station 9</a>",
+      "replace": "<a href=\"/station9/#ask\">Talk to us</a>"
+    },
+    {
+      "pattern": "\\s*<a data-link=\"truecoach\"[\\s\\S]*?</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*<a href=\"https://station9.studio\" target=\"_blank\" rel=\"noopener\">Station 9 365</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*<a href=\"https://station9.studio\" target=\"_blank\" rel=\"noopener\">All links</a>",
+      "replace": ""
+    },
+    {
+      "pattern": ">Instagram @station9fit</a",
+      "replace": ">Instagram @station9.studio</a"
+    },
+    {
+      "pattern": ">TikTok @station9fit</a",
+      "replace": ">TikTok @station9studio</a"
+    },
+    {
+      "pattern": "<form\\s+class=\"onboard\"[^>]*id=\"onboard-form\"[\\s\\S]*?</form>",
+      "replace": ""
+    },
+    {
+      "pattern": "<div class=\"zone-result\" id=\"zone-result\"[\\s\\S]*?zone fits better\\.\\s*</p>\\s*</div>",
+      "replace": ""
+    },
+    {
+      "pattern": "show it on this page and on @station9\\.",
+      "replace": "show it on this page and on @station9.studio."
+    },
+    {
+      "pattern": "Ask Station 9 any time to take\\s*it down\\.",
+      "replace": "Ask us any time to take it down."
+    },
+    {
+      "pattern": "<a href=\"/station9/coaching.html\">Coaching</a>",
+      "replace": "<a href=\"/station9/coaching.html\">Work with us</a>"
+    },
+    {
+      "pattern": "<a href=\"/station9/watch.html\">Watch</a>",
+      "replace": "<a href=\"/station9/watch.html\">Watch</a>"
+    },
+    {
+      "pattern": "Station 9 \u2014 HYROX Pro athlete, coach and creator\\. Station 9 1:1 coaching and programmes, race tools and race-mate finder\\.",
+      "replace": "Station 9 \u2014 the platform behind coach sites: coaching links, race tools, community boards and the money desk, under each creator's own brand."
+    },
+    {
+      "pattern": "first news on Station 9 365 drops, coaching spots, race dates and the new vlog\\.",
+      "replace": "first news on new builds, platform features and the athletes' network."
+    },
+    {
+      "pattern": "S9 drops, coaching spots opening, race dates, the new vlog \u2014",
+      "replace": "New builds opening, platform features, network news \u2014"
+    },
+    {
+      "pattern": "<option>Race dates &amp; vlogs</option>",
+      "replace": "<option>Platform news &amp; updates</option>"
+    },
+    {
+      "pattern": "station 9, station9, Station 9, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, ukshire hyrox",
+      "replace": "station 9, station9, coaching platform, creator websites, race tools, hyrox uk, race predictor, coaching business software"
+    },
+    {
+      "pattern": "\"jobTitle\": \"HYROX Pro athlete, coach & creator\"",
+      "replace": "\"jobTitle\": \"Coaching-platform studio\""
+    },
+    {
+      "pattern": "alt=\"Station 9 \u2014 HYROX Pro athlete and coach\"",
+      "replace": "alt=\"Station 9 \u2014 the platform behind the coaches\""
     }
   ],
   "stripPages": [
     "desk.html"
+  ],
+  "demoPages": [
+    "coaching.html",
+    "watch.html",
+    "partners.html",
+    "find-a-partner.html",
+    "race-crew.html",
+    "results.html"
   ]
 }

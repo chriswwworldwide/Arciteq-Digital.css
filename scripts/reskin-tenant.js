@@ -179,6 +179,14 @@ if (cfg.mode === "chassis") {
       s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
     if (file.endsWith(".html")) {
       if (cfg.menu) s = replaceMenu(s); // chassis pages already carry a menu
+      // demoPages: coach-shaped pages kept live as product evidence get a
+      // banner so a studio/aggregator tenant doesn't claim them as its own.
+      if ((cfg.demoPages || []).some((f) => file.endsWith(`/${f}`))) {
+        s = s.replace(
+          /(<body[^>]*>)/,
+          `$1\n    <div style="background:#ff3b3b;color:#fff;text-align:center;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:.5em 1em">Demo — this page is part of a Station&nbsp;9 client-site build.</div>`,
+        );
+      }
       if (cfg.htmlTitle && file.endsWith("index.html")) {
         s = s.replace(/<title>[\s\S]*?<\/title>/, `<title>${cfg.htmlTitle}</title>`);
       }

@@ -2230,6 +2230,8 @@ body.has-sticky-cta {
   background: var(--pink-600);
 }
 
+/* While the accent sticky CTA is on screen the FAB steps back to a quiet
+   surface — one signature-colour element at a time, no matching pills. */
 body.has-sticky-cta .wa-fab {
   bottom: calc(88px + env(safe-area-inset-bottom));
   background: var(--paper-2);
@@ -2840,3 +2842,9 @@ body[data-broadcast=locked] .bc-lock {
     mask-image: none;
   }
 }
+
+/* readability: no orphan words in leads/standfirst, full-white copy in dark tips cards */
+.lead, .hero p { text-wrap: pretty; }
+.tips-grid ol, .tips-grid details p { color: #fff; }
+section.cta-band { background: #14141a; }
+section.cta-band .btn-light { background: var(--ink); color: #14141a; }

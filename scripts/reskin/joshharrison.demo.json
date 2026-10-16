@@ -171,7 +171,12 @@
     ["href=\"/joshharrison/london-hybrid-scene/\"", "href=\"/joshharrison/news.html\""],
     ["href=\"/joshharrison/advertise/\"", "href=\"/joshharrison/partners.html\""],
     ["href=\"/joshharrison/doubles/\"", "href=\"/joshharrison/find-a-partner.html\""],
-    ["<a href=\"/joshharrison/partners.html\">Advertise</a>\n        </nav>", "<a href=\"/joshharrison/partners.html\">Partners</a>\n          <a href=\"/joshharrison/desk.html\">The desk</a>\n        </nav>"]
+    ["<a href=\"/joshharrison/partners.html\">Advertise</a>\n        </nav>", "<a href=\"/joshharrison/partners.html\">Partners</a>\n          <a href=\"/joshharrison/desk.html\">The desk</a>\n        </nav>"],
+    ["on her private desk", "on his private desk"],
+    ["in her race belt", "in his race belt"],
+    ["in her HYROX race kit", "in his HYROX race kit"],
+    ["Josh and her doubles partner", "Josh and his doubles partner"],
+    [" (analisis split HYROX)", ""]
   ],
   "copyOverrides": [
     {
@@ -529,6 +534,150 @@
     {
       "pattern": "Worcestershire Scene|Worcestershire scene",
       "replace": "UK scene"
+    },
+    {
+      "pattern": "Applications, enrolment and checkout stay on Josh's existing forms\\s*and stores — this page routes you to the right one rather than\\s*inventing a new funnel\\. Sample preview copy\\.",
+      "replace": "Every route is Josh's official one — applications, programmes and the store. One tap out, nothing in between."
+    },
+    {
+      "pattern": "(<p class=\"city\">Worcestershire</p>\\s*</header>)\\s*<section class=\"guide-hero\">",
+      "replace": "$1\n\n    <div class=\"nav\">\n      <div class=\"wrap\">\n        <button class=\"nav-toggle\" aria-expanded=\"false\" aria-controls=\"menu\">\n          Menu\n        </button>\n        <ul class=\"menu\" id=\"menu\"></ul>\n      </div>\n    </div>\n\n    <section class=\"guide-hero\">"
+    },
+    {
+      "pattern": "(<title>\\s*HYROX race-time predictor[\\s\\S]*?</title>)",
+      "replace": "$1\n    <style>\n      .guide-hero-photo img { max-height: 560px; }\n      .wrap.guide { grid-template-columns: minmax(0, 1fr); }\n      .wrap.guide .article { max-width: none; }\n      .wrap.guide .article p { max-width: 72ch; }\n      .wrap.guide .calc-form { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }\n      .wrap.guide .dossier { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }\n    </style>"
+    },
+    {
+      "pattern": "(<title>\\s*Hyrox Split Analyser[\\s\\S]*?</title>)",
+      "replace": "$1\n    <style>\n      .wrap.guide .article { max-width: none; }\n      .wrap.guide .calc-form { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }\n    </style>"
+    },
+    {
+      "pattern": "(Analyse real splits</a[^>]*>\\s*</p>\\s*</article>\\s*</div>\\s*</div>)",
+      "replace": "$1\n\n    <section class=\"cta-band\">\n      <div class=\"wrap\">\n        <h3>Want a number you can actually hold?</h3>\n        <p>\n          A prediction is a vibe. A coached plan is a number built from your\n          real splits — and re-checked after every race.\n        </p>\n        <a class=\"btn btn-light\" href=\"/joshharrison/coaching.html\">Coach with Josh</a>\n        <a class=\"btn btn-primary\" href=\"/joshharrison/#ask\">Ask Josh</a>\n      </div>\n    </section>"
+    },
+    {
+      "pattern": "Bisikin Josh",
+      "replace": "Tip Josh off"
+    },
+    {
+      "pattern": "part-time metronome\\.\\s*</p>\\s*</div>",
+      "replace": "part-time metronome.</p>\n        </div>\n        <figure class=\"guide-hero-photo\">\n          <img\n            src=\"/joshharrison/images/finish.jpg\"\n            alt=\"Josh mid-race in the arena — the bright kit pops against the dark\"\n            width=\"1600\"\n            height=\"1066\"\n            loading=\"lazy\"\n          />\n        </figure>"
+    },
+    {
+      "pattern": "she'll\\s*intro you herself\\. She races this circuit — she knows who'd actually\\s*suit you\\.",
+      "replace": "he'll intro you himself. He races this circuit — he knows who'd actually suit you."
+    },
+    {
+      "pattern": "HYROX Group Coach, pro athlete, occasional matchmaker\\.",
+      "replace": "HYROX Pro athlete, coach, occasional matchmaker."
+    },
+    {
+      "pattern": "Forget three dinner dates —\\s*watch someone on the sled push and you'll know everything you need\\s*to\\.",
+      "replace": "Forget three dinner dates — thirty seconds on a sled tells you everything you need."
+    },
+    {
+      "pattern": "— and\\s*absolutely take credit at the wedding\\.",
+      "replace": "— credit at the wedding is non-negotiable."
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Josh running a Hyrox lap in race kit\"",
+      "replace": "src=\"/joshharrison/images/josh-treadmill.jpg\"\n            alt=\"Josh putting in treadmill miles between race blocks\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/coaching\\.jpg\"\\s*\\n\\s*alt=\"Josh mid sandbag lunge\"",
+      "replace": "src=\"/joshharrison/images/josh-kerb.jpg\"\n            alt=\"Josh kerbside post-race — recovery starts before the next session\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/coaching\\.jpg\"\\s*\\n\\s*alt=\"Josh laughing mid-lunge, carrying the 20 kg sandbag on her shoulders at a Hyrox race\"",
+      "replace": "src=\"/joshharrison/images/josh-walkin.jpg\"\n            alt=\"Josh walking into the arena ahead of a race\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh low over the sled poles driving a loaded sled, CENTR plates visible\"",
+      "replace": "src=\"/joshharrison/images/station-lean.jpg\"\n            alt=\"Josh driving the sled away from camera — head down through the poles\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Josh mid broad jump between burpee reps in the arena\"",
+      "replace": "src=\"/joshharrison/images/wallball.jpg\"\n            alt=\"Josh mid broad jump between burpee reps in the arena\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/wallball\\.jpg\" alt=\"The squad mid rowing warm-up in the gym\"",
+      "replace": "src=\"/joshharrison/images/josh-bike.jpg\" alt=\"Josh on the erg between pieces — same engine, different machine\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh mid-stride on the farmers carry with competition kettlebells in the arena\"",
+      "replace": "src=\"/joshharrison/images/carry.jpg\"\n            alt=\"Josh mid-stride on the farmers carry — the grimace is the point\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Josh laughing with a 20 kg sandbag on each shoulder mid-lunges\"",
+      "replace": "src=\"/joshharrison/images/coaching.jpg\"\n            alt=\"Josh crouched low between efforts — the legs the lunges are built on\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/carry\\.jpg\" alt=\"Mid overhead press — the pressing pattern behind wall balls\"",
+      "replace": "src=\"/joshharrison/images/josh-detail.jpg\" alt=\"Head down between wall-ball sets — the breathing pattern holds\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"[\\s\\S]*?alt=\"Josh grinding through the farmers carry, low angle past the crowd barriers at Hyrox\"",
+      "replace": "src=\"/joshharrison/images/race-revel.jpg\"\n            alt=\"Josh mid-run between stations at HYROX Manchester\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/josh-kerb\\.jpg\"\\s*\\n\\s*alt=\"Josh kerbside post-race — recovery starts before the next session\"",
+      "replace": "src=\"/joshharrison/images/josh-kerb.jpg\"\n            style=\"object-position: 50% 68%\"\n            alt=\"Josh kerbside post-race — recovery starts before the next session\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh mid-stride on the farmers carry with competition kettlebells\"",
+      "replace": "src=\"/joshharrison/images/carry.jpg\"\n            alt=\"Josh mid-stride on the farmers carry — legs like this don't fuel themselves\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh head-on, driving a loaded sled in the arena\"",
+      "replace": "src=\"/joshharrison/images/josh-night.jpg\"\n            alt=\"Night miles logged before race morning\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Josh mid sandbag lunge in black kit\"",
+      "replace": "src=\"/joshharrison/images/josh-momentum.jpg\"\n            alt=\"Track walk with the bottle — the taper is the training\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Josh on the podium, 1st place doubles\"",
+      "replace": "src=\"/joshharrison/images/josh-pb.jpg\"\n            alt=\"Josh on the HYROX floor after the Bologna PB\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Josh laughing mid-effort in his HYROX race kit\"",
+      "replace": "src=\"/joshharrison/images/josh-half.jpg\"\n            alt=\"Josh at the AJ Bell Birmingham Half — 1:32:13 on the day\""
+    },
+    {
+      "pattern": "Josh leaning back into the sled pull rope in her lilac kit, Worcestershire banner behind",
+      "replace": "Josh leaning back into the sled pull rope, arena behind"
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh mid-stride on the farmers carry with competition kettlebells\"",
+      "replace": "src=\"/joshharrison/images/gallery/stock-arena.jpg\"\n            alt=\"Inside the arena — the atmosphere that makes the fuel worth it\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"[\\s\\S]*?alt=\"Josh grinding through the farmers carry, low angle past the crowd barriers at Hyrox\"",
+      "replace": "src=\"/joshharrison/images/josh-sprint.jpg\"\n            alt=\"Josh sprinting through the arena between stations\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/hero-reveal\\.jpg\"\\s*\\n\\s*alt=\"Josh and his doubles partner laughing at the Hyrox Birmingham finish line[^\"]*\"",
+      "replace": "src=\"/joshharrison/images/josh-startline.jpg\"\n            alt=\"Josh on the start line — flat expression, miles to go\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Josh with both arms raised in celebration at the finish line\"",
+      "replace": "src=\"/joshharrison/images/josh-bologna.jpg\"\n            style=\"aspect-ratio: 4/3; object-position: 50% 20%\"\n            alt=\"Josh beside the 1:05:43 finish board in Bologna\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/squad-athlos\\.jpg\"\\s*\\n\\s*alt=\"The whole crew after a session — all abilities, all welcome\"",
+      "replace": "src=\"/joshharrison/images/gallery/restaurant.jpg\"\n            alt=\"The crew meetup table — dinner after the race, all welcome\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Josh and a teammate celebrating at a race event backdrop\"",
+      "replace": "src=\"/joshharrison/images/squad-athlos.jpg\"\n            alt=\"The orange wave leaving the start line — pick your weekend\""
+    },
+    {
+      "pattern": "src=\"/joshharrison/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Arms up at the finish line — the celebration is the point\"",
+      "replace": "src=\"/joshharrison/images/gallery/dance.jpg\"\n              alt=\"The post-race dance floor — Station 10 is non-negotiable for some\""
+    },
+    {
+      "pattern": "(<b>Away edition — race weekends\\.</b>[\\s\\S]*?</li>\\s*</ul>)",
+      "replace": "$1"
     }
   ],
   "stripSections": ["pelatih"],
@@ -543,7 +692,26 @@
     },
     "news.json": {
       "note": "PRIVATE PITCH PREVIEW — demo headlines only.",
-      "items": []
+      "items": [
+        {
+          "date": "2026-10-14",
+          "title": "HYROX confirms the 26/27 UK calendar",
+          "summary": "London, Glasgow, Cardiff and Birmingham all land on the new season calendar, with the usual sell-out warnings attached. Full dates and venues are on the official site.",
+          "take": "Book the hotel before you book the heat — Saturday waves go first and nobody enjoys a 6 a.m. start in a city an hour away. Bologna taught me that one.",
+          "link": "https://hyrox.com",
+          "linkLabel": "Official calendar →",
+          "source": "https://hyrox.com",
+          "sourceName": "hyrox.com"
+        },
+        {
+          "date": "2026-10-06",
+          "title": "Doubles fields keep getting quicker",
+          "summary": "Pro doubles times across the season are trending down, with more sub-hour pairs turning up at every major race.",
+          "take": "57:14 isn't a flex, it's a warning — the pairs game is where this sport is heading. Find your partner before you need one; the race-mate board exists for a reason.",
+          "link": "/joshharrison/find-a-partner.html",
+          "linkLabel": "Find a race-mate →"
+        }
+      ]
     },
     "partners.json": {
       "note": "PRIVATE PITCH PREVIEW — partner offers below are illustrative.",
@@ -590,6 +758,7 @@
   "currency": "GBP",
   "sharedPack": "scripts/reskin/shared-packs/uk.json",
   "heroFull": true,
+  "extraCss": "/* readability: no orphan words in leads/standfirst, full-white copy in dark tips cards */\n.lead, .hero p { text-wrap: pretty; }\n.tips-grid ol, .tips-grid details p { color: #fff; }\nsection.cta-band { background: #14141a; }\nsection.cta-band .btn-light { background: var(--ink); color: #14141a; }",
   "menu": "<style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class=\"menu\" id=\"menu\">\n          <li><a href=\"/joshharrison/coaching.html\">Coaching</a></li>\n          <li><a href=\"/joshharrison/watch.html\">Watch</a></li>\n          <li><a href=\"/joshharrison/find-a-partner.html\" style=\"color:var(--pink);font-weight:700\">Find a race-mate</a></li>\n          <li>\n            <button aria-expanded=\"false\" aria-haspopup=\"true\">Race Tools <span class=\"caret\"></span></button>\n            <ul class=\"sub\">\n              <li><a href=\"/joshharrison/predictor.html\">Race predictor</a></li>\n              <li><a href=\"/joshharrison/splits.html\">Split analyser</a></li>\n              <li><a href=\"/joshharrison/results.html\">Results board</a></li>\n              <li><a href=\"/joshharrison/stations-prep/\">Stations prep</a></li>\n              <li><a href=\"/joshharrison/run-zone/\">Run zone</a></li>\n              <li><a href=\"/joshharrison/fuel-zone/\">Fuel zone</a></li>\n              <li><a href=\"/joshharrison/events.html\">Race calendar</a></li>\n            </ul>\n          </li>\n          <li>\n            <button aria-expanded=\"false\" aria-haspopup=\"true\">Community <span class=\"caret\"></span></button>\n            <ul class=\"sub\">\n              <li><a href=\"/joshharrison/race-crew.html\">Race crew meetups</a></li>\n              <li><a href=\"https://www.instagram.com/hybrid.hub/\" target=\"_blank\" rel=\"noopener\">Hybrid Hub IG</a></li>\n              <li><a href=\"/joshharrison/#ask\">Ask Josh</a></li>\n              <li><a href=\"/joshharrison/news.html\">UK HYROX news</a></li>\n            </ul>\n          </li>\n          <li><a href=\"/joshharrison/partners.html\">Partners</a></li>\n          <li><a href=\"/joshharrison/list.html\">Join the list</a></li>\n        </ul>",
   "pageFiles": {
     "coaching.html": "@scripts/reskin/joshharrison-pages/coaching.html",

@@ -7,12 +7,20 @@
     <title>
       HYROX race-time predictor — commit your number | Josh Harrison
     </title>
+    <style>
+      .guide-hero-photo img { max-height: 560px; }
+      .wrap.guide { grid-template-columns: minmax(0, 1fr); }
+      .wrap.guide .article { max-width: none; }
+      .wrap.guide .article p { max-width: 72ch; }
+      .wrap.guide .calc-form { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+      .wrap.guide .dossier { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    </style>
     <meta
       name="description"
       content="Tell us what you think you'll run at your next HYROX. We'll tell you what you'll actually run — here and at your next three races."
     />
-    <link rel="stylesheet" href="/joshharrison/styles.css?v=1792170484542" />
-    <link rel="stylesheet" href="/joshharrison/guide.css?v=1792170484542" />
+    <link rel="stylesheet" href="/joshharrison/styles.css?v=1792180632556" />
+    <link rel="stylesheet" href="/joshharrison/guide.css?v=1792180632556" />
   </head>
   <body>
     <header class="masthead wrap">
@@ -34,6 +42,42 @@
       <p class="city">Worcestershire</p>
     </header>
 
+    <div class="nav">
+      <div class="wrap">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          Menu
+        </button>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
+          <li><a href="/joshharrison/coaching.html">Coaching</a></li>
+          <li><a href="/joshharrison/watch.html">Watch</a></li>
+          <li><a href="/joshharrison/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/joshharrison/predictor.html">Race predictor</a></li>
+              <li><a href="/joshharrison/splits.html">Split analyser</a></li>
+              <li><a href="/joshharrison/results.html">Results board</a></li>
+              <li><a href="/joshharrison/stations-prep/">Stations prep</a></li>
+              <li><a href="/joshharrison/run-zone/">Run zone</a></li>
+              <li><a href="/joshharrison/fuel-zone/">Fuel zone</a></li>
+              <li><a href="/joshharrison/events.html">Race calendar</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/joshharrison/race-crew.html">Race crew meetups</a></li>
+              <li><a href="https://www.instagram.com/hybrid.hub/" target="_blank" rel="noopener">Hybrid Hub IG</a></li>
+              <li><a href="/joshharrison/#ask">Ask Josh</a></li>
+              <li><a href="/joshharrison/news.html">UK HYROX news</a></li>
+            </ul>
+          </li>
+          <li><a href="/joshharrison/partners.html">Partners</a></li>
+          <li><a href="/joshharrison/list.html">Join the list</a></li>
+        </ul>
+      </div>
+    </div>
+
     <section class="guide-hero">
       <div class="wrap">
         <div class="guide-hero-text">
@@ -50,9 +94,17 @@
             (It isn&rsquo;t. But tell us anyway.)
           </p>
           <p class="byline">
-            By Josh — HYROX Pro athlete, coach, part-time metronome.
-          </p>
+            By Josh — HYROX Pro athlete, coach, part-time metronome.</p>
         </div>
+        <figure class="guide-hero-photo">
+          <img
+            src="/joshharrison/images/finish.jpg"
+            alt="Josh mid-race in the arena — the bright kit pops against the dark"
+            width="1600"
+            height="1066"
+            loading="lazy"
+          />
+        </figure>
       </div>
     </section>
 
@@ -248,13 +300,25 @@
       </div>
     </div>
 
+    <section class="cta-band">
+      <div class="wrap">
+        <h3>Want a number you can actually hold?</h3>
+        <p>
+          A prediction is a vibe. A coached plan is a number built from your
+          real splits — and re-checked after every race.
+        </p>
+        <a class="btn btn-light" href="/joshharrison/coaching.html">Coach with Josh</a>
+        <a class="btn btn-primary" href="/joshharrison/#ask">Ask Josh</a>
+      </div>
+    </section>
+
     <footer>
       <div class="wrap">
         <div>© <span id="year"></span> Josh Harrison</div>
       </div>
     </footer>
 
-    <script src="/joshharrison/app.js?v=1792170484542" defer></script>
-    <script src="/joshharrison/predictor.js?v=1792170484542" defer></script>
+    <script src="/joshharrison/app.js?v=1792180632556" defer></script>
+    <script src="/joshharrison/predictor.js?v=1792180632556" defer></script>
   </body>
 </html>

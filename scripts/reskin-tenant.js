@@ -358,6 +358,10 @@ for (const file of walk(dst)) {
   if (cfg.heroEdgeCover && file.endsWith("styles.css")) {
     s += `\n${HERO_EDGE_COVER_CSS}\n`;
   }
+  // free-form tenant-scoped CSS appended after all theme blocks
+  if (cfg.extraCss && file.endsWith("styles.css")) {
+    s += `\n${cfg.extraCss}\n`;
+  }
   // broadcastDemo opt-in: the bulletin page flips from the locked teaser to
   // the playable demo player, and gets linked in nav + footer (the source
   // site keeps it hidden/locked — direct URL only, like the predictor).

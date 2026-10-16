@@ -215,7 +215,7 @@
           <p class="lead">
             Coaching income, programme payments, affiliate money, race costs —
             one running ledger instead of five spreadsheets and a screenshot
-            folder. This is what "a business, not a Linktree" actually means.
+            folder.
           </p>
         </div>
       </div>
@@ -229,7 +229,12 @@
           page, on his own login.
         </p>
 
-        <div class="desk-stats" id="desk-stats"></div>
+        <div class="desk-stats" id="desk-stats">
+          <div class="desk-stat"><div class="ds-label">Money in</div><div class="ds-value pos">£4,614</div></div>
+          <div class="desk-stat"><div class="ds-label">Money out</div><div class="ds-value neg">£973</div></div>
+          <div class="desk-stat"><div class="ds-label">Net</div><div class="ds-value pos">£3,641</div></div>
+          <div class="desk-stat"><div class="ds-label">Est. tax set-aside (20%)</div><div class="ds-value">£728.2</div></div>
+        </div>
 
         <div class="desk-tools">
           <select id="f-type" aria-label="Filter by type">
@@ -285,7 +290,20 @@
           </div>
         </form>
 
-        <div class="desk-list" id="desk-list"></div>
+        <div class="desk-list" id="desk-list">
+          <div class="desk-row"><span class="dr-date">2026-04-09</span><span class="dr-desc">Myprotein code payout<small>Affiliate income</small></span><span class="dr-amt in">+£168</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="11">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-04-05</span><span class="dr-desc">BTS shoot — track session<small>Content costs</small></span><span class="dr-amt out">−£180</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="10">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-04-02</span><span class="dr-desc">Four athletes — April blocks<small>1:1 coaching</small></span><span class="dr-amt in">+£720</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="9">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-03-30</span><span class="dr-desc">March drop — first weekend<small>Clothing (HH365)</small></span><span class="dr-amt in">+£960</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="8">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-03-28</span><span class="dr-desc">Quarterly filing<small>Accountant & tax</small></span><span class="dr-amt out">−£150</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="7">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-03-25</span><span class="dr-desc">Alphafly rotation<small>Kit & equipment</small></span><span class="dr-amt out">−£260</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="6">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-03-21</span><span class="dr-desc">Event content day — Birmingham<small>Content / brand work</small></span><span class="dr-amt in">+£1,200</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="5">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-03-18</span><span class="dr-desc">FITR + hosting + editing apps<small>Software & tools</small></span><span class="dr-amt out">−£87</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="4">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-03-14</span><span class="dr-desc">Gymshark code payout<small>Affiliate income</small></span><span class="dr-amt in">+£214</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="3">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-03-10</span><span class="dr-desc">Bologna flights + entry<small>Race entry & travel</small></span><span class="dr-amt out">−£296</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="2">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-03-06</span><span class="dr-desc">FITR cohort — spring block<small>Group programmes</small></span><span class="dr-amt in">+£812</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="1">×</button></div>
+          <div class="desk-row"><span class="dr-date">2026-03-03</span><span class="dr-desc">Three athletes — March blocks<small>1:1 coaching</small></span><span class="dr-amt in">+£540</span><button class="dr-del" type="button" aria-label="Delete entry" data-i="0">×</button></div>
+        </div>
         <div class="desk-empty" id="desk-empty" hidden>
           Nothing matches those filters.
         </div>
@@ -308,7 +326,7 @@
     <script src="/joshharrison/app.js" defer></script>
     <script>
       (function () {
-        var KEY = "jh-desk-v1";
+        var KEY = "jh-desk-v2";
         var CATS = {
           in: [
             "1:1 coaching",
@@ -344,7 +362,17 @@
         function load() {
           try {
             var raw = localStorage.getItem(KEY);
-            if (raw) return JSON.parse(raw);
+            if (raw) {
+              var saved = JSON.parse(raw);
+              if (
+                Array.isArray(saved) &&
+                saved.length &&
+                saved.every(function (r) {
+                  return r && r.d && r.t && typeof r.a === "number";
+                })
+              )
+                return saved;
+            }
           } catch (e) {}
           return SEED.slice();
         }

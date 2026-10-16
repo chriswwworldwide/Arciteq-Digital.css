@@ -55,3 +55,15 @@ same flag, and treat bake gradient/scrim strength as a single token.
 - [ ] Code review pass
 - [ ] Chassis mode in reskin-tenant.js
 - [ ] Regenerate a test tenant and diff-compare against a hand-built demo
+
+## Open follow-ups
+
+- **Verify accent FAB actually visible on all sites.** Shipped in commit
+  e1d74a0 (Oct 16) but not yet confirmed in a browser. Local tenants: hard
+  refresh needed — stylesheets are only cache-busted per regen, so
+  racetoframe/roxjaya may serve the old cached CSS until refreshed or
+  regenerated. Dina's live site: pushed to `devin/gh-dossier`; if Railway
+  deploys `main` it won't appear until merge — check which branch deploys.
+- **Revisit hero "secondary fade"** — the ::after scrim gradient on
+  hero--full; user parked the decision mid-tuning (currently ~18% max).
+

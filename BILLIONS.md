@@ -378,6 +378,63 @@ working demos risks regressions for zero gain — migrate at purchase).
 token map will leak a few strings on tenant #1; expect one patch round.
 Deeper symbol-level dead-code pass inside app.js/styles.css deferred.
 
+## The full arc — sites → rails → network (agreed)
+
+Income model: 75% base tier (£450 + £45/mo), 25% commercial (£1k + £180/mo);
+conversion ~8% on hottest prospects decaying to ~5% (spec-work outreach
+rates, not cold-email rates — the demo is the pitch).
+
+Year 1: ~£95k, ~84 clients, ~£7k/mo exit run-rate (~1,850 pitches).
+Falsifiable test: 60 hottest pitches → expect ~5 sales in month 1;
+≤1 after the channel fix = diagnose the offer, not the volume.
+
+Peak HYROX-only: ~300 clients ≈ £23k/mo ≈ month 30–36, then churn≈adds.
+Adjacent markets (CrossFit, running, DEKA) restart the front-loaded phase —
+same chassis, new token flavour pack.
+
+De-shopify phase: {{STORE_URL}} seam already points at our engine. Once
+~40% migrate (store bolt-on £30–50/mo commercial, £15–25 base, or
+"same as your Shopify bill"), peak ≈ £28–30k/mo and churn collapses —
+nobody leaves the platform their revenue runs through.
+
+Coaching-ops annex: TrueCoach/Calendly/invoicing replacement on the desk
+data that's already there. Rail fee on coached GMV (~£40–60k/mo ceiling
+on the 300-tenant base).
+
+## The billion thesis (and what it actually requires)
+
+The coach business tops out at an excellent £20–50M company — not £1B.
+The billion only exists via the athlete network: ~1,000 tenants × ~300
+athletes = ~300k athletes acquired B2B2C for free (Strava spent a decade
+and £150M doing that B2C). Then the consumer layer (Station 9) monetises
+events, entries, sponsor reach — the "owns the athlete relationship layer"
+valuation, ~£1–2B comparable, ~yr 6–8, honest odds 5–15%.
+
+Non-negotiable foundations (decided, bake in now):
+- Every athlete record: tenant_id + global athlete_id in central Postgres
+  — never per-tenant files/localStorage. Retrofit kills networks.
+- Station 9 = the consumer-facing product brand. Coach sites are front-ends;
+  athlete accounts are Station 9 accounts powered through the coach's site.
+- Coach trust rule: athletes' visible relationship stays with the coach's
+  site; network features only ship when they make the coach's offering
+  better that day (opt-in federation at ~50–80 tenants; Station 9 public
+  face at 150+). Contract line: coach keeps their athlete relationships.
+
+Non-negotiables for later, deliberately NOT now: cross-tenant boards, SSO,
+event discovery (federation of 5 sites = a group chat), commerce build,
+locale packs (first German bite triggers it), GDPR hygiene path (consent
+copy on boards + real deletion route — needed before federation, not before
+first pitch).
+
+## Brand structure (decided)
+
+Arciteq Digital = parent/holding entity — trading name, contracts,
+invoicing, the agency face when needed. Station 9 = the product brand:
+coaches' sites are "powered by Station 9", the athlete network is Station 9.
+Do NOT split into a third consumer brand later — that re-fragments the one
+asset that compounds. Structure: Arciteq Digital owns the pipeline;
+Station 9 owns the network.
+
 ## Chat notes
 
 - **Tone: dry British sarcasm, on tap.** Not sitcom energy — deadpan,

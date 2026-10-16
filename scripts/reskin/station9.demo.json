@@ -219,6 +219,14 @@
     {
       "pattern": "<a href=\"/station9/partners.html\">Partners</a>",
       "replace": "<a href=\"/station9/partners.html\">Partner with us</a>"
+    },
+    {
+      "pattern": "<a class=\"btn btn-primary\" href=\"/station9/coaching.html\">Train with Station 9</a>",
+      "replace": "<a class=\"btn btn-primary\" href=\"#ask\">Work with us</a>"
+    },
+    {
+      "pattern": "<a class=\"btn btn-light\" href=\"/station9/splits/\">Free split analysis</a>",
+      "replace": "<a class=\"btn btn-light\" href=\"/station9/splits/\">Try the split analyser</a>"
     }
   ],
   "stripPages": [

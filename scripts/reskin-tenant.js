@@ -158,6 +158,13 @@ if (cfg.mode === "chassis") {
     filter: (p) => !p.endsWith(".DS_Store") && !p.endsWith("tenant.record.json"),
   });
 
+  // stripPages: drop whole pages the tenant doesn't ship (e.g. desk.html on
+  // a studio site). Nav should already omit them via cfg.menu.
+  for (const f of cfg.stripPages || []) {
+    const p = path.join(dst, f);
+    if (fs.existsSync(p)) fs.unlinkSync(p);
+  }
+
   const tokenPairs = Object.entries(cfg.tokens || {}).map(([k, v]) => [
     `{{${k}}}`,
     v,

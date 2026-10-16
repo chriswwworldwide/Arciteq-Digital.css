@@ -4,6 +4,7 @@
 // ORDER MATTERS: Express matches top to bottom. tools/verify-refactor.sh
 // snapshots the full route order — run it after touching this file.
 import express from "express";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import Stripe from "stripe";
@@ -149,10 +150,16 @@ app.get("/health", (req, res) => {
 });
 app.use(createShopRouter({ accountLinkLimiter, stripe }));
 
-// When you visit http://localhost:3000/, send users to the store entry point.
-// The old landing page remains available at /index.html.
+// Host-resolved tenants land on their own site. On the shared demo host the
+// athlete sites hang off /<slug>/, so the apex itself is the Station 9 studio
+// front door — what the "Built with Station 9" footer badges link to.
 app.get("/", (req, res) => {
   const tenant = resolveTenantFromRequest(req);
+  if (tenant.tenant_id === "default") {
+    const s9 = path.join(__dirname, "station9", "index.html");
+    if (fs.existsSync(s9)) return res.sendFile(s9);
+    return res.redirect(302, "/shop.html");
+  }
   if (tenant.vertical === "coaching" || tenant.tenant_id === "roxjaya")
     return res.redirect(301, `/${tenant.tenant_id}/`);
   return res.redirect(302, "/shop.html");

@@ -207,6 +207,21 @@
     {
       "pattern": "The target the season was built towards. Building with each\\s*session \u2014 watch the build on the channel.",
       "replace": "Demo entry \u2014 the feed updates itself; the coach never touches a CMS."
+    },
+    {
+      "pattern": "\\s*<a href=\"/station9/desk.html\">The desk</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "<a href=\"/station9/coaching.html\">Book Station 9</a>",
+      "replace": "<a href=\"/station9/coaching.html\">Work with us</a>"
+    },
+    {
+      "pattern": "<a href=\"/station9/partners.html\">Partners</a>",
+      "replace": "<a href=\"/station9/partners.html\">Partner with us</a>"
     }
+  ],
+  "stripPages": [
+    "desk.html"
   ]
 }

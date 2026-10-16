@@ -75,7 +75,8 @@
     { "find": "myprotein", "token": "PARTNER_SUPP_LC" },
     { "find": "Adidas", "token": "PARTNER_KIT" },
     { "find": "adidas", "token": "PARTNER_KIT_LC" },
-    { "find": "JOSHH", "token": "GYM_CODE" },
+    { "find": "JOSHHARRISONFIT", "token": "SOCIAL_HANDLE_UPPER" },
+    { "find": "JOSHH\\b", "token": "GYM_CODE", "regex": true },
 
     { "find": "Emma H", "token": "PHOTO_BUDDY" },
 
@@ -84,6 +85,7 @@
 
   "renames": [
     { "find": "inWorcestershire", "replace": "inHomeCity" },
+    { "find": "    </footer>", "replace": "      <p class=\"site-credit\" style=\"text-align:center;margin:2rem 0 0\"><a href=\"https://station9.studio\" rel=\"noopener\" style=\"display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none\">Built with <b style=\"color:#ff3b3b;font-weight:700\">Station 9</b></a></p>\n    </footer>" },
     { "find": "for women who race", "replace": "for people who race" },
     { "find": "If he thinks it fits — pace, format, race — he connects you both. He races this circuit; he knows who would actually suit you.", "replace": "If it fits — pace, format, race — you're connected. Josh races this circuit and knows who'd actually suit you." },
     { "find": "he'll intro you himself. He races this circuit — he knows who'd actually suit you.", "replace": "the intro happens personally — Josh races this circuit and knows who'd actually suit you." },

@@ -5,6 +5,8 @@
   "requiredImageFields": [
     "subjects",
     "station",
+    "stationVerified",
+    "verificationSource",
     "quality",
     "brandFit",
     "allowOffBrandFallback",
@@ -35,10 +37,20 @@
     "wall-balls",
     "running"
   ],
+  "verificationSource": [
+    "fullres",
+    "framesheet",
+    "thumbnail",
+    "stock",
+    "none"
+  ],
   "rules": [
     "Carousel captions are context only and never prove a child image's subject.",
     "Text overlays reject critical slots unless the text is venue signage and allowText is explicit.",
-    "A station slot requires a visually confirmed matching station value.",
+    "A station slot requires a visually confirmed matching station value AND stationVerified=true with verificationSource 'fullres' or 'framesheet'. Thumbnail-only ratings are never sufficient for station slots.",
+    "Video candidates must be rated from extracted frame sheets (_f1/_f2/_f3), not the cover thumbnail — the cover does not represent the downloaded frame.",
+    "Station slots never accept allowOffBrandFallback or stock images unless allocation_verified explicitly approves the fallback.",
+    "Stock/royalty-free fallbacks must pass the same brandFit check as coach photos; a correct but off-brand stock image loses to a nearest-context coach shot.",
     "When a higher hero score replaces a prior leader, the prior image remains ranked for other allowed premium slots.",
     "No source file may be allocated twice; near-duplicate frames count as the same source moment."
   ],

@@ -164,6 +164,25 @@ are triage only: video-frame exports never inherit a cover rating blindly, and
 station slots must be confirmed against the real downloaded file (or flagged
 `allowOffBrandFallback` when no true candidate exists in the pool).
 
+Station verification (added after the Jade correction pass): every station
+image needs `stationVerified: true` plus `verificationSource` of `fullres`,
+`framesheet` or `stock` in `visual-index.json`; `photo-sort` hard-rejects
+`images/station-*` slots without it. Contact sheets write `*-labels.json`
+alongside the tiles — always copy label strings from that file, never
+transcribe them off a tile (misread `l`/`L`/`m` shortcodes caused repeated
+missing-label warnings). Shortlisted videos for semantic slots must be rated
+from `video-frame-sheet.py` frames, not the cover. When a station slot has no
+confident candidate after triage and backfill, first run a caption scan over
+the deepest cached records (`sled`, `lunge`, `wall`, `carry`…) to mine
+targeted posts; if the asset genuinely does not exist, prefer a
+nearest-context coach shot over off-brand stock, and only use royalty-free
+imagery that is dark/arena-branded with no visible faces — a correct but
+bright gym stock photo reads worse than an honest event frame. Stock files
+ship with a `.meta.json` carrying `stock: true`, `license`,
+`station_verified` and `event: null`. Swapped slot images keep their
+filenames, so stale browser cache (max-age 300s) can show the previous photo —
+hard-refresh before declaring an allocation wrong.
+
 Pipeline boundaries: `prospect-pipeline.js` is the production entry point.
 `ig-scan.py`, `ig-triage.py` and `ig-pull.py` are legacy/manual fallbacks and are
 never called by it. `apply-visual-review.js` exists only for migrating the Zara

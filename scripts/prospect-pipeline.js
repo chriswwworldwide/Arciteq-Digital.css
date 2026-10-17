@@ -157,6 +157,8 @@ function prepare() {
       instructions: [
         "Set approval.json config_path first so stripped/omitted slots leave the roster.",
         "Review thumbnails only; assign 1-2 candidate labels per active slot.",
+        "Canonical labels live in contact-sheets/*-labels.json — copy label strings from there, never transcribe from sheet tiles.",
+        "Labels marked [VID] are video COVERS only. Before shortlisting a video for a semantic slot (stations/run-zone), run scripts/video-frame-sheet.py on its shortcode and rate the actual frames.",
         "Keep no more than 10 unique spares. Full-resolution export happens only after this gate.",
         "Crew dinner/dance are protected template defaults and never belong in this roster.",
         "If final QA exposes a gap, backfill that one slot rather than reopening the whole profile.",
@@ -557,6 +559,22 @@ function resume(runId) {
     state.metrics.start_to_build_seconds = Math.round(
       (new Date(state.built_at) - new Date(state.started_at)) / 1000,
     );
+  }
+  // Append-only status timeline per handle so stage durations are derivable:
+  // diff consecutive entries for the same handle to time triage, backfill,
+  // export/index, allocation review and rework separately.
+  state.stage_log ||= [];
+  const loggedAt = new Date().toISOString();
+  for (const result of results) {
+    const last = [...state.stage_log]
+      .reverse()
+      .find((entry) => entry.handle === result.handle);
+    if (!last || last.status !== result.status)
+      state.stage_log.push({
+        handle: result.handle,
+        status: result.status,
+        at: loggedAt,
+      });
   }
   writeJson(statePath, state);
   console.log(JSON.stringify(results, null, 2));

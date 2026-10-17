@@ -179,6 +179,10 @@ if (indexOnly) {
   const stub = (photo) => ({
     subjects: [...photo.labels],
     station: null,
+    stationVerified: Boolean(photo.mediaMeta.station_verified),
+    verificationSource:
+      photo.mediaMeta.verification_source ||
+      (photo.mediaMeta.station_verified ? "stock" : "none"),
     quality: 0,
     brandFit: 0,
     allowOffBrandFallback: false,
@@ -263,8 +267,21 @@ function score(photo, slot, slotName) {
   );
   const semanticCritical =
     slot.page === "stations-prep" || slot.page === "run-zone";
+  const stationSlot = slotName.startsWith("images/station-");
   if (forbidden)
     return { score: -Infinity, proof, reason: "forbidden subject evidence" };
+  if (
+    stationSlot &&
+    (photo.annotation.stationVerified !== true ||
+      !["fullres", "framesheet", "stock"].includes(
+        photo.annotation.verificationSource || "none",
+      ))
+  )
+    return {
+      score: -Infinity,
+      proof,
+      reason: "station not verified from actual file or frame sheet",
+    };
   if (semanticCritical && proof.total === 0)
     return {
       score: -Infinity,

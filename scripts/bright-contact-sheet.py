@@ -91,6 +91,7 @@ def main():
                 record.get("date_posted") or record.get("datetime") or "",
             )
         )
+        label_records = []
         for record in profile_records[: args.max]:
             event_name = event_for(record, event_config)
             for label, url, video in media(record):
@@ -98,6 +99,15 @@ def main():
                     event_tag = f" [{event_name}]" if event_name else ""
                     tiles.append(
                         (f"{label}{' [VID]' if video else ''}{event_tag}", grab(url))
+                    )
+                    label_records.append(
+                        {
+                            "label": label,
+                            "shortcode": record.get("shortcode"),
+                            "video": video,
+                            "event": event_name,
+                            "url": url,
+                        }
                     )
                 except Exception as error:
                     print("skip", handle, label, error)
@@ -127,6 +137,9 @@ def main():
             target = out / f"{handle}-sheet-{start // per_sheet + 1}.jpg"
             sheet.save(target, quality=88)
             print(target, len(chunk))
+        labels_path = out / f"{handle}-labels.json"
+        labels_path.write_text(json.dumps(label_records, indent=2))
+        print(labels_path, len(label_records), "labels")
 
 
 if __name__ == "__main__":

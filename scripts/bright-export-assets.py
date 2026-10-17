@@ -84,6 +84,42 @@ def main():
 
     records = json.loads(Path(args.records).read_text())
     handle = args.handle.lstrip("@").lower()
+
+    # Resolve shortlisted labels against the labels that actually exist in the
+    # records, so a bare shortcode resolves to its single `_1` child (and vice
+    # versa) instead of silently never matching.
+    if selected is not None:
+        available = {}
+        for record in records:
+            if owner(record) != handle:
+                continue
+            for label, *_rest in media(record):
+                available[label] = record.get("shortcode")
+        aliases = {}
+        resolved = set()
+        for label in selected:
+            if label in available:
+                resolved.add(label)
+                continue
+            base, sep, suffix = label.rpartition("_")
+            target = None
+            if sep and suffix.isdigit() and base in available:
+                target = base
+            elif f"{label}_1" in available:
+                target = f"{label}_1"
+            else:
+                sc_labels = [l for l, sc in available.items() if sc == label]
+                if len(sc_labels) == 1:
+                    target = sc_labels[0]
+            if target:
+                aliases[label] = target
+                resolved.add(target)
+            else:
+                resolved.add(label)
+        if aliases:
+            print("label aliases resolved:", ", ".join(f"{k}→{v}" for k, v in sorted(aliases.items())))
+        selected = resolved
+
     out = Path(args.outdir)
     out.mkdir(parents=True, exist_ok=True)
     exported = 0

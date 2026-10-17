@@ -34,8 +34,8 @@ def main():
     ap.add_argument(
         "--frames",
         type=int,
-        default=0,
-        help="for video posts, also extract N stills (needs imageio-ffmpeg in the venv)",
+        default=3,
+        help="stills to extract per video (default 3 — reel frames often beat poor photos; 0 disables)",
     )
     args = ap.parse_args()
 
@@ -79,8 +79,8 @@ def main():
         if not urls:  # pure video post — grab the thumbnail so nothing is lost
             urls = [post.url] if post.url else []
 
-        # --frames: pull stills out of video nodes too — reels often hold the
-        # best shots and a 1080p frame is pitch-quality
+        # reels routinely hold better stills than the still posts — frames are
+        # extracted by default and land as normal candidates for photo-sort
         if args.frames:
             vids = []
             if post.is_video and post.video_url:

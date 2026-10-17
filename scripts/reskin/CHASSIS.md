@@ -159,3 +159,8 @@ Triage details (learned the hard way):
   are spotted on the sheet before any frames are pulled. Talking-head
   covers rarely yield usable stills — skip those unless the caption tags
   an event.
+- Video stills are a first-class source, not a fallback: --frames defaults
+  to 3 stills per video, so picked reels automatically drop frame
+  candidates (CODE_v1f1.jpg …) into the same pool photo-sort indexes.
+  Poor still coverage? Pull more [VID] shortcodes — that's the answer,
+  not a compromise.

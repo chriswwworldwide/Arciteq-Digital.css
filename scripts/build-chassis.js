@@ -28,6 +28,10 @@ execFileSync("node", [path.join(root, "scripts/reskin-tenant.js"), recipe.donorC
 });
 
 // ---- 2. fresh copy ----------------------------------------------------------
+const slotsPath = path.join(outDir, "images", "slots.json");
+const preservedSlots = fs.existsSync(slotsPath)
+  ? fs.readFileSync(slotsPath)
+  : null;
 fs.rmSync(outDir, { recursive: true, force: true });
 fs.cpSync(donorDir, outDir, { recursive: true });
 
@@ -71,6 +75,48 @@ for (const file of walk(outDir)) {
     fs.writeFileSync(file, s);
     tokenised++;
   }
+}
+
+const imageSlotRemaps = {
+  "predictor.html": [["images/finish.jpg", "images/predictor-hero.jpg"]],
+  "splits.html": [["images/rope.jpg", "images/splits-hero.jpg"]],
+  "events.html": [["images/squad-athlos.jpg", "images/events-hero.jpg"]],
+  "coaching.html": [["images/sprint.jpg", "images/coaching-hero.jpg"]],
+  "run-zone.html": [
+    ["images/treadmill.jpg", "images/run-hero.jpg"],
+    ["images/race-revel.jpg", "images/run-compromised.jpg"],
+  ],
+  "stations-prep.html": [
+    ["images/walkin.jpg", "images/stations-hero.jpg"],
+    ["images/skierg-laugh.jpg", "images/station-skierg.jpg"],
+    ["images/station-lean.jpg", "images/station-sled-push.jpg"],
+    ["images/rope.jpg", "images/station-sled-pull.jpg"],
+    ["images/wallball.jpg", "images/station-burpees.jpg"],
+    ["images/bike.jpg", "images/station-row.jpg"],
+    ["images/carry.jpg", "images/station-farmers-carry.jpg"],
+    ["images/coaching.jpg", "images/station-sandbag-lunges.jpg"],
+    ["images/detail.jpg", "images/station-wall-balls.jpg"],
+    [
+      "{{COACH_FIRST}} on the erg between pieces — same engine, different machine",
+      "{{COACH_FIRST}} driving through the rowing station mid-race",
+    ],
+    [
+      "{{COACH_FIRST}} crouched low between efforts — the legs the lunges are built on",
+      "{{COACH_FIRST}} completing sandbag lunges with the bag across the shoulders",
+    ],
+    [
+      "Head down between wall-ball sets — the breathing pattern holds",
+      "{{COACH_FIRST}} completing wall balls under fatigue",
+    ],
+  ],
+};
+for (const [fileName, replacements] of Object.entries(imageSlotRemaps)) {
+  const file = path.join(outDir, fileName);
+  if (!fs.existsSync(file)) continue;
+  let content = fs.readFileSync(file, "utf8");
+  for (const [from, to] of replacements)
+    content = content.split(from).join(to);
+  fs.writeFileSync(file, content);
 }
 
 // ---- 4a. hero-mode contract — one attribute drives everything --------------
@@ -143,6 +189,8 @@ if (leaks.length) {
 
 // ---- 6. image contract ---------------------------------------------------------
 fs.mkdirSync(path.join(outDir, "images"), { recursive: true });
+if (preservedSlots)
+  fs.writeFileSync(path.join(outDir, "images", "slots.json"), preservedSlots);
 const imgRefs = new Set();
 for (const file of walk(outDir)) {
   if (!TEXT_EXT.has(path.extname(file))) continue;

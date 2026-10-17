@@ -12,7 +12,7 @@ chain). Agreed approach and rationale below.
    feature set, already fully English and pronoun-consistent).
 3. Tokenise persona values mechanically: `{{COACH}}`, `{{BRAND}}`,
    `{{CITY}}`, `{{IG_HANDLE}}`, `{{ACCENT}}` etc. Verification: `grep -ri
-   josh chassis/` must return zero hits.
+josh chassis/` must return zero hits.
 4. Empty `images/` + a `REQUIRED.md` contract: fixed slot names (hero.jpg,
    story.jpg, coach.jpg + optional extras) so authored pages never change.
 5. Then a full code review for dead machinery (WhatsApp deep-links,
@@ -51,23 +51,23 @@ same flag, and treat bake gradient/scrim strength as a single token.
 - [x] Direction agreed
 - [x] joshharrison/ browser review by user (in progress)
 - [x] Fork to chassis/ + tokenise — `node scripts/build-chassis.js`
-  (recipe: `scripts/reskin/chassis.tokens.json`; regenerates Josh, tokenises,
-  strips dead files, fails loudly on persona leaks)
-- [x] Image contract — `chassis/images/REQUIRED.md` (auto-generated, 31 slots)
+      (recipe: `scripts/reskin/chassis.tokens.json`; regenerates Josh, tokenises,
+      strips dead files, fails loudly on persona leaks)
+- [x] Image contract — `chassis/images/REQUIRED.md` (auto-generated; 44 allocatable slots plus 2 protected crew defaults)
 - [x] Dead files stripped — alt.css, coach.css, hero-reveal.js, scene.js,
-  doubles.js, diary.js, confetti.browser.js (verified unlinked)
+      doubles.js, diary.js, confetti.browser.js (verified unlinked)
 - [x] Chassis mode in reskin-tenant.js — `"mode": "chassis"` + `tokens` map +
-  `assets` dir + `heroMode`; fails loudly on unfilled `{{TOKENS}}`; tenant
-  record cloned from `chassis/tenant.record.json` (never the roxjaya record)
+      `assets` dir + `heroMode`; fails loudly on unfilled `{{TOKENS}}`; tenant
+      record cloned from `chassis/tenant.record.json` (never the roxjaya record)
 - [x] Hero contract — single `data-hero-mode="full|ambient"` attribute on
-  `.hero--bleed`; CSS selectors + app.js mask check both key off it
+      `.hero--bleed`; CSS selectors + app.js mask check both key off it
 - [x] Test tenant generated — `mayaokafor` (fictional, ambient hero):
-  all pages 200, zero tokens left, zero Josh-ghosts, images resolve
+      all pages 200, zero tokens left, zero Josh-ghosts, images resolve
 - [x] Voice slots marked — humour moments are explicit tokens, not inherited
-  phrasing: `{{VOICE_DOUBLES_HOOK}}` (mixed-doubles line on find-a-partner),
-  `{{VOICE_WEDDING}}` (card-removal joke), `{{VOICE_NEWS_TAKE}}` (third news
-  item's take). Plus `cfg.news` — an array of feed items in the owner's voice;
-  chassis ships 3 sample items by default so the feed never launches empty.
+      phrasing: `{{VOICE_DOUBLES_HOOK}}` (mixed-doubles line on find-a-partner),
+      `{{VOICE_WEDDING}}` (card-removal joke), `{{VOICE_NEWS_TAKE}}` (third news
+      item's take). Plus `cfg.news` — an array of feed items in the owner's voice;
+      chassis ships 3 sample items by default so the feed never launches empty.
 - [ ] Visual browser review of a chassis tenant (both hero modes)
 
 ## Voice & personality map — where a creator's character lives
@@ -82,15 +82,15 @@ Optional personality spots — already gender/persona-neutral in the
 chassis; override per tenant via `copyOverrides` if the creator's voice
 wants something different:
 
-| Spot | File | Current hed/copy |
-| --- | --- | --- |
-| Hero motto | index.html | `{{HERO_TITLE_HTML}}` + `{{TAGLINE}}` |
-| Story hed | index.html | "{{COACH_NAME}}. {{SEASON_START}} to …" — stat-led, fine as-is |
-| Rulebook hed | index.html | "The stuff that's not in the rulebook." |
-| Matchmaker copy | find-a-partner.html | voice tokens + "The coach is the matchmaker, not an algorithm" |
-| Crew hed | race-crew.html | "Eight stations done — one more: dinner." |
-| Desk intro | desk.html | generic ledger copy |
-| Coach tone | desk.js/coaching.html | demo framing lines |
+| Spot            | File                  | Current hed/copy                                               |
+| --------------- | --------------------- | -------------------------------------------------------------- |
+| Hero motto      | index.html            | `{{HERO_TITLE_HTML}}` + `{{TAGLINE}}`                          |
+| Story hed       | index.html            | "{{COACH_NAME}}. {{SEASON_START}} to …" — stat-led, fine as-is |
+| Rulebook hed    | index.html            | "The stuff that's not in the rulebook."                        |
+| Matchmaker copy | find-a-partner.html   | voice tokens + "The coach is the matchmaker, not an algorithm" |
+| Crew hed        | race-crew.html        | "Eight stations done — one more: dinner."                      |
+| Desk intro      | desk.html             | generic ledger copy                                            |
+| Coach tone      | desk.js/coaching.html | demo framing lines                                             |
 
 Gender rule: all copy is gender-neutral by default; division names
 (Men / Women / Women's Pro) stay — they're HYROX categories, not persona.
@@ -107,7 +107,6 @@ tokens and copyOverrides, never by editing the chassis.
   deploys `main` it won't appear until merge — check which branch deploys.
 - **Revisit hero "secondary fade"** — the ::after scrim gradient on
   hero--full; user parked the decision mid-tuning (currently ~18% max).
-
 
 ## Nutrition safety gate
 
@@ -129,22 +128,27 @@ This prevents inherited nutritional guidance being silently attributed to a nutr
 
 ## Photo sort (scripts/photo-sort.js)
 
-The 31 image slots are declared in `chassis/images/slots.json` — each with a
-label, preferred aspect, fill priority, accepted keywords, and a
-`faceCritical` flag for shots where a cropped head is fatal (hero, bio,
-finish board, portraits).
+`chassis/images/slots.json` declares 44 allocatable slots plus two protected
+crew defaults. `allocationOrder` is permanent and unique: homepage hero first,
+then coaching/bio/product heroes, exact station positions, secondary content
+and finally lifestyle. Every page-specific hero and every HYROX station has a
+dedicated filename; generic filenames must never stand in for a different
+station.
 
-`node scripts/photo-sort.js <assetsDir>` indexes a folder of source photos
-(IG pulls keep their caption sidecars, which become keyword text) and
-greedily allocates them: priority order, each photo used once. Output marks
-`ok` / `REVIEW` / `PIN` per slot; low-confidence picks (e.g. carousel
-sub-images that share one caption) are flagged for human eyes rather than
-silently placed — that was the miscrop/misallocation failure mode this
-replaces.
+Do not export a whole profile. Generate thumbnail sheets, shortlist one obvious
+candidate per active slot (a second only when genuinely close), plus at most ten
+spares. Only those files are downloaded full-resolution and written to
+`visual-index.json`: subjects, exact station, venue/event, quality 1–10, brand
+fit 1–10, homepage-hero score 1–10, overlay, creator/face/crop safety, allowed
+slots and rejection reason. Carousel captions are never child-image evidence.
 
-`--apply <dir>` copies winners under slot filenames. `--pin slot=file`
-locks a slot to a specific photo (e.g. Station 9's hero/bio stay put even
-when the asset pile gets re-sorted).
+`photo-sort.js --index-only` adds Apple Vision face/OCR/classification and
+perceptual-duplicate metadata. After AI visual review marks the index COMPLETE,
+normal photo-sort fills slots in permanent order with the highest-rated unused
+compatible image. Losing hero candidates remain in the pool for later allowed
+slots. Strict builds reject repeated sources, near-duplicates, missing critical
+slots and text overlays. The protected crew dinner/dance images stay filled by
+the template unless `customCrewAssets` is explicitly enabled.
 
 ## Asset pipeline: scrape → triage → pull → sort
 

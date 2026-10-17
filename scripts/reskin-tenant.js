@@ -4,6 +4,7 @@
 // Steps: copy roxjaya/ → <slug>/, apply ordered brand substitutions across
 // html/js/css, seed fresh data files, remap the race calendar, register the
 // tenant in data/tenants.json. Safe to re-run — the target dir is replaced.
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -272,6 +273,46 @@ if (cfg.mode === "chassis") {
     const a = path.join(root, dir);
     if (fs.existsSync(a)) fs.cpSync(a, dst, { recursive: true });
   }
+  const crewDefaults = path.join(
+    root,
+    "scripts",
+    "reskin",
+    "chassis-demo-assets",
+    "images",
+    "gallery",
+  );
+  if (!cfg.customCrewAssets && fs.existsSync(crewDefaults)) {
+    fs.mkdirSync(path.join(dst, "images", "gallery"), { recursive: true });
+    for (const file of ["restaurant.jpg", "dance.jpg"])
+      fs.copyFileSync(
+        path.join(crewDefaults, file),
+        path.join(dst, "images", "gallery", file),
+      );
+  }
+  if (!cfg.strictImages) {
+    const legacyImageFallbacks = {
+      "predictor-hero.jpg": "finish.jpg",
+      "splits-hero.jpg": "rope.jpg",
+      "events-hero.jpg": "squad-athlos.jpg",
+      "coaching-hero.jpg": "sprint.jpg",
+      "stations-hero.jpg": "walkin.jpg",
+      "run-hero.jpg": "treadmill.jpg",
+      "run-compromised.jpg": "race-revel.jpg",
+      "station-skierg.jpg": "skierg-laugh.jpg",
+      "station-sled-push.jpg": "station-lean.jpg",
+      "station-sled-pull.jpg": "rope.jpg",
+      "station-burpees.jpg": "wallball.jpg",
+      "station-row.jpg": "bike.jpg",
+      "station-farmers-carry.jpg": "carry.jpg",
+      "station-sandbag-lunges.jpg": "coaching.jpg",
+      "station-wall-balls.jpg": "detail.jpg",
+    };
+    for (const [targetName, sourceName] of Object.entries(legacyImageFallbacks)) {
+      const target = path.join(dst, "images", targetName);
+      const source = path.join(dst, "images", sourceName);
+      if (!fs.existsSync(target) && fs.existsSync(source)) fs.copyFileSync(source, target);
+    }
+  }
 
   // seedFiles same as pair mode
   for (const [f, content] of Object.entries(cfg.seedFiles || {})) {
@@ -330,8 +371,8 @@ if (cfg.mode === "chassis") {
   const scanImgs = (d) => {
     for (const e of fs.readdirSync(d, { withFileTypes: true })) {
       const p = path.join(d, e.name);
-      if (e.isDirectory()) scanImgs(p);
-      else if (/\.(html|js|json)$/.test(e.name))
+      if (e.isDirectory() && e.name !== "images") scanImgs(p);
+      else if (!e.isDirectory() && /\.(html|js|json)$/.test(e.name))
         for (const m of fs
           .readFileSync(p, "utf8")
           .matchAll(/images\/[a-z0-9/_-]+\.(?:jpe?g|png|webp)/g))
@@ -343,6 +384,36 @@ if (cfg.mode === "chassis") {
     console.error("\nMISSING IMAGES — drop these in cfg.assets (see chassis/images/REQUIRED.md):");
     for (const m of [...missingImgs].sort()) console.error("  " + m);
     process.exit(1);
+  }
+
+  if (cfg.strictImages) {
+    const referenced = new Set();
+    const collectRefs = (d) => {
+      for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+        const p = path.join(d, e.name);
+        if (e.isDirectory() && e.name !== "images") collectRefs(p);
+        else if (!e.isDirectory() && /\.(html|js|json)$/.test(e.name))
+          for (const m of fs
+            .readFileSync(p, "utf8")
+            .matchAll(/images\/[a-z0-9/_-]+\.(?:jpe?g|png|webp)/g))
+            referenced.add(m[0]);
+      }
+    };
+    collectRefs(dst);
+    const byHash = new Map();
+    for (const image of referenced) {
+      const content = fs.readFileSync(path.join(dst, image));
+      const hash = crypto.createHash("sha256").update(content).digest("hex");
+      const matches = byHash.get(hash) || [];
+      matches.push(image);
+      byHash.set(hash, matches);
+    }
+    const duplicates = [...byHash.values()].filter((matches) => matches.length > 1);
+    if (duplicates.length) {
+      console.error("\nDUPLICATE IMAGES — strict builds require a unique photo per slot:");
+      for (const matches of duplicates) console.error("  " + matches.join(" = "));
+      process.exit(1);
+    }
   }
 
   // register from the tokenised record template — never the roxjaya record

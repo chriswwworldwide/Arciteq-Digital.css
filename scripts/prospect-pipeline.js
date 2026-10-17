@@ -5,6 +5,13 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const imageSlots = Object.entries(
+  JSON.parse(
+    fs.readFileSync(path.join(root, "chassis", "images", "slots.json"), "utf8"),
+  ).slots,
+)
+  .filter(([, slot]) => !slot.protectedDefault)
+  .map(([name]) => name);
 const args = process.argv.slice(2);
 const resumeIndex = args.indexOf("--resume");
 const completeIndex = args.indexOf("--complete");
@@ -131,7 +138,6 @@ function prepare() {
 
   for (const handle of finalists) {
     const prospectDir = path.join(runDir, handle);
-    const sourceDir = path.join(prospectDir, "source");
     run(python, [
       "scripts/bright-contact-sheet.py",
       records,
@@ -140,25 +146,27 @@ function prepare() {
       "--max",
       String(posts),
     ]);
-    run(python, [
-      "scripts/bright-export-assets.py",
-      records,
-      handle,
-      sourceDir,
-      "--max",
-      "80",
-    ]);
-    const sortOutput = run("node", ["scripts/photo-sort.js", sourceDir]);
-    if (!dryRun)
-      fs.writeFileSync(path.join(prospectDir, "photo-sort.txt"), sortOutput);
+    writeJson(path.join(prospectDir, "shortlist.json"), {
+      status: "PENDING",
+      instructions: [
+        "Set approval.json config_path first so stripped/omitted slots leave the roster.",
+        "Review thumbnails only; assign 1-2 candidate labels per active slot.",
+        "Keep no more than 10 unique spares. Full-resolution export happens only after this gate.",
+        "Crew dinner/dance are protected template defaults and never belong in this roster.",
+        "If final QA exposes a gap, backfill that one slot rather than reopening the whole profile.",
+      ],
+      slots: {},
+      spares: [],
+    });
     writeJson(path.join(prospectDir, "approval.json"), {
       approved: false,
       decision: "REVIEW",
       config_path: "",
       notes: [
-        "Inspect every contact sheet and the proposed photo-sort assignments.",
-        "Confirm subject identity, intact faces, readable clocks, station accuracy and no visual duplicates.",
-        "Set decision to BUILD or REJECT. BUILD requires all 31 slots plus config_path.",
+        "First complete source/visual-index.json from the contact sheets before allocation runs.",
+        "Rate quality, brand fit and hero strength; identify station, venue, overlays, face/crop safety and allowed slots.",
+        "Then inspect photo-sort.txt and approve/reject the ranked assignments.",
+        `Set decision to BUILD or REJECT. BUILD requires all ${imageSlots.length} slots plus config_path.`,
       ],
       rework_seconds: 0,
       corrections: [],
@@ -168,7 +176,7 @@ function prepare() {
 
   writeJson(path.join(runDir, "pipeline.json"), {
     run_id: runId,
-    stage: "visual_review",
+    stage: "thumbnail_triage",
     started_at: startedAt.toISOString(),
     prepared_at: new Date().toISOString(),
     handles,
@@ -177,7 +185,7 @@ function prepare() {
     metrics: { rework_seconds: 0, corrections: [] },
     next_command: `node scripts/prospect-pipeline.js --resume ${runId}`,
   });
-  console.log(`\nREADY FOR VISUAL REVIEW → ${path.relative(root, runDir)}`);
+  console.log(`\nREADY FOR THUMBNAIL TRIAGE → ${path.relative(root, runDir)}`);
   console.log(`Resume: node scripts/prospect-pipeline.js --resume ${runId}`);
 }
 
@@ -198,27 +206,213 @@ function resume(runId) {
       results.push({ handle, status: "REJECTED_AT_VISUAL_GATE" });
       continue;
     }
+    const configPath = approval.config_path
+      ? path.resolve(root, approval.config_path)
+      : null;
+    const config = configPath
+      ? JSON.parse(fs.readFileSync(configPath, "utf8"))
+      : null;
+    const omittedSlots = new Set(config?.omitImageSlots || []);
+    const requiredImageSlots = imageSlots.filter(
+      (slot) => !omittedSlots.has(slot),
+    );
+    const shortlistPath = path.join(prospectDir, "shortlist.json");
+    const shortlist = fs.existsSync(shortlistPath)
+      ? JSON.parse(fs.readFileSync(shortlistPath, "utf8"))
+      : null;
+    if (shortlist?.status !== "COMPLETE") {
+      results.push({ handle, status: "WAITING_FOR_THUMBNAIL_SHORTLIST" });
+      continue;
+    }
+    if (!config && !shortlist.legacy) {
+      results.push({ handle, status: "WAITING_FOR_CONFIG_BEFORE_SHORTLIST" });
+      continue;
+    }
+    if (!shortlist.legacy) {
+      const shortlistSlots = shortlist.slots || {};
+      const missingShortlists = requiredImageSlots.filter(
+        (slot) =>
+          !Array.isArray(shortlistSlots[slot]) ||
+          shortlistSlots[slot].length < 1,
+      );
+      const oversizedShortlists = Object.entries(shortlistSlots)
+        .filter(([, labels]) => !Array.isArray(labels) || labels.length > 2)
+        .map(([slot]) => slot);
+      const spares = shortlist.spares || [];
+      const allLabels = [...Object.values(shortlistSlots).flat(), ...spares];
+      if (
+        missingShortlists.length ||
+        oversizedShortlists.length ||
+        spares.length > 10 ||
+        new Set(allLabels).size > requiredImageSlots.length + 10
+      ) {
+        results.push({
+          handle,
+          status: "INVALID_THUMBNAIL_SHORTLIST",
+          error: [
+            missingShortlists.length
+              ? `no candidate: ${missingShortlists.join(", ")}`
+              : "",
+            oversizedShortlists.length
+              ? `more than 2 candidates: ${oversizedShortlists.join(", ")}`
+              : "",
+            spares.length > 10 ? "more than 10 spares" : "",
+            new Set(allLabels).size > requiredImageSlots.length + 10
+              ? `more than ${requiredImageSlots.length + 10} unique downloads`
+              : "",
+          ]
+            .filter(Boolean)
+            .join("; "),
+        });
+        continue;
+      }
+    }
+    const sourceDir = path.join(prospectDir, "source");
+    const visualIndexPath = path.join(sourceDir, "visual-index.json");
+    if (!fs.existsSync(visualIndexPath)) {
+      run(python, [
+        "scripts/bright-export-assets.py",
+        deepCachePath(state.finalists || []),
+        handle,
+        sourceDir,
+        "--max",
+        String(
+          Math.max(
+            new Set([
+              ...Object.values(shortlist.slots || {}).flat(),
+              ...(shortlist.spares || []),
+              ...(shortlist.candidates || []).map((item) => item.label),
+            ]).size * 3,
+            20,
+          ),
+        ),
+        "--selection",
+        shortlistPath,
+      ]);
+      run("node", ["scripts/photo-sort.js", sourceDir, "--index-only"]);
+      results.push({ handle, status: "EXPORTED_WAITING_FOR_VISUAL_INDEX" });
+      continue;
+    }
+    const visualIndex = JSON.parse(fs.readFileSync(visualIndexPath, "utf8"));
+    if (visualIndex?.status !== "COMPLETE") {
+      results.push({ handle, status: "WAITING_FOR_VISUAL_INDEX" });
+      continue;
+    }
+    const requiredFields = JSON.parse(
+      fs.readFileSync(
+        path.join(root, "scripts", "photo-visual-index.schema.json"),
+        "utf8",
+      ),
+    ).requiredImageFields;
+    const indexedImages = Object.entries(visualIndex.images || {});
+    const invalidImages = indexedImages
+      .filter(([, image]) => requiredFields.some((field) => !(field in image)))
+      .map(([file]) => file);
+    const sourceImages = fs
+      .readdirSync(sourceDir)
+      .filter((file) => /\.(?:jpe?g|png|webp|heic)$/i.test(file));
+    const indexedNames = new Set(indexedImages.map(([file]) => file));
+    const unindexedImages = sourceImages.filter(
+      (file) => !indexedNames.has(file),
+    );
+    const uncoveredSlots = requiredImageSlots.filter(
+      (slot) =>
+        !indexedImages.some(
+          ([, image]) =>
+            !image.rejected &&
+            Array.isArray(image.allowedSlots) &&
+            image.allowedSlots.includes(slot),
+        ),
+    );
+    if (
+      invalidImages.length ||
+      unindexedImages.length ||
+      uncoveredSlots.length
+    ) {
+      results.push({
+        handle,
+        status: "INVALID_VISUAL_INDEX",
+        error: [
+          invalidImages.length
+            ? `missing required fields: ${invalidImages.join(", ")}`
+            : "",
+          unindexedImages.length
+            ? `not visually indexed: ${unindexedImages.join(", ")}`
+            : "",
+          uncoveredSlots.length
+            ? `no approved candidate for: ${uncoveredSlots.join(", ")}`
+            : "",
+        ]
+          .filter(Boolean)
+          .join("; "),
+      });
+      continue;
+    }
+    const sortOutput = run("node", ["scripts/photo-sort.js", sourceDir]);
+    if (!dryRun)
+      fs.writeFileSync(path.join(prospectDir, "photo-sort.txt"), sortOutput);
     if (!approval.approved || approval.decision !== "BUILD") {
       results.push({ handle, status: "WAITING_FOR_VISUAL_APPROVAL" });
       continue;
     }
-    const slotEntries = Object.entries(approval.slots || {});
-    if (slotEntries.length !== 31) {
-      results.push({
-        handle,
-        status: "INVALID_APPROVAL",
-        error: "exactly 31 image slots required",
-      });
-      continue;
-    }
-    if (!approval.config_path) {
+    if (!config) {
       results.push({ handle, status: "WAITING_FOR_CONFIG" });
       continue;
     }
-
-    const configPath = path.resolve(root, approval.config_path);
-    const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
-    const sourceDir = path.join(prospectDir, "source");
+    const slotEntries = Object.entries(approval.slots || {}).filter(
+      ([slot]) => !omittedSlots.has(slot),
+    );
+    const approvedSlotNames = new Set(slotEntries.map(([slot]) => slot));
+    const missingSlots = requiredImageSlots.filter(
+      (slot) => !approvedSlotNames.has(slot),
+    );
+    const unknownSlots = slotEntries
+      .map(([slot]) => slot)
+      .filter((slot) => !imageSlots.includes(slot));
+    const sourceNames = slotEntries.map(([, source]) => source);
+    if (
+      missingSlots.length ||
+      unknownSlots.length ||
+      new Set(sourceNames).size !== sourceNames.length
+    ) {
+      results.push({
+        handle,
+        status: "INVALID_APPROVAL",
+        error: [
+          missingSlots.length ? `missing: ${missingSlots.join(", ")}` : "",
+          unknownSlots.length ? `unknown: ${unknownSlots.join(", ")}` : "",
+          new Set(sourceNames).size !== sourceNames.length
+            ? "same source photo assigned more than once"
+            : "",
+        ]
+          .filter(Boolean)
+          .join("; "),
+      });
+      continue;
+    }
+    const photoIndexPath = path.join(prospectDir, "source", "photo-index.json");
+    if (fs.existsSync(photoIndexPath)) {
+      const photoIndex = JSON.parse(fs.readFileSync(photoIndexPath, "utf8"));
+      const selected = new Set(sourceNames);
+      const nearDuplicates = photoIndex.flatMap((photo) =>
+        (photo.duplicateFiles || [])
+          .filter(
+            (duplicate) =>
+              selected.has(photo.file) &&
+              selected.has(duplicate) &&
+              photo.file < duplicate,
+          )
+          .map((duplicate) => `${photo.file} ≈ ${duplicate}`),
+      );
+      if (nearDuplicates.length) {
+        results.push({
+          handle,
+          status: "INVALID_APPROVAL",
+          error: `near-duplicate photos selected: ${nearDuplicates.join(", ")}`,
+        });
+        continue;
+      }
+    }
     const assetsDir = path.join(
       root,
       "scripts",

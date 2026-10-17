@@ -2,6 +2,7 @@
   "mode": "chassis",
   "slug": "coachedbyzara",
   "heroMode": "full",
+  "strictImages": true,
   "assets": "scripts/reskin/coachedbyzara-assets",
   "currency": "gbp",
   "extraCss": "@media (max-width: 600px) { .hero h2 { font-size: 34px; } }",
@@ -62,7 +63,27 @@
     "SOCIAL_HANDLE_UPPER": "COACHEDBYZARA"
   },
   "stripSections": [
-    "merch"
+    "merch",
+    "tips"
+  ],
+  "omitImageSlots": [
+    "images/finish.jpg",
+    "images/race-revel.jpg",
+    "images/sprint.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/bike.jpg",
+    "images/wallball.jpg",
+    "images/carry.jpg",
+    "images/rope.jpg",
+    "images/squad-athlos.jpg",
+    "images/detail.jpg",
+    "images/station-lean.jpg",
+    "images/kerb.jpg",
+    "images/rooftop.jpg",
+    "images/walkin.jpg",
+    "images/suit.jpg",
+    "images/hoodie.jpg"
   ],
   "stripPages": [
     "watch.html"

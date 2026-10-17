@@ -1,37 +1,42 @@
 #!/usr/bin/env node
-// scripts/photo-sort.js — index + allocate a pile of source photos into the
-// chassis image slots, so tenant builds stop needing hand-picked filenames.
-//
-//   node scripts/photo-sort.js <assetsDir> [--apply <tenantAssetsDir>] [--pin hero.jpg=somefile.jpg]
-//
-// Index: every image in <assetsDir> gets scored per slot from
-// chassis/images/slots.json using:
-//   - aspect match (slot wants landscape/portrait vs photo's real shape)
-//   - keyword match (slot keywords vs IG caption sidecar .txt + filename)
-//   - faceCritical guard (hero/portrait slots only take shots whose captions
-//     suggest a person, never scenery/gym equipment)
-// Allocation: slots fill in priority order (1 first), each photo used once,
-// then a report lists confident picks, low-confidence picks, and unused photos.
-// --apply copies the winners into a tenant assets dir under slot filenames;
-// --pin slot=photo forces a specific assignment (e.g. keep Station 9's hero).
 import fs from "node:fs";
 import path from "node:path";
-import { execSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const slotsPath = path.join(root, "chassis", "images", "slots.json");
-const slots = JSON.parse(fs.readFileSync(slotsPath, "utf8")).slots;
-
+const manifest = JSON.parse(fs.readFileSync(slotsPath, "utf8"));
+const slots = manifest.slots;
+const allocationOrder = manifest.allocationOrder || Object.keys(slots);
+const allocatableSlots = Object.entries(slots)
+  .filter(([, slot]) => !slot.protectedDefault)
+  .map(([name]) => name);
+const missingOrder = allocatableSlots.filter(
+  (name) => !allocationOrder.includes(name),
+);
+const duplicateOrder = allocationOrder.filter(
+  (name, index) => allocationOrder.indexOf(name) !== index,
+);
+if (missingOrder.length || duplicateOrder.length) {
+  console.error(
+    `bad image allocationOrder — missing: ${missingOrder.join(", ") || "none"}; duplicates: ${[...new Set(duplicateOrder)].join(", ") || "none"}`,
+  );
+  process.exit(1);
+}
 const args = process.argv.slice(2);
 const srcDir = args[0];
 if (!srcDir || !fs.existsSync(srcDir)) {
   console.error(
-    "usage: node scripts/photo-sort.js <assetsDir> [--apply <outDir>] [--pin slot=file ...]",
+    "usage: node scripts/photo-sort.js <assetsDir> [--apply <outDir>] [--strict] [--pin slot=file ...]",
   );
   process.exit(1);
 }
-const applyDir = args.includes("--apply") ? args[args.indexOf("--apply") + 1] : null;
+const applyDir = args.includes("--apply")
+  ? args[args.indexOf("--apply") + 1]
+  : null;
+const strict = args.includes("--strict");
+const indexOnly = args.includes("--index-only");
 const pins = {};
 for (let i = 0; i < args.length; i++) {
   if (args[i] === "--pin" && args[i + 1]) {
@@ -45,111 +50,328 @@ const IMG = /\.(jpe?g|png|webp|heic)$/i;
 const PERSON_WORDS =
   /\b(i|me|my|we|us|he|she|coach|athlete|partner|team|squad|client|race|finish|pb|proud|won|first)\b/i;
 const CROP_RISK_WORDS = /\b(nature|food|view|skyline|equipment|product)\b/i;
-
-function dims(f) {
-  try {
-    const out = execSync(
-      `sips -g pixelWidth -g pixelHeight "${f}" 2>/dev/null`,
-      { encoding: "utf8" },
-    );
-    const w = +(/pixelWidth:\s*(\d+)/.exec(out)?.[1] || 0);
-    const h = +(/pixelHeight:\s*(\d+)/.exec(out)?.[1] || 0);
-    return w && h ? { w, h, ratio: w / h } : null;
-  } catch {
-    return null;
-  }
-}
-
-// ---- index every photo ------------------------------------------------
-const photos = [];
-for (const f of fs.readdirSync(srcDir).sort()) {
-  if (!IMG.test(f)) continue;
-  const full = path.join(srcDir, f);
-  const d = dims(full);
-  if (!d) continue;
-  const sidecar = full.replace(IMG, ".txt");
-  const caption = fs.existsSync(sidecar)
-    ? fs.readFileSync(sidecar, "utf8").toLowerCase()
-    : "";
-  photos.push({
-    file: f,
-    full,
-    ...d,
-    text: `${f.toLowerCase()} ${caption}`,
-    hasPerson: PERSON_WORDS.test(caption),
-    cropRisk: CROP_RISK_WORDS.test(caption),
-  });
-}
-if (!photos.length) {
+const files = fs
+  .readdirSync(srcDir)
+  .filter((file) => IMG.test(file))
+  .sort();
+if (!files.length) {
   console.error(`no images found in ${srcDir}`);
   process.exit(1);
 }
-console.log(`indexed ${photos.length} photos`);
 
-// ---- scoring -----------------------------------------------------------
-function score(photo, slot) {
-  let s = 0;
-  const wantAspect = slot.aspect || "any";
-  if (wantAspect === "landscape") s += photo.ratio >= 1.15 ? 3 : photo.ratio >= 0.9 ? 1 : -3;
-  else if (wantAspect === "portrait") s += photo.ratio <= 0.85 ? 3 : photo.ratio <= 1.0 ? 1 : -3;
-  let kw = 0;
-  for (const k of slot.keywords || []) if (photo.text.includes(k)) kw++;
-  s += Math.min(kw, 2) * 4;
-  if (slot.faceCritical) {
-    if (photo.cropRisk) s -= 8;
-    else if (photo.hasPerson) s += 3;
-    else s -= 4; // no evidence of a person in a face-critical slot
+function visionIndex(imagePaths) {
+  if (process.platform !== "darwin") return [];
+  try {
+    const output = execFileSync(
+      "swift",
+      [path.join(root, "scripts", "image-vision.swift"), ...imagePaths],
+      { encoding: "utf8", maxBuffer: 50 * 1024 * 1024 },
+    );
+    return JSON.parse(output);
+  } catch (error) {
+    console.error(`vision metadata unavailable: ${error.message}`);
+    return [];
   }
-  return s;
 }
 
-// ---- allocate (priority order, no reuse) --------------------------------
-const order = Object.entries(slots).sort(
-  (a, b) => (a[1].priority || 3) - (b[1].priority || 3),
+const visualIndexPath = path.join(srcDir, "visual-index.json");
+const legacyAnnotationsPath = path.join(srcDir, "annotations.json");
+const visualIndex = fs.existsSync(visualIndexPath)
+  ? JSON.parse(fs.readFileSync(visualIndexPath, "utf8"))
+  : null;
+const annotations = visualIndex?.images
+  ? visualIndex.images
+  : fs.existsSync(legacyAnnotationsPath)
+    ? JSON.parse(fs.readFileSync(legacyAnnotationsPath, "utf8"))
+    : {};
+const fullPaths = files.map((file) => path.join(srcDir, file));
+const vision = visionIndex(fullPaths);
+const visionByPath = new Map(
+  vision.map((item) => [path.resolve(item.path), item]),
 );
-const used = new Set();
-const assign = {};
-const review = [];
-for (const slotName of pins ? Object.keys(pins) : []) {
-  const p = photos.find((p) => p.file === pins[slotName]);
-  if (p) {
-    assign[slotName] = { photo: p.file, score: 99, pinned: true };
-    used.add(p.file);
+const photos = files.map((file) => {
+  const full = path.join(srcDir, file);
+  const metadata = visionByPath.get(path.resolve(full)) || {};
+  const sidecar = full.replace(IMG, ".txt");
+  const metaPath = full.replace(IMG, ".meta.json");
+  const mediaMeta = fs.existsSync(metaPath)
+    ? JSON.parse(fs.readFileSync(metaPath, "utf8"))
+    : { media_count: 1, caption_applies_to_carousel: false };
+  const annotation = annotations[file] || {};
+  const caption = fs.existsSync(sidecar)
+    ? fs.readFileSync(sidecar, "utf8").toLowerCase()
+    : "";
+  const labels = (metadata.labels || [])
+    .filter((label) => label.confidence >= 0.15)
+    .map((label) => label.label.toLowerCase());
+  const texts = (metadata.texts || []).filter(
+    (text) => text.confidence >= 0.25,
+  );
+  const textArea = texts.reduce(
+    (total, text) => total + Number(text.area || 0),
+    0,
+  );
+  const textCharacters = texts.reduce(
+    (total, text) => total + String(text.text || "").length,
+    0,
+  );
+  const faces = metadata.faces || [];
+  const faceCropRisk = faces.some(
+    (face) =>
+      face.x < 0.025 ||
+      face.y < 0.025 ||
+      face.x + face.width > 0.975 ||
+      face.y + face.height > 0.975,
+  );
+  return {
+    file,
+    full,
+    w: metadata.width || 0,
+    h: metadata.height || 0,
+    ratio:
+      metadata.width && metadata.height ? metadata.width / metadata.height : 1,
+    caption,
+    captionTrusted:
+      !mediaMeta.caption_applies_to_carousel && !mediaMeta.is_video_frame,
+    mediaMeta,
+    annotation,
+    labels,
+    visionText: labels.join(" ").toLowerCase(),
+    annotationText: (annotation.subjects || []).join(" ").toLowerCase(),
+    text: `${file.toLowerCase()} ${caption} ${(annotation.subjects || []).join(" ")}`.toLowerCase(),
+    hasPerson:
+      annotation.creatorVisible === true ||
+      faces.length > 0 ||
+      PERSON_WORDS.test(caption),
+    faceCount: faces.length,
+    cropRisk:
+      annotation.faceCropSafe === true
+        ? false
+        : faceCropRisk || CROP_RISK_WORDS.test(caption),
+    textOverlay:
+      !annotation.allowText &&
+      (textArea >= 0.035 || (textArea >= 0.015 && textCharacters >= 18)),
+    recognizedText: texts.map((text) => text.text),
+    duplicatePaths: new Set(
+      (metadata.duplicates || []).map((duplicate) =>
+        path.basename(duplicate.path),
+      ),
+    ),
+  };
+});
+fs.writeFileSync(
+  path.join(srcDir, "photo-index.json"),
+  `${JSON.stringify(
+    photos.map(({ full: _full, duplicatePaths, ...photo }) => ({
+      ...photo,
+      duplicateFiles: [...duplicatePaths],
+    })),
+    null,
+    2,
+  )}\n`,
+);
+console.log(
+  `indexed ${photos.length} photos (Vision faces, OCR, labels, near-duplicates)`,
+);
+if (indexOnly) {
+  if (!fs.existsSync(visualIndexPath)) {
+    const images = Object.fromEntries(
+      photos.map((photo) => [
+        photo.file,
+        {
+          subjects: [...photo.labels],
+          station: null,
+          quality: 0,
+          brandFit: 0,
+          heroScore: 0,
+          venue: "",
+          event: "",
+          textOverlay: photo.textOverlay,
+          allowText: false,
+          creatorVisible: photo.faceCount > 0,
+          faceCropSafe: !photo.cropRisk,
+          allowedSlots: [],
+          rejected: null,
+          notes: `AUTO INDEX ONLY — review required. OCR: ${photo.recognizedText.join(" | ")}`,
+        },
+      ]),
+    );
+    fs.writeFileSync(
+      visualIndexPath,
+      `${JSON.stringify(
+        {
+          status: "PENDING",
+          schema: "scripts/photo-visual-index.schema.json",
+          images,
+        },
+        null,
+        2,
+      )}\n`,
+    );
   }
-}
-for (const [slotName, slot] of order) {
-  if (assign[slotName]) continue;
-  const candidates = photos
-    .filter((p) => !used.has(p.file))
-    .map((p) => ({ p, s: score(p, slot) }))
-    .sort((a, b) => b.s - a.s);
-  const best = candidates[0];
-  if (!best) break;
-  assign[slotName] = { photo: best.p.file, score: best.s };
-  used.add(best.p.file);
-  if (best.s < 4) review.push({ slot: slotName, photo: best.p.file, score: best.s, label: slot.label });
+  process.exit(0);
 }
 
-// ---- report ------------------------------------------------------------
-console.log("\n=== ASSIGNMENTS (slot ← photo · score) ===");
-for (const [slot, a] of Object.entries(assign)) {
-  const flag = a.pinned ? "PIN" : a.score < 4 ? "REVIEW" : "ok";
-  console.log(`  ${flag.padEnd(6)} ${slot.padEnd(34)} ← ${a.photo}  (${a.score})`);
+function evidence(photo, slot) {
+  const captionHits = photo.captionTrusted
+    ? (slot.keywords || []).filter((keyword) => photo.caption.includes(keyword))
+    : [];
+  const annotationHits = (slot.keywords || []).filter((keyword) =>
+    photo.annotationText.includes(keyword),
+  );
+  const visualHits = (slot.visualKeywords || []).filter((keyword) =>
+    photo.visionText.includes(keyword),
+  );
+  return {
+    captionHits,
+    annotationHits,
+    visualHits,
+    total: captionHits.length + annotationHits.length + visualHits.length,
+  };
+}
+
+function score(photo, slot, slotName) {
+  const proof = evidence(photo, slot);
+  if (photo.annotation.rejected)
+    return { score: -Infinity, proof, reason: "visually rejected" };
+  if (
+    Array.isArray(photo.annotation.allowedSlots) &&
+    photo.annotation.allowedSlots.length &&
+    !photo.annotation.allowedSlots.includes(slotName)
+  )
+    return { score: -Infinity, proof, reason: "slot not visually approved" };
+  const forbidden = (slot.forbiddenKeywords || []).some(
+    (keyword) =>
+      photo.text.includes(keyword) || photo.visionText.includes(keyword),
+  );
+  const semanticCritical =
+    slot.page === "stations-prep" || slot.page === "run-zone";
+  if (forbidden)
+    return { score: -Infinity, proof, reason: "forbidden subject evidence" };
+  if (semanticCritical && proof.total === 0)
+    return {
+      score: -Infinity,
+      proof,
+      reason: "no slot-specific subject evidence",
+    };
+  if (slot.noTextOverlay && photo.textOverlay)
+    return { score: -Infinity, proof, reason: "visible text overlay" };
+  if (slot.faceCritical && !photo.hasPerson)
+    return { score: -Infinity, proof, reason: "no person/face evidence" };
+  if (slot.faceCritical && photo.cropRisk)
+    return { score: -Infinity, proof, reason: "face/crop risk" };
+
+  let value = 0;
+  const wantAspect = slot.aspect || "any";
+  if (wantAspect === "landscape")
+    value += photo.ratio >= 1.15 ? 3 : photo.ratio >= 0.9 ? 1 : -3;
+  else if (wantAspect === "portrait")
+    value += photo.ratio <= 0.85 ? 3 : photo.ratio <= 1.0 ? 1 : -3;
+  value += Math.min(proof.annotationHits.length, 2) * 8;
+  value += Math.min(proof.captionHits.length, 2) * 5;
+  value += Math.min(proof.visualHits.length, 2) * 3;
+  value += Number(photo.annotation.quality || 0);
+  value += Number(photo.annotation.brandFit || 0);
+  if (slot.position === "hero")
+    value += Number(photo.annotation.heroScore || 0) * 2;
+  if (slot.faceCritical && photo.faceCount) value += 4;
+  return { score: value, proof, reason: "" };
+}
+
+const order = allocationOrder
+  .filter((name) => slots[name] && !slots[name].protectedDefault)
+  .map((name) => [name, slots[name]]);
+const used = new Set();
+const assignments = {};
+const review = [];
+const failures = [];
+function conflictsWithUsed(photo) {
+  return [...used].some(
+    (usedFile) => usedFile === photo.file || photo.duplicatePaths.has(usedFile),
+  );
+}
+
+for (const [slotName, file] of Object.entries(pins)) {
+  const photo = photos.find((candidate) => candidate.file === file);
+  if (!photo) {
+    failures.push({ slot: slotName, reason: `pinned file missing: ${file}` });
+    continue;
+  }
+  if (conflictsWithUsed(photo)) {
+    failures.push({ slot: slotName, reason: `pinned duplicate: ${file}` });
+    continue;
+  }
+  assignments[slotName] = { photo: photo.file, score: 99, pinned: true };
+  used.add(photo.file);
+}
+
+for (const [slotName, slot] of order) {
+  if (assignments[slotName]) continue;
+  const candidates = photos
+    .filter((photo) => !conflictsWithUsed(photo))
+    .map((photo) => ({ photo, result: score(photo, slot, slotName) }))
+    .filter((candidate) => Number.isFinite(candidate.result.score))
+    .sort((left, right) => right.result.score - left.result.score);
+  const best = candidates[0];
+  if (!best) {
+    failures.push({
+      slot: slotName,
+      reason: "no semantically valid unique image",
+    });
+    continue;
+  }
+  assignments[slotName] = {
+    photo: best.photo.file,
+    score: best.result.score,
+    evidence: [
+      ...best.result.proof.annotationHits.map((hit) => `annotation:${hit}`),
+      ...best.result.proof.captionHits.map((hit) => `caption:${hit}`),
+      ...best.result.proof.visualHits.map((hit) => `vision:${hit}`),
+    ],
+  };
+  used.add(best.photo.file);
+  if (best.result.score < 4)
+    review.push({
+      slot: slotName,
+      photo: best.photo.file,
+      score: best.result.score,
+      label: slot.label,
+    });
+}
+
+console.log("\n=== ASSIGNMENTS (slot ← photo · score · evidence) ===");
+for (const [slot, assignment] of Object.entries(assignments)) {
+  const flag = assignment.pinned
+    ? "PIN"
+    : assignment.score < 4
+      ? "REVIEW"
+      : "ok";
+  console.log(
+    `  ${flag.padEnd(6)} ${slot.padEnd(40)} ← ${assignment.photo}  (${assignment.score}) ${(assignment.evidence || []).join(", ")}`,
+  );
 }
 if (review.length) {
   console.log("\n=== NEEDS HUMAN EYES ===");
-  for (const r of review) console.log(`  ${r.slot}: "${r.label}" ← ${r.photo}`);
+  for (const item of review)
+    console.log(`  ${item.slot}: "${item.label}" ← ${item.photo}`);
 }
-const unused = photos.filter((p) => !used.has(p.file)).map((p) => p.file);
-console.log(`\nunused: ${unused.length} photos${unused.length ? " — " + unused.slice(0, 10).join(", ") + (unused.length > 10 ? "…" : "") : ""}`);
+if (failures.length) {
+  console.log("\n=== UNFILLED / REJECTED SLOTS ===");
+  for (const failure of failures)
+    console.log(`  ${failure.slot}: ${failure.reason}`);
+}
+const unused = photos
+  .filter((photo) => !used.has(photo.file))
+  .map((photo) => photo.file);
+console.log(`\nunused: ${unused.length} photos`);
 
-// ---- apply -------------------------------------------------------------
-if (applyDir) {
-  for (const [slot, a] of Object.entries(assign)) {
-    const src = path.join(srcDir, a.photo);
-    const dst = path.join(applyDir, slot);
-    fs.mkdirSync(path.dirname(dst), { recursive: true });
-    fs.copyFileSync(src, dst);
+if (applyDir && (!strict || (!failures.length && !review.length))) {
+  for (const [slot, assignment] of Object.entries(assignments)) {
+    const source = path.join(srcDir, assignment.photo);
+    const target = path.join(applyDir, slot);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.copyFileSync(source, target);
   }
   console.log(`\napplied → ${applyDir}`);
 }
+if (strict && (failures.length || review.length)) process.exit(2);

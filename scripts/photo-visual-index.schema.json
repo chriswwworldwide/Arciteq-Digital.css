@@ -1,0 +1,65 @@
+{
+  "description": "AI visual inventory written before slot allocation. Index every viable candidate once; mark unusable images rejected rather than omitting silently.",
+  "requiredTopLevel": ["status", "images"],
+  "status": ["PENDING", "COMPLETE"],
+  "requiredImageFields": [
+    "subjects",
+    "station",
+    "quality",
+    "brandFit",
+    "heroScore",
+    "venue",
+    "event",
+    "textOverlay",
+    "creatorVisible",
+    "faceCropSafe",
+    "allowedSlots",
+    "rejected",
+    "notes"
+  ],
+  "scales": {
+    "quality": "1-10: focus, light, resolution, composition",
+    "brandFit": "1-10: fit with this creator's visual identity",
+    "heroScore": "1-10: standalone main-hero strength; an 8 remains eligible for secondary premium slots if a 9 wins hero"
+  },
+  "stationValues": [
+    null,
+    "skierg",
+    "sled-push",
+    "sled-pull",
+    "burpees",
+    "row",
+    "farmers-carry",
+    "sandbag-lunges",
+    "wall-balls",
+    "running"
+  ],
+  "rules": [
+    "Carousel captions are context only and never prove a child image's subject.",
+    "Text overlays reject critical slots unless the text is venue signage and allowText is explicit.",
+    "A station slot requires a visually confirmed matching station value.",
+    "When a higher hero score replaces a prior leader, the prior image remains ranked for other allowed premium slots.",
+    "No source file may be allocated twice; near-duplicate frames count as the same source moment."
+  ],
+  "example": {
+    "status": "COMPLETE",
+    "images": {
+      "example.jpg": {
+        "subjects": ["running", "race"],
+        "station": "running",
+        "quality": 8,
+        "brandFit": 9,
+        "heroScore": 7,
+        "venue": "ExCeL London",
+        "event": "HYROX London",
+        "textOverlay": false,
+        "allowText": false,
+        "creatorVisible": true,
+        "faceCropSafe": true,
+        "allowedSlots": ["images/run-hero.jpg", "images/run-compromised.jpg"],
+        "rejected": false,
+        "notes": "Strong secondary running image."
+      }
+    }
+  }
+}

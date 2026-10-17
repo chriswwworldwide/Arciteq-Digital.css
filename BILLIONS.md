@@ -433,20 +433,38 @@ carousel/video candidates; selected full assets and video frames flow into
 node scripts/prospect-pipeline.js prepare handle1 handle2 --run=sunday-batch
 ```
 
-One resumable command now coordinates the existing tools: cached Bright Data
-profile qualification → PASS-only 60-post/event-window assessment → contact
-sheets → local asset export → priority/no-duplicate photo sort → review pack.
-Each candidate lands under ignored
-`scripts/reskin/prospects/<run>/<handle>/` with `qualification.json`,
-`assessment.json`, labelled contact sheets, source assets, photo-sort report
-and an `approval.json` template.
+One resumable command coordinates: cached Bright Data profile qualification →
+PASS-only 60-post/event-window assessment → **thumbnail sheets first** → AI
+shortlist → selected full-resolution export → detailed visual index → permanent
+priority allocation → review pack. Never export an entire profile before
+thumbnail triage.
 
-The pipeline then stops deliberately at **READY FOR VISUAL REVIEW**. This is an
-AI visual gate, not manual work for the founder: inspect identity, cropped
-heads, finish-clock readability, station correctness, hero quality and visual
-duplicates; fill all 31 slot assignments; set `decision: BUILD`; supply the
-generated config path. Reject weak candidates without building. Captions and
-aspect ratios propose; vision approves.
+Shortlist rule: normally **one obvious candidate per active slot**; allow a
+second only where thumbnails are genuinely close or crop/clarity cannot be
+judged. Maximum ten unique spares across the build. Therefore a 20-slot tenant
+normally indexes roughly 20–30 full files, not 250. If final QA exposes one
+missing/weak position, perform a targeted one-slot backfill rather than reopen
+the whole profile.
+
+Every shortlisted full image is indexed once: subjects, creator visibility,
+venue, event, exact station, technical quality 1–10, brand fit 1–10, homepage
+hero score 1–10, text overlay, face/crop safety, allowed slots, duplicate group
+and rejection reason. Carousel captions are context only, never evidence for a
+child image. The two proven crew dinner/dance photos are protected template
+defaults: permanently filled, excluded from the to-fill roster, manually
+changed only by exception.
+
+Slots have one permanent allocation order (homepage hero first, then coaching
+hero, bio, product/page heroes, exact stations, then secondary/lifestyle).
+For each slot choose the highest-rated unused compatible image. Losing hero
+candidates keep all tags and return to the pool for later compatible slots—an
+8/10 is not discarded merely because a 9/10 won the homepage.
+
+The AI visual gates are not founder work: thumbnail triage, then detailed
+shortlist indexing, then final allocation review. The pipeline refuses missing
+indices, more than two candidates per slot, more than ten spares, uncovered
+active slots, repeated files, perceptual near-duplicates, overlays in critical
+positions and unreviewed configs. Final desktop/mobile review remains required.
 
 ```bash
 node scripts/prospect-pipeline.js --resume sunday-batch

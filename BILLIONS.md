@@ -345,26 +345,87 @@ The "clone" machine is real now. End state: scan → pull → build → QC → p
 - **Test tenant:** `mayaokafor` (fictional, ambient hero) — all pages 200,
   zero tokens, zero ghosts, lint/type-check clean.
 
-**IG prospect tooling:**
-- `scripts/ig-pull.py` — full-res post images + caption .txt via the logged-in
-  Chrome session (instaloader + browser_cookie3; venv at /tmp/igenv).
-  Carousels auto-split. Re-run safe.
-- `scripts/ig-scan.py` — ranks handles: followers, cadence, engagement rate,
-  link-in-bio tool detection (the fragmentation we replace), coaching
-  keywords in bio + captions → score. `--csv` for spreadsheet mode.
-  Verified: joshharrisonfit scores 11/13 (linktree + coaching caps + engaged).
-- gallery-dl/yt-dlp both failed (IG broke their profile GraphQL endpoints);
-  instaloader's `load_session` is the working path.
+**Lead search and qualification — gates before scores:**
 
-**Safety:** ran off station9.studio session. Plan: dedicated burner account,
-created on desktop, warmed up (follow/like/browse a few days) before heavy
-scanning. New accounts are MORE fragile than aged ones — warm first.
+The first scanner was too permissive: it added points for audience,
+Linktree and coaching language, so an Australian HYROX coach, a UK
+triathlete and a general transformation coach could all rank highly. Those
+are commercially interesting people but wrong first-wave chassis targets.
+Never mine media until all hard gates pass.
 
-**Throughput estimate:** machine side ~30–50 drafts/day; bottleneck is photo
-curation — except Devin can classify pulled images into contract slots
-(sled push vs rope pull etc, proven on Josh's audit), so human time lands
-at ~5–10 min QC/site → ~15–25 pitch-ready/day ceiling. Funnel reality:
-~30 scanned → ~8 buildable → ~5–8 pitched/day.
+**Hard gates (failure = reject, not fewer points):**
+
+1. **Geography:** currently UK. Confirm from bio, location, linked business
+   and recent captions; do not infer from appearance. EU/Australia enter
+   their own later locale queues.
+2. **Sport:** HYROX must be explicit and current — bio/category or at least
+   ~3 of the latest 12 posts about HYROX races, stations, programming or
+   clients. "Hybrid athlete" alone is insufficient.
+3. **Seller:** must sell coaching, programmes, cohorts, memberships or a
+   community. Athlete/influencer without an offer is not this product's
+   buyer.
+4. **Activity/access:** public, recently active (normally within 30 days),
+   contactable and suitable for a private demo.
+5. **Site gap:** no strong owned platform already solving the problem. A
+   Linktree/Beacons/Stan or visibly fragmented stack is positive evidence.
+
+**Negative classifications (reject or route to another future chassis):**
+triathlon/IRONMAN dominant, bodybuilding/transformation dominant,
+running-only, general lifestyle influencer, athlete with no coaching
+business, wrong geography, or a mature owned platform already in place.
+Do not force HYROX station pages onto a commercially attractive person in
+the wrong category.
+
+**Rank only after the gates pass:**
+
+- Linktree/Beacons/Stan or multiple disconnected booking/store/community links
+- 1:1 coaching plus group programmes/cohorts
+- Gym, programme-coordinator or community role
+- Affiliate codes, sponsors, merchandise or ecommerce
+- Multiple revenue streams (strong **desk-first** pitch)
+- Active race/community content (network/race-mate pitch)
+- Race analysis content (predictor/splits pitch)
+- Useful audience size and genuine engagement
+- Strong recent photography and no proper website
+- Nutrition-led creators trigger the chassis nutrition review gate; generic
+  fuel copy is never silently attributed to them
+
+**Desk-first ordering:** prioritise prospects juggling coaching, programme,
+affiliate, sponsor, merchandise or gym income. The desk is strongest where
+money currently lives across several tabs; a single-offer coach receives a
+different lead feature.
+
+**Staged data budget (cheap rejection first):**
+
+1. Profile record only: geography, bio, external stack, activity.
+2. 10–12 text/metadata post records: HYROX density and negative-sport check.
+3. 20–30 thumbnails only for qualified prospects: verify hero, portrait,
+   coaching, race/station, doubles/community and lifestyle coverage.
+4. Pull 10–15 selected full assets/video frames only after image viability.
+5. Build, automated QA, one visual review, then pitch.
+
+Target monthly shape: ~200 profile gates → ~80 sport checks → ~30 visual
+triages → ~15–20 full speculative builds initially. Increase full builds
+only when conversion data proves they outperform lighter outreach.
+
+**Production data source:** use a paid public-data provider rather than a
+logged-in Instagram account. Current recommendation: Bright Data Instagram
+Scraper API (public profile/post records, no Station 9 cookies; advertised
+5,000 free records/month and pay-as-you-go thereafter). Apify is the backup.
+Free anonymous viewers are manual/emergency fallback, not infrastructure.
+Station 9's IG account is for normal posting, engagement and outreach only.
+Cache every fetched record; never scan the same profile twice unnecessarily.
+
+**Local tooling:** `ig-scan.py` is an early prototype and its current ranking
+must not be trusted until it implements the hard gates (pinned posts can
+also distort its dates/engagement). `ig-triage.py`, `ig-pull.py` and
+`photo-sort.js` remain useful after qualification: contact sheets expose
+carousel/video candidates; selected full assets and video frames flow into
+31 labelled, priority-ordered, non-duplicating image slots.
+
+**Throughput:** builds are no longer the constraint. Qualified leads and
+final visual QA are. Optimise for the number of correctly targeted pitches,
+not raw sites generated.
 
 **Market sequencing:** exhaust HYROX-adjacent creators (anyone coaching
 athletes who race — the tools land as-is), then adjacent niches reuse the

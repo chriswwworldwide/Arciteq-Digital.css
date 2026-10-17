@@ -145,3 +145,12 @@ anything), so selection is visual, not textual:
 
 Pulling every post full-res is overkill and hits rate limits — the triage
 step keeps the fetch to ~10–15 images per creator.
+
+Triage details (learned the hard way):
+
+- Bump --max to ~100 thumbs — cheap, they're small.
+- Carousels tile EVERY node (`CODE_1`, `CODE_2`…) — the cover frame often
+  isn't representative; the good shot is frequently frame 3 of 7.
+- Video posts get a `[VID]` badge. When stills run thin, promising reels
+  become photo candidates: `ig-pull.py --only CODE --frames 3` extracts
+  3 stills per video via bundled ffmpeg — 1080p frames are pitch-quality.

@@ -31,6 +31,12 @@ def main():
         default="",
         help="comma-separated shortcodes — fetch just these posts (pairs with ig-triage picks)",
     )
+    ap.add_argument(
+        "--frames",
+        type=int,
+        default=0,
+        help="for video posts, also extract N stills (needs imageio-ffmpeg in the venv)",
+    )
     args = ap.parse_args()
 
     out = Path(args.outdir)
@@ -72,6 +78,32 @@ def main():
             urls = [post.url]
         if not urls:  # pure video post — grab the thumbnail so nothing is lost
             urls = [post.url] if post.url else []
+
+        # --frames: pull stills out of video nodes too — reels often hold the
+        # best shots and a 1080p frame is pitch-quality
+        if args.frames:
+            vids = []
+            if post.is_video and post.video_url:
+                vids.append(post.video_url)
+            elif post.typename == "GraphSidecar":
+                vids = [n.video_url for n in post.get_sidecar_nodes() if n.is_video and n.video_url]
+            for vi, vurl in enumerate(vids[:2]):
+                try:
+                    import subprocess, tempfile
+                    import imageio_ffmpeg
+                    tmp = Path(tempfile.mkstemp(suffix=".mp4")[1])
+                    tmp.write_bytes(urllib.request.urlopen(vurl, timeout=60).read())
+                    ff = imageio_ffmpeg.get_ffmpeg_exe()
+                    for f_i in range(args.frames):
+                        ts = ["10%", "50%", "85%"][min(f_i, 2)]
+                        fout = out / f"{post.shortcode}_v{vi+1}f{f_i+1}.jpg"
+                        subprocess.run(
+                            [ff, "-y", "-ss", ts, "-i", str(tmp), "-frames:v", "1", "-q:v", "2", str(fout)],
+                            capture_output=True, timeout=60,
+                        )
+                    tmp.unlink(missing_ok=True)
+                except Exception as e:
+                    print("  ! frame fail", post.shortcode, e)
 
         for i, u in enumerate(urls):
             suffix = f"_{i+1}" if len(urls) > 1 else ""

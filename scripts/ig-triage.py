@@ -5,8 +5,13 @@
 #
 #   /tmp/igenv/bin/python scripts/ig-triage.py <handle> <outdir> [--max N] [--cols N]
 #
-# Output: <outdir>/sheet-1.jpg, sheet-2.jpg … (6-col grid, each tile labelled
-# with its shortcode so picks can be named: "DeM64xSu19i, Dd4gj47RotA").
+# Output: <outdir>/sheet-1.jpg, sheet-2.jpg … (6-col grid).
+#   - Photo posts:        tile labelled CODE
+#   - Carousels:          EVERY node tiled as CODE_1, CODE_2 … (first frame
+#                         rarely represents the set — we want to see inside)
+#   - Video posts:        thumbnail labelled CODE [VID] — promising ones can
+#                         be frame-grabbed via ig-pull.py --frames
+#
 # Then fetch full-res of picks with: ig-pull.py <handle> <dir> --only CODE,CODE
 
 import argparse, sys
@@ -18,11 +23,13 @@ import instaloader
 import urllib.request
 from PIL import Image, ImageDraw
 
+MAX_CAROUSEL = 6  # tiles per sidecar — plenty to spot the good frame
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("handle")
     ap.add_argument("outdir")
-    ap.add_argument("--max", type=int, default=48)
+    ap.add_argument("--max", type=int, default=100)
     ap.add_argument("--cols", type=int, default=6)
     ap.add_argument("--tile", type=int, default=360)
     args = ap.parse_args()
@@ -44,42 +51,47 @@ def main():
     prof = instaloader.Profile.from_username(L.context, args.handle)
     print(f"{prof.full_name} — {prof.mediacount} posts; taking first {args.max}")
 
-    tiles = []  # (shortcode, PIL image)
+    def grab(url):
+        return Image.open(BytesIO(urllib.request.urlopen(url).read())).convert("RGB")
+
+    tiles = []  # (label, PIL image)
+    seen = 0
     for post in prof.get_posts():
-        if len(tiles) >= args.max:
+        if seen >= args.max:
             break
+        seen += 1
         try:
             if post.typename == "GraphSidecar":
-                nodes = [n for n in post.get_sidecar_nodes() if not n.is_video]
-                if not nodes:
-                    continue
-                url = nodes[0].display_url
+                for i, n in enumerate(post.get_sidecar_nodes()):
+                    if i >= MAX_CAROUSEL:
+                        break
+                    tag = f"{post.shortcode}_{i+1}" + (" [VID]" if n.is_video else "")
+                    tiles.append((tag, grab(n.display_url)))
+            elif post.is_video:
+                tiles.append((f"{post.shortcode} [VID]", grab(post.url)))
             else:
-                url = post.display_url
-            img = Image.open(BytesIO(urllib.request.urlopen(url).read())).convert("RGB")
-            tiles.append((post.shortcode, img))
+                tiles.append((post.shortcode, grab(post.url)))
         except Exception as e:
             print("skip", post.shortcode, e)
 
-    T, C = args.tile, args.cols
+    T, C, LABEL = args.tile, args.cols, 24
     rows_per = 5
     per_sheet = rows_per * C
     for si in range(0, len(tiles), per_sheet):
         chunk = tiles[si : si + per_sheet]
         rows = (len(chunk) + C - 1) // C
-        sheet = Image.new("RGB", (C * T, rows * (T + 24)), "black")
+        sheet = Image.new("RGB", (C * T, rows * (T + LABEL)), "black")
         d = ImageDraw.Draw(sheet)
         for i, (code, img) in enumerate(chunk):
-            x, y = (i % C) * T, (i // C) * (T + 24)
-            # centre-crop to square
+            x, y = (i % C) * T, (i // C) * (T + LABEL)
             w, h = img.size
             m = min(w, h)
             img = img.crop(((w - m) // 2, (h - m) // 2, (w + m) // 2, (h + m) // 2)).resize((T, T))
             sheet.paste(img, (x, y))
-            d.text((x + 6, y + T + 4), code, fill="white")
+            d.text((x + 6, y + T + 5), code, fill="white")
         name = out / f"sheet-{si // per_sheet + 1}.jpg"
         sheet.save(name, quality=88)
-        print("wrote", name)
+        print("wrote", name, f"({len(chunk)} tiles)")
 
 if __name__ == "__main__":
     main()

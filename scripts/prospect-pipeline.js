@@ -73,13 +73,18 @@ function writeJson(target, value) {
 }
 
 function deepCachePath(handles, postCount = posts) {
-  return path.join(
-    root,
-    "data",
-    "prospect-cache",
-    "deep-posts",
-    `${[...handles].sort().join("_")}--${postCount}.json`,
-  );
+  const dir = path.join(root, "data", "prospect-cache", "deep-posts");
+  const prefix = `${[...handles].sort().join("_")}--`;
+  const cached = fs.existsSync(dir)
+    ? fs
+        .readdirSync(dir)
+        .filter((file) => file.startsWith(prefix) && file.endsWith(".json"))
+        .map((file) => Number(file.slice(prefix.length, -5)))
+        .filter((count) => Number.isFinite(count) && count >= postCount)
+        .sort((a, b) => a - b)
+    : [];
+  const best = cached.length ? cached[0] : postCount;
+  return path.join(dir, `${prefix}${best}.json`);
 }
 
 function prepare() {
@@ -472,6 +477,20 @@ function resume(runId) {
         });
         continue;
       }
+    }
+    if (!approval.allocation_verified) {
+      run(python, [
+        "scripts/allocation-contact-sheet.py",
+        approvalPath,
+        sourceDir,
+        path.join(prospectDir, "allocation"),
+      ]);
+      results.push({
+        handle,
+        status: "WAITING_FOR_ALLOCATION_REVIEW",
+        note: "Review allocation/*.jpg — sheets show the ACTUAL files per slot. Set allocation_verified: true in approval.json to build.",
+      });
+      continue;
     }
     const assetsDir = path.join(
       root,

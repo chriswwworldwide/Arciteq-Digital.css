@@ -139,6 +139,8 @@ const photos = files.map((file) => {
     visionText: labels.join(" ").toLowerCase(),
     annotationText: (annotation.subjects || []).join(" ").toLowerCase(),
     text: `${file.toLowerCase()} ${caption} ${(annotation.subjects || []).join(" ")}`.toLowerCase(),
+    trustedText:
+      `${file.toLowerCase()} ${mediaMeta.caption_applies_to_carousel || mediaMeta.is_video_frame ? "" : caption} ${(annotation.subjects || []).join(" ")}`.toLowerCase(),
     hasPerson:
       annotation.creatorVisible === true ||
       faces.length > 0 ||
@@ -174,42 +176,55 @@ console.log(
   `indexed ${photos.length} photos (Vision faces, OCR, labels, near-duplicates)`,
 );
 if (indexOnly) {
-  if (!fs.existsSync(visualIndexPath)) {
-    const images = Object.fromEntries(
-      photos.map((photo) => [
-        photo.file,
-        {
-          subjects: [...photo.labels],
-          station: null,
-          quality: 0,
-          brandFit: 0,
-          allowOffBrandFallback: false,
-          heroScore: 0,
-          venue: "",
-          event: "",
+  const stub = (photo) => ({
+    subjects: [...photo.labels],
+    station: null,
+    quality: 0,
+    brandFit: 0,
+    allowOffBrandFallback: false,
+    heroScore: 0,
+    venue: "",
+    event: photo.mediaMeta.event || "",
+    eventVerified: Boolean(photo.mediaMeta.event),
+    textOverlay: photo.textOverlay,
+    allowText: false,
+    creatorVisible: photo.faceCount > 0,
+    faceCropSafe: !photo.cropRisk,
+    allowedSlots: [],
+    rejected: null,
+    notes: `AUTO INDEX ONLY — review required. OCR: ${photo.recognizedText.join(" | ")}`,
+  });
+  const existing = fs.existsSync(visualIndexPath)
+    ? JSON.parse(fs.readFileSync(visualIndexPath, "utf8"))
+    : null;
+  const images = { ...(existing?.images || {}) };
+  for (const photo of photos) {
+    images[photo.file] = images[photo.file]
+      ? {
+          ...images[photo.file],
           textOverlay: photo.textOverlay,
-          allowText: false,
-          creatorVisible: photo.faceCount > 0,
-          faceCropSafe: !photo.cropRisk,
-          allowedSlots: [],
-          rejected: null,
-          notes: `AUTO INDEX ONLY — review required. OCR: ${photo.recognizedText.join(" | ")}`,
-        },
-      ]),
-    );
-    fs.writeFileSync(
-      visualIndexPath,
-      `${JSON.stringify(
-        {
-          status: "PENDING",
-          schema: "scripts/photo-visual-index.schema.json",
-          images,
-        },
-        null,
-        2,
-      )}\n`,
-    );
+          creatorVisible:
+            images[photo.file].creatorVisible || photo.faceCount > 0,
+          faceCropSafe: images[photo.file].faceCropSafe && !photo.cropRisk,
+          event: images[photo.file].event || photo.mediaMeta.event || "",
+          eventVerified:
+            images[photo.file].eventVerified ||
+            Boolean(photo.mediaMeta.event),
+        }
+      : stub(photo);
   }
+  fs.writeFileSync(
+    visualIndexPath,
+    `${JSON.stringify(
+      {
+        status: existing?.status || "PENDING",
+        schema: "scripts/photo-visual-index.schema.json",
+        images,
+      },
+      null,
+      2,
+    )}\n`,
+  );
   process.exit(0);
 }
 
@@ -243,7 +258,8 @@ function score(photo, slot, slotName) {
     return { score: -Infinity, proof, reason: "slot not visually approved" };
   const forbidden = (slot.forbiddenKeywords || []).some(
     (keyword) =>
-      photo.text.includes(keyword) || photo.visionText.includes(keyword),
+      photo.trustedText.includes(keyword) ||
+      photo.visionText.includes(keyword),
   );
   const semanticCritical =
     slot.page === "stations-prep" || slot.page === "run-zone";

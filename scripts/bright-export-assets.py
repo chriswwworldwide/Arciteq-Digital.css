@@ -8,6 +8,26 @@ from pathlib import Path
 
 import imageio_ffmpeg
 
+WINDOWS_PATH = Path(__file__).parent / "reskin" / "hyrox-event-windows.json"
+
+
+def event_tag(date_posted):
+    try:
+        windows = json.loads(WINDOWS_PATH.read_text())
+        days = int(windows.get("windowDays", 21))
+        from datetime import datetime, timezone
+
+        posted = datetime.fromisoformat(str(date_posted).replace("Z", "+00:00"))
+        for event in windows.get("events", []):
+            event_date = datetime.fromisoformat(event["date"]).replace(
+                tzinfo=timezone.utc
+            )
+            if abs((posted - event_date).days) <= days:
+                return event["name"]
+    except Exception:
+        pass
+    return None
+
 
 def owner(record):
     profile = record.get("user_posted") or record.get("account")
@@ -67,6 +87,7 @@ def main():
     out = Path(args.outdir)
     out.mkdir(parents=True, exist_ok=True)
     exported = 0
+    seen = set()
     for record in records:
         if owner(record) != handle:
             continue
@@ -76,6 +97,7 @@ def main():
                 break
             if selected is not None and label not in selected:
                 continue
+            seen.add(label)
             targets = []
             request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
             try:
@@ -127,6 +149,10 @@ def main():
                             "media_count": media_count,
                             "is_video_frame": is_video,
                             "caption_applies_to_carousel": media_count > 1,
+                            "date_posted": record.get("date_posted"),
+                            "event": event_tag(record.get("date_posted")),
+                            "event_verified": event_tag(record.get("date_posted"))
+                            is not None,
                         },
                         indent=2,
                     )
@@ -137,6 +163,13 @@ def main():
                     break
         if exported >= args.max:
             break
+    if selected is not None:
+        missing = sorted(selected - seen)
+        if missing:
+            print(
+                f"WARNING: {len(missing)} shortlisted labels not found in records: "
+                + ", ".join(missing)
+            )
     print(f"exported {exported} assets for @{handle} → {out}")
 
 

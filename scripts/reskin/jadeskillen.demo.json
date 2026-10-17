@@ -1,0 +1,154 @@
+{
+  "mode": "chassis",
+  "slug": "jadeskillen",
+  "heroMode": "full",
+  "strictImages": true,
+  "assets": "scripts/reskin/jadeskillen-assets",
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "tokens": {
+    "SLUG": "jadeskillen",
+    "COACH_NAME": "Jade Skillen",
+    "COACH_NAME_LC": "jade skillen",
+    "COACH_FIRST": "Jade",
+    "COACH_LAST": "Skillen",
+    "WORDMARK_HTML": "<span class=\"o\">J</span>ADE",
+    "BRAND": "Jade Skillen",
+    "BRAND_SHORT": "jadeskillen",
+    "BRAND_SOCIAL": "jade_skillen",
+    "CLOTHING_SHORT": "JS",
+    "CITY": "Online",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "helping HYROX athletes hit a race PR in 60 days or less",
+    "HERO_TITLE_HTML": "Elite 15 athlete.<br /><em>Performance coach.</em>",
+    "APPLY_URL": "https://www.instagram.com/jade_skillen/",
+    "PROGRAMMES_URL": "https://www.instagram.com/jade_skillen/",
+    "STORE_URL": "https://www.instagram.com/jade_skillen/",
+    "IG_URL": "https://www.instagram.com/jade_skillen/",
+    "BRAND_IG_URL": "https://www.instagram.com/jade_skillen/",
+    "YOUTUBE_URL": "https://www.instagram.com/jade_skillen/",
+    "TIKTOK_URL": "https://www.instagram.com/jade_skillen/",
+    "THREADS_URL": "https://www.threads.net/@jade_skillen",
+    "DOUBLES_PARTNER": "Kat Parnell",
+    "PB_VENUE": "Birmingham",
+    "PB_VENUE_LC": "birmingham",
+    "DOUBLES_VENUE": "Bordeaux",
+    "DOUBLES_VENUE_LC": "bordeaux",
+    "OPEN_VENUE": "Bordeaux",
+    "PB_SOLO": "Elite 15",
+    "PB_DOUBLES": "Elite 15",
+    "PB_HALF": "Elite 15",
+    "PB_OPEN": "Pro",
+    "SEASON_START": "Pro",
+    "PARTNER_GYM": "Mirafit",
+    "PARTNER_GYM_LC": "mirafit",
+    "PARTNER_SUPP": "Hilltop Honey",
+    "PARTNER_SUPP_LC": "hilltop honey",
+    "PARTNER_KIT": "PUMA",
+    "PARTNER_KIT_LC": "puma",
+    "PARTNER_KIT_TAG": "Official partner",
+    "PARTNER_KIT_TITLE": "PUMA x Jade Skillen",
+    "PARTNER_KIT_COPY": "Jade races and trains in PUMA — race-day kit and training footwear built for hybrid racing.",
+    "PARTNER_KIT_CTA": "Shop PUMA",
+    "PARTNER_KIT_URL": "https://uk.puma.com/",
+    "GYM_CODE": "JADESKILLEN",
+    "PHOTO_BUDDY": "Kat Parnell",
+    "ACCENT": "#c6f24e",
+    "ACCENT_DARK": "#7fa32a",
+    "ACCENT_SOFT": "#1c2410",
+    "BRAND_SHORT_UPPER": "JADE SKILLEN",
+    "LINKTREE_URL": "https://www.instagram.com/jade_skillen/",
+    "VOICE_DOUBLES_HOOK": "A whole new layer of motivation when you know your partner is working just as hard.",
+    "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
+    "VOICE_NEWS_TAKE": "Performance isn't about having perfect conditions. It's about finding a way to execute anyway.",
+    "SOCIAL_HANDLE_UPPER": "JADE_SKILLEN"
+  },
+  "stripSections": [
+    "merch",
+    "tips"
+  ],
+  "omitImageSlots": [
+    "images/finish.jpg",
+    "images/pb-venue.jpg",
+    "images/race-revel.jpg",
+    "images/sprint.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/bike.jpg",
+    "images/wallball.jpg",
+    "images/carry.jpg",
+    "images/rope.jpg",
+    "images/squad-athlos.jpg",
+    "images/detail.jpg",
+    "images/station-lean.jpg",
+    "images/kerb.jpg",
+    "images/rooftop.jpg",
+    "images/walkin.jpg",
+    "images/suit.jpg",
+    "images/hoodie.jpg"
+  ],
+  "stripPages": [
+    "watch.html"
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
+      "replace": "HYROX Elite 15 athlete who has helped qualify 250+ athletes for World Championships."
+    },
+    {
+      "pattern": "AJ Bell Birmingham Half",
+      "replace": "HYROX Birmingham"
+    },
+    {
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} — HYROX Elite 15 athlete, performance coach, and the face behind {{BRAND}}."
+    },
+    {
+      "pattern": "Started the season at {{SEASON_START}}\\.",
+      "replace": "Racing at Elite 15 level."
+    },
+    {
+      "pattern": "HYROX Pro Solo {{PB_SOLO}} — {{PB_VENUE}}\\.",
+      "replace": "HYROX Elite 15 — {{PB_VENUE}}."
+    },
+    {
+      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}\\.",
+      "replace": "Pro Doubles with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}."
+    },
+    {
+      "pattern": "pro solo {{PB_SOLO}} in {{PB_VENUE}}, a {{PB_DOUBLES}} pro doubles",
+      "replace": "Elite 15 racing in {{PB_VENUE}}, pro doubles in {{DOUBLES_VENUE}}"
+    },
+    {
+      "pattern": "{{PB_DOUBLES}} isn't a flex, it's a warning",
+      "replace": "Elite 15 isn't a flex, it's a warning"
+    },
+    {
+      "pattern": "Hong Kong",
+      "replace": "Dubai"
+    },
+    {
+      "pattern": "\\s*<li><a href=\"/jadeskillen/watch.html\">Watch</a></li>",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*<a href=\"/jadeskillen/watch.html\">Watch</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "on FITR",
+      "replace": "by application"
+    },
+    {
+      "pattern": "clothing line",
+      "replace": "athlete community"
+    },
+    {
+      "pattern": "365",
+      "replace": "performance"
+    }
+  ]
+}

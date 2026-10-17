@@ -154,6 +154,16 @@ slots. Strict builds reject repeated sources, near-duplicates, missing critical
 slots and text overlays. The protected crew dinner/dance images stay filled by
 the template unless `customCrewAssets` is explicitly enabled.
 
+Verification gate (added after the Jade pilot): every exported file carries a
+verified `event` tag derived from `date_posted` matched against
+`hyrox-event-windows.json` — never guessed from thumbnails. Before any build,
+`prospect-pipeline.js` renders `allocation/*.jpg` contact sheets of the actual
+downloaded files labelled by slot and stops at `WAITING_FOR_ALLOCATION_REVIEW`.
+Build requires `allocation_verified: true` in `approval.json`. Thumbnail ratings
+are triage only: video-frame exports never inherit a cover rating blindly, and
+station slots must be confirmed against the real downloaded file (or flagged
+`allowOffBrandFallback` when no true candidate exists in the pool).
+
 Pipeline boundaries: `prospect-pipeline.js` is the production entry point.
 `ig-scan.py`, `ig-triage.py` and `ig-pull.py` are legacy/manual fallbacks and are
 never called by it. `apply-visual-review.js` exists only for migrating the Zara

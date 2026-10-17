@@ -61,7 +61,8 @@ same flag, and treat bake gradient/scrim strength as a single token.
       record cloned from `chassis/tenant.record.json` (never the roxjaya record)
 - [x] Hero contract — single `data-hero-mode="full|ambient"` attribute on
       `.hero--bleed`; CSS selectors + app.js mask check both key off it
-- [x] Test tenant generated — `mayaokafor` (fictional, ambient hero):
+- [x] Test tenant generated — `mayaokafor` (fictional, ambient hero; since
+      removed — `testchassis.demo.json` can regenerate it on demand):
       all pages 200, zero tokens left, zero Josh-ghosts, images resolve
 - [x] Voice slots marked — humour moments are explicit tokens, not inherited
       phrasing: `{{VOICE_DOUBLES_HOOK}}` (mixed-doubles line on find-a-partner),

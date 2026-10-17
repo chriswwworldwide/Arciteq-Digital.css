@@ -151,6 +151,16 @@ for (const [fileName, replacements] of Object.entries(imageSlotRemaps)) {
   for (const [from, to] of replacements) content = content.split(from).join(to);
   fs.writeFileSync(file, content);
 }
+for (const file of walk(outDir).filter((candidate) => candidate.endsWith(".html"))) {
+  let content = fs
+    .readFileSync(file, "utf8")
+    .replace(/\s*<p class="site-credit"[\s\S]*?<\/p>/g, "");
+  content = content.replace(
+    "</footer>",
+    '  <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>\n    </footer>',
+  );
+  fs.writeFileSync(file, content);
+}
 
 // ---- 4a. hero-mode contract — one attribute drives everything --------------
 // Donor HTML carries class="hero--full" + dead data-hero-roll; CSS selectors

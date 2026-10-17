@@ -23,9 +23,13 @@
         padding-left: 0;
       }
       .coach-photo {
-        width: 100%;
+        display: block;
+        width: min(100%, 720px);
+        max-height: 520px;
+        object-fit: cover;
+        object-position: center;
         border-radius: var(--radius);
-        margin: 1.4rem 0 2rem;
+        margin: 1.4rem auto 2rem;
         border: 1px solid var(--line);
       }
     </style>

@@ -67,7 +67,10 @@
     "VOICE_NEWS_TAKE": "Performance isn't about having perfect conditions. It's about finding a way to execute anyway.",
     "SOCIAL_HANDLE_UPPER": "COACHEDBYZARA"
   },
-  "stripSections": ["merch", "tips"],
+  "stripSections": [
+    "merch",
+    "tips"
+  ],
   "omitImageSlots": [
     "images/finish.jpg",
     "images/pb-venue.jpg",
@@ -88,7 +91,9 @@
     "images/suit.jpg",
     "images/hoodie.jpg"
   ],
-  "stripPages": ["watch.html"],
+  "stripPages": [
+    "watch.html"
+  ],
   "news": [
     {
       "date": "2026-10-07",
@@ -207,6 +212,10 @@
     {
       "pattern": "Training through pregnancy or a comeback is exactly where Zara's own experience counts — floor time for form checks plus weekly video review\\.",
       "replace": "A comeback or a change in circumstances is where personalised coaching counts — direct form feedback plus regular review."
+    },
+    {
+      "pattern": "Zara on the start line — flat expression, miles to go",
+      "replace": "Zara completing sandbag lunges on the HYROX race floor"
     }
   ]
 }

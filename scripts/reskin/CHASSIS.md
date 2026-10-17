@@ -109,6 +109,24 @@ tokens and copyOverrides, never by editing the chassis.
   hero--full; user parked the decision mid-tuning (currently ~18% max).
 
 
+## Nutrition safety gate
+
+Every chassis config can declare:
+
+```json
+"nutrition": {
+  "mode": "standard | nutrition-led | hidden",
+  "reviewed": false,
+  "reviewer": "Coach or qualified reviewer name"
+}
+```
+
+- `standard` keeps the generic race-fuelling guide for non-nutrition-led creators.
+- `nutrition-led` requires an explicit `reviewed` boolean. `false` keeps the page available for private review but adds a prominent draft warning and `noindex`; `true` shows the named review approval. Omitting the check fails the build.
+- `hidden` removes the Fuel page and its navigation links.
+
+This prevents inherited nutritional guidance being silently attributed to a nutrition coach. A nutrition-led prospect must have the page reviewed or intentionally hidden before launch.
+
 ## Photo sort (scripts/photo-sort.js)
 
 The 31 image slots are declared in `chassis/images/slots.json` — each with a

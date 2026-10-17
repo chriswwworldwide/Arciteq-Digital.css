@@ -147,6 +147,21 @@ if (slug === "roxjaya" || slug.startsWith("..") || slug === "chassis") {
 // (copyOverrides, stripSections, pageFiles, seedFiles, extraCss, menu, hero).
 // Any {{TOKEN}} left unfilled after the pass = loud failure.
 if (cfg.mode === "chassis") {
+  const nutrition = cfg.nutrition || { mode: "standard" };
+  const nutritionModes = new Set(["standard", "nutrition-led", "hidden"]);
+  if (!nutritionModes.has(nutrition.mode)) {
+    console.error(
+      'bad nutrition.mode — use "standard", "nutrition-led", or "hidden"',
+    );
+    process.exit(1);
+  }
+  if (nutrition.mode === "nutrition-led" && typeof nutrition.reviewed !== "boolean") {
+    console.error(
+      'NUTRITION CHECK REQUIRED — set nutrition.reviewed to true or false; never publish inherited fuel advice under a nutrition coach\'s name by accident.',
+    );
+    process.exit(1);
+  }
+
   const chassisDir = path.join(root, "chassis");
   if (!fs.existsSync(chassisDir)) {
     console.error("chassis/ missing — run: node scripts/build-chassis.js");
@@ -160,7 +175,9 @@ if (cfg.mode === "chassis") {
 
   // stripPages: drop whole pages the tenant doesn't ship (e.g. desk.html on
   // a studio site). Nav should already omit them via cfg.menu.
-  for (const f of cfg.stripPages || []) {
+  const stripPages = [...(cfg.stripPages || [])];
+  if (nutrition.mode === "hidden") stripPages.push("fuel-zone.html");
+  for (const f of stripPages) {
     const p = path.join(dst, f);
     if (fs.existsSync(p)) fs.unlinkSync(p);
   }
@@ -178,6 +195,37 @@ if (cfg.mode === "chassis") {
     for (const o of copyOverrides)
       s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
     if (file.endsWith(".html")) {
+      if (nutrition.mode === "hidden") {
+        s = s.replace(
+          /\s*<li><a href="\/[^"]+\/fuel-zone\/?">Fuel zone<\/a><\/li>/g,
+          "",
+        );
+        s = s.replace(
+          /\s*<a href="\/[^"]+\/fuel-zone\/?">Fuel Zone<\/a>/g,
+          "",
+        );
+      }
+      if (
+        nutrition.mode === "nutrition-led" &&
+        !nutrition.reviewed &&
+        file.endsWith("/fuel-zone.html")
+      ) {
+        s = s.replace("<head>", '<head>\n    <meta name="robots" content="noindex, nofollow" />');
+        s = s.replace(
+          /(<body[^>]*>)/,
+          `$1\n    <div role="status" style="background:#ffb020;color:#141414;text-align:center;font-weight:800;padding:.75rem 1rem">NUTRITION DRAFT — this page contains inherited race-fuelling guidance and must be reviewed by the coach before publication.</div>`,
+        );
+      }
+      if (
+        nutrition.mode === "nutrition-led" &&
+        nutrition.reviewed &&
+        file.endsWith("/fuel-zone.html")
+      ) {
+        s = s.replace(
+          /(<body[^>]*>)/,
+          `$1\n    <div role="status" style="background:#173f2b;color:#d9ffe9;text-align:center;font-weight:700;padding:.6rem 1rem">Nutrition content reviewed and approved by ${nutrition.reviewer || cfg.tokens?.COACH_NAME || "the coach"}.</div>`,
+        );
+      }
       if (cfg.menu) s = replaceMenu(s); // chassis pages already carry a menu
       // demoPages: coach-shaped pages kept live as product evidence get a
       // banner so a studio/aggregator tenant doesn't claim them as its own.
@@ -321,7 +369,15 @@ if (cfg.mode === "chassis") {
   tenants.tenants.push(t);
   fs.writeFileSync(tenantsFile, JSON.stringify(tenants, null, 2) + "\n");
 
-  console.log(`chassis build done → ${slug}/  (hero: ${heroMode})`);
+  const nutritionState =
+    nutrition.mode === "nutrition-led"
+      ? nutrition.reviewed
+        ? `nutrition: reviewed by ${nutrition.reviewer || "coach"}`
+        : "nutrition: DRAFT — warning + noindex applied"
+      : `nutrition: ${nutrition.mode}`;
+  console.log(
+    `chassis build done → ${slug}/  (hero: ${heroMode}; ${nutritionState})`,
+  );
   console.log(`tenant "${slug}" registered — hostnames: ${t.hostnames.join(", ")}`);
   console.log(`open http://localhost:3000/${slug}/`);
   process.exit(0);

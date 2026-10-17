@@ -154,3 +154,8 @@ Triage details (learned the hard way):
 - Video posts get a `[VID]` badge. When stills run thin, promising reels
   become photo candidates: `ig-pull.py --only CODE --frames 3` extracts
   3 stills per video via bundled ffmpeg — 1080p frames are pitch-quality.
+- Video triage is early-signal, not blind: the [VID] tile shows IG's cover
+  frame, so promising reels (creator mid-event, start pen, finish board)
+  are spotted on the sheet before any frames are pulled. Talking-head
+  covers rarely yield usable stills — skip those unless the caption tags
+  an event.

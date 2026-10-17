@@ -1,0 +1,29 @@
+{
+  "note": "Owner-voice feed — edit via config.",
+  "items": [
+    {
+      "date": "2026-10-07",
+      "title": "Back to Hamburg",
+      "summary": "Returning to a race that has always meant something, with the standard higher than ever.",
+      "take": "We know the standard will be up there with the best. We'll fight until the last wall ball.",
+      "link": "/coachedbyzara/events.html",
+      "linkLabel": "Race calendar →"
+    },
+    {
+      "date": "2026-09-03",
+      "title": "Training with your cycle, not beneath it",
+      "summary": "Tracking gives context. It doesn't automatically decide what an athlete can do that day.",
+      "take": "Use the information, assess how you feel, then make the right training decision for you.",
+      "link": "/coachedbyzara/coaching.html",
+      "linkLabel": "Coaching →"
+    },
+    {
+      "date": "2026-05-27",
+      "title": "Conditions won't always be perfect",
+      "summary": "Wrong shoes, dead headphones, hard session. The work can still get done.",
+      "take": "Performance isn't about waiting for the perfect environment. It's about executing anyway.",
+      "link": "/coachedbyzara/run-zone.html",
+      "linkLabel": "Run zone →"
+    }
+  ]
+}

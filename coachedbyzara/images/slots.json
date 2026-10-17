@@ -1,0 +1,367 @@
+{
+  "note": "Image slot manifest \u2014 the contract between photo-sort.js and the chassis. Each slot: label (what belongs here), aspect (portrait|landscape|any), priority (1=fills first, 5=fills last), keywords (accepted subjects, matched against captions + filenames), faceCritical (true = cropped heads are fatal, candidates need a visible intact subject).",
+  "slots": {
+    "images/hero.jpg": {
+      "label": "Hero \u2014 cinematic full-bleed shot, creator mid-effort or iconic",
+      "aspect": "landscape",
+      "priority": 1,
+      "faceCritical": true,
+      "keywords": [
+        "race",
+        "run",
+        "event",
+        "hyrox",
+        "crowd",
+        "athlete"
+      ]
+    },
+    "images/bio.jpg": {
+      "label": "Bio/story portrait \u2014 creator clearly visible, face intact",
+      "aspect": "portrait",
+      "priority": 1,
+      "faceCritical": true,
+      "keywords": [
+        "portrait",
+        "me",
+        "coach",
+        "self"
+      ]
+    },
+    "images/coaching.jpg": {
+      "label": "Coaching in action \u2014 creator with athletes or mid-session",
+      "aspect": "any",
+      "priority": 2,
+      "faceCritical": true,
+      "keywords": [
+        "coach",
+        "session",
+        "training",
+        "client",
+        "pt"
+      ]
+    },
+    "images/finish.jpg": {
+      "label": "Finish line / clock board \u2014 board and time must be FULLY visible, no crop",
+      "aspect": "landscape",
+      "priority": 2,
+      "faceCritical": true,
+      "keywords": [
+        "finish",
+        "clock",
+        "time",
+        "result",
+        "pb"
+      ]
+    },
+    "images/pb.jpg": {
+      "label": "PB moment \u2014 celebration, arms up, medal",
+      "aspect": "any",
+      "priority": 3,
+      "faceCritical": true,
+      "keywords": [
+        "pb",
+        "celebrat",
+        "medal",
+        "win"
+      ]
+    },
+    "images/pb-venue.jpg": {
+      "label": "PB venue / arena exterior or hall",
+      "aspect": "landscape",
+      "priority": 4,
+      "faceCritical": false,
+      "keywords": [
+        "venue",
+        "arena",
+        "expo",
+        "hall",
+        "city"
+      ]
+    },
+    "images/doubles.jpg": {
+      "label": "Doubles partner shot \u2014 two athletes",
+      "aspect": "any",
+      "priority": 2,
+      "faceCritical": true,
+      "keywords": [
+        "doubles",
+        "partner",
+        "together",
+        "duo"
+      ]
+    },
+    "images/race-pair.jpg": {
+      "label": "Race pair / crew together",
+      "aspect": "any",
+      "priority": 3,
+      "faceCritical": true,
+      "keywords": [
+        "pair",
+        "crew",
+        "team",
+        "group"
+      ]
+    },
+    "images/race-revel.jpg": {
+      "label": "Race celebration / post-race emotion",
+      "aspect": "any",
+      "priority": 3,
+      "faceCritical": true,
+      "keywords": [
+        "celebrat",
+        "finish",
+        "happy",
+        "emotion"
+      ]
+    },
+    "images/startline.jpg": {
+      "label": "Start line \u2014 pre-race, pen, anticipation",
+      "aspect": "any",
+      "priority": 3,
+      "faceCritical": false,
+      "keywords": [
+        "start",
+        "line",
+        "pen",
+        "before"
+      ]
+    },
+    "images/sprint.jpg": {
+      "label": "Running / sprinting effort",
+      "aspect": "any",
+      "priority": 3,
+      "faceCritical": false,
+      "keywords": [
+        "run",
+        "sprint",
+        "track"
+      ]
+    },
+    "images/track.jpg": {
+      "label": "Track / running environment",
+      "aspect": "any",
+      "priority": 4,
+      "faceCritical": false,
+      "keywords": [
+        "track",
+        "run",
+        "lane"
+      ]
+    },
+    "images/treadmill.jpg": {
+      "label": "Treadmill / indoor running",
+      "aspect": "any",
+      "priority": 4,
+      "faceCritical": false,
+      "keywords": [
+        "treadmill",
+        "run",
+        "gym"
+      ]
+    },
+    "images/bike.jpg": {
+      "label": "Bike erg / cycling station",
+      "aspect": "any",
+      "priority": 3,
+      "faceCritical": false,
+      "keywords": [
+        "bike",
+        "erg",
+        "cycle"
+      ]
+    },
+    "images/skierg-laugh.jpg": {
+      "label": "SkiErg \u2014 ideally mid-laugh or grimace, personality shot",
+      "aspect": "any",
+      "priority": 3,
+      "faceCritical": true,
+      "keywords": [
+        "ski",
+        "skierg"
+      ]
+    },
+    "images/wallball.jpg": {
+      "label": "Wall balls station",
+      "aspect": "any",
+      "priority": 3,
+      "faceCritical": false,
+      "keywords": [
+        "wallball",
+        "wall ball",
+        "squat"
+      ]
+    },
+    "images/carry.jpg": {
+      "label": "Farmers carry / sled or loaded carry",
+      "aspect": "any",
+      "priority": 3,
+      "faceCritical": false,
+      "keywords": [
+        "carry",
+        "sled",
+        "farmers"
+      ]
+    },
+    "images/rope.jpg": {
+      "label": "Rope / sled pull station",
+      "aspect": "any",
+      "priority": 3,
+      "faceCritical": false,
+      "keywords": [
+        "rope",
+        "pull",
+        "sled"
+      ]
+    },
+    "images/squad-athlos.jpg": {
+      "label": "Squad / group training photo",
+      "aspect": "landscape",
+      "priority": 3,
+      "faceCritical": true,
+      "keywords": [
+        "squad",
+        "group",
+        "team",
+        "class"
+      ]
+    },
+    "images/momentum.jpg": {
+      "label": "Motion blur / momentum \u2014 atmospheric effort shot",
+      "aspect": "any",
+      "priority": 4,
+      "faceCritical": false,
+      "keywords": [
+        "motion",
+        "blur",
+        "run"
+      ]
+    },
+    "images/half.jpg": {
+      "label": "Half marathon / road race",
+      "aspect": "any",
+      "priority": 4,
+      "faceCritical": false,
+      "keywords": [
+        "half",
+        "marathon",
+        "road"
+      ]
+    },
+    "images/detail.jpg": {
+      "label": "Detail shot \u2014 shoes, chalk, hands, kit",
+      "aspect": "any",
+      "priority": 4,
+      "faceCritical": false,
+      "keywords": [
+        "shoe",
+        "chalk",
+        "hands",
+        "kit",
+        "detail"
+      ]
+    },
+    "images/station-lean.jpg": {
+      "label": "Station recovery lean \u2014 exhausted against wall/rig",
+      "aspect": "any",
+      "priority": 4,
+      "faceCritical": true,
+      "keywords": [
+        "rest",
+        "lean",
+        "tired",
+        "wall"
+      ]
+    },
+    "images/night.jpg": {
+      "label": "Night shoot / dark atmospheric",
+      "aspect": "any",
+      "priority": 5,
+      "faceCritical": false,
+      "keywords": [
+        "night",
+        "dark",
+        "light"
+      ]
+    },
+    "images/kerb.jpg": {
+      "label": "Street kerb / urban lifestyle",
+      "aspect": "any",
+      "priority": 5,
+      "faceCritical": false,
+      "keywords": [
+        "street",
+        "urban",
+        "city"
+      ]
+    },
+    "images/rooftop.jpg": {
+      "label": "Rooftop / skyline lifestyle",
+      "aspect": "any",
+      "priority": 5,
+      "faceCritical": false,
+      "keywords": [
+        "roof",
+        "skyline",
+        "view"
+      ]
+    },
+    "images/walkin.jpg": {
+      "label": "Walking / arrival shot",
+      "aspect": "any",
+      "priority": 5,
+      "faceCritical": false,
+      "keywords": [
+        "walk",
+        "arrive",
+        "street"
+      ]
+    },
+    "images/suit.jpg": {
+      "label": "Dressed-up / off-duty look",
+      "aspect": "portrait",
+      "priority": 5,
+      "faceCritical": true,
+      "keywords": [
+        "suit",
+        "dress",
+        "outfit",
+        "smart"
+      ]
+    },
+    "images/hoodie.jpg": {
+      "label": "Hoodie / casual kit shot",
+      "aspect": "any",
+      "priority": 5,
+      "faceCritical": true,
+      "keywords": [
+        "hoodie",
+        "kit",
+        "casual",
+        "merch"
+      ]
+    },
+    "images/gallery/dance.jpg": {
+      "label": "Gallery \u2014 night out / dancing",
+      "aspect": "any",
+      "priority": 5,
+      "faceCritical": false,
+      "keywords": [
+        "dance",
+        "night",
+        "party"
+      ]
+    },
+    "images/gallery/restaurant.jpg": {
+      "label": "Gallery \u2014 food / restaurant",
+      "aspect": "any",
+      "priority": 5,
+      "faceCritical": false,
+      "keywords": [
+        "food",
+        "restaurant",
+        "eat",
+        "dinner"
+      ]
+    }
+  }
+}

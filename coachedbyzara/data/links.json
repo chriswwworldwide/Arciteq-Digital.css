@@ -1,0 +1,4 @@
+{
+  "note": "External tools Zara uses. Set 'truecoach' to the coach's client-login URL (e.g. https://app.truecoach.co/) once the account exists; empty string keeps the links hidden. Coaching delivery lives in TrueCoach \u2014 Zara acquires and bills.",
+  "truecoach": ""
+}

@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
 const resumeIndex = args.indexOf("--resume");
+const completeIndex = args.indexOf("--complete");
 const runArg = args.find((arg) => arg.startsWith("--run="));
 const postsArg = args.find((arg) => arg.startsWith("--posts="));
 const dryRun = args.includes("--dry-run");
@@ -85,6 +86,14 @@ function prepare() {
   );
   const runDir = path.join(root, "scripts", "reskin", "prospects", runId);
   fs.mkdirSync(runDir, { recursive: true });
+  const startedAt = new Date();
+  writeJson(path.join(runDir, "pipeline.json"), {
+    run_id: runId,
+    stage: "preparing",
+    started_at: startedAt.toISOString(),
+    handles,
+    metrics: { rework_seconds: 0, corrections: [] },
+  });
 
   const qualificationText = run(
     "node",
@@ -151,6 +160,8 @@ function prepare() {
         "Confirm subject identity, intact faces, readable clocks, station accuracy and no visual duplicates.",
         "Set decision to BUILD or REJECT. BUILD requires all 31 slots plus config_path.",
       ],
+      rework_seconds: 0,
+      corrections: [],
       slots: {},
     });
   }
@@ -158,10 +169,12 @@ function prepare() {
   writeJson(path.join(runDir, "pipeline.json"), {
     run_id: runId,
     stage: "visual_review",
-    created_at: new Date().toISOString(),
+    started_at: startedAt.toISOString(),
+    prepared_at: new Date().toISOString(),
     handles,
     finalists,
     posts,
+    metrics: { rework_seconds: 0, corrections: [] },
     next_command: `node scripts/prospect-pipeline.js --resume ${runId}`,
   });
   console.log(`\nREADY FOR VISUAL REVIEW → ${path.relative(root, runDir)}`);
@@ -203,8 +216,15 @@ function resume(runId) {
       continue;
     }
 
+    const configPath = path.resolve(root, approval.config_path);
+    const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
     const sourceDir = path.join(prospectDir, "source");
-    const assetsDir = path.join(prospectDir, "assets");
+    const assetsDir = path.join(
+      root,
+      "scripts",
+      "reskin",
+      `${config.slug}-assets`,
+    );
     for (const [slot, sourceName] of slotEntries) {
       const source = path.join(sourceDir, sourceName);
       if (!fs.existsSync(source))
@@ -214,8 +234,6 @@ function resume(runId) {
       fs.copyFileSync(source, target);
     }
 
-    const configPath = path.resolve(root, approval.config_path);
-    const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
     config.assets = path.relative(root, assetsDir);
     writeJson(configPath, config);
     run("node", ["scripts/reskin-tenant.js", path.relative(root, configPath)], {
@@ -229,12 +247,64 @@ function resume(runId) {
     : "visual_review";
   state.updated_at = new Date().toISOString();
   state.results = results;
+  state.metrics = {
+    rework_seconds: (state.finalists || []).reduce((total, handle) => {
+      const approval = JSON.parse(
+        fs.readFileSync(path.join(runDir, handle, "approval.json"), "utf8"),
+      );
+      return total + Number(approval.rework_seconds || 0);
+    }, 0),
+    corrections: (state.finalists || []).flatMap((handle) => {
+      const approval = JSON.parse(
+        fs.readFileSync(path.join(runDir, handle, "approval.json"), "utf8"),
+      );
+      return (approval.corrections || []).map((correction) => ({
+        handle,
+        correction,
+      }));
+    }),
+  };
+  if (state.stage === "built_pending_browser_qc") {
+    state.built_at = new Date().toISOString();
+    state.metrics.start_to_build_seconds = Math.round(
+      (new Date(state.built_at) - new Date(state.started_at)) / 1000,
+    );
+  }
   writeJson(statePath, state);
   console.log(JSON.stringify(results, null, 2));
 }
 
+function complete(runId) {
+  const safeId = safeRunId(runId);
+  const statePath = path.join(
+    root,
+    "scripts",
+    "reskin",
+    "prospects",
+    safeId,
+    "pipeline.json",
+  );
+  if (!fs.existsSync(statePath))
+    throw new Error(`unknown pipeline run: ${safeId}`);
+  const state = JSON.parse(fs.readFileSync(statePath, "utf8"));
+  if (state.stage !== "built_pending_browser_qc")
+    throw new Error(`run is not waiting for browser QC: ${state.stage}`);
+  state.stage = "pitch_ready";
+  state.completed_at = new Date().toISOString();
+  state.metrics ||= {};
+  state.metrics.start_to_finish_seconds = Math.round(
+    (new Date(state.completed_at) - new Date(state.started_at)) / 1000,
+  );
+  writeJson(statePath, state);
+  console.log(JSON.stringify(state.metrics, null, 2));
+}
+
 try {
-  if (resumeIndex !== -1) {
+  if (completeIndex !== -1) {
+    const runId = args[completeIndex + 1];
+    if (!runId) throw new Error("--complete requires a run id");
+    complete(runId);
+  } else if (resumeIndex !== -1) {
     const runId = args[resumeIndex + 1];
     if (!runId) throw new Error("--resume requires a run id");
     resume(runId);

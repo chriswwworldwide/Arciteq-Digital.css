@@ -156,9 +156,12 @@ if (cfg.mode === "chassis") {
     );
     process.exit(1);
   }
-  if (nutrition.mode === "nutrition-led" && typeof nutrition.reviewed !== "boolean") {
+  if (
+    nutrition.mode === "nutrition-led" &&
+    typeof nutrition.reviewed !== "boolean"
+  ) {
     console.error(
-      'NUTRITION CHECK REQUIRED — set nutrition.reviewed to true or false; never publish inherited fuel advice under a nutrition coach\'s name by accident.',
+      "NUTRITION CHECK REQUIRED — set nutrition.reviewed to true or false; never publish inherited fuel advice under a nutrition coach's name by accident.",
     );
     process.exit(1);
   }
@@ -171,7 +174,8 @@ if (cfg.mode === "chassis") {
   fs.rmSync(dst, { recursive: true, force: true });
   fs.cpSync(chassisDir, dst, {
     recursive: true,
-    filter: (p) => !p.endsWith(".DS_Store") && !p.endsWith("tenant.record.json"),
+    filter: (p) =>
+      !p.endsWith(".DS_Store") && !p.endsWith("tenant.record.json"),
   });
 
   // stripPages: drop whole pages the tenant doesn't ship (e.g. desk.html on
@@ -201,17 +205,17 @@ if (cfg.mode === "chassis") {
           /\s*<li><a href="\/[^"]+\/fuel-zone\/?">Fuel zone<\/a><\/li>/g,
           "",
         );
-        s = s.replace(
-          /\s*<a href="\/[^"]+\/fuel-zone\/?">Fuel Zone<\/a>/g,
-          "",
-        );
+        s = s.replace(/\s*<a href="\/[^"]+\/fuel-zone\/?">Fuel Zone<\/a>/g, "");
       }
       if (
         nutrition.mode === "nutrition-led" &&
         !nutrition.reviewed &&
         file.endsWith("/fuel-zone.html")
       ) {
-        s = s.replace("<head>", '<head>\n    <meta name="robots" content="noindex, nofollow" />');
+        s = s.replace(
+          "<head>",
+          '<head>\n    <meta name="robots" content="noindex, nofollow" />',
+        );
         s = s.replace(
           /(<body[^>]*>)/,
           `$1\n    <div role="status" style="background:#ffb020;color:#141414;text-align:center;font-weight:800;padding:.75rem 1rem">NUTRITION DRAFT — this page contains inherited race-fuelling guidance and must be reviewed by the coach before publication.</div>`,
@@ -237,7 +241,10 @@ if (cfg.mode === "chassis") {
         );
       }
       if (cfg.htmlTitle && file.endsWith("index.html")) {
-        s = s.replace(/<title>[\s\S]*?<\/title>/, `<title>${cfg.htmlTitle}</title>`);
+        s = s.replace(
+          /<title>[\s\S]*?<\/title>/,
+          `<title>${cfg.htmlTitle}</title>`,
+        );
       }
       if (cfg.metaDescription && file.endsWith("index.html")) {
         s = s.replace(
@@ -261,7 +268,10 @@ if (cfg.mode === "chassis") {
     }
     for (const id of stripSections) {
       s = s.replace(
-        new RegExp(`[ \\t]*<section[^>]*id="${id}"[^>]*>[\\s\\S]*?</section>`, ""),
+        new RegExp(
+          `[ \\t]*<section[^>]*id="${id}"[^>]*>[\\s\\S]*?</section>`,
+          "",
+        ),
         "",
       );
     }
@@ -294,7 +304,9 @@ if (cfg.mode === "chassis") {
       "predictor-hero.jpg": "finish.jpg",
       "splits-hero.jpg": "rope.jpg",
       "events-hero.jpg": "squad-athlos.jpg",
+      "events-secondary.jpg": "pb-venue.jpg",
       "coaching-hero.jpg": "sprint.jpg",
+      "race-mate-hero.jpg": "race-pair.jpg",
       "stations-hero.jpg": "walkin.jpg",
       "run-hero.jpg": "treadmill.jpg",
       "run-compromised.jpg": "race-revel.jpg",
@@ -307,10 +319,13 @@ if (cfg.mode === "chassis") {
       "station-sandbag-lunges.jpg": "coaching.jpg",
       "station-wall-balls.jpg": "detail.jpg",
     };
-    for (const [targetName, sourceName] of Object.entries(legacyImageFallbacks)) {
+    for (const [targetName, sourceName] of Object.entries(
+      legacyImageFallbacks,
+    )) {
       const target = path.join(dst, "images", targetName);
       const source = path.join(dst, "images", sourceName);
-      if (!fs.existsSync(target) && fs.existsSync(source)) fs.copyFileSync(source, target);
+      if (!fs.existsSync(target) && fs.existsSync(source))
+        fs.copyFileSync(source, target);
     }
   }
 
@@ -320,14 +335,21 @@ if (cfg.mode === "chassis") {
       typeof content === "string" && content.startsWith("@")
         ? JSON.parse(fs.readFileSync(path.join(root, content.slice(1)), "utf8"))
         : content;
-    fs.writeFileSync(path.join(dst, "data", f), JSON.stringify(data, null, 2) + "\n");
+    fs.writeFileSync(
+      path.join(dst, "data", f),
+      JSON.stringify(data, null, 2) + "\n",
+    );
   }
 
   // cfg.news: owner's-voice feed items — replaces the chassis sample items
   if (Array.isArray(cfg.news) && cfg.news.length) {
     fs.writeFileSync(
       path.join(dst, "data", "news.json"),
-      JSON.stringify({ note: "Owner-voice feed — edit via config.", items: cfg.news }, null, 2) + "\n",
+      JSON.stringify(
+        { note: "Owner-voice feed — edit via config.", items: cfg.news },
+        null,
+        2,
+      ) + "\n",
     );
   }
 
@@ -340,7 +362,10 @@ if (cfg.mode === "chassis") {
     for (const o of copyOverrides)
       s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
     s = s.replace(
-      new RegExp(`((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`, "g"),
+      new RegExp(
+        `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`,
+        "g",
+      ),
       `$1?v=${buildV}"`,
     );
     if (cfg.menu) s = replaceMenu(s);
@@ -354,7 +379,9 @@ if (cfg.mode === "chassis") {
       const p = path.join(d, e.name);
       if (e.isDirectory()) scan(p);
       else if (/\.(html|js|css|json)$/.test(e.name))
-        for (const m of fs.readFileSync(p, "utf8").matchAll(/\{\{([A-Z_]+)\}\}/g))
+        for (const m of fs
+          .readFileSync(p, "utf8")
+          .matchAll(/\{\{([A-Z_]+)\}\}/g))
           missing.add(`${m[1]}  (${path.relative(dst, p)})`);
     }
   };
@@ -381,7 +408,9 @@ if (cfg.mode === "chassis") {
   };
   scanImgs(dst);
   if (missingImgs.size) {
-    console.error("\nMISSING IMAGES — drop these in cfg.assets (see chassis/images/REQUIRED.md):");
+    console.error(
+      "\nMISSING IMAGES — drop these in cfg.assets (see chassis/images/REQUIRED.md):",
+    );
     for (const m of [...missingImgs].sort()) console.error("  " + m);
     process.exit(1);
   }
@@ -408,10 +437,15 @@ if (cfg.mode === "chassis") {
       matches.push(image);
       byHash.set(hash, matches);
     }
-    const duplicates = [...byHash.values()].filter((matches) => matches.length > 1);
+    const duplicates = [...byHash.values()].filter(
+      (matches) => matches.length > 1,
+    );
     if (duplicates.length) {
-      console.error("\nDUPLICATE IMAGES — strict builds require a unique photo per slot:");
-      for (const matches of duplicates) console.error("  " + matches.join(" = "));
+      console.error(
+        "\nDUPLICATE IMAGES — strict builds require a unique photo per slot:",
+      );
+      for (const matches of duplicates)
+        console.error("  " + matches.join(" = "));
       process.exit(1);
     }
   }
@@ -419,7 +453,10 @@ if (cfg.mode === "chassis") {
   // register from the tokenised record template — never the roxjaya record
   const tenantsFile = path.join(root, "data", "tenants.json");
   const tenants = JSON.parse(fs.readFileSync(tenantsFile, "utf8"));
-  let tStr = fs.readFileSync(path.join(chassisDir, "tenant.record.json"), "utf8");
+  let tStr = fs.readFileSync(
+    path.join(chassisDir, "tenant.record.json"),
+    "utf8",
+  );
   for (const [a, b] of tokenPairs) {
     // tokens sit inside JSON strings — escape \ and " so the fill stays valid
     const safe = String(b).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
@@ -427,11 +464,15 @@ if (cfg.mode === "chassis") {
   }
   const t = JSON.parse(tStr);
   t.tenant_id = slug;
-  const demoDomain = String(process.env.DEMO_BASE_DOMAIN || "").trim().toLowerCase();
+  const demoDomain = String(process.env.DEMO_BASE_DOMAIN || "")
+    .trim()
+    .toLowerCase();
   t.hostnames = [
     `${slug}.localhost`,
     `demo-${slug}.localhost`,
-    ...(demoDomain ? [`${slug}.${demoDomain}`, `demo-${slug}.${demoDomain}`] : []),
+    ...(demoDomain
+      ? [`${slug}.${demoDomain}`, `demo-${slug}.${demoDomain}`]
+      : []),
   ];
   t.canonicalHost = `${slug}.localhost`;
   t.currency = cfg.currency || "gbp";
@@ -449,7 +490,9 @@ if (cfg.mode === "chassis") {
   console.log(
     `chassis build done → ${slug}/  (hero: ${heroMode}; ${nutritionState})`,
   );
-  console.log(`tenant "${slug}" registered — hostnames: ${t.hostnames.join(", ")}`);
+  console.log(
+    `tenant "${slug}" registered — hostnames: ${t.hostnames.join(", ")}`,
+  );
   console.log(`open http://localhost:3000/${slug}/`);
   process.exit(0);
 }
@@ -513,7 +556,8 @@ const extraChannels = channels
   )
   .join("");
 
-const localScene = pageRenames["jakarta-hybrid-scene"] || "jakarta-hybrid-scene";
+const localScene =
+  pageRenames["jakarta-hybrid-scene"] || "jakarta-hybrid-scene";
 const localGuide = pageRenames["hyrox-jakarta"] || "hyrox-jakarta";
 const coachingPage =
   pageRenames["hybrid-coaching-jakarta"] || "hybrid-coaching-jakarta";
@@ -525,12 +569,14 @@ const trainingLinks = cfg.singleIntroOffer
               <li><a href="/${slug}/${coachingPage}/">Hybrid coaching</a></li>
               <li><a href="/${slug}/elite-race-prep/">Elite race prep</a></li>
               <li><a href="/${slug}/events/#cohorts">12-week cohorts</a></li>`;
-const localGuideLink = cfg.localRaceGuide === false
-  ? ""
-  : `              <li><a href="/${slug}/${localGuide}/">Hyrox ${city} guide</a></li>\n`;
-const merchandiseLink = cfg.merchandise === false
-  ? ""
-  : `              <li><a href="/${slug}/#merch">Merchandise</a></li>\n`;
+const localGuideLink =
+  cfg.localRaceGuide === false
+    ? ""
+    : `              <li><a href="/${slug}/${localGuide}/">Hyrox ${city} guide</a></li>\n`;
+const merchandiseLink =
+  cfg.merchandise === false
+    ? ""
+    : `              <li><a href="/${slug}/#merch">Merchandise</a></li>\n`;
 const salesMenu = `        <ul class="menu" id="menu">
           <li><a href="/${slug}/predictor/">Race Predictor</a></li>
           <li><a href="/${slug}/splits/">Split Analyser</a></li>
@@ -595,7 +641,9 @@ function replaceMenu(s) {
   while ((match = tags.exec(s))) {
     depth += match[0].startsWith("</") ? -1 : 1;
     if (depth === 0)
-      return s.slice(0, start) + (cfg.menu || salesMenu) + s.slice(tags.lastIndex);
+      return (
+        s.slice(0, start) + (cfg.menu || salesMenu) + s.slice(tags.lastIndex)
+      );
   }
   return s;
 }
@@ -737,7 +785,8 @@ if (overrideRes.length) {
     for (const e of fs.readdirSync(d, { withFileTypes: true })) {
       const p = path.join(d, e.name);
       if (e.isDirectory()) walk(p);
-      else if (overrideRes.some((re) => re.test(path.relative(dst, p)))) fs.rmSync(p);
+      else if (overrideRes.some((re) => re.test(path.relative(dst, p))))
+        fs.rmSync(p);
     }
   };
   walk(dst);
@@ -821,7 +870,9 @@ const demoDomain = String(process.env.DEMO_BASE_DOMAIN || "")
 t.hostnames = [
   `${slug}.localhost`,
   `demo-${slug}.localhost`,
-  ...(demoDomain ? [`${slug}.${demoDomain}`, `demo-${slug}.${demoDomain}`] : []),
+  ...(demoDomain
+    ? [`${slug}.${demoDomain}`, `demo-${slug}.${demoDomain}`]
+    : []),
 ];
 t.canonicalHost = `${slug}.localhost`;
 if (email) t.seo.supportEmail = email;
@@ -839,8 +890,7 @@ tStr = tStr
   .join(city)
   .split("dinazumba1987@gmail.com")
   .join(email || "demo@example.com");
-for (const [a, b] of Object.entries(pageRenames))
-  tStr = tStr.split(a).join(b);
+for (const [a, b] of Object.entries(pageRenames)) tStr = tStr.split(a).join(b);
 for (const [a, b] of extraPairs) tStr = tStr.split(a).join(b);
 t = JSON.parse(tStr);
 t.currency = currency;
@@ -857,5 +907,7 @@ tenants.tenants.push(t);
 fs.writeFileSync(tenantsFile, JSON.stringify(tenants, null, 2) + "\n");
 
 console.log(`reskin done → ${slug}/  (${touched} files touched)`);
-console.log(`tenant "${slug}" registered — hostnames: ${t.hostnames.join(", ")}`);
+console.log(
+  `tenant "${slug}" registered — hostnames: ${t.hostnames.join(", ")}`,
+);
 console.log(`open http://localhost:3000/${slug}/`);

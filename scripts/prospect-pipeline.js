@@ -157,6 +157,7 @@ function prepare() {
       ],
       slots: {},
       spares: [],
+      images: {},
     });
     writeJson(path.join(prospectDir, "approval.json"), {
       approved: false,
@@ -290,8 +291,11 @@ function resume(runId) {
         shortlistPath,
       ]);
       run("node", ["scripts/photo-sort.js", sourceDir, "--index-only"]);
-      results.push({ handle, status: "EXPORTED_WAITING_FOR_VISUAL_INDEX" });
-      continue;
+      run("node", [
+        "scripts/apply-thumbnail-index.js",
+        visualIndexPath,
+        shortlistPath,
+      ]);
     }
     const visualIndex = JSON.parse(fs.readFileSync(visualIndexPath, "utf8"));
     if (visualIndex?.status !== "COMPLETE") {

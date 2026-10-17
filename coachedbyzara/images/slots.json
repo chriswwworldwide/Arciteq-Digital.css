@@ -7,10 +7,12 @@
     "images/predictor-hero.jpg",
     "images/splits-hero.jpg",
     "images/events-hero.jpg",
+    "images/events-secondary.jpg",
     "images/stations-hero.jpg",
     "images/run-hero.jpg",
     "images/finish.jpg",
     "images/doubles.jpg",
+    "images/race-mate-hero.jpg",
     "images/coaching.jpg",
     "images/station-skierg.jpg",
     "images/station-sled-push.jpg",
@@ -102,6 +104,17 @@
       "noTextOverlay": true,
       "keywords": ["event", "arena", "start", "race", "crowd"],
       "visualKeywords": ["sports", "competition", "crowd"]
+    },
+    "images/events-secondary.jpg": {
+      "label": "Race Calendar secondary — on-brand HYROX race-floor effort",
+      "aspect": "landscape",
+      "priority": 2,
+      "faceCritical": false,
+      "page": "events",
+      "position": "secondary",
+      "noTextOverlay": true,
+      "keywords": ["hyrox", "race", "station", "arena"],
+      "visualKeywords": ["sports", "competition", "fitness"]
     },
     "images/coaching-hero.jpg": {
       "label": "Coaching page hero — creator coaching or strong approachable portrait",
@@ -267,8 +280,19 @@
       "faceCritical": true,
       "keywords": ["doubles", "partner", "together", "duo"]
     },
+    "images/race-mate-hero.jpg": {
+      "label": "Race-mate hero — creator with a doubles partner or clearly paired HYROX athletes",
+      "aspect": "portrait",
+      "priority": 2,
+      "faceCritical": true,
+      "page": "find-a-partner",
+      "position": "hero",
+      "noTextOverlay": true,
+      "keywords": ["doubles", "partner", "pair", "hyrox"],
+      "visualKeywords": ["people", "sports", "competition"]
+    },
     "images/race-pair.jpg": {
-      "label": "Race pair / crew together",
+      "label": "Results/community pair — two athletes together",
       "aspect": "any",
       "priority": 3,
       "faceCritical": true,

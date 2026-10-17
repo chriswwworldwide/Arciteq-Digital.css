@@ -48,8 +48,13 @@
     "PARTNER_GYM_LC": "lskd",
     "PARTNER_SUPP": "ESN",
     "PARTNER_SUPP_LC": "esn",
-    "PARTNER_KIT": "Five Point Five",
-    "PARTNER_KIT_LC": "five point five",
+    "PARTNER_KIT": "FivePointFive",
+    "PARTNER_KIT_LC": "fivepointfive",
+    "PARTNER_KIT_TAG": "Performance & recovery",
+    "PARTNER_KIT_TITLE": "FivePointFive breathwork",
+    "PARTNER_KIT_COPY": "Functional breathwork for athletes — performance, recovery, focus and sleep in one measurable app.",
+    "PARTNER_KIT_CTA": "Explore FivePointFive",
+    "PARTNER_KIT_URL": "https://fivepointfive.com/",
     "GYM_CODE": "ZARALSKD",
     "PHOTO_BUDDY": "Gabriella Moriarty",
     "ACCENT": "#ef4f91",
@@ -62,12 +67,10 @@
     "VOICE_NEWS_TAKE": "Performance isn't about having perfect conditions. It's about finding a way to execute anyway.",
     "SOCIAL_HANDLE_UPPER": "COACHEDBYZARA"
   },
-  "stripSections": [
-    "merch",
-    "tips"
-  ],
+  "stripSections": ["merch", "tips"],
   "omitImageSlots": [
     "images/finish.jpg",
+    "images/pb-venue.jpg",
     "images/race-revel.jpg",
     "images/sprint.jpg",
     "images/track.jpg",
@@ -85,9 +88,7 @@
     "images/suit.jpg",
     "images/hoodie.jpg"
   ],
-  "stripPages": [
-    "watch.html"
-  ],
+  "stripPages": ["watch.html"],
   "news": [
     {
       "date": "2026-10-07",

@@ -45,6 +45,7 @@ for (const [slot, file] of Object.entries(inheritedAssignments)) {
             : null,
       quality: 6,
       brandFit: 6,
+      allowOffBrandFallback: false,
       heroScore: definition?.position === "hero" ? 6 : 0,
       venue: "",
       event: "",
@@ -64,12 +65,18 @@ for (const [file, image] of Object.entries(index.images || {})) {
   };
   const selected = Boolean(assignmentDecisions[file] || review.images?.[file]);
   if (selected) {
-    index.images[file] = { ...image, ...decision, rejected: false };
+    index.images[file] = {
+      ...image,
+      allowOffBrandFallback: false,
+      ...decision,
+      rejected: false,
+    };
   } else {
     index.images[file] = {
       ...image,
       quality: Number(image.quality || 0),
       brandFit: Number(image.brandFit || 0),
+      allowOffBrandFallback: Boolean(image.allowOffBrandFallback),
       heroScore: Number(image.heroScore || 0),
       venue: image.venue || "",
       event: image.event || "",

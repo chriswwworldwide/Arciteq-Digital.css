@@ -31,17 +31,17 @@ const COACHING =
   /\b(coach|coaching|client|programme|program|cohort|membership|apply|book|discovery call|training plan)\b/i;
 const DESK =
   /\b(code\b|affiliate|sponsor|ambassador|shop|store|merch|seminar|cohort|membership|founder|book)\b/i;
-const eventDates = [
-  ["Manchester", "2026-01-23"],
-  ["Glasgow", "2026-03-13"],
-  ["London EMEA", "2026-03-21"],
-  ["London", "2026-03-26"],
-  ["Cardiff", "2026-05-02"],
-  ["Birmingham", "2026-10-30"],
-].map(([name, date]) => ({
+const eventWindowConfig = JSON.parse(
+  fs.readFileSync(
+    path.join(root, "scripts", "reskin", "hyrox-event-windows.json"),
+    "utf8",
+  ),
+);
+const eventDates = eventWindowConfig.events.map(({ name, date }) => ({
   name,
   time: new Date(`${date}T00:00:00Z`).getTime(),
 }));
+const eventWindowMs = Number(eventWindowConfig.windowDays || 21) * 86400000;
 
 const headers = { Authorization: `Bearer ${process.env.BRIGHT_DATA_API_KEY}` };
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -66,7 +66,7 @@ function eventFor(record) {
   return (
     eventDates
       .map((event) => ({ ...event, distance: Math.abs(time - event.time) }))
-      .filter((event) => event.distance <= 21 * 86400000)
+      .filter((event) => event.distance <= eventWindowMs)
       .sort((a, b) => a.distance - b.distance)[0]?.name || null
   );
 }

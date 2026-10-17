@@ -11,6 +11,7 @@ files into its assets folder (same names, any real photo per slot):
 - images/detail.jpg
 - images/doubles.jpg
 - images/events-hero.jpg
+- images/events-secondary.jpg
 - images/finish.jpg
 - images/gallery/dance.jpg
 - images/gallery/restaurant.jpg
@@ -23,6 +24,7 @@ files into its assets folder (same names, any real photo per slot):
 - images/pb-venue.jpg
 - images/pb.jpg
 - images/predictor-hero.jpg
+- images/race-mate-hero.jpg
 - images/race-pair.jpg
 - images/race-revel.jpg
 - images/rooftop.jpg

@@ -2,6 +2,7 @@
 import argparse
 import json
 import urllib.request
+from datetime import datetime, timezone
 from io import BytesIO
 from pathlib import Path
 
@@ -22,7 +23,7 @@ def media(record):
     candidates = []
     children = record.get("post_content") or []
     if children:
-        for index, child in enumerate(children[:6], 1):
+        for index, child in enumerate(children, 1):
             url = child.get("image_url") or child.get("display_url") or child.get("thumbnail")
             if url:
                 candidates.append((f"{record.get('shortcode', 'post')}_{index}", url, bool(child.get("video_url"))))
@@ -41,6 +42,26 @@ def grab(url):
     return Image.open(BytesIO(urllib.request.urlopen(request, timeout=30).read())).convert("RGB")
 
 
+def event_for(record, event_config):
+    raw_date = record.get("date_posted") or record.get("datetime")
+    if not raw_date:
+        return None
+    try:
+        posted = datetime.fromisoformat(raw_date.replace("Z", "+00:00"))
+        if posted.tzinfo is None:
+            posted = posted.replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+    window = int(event_config.get("windowDays", 21)) * 86400
+    matches = []
+    for event in event_config.get("events", []):
+        event_date = datetime.fromisoformat(event["date"] + "T00:00:00+00:00")
+        distance = abs((posted - event_date).total_seconds())
+        if distance <= window:
+            matches.append((distance, event["name"]))
+    return min(matches)[1] if matches else None
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("records")
@@ -52,20 +73,32 @@ def main():
     args = parser.parse_args()
 
     records = json.loads(Path(args.records).read_text())
+    event_config = json.loads(
+        (Path(__file__).parent / "reskin" / "hyrox-event-windows.json").read_text()
+    )
     out = Path(args.outdir)
     out.mkdir(parents=True, exist_ok=True)
 
     for requested in args.handles:
         handle = requested.lstrip("@").lower()
         tiles = []
-        for record in records:
-            if owner(record) != handle:
-                continue
+        profile_records = [record for record in records if owner(record) == handle]
+        profile_records.sort(
+            key=lambda record: (
+                0 if event_for(record, event_config) else 1,
+                record.get("date_posted") or record.get("datetime") or "",
+            )
+        )
+        for record in profile_records:
+            event_name = event_for(record, event_config)
             for label, url, video in media(record):
                 if len(tiles) >= args.max:
                     break
                 try:
-                    tiles.append((f"{label}{' [VID]' if video else ''}", grab(url)))
+                    event_tag = f" [{event_name}]" if event_name else ""
+                    tiles.append(
+                        (f"{label}{' [VID]' if video else ''}{event_tag}", grab(url))
+                    )
                 except Exception as error:
                     print("skip", handle, label, error)
             if len(tiles) >= args.max:

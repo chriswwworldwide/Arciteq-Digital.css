@@ -442,9 +442,12 @@ thumbnail triage.
 Shortlist rule: normally **one obvious candidate per active slot**; allow a
 second only where thumbnails are genuinely close or crop/clarity cannot be
 judged. Maximum ten unique spares across the build. Therefore a 20-slot tenant
-normally indexes roughly 20–30 full files, not 250. If final QA exposes one
-missing/weak position, perform a targeted one-slot backfill rather than reopen
-the whole profile.
+normally indexes roughly 20–30 full files, not 250. Contact sheets put posts
+from major HYROX event windows first and label the event (the race-floor,
+station, doubles and finish photography is concentrated there); off-season and
+lifestyle thumbnails follow. The shared event-window file is updated with each
+season's calendar. If final QA exposes one missing/weak position, perform a
+targeted one-slot backfill rather than reopen the whole profile.
 
 Every shortlisted full image is indexed once: subjects, creator visibility,
 venue, event, exact station, technical quality 1–10, brand fit 1–10, homepage

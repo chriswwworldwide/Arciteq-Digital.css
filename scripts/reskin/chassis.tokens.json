@@ -22,17 +22,39 @@
   "stripDirs": ["images"],
 
   "tokens": [
-    { "find": "https://1hppzdej2by.typeform.com/to/LeVTUyHt", "token": "APPLY_URL" },
-    { "find": "https://the-hybrid-hub.fitr.training/t/TheHybridHub/", "token": "PROGRAMMES_URL" },
+    {
+      "find": "https://1hppzdej2by.typeform.com/to/LeVTUyHt",
+      "token": "APPLY_URL"
+    },
+    {
+      "find": "https://the-hybrid-hub.fitr.training/t/TheHybridHub/",
+      "token": "PROGRAMMES_URL"
+    },
     { "find": "https://thehybridhubclothing.com/", "token": "STORE_URL" },
     { "find": "https://www.instagram.com/joshharrisonfit/", "token": "IG_URL" },
-    { "find": "https://www.instagram.com/hybrid.hub/", "token": "BRAND_IG_URL" },
-    { "find": "https://www.youtube.com/@Joshharrisonfit", "token": "YOUTUBE_URL" },
-    { "find": "https://www.tiktok.com/@joshharrisonfit", "token": "TIKTOK_URL" },
-    { "find": "https://www.threads.com/@joshharrisonfit", "token": "THREADS_URL" },
+    {
+      "find": "https://www.instagram.com/hybrid.hub/",
+      "token": "BRAND_IG_URL"
+    },
+    {
+      "find": "https://www.youtube.com/@Joshharrisonfit",
+      "token": "YOUTUBE_URL"
+    },
+    {
+      "find": "https://www.tiktok.com/@joshharrisonfit",
+      "token": "TIKTOK_URL"
+    },
+    {
+      "find": "https://www.threads.com/@joshharrisonfit",
+      "token": "THREADS_URL"
+    },
     { "find": "https://linktr.ee/JHFIT", "token": "LINKTREE_URL" },
 
-    { "find": "JOSH HARRIS<span class=\\\\?\"?o\\\\?\"?>O</span>N", "token": "WORDMARK_HTML", "regex": true },
+    {
+      "find": "JOSH HARRIS<span class=\\\\?\"?o\\\\?\"?>O</span>N",
+      "token": "WORDMARK_HTML",
+      "regex": true
+    },
     { "find": "Josh Harrison", "token": "COACH_NAME" },
     { "find": "josh harrison", "token": "COACH_NAME_LC" },
     { "find": "jhfit", "token": "BRAND_SHORT" },
@@ -44,7 +66,11 @@
     { "find": "HYBRID HUB 365", "token": "CLOTHING_LINE" },
     { "find": "HH365", "token": "CLOTHING_SHORT" },
     { "find": "hybrid.hub", "token": "BRAND_SOCIAL" },
-    { "find": "Hybrid Hub|HYBRID HUB|hybrid hub", "token": "BRAND", "regex": true },
+    {
+      "find": "Hybrid Hub|HYBRID HUB|hybrid hub",
+      "token": "BRAND",
+      "regex": true
+    },
 
     { "find": "Worcestershire", "token": "REGION" },
     { "find": "worcester", "token": "REGION_LC" },
@@ -66,13 +92,25 @@
     { "find": "#e01e4e", "token": "ACCENT_DARK" },
     { "find": "#2a141b", "token": "ACCENT_SOFT" },
 
-    { "find": "Hard work<br /><em>compounds.</em>", "token": "HERO_TITLE_HTML" },
+    {
+      "find": "Hard work<br /><em>compounds.</em>",
+      "token": "HERO_TITLE_HTML"
+    },
     { "find": "[Oo]bsession beats talent", "token": "TAGLINE", "regex": true },
 
     { "find": "Gymshark", "token": "PARTNER_GYM" },
     { "find": "gymshark", "token": "PARTNER_GYM_LC" },
     { "find": "Myprotein", "token": "PARTNER_SUPP" },
     { "find": "myprotein", "token": "PARTNER_SUPP_LC" },
+    { "find": "https://www.adidas.co.uk/training", "token": "PARTNER_KIT_URL" },
+    {
+      "find": "The race-day kit\\s+— Alphafly rotation and the red gear from the\\s+events\\.",
+      "token": "PARTNER_KIT_COPY",
+      "regex": true
+    },
+    { "find": "Shop Adidas", "token": "PARTNER_KIT_CTA" },
+    { "find": "Adidas training", "token": "PARTNER_KIT_TITLE" },
+    { "find": "Race kit", "token": "PARTNER_KIT_TAG" },
     { "find": "Adidas", "token": "PARTNER_KIT" },
     { "find": "adidas", "token": "PARTNER_KIT_LC" },
     { "find": "JOSHHARRISONFIT", "token": "SOCIAL_HANDLE_UPPER" },
@@ -80,41 +118,100 @@
 
     { "find": "Emma H", "token": "PHOTO_BUDDY" },
 
-    { "find": "Forget three dinner dates — thirty seconds on a sled tells you everything you need.", "token": "VOICE_DOUBLES_HOOK" }
+    {
+      "find": "Forget three dinner dates — thirty seconds on a sled tells you everything you need.",
+      "token": "VOICE_DOUBLES_HOOK"
+    }
   ],
 
   "renames": [
     { "find": "inWorcestershire", "replace": "inHomeCity" },
-    { "find": "    </footer>", "replace": "      <p class=\"site-credit\" style=\"text-align:center;margin:2rem 0 0\"><a href=\"https://station9.studio\" rel=\"noopener\" style=\"display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none\">Built with <b style=\"color:#ff3b3b;font-weight:700\">Station 9</b></a></p>\n    </footer>" },
+    {
+      "find": "    </footer>",
+      "replace": "      <p class=\"site-credit\" style=\"text-align:center;margin:2rem 0 0\"><a href=\"https://station9.studio\" rel=\"noopener\" style=\"display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none\">Built with <b style=\"color:#ff3b3b;font-weight:700\">Station 9</b></a></p>\n    </footer>"
+    },
     { "find": "for women who race", "replace": "for people who race" },
-    { "find": "If he thinks it fits — pace, format, race — he connects you both. He races this circuit; he knows who would actually suit you.", "replace": "If it fits — pace, format, race — you're connected. Josh races this circuit and knows who'd actually suit you." },
-    { "find": "he'll intro you himself. He races this circuit — he knows who'd actually suit you.", "replace": "the intro happens personally — Josh races this circuit and knows who'd actually suit you." },
-    { "find": "he books for the RSVPs he has.", "replace": "the table's booked for the RSVPs in." },
-    { "find": "books for the numbers he has — tell him you're coming", "replace": "books for the numbers confirmed — say you're coming" },
-    { "find": "carries a small bottle in his race belt", "replace": "carries a small bottle in the race belt" },
-    { "find": "he'll edit as his programming evolves", "replace": "edits follow the programming as it evolves" },
-    { "find": "Josh and his doubles partner celebrating", "replace": "Josh and Rio Quarry celebrating" },
-    { "find": "to her client-login URL (e.g. https://app.truecoach.co/) once her account exists", "replace": "to the coach's client-login URL (e.g. https://app.truecoach.co/) once the account exists" },
-    { "find": "reads every card himself", "replace": "reads every card personally" },
+    {
+      "find": "If he thinks it fits — pace, format, race — he connects you both. He races this circuit; he knows who would actually suit you.",
+      "replace": "If it fits — pace, format, race — you're connected. Josh races this circuit and knows who'd actually suit you."
+    },
+    {
+      "find": "he'll intro you himself. He races this circuit — he knows who'd actually suit you.",
+      "replace": "the intro happens personally — Josh races this circuit and knows who'd actually suit you."
+    },
+    {
+      "find": "he books for the RSVPs he has.",
+      "replace": "the table's booked for the RSVPs in."
+    },
+    {
+      "find": "books for the numbers he has — tell him you're coming",
+      "replace": "books for the numbers confirmed — say you're coming"
+    },
+    {
+      "find": "carries a small bottle in his race belt",
+      "replace": "carries a small bottle in the race belt"
+    },
+    {
+      "find": "he'll edit as his programming evolves",
+      "replace": "edits follow the programming as it evolves"
+    },
+    {
+      "find": "Josh and his doubles partner celebrating",
+      "replace": "Josh and Rio Quarry celebrating"
+    },
+    {
+      "find": "to her client-login URL (e.g. https://app.truecoach.co/) once her account exists",
+      "replace": "to the coach's client-login URL (e.g. https://app.truecoach.co/) once the account exists"
+    },
+    {
+      "find": "reads every card himself",
+      "replace": "reads every card personally"
+    },
     { "find": "and she'll see your", "replace": "and the coach sees your" },
-    { "find": "them, on his private desk.", "replace": "them on the private desk." },
+    {
+      "find": "them, on his private desk.",
+      "replace": "them on the private desk."
+    },
     { "find": "without his OK", "replace": "without the coach's OK" },
-    { "find": "He's the matchmaker, not an algorithm", "replace": "The coach is the matchmaker, not an algorithm" },
+    {
+      "find": "He's the matchmaker, not an algorithm",
+      "replace": "The coach is the matchmaker, not an algorithm"
+    },
     { "find": "on his own login", "replace": "on the coach's own login" },
-    { "find": "Applications go through his existing forms", "replace": "Applications go through the existing forms" },
+    {
+      "find": "Applications go through his existing forms",
+      "replace": "Applications go through the existing forms"
+    },
     { "find": "go through his existing", "replace": "go through the existing" },
     { "find": "for the RSVPs he has.", "replace": "for the RSVPs in." },
     { "find": "His own · drops", "replace": "Own line · drops" },
-    { "find": "and he'll take your card down — credit at the wedding is non-negotiable.", "replace": "and your card comes down — {{VOICE_WEDDING}}" },
+    {
+      "find": "and he'll take your card down — credit at the wedding is non-negotiable.",
+      "replace": "and your card comes down — {{VOICE_WEDDING}}"
+    },
     { "find": "images/hero-reveal.jpg", "replace": "images/hero.jpg" },
     { "find": "images/josh-bologna.jpg", "replace": "images/pb-venue.jpg" },
     { "find": "images/josh-", "replace": "images/" }
   ],
 
   "forbiddenStrings": [
-    "josh", "harrison", "worcester", "bewdley", "hybrid hub", "hh365",
-    "bologna", "rio quarry", "gymshark", "myprotein",
-    "joshharrisonfit", "typeform", "fitr.training", "thehybridhubclothing",
-    "dina", "roxjaya", "jakarta", "indonesia"
+    "josh",
+    "harrison",
+    "worcester",
+    "bewdley",
+    "hybrid hub",
+    "hh365",
+    "bologna",
+    "rio quarry",
+    "gymshark",
+    "myprotein",
+    "joshharrisonfit",
+    "typeform",
+    "fitr.training",
+    "thehybridhubclothing",
+    "dina",
+    "roxjaya",
+    "jakarta",
+    "indonesia"
   ]
 }

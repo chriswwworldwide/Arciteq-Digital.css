@@ -1,0 +1,15 @@
+{
+  "windowDays": 21,
+  "events": [
+    { "name": "HYROX Manchester", "date": "2026-01-23", "region": "UK" },
+    { "name": "HYROX Glasgow", "date": "2026-03-13", "region": "UK" },
+    { "name": "HYROX EMEA London", "date": "2026-03-21", "region": "UK" },
+    { "name": "HYROX London", "date": "2026-03-26", "region": "UK" },
+    { "name": "HYROX Cardiff", "date": "2026-05-02", "region": "UK" },
+    { "name": "HYROX Birmingham", "date": "2026-10-30", "region": "UK" },
+    { "name": "HYROX London", "date": "2026-12-04", "region": "UK" },
+    { "name": "HYROX Manchester", "date": "2027-01-25", "region": "UK" },
+    { "name": "HYROX Glasgow", "date": "2027-03-12", "region": "UK" },
+    { "name": "HYROX Cardiff", "date": "2027-05-24", "region": "UK" }
+  ]
+}

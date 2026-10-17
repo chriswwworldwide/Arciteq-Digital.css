@@ -137,10 +137,13 @@ station.
 
 Do not export a whole profile. Generate thumbnail sheets, shortlist one obvious
 candidate per active slot (a second only when genuinely close), plus at most ten
-spares. Only those files are downloaded full-resolution and written to
-`visual-index.json`: subjects, exact station, venue/event, quality 1–10, brand
-fit 1–10, homepage-hero score 1–10, overlay, creator/face/crop safety, allowed
-slots and rejection reason. Carousel captions are never child-image evidence.
+spares. Only those files are downloaded full-resolution. The visual ratings are made
+from the contact-sheet thumbnails and carried into `visual-index.json`:
+subjects, exact station, venue/event, quality 1–10, brand fit 1–10,
+homepage-hero score 1–10, overlay, creator/face/crop safety, allowed slots and
+rejection reason. Do not reopen downloaded originals: Apple Vision checks OCR,
+faces/crops and duplicates automatically, then the rendered site is the final
+visual check. Carousel captions are never child-image evidence.
 
 `photo-sort.js --index-only` adds Apple Vision face/OCR/classification and
 perceptual-duplicate metadata. After AI visual review marks the index COMPLETE,

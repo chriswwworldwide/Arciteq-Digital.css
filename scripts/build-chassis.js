@@ -14,7 +14,10 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const recipe = JSON.parse(
-  fs.readFileSync(path.join(root, "scripts/reskin/chassis.tokens.json"), "utf8"),
+  fs.readFileSync(
+    path.join(root, "scripts/reskin/chassis.tokens.json"),
+    "utf8",
+  ),
 );
 
 const donorDir = path.join(root, recipe.donorSlug);
@@ -22,10 +25,14 @@ const outDir = path.join(root, recipe.outDir);
 
 // ---- 1. regenerate the donor so the chassis tracks its latest state --------
 console.log(`regenerating ${recipe.donorSlug} from ${recipe.donorConfig}…`);
-execFileSync("node", [path.join(root, "scripts/reskin-tenant.js"), recipe.donorConfig], {
-  cwd: root,
-  stdio: "inherit",
-});
+execFileSync(
+  "node",
+  [path.join(root, "scripts/reskin-tenant.js"), recipe.donorConfig],
+  {
+    cwd: root,
+    stdio: "inherit",
+  },
+);
 
 // ---- 2. fresh copy ----------------------------------------------------------
 const slotsPath = path.join(outDir, "images", "slots.json");
@@ -36,13 +43,17 @@ fs.rmSync(outDir, { recursive: true, force: true });
 fs.cpSync(donorDir, outDir, { recursive: true });
 
 // ---- 3. strip dead weight ----------------------------------------------------
-for (const f of recipe.stripFiles) fs.rmSync(path.join(outDir, f), { force: true });
-for (const d of recipe.stripDirs) fs.rmSync(path.join(outDir, d), { recursive: true, force: true });
+for (const f of recipe.stripFiles)
+  fs.rmSync(path.join(outDir, f), { force: true });
+for (const d of recipe.stripDirs)
+  fs.rmSync(path.join(outDir, d), { recursive: true, force: true });
 
 // ---- 4. tokenise --------------------------------------------------------------
 // literal renames first (path normalisation), then tokens longest-first so
 // "Josh Harrison" beats "Josh" and "1:05:43" beats "1:14".
-const renames = [...recipe.renames].sort((a, b) => b.find.length - a.find.length);
+const renames = [...recipe.renames].sort(
+  (a, b) => b.find.length - a.find.length,
+);
 const tokens = [...recipe.tokens].sort((a, b) => b.find.length - a.find.length);
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
@@ -56,7 +67,16 @@ const walk = (dir) => {
   return files;
 };
 
-const TEXT_EXT = new Set([".html", ".css", ".js", ".json", ".md", ".xml", ".txt", ".svg"]);
+const TEXT_EXT = new Set([
+  ".html",
+  ".css",
+  ".js",
+  ".json",
+  ".md",
+  ".xml",
+  ".txt",
+  ".svg",
+]);
 let tokenised = 0;
 for (const file of walk(outDir)) {
   if (!TEXT_EXT.has(path.extname(file))) continue;
@@ -64,12 +84,12 @@ for (const file of walk(outDir)) {
   let changed = false;
   for (const r of renames) {
     const next = s.split(r.find).join(r.replace);
-    if (next !== s) (s = next), (changed = true);
+    if (next !== s) ((s = next), (changed = true));
   }
   for (const t of tokens) {
     const re = new RegExp(t.regex ? t.find : esc(t.find), "g");
     const next = s.replace(re, `{{${t.token}}}`);
-    if (next !== s) (s = next), (changed = true);
+    if (next !== s) ((s = next), (changed = true));
   }
   if (changed) {
     fs.writeFileSync(file, s);
@@ -80,8 +100,22 @@ for (const file of walk(outDir)) {
 const imageSlotRemaps = {
   "predictor.html": [["images/finish.jpg", "images/predictor-hero.jpg"]],
   "splits.html": [["images/rope.jpg", "images/splits-hero.jpg"]],
-  "events.html": [["images/squad-athlos.jpg", "images/events-hero.jpg"]],
+  "events.html": [
+    ["images/squad-athlos.jpg", "images/events-hero.jpg"],
+    ["images/pb-venue.jpg", "images/events-secondary.jpg"],
+    [
+      "{{COACH_FIRST}} beside the {{PB_SOLO}} finish board in {{PB_VENUE}}",
+      "{{COACH_FIRST}} racing inside a HYROX event arena",
+    ],
+    [
+      "Arms up at the finish — the part you trained for.",
+      "Race-floor effort — the reason the weekend is on the calendar.",
+    ],
+  ],
   "coaching.html": [["images/sprint.jpg", "images/coaching-hero.jpg"]],
+  "find-a-partner.html": [
+    ["images/race-pair.jpg", "images/race-mate-hero.jpg"],
+  ],
   "run-zone.html": [
     ["images/treadmill.jpg", "images/run-hero.jpg"],
     ["images/race-revel.jpg", "images/run-compromised.jpg"],
@@ -114,8 +148,7 @@ for (const [fileName, replacements] of Object.entries(imageSlotRemaps)) {
   const file = path.join(outDir, fileName);
   if (!fs.existsSync(file)) continue;
   let content = fs.readFileSync(file, "utf8");
-  for (const [from, to] of replacements)
-    content = content.split(from).join(to);
+  for (const [from, to] of replacements) content = content.split(from).join(to);
   fs.writeFileSync(file, content);
 }
 
@@ -149,7 +182,10 @@ const donorRec = JSON.parse(fs.readFileSync(tenantsFile, "utf8")).tenants.find(
 let recStr = JSON.stringify(donorRec, null, 2);
 for (const r of renames) recStr = recStr.split(r.find).join(r.replace);
 for (const t of tokens) {
-  recStr = recStr.replace(new RegExp(t.regex ? t.find : esc(t.find), "g"), `{{${t.token}}}`);
+  recStr = recStr.replace(
+    new RegExp(t.regex ? t.find : esc(t.find), "g"),
+    `{{${t.token}}}`,
+  );
 }
 fs.writeFileSync(path.join(outDir, "tenant.record.json"), recStr + "\n");
 
@@ -201,7 +237,14 @@ for (const file of walk(outDir)) {
 }
 fs.writeFileSync(
   path.join(outDir, "images", "REQUIRED.md"),
-  `# Image contract — chassis\n\nThis site ships with no photography. To build a tenant, drop these\nfiles into its assets folder (same names, any real photo per slot):\n\n${[...imgRefs].sort().map((r) => `- images/${r}`).join("\n")}\n\nOptional extras (gallery/, lifestyle) can be added per tenant; filenames\nin pages are the contract — rename files to match, not the other way round.\n`,
+  `# Image contract — chassis\n\nThis site ships with no photography. To build a tenant, drop these\nfiles into its assets folder (same names, any real photo per slot):\n\n${[
+    ...imgRefs,
+  ]
+    .sort()
+    .map((r) => `- images/${r}`)
+    .join(
+      "\n",
+    )}\n\nOptional extras (gallery/, lifestyle) can be added per tenant; filenames\nin pages are the contract — rename files to match, not the other way round.\n`,
 );
 
 console.log(

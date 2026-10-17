@@ -9,8 +9,8 @@
       name="description"
       content="{{COACH_NAME}}'s partner codes and affiliate links — {{PARTNER_GYM}} and {{PARTNER_SUPP}} included — all in one place, honestly labelled."
     />
-    <link rel="stylesheet" href="/{{SLUG}}/styles.css?v=1792186391002" />
-    <link rel="stylesheet" href="/{{SLUG}}/guide.css?v=1792186391002" />
+    <link rel="stylesheet" href="/{{SLUG}}/styles.css?v=1792258248414" />
+    <link rel="stylesheet" href="/{{SLUG}}/guide.css?v=1792258248414" />
     <style>
       .partner-wrap {
         padding: 48px 0 84px;
@@ -168,18 +168,17 @@
             >
           </div>
           <div class="partner-card">
-            <span class="pc-tag">Race kit</span>
-            <h4>{{PARTNER_KIT}} training</h4>
+            <span class="pc-tag">{{PARTNER_KIT_TAG}}</span>
+            <h4>{{PARTNER_KIT_TITLE}}</h4>
             <p>
-              The race-day kit — Alphafly rotation and the red gear from the
-              events.
+              {{PARTNER_KIT_COPY}}
             </p>
             <a
               class="pc-cta"
-              href="https://www.{{PARTNER_KIT_LC}}.co.uk/training"
+              href="{{PARTNER_KIT_URL}}"
               target="_blank"
               rel="noopener"
-              >Shop {{PARTNER_KIT}} →</a
+              >{{PARTNER_KIT_CTA}} →</a
             >
           </div>
           <div class="partner-card">
@@ -218,9 +217,10 @@
           <a href="{{IG_URL}}" target="_blank" rel="noopener">Instagram</a>
         </nav>
       </div>
-      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">the ninth station</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="https://station9.studio" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/{{SLUG}}/app.js?v=1792186391002" defer></script>
+    <script src="/{{SLUG}}/app.js?v=1792258248414" defer></script>
   </body>
 </html>

@@ -48,6 +48,11 @@
     "PARTNER_SUPP_LC": "coaches",
     "PARTNER_KIT": "athletes",
     "PARTNER_KIT_LC": "athletes",
+    "PARTNER_KIT_TAG": "Platform",
+    "PARTNER_KIT_TITLE": "Tools athletes use",
+    "PARTNER_KIT_COPY": "Race tools, community and coaching operations under each creator's own brand.",
+    "PARTNER_KIT_CTA": "See the platform",
+    "PARTNER_KIT_URL": "/station9/#zones",
     "GYM_CODE": "S9",
     "PHOTO_BUDDY": "the team",
     "ACCENT": "#ff3b3b",
@@ -84,11 +89,7 @@
       "linkLabel": "See the race-mate board \u2192"
     }
   ],
-  "stripSections": [
-    "plans",
-    "merch",
-    "tips"
-  ],
+  "stripSections": ["plans", "merch", "tips"],
   "htmlTitle": "Station 9 \u2014 the platform behind the coaches",
   "metaDescription": "Station 9 builds the sites coaches' businesses deserve: coaching links, race tools, community boards and the money desk \u2014 one platform, their brand.",
   "copyOverrides": [
@@ -313,9 +314,7 @@
       "replace": "alt=\"Station 9 \u2014 the platform behind the coaches\""
     }
   ],
-  "stripPages": [
-    "desk.html"
-  ],
+  "stripPages": ["desk.html"],
   "demoPages": [
     "coaching.html",
     "watch.html",

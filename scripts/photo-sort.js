@@ -183,6 +183,7 @@ if (indexOnly) {
           station: null,
           quality: 0,
           brandFit: 0,
+          allowOffBrandFallback: false,
           heroScore: 0,
           venue: "",
           event: "",
@@ -260,6 +261,16 @@ function score(photo, slot, slotName) {
     return { score: -Infinity, proof, reason: "no person/face evidence" };
   if (slot.faceCritical && photo.cropRisk)
     return { score: -Infinity, proof, reason: "face/crop risk" };
+  const minimumBrandFit =
+    slot.minBrandFit ??
+    (slot.position === "hero" || slot.page === "stations-prep" ? 8 : 6);
+  const brandFit = Number(photo.annotation.brandFit || 0);
+  if (brandFit < minimumBrandFit && !photo.annotation.allowOffBrandFallback)
+    return {
+      score: -Infinity,
+      proof,
+      reason: `off brand (${brandFit}/10; needs ${minimumBrandFit})`,
+    };
 
   let value = 0;
   const wantAspect = slot.aspect || "any";
@@ -275,7 +286,12 @@ function score(photo, slot, slotName) {
   if (slot.position === "hero")
     value += Number(photo.annotation.heroScore || 0) * 2;
   if (slot.faceCritical && photo.faceCount) value += 4;
-  return { score: value, proof, reason: "" };
+  return {
+    score: value,
+    proof,
+    reason: "",
+    offBrandFallback: brandFit < minimumBrandFit,
+  };
 }
 
 const order = allocationOrder
@@ -323,6 +339,7 @@ for (const [slotName, slot] of order) {
   assignments[slotName] = {
     photo: best.photo.file,
     score: best.result.score,
+    offBrandFallback: best.result.offBrandFallback,
     evidence: [
       ...best.result.proof.annotationHits.map((hit) => `annotation:${hit}`),
       ...best.result.proof.captionHits.map((hit) => `caption:${hit}`),
@@ -330,7 +347,7 @@ for (const [slotName, slot] of order) {
     ],
   };
   used.add(best.photo.file);
-  if (best.result.score < 4)
+  if (best.result.score < 4 || best.result.offBrandFallback)
     review.push({
       slot: slotName,
       photo: best.photo.file,

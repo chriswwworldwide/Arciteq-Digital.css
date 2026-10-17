@@ -11,22 +11,22 @@ Not a website company. Not a website generator. **A machine that produces
 niche community platforms** — the factory (`reskin-tenant.js` + config +
 assets) is the wedge; the community graph inside each tenant is the moat.
 
-The pitch in one line: *"Your business's platform, already built — see it
-before you pay."* Demo-first, never promise-first.
+The pitch in one line: _"Your business's platform, already built — see it
+before you pay."_ Demo-first, never promise-first.
 
 ## Station 9 — the platform's front door
 
-Name: **Station 9**. ("The 9th station is the community" — the name *is*
+Name: **Station 9**. ("The 9th station is the community" — the name _is_
 the pitch.) Needs its own site — the product's window display — housing:
 
 - The pitch + the three live demos as proof (Hustle, RTF, Hannah —
-  *that's what the demos are for*)
+  _that's what the demos are for_)
 - Pricing + the intake form as the CTA
-- The walk-in/DM follow-through: *"here's what I'd build you → fill this in"*
+- The walk-in/DM follow-through: _"here's what I'd build you → fill this in"_
 
 Distribution hack: subtle "Site by Station 9" footer credit on every
 tenant — every member of every client gym is a lead. Keep it subtle —
-Bobby's demo must feel like *his* site, not our ad.
+Bobby's demo must feel like _his_ site, not our ad.
 
 ## The intake pipeline (form → site)
 
@@ -36,11 +36,11 @@ a dashboard:
 
 1. **Intake** — form fields map 1:1 onto config JSON (brand, coach, city,
    colours, offer/prices, three voice questions)
-2. **Assets** — photo *uploads* over IG scraping: prospects know their
+2. **Assets** — photo _uploads_ over IG scraping: prospects know their
    best shots, better quality, zero ToS-grey. Slot by role (hero, coach
    portrait, action, group), not content
 3. **Voice** — the hard bit. LLM drafts brand-voiced copy from their bio
-   + three answers; eyeball once before publish
+   - three answers; eyeball once before publish
 4. **Build** — form → JSON → reskin script → job queue →
    `prospectslug.yourdomain.com` (DEMO_BASE_DOMAIN mechanism already works)
 5. **Preview → pay → publish** — free to look and tinker; Stripe checkout
@@ -60,18 +60,18 @@ self-serve; I'm the frame observer, exceptions only).
 There are maybe 5–10k HYROX-affiliated gyms on Earth → HYROX alone tops
 out at **£3–7M ARR**. The niche is the wedge, not the prize.
 
-| Years | Stage | Shape | Money |
-|---|---|---|---|
-| 0–0.5 | Validation | UK HYROX blitz — 100+ demo pitches (build is no longer the constraint), 20–50 clients, conversion-rate proof | £15–60k |
-| 0.5–1.5 | Niche domination | UK+EU HYROX, self-serve live, remote-close motion proven | £100–400k/yr |
-| 1.5–4 | Category expansion | All boutique fitness (~30–60k gyms) | £1–10M ARR |
-| 4–7 | Platform | What gyms *run on* — member graph, payments | £10–50M ARR |
-| 7–12 | Billion or bust | Default OS for an industry segment | £125M+ ARR |
+| Years   | Stage              | Shape                                                                                                        | Money        |
+| ------- | ------------------ | ------------------------------------------------------------------------------------------------------------ | ------------ |
+| 0–0.5   | Validation         | UK HYROX blitz — 100+ demo pitches (build is no longer the constraint), 20–50 clients, conversion-rate proof | £15–60k      |
+| 0.5–1.5 | Niche domination   | UK+EU HYROX, self-serve live, remote-close motion proven                                                     | £100–400k/yr |
+| 1.5–4   | Category expansion | All boutique fitness (~30–60k gyms)                                                                          | £1–10M ARR   |
+| 4–7     | Platform           | What gyms _run on_ — member graph, payments                                                                  | £10–50M ARR  |
+| 7–12    | Billion or bust    | Default OS for an industry segment                                                                           | £125M+ ARR   |
 
 **Revision (post-factory proof):** the original 0–1 year assumed builds
 paced the pipeline — wrong. Seven full tenant demos shipped in ~20
 minutes of machine time; ~30 pitch-ready sites in 3 days is now
-conservative, and Europe becomes a *weeks* decision, not a year-two
+conservative, and Europe becomes a _weeks_ decision, not a year-two
 one — the reskin machinery is already language-proven (extraPairs
 carried Bahasa→English; a German/French/Spanish pack is config work,
 not engineering). The binding constraint moved entirely to three
@@ -83,7 +83,7 @@ work), and **retention load** (every yes is a site you now host,
 monitor and keep alive — automation before volume, or churn eats the
 arc). Revised honest ceiling for year one: 40–80 paying tenants if
 conversion holds, which lands the niche-domination ARR a full year
-early — *if* the first ten demos convert at all. Sequence stays:
+early — _if_ the first ten demos convert at all. Sequence stays:
 Hannah → Bobby → the seven → blitz.
 
 The billionaire fork is ~year 3, and requires the product to mutate
@@ -96,7 +96,7 @@ second mutation.
 Working backwards from "one person, giant P&L":
 
 1. **Marginal cost ≈ zero** — template + config + AI labour (reskin script
-   is exactly this). Trillion version automates *everything*; human only
+   is exactly this). Trillion version automates _everything_; human only
    approves exceptions
 2. **Sell outcomes, not tools** — nobody buys a website; they buy a gym
    that keeps members. £60/mo is retention infrastructure, not hosting
@@ -108,7 +108,7 @@ Working backwards from "one person, giant P&L":
    accumulated member graph
 5. **Boring rails early** — payments, onboarding, monitoring, inventory,
    tax. The part everyone skips; the part that determines whether you can
-   *hold* the revenue (why the four commerce gaps are being built
+   _hold_ the revenue (why the four commerce gaps are being built
    properly now, not under client pressure)
 
 ## Why form→site hasn't worked for the big players
@@ -124,7 +124,7 @@ Our edges that generic builders can't copy:
   business" every time; selling artifacts beats selling promises
 - **Niche depth** — split analyser, race-mate boards, sim RSVPs. A HYROX
   coach sees their sport, not a tool
-- **The ongoing system** — we sell what the site *runs*, not the site.
+- **The ongoing system** — we sell what the site _runs_, not the site.
   Churn inverts when the community lives in it
 
 Window: the "done-for-you niche platform" claim is rare for maybe
@@ -137,7 +137,7 @@ Two lanes, both real:
 
 - **Bolt-on** (Trojan horse): fast SEO storefront as the marketing layer,
   checkout stays Shopify. Operators already pay $40–200/mo for landing
-  builders that do *worse*. Zero migration risk; every bolt-on is a
+  builders that do _worse_. Zero migration risk; every bolt-on is a
   replace candidate once trusted
 - **Replacement**: simple merchants (domestic shipping, Stripe, no POS).
   Migration = a weekend. The gap list (tax, stock, discounts, accounts,
@@ -153,7 +153,7 @@ the real moat is gravity, not features.
 
 Flagship symmetry: **Roxjaya proves community, Pawsense proves commerce.**
 Shopify operators are the best possible demo-first market — they can
-*count* what a faster site is worth and already feel the same-box pain.
+_count_ what a faster site is worth and already feel the same-box pain.
 
 Don't build the rest of the gap speculatively — clients tell you which
 10% matters. But make the Pawsense storefront tenant-parameterised like
@@ -172,7 +172,7 @@ where it's free:
 
 - **Track 1 (labour pricing): TAKE.** The receptionist bot isn't a
   "£25 chatbot add-on" — it's a front-desk hire. Reprice/repitch as
-  *"your £25/mo receptionist"* — payroll framing at our scale.
+  _"your £25/mo receptionist"_ — payroll framing at our scale.
 - **Track 4 (zero per-customer work): STEER INTO.** The reskin is our
   only per-customer cost; the intake form + voice engine + automation
   pipeline exist to zero it. Pushing there takes us ~3 of 4 trillion
@@ -194,19 +194,19 @@ Two layers — the separation is the product:
    `VOICE.md` for Dina is the hand-written ancestor of this file.
 2. **Dials** (declared): axes on top of the baseline — wit, warmth,
    energy, directness, polish. Their posts set zero; they push any axis
-   past their own natural range. *"Sound like me but 20% funnier"* =
+   past their own natural range. _"Sound like me but 20% funnier"_ =
    baseline + wit +2. Never breaks recognisability, lets them be a
    better version of themselves.
 
-UX: not sliders — three draft variants per message (*like me* /
-*funnier* / *funnier still*), pick = setting. Approval gate is always
+UX: not sliders — three draft variants per message (_like me_ /
+_funnier_ / _funnier still_), pick = setting. Approval gate is always
 "sounds like me." Plugs into: receptionist bot (first surface), email
 nudges, caption lab (new drafting surface), reskin copy.
 
 ## The chat-plugin insight — redirected
 
 Insight (real): chat history is the richest voice corpus that exists —
-DMs are the *actual* voice, not the performed one. And consumer demand
+DMs are the _actual_ voice, not the performed one. And consumer demand
 for "50% funnier" is proven (rizz apps: millions of downloads, 2023).
 
 Consumer version rejected: WhatsApp/IG are closed (no API — the only
@@ -215,7 +215,7 @@ history GDPR friction), Meta is already baking AI into WhatsApp
 (landlord eats feature — the rizz apps all died in ~18 months), and
 "50% sexier" carries manipulation optics.
 
-**Redirect (adopted):** WhatsApp *Business* has a real API — and a gym's
+**Redirect (adopted):** WhatsApp _Business_ has a real API — and a gym's
 members actually talk to the coach on WhatsApp, not the website.
 Feature: **the receptionist answers the tenant's WhatsApp Business DMs
 in the coach's voice** (booking, "what time is Saturday sim," trials) —
@@ -228,13 +228,13 @@ land. v3 pipeline piece.
 
 Conditional yes, not a blanket one. It works if: narrow target
 (frustrated growth-stage D2C operators already paying for landing
-builders or visibly app-bloated — they can *count* the pain), demo-first
+builders or visibly app-bloated — they can _count_ the pain), demo-first
 (rebuilt storefront they can't unsee + their Lighthouse vs ours),
 bolt-on first (replace a Shogun/GemPages budget line, not their
 checkout). It fails as generic "replace Shopify" cold DMs — that pitch
 is the most crowded channel in e-commerce, and speed alone doesn't
 close without a case study. Pawsense must produce numbers, or the first
-commerce client *becomes* the case study.
+commerce client _becomes_ the case study.
 
 ## Idea log — consumer outriggers (cheap experiments, never the core)
 
@@ -292,7 +292,7 @@ productised freelancing, doesn't cannibalise the recurring play.
 
 Revisit if: the go/no-go gates in PROSPECTS.md trigger with zero
 closes, OR the template economics prove out and agencies reappear as a
-*channel*, not the buyer. Pickaxe stays ours until the hole's dug.
+_channel_, not the buyer. Pickaxe stays ours until the hole's dug.
 
 ### Outrigger #4 — rival race brands chasing HYROX
 
@@ -416,10 +416,14 @@ Free anonymous viewers are manual/emergency fallback, not infrastructure.
 Station 9's IG account is for normal posting, engagement and outreach only.
 Cache every fetched record; never scan the same profile twice unnecessarily.
 
-**Local tooling:** `ig-scan.py` is an early prototype and its current ranking
-must not be trusted until it implements the hard gates (pinned posts can
-also distort its dates/engagement). `ig-triage.py`, `ig-pull.py` and
-`photo-sort.js` remain useful after qualification: contact sheets expose
+**Local tooling:** `scripts/qualify-prospects.js` is the production first gate:
+`node scripts/qualify-prospects.js handle1 handle2` fetches one Bright Data
+profile record per uncached handle, classifies it PASS/REVIEW/REJECT and prints
+reasons plus desk/nutrition signals. Responses cache locally under ignored
+`data/prospect-cache/`; `--refresh` explicitly spends a new record and `--json`
+emits pipeline output. `ig-scan.py` is retained only as an early prototype and
+its old additive ranking must not drive pitches. `ig-triage.py`, `ig-pull.py`
+and `photo-sort.js` remain useful after qualification: contact sheets expose
 carousel/video candidates; selected full assets and video frames flow into
 31 labelled, priority-ordered, non-duplicating image slots.
 
@@ -472,6 +476,7 @@ events, entries, sponsor reach — the "owns the athlete relationship layer"
 valuation, ~£1–2B comparable, ~yr 6–8, honest odds 5–15%.
 
 Non-negotiable foundations (decided, bake in now):
+
 - Every athlete record: tenant_id + global athlete_id in central Postgres
   — never per-tenant files/localStorage. Retrofit kills networks.
 - Station 9 = the consumer-facing product brand. Coach sites are front-ends;
@@ -526,7 +531,7 @@ Structure agreed as a fallback deal, not a live track:
 - **Capacity retainer:** £500–£1,500/mo (never under £400). £750–1,000 is
   the defensible opening position. Non-refundable, paid whether they sell
   or not — it reserves our availability, and filters out window-shoppers.
-- **Per-sale cut:** 20–30% of the sale price (of *sale price*, not their
+- **Per-sale cut:** 20–30% of the sale price (of _sale price_, not their
   fantasy internal cost). At ~£2k/site that's £400–600 to us per build.
 - **Support bound:** retainer covers availability; revisions capped
   (e.g. 2 rounds per site, then hourly). White-label profit dies in

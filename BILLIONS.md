@@ -427,6 +427,42 @@ and `photo-sort.js` remain useful after qualification: contact sheets expose
 carousel/video candidates; selected full assets and video frames flow into
 31 labelled, priority-ordered, non-duplicating image slots.
 
+**Combined prospect pipeline (decided and automated):**
+
+```bash
+node scripts/prospect-pipeline.js prepare handle1 handle2 --run=sunday-batch
+```
+
+One resumable command now coordinates the existing tools: cached Bright Data
+profile qualification → PASS-only 60-post/event-window assessment → contact
+sheets → local asset export → priority/no-duplicate photo sort → review pack.
+Each candidate lands under ignored
+`scripts/reskin/prospects/<run>/<handle>/` with `qualification.json`,
+`assessment.json`, labelled contact sheets, source assets, photo-sort report
+and an `approval.json` template.
+
+The pipeline then stops deliberately at **READY FOR VISUAL REVIEW**. This is an
+AI visual gate, not manual work for the founder: inspect identity, cropped
+heads, finish-clock readability, station correctness, hero quality and visual
+duplicates; fill all 31 slot assignments; set `decision: BUILD`; supply the
+generated config path. Reject weak candidates without building. Captions and
+aspect ratios propose; vision approves.
+
+```bash
+node scripts/prospect-pipeline.js --resume sunday-batch
+```
+
+Resume applies the approved images, points the tenant config at those assets
+and runs the chassis build. It refuses incomplete approvals, missing files or
+missing configs, and ends at `built_pending_browser_qc` rather than pretending
+visual QA happened. Final desktop/mobile browser review remains required before
+a pitch enters the send queue. The pipeline never invents race results and
+never publishes without an explicit gate.
+
+Future automation can add face matching, OCR, blur/crop scoring and perceptual
+deduplication, trained from approved/rejected slot decisions. Do not remove the
+visual gate until 20–30 real builds show those checks match human judgement.
+
 **Throughput:** builds are no longer the constraint. Qualified leads and
 final visual QA are. Optimise for the number of correctly targeted pitches,
 not raw sites generated.

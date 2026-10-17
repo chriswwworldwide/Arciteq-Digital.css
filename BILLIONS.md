@@ -325,7 +325,7 @@ The "clone" machine is real now. End state: scan → pull → build → QC → p
 - **`scripts/build-chassis.js`** — regenerates Josh, copies to `chassis/`,
   swaps every Josh-string for `{{TOKEN}}` (recipe: `chassis.tokens.json`),
   strips dead files (7 dead js/css + 5 orphaned data jsons), emits
-  `images/REQUIRED.md` (31 slots) + a tokenised `tenant.record.json`.
+  a manifest-driven `images/REQUIRED.md` + a tokenised `tenant.record.json`.
   **Fails loudly if any persona string survives.** No ghosts — this is the
   thing we could never do to Dina's site because you can't grep for
   "sentences about being pregnant."

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
@@ -71,13 +72,13 @@ function writeJson(target, value) {
   fs.writeFileSync(target, `${JSON.stringify(value, null, 2)}\n`);
 }
 
-function deepCachePath(handles) {
+function deepCachePath(handles, postCount = posts) {
   return path.join(
     root,
     "data",
     "prospect-cache",
     "deep-posts",
-    `${[...handles].sort().join("_")}--${posts}.json`,
+    `${[...handles].sort().join("_")}--${postCount}.json`,
   );
 }
 
@@ -221,6 +222,38 @@ function resume(runId) {
     const shortlist = fs.existsSync(shortlistPath)
       ? JSON.parse(fs.readFileSync(shortlistPath, "utf8"))
       : null;
+    if (shortlist?.status === "NEEDS_MORE_THUMBNAILS") {
+      const requestedPosts = Math.min(
+        Number(shortlist.requestedPosts || state.posts + 40),
+        200,
+      );
+      run("node", [
+        "scripts/assess-finalists.js",
+        handle,
+        `--posts=${requestedPosts}`,
+      ]);
+      run(python, [
+        "scripts/bright-contact-sheet.py",
+        deepCachePath([handle], requestedPosts),
+        path.join(prospectDir, `contact-sheets-backfill-${requestedPosts}`),
+        handle,
+        "--max",
+        String(requestedPosts),
+      ]);
+      shortlist.status = "PENDING";
+      shortlist.backfills ||= [];
+      shortlist.backfills.push({
+        posts: requestedPosts,
+        created_at: new Date().toISOString(),
+      });
+      writeJson(shortlistPath, shortlist);
+      results.push({
+        handle,
+        status: "THUMBNAILS_BACKFILLED",
+        posts: requestedPosts,
+      });
+      continue;
+    }
     if (shortlist?.status !== "COMPLETE") {
       results.push({ handle, status: "WAITING_FOR_THUMBNAIL_SHORTLIST" });
       continue;
@@ -270,6 +303,28 @@ function resume(runId) {
     }
     const sourceDir = path.join(prospectDir, "source");
     const visualIndexPath = path.join(sourceDir, "visual-index.json");
+    const shortlistHash = crypto
+      .createHash("sha256")
+      .update(
+        JSON.stringify({
+          slots: shortlist.slots || {},
+          spares: shortlist.spares || [],
+          images: shortlist.images || {},
+        }),
+      )
+      .digest("hex");
+    const shortlistHashPath = path.join(sourceDir, "shortlist.sha256");
+    if (
+      fs.existsSync(visualIndexPath) &&
+      fs.existsSync(shortlistHashPath) &&
+      fs.readFileSync(shortlistHashPath, "utf8").trim() !== shortlistHash
+    ) {
+      results.push({
+        handle,
+        status: "SHORTLIST_CHANGED_USE_TARGETED_BACKFILL",
+      });
+      continue;
+    }
     if (!fs.existsSync(visualIndexPath)) {
       run(python, [
         "scripts/bright-export-assets.py",
@@ -296,6 +351,7 @@ function resume(runId) {
         visualIndexPath,
         shortlistPath,
       ]);
+      fs.writeFileSync(shortlistHashPath, `${shortlistHash}\n`);
     }
     const visualIndex = JSON.parse(fs.readFileSync(visualIndexPath, "utf8"));
     if (visualIndex?.status !== "COMPLETE") {
@@ -442,7 +498,22 @@ function resume(runId) {
 
   state.stage = results.some((result) => result.status === "BUILT")
     ? "built_pending_browser_qc"
-    : "visual_review";
+    : results.some((result) =>
+          [
+            "WAITING_FOR_THUMBNAIL_SHORTLIST",
+            "THUMBNAILS_BACKFILLED",
+            "INVALID_THUMBNAIL_SHORTLIST",
+            "SHORTLIST_CHANGED_USE_TARGETED_BACKFILL",
+          ].includes(result.status),
+        )
+      ? "thumbnail_triage"
+      : results.some((result) =>
+            ["WAITING_FOR_VISUAL_INDEX", "INVALID_VISUAL_INDEX"].includes(
+              result.status,
+            ),
+          )
+        ? "visual_index"
+        : "visual_review";
   state.updated_at = new Date().toISOString();
   state.results = results;
   state.metrics = {

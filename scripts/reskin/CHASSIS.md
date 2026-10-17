@@ -146,12 +146,20 @@ faces/crops and duplicates automatically, then the rendered site is the final
 visual check. Carousel captions are never child-image evidence.
 
 `photo-sort.js --index-only` adds Apple Vision face/OCR/classification and
-perceptual-duplicate metadata. After AI visual review marks the index COMPLETE,
-normal photo-sort fills slots in permanent order with the highest-rated unused
+perceptual-duplicate metadata to the downloaded shortlist only. Thumbnail
+ratings flow into that index automatically; full originals are not reopened.
+Normal photo-sort fills slots in permanent order with the highest-rated unused
 compatible image. Losing hero candidates remain in the pool for later allowed
 slots. Strict builds reject repeated sources, near-duplicates, missing critical
 slots and text overlays. The protected crew dinner/dance images stay filled by
 the template unless `customCrewAssets` is explicitly enabled.
+
+Pipeline boundaries: `prospect-pipeline.js` is the production entry point.
+`ig-scan.py`, `ig-triage.py` and `ig-pull.py` are legacy/manual fallbacks and are
+never called by it. `apply-visual-review.js` exists only for migrating the Zara
+pilot or an exceptional manual correction. `allocation-contact-sheet.py` and
+`video-frame-sheet.py` are targeted QA/backfill utilities, not normal stages.
+No normal path downloads a whole profile or indexes files outside the shortlist.
 
 ## Asset pipeline: scrape → triage → pull → sort
 

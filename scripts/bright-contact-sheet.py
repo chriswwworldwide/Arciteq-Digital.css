@@ -67,7 +67,9 @@ def main():
     parser.add_argument("records")
     parser.add_argument("outdir")
     parser.add_argument("handles", nargs="+")
-    parser.add_argument("--max", type=int, default=60)
+    parser.add_argument(
+        "--max", type=int, default=60, help="maximum posts; every carousel child is shown"
+    )
     parser.add_argument("--cols", type=int, default=6)
     parser.add_argument("--tile", type=int, default=320)
     args = parser.parse_args()
@@ -89,11 +91,9 @@ def main():
                 record.get("date_posted") or record.get("datetime") or "",
             )
         )
-        for record in profile_records:
+        for record in profile_records[: args.max]:
             event_name = event_for(record, event_config)
             for label, url, video in media(record):
-                if len(tiles) >= args.max:
-                    break
                 try:
                     event_tag = f" [{event_name}]" if event_name else ""
                     tiles.append(
@@ -101,8 +101,6 @@ def main():
                     )
                 except Exception as error:
                     print("skip", handle, label, error)
-            if len(tiles) >= args.max:
-                break
 
         tile, cols, label_height = args.tile, args.cols, 24
         per_sheet = cols * 5

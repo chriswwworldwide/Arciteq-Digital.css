@@ -3,7 +3,7 @@
 # for chassis demo builds. Uses the logged-in browser session (Chrome via
 # browser_cookie3) so no password handling.
 #
-#   python3 scripts/ig-pull.py <handle> <outdir> [--max N] [--sleep S]
+#   python3 scripts/ig-pull.py <handle> <outdir> [--max N] [--sleep S] [--only CODE,CODE]
 #
 # Output: <outdir>/<shortcode>.jpg + <shortcode>.txt (caption + date +
 # permalink). Re-run safe (skips existing). Keep --sleep >= 1 on big pulls —
@@ -25,6 +25,12 @@ def main():
     ap.add_argument("outdir")
     ap.add_argument("--max", type=int, default=60)
     ap.add_argument("--sleep", type=float, default=1.0)
+    ap.add_argument(
+        "--only",
+        type=str,
+        default="",
+        help="comma-separated shortcodes — fetch just these posts (pairs with ig-triage picks)",
+    )
     args = ap.parse_args()
 
     out = Path(args.outdir)
@@ -45,7 +51,11 @@ def main():
     print(f"{prof.full_name} — {prof.mediacount} posts")
 
     got = 0
-    for post in prof.get_posts():
+    only = {c.strip() for c in args.only.split(",") if c.strip()}
+    posts = prof.get_posts() if not only else (
+        instaloader.Post.from_shortcode(L.context, c) for c in sorted(only)
+    )
+    for post in posts:
         if got >= args.max:
             break
         base = out / post.shortcode

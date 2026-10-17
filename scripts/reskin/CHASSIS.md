@@ -127,3 +127,21 @@ replaces.
 `--apply <dir>` copies winners under slot filenames. `--pin slot=file`
 locks a slot to a specific photo (e.g. Station 9's hero/bio stay put even
 when the asset pile gets re-sorted).
+
+## Asset pipeline: scrape → triage → pull → sort
+
+Captions are useless for picking photos ("Manchester" tells nobody
+anything), so selection is visual, not textual:
+
+1. `ig-triage.py <handle> <dir>` — thumbnails of the last ~48 posts tiled
+   into `sheet-N.jpg` contact sheets, each tile labelled with its
+   shortcode.
+2. Human/agent views the sheets and names the picks ("DeM64xSu19i,
+   Dd4gj47RotA") — one visual pass, no caption guessing.
+3. `ig-pull.py <handle> <dir> --only CODE,CODE` — full-res fetch of just
+   the picks (plus caption sidecars).
+4. `photo-sort.js <dir>` — index + allocate into slots; `--apply` writes
+   slot filenames, `--pin` locks known-good photos.
+
+Pulling every post full-res is overkill and hits rate limits — the triage
+step keeps the fetch to ~10–15 images per creator.

@@ -108,3 +108,22 @@ tokens and copyOverrides, never by editing the chassis.
 - **Revisit hero "secondary fade"** — the ::after scrim gradient on
   hero--full; user parked the decision mid-tuning (currently ~18% max).
 
+
+## Photo sort (scripts/photo-sort.js)
+
+The 31 image slots are declared in `chassis/images/slots.json` — each with a
+label, preferred aspect, fill priority, accepted keywords, and a
+`faceCritical` flag for shots where a cropped head is fatal (hero, bio,
+finish board, portraits).
+
+`node scripts/photo-sort.js <assetsDir>` indexes a folder of source photos
+(IG pulls keep their caption sidecars, which become keyword text) and
+greedily allocates them: priority order, each photo used once. Output marks
+`ok` / `REVIEW` / `PIN` per slot; low-confidence picks (e.g. carousel
+sub-images that share one caption) are flagged for human eyes rather than
+silently placed — that was the miscrop/misallocation failure mode this
+replaces.
+
+`--apply <dir>` copies winners under slot filenames. `--pin slot=file`
+locks a slot to a specific photo (e.g. Station 9's hero/bio stay put even
+when the asset pile gets re-sorted).

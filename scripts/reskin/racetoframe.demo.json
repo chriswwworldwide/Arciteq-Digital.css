@@ -434,6 +434,10 @@
   ],
   "copyOverrides": [
     {
+      "pattern": "src=\"/racetoframe/images/race-pair\\.jpg[^\"]*\"\\s+alt=\"Two G&H athletes racing side by side at Hyrox\"",
+      "replace": "src=\"/racetoframe/images/duo-patches.jpg\"\n            alt=\"Gregor and Hattie together on the HYROX race floor\""
+    },
+    {
       "pattern": "<p class=\"crew-line\">[\\s\\S]*?</p>",
       "replace": "<p class=\"crew-line\">\n              Never raced and not sure where to start? Start here. Everything\n              on this site is built for the HYROX-curious as much as the\n              podium-chasers \u2014 free race tools, honest talk, and a crew who\n              remember their first finish. Come say it on Instagram; they\n              actually answer.\n            </p>"
     },

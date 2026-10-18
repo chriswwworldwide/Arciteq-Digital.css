@@ -16,11 +16,14 @@ describe("PawVigil guide autopilot", () => {
   });
 
   it("blocks medical and ingestible claims", () => {
-    expect(safetyError({ body_html: "<p>This dosage will cure pain.</p>" })).toMatch(
-      /blocked safety language/,
-    );
+    expect(
+      safetyError({ body_html: "<p>This device will cure pain.</p>" }),
+    ).toMatch(/blocked safety language/);
     expect(
       safetyError({ body_html: "<p>Use reflective gear and check the fit.</p>" }),
+    ).toBeNull();
+    expect(
+      safetyError({ body_html: "<p>This guide does not diagnose or treat conditions.</p>" }),
     ).toBeNull();
   });
 

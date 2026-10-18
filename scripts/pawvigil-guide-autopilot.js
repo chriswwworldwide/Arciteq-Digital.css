@@ -31,9 +31,9 @@ export const TOPICS = [
 ];
 
 const BLOCKED = [
-  /\b(diagnos(?:e|is|tic)|treat(?:ment)?|cure|heal)\b/i,
-  /\b(dosage|dose|prescri(?:be|ption)|medication|medicine)\b/i,
-  /\b(supplement|vitamin|probiotic|cbd|essential oil|ingestible)\b/i,
+  /\b(?:will|can|may|designed to|proven to)\s+(?:diagnose|treat|cure|heal)\b/i,
+  /\b(?:give|use|recommend|prescribe)\s+(?:a\s+)?(?:dosage|dose|medication|medicine)\b/i,
+  /\b(?:give|use|recommend)\s+(?:a\s+)?(?:supplement|vitamin|probiotic|cbd|essential oil|ingestible)\b/i,
   /\b(guarantee[ds]?|risk[- ]free|completely safe|prevents? all)\b/i,
 ];
 

@@ -318,6 +318,77 @@ product with a reskinned race-tools layer — viable, slightly thinner
 demo. Expands the addressable pool well beyond the ~30–80 creator /
 hundreds-of-gyms HYROX-only estimate.
 
+### Outrigger #5 — digital legacy / "talk to them when they're gone" (Oct 2026)
+
+Origin: personal — Pat (81) and Graham (84). The idea: preserve a person
+as something the family can visit — video, voice, family-history map,
+AR-anchored stories. Grief-tech already exists but nobody has won the
+category.
+
+**Psychology, both sides of the debate:**
+- *For:* continuing-bonds research says maintaining a bond with the dead
+  is normal and often healthy — this is a richer photo album, not a new
+  risk. Strongest case = unfinished business (sudden death, or long
+  illness with no last real conversation). Descendants who never met
+  them get to *ask*, not just hear.
+- *Against:* prolonged-grief risk if the sim substitutes for acceptance;
+  near-real avatars can land uncanny and worse than nothing; consent of
+  the dead (the sim could "say" things they never said); family
+  asymmetry — one sibling comforted, another horrified.
+
+**Design answer — guardrails ARE the product:**
+- Retrieval over impersonation: only ever plays/selects what they
+  actually said/wrote. "I never talked about that" is an honest answer,
+  not a failure. The horror stories are all generation bots.
+- Coverage via topic map: childhood / work / how-we-met / places /
+  each kid. ~80% of real "talks" are "do you remember" + "when you were
+  young" — the map covers it by construction.
+- Visit cadence as anti-dependency: a designed rhythm (e.g. a few visits
+  a month), family-controlled, never monetised. Bonus beat: the recorded
+  person can set it themselves — "once a week, go live your life" in
+  their own words.
+- Tiers: story archive (text+photos, no synthesis) → voice (cloned,
+  retrieval-bounded) → avatar (opt-in only, their choice while alive —
+  "how present do you want to be" is a capture question).
+- Capture must be zero-marathon: scattered phone video + voice notes +
+  family-written stories as text corpus. Hours of studio interview is
+  the failure mode — nobody old will do it. WhatsApp-style prompts to
+  relatives ("what's the wedding-car story?") beats a camera crew.
+
+**Market reality check:**
+- Umbrella "digital legacy" numbers (£22–24B → £47–79B 2034) are mostly
+  estate/password vaults — not our niche. The memorialisation slice is
+  ~$2.2B → ~$3.4B 2030, ~6% CAGR.
+- Benchmarks: HereAfter £3.99–7.99/mo or £99–199 one-off; StoryFile £499
+  premium video; Project December ~£10/mo text bot (the cautionary
+  tales). Voice-first = cheapest tier and dodges uncanny valley entirely.
+- Early but not first: StoryFile/HereAfter have had since ~2019 and
+  haven't broken mainstream. The demographic tailwind is real — digital
+  natives are now burying digital-native parents.
+
+**Profit arc (modelled, assumptions flagged):**
+- M1–2 pilot £0 → M3–4 D2C trickle £200–500/mo → M5–8 first funeral-
+  director partners £1–2k → M9–12 £3–5k → Y2 £6–18k/mo → M24 ~£15–20k
+  steady state (500–800 hosted archives, churn ≈ 0 — nobody cancels Mum).
+- Economics: unit cost £8–15/family/yr (voice+retrieval+storage); the
+  margin-killer is capture labour, so self-serve capture is the wedge.
+  B2B volume channel = funeral directors/hospices (a £200 add-on against
+  a £3k funeral is an easy attach; expect 15–25% rev-share ask).
+- Floor: ~£150–250k/yr niche business done well. Ceiling only exists if
+  a national death-care channel takes it — £1M+/yr branch. The whole
+  bet rides on whether families complete capture — Pat & Graham pilot
+  is the proof.
+
+**Where it sits vs Station 9/Arciteq:** different business entirely —
+slower sales, emotional purchase context, probably B2B2C via death care
+rather than creator D2C. But the chassis insight transfers weirdly well:
+one profile → one living archive is the same "tenant" organism. Keep it
+separate as a venture; reuse the ingestion/index/hosting spine.
+
+Next step if pursued: proper dossier — competitor teardown, UK
+death-care channel map, unit economics, and the Pat-and-Graham capture
+protocol (what to collect, in what order, no marathon sessions).
+
 ## The chassis pipeline — done, committed (2a4bec0, devin/gh-dossier)
 
 The "clone" machine is real now. End state: scan → pull → build → QC → pitch.

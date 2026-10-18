@@ -10,6 +10,45 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+// tenants.json is shared state — parallel builds must serialize the
+// read-modify-write or the last writer clobbers the others' registrations.
+// Lockfile via O_EXCL create; stale locks (>60s) are broken so a crashed
+// build can't wedge the queue. Writes go to a temp file then rename so a
+// reader never sees a half-written file.
+function withTenantsLock(mutate) {
+  const tenantsFile = path.join(root, "data", "tenants.json");
+  const lockFile = tenantsFile + ".lock";
+  const deadline = Date.now() + 30000;
+  for (;;) {
+    try {
+      const fd = fs.openSync(lockFile, "wx");
+      fs.closeSync(fd);
+      break;
+    } catch (e) {
+      if (e.code !== "EEXIST") throw e;
+      try {
+        if (Date.now() - fs.statSync(lockFile).mtimeMs > 60000)
+          fs.unlinkSync(lockFile);
+      } catch (e) {
+        void e; // lock vanished between stat and unlink — retry loop handles it
+      }
+      if (Date.now() > deadline)
+        throw new Error("timed out waiting for tenants.json lock");
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 50);
+    }
+  }
+  try {
+    const tenants = JSON.parse(fs.readFileSync(tenantsFile, "utf8"));
+    mutate(tenants);
+    const tmp = tenantsFile + ".tmp-" + process.pid;
+    fs.writeFileSync(tmp, JSON.stringify(tenants, null, 2) + "\n");
+    fs.renameSync(tmp, tenantsFile);
+  } finally {
+    fs.unlinkSync(lockFile);
+  }
+}
+
 const cfgPath = process.argv[2];
 if (!cfgPath) {
   console.error("usage: node scripts/reskin-tenant.js <config.json>");
@@ -456,8 +495,6 @@ if (cfg.mode === "chassis") {
   }
 
   // register from the tokenised record template — never the roxjaya record
-  const tenantsFile = path.join(root, "data", "tenants.json");
-  const tenants = JSON.parse(fs.readFileSync(tenantsFile, "utf8"));
   let tStr = fs.readFileSync(
     path.join(chassisDir, "tenant.record.json"),
     "utf8",
@@ -482,9 +519,10 @@ if (cfg.mode === "chassis") {
   t.canonicalHost = `${slug}.localhost`;
   t.currency = cfg.currency || "gbp";
   t.demo = true;
-  tenants.tenants = tenants.tenants.filter((x) => x.tenant_id !== slug);
-  tenants.tenants.push(t);
-  fs.writeFileSync(tenantsFile, JSON.stringify(tenants, null, 2) + "\n");
+  withTenantsLock((tenants) => {
+    tenants.tenants = tenants.tenants.filter((x) => x.tenant_id !== slug);
+    tenants.tenants.push(t);
+  });
 
   const nutritionState =
     nutrition.mode === "nutrition-led"
@@ -907,9 +945,10 @@ if (t.guides && t.guides.headerHtml) {
 t.features = features;
 t.channels = channels;
 t.demo = true;
-tenants.tenants = tenants.tenants.filter((x) => x.tenant_id !== slug);
-tenants.tenants.push(t);
-fs.writeFileSync(tenantsFile, JSON.stringify(tenants, null, 2) + "\n");
+withTenantsLock((tenants) => {
+  tenants.tenants = tenants.tenants.filter((x) => x.tenant_id !== slug);
+  tenants.tenants.push(t);
+});
 
 console.log(`reskin done → ${slug}/  (${touched} files touched)`);
 console.log(

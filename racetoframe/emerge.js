@@ -29,6 +29,12 @@
   // overrides for previews; ?fx=off disables entirely.
   const solo = /^[0-3]$/.test(fx || "") ? Number(fx) : fx === null ? 2 : null;
   if (!demo && solo === null) return;
+  if (window.matchMedia("(max-width: 800px)").matches) {
+    const mobileReveal = document.createElement("script");
+    mobileReveal.src = "/burgonfitness/emerge.js";
+    document.head.appendChild(mobileReveal);
+    return;
+  }
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   window.__emerge = true; // hero-reveal.js checks this and stands down
 

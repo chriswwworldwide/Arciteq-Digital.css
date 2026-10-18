@@ -22,7 +22,36 @@ const ctx = {};
 
 // ---- Guides (database-backed, written by the fortnightly autopilot) ----
 export function tenantGuides(tenant) {
-  const g = tenant?.guides;
+  const g =
+    tenant?.guides ||
+    (String(tenant?.tenant_id || "default") === "default"
+      ? {
+          basePath: "/guides/",
+          brand: "PawVigil",
+          homePath: "/",
+          language: "en",
+          author: {
+            name: "PawVigil editorial team",
+            jobTitle: "Pet safety and wellbeing editors",
+          },
+          byline: "By the PawVigil editorial team",
+          indexTitle: "Pet safety and wellbeing guides — PawVigil",
+          indexHeading: "Practical pet safety guides",
+          indexDescription:
+            "Practical guidance on pet identification, visibility, home monitoring, travel safety and senior-pet comfort.",
+          stylesheets: ["/styles/styles.css", "/styles/premium.css"],
+          scripts: ["/styles/premium.js"],
+          headerHtml:
+            '<h1><a href="/" style="color:inherit;text-decoration:none">PawVigil</a></h1>',
+          nav: [
+            { href: "/", label: "Home" },
+            { href: "/shop.html", label: "Shop" },
+            { href: "/guides/", label: "Guides" },
+          ],
+          ctaHtml:
+            '<section class="cta-band"><h3>Practical protection for everyday pets</h3><p>Browse safety, comfort and monitoring essentials selected for dogs and cats.</p><a class="btn btn-light" href="/shop.html">Browse the collection</a></section>',
+        }
+      : null);
   if (!g || typeof g !== "object" || !g.basePath) return null;
   return { ...g, basePath: String(g.basePath).replace(/\/?$/, "/") };
 }

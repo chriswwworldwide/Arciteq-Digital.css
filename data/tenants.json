@@ -50,7 +50,17 @@
           "shopDescription": "Browse pet safety tech and non-ingestible wellness products curated for comfort, calm and smart monitoring. Shop opening soon — read our guides in the meantime.",
           "cartDescription": "Review your cart and checkout securely. All prices are shown in the storefront’s currency."
         },
-        "sameAs": []
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/content/pet-safety-guides.html",
+            "priority": "0.85"
+          },
+          {
+            "path": "/content/qr-code-dog-id-tags-what-to-store-what-to-keep-private-and-how-often-to-test-the.html",
+            "priority": "0.85"
+          }
+        ]
       },
       "offers": {
         "freeShipping": {

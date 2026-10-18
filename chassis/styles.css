@@ -2018,9 +2018,9 @@ footer a:hover {
 }
 
 .event-tabs button[aria-selected="true"] {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #0b0b0e;
 }
 
 .event-tabs button span {

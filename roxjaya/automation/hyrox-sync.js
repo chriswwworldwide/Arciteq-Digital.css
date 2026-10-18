@@ -13,8 +13,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { applyPatches } from "../../src/inbox.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
+const root = path.join(here, "..", "..");
 const dataDir = path.join(here, "..", "data");
 const SITE_URL = String(process.env.SITE_URL || "").replace(/\/+$/, "");
 const ADMIN_KEY = String(process.env.ADMIN_API_KEY || "");
@@ -173,11 +175,44 @@ export function buildCandidates({ events, cities, eventsJson, today }) {
     if (ev.start < today) continue;
     const label = rangeLabel(ev.start, ev.end);
     if (!city) {
+      const alsoOn = Array.isArray(cities?.alsoOn) ? cities.alsoOn : [];
+      const alsoIdx = alsoOn.findIndex(
+        (race) => race.source === ev.link || race.name === ev.title,
+      );
+      if (alsoIdx >= 0 && alsoOn[alsoIdx].start === ev.start) continue;
+      const value = {
+        name: ev.title,
+        city: ev.title.replace(/^.*?HYROX\s+/i, ""),
+        flag: "",
+        nickname: "",
+        dates: label,
+        start: ev.start,
+        venue: ev.address || "Venue TBA — confirm on hyrox.com",
+        note: "Asia-Pacific race listed by HYROX.",
+        source: ev.link,
+      };
+      const apply =
+        alsoIdx >= 0
+          ? [
+              {
+                file: "roxjaya/data/cities.json",
+                path: `alsoOn.${alsoIdx}`,
+                value,
+              },
+            ]
+          : [
+              {
+                file: "roxjaya/data/cities.json",
+                path: "alsoOn",
+                op: "prepend",
+                value,
+              },
+            ];
       out.push({
         key: `event:${ev.slug}:${ev.start}`,
         kind: "event",
         title: `${ev.title} — ${label}`,
-        summary: `New Asia-Pacific race on hyrox.com${ev.address ? ` at ${ev.address}` : ""}. Not one of our city guides yet — approve to mark as seen, or add a city in cities.json.`,
+        summary: `New Asia-Pacific race on hyrox.com${ev.address ? ` at ${ev.address}` : ""}.`,
         source: ev.link,
         data: {
           slug: ev.slug,
@@ -185,6 +220,7 @@ export function buildCandidates({ events, cities, eventsJson, today }) {
           end: ev.end,
           address: ev.address,
         },
+        apply,
       });
       continue;
     }
@@ -326,6 +362,28 @@ async function main() {
     `hyrox.com: ${events.length} Asia-Pacific races, ${candidates.length} candidate(s)`,
   );
   for (const c of candidates) console.log(` - [${c.kind}] ${c.title}`);
+  if (process.env.AUTO_PUBLISH === "true") {
+    const allowedFiles = [
+      "roxjaya/data/cities.json",
+      "roxjaya/data/events.json",
+    ];
+    let applied = 0;
+    for (const candidate of candidates) {
+      const result = applyPatches(candidate, {
+        allowedFiles,
+        readJson: (rel) =>
+          JSON.parse(fs.readFileSync(path.join(root, rel), "utf8")),
+        writeJson: (rel, json) =>
+          fs.writeFileSync(
+            path.join(root, rel),
+            `${JSON.stringify(json, null, 2)}\n`,
+          ),
+      });
+      applied += result.applied.length;
+    }
+    console.log(`published: ${applied} race update(s)`);
+    return;
+  }
   if (!SITE_URL || !ADMIN_KEY) {
     console.log("dry run (set SITE_URL + ADMIN_API_KEY to post to the inbox)");
     return;

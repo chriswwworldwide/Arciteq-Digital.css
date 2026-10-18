@@ -22,20 +22,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Discover Asia race dates -> approve queue
+      - name: Discover and publish Asia race dates
         env:
-          SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}
-          ADMIN_API_KEY: ${{ secrets.ROXJAYA_ADMIN_KEY }}
+          AUTO_PUBLISH: "true"
         run: node roxjaya/automation/hyrox-sync.js
       - name: Discover and publish Hyrox Asia news
         env:
           AUTO_PUBLISH: "true"
         run: node roxjaya/automation/news-sync.js
-      - name: Persist published news
+      - name: Persist published updates
         run: |
-          if git diff --quiet -- roxjaya/data/news.json; then exit 0; fi
-          git add roxjaya/data/news.json
-          git -c user.name="Roxjaya News Bot" -c user.email="actions@github.com" commit -m "Publish Roxjaya news updates"
+          if git diff --quiet -- roxjaya/data/news.json roxjaya/data/cities.json roxjaya/data/events.json; then exit 0; fi
+          git add roxjaya/data/news.json roxjaya/data/cities.json roxjaya/data/events.json
+          git -c user.name="Roxjaya Update Bot" -c user.email="actions@github.com" commit -m "Publish Roxjaya schedule and news updates"
           git push
 
   digest:

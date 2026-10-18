@@ -34,7 +34,7 @@ const BLOCKED = [
   /\b(?:will|can|may|designed to|proven to)\s+(?:diagnose|treat|cure|heal)\b/i,
   /\b(?:give|use|recommend|prescribe)\s+(?:a\s+)?(?:dosage|dose|medication|medicine)\b/i,
   /\b(?:give|use|recommend)\s+(?:a\s+)?(?:supplement|vitamin|probiotic|cbd|essential oil|ingestible)\b/i,
-  /\b(guarantee[ds]?|risk[- ]free|completely safe|prevents? all)\b/i,
+  /\b(?:is|are|offers?|provides?)\s+(?:guaranteed|risk[- ]free|completely safe)\b|\bprevents? all\b/i,
 ];
 
 function daysSince(iso) {

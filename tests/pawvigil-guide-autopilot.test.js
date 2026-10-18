@@ -23,8 +23,11 @@ describe("PawVigil guide autopilot", () => {
       safetyError({ body_html: "<p>Use reflective gear and check the fit.</p>" }),
     ).toBeNull();
     expect(
-      safetyError({ body_html: "<p>This guide does not diagnose or treat conditions.</p>" }),
+      safetyError({ body_html: "<p>This guide does not diagnose or treat conditions and cannot guarantee safety.</p>" }),
     ).toBeNull();
+    expect(
+      safetyError({ body_html: "<p>This device is completely safe.</p>" }),
+    ).toMatch(/blocked safety language/);
   });
 
   it("instructs the model to avoid unsafe pet advice", () => {

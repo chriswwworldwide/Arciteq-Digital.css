@@ -529,7 +529,7 @@ button.btn {
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   align-items: stretch;
   color: #fff;
-  background: var(--ink);
+  background: var(--paper);
   overflow: hidden;
   isolation: isolate;
 }
@@ -1428,7 +1428,7 @@ footer a:hover {
     right: 0;
     bottom: 0;
     height: 15%;
-    background: linear-gradient(180deg, transparent, var(--ink));
+    background: linear-gradient(180deg, transparent, var(--paper));
     pointer-events: none;
   }
   .hero--bleed .hero-img {
@@ -1443,7 +1443,7 @@ footer a:hover {
     background: linear-gradient(
       180deg,
       rgba(11, 11, 14, 0) 55%,
-      var(--ink) 100%
+      var(--paper) 100%
     );
   }
   .hero--bleed .wrap {

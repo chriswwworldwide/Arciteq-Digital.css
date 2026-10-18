@@ -1,6 +1,24 @@
 {
-  "note": "Curated Hyrox Asia news. Items land here only when Dina taps Publish on the Coach's desk; edit or delete rows freely. Newest first. Items dated in the future auto-publish on their date — the feed rolls weekly through the season without anyone touching it. Voice: 'title' stays punchy English; 'summary' and 'take' are Dina's Jakartan.",
+  "note": "Curated HYROX Asia news. Filtered stories publish automatically from trusted feeds; edit or delete rows freely. Newest first. Items dated in the future auto-publish on their date. Dina's take remains optional.",
   "items": [
+    {
+      "id": "2026-10-13-hyrox-training-in-singapore-tips-from-an-ortho-sur",
+      "date": "2026-10-13",
+      "title": "Hyrox training in Singapore – tips from an ortho surgeon!",
+      "summary": "Recent HYROX Asia coverage from expatliving.sg. Open the source for the full story.",
+      "take": "",
+      "source": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOU1ZiR3hmMXNMTk9vRjFFVDlsNHp2R2Jzang4YWRSUWtlV3NqSW9nelBaOFdtYTdWaU9CV3FDdTdqUUtZb2ZhVWkxdjhBU3MyVFZTVkZGbjF4ekphMEpPc1RlRzZqNHloc2RLcUNqWGtjRUJIZEpzWUN2TzJXT0x5ODNValBUM0hrcEN4RkphWQ?oc=5",
+      "sourceName": "expatliving.sg"
+    },
+    {
+      "id": "2026-10-09-hyrox-youngstars-for-kids-aged-8-15-is-coming-to-s",
+      "date": "2026-10-09",
+      "title": "HYROX Youngstars For Kids Aged 8-15 Is Coming To Singapore – Here’s Everything Parents Need To Know",
+      "summary": "Recent HYROX Asia coverage from TheSmartLocal. Open the source for the full story.",
+      "take": "",
+      "source": "https://news.google.com/rss/articles/CBMiakFVX3lxTFAyRnlHRFpDYnZ1UjNSbUY0UGV5cEZKUG9WcjlUSXFyNmZyN1YzNC1ielhnWDlaUFlRcndtVzBkUlk1VjltbE5iR080ZjF6MmNxWmJmb2IxX092clJybGZQU0tVTy1DbkdCakHSAW9BVV95cUxQMS1SMGRqWEpqc1dDdU8wUUtaT29jdmQyR1Q4STVqM0gxeTFtMHVMdy1vb09CMWFuQTFXSTZxSGpiREpXV1lUWmlQV0tDM0ptQnZoQUtPV0RGUkhrOHR1VWhvSHhwdkNBeG5hRHZZUjA?oc=5",
+      "sourceName": "TheSmartLocal"
+    },
     {
       "date": "2026-12-14",
       "title": "That's a wrap on 2026 — the season resets",

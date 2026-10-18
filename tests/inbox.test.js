@@ -365,9 +365,28 @@ describe("news feed", () => {
       excerpt: "",
     }));
     expect(selectNews(many, { today: "2026-09-03" })).toHaveLength(MAX_PER_RUN);
+    const repeatedAnnouncement = [
+      {
+        title: "HYROX Youngstars launches in Singapore",
+        link: "https://example.com/youngstars-one",
+        date: "2026-09-02",
+        sourceName: "one",
+        excerpt: "HYROX Youngstars Singapore",
+      },
+      {
+        title: "HYROX Youngstars makes its Asian debut",
+        link: "https://example.com/youngstars-two",
+        date: "2026-09-01",
+        sourceName: "two",
+        excerpt: "HYROX Youngstars Asia Singapore",
+      },
+    ];
+    expect(
+      selectNews(repeatedAnnouncement, { today: "2026-09-03" }),
+    ).toHaveLength(1);
   });
 
-  it("news candidates validate, publish only after a summary is written, and prepend into news.json", () => {
+  it("news candidates include a publishable summary and prepend into news.json", () => {
     const [cand] = buildNewsCandidates(
       selectNews(parseFeed(feed, "Google News"), { today: "2026-09-03" }),
     );
@@ -376,7 +395,8 @@ describe("news feed", () => {
       kind: "news",
       key: "news:2026-09-02-hong-kong-hyrox-tickets-go-on-sale-thursday",
       editable: ["summary", "take"],
-      summary: "",
+      summary:
+        "Recent HYROX Asia coverage from South China Morning Post. Open the source for the full story.",
     });
     expect(valid.apply[0].op).toBe("prepend");
 

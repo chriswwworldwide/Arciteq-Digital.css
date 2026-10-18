@@ -124,9 +124,10 @@ export function selectNews(
     if (!ASIA_RE.test(text) && !/hyrox\.com/i.test(it.link)) continue;
     if (BLOCK_RE.test(it.title)) continue;
     const key = slug(it.title);
-    if (!key || seen.has(key)) continue;
+    const topic = key.includes("youngstars") ? "hyrox-youngstars" : key;
+    if (!key || seen.has(key) || picked.some((p) => p.topic === topic)) continue;
     seen.add(key);
-    picked.push(it);
+    picked.push({ ...it, topic });
     if (picked.length >= max) break;
   }
   return picked;
@@ -148,17 +149,22 @@ export function plainExcerpt(html) {
 export function buildNewsCandidates(items) {
   return items.map((it) => {
     const id = `${it.date}-${slug(it.title).slice(0, 50)}`;
+    const excerpt = plainExcerpt(it.excerpt);
+    const summary =
+      excerpt.length > it.title.length + 30
+        ? excerpt
+        : `Recent HYROX Asia coverage from ${it.sourceName}. Open the source for the full story.`;
     return {
       key: `news:${id}`,
       kind: "news",
       title: it.title,
-      summary: plainExcerpt(it.excerpt),
+      summary,
       source: it.link,
       editable: ["summary", "take"],
       data: {
         date: it.date,
         sourceName: it.sourceName,
-        summary: plainExcerpt(it.excerpt),
+        summary,
         take: "",
         hint: "Write 2–3 lines in your own words (facts only), add your take if you like, then Publish.",
       },
@@ -171,7 +177,7 @@ export function buildNewsCandidates(items) {
             id,
             date: it.date,
             title: it.title,
-            summary: plainExcerpt(it.excerpt),
+            summary,
             take: "",
             source: it.link,
             sourceName: it.sourceName,
@@ -217,6 +223,19 @@ async function main() {
   for (const c of candidates)
     console.log(` - [news] ${c.title} (${c.data.sourceName}, ${c.data.date})`);
   if (!candidates.length) console.log("nothing new worth a look");
+  if (process.env.AUTO_PUBLISH === "true") {
+    if (!candidates.length) return;
+    const file = path.join(dataDir, "news.json");
+    const current = JSON.parse(fs.readFileSync(file, "utf8"));
+    const seen = new Set((current.items || []).map((item) => slug(item.title)));
+    const additions = candidates
+      .map((candidate) => candidate.apply[0].value)
+      .filter((item) => !seen.has(slug(item.title)));
+    current.items = [...additions, ...(current.items || [])];
+    fs.writeFileSync(file, `${JSON.stringify(current, null, 2)}\n`);
+    console.log(`published: +${additions.length} news item(s)`);
+    return;
+  }
   if (!SITE_URL || !ADMIN_KEY) {
     console.log("dry run (set SITE_URL + ADMIN_API_KEY to post to the inbox)");
     return;

@@ -10,6 +10,9 @@ on:
     - cron: "0 0 * * 1" # 07:00 Jakarta, Mondays
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -24,11 +27,16 @@ jobs:
           SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}
           ADMIN_API_KEY: ${{ secrets.ROXJAYA_ADMIN_KEY }}
         run: node roxjaya/automation/hyrox-sync.js
-      - name: Discover Hyrox Asia news -> approve queue
+      - name: Discover and publish Hyrox Asia news
         env:
-          SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}
-          ADMIN_API_KEY: ${{ secrets.ROXJAYA_ADMIN_KEY }}
+          AUTO_PUBLISH: "true"
         run: node roxjaya/automation/news-sync.js
+      - name: Persist published news
+        run: |
+          if git diff --quiet -- roxjaya/data/news.json; then exit 0; fi
+          git add roxjaya/data/news.json
+          git -c user.name="Roxjaya News Bot" -c user.email="actions@github.com" commit -m "Publish Roxjaya news updates"
+          git push
 
   digest:
     runs-on: ubuntu-latest

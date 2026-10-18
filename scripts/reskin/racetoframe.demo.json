@@ -1012,7 +1012,7 @@
       "items": []
     }
   },
-  "extraCss": "@media (max-width: 800px) { .hero--bleed .wrap { color: var(--ink); } .hero--bleed p, .hero--bleed .stats div span { color: var(--ink-2); } .hero--bleed .stats { border-top-color: var(--line); } }",
+  "extraCss": "#zones { color: var(--ink); background: var(--paper); } #zones .zone { color: var(--ink); } @media (max-width: 800px) { .hero--bleed .wrap { color: var(--ink); } .hero--bleed p, .hero--bleed .stats div span { color: var(--ink-2); } .hero--bleed .stats { border-top-color: var(--line); } }",
   "imageOverrides": [
     "scripts/reskin/racetoframe-assets"
   ],

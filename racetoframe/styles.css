@@ -714,6 +714,15 @@ section.block {
   padding: 84px 0;
 }
 
+#zones {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+#zones .zone {
+  color: var(--ink);
+}
+
 section.block.alt {
   background: var(--paper-2);
 }

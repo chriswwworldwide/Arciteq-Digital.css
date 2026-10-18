@@ -61,7 +61,9 @@
     "VOICE_DOUBLES_HOOK": "The network does the matching \u2014 coaches keep the relationship.",
     "VOICE_WEDDING": "the platform remembers so you don't have to.",
     "VOICE_NEWS_TAKE": "Every coach on Station 9 brings their athletes with them \u2014 and every athlete makes the next coach's site better.",
-    "SOCIAL_HANDLE_UPPER": "STATION9STUDIO"
+    "SOCIAL_HANDLE_UPPER": "STATION9STUDIO",
+    "PARTNER_GYM_URL": "/station9/#zones",
+    "PARTNER_SUPP_URL": "/station9/#zones"
   },
   "news": [
     {
@@ -89,7 +91,11 @@
       "linkLabel": "See the race-mate board \u2192"
     }
   ],
-  "stripSections": ["plans", "merch", "tips"],
+  "stripSections": [
+    "plans",
+    "merch",
+    "tips"
+  ],
   "htmlTitle": "Station 9 \u2014 the platform behind the coaches",
   "metaDescription": "Station 9 builds the sites coaches' businesses deserve: coaching links, race tools, community boards and the money desk \u2014 one platform, their brand.",
   "copyOverrides": [
@@ -314,7 +320,9 @@
       "replace": "alt=\"Station 9 \u2014 the platform behind the coaches\""
     }
   ],
-  "stripPages": ["desk.html"],
+  "stripPages": [
+    "desk.html"
+  ],
   "demoPages": [
     "coaching.html",
     "watch.html",

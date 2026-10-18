@@ -430,8 +430,29 @@ function resume(runId) {
       ([slot]) => !omittedSlots.has(slot),
     );
     const approvedSlotNames = new Set(slotEntries.map(([slot]) => slot));
+    // Stock fallback: scripts/reskin/stock/station-<name>.jpg (or
+    // stock-<name>.jpg) auto-fills an unassigned slot instead of shipping a
+    // wrong image. Auto-fills are recorded in the result so the log stays honest.
+    const stockDir = path.join(root, "scripts", "reskin", "stock");
+    const stockFor = (slot) => {
+      const base = path.basename(slot, ".jpg");
+      for (const name of [`${base}.jpg`, `stock-${base.replace(/^station-/, "")}.jpg`]) {
+        const p = path.join(stockDir, name);
+        if (fs.existsSync(p)) return p;
+      }
+      return null;
+    };
+    const autoFilled = [];
+    for (const slot of requiredImageSlots) {
+      if (approvedSlotNames.has(slot)) continue;
+      const stock = stockFor(slot);
+      if (stock) {
+        slotEntries.push([slot, path.relative(sourceDir, stock)]);
+        autoFilled.push(path.basename(slot));
+      }
+    }
     const missingSlots = requiredImageSlots.filter(
-      (slot) => !approvedSlotNames.has(slot),
+      (slot) => !approvedSlotNames.has(slot) && !autoFilled.includes(path.basename(slot)),
     );
     const unknownSlots = slotEntries
       .map(([slot]) => slot)

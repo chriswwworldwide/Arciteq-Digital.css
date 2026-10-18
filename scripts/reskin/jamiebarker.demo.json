@@ -1,0 +1,155 @@
+{
+  "mode": "chassis",
+  "slug": "jamiebarker",
+  "heroMode": "full",
+  "strictImages": true,
+  "assets": "scripts/reskin/jamiebarker-assets",
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "tokens": {
+    "SLUG": "jamiebarker",
+    "COACH_NAME": "Jamie Barker",
+    "COACH_NAME_LC": "jamie barker",
+    "COACH_FIRST": "Jamie",
+    "COACH_LAST": "Barker",
+    "WORDMARK_HTML": "<span class=\"o\">J</span>AMIE",
+    "BRAND": "Jamie Barker",
+    "BRAND_SHORT": "jamiebarker",
+    "BRAND_SOCIAL": "jamiebarker_fit",
+    "CLOTHING_SHORT": "JB",
+    "CITY": "Online",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "the real hybrid life — running, hyrox and strength that fits around yours",
+    "HERO_TITLE_HTML": "Hybrid athlete.<br /><em>Real-life coach.</em>",
+    "APPLY_URL": "https://findyouredge.app/",
+    "PROGRAMMES_URL": "https://findyouredge.app/",
+    "STORE_URL": "https://findyouredge.app/",
+    "IG_URL": "https://www.instagram.com/jamiebarker_fit/",
+    "BRAND_IG_URL": "https://www.instagram.com/jamiebarker_fit/",
+    "YOUTUBE_URL": "https://www.instagram.com/jamiebarker_fit/",
+    "TIKTOK_URL": "https://www.instagram.com/jamiebarker_fit/",
+    "THREADS_URL": "https://www.threads.net/@jamiebarker_fit",
+    "DOUBLES_PARTNER": "Stuart Allan",
+    "PB_VENUE": "Manchester",
+    "PB_VENUE_LC": "manchester",
+    "DOUBLES_VENUE": "Cardiff",
+    "DOUBLES_VENUE_LC": "cardiff",
+    "OPEN_VENUE": "Birmingham",
+    "PB_SOLO": "0:59:47",
+    "PB_DOUBLES": "1:04:09",
+    "PB_HALF": "70.3",
+    "PB_OPEN": "Pro",
+    "SEASON_START": "first HYROX",
+    "PARTNER_GYM": "Find Your Edge",
+    "PARTNER_GYM_LC": "edge",
+    "PARTNER_SUPP": "MyProtein",
+    "PARTNER_SUPP_LC": "myprotein",
+    "PARTNER_KIT": "Red Bull",
+    "PARTNER_KIT_LC": "red bull",
+    "PARTNER_KIT_TAG": "Coaches Camp",
+    "PARTNER_KIT_TITLE": "Red Bull HYROX Coaches Camp",
+    "PARTNER_KIT_COPY": "Jamie was selected for the Red Bull HYROX Coaches Camp — coaching education for the athletes pushing hybrid racing forward.",
+    "PARTNER_KIT_CTA": "About the camp",
+    "PARTNER_KIT_URL": "https://www.redbull.com/",
+    "GYM_CODE": "JAMIEBARKER",
+    "PHOTO_BUDDY": "Stuart Allan",
+    "ACCENT": "#e8452c",
+    "ACCENT_DARK": "#a32b16",
+    "ACCENT_SOFT": "#24100c",
+    "BRAND_SHORT_UPPER": "JAMIE BARKER",
+    "LINKTREE_URL": "https://www.instagram.com/jamiebarker_fit/",
+    "VOICE_DOUBLES_HOOK": "Training with someone who gets it changes what you're capable of.",
+    "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
+    "VOICE_NEWS_TAKE": "Hybrid isn't a trend — it's how people actually want to train now.",
+    "SOCIAL_HANDLE_UPPER": "JAMIEBARKER_FIT",
+    "PARTNER_GYM_URL": "https://findyouredge.app/",
+    "PARTNER_SUPP_URL": "https://www.myprotein.com/",
+    "STORE_NAME": "Find Your Edge",
+    "STORE_TAG": "Coaching app",
+    "STORE_COPY": "Jamie's coaching platform — his plans and community live inside the EDGE app.",
+    "STORE_CTA": "Visit EDGE",
+    "SEASON_HEADLINE": "From his first HYROX to a sub-60 debut."
+  },
+  "stripSections": [
+    "merch",
+    "tips"
+  ],
+  "omitImageSlots": [
+    "images/station-lean.jpg",
+    "images/kerb.jpg",
+    "images/rooftop.jpg",
+    "images/walkin.jpg",
+    "images/suit.jpg",
+    "images/hoodie.jpg",
+    "images/wallball.jpg",
+    "images/treadmill.jpg"
+  ],
+  "stripPages": [
+    "watch.html"
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
+      "replace": "From first HYROX to a sub-60 debut — and an Ironman 70.3 along the way."
+    },
+    {
+      "pattern": "AJ Bell Birmingham Half",
+      "replace": "HYROX Birmingham"
+    },
+    {
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} — hybrid athlete, coach, and the face behind {{BRAND}}."
+    },
+    {
+      "pattern": "Started the season at {{SEASON_START}}\\.",
+      "replace": "Raced his first HYROX and broke 60 minutes on debut."
+    },
+    {
+      "pattern": "HYROX Pro Solo {{PB_SOLO}} — {{PB_VENUE}}\\.",
+      "replace": "HYROX {{PB_SOLO}} debut — {{PB_VENUE}}."
+    },
+    {
+      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}\\.",
+      "replace": "Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}."
+    },
+    {
+      "pattern": "pro solo {{PB_SOLO}} in {{PB_VENUE}}, a {{PB_DOUBLES}} pro doubles",
+      "replace": "a {{PB_SOLO}} debut in {{PB_VENUE}}, doubles in {{DOUBLES_VENUE}}"
+    },
+    {
+      "pattern": "{{PB_DOUBLES}} isn't a flex, it's a warning",
+      "replace": "{{PB_SOLO}} isn't a flex, it's a warning"
+    },
+    {
+      "pattern": "Hong Kong",
+      "replace": "London"
+    },
+    {
+      "pattern": "\\s*<li><a href=\"/jamiebarker/watch.html\">Watch</a></li>",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*<a href=\"/jamiebarker/watch.html\">Watch</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "on FITR",
+      "replace": "by application"
+    },
+    {
+      "pattern": "clothing line",
+      "replace": "athlete community"
+    },
+    {
+      "pattern": "365",
+      "replace": "hybrid"
+    }
+  ],
+  "stripBlocks": [
+    "youtube-link",
+    "tiktok-link"
+  ]
+}

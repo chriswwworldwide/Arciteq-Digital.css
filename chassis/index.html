@@ -90,6 +90,7 @@
               <li><a href="/{{SLUG}}/stations-prep/">Stations prep</a></li>
               <li><a href="/{{SLUG}}/run-zone/">Run zone</a></li>
               <li><a href="/{{SLUG}}/fuel-zone/">Fuel zone</a></li>
+              <li><a href="/{{SLUG}}/taper-zone/">Taper zone</a></li>
               <li><a href="/{{SLUG}}/events.html">Race calendar</a></li>
             </ul>
           </li>
@@ -223,7 +224,7 @@
         </figure>
         <div class="reveal">
           <p class="eyebrow">The athlete</p>
-          <h3>{{COACH_NAME}}. {{SEASON_START}} to 1:05 in one season.</h3>
+          <h3>{{COACH_NAME}}. {{SEASON_HEADLINE}}</h3>
           <p class="lead">
             {{CITY}}, {{REGION}}. HYROX Pro athlete, coach and creator —
             building {{BRAND}} between race blocks. Open solo {{PB_OPEN}} at
@@ -326,22 +327,16 @@
               >See programmes on FITR</a
             >
           </div>
-          <div class="plan reveal">
-            <span class="tag">Drops</span>
-            <h4>{{BRAND}} 365</h4>
-            <div class="price">Kit</div>
-            <div class="per">Tees, hoodies, tanks — open per drop</div>
-            <ul>
-              <li>The clothing side of the Hub</li>
-              <li>Doors open per drop, not year-round</li>
-              <li>The list hears first when the next one lands</li>
-            </ul>
+          <div class="plan reveal" data-strip="store-card">
+            <span class="tag">{{STORE_TAG}}</span>
+            <h4>{{STORE_NAME}}</h4>
+            <div class="per">{{STORE_COPY}}</div>
             <a
               class="btn btn-ghost"
               href="{{STORE_URL}}"
               target="_blank"
               rel="noopener"
-              >Visit the store</a
+              >{{STORE_CTA}}</a
             >
           </div>
         </div>
@@ -975,7 +970,6 @@
           <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
           <a href="/{{SLUG}}/race-planner/">Race planner</a>
           <a href="/{{SLUG}}/news/">News</a>
-          <a href="/{{SLUG}}/news.html">UK scene</a>
           <a href="/{{SLUG}}/race-crew/">the ninth station</a>
           <a href="/{{SLUG}}/results/">Results</a>
           <a href="/{{SLUG}}/splits/">Splits</a>
@@ -991,9 +985,9 @@
             rel="noopener"
             >Instagram @{{SLUG}}fit</a
           >
-          <a href="{{TIKTOK_URL}}" target="_blank" rel="noopener">TikTok @{{SLUG}}fit</a>
-          <a href="{{YOUTUBE_URL}}" target="_blank" rel="noopener">YouTube — {{SOCIAL_HANDLE_UPPER}}</a>
-          <a href="{{STORE_URL}}" target="_blank" rel="noopener">{{BRAND}} 365</a>
+          <a data-strip="tiktok-link" href="{{TIKTOK_URL}}" target="_blank" rel="noopener">TikTok @{{SLUG}}fit</a>
+          <a data-strip="youtube-link" href="{{YOUTUBE_URL}}" target="_blank" rel="noopener">YouTube — {{SOCIAL_HANDLE_UPPER}}</a>
+          <a href="{{STORE_URL}}" target="_blank" rel="noopener">{{STORE_NAME}}</a>
           <a href="{{LINKTREE_URL}}" target="_blank" rel="noopener">All links</a>
 
           <a href="/{{SLUG}}/coaching.html">Book {{COACH_FIRST}}</a>

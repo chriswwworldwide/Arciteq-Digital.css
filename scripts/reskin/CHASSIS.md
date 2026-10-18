@@ -227,3 +227,27 @@ Triage details (learned the hard way):
   candidates (CODE_v1f1.jpg …) into the same pool photo-sort indexes.
   Poor still coverage? Pull more [VID] shortcodes — that's the answer,
   not a compromise.
+
+## Video-still station accuracy (rule)
+
+A reel often pans across SEVERAL stations in one clip — the cover frame's
+shortcode says nothing about which station each extracted frame shows.
+When a video still is used for a station slot, verify THE FRAME, not the
+post: `CODE_v1f2` from a "HYROX day" reel can be a burpee even if the
+cover looked like a sled. Every video frame must be reviewed on the frame
+sheet and tagged to the station it actually depicts before it can fill a
+critical slot.
+
+## Speedup backlog (post batch-3)
+
+- `reskin-new.js <handle> <name> <ig>` — scaffold a demo config + approval
+  skeleton from a template instead of hand-writing each `*.demo.json`.
+- Sheet-aware shortlist assist — pre-bucket labels by verified event /
+  video flag / caption keywords so slot assignment starts from a sorted
+  table, not 500 raw shortcodes.
+- Content-hash (or build-stamp) query strings on image URLs — same
+  filename + different bytes caused stale-cache confusion mid-review.
+- "Missing slot" report at sheet stage — flag "no sled-push candidates
+  seen" at triage instead of discovering it at allocation.
+- Batch prepare + parallel builds are live (tenants.json lock in
+  reskin-tenant.js); remaining serial step is the eyeball gate by design.

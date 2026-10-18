@@ -1,0 +1,31 @@
+{
+  "note": "PRIVATE PITCH PREVIEW — demo headlines only.",
+  "items": [
+    {
+      "date": "2026-10-14",
+      "title": "HYROX confirms the 26/27 UK calendar",
+      "summary": "London, Glasgow, Cardiff and Birmingham all land on the new season calendar, with the usual sell-out warnings attached. Full dates and venues are on the official site.",
+      "take": "Book the hotel before you book the heat — Saturday waves go first and nobody enjoys a 6 a.m. start in a city an hour away. London taught me that one.",
+      "link": "https://hyrox.com",
+      "linkLabel": "Official calendar →",
+      "source": "https://hyrox.com",
+      "sourceName": "hyrox.com"
+    },
+    {
+      "date": "2026-10-06",
+      "title": "Doubles fields keep getting quicker",
+      "summary": "Pro doubles times across the season are trending down, with more sub-hour pairs turning up at every major race.",
+      "take": "1:16:18 isn't a flex, it's a warning — the pairs game is where this sport is heading. Find your partner before you need one; the race-mate board exists for a reason.",
+      "link": "/georgegrayson/find-a-partner.html",
+      "linkLabel": "Find a race-mate →"
+    },
+    {
+      "date": "2026-09-22",
+      "title": "The station nobody trains enough",
+      "summary": "Ask a room of first-timers which station worries them and it's always the sled. Ask the people who've raced and they say wall balls — the station that looks easy and empties your legs.",
+      "take": "Consistency beats intensity — the plan only works if you do.",
+      "link": "/georgegrayson/stations-prep.html",
+      "linkLabel": "All eight stations →"
+    }
+  ]
+}

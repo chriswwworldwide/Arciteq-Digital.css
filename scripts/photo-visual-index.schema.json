@@ -1,7 +1,13 @@
 {
   "description": "AI visual inventory written before slot allocation. Index every viable candidate once; mark unusable images rejected rather than omitting silently.",
-  "requiredTopLevel": ["status", "images"],
-  "status": ["PENDING", "COMPLETE"],
+  "requiredTopLevel": [
+    "status",
+    "images"
+  ],
+  "status": [
+    "PENDING",
+    "COMPLETE"
+  ],
   "requiredImageFields": [
     "subjects",
     "station",
@@ -23,7 +29,17 @@
   "scales": {
     "quality": "1-10: focus, light, resolution, composition",
     "brandFit": "1-10: fit with this creator's visual identity",
-    "heroScore": "1-10: standalone main-hero strength; an 8 remains eligible for secondary premium slots if a 9 wins hero"
+    "heroScore": "1-10: standalone main-hero strength; an 8 remains eligible for secondary premium slots if a 9 wins hero",
+    "framing": "0-10: how well the subject sits in frame — 0 = cropped at edge/top, half-visible or background detail; 10 = subject fully visible and well-composed. A station claim with framing < 4 should be treated as suspect even if stationVerified."
+  },
+  "optionalImageFields": [
+    "framing",
+    "suitability",
+    "eventVerified"
+  ],
+  "fieldNotes": {
+    "framing": "Score the visible file, not the post. Low framing is how 'verified' sled pushes ship as floor shots.",
+    "suitability": "Plain-English sentence: what is actually in frame and whether it suits the claimed station/slot. Written evidence, not vibes — 'athlete bent over mid broad-jump' beats a bare 'burpee' tag."
   },
   "stationValues": [
     null,
@@ -58,7 +74,10 @@
     "status": "COMPLETE",
     "images": {
       "example.jpg": {
-        "subjects": ["running", "race"],
+        "subjects": [
+          "running",
+          "race"
+        ],
         "station": "running",
         "quality": 8,
         "brandFit": 9,
@@ -70,7 +89,10 @@
         "allowText": false,
         "creatorVisible": true,
         "faceCropSafe": true,
-        "allowedSlots": ["images/run-hero.jpg", "images/run-compromised.jpg"],
+        "allowedSlots": [
+          "images/run-hero.jpg",
+          "images/run-compromised.jpg"
+        ],
         "rejected": false,
         "notes": "Strong secondary running image."
       }

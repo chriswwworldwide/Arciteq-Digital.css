@@ -1,5 +1,5 @@
 {
-  "note": "Image slot manifest — every viable photo is visually indexed before deterministic allocation. allocationOrder is permanent: the strongest unused compatible image fills each slot in sequence; runners-up remain in the pool for later slots.",
+  "note": "Image slot manifest — every viable photo is visually indexed before deterministic allocation. allocationOrder is permanent: the strongest unused compatible image fills each slot in sequence; runners-up remain in the pool for later slots. requireEvent: candidate must be eventVerified (or stock). eventPreferred: eventVerified candidates get a large score bonus.",
   "allocationOrder": [
     "images/hero.jpg",
     "images/coaching-hero.jpg",
@@ -50,15 +50,37 @@
   ],
   "slots": {
     "images/hero.jpg": {
-      "label": "Hero \u2014 cinematic full-bleed shot, creator mid-effort or iconic",
+      "label": "Hero — cinematic full-bleed shot, creator mid-effort or iconic",
       "aspect": "landscape",
       "priority": 1,
       "faceCritical": true,
-      "keywords": ["race", "run", "event", "hyrox", "crowd", "athlete"],
+      "keywords": [
+        "race",
+        "run",
+        "event",
+        "hyrox",
+        "crowd",
+        "athlete"
+      ],
       "page": "home",
       "position": "hero",
       "noTextOverlay": true,
-      "visualKeywords": ["person", "athlete", "sports", "competition"]
+      "visualKeywords": [
+        "person",
+        "athlete",
+        "sports",
+        "competition"
+      ],
+      "eventPreferred": true,
+      "forbiddenKeywords": [
+        "swim",
+        "swimming",
+        "goggles",
+        "pool",
+        "cycling",
+        "bike",
+        "bicycle"
+      ]
     },
     "images/run-hero.jpg": {
       "label": "Run Zone hero — creator visibly running, no lunges or static station work",
@@ -68,9 +90,25 @@
       "page": "run-zone",
       "position": "hero",
       "noTextOverlay": true,
-      "keywords": ["run", "running", "track", "race"],
-      "visualKeywords": ["running", "jogging", "track and field", "person"],
-      "forbiddenKeywords": ["lunge", "sandbag", "row", "rowing"]
+      "keywords": [
+        "run",
+        "running",
+        "track",
+        "race"
+      ],
+      "visualKeywords": [
+        "running",
+        "jogging",
+        "track and field",
+        "person"
+      ],
+      "forbiddenKeywords": [
+        "lunge",
+        "sandbag",
+        "row",
+        "rowing"
+      ],
+      "eventPreferred": true
     },
     "images/predictor-hero.jpg": {
       "label": "Race Predictor hero — strong HYROX race image, no social caption overlay",
@@ -80,8 +118,18 @@
       "page": "predictor",
       "position": "hero",
       "noTextOverlay": true,
-      "keywords": ["hyrox", "race", "finish", "arena"],
-      "visualKeywords": ["sports", "competition", "person"]
+      "keywords": [
+        "hyrox",
+        "race",
+        "finish",
+        "arena"
+      ],
+      "visualKeywords": [
+        "sports",
+        "competition",
+        "person"
+      ],
+      "eventPreferred": true
     },
     "images/splits-hero.jpg": {
       "label": "Split Analyser hero — race/station analysis image with technical energy",
@@ -91,8 +139,18 @@
       "page": "splits",
       "position": "hero",
       "noTextOverlay": true,
-      "keywords": ["hyrox", "race", "station", "split"],
-      "visualKeywords": ["sports", "competition", "fitness"]
+      "keywords": [
+        "hyrox",
+        "race",
+        "station",
+        "split"
+      ],
+      "visualKeywords": [
+        "sports",
+        "competition",
+        "fitness"
+      ],
+      "eventPreferred": true
     },
     "images/events-hero.jpg": {
       "label": "Race Calendar hero — arena, start line or race-weekend atmosphere",
@@ -102,8 +160,19 @@
       "page": "events",
       "position": "hero",
       "noTextOverlay": true,
-      "keywords": ["event", "arena", "start", "race", "crowd"],
-      "visualKeywords": ["sports", "competition", "crowd"]
+      "keywords": [
+        "event",
+        "arena",
+        "start",
+        "race",
+        "crowd"
+      ],
+      "visualKeywords": [
+        "sports",
+        "competition",
+        "crowd"
+      ],
+      "requireEvent": true
     },
     "images/events-secondary.jpg": {
       "label": "Race Calendar secondary — on-brand HYROX race-floor effort",
@@ -113,8 +182,18 @@
       "page": "events",
       "position": "secondary",
       "noTextOverlay": true,
-      "keywords": ["hyrox", "race", "station", "arena"],
-      "visualKeywords": ["sports", "competition", "fitness"]
+      "keywords": [
+        "hyrox",
+        "race",
+        "station",
+        "arena"
+      ],
+      "visualKeywords": [
+        "sports",
+        "competition",
+        "fitness"
+      ],
+      "requireEvent": true
     },
     "images/coaching-hero.jpg": {
       "label": "Coaching page hero — creator coaching or strong approachable portrait",
@@ -124,8 +203,18 @@
       "page": "coaching",
       "position": "hero",
       "noTextOverlay": true,
-      "keywords": ["coach", "coaching", "client", "training", "portrait"],
-      "visualKeywords": ["person", "people", "fitness"]
+      "keywords": [
+        "coach",
+        "coaching",
+        "client",
+        "training",
+        "portrait"
+      ],
+      "visualKeywords": [
+        "person",
+        "people",
+        "fitness"
+      ]
     },
     "images/stations-hero.jpg": {
       "label": "Stations Prep hero — strongest on-brand HYROX station image",
@@ -135,8 +224,18 @@
       "page": "stations-prep",
       "position": "hero",
       "noTextOverlay": true,
-      "keywords": ["hyrox", "station", "race", "arena"],
-      "visualKeywords": ["sports", "competition", "fitness"]
+      "keywords": [
+        "hyrox",
+        "station",
+        "race",
+        "arena"
+      ],
+      "visualKeywords": [
+        "sports",
+        "competition",
+        "fitness"
+      ],
+      "eventPreferred": true
     },
     "images/run-compromised.jpg": {
       "label": "Run Zone secondary — creator running during or immediately after HYROX stations",
@@ -146,9 +245,24 @@
       "page": "run-zone",
       "position": "secondary",
       "noTextOverlay": true,
-      "keywords": ["run", "running", "hyrox", "race"],
-      "visualKeywords": ["running", "jogging", "track and field"],
-      "forbiddenKeywords": ["lunge", "sandbag", "row", "rowing"]
+      "keywords": [
+        "run",
+        "running",
+        "hyrox",
+        "race"
+      ],
+      "visualKeywords": [
+        "running",
+        "jogging",
+        "track and field"
+      ],
+      "forbiddenKeywords": [
+        "lunge",
+        "sandbag",
+        "row",
+        "rowing"
+      ],
+      "eventPreferred": true
     },
     "images/station-skierg.jpg": {
       "label": "Stations 01 — SkiErg with handles/cables and overhead pull visible",
@@ -158,8 +272,15 @@
       "page": "stations-prep",
       "position": "station-01-skierg",
       "noTextOverlay": true,
-      "keywords": ["ski", "skierg"],
-      "visualKeywords": ["exercise machine", "skiing", "fitness"]
+      "keywords": [
+        "ski",
+        "skierg"
+      ],
+      "visualKeywords": [
+        "exercise machine",
+        "skiing",
+        "fitness"
+      ]
     },
     "images/station-sled-push.jpg": {
       "label": "Stations 02 — sled push, athlete behind sled driving forward",
@@ -169,8 +290,16 @@
       "page": "stations-prep",
       "position": "station-02-sled-push",
       "noTextOverlay": true,
-      "keywords": ["sled push", "push", "sled"],
-      "visualKeywords": ["pushing", "fitness", "sports"]
+      "keywords": [
+        "sled push",
+        "push",
+        "sled"
+      ],
+      "visualKeywords": [
+        "pushing",
+        "fitness",
+        "sports"
+      ]
     },
     "images/station-sled-pull.jpg": {
       "label": "Stations 03 — sled pull with rope clearly visible",
@@ -180,8 +309,16 @@
       "page": "stations-prep",
       "position": "station-03-sled-pull",
       "noTextOverlay": true,
-      "keywords": ["sled pull", "rope", "pull"],
-      "visualKeywords": ["rope", "pulling", "fitness"]
+      "keywords": [
+        "sled pull",
+        "rope",
+        "pull"
+      ],
+      "visualKeywords": [
+        "rope",
+        "pulling",
+        "fitness"
+      ]
     },
     "images/station-burpees.jpg": {
       "label": "Stations 04 — burpee broad jump, athlete low to floor or jumping forward",
@@ -191,8 +328,16 @@
       "page": "stations-prep",
       "position": "station-04-burpees",
       "noTextOverlay": true,
-      "keywords": ["burpee", "broad jump", "jump"],
-      "visualKeywords": ["jumping", "exercise", "fitness"]
+      "keywords": [
+        "burpee",
+        "broad jump",
+        "jump"
+      ],
+      "visualKeywords": [
+        "jumping",
+        "exercise",
+        "fitness"
+      ]
     },
     "images/station-row.jpg": {
       "label": "Stations 05 — rowing machine with handle and seat visible",
@@ -202,8 +347,16 @@
       "page": "stations-prep",
       "position": "station-05-row",
       "noTextOverlay": true,
-      "keywords": ["row", "rowing", "rower"],
-      "visualKeywords": ["rowing machine", "exercise machine", "fitness"]
+      "keywords": [
+        "row",
+        "rowing",
+        "rower"
+      ],
+      "visualKeywords": [
+        "rowing machine",
+        "exercise machine",
+        "fitness"
+      ]
     },
     "images/station-farmers-carry.jpg": {
       "label": "Stations 06 — farmers carry with two kettlebells carried at sides",
@@ -213,8 +366,16 @@
       "page": "stations-prep",
       "position": "station-06-farmers-carry",
       "noTextOverlay": true,
-      "keywords": ["farmers carry", "kettlebell", "carry"],
-      "visualKeywords": ["kettlebell", "carrying", "walking"]
+      "keywords": [
+        "farmers carry",
+        "kettlebell",
+        "carry"
+      ],
+      "visualKeywords": [
+        "kettlebell",
+        "carrying",
+        "walking"
+      ]
     },
     "images/station-sandbag-lunges.jpg": {
       "label": "Stations 07 — sandbag lunges with bag across shoulders and knee bent",
@@ -224,8 +385,16 @@
       "page": "stations-prep",
       "position": "station-07-sandbag-lunges",
       "noTextOverlay": true,
-      "keywords": ["sandbag", "lunge", "lunges"],
-      "visualKeywords": ["lunging", "exercise", "fitness"]
+      "keywords": [
+        "sandbag",
+        "lunge",
+        "lunges"
+      ],
+      "visualKeywords": [
+        "lunging",
+        "exercise",
+        "fitness"
+      ]
     },
     "images/station-wall-balls.jpg": {
       "label": "Stations 08 — wall ball squat/throw with ball and target visible",
@@ -235,50 +404,93 @@
       "page": "stations-prep",
       "position": "station-08-wall-balls",
       "noTextOverlay": true,
-      "keywords": ["wall ball", "wallball", "squat", "target"],
-      "visualKeywords": ["ball", "throwing", "squatting", "fitness"]
+      "keywords": [
+        "wall ball",
+        "wallball",
+        "squat",
+        "target"
+      ],
+      "visualKeywords": [
+        "ball",
+        "throwing",
+        "squatting",
+        "fitness"
+      ]
     },
     "images/bio.jpg": {
-      "label": "Bio/story portrait \u2014 creator clearly visible, face intact",
+      "label": "Bio/story portrait — creator clearly visible, face intact",
       "aspect": "portrait",
       "priority": 1,
       "faceCritical": true,
-      "keywords": ["portrait", "me", "coach", "self"]
+      "keywords": [
+        "portrait",
+        "me",
+        "coach",
+        "self"
+      ]
     },
     "images/coaching.jpg": {
-      "label": "Coaching in action \u2014 creator with athletes or mid-session",
+      "label": "Coaching in action — creator with athletes or mid-session",
       "aspect": "any",
       "priority": 2,
       "faceCritical": true,
-      "keywords": ["coach", "session", "training", "client", "pt"]
+      "keywords": [
+        "coach",
+        "session",
+        "training",
+        "client",
+        "pt"
+      ]
     },
     "images/finish.jpg": {
-      "label": "Finish line / clock board \u2014 board and time must be FULLY visible, no crop",
+      "label": "Finish line / clock board — board and time must be FULLY visible, no crop",
       "aspect": "landscape",
       "priority": 2,
       "faceCritical": true,
-      "keywords": ["finish", "clock", "time", "result", "pb"]
+      "keywords": [
+        "finish",
+        "clock",
+        "time",
+        "result",
+        "pb"
+      ]
     },
     "images/pb.jpg": {
-      "label": "PB moment \u2014 celebration, arms up, medal",
+      "label": "PB moment — celebration, arms up, medal",
       "aspect": "any",
       "priority": 3,
       "faceCritical": true,
-      "keywords": ["pb", "celebrat", "medal", "win"]
+      "keywords": [
+        "pb",
+        "celebrat",
+        "medal",
+        "win"
+      ]
     },
     "images/pb-venue.jpg": {
       "label": "PB venue / arena exterior or hall",
       "aspect": "landscape",
       "priority": 4,
       "faceCritical": false,
-      "keywords": ["venue", "arena", "expo", "hall", "city"]
+      "keywords": [
+        "venue",
+        "arena",
+        "expo",
+        "hall",
+        "city"
+      ]
     },
     "images/doubles.jpg": {
-      "label": "Doubles partner shot \u2014 two athletes",
+      "label": "Doubles partner shot — two athletes",
       "aspect": "any",
       "priority": 2,
       "faceCritical": true,
-      "keywords": ["doubles", "partner", "together", "duo"]
+      "keywords": [
+        "doubles",
+        "partner",
+        "together",
+        "duo"
+      ]
     },
     "images/race-mate-hero.jpg": {
       "label": "Race-mate hero — creator with a doubles partner or clearly paired HYROX athletes",
@@ -288,162 +500,268 @@
       "page": "find-a-partner",
       "position": "hero",
       "noTextOverlay": true,
-      "keywords": ["doubles", "partner", "pair", "hyrox"],
-      "visualKeywords": ["people", "sports", "competition"]
+      "keywords": [
+        "doubles",
+        "partner",
+        "pair",
+        "hyrox"
+      ],
+      "visualKeywords": [
+        "people",
+        "sports",
+        "competition"
+      ]
     },
     "images/race-pair.jpg": {
       "label": "Results/community pair — two athletes together",
       "aspect": "any",
       "priority": 3,
       "faceCritical": true,
-      "keywords": ["pair", "crew", "team", "group"]
+      "keywords": [
+        "pair",
+        "crew",
+        "team",
+        "group"
+      ]
     },
     "images/race-revel.jpg": {
       "label": "Race celebration / post-race emotion",
       "aspect": "any",
       "priority": 3,
       "faceCritical": true,
-      "keywords": ["celebrat", "finish", "happy", "emotion"]
+      "keywords": [
+        "celebrat",
+        "finish",
+        "happy",
+        "emotion"
+      ]
     },
     "images/startline.jpg": {
-      "label": "Start line \u2014 pre-race, pen, anticipation",
+      "label": "Start line — pre-race, pen, anticipation",
       "aspect": "any",
       "priority": 3,
       "faceCritical": false,
-      "keywords": ["start", "line", "pen", "before"]
+      "keywords": [
+        "start",
+        "line",
+        "pen",
+        "before"
+      ]
     },
     "images/sprint.jpg": {
       "label": "Running / sprinting effort",
       "aspect": "any",
       "priority": 3,
       "faceCritical": false,
-      "keywords": ["run", "sprint", "track"]
+      "keywords": [
+        "run",
+        "sprint",
+        "track"
+      ]
     },
     "images/track.jpg": {
       "label": "Track / running environment",
       "aspect": "any",
       "priority": 4,
       "faceCritical": false,
-      "keywords": ["track", "run", "lane"]
+      "keywords": [
+        "track",
+        "run",
+        "lane"
+      ]
     },
     "images/treadmill.jpg": {
       "label": "Treadmill / indoor running",
       "aspect": "any",
       "priority": 4,
       "faceCritical": false,
-      "keywords": ["treadmill", "run", "gym"]
+      "keywords": [
+        "treadmill",
+        "run",
+        "gym"
+      ]
     },
     "images/bike.jpg": {
       "label": "Bike erg / cycling station",
       "aspect": "any",
       "priority": 3,
       "faceCritical": false,
-      "keywords": ["bike", "erg", "cycle"]
+      "keywords": [
+        "bike",
+        "erg",
+        "cycle"
+      ]
     },
     "images/skierg-laugh.jpg": {
-      "label": "SkiErg \u2014 ideally mid-laugh or grimace, personality shot",
+      "label": "SkiErg — ideally mid-laugh or grimace, personality shot",
       "aspect": "any",
       "priority": 3,
       "faceCritical": true,
-      "keywords": ["ski", "skierg"]
+      "keywords": [
+        "ski",
+        "skierg"
+      ]
     },
     "images/wallball.jpg": {
       "label": "Wall balls station",
       "aspect": "any",
       "priority": 3,
       "faceCritical": false,
-      "keywords": ["wallball", "wall ball", "squat"]
+      "keywords": [
+        "wallball",
+        "wall ball",
+        "squat"
+      ]
     },
     "images/carry.jpg": {
       "label": "Farmers carry / sled or loaded carry",
       "aspect": "any",
       "priority": 3,
       "faceCritical": false,
-      "keywords": ["carry", "sled", "farmers"]
+      "keywords": [
+        "carry",
+        "sled",
+        "farmers"
+      ]
     },
     "images/rope.jpg": {
       "label": "Rope / sled pull station",
       "aspect": "any",
       "priority": 3,
       "faceCritical": false,
-      "keywords": ["rope", "pull", "sled"]
+      "keywords": [
+        "rope",
+        "pull",
+        "sled"
+      ]
     },
     "images/squad-athlos.jpg": {
       "label": "Squad / group training photo",
       "aspect": "landscape",
       "priority": 3,
       "faceCritical": true,
-      "keywords": ["squad", "group", "team", "class"]
+      "keywords": [
+        "squad",
+        "group",
+        "team",
+        "class"
+      ]
     },
     "images/momentum.jpg": {
-      "label": "Motion blur / momentum \u2014 atmospheric effort shot",
+      "label": "Motion blur / momentum — atmospheric effort shot",
       "aspect": "any",
       "priority": 4,
       "faceCritical": false,
-      "keywords": ["motion", "blur", "run"]
+      "keywords": [
+        "motion",
+        "blur",
+        "run"
+      ]
     },
     "images/half.jpg": {
       "label": "Half marathon / road race",
       "aspect": "any",
       "priority": 4,
       "faceCritical": false,
-      "keywords": ["half", "marathon", "road"]
+      "keywords": [
+        "half",
+        "marathon",
+        "road"
+      ],
+      "eventPreferred": true
     },
     "images/detail.jpg": {
-      "label": "Detail shot \u2014 shoes, chalk, hands, kit",
+      "label": "Detail shot — shoes, chalk, hands, kit",
       "aspect": "any",
       "priority": 4,
       "faceCritical": false,
-      "keywords": ["shoe", "chalk", "hands", "kit", "detail"]
+      "keywords": [
+        "shoe",
+        "chalk",
+        "hands",
+        "kit",
+        "detail"
+      ]
     },
     "images/station-lean.jpg": {
-      "label": "Station recovery lean \u2014 exhausted against wall/rig",
+      "label": "Station recovery lean — exhausted against wall/rig",
       "aspect": "any",
       "priority": 4,
       "faceCritical": true,
-      "keywords": ["rest", "lean", "tired", "wall"]
+      "keywords": [
+        "rest",
+        "lean",
+        "tired",
+        "wall"
+      ]
     },
     "images/night.jpg": {
       "label": "Night shoot / dark atmospheric",
       "aspect": "any",
       "priority": 5,
       "faceCritical": false,
-      "keywords": ["night", "dark", "light"]
+      "keywords": [
+        "night",
+        "dark",
+        "light"
+      ]
     },
     "images/kerb.jpg": {
       "label": "Street kerb / urban lifestyle",
       "aspect": "any",
       "priority": 5,
       "faceCritical": false,
-      "keywords": ["street", "urban", "city"]
+      "keywords": [
+        "street",
+        "urban",
+        "city"
+      ]
     },
     "images/rooftop.jpg": {
       "label": "Rooftop / skyline lifestyle",
       "aspect": "any",
       "priority": 5,
       "faceCritical": false,
-      "keywords": ["roof", "skyline", "view"]
+      "keywords": [
+        "roof",
+        "skyline",
+        "view"
+      ]
     },
     "images/walkin.jpg": {
       "label": "Walking / arrival shot",
       "aspect": "any",
       "priority": 5,
       "faceCritical": false,
-      "keywords": ["walk", "arrive", "street"]
+      "keywords": [
+        "walk",
+        "arrive",
+        "street"
+      ]
     },
     "images/suit.jpg": {
       "label": "Dressed-up / off-duty look",
       "aspect": "portrait",
       "priority": 5,
       "faceCritical": true,
-      "keywords": ["suit", "dress", "outfit", "smart"]
+      "keywords": [
+        "suit",
+        "dress",
+        "outfit",
+        "smart"
+      ]
     },
     "images/hoodie.jpg": {
       "label": "Hoodie / casual kit shot",
       "aspect": "any",
       "priority": 5,
       "faceCritical": true,
-      "keywords": ["hoodie", "kit", "casual", "merch"]
+      "keywords": [
+        "hoodie",
+        "kit",
+        "casual",
+        "merch"
+      ]
     },
     "images/gallery/dance.jpg": {
       "label": "Protected crew default — post-race dance floor",
@@ -451,7 +769,11 @@
       "priority": 5,
       "faceCritical": false,
       "protectedDefault": true,
-      "keywords": ["dance", "night", "party"]
+      "keywords": [
+        "dance",
+        "night",
+        "party"
+      ]
     },
     "images/gallery/restaurant.jpg": {
       "label": "Protected crew default — post-race dinner table",
@@ -459,7 +781,12 @@
       "priority": 5,
       "faceCritical": false,
       "protectedDefault": true,
-      "keywords": ["food", "restaurant", "eat", "dinner"]
+      "keywords": [
+        "food",
+        "restaurant",
+        "eat",
+        "dinner"
+      ]
     }
   }
 }

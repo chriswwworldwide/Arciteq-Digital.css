@@ -1,4 +1,68 @@
 {
-  "note": "PRIVATE PITCH PREVIEW.",
-  "items": []
+  "photos": [
+    {
+      "src": "/joshharrison/images/gallery/malaga-crew.jpg",
+      "alt": "HTCC crew on the race floor at HYROX Málaga",
+      "caption": "An unforgettable weekend full of PBs, sun, sangria and more laughs than I've had in a while. We'll be back next year — who's joining us?",
+      "by": "@sunday.squad",
+      "tilt": -1.5,
+      "event": "Race trip"
+    },
+    {
+      "src": "/joshharrison/images/gallery/malaga-three.jpg",
+      "alt": "Three HTCC athletes grinning after racing in Málaga",
+      "caption": "Dee's first ever HYROX. Hooked right from that first race.",
+      "by": "@hyrox.huns",
+      "tilt": 2,
+      "event": "Race trip"
+    },
+    {
+      "src": "/joshharrison/images/gallery/istanbul-podium.jpg",
+      "alt": "Michelle and Ellie with the Union flag on the podium at HYROX Istanbul",
+      "caption": "Michelle & Ellie — podium, Istanbul. Keep setting the standard.",
+      "by": "@racefloor.crew",
+      "tilt": 1,
+      "event": "Race day"
+    },
+    {
+      "src": "/joshharrison/images/gallery/glasgow-doors.jpg",
+      "alt": "Ross outside the HYROX Glasgow entrance",
+      "caption": "Glasgow. Just enjoy it they say. But don't underestimate the challenge.",
+      "by": "@sleds.and.regrets",
+      "tilt": -2,
+      "event": "Race day"
+    },
+    {
+      "src": "/joshharrison/images/gallery/glasgow-oxworld.jpg",
+      "alt": "HTCC crew at the OX World stand in Glasgow",
+      "caption": "Crew at Glasgow. Half of them didn't know each other a year ago.",
+      "by": "@the8amheat",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/joshharrison/images/gallery/doubles-finish.jpg",
+      "alt": "A doubles pair celebrating at the finish",
+      "caption": "You've smashed your training — now go smash this race. They did.",
+      "by": "@roxzone",
+      "event": "Race day"
+    },
+    {
+      "src": "/joshharrison/images/gallery/crew-faces.jpg",
+      "alt": "HTCC members in club tees after a group run",
+      "caption": "Sunny springy group runs. Run Club, Tuesdays and Wednesdays.",
+      "by": "@pb_chasers",
+      "tilt": 1,
+      "event": "Run club"
+    },
+    {
+      "src": "/joshharrison/images/gallery/crew-selfie.jpg",
+      "alt": "Post-race crew selfie",
+      "caption": "It's not just a club — it's friends & family.",
+      "by": "@finishline.fam",
+      "tilt": -1.5,
+      "event": "Race day"
+    }
+  ],
+  "note": "Seeded community picks — generic event photos standing in until real submissions land."
 }

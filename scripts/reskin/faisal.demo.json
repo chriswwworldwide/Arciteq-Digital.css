@@ -1,0 +1,154 @@
+{
+  "mode": "chassis",
+  "slug": "faisalpma",
+  "heroMode": "full",
+  "strictImages": true,
+  "assets": "scripts/reskin/faisalpma-assets",
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "tokens": {
+    "SLUG": "faisalpma",
+    "COACH_NAME": "Faisal Abdalla",
+    "COACH_NAME_LC": "faisal abdalla",
+    "COACH_FIRST": "Faisal",
+    "COACH_LAST": "Abdalla",
+    "WORDMARK_HTML": "<span class=\"o\">P</span>MA",
+    "BRAND": "PMA Fitness",
+    "BRAND_SHORT": "faisalpma",
+    "BRAND_SOCIAL": "faisalpmafitness",
+    "CLOTHING_SHORT": "PMA",
+    "CITY": "London",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "positive mental attitude — the global voice of HYROX, now coaching yours",
+    "HERO_TITLE_HTML": "The voice of HYROX.<br /><em>Positive. Mental. Attitude.</em>",
+    "APPLY_URL": "https://linktr.ee/pmafitness",
+    "PROGRAMMES_URL": "https://pmafitness.fitr.training/p/PMAHYROX",
+    "STORE_URL": "https://linktr.ee/pmafitness",
+    "IG_URL": "https://www.instagram.com/faisalpmafitness/",
+    "BRAND_IG_URL": "https://www.instagram.com/faisalpmafitness/",
+    "YOUTUBE_URL": "https://www.youtube.com/@PMAFitness",
+    "TIKTOK_URL": "https://www.instagram.com/faisalpmafitness/",
+    "THREADS_URL": "https://www.threads.net/@faisalpmafitness",
+    "DOUBLES_PARTNER": "Swa",
+    "PB_VENUE": "Istanbul",
+    "PB_VENUE_LC": "istanbul",
+    "DOUBLES_VENUE": "Rome",
+    "DOUBLES_VENUE_LC": "rome",
+    "OPEN_VENUE": "Stockholm",
+    "PB_SOLO": "World Champs MC",
+    "PB_DOUBLES": "World Champs",
+    "PB_HALF": "Olympic Tri",
+    "PB_OPEN": "Pro",
+    "SEASON_START": "first HYROX",
+    "PARTNER_GYM": "Everlast Gyms",
+    "PARTNER_GYM_LC": "everlast gyms",
+    "PARTNER_SUPP": "Applied Nutrition",
+    "PARTNER_SUPP_LC": "applied nutrition",
+    "PARTNER_KIT": "PUMA",
+    "PARTNER_KIT_LC": "puma",
+    "PARTNER_KIT_TAG": "Global partner",
+    "PARTNER_KIT_TITLE": "PUMA x HYROX",
+    "PARTNER_KIT_COPY": "Faisal fronts HYROX events worldwide in PUMA race-day kit.",
+    "PARTNER_KIT_CTA": "Shop PUMA",
+    "PARTNER_KIT_URL": "https://uk.puma.com/",
+    "GYM_CODE": "PMAFITNESS",
+    "PHOTO_BUDDY": "the PMA crew",
+    "ACCENT": "#f5c518",
+    "ACCENT_DARK": "#a88408",
+    "ACCENT_SOFT": "#241c08",
+    "BRAND_SHORT_UPPER": "FAISAL PMA",
+    "LINKTREE_URL": "https://linktr.ee/pmafitness",
+    "VOICE_DOUBLES_HOOK": "When you race with someone, you find out who they really are.",
+    "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
+    "VOICE_NEWS_TAKE": "The fitness is there — now it's time to trust yourself.",
+    "SOCIAL_HANDLE_UPPER": "FAISALPMAFITNESS",
+    "PARTNER_GYM_URL": "https://www.everlastgyms.com/",
+    "PARTNER_SUPP_URL": "https://appliednutrition.com/",
+    "STORE_NAME": "PMA Fitness",
+    "STORE_TAG": "All things PMA",
+    "STORE_COPY": "Faisal's own hub — PMAHYROX on FITR, The PMA Method and every link that matters.",
+    "STORE_CTA": "Visit PMA",
+    "SEASON_HEADLINE": "Five-time HYROX World Championships MC turned coach."
+  },
+  "stripSections": [
+    "merch",
+    "tips"
+  ],
+  "omitImageSlots": [
+    "images/station-lean.jpg",
+    "images/kerb.jpg",
+    "images/rooftop.jpg",
+    "images/walkin.jpg",
+    "images/suit.jpg",
+    "images/hoodie.jpg",
+    "images/bike.jpg",
+    "images/wallball.jpg"
+  ],
+  "stripPages": [
+    "watch.html"
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
+      "replace": "Global HYROX MC and Head of HYROX Performance — now coaching the PMA method."
+    },
+    {
+      "pattern": "AJ Bell Birmingham Half",
+      "replace": "HYROX Birmingham"
+    },
+    {
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} — global HYROX MC, coach, author, and the face behind {{BRAND}}."
+    },
+    {
+      "pattern": "Started the season at {{SEASON_START}}\\.",
+      "replace": "Five-time HYROX World Championships MC turned coach."
+    },
+    {
+      "pattern": "HYROX Pro Solo {{PB_SOLO}} — {{PB_VENUE}}\\.",
+      "replace": "HYROX World Championships MC — {{PB_VENUE}}."
+    },
+    {
+      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}\\.",
+      "replace": "Doubles with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}."
+    },
+    {
+      "pattern": "pro solo {{PB_SOLO}} in {{PB_VENUE}}, a {{PB_DOUBLES}} pro doubles",
+      "replace": "the mic in {{PB_VENUE}}, the race floor in {{DOUBLES_VENUE}}"
+    },
+    {
+      "pattern": "{{PB_DOUBLES}} isn't a flex, it's a warning",
+      "replace": "PMA isn't a slogan, it's a warning"
+    },
+    {
+      "pattern": "Hong Kong",
+      "replace": "London"
+    },
+    {
+      "pattern": "\\s*<li><a href=\"/faisalpma/watch.html\">Watch</a></li>",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*<a href=\"/faisalpma/watch.html\">Watch</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "on FITR",
+      "replace": "with PMA"
+    },
+    {
+      "pattern": "clothing line",
+      "replace": "athlete community"
+    },
+    {
+      "pattern": "365",
+      "replace": "positive"
+    }
+  ],
+  "stripBlocks": [
+    "tiktok-link"
+  ]
+}

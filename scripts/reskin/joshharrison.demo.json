@@ -28,7 +28,7 @@
       "url": "https://www.tiktok.com/@joshharrisonfit"
     },
     {
-      "label": "YouTube — JOSHHARRISONFIT",
+      "label": "YouTube \u2014 JOSHHARRISONFIT",
       "url": "https://www.youtube.com/@Joshharrisonfit"
     },
     {
@@ -60,128 +60,470 @@
     "station-9": "race-crew"
   },
   "metaKeywords": "josh harrison, jhfit, hybrid hub, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, worcestershire hyrox",
-  "htmlTitle": "Josh Harrison — HYROX Pro athlete, coach & creator | JHFIT",
-  "metaDescription": "Josh Harrison's home on the web: Hybrid Hub 1:1 coaching and group programmes, free race tools, the race-mate finder, vlogs and partner codes — all in one place.",
+  "htmlTitle": "Josh Harrison \u2014 HYROX Pro athlete, coach & creator | JHFIT",
+  "metaDescription": "Josh Harrison's home on the web: Hybrid Hub 1:1 coaching and group programmes, free race tools, the race-mate finder, vlogs and partner codes \u2014 all in one place.",
   "extraPairs": [
-    ["Pilih kelemahanmu. Kita ubah jadi split tercepatmu — tanpa drama.", "Pick the weak link. Make it the weapon."],
-    ["Punya tiket, nggak punya partner?", "Got a ticket, need a partner?"],
-    ["share the KL trip", "share the race trip"],
-    ["Rp 850k", "£45"],
-    ["Rp 599k", "£35"],
-    ["Rp 2.5m", "£120"],
-    ["Rp 6m", "£250"],
-    ["cancel kapan aja", "cancel any time"],
-    ["makan bareng", "eating together"],
-    ["Yang nggak ada di rulebook.", "The stuff that's not in the rulebook."],
-    ["Gas, biar namamu keitung.", "Go on, get your name counted."],
-    ["Kabar HYROX Asia", "HYROX UK news"],
-    ["Lagi ngambil yang terbaru…", "Fetching the latest…"],
-    ["Baca soal race. Terus ikutan race-nya.", "Read about races. Then go run one."],
-    ["Jadwal, Lokasi, Tiket", "Venue, Tickets"],
-    ["Lagi ngambil scene-nya…", "Loading the scene…"],
-    ["Sim dulu. Race belakangan. Podium bonus.", "Sim first. Race later. Podium's a bonus."],
-    ["Setiap meter race, kita bedah pelan-pelan.", "Every metre, every station, every excuse."],
-    ["The Big Durian", "The Second City"],
-    ["NICE, PIK2", "the NEC"],
-    ["NICE PIK2", "the NEC"],
-    ["Southeast Asia", "Europe"],
-    ["Asia-Pacific", "UK & Ireland"],
-    ["Indonesia's", "the UK's"],
-    ["Indonesian rupiah", "pounds sterling"],
-    ["Indonesian", "British"],
-    ["Team Indonesia", "Team Hybrid Hub"],
-    ["Indonesia", "the UK"],
-    ["Asian", "British"],
-    ["Asia", "the UK"],
-    ["\"Rp \" +", "\"£\" +"],
-    ["toLocaleString(\"id-ID\")", "toLocaleString(\"en-GB\")"],
-    ["Muka habis finish. Masih nggak percaya.", "Finish-line face. Still can't believe it."],
-    ["Tiap tiga bulan — tanggal muncul di sini", "Every three months — next date appears here"],
-    ["BCA bank transfer", "bank transfer"],
-    ["BCA app", "banking app"],
-    ["Rp ${", "£${"],
-    ["Pelatih HYROX", "HYROX"],
-    ["your BCA", "your bank"],
-    ["PIK humidity", "arena heat"],
-    ["to check in BCA", "to check"],
-    ["a QRIS code from your banking app", "a payment link from your banking app"],
-    ["data-city=\"london\"", "data-city=\"birmingham\""],
-    ["jakarta-top10", "jh-crew"],
-    ["Kirim di WhatsApp", "Send on WhatsApp"],
-    ["placeholder=\"62… — venue drops in the group\"", "placeholder=\"07… — venue drops in the group\""],
-    ["rgba(255, 45, 149", "rgba(255, 46, 99"],
-    ["rgba(224, 23, 124", "rgba(224, 30, 78"],
-    ["rgba(40, 14, 30", "rgba(11, 11, 14"],
-    ["#fff0f6", "#1f1218"],
-    ["#fff5f8", "#0e0e12"],
-    ["#2a1330", "#0e0e12"],
-    ["#1f0e22", "#0b0b0e"],
-    ["#150812", "#08080a"],
-    ["\"#ff2ea6\", \"#ff7ad0\", \"#ffffff\", \"#ffd2ef\"", "\"#ff2e63\", \"#ff7a90\", \"#ffffff\", \"#ffc9d2\""],
-    ["--paper: #fffdfb;", "--paper: #0b0b0e;"],
-    ["--paper-2: #fbf3ee;", "--paper-2: #16161c;"],
-    ["--line: #efe3e3;", "--line: #2a2a32;"],
-    ["--ink: #0f0f11;", "--ink: #f2f2f0;"],
-    ["--ink-2: #3a3a40;", "--ink-2: #cfcfd6;"],
-    ["--ink-3: #7a7a85;", "--ink-3: #9c9ca6;"],
-    ["background: #fff;", "background: #14141a;"],
-    ["background: rgba(255, 255, 255, 0.92);", "background: rgba(12, 12, 16, 0.92);"],
-    ["background: rgba(255, 255, 255, 0.85);", "background: rgba(18, 18, 22, 0.88);"],
-    ["#25d366", "#ff2e63"],
-    ["#25D366", "#ff2e63"],
-    ["#1ebe5b", "#e01e4e"],
-    ["color: #0b1a10;", "color: #ffffff;"],
-    ["vec3(1.0, 0.16, 0.62)", "vec3(1.0, 0.18, 0.39)"],
-    ["vec3(1.0, 0.5, 0.85)", "vec3(1.0, 0.55, 0.62)"],
-    ["vec3(0.9, 0.25, 0.6)", "vec3(0.88, 0.14, 0.32)"],
-    ["vec3(1.0, 0.9, 1.0)", "vec3(1.0, 0.93, 0.95)"],
-    ["Station 9", "the ninth station"],
-    ["/joshharrison/book-dina/", "/joshharrison/coaching.html"],
-    ["HYROX Group Coach, Hyrox athlete & personal trainer", "HYROX Pro athlete, coach & creator"],
-    ["HYROX Certified Coach, podium athlete, part-time oracle.", "HYROX Pro athlete, coach, part-time metronome."],
-    ["podium athlete, occasional matchmaker.", "pro athlete, occasional matchmaker."],
-    ["podium athlete, head of the table.", "pro athlete, head of the table."],
-    ["coaches, podium athlete, UK personal trainer.", "pro athlete and coach."],
-    ["Josh reads every card herself.", "Josh reads every card himself."],
-    ["she'll take your card down", "he'll take your card down"],
-    ["Josh books for the numbers she has — tell her you're coming", "Josh books for the numbers he has — tell him you're coming"],
-    ["Josh books the table for the RSVPs she has", "Josh books the table for the RSVPs he has"],
-    ["Josh carries a small bottle in her race belt", "Josh carries a small bottle in his race belt"],
-    ["Josh has done it herself, twice, pregnant.", "Josh has done it himself — 1:14 to 1:05 in a season."],
-    ["Josh intros you herself.", "Josh makes the intro himself."],
-    ["she's still enjoying herself.", "still smiling at 100 m."],
-    ["HYROX coach, podium athlete,", "HYROX pro athlete, coach,"],
-    ["who makes intros herself.", "who makes intros himself."],
-    ["If she thinks it fits — pace, format, race — she connects you both. She races this circuit; she knows who would actually suit you.", "If he thinks it fits — pace, format, race — he connects you both. He races this circuit; he knows who would actually suit you."],
-    ["she'll edit as her programming evolves", "he'll edit as his programming evolves"],
-    ["she'll see your real numbers", "he'll see your real numbers"],
-    ["only Josh sees them, on her private desk", "only Josh sees them, on his private desk"],
-    ["once Josh has booked a table. Numbers matter: she books for the RSVPs she has.", "once Josh has booked a table. Numbers matter: he books for the RSVPs he has."],
-    ["6–7 for most women", "6–7 for most athletes"],
-    ["pregnancy stage,", "race history,"],
-    ["Fit through pregnancy", "Doubles partner hunt"],
-    ["Post-natal comeback", "Injury comeback"],
-    ["Josh answers personally", "Josh reads them personally"],
-    ["Josh books for", "Josh books for"],
-    ["\"sameAs\": [\"https://www.instagram.com/joshharrisonfit/\"]", "\"sameAs\": [\"https://www.instagram.com/joshharrisonfit/\", \"https://www.youtube.com/@Joshharrisonfit\", \"https://www.tiktok.com/@joshharrisonfit\", \"https://www.threads.com/@joshharrisonfit\"]"],
-    ["en-ID", "en-GB"],
-    ["ID-JK", "GB-WOR"],
-    ["\"en\", \"id\"", "\"en\""],
-    ["href=\"/joshharrison/hyrox-london/\"", "href=\"https://hyrox.com\" target=\"_blank\" rel=\"noopener\""],
-    ["href=\"/joshharrison/london-hybrid-scene/\"", "href=\"/joshharrison/news.html\""],
-    ["href=\"/joshharrison/advertise/\"", "href=\"/joshharrison/partners.html\""],
-    ["href=\"/joshharrison/doubles/\"", "href=\"/joshharrison/find-a-partner.html\""],
-    ["<a href=\"/joshharrison/partners.html\">Advertise</a>\n        </nav>", "<a href=\"/joshharrison/partners.html\">Partners</a>\n          <a href=\"/joshharrison/desk.html\">The desk</a>\n        </nav>"],
-    ["on her private desk", "on his private desk"],
-    ["in her race belt", "in his race belt"],
-    ["in her HYROX race kit", "in his HYROX race kit"],
-    ["Josh and her doubles partner", "Josh and his doubles partner"],
-    [" (analisis split HYROX)", ""]
+    [
+      "Pilih kelemahanmu. Kita ubah jadi split tercepatmu \u2014 tanpa drama.",
+      "Pick the weak link. Make it the weapon."
+    ],
+    [
+      "Punya tiket, nggak punya partner?",
+      "Got a ticket, need a partner?"
+    ],
+    [
+      "share the KL trip",
+      "share the race trip"
+    ],
+    [
+      "Rp 850k",
+      "\u00a345"
+    ],
+    [
+      "Rp 599k",
+      "\u00a335"
+    ],
+    [
+      "Rp 2.5m",
+      "\u00a3120"
+    ],
+    [
+      "Rp 6m",
+      "\u00a3250"
+    ],
+    [
+      "cancel kapan aja",
+      "cancel any time"
+    ],
+    [
+      "makan bareng",
+      "eating together"
+    ],
+    [
+      "Yang nggak ada di rulebook.",
+      "The stuff that's not in the rulebook."
+    ],
+    [
+      "Gas, biar namamu keitung.",
+      "Go on, get your name counted."
+    ],
+    [
+      "Kabar HYROX Asia",
+      "HYROX UK news"
+    ],
+    [
+      "Lagi ngambil yang terbaru\u2026",
+      "Fetching the latest\u2026"
+    ],
+    [
+      "Baca soal race. Terus ikutan race-nya.",
+      "Read about races. Then go run one."
+    ],
+    [
+      "Jadwal, Lokasi, Tiket",
+      "Venue, Tickets"
+    ],
+    [
+      "Lagi ngambil scene-nya\u2026",
+      "Loading the scene\u2026"
+    ],
+    [
+      "Sim dulu. Race belakangan. Podium bonus.",
+      "Sim first. Race later. Podium's a bonus."
+    ],
+    [
+      "Setiap meter race, kita bedah pelan-pelan.",
+      "Every metre, every station, every excuse."
+    ],
+    [
+      "The Big Durian",
+      "The Second City"
+    ],
+    [
+      "NICE, PIK2",
+      "the NEC"
+    ],
+    [
+      "NICE PIK2",
+      "the NEC"
+    ],
+    [
+      "Southeast Asia",
+      "Europe"
+    ],
+    [
+      "Asia-Pacific",
+      "UK & Ireland"
+    ],
+    [
+      "Indonesia's",
+      "the UK's"
+    ],
+    [
+      "Indonesian rupiah",
+      "pounds sterling"
+    ],
+    [
+      "Indonesian",
+      "British"
+    ],
+    [
+      "Team Indonesia",
+      "Team Hybrid Hub"
+    ],
+    [
+      "Indonesia",
+      "the UK"
+    ],
+    [
+      "Asian",
+      "British"
+    ],
+    [
+      "Asia",
+      "the UK"
+    ],
+    [
+      "\"Rp \" +",
+      "\"\u00a3\" +"
+    ],
+    [
+      "toLocaleString(\"id-ID\")",
+      "toLocaleString(\"en-GB\")"
+    ],
+    [
+      "Muka habis finish. Masih nggak percaya.",
+      "Finish-line face. Still can't believe it."
+    ],
+    [
+      "Tiap tiga bulan \u2014 tanggal muncul di sini",
+      "Every three months \u2014 next date appears here"
+    ],
+    [
+      "BCA bank transfer",
+      "bank transfer"
+    ],
+    [
+      "BCA app",
+      "banking app"
+    ],
+    [
+      "Rp ${",
+      "\u00a3${"
+    ],
+    [
+      "Pelatih HYROX",
+      "HYROX"
+    ],
+    [
+      "your BCA",
+      "your bank"
+    ],
+    [
+      "PIK humidity",
+      "arena heat"
+    ],
+    [
+      "to check in BCA",
+      "to check"
+    ],
+    [
+      "a QRIS code from your banking app",
+      "a payment link from your banking app"
+    ],
+    [
+      "data-city=\"london\"",
+      "data-city=\"birmingham\""
+    ],
+    [
+      "jakarta-top10",
+      "jh-crew"
+    ],
+    [
+      "Kirim di WhatsApp",
+      "Send on WhatsApp"
+    ],
+    [
+      "placeholder=\"62\u2026 \u2014 venue drops in the group\"",
+      "placeholder=\"07\u2026 \u2014 venue drops in the group\""
+    ],
+    [
+      "rgba(255, 45, 149",
+      "rgba(255, 46, 99"
+    ],
+    [
+      "rgba(224, 23, 124",
+      "rgba(224, 30, 78"
+    ],
+    [
+      "rgba(40, 14, 30",
+      "rgba(11, 11, 14"
+    ],
+    [
+      "#fff0f6",
+      "#1f1218"
+    ],
+    [
+      "#fff5f8",
+      "#0e0e12"
+    ],
+    [
+      "#2a1330",
+      "#0e0e12"
+    ],
+    [
+      "#1f0e22",
+      "#0b0b0e"
+    ],
+    [
+      "#150812",
+      "#08080a"
+    ],
+    [
+      "\"#ff2ea6\", \"#ff7ad0\", \"#ffffff\", \"#ffd2ef\"",
+      "\"#ff2e63\", \"#ff7a90\", \"#ffffff\", \"#ffc9d2\""
+    ],
+    [
+      "--paper: #fffdfb;",
+      "--paper: #0b0b0e;"
+    ],
+    [
+      "--paper-2: #fbf3ee;",
+      "--paper-2: #16161c;"
+    ],
+    [
+      "--line: #efe3e3;",
+      "--line: #2a2a32;"
+    ],
+    [
+      "--ink: #0f0f11;",
+      "--ink: #f2f2f0;"
+    ],
+    [
+      "--ink-2: #3a3a40;",
+      "--ink-2: #cfcfd6;"
+    ],
+    [
+      "--ink-3: #7a7a85;",
+      "--ink-3: #9c9ca6;"
+    ],
+    [
+      "background: #fff;",
+      "background: #14141a;"
+    ],
+    [
+      "background: rgba(255, 255, 255, 0.92);",
+      "background: rgba(12, 12, 16, 0.92);"
+    ],
+    [
+      "background: rgba(255, 255, 255, 0.85);",
+      "background: rgba(18, 18, 22, 0.88);"
+    ],
+    [
+      "#25d366",
+      "#ff2e63"
+    ],
+    [
+      "#25D366",
+      "#ff2e63"
+    ],
+    [
+      "#1ebe5b",
+      "#e01e4e"
+    ],
+    [
+      "color: #0b1a10;",
+      "color: #ffffff;"
+    ],
+    [
+      "vec3(1.0, 0.16, 0.62)",
+      "vec3(1.0, 0.18, 0.39)"
+    ],
+    [
+      "vec3(1.0, 0.5, 0.85)",
+      "vec3(1.0, 0.55, 0.62)"
+    ],
+    [
+      "vec3(0.9, 0.25, 0.6)",
+      "vec3(0.88, 0.14, 0.32)"
+    ],
+    [
+      "vec3(1.0, 0.9, 1.0)",
+      "vec3(1.0, 0.93, 0.95)"
+    ],
+    [
+      "Station 9",
+      "the ninth station"
+    ],
+    [
+      "/joshharrison/book-dina/",
+      "/joshharrison/coaching.html"
+    ],
+    [
+      "HYROX Group Coach, Hyrox athlete & personal trainer",
+      "HYROX Pro athlete, coach & creator"
+    ],
+    [
+      "HYROX Certified Coach, podium athlete, part-time oracle.",
+      "HYROX Pro athlete, coach, part-time metronome."
+    ],
+    [
+      "podium athlete, occasional matchmaker.",
+      "pro athlete, occasional matchmaker."
+    ],
+    [
+      "podium athlete, head of the table.",
+      "pro athlete, head of the table."
+    ],
+    [
+      "coaches, podium athlete, UK personal trainer.",
+      "pro athlete and coach."
+    ],
+    [
+      "Josh reads every card herself.",
+      "Josh reads every card himself."
+    ],
+    [
+      "she'll take your card down",
+      "he'll take your card down"
+    ],
+    [
+      "Josh books for the numbers she has \u2014 tell her you're coming",
+      "Josh books for the numbers he has \u2014 tell him you're coming"
+    ],
+    [
+      "Josh books the table for the RSVPs she has",
+      "Josh books the table for the RSVPs he has"
+    ],
+    [
+      "Josh carries a small bottle in her race belt",
+      "Josh carries a small bottle in his race belt"
+    ],
+    [
+      "Josh has done it herself, twice, pregnant.",
+      "Josh has done it himself \u2014 1:14 to 1:05 in a season."
+    ],
+    [
+      "Josh intros you herself.",
+      "Josh makes the intro himself."
+    ],
+    [
+      "she's still enjoying herself.",
+      "still smiling at 100 m."
+    ],
+    [
+      "HYROX coach, podium athlete,",
+      "HYROX pro athlete, coach,"
+    ],
+    [
+      "who makes intros herself.",
+      "who makes intros himself."
+    ],
+    [
+      "If she thinks it fits \u2014 pace, format, race \u2014 she connects you both. She races this circuit; she knows who would actually suit you.",
+      "If he thinks it fits \u2014 pace, format, race \u2014 he connects you both. He races this circuit; he knows who would actually suit you."
+    ],
+    [
+      "she'll edit as her programming evolves",
+      "he'll edit as his programming evolves"
+    ],
+    [
+      "she'll see your real numbers",
+      "he'll see your real numbers"
+    ],
+    [
+      "only Josh sees them, on her private desk",
+      "only Josh sees them, on his private desk"
+    ],
+    [
+      "once Josh has booked a table. Numbers matter: she books for the RSVPs she has.",
+      "once Josh has booked a table. Numbers matter: he books for the RSVPs he has."
+    ],
+    [
+      "6\u20137 for most women",
+      "6\u20137 for most athletes"
+    ],
+    [
+      "pregnancy stage,",
+      "race history,"
+    ],
+    [
+      "Fit through pregnancy",
+      "Doubles partner hunt"
+    ],
+    [
+      "Post-natal comeback",
+      "Injury comeback"
+    ],
+    [
+      "Josh answers personally",
+      "Josh reads them personally"
+    ],
+    [
+      "Josh books for",
+      "Josh books for"
+    ],
+    [
+      "\"sameAs\": [\"https://www.instagram.com/joshharrisonfit/\"]",
+      "\"sameAs\": [\"https://www.instagram.com/joshharrisonfit/\", \"https://www.youtube.com/@Joshharrisonfit\", \"https://www.tiktok.com/@joshharrisonfit\", \"https://www.threads.com/@joshharrisonfit\"]"
+    ],
+    [
+      "en-ID",
+      "en-GB"
+    ],
+    [
+      "ID-JK",
+      "GB-WOR"
+    ],
+    [
+      "\"en\", \"id\"",
+      "\"en\""
+    ],
+    [
+      "href=\"/joshharrison/hyrox-london/\"",
+      "href=\"https://hyrox.com\" target=\"_blank\" rel=\"noopener\""
+    ],
+    [
+      "href=\"/joshharrison/london-hybrid-scene/\"",
+      "href=\"/joshharrison/news.html\""
+    ],
+    [
+      "href=\"/joshharrison/advertise/\"",
+      "href=\"/joshharrison/partners.html\""
+    ],
+    [
+      "href=\"/joshharrison/doubles/\"",
+      "href=\"/joshharrison/find-a-partner.html\""
+    ],
+    [
+      "<a href=\"/joshharrison/partners.html\">Advertise</a>\n        </nav>",
+      "<a href=\"/joshharrison/partners.html\">Partners</a>\n          <a href=\"/joshharrison/desk.html\">The desk</a>\n        </nav>"
+    ],
+    [
+      "on her private desk",
+      "on his private desk"
+    ],
+    [
+      "in her race belt",
+      "in his race belt"
+    ],
+    [
+      "in her HYROX race kit",
+      "in his HYROX race kit"
+    ],
+    [
+      "Josh and her doubles partner",
+      "Josh and his doubles partner"
+    ],
+    [
+      " (analisis split HYROX)",
+      ""
+    ]
   ],
   "copyOverrides": [
     {
-      "pattern": "· dari lantai Zumba ke podium",
-      "replace": "· obsession beats talent"
+      "pattern": "\u00b7 dari lantai Zumba ke podium",
+      "replace": "\u00b7 obsession beats talent"
     },
     {
       "pattern": "Run your own race,<br /><em>with <i>your</i> pace\\.</em>",
@@ -189,7 +531,7 @@
     },
     {
       "pattern": "Aku \\w+[\\s\\S]*?Yang penting berani memulai\\.",
-      "replace": "Josh Harrison — HYROX Pro athlete, coach, and the face behind Hybrid Hub. Went from 1:14 to a 1:05:43 pro solo in one season. Obsession beats talent; the rest is reps."
+      "replace": "Josh Harrison \u2014 HYROX Pro athlete, coach, and the face behind Hybrid Hub. Went from 1:14 to a 1:05:43 pro solo in one season. Obsession beats talent; the rest is reps."
     },
     {
       "pattern": "<a class=\"btn btn-primary\" href=\"#plans\">See subscriptions</a>",
@@ -197,7 +539,7 @@
     },
     {
       "pattern": "<div class=\"stats\">[\\s\\S]*?Hyrox races</span></div>\\s*</div>",
-      "replace": "<div class=\"stats\">\n          <div>\n            <strong>1:05:43</strong><span>HYROX Pro Solo PB — Bologna</span>\n          </div>\n          <div>\n            <strong>57:14</strong><span>Pro Doubles — Manchester, with Rio Quarry</span>\n          </div>\n          <div><strong>1:32:13</strong><span>AJ Bell Birmingham Half</span></div>\n        </div>"
+      "replace": "<div class=\"stats\">\n          <div>\n            <strong>1:05:43</strong><span>HYROX Pro Solo PB \u2014 Bologna</span>\n          </div>\n          <div>\n            <strong>57:14</strong><span>Pro Doubles \u2014 Manchester, with Rio Quarry</span>\n          </div>\n          <div><strong>1:32:13</strong><span>AJ Bell Birmingham Half</span></div>\n        </div>"
     },
     {
       "pattern": "href=\"/joshharrison/images/skierg-laugh\\.jpg\"",
@@ -209,39 +551,39 @@
     },
     {
       "pattern": "class=\"hero-img\"\\s*\\n\\s*src=\"[^\"]*\"\\s*\\n\\s*alt=\"[^\"]*\"",
-      "replace": "class=\"hero-img\"\n          src=\"/joshharrison/images/hero-reveal.jpg\"\n          alt=\"Josh Harrison driving the sled, head-on — the station nobody enjoys\""
+      "replace": "class=\"hero-img\"\n          src=\"/joshharrison/images/hero-reveal.jpg\"\n          alt=\"Josh Harrison driving the sled, head-on \u2014 the station nobody enjoys\""
     },
     {
       "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"eyebrow\">The athlete</p>\n          <h3>Josh Harrison. 1:14 to 1:05 in one season.</h3>\n          <p class=\"lead\">\n            Bewdley, Worcestershire. HYROX Pro athlete, coach and creator —\n            building Hybrid Hub between race blocks. Open solo 1:06:13 at\n            ExCeL London, pro solo 1:05:43 in Bologna, a 57:14 pro doubles\n            with Rio Quarry in Manchester. The training blocks, the race\n            weekends and the honest debriefs all go on the channel.\n          </p>\n          <p class=\"quote\">\n            \"Obsession beats talent.\"\n          </p>"
+      "replace": "<p class=\"eyebrow\">The athlete</p>\n          <h3>Josh Harrison. 1:14 to 1:05 in one season.</h3>\n          <p class=\"lead\">\n            Bewdley, Worcestershire. HYROX Pro athlete, coach and creator \u2014\n            building Hybrid Hub between race blocks. Open solo 1:06:13 at\n            ExCeL London, pro solo 1:05:43 in Bologna, a 57:14 pro doubles\n            with Rio Quarry in Manchester. The training blocks, the race\n            weekends and the honest debriefs all go on the channel.\n          </p>\n          <p class=\"quote\">\n            \"Obsession beats talent.\"\n          </p>"
     },
     {
-      "pattern": "Podium and 1st in age group 35–39[\\s\\S]*?16 active\\s*athletes\\s*</li>",
-      "replace": "HYROX Pro Solo 1:05:43 — Bologna. Started the season at 1:14.\n            </li>\n            <li>\n              Open solo 1:06:13 — ExCeL London. The benchmark that started it.\n            </li>\n            <li>\n              Pro Doubles 57:14 with Rio Quarry — HYROX Manchester.\n            </li>\n            <li>\n              Hybrid Hub: 1:1 coaching, group programmes, HYBRID HUB 365 kit.\n            </li>"
+      "pattern": "Podium and 1st in age group 35\u201339[\\s\\S]*?16 active\\s*athletes\\s*</li>",
+      "replace": "HYROX Pro Solo 1:05:43 \u2014 Bologna. Started the season at 1:14.\n            </li>\n            <li>\n              Open solo 1:06:13 \u2014 ExCeL London. The benchmark that started it.\n            </li>\n            <li>\n              Pro Doubles 57:14 with Rio Quarry \u2014 HYROX Manchester.\n            </li>\n            <li>\n              Hybrid Hub: 1:1 coaching, group programmes, HYBRID HUB 365 kit.\n            </li>"
     },
     {
       "pattern": "src=\"/joshharrison/images/hero-reveal\\.jpg\"\\s*\\n\\s*alt=\"Josh and her doubles partner[^\"]*\"",
-      "replace": "src=\"/joshharrison/images/josh-collapse.jpg\"\n            alt=\"Josh Harrison flat on the arena floor post-finish, laughing — HYROX Pro athlete and coach\""
+      "replace": "src=\"/joshharrison/images/josh-collapse.jpg\"\n            alt=\"Josh Harrison flat on the arena floor post-finish, laughing \u2014 HYROX Pro athlete and coach\""
     },
     {
       "pattern": "<p class=\"eyebrow reveal\">Subscriptions</p>[\\s\\S]*?</section>",
-      "replace": "<p class=\"eyebrow reveal\">The Hybrid Hub</p>\n        <h3 class=\"reveal\">The coaching arm.</h3>\n        <p class=\"lead reveal\">\n          What Josh sells: 1:1 coaching, group programmes on FITR, and the\n          HYBRID HUB 365 clothing line. Applications go through his existing\n          forms — no new inbox to check.\n        </p>\n        <div class=\"plan plan-crew reveal\">\n          <img\n            class=\"crew-photo\"\n            src=\"/joshharrison/images/josh-doubles.jpg\"\n            alt=\"Josh Harrison driving the sled in a HYROX Pro Doubles race in Manchester\"\n            loading=\"lazy\"\n          />\n          <div class=\"crew-copy\">\n            <span class=\"tag\">New here?</span>\n            <h4>Start with the free stuff</h4>\n            <p class=\"crew-line\">\n              Not ready for coaching? The race tools are free — predictor,\n              split analyser, stations prep. Use them, race better, and the\n              Hub is here when you want the structured version.\n            </p>\n            <p class=\"crew-note\">\n              Race predictor · split analyser · stations prep · race-mate\n              finder — free, always.\n            </p>\n          </div>\n          <div class=\"crew-side\">\n            <div class=\"price\">£0 <small>/ always</small></div>\n            <div class=\"per\">The tools below</div>\n            <a class=\"btn btn-primary\" href=\"#zones\">Use the tools</a>\n          </div>\n        </div>\n        <div class=\"plans\">\n          <div class=\"plan featured reveal\">\n            <span class=\"tag\">Application only</span>\n            <h4>1:1 Coaching</h4>\n            <div class=\"price\">Hybrid Hub</div>\n            <div class=\"per\">Spots limited — Josh reviews every application</div>\n            <ul>\n              <li>Programme built around your life and your race calendar</li>\n              <li>Weekly check-ins and video form review</li>\n              <li>Pacing, stations, race plan — built to a number</li>\n              <li>Direct line to Josh between sessions</li>\n            </ul>\n            <a\n              class=\"btn btn-primary\"\n              href=\"https://1hppzdej2by.typeform.com/to/LeVTUyHt\"\n              target=\"_blank\"\n              rel=\"noopener\"\n              >Apply for 1:1</a\n            >\n          </div>\n          <div class=\"plan reveal\">\n            <span class=\"tag\">On FITR</span>\n            <h4>Group Programmes</h4>\n            <div class=\"price\">Hybrid Hub</div>\n            <div class=\"per\">Structured blocks with the Hub cohort</div>\n            <ul>\n              <li>Programmed blocks in the FITR app</li>\n              <li>HYROX-specific work, not generic circuits</li>\n              <li>Start with the cohort, progress through blocks</li>\n              <li>The same engine behind Josh's own season</li>\n            </ul>\n            <a\n              class=\"btn btn-ghost\"\n              href=\"https://the-hybrid-hub.fitr.training/t/TheHybridHub/\"\n              target=\"_blank\"\n              rel=\"noopener\"\n              >See programmes on FITR</a\n            >\n          </div>\n          <div class=\"plan reveal\">\n            <span class=\"tag\">Drops</span>\n            <h4>HYBRID HUB 365</h4>\n            <div class=\"price\">Kit</div>\n            <div class=\"per\">Tees, hoodies, tanks — open per drop</div>\n            <ul>\n              <li>The clothing side of the Hub</li>\n              <li>Doors open per drop, not year-round</li>\n              <li>The list hears first when the next one lands</li>\n            </ul>\n            <a\n              class=\"btn btn-ghost\"\n              href=\"https://thehybridhubclothing.com/\"\n              target=\"_blank\"\n              rel=\"noopener\"\n              >Visit the store</a\n            >\n          </div>\n        </div>\n        <p class=\"plans-note\">\n          Applications, enrolment and checkout stay on Josh's existing forms\n          and stores — this page routes you to the right one rather than\n          inventing a new funnel. Sample preview copy.\n        </p>\n      </div>\n    </section>"
+      "replace": "<p class=\"eyebrow reveal\">The Hybrid Hub</p>\n        <h3 class=\"reveal\">The coaching arm.</h3>\n        <p class=\"lead reveal\">\n          What Josh sells: 1:1 coaching, group programmes on FITR, and the\n          HYBRID HUB 365 clothing line. Applications go through his existing\n          forms \u2014 no new inbox to check.\n        </p>\n        <div class=\"plan plan-crew reveal\">\n          <img\n            class=\"crew-photo\"\n            src=\"/joshharrison/images/josh-doubles.jpg\"\n            alt=\"Josh Harrison driving the sled in a HYROX Pro Doubles race in Manchester\"\n            loading=\"lazy\"\n          />\n          <div class=\"crew-copy\">\n            <span class=\"tag\">New here?</span>\n            <h4>Start with the free stuff</h4>\n            <p class=\"crew-line\">\n              Not ready for coaching? The race tools are free \u2014 predictor,\n              split analyser, stations prep. Use them, race better, and the\n              Hub is here when you want the structured version.\n            </p>\n            <p class=\"crew-note\">\n              Race predictor \u00b7 split analyser \u00b7 stations prep \u00b7 race-mate\n              finder \u2014 free, always.\n            </p>\n          </div>\n          <div class=\"crew-side\">\n            <div class=\"price\">\u00a30 <small>/ always</small></div>\n            <div class=\"per\">The tools below</div>\n            <a class=\"btn btn-primary\" href=\"#zones\">Use the tools</a>\n          </div>\n        </div>\n        <div class=\"plans\">\n          <div class=\"plan featured reveal\">\n            <span class=\"tag\">Application only</span>\n            <h4>1:1 Coaching</h4>\n            <div class=\"price\">Hybrid Hub</div>\n            <div class=\"per\">Spots limited \u2014 Josh reviews every application</div>\n            <ul>\n              <li>Programme built around your life and your race calendar</li>\n              <li>Weekly check-ins and video form review</li>\n              <li>Pacing, stations, race plan \u2014 built to a number</li>\n              <li>Direct line to Josh between sessions</li>\n            </ul>\n            <a\n              class=\"btn btn-primary\"\n              href=\"https://1hppzdej2by.typeform.com/to/LeVTUyHt\"\n              target=\"_blank\"\n              rel=\"noopener\"\n              >Apply for 1:1</a\n            >\n          </div>\n          <div class=\"plan reveal\">\n            <span class=\"tag\">On FITR</span>\n            <h4>Group Programmes</h4>\n            <div class=\"price\">Hybrid Hub</div>\n            <div class=\"per\">Structured blocks with the Hub cohort</div>\n            <ul>\n              <li>Programmed blocks in the FITR app</li>\n              <li>HYROX-specific work, not generic circuits</li>\n              <li>Start with the cohort, progress through blocks</li>\n              <li>The same engine behind Josh's own season</li>\n            </ul>\n            <a\n              class=\"btn btn-ghost\"\n              href=\"https://the-hybrid-hub.fitr.training/t/TheHybridHub/\"\n              target=\"_blank\"\n              rel=\"noopener\"\n              >See programmes on FITR</a\n            >\n          </div>\n          <div class=\"plan reveal\">\n            <span class=\"tag\">Drops</span>\n            <h4>HYBRID HUB 365</h4>\n            <div class=\"price\">Kit</div>\n            <div class=\"per\">Tees, hoodies, tanks \u2014 open per drop</div>\n            <ul>\n              <li>The clothing side of the Hub</li>\n              <li>Doors open per drop, not year-round</li>\n              <li>The list hears first when the next one lands</li>\n            </ul>\n            <a\n              class=\"btn btn-ghost\"\n              href=\"https://thehybridhubclothing.com/\"\n              target=\"_blank\"\n              rel=\"noopener\"\n              >Visit the store</a\n            >\n          </div>\n        </div>\n        <p class=\"plans-note\">\n          Applications, enrolment and checkout stay on Josh's existing forms\n          and stores \u2014 this page routes you to the right one rather than\n          inventing a new funnel. Sample preview copy.\n        </p>\n      </div>\n    </section>"
     },
     {
       "pattern": "<strong>TBA</strong><span>Worcestershire</span></div>\\s*<div>\\s*<h4>HYROX Worcestershire 2027</h4>\\s*<p>[\\s\\S]*?</p>",
-      "replace": "<strong>TBA</strong><span>Budapest</span></div>\n            <div>\n              <h4>HYROX Budapest</h4>\n              <p>\n                The off-season test — raced it to see where the block stands\n                before tapering for the bigger targets. Watch for the vlog.\n              </p>"
+      "replace": "<strong>TBA</strong><span>Budapest</span></div>\n            <div>\n              <h4>HYROX Budapest</h4>\n              <p>\n                The off-season test \u2014 raced it to see where the block stands\n                before tapering for the bigger targets. Watch for the vlog.\n              </p>"
     },
     {
       "pattern": "<strong>TBA</strong><span>London</span></div>\\s*<div>\\s*<h4>HYROX London</h4>\\s*<p>[\\s\\S]*?</p>",
-      "replace": "<strong>TBA</strong><span>London</span></div>\n            <div>\n              <h4>HYROX London — ExCeL</h4>\n              <p>\n                The home weekend. Where the 1:06:13 open solo benchmark was\n                set — now it's the number everyone else is chasing.\n              </p>"
+      "replace": "<strong>TBA</strong><span>London</span></div>\n            <div>\n              <h4>HYROX London \u2014 ExCeL</h4>\n              <p>\n                The home weekend. Where the 1:06:13 open solo benchmark was\n                set \u2014 now it's the number everyone else is chasing.\n              </p>"
     },
     {
       "pattern": "<strong>Sat</strong><span>Monthly</span></div>\\s*<div>\\s*<h4>[\\s\\S]*?</h4>\\s*<p>\\s*[\\s\\S]*?</p>",
-      "replace": "<strong>TBA</strong><span>Glasgow</span></div>\n            <div>\n              <h4>HYROX Glasgow — pro solo</h4>\n              <p>\n                The target the season was built towards. Building with each\n                session — watch the build on the channel.\n              </p>"
+      "replace": "<strong>TBA</strong><span>Glasgow</span></div>\n            <div>\n              <h4>HYROX Glasgow \u2014 pro solo</h4>\n              <p>\n                The target the season was built towards. Building with each\n                session \u2014 watch the build on the channel.\n              </p>"
     },
     {
       "pattern": "Belum berani race\\?[\\s\\S]*?seru\\.",
-      "replace": "Not racing yet? Watch the vlogs first — you'll want a start line by the end."
+      "replace": "Not racing yet? Watch the vlogs first \u2014 you'll want a start line by the end."
     },
     {
       "pattern": "href=\"#ask\">Get notified</a>",
@@ -249,7 +591,7 @@
     },
     {
       "pattern": "Tiga hal per station[\\s\\S]*?masuk sini\\.",
-      "replace": "Three things per station that Josh actually does on race day — including the embarrassing ones. Spot a gap? <a href=\"#ask\">Ask Josh</a> — it might make the list."
+      "replace": "Three things per station that Josh actually does on race day \u2014 including the embarrassing ones. Spot a gap? <a href=\"#ask\">Ask Josh</a> \u2014 it might make the list."
     },
     {
       "pattern": "Kata Josh",
@@ -257,14 +599,14 @@
     },
     {
       "pattern": "every venue is different,\\s*Worcestershire's was notoriously slow",
-      "replace": "every venue is different — some carpets just never let go"
+      "replace": "every venue is different \u2014 some carpets just never let go"
     },
     {
       "pattern": "Racing from Worcestershire, this is the free minute\\.",
       "replace": "Racing anywhere, this is the free minute."
     },
     {
-      "pattern": "Train outdoors at Worcestershire effort, race indoors at pace\\. Aircon venues are 10°C cooler than your Sunday run, so your race pace is faster than your training says\\.",
+      "pattern": "Train outdoors at Worcestershire effort, race indoors at pace\\. Aircon venues are 10\u00b0C cooler than your Sunday run, so your race pace is faster than your training says\\.",
       "replace": "Train outdoors in the cold, race indoors at pace. Arena halls run warmer than a Worcestershire winter, so your race pace is faster than your training says."
     },
     {
@@ -273,7 +615,7 @@
     },
     {
       "pattern": "<summary>Training pregnant</summary>\\s*<ol>[\\s\\S]*?</ol>\\s*</details>",
-      "replace": "<summary>Coming back from a layoff</summary>\n            <ol>\n              <li>\n                Drop intensity before volume — keep the sessions, cut the\n                load. The habit is the hard part; the fitness comes back.\n              </li>\n              <li>\n                Race doubles first. Splitting the stations means you can go\n                hard for 30 seconds and recover — banking confidence instead\n                of a blow-up.\n              </li>\n              <li>\n                A plan beats guesswork. Ask Josh — that's what the coaching\n                page is for.\n              </li>\n            </ol>\n          </details>"
+      "replace": "<summary>Coming back from a layoff</summary>\n            <ol>\n              <li>\n                Drop intensity before volume \u2014 keep the sessions, cut the\n                load. The habit is the hard part; the fitness comes back.\n              </li>\n              <li>\n                Race doubles first. Splitting the stations means you can go\n                hard for 30 seconds and recover \u2014 banking confidence instead\n                of a blow-up.\n              </li>\n              <li>\n                A plan beats guesswork. Ask Josh \u2014 that's what the coaching\n                page is for.\n              </li>\n            </ol>\n          </details>"
     },
     {
       "pattern": "Prefer chat\\? Subscribers get Josh on\\s*<a class=\"chat-zone chat-zone-inline\" href=\"#ask\" data-whatsapp=\"\"\\s*>\\s*<span class=\"dot\"></span> WhatsApp</a\\s*>",
@@ -297,19 +639,19 @@
     },
     {
       "pattern": "alt=\"Josh mid wall-ball rep at a Hyrox race\"",
-      "replace": "alt=\"Josh Harrison mid burpee broad jump — arms up, eyes on the line\""
+      "replace": "alt=\"Josh Harrison mid burpee broad jump \u2014 arms up, eyes on the line\""
     },
     {
       "pattern": "alt=\"Josh, head coach\"",
-      "replace": "alt=\"Josh Harrison — HYROX Pro athlete and coach\""
+      "replace": "alt=\"Josh Harrison \u2014 HYROX Pro athlete and coach\""
     },
     {
-      "pattern": "<p class=\"eyebrow reveal\">Merchandise</p>\\s*<h3 class=\"reveal\">Warriors kit — coming soon\\.</h3>\\s*<p class=\"lead reveal\">[\\s\\S]*?</p>\\s*<a class=\"btn btn-ghost reveal\" href=\"#ask\">Tell me when it drops</a>",
-      "replace": "<p class=\"eyebrow reveal\">The clothing line</p>\n          <h3 class=\"reveal\">HYBRID HUB 365 — drops, not rails.</h3>\n          <p class=\"lead reveal\">\n            Tees, hoodies, tanks, joggers — the kit Josh trains and races\n            in. Doors open per drop; the list hears first.\n          </p>\n          <a class=\"btn btn-ghost reveal\" href=\"/joshharrison/list.html\">Join the list</a>"
+      "pattern": "<p class=\"eyebrow reveal\">Merchandise</p>\\s*<h3 class=\"reveal\">Warriors kit \u2014 coming soon\\.</h3>\\s*<p class=\"lead reveal\">[\\s\\S]*?</p>\\s*<a class=\"btn btn-ghost reveal\" href=\"#ask\">Tell me when it drops</a>",
+      "replace": "<p class=\"eyebrow reveal\">The clothing line</p>\n          <h3 class=\"reveal\">HYBRID HUB 365 \u2014 drops, not rails.</h3>\n          <p class=\"lead reveal\">\n            Tees, hoodies, tanks, joggers \u2014 the kit Josh trains and races\n            in. Doors open per drop; the list hears first.\n          </p>\n          <a class=\"btn btn-ghost reveal\" href=\"/joshharrison/list.html\">Join the list</a>"
     },
     {
-      "pattern": "src=\"/joshharrison/images/rope\\.jpg\"\\s*\\n\\s*alt=\"Josh Harrison kit — photo coming soon\"",
-      "replace": "src=\"/joshharrison/images/josh-hoodie.jpg\"\n            alt=\"Josh in the black hoodie on a training run — HYBRID HUB 365 kit lands per drop\""
+      "pattern": "src=\"/joshharrison/images/rope\\.jpg\"\\s*\\n\\s*alt=\"Josh Harrison kit \u2014 photo coming soon\"",
+      "replace": "src=\"/joshharrison/images/josh-hoodie.jpg\"\n            alt=\"Josh in the black hoodie on a training run \u2014 HYBRID HUB 365 kit lands per drop\""
     },
     {
       "pattern": "<a class=\"btn btn-primary\" href=\"#plans\">Start training</a>",
@@ -317,7 +659,7 @@
     },
     {
       "pattern": "content=\"Punya tiket[^\"]*\"",
-      "replace": "content=\"Got a race ticket, need a partner? Post your card on the JHFIT match board — first name and pace only — and Josh intros you to a HYROX partner at your level. Open, pro and mixed doubles, relay teams and race-trip company across the UK.\""
+      "replace": "content=\"Got a race ticket, need a partner? Post your card on the JHFIT match board \u2014 first name and pace only \u2014 and Josh intros you to a HYROX partner at your level. Open, pro and mixed doubles, relay teams and race-trip company across the UK.\""
     },
     {
       "pattern": "Punya tiket, <em>nggak</em> punya partner\\.",
@@ -325,11 +667,11 @@
     },
     {
       "pattern": "Udah booking flight sama hotel[\\s\\S]*?mejanya\\.",
-      "replace": "Booked flights and a hotel for your next race? Post your trip — others can join in: same flight, same hotel, split a room, or just travel to the venue together. Nothing booked yet? Post anyway — join someone's trip. Josh makes the intro, your number stays private."
+      "replace": "Booked flights and a hotel for your next race? Post your trip \u2014 others can join in: same flight, same hotel, split a room, or just travel to the venue together. Nothing booked yet? Post anyway \u2014 join someone's trip. Josh makes the intro, your number stays private."
     },
     {
       "pattern": "content=\"Delapan stasiun kelar[^\"]*\"",
-      "replace": "content=\"Eight stations done — one more: dinner. The race-crew table is the JHFIT meetup: race-weekend dinners and post-race hangs for athletes, participants and the HYROX-curious. The dance floor is optional. RSVP so there's a chair for you.\""
+      "replace": "content=\"Eight stations done \u2014 one more: dinner. The race-crew table is the JHFIT meetup: race-weekend dinners and post-race hangs for athletes, participants and the HYROX-curious. The dance floor is optional. RSVP so there's a chair for you.\""
     },
     {
       "pattern": "Delapan stasiun kelar\\. <em>Satu lagi:</em> makan\\.",
@@ -337,15 +679,15 @@
     },
     {
       "pattern": "the ninth station itu meja makan[\\s\\S]*?Yang penting rame\\.",
-      "replace": "The ninth station is the dinner table. Race-weekend meetups — athletes, racers and the HYROX-curious all welcome. And after away races, Sunday night: a busy restaurant, race stories, laughing. Not fine dining. Loud is the point."
+      "replace": "The ninth station is the dinner table. Race-weekend meetups \u2014 athletes, racers and the HYROX-curious all welcome. And after away races, Sunday night: a busy restaurant, race stories, laughing. Not fine dining. Loud is the point."
     },
     {
       "pattern": "HYROX itu delapan stasiun[\\s\\S]*?rencana\\.",
-      "replace": "HYROX has eight stations. The ninth station — a dinner table full of people who get why your legs are wrecked. No pace requirement, no partner needed, don't even need to have raced. If you're just curious you're the most welcome of all — sit down, eat, hear the stories, leave with a plan."
+      "replace": "HYROX has eight stations. The ninth station \u2014 a dinner table full of people who get why your legs are wrecked. No pace requirement, no partner needed, don't even need to have raced. If you're just curious you're the most welcome of all \u2014 sit down, eat, hear the stories, leave with a plan."
     },
     {
       "pattern": "Yang kakinya masih berfungsi[\\s\\S]*?menang\\.",
-      "replace": "Legs still working? Carry on to the dance floor. Legs not working? Sit down — the gossip continues either way. Both count as winning."
+      "replace": "Legs still working? Carry on to the dance floor. Legs not working? Sit down \u2014 the gossip continues either way. Both count as winning."
     },
     {
       "pattern": "an Indonesian\\s+flag in the results",
@@ -353,7 +695,7 @@
     },
     {
       "pattern": "Makan bareng atlet, peserta[\\s\\S]*?edisi\\.",
-      "replace": "Dinner with athletes, racers and the HYROX-curious — a laid-back restaurant, race chat, then the dance floor for legs that still work. Broken bodies welcome to just sit — the gossip carries on. Venue announced per edition."
+      "replace": "Dinner with athletes, racers and the HYROX-curious \u2014 a laid-back restaurant, race chat, then the dance floor for legs that still work. Broken bodies welcome to just sit \u2014 the gossip carries on. Venue announced per edition."
     },
     {
       "pattern": "Apa yang lagi rame di <em>Asia</em>, dua baris aja\\.",
@@ -361,7 +703,7 @@
     },
     {
       "pattern": "Race baru, hasil, aturan yang berubah[\\s\\S]*?Worcestershire\\.",
-      "replace": "New races, results, rule changes and the bigger gossip — a handful every week: short summary, original source, and Josh's take on what it means for your next start line."
+      "replace": "New races, results, rule changes and the bigger gossip \u2014 a handful every week: short summary, original source, and Josh's take on what it means for your next start line."
     },
     {
       "pattern": "Ringkasan punya kita;[\\s\\S]*?kelewat\\?",
@@ -377,7 +719,7 @@
     },
     {
       "pattern": "Jadwal HYROX Worcestershire 2027 belum diumumkan[^\"]*",
-      "replace": "Race dates are announced by HYROX on hyrox.com — registration and tickets open there once the official schedule drops; popular cities usually sell out within weeks. Join the list so you hear about it the day it happens."
+      "replace": "Race dates are announced by HYROX on hyrox.com \u2014 registration and tickets open there once the official schedule drops; popular cities usually sell out within weeks. Join the list so you hear about it the day it happens."
     },
     {
       "pattern": "<span lang=\"id\"\\s*>[\\s\\S]*?the UK\\.</span\\s*>",
@@ -389,15 +731,15 @@
     },
     {
       "pattern": "Race resmi, simulasi[\\s\\S]*?berarti\\s*layak\\.",
-      "replace": "Official races, simulations, brand events, and training spots that actually have the stations — everything you need to stay race-ready at home. Josh curates it: if it's listed here, it's worth your time."
+      "replace": "Official races, simulations, brand events, and training spots that actually have the stations \u2014 everything you need to stay race-ready at home. Josh curates it: if it's listed here, it's worth your time."
     },
     {
       "pattern": "Lagi bikin sim atau kompetisi hybrid di Worcestershire yang belum masuk[\\s\\S]*?masuk list\\.",
-      "replace": "Running a sim or hybrid comp that's not listed? <a href=\"https://www.instagram.com/joshharrisonfit/\" target=\"_blank\" rel=\"noopener\">Tip Josh off</a> — send the organiser link and dates, it goes straight on the list."
+      "replace": "Running a sim or hybrid comp that's not listed? <a href=\"https://www.instagram.com/joshharrisonfit/\" target=\"_blank\" rel=\"noopener\">Tip Josh off</a> \u2014 send the organiser link and dates, it goes straight on the list."
     },
     {
       "pattern": "Warriors dapet sim berwaktu[\\s\\S]*?hari-H\\.",
-      "replace": "Hybrid Hub athletes get timed sims and split breakdowns before every race block — so race day holds no surprises."
+      "replace": "Hybrid Hub athletes get timed sims and split breakdowns before every race block \u2014 so race day holds no surprises."
     },
     {
       "pattern": " Jadwal HYROX Worcestershire dan the UK\\.",
@@ -408,8 +750,8 @@
       "replace": ""
     },
     {
-      "pattern": "RSVP — biar ada kursi buat lo",
-      "replace": "RSVP — so there's a chair for you"
+      "pattern": "RSVP \u2014 biar ada kursi buat lo",
+      "replace": "RSVP \u2014 so there's a chair for you"
     },
     {
       "pattern": " lang=\"id\"",
@@ -437,23 +779,23 @@
     },
     {
       "pattern": "\"text\": \"Nusantara International Convention Exhibition[^\"]*\"",
-      "replace": "\"text\": \"Race venues vary by city — check the official listing on hyrox.com for the address and door times. Allow an hour to get across town on race weekend.\""
+      "replace": "\"text\": \"Race venues vary by city \u2014 check the official listing on hyrox.com for the address and door times. Allow an hour to get across town on race weekend.\""
     },
     {
       "pattern": "Nusantara International Convention Exhibition \\(NICE\\) in PIK2,[\\s\\S]*?airport\\.",
-      "replace": "Venue details vary by city — the official listing on hyrox.com has the address and door times. Allow an hour to get across town on race weekend."
+      "replace": "Venue details vary by city \u2014 the official listing on hyrox.com has the address and door times. Allow an hour to get across town on race weekend."
     },
     {
       "pattern": "\"Udah dibilang kan[^\"]*\"",
-      "replace": "\"Told you — the 1:14 start meant nothing by April. One season, nine minutes gone. Hard work compounds.\""
+      "replace": "\"Told you \u2014 the 1:14 start meant nothing by April. One season, nine minutes gone. Hard work compounds.\""
     },
     {
       "pattern": "\"1:01:49\\. Weekend panas[^\"]*\"",
-      "replace": "\"1:06:13 at ExCeL and 1:05:43 in Bologna — if you're racing the open, that's the number on the fridge now.\""
+      "replace": "\"1:06:13 at ExCeL and 1:05:43 in Bologna \u2014 if you're racing the open, that's the number on the fridge now.\""
     },
     {
       "pattern": "\"Lantai HYROX di Worcestershire[^\"]*\"",
-      "replace": "\"Pro solo 1:05:43, pro doubles 57:14 with Rio Quarry, and a coaching arm that trains like it races — Josh Harrison turned a Linktree into a business. Watch what happens with a real front door.\""
+      "replace": "\"Pro solo 1:05:43, pro doubles 57:14 with Rio Quarry, and a coaching arm that trains like it races \u2014 Josh Harrison turned a Linktree into a business. Watch what happens with a real front door.\""
     },
     {
       "pattern": "crew WhatsApp group",
@@ -477,35 +819,35 @@
     },
     {
       "pattern": "<div class=\"results-tools\">",
-      "replace": "<p style=\"font-size:12px;opacity:.55;margin:-6px 0 10px\">Sample entries — the board fills from real submissions and results once live.</p>\n        <div class=\"results-tools\">"
+      "replace": "<p style=\"font-size:12px;opacity:.55;margin:-6px 0 10px\">Sample entries \u2014 the board fills from real submissions and results once live.</p>\n        <div class=\"results-tools\">"
     },
     {
       "pattern": "(<h3>Race weekend roundups</h3>\\s*<p class=\"plan-source\">[\\s\\S]*?</p>)",
-      "replace": "$1\n          <p style=\"font-size:12px;opacity:.55;margin-top:-6px\">Sample roundups — the format, not the real write-ups yet.</p>"
+      "replace": "$1\n          <p style=\"font-size:12px;opacity:.55;margin-top:-6px\">Sample roundups \u2014 the format, not the real write-ups yet.</p>"
     },
     {
       "pattern": "women, doubles, mixed and relay\\. Official chip times, updated after",
-      "replace": "open, pro, doubles and relay. Sample entries for the preview — official chip times once live, updated after"
+      "replace": "open, pro, doubles and relay. Sample entries for the preview \u2014 official chip times once live, updated after"
     },
     {
       "pattern": "under an British nationality\\. All times are official chip times\\.",
-      "replace": "under a British nationality. Sample entries for the preview — official chip times once live."
+      "replace": "under a British nationality. Sample entries for the preview \u2014 official chip times once live."
     },
     {
       "pattern": "\"text\": \"From the official Hyrox results \\(results\\.hyrox\\.com\\)[^\"]*\"",
-      "replace": "\"text\": \"Sample entries for the preview — the live board compiles finish times from official HYROX results (results.hyrox.com), hyresult.com and hyranking.com once connected.\""
+      "replace": "\"text\": \"Sample entries for the preview \u2014 the live board compiles finish times from official HYROX results (results.hyrox.com), hyresult.com and hyranking.com once connected.\""
     },
     {
       "pattern": "\"description\": \"Finish times and personal bests of British Hyrox athletes[^\"]*\"",
-      "replace": "\"description\": \"Finish times and personal bests by division — sample board for the preview; live data compiles official HYROX results.\""
+      "replace": "\"description\": \"Finish times and personal bests by division \u2014 sample board for the preview; live data compiles official HYROX results.\""
     },
     {
       "pattern": "from official Hyrox results\\. Updated after every race\\. Hasil dan leaderboard HYROX the UK\\.",
       "replace": "from official HYROX results once live. Updated after every race."
     },
     {
-      "pattern": "\"description\": \"HYROX coaching in \\w+ — online training program[^\"]*\"",
-      "replace": "\"description\": \"Josh Harrison — HYROX Pro athlete, coach and creator. Hybrid Hub 1:1 coaching and programmes, race tools and race-mate finder.\""
+      "pattern": "\"description\": \"HYROX coaching in \\w+ \u2014 online training program[^\"]*\"",
+      "replace": "\"description\": \"Josh Harrison \u2014 HYROX Pro athlete, coach and creator. Hybrid Hub 1:1 coaching and programmes, race tools and race-mate finder.\""
     },
     {
       "pattern": "animation:\\s*\\n\\s*hero-enter 2\\.8s cubic-bezier\\(0\\.16, 0\\.6, 0\\.3, 1\\) both,\\s*\\n\\s*hero-drift 18s ease-in-out 4\\.4s infinite alternate;",
@@ -536,8 +878,8 @@
       "replace": "UK scene"
     },
     {
-      "pattern": "Applications, enrolment and checkout stay on Josh's existing forms\\s*and stores — this page routes you to the right one rather than\\s*inventing a new funnel\\. Sample preview copy\\.",
-      "replace": "Every route is Josh's official one — applications, programmes and the store. One tap out, nothing in between."
+      "pattern": "Applications, enrolment and checkout stay on Josh's existing forms\\s*and stores \u2014 this page routes you to the right one rather than\\s*inventing a new funnel\\. Sample preview copy\\.",
+      "replace": "Every route is Josh's official one \u2014 applications, programmes and the store. One tap out, nothing in between."
     },
     {
       "pattern": "(<p class=\"city\">Worcestershire</p>\\s*</header>)\\s*<section class=\"guide-hero\">",
@@ -553,7 +895,7 @@
     },
     {
       "pattern": "(Analyse real splits</a[^>]*>\\s*</p>\\s*</article>\\s*</div>\\s*</div>)",
-      "replace": "$1\n\n    <section class=\"cta-band\">\n      <div class=\"wrap\">\n        <h3>Want a number you can actually hold?</h3>\n        <p>\n          A prediction is a vibe. A coached plan is a number built from your\n          real splits — and re-checked after every race.\n        </p>\n        <a class=\"btn btn-light\" href=\"/joshharrison/coaching.html\">Coach with Josh</a>\n        <a class=\"btn btn-primary\" href=\"/joshharrison/#ask\">Ask Josh</a>\n      </div>\n    </section>"
+      "replace": "$1\n\n    <section class=\"cta-band\">\n      <div class=\"wrap\">\n        <h3>Want a number you can actually hold?</h3>\n        <p>\n          A prediction is a vibe. A coached plan is a number built from your\n          real splits \u2014 and re-checked after every race.\n        </p>\n        <a class=\"btn btn-light\" href=\"/joshharrison/coaching.html\">Coach with Josh</a>\n        <a class=\"btn btn-primary\" href=\"/joshharrison/#ask\">Ask Josh</a>\n      </div>\n    </section>"
     },
     {
       "pattern": "Bisikin Josh",
@@ -561,23 +903,23 @@
     },
     {
       "pattern": "part-time metronome\\.\\s*</p>\\s*</div>",
-      "replace": "part-time metronome.</p>\n        </div>\n        <figure class=\"guide-hero-photo\">\n          <img\n            src=\"/joshharrison/images/finish.jpg\"\n            alt=\"Josh mid-race in the arena — the bright kit pops against the dark\"\n            width=\"1600\"\n            height=\"1066\"\n            loading=\"lazy\"\n          />\n        </figure>"
+      "replace": "part-time metronome.</p>\n        </div>\n        <figure class=\"guide-hero-photo\">\n          <img\n            src=\"/joshharrison/images/finish.jpg\"\n            alt=\"Josh mid-race in the arena \u2014 the bright kit pops against the dark\"\n            width=\"1600\"\n            height=\"1066\"\n            loading=\"lazy\"\n          />\n        </figure>"
     },
     {
-      "pattern": "she'll\\s*intro you herself\\. She races this circuit — she knows who'd actually\\s*suit you\\.",
-      "replace": "he'll intro you himself. He races this circuit — he knows who'd actually suit you."
+      "pattern": "she'll\\s*intro you herself\\. She races this circuit \u2014 she knows who'd actually\\s*suit you\\.",
+      "replace": "he'll intro you himself. He races this circuit \u2014 he knows who'd actually suit you."
     },
     {
       "pattern": "HYROX Group Coach, pro athlete, occasional matchmaker\\.",
       "replace": "HYROX Pro athlete, coach, occasional matchmaker."
     },
     {
-      "pattern": "Forget three dinner dates —\\s*watch someone on the sled push and you'll know everything you need\\s*to\\.",
-      "replace": "Forget three dinner dates — thirty seconds on a sled tells you everything you need."
+      "pattern": "Forget three dinner dates \u2014\\s*watch someone on the sled push and you'll know everything you need\\s*to\\.",
+      "replace": "Forget three dinner dates \u2014 thirty seconds on a sled tells you everything you need."
     },
     {
-      "pattern": "— and\\s*absolutely take credit at the wedding\\.",
-      "replace": "— credit at the wedding is non-negotiable."
+      "pattern": "\u2014 and\\s*absolutely take credit at the wedding\\.",
+      "replace": "\u2014 credit at the wedding is non-negotiable."
     },
     {
       "pattern": "src=\"/joshharrison/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Josh running a Hyrox lap in race kit\"",
@@ -585,7 +927,7 @@
     },
     {
       "pattern": "src=\"/joshharrison/images/coaching\\.jpg\"\\s*\\n\\s*alt=\"Josh mid sandbag lunge\"",
-      "replace": "src=\"/joshharrison/images/josh-kerb.jpg\"\n            alt=\"Josh kerbside post-race — recovery starts before the next session\""
+      "replace": "src=\"/joshharrison/images/josh-kerb.jpg\"\n            alt=\"Josh kerbside post-race \u2014 recovery starts before the next session\""
     },
     {
       "pattern": "src=\"/joshharrison/images/coaching\\.jpg\"\\s*\\n\\s*alt=\"Josh laughing mid-lunge, carrying the 20 kg sandbag on her shoulders at a Hyrox race\"",
@@ -593,7 +935,7 @@
     },
     {
       "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh low over the sled poles driving a loaded sled, CENTR plates visible\"",
-      "replace": "src=\"/joshharrison/images/station-lean.jpg\"\n            alt=\"Josh driving the sled away from camera — head down through the poles\""
+      "replace": "src=\"/joshharrison/images/station-lean.jpg\"\n            alt=\"Josh driving the sled away from camera \u2014 head down through the poles\""
     },
     {
       "pattern": "src=\"/joshharrison/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Josh mid broad jump between burpee reps in the arena\"",
@@ -601,31 +943,31 @@
     },
     {
       "pattern": "src=\"/joshharrison/images/wallball\\.jpg\" alt=\"The squad mid rowing warm-up in the gym\"",
-      "replace": "src=\"/joshharrison/images/josh-bike.jpg\" alt=\"Josh on the erg between pieces — same engine, different machine\""
+      "replace": "src=\"/joshharrison/images/josh-bike.jpg\" alt=\"Josh on the erg between pieces \u2014 same engine, different machine\""
     },
     {
       "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh mid-stride on the farmers carry with competition kettlebells in the arena\"",
-      "replace": "src=\"/joshharrison/images/carry.jpg\"\n            alt=\"Josh mid-stride on the farmers carry — the grimace is the point\""
+      "replace": "src=\"/joshharrison/images/carry.jpg\"\n            alt=\"Josh mid-stride on the farmers carry \u2014 the grimace is the point\""
     },
     {
       "pattern": "src=\"/joshharrison/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Josh laughing with a 20 kg sandbag on each shoulder mid-lunges\"",
-      "replace": "src=\"/joshharrison/images/coaching.jpg\"\n            alt=\"Josh crouched low between efforts — the legs the lunges are built on\""
+      "replace": "src=\"/joshharrison/images/coaching.jpg\"\n            alt=\"Josh crouched low between efforts \u2014 the legs the lunges are built on\""
     },
     {
-      "pattern": "src=\"/joshharrison/images/carry\\.jpg\" alt=\"Mid overhead press — the pressing pattern behind wall balls\"",
-      "replace": "src=\"/joshharrison/images/josh-detail.jpg\" alt=\"Head down between wall-ball sets — the breathing pattern holds\""
+      "pattern": "src=\"/joshharrison/images/carry\\.jpg\" alt=\"Mid overhead press \u2014 the pressing pattern behind wall balls\"",
+      "replace": "src=\"/joshharrison/images/josh-detail.jpg\" alt=\"Head down between wall-ball sets \u2014 the breathing pattern holds\""
     },
     {
       "pattern": "src=\"/joshharrison/images/carry\\.jpg\"[\\s\\S]*?alt=\"Josh grinding through the farmers carry, low angle past the crowd barriers at Hyrox\"",
       "replace": "src=\"/joshharrison/images/race-revel.jpg\"\n            alt=\"Josh mid-run between stations at HYROX Manchester\""
     },
     {
-      "pattern": "src=\"/joshharrison/images/josh-kerb\\.jpg\"\\s*\\n\\s*alt=\"Josh kerbside post-race — recovery starts before the next session\"",
-      "replace": "src=\"/joshharrison/images/josh-kerb.jpg\"\n            style=\"object-position: 50% 68%\"\n            alt=\"Josh kerbside post-race — recovery starts before the next session\""
+      "pattern": "src=\"/joshharrison/images/josh-kerb\\.jpg\"\\s*\\n\\s*alt=\"Josh kerbside post-race \u2014 recovery starts before the next session\"",
+      "replace": "src=\"/joshharrison/images/josh-kerb.jpg\"\n            style=\"object-position: 50% 68%\"\n            alt=\"Josh kerbside post-race \u2014 recovery starts before the next session\""
     },
     {
       "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh mid-stride on the farmers carry with competition kettlebells\"",
-      "replace": "src=\"/joshharrison/images/carry.jpg\"\n            alt=\"Josh mid-stride on the farmers carry — legs like this don't fuel themselves\""
+      "replace": "src=\"/joshharrison/images/carry.jpg\"\n            alt=\"Josh mid-stride on the farmers carry \u2014 legs like this don't fuel themselves\""
     },
     {
       "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh head-on, driving a loaded sled in the arena\"",
@@ -633,7 +975,7 @@
     },
     {
       "pattern": "src=\"/joshharrison/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Josh mid sandbag lunge in black kit\"",
-      "replace": "src=\"/joshharrison/images/josh-momentum.jpg\"\n            alt=\"Track walk with the bottle — the taper is the training\""
+      "replace": "src=\"/joshharrison/images/josh-momentum.jpg\"\n            alt=\"Track walk with the bottle \u2014 the taper is the training\""
     },
     {
       "pattern": "src=\"/joshharrison/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Josh on the podium, 1st place doubles\"",
@@ -641,7 +983,7 @@
     },
     {
       "pattern": "src=\"/joshharrison/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Josh laughing mid-effort in his HYROX race kit\"",
-      "replace": "src=\"/joshharrison/images/josh-half.jpg\"\n            alt=\"Josh at the AJ Bell Birmingham Half — 1:32:13 on the day\""
+      "replace": "src=\"/joshharrison/images/josh-half.jpg\"\n            alt=\"Josh at the AJ Bell Birmingham Half \u2014 1:32:13 on the day\""
     },
     {
       "pattern": "Josh leaning back into the sled pull rope in her lilac kit, Worcestershire banner behind",
@@ -649,7 +991,7 @@
     },
     {
       "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh mid-stride on the farmers carry with competition kettlebells\"",
-      "replace": "src=\"/joshharrison/images/gallery/stock-arena.jpg\"\n            alt=\"Inside the arena — the atmosphere that makes the fuel worth it\""
+      "replace": "src=\"/joshharrison/images/gallery/stock-arena.jpg\"\n            alt=\"Inside the arena \u2014 the atmosphere that makes the fuel worth it\""
     },
     {
       "pattern": "src=\"/joshharrison/images/carry\\.jpg\"[\\s\\S]*?alt=\"Josh grinding through the farmers carry, low angle past the crowd barriers at Hyrox\"",
@@ -657,49 +999,51 @@
     },
     {
       "pattern": "src=\"/joshharrison/images/hero-reveal\\.jpg\"\\s*\\n\\s*alt=\"Josh and his doubles partner laughing at the Hyrox Birmingham finish line[^\"]*\"",
-      "replace": "src=\"/joshharrison/images/josh-startline.jpg\"\n            alt=\"Josh on the start line — flat expression, miles to go\""
+      "replace": "src=\"/joshharrison/images/josh-startline.jpg\"\n            alt=\"Josh on the start line \u2014 flat expression, miles to go\""
     },
     {
       "pattern": "src=\"/joshharrison/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Josh with both arms raised in celebration at the finish line\"",
       "replace": "src=\"/joshharrison/images/josh-bologna.jpg\"\n            style=\"aspect-ratio: 4/3; object-position: 50% 20%\"\n            alt=\"Josh beside the 1:05:43 finish board in Bologna\""
     },
     {
-      "pattern": "src=\"/joshharrison/images/squad-athlos\\.jpg\"\\s*\\n\\s*alt=\"The whole crew after a session — all abilities, all welcome\"",
-      "replace": "src=\"/joshharrison/images/gallery/restaurant.jpg\"\n            alt=\"The crew meetup table — dinner after the race, all welcome\""
+      "pattern": "src=\"/joshharrison/images/squad-athlos\\.jpg\"\\s*\\n\\s*alt=\"The whole crew after a session \u2014 all abilities, all welcome\"",
+      "replace": "src=\"/joshharrison/images/gallery/restaurant.jpg\"\n            alt=\"The crew meetup table \u2014 dinner after the race, all welcome\""
     },
     {
       "pattern": "src=\"/joshharrison/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Josh and a teammate celebrating at a race event backdrop\"",
-      "replace": "src=\"/joshharrison/images/squad-athlos.jpg\"\n            alt=\"The orange wave leaving the start line — pick your weekend\""
+      "replace": "src=\"/joshharrison/images/squad-athlos.jpg\"\n            alt=\"The orange wave leaving the start line \u2014 pick your weekend\""
     },
     {
-      "pattern": "src=\"/joshharrison/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Arms up at the finish line — the celebration is the point\"",
-      "replace": "src=\"/joshharrison/images/gallery/dance.jpg\"\n              alt=\"The post-race dance floor — Station 10 is non-negotiable for some\""
+      "pattern": "src=\"/joshharrison/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Arms up at the finish line \u2014 the celebration is the point\"",
+      "replace": "src=\"/joshharrison/images/gallery/dance.jpg\"\n              alt=\"The post-race dance floor \u2014 Station 10 is non-negotiable for some\""
     },
     {
-      "pattern": "(<b>Away edition — race weekends\\.</b>[\\s\\S]*?</li>\\s*</ul>)",
+      "pattern": "(<b>Away edition \u2014 race weekends\\.</b>[\\s\\S]*?</li>\\s*</ul>)",
       "replace": "$1"
     }
   ],
-  "stripSections": ["pelatih"],
+  "stripSections": [
+    "pelatih"
+  ],
   "seedFiles": {
     "cities.json": {
       "note": "UK race cities for the predictor demo.",
       "items": []
     },
     "wall.json": {
-      "note": "PRIVATE PITCH PREVIEW — athlete wall shows placeholder entries only; real photos added with consent after launch.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 athlete wall shows placeholder entries only; real photos added with consent after launch.",
       "items": []
     },
     "news.json": {
-      "note": "PRIVATE PITCH PREVIEW — demo headlines only.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 demo headlines only.",
       "items": [
         {
           "date": "2026-10-14",
           "title": "HYROX confirms the 26/27 UK calendar",
           "summary": "London, Glasgow, Cardiff and Birmingham all land on the new season calendar, with the usual sell-out warnings attached. Full dates and venues are on the official site.",
-          "take": "Book the hotel before you book the heat — Saturday waves go first and nobody enjoys a 6 a.m. start in a city an hour away. Bologna taught me that one.",
+          "take": "Book the hotel before you book the heat \u2014 Saturday waves go first and nobody enjoys a 6 a.m. start in a city an hour away. Bologna taught me that one.",
           "link": "https://hyrox.com",
-          "linkLabel": "Official calendar →",
+          "linkLabel": "Official calendar \u2192",
           "source": "https://hyrox.com",
           "sourceName": "hyrox.com"
         },
@@ -707,32 +1051,96 @@
           "date": "2026-10-06",
           "title": "Doubles fields keep getting quicker",
           "summary": "Pro doubles times across the season are trending down, with more sub-hour pairs turning up at every major race.",
-          "take": "57:14 isn't a flex, it's a warning — the pairs game is where this sport is heading. Find your partner before you need one; the race-mate board exists for a reason.",
+          "take": "57:14 isn't a flex, it's a warning \u2014 the pairs game is where this sport is heading. Find your partner before you need one; the race-mate board exists for a reason.",
           "link": "/joshharrison/find-a-partner.html",
-          "linkLabel": "Find a race-mate →"
+          "linkLabel": "Find a race-mate \u2192"
         }
       ]
     },
     "partners.json": {
-      "note": "PRIVATE PITCH PREVIEW — partner offers below are illustrative.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 partner offers below are illustrative.",
       "items": []
     },
     "matchboard.json": {
-      "note": "PRIVATE PITCH PREVIEW — sample race-mate posts only.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 sample race-mate posts only.",
       "items": []
     },
     "travelboard.json": {
-      "note": "PRIVATE PITCH PREVIEW — sample travel-board posts only.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 sample travel-board posts only.",
       "items": []
     },
     "station9.json": {
-      "note": "PRIVATE PITCH PREVIEW — meetup listings are illustrative.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 meetup listings are illustrative.",
       "next": null,
       "away": []
     },
     "gallery.json": {
-      "note": "PRIVATE PITCH PREVIEW.",
-      "items": []
+      "photos": [
+        {
+          "src": "/joshharrison/images/gallery/malaga-crew.jpg",
+          "alt": "HTCC crew on the race floor at HYROX M\u00e1laga",
+          "caption": "An unforgettable weekend full of PBs, sun, sangria and more laughs than I've had in a while. We'll be back next year \u2014 who's joining us?",
+          "by": "@sunday.squad",
+          "tilt": -1.5,
+          "event": "Race trip"
+        },
+        {
+          "src": "/joshharrison/images/gallery/malaga-three.jpg",
+          "alt": "Three HTCC athletes grinning after racing in M\u00e1laga",
+          "caption": "Dee's first ever HYROX. Hooked right from that first race.",
+          "by": "@hyrox.huns",
+          "tilt": 2,
+          "event": "Race trip"
+        },
+        {
+          "src": "/joshharrison/images/gallery/istanbul-podium.jpg",
+          "alt": "Michelle and Ellie with the Union flag on the podium at HYROX Istanbul",
+          "caption": "Michelle & Ellie \u2014 podium, Istanbul. Keep setting the standard.",
+          "by": "@racefloor.crew",
+          "tilt": 1,
+          "event": "Race day"
+        },
+        {
+          "src": "/joshharrison/images/gallery/glasgow-doors.jpg",
+          "alt": "Ross outside the HYROX Glasgow entrance",
+          "caption": "Glasgow. Just enjoy it they say. But don't underestimate the challenge.",
+          "by": "@sleds.and.regrets",
+          "tilt": -2,
+          "event": "Race day"
+        },
+        {
+          "src": "/joshharrison/images/gallery/glasgow-oxworld.jpg",
+          "alt": "HTCC crew at the OX World stand in Glasgow",
+          "caption": "Crew at Glasgow. Half of them didn't know each other a year ago.",
+          "by": "@the8amheat",
+          "tilt": 1.5,
+          "event": "Race day"
+        },
+        {
+          "src": "/joshharrison/images/gallery/doubles-finish.jpg",
+          "alt": "A doubles pair celebrating at the finish",
+          "caption": "You've smashed your training \u2014 now go smash this race. They did.",
+          "by": "@roxzone",
+          "event": "Race day"
+        },
+        {
+          "src": "/joshharrison/images/gallery/crew-faces.jpg",
+          "alt": "HTCC members in club tees after a group run",
+          "caption": "Sunny springy group runs. Run Club, Tuesdays and Wednesdays.",
+          "by": "@pb_chasers",
+          "tilt": 1,
+          "event": "Run club"
+        },
+        {
+          "src": "/joshharrison/images/gallery/crew-selfie.jpg",
+          "alt": "Post-race crew selfie",
+          "caption": "It's not just a club \u2014 it's friends & family.",
+          "by": "@finishline.fam",
+          "tilt": -1.5,
+          "event": "Race day"
+        }
+      ],
+      "note": "Seeded community picks \u2014 generic event photos standing in until real submissions land."
     },
     "bulletin.json": {
       "note": "PRIVATE PITCH PREVIEW.",
@@ -747,7 +1155,9 @@
       "items": []
     }
   },
-  "imageOverrides": ["scripts/reskin/joshharrison-assets"],
+  "imageOverrides": [
+    "scripts/reskin/joshharrison-assets"
+  ],
   "excludePatterns": [
     "(warrior-program|hybrid-coaching-jakarta|elite-race-prep|pay|hyrox-jakarta|jakarta-hybrid-scene|book-dina|book|advertise|alt|coach|doubles|broadcast|diary|welcome)\\.html$",
     "(coach|advertise|pay|book|broadcast)\\.js$",

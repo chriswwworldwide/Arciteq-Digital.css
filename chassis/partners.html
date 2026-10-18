@@ -98,6 +98,7 @@
               <li><a href="/{{SLUG}}/stations-prep/">Stations prep</a></li>
               <li><a href="/{{SLUG}}/run-zone/">Run zone</a></li>
               <li><a href="/{{SLUG}}/fuel-zone/">Fuel zone</a></li>
+              <li><a href="/{{SLUG}}/taper-zone/">Taper zone</a></li>
               <li><a href="/{{SLUG}}/events.html">Race calendar</a></li>
             </ul>
           </li>
@@ -146,7 +147,7 @@
             <span class="code">{{GYM_CODE}}</span>
             <a
               class="pc-cta"
-              href="https://www.{{PARTNER_GYM_LC}}.com/"
+              href="{{PARTNER_GYM_URL}}"
               target="_blank"
               rel="noopener"
               >Shop {{PARTNER_GYM}} →</a
@@ -161,7 +162,7 @@
             <span class="code">{{GYM_CODE}}</span>
             <a
               class="pc-cta"
-              href="https://www.{{PARTNER_SUPP_LC}}.com/"
+              href="{{PARTNER_SUPP_URL}}"
               target="_blank"
               rel="noopener"
               >Shop {{PARTNER_SUPP}} →</a
@@ -181,19 +182,16 @@
               >{{PARTNER_KIT_CTA}} →</a
             >
           </div>
-          <div class="partner-card">
-            <span class="pc-tag">Own line · drops</span>
-            <h4>{{BRAND}} 365</h4>
-            <p>
-              Not a partner — {{COACH_FIRST}}'s own clothing line. Doors open per drop;
-              the list hears first.
-            </p>
+          <div class="partner-card" data-strip="store-card">
+            <span class="pc-tag">{{STORE_TAG}}</span>
+            <h4>{{STORE_NAME}}</h4>
+            <p>{{STORE_COPY}}</p>
             <a
               class="pc-cta"
               href="{{STORE_URL}}"
               target="_blank"
               rel="noopener"
-              >Visit the store →</a
+              >{{STORE_CTA}} →</a
             >
           </div>
         </div>

@@ -48,7 +48,7 @@
           ? `<a href="${esc(n.source)}" rel="noopener nofollow" target="_blank">${esc(n.sourceName || host(n.source) || "Source")} ↗</a>`
           : "";
         const take = n.take
-          ? `<p class="news-take"><strong>Gregor & Hattie's take:</strong> ${esc(n.take)}</p>`
+          ? `<p class="news-take"><strong>$1's take:</strong> ${esc(n.take)}</p>`
           : "";
         const guide = n.link
           ? `<p class="news-src"><a href="${esc(n.link)}">${esc(n.linkLabel || "Race guide →")}</a></p>`

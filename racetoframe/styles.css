@@ -1286,8 +1286,7 @@ section.block.alt {
 }
 
 /* Footer */
-footer {
-  padding: 40px 0 96px;
+$1padding: 40px 0 96px;
   border-top: 1px solid var(--line);
   color: var(--ink-3);
   font-size: 14px;
@@ -2230,6 +2229,8 @@ body.has-sticky-cta {
   background: var(--pink-600);
 }
 
+/* While the accent sticky CTA is on screen the FAB steps back to a quiet
+   surface — one signature-colour element at a time, no matching pills. */
 body.has-sticky-cta .wa-fab {
   bottom: calc(88px + env(safe-area-inset-bottom));
   background: var(--paper-2);

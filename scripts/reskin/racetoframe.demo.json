@@ -60,12 +60,12 @@
     "station-9": "race-crew"
   },
   "metaKeywords": "gregor and hattie, race to frame, hyrox frame, podium flag frame, hyrox coaching, hyrox podcast, hyrox predictor",
-  "htmlTitle": "Gregor & Hattie — Race to Frame, coaching, podcast & race tools",
-  "metaDescription": "Gregor and Hattie’s home on the web: Race to Frame finisher and podium frames, HYROX coaching and programming, the podcast, race predictor tools and partner offers — all in one place.",
+  "htmlTitle": "Gregor & Hattie \u2014 Race to Frame, coaching, podcast & race tools",
+  "metaDescription": "Gregor and Hattie\u2019s home on the web: Race to Frame finisher and podium frames, HYROX coaching and programming, the podcast, race predictor tools and partner offers \u2014 all in one place.",
   "extraPairs": [
     [
-      "Pilih kelemahanmu. Kita ubah jadi split tercepatmu — tanpa drama.",
-      "Pick your weakness. We'll turn it into your fastest split — no drama."
+      "Pilih kelemahanmu. Kita ubah jadi split tercepatmu \u2014 tanpa drama.",
+      "Pick your weakness. We'll turn it into your fastest split \u2014 no drama."
     ],
     [
       "Punya tiket, nggak punya partner?",
@@ -81,19 +81,19 @@
     ],
     [
       "Rp 850k",
-      "£45"
+      "\u00a345"
     ],
     [
       "Rp 599k",
-      "£35"
+      "\u00a335"
     ],
     [
       "Rp 2.5m",
-      "£120"
+      "\u00a3120"
     ],
     [
       "Rp 6m",
-      "£250"
+      "\u00a3250"
     ],
     [
       "cancel kapan aja",
@@ -116,8 +116,8 @@
       "HYROX UK news"
     ],
     [
-      "Lagi ngambil yang terbaru…",
-      "Fetching the latest…"
+      "Lagi ngambil yang terbaru\u2026",
+      "Fetching the latest\u2026"
     ],
     [
       "Baca soal race. Terus ikutan race-nya.",
@@ -128,8 +128,8 @@
       "Venue, Tickets"
     ],
     [
-      "Lagi ngambil scene-nya…",
-      "Loading the scene…"
+      "Lagi ngambil scene-nya\u2026",
+      "Loading the scene\u2026"
     ],
     [
       "Sim dulu. Race belakangan. Podium bonus.",
@@ -185,7 +185,7 @@
     ],
     [
       "\"Rp \" +",
-      "\"£\" +"
+      "\"\u00a3\" +"
     ],
     [
       "toLocaleString(\"id-ID\")",
@@ -196,8 +196,8 @@
       "Finish-line face. Still can't believe it."
     ],
     [
-      "Tiap tiga bulan — tanggal muncul di sini",
-      "Every three months — next date appears here"
+      "Tiap tiga bulan \u2014 tanggal muncul di sini",
+      "Every three months \u2014 next date appears here"
     ],
     [
       "BCA bank transfer",
@@ -209,7 +209,7 @@
     ],
     [
       "Rp ${",
-      "£${"
+      "\u00a3${"
     ],
     [
       "Pelatih HYROX",
@@ -337,7 +337,7 @@
     ],
     [
       "HYROX Certified Coach, podium athlete, part-time oracle.",
-      "HYROX coaches and podium athletes — part-time oracles."
+      "HYROX coaches and podium athletes \u2014 part-time oracles."
     ],
     [
       "podium athlete, occasional matchmaker.",
@@ -356,8 +356,8 @@
       "they'll take your card down"
     ],
     [
-      "G&H books for the numbers she has — tell her you're coming",
-      "G&H book for the numbers they have — tell them you're coming"
+      "G&H books for the numbers she has \u2014 tell her you're coming",
+      "G&H book for the numbers they have \u2014 tell them you're coming"
     ],
     [
       "G&H books the table for the RSVPs she has",
@@ -373,7 +373,7 @@
     ],
     [
       "Gregor & Hattie has done it herself, twice, pregnant.",
-      "Gregor & Hattie have done it — podium flags and a sub-60 to show for it."
+      "Gregor & Hattie have done it \u2014 podium flags and a sub-60 to show for it."
     ],
     [
       "G&H intros you herself.",
@@ -392,8 +392,8 @@
       "who make intros themselves."
     ],
     [
-      "If she thinks it fits — pace, format, race — she connects you both. She races this circuit; she knows who would actually suit you.",
-      "If they think it fits — pace, format, race — they connect you both. They race this circuit; they know who would actually suit you."
+      "If she thinks it fits \u2014 pace, format, race \u2014 she connects you both. She races this circuit; she knows who would actually suit you.",
+      "If they think it fits \u2014 pace, format, race \u2014 they connect you both. They race this circuit; they know who would actually suit you."
     ],
     [
       "she'll edit as her programming evolves",
@@ -401,11 +401,11 @@
     ],
     [
       "women, doubles, mixed and relay. Official chip times, updated after",
-      "women, doubles, mixed and relay. Sample entries for the preview — official chip times once live, updated after"
+      "women, doubles, mixed and relay. Sample entries for the preview \u2014 official chip times once live, updated after"
     ],
     [
       "under an British nationality. All times are official chip times.",
-      "under a British nationality. Sample entries for the preview — official chip times once live."
+      "under a British nationality. Sample entries for the preview \u2014 official chip times once live."
     ],
     [
       "href=\"/racetoframe/hyrox-london/\"",
@@ -431,31 +431,31 @@
   "copyOverrides": [
     {
       "pattern": "<p class=\"crew-line\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"crew-line\">\n              Never raced and not sure where to start? Start here. Everything\n              on this site is built for the HYROX-curious as much as the\n              podium-chasers — free race tools, honest talk, and a crew who\n              remember their first finish. Come say it on Instagram; they\n              actually answer.\n            </p>"
+      "replace": "<p class=\"crew-line\">\n              Never raced and not sure where to start? Start here. Everything\n              on this site is built for the HYROX-curious as much as the\n              podium-chasers \u2014 free race tools, honest talk, and a crew who\n              remember their first finish. Come say it on Instagram; they\n              actually answer.\n            </p>"
     },
     {
       "pattern": "<p class=\"crew-note\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"crew-note\">\n              Weekly group session · monthly meetup — class first, then coffee\n              and treats (the important part, honestly) · starter programme in\n              the app · crew WhatsApp group. Walkers welcome — the podium's a\n              bonus.\n            </p>"
+      "replace": "<p class=\"crew-note\">\n              Weekly group session \u00b7 monthly meetup \u2014 class first, then coffee\n              and treats (the important part, honestly) \u00b7 starter programme in\n              the app \u00b7 crew WhatsApp group. Walkers welcome \u2014 the podium's a\n              bonus.\n            </p>"
     },
     {
       "pattern": "Pay by bank transfer \\(BCA\\) or QRIS[\\s\\S]*?needed\\.",
-      "replace": "Pay by bank transfer or direct debit — no card needed."
+      "replace": "Pay by bank transfer or direct debit \u2014 no card needed."
     },
     {
       "pattern": "<p class=\"plan-note\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"plan-note\">\n              Travelling or carrying a knock? Floor sessions can switch to\n              video form reviews, or bank them for when you're back — your\n              call, no loss.\n            </p>"
+      "replace": "<p class=\"plan-note\">\n              Travelling or carrying a knock? Floor sessions can switch to\n              video form reviews, or bank them for when you're back \u2014 your\n              call, no loss.\n            </p>"
     },
     {
       "pattern": "Belum berani race\\?[\\s\\S]*?seru\\.",
-      "replace": "Not ready to race? Come watch with the crew — free, still a great day out."
+      "replace": "Not ready to race? Come watch with the crew \u2014 free, still a great day out."
     },
     {
       "pattern": "Tiga hal per station[\\s\\S]*?masuk sini\\.",
-      "replace": "Three things per station that Gregor & Hattie actually does on race day — including the embarrassing ones. Spot a gap? <a href=\"#ask\">Ask Gregor & Hattie</a> — it might make the list."
+      "replace": "Three things per station that Gregor & Hattie actually does on race day \u2014 including the embarrassing ones. Spot a gap? <a href=\"#ask\">Ask Gregor & Hattie</a> \u2014 it might make the list."
     },
     {
       "pattern": "content=\"Punya tiket[^\"]*\"",
-      "replace": "content=\"Got a race ticket, need a partner? Post your card on the Race to Frame match board — first name and pace only — and we intro you to a HYROX partner at your level. Open, pro and mixed doubles, relay teams and race-trip company across the UK.\""
+      "replace": "content=\"Got a race ticket, need a partner? Post your card on the Race to Frame match board \u2014 first name and pace only \u2014 and we intro you to a HYROX partner at your level. Open, pro and mixed doubles, relay teams and race-trip company across the UK.\""
     },
     {
       "pattern": "Punya tiket, <em>nggak</em> punya partner\\.",
@@ -463,11 +463,11 @@
     },
     {
       "pattern": "Udah booking flight sama hotel[\\s\\S]*?mejanya\\.",
-      "replace": "Booked flights and a hotel for your next race? Post your trip — others can join in: same flight, same hotel, split a room, or just travel to the venue together. Nothing booked yet? Post anyway — join someone's trip. Gregor & Hattie makes the intro, your number stays private."
+      "replace": "Booked flights and a hotel for your next race? Post your trip \u2014 others can join in: same flight, same hotel, split a room, or just travel to the venue together. Nothing booked yet? Post anyway \u2014 join someone's trip. Gregor & Hattie makes the intro, your number stays private."
     },
     {
       "pattern": "content=\"Delapan stasiun kelar[^\"]*\"",
-      "replace": "content=\"Eight stations done — one more: dinner. The race-crew table is the G&H meetup: race-weekend dinners and post-race hangs for athletes, participants and the HYROX-curious. The dance floor is optional. RSVP so there\\u2019s a chair for you.\""
+      "replace": "content=\"Eight stations done \u2014 one more: dinner. The race-crew table is the G&H meetup: race-weekend dinners and post-race hangs for athletes, participants and the HYROX-curious. The dance floor is optional. RSVP so there\\u2019s a chair for you.\""
     },
     {
       "pattern": "Delapan stasiun kelar\\. <em>Satu lagi:</em> makan\\.",
@@ -475,15 +475,15 @@
     },
     {
       "pattern": "Station 9 itu meja makan[\\s\\S]*?Yang penting rame\\.",
-      "replace": "The ninth station is the dinner table. Race-weekend meetups — athletes, racers and the HYROX-curious all welcome. And after away races, Sunday night: a busy restaurant, race stories, laughing. Not fine dining. Loud is the point."
+      "replace": "The ninth station is the dinner table. Race-weekend meetups \u2014 athletes, racers and the HYROX-curious all welcome. And after away races, Sunday night: a busy restaurant, race stories, laughing. Not fine dining. Loud is the point."
     },
     {
       "pattern": "HYROX itu delapan stasiun[\\s\\S]*?rencana\\.",
-      "replace": "HYROX has eight stations. The ninth station — a dinner table full of people who get why your legs are wrecked. No pace requirement, no partner needed, don't even need to have raced. If you're just curious you're the most welcome of all — sit down, eat, hear the stories, leave with a plan."
+      "replace": "HYROX has eight stations. The ninth station \u2014 a dinner table full of people who get why your legs are wrecked. No pace requirement, no partner needed, don't even need to have raced. If you're just curious you're the most welcome of all \u2014 sit down, eat, hear the stories, leave with a plan."
     },
     {
       "pattern": "Yang kakinya masih berfungsi[\\s\\S]*?menang\\.",
-      "replace": "Legs still working? Carry on to the dance floor. Legs not working? Sit down — the gossip continues either way. Both count as winning."
+      "replace": "Legs still working? Carry on to the dance floor. Legs not working? Sit down \u2014 the gossip continues either way. Both count as winning."
     },
     {
       "pattern": "an Indonesian\\s+flag in the results",
@@ -491,7 +491,7 @@
     },
     {
       "pattern": "Makan bareng atlet, peserta[\\s\\S]*?edisi\\.",
-      "replace": "Dinner with athletes, racers and the HYROX-curious — a laid-back restaurant, race chat, then the dance floor (dancing) for legs that still work. Broken bodies welcome to just sit — the gossip carries on. Venue announced per edition."
+      "replace": "Dinner with athletes, racers and the HYROX-curious \u2014 a laid-back restaurant, race chat, then the dance floor (dancing) for legs that still work. Broken bodies welcome to just sit \u2014 the gossip carries on. Venue announced per edition."
     },
     {
       "pattern": "Apa yang lagi rame di <em>Asia</em>, dua baris aja\\.",
@@ -499,7 +499,7 @@
     },
     {
       "pattern": "Race baru, hasil, aturan yang berubah[\\s\\S]*?Norwich\\.",
-      "replace": "New races, results, rule changes and the bigger gossip — a handful every week: short summary, original source, and G&H's take on what it means for your next start line."
+      "replace": "New races, results, rule changes and the bigger gossip \u2014 a handful every week: short summary, original source, and G&H's take on what it means for your next start line."
     },
     {
       "pattern": "Ringkasan punya kita;[\\s\\S]*?kelewat\\?",
@@ -515,7 +515,7 @@
     },
     {
       "pattern": "Jadwal HYROX Norwich 2027 belum diumumkan[^\"]*",
-      "replace": "Race dates are announced by HYROX on hyrox.com — registration and tickets open there once the official schedule drops; popular cities usually sell out within weeks. Join the G&H mailing list so you hear about it the day it happens."
+      "replace": "Race dates are announced by HYROX on hyrox.com \u2014 registration and tickets open there once the official schedule drops; popular cities usually sell out within weeks. Join the G&H mailing list so you hear about it the day it happens."
     },
     {
       "pattern": "<span lang=\"id\"\\s*>[\\s\\S]*?Indonesia\\.</span\\s*>",
@@ -527,15 +527,15 @@
     },
     {
       "pattern": "Race resmi, simulasi[\\s\\S]*?berarti\\s*layak\\.",
-      "replace": "Official races, simulations, brand events, and training spots that actually have the stations — everything you need to stay race-ready at home. Gregor & Hattie curates it: if it's listed here, it's worth your time."
+      "replace": "Official races, simulations, brand events, and training spots that actually have the stations \u2014 everything you need to stay race-ready at home. Gregor & Hattie curates it: if it's listed here, it's worth your time."
     },
     {
       "pattern": "Lagi bikin sim atau kompetisi hybrid di Norwich yang belum masuk[\\s\\S]*?masuk list\\.",
-      "replace": "Running a sim or hybrid comp that\\u2019s not listed? <a href=\"https://www.instagram.com/gregorandhattie/\" target=\"_blank\" rel=\"noopener\">Tip off Gregor &amp; Hattie</a> — send the organiser link and dates, it goes straight on the list."
+      "replace": "Running a sim or hybrid comp that\\u2019s not listed? <a href=\"https://www.instagram.com/gregorandhattie/\" target=\"_blank\" rel=\"noopener\">Tip off Gregor &amp; Hattie</a> \u2014 send the organiser link and dates, it goes straight on the list."
     },
     {
       "pattern": "Warriors dapet sim berwaktu[\\s\\S]*?hari-H\\.",
-      "replace": "Race to Frame members get timed sims and split breakdowns before every race block — so race day holds no surprises."
+      "replace": "Race to Frame members get timed sims and split breakdowns before every race block \u2014 so race day holds no surprises."
     },
     {
       "pattern": " Jadwal HYROX Norwich dan Asia\\.",
@@ -546,8 +546,8 @@
       "replace": ""
     },
     {
-      "pattern": "RSVP — biar ada kursi buat lo",
-      "replace": "RSVP — so there's a chair for you"
+      "pattern": "RSVP \u2014 biar ada kursi buat lo",
+      "replace": "RSVP \u2014 so there's a chair for you"
     },
     {
       "pattern": " lang=\"id\"",
@@ -575,39 +575,39 @@
     },
     {
       "pattern": "\"text\": \"Nusantara International Convention Exhibition[^\"]*\"",
-      "replace": "\"text\": \"Race venues vary by city — check the official listing on hyrox.com for the address and door times. Allow an hour to get across town on race weekend.\""
+      "replace": "\"text\": \"Race venues vary by city \u2014 check the official listing on hyrox.com for the address and door times. Allow an hour to get across town on race weekend.\""
     },
     {
       "pattern": "Nusantara International Convention Exhibition \\(NICE\\) in PIK2,[\\s\\S]*?airport\\.",
-      "replace": "Venue details vary by city — the official listing on hyrox.com has the address and door times. Allow an hour to get across town on race weekend."
+      "replace": "Venue details vary by city \u2014 the official listing on hyrox.com has the address and door times. Allow an hour to get across town on race weekend."
     },
     {
       "pattern": "\"Udah dibilang kan[^\"]*\"",
-      "replace": "\"Told you — the sneaky sub-60 was no fluke. These two race like they\\u2019ve been at this level for years; British doubles really is world-class now. Everyone else is playing catch-up.\""
+      "replace": "\"Told you \u2014 the sneaky sub-60 was no fluke. These two race like they\\u2019ve been at this level for years; British doubles really is world-class now. Everyone else is playing catch-up.\""
     },
     {
       "pattern": "\"1:01:49\\. Weekend panas[^\"]*\"",
-      "replace": "\"1:01:49. Hot weekend, nothing to help you. If you're training for London — that's the number stuck to the fridge now.\""
+      "replace": "\"1:01:49. Hot weekend, nothing to help you. If you're training for London \u2014 that's the number stuck to the fridge now.\""
     },
     {
       "pattern": "\"Lantai HYROX di Norwich[^\"]*\"",
-      "replace": "\"Podium flags, finisher patches, full HYROX weekends across Europe — Gregor & Hattie turned the kitchen-table frame idea into a proper race-weekend operation. The default follow for anyone chasing their first finish line.\""
+      "replace": "\"Podium flags, finisher patches, full HYROX weekends across Europe \u2014 Gregor & Hattie turned the kitchen-table frame idea into a proper race-weekend operation. The default follow for anyone chasing their first finish line.\""
     },
     {
       "pattern": "<p class=\"eyebrow reveal\">Subscriptions</p>[\\s\\S]*?</div>\\s*</section>",
-      "replace": "<p class=\"eyebrow reveal\">Shop + crew</p>\n        <h3 class=\"reveal\">The frames stay. This is the community around them.</h3>\n        <p class=\"lead reveal\">\n          Your patch, your flag, your finish-line photo — framed. And a crew\n          to earn the next one with.\n        </p>\n        <div class=\"plan plan-crew reveal\">\n          <img\n            class=\"crew-photo\"\n            src=\"/racetoframe/images/squad-athlos.jpg\"\n            alt=\"The Race to Frame crew at their HYROX event stall\"\n            loading=\"lazy\"\n          />\n          <div class=\"crew-copy\">\n            <span class=\"tag\">Free — always</span>\n            <h4>Join the crew</h4>\n            <p class=\"crew-line\">\n              Race crews for every UK weekend — travel together, find a\n              doubles partner, post-race meet-ups at the stall, your name on\n              the results wall. The shop sells the frame; the crew gives you\n              something to put in it.\n            </p>\n            <p class=\"crew-note\">\n              Travel board · partner finder · results wall · finish-line\n              stalls · the podcast. Free, because community isn't a product.\n            </p>\n          </div>\n          <div class=\"crew-side\">\n            <div class=\"price\">£0 <small>/ forever</small></div>\n            <div class=\"per\">Race weekends · meet-ups · the wall</div>\n            <a class=\"btn btn-primary\" href=\"#ask\">Join the crew</a>\n          </div>\n        </div>\n        <div class=\"plans\">\n          <div class=\"plan featured reveal\">\n            <span class=\"tag\">Best seller</span>\n            <h4>Finisher Patch Frame</h4>\n            <div class=\"price\">£25.99</div>\n            <div class=\"per\">Your patch + your race photo, framed</div>\n            <ul>\n              <li>Fits 25/26 &amp; 26/27 season patches</li>\n              <li>Portrait + landscape photo windows</li>\n              <li>Pine frame — hangs or stands</li>\n              <li>The gift every first-timer actually wants</li>\n            </ul>\n            <a class=\"btn btn-primary\" href=\"https://racetoframe.com/products/hyrox-finisher-patch-frame-25-26-season\" target=\"_blank\" rel=\"noopener\">Shop the frame</a>\n            <a class=\"plan-more\" href=\"https://racetoframe.com/collections/hyrox-frames\" target=\"_blank\" rel=\"noopener\">All frames →</a>\n          </div>\n          <div class=\"plan reveal\">\n            <span class=\"tag\">Podium</span>\n            <h4>Podium Flag Frame</h4>\n            <div class=\"price\">£72.99</div>\n            <div class=\"per\">The flag earned the wall</div>\n            <ul>\n              <li>Tailored to official HYROX podium flags</li>\n              <li>Full frame 94 × 64 cm</li>\n              <li>Pine, lacquered, ready to hang</li>\n              <li>First podium or fifth — same pride</li>\n            </ul>\n            <a class=\"btn btn-ghost\" href=\"https://racetoframe.com/products/podium-frame-25-26-season\" target=\"_blank\" rel=\"noopener\">Shop the frame</a>\n            <a class=\"plan-more\" href=\"https://racetoframe.com/collections/hyrox-frames\" target=\"_blank\" rel=\"noopener\">All frames →</a>\n          </div>\n          <div class=\"plan reveal\">\n            <span class=\"tag\">At the races</span>\n            <h4>Find the stall</h4>\n            <div class=\"price\">Finish line</div>\n            <div class=\"per\">Photo printed and framed before you've cooled down</div>\n            <ul>\n              <li>Live photo printing at finish lines</li>\n              <li>Patch + photo framed on the spot</li>\n              <li>Meet G&amp;H — argue about stations in person</li>\n              <li>Event calendar on the community board</li>\n            </ul>\n            <a class=\"btn btn-ghost\" href=\"/racetoframe/events/\">Where we'll be</a>\n            <a class=\"plan-more\" href=\"/racetoframe/events/\">Event calendar →</a>\n          </div>\n        </div>\n      </div>\n    </section>"
+      "replace": "<p class=\"eyebrow reveal\">Shop + crew</p>\n        <h3 class=\"reveal\">The frames stay. This is the community around them.</h3>\n        <p class=\"lead reveal\">\n          Your patch, your flag, your finish-line photo \u2014 framed. And a crew\n          to earn the next one with.\n        </p>\n        <div class=\"plan plan-crew reveal\">\n          <img\n            class=\"crew-photo\"\n            src=\"/racetoframe/images/squad-athlos.jpg\"\n            alt=\"The Race to Frame crew at their HYROX event stall\"\n            loading=\"lazy\"\n          />\n          <div class=\"crew-copy\">\n            <span class=\"tag\">Free \u2014 always</span>\n            <h4>Join the crew</h4>\n            <p class=\"crew-line\">\n              Race crews for every UK weekend \u2014 travel together, find a\n              doubles partner, post-race meet-ups at the stall, your name on\n              the results wall. The shop sells the frame; the crew gives you\n              something to put in it.\n            </p>\n            <p class=\"crew-note\">\n              Travel board \u00b7 partner finder \u00b7 results wall \u00b7 finish-line\n              stalls \u00b7 the podcast. Free, because community isn't a product.\n            </p>\n          </div>\n          <div class=\"crew-side\">\n            <div class=\"price\">\u00a30 <small>/ forever</small></div>\n            <div class=\"per\">Race weekends \u00b7 meet-ups \u00b7 the wall</div>\n            <a class=\"btn btn-primary\" href=\"#ask\">Join the crew</a>\n          </div>\n        </div>\n        <div class=\"plans\">\n          <div class=\"plan featured reveal\">\n            <span class=\"tag\">Best seller</span>\n            <h4>Finisher Patch Frame</h4>\n            <div class=\"price\">\u00a325.99</div>\n            <div class=\"per\">Your patch + your race photo, framed</div>\n            <ul>\n              <li>Fits 25/26 &amp; 26/27 season patches</li>\n              <li>Portrait + landscape photo windows</li>\n              <li>Pine frame \u2014 hangs or stands</li>\n              <li>The gift every first-timer actually wants</li>\n            </ul>\n            <a class=\"btn btn-primary\" href=\"https://racetoframe.com/products/hyrox-finisher-patch-frame-25-26-season\" target=\"_blank\" rel=\"noopener\">Shop the frame</a>\n            <a class=\"plan-more\" href=\"https://racetoframe.com/collections/hyrox-frames\" target=\"_blank\" rel=\"noopener\">All frames \u2192</a>\n          </div>\n          <div class=\"plan reveal\">\n            <span class=\"tag\">Podium</span>\n            <h4>Podium Flag Frame</h4>\n            <div class=\"price\">\u00a372.99</div>\n            <div class=\"per\">The flag earned the wall</div>\n            <ul>\n              <li>Tailored to official HYROX podium flags</li>\n              <li>Full frame 94 \u00d7 64 cm</li>\n              <li>Pine, lacquered, ready to hang</li>\n              <li>First podium or fifth \u2014 same pride</li>\n            </ul>\n            <a class=\"btn btn-ghost\" href=\"https://racetoframe.com/products/podium-frame-25-26-season\" target=\"_blank\" rel=\"noopener\">Shop the frame</a>\n            <a class=\"plan-more\" href=\"https://racetoframe.com/collections/hyrox-frames\" target=\"_blank\" rel=\"noopener\">All frames \u2192</a>\n          </div>\n          <div class=\"plan reveal\">\n            <span class=\"tag\">At the races</span>\n            <h4>Find the stall</h4>\n            <div class=\"price\">Finish line</div>\n            <div class=\"per\">Photo printed and framed before you've cooled down</div>\n            <ul>\n              <li>Live photo printing at finish lines</li>\n              <li>Patch + photo framed on the spot</li>\n              <li>Meet G&amp;H \u2014 argue about stations in person</li>\n              <li>Event calendar on the community board</li>\n            </ul>\n            <a class=\"btn btn-ghost\" href=\"/racetoframe/events/\">Where we'll be</a>\n            <a class=\"plan-more\" href=\"/racetoframe/events/\">Event calendar \u2192</a>\n          </div>\n        </div>\n      </div>\n    </section>"
     },
     {
       "pattern": "Aku \\w+[\\s\\S]*?Yang penting berani memulai\\.",
-      "replace": "We're Gregor & Hattie — the couple behind Race to Frame. He races Europe most weekends; she's mid-build for her first solo HYROX. Real travel, real race-day chaos, your real first finish. Never raced? Even better — we remember ours."
+      "replace": "We're Gregor & Hattie \u2014 the couple behind Race to Frame. He races Europe most weekends; she's mid-build for her first solo HYROX. Real travel, real race-day chaos, your real first finish. Never raced? Even better \u2014 we remember ours."
     },
     {
       "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"eyebrow\">Meet the pair</p>\n          <h3>Gregor &amp; Hattie. From a kitchen-table frame idea to every HYROX weekend in Europe.</h3>\n          <p class=\"lead\">\n            The couple who turned \"we should frame that patch\"\n            into Race to Frame — finisher and podium flag frames,\n            coaching, and a podcast that's basically group therapy.\n            Gregor collects podium flags most weekends; Hattie's\n            build is the one to watch.\n          </p>\n          <p class=\"quote\">\n            \"The patch on your wall is the excuse. The crew is the point.\"\n          </p>"
+      "replace": "<p class=\"eyebrow\">Meet the pair</p>\n          <h3>Gregor &amp; Hattie. From a kitchen-table frame idea to every HYROX weekend in Europe.</h3>\n          <p class=\"lead\">\n            The couple who turned \"we should frame that patch\"\n            into Race to Frame \u2014 finisher and podium flag frames,\n            coaching, and a podcast that's basically group therapy.\n            Gregor collects podium flags most weekends; Hattie's\n            build is the one to watch.\n          </p>\n          <p class=\"quote\">\n            \"The patch on your wall is the excuse. The crew is the point.\"\n          </p>"
     },
     {
       "pattern": "<div class=\"stats\">[\\s\\S]*?Hyrox races</span></div>\\s*</div>",
-      "replace": "<div class=\"stats\">\n          <div>\n            <strong>Gymshark</strong><span>Sponsored athletes — with DFYNE</span>\n          </div>\n          <div>\n            <strong>~Every</strong><span>Weekend at a HYROX race somewhere in Europe</span>\n          </div>\n          <div><strong>2024</strong><span>Race to Frame founded</span></div>\n        </div>"
+      "replace": "<div class=\"stats\">\n          <div>\n            <strong>Gymshark</strong><span>Sponsored athletes \u2014 with DFYNE</span>\n          </div>\n          <div>\n            <strong>~Every</strong><span>Weekend at a HYROX race somewhere in Europe</span>\n          </div>\n          <div><strong>2024</strong><span>Race to Frame founded</span></div>\n        </div>"
     },
     {
       "pattern": "(<li><a href=\"/racetoframe/splits/\">Split [Aa]nalyser</a></li>)",
@@ -626,16 +626,16 @@
       "replace": ":root{\n  --hero-focus: 50% 35%;"
     },
     {
-      "pattern": "· dari lantai Zumba ke podium",
-      "replace": "· race weekend community"
+      "pattern": "\u00b7 dari lantai Zumba ke podium",
+      "replace": "\u00b7 race weekend community"
     },
     {
-      "pattern": "src=\"/racetoframe/images/[a-z-]+\\.jpg\"\\s*alt=\"The whole crew after a session — all abilities, all welcome\"",
-      "replace": "src=\"/racetoframe/images/gallery/restaurant.jpg\"\n            alt=\"The crew meetup table — dinner after the race, all welcome\""
+      "pattern": "src=\"/racetoframe/images/[a-z-]+\\.jpg\"\\s*alt=\"The whole crew after a session \u2014 all abilities, all welcome\"",
+      "replace": "src=\"/racetoframe/images/gallery/restaurant.jpg\"\n            alt=\"The crew meetup table \u2014 dinner after the race, all welcome\""
     },
     {
-      "pattern": "src=\"/racetoframe/images/[a-z-]+\\.jpg\"\\s*alt=\"Arms up at the finish line — the celebration is the point\"",
-      "replace": "src=\"/racetoframe/images/gallery/dance.jpg\"\n              alt=\"The dance floor after dinner — optional, always\""
+      "pattern": "src=\"/racetoframe/images/[a-z-]+\\.jpg\"\\s*alt=\"Arms up at the finish line \u2014 the celebration is the point\"",
+      "replace": "src=\"/racetoframe/images/gallery/dance.jpg\"\n              alt=\"The dance floor after dinner \u2014 optional, always\""
     },
     {
       "pattern": "G&H\\s+Warriors",
@@ -658,12 +658,12 @@
       "replace": "Your email and number never appear on the site"
     },
     {
-      "pattern": "We're Gregor & Hattie — the couple behind Race to Frame\\. He races Europe most weekends; she's mid-build for her first solo HYROX\\. Real travel, real race-day chaos, your real first finish\\. Never raced\\? Even better — we remember ours\\.",
-      "replace": "We're Gregor &amp; Hattie — the couple behind Race to Frame. Racing most weekends, coaching in between, podcasting about all of it. Real travel, real race-day chaos, your real first finish. Never raced? Even better — we remember ours."
+      "pattern": "We're Gregor & Hattie \u2014 the couple behind Race to Frame\\. He races Europe most weekends; she's mid-build for her first solo HYROX\\. Real travel, real race-day chaos, your real first finish\\. Never raced\\? Even better \u2014 we remember ours\\.",
+      "replace": "We're Gregor &amp; Hattie \u2014 the couple behind Race to Frame. Racing most weekends, coaching in between, podcasting about all of it. Real travel, real race-day chaos, your real first finish. Never raced? Even better \u2014 we remember ours."
     },
     {
-      "pattern": "<strong>Gymshark</strong><span>Sponsored athletes — with DFYNE</span>",
-      "replace": "<strong>Gymshark &amp; DFYNE</strong><span>Partner athletes — codes on the partners page</span>"
+      "pattern": "<strong>Gymshark</strong><span>Sponsored athletes \u2014 with DFYNE</span>",
+      "replace": "<strong>Gymshark &amp; DFYNE</strong><span>Partner athletes \u2014 codes on the partners page</span>"
     },
     {
       "pattern": "your card and G&H intros you herself\\.",
@@ -682,20 +682,20 @@
       "replace": "The G&amp;H Wall"
     },
     {
-      "pattern": "Twelve-week Warriors cohort — dates confirmed\\s*when HYROX announces\\.",
-      "replace": "Dates confirmed when HYROX announces — join the mailing list and it lands in your inbox the day it drops."
+      "pattern": "Twelve-week Warriors cohort \u2014 dates confirmed\\s*when HYROX announces\\.",
+      "replace": "Dates confirmed when HYROX announces \u2014 join the mailing list and it lands in your inbox the day it drops."
     },
     {
-      "pattern": "<h4>Warriors Sim Day — UK</h4>\\s*<p>\\s*Full race simulation on the floor\\. Open to all subscribers;\\s*bring a doubles partner\\.\\s*</p>",
-      "replace": "<h4>Race crew meetups</h4>\n              <p>\n                Post-race dinners and HYROX-curious hangs — the crew\n                table, open to anyone who raced, supported, or just wants in.\n              </p>"
+      "pattern": "<h4>Warriors Sim Day \u2014 UK</h4>\\s*<p>\\s*Full race simulation on the floor\\. Open to all subscribers;\\s*bring a doubles partner\\.\\s*</p>",
+      "replace": "<h4>Race crew meetups</h4>\n              <p>\n                Post-race dinners and HYROX-curious hangs \u2014 the crew\n                table, open to anyone who raced, supported, or just wants in.\n              </p>"
     },
     {
-      "pattern": "<h3 class=\"reveal\">Warriors kit — coming soon\\.</h3>\\s*<p class=\"lead reveal\">\\s*Training tees, race-day singlets and the R<span class=\"o\">O</span>X\\s*cap\\. Subscribers get first drop\\.\\s*</p>\\s*<a class=\"btn btn-ghost reveal\" href=\"#ask\">Tell me when it drops</a>",
-      "replace": "<h3 class=\"reveal\">Race to Frame — the shop.</h3>\n          <p class=\"lead reveal\">\n            Finisher patch frames, podium flag frames, medal frames and\n            keyrings — the stuff your race weekend deserves.\n          </p>\n          <a class=\"btn btn-ghost reveal\" href=\"/racetoframe/shop.html\">Browse the shop</a>"
+      "pattern": "<h3 class=\"reveal\">Warriors kit \u2014 coming soon\\.</h3>\\s*<p class=\"lead reveal\">\\s*Training tees, race-day singlets and the R<span class=\"o\">O</span>X\\s*cap\\. Subscribers get first drop\\.\\s*</p>\\s*<a class=\"btn btn-ghost reveal\" href=\"#ask\">Tell me when it drops</a>",
+      "replace": "<h3 class=\"reveal\">Race to Frame \u2014 the shop.</h3>\n          <p class=\"lead reveal\">\n            Finisher patch frames, podium flag frames, medal frames and\n            keyrings \u2014 the stuff your race weekend deserves.\n          </p>\n          <a class=\"btn btn-ghost reveal\" href=\"/racetoframe/shop.html\">Browse the shop</a>"
     },
     {
-      "pattern": "alt=\"Gregor & Hattie kit — photo coming soon\"",
-      "replace": "alt=\"Race to Frame podium flag frame — earned, not given\""
+      "pattern": "alt=\"Gregor & Hattie kit \u2014 photo coming soon\"",
+      "replace": "alt=\"Race to Frame podium flag frame \u2014 earned, not given\""
     },
     {
       "pattern": "src=\"/racetoframe/images/hero-reveal\\.jpg\"",
@@ -703,11 +703,11 @@
     },
     {
       "pattern": "alt=\"Gregor & Hattie and her doubles partner laughing at the Hyrox Birmingham finish line, BOY / GIRL\\? written on her stomach\"",
-      "replace": "alt=\"Hattie mid sled-pull at a HYROX race — the other half of Race to Frame\""
+      "replace": "alt=\"Hattie mid sled-pull at a HYROX race \u2014 the other half of Race to Frame\""
     },
     {
       "pattern": "src=\"/racetoframe/images/(?:wallball|race-revel)\\.jpg\"\\s*\\n\\s*alt=\"Gregor & Hattie mid wall-ball rep at a Hyrox race\"",
-      "replace": "src=\"/racetoframe/images/station-lean.jpg\"\n            alt=\"Gregor post-race in his Puresport cap — the man with the field notes\""
+      "replace": "src=\"/racetoframe/images/station-lean.jpg\"\n            alt=\"Gregor post-race in his Puresport cap \u2014 the man with the field notes\""
     },
     {
       "pattern": "src=\"/racetoframe/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Gregor & Hattie running a Hyrox lap in race kit\"",
@@ -715,7 +715,7 @@
     },
     {
       "pattern": "src=\"/racetoframe/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Gregor & Hattie laughing mid-effort in her HYROX race kit\"",
-      "replace": "src=\"/racetoframe/images/coach.jpg\"\n            alt=\"Gregor & Hattie — the pair behind the newsletter\""
+      "replace": "src=\"/racetoframe/images/coach.jpg\"\n            alt=\"Gregor & Hattie \u2014 the pair behind the newsletter\""
     },
     {
       "pattern": "src=\"/racetoframe/images/bio\\.jpg\"",
@@ -723,39 +723,39 @@
     },
     {
       "pattern": "alt=\"Gregor & Hattie, head coach\"",
-      "replace": "alt=\"Gregor & Hattie after their Manchester finish — ask them anything\""
+      "replace": "alt=\"Gregor & Hattie after their Manchester finish \u2014 ask them anything\""
     },
     {
-      "pattern": "src=\"/racetoframe/images/(?:finish|rope)\\.jpg\"\\s*\\n\\s*alt=\"Race to Frame podium flag frame — earned, not given\"",
-      "replace": "src=\"/racetoframe/images/frame-manchester.jpg\"\n            alt=\"A Race to Frame finisher frame on the wall — patch and race photo inside\""
+      "pattern": "src=\"/racetoframe/images/(?:finish|rope)\\.jpg\"\\s*\\n\\s*alt=\"Race to Frame podium flag frame \u2014 earned, not given\"",
+      "replace": "src=\"/racetoframe/images/frame-manchester.jpg\"\n            alt=\"A Race to Frame finisher frame on the wall \u2014 patch and race photo inside\""
     },
     {
       "pattern": "alt=\"The Race to Frame crew at their HYROX event stall\"",
-      "replace": "alt=\"Gregor & Hattie — the pair behind Race to Frame\""
+      "replace": "alt=\"Gregor & Hattie \u2014 the pair behind Race to Frame\""
     },
     {
       "pattern": "src=\"/racetoframe/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Gregor & Hattie and a teammate celebrating at a race event backdrop\"",
-      "replace": "src=\"/racetoframe/images/coach.jpg\"\n            alt=\"Gregor & Hattie — catch the pair at races most weekends\""
+      "replace": "src=\"/racetoframe/images/coach.jpg\"\n            alt=\"Gregor & Hattie \u2014 catch the pair at races most weekends\""
     },
     {
       "pattern": "src=\"/racetoframe/images/(?:finish|rope)\\.jpg\"\\s*\\n\\s*alt=\"Gregor & Hattie mid-pull on the RowErg, side view\"",
-      "replace": "src=\"/racetoframe/images/hero.jpg\"\n            alt=\"Gregor driving the sled — every second counts\""
+      "replace": "src=\"/racetoframe/images/hero.jpg\"\n            alt=\"Gregor driving the sled \u2014 every second counts\""
     },
     {
       "pattern": "src=\"/racetoframe/images/rope\\.jpg\"\\s*\\n\\s*alt=\"Gregor & Hattie leaning back into the sled pull rope in her lilac kit, UK banner behind\"",
-      "replace": "src=\"/racetoframe/images/hattie-run.jpg\"\n            alt=\"Hattie mid-run in her HYROX race kit — engine work between stations\""
+      "replace": "src=\"/racetoframe/images/hattie-run.jpg\"\n            alt=\"Hattie mid-run in her HYROX race kit \u2014 engine work between stations\""
     },
     {
-      "pattern": "src=\"/racetoframe/images/race-pair\\.jpg\"\\s*\\n\\s*alt=\"Gregor and Hattie together — the two voices on the podcast\"",
-      "replace": "src=\"/racetoframe/images/doubles.jpg\"\n            alt=\"Gregor and Hattie together — the two voices on the podcast\""
+      "pattern": "src=\"/racetoframe/images/race-pair\\.jpg\"\\s*\\n\\s*alt=\"Gregor and Hattie together \u2014 the two voices on the podcast\"",
+      "replace": "src=\"/racetoframe/images/doubles.jpg\"\n            alt=\"Gregor and Hattie together \u2014 the two voices on the podcast\""
     },
     {
       "pattern": "Prefer chat\\? Subscribers get G&H on\\s*<a class=\"chat-zone chat-zone-inline\" href=\"#ask\" data-whatsapp=\"\"\\s*><span class=\"dot\"></span> WhatsApp</a>",
       "replace": "Prefer chat? Find G&amp;H on\n              <a class=\"chat-zone chat-zone-inline\" href=\"https://www.instagram.com/gregorandhattie/\" target=\"_blank\" rel=\"noopener\"><span class=\"dot\"></span> Instagram</a>"
     },
     {
-      "pattern": "Upload didn't go through — send the photo and caption to Dina on Instagram \\(@dinabawden87\\) and she'll put it up\\.",
-      "replace": "Upload didn't go through — send the photo and caption to Gregor & Hattie on Instagram (@gregorandhattie)."
+      "pattern": "Upload didn't go through \u2014 send the photo and caption to Dina on Instagram \\(@dinabawden87\\) and she'll put it up\\.",
+      "replace": "Upload didn't go through \u2014 send the photo and caption to Gregor & Hattie on Instagram (@gregorandhattie)."
     },
     {
       "pattern": "const waHref = `https://wa\\.me/\\$\\{ROX_WHATSAPP\\}[^`]*`;",
@@ -782,8 +782,8 @@
       "replace": "animation: none;"
     },
     {
-      "pattern": "she'll\\s+intro you herself\\.\\s+She races this circuit — she knows who'd\\s+actually\\s+suit you\\.",
-      "replace": "they'll intro you themselves. They race this circuit — they know who'd actually\n            suit you."
+      "pattern": "she'll\\s+intro you herself\\.\\s+She races this circuit \u2014 she knows who'd\\s+actually\\s+suit you\\.",
+      "replace": "they'll intro you themselves. They race this circuit \u2014 they know who'd actually\n            suit you."
     },
     {
       "pattern": "<b>G&H checks every post\\.</b>\\s+Nothing goes up without her OK\\.\\s+She's the matchmaker, not an algorithm",
@@ -806,24 +806,24 @@
       "replace": "the crew finds your match."
     },
     {
-      "pattern": "Podium and 1st in age group 35–39[\\s\\S]*?16 active\\s*athletes\\s*</li>",
-      "replace": "Podium flags at HYROX Cardiff — the flags that became a\n              frame business\n            </li>\n            <li>\n              Sub-60 finishers; Gregor races most weekends across Europe\n            </li>\n            <li>\n              SheBuilds 1:1, Sculpt &amp; Shape and GJ programming — the\n              coaching side\n            </li>\n            <li>\n              Gymshark &amp; DFYNE partner athletes — codes on the partners\n              page\n            </li>"
+      "pattern": "Podium and 1st in age group 35\u201339[\\s\\S]*?16 active\\s*athletes\\s*</li>",
+      "replace": "Podium flags at HYROX Cardiff \u2014 the flags that became a\n              frame business\n            </li>\n            <li>\n              Sub-60 finishers; Gregor races most weekends across Europe\n            </li>\n            <li>\n              SheBuilds 1:1, Sculpt &amp; Shape and GJ programming \u2014 the\n              coaching side\n            </li>\n            <li>\n              Gymshark &amp; DFYNE partner athletes \u2014 codes on the partners\n              page\n            </li>"
     },
     {
       "pattern": "coaches, podium athlete, UK personal\\s+trainer\\.",
-      "replace": "coaches and podium athletes — at a race most weekends."
+      "replace": "coaches and podium athletes \u2014 at a race most weekends."
     },
     {
       "pattern": "<summary>Training pregnant</summary>\\s*<ol>[\\s\\S]*?</ol>\\s*</details>",
-      "replace": "<summary>Coming back from a layoff</summary>\n            <ol>\n              <li>\n                Drop intensity before volume — keep the sessions, cut the\n                load. The habit is the hard part; the fitness comes back.\n              </li>\n              <li>\n                Race doubles first. Splitting the stations means you can go\n                hard for 30 seconds and recover — banking confidence instead of\n                a blow-up.\n              </li>\n              <li>\n                A plan beats guesswork. Ask G&amp;H — that's what the coaching\n                page is for.\n              </li>\n            </ol>\n          </details>"
+      "replace": "<summary>Coming back from a layoff</summary>\n            <ol>\n              <li>\n                Drop intensity before volume \u2014 keep the sessions, cut the\n                load. The habit is the hard part; the fitness comes back.\n              </li>\n              <li>\n                Race doubles first. Splitting the stations means you can go\n                hard for 30 seconds and recover \u2014 banking confidence instead of\n                a blow-up.\n              </li>\n              <li>\n                A plan beats guesswork. Ask G&amp;H \u2014 that's what the coaching\n                page is for.\n              </li>\n            </ol>\n          </details>"
     },
     {
       "pattern": "<div class=\"results-tools\">",
-      "replace": "<p style=\"font-size:12px;opacity:.55;margin:-6px 0 10px\">Sample entries — the board fills from real submissions and results once live.</p>\n        <div class=\"results-tools\">"
+      "replace": "<p style=\"font-size:12px;opacity:.55;margin:-6px 0 10px\">Sample entries \u2014 the board fills from real submissions and results once live.</p>\n        <div class=\"results-tools\">"
     },
     {
       "pattern": "(<h3>Race weekend roundups</h3>\\s*<p class=\"plan-source\">[\\s\\S]*?</p>)",
-      "replace": "$1\n          <p style=\"font-size:12px;opacity:.55;margin-top:-6px\">Sample roundups — the format, not the real write-ups yet.</p>"
+      "replace": "$1\n          <p style=\"font-size:12px;opacity:.55;margin-top:-6px\">Sample roundups \u2014 the format, not the real write-ups yet.</p>"
     },
     {
       "pattern": "src=\"/racetoframe/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Gregor mid-run between stations at a HYROX race\"",
@@ -831,7 +831,7 @@
     },
     {
       "pattern": "alt=\"Gregor & Hattie laughing mid-lunge, carrying the 20 kg sandbag on her shoulders at a Hyrox race\"",
-      "replace": "alt=\"Gregor & Hattie — the pair behind Race to Frame\""
+      "replace": "alt=\"Gregor & Hattie \u2014 the pair behind Race to Frame\""
     },
     {
       "pattern": "alt=\"Gregor & Hattie at full extension on the SkiErg, arms overhead, mid-race\"",
@@ -839,31 +839,31 @@
     },
     {
       "pattern": "alt=\"Gregor & Hattie low over the sled poles driving a loaded sled, CENTR plates visible\"",
-      "replace": "alt=\"Gregor mid-stride on the farmers carry — kettlebells loaded\""
+      "replace": "alt=\"Gregor mid-stride on the farmers carry \u2014 kettlebells loaded\""
     },
     {
       "pattern": "alt=\"Gregor & Hattie mid broad jump between burpee reps in the arena\"",
-      "replace": "alt=\"Gregor between efforts — the breather you take when you can\""
+      "replace": "alt=\"Gregor between efforts \u2014 the breather you take when you can\""
     },
     {
       "pattern": "alt=\"The squad mid rowing warm-up in the gym\"",
-      "replace": "alt=\"Gregor & Hattie, DFYNE partner athletes — race weekend regulars\""
+      "replace": "alt=\"Gregor & Hattie, DFYNE partner athletes \u2014 race weekend regulars\""
     },
     {
       "pattern": "alt=\"Gregor & Hattie laughing with a 20 kg sandbag on each shoulder mid-lunges\"",
-      "replace": "alt=\"Gregor post-effort — still standing at the end\""
+      "replace": "alt=\"Gregor post-effort \u2014 still standing at the end\""
     },
     {
-      "pattern": "alt=\"Mid overhead press — the pressing pattern behind wall balls\"",
+      "pattern": "alt=\"Mid overhead press \u2014 the pressing pattern behind wall balls\"",
       "replace": "alt=\"Gregor mid-stride on the farmers carry\""
     },
     {
       "pattern": "\"text\": \"From the official Hyrox results \\(results\\.hyrox\\.com\\), hyresult\\.com and the hyranking\\.com the UK records board, filtered to athletes racing under an British nationality\\. Times are official chip times\\.\"",
-      "replace": "\"text\": \"Sample entries for the preview — the live board compiles finish times from official HYROX results (results.hyrox.com), hyresult.com and hyranking.com once connected.\""
+      "replace": "\"text\": \"Sample entries for the preview \u2014 the live board compiles finish times from official HYROX results (results.hyrox.com), hyresult.com and hyranking.com once connected.\""
     },
     {
       "pattern": "\"description\": \"Finish times and personal bests of British Hyrox athletes by division, compiled from official Hyrox results\\.\"",
-      "replace": "\"description\": \"Finish times and personal bests by division — sample board for the preview; live data compiles official HYROX results.\""
+      "replace": "\"description\": \"Finish times and personal bests by division \u2014 sample board for the preview; live data compiles official HYROX results.\""
     },
     {
       "pattern": "from official Hyrox results\\. Updated after every race\\. Hasil dan leaderboard HYROX the UK\\.",
@@ -874,16 +874,16 @@
       "replace": "src=\"/racetoframe/images/hattie-run.jpg\"\n            alt=\"Hattie mid-run between stations at HYROX Manchester\""
     },
     {
-      "pattern": "src=\"/racetoframe/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Gregor mid-stride on the farmers carry — kettlebells loaded\"",
-      "replace": "src=\"/racetoframe/images/stock-sleds.jpg\"\n            alt=\"Athletes drive loaded sleds at a HYROX race — the sled push station\""
+      "pattern": "src=\"/racetoframe/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Gregor mid-stride on the farmers carry \u2014 kettlebells loaded\"",
+      "replace": "src=\"/racetoframe/images/stock-sleds.jpg\"\n            alt=\"Athletes drive loaded sleds at a HYROX race \u2014 the sled push station\""
     },
     {
-      "pattern": "src=\"/racetoframe/images/wallball\\.jpg\"\\s*alt=\"Gregor & Hattie, DFYNE partner athletes — race weekend regulars\"",
-      "replace": "src=\"/racetoframe/images/stock-rower.jpg\" alt=\"On the rowing machine — full extension, controlled return\""
+      "pattern": "src=\"/racetoframe/images/wallball\\.jpg\"\\s*alt=\"Gregor & Hattie, DFYNE partner athletes \u2014 race weekend regulars\"",
+      "replace": "src=\"/racetoframe/images/stock-rower.jpg\" alt=\"On the rowing machine \u2014 full extension, controlled return\""
     },
     {
-      "pattern": "src=\"/racetoframe/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Gregor post-effort — still standing at the end\"",
-      "replace": "src=\"/racetoframe/images/stock-barbell.jpg\"\n            alt=\"Loaded bar on the gym floor — the strength work behind sandbag lunges\""
+      "pattern": "src=\"/racetoframe/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Gregor post-effort \u2014 still standing at the end\"",
+      "replace": "src=\"/racetoframe/images/stock-barbell.jpg\"\n            alt=\"Loaded bar on the gym floor \u2014 the strength work behind sandbag lunges\""
     },
     {
       "pattern": "(footer \\{[^}]*?)padding: 40px 0;",
@@ -899,33 +899,97 @@
       "items": []
     },
     "wall.json": {
-      "note": "PRIVATE PITCH PREVIEW — athlete wall shows placeholder entries only; real photos added with consent after launch.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 athlete wall shows placeholder entries only; real photos added with consent after launch.",
       "items": []
     },
     "news.json": {
-      "note": "PRIVATE PITCH PREVIEW — demo headlines only.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 demo headlines only.",
       "items": []
     },
     "partners.json": {
-      "note": "PRIVATE PITCH PREVIEW — partner offers below are illustrative.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 partner offers below are illustrative.",
       "items": []
     },
     "matchboard.json": {
-      "note": "PRIVATE PITCH PREVIEW — sample race-mate posts only.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 sample race-mate posts only.",
       "items": []
     },
     "travelboard.json": {
-      "note": "PRIVATE PITCH PREVIEW — sample travel-board posts only.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 sample travel-board posts only.",
       "items": []
     },
     "station9.json": {
-      "note": "PRIVATE PITCH PREVIEW — meetup listings are illustrative.",
+      "note": "PRIVATE PITCH PREVIEW \u2014 meetup listings are illustrative.",
       "next": null,
       "away": []
     },
     "gallery.json": {
-      "note": "PRIVATE PITCH PREVIEW.",
-      "items": []
+      "photos": [
+        {
+          "src": "/racetoframe/images/gallery/malaga-crew.jpg",
+          "alt": "HTCC crew on the race floor at HYROX M\u00e1laga",
+          "caption": "An unforgettable weekend full of PBs, sun, sangria and more laughs than I've had in a while. We'll be back next year \u2014 who's joining us?",
+          "by": "@sunday.squad",
+          "tilt": -1.5,
+          "event": "Race trip"
+        },
+        {
+          "src": "/racetoframe/images/gallery/malaga-three.jpg",
+          "alt": "Three HTCC athletes grinning after racing in M\u00e1laga",
+          "caption": "Dee's first ever HYROX. Hooked right from that first race.",
+          "by": "@hyrox.huns",
+          "tilt": 2,
+          "event": "Race trip"
+        },
+        {
+          "src": "/racetoframe/images/gallery/istanbul-podium.jpg",
+          "alt": "Michelle and Ellie with the Union flag on the podium at HYROX Istanbul",
+          "caption": "Michelle & Ellie \u2014 podium, Istanbul. Keep setting the standard.",
+          "by": "@racefloor.crew",
+          "tilt": 1,
+          "event": "Race day"
+        },
+        {
+          "src": "/racetoframe/images/gallery/glasgow-doors.jpg",
+          "alt": "Ross outside the HYROX Glasgow entrance",
+          "caption": "Glasgow. Just enjoy it they say. But don't underestimate the challenge.",
+          "by": "@sleds.and.regrets",
+          "tilt": -2,
+          "event": "Race day"
+        },
+        {
+          "src": "/racetoframe/images/gallery/glasgow-oxworld.jpg",
+          "alt": "HTCC crew at the OX World stand in Glasgow",
+          "caption": "Crew at Glasgow. Half of them didn't know each other a year ago.",
+          "by": "@the8amheat",
+          "tilt": 1.5,
+          "event": "Race day"
+        },
+        {
+          "src": "/racetoframe/images/gallery/doubles-finish.jpg",
+          "alt": "A doubles pair celebrating at the finish",
+          "caption": "You've smashed your training \u2014 now go smash this race. They did.",
+          "by": "@roxzone",
+          "event": "Race day"
+        },
+        {
+          "src": "/racetoframe/images/gallery/crew-faces.jpg",
+          "alt": "HTCC members in club tees after a group run",
+          "caption": "Sunny springy group runs. Run Club, Tuesdays and Wednesdays.",
+          "by": "@pb_chasers",
+          "tilt": 1,
+          "event": "Run club"
+        },
+        {
+          "src": "/racetoframe/images/gallery/crew-selfie.jpg",
+          "alt": "Post-race crew selfie",
+          "caption": "It's not just a club \u2014 it's friends & family.",
+          "by": "@finishline.fam",
+          "tilt": -1.5,
+          "event": "Race day"
+        }
+      ],
+      "note": "Seeded community picks \u2014 generic event photos standing in until real submissions land."
     },
     "bulletin.json": {
       "note": "PRIVATE PITCH PREVIEW.",

@@ -96,9 +96,74 @@ const {
   extraPairs = [],
   copyOverrides = [],
   stripSections = [],
+  stripBlocks = [],
   excludePatterns = [],
 } = cfg;
 const excludeRes = excludePatterns.map((re) => new RegExp(re));
+
+// Store-card defaults keep the G&H 365 copy working for configs that predate
+// the tokenised card; tenants without a store should stripBlocks: ["store-card"].
+cfg.tokens = cfg.tokens || {};
+cfg.tokens.STORE_NAME ??= `${cfg.tokens.BRAND || "Shop"} 365`;
+cfg.tokens.STORE_TAG ??= "Own line · drops";
+cfg.tokens.STORE_COPY ??= `Not a partner — ${cfg.tokens.COACH_FIRST || "the coach"}'s own clothing line. Doors open per drop; the list hears first.`;
+cfg.tokens.STORE_CTA ??= "Visit the store";
+// SEASON_START is lowercase by design for mid-sentence use; the athlete
+// headline needs a sentence-start version.
+cfg.tokens.SEASON_HEADLINE ??= `From ${cfg.tokens.SEASON_START || "day one"} to ${cfg.tokens.PB_SOLO || "a PB"} in one season.`;
+
+// Expand {{TOKEN}} inside override patterns so patterns written against the
+// chassis template still match the substituted output.
+function overridePattern(pattern) {
+  return String(pattern).replace(/\{\{(\w+)\}\}/g, (m, key) =>
+    Object.prototype.hasOwnProperty.call(cfg.tokens, key)
+      ? String(cfg.tokens[key]).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+      : m,
+  );
+}
+function applyCopyOverrides(s) {
+  for (const o of copyOverrides) {
+    // {{TOKEN}} in a replacement swaps for the real value; a function
+    // replacement keeps literal $ out of String.replace's special syntax.
+    const replacement = String(o.replace).replace(/\{\{(\w+)\}\}/g, (m, key) =>
+      Object.prototype.hasOwnProperty.call(cfg.tokens, key) ? String(cfg.tokens[key]) : m,
+    );
+    s = s.replace(
+      new RegExp(overridePattern(o.pattern), o.flags || "g"),
+      () => replacement,
+    );
+  }
+  return s;
+}
+
+// Remove any element carrying data-strip="<id>" — matched with tag-depth
+// awareness so nested divs don't truncate the cut early.
+function stripMarkedBlocks(s, id) {
+  const open = new RegExp(
+    `<(\\w+)([^>]*?)data-strip="${id}"[^>]*>`,
+    "g",
+  );
+  let m;
+  while ((m = open.exec(s))) {
+    const tag = m[1];
+    const tagRe = new RegExp(`<\\/?${tag}\\b[^>]*>`, "g");
+    tagRe.lastIndex = m.index;
+    let depth = 0;
+    let end = -1;
+    let t;
+    while ((t = tagRe.exec(s))) {
+      depth += t[0].startsWith("</") ? -1 : t[0].endsWith("/>") ? 0 : 1;
+      if (depth === 0) {
+        end = t.index + t[0].length;
+        break;
+      }
+    }
+    if (end === -1) break;
+    s = s.slice(0, m.index) + s.slice(end);
+    open.lastIndex = 0;
+  }
+  return s;
+}
 
 const src = path.join(root, "roxjaya");
 const dst = path.join(root, slug);
@@ -236,8 +301,8 @@ if (cfg.mode === "chassis") {
     let s = fs.readFileSync(file, "utf8");
     const before = s;
     for (const [a, b] of tokenPairs) s = s.split(a).join(b);
-    for (const o of copyOverrides)
-      s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
+    s = applyCopyOverrides(s);
+    for (const id of stripBlocks) s = stripMarkedBlocks(s, id);
     if (file.endsWith(".html")) {
       s = s.replace(/\s*<p class="site-credit"[\s\S]*?<\/p>/g, "");
       s = s.replace(
@@ -298,7 +363,7 @@ if (cfg.mode === "chassis") {
       }
       s = s.replace(
         new RegExp(
-          `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`,
+          `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js|jpe?g|png|webp|avif|gif|mp4|webm))(?:\\?v=\\d+)?"`,
           "g",
         ),
         `$1?v=${buildV}"`,
@@ -403,11 +468,11 @@ if (cfg.mode === "chassis") {
       ? fs.readFileSync(path.join(root, spec.slice(1)), "utf8")
       : spec;
     for (const [a, b] of tokenPairs) s = s.split(a).join(b);
-    for (const o of copyOverrides)
-      s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
+    s = applyCopyOverrides(s);
+    for (const id of stripBlocks) s = stripMarkedBlocks(s, id);
     s = s.replace(
       new RegExp(
-        `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`,
+        `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js|jpe?g|png|webp|avif|gif|mp4|webm))(?:\\?v=\\d+)?"`,
         "g",
       ),
       `$1?v=${buildV}"`,
@@ -731,16 +796,15 @@ for (const file of walk(dst)) {
     }
   }
   // per-demo copy fixes: regex find → replace
-  for (const o of copyOverrides) {
-    s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
-  }
+  s = applyCopyOverrides(s);
+  for (const id of stripBlocks) s = stripMarkedBlocks(s, id);
   if (file.endsWith(".html")) s = replaceMenu(s);
   if (file.endsWith("styles.css")) s += `\n${DEMO_NAV_CSS}\n`;
   // cache-bust tenant css/js so browsers can't serve stale hero/styles
   if (file.endsWith(".html")) {
     s = s.replace(
       new RegExp(
-        `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`,
+        `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js|jpe?g|png|webp|avif|gif|mp4|webm))(?:\\?v=\\d+)?"`,
         "g",
       ),
       `$1?v=${buildV}"`,
@@ -883,12 +947,11 @@ for (const [f, spec] of Object.entries(cfg.pageFiles || {})) {
     ? fs.readFileSync(path.join(root, spec.slice(1)), "utf8")
     : spec;
   for (const [a, b] of pairs) s = s.split(a).join(b);
-  for (const o of copyOverrides) {
-    s = s.replace(new RegExp(o.pattern, o.flags || "g"), o.replace);
-  }
+  s = applyCopyOverrides(s);
+  for (const id of stripBlocks) s = stripMarkedBlocks(s, id);
   s = s.replace(
     new RegExp(
-      `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js))(?:\\?v=\\d+)?"`,
+      `((?:src|href)="\\/${slug}\\/[^"?]+\\.(?:css|js|jpe?g|png|webp|avif|gif|mp4|webm))(?:\\?v=\\d+)?"`,
       "g",
     ),
     `$1?v=${buildV}"`,

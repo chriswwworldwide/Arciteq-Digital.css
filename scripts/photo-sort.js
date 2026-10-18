@@ -137,7 +137,12 @@ const photos = files.map((file) => {
     annotation,
     labels,
     visionText: labels.join(" ").toLowerCase(),
-    annotationText: (annotation.subjects || []).join(" ").toLowerCase(),
+    annotationText: [
+      ...(annotation.subjects || []),
+      annotation.suitability || "",
+    ]
+      .join(" ")
+      .toLowerCase(),
     text: `${file.toLowerCase()} ${caption} ${(annotation.subjects || []).join(" ")}`.toLowerCase(),
     trustedText:
       `${file.toLowerCase()} ${mediaMeta.caption_applies_to_carousel || mediaMeta.is_video_frame ? "" : caption} ${(annotation.subjects || []).join(" ")}`.toLowerCase(),
@@ -288,6 +293,16 @@ function score(photo, slot, slotName) {
       proof,
       reason: "no slot-specific subject evidence",
     };
+  if (
+    slot.requireEvent &&
+    photo.annotation.eventVerified !== true &&
+    photo.annotation.verificationSource !== "stock"
+  )
+    return {
+      score: -Infinity,
+      proof,
+      reason: "slot requires a verified event photo",
+    };
   if (slot.noTextOverlay && photo.textOverlay)
     return { score: -Infinity, proof, reason: "visible text overlay" };
   if (slot.faceCritical && !photo.hasPerson)
@@ -316,6 +331,9 @@ function score(photo, slot, slotName) {
   value += Math.min(proof.visualHits.length, 2) * 3;
   value += Number(photo.annotation.quality || 0);
   value += Number(photo.annotation.brandFit || 0);
+  value += Number(photo.annotation.framing || 0);
+  if (slot.eventPreferred && photo.annotation.eventVerified === true)
+    value += 12;
   if (slot.position === "hero")
     value += Number(photo.annotation.heroScore || 0) * 2;
   if (slot.faceCritical && photo.faceCount) value += 4;

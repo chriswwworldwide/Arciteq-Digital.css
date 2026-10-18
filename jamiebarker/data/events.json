@@ -1,0 +1,8 @@
+{
+  "note": "Next confirmed race for the countdown on /jamiebarker/events/. Set 'next' to { name, date (YYYY-MM-DD, race day 1), url } once Hyrox publishes it; null keeps the countdown hidden. Confirmed dates only.",
+  "next": {
+    "name": "HYROX Budapest",
+    "date": "2026-11-15",
+    "url": "https://hyrox.com/events/"
+  }
+}

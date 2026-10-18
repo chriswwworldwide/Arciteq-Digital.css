@@ -1,0 +1,153 @@
+{
+  "mode": "chassis",
+  "slug": "georgegrayson",
+  "heroMode": "full",
+  "strictImages": true,
+  "assets": "scripts/reskin/georgegrayson-assets",
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "tokens": {
+    "SLUG": "georgegrayson",
+    "COACH_NAME": "George Grayson",
+    "COACH_NAME_LC": "george grayson",
+    "COACH_FIRST": "George",
+    "COACH_LAST": "Grayson",
+    "WORDMARK_HTML": "<span class=\"o\">G</span>G",
+    "BRAND": "GG Coaching",
+    "BRAND_SHORT": "georgegrayson",
+    "BRAND_SOCIAL": "ggeorge_grayson",
+    "CLOTHING_SHORT": "GG",
+    "CITY": "Sheffield",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "online coaching for running, hyrox, fat loss and strength",
+    "HERO_TITLE_HTML": "Online coach.<br /><em>Hybrid athlete.</em>",
+    "APPLY_URL": "https://www.liinks.co/georgegraysoncoaching",
+    "PROGRAMMES_URL": "https://georgegraysonfitness.co.uk/8-week-program/",
+    "STORE_URL": "https://georgegraysonfitness.co.uk/",
+    "IG_URL": "https://www.instagram.com/ggeorge_grayson/",
+    "BRAND_IG_URL": "https://www.instagram.com/ggcoaching_/",
+    "YOUTUBE_URL": "https://www.instagram.com/ggeorge_grayson/",
+    "TIKTOK_URL": "https://www.instagram.com/ggeorge_grayson/",
+    "THREADS_URL": "https://www.threads.net/@ggeorge_grayson",
+    "DOUBLES_PARTNER": "Stuart",
+    "PB_VENUE": "London",
+    "PB_VENUE_LC": "london",
+    "DOUBLES_VENUE": "Manchester",
+    "DOUBLES_VENUE_LC": "manchester",
+    "OPEN_VENUE": "Glasgow",
+    "PB_SOLO": "Pro",
+    "PB_DOUBLES": "1:16:18",
+    "PB_HALF": "100k Ultra",
+    "PB_OPEN": "Pro",
+    "SEASON_START": "first HYROX",
+    "PARTNER_GYM": "GG Fitness",
+    "PARTNER_GYM_LC": "gg fitness",
+    "PARTNER_SUPP": "MyProtein",
+    "PARTNER_SUPP_LC": "myprotein",
+    "PARTNER_KIT": "Castore",
+    "PARTNER_KIT_LC": "castore",
+    "PARTNER_KIT_TAG": "Partner",
+    "PARTNER_KIT_TITLE": "Castore x George Grayson",
+    "PARTNER_KIT_COPY": "George races and trains in Castore \u2014 performance kit built for hybrid racing.",
+    "PARTNER_KIT_CTA": "Shop Castore",
+    "PARTNER_KIT_URL": "https://www.castore.com/",
+    "GYM_CODE": "GGCOACHING",
+    "PHOTO_BUDDY": "the GG crew",
+    "ACCENT": "#a3e635",
+    "ACCENT_DARK": "#5e8c0a",
+    "ACCENT_SOFT": "#18200a",
+    "BRAND_SHORT_UPPER": "GEORGE GRAYSON",
+    "LINKTREE_URL": "https://www.liinks.co/georgegraysoncoaching",
+    "VOICE_DOUBLES_HOOK": "Nothing beats grafting through a session with your partner next to you.",
+    "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
+    "VOICE_NEWS_TAKE": "Consistency beats intensity \u2014 the plan only works if you do.",
+    "SOCIAL_HANDLE_UPPER": "GGEORGE_GRAYSON",
+    "PARTNER_GYM_URL": "https://georgegraysonfitness.co.uk/",
+    "PARTNER_SUPP_URL": "https://www.myprotein.com/",
+    "STORE_NAME": "GG Coaching",
+    "STORE_TAG": "Coaching base",
+    "STORE_COPY": "George's coaching home \u2014 programmes, applications and contact. Everything runs through there.",
+    "STORE_CTA": "Visit the site",
+    "SEASON_HEADLINE": "From his first HYROX to the Pro division in one season."
+  },
+  "stripSections": [
+    "merch",
+    "tips"
+  ],
+  "omitImageSlots": [
+    "images/station-lean.jpg",
+    "images/kerb.jpg",
+    "images/rooftop.jpg",
+    "images/walkin.jpg",
+    "images/suit.jpg",
+    "images/hoodie.jpg"
+  ],
+  "stripPages": [
+    "watch.html"
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
+      "replace": "Online coach and hybrid athlete \u2014 running, HYROX, fat loss and strength."
+    },
+    {
+      "pattern": "AJ Bell Birmingham Half",
+      "replace": "Ultramarathon"
+    },
+    {
+      "pattern": "{{COACH_NAME}} \u2014 HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} \u2014 online coach, hybrid athlete, and the face behind {{BRAND}}."
+    },
+    {
+      "pattern": "Started the season at {{SEASON_START}}\\.",
+      "replace": "Coaches everyday athletes through running, HYROX and strength work."
+    },
+    {
+      "pattern": "HYROX Pro Solo {{PB_SOLO}} \u2014 {{PB_VENUE}}\\.",
+      "replace": "HYROX Pro \u2014 {{PB_VENUE}}."
+    },
+    {
+      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} \u2014 HYROX {{DOUBLES_VENUE}}\\.",
+      "replace": "Doubles {{PB_DOUBLES}} \u2014 HYROX {{DOUBLES_VENUE}}."
+    },
+    {
+      "pattern": "pro solo {{PB_SOLO}} in {{PB_VENUE}}, a {{PB_DOUBLES}} pro doubles",
+      "replace": "pro racing in {{PB_VENUE}}, doubles in {{DOUBLES_VENUE}}"
+    },
+    {
+      "pattern": "{{PB_DOUBLES}} isn't a flex, it's a warning",
+      "replace": "{{PB_DOUBLES}} isn't a flex, it's a warning"
+    },
+    {
+      "pattern": "Hong Kong",
+      "replace": "Sheffield"
+    },
+    {
+      "pattern": "\\s*<li><a href=\"/georgegrayson/watch.html\">Watch</a></li>",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*<a href=\"/georgegrayson/watch.html\">Watch</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "on FITR",
+      "replace": "online"
+    },
+    {
+      "pattern": "clothing line",
+      "replace": "athlete community"
+    },
+    {
+      "pattern": "365",
+      "replace": "hybrid"
+    }
+  ],
+  "stripBlocks": [
+    "youtube-link",
+    "tiktok-link"
+  ]
+}

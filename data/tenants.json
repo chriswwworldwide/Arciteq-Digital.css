@@ -13,7 +13,7 @@
       "language": "en",
       "shop": {
         "status": "opening-soon",
-        "message": "Our shop opens soon \u2014 we are finalising stock and pricing. Browse the collection and read our guides in the meantime."
+        "message": "Our shop opens soon — we are finalising stock and pricing. Browse the collection and read our guides in the meantime."
       },
       "catalog": {
         "nicheCategorySlugs": [
@@ -42,23 +42,23 @@
       },
       "seo": {
         "brandName": "PawVigil",
-        "tagline": "Pet safety, comfort and peace of mind \u2014 smart tech and non-ingestible wellness for dogs and cats.",
+        "tagline": "Pet safety, comfort and peace of mind — smart tech and non-ingestible wellness for dogs and cats.",
         "supportEmail": "hello@pawvigil.com",
-        "about": "PawVigil curates pet safety tech and non-ingestible wellness products with a focus on comfort, mobility and everyday monitoring \u2014 built for pet parents who want simple, practical peace of mind.",
+        "about": "PawVigil curates pet safety tech and non-ingestible wellness products with a focus on comfort, mobility and everyday monitoring — built for pet parents who want simple, practical peace of mind.",
         "meta": {
           "homeDescription": "PawVigil curates pet safety tech and non-ingestible wellness for calm, comfort and everyday monitoring. Guides and practical solutions for dogs and cats. Shop opening soon.",
-          "shopDescription": "Browse pet safety tech and non-ingestible wellness products curated for comfort, calm and smart monitoring. Shop opening soon \u2014 read our guides in the meantime.",
-          "cartDescription": "Review your cart and checkout securely. All prices are shown in the storefront\u2019s currency."
+          "shopDescription": "Browse pet safety tech and non-ingestible wellness products curated for comfort, calm and smart monitoring. Shop opening soon — read our guides in the meantime.",
+          "cartDescription": "Review your cart and checkout securely. All prices are shown in the storefront’s currency."
         },
         "sameAs": []
       },
       "offers": {
         "freeShipping": {
           "thresholdMinor": 4000,
-          "label": "Free UK delivery over \u00a340"
+          "label": "Free UK delivery over £40"
         },
         "starterKits": {
-          "subtitle": "Multi\u2011pet household? Save automatically when you add 2+ kits.",
+          "subtitle": "Multi‑pet household? Save automatically when you add 2+ kits.",
           "howItWorks": "2nd kit 10% off, 3rd+ 15% off (cap applies).",
           "kits": [
             {
@@ -89,7 +89,7 @@
             {
               "id": "home-monitoring-both",
               "title": "Home Monitoring Kit (Dog or Cat)",
-              "description": "Simple monitoring setup for peace of mind while you\u2019re out.",
+              "description": "Simple monitoring setup for peace of mind while you’re out.",
               "petTypes": [
                 "Dog",
                 "Cat"
@@ -105,11 +105,11 @@
           "items": [
             {
               "title": "Delivery",
-              "text": "Free UK delivery over \u00a340."
+              "text": "Free UK delivery over £40."
             },
             {
               "title": "Estimated delivery",
-              "text": "7\u201315 business days (UK)."
+              "text": "7–15 business days (UK)."
             },
             {
               "title": "Returns",
@@ -138,7 +138,7 @@
       "language": "en",
       "shop": {
         "status": "opening-soon",
-        "message": "Our shop opens soon \u2014 we are finalising puppy and kitten stock. Read the first-year guides in the meantime."
+        "message": "Our shop opens soon — we are finalising puppy and kitten stock. Read the first-year guides in the meantime."
       },
       "catalog": {
         "nicheCategorySlugs": [
@@ -155,21 +155,21 @@
         "brandName": "PupStartHQ",
         "tagline": "Puppy & kitten first-year essentials",
         "supportEmail": "hello@pupstarthq.com",
-        "about": "PupStartHQ is a UK guide and shop for the first twelve months with a puppy or kitten: crate and toilet training, teething, socialisation and settling in \u2014 with non-ingestible kit chosen to make those weeks calmer.",
+        "about": "PupStartHQ is a UK guide and shop for the first twelve months with a puppy or kitten: crate and toilet training, teething, socialisation and settling in — with non-ingestible kit chosen to make those weeks calmer.",
         "meta": {
           "homeDescription": "Puppy and kitten first-year guides and essentials: crate training, toilet training, teething, socialisation and settling a kitten in. UK delivery.",
           "shopDescription": "Shop puppy and kitten first-year essentials from PupStartHQ: crates, washable training pads, teething toys, first harnesses and kitten starter kit.",
           "cartDescription": "Your PupStartHQ cart."
         },
         "home": {
-          "eyebrow": "PupStartHQ \u2014 Puppy & kitten first year",
+          "eyebrow": "PupStartHQ — Puppy & kitten first year",
           "headline": "The first year, without the guesswork",
-          "lead": "Crate training, toilet training, teething, socialisation and settling in a kitten \u2014 practical guides written for first-time owners, plus the handful of non-ingestible essentials that actually help.",
+          "lead": "Crate training, toilet training, teething, socialisation and settling in a kitten — practical guides written for first-time owners, plus the handful of non-ingestible essentials that actually help.",
           "guideHref": "/content/pupstart/puppy-first-week-at-home.html?ref=home-hero",
           "guideLabel": "Read: your puppy's first week at home",
           "shopBannerHref": "/content/pupstart/puppy-toilet-training-timeline.html?ref=shop-banner",
           "shopBannerLabel": "Read our Puppy Toilet Training Timeline",
-          "footer": "PupStartHQ \u00b7 Puppy & kitten first-year guides and essentials."
+          "footer": "PupStartHQ · Puppy & kitten first-year guides and essentials."
         },
         "staticPages": [
           {
@@ -223,9 +223,9 @@
         "brandName": "Roxjaya Warriors Jakarta",
         "tagline": "Hyrox coaching, online programming and race prep from Jakarta.",
         "supportEmail": "",
-        "about": "Hyrox coaching by Dina \u2014 podium athlete and Jakarta personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "about": "Hyrox coaching by Dina — podium athlete and Jakarta personal trainer. Structured programming, station technique and run pacing for women who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in Jakarta and online with Dina \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in Jakarta and online with Dina — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -362,7 +362,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/roxjaya/welcome/",
-        "welcomeIntro": "Hi Dina \u2014 this is the first of your Monday emails from roxjaya.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Dina — this is the first of your Monday emails from roxjaya.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -374,8 +374,8 @@
           "name": "Dina Rosdiana",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Dina \u2014 HYROX Certified Coach, podium athlete, Jakarta personal trainer.",
-        "indexTitle": "HYROX training guides by Dina \u2014 Roxjaya Warriors Jakarta",
+        "byline": "By Dina — HYROX Certified Coach, podium athlete, Jakarta personal trainer.",
+        "indexTitle": "HYROX training guides by Dina — Roxjaya Warriors Jakarta",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from Jakarta: stations, pacing, race travel across Asia and training in the heat. New guide every fortnight.",
         "stylesheets": [
@@ -441,7 +441,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Dina</h3><p>Hybrid coaching in Jakarta or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/roxjaya/hybrid-coaching-jakarta/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Dina</h3><p>Hybrid coaching in Jakarta or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/roxjaya/hybrid-coaching-jakarta/\">See coaching plans</a></section>"
       }
     },
     {
@@ -463,9 +463,9 @@
         "brandName": "Burgon Fitness",
         "tagline": "Hyrox coaching, online programming and race prep from Stockport.",
         "supportEmail": "hannahburgonpt@gmail.com",
-        "about": "Hyrox coaching by Hannah \u2014 podium athlete and Stockport personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "about": "Hyrox coaching by Hannah — podium athlete and Stockport personal trainer. Structured programming, station technique and run pacing for women who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in Stockport and online with Hannah \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in Stockport and online with Hannah — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -602,7 +602,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/burgonfitness/welcome/",
-        "welcomeIntro": "Hi Hannah \u2014 this is the first of your Monday emails from burgonfitness.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Hannah — this is the first of your Monday emails from burgonfitness.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -614,8 +614,8 @@
           "name": "Hannah Burgon",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Hannah \u2014 HYROX Certified Coach, podium athlete, Stockport personal trainer.",
-        "indexTitle": "HYROX training guides by Hannah \u2014 Burgon Fitness",
+        "byline": "By Hannah — HYROX Certified Coach, podium athlete, Stockport personal trainer.",
+        "indexTitle": "HYROX training guides by Hannah — Burgon Fitness",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from Stockport: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -681,7 +681,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Hannah</h3><p>Hybrid coaching in Stockport or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/burgonfitness/hyrox-coaching-stockport/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Hannah</h3><p>Hybrid coaching in Stockport or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/burgonfitness/hyrox-coaching-stockport/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -718,9 +718,9 @@
         "brandName": "Pace Gym",
         "tagline": "Hyrox coaching, online programming and race prep from Chichester.",
         "supportEmail": "",
-        "about": "Hyrox coaching by Simon \u2014 podium athlete and Chichester personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "about": "Hyrox coaching by Simon — podium athlete and Chichester personal trainer. Structured programming, station technique and run pacing for women who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in Chichester and online with Simon \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in Chichester and online with Simon — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -857,7 +857,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/pacegym/welcome/",
-        "welcomeIntro": "Hi Simon \u2014 this is the first of your Monday emails from pacegym.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Simon — this is the first of your Monday emails from pacegym.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -869,8 +869,8 @@
           "name": "Simon Wenham",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Simon \u2014 HYROX Certified Coach, podium athlete, Chichester personal trainer.",
-        "indexTitle": "HYROX training guides by Simon \u2014 Pace Gym",
+        "byline": "By Simon — HYROX Certified Coach, podium athlete, Chichester personal trainer.",
+        "indexTitle": "HYROX training guides by Simon — Pace Gym",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from Chichester: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -936,7 +936,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Simon</h3><p>Hybrid coaching in Chichester or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/pacegym/hyrox-coaching-chichester/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Simon</h3><p>Hybrid coaching in Chichester or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/pacegym/hyrox-coaching-chichester/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -965,9 +965,9 @@
         "brandName": "Gym64",
         "tagline": "Hyrox coaching, online programming and race prep from Glenrothes.",
         "supportEmail": "",
-        "about": "Hyrox coaching by Coach \u2014 podium athlete and Glenrothes personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "about": "Hyrox coaching by Coach — podium athlete and Glenrothes personal trainer. Structured programming, station technique and run pacing for women who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in Glenrothes and online with Coach \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in Glenrothes and online with Coach — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -1104,7 +1104,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/gym64/welcome/",
-        "welcomeIntro": "Hi Coach \u2014 this is the first of your Monday emails from gym64.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Coach — this is the first of your Monday emails from gym64.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -1116,8 +1116,8 @@
           "name": "the Gym64 coaching team",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Coach \u2014 HYROX Certified Coach, podium athlete, Glenrothes personal trainer.",
-        "indexTitle": "HYROX training guides by Coach \u2014 Gym64",
+        "byline": "By Coach — HYROX Certified Coach, podium athlete, Glenrothes personal trainer.",
+        "indexTitle": "HYROX training guides by Coach — Gym64",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from Glenrothes: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -1183,7 +1183,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Glenrothes or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/gym64/hyrox-coaching-glenrothes/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Glenrothes or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/gym64/hyrox-coaching-glenrothes/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -1212,9 +1212,9 @@
         "brandName": "NutriFit Gym",
         "tagline": "Hyrox coaching, online programming and race prep from Liverpool.",
         "supportEmail": "",
-        "about": "Hyrox coaching by Coach \u2014 podium athlete and Liverpool personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "about": "Hyrox coaching by Coach — podium athlete and Liverpool personal trainer. Structured programming, station technique and run pacing for women who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in Liverpool and online with Coach \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in Liverpool and online with Coach — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -1351,7 +1351,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/nutrifit/welcome/",
-        "welcomeIntro": "Hi Coach \u2014 this is the first of your Monday emails from nutrifit.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Coach — this is the first of your Monday emails from nutrifit.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -1363,8 +1363,8 @@
           "name": "the NutriFit coaching team",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Coach \u2014 HYROX Certified Coach, podium athlete, Liverpool personal trainer.",
-        "indexTitle": "HYROX training guides by Coach \u2014 NutriFit Gym",
+        "byline": "By Coach — HYROX Certified Coach, podium athlete, Liverpool personal trainer.",
+        "indexTitle": "HYROX training guides by Coach — NutriFit Gym",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from Liverpool: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -1430,7 +1430,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Liverpool or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/nutrifit/hyrox-coaching-liverpool/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Liverpool or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/nutrifit/hyrox-coaching-liverpool/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -1459,9 +1459,9 @@
         "brandName": "KORE",
         "tagline": "Hyrox coaching, online programming and race prep from Newport.",
         "supportEmail": "",
-        "about": "Hyrox coaching by Coach \u2014 podium athlete and Newport personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "about": "Hyrox coaching by Coach — podium athlete and Newport personal trainer. Structured programming, station technique and run pacing for women who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in Newport and online with Coach \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in Newport and online with Coach — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -1598,7 +1598,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/kore/welcome/",
-        "welcomeIntro": "Hi Coach \u2014 this is the first of your Monday emails from kore.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Coach — this is the first of your Monday emails from kore.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -1610,8 +1610,8 @@
           "name": "the KORE coaching team",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Coach \u2014 HYROX Certified Coach, podium athlete, Newport personal trainer.",
-        "indexTitle": "HYROX training guides by Coach \u2014 KORE",
+        "byline": "By Coach — HYROX Certified Coach, podium athlete, Newport personal trainer.",
+        "indexTitle": "HYROX training guides by Coach — KORE",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from Newport: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -1677,7 +1677,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Newport or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/kore/hyrox-coaching-newport/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Coach</h3><p>Hybrid coaching in Newport or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/kore/hyrox-coaching-newport/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -1706,9 +1706,9 @@
         "brandName": "Fennell Fitness",
         "tagline": "Hyrox coaching, online programming and race prep from Bedford.",
         "supportEmail": "",
-        "about": "Hyrox coaching by Dan \u2014 podium athlete and Bedford personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "about": "Hyrox coaching by Dan — podium athlete and Bedford personal trainer. Structured programming, station technique and run pacing for women who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in Bedford and online with Dan \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in Bedford and online with Dan — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -1845,7 +1845,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/fennellfitness/welcome/",
-        "welcomeIntro": "Hi Dan \u2014 this is the first of your Monday emails from fennellfitness.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Dan — this is the first of your Monday emails from fennellfitness.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -1857,8 +1857,8 @@
           "name": "Dan Fennell",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Dan \u2014 HYROX Certified Coach, podium athlete, Bedford personal trainer.",
-        "indexTitle": "HYROX training guides by Dan \u2014 Fennell Fitness",
+        "byline": "By Dan — HYROX Certified Coach, podium athlete, Bedford personal trainer.",
+        "indexTitle": "HYROX training guides by Dan — Fennell Fitness",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from Bedford: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -1924,7 +1924,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Dan</h3><p>Hybrid coaching in Bedford or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/fennellfitness/hyrox-coaching-bedford/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Dan</h3><p>Hybrid coaching in Bedford or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/fennellfitness/hyrox-coaching-bedford/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -1953,9 +1953,9 @@
         "brandName": "Hustle Performance Centre",
         "tagline": "Hyrox coaching, online programming and race prep from Norwich.",
         "supportEmail": "hello@doyouhustle.co.uk",
-        "about": "Hyrox coaching by Bobby \u2014 podium athlete and Norwich personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "about": "Hyrox coaching by Bobby — podium athlete and Norwich personal trainer. Structured programming, station technique and run pacing for women who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in Norwich and online with Bobby \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in Norwich and online with Bobby — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -2092,7 +2092,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/hustle/welcome/",
-        "welcomeIntro": "Hi Bobby \u2014 this is the first of your Monday emails from hustle.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Bobby — this is the first of your Monday emails from hustle.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -2104,8 +2104,8 @@
           "name": "Bobby Harrison",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Bobby \u2014 HYROX Certified Coach, podium athlete, Norwich personal trainer.",
-        "indexTitle": "HYROX training guides by Bobby \u2014 Hustle Performance Centre",
+        "byline": "By Bobby — HYROX Certified Coach, podium athlete, Norwich personal trainer.",
+        "indexTitle": "HYROX training guides by Bobby — Hustle Performance Centre",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from Norwich: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -2171,7 +2171,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Bobby</h3><p>Hybrid coaching in Norwich or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/hustle/hyrox-coaching-norwich/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Bobby</h3><p>Hybrid coaching in Norwich or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/hustle/hyrox-coaching-norwich/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -2208,9 +2208,9 @@
         "brandName": "HYROX Doncaster",
         "tagline": "Hyrox coaching, online programming and race prep from Doncaster.",
         "supportEmail": "",
-        "about": "Hyrox coaching by Nigel \u2014 podium athlete and Doncaster personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "about": "Hyrox coaching by Nigel — podium athlete and Doncaster personal trainer. Structured programming, station technique and run pacing for women who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in Doncaster and online with Nigel \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in Doncaster and online with Nigel — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -2347,7 +2347,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/hyroxdoncaster/welcome/",
-        "welcomeIntro": "Hi Nigel \u2014 this is the first of your Monday emails from hyroxdoncaster.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Nigel — this is the first of your Monday emails from hyroxdoncaster.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -2359,8 +2359,8 @@
           "name": "Nigel Wood",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Nigel \u2014 HYROX Certified Coach, podium athlete, Doncaster personal trainer.",
-        "indexTitle": "HYROX training guides by Nigel \u2014 HYROX Doncaster",
+        "byline": "By Nigel — HYROX Certified Coach, podium athlete, Doncaster personal trainer.",
+        "indexTitle": "HYROX training guides by Nigel — HYROX Doncaster",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from Doncaster: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -2426,7 +2426,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Nigel</h3><p>Hybrid coaching in Doncaster or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/hyroxdoncaster/hyrox-coaching-doncaster/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Nigel</h3><p>Hybrid coaching in Doncaster or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/hyroxdoncaster/hyrox-coaching-doncaster/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -2459,9 +2459,9 @@
         "brandName": "HTC Christchurch",
         "tagline": "Hyrox coaching, online programming and race prep from Christchurch.",
         "supportEmail": "",
-        "about": "Hyrox coaching by Ross \u2014 podium athlete and Christchurch personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "about": "Hyrox coaching by Ross — podium athlete and Christchurch personal trainer. Structured programming, station technique and run pacing for women who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in Christchurch and online with Ross \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in Christchurch and online with Ross — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -2598,7 +2598,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/htcfisher/welcome/",
-        "welcomeIntro": "Hi Ross \u2014 this is the first of your Monday emails from htcfisher.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Ross — this is the first of your Monday emails from htcfisher.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -2610,8 +2610,8 @@
           "name": "Ross Fisher",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Ross \u2014 HYROX Certified Coach, podium athlete, Christchurch personal trainer.",
-        "indexTitle": "HYROX training guides by Ross \u2014 HTC Christchurch",
+        "byline": "By Ross — HYROX Certified Coach, podium athlete, Christchurch personal trainer.",
+        "indexTitle": "HYROX training guides by Ross — HTC Christchurch",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from Christchurch: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -2677,7 +2677,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Ross</h3><p>Hybrid coaching in Christchurch or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/htcfisher/hyrox-coaching-christchurch/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Ross</h3><p>Hybrid coaching in Christchurch or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/htcfisher/hyrox-coaching-christchurch/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -2687,795 +2687,6 @@
         {
           "label": "Coach Ross",
           "url": "https://www.instagram.com/coachrossfish/"
-        }
-      ],
-      "demo": true
-    },
-    {
-      "tenant_id": "racetoframe",
-      "vertical": "coaching",
-      "hostnames": [
-        "racetoframe.localhost",
-        "demo-racetoframe.localhost"
-      ],
-      "canonicalHost": "racetoframe.localhost",
-      "currency": "GBP",
-      "language": "en",
-      "catalog": {
-        "nicheCategorySlugs": [],
-        "heroProductIds": [],
-        "productTypeSlugs": []
-      },
-      "seo": {
-        "brandName": "Gregor & Hattie",
-        "tagline": "Hyrox coaching, online programming and race prep from UK.",
-        "supportEmail": "",
-        "about": "Hyrox coaching by Gregor & Hattie \u2014 podium athlete and UK personal trainer. Structured programming, station technique and run pacing for women who race.",
-        "meta": {
-          "homeDescription": "Hyrox coaching in UK and online with Gregor & Hattie \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
-          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
-          "cartDescription": "Review your plan and subscribe securely."
-        },
-        "sameAs": [],
-        "staticPages": [
-          {
-            "path": "/racetoframe/",
-            "priority": "1.0"
-          },
-          {
-            "path": "/racetoframe/stations-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/run-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/fuel-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/taper-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/warrior-program/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/hybrid-coaching-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/elite-race-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/events/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/racetoframe/hyrox-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/race-planner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/news/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/racetoframe/london-hybrid-scene/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/advertise/",
-            "priority": "0.5"
-          },
-          {
-            "path": "/racetoframe/coaching.html",
-            "priority": "0.7"
-          },
-          {
-            "path": "/racetoframe/results/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/splits/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/doubles/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/find-a-partner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/racetoframe/race-crew/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/racetoframe/guides/",
-            "priority": "0.8"
-          }
-        ]
-      },
-      "submissions": {
-        "kinds": [
-          "race_splits",
-          "wall_photo",
-          "sponsor",
-          "bank_transfer",
-          "date_alert",
-          "partner_search",
-          "travel_party",
-          "station9_rsvp",
-          "race_result",
-          "predictor"
-        ]
-      },
-      "features": {
-        "predictor": true,
-        "chatbot": false
-      },
-      "analytics": {
-        "pageviews": true
-      },
-      "automation": {
-        "inbox": "racetoframe/data/inbox.json",
-        "writable": [
-          "racetoframe/data/events.json",
-          "racetoframe/data/cities.json",
-          "racetoframe/data/news.json",
-          "racetoframe/data/partners.json",
-          "racetoframe/data/matchboard.json",
-          "racetoframe/data/travelboard.json"
-        ],
-        "partners": "racetoframe/data/partners.json",
-        "matchboard": "racetoframe/data/matchboard.json",
-        "travelboard": "racetoframe/data/travelboard.json",
-        "autoApprove": [
-          "event",
-          "news",
-          "alert",
-          "sponsor"
-        ],
-        "coachPath": "/racetoframe/coach/",
-        "digestTo": "demo@example.com",
-        "digestDayUtc": 1,
-        "digestHourUtc": 0,
-        "welcomePath": "/racetoframe/welcome/",
-        "welcomeIntro": "Hi Gregor & Hattie \u2014 this is the first of your Monday emails from racetoframe.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
-      },
-      "offers": {},
-      "guides": {
-        "basePath": "/racetoframe/guides/",
-        "brand": "Gregor & Hattie",
-        "homePath": "/racetoframe/",
-        "language": "en",
-        "author": {
-          "name": "Gregor & Hattie",
-          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
-        },
-        "byline": "By Gregor & Hattie \u2014 HYROX Certified Coach, podium athlete, UK personal trainer.",
-        "indexTitle": "HYROX training guides by Gregor & Hattie \u2014 Gregor & Hattie",
-        "indexHeading": "HYROX training guides",
-        "indexDescription": "Practical HYROX guides from UK: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
-        "stylesheets": [
-          "/racetoframe/styles.css",
-          "/racetoframe/guide.css"
-        ],
-        "scripts": [
-          "/racetoframe/app.js",
-          "/racetoframe/partners.js"
-        ],
-        "headerHtml": "<a href=\"/racetoframe/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">GREG<span class=\"o\">O</span>R &amp; HATTIE <span class=\"sig\" aria-label=\"by Gregor & Hattie\"><span class=\"sig-text\">by Gregor & Hattie</span></span></span></h1></a><p class=\"city\">UK</p>",
-        "nav": [
-          {
-            "href": "/racetoframe/",
-            "label": "Home"
-          },
-          {
-            "href": "/racetoframe/stations-prep/",
-            "label": "Stations Prep"
-          },
-          {
-            "href": "/racetoframe/run-zone/",
-            "label": "Run Zone"
-          },
-          {
-            "href": "/racetoframe/fuel-zone/",
-            "label": "Fuel Zone"
-          },
-          {
-            "href": "/racetoframe/taper-zone/",
-            "label": "Taper Zone"
-          },
-          {
-            "href": "/racetoframe/guides/",
-            "label": "Guides"
-          },
-          {
-            "href": "/racetoframe/events/",
-            "label": "Upcoming Events"
-          },
-          {
-            "href": "/racetoframe/hyrox-london/",
-            "label": "Hyrox UK"
-          },
-          {
-            "href": "/racetoframe/race-planner/",
-            "label": "Race planner"
-          },
-          {
-            "href": "/racetoframe/news/",
-            "label": "News"
-          },
-          {
-            "href": "/racetoframe/results/",
-            "label": "Results"
-          },
-          {
-            "href": "/racetoframe/splits/",
-            "label": "Split analyser"
-          },
-          {
-            "href": "/racetoframe/#plans",
-            "label": "Subscriptions"
-          }
-        ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Gregor & Hattie</h3><p>Hybrid coaching in UK or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/racetoframe/hybrid-coaching-london/\">See coaching plans</a></section>"
-      },
-      "channels": [
-        {
-          "label": "Instagram @gregorandhattie",
-          "url": "https://www.instagram.com/gregorandhattie/"
-        },
-        {
-          "label": "TikTok @gregorandhattie",
-          "url": "https://www.tiktok.com/@gregorandhattie"
-        },
-        {
-          "label": "Race to Frame shop",
-          "url": "https://racetoframe.com/"
-        },
-        {
-          "label": "Podcast",
-          "url": "/racetoframe/podcast.html"
-        },
-        {
-          "label": "Mailing list",
-          "url": "https://racetoframe.com/pages/mailing-list"
-        }
-      ],
-      "demo": true
-    },
-    {
-      "tenant_id": "joshharrison",
-      "vertical": "coaching",
-      "hostnames": [
-        "joshharrison.localhost",
-        "demo-joshharrison.localhost"
-      ],
-      "canonicalHost": "joshharrison.localhost",
-      "currency": "GBP",
-      "language": "en",
-      "catalog": {
-        "nicheCategorySlugs": [],
-        "heroProductIds": [],
-        "productTypeSlugs": []
-      },
-      "seo": {
-        "brandName": "Josh Harrison",
-        "tagline": "Hyrox coaching, online programming and race prep from Worcestershire.",
-        "supportEmail": "",
-        "about": "Hyrox coaching by Josh \u2014 podium athlete and Worcestershire personal trainer. Structured programming, station technique and run pacing for women who race.",
-        "meta": {
-          "homeDescription": "Hyrox coaching in Worcestershire and online with Josh \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
-          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
-          "cartDescription": "Review your plan and subscribe securely."
-        },
-        "sameAs": [],
-        "staticPages": [
-          {
-            "path": "/joshharrison/",
-            "priority": "1.0"
-          },
-          {
-            "path": "/joshharrison/stations-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/run-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/fuel-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/taper-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/warrior-program/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/hybrid-coaching-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/elite-race-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/events/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/joshharrison/hyrox-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/race-planner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/news/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/joshharrison/london-hybrid-scene/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/advertise/",
-            "priority": "0.5"
-          },
-          {
-            "path": "/joshharrison/coaching.html",
-            "priority": "0.7"
-          },
-          {
-            "path": "/joshharrison/results/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/splits/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/doubles/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/find-a-partner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/race-crew/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/joshharrison/guides/",
-            "priority": "0.8"
-          }
-        ]
-      },
-      "submissions": {
-        "kinds": [
-          "race_splits",
-          "wall_photo",
-          "sponsor",
-          "bank_transfer",
-          "date_alert",
-          "partner_search",
-          "travel_party",
-          "station9_rsvp",
-          "race_result",
-          "predictor"
-        ]
-      },
-      "features": {
-        "predictor": true,
-        "chatbot": false
-      },
-      "analytics": {
-        "pageviews": true
-      },
-      "automation": {
-        "inbox": "joshharrison/data/inbox.json",
-        "writable": [
-          "joshharrison/data/events.json",
-          "joshharrison/data/cities.json",
-          "joshharrison/data/news.json",
-          "joshharrison/data/partners.json",
-          "joshharrison/data/matchboard.json",
-          "joshharrison/data/travelboard.json"
-        ],
-        "partners": "joshharrison/data/partners.json",
-        "matchboard": "joshharrison/data/matchboard.json",
-        "travelboard": "joshharrison/data/travelboard.json",
-        "autoApprove": [
-          "event",
-          "news",
-          "alert",
-          "sponsor"
-        ],
-        "coachPath": "/joshharrison/coach/",
-        "digestTo": "demo@example.com",
-        "digestDayUtc": 1,
-        "digestHourUtc": 0,
-        "welcomePath": "/joshharrison/welcome/",
-        "welcomeIntro": "Hi Josh \u2014 this is the first of your Monday emails from joshharrison.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
-      },
-      "offers": {},
-      "guides": {
-        "basePath": "/joshharrison/guides/",
-        "brand": "Josh Harrison",
-        "homePath": "/joshharrison/",
-        "language": "en",
-        "author": {
-          "name": "Josh Harrison",
-          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
-        },
-        "byline": "By Josh \u2014 HYROX Certified Coach, podium athlete, Worcestershire personal trainer.",
-        "indexTitle": "HYROX training guides by Josh \u2014 Josh Harrison",
-        "indexHeading": "HYROX training guides",
-        "indexDescription": "Practical HYROX guides from Worcestershire: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
-        "stylesheets": [
-          "/joshharrison/styles.css",
-          "/joshharrison/guide.css"
-        ],
-        "scripts": [
-          "/joshharrison/app.js",
-          "/joshharrison/partners.js"
-        ],
-        "headerHtml": "<a href=\"/joshharrison/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">JOSH HARRIS<span class=\"o\">O</span>N <span class=\"sig\" aria-label=\"by Josh Harrison\"><span class=\"sig-text\">by Josh Harrison</span></span></span></h1></a><p class=\"city\">Worcestershire</p>",
-        "nav": [
-          {
-            "href": "/joshharrison/",
-            "label": "Home"
-          },
-          {
-            "href": "/joshharrison/stations-prep/",
-            "label": "Stations Prep"
-          },
-          {
-            "href": "/joshharrison/run-zone/",
-            "label": "Run Zone"
-          },
-          {
-            "href": "/joshharrison/fuel-zone/",
-            "label": "Fuel Zone"
-          },
-          {
-            "href": "/joshharrison/taper-zone/",
-            "label": "Taper Zone"
-          },
-          {
-            "href": "/joshharrison/guides/",
-            "label": "Guides"
-          },
-          {
-            "href": "/joshharrison/events/",
-            "label": "Upcoming Events"
-          },
-          {
-            "href": "/joshharrison/hyrox-london/",
-            "label": "Hyrox Worcestershire"
-          },
-          {
-            "href": "/joshharrison/race-planner/",
-            "label": "Race planner"
-          },
-          {
-            "href": "/joshharrison/news/",
-            "label": "News"
-          },
-          {
-            "href": "/joshharrison/results/",
-            "label": "Results"
-          },
-          {
-            "href": "/joshharrison/splits/",
-            "label": "Split analyser"
-          },
-          {
-            "href": "/joshharrison/#plans",
-            "label": "Subscriptions"
-          }
-        ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Josh</h3><p>Hybrid coaching in Worcestershire or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/joshharrison/hybrid-coaching-london/\">See coaching plans</a></section>"
-      },
-      "channels": [
-        {
-          "label": "TikTok @joshharrisonfit",
-          "url": "https://www.tiktok.com/@joshharrisonfit"
-        },
-        {
-          "label": "YouTube \u2014 JOSHHARRISONFIT",
-          "url": "https://www.youtube.com/@Joshharrisonfit"
-        },
-        {
-          "label": "Hybrid Hub @hybrid.hub",
-          "url": "https://www.instagram.com/hybrid.hub/"
-        },
-        {
-          "label": "HYBRID HUB 365",
-          "url": "https://thehybridhubclothing.com/"
-        },
-        {
-          "label": "All links",
-          "url": "https://linktr.ee/JHFIT"
-        }
-      ],
-      "demo": true
-    },
-    {
-      "tenant_id": "station9",
-      "vertical": "coaching",
-      "hostnames": [
-        "station9.localhost",
-        "demo-station9.localhost"
-      ],
-      "canonicalHost": "station9.localhost",
-      "currency": "gbp",
-      "language": "en",
-      "catalog": {
-        "nicheCategorySlugs": [],
-        "heroProductIds": [],
-        "productTypeSlugs": []
-      },
-      "seo": {
-        "brandName": "Station 9",
-        "tagline": "Hyrox coaching, online programming and race prep from the UK.",
-        "supportEmail": "",
-        "about": "Hyrox coaching by Station 9 \u2014 podium athlete and the UK personal trainer. Structured programming, station technique and run pacing for people who race.",
-        "meta": {
-          "homeDescription": "Hyrox coaching in the UK and online with Station 9 \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
-          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
-          "cartDescription": "Review your plan and subscribe securely."
-        },
-        "sameAs": [],
-        "staticPages": [
-          {
-            "path": "/station9/",
-            "priority": "1.0"
-          },
-          {
-            "path": "/station9/stations-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/run-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/fuel-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/taper-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/warrior-program/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/hybrid-coaching-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/elite-race-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/events/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/station9/hyrox-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/race-planner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/news/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/station9/london-hybrid-scene/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/advertise/",
-            "priority": "0.5"
-          },
-          {
-            "path": "/station9/coaching.html",
-            "priority": "0.7"
-          },
-          {
-            "path": "/station9/results/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/splits/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/doubles/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/find-a-partner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/station9/race-crew/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/station9/guides/",
-            "priority": "0.8"
-          }
-        ]
-      },
-      "submissions": {
-        "kinds": [
-          "race_splits",
-          "wall_photo",
-          "sponsor",
-          "bank_transfer",
-          "date_alert",
-          "partner_search",
-          "travel_party",
-          "station9_rsvp",
-          "race_result",
-          "predictor"
-        ]
-      },
-      "features": {
-        "predictor": true,
-        "chatbot": false
-      },
-      "analytics": {
-        "pageviews": true
-      },
-      "automation": {
-        "inbox": "station9/data/inbox.json",
-        "writable": [
-          "station9/data/events.json",
-          "station9/data/cities.json",
-          "station9/data/news.json",
-          "station9/data/partners.json",
-          "station9/data/matchboard.json",
-          "station9/data/travelboard.json"
-        ],
-        "partners": "station9/data/partners.json",
-        "matchboard": "station9/data/matchboard.json",
-        "travelboard": "station9/data/travelboard.json",
-        "autoApprove": [
-          "event",
-          "news",
-          "alert",
-          "sponsor"
-        ],
-        "coachPath": "/station9/coach/",
-        "digestTo": "demo@example.com",
-        "digestDayUtc": 1,
-        "digestHourUtc": 0,
-        "welcomePath": "/station9/welcome/",
-        "welcomeIntro": "Hi Station 9 \u2014 this is the first of your Monday emails from station9.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
-      },
-      "offers": {},
-      "guides": {
-        "basePath": "/station9/guides/",
-        "brand": "Station 9",
-        "homePath": "/station9/",
-        "language": "en",
-        "author": {
-          "name": "Station 9",
-          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
-        },
-        "byline": "By Station 9 \u2014 HYROX Certified Coach, podium athlete, the UK personal trainer.",
-        "indexTitle": "HYROX training guides by Station 9 \u2014 Station 9",
-        "indexHeading": "HYROX training guides",
-        "indexDescription": "Practical HYROX guides from the UK: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
-        "stylesheets": [
-          "/station9/styles.css",
-          "/station9/guide.css"
-        ],
-        "scripts": [
-          "/station9/app.js",
-          "/station9/partners.js"
-        ],
-        "headerHtml": "<a href=\"/station9/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">STATION <span class=\"o\">9</span> <span class=\"sig\" aria-label=\"by Station 9\"><span class=\"sig-text\">by Station 9</span></span></span></h1></a><p class=\"city\">the UK</p>",
-        "nav": [
-          {
-            "href": "/station9/",
-            "label": "Home"
-          },
-          {
-            "href": "/station9/stations-prep/",
-            "label": "Stations Prep"
-          },
-          {
-            "href": "/station9/run-zone/",
-            "label": "Run Zone"
-          },
-          {
-            "href": "/station9/fuel-zone/",
-            "label": "Fuel Zone"
-          },
-          {
-            "href": "/station9/taper-zone/",
-            "label": "Taper Zone"
-          },
-          {
-            "href": "/station9/guides/",
-            "label": "Guides"
-          },
-          {
-            "href": "/station9/events/",
-            "label": "Upcoming Events"
-          },
-          {
-            "href": "/station9/hyrox-london/",
-            "label": "Hyrox the UK"
-          },
-          {
-            "href": "/station9/race-planner/",
-            "label": "Race planner"
-          },
-          {
-            "href": "/station9/news/",
-            "label": "News"
-          },
-          {
-            "href": "/station9/results/",
-            "label": "Results"
-          },
-          {
-            "href": "/station9/splits/",
-            "label": "Split analyser"
-          },
-          {
-            "href": "/station9/#plans",
-            "label": "Subscriptions"
-          }
-        ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Station 9</h3><p>Hybrid coaching in the UK or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/station9/hybrid-coaching-london/\">See coaching plans</a></section>"
-      },
-      "channels": [
-        {
-          "label": "TikTok @station9fit",
-          "url": "https://www.tiktok.com/@station9studio"
-        },
-        {
-          "label": "YouTube \u2014 STATION9STUDIO",
-          "url": "https://www.youtube.com/@station9studio"
-        },
-        {
-          "label": "Station 9 @station9.studio",
-          "url": "https://www.instagram.com/station9.studio/"
-        },
-        {
-          "label": "Station 9 365",
-          "url": "https://station9.studio"
-        },
-        {
-          "label": "All links",
-          "url": "https://station9.studio"
         }
       ],
       "demo": true
@@ -3499,9 +2710,9 @@
         "brandName": "Zara Piergianni",
         "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
         "supportEmail": "",
-        "about": "Hyrox coaching by Zara \u2014 podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "about": "Hyrox coaching by Zara — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in United Kingdom and online with Zara \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in United Kingdom and online with Zara — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -3638,7 +2849,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/coachedbyzara/welcome/",
-        "welcomeIntro": "Hi Zara \u2014 this is the first of your Monday emails from coachedbyzara.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Zara — this is the first of your Monday emails from coachedbyzara.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -3650,8 +2861,8 @@
           "name": "Zara Piergianni",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Zara \u2014 HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
-        "indexTitle": "HYROX training guides by Zara \u2014 Zara Piergianni",
+        "byline": "By Zara — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
+        "indexTitle": "HYROX training guides by Zara — Zara Piergianni",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -3717,7 +2928,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Zara</h3><p>Hybrid coaching in United Kingdom or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/coachedbyzara/hybrid-coaching-london/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Zara</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/coachedbyzara/hybrid-coaching-london/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -3725,7 +2936,7 @@
           "url": "https://www.instagram.com/coachedbyzara/"
         },
         {
-          "label": "YouTube \u2014 COACHEDBYZARA",
+          "label": "YouTube — COACHEDBYZARA",
           "url": "https://www.instagram.com/coachedbyzara/"
         },
         {
@@ -3762,9 +2973,9 @@
         "brandName": "Jade Skillen",
         "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
         "supportEmail": "",
-        "about": "Hyrox coaching by Jade \u2014 podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "about": "Hyrox coaching by Jade — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
         "meta": {
-          "homeDescription": "Hyrox coaching in United Kingdom and online with Jade \u2014 podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "homeDescription": "Hyrox coaching in United Kingdom and online with Jade — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
           "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
           "cartDescription": "Review your plan and subscribe securely."
         },
@@ -3901,7 +3112,7 @@
         "digestDayUtc": 1,
         "digestHourUtc": 0,
         "welcomePath": "/jadeskillen/welcome/",
-        "welcomeIntro": "Hi Jade \u2014 this is the first of your Monday emails from jadeskillen.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+        "welcomeIntro": "Hi Jade — this is the first of your Monday emails from jadeskillen.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
       },
       "offers": {},
       "guides": {
@@ -3913,8 +3124,8 @@
           "name": "Jade Skillen",
           "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
         },
-        "byline": "By Jade \u2014 HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
-        "indexTitle": "HYROX training guides by Jade \u2014 Jade Skillen",
+        "byline": "By Jade — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
+        "indexTitle": "HYROX training guides by Jade — Jade Skillen",
         "indexHeading": "HYROX training guides",
         "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
         "stylesheets": [
@@ -3980,7 +3191,7 @@
             "label": "Subscriptions"
           }
         ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Jade</h3><p>Hybrid coaching in United Kingdom or fully online \u2014 programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/jadeskillen/hybrid-coaching-london/\">See coaching plans</a></section>"
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Jade</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/jadeskillen/hybrid-coaching-london/\">See coaching plans</a></section>"
       },
       "channels": [
         {
@@ -3988,8 +3199,8 @@
           "url": "https://www.instagram.com/jade_skillen/"
         },
         {
-          "label": "YouTube \u2014 JADE_SKILLEN",
-          "url": "https://www.instagram.com/jade_skillen/"
+          "label": "YouTube — JADE_SKILLEN",
+          "url": "https://www.youtube.com/channel/UCzInwf7-85RjXrzZ590CMww"
         },
         {
           "label": "Jade Skillen @jade_skillen",
@@ -3997,11 +3208,1589 @@
         },
         {
           "label": "Jade Skillen 365",
-          "url": "https://www.instagram.com/jade_skillen/"
+          "url": "https://smashyourhyrox.com/"
         },
         {
           "label": "All links",
-          "url": "https://www.instagram.com/jade_skillen/"
+          "url": "https://smashyourhyrox.com/"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "racetoframe",
+      "vertical": "coaching",
+      "hostnames": [
+        "racetoframe.localhost",
+        "demo-racetoframe.localhost"
+      ],
+      "canonicalHost": "racetoframe.localhost",
+      "currency": "GBP",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Gregor & Hattie",
+        "tagline": "Hyrox coaching, online programming and race prep from UK.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Gregor & Hattie — podium athlete and UK personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in UK and online with Gregor & Hattie — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/racetoframe/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/racetoframe/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/racetoframe/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/racetoframe/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/racetoframe/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/racetoframe/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/racetoframe/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/racetoframe/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "racetoframe/data/inbox.json",
+        "writable": [
+          "racetoframe/data/events.json",
+          "racetoframe/data/cities.json",
+          "racetoframe/data/news.json",
+          "racetoframe/data/partners.json",
+          "racetoframe/data/matchboard.json",
+          "racetoframe/data/travelboard.json"
+        ],
+        "partners": "racetoframe/data/partners.json",
+        "matchboard": "racetoframe/data/matchboard.json",
+        "travelboard": "racetoframe/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/racetoframe/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/racetoframe/welcome/",
+        "welcomeIntro": "Hi Gregor & Hattie — this is the first of your Monday emails from racetoframe.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/racetoframe/guides/",
+        "brand": "Gregor & Hattie",
+        "homePath": "/racetoframe/",
+        "language": "en",
+        "author": {
+          "name": "Gregor & Hattie",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Gregor & Hattie — HYROX Certified Coach, podium athlete, UK personal trainer.",
+        "indexTitle": "HYROX training guides by Gregor & Hattie — Gregor & Hattie",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from UK: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/racetoframe/styles.css",
+          "/racetoframe/guide.css"
+        ],
+        "scripts": [
+          "/racetoframe/app.js",
+          "/racetoframe/partners.js"
+        ],
+        "headerHtml": "<a href=\"/racetoframe/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">GREG<span class=\"o\">O</span>R &amp; HATTIE <span class=\"sig\" aria-label=\"by Gregor & Hattie\"><span class=\"sig-text\">by Gregor & Hattie</span></span></span></h1></a><p class=\"city\">UK</p>",
+        "nav": [
+          {
+            "href": "/racetoframe/",
+            "label": "Home"
+          },
+          {
+            "href": "/racetoframe/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/racetoframe/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/racetoframe/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/racetoframe/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/racetoframe/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/racetoframe/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/racetoframe/hyrox-london/",
+            "label": "Hyrox UK"
+          },
+          {
+            "href": "/racetoframe/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/racetoframe/news/",
+            "label": "News"
+          },
+          {
+            "href": "/racetoframe/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/racetoframe/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/racetoframe/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Gregor & Hattie</h3><p>Hybrid coaching in UK or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/racetoframe/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "Instagram @gregorandhattie",
+          "url": "https://www.instagram.com/gregorandhattie/"
+        },
+        {
+          "label": "TikTok @gregorandhattie",
+          "url": "https://www.tiktok.com/@gregorandhattie"
+        },
+        {
+          "label": "Race to Frame shop",
+          "url": "https://racetoframe.com/"
+        },
+        {
+          "label": "Podcast",
+          "url": "/racetoframe/podcast.html"
+        },
+        {
+          "label": "Mailing list",
+          "url": "https://racetoframe.com/pages/mailing-list"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "joshharrison",
+      "vertical": "coaching",
+      "hostnames": [
+        "joshharrison.localhost",
+        "demo-joshharrison.localhost"
+      ],
+      "canonicalHost": "joshharrison.localhost",
+      "currency": "GBP",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Josh Harrison",
+        "tagline": "Hyrox coaching, online programming and race prep from Worcestershire.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Josh — podium athlete and Worcestershire personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Worcestershire and online with Josh — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/joshharrison/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/joshharrison/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/joshharrison/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/joshharrison/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/joshharrison/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/joshharrison/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/joshharrison/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "joshharrison/data/inbox.json",
+        "writable": [
+          "joshharrison/data/events.json",
+          "joshharrison/data/cities.json",
+          "joshharrison/data/news.json",
+          "joshharrison/data/partners.json",
+          "joshharrison/data/matchboard.json",
+          "joshharrison/data/travelboard.json"
+        ],
+        "partners": "joshharrison/data/partners.json",
+        "matchboard": "joshharrison/data/matchboard.json",
+        "travelboard": "joshharrison/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/joshharrison/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/joshharrison/welcome/",
+        "welcomeIntro": "Hi Josh — this is the first of your Monday emails from joshharrison.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/joshharrison/guides/",
+        "brand": "Josh Harrison",
+        "homePath": "/joshharrison/",
+        "language": "en",
+        "author": {
+          "name": "Josh Harrison",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Josh — HYROX Certified Coach, podium athlete, Worcestershire personal trainer.",
+        "indexTitle": "HYROX training guides by Josh — Josh Harrison",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Worcestershire: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/joshharrison/styles.css",
+          "/joshharrison/guide.css"
+        ],
+        "scripts": [
+          "/joshharrison/app.js",
+          "/joshharrison/partners.js"
+        ],
+        "headerHtml": "<a href=\"/joshharrison/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">JOSH HARRIS<span class=\"o\">O</span>N <span class=\"sig\" aria-label=\"by Josh Harrison\"><span class=\"sig-text\">by Josh Harrison</span></span></span></h1></a><p class=\"city\">Worcestershire</p>",
+        "nav": [
+          {
+            "href": "/joshharrison/",
+            "label": "Home"
+          },
+          {
+            "href": "/joshharrison/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/joshharrison/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/joshharrison/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/joshharrison/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/joshharrison/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/joshharrison/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/joshharrison/hyrox-london/",
+            "label": "Hyrox Worcestershire"
+          },
+          {
+            "href": "/joshharrison/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/joshharrison/news/",
+            "label": "News"
+          },
+          {
+            "href": "/joshharrison/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/joshharrison/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/joshharrison/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Josh</h3><p>Hybrid coaching in Worcestershire or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/joshharrison/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @joshharrisonfit",
+          "url": "https://www.tiktok.com/@joshharrisonfit"
+        },
+        {
+          "label": "YouTube — JOSHHARRISONFIT",
+          "url": "https://www.youtube.com/@Joshharrisonfit"
+        },
+        {
+          "label": "Hybrid Hub @hybrid.hub",
+          "url": "https://www.instagram.com/hybrid.hub/"
+        },
+        {
+          "label": "HYBRID HUB 365",
+          "url": "https://thehybridhubclothing.com/"
+        },
+        {
+          "label": "All links",
+          "url": "https://linktr.ee/JHFIT"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "station9",
+      "vertical": "coaching",
+      "hostnames": [
+        "station9.localhost",
+        "demo-station9.localhost"
+      ],
+      "canonicalHost": "station9.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Station 9",
+        "tagline": "Hyrox coaching, online programming and race prep from the UK.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Station 9 — podium athlete and the UK personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in the UK and online with Station 9 — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/station9/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/station9/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/station9/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/station9/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/station9/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/station9/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/station9/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/station9/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "station9/data/inbox.json",
+        "writable": [
+          "station9/data/events.json",
+          "station9/data/cities.json",
+          "station9/data/news.json",
+          "station9/data/partners.json",
+          "station9/data/matchboard.json",
+          "station9/data/travelboard.json"
+        ],
+        "partners": "station9/data/partners.json",
+        "matchboard": "station9/data/matchboard.json",
+        "travelboard": "station9/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/station9/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/station9/welcome/",
+        "welcomeIntro": "Hi Station 9 — this is the first of your Monday emails from station9.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/station9/guides/",
+        "brand": "Station 9",
+        "homePath": "/station9/",
+        "language": "en",
+        "author": {
+          "name": "Station 9",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Station 9 — HYROX Certified Coach, podium athlete, the UK personal trainer.",
+        "indexTitle": "HYROX training guides by Station 9 — Station 9",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from the UK: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/station9/styles.css",
+          "/station9/guide.css"
+        ],
+        "scripts": [
+          "/station9/app.js",
+          "/station9/partners.js"
+        ],
+        "headerHtml": "<a href=\"/station9/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">STATION <span class=\"o\">9</span> <span class=\"sig\" aria-label=\"by Station 9\"><span class=\"sig-text\">by Station 9</span></span></span></h1></a><p class=\"city\">the UK</p>",
+        "nav": [
+          {
+            "href": "/station9/",
+            "label": "Home"
+          },
+          {
+            "href": "/station9/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/station9/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/station9/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/station9/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/station9/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/station9/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/station9/hyrox-london/",
+            "label": "Hyrox the UK"
+          },
+          {
+            "href": "/station9/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/station9/news/",
+            "label": "News"
+          },
+          {
+            "href": "/station9/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/station9/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/station9/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Station 9</h3><p>Hybrid coaching in the UK or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/station9/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @station9fit",
+          "url": "https://www.tiktok.com/@station9studio"
+        },
+        {
+          "label": "YouTube — STATION9STUDIO",
+          "url": "https://www.youtube.com/@station9studio"
+        },
+        {
+          "label": "Station 9 @station9.studio",
+          "url": "https://www.instagram.com/station9.studio/"
+        },
+        {
+          "label": "Station 9 365",
+          "url": "https://station9.studio"
+        },
+        {
+          "label": "All links",
+          "url": "https://station9.studio"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "faisalpma",
+      "vertical": "coaching",
+      "hostnames": [
+        "faisalpma.localhost",
+        "demo-faisalpma.localhost"
+      ],
+      "canonicalHost": "faisalpma.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Faisal Abdalla",
+        "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Faisal — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in United Kingdom and online with Faisal — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/faisalpma/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/faisalpma/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/faisalpma/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/faisalpma/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/faisalpma/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/faisalpma/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/faisalpma/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "faisalpma/data/inbox.json",
+        "writable": [
+          "faisalpma/data/events.json",
+          "faisalpma/data/cities.json",
+          "faisalpma/data/news.json",
+          "faisalpma/data/partners.json",
+          "faisalpma/data/matchboard.json",
+          "faisalpma/data/travelboard.json"
+        ],
+        "partners": "faisalpma/data/partners.json",
+        "matchboard": "faisalpma/data/matchboard.json",
+        "travelboard": "faisalpma/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/faisalpma/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/faisalpma/welcome/",
+        "welcomeIntro": "Hi Faisal — this is the first of your Monday emails from faisalpma.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/faisalpma/guides/",
+        "brand": "Faisal Abdalla",
+        "homePath": "/faisalpma/",
+        "language": "en",
+        "author": {
+          "name": "Faisal Abdalla",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Faisal — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
+        "indexTitle": "HYROX training guides by Faisal — Faisal Abdalla",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/faisalpma/styles.css",
+          "/faisalpma/guide.css"
+        ],
+        "scripts": [
+          "/faisalpma/app.js",
+          "/faisalpma/partners.js"
+        ],
+        "headerHtml": "<a href=\"/faisalpma/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">P</span>MA <span class=\"sig\" aria-label=\"by Faisal Abdalla\"><span class=\"sig-text\">by Faisal Abdalla</span></span></span></h1></a><p class=\"city\">United Kingdom</p>",
+        "nav": [
+          {
+            "href": "/faisalpma/",
+            "label": "Home"
+          },
+          {
+            "href": "/faisalpma/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/faisalpma/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/faisalpma/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/faisalpma/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/faisalpma/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/faisalpma/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/faisalpma/hyrox-london/",
+            "label": "Hyrox United Kingdom"
+          },
+          {
+            "href": "/faisalpma/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/faisalpma/news/",
+            "label": "News"
+          },
+          {
+            "href": "/faisalpma/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/faisalpma/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/faisalpma/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Faisal</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/faisalpma/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @faisalpmafit",
+          "url": "https://www.instagram.com/faisalpmafitness/"
+        },
+        {
+          "label": "YouTube — FAISALPMAFITNESS",
+          "url": "https://www.youtube.com/@PMAFitness"
+        },
+        {
+          "label": "PMA Fitness @faisalpmafitness",
+          "url": "https://www.instagram.com/faisalpmafitness/"
+        },
+        {
+          "label": "PMA Fitness 365",
+          "url": "https://linktr.ee/pmafitness"
+        },
+        {
+          "label": "All links",
+          "url": "https://linktr.ee/pmafitness"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "jamiebarker",
+      "vertical": "coaching",
+      "hostnames": [
+        "jamiebarker.localhost",
+        "demo-jamiebarker.localhost"
+      ],
+      "canonicalHost": "jamiebarker.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Jamie Barker",
+        "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Jamie — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in United Kingdom and online with Jamie — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/jamiebarker/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/jamiebarker/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/jamiebarker/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/jamiebarker/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/jamiebarker/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/jamiebarker/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jamiebarker/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/jamiebarker/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "jamiebarker/data/inbox.json",
+        "writable": [
+          "jamiebarker/data/events.json",
+          "jamiebarker/data/cities.json",
+          "jamiebarker/data/news.json",
+          "jamiebarker/data/partners.json",
+          "jamiebarker/data/matchboard.json",
+          "jamiebarker/data/travelboard.json"
+        ],
+        "partners": "jamiebarker/data/partners.json",
+        "matchboard": "jamiebarker/data/matchboard.json",
+        "travelboard": "jamiebarker/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/jamiebarker/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/jamiebarker/welcome/",
+        "welcomeIntro": "Hi Jamie — this is the first of your Monday emails from jamiebarker.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/jamiebarker/guides/",
+        "brand": "Jamie Barker",
+        "homePath": "/jamiebarker/",
+        "language": "en",
+        "author": {
+          "name": "Jamie Barker",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Jamie — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
+        "indexTitle": "HYROX training guides by Jamie — Jamie Barker",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/jamiebarker/styles.css",
+          "/jamiebarker/guide.css"
+        ],
+        "scripts": [
+          "/jamiebarker/app.js",
+          "/jamiebarker/partners.js"
+        ],
+        "headerHtml": "<a href=\"/jamiebarker/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">J</span>AMIE <span class=\"sig\" aria-label=\"by Jamie Barker\"><span class=\"sig-text\">by Jamie Barker</span></span></span></h1></a><p class=\"city\">United Kingdom</p>",
+        "nav": [
+          {
+            "href": "/jamiebarker/",
+            "label": "Home"
+          },
+          {
+            "href": "/jamiebarker/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/jamiebarker/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/jamiebarker/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/jamiebarker/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/jamiebarker/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/jamiebarker/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/jamiebarker/hyrox-london/",
+            "label": "Hyrox United Kingdom"
+          },
+          {
+            "href": "/jamiebarker/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/jamiebarker/news/",
+            "label": "News"
+          },
+          {
+            "href": "/jamiebarker/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/jamiebarker/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/jamiebarker/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Jamie</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/jamiebarker/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @jamiebarkerfit",
+          "url": "https://www.instagram.com/jamiebarker_fit/"
+        },
+        {
+          "label": "YouTube — JAMIEBARKER_FIT",
+          "url": "https://www.instagram.com/jamiebarker_fit/"
+        },
+        {
+          "label": "Jamie Barker @jamiebarker_fit",
+          "url": "https://www.instagram.com/jamiebarker_fit/"
+        },
+        {
+          "label": "Jamie Barker 365",
+          "url": "https://findyouredge.app/"
+        },
+        {
+          "label": "All links",
+          "url": "https://www.instagram.com/jamiebarker_fit/"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "georgegrayson",
+      "vertical": "coaching",
+      "hostnames": [
+        "georgegrayson.localhost",
+        "demo-georgegrayson.localhost"
+      ],
+      "canonicalHost": "georgegrayson.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "George Grayson",
+        "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by George — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in United Kingdom and online with George — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/georgegrayson/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/georgegrayson/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/georgegrayson/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/georgegrayson/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/georgegrayson/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/georgegrayson/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/georgegrayson/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/georgegrayson/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "georgegrayson/data/inbox.json",
+        "writable": [
+          "georgegrayson/data/events.json",
+          "georgegrayson/data/cities.json",
+          "georgegrayson/data/news.json",
+          "georgegrayson/data/partners.json",
+          "georgegrayson/data/matchboard.json",
+          "georgegrayson/data/travelboard.json"
+        ],
+        "partners": "georgegrayson/data/partners.json",
+        "matchboard": "georgegrayson/data/matchboard.json",
+        "travelboard": "georgegrayson/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/georgegrayson/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/georgegrayson/welcome/",
+        "welcomeIntro": "Hi George — this is the first of your Monday emails from georgegrayson.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/georgegrayson/guides/",
+        "brand": "George Grayson",
+        "homePath": "/georgegrayson/",
+        "language": "en",
+        "author": {
+          "name": "George Grayson",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By George — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
+        "indexTitle": "HYROX training guides by George — George Grayson",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/georgegrayson/styles.css",
+          "/georgegrayson/guide.css"
+        ],
+        "scripts": [
+          "/georgegrayson/app.js",
+          "/georgegrayson/partners.js"
+        ],
+        "headerHtml": "<a href=\"/georgegrayson/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">G</span>G <span class=\"sig\" aria-label=\"by George Grayson\"><span class=\"sig-text\">by George Grayson</span></span></span></h1></a><p class=\"city\">United Kingdom</p>",
+        "nav": [
+          {
+            "href": "/georgegrayson/",
+            "label": "Home"
+          },
+          {
+            "href": "/georgegrayson/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/georgegrayson/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/georgegrayson/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/georgegrayson/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/georgegrayson/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/georgegrayson/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/georgegrayson/hyrox-london/",
+            "label": "Hyrox United Kingdom"
+          },
+          {
+            "href": "/georgegrayson/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/georgegrayson/news/",
+            "label": "News"
+          },
+          {
+            "href": "/georgegrayson/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/georgegrayson/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/georgegrayson/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with George</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/georgegrayson/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @georgegraysonfit",
+          "url": "https://www.instagram.com/ggeorge_grayson/"
+        },
+        {
+          "label": "YouTube — GGEORGE_GRAYSON",
+          "url": "https://www.instagram.com/ggeorge_grayson/"
+        },
+        {
+          "label": "GG Coaching @ggeorge_grayson",
+          "url": "https://www.instagram.com/ggcoaching_/"
+        },
+        {
+          "label": "GG Coaching 365",
+          "url": "https://georgegraysonfitness.co.uk/"
+        },
+        {
+          "label": "All links",
+          "url": "https://www.liinks.co/georgegraysoncoaching"
         }
       ],
       "demo": true

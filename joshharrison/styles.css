@@ -1286,8 +1286,7 @@ section.block.alt {
 }
 
 /* Footer */
-footer {
-  padding: 40px 0 96px;
+$1padding: 40px 0 96px;
   border-top: 1px solid var(--line);
   color: var(--ink-3);
   font-size: 14px;

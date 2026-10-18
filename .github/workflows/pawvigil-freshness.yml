@@ -5,6 +5,9 @@ on:
     - cron: "20 9 * * 2"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   publish-guide:
     runs-on: ubuntu-latest
@@ -16,6 +19,11 @@ jobs:
       - name: Publish a guarded PawVigil guide when due
         run: node scripts/pawvigil-guide-autopilot.js
         env:
-          SITE_URL: https://pawvigil.com
-          ADMIN_API_KEY: ${{ secrets.ROXJAYA_ADMIN_KEY }}
+          GIT_PUBLISH: "true"
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Persist the guide and sitemap source
+        run: |
+          if git diff --quiet -- content data/pawvigil-guides.json data/tenants.json; then exit 0; fi
+          git add content data/pawvigil-guides.json data/tenants.json
+          git -c user.name="PawVigil Guide Bot" -c user.email="actions@github.com" commit -m "Publish PawVigil safety guide"
+          git push

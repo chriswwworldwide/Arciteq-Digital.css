@@ -1,5 +1,9 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { validateGuide, nearDuplicate } from "../src/guides.js";
 
+const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_URL = String(process.env.SITE_URL || "https://pawvigil.com").replace(
   /\/+$/,
   "",
@@ -9,6 +13,7 @@ const ANTHROPIC_KEY = String(process.env.ANTHROPIC_API_KEY || "");
 const MODEL = process.env.ANTHROPIC_MODEL || "claude-sonnet-5-5";
 const MIN_DAYS = Number(process.env.MIN_DAYS ?? 13);
 const DRY = process.argv.includes("--dry");
+const GIT_PUBLISH = process.env.GIT_PUBLISH === "true";
 
 export const TOPICS = [
   "QR code dog ID tags: what to store, what to keep private and how often to test the link",
@@ -99,10 +104,104 @@ async function draft(topic, existingTitles) {
   return JSON.parse(text.slice(start, end + 1));
 }
 
+const esc = (value) =>
+  String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
+function staticState() {
+  const file = path.join(root, "data", "pawvigil-guides.json");
+  if (!fs.existsSync(file)) return { lastPublished: "", guides: [] };
+  return JSON.parse(fs.readFileSync(file, "utf8"));
+}
+
+function renderStaticGuide(guide, date) {
+  const canonical = `https://pawvigil.com/content/${guide.slug}.html`;
+  const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.title,
+    description: guide.description,
+    datePublished: date,
+    dateModified: date,
+    author: { "@type": "Organization", name: "PawVigil" },
+    publisher: { "@type": "Organization", name: "PawVigil" },
+    mainEntityOfPage: canonical,
+  }).replace(/</g, "\\u003c");
+  const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: guide.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: { "@type": "Answer", text: faq.a },
+    })),
+  }).replace(/</g, "\\u003c");
+  return `<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(guide.title)} | PawVigil</title><meta name="description" content="${esc(guide.description)}"><link rel="canonical" href="${canonical}">
+<link rel="stylesheet" href="/styles/styles.css"><link rel="stylesheet" href="/styles/premium.css"><script src="/styles/premium.js" defer></script>
+<script type="application/ld+json">${schema}</script><script type="application/ld+json">${faqSchema}</script>
+<style>header,main{max-width:760px;margin:auto;padding:16px 24px}main{padding-bottom:48px}.hero{padding:24px 0}.hero h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.05}.lead{font-size:1.15rem;color:#374151}.article{line-height:1.7}.article h3{margin-top:2rem}.faq{margin-top:2.5rem}.faq details{border-top:1px solid #ddd;padding:1rem 0}.back{display:inline-block;margin-top:2rem}</style></head>
+<body><header><a href="/" style="font-weight:700;color:inherit;text-decoration:none">PawVigil</a> · <a href="/content/pet-safety-guides.html">Guides</a> · <a href="/shop.html">Shop</a></header>
+<main><section class="hero"><p>${esc(guide.eyebrow)}</p><h1>${esc(guide.title)}</h1><p>By the PawVigil editorial team · Updated <time datetime="${date}">${date}</time></p><p class="lead">${esc(guide.lead)}</p></section>
+<article class="article">${guide.body_html}</article><section class="faq"><h2>Frequently asked questions</h2>${guide.faqs.map((faq) => `<details><summary>${esc(faq.q)}</summary><p>${esc(faq.a)}</p></details>`).join("")}</section>
+<a class="back" href="/content/pet-safety-guides.html">More PawVigil guides</a></main></body></html>`;
+}
+
+function publishStatic(guide, topic, state) {
+  const date = new Date().toISOString().slice(0, 10);
+  fs.writeFileSync(
+    path.join(root, "content", `${guide.slug}.html`),
+    renderStaticGuide(guide, date),
+  );
+  state.lastPublished = date;
+  state.guides.unshift({ slug: guide.slug, title: guide.title, topic, date });
+  fs.writeFileSync(
+    path.join(root, "data", "pawvigil-guides.json"),
+    `${JSON.stringify(state, null, 2)}\n`,
+  );
+  const tenantsFile = path.join(root, "data", "tenants.json");
+  const tenants = JSON.parse(fs.readFileSync(tenantsFile, "utf8"));
+  const tenant = tenants.tenants.find((item) => item.tenant_id === "default");
+  const pages = tenant.seo.staticPages || (tenant.seo.staticPages = []);
+  for (const pagePath of [
+    "/content/pet-safety-guides.html",
+    `/content/${guide.slug}.html`,
+  ]) {
+    if (!pages.some((page) => page.path === pagePath))
+      pages.push({ path: pagePath, priority: "0.85" });
+  }
+  fs.writeFileSync(tenantsFile, `${JSON.stringify(tenants, null, 2)}\n`);
+  const staticGuides = fs
+    .readdirSync(path.join(root, "content"))
+    .filter((file) => file.endsWith(".html") && file !== "pet-safety-guides.html")
+    .map((file) => {
+      const html = fs.readFileSync(path.join(root, "content", file), "utf8");
+      const title = html.match(/<title>(.*?)\s*[|—]/i)?.[1] || file;
+      return `<li><a href="/content/${file}">${esc(title)}</a></li>`;
+    })
+    .join("");
+  fs.writeFileSync(
+    path.join(root, "content", "pet-safety-guides.html"),
+    `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pet safety guides | PawVigil</title><meta name="description" content="Practical PawVigil guides for pet identification, visibility, monitoring, travel and senior-pet comfort."><link rel="canonical" href="https://pawvigil.com/content/pet-safety-guides.html"><link rel="stylesheet" href="/styles/styles.css"><link rel="stylesheet" href="/styles/premium.css"></head><body><main style="max-width:760px;margin:auto;padding:40px 24px"><a href="/">PawVigil</a><h1>Pet safety guides</h1><p>Practical checks and routines for safer, calmer everyday pet care.</p><ul>${staticGuides}</ul></main></body></html>`,
+  );
+  console.log(`published static guide: /content/${guide.slug}.html`);
+}
+
 async function main() {
-  if (!ADMIN_KEY) throw new Error("ADMIN_API_KEY is required");
   if (!ANTHROPIC_KEY) throw new Error("ANTHROPIC_API_KEY is required");
-  const { guides: existing = [] } = await api("/admin/guides");
+  const state = GIT_PUBLISH ? staticState() : null;
+  if (!GIT_PUBLISH && !ADMIN_KEY) throw new Error("ADMIN_API_KEY is required");
+  const existing = GIT_PUBLISH
+    ? state.guides.map((guide) => ({
+        ...guide,
+        source: guide.topic,
+        published_at: guide.date,
+      }))
+    : (await api("/admin/guides")).guides || [];
   if (daysSince(existing[0]?.published_at) < MIN_DAYS) {
     console.log("latest guide is under the fortnightly freshness threshold");
     return;
@@ -134,6 +233,10 @@ async function main() {
     }
     if (DRY) {
       console.log(JSON.stringify(checked.guide, null, 2));
+      return;
+    }
+    if (GIT_PUBLISH) {
+      publishStatic(checked.guide, topic, state);
       return;
     }
     const output = await api("/admin/guides", {

@@ -1451,10 +1451,18 @@ footer a:hover {
     width: auto;
     padding: 8px 20px 40px;
   }
+  .hero--bleed .wrap {
+    color: var(--ink);
+  }
   .hero--bleed h2 {
     font-size: clamp(40px, 11.5vw, 56px);
   }
+  .hero--bleed p,
+  .hero--bleed .stats div span {
+    color: var(--ink-2);
+  }
   .hero--bleed .stats {
+    border-top-color: var(--line);
     gap: 24px;
   }
   .coach {

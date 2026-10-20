@@ -444,9 +444,40 @@ function resume(runId) {
       ([slot]) => !omittedSlots.has(slot),
     );
     const approvedSlotNames = new Set(slotEntries.map(([slot]) => slot));
-    // Stock fallback: scripts/reskin/stock/station-<name>.jpg (or
-    // stock-<name>.jpg) auto-fills an unassigned slot instead of shipping a
-    // wrong image. Auto-fills are recorded in the result so the log stays honest.
+    // IG-first rule: the coach's own Instagram is ALWAYS the primary image
+    // source. Stock fallback is a last resort after a deeper IG pull has been
+    // attempted. The pipeline must try to fill every slot from the coach's
+    // content before touching stock photos. Auto-fills are recorded in the
+    // result so the log stays honest about what came from stock.
+    const unapprovedSlots = requiredImageSlots.filter(
+      (slot) => !approvedSlotNames.has(slot),
+    );
+    if (unapprovedSlots.length) {
+      // Check if a deeper IG pull was already attempted for this prospect
+      const deeperPullMarker = path.join(prospectDir, "deeper-pull.json");
+      if (!fs.existsSync(deeperPullMarker)) {
+        // First pass: request a deeper IG pull before falling back to stock
+        const deeperPosts = Math.min((state.posts || posts) + 60, 200);
+        writeJson(deeperPullMarker, {
+          reason: "unfilled_slots_from_ig",
+          unfilled: unapprovedSlots,
+          original_posts: state.posts || posts,
+          deeper_posts: deeperPosts,
+          created_at: new Date().toISOString(),
+        });
+        console.log(
+          `  IG-FIRST: ${handle} has ${unapprovedSlots.length} unfilled slot(s) — pulling ${deeperPosts} posts before stock fallback`,
+        );
+        console.log(`    unfilled: ${unapprovedSlots.join(", ")}`);
+        results.push({
+          handle,
+          status: "DEEPER_IG_PULL_REQUESTED",
+          unfilled: unapprovedSlots,
+          deeper_posts: deeperPosts,
+        });
+        continue;
+      }
+    }
     const stockDir = path.join(root, "scripts", "reskin", "stock");
     const stockFor = (slot) => {
       const base = path.basename(slot, ".jpg");
@@ -461,6 +492,7 @@ function resume(runId) {
       if (approvedSlotNames.has(slot)) continue;
       const stock = stockFor(slot);
       if (stock) {
+        console.log(`  STOCK FALLBACK: ${handle} — ${path.basename(slot)} filled from stock (no IG image found after deeper pull)`);
         slotEntries.push([slot, path.relative(sourceDir, stock)]);
         autoFilled.push(path.basename(slot));
       }

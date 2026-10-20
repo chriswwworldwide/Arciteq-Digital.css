@@ -692,9 +692,12 @@ if (cfg.mode === "chassis") {
       matches.push(image);
       byHash.set(hash, matches);
     }
+    // Allow deliberate duplicates listed in config (e.g. bio + coaching-hero same headshot)
+    const allowedDups = new Set((cfg.allowDuplicateSlots || []).map((s) => s.replace(/^images\//, "")));
     const duplicates = [...byHash.values()]
       .map((matches) => matches.filter((m) => !m.startsWith("images/gallery/")))
-      .filter((matches) => matches.length > 1);
+      .filter((matches) => matches.length > 1)
+      .filter((matches) => !matches.every((m) => allowedDups.has(path.basename(m))));
     if (duplicates.length) {
       console.error(
         "\nDUPLICATE IMAGES — strict builds require a unique photo per slot:",

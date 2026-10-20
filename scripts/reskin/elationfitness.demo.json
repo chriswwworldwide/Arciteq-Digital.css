@@ -3,6 +3,7 @@
   "slug": "elationfitness",
   "heroMode": "full",
   "strictImages": true,
+  "allowDuplicateSlots": ["bio.jpg", "coaching-hero.jpg"],
   "assets": "scripts/reskin/elationfitness-assets",
   "currency": "gbp",
   "nutrition": {
@@ -116,7 +117,6 @@
     "images/hoodie.jpg",
     "images/wallball.jpg",
     "images/carry.jpg",
-    "images/splits-hero.jpg",
     "images/finish.jpg",
     "images/track.jpg",
     "images/bike.jpg",
@@ -126,8 +126,7 @@
     "images/night.jpg",
     "images/sprint.jpg",
     "images/run-compromised.jpg",
-    "images/squad-athlos.jpg",
-    "images/predictor-hero.jpg"
+    "images/squad-athlos.jpg"
   ],
   "stripPages": [
     "watch.html"
@@ -193,6 +192,10 @@
     },
     {
       "pattern": "\\s*<li><a href=\"/elationfitness/watch.html\">Watch</a></li>",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*<a href=\"/elationfitness/watch.html\">Watch</a>",
       "replace": ""
     }
   ],

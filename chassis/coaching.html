@@ -27,7 +27,7 @@
         width: min(100%, 720px);
         max-height: 520px;
         object-fit: cover;
-        object-position: center;
+        object-position: center 20%;
         border-radius: var(--radius);
         margin: 1.4rem auto 2rem;
         border: 1px solid var(--line);
@@ -111,6 +111,13 @@
 
     <div class="wrap coach-wrap">
       <div class="article" style="max-width: none">
+        <img
+          class="coach-photo"
+          src="/{{SLUG}}/images/coaching-hero.jpg"
+          alt="{{COACH_NAME}} — coaching"
+          loading="lazy"
+        />
+
         <div class="plans coach-plans">
           <div class="plan featured reveal">
             <span class="tag">1:1 · application</span>
@@ -169,13 +176,6 @@
             >
           </div>
         </div>
-
-        <img
-          class="coach-photo"
-          src="/{{SLUG}}/images/coaching-hero.jpg"
-          alt="{{COACH_NAME}} sprinting in the arena in vivid pink race shoes"
-          loading="lazy"
-        />
 
         <p class="shop-note">
           Every route is {{COACH_FIRST}}'s official one — applications, programmes and

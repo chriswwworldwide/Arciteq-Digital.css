@@ -51,7 +51,7 @@
     "PARTNER_KIT_LC": "lululemon",
     "PARTNER_KIT_TAG": "Performance kit",
     "PARTNER_KIT_TITLE": "lululemon",
-    "PARTNER_KIT_COPY": "Gabby trains and races in lululemon — technical kit built for hybrid athletes.",
+    "PARTNER_KIT_COPY": "Gabby trains and races in lululemon \u2014 technical kit built for hybrid athletes.",
     "PARTNER_KIT_CTA": "Shop lululemon",
     "PARTNER_KIT_URL": "https://www.lululemon.co.uk/en-gb/home",
     "GYM_CODE": "GFG",
@@ -61,7 +61,7 @@
     "ACCENT_SOFT": "#2a1616",
     "BRAND_SHORT_UPPER": "GET FIT GABBY",
     "LINKTREE_URL": "https://linktr.ee/gabriellamoriarty",
-    "VOICE_DOUBLES_HOOK": "A great partner doesn't make the race easier — they make the hard moments shared instead of lonely.",
+    "VOICE_DOUBLES_HOOK": "A great partner doesn't make the race easier \u2014 they make the hard moments shared instead of lonely.",
     "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
     "VOICE_NEWS_TAKE": "Progress is built one honest session, one recovery day and one brave start at a time.",
     "SOCIAL_HANDLE_UPPER": "GETFITGABBY",
@@ -69,7 +69,7 @@
     "PARTNER_SUPP_URL": "https://marchon-global.com/",
     "STORE_NAME": "Get Fit Gabby",
     "STORE_TAG": "Coaching hub",
-    "STORE_COPY": "Coaching enquiries, training links and the GoCardless payment page — everything runs through the hub.",
+    "STORE_COPY": "Coaching enquiries, training links and the GoCardless payment page \u2014 everything runs through the hub.",
     "STORE_CTA": "Visit the hub",
     "SEASON_HEADLINE": "From her first HYROX to a 1:01:06 Pro Women solo in one season."
   },
@@ -85,7 +85,8 @@
     "images/treadmill.jpg",
     "images/rope.jpg",
     "images/station-lean.jpg",
-    "images/walkin.jpg"
+    "images/walkin.jpg",
+    "images/momentum.jpg"
   ],
   "stripPages": [
     "watch.html"
@@ -94,32 +95,32 @@
     {
       "date": "2026-10-17",
       "title": "A statement win in Budapest",
-      "summary": "Pro Doubles Women at the first-ever HYROX Budapest — fast running, strong stations, one team from start to finish.",
+      "summary": "Pro Doubles Women at the first-ever HYROX Budapest \u2014 fast running, strong stations, one team from start to finish.",
       "take": "When the plan meets execution, the result takes care of itself.",
       "link": "/getfitgabby/events.html",
-      "linkLabel": "Race calendar →"
+      "linkLabel": "Race calendar \u2192"
     },
     {
       "date": "2026-10-12",
       "title": "Race-day ready",
-      "summary": "Getting my glam on isn't just vanity — it's the ritual that calms the nerves before the start pen.",
+      "summary": "Getting my glam on isn't just vanity \u2014 it's the ritual that calms the nerves before the start pen.",
       "take": "Find the routine that makes you feel like you, then trust it under pressure.",
       "link": "/getfitgabby/run-zone.html",
-      "linkLabel": "Run zone →"
+      "linkLabel": "Run zone \u2192"
     },
     {
       "date": "2026-10-07",
       "title": "Make trying hard cool again",
-      "summary": "Back in the elite 15 doubles and chasing the next benchmark — the work is the reward.",
+      "summary": "Back in the elite 15 doubles and chasing the next benchmark \u2014 the work is the reward.",
       "take": "Progress isn't about perfect conditions. It's about showing up anyway.",
       "link": "/getfitgabby/coaching.html",
-      "linkLabel": "Coaching →"
+      "linkLabel": "Coaching \u2192"
     }
   ],
   "copyOverrides": [
     {
       "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
-      "replace": "Elite 15 HYROX athlete and online coach — helping people perform better through running, HYROX and strength work."
+      "replace": "Elite 15 HYROX athlete and online coach \u2014 helping people perform better through running, HYROX and strength work."
     },
     {
       "pattern": "{{COACH_NAME}} \\u2014 HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",

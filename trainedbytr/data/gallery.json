@@ -2,6 +2,14 @@
   "note": "PRIVATE PITCH PREVIEW.",
   "photos": [
     {
+      "src": "/trainedbytr/images/gallery/stock-rower.jpg",
+      "alt": "Athlete on a Concept2 rower mid-race",
+      "caption": "1,000 metres. The monitor doesn’t lie and neither do your legs.",
+      "by": "Training",
+      "tilt": 2,
+      "event": "Training"
+    },
+    {
       "src": "/trainedbytr/images/gallery/stock-barbell.jpg",
       "alt": "Deadlift on gym floor — no face visible",
       "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",

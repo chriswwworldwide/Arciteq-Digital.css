@@ -1,0 +1,136 @@
+[
+  {
+    "path": "",
+    "subs": [
+      {
+        "text": "Graham, I built this for you. 60 seconds, then delete this if it's not for you.",
+        "holdMs": 5000
+      },
+      {
+        "text": "That finish line in the hero? That's yours. Every image on this site is from your Instagram.",
+        "scroll": true,
+        "holdMs": 5500
+      },
+      {
+        "text": "This isn't a website \u2014 it's what your Instagram should have been building towards all along.",
+        "scrollTo": ".reveal",
+        "holdMs": 5500
+      },
+      {
+        "text": "Your words. Your philosophy. Not marketing copy \u2014 the actual quote from your 114K post.",
+        "scrollTo": ".quote",
+        "holdMs": 5500
+      }
+    ]
+  },
+  {
+    "path": "coaching.html",
+    "subs": [
+      {
+        "text": "Coaching applications come through here. Not a Linktree link, not a DM.",
+        "holdMs": 4500
+      },
+      {
+        "text": "ELATION COACH on your chest, your gym behind you. This is the first thing they see.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "stations-prep.html",
+    "subs": [
+      {
+        "text": "Every station photo is you. Your sled push, your rowing, your burpees. Not stock.",
+        "scroll": true,
+        "holdMs": 5000
+      },
+      {
+        "text": "Your SkiErg through the flywheel. Your farmers carry. Your lunges with the ELATION tattoo showing.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "splits.html",
+    "subs": [
+      {
+        "text": "Split analyser. They paste a result, see exactly where to improve.",
+        "holdMs": 4500
+      },
+      {
+        "text": "That's you face-down on the arena floor. You gave everything. Now the data tells them why.",
+        "holdMs": 5000
+      },
+      {
+        "text": "",
+        "actions": [
+          { "scrollTo": "#splits-form" },
+          { "selector": "input[name='name']", "fill": "Kieran", "pause": 400 },
+          { "selector": "input[name='event']", "fill": "HYROX Glasgow 2026", "pause": 400 },
+          { "selector": "select[name='division']", "select": "Men Open", "pause": 400 },
+          { "selector": "input[name='roxzone']", "fill": "1:12:18", "pause": 500 },
+          { "click": "#splits-form button[type='submit'], #splits-form input[type='submit'], #splits-form .btn", "pause": 1200 }
+        ],
+        "holdMs": 1500
+      },
+      {
+        "text": "Instant breakdown. Every station benchmarked. Under your brand.",
+        "scroll": true,
+        "holdMs": 4500
+      }
+    ]
+  },
+  {
+    "path": "predictor.html",
+    "subs": [
+      {
+        "text": "Race calculator. Your 54:42 on the board \u2014 they set their target, it tells them what each station needs to be.",
+        "scroll": true,
+        "holdMs": 5500
+      }
+    ]
+  },
+  {
+    "path": "find-a-partner.html",
+    "subs": [
+      {
+        "text": "Race-mate finder. You and Hannah running together is the hero image here.",
+        "holdMs": 4500
+      },
+      {
+        "text": "Doubles partners pair up on your site, not in your DMs. No admin for you.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "results.html",
+    "subs": [
+      {
+        "text": "Results board. You and Hannah, 1:00:41. That's not a stock photo \u2014 that's your actual PB board.",
+        "scroll": true,
+        "holdMs": 5500
+      }
+    ]
+  },
+  {
+    "path": "",
+    "subs": [
+      {
+        "text": "Instagram is disposable. Stories vanish, posts get buried. This is permanent.",
+        "holdMs": 5000
+      },
+      {
+        "text": "Your photography, your philosophy, your race tools, your coaching \u2014 under your name, on your domain.",
+        "holdMs": 5500
+      },
+      {
+        "text": "Have a look around. I'd love to hear what you think.",
+        "holdMs": 5000
+      }
+    ]
+  }
+]

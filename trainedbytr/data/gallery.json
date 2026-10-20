@@ -2,7 +2,7 @@
   "note": "PRIVATE PITCH PREVIEW.",
   "photos": [
     {
-      "src": "gallery/gym-squad.jpg",
+      "src": "/trainedbytr/images/gallery/gym-squad.jpg",
       "alt": "Tom coaching team session at the gym",
       "caption": "The squad — another session in the books",
       "event": "Training",
@@ -16,14 +16,14 @@
       "tilt": 1
     },
     {
-      "src": "gallery/event-crew.jpg",
+      "src": "/trainedbytr/images/gallery/event-crew.jpg",
       "alt": "Team at HYROX event",
       "caption": "Race day — the full crew",
       "event": "Race day",
       "tilt": 0.8
     },
     {
-      "src": "gallery/race-doubles.jpg",
+      "src": "/trainedbytr/images/gallery/race-doubles.jpg",
       "alt": "Tom sprinting through HYROX arch with doubles partner",
       "caption": "Doubles — under the arch",
       "event": "Race day",

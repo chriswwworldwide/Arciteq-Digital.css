@@ -445,10 +445,10 @@ if (cfg.mode === "chassis") {
     const gp = path.join(dst, "data", "gallery.json");
     const gd = { note: "PRIVATE PITCH PREVIEW.", photos: [] };
     for (const entry of cfg.tenantGallery) {
-      gd.photos.push({
-        ...entry,
-        src: entry.src.replace("{{SLUG}}", cfg.slug),
-      });
+      let gallerySrc = entry.src.replace("{{SLUG}}", cfg.slug);
+      // Prefix relative gallery paths with the tenant image root
+      if (!gallerySrc.startsWith("/")) gallerySrc = `/${cfg.slug}/images/${gallerySrc}`;
+      gd.photos.push({ ...entry, src: gallerySrc });
     }
     fs.writeFileSync(gp, JSON.stringify(gd, null, 2) + "\n");
   } else {

@@ -2,7 +2,7 @@
   "note": "PRIVATE PITCH PREVIEW.",
   "photos": [
     {
-      "src": "gallery/squad-gym.jpg",
+      "src": "/elationfitness/images/gallery/squad-gym.jpg",
       "alt": "Full Elation squad on the gym floor",
       "caption": "The Elation floor — 25+ athletes and one Pomeranian",
       "event": "Training",
@@ -16,14 +16,14 @@
       "tilt": 1
     },
     {
-      "src": "gallery/race-pack.jpg",
+      "src": "/elationfitness/images/gallery/race-pack.jpg",
       "alt": "Graham leading the pack at HYROX",
       "caption": "Leading from the front — HYROX arena",
       "event": "Race day",
       "tilt": -1.2
     },
     {
-      "src": "gallery/doubles-medal.jpg",
+      "src": "/elationfitness/images/gallery/doubles-medal.jpg",
       "alt": "Graham and Liam at HYROX Glasgow with medal",
       "caption": "Pro Doubles 50:54 — HYROX Glasgow",
       "event": "Race day",

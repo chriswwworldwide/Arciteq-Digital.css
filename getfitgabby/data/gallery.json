@@ -2,7 +2,7 @@
   "note": "PRIVATE PITCH PREVIEW.",
   "photos": [
     {
-      "src": "gallery/squad-gym.jpg",
+      "src": "/getfitgabby/images/gallery/squad-gym.jpg",
       "alt": "Get Fit Gabby squad on the gym floor",
       "caption": "The squad — ready for the next block",
       "event": "Training",
@@ -16,14 +16,14 @@
       "tilt": 1
     },
     {
-      "src": "gallery/race-mates.jpg",
+      "src": "/getfitgabby/images/gallery/race-mates.jpg",
       "alt": "Gabby and race partner at HYROX",
       "caption": "Race mates — HYROX event",
       "event": "Race day",
       "tilt": -1
     },
     {
-      "src": "gallery/arena-run.jpg",
+      "src": "/getfitgabby/images/gallery/arena-run.jpg",
       "alt": "Running past the water station at HYROX arena",
       "caption": "PGE Narodowy — doubles on the run",
       "event": "Race day",

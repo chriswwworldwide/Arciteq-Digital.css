@@ -37,6 +37,28 @@ def media(record):
     return candidates
 
 
+# HYROX event locations — carousels referencing these are professional event photography
+HYROX_LOCATIONS = [
+    "rome", "london", "birmingham", "manchester", "glasgow", "hamburg", "warsaw",
+    "dublin", "vienna", "amsterdam", "paris", "madrid", "munich", "berlin", "nice",
+    "chicago", "dallas", "atlanta", "new york", "nyc", "boston", "toronto",
+    "sydney", "melbourne", "worlds", "world champs", "world championship",
+    "elite 15", "challenger", "athens", "copenhagen", "lisbon", "zurich",
+]
+
+# Photographer credit signals
+CREDIT_SIGNALS = ["📸", "photo by", "shot by", "captured by", "credit:", "📷", "@hyrox"]
+
+
+def is_pro_carousel(record):
+    """Detect professional event carousels from Bright Data records."""
+    caption = (record.get("description") or record.get("caption") or "").lower()
+    children = record.get("post_content") or []
+    has_location = any(loc in caption for loc in HYROX_LOCATIONS) or "hyrox" in caption
+    has_credit = any(sig in caption for sig in CREDIT_SIGNALS)
+    return (len(children) >= 6) or (has_location and len(children) > 1) or has_credit
+
+
 def grab(url):
     request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     return Image.open(BytesIO(urllib.request.urlopen(request, timeout=30).read())).convert("RGB")
@@ -92,13 +114,19 @@ def main():
             )
         )
         label_records = []
+        pro_count = 0
         for record in profile_records[: args.max]:
             event_name = event_for(record, event_config)
+            pro = is_pro_carousel(record)
+            pro_tag = " [PRO]" if pro else ""
+            if pro:
+                pro_count += 1
+                print(f"  ★ PRO: {record.get('shortcode', '?')} — {(record.get('description') or record.get('caption') or '')[:80]}")
             for label, url, video in media(record):
                 try:
                     event_tag = f" [{event_name}]" if event_name else ""
                     tiles.append(
-                        (f"{label}{' [VID]' if video else ''}{event_tag}", grab(url))
+                        (f"{label}{' [VID]' if video else ''}{event_tag}{pro_tag}", grab(url))
                     )
                     label_records.append(
                         {
@@ -106,11 +134,17 @@ def main():
                             "shortcode": record.get("shortcode"),
                             "video": video,
                             "event": event_name,
+                            "pro": pro,
                             "url": url,
                         }
                     )
                 except Exception as error:
                     print("skip", handle, label, error)
+
+        if pro_count:
+            print(f"\n★ {handle}: {pro_count} professional event carousel(s) — prioritise [PRO] tiles")
+        else:
+            print(f"\n  {handle}: no professional event carousels detected")
 
         tile, cols, label_height = args.tile, args.cols, 24
         per_sheet = cols * 5

@@ -216,10 +216,10 @@ function prepare() {
       status: "PENDING",
       instructions: [
         "Set approval.json config_path first so stripped/omitted slots leave the roster.",
-        "Review thumbnails only; assign 1-2 candidate labels per active slot.",
+        "Review thumbnails only; assign 1-4 candidate labels per active slot (prefer more candidates from professional event carousels).",
         "Canonical labels live in contact-sheets/*-labels.json — copy label strings from there, never transcribe from sheet tiles.",
         "Labels marked [VID] are video COVERS only. Before shortlisting a video for a semantic slot (stations/run-zone), run scripts/video-frame-sheet.py on its shortcode and rate the actual frames.",
-        "Keep no more than 10 unique spares. Full-resolution export happens only after this gate.",
+        "Keep no more than 20 unique spares. Professional event carousels (6+ photos, HYROX locations, photographer credits) are goldmines — pull generously.",
         "Crew dinner/dance are protected template defaults and never belong in this roster.",
         "If final QA exposes a gap, backfill that one slot rather than reopening the whole profile.",
       ],
@@ -338,15 +338,15 @@ function resume(runId) {
           shortlistSlots[slot].length < 1,
       );
       const oversizedShortlists = Object.entries(shortlistSlots)
-        .filter(([, labels]) => !Array.isArray(labels) || labels.length > 2)
+        .filter(([, labels]) => !Array.isArray(labels) || labels.length > 4)
         .map(([slot]) => slot);
       const spares = shortlist.spares || [];
       const allLabels = [...Object.values(shortlistSlots).flat(), ...spares];
       if (
         missingShortlists.length ||
         oversizedShortlists.length ||
-        spares.length > 10 ||
-        new Set(allLabels).size > requiredImageSlots.length + 10
+        spares.length > 20 ||
+        new Set(allLabels).size > requiredImageSlots.length + 20
       ) {
         results.push({
           handle,
@@ -356,11 +356,11 @@ function resume(runId) {
               ? `no candidate: ${missingShortlists.join(", ")}`
               : "",
             oversizedShortlists.length
-              ? `more than 2 candidates: ${oversizedShortlists.join(", ")}`
+              ? `more than 4 candidates: ${oversizedShortlists.join(", ")}`
               : "",
-            spares.length > 10 ? "more than 10 spares" : "",
-            new Set(allLabels).size > requiredImageSlots.length + 10
-              ? `more than ${requiredImageSlots.length + 10} unique downloads`
+            spares.length > 20 ? "more than 20 spares" : "",
+            new Set(allLabels).size > requiredImageSlots.length + 20
+              ? `more than ${requiredImageSlots.length + 20} unique downloads`
               : "",
           ]
             .filter(Boolean)

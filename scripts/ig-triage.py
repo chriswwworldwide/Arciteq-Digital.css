@@ -25,6 +25,27 @@ from PIL import Image, ImageDraw
 
 MAX_CAROUSEL = 20  # show every carousel child — a single HYROX race carousel can hold 12+ professional shots
 
+# HYROX event locations — carousels referencing these are almost always professional event photography
+HYROX_LOCATIONS = [
+    "rome", "london", "birmingham", "manchester", "glasgow", "hamburg", "warsaw",
+    "dublin", "vienna", "amsterdam", "paris", "madrid", "munich", "berlin", "nice",
+    "chicago", "dallas", "atlanta", "new york", "nyc", "boston", "toronto",
+    "sydney", "melbourne", "worlds", "world champs", "world championship",
+    "elite 15", "challenger", "athens", "copenhagen", "lisbon", "zurich",
+]
+
+# Photographer credit signals — posts with these are likely professional shots
+CREDIT_SIGNALS = ["📸", "photo by", "shot by", "captured by", "credit:", "📷", "@hyrox"]
+
+def is_event_carousel(post, child_count=0):
+    """Detect professional event carousels: 6+ images or HYROX location in caption.
+    Pass child_count to avoid a redundant API call for sidecar node enumeration."""
+    caption = (post.caption or "").lower()
+    sidecar = post.typename == "GraphSidecar"
+    has_location = any(loc in caption for loc in HYROX_LOCATIONS) or "hyrox" in caption
+    has_credit = any(sig in caption for sig in CREDIT_SIGNALS)
+    return (child_count >= 6 and sidecar) or (has_location and sidecar) or has_credit
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("handle")
@@ -55,6 +76,7 @@ def main():
         return Image.open(BytesIO(urllib.request.urlopen(url).read())).convert("RGB")
 
     tiles = []  # (label, PIL image)
+    event_carousels = []  # track professional carousels for the log
     seen = 0
     for post in prof.get_posts():
         if seen >= args.max:
@@ -62,10 +84,16 @@ def main():
         seen += 1
         try:
             if post.typename == "GraphSidecar":
-                for i, n in enumerate(post.get_sidecar_nodes()):
+                children = list(post.get_sidecar_nodes())
+                pro = is_event_carousel(post, child_count=len(children))
+                pro_tag = " [PRO]" if pro else ""
+                if pro:
+                    event_carousels.append(post.shortcode)
+                    print(f"  ★ PRO CAROUSEL: {post.shortcode} ({len(children)} images) — {(post.caption or '')[:80]}")
+                for i, n in enumerate(children):
                     if i >= MAX_CAROUSEL:
                         break
-                    tag = f"{post.shortcode}_{i+1}" + (" [VID]" if n.is_video else "")
+                    tag = f"{post.shortcode}_{i+1}" + (" [VID]" if n.is_video else "") + pro_tag
                     tiles.append((tag, grab(n.display_url)))
             elif post.is_video:
                 tiles.append((f"{post.shortcode} [VID]", grab(post.url)))
@@ -73,6 +101,11 @@ def main():
                 tiles.append((post.shortcode, grab(post.url)))
         except Exception as e:
             print("skip", post.shortcode, e)
+
+    if event_carousels:
+        print(f"\n★ {len(event_carousels)} professional event carousel(s) found — prioritise [PRO] tiles")
+    else:
+        print("\n  No professional event carousels detected in this pull")
 
     T, C, LABEL = args.tile, args.cols, 24
     rows_per = 5

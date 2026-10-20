@@ -196,13 +196,21 @@ These exist because the first batch build wasted 3+ hours searching stock photo 
 
 1. **IG first, always.** The coach's own Instagram is the primary image source. Their actual HYROX event photos, training shots, and coaching images are always more authentic and compelling than stock. Do not search stock sites until IG has been fully exhausted.
 
-2. **Carousels are goldmines.** A single HYROX race carousel post (e.g. "HYROX Rome" — 12 professional shots) can fill most station slots in one go. `ig-triage.py` expands every carousel child (up to 20) so nothing is missed.
+2. **Carousels are goldmines.** A single HYROX race carousel post (e.g. "HYROX Rome" — 12 professional shots) can fill most station slots in one go. `ig-triage.py` expands every carousel child (up to 20) so nothing is missed. Both `ig-triage.py` and `bright-contact-sheet.py` flag professional carousels with `[PRO]` tags on tiles so they're immediately visible on contact sheets.
 
-3. **Bright Data has known limits.** The Bright Data Instagram dataset (`gd_lk5ns7kz21pck8jpis`) returned only 12 posts per profile with zero carousel expansion during the first batch. The pipeline now validates pull quality and automatically falls through to `ig-triage.py` (Instaloader, via browser session) when Bright Data is shallow. `assess-finalists.js` logs warnings for shallow pulls and missing carousel expansion.
+3. **Detect professional event posts automatically.** The pipeline flags posts as `[PRO]` when any of these are true:
+   - Carousel with 6+ images (almost always professional event coverage)
+   - Caption mentions a HYROX location (Rome, London, Birmingham, Glasgow, Hamburg, Warsaw, Athens, etc.)
+   - Caption contains photographer credit signals (📸, "photo by", "@hyrox", etc.)
+   These posts should be prioritised during triage — they are the richest source of station, finish, and race shots.
 
-4. **Human curation beats automated search.** A human scanning 10 rows of an IG grid picks 15 strong images in 12 minutes. An agent hunting stock sites for 3 hours finds weaker images. The pipeline should pull broadly from IG, then the human picks — not the other way round.
+4. **Pull generously, shortlist widely.** The per-slot candidate cap is 4 (not 2) and spares cap is 20 (not 10). When a coach has 60 great images on their IG, a tight cap forces the pipeline to discard the best material. Pull more, sort later.
 
-5. **Stock is last resort.** When the pipeline uses a stock image, it logs it explicitly (`STOCK FALLBACK: <handle> — <slot>`). If more than 3 slots per tenant fall back to stock, the pipeline requests a deeper IG pull before proceeding.
+5. **Bright Data has known limits.** The Bright Data Instagram dataset (`gd_lk5ns7kz21pck8jpis`) returned only 12 posts per profile with zero carousel expansion during the first batch. The pipeline now validates pull quality and automatically falls through to `ig-triage.py` (Instaloader, via browser session) when Bright Data is shallow. `assess-finalists.js` logs warnings for shallow pulls and missing carousel expansion.
+
+6. **Human curation beats automated search.** A human scanning 10 rows of an IG grid picks 15 strong images in 12 minutes. An agent hunting stock sites for 3 hours finds weaker images. The pipeline should pull broadly from IG, then the human picks — not the other way round.
+
+7. **Stock is last resort.** When the pipeline uses a stock image, it logs it explicitly (`STOCK FALLBACK: <handle> — <slot>`). If more than 3 slots per tenant fall back to stock, the pipeline requests a deeper IG pull before proceeding.
 
 ### CLIP scoring (image intelligence)
 

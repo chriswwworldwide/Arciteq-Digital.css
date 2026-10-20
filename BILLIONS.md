@@ -874,6 +874,66 @@ Best results: Option 1 per prospect, pulling their actual race result or
 event from the demo config. The body handles the explanation; the subject
 just earns the open.
 
+**Option 4 — Client-inquiry pattern match (highest open rate, highest risk)**
+These read like a potential client asking about training. Coaches open
+these instantly because they look like money walking in the door. 80–90%
+open rate — but if the first line feels like bait-and-switch, you've
+burned the prospect. The opener must land value immediately and honestly.
+- "Quick question about your coaching"
+- "Looking at your programme — one question"
+- "Do you have space for new clients?"
+- "Saw your results, wanted to ask something"
+
+Mandatory opener if using Option 4 (no throat-clearing, no company intro):
+> "I'm not looking to train — but I did build this for you. [link].
+> 60 seconds of your time, then delete this if it's not for you."
+
+The Loom thumbnail showing their brand is what saves the 3-second
+post-open window. They open expecting a client, see it's not, feel a
+flash of irritation, then see their own name on a working platform and
+curiosity takes over. Only works if the transition is instant and the
+payload is obviously valuable.
+
+#### Send timing and sequence
+
+**Send window:** 7:00am, any Tuesday–Thursday. Schedule in Outlook the
+night before. Send all prospects at the same time — no staggering needed.
+Nobody is calling back in 30 minutes; realistic response time is hours
+or days.
+
+**Avoid:** Monday (inbox backlog), Friday/Saturday (weekend brain, email
+gets buried by Monday). At 7am before first session, a coach's headspace
+is identical on Tues/Wed/Thurs.
+
+**Why 7am:** Coaches run sessions from 8–9am. The 7am window catches them
+having coffee, scrolling their phone, before the day's noise. Early
+enough that if they're interested they might reply the same day. The
+Loom video needs a quiet moment — headphones or at least sound — which
+favours pre-session, not between-session gaps on a gym floor.
+
+**The sequence:**
+
+| Day | Action | Expected result |
+|-----|--------|-----------------|
+| Tue–Thu, 7am | **Email 1** — personalised subject, Loom + demo link | 35–45% open, 15–25% watch (higher with Option 4 subject) |
+| Day 2–3 | **IG nudge** — story view, like a recent post, maybe a comment. No DM, no pitch. Just be visible. | Primes name recognition for email 2 (+5–10% on second open) |
+| Day 4–5 | **Email 2** — short follow-up. "Did you get a chance to look at the link? Happy to walk through it live if easier." | 50–60% cumulative open, another 5–10% reply rate |
+
+**Expected combined rates (realistic for 3 high-quality prospects):**
+
+| Metric | Range | Notes |
+|--------|-------|-------|
+| Cumulative open | 50–65% | Upper end with personalised subject + Outlook business account |
+| Demo actually viewed | 20–35% | Loom + live site combo is unusually strong for cold |
+| Reply rate | 8–15% | "I built this for you" with proof is rare |
+| Conversation started | ~1 of 3 | Statistically likely; with 3 prospects, variance is high |
+
+With 3 prospects, statistics barely apply. The personalised demo does
+the heavy lifting — most cold outreach has nothing close to "here's your
+brand on a working platform." That's the variable that matters more than
+any timing or sequence optimisation. Have email 2 written before sending
+email 1.
+
 #### Body (3–4 sentences)
 
 1. One sentence that proves you know who they are.

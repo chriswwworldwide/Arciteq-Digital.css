@@ -179,7 +179,9 @@ This regenerates `joshharrison/`, copies it to `chassis/`, strips dead files, to
 
 ### The photo process
 
-1. **Triage** — `ig-triage.py <handle> <dir>` creates thumbnail contact sheets of the last ~48–100 posts.
+**Rule: the coach's own Instagram is ALWAYS the primary image source.** Stock photos are a last resort, not a first instinct. A single HYROX race carousel can contain 12+ professional event shots — sled push, rowing, burpees, SkiErg, farmers carry, sandbag, wall balls, finish line — all from the coach's actual race. These are always stronger than stock crops or generic gym shots. The pipeline enforces this:
+
+1. **Triage** — `ig-triage.py <handle> <dir>` creates thumbnail contact sheets of the last ~48–100 posts. Every carousel child is shown (up to 20 per sidecar).
 2. **Pick** — human/agent names 1–2 candidate labels per active slot from the sheets. Labels are copied from `*-labels.json`, never transcribed by eye.
 3. **Pull** — `ig-pull.py <handle> <dir> --only CODE,CODE` fetches full-res picks. Video covers marked `[VID]` need `scripts/video-frame-sheet.py` before being assigned to station slots.
 4. **Index** — `scripts/photo-sort.js <dir> --index-only` runs Apple Vision face/OCR/classification.
@@ -187,6 +189,20 @@ This regenerates `joshharrison/`, copies it to `chassis/`, strips dead files, to
 6. **Sort** — `scripts/photo-sort.js <dir>` allocates images into the fixed slot order. Reads `clip-scores.json` if present for better scene/identity matching.
 7. **Review** — `scripts/allocation-contact-sheet.py` renders the actual files per slot; set `allocation_verified: true` to allow the build.
 8. **Build** — assets are copied to `scripts/reskin/<slug>-assets/` and the tenant is generated.
+
+### Image sourcing rules (hard-won, Dec 2026)
+
+These exist because the first batch build wasted 3+ hours searching stock photo sites while the coach's Instagram had better images sitting in the first 10 rows.
+
+1. **IG first, always.** The coach's own Instagram is the primary image source. Their actual HYROX event photos, training shots, and coaching images are always more authentic and compelling than stock. Do not search stock sites until IG has been fully exhausted.
+
+2. **Carousels are goldmines.** A single HYROX race carousel post (e.g. "HYROX Rome" — 12 professional shots) can fill most station slots in one go. `ig-triage.py` expands every carousel child (up to 20) so nothing is missed.
+
+3. **Bright Data has known limits.** The Bright Data Instagram dataset (`gd_lk5ns7kz21pck8jpis`) returned only 12 posts per profile with zero carousel expansion during the first batch. The pipeline now validates pull quality and automatically falls through to `ig-triage.py` (Instaloader, via browser session) when Bright Data is shallow. `assess-finalists.js` logs warnings for shallow pulls and missing carousel expansion.
+
+4. **Human curation beats automated search.** A human scanning 10 rows of an IG grid picks 15 strong images in 12 minutes. An agent hunting stock sites for 3 hours finds weaker images. The pipeline should pull broadly from IG, then the human picks — not the other way round.
+
+5. **Stock is last resort.** When the pipeline uses a stock image, it logs it explicitly (`STOCK FALLBACK: <handle> — <slot>`). If more than 3 slots per tenant fall back to stock, the pipeline requests a deeper IG pull before proceeding.
 
 ### CLIP scoring (image intelligence)
 

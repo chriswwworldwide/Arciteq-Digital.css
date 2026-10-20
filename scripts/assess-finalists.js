@@ -164,6 +164,35 @@ if (fs.existsSync(cachePath)) {
   fs.writeFileSync(cachePath, `${JSON.stringify(records, null, 2)}\n`);
 }
 
+// Validate Bright Data pull quality — flag shallow pulls and missing carousels
+for (const handle of handles) {
+  const posts = records.filter((r) => {
+    const owner = (r.user_posted || r.account || "").toString().toLowerCase()
+      || (r.profile_url || "").split("instagram.com/")[1]?.split("/")[0]?.toLowerCase();
+    return owner === handle;
+  });
+  const carousels = posts.filter((r) => (r.post_content || []).length > 1);
+  const expandedChildren = posts.reduce((sum, r) => sum + (r.post_content || []).length, 0);
+  if (posts.length < postCount * 0.5) {
+    console.error(
+      `⚠ SHALLOW PULL: ${handle} — requested ${postCount} posts, got ${posts.length}. ` +
+      `Bright Data may have hit a limit. Use ig-triage.py + ig-pull.py as fallback.`
+    );
+  }
+  if (posts.length > 0 && carousels.length === 0) {
+    console.error(
+      `⚠ NO CAROUSEL EXPANSION: ${handle} — ${posts.length} posts but zero carousel children. ` +
+      `HYROX race carousels (often 6-12 professional shots) are invisible. ` +
+      `Use ig-triage.py which expands every sidecar.`
+    );
+  } else if (carousels.length > 0 && expandedChildren / posts.length < 1.5) {
+    console.error(
+      `⚠ LOW CAROUSEL DEPTH: ${handle} — ${carousels.length} carousels but only ${expandedChildren} total children. ` +
+      `Some carousel children may be missing.`
+    );
+  }
+}
+
 console.log(
   JSON.stringify(
     handles.map((handle) => assess(handle, records)),

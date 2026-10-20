@@ -155,16 +155,63 @@ function prepare() {
   writeJson(path.join(runDir, "assessment.json"), assessment);
   const records = deepCachePath(finalists);
 
+  // Check Bright Data pull quality per finalist — fall through to Instaloader
+  // for shallow pulls or missing carousel expansion.
+  let brightRecords;
+  try {
+    brightRecords = JSON.parse(fs.readFileSync(records, "utf8"));
+  } catch { brightRecords = []; }
+  const igFallbackHandles = new Set();
+  for (const handle of finalists) {
+    const ownerPosts = (Array.isArray(brightRecords) ? brightRecords : []).filter((r) => {
+      const owner = (r.user_posted || r.account || "").toString().toLowerCase()
+        || (r.profile_url || "").split("instagram.com/")[1]?.split("/")[0]?.toLowerCase() || "";
+      return owner === handle;
+    });
+    const carousels = ownerPosts.filter((r) => (r.post_content || []).length > 1);
+    if (ownerPosts.length < posts * 0.25 || (ownerPosts.length > 0 && carousels.length === 0)) {
+      console.log(
+        `  IG-FIRST FALLBACK: ${handle} — Bright Data returned ${ownerPosts.length} posts (${carousels.length} carousels). ` +
+        `Falling through to ig-triage.py for full carousel expansion.`
+      );
+      igFallbackHandles.add(handle);
+    }
+  }
+
   for (const handle of finalists) {
     const prospectDir = path.join(runDir, handle);
-    run(python, [
-      "scripts/bright-contact-sheet.py",
-      records,
-      path.join(prospectDir, "contact-sheets"),
-      handle,
-      "--max",
-      String(posts),
-    ]);
+
+    if (igFallbackHandles.has(handle)) {
+      // Use Instaloader directly — expands every carousel, no child limit issues
+      const igDir = path.join(prospectDir, "contact-sheets");
+      run(python, [
+        "scripts/ig-triage.py",
+        handle,
+        igDir,
+        "--max",
+        String(posts),
+      ]);
+      writeJson(path.join(prospectDir, "ig-fallback.json"), {
+        reason: "bright_data_shallow",
+        bright_data_posts: (Array.isArray(brightRecords) ? brightRecords : []).filter((r) => {
+          const owner = (r.user_posted || r.account || "").toString().toLowerCase()
+            || (r.profile_url || "").split("instagram.com/")[1]?.split("/")[0]?.toLowerCase() || "";
+          return owner === handle;
+        }).length,
+        requested_posts: posts,
+        method: "ig-triage.py (Instaloader)",
+        created_at: new Date().toISOString(),
+      });
+    } else {
+      run(python, [
+        "scripts/bright-contact-sheet.py",
+        records,
+        path.join(prospectDir, "contact-sheets"),
+        handle,
+        "--max",
+        String(posts),
+      ]);
+    }
     writeJson(path.join(prospectDir, "shortlist.json"), {
       status: "PENDING",
       instructions: [

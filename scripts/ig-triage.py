@@ -23,7 +23,7 @@ import instaloader
 import urllib.request
 from PIL import Image, ImageDraw
 
-MAX_CAROUSEL = 6  # tiles per sidecar — plenty to spot the good frame
+MAX_CAROUSEL = 20  # show every carousel child — a single HYROX race carousel can hold 12+ professional shots
 
 def main():
     ap = argparse.ArgumentParser()

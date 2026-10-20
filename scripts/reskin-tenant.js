@@ -416,7 +416,7 @@ if (cfg.mode === "chassis") {
       };
       walkImg(path.join(dst, "images"));
     }
-    for (const file of ["restaurant.jpg", "dance.jpg", "stock-arena.jpg", "stock-barbell.jpg", "stock-rower.jpg"]) {
+    for (const file of ["restaurant.jpg", "dance.jpg", "stock-arena.jpg", "stock-barbell.jpg", "stock-rower.jpg", "stock-burpee.jpg", "stock-sled-push.jpg"]) {
       const src = path.join(crewDefaults, file);
       if (!fs.existsSync(src)) continue;
       if (cfg.strictImages) {
@@ -453,6 +453,18 @@ if (cfg.mode === "chassis") {
       });
     }
     fs.writeFileSync(gp, JSON.stringify(gd, null, 2) + "\n");
+  }
+
+  // Gallery minimum check: Warriors Wall needs at least 4 photos with 2+ event categories for filter tabs
+  {
+    const gp = path.join(dst, "data", "gallery.json");
+    if (fs.existsSync(gp)) {
+      const gd = JSON.parse(fs.readFileSync(gp, "utf8"));
+      const photos = Array.isArray(gd.photos) ? gd.photos.filter((p) => !skippedGallery.has(path.basename(String(p.src || "")))) : [];
+      const events = new Set(photos.map((p) => p.event).filter(Boolean));
+      if (photos.length < 4) console.log(`  WARNING: gallery has only ${photos.length} photos (need 4+ for a strong Warriors Wall)`);
+      if (events.size < 2) console.log(`  WARNING: gallery has ${events.size} event category (need 2+ for filter tabs)`);
+    }
   }
 
   if (!cfg.strictImages) {

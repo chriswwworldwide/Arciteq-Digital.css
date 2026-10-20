@@ -1,13 +1,43 @@
 {
   "mode": "chassis",
   "slug": "elationfitness",
-  "heroMode": "ambient",
+  "heroMode": "full",
   "strictImages": true,
   "assets": "scripts/reskin/elationfitness-assets",
   "currency": "gbp",
   "nutrition": {
     "mode": "hidden"
   },
+  "tenantGallery": [
+    {
+      "src": "gallery/race-pack.jpg",
+      "alt": "Graham leading the pack at HYROX",
+      "caption": "Leading from the front — HYROX arena",
+      "event": "Race day",
+      "tilt": -1.2
+    },
+    {
+      "src": "gallery/young-stars.jpg",
+      "alt": "Elation Young Stars crew at HYROX",
+      "caption": "Young Stars — the next wave of Elation athletes",
+      "event": "Race day",
+      "tilt": 0.8
+    },
+    {
+      "src": "gallery/squad-gym.jpg",
+      "alt": "Full Elation squad on the gym floor",
+      "caption": "The Elation floor — 25+ athletes and one Pomeranian",
+      "event": "Training",
+      "tilt": -0.5
+    },
+    {
+      "src": "gallery/doubles-medal.jpg",
+      "alt": "Graham and Liam at HYROX Glasgow with medal",
+      "caption": "Pro Doubles 50:54 — HYROX Glasgow",
+      "event": "Race day",
+      "tilt": 1.1
+    }
+  ],
   "tokens": {
     "SLUG": "elationfitness",
     "COACH_NAME": "Graham Halliday",
@@ -87,7 +117,6 @@
     "images/wallball.jpg",
     "images/carry.jpg",
     "images/splits-hero.jpg",
-    "images/startline.jpg",
     "images/finish.jpg",
     "images/track.jpg",
     "images/bike.jpg",
@@ -110,15 +139,15 @@
       "summary": "Classes that fit around real life, backed by 11 coaches and a community that keeps the standard high.",
       "take": "Consistency gets easier when the right people are waiting for you on the floor.",
       "link": "/elationfitness/coaching.html",
-      "linkLabel": "Train with Elation →"
+      "linkLabel": "Train with Elation \u2192"
     },
     {
       "date": "2026-09-28",
       "title": "Two ways into Elation",
-      "summary": "Small Group PT plus unlimited classes is £100 per month. Unlimited classes is £75 per month.",
+      "summary": "Small Group PT plus unlimited classes is \u00a3100 per month. Unlimited classes is \u00a375 per month.",
       "take": "Pick the support you need, then turn up and put the work in.",
       "link": "/elationfitness/coaching.html",
-      "linkLabel": "See membership →"
+      "linkLabel": "See membership \u2192"
     },
     {
       "date": "2026-06-21",
@@ -126,7 +155,7 @@
       "summary": "Two Elite 15 owners, Graham Halliday and Matt Agnew, coach alongside the Elation team in Glasgow.",
       "take": "Elite standards are useful only when they help everyday athletes make real progress.",
       "link": "/elationfitness/stations-prep.html",
-      "linkLabel": "Prepare for HYROX →"
+      "linkLabel": "Prepare for HYROX \u2192"
     }
   ],
   "copyOverrides": [
@@ -135,8 +164,8 @@
       "replace": "Elation co-owner, coach and Elite 15 athlete"
     },
     {
-      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
-      "replace": "{{COACH_NAME}} — Elite 15 athlete, coach and co-owner of {{BRAND}} Fitness Training with Matt Agnew."
+      "pattern": "{{COACH_NAME}} \u2014 HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} \u2014 Elite 15 athlete, coach and co-owner of {{BRAND}} Fitness Training with Matt Agnew."
     },
     {
       "pattern": "1:1 coaching, group programmes, {{BRAND}} 365 kit\\.",
@@ -144,7 +173,7 @@
     },
     {
       "pattern": "{{BRAND}} 1:1 coaching by application, group programmes on FITR, and the {{BRAND}} 365 clothing line\\.",
-      "replace": "Elation offers Small Group PT plus unlimited classes for £100 per month, or unlimited classes for £75 per month."
+      "replace": "Elation offers Small Group PT plus unlimited classes for \u00a3100 per month, or unlimited classes for \u00a375 per month."
     },
     {
       "pattern": "Hong Kong",

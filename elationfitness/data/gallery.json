@@ -16,6 +16,50 @@
       "by": "Training",
       "tilt": 1,
       "event": "Training"
+    },
+    {
+      "src": "/elationfitness/images/gallery/stock-burpee.jpg",
+      "alt": "Burpee broad jump at HYROX event",
+      "caption": "Chest down, broad jump, repeat. Eighty times.",
+      "by": "Race day",
+      "tilt": -0.8,
+      "event": "Race day"
+    },
+    {
+      "src": "/elationfitness/images/gallery/stock-sled-push.jpg",
+      "alt": "Sled push at HYROX event",
+      "caption": "Load the plates. Lean in. Drive.",
+      "by": "Race day",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "gallery/race-pack.jpg",
+      "alt": "Graham leading the pack at HYROX",
+      "caption": "Leading from the front — HYROX arena",
+      "event": "Race day",
+      "tilt": -1.2
+    },
+    {
+      "src": "gallery/young-stars.jpg",
+      "alt": "Elation Young Stars crew at HYROX",
+      "caption": "Young Stars — the next wave of Elation athletes",
+      "event": "Race day",
+      "tilt": 0.8
+    },
+    {
+      "src": "gallery/squad-gym.jpg",
+      "alt": "Full Elation squad on the gym floor",
+      "caption": "The Elation floor — 25+ athletes and one Pomeranian",
+      "event": "Training",
+      "tilt": -0.5
+    },
+    {
+      "src": "gallery/doubles-medal.jpg",
+      "alt": "Graham and Liam at HYROX Glasgow with medal",
+      "caption": "Pro Doubles 50:54 — HYROX Glasgow",
+      "event": "Race day",
+      "tilt": 1.1
     }
   ]
 }

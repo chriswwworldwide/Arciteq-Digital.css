@@ -111,7 +111,7 @@
       "eventPreferred": true
     },
     "images/predictor-hero.jpg": {
-      "label": "Race Predictor hero — strong HYROX race image, no social caption overlay",
+      "label": "Race Predictor hero — finish line, podium or strong proof-of-performance shot",
       "aspect": "landscape",
       "priority": 1,
       "faceCritical": true,
@@ -119,15 +119,20 @@
       "position": "hero",
       "noTextOverlay": true,
       "keywords": [
+        "finish",
+        "finish line",
+        "podium",
+        "champion",
         "hyrox",
         "race",
-        "finish",
-        "arena"
+        "arena",
+        "crossing"
       ],
       "visualKeywords": [
         "sports",
         "competition",
-        "person"
+        "person",
+        "finish line"
       ],
       "eventPreferred": true
     },
@@ -456,15 +461,20 @@
       ]
     },
     "images/pb.jpg": {
-      "label": "PB moment — celebration, arms up, medal",
+      "label": "PB / results — time board, leaderboard, scoreboard or celebration with visible time",
       "aspect": "any",
       "priority": 3,
       "faceCritical": true,
       "keywords": [
         "pb",
+        "time board",
+        "leaderboard",
+        "scoreboard",
+        "results board",
         "celebrat",
         "medal",
-        "win"
+        "win",
+        "clock"
       ]
     },
     "images/pb-venue.jpg": {
@@ -659,11 +669,15 @@
       ]
     },
     "images/half.jpg": {
-      "label": "Half marathon / road race",
+      "label": "News hero — event day, group energy, or race-weekend atmosphere",
       "aspect": "any",
       "priority": 4,
       "faceCritical": false,
       "keywords": [
+        "event",
+        "group",
+        "race day",
+        "community",
         "half",
         "marathon",
         "road"

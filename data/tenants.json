@@ -973,269 +973,6 @@
       "demo": true
     },
     {
-      "tenant_id": "elationfitness",
-      "vertical": "coaching",
-      "hostnames": [
-        "elationfitness.localhost",
-        "demo-elationfitness.localhost"
-      ],
-      "canonicalHost": "elationfitness.localhost",
-      "currency": "gbp",
-      "language": "en",
-      "catalog": {
-        "nicheCategorySlugs": [],
-        "heroProductIds": [],
-        "productTypeSlugs": []
-      },
-      "seo": {
-        "brandName": "Graham Halliday",
-        "tagline": "Hyrox coaching, online programming and race prep from Scotland.",
-        "supportEmail": "",
-        "about": "Hyrox coaching by Graham — podium athlete and Scotland personal trainer. Structured programming, station technique and run pacing for people who race.",
-        "meta": {
-          "homeDescription": "Hyrox coaching in Scotland and online with Graham — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
-          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
-          "cartDescription": "Review your plan and subscribe securely."
-        },
-        "sameAs": [],
-        "staticPages": [
-          {
-            "path": "/elationfitness/",
-            "priority": "1.0"
-          },
-          {
-            "path": "/elationfitness/stations-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/run-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/fuel-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/taper-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/warrior-program/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/hybrid-coaching-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/elite-race-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/events/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/elationfitness/hyrox-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/race-planner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/news/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/elationfitness/london-hybrid-scene/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/advertise/",
-            "priority": "0.5"
-          },
-          {
-            "path": "/elationfitness/coaching.html",
-            "priority": "0.7"
-          },
-          {
-            "path": "/elationfitness/results/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/splits/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/doubles/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/find-a-partner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/race-crew/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/elationfitness/guides/",
-            "priority": "0.8"
-          }
-        ]
-      },
-      "submissions": {
-        "kinds": [
-          "race_splits",
-          "wall_photo",
-          "sponsor",
-          "bank_transfer",
-          "date_alert",
-          "partner_search",
-          "travel_party",
-          "station9_rsvp",
-          "race_result",
-          "predictor"
-        ]
-      },
-      "features": {
-        "predictor": true,
-        "chatbot": false
-      },
-      "analytics": {
-        "pageviews": true
-      },
-      "automation": {
-        "inbox": "elationfitness/data/inbox.json",
-        "writable": [
-          "elationfitness/data/events.json",
-          "elationfitness/data/cities.json",
-          "elationfitness/data/news.json",
-          "elationfitness/data/partners.json",
-          "elationfitness/data/matchboard.json",
-          "elationfitness/data/travelboard.json"
-        ],
-        "partners": "elationfitness/data/partners.json",
-        "matchboard": "elationfitness/data/matchboard.json",
-        "travelboard": "elationfitness/data/travelboard.json",
-        "autoApprove": [
-          "event",
-          "news",
-          "alert",
-          "sponsor"
-        ],
-        "coachPath": "/elationfitness/coach/",
-        "digestTo": "demo@example.com",
-        "digestDayUtc": 1,
-        "digestHourUtc": 0,
-        "welcomePath": "/elationfitness/welcome/",
-        "welcomeIntro": "Hi Graham — this is the first of your Monday emails from elationfitness.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
-      },
-      "offers": {},
-      "guides": {
-        "basePath": "/elationfitness/guides/",
-        "brand": "Graham Halliday",
-        "homePath": "/elationfitness/",
-        "language": "en",
-        "author": {
-          "name": "Graham Halliday",
-          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
-        },
-        "byline": "By Graham — HYROX Certified Coach, podium athlete, Scotland personal trainer.",
-        "indexTitle": "HYROX training guides by Graham — Graham Halliday",
-        "indexHeading": "HYROX training guides",
-        "indexDescription": "Practical HYROX guides from Scotland: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
-        "stylesheets": [
-          "/elationfitness/styles.css",
-          "/elationfitness/guide.css"
-        ],
-        "scripts": [
-          "/elationfitness/app.js",
-          "/elationfitness/partners.js"
-        ],
-        "headerHtml": "<a href=\"/elationfitness/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">E</span>LATION <span class=\"sig\" aria-label=\"by Graham Halliday\"><span class=\"sig-text\">by Graham Halliday</span></span></span></h1></a><p class=\"city\">Scotland</p>",
-        "nav": [
-          {
-            "href": "/elationfitness/",
-            "label": "Home"
-          },
-          {
-            "href": "/elationfitness/stations-prep/",
-            "label": "Stations Prep"
-          },
-          {
-            "href": "/elationfitness/run-zone/",
-            "label": "Run Zone"
-          },
-          {
-            "href": "/elationfitness/fuel-zone/",
-            "label": "Fuel Zone"
-          },
-          {
-            "href": "/elationfitness/taper-zone/",
-            "label": "Taper Zone"
-          },
-          {
-            "href": "/elationfitness/guides/",
-            "label": "Guides"
-          },
-          {
-            "href": "/elationfitness/events/",
-            "label": "Upcoming Events"
-          },
-          {
-            "href": "/elationfitness/hyrox-london/",
-            "label": "Hyrox Scotland"
-          },
-          {
-            "href": "/elationfitness/race-planner/",
-            "label": "Race planner"
-          },
-          {
-            "href": "/elationfitness/news/",
-            "label": "News"
-          },
-          {
-            "href": "/elationfitness/results/",
-            "label": "Results"
-          },
-          {
-            "href": "/elationfitness/splits/",
-            "label": "Split analyser"
-          },
-          {
-            "href": "/elationfitness/#plans",
-            "label": "Subscriptions"
-          }
-        ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Graham</h3><p>Hybrid coaching in Scotland or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/elationfitness/hybrid-coaching-london/\">See coaching plans</a></section>"
-      },
-      "channels": [
-        {
-          "label": "TikTok @elationfitnessfit",
-          "url": "https://www.instagram.com/elationgymglasgow/"
-        },
-        {
-          "label": "YouTube — ELATIONGYMGLASGOW",
-          "url": "https://www.instagram.com/elationgymglasgow/"
-        },
-        {
-          "label": "Elation @elationgymglasgow",
-          "url": "https://www.instagram.com/elationgymglasgow/"
-        },
-        {
-          "label": "Elation 365",
-          "url": "https://elationfitnesstraining.co.uk/"
-        },
-        {
-          "label": "All links",
-          "url": "https://linktr.ee/ElationFT"
-        }
-      ],
-      "demo": true
-    },
-    {
       "tenant_id": "faisalpma",
       "vertical": "coaching",
       "hostnames": [
@@ -1741,269 +1478,6 @@
         {
           "label": "Instagram",
           "url": "https://www.instagram.com/"
-        }
-      ],
-      "demo": true
-    },
-    {
-      "tenant_id": "getfitgabby",
-      "vertical": "coaching",
-      "hostnames": [
-        "getfitgabby.localhost",
-        "demo-getfitgabby.localhost"
-      ],
-      "canonicalHost": "getfitgabby.localhost",
-      "currency": "gbp",
-      "language": "en",
-      "catalog": {
-        "nicheCategorySlugs": [],
-        "heroProductIds": [],
-        "productTypeSlugs": []
-      },
-      "seo": {
-        "brandName": "Gabriella Moriarty",
-        "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
-        "supportEmail": "",
-        "about": "Hyrox coaching by Gabby — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
-        "meta": {
-          "homeDescription": "Hyrox coaching in United Kingdom and online with Gabby — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
-          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
-          "cartDescription": "Review your plan and subscribe securely."
-        },
-        "sameAs": [],
-        "staticPages": [
-          {
-            "path": "/getfitgabby/",
-            "priority": "1.0"
-          },
-          {
-            "path": "/getfitgabby/stations-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/run-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/fuel-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/taper-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/warrior-program/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/hybrid-coaching-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/elite-race-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/events/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/getfitgabby/hyrox-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/race-planner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/news/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/getfitgabby/london-hybrid-scene/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/advertise/",
-            "priority": "0.5"
-          },
-          {
-            "path": "/getfitgabby/coaching.html",
-            "priority": "0.7"
-          },
-          {
-            "path": "/getfitgabby/results/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/splits/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/doubles/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/find-a-partner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/getfitgabby/race-crew/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/getfitgabby/guides/",
-            "priority": "0.8"
-          }
-        ]
-      },
-      "submissions": {
-        "kinds": [
-          "race_splits",
-          "wall_photo",
-          "sponsor",
-          "bank_transfer",
-          "date_alert",
-          "partner_search",
-          "travel_party",
-          "station9_rsvp",
-          "race_result",
-          "predictor"
-        ]
-      },
-      "features": {
-        "predictor": true,
-        "chatbot": false
-      },
-      "analytics": {
-        "pageviews": true
-      },
-      "automation": {
-        "inbox": "getfitgabby/data/inbox.json",
-        "writable": [
-          "getfitgabby/data/events.json",
-          "getfitgabby/data/cities.json",
-          "getfitgabby/data/news.json",
-          "getfitgabby/data/partners.json",
-          "getfitgabby/data/matchboard.json",
-          "getfitgabby/data/travelboard.json"
-        ],
-        "partners": "getfitgabby/data/partners.json",
-        "matchboard": "getfitgabby/data/matchboard.json",
-        "travelboard": "getfitgabby/data/travelboard.json",
-        "autoApprove": [
-          "event",
-          "news",
-          "alert",
-          "sponsor"
-        ],
-        "coachPath": "/getfitgabby/coach/",
-        "digestTo": "demo@example.com",
-        "digestDayUtc": 1,
-        "digestHourUtc": 0,
-        "welcomePath": "/getfitgabby/welcome/",
-        "welcomeIntro": "Hi Gabby — this is the first of your Monday emails from getfitgabby.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
-      },
-      "offers": {},
-      "guides": {
-        "basePath": "/getfitgabby/guides/",
-        "brand": "Gabriella Moriarty",
-        "homePath": "/getfitgabby/",
-        "language": "en",
-        "author": {
-          "name": "Gabriella Moriarty",
-          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
-        },
-        "byline": "By Gabby — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
-        "indexTitle": "HYROX training guides by Gabby — Gabriella Moriarty",
-        "indexHeading": "HYROX training guides",
-        "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
-        "stylesheets": [
-          "/getfitgabby/styles.css",
-          "/getfitgabby/guide.css"
-        ],
-        "scripts": [
-          "/getfitgabby/app.js",
-          "/getfitgabby/partners.js"
-        ],
-        "headerHtml": "<a href=\"/getfitgabby/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">G</span>FG <span class=\"sig\" aria-label=\"by Gabriella Moriarty\"><span class=\"sig-text\">by Gabriella Moriarty</span></span></span></h1></a><p class=\"city\">United Kingdom</p>",
-        "nav": [
-          {
-            "href": "/getfitgabby/",
-            "label": "Home"
-          },
-          {
-            "href": "/getfitgabby/stations-prep/",
-            "label": "Stations Prep"
-          },
-          {
-            "href": "/getfitgabby/run-zone/",
-            "label": "Run Zone"
-          },
-          {
-            "href": "/getfitgabby/fuel-zone/",
-            "label": "Fuel Zone"
-          },
-          {
-            "href": "/getfitgabby/taper-zone/",
-            "label": "Taper Zone"
-          },
-          {
-            "href": "/getfitgabby/guides/",
-            "label": "Guides"
-          },
-          {
-            "href": "/getfitgabby/events/",
-            "label": "Upcoming Events"
-          },
-          {
-            "href": "/getfitgabby/hyrox-london/",
-            "label": "Hyrox United Kingdom"
-          },
-          {
-            "href": "/getfitgabby/race-planner/",
-            "label": "Race planner"
-          },
-          {
-            "href": "/getfitgabby/news/",
-            "label": "News"
-          },
-          {
-            "href": "/getfitgabby/results/",
-            "label": "Results"
-          },
-          {
-            "href": "/getfitgabby/splits/",
-            "label": "Split analyser"
-          },
-          {
-            "href": "/getfitgabby/#plans",
-            "label": "Subscriptions"
-          }
-        ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Gabby</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/getfitgabby/hybrid-coaching-london/\">See coaching plans</a></section>"
-      },
-      "channels": [
-        {
-          "label": "TikTok @getfitgabbyfit",
-          "url": "https://www.instagram.com/getfitgabby/"
-        },
-        {
-          "label": "YouTube — GETFITGABBY",
-          "url": "https://www.instagram.com/getfitgabby/"
-        },
-        {
-          "label": "Get Fit Gabby @getfitgabby",
-          "url": "https://www.instagram.com/getfitgabby/"
-        },
-        {
-          "label": "Get Fit Gabby 365",
-          "url": "https://linktr.ee/gabriellamoriarty"
-        },
-        {
-          "label": "All links",
-          "url": "https://linktr.ee/gabriellamoriarty"
         }
       ],
       "demo": true
@@ -5853,6 +5327,532 @@
         {
           "label": "All links",
           "url": "https://go.trainedbytr.com/home"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "getfitgabby",
+      "vertical": "coaching",
+      "hostnames": [
+        "getfitgabby.localhost",
+        "demo-getfitgabby.localhost"
+      ],
+      "canonicalHost": "getfitgabby.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Gabriella Moriarty",
+        "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Gabby — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in United Kingdom and online with Gabby — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/getfitgabby/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/getfitgabby/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/getfitgabby/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/getfitgabby/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/getfitgabby/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/getfitgabby/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/getfitgabby/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/getfitgabby/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "getfitgabby/data/inbox.json",
+        "writable": [
+          "getfitgabby/data/events.json",
+          "getfitgabby/data/cities.json",
+          "getfitgabby/data/news.json",
+          "getfitgabby/data/partners.json",
+          "getfitgabby/data/matchboard.json",
+          "getfitgabby/data/travelboard.json"
+        ],
+        "partners": "getfitgabby/data/partners.json",
+        "matchboard": "getfitgabby/data/matchboard.json",
+        "travelboard": "getfitgabby/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/getfitgabby/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/getfitgabby/welcome/",
+        "welcomeIntro": "Hi Gabby — this is the first of your Monday emails from getfitgabby.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/getfitgabby/guides/",
+        "brand": "Gabriella Moriarty",
+        "homePath": "/getfitgabby/",
+        "language": "en",
+        "author": {
+          "name": "Gabriella Moriarty",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Gabby — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
+        "indexTitle": "HYROX training guides by Gabby — Gabriella Moriarty",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/getfitgabby/styles.css",
+          "/getfitgabby/guide.css"
+        ],
+        "scripts": [
+          "/getfitgabby/app.js",
+          "/getfitgabby/partners.js"
+        ],
+        "headerHtml": "<a href=\"/getfitgabby/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">G</span>FG <span class=\"sig\" aria-label=\"by Gabriella Moriarty\"><span class=\"sig-text\">by Gabriella Moriarty</span></span></span></h1></a><p class=\"city\">United Kingdom</p>",
+        "nav": [
+          {
+            "href": "/getfitgabby/",
+            "label": "Home"
+          },
+          {
+            "href": "/getfitgabby/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/getfitgabby/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/getfitgabby/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/getfitgabby/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/getfitgabby/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/getfitgabby/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/getfitgabby/hyrox-london/",
+            "label": "Hyrox United Kingdom"
+          },
+          {
+            "href": "/getfitgabby/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/getfitgabby/news/",
+            "label": "News"
+          },
+          {
+            "href": "/getfitgabby/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/getfitgabby/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/getfitgabby/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Gabby</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/getfitgabby/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @getfitgabbyfit",
+          "url": "https://www.instagram.com/getfitgabby/"
+        },
+        {
+          "label": "YouTube — GETFITGABBY",
+          "url": "https://www.instagram.com/getfitgabby/"
+        },
+        {
+          "label": "Get Fit Gabby @getfitgabby",
+          "url": "https://www.instagram.com/getfitgabby/"
+        },
+        {
+          "label": "Get Fit Gabby 365",
+          "url": "https://linktr.ee/gabriellamoriarty"
+        },
+        {
+          "label": "All links",
+          "url": "https://linktr.ee/gabriellamoriarty"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "elationfitness",
+      "vertical": "coaching",
+      "hostnames": [
+        "elationfitness.localhost",
+        "demo-elationfitness.localhost"
+      ],
+      "canonicalHost": "elationfitness.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Graham Halliday",
+        "tagline": "Hyrox coaching, online programming and race prep from Scotland.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Graham — podium athlete and Scotland personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Scotland and online with Graham — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/elationfitness/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/elationfitness/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/elationfitness/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/elationfitness/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/elationfitness/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/elationfitness/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/elationfitness/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "elationfitness/data/inbox.json",
+        "writable": [
+          "elationfitness/data/events.json",
+          "elationfitness/data/cities.json",
+          "elationfitness/data/news.json",
+          "elationfitness/data/partners.json",
+          "elationfitness/data/matchboard.json",
+          "elationfitness/data/travelboard.json"
+        ],
+        "partners": "elationfitness/data/partners.json",
+        "matchboard": "elationfitness/data/matchboard.json",
+        "travelboard": "elationfitness/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/elationfitness/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/elationfitness/welcome/",
+        "welcomeIntro": "Hi Graham — this is the first of your Monday emails from elationfitness.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/elationfitness/guides/",
+        "brand": "Graham Halliday",
+        "homePath": "/elationfitness/",
+        "language": "en",
+        "author": {
+          "name": "Graham Halliday",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Graham — HYROX Certified Coach, podium athlete, Scotland personal trainer.",
+        "indexTitle": "HYROX training guides by Graham — Graham Halliday",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Scotland: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/elationfitness/styles.css",
+          "/elationfitness/guide.css"
+        ],
+        "scripts": [
+          "/elationfitness/app.js",
+          "/elationfitness/partners.js"
+        ],
+        "headerHtml": "<a href=\"/elationfitness/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">E</span>LATION <span class=\"sig\" aria-label=\"by Graham Halliday\"><span class=\"sig-text\">by Graham Halliday</span></span></span></h1></a><p class=\"city\">Scotland</p>",
+        "nav": [
+          {
+            "href": "/elationfitness/",
+            "label": "Home"
+          },
+          {
+            "href": "/elationfitness/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/elationfitness/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/elationfitness/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/elationfitness/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/elationfitness/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/elationfitness/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/elationfitness/hyrox-london/",
+            "label": "Hyrox Scotland"
+          },
+          {
+            "href": "/elationfitness/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/elationfitness/news/",
+            "label": "News"
+          },
+          {
+            "href": "/elationfitness/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/elationfitness/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/elationfitness/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Graham</h3><p>Hybrid coaching in Scotland or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/elationfitness/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @elationfitnessfit",
+          "url": "https://www.instagram.com/elationgymglasgow/"
+        },
+        {
+          "label": "YouTube — ELATIONGYMGLASGOW",
+          "url": "https://www.instagram.com/elationgymglasgow/"
+        },
+        {
+          "label": "Elation @elationgymglasgow",
+          "url": "https://www.instagram.com/elationgymglasgow/"
+        },
+        {
+          "label": "Elation 365",
+          "url": "https://elationfitnesstraining.co.uk/"
+        },
+        {
+          "label": "All links",
+          "url": "https://linktr.ee/ElationFT"
         }
       ],
       "demo": true

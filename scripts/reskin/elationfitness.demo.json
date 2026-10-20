@@ -190,6 +190,10 @@
     {
       "pattern": "365",
       "replace": "community"
+    },
+    {
+      "pattern": "\\s*<li><a href=\"/elationfitness/watch.html\">Watch</a></li>",
+      "replace": ""
     }
   ],
   "stripBlocks": [

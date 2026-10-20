@@ -183,9 +183,36 @@ This regenerates `joshharrison/`, copies it to `chassis/`, strips dead files, to
 2. **Pick** — human/agent names 1–2 candidate labels per active slot from the sheets. Labels are copied from `*-labels.json`, never transcribed by eye.
 3. **Pull** — `ig-pull.py <handle> <dir> --only CODE,CODE` fetches full-res picks. Video covers marked `[VID]` need `scripts/video-frame-sheet.py` before being assigned to station slots.
 4. **Index** — `scripts/photo-sort.js <dir> --index-only` runs Apple Vision face/OCR/classification.
-5. **Sort** — `scripts/photo-sort.js <dir>` allocates images into the fixed slot order.
-6. **Review** — `scripts/allocation-contact-sheet.py` renders the actual files per slot; set `allocation_verified: true` to allow the build.
-7. **Build** — assets are copied to `scripts/reskin/<slug>-assets/` and the tenant is generated.
+5. **CLIP score** — `scripts/image-clip-score.py <dir> --reference <dir>/reference` scores every image against slot descriptions and coach identity. Requires the Python venv (see below). Creates `clip-scores.json` in the source directory.
+6. **Sort** — `scripts/photo-sort.js <dir>` allocates images into the fixed slot order. Reads `clip-scores.json` if present for better scene/identity matching.
+7. **Review** — `scripts/allocation-contact-sheet.py` renders the actual files per slot; set `allocation_verified: true` to allow the build.
+8. **Build** — assets are copied to `scripts/reskin/<slug>-assets/` and the tenant is generated.
+
+### CLIP scoring (image intelligence)
+
+CLIP replaces manual eyeballing for two things:
+- **Coach identity:** "Is this the coach or a stranger?" (coach similarity score, 0.7+ = confirmed, 0.55–0.7 = possible, <0.55 = unlikely)
+- **Scene classification:** "Is this a burpee, a sled push, rowing, coaching, a selfie, a text graphic?" (scores for 20+ scene types)
+
+Setup (one-time):
+```bash
+python3.14 -m venv .venv
+.venv/bin/pip install open_clip_torch Pillow
+```
+
+Usage:
+```bash
+# Create 3-5 confirmed coach photos in a reference/ subfolder
+mkdir -p <source-dir>/reference
+cp <known-coach-photos> <source-dir>/reference/
+
+# Score all candidates
+.venv/bin/python scripts/image-clip-score.py <source-dir> --reference <source-dir>/reference
+```
+
+Output: `<source-dir>/clip-scores.json` — picked up automatically by `photo-sort.js`.
+
+The model (~350 MB) downloads once and caches in `~/.cache/huggingface/`. Scores ~1 image/second on Apple Silicon CPU.
 
 The canonical slot names and rules live in `chassis/images/slots.json` and `chassis/images/REQUIRED.md`.
 

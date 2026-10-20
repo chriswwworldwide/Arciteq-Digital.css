@@ -843,10 +843,39 @@ is 3–4 sentences max with the video link.
 
 ### Pitch email structure
 
-Subject: something specific to them — their name, their brand, a recent
-race result. Not generic.
+#### Subject line — do NOT "does what it says on the tin"
 
-Body (3–4 sentences):
+Avoid anything that explains the product in the subject. "We built you a
+HYROX coaching platform" or "Your own branded website" reads like every
+agency cold email they've ever ignored. The subject's only job is to earn
+the open, not explain the product.
+
+**Option 1 — Curiosity gap with a personal detail (recommended)**
+Short, lowercase-feeling, references something real about them. Impossible
+to categorise as spam without opening.
+- "Saw your Manchester splits — quick question"
+- "Your athletes are going to ask about this"
+- "Something came up when I was looking at your programme"
+- "Re: your 54:09 in Warsaw"
+
+**Option 2 — Pattern interrupt**
+Breaks the template. Agency emails never say these things.
+- "This isn't a pitch"
+- "Probably a weird email"
+- "Delete this if you want, but look at the link first"
+
+**Option 3 — Specificity / social proof**
+Proves you actually looked at their stuff, not a mail merge.
+- "Glasgow HYROX coaches and a gap I noticed"
+- "Your Elation floor vs. what your website says about you"
+- "Saw what you're doing with [their programme name]"
+
+Best results: Option 1 per prospect, pulling their actual race result or
+event from the demo config. The body handles the explanation; the subject
+just earns the open.
+
+#### Body (3–4 sentences)
+
 1. One sentence that proves you know who they are.
 2. "I built this for you — [link to demo]."
 3. "60-second walkthrough: [link to Loom video]."

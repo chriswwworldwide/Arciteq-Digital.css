@@ -692,6 +692,105 @@ organism in different skin — tokenisation is only possible because the
 organism is already understood. Unproven ≠ unbuilt: sales conversion,
 paying-tenant ops and churn are the untested legs, not the platform.
 
+## Pricing — decided (Jan 2027)
+
+Supersedes the earlier £995/£129 Race to Frame founding rate and the
+£450/£45 base-tier model in the income section above. Those were
+pre-chassis estimates; the product is now a full platform with race tools,
+business infrastructure and community features on every demo.
+
+### Pricing psychology (the reasoning)
+
+- **£1,000 setup, not £997.** Round number signals confidence — "a grand"
+  is a statement, not a negotiation tactic. Coaches who charge £89–150/mo
+  for their own services understand value pricing and can smell .97 retail
+  tricks. £997 reads as "trying to sneak under a thousand" which implies we
+  think a thousand is too much. £1,000 says "this is what it's worth."
+- **Monthly prices stay specific (£129, £49, £39).** Recurring costs benefit
+  from feeling calculated — it signals ongoing service, not a round-number
+  guess. The non-round monthly complements the round setup.
+- **Left-digit / boundary crossing matters.** £49 reads as "forty-something"
+  not "fifty." £129 reads as "one-twenty-nine" not "one-thirty." These cross
+  meaningful perceptual boundaries. £43 vs £47 doesn't — nobody cares within
+  a decade. We only use charm pricing where it genuinely crosses a tens or
+  hundreds boundary.
+- **Never price to look cheap.** The demo shows the full product; the price
+  must match that quality. A coach seeing a complete working site with their
+  name, photos, race tools, and business dashboard should not then see a
+  price that feels discount.
+
+### The structure: base + visible add-ons
+
+Every demo shows everything — Desk, race tools, coaching, Warriors Wall.
+The prospect sees the full platform working. The base price covers a
+genuinely complete product; add-ons are already visible in the demo so
+they sell themselves.
+
+**Base — £1,000 setup + £129/mo**
+
+Everything that makes a coach look professional and their athletes come back:
+- Full branded site (homepage, coaching page, about/bio)
+- Stations prep, run zone, taper zone (the content library)
+- Race planner + events calendar
+- Find a race-mate / doubles partner
+- Warriors Wall community gallery
+- News feed
+- SEO, hosting, SSL, mobile-responsive
+- Station 9 community page
+
+This is a complete product. A coach can replace their Linktree, Squarespace
+and scattered payment links with this alone.
+
+**Premium add-ons (visible in every demo)**
+
+| Add-on | What it does | Setup | Monthly |
+|---|---|---|---|
+| The Desk | Money in/out, tax set-aside, affiliate tracking, CSV import | +£200 | +£49/mo |
+| Race Tools Pack (Splits + Predictor + Results) | Interactive race analyser, time predictor, PB dashboard | +£200 | +£39/mo |
+
+Bundle play: individually the Race Tools would be £400 setup; the pack
+is £200. Everyone takes the pack.
+
+**Full platform (everything):** £1,400 setup + £199/mo. Position as
+"founding rate, first 10 coaches."
+
+### Current tenant pricing audit (Jan 2027)
+
+All 12 pitch-ready sites are functionally identical — same page set, same
+race tools, same community features. The only two without Desk (HTC Fisher
+and Burgon Fitness) are older legacy-mode builds that predate the chassis;
+they can be brought level with a rebuild. No reason to tier differently.
+
+| Tenant | Desk | Gallery | Status | Notes |
+|---|---|---|---|---|
+| racetoframe | YES | 8 | Not pitched by email | Was quoted £995+£129 pre-chassis — superseded |
+| joshharrison | YES | 8 | IG pitched | Creator-commerce shape |
+| jadeskillen | YES | 8 | IG pitched | Established coach, PERFORM programme |
+| htcfisher | NO | 10 | IG pitched | Legacy build — add Desk on rebuild |
+| burgonfitness | NO | 9 | Not pitched | Legacy build — add Desk on rebuild |
+| faisalpma | YES | 8 | Not pitched | Authority/creator, big following |
+| georgegrayson | YES | 8 | Not pitched | GG Coaching |
+| coachedbyzara | YES | 8 | Not pitched | No verified email yet |
+| jamiebarker | YES | 8 | Not pitched | Edge app founder |
+| getfitgabby | YES | 3 | Just built | Creator-commerce, E15 pro |
+| trainedbytr | YES | 1 | Just built | Coach greenfield |
+| elationfitness | YES | 2 | Just built | Gym bolt-on, Glasgow |
+
+### Pricing rules
+
+1. Quote £1,000 setup to everyone. No discounts on setup — it validates
+   the work (photo curation, content, demo build, QA) and qualifies the
+   buyer.
+2. Monthly is where negotiation lives if needed. £129/mo base is the
+   floor; add-ons are the upsell.
+3. Annual option: 2 months free (£1,290/yr instead of £1,548). Locks in
+   revenue, reduces churn.
+4. Never offer a free tier. The demo IS the try — they've already seen a
+   working site with their name on it.
+5. Don't bundle setup into monthly. £0 setup + higher monthly reads as
+   SaaS. A setup fee + monthly reads as bespoke build with ongoing service.
+   The second churns less because they've invested.
+
 ## Open questions
 
 - Station 9 site — live at / (apex) + /station9/, studio copy pass done;

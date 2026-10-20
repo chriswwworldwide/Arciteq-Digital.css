@@ -10,30 +10,30 @@
   },
   "tenantGallery": [
     {
-      "src": "gallery/race-pack.jpg",
-      "alt": "Graham leading the pack at HYROX",
-      "caption": "Leading from the front — HYROX arena",
-      "event": "Race day",
-      "tilt": -1.2
-    },
-    {
-      "src": "gallery/young-stars.jpg",
-      "alt": "Elation Young Stars crew at HYROX",
-      "caption": "Young Stars — the next wave of Elation athletes",
-      "event": "Race day",
-      "tilt": 0.8
-    },
-    {
       "src": "gallery/squad-gym.jpg",
       "alt": "Full Elation squad on the gym floor",
-      "caption": "The Elation floor — 25+ athletes and one Pomeranian",
+      "caption": "The Elation floor \u2014 25+ athletes and one Pomeranian",
       "event": "Training",
       "tilt": -0.5
     },
     {
+      "src": "/elationfitness/images/gallery/stock-barbell.jpg",
+      "alt": "Deadlift on gym floor",
+      "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
+      "event": "Training",
+      "tilt": 1.0
+    },
+    {
+      "src": "gallery/race-pack.jpg",
+      "alt": "Graham leading the pack at HYROX",
+      "caption": "Leading from the front \u2014 HYROX arena",
+      "event": "Race day",
+      "tilt": -1.2
+    },
+    {
       "src": "gallery/doubles-medal.jpg",
       "alt": "Graham and Liam at HYROX Glasgow with medal",
-      "caption": "Pro Doubles 50:54 — HYROX Glasgow",
+      "caption": "Pro Doubles 50:54 \u2014 HYROX Glasgow",
       "event": "Race day",
       "tilt": 1.1
     }

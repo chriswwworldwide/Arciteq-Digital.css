@@ -32,14 +32,6 @@
       "by": "Race day",
       "tilt": -0.8,
       "event": "Race day"
-    },
-    {
-      "src": "/{{SLUG}}/images/gallery/stock-sled-push.jpg",
-      "alt": "Sled push at HYROX event",
-      "caption": "Load the plates. Lean in. Drive.",
-      "by": "Race day",
-      "tilt": 1.5,
-      "event": "Race day"
     }
   ]
 }

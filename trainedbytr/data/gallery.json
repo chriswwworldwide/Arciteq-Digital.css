@@ -2,52 +2,32 @@
   "note": "PRIVATE PITCH PREVIEW.",
   "photos": [
     {
-      "src": "/trainedbytr/images/gallery/stock-arena.jpg",
-      "alt": "Athlete walking the arena floor before a race",
-      "caption": "The calm before the storm. Arena doors open, nerves kick in, let’s go.",
-      "by": "Race day",
-      "tilt": -1.5,
-      "event": "Race day"
-    },
-    {
-      "src": "/trainedbytr/images/gallery/stock-rower.jpg",
-      "alt": "Athlete on a Concept2 rower mid-race",
-      "caption": "1,000 metres. The monitor doesn’t lie and neither do your legs.",
-      "by": "Training",
-      "tilt": 2,
-      "event": "Training"
+      "src": "gallery/gym-squad.jpg",
+      "alt": "Tom coaching team session at the gym",
+      "caption": "The squad — another session in the books",
+      "event": "Training",
+      "tilt": -1.2
     },
     {
       "src": "/trainedbytr/images/gallery/stock-barbell.jpg",
-      "alt": "Deadlift on gym floor — no face visible",
+      "alt": "Deadlift on gym floor",
       "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
-      "by": "Training",
-      "tilt": 1,
-      "event": "Training"
+      "event": "Training",
+      "tilt": 1
     },
     {
-      "src": "/trainedbytr/images/gallery/gym-squad.jpg",
-      "alt": "TR squad at Gym King — team photo after a big session",
-      "caption": "Squad. Every session, every rep, nobody left behind.",
-      "by": "Trained by TR",
-      "tilt": -1.5,
-      "event": "Training"
+      "src": "gallery/event-crew.jpg",
+      "alt": "Team at HYROX event",
+      "caption": "Race day — the full crew",
+      "event": "Race day",
+      "tilt": 0.8
     },
     {
-      "src": "/trainedbytr/images/gallery/event-crew.jpg",
-      "alt": "Full event crew at the gym — 30+ athletes ready",
-      "caption": "Race prep done right. Thirty athletes, one goal, zero excuses.",
-      "by": "Trained by TR",
-      "tilt": 2.5,
-      "event": "Race day"
-    },
-    {
-      "src": "/trainedbytr/images/gallery/race-doubles.jpg",
+      "src": "gallery/race-doubles.jpg",
       "alt": "Tom sprinting through HYROX arch with doubles partner",
-      "caption": "Through the arch. The bit nobody photographs because everyone is screaming.",
-      "by": "HYROX",
-      "tilt": -0.5,
-      "event": "Race day"
+      "caption": "Doubles — under the arch",
+      "event": "Race day",
+      "tilt": -0.5
     }
   ]
 }

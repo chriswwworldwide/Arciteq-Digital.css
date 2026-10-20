@@ -10,32 +10,32 @@
   },
   "tenantGallery": [
     {
-      "src": "gallery/race-mates.jpg",
-      "alt": "Gabby and race partner at HYROX",
-      "caption": "Race mates — HYROX event",
-      "event": "Race day",
-      "tilt": -1.0
-    },
-    {
       "src": "gallery/squad-gym.jpg",
       "alt": "Get Fit Gabby squad on the gym floor",
-      "caption": "The squad — ready for the next block",
+      "caption": "The squad \u2014 ready for the next block",
       "event": "Training",
       "tilt": 0.6
     },
     {
-      "src": "gallery/arena-run.jpg",
-      "alt": "Running past the water station at HYROX arena",
-      "caption": "PGE Narodowy — doubles on the run",
-      "event": "Race day",
-      "tilt": -0.4
+      "src": "/getfitgabby/images/gallery/stock-barbell.jpg",
+      "alt": "Deadlift on gym floor",
+      "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
+      "event": "Training",
+      "tilt": 1.0
     },
     {
-      "src": "gallery/doubles-crew.jpg",
-      "alt": "Gabby with doubles partner",
-      "caption": "Doubles day — stronger together",
+      "src": "gallery/race-mates.jpg",
+      "alt": "Gabby and race partner at HYROX",
+      "caption": "Race mates \u2014 HYROX event",
       "event": "Race day",
-      "tilt": 1.2
+      "tilt": -1.0
+    },
+    {
+      "src": "gallery/arena-run.jpg",
+      "alt": "Running past the water station at HYROX arena",
+      "caption": "PGE Narodowy \u2014 doubles on the run",
+      "event": "Race day",
+      "tilt": -0.4
     }
   ],
   "tokens": {

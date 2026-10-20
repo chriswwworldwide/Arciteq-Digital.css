@@ -190,28 +190,32 @@
   ],
   "tenantGallery": [
     {
-      "src": "/{{SLUG}}/images/gallery/gym-squad.jpg",
-      "alt": "TR squad at Gym King \u2014 team photo after a big session",
-      "caption": "Squad. Every session, every rep, nobody left behind.",
-      "by": "Trained by TR",
-      "tilt": -1.5,
-      "event": "Training"
+      "src": "gallery/gym-squad.jpg",
+      "alt": "Tom coaching team session at the gym",
+      "caption": "The squad \u2014 another session in the books",
+      "event": "Training",
+      "tilt": -1.2
     },
     {
-      "src": "/{{SLUG}}/images/gallery/event-crew.jpg",
-      "alt": "Full event crew at the gym \u2014 30+ athletes ready",
-      "caption": "Race prep done right. Thirty athletes, one goal, zero excuses.",
-      "by": "Trained by TR",
-      "tilt": 2.5,
-      "event": "Race day"
+      "src": "/trainedbytr/images/gallery/stock-barbell.jpg",
+      "alt": "Deadlift on gym floor",
+      "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
+      "event": "Training",
+      "tilt": 1.0
     },
     {
-      "src": "/{{SLUG}}/images/gallery/race-doubles.jpg",
+      "src": "gallery/event-crew.jpg",
+      "alt": "Team at HYROX event",
+      "caption": "Race day \u2014 the full crew",
+      "event": "Race day",
+      "tilt": 0.8
+    },
+    {
+      "src": "gallery/race-doubles.jpg",
       "alt": "Tom sprinting through HYROX arch with doubles partner",
-      "caption": "Through the arch. The bit nobody photographs because everyone is screaming.",
-      "by": "HYROX",
-      "tilt": -0.5,
-      "event": "Race day"
+      "caption": "Doubles \u2014 under the arch",
+      "event": "Race day",
+      "tilt": -0.5
     }
   ]
 }

@@ -440,12 +440,10 @@ if (cfg.mode === "chassis") {
       );
     }
   }
+  // When tenantGallery is provided it replaces the chassis stock defaults entirely
   if (Array.isArray(cfg.tenantGallery) && cfg.tenantGallery.length) {
     const gp = path.join(dst, "data", "gallery.json");
-    const gd = fs.existsSync(gp)
-      ? JSON.parse(fs.readFileSync(gp, "utf8"))
-      : { note: "PRIVATE PITCH PREVIEW.", photos: [] };
-    if (!Array.isArray(gd.photos)) gd.photos = [];
+    const gd = { note: "PRIVATE PITCH PREVIEW.", photos: [] };
     for (const entry of cfg.tenantGallery) {
       gd.photos.push({
         ...entry,
@@ -453,17 +451,27 @@ if (cfg.mode === "chassis") {
       });
     }
     fs.writeFileSync(gp, JSON.stringify(gd, null, 2) + "\n");
+  } else {
+    // No tenant gallery — filter skipped stock from chassis defaults
+    const gp = path.join(dst, "data", "gallery.json");
+    if (fs.existsSync(gp) && skippedGallery.size) {
+      const gd = JSON.parse(fs.readFileSync(gp, "utf8"));
+      if (Array.isArray(gd.photos)) {
+        gd.photos = gd.photos.filter((p) => !skippedGallery.has(path.basename(String(p.src || ""))));
+        fs.writeFileSync(gp, JSON.stringify(gd, null, 2) + "\n");
+      }
+    }
   }
 
-  // Gallery minimum check: Warriors Wall needs at least 4 photos with 2+ event categories for filter tabs
+  // Gallery check: Warriors Wall needs exactly 4 photos with 2 event categories
   {
     const gp = path.join(dst, "data", "gallery.json");
     if (fs.existsSync(gp)) {
       const gd = JSON.parse(fs.readFileSync(gp, "utf8"));
-      const photos = Array.isArray(gd.photos) ? gd.photos.filter((p) => !skippedGallery.has(path.basename(String(p.src || "")))) : [];
+      const photos = Array.isArray(gd.photos) ? gd.photos : [];
       const events = new Set(photos.map((p) => p.event).filter(Boolean));
-      if (photos.length < 4) console.log(`  WARNING: gallery has only ${photos.length} photos (need 4+ for a strong Warriors Wall)`);
-      if (events.size < 2) console.log(`  WARNING: gallery has ${events.size} event category (need 2+ for filter tabs)`);
+      if (photos.length !== 4) console.log(`  WARNING: gallery has ${photos.length} photos (want exactly 4)`);
+      if (events.size < 2) console.log(`  WARNING: gallery has ${events.size} event category (need 2 for filter tabs)`);
     }
   }
 

@@ -16,6 +16,30 @@
       "by": "Training",
       "tilt": 1,
       "event": "Training"
+    },
+    {
+      "src": "/trainedbytr/images/gallery/gym-squad.jpg",
+      "alt": "TR squad at Gym King — team photo after a big session",
+      "caption": "Squad. Every session, every rep, nobody left behind.",
+      "by": "Trained by TR",
+      "tilt": -1.5,
+      "event": "Training"
+    },
+    {
+      "src": "/trainedbytr/images/gallery/event-crew.jpg",
+      "alt": "Full event crew at the gym — 30+ athletes ready",
+      "caption": "Race prep done right. Thirty athletes, one goal, zero excuses.",
+      "by": "Trained by TR",
+      "tilt": 2.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/trainedbytr/images/gallery/race-doubles.jpg",
+      "alt": "Tom sprinting through HYROX arch with doubles partner",
+      "caption": "Through the arch. The bit nobody photographs because everyone is screaming.",
+      "by": "HYROX",
+      "tilt": -0.5,
+      "event": "Race day"
     }
   ]
 }

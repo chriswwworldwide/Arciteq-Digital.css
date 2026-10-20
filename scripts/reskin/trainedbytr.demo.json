@@ -88,7 +88,10 @@
     "images/detail.jpg",
     "images/station-lean.jpg",
     "images/walkin.jpg",
-    "images/suit.jpg"
+    "images/suit.jpg",
+    "images/pb.jpg",
+    "images/station-burpees.jpg",
+    "images/station-sled-push.jpg"
   ],
   "stripPages": [
     "watch.html"
@@ -184,5 +187,31 @@
   "stripBlocks": [
     "youtube-link",
     "tiktok-link"
+  ],
+  "tenantGallery": [
+    {
+      "src": "/{{SLUG}}/images/gallery/gym-squad.jpg",
+      "alt": "TR squad at Gym King \u2014 team photo after a big session",
+      "caption": "Squad. Every session, every rep, nobody left behind.",
+      "by": "Trained by TR",
+      "tilt": -1.5,
+      "event": "Training"
+    },
+    {
+      "src": "/{{SLUG}}/images/gallery/event-crew.jpg",
+      "alt": "Full event crew at the gym \u2014 30+ athletes ready",
+      "caption": "Race prep done right. Thirty athletes, one goal, zero excuses.",
+      "by": "Trained by TR",
+      "tilt": 2.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/{{SLUG}}/images/gallery/race-doubles.jpg",
+      "alt": "Tom sprinting through HYROX arch with doubles partner",
+      "caption": "Through the arch. The bit nobody photographs because everyone is screaming.",
+      "by": "HYROX",
+      "tilt": -0.5,
+      "event": "Race day"
+    }
   ]
 }

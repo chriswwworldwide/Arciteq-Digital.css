@@ -426,6 +426,35 @@ if (cfg.mode === "chassis") {
       fs.copyFileSync(src, path.join(dst, "images", "gallery", file));
     }
   }
+
+  // Tenant-specific gallery: copy images from <slug>-assets/images/gallery/
+  // and merge gallery entries from tenantGallery config array into gallery.json
+  const tenantGalleryDir = path.join(root, [cfg.assets].flat().filter(Boolean)[0] || "", "images", "gallery");
+  if (fs.existsSync(tenantGalleryDir)) {
+    fs.mkdirSync(path.join(dst, "images", "gallery"), { recursive: true });
+    for (const file of fs.readdirSync(tenantGalleryDir)) {
+      if (!/\.(jpe?g|png|webp)$/i.test(file)) continue;
+      fs.copyFileSync(
+        path.join(tenantGalleryDir, file),
+        path.join(dst, "images", "gallery", file),
+      );
+    }
+  }
+  if (Array.isArray(cfg.tenantGallery) && cfg.tenantGallery.length) {
+    const gp = path.join(dst, "data", "gallery.json");
+    const gd = fs.existsSync(gp)
+      ? JSON.parse(fs.readFileSync(gp, "utf8"))
+      : { note: "PRIVATE PITCH PREVIEW.", photos: [] };
+    if (!Array.isArray(gd.photos)) gd.photos = [];
+    for (const entry of cfg.tenantGallery) {
+      gd.photos.push({
+        ...entry,
+        src: entry.src.replace("{{SLUG}}", cfg.slug),
+      });
+    }
+    fs.writeFileSync(gp, JSON.stringify(gd, null, 2) + "\n");
+  }
+
   if (!cfg.strictImages) {
     const legacyImageFallbacks = {
       "predictor-hero.jpg": "finish.jpg",
@@ -643,9 +672,9 @@ if (cfg.mode === "chassis") {
       matches.push(image);
       byHash.set(hash, matches);
     }
-    const duplicates = [...byHash.values()].filter(
-      (matches) => matches.length > 1,
-    );
+    const duplicates = [...byHash.values()]
+      .map((matches) => matches.filter((m) => !m.startsWith("images/gallery/")))
+      .filter((matches) => matches.length > 1);
     if (duplicates.length) {
       console.error(
         "\nDUPLICATE IMAGES — strict builds require a unique photo per slot:",

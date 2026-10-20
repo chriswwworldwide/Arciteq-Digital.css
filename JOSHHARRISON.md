@@ -56,3 +56,19 @@ line inside. Do not claim he owns things his pages don't say.
 3. FITR coaching pricing/programme names — need the FITR page (JS-only; screenshot or manual check).
 4. Current race schedule for the season ahead.
 5. Mailing list — does he run one? Nothing seen yet; we'd be offering it as a gain, not replacing.
+
+## Approved pitch (sent window: Sunday evening)
+
+Hi Josh — unusual message. I'm Chris, founder of Station9. I build sites for HYROX athletes who've turned racing into a business, and you were top of my list. Love your "Can AI do that?" reel — every discipline, every "no". But turning your HYBRID HUB drops, coaching and YouTube into one owned platform? AI can't do that.
+
+I've built you a preview site that puts them under one roof: coaching home, race predictor, split analyser, race-mate board, results, race calendar — plus a Warriors Wall for your athletes' photos. Hub merch drop gets its own card when doors open.
+
+https://www.station9studio.co.uk/joshharrison/
+
+Used your public posts to make it feel real — hope that's OK. Unlaunched, not indexed, free to view, no obligation.
+
+If you like it, it's your site — setup fee and a small monthly, shaped with you. Held until Thursday.
+
+Does it feel like you? Happy to talk it through either way. Chris
+
+Notes: "Can AI do that?" = verified recent reel detail. No client-roster claims. "AI can't do that" frames the human-built demo, not AI-generated. Deadline = Thursday.

@@ -1,0 +1,123 @@
+[
+  {
+    "path": "",
+    "subs": [
+      {
+        "text": "Gabby, this is your site.",
+        "holdMs": 4500
+      },
+      {
+        "text": "Not a Linktree. Not a payment link. Yours.",
+        "scroll": true,
+        "holdMs": 4500
+      },
+      {
+        "text": "Coaching, race tools, community, partner codes \u2014 one place.",
+        "scrollTo": "#plans",
+        "holdMs": 4500
+      },
+      {
+        "text": "Your Linktree links? They all live inside the site now.",
+        "holdMs": 3000,
+        "actions": [
+          { "click": "a.btn.btn-primary[href='/getfitgabby/coaching.html']", "pause": 2500 }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "coaching.html",
+    "skip_nav": true,
+    "subs": [
+      {
+        "text": "Coaching applications come through here \u2014 not a GoCardless link.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "stations-prep.html",
+    "subs": [
+      {
+        "text": "Real station prep \u2014 your photos, your coaching voice.",
+        "scroll": true,
+        "holdMs": 4500
+      }
+    ]
+  },
+  {
+    "path": "splits.html",
+    "subs": [
+      {
+        "text": "Split analyser. They paste a result, see exactly where to improve.",
+        "scrollTo": "#splits-form",
+        "holdMs": 5500
+      },
+      {
+        "text": "",
+        "actions": [
+          { "scrollTo": "#splits-form" },
+          { "selector": "input[name='name']", "fill": "Sarah", "pause": 400 },
+          { "selector": "input[name='event']", "fill": "HYROX London 2026", "pause": 400 },
+          { "selector": "select[name='division']", "select": "Women Open", "pause": 400 },
+          { "selector": "input[name='roxzone']", "fill": "1:18:42", "pause": 500 },
+          { "click": "#splits-form button[type='submit'], #splits-form input[type='submit'], #splits-form .btn", "pause": 1200 }
+        ],
+        "holdMs": 1500
+      },
+      {
+        "text": "Instant breakdown. Every station benchmarked.",
+        "scroll": true,
+        "holdMs": 4500
+      }
+    ]
+  },
+  {
+    "path": "find-a-partner.html",
+    "subs": [
+      {
+        "text": "Race-mate finder. Doubles partners pair up here, not in your DMs.",
+        "scrollTo": "#partner-form",
+        "holdMs": 5000
+      },
+      {
+        "text": "They post a card, find each other. No admin for you.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "desk.html",
+    "subs": [
+      {
+        "text": "And this is the bit nobody else builds you.",
+        "holdMs": 4500
+      },
+      {
+        "text": "The Desk. Coaching income, race costs, tax \u2014 one view. No spreadsheet.",
+        "scrollTo": ".desk-stats",
+        "holdMs": 5000
+      },
+      {
+        "text": "Bank CSV import. Affiliate tracking. It runs itself.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "",
+    "subs": [
+      {
+        "text": "Everything you sell, everything your community needs, under your name.",
+        "holdMs": 5000
+      },
+      {
+        "text": "Have a look around. I\u2019d love to hear what you think.",
+        "holdMs": 4500
+      }
+    ]
+  }
+]

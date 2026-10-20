@@ -1,0 +1,229 @@
+{
+  "mode": "chassis",
+  "slug": "getfitgabby",
+  "heroMode": "full",
+  "strictImages": true,
+  "assets": "scripts/reskin/getfitgabby-assets",
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "tokens": {
+    "SLUG": "getfitgabby",
+    "COACH_NAME": "Gabriella Moriarty",
+    "COACH_NAME_LC": "gabriella moriarty",
+    "COACH_FIRST": "Gabby",
+    "COACH_LAST": "Moriarty",
+    "WORDMARK_HTML": "<span class=\"o\">G</span>FG",
+    "BRAND": "Get Fit Gabby",
+    "BRAND_SHORT": "getfitgabby",
+    "BRAND_SOCIAL": "getfitgabby",
+    "CLOTHING_SHORT": "GFG",
+    "CITY": "Online",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "Helping people perform better",
+    "HERO_TITLE_HTML": "Elite 15 athlete.<br /><em>Online coach.</em>",
+    "APPLY_URL": "https://linktr.ee/gabriellamoriarty",
+    "PROGRAMMES_URL": "https://linktr.ee/gabriellamoriarty",
+    "STORE_URL": "https://linktr.ee/gabriellamoriarty",
+    "IG_URL": "https://www.instagram.com/getfitgabby/",
+    "BRAND_IG_URL": "https://www.instagram.com/getfitgabby/",
+    "YOUTUBE_URL": "https://www.instagram.com/getfitgabby/",
+    "TIKTOK_URL": "https://www.instagram.com/getfitgabby/",
+    "THREADS_URL": "https://www.threads.net/@getfitgabby",
+    "DOUBLES_PARTNER": "Zara Piergianni",
+    "PB_VENUE": "Berlin",
+    "PB_VENUE_LC": "berlin",
+    "DOUBLES_VENUE": "Stockholm",
+    "DOUBLES_VENUE_LC": "stockholm",
+    "OPEN_VENUE": "London",
+    "PB_SOLO": "1:01:06",
+    "PB_DOUBLES": "58:39",
+    "PB_HALF": "Elite 15",
+    "PB_OPEN": "Elite 15",
+    "SEASON_START": "first HYROX",
+    "PARTNER_GYM": "lululemon",
+    "PARTNER_GYM_LC": "lululemon",
+    "PARTNER_SUPP": "Marchon",
+    "PARTNER_SUPP_LC": "marchon",
+    "PARTNER_KIT": "lululemon",
+    "PARTNER_KIT_LC": "lululemon",
+    "PARTNER_KIT_TAG": "Performance kit",
+    "PARTNER_KIT_TITLE": "lululemon",
+    "PARTNER_KIT_COPY": "Gabby trains and races in lululemon — technical kit built for hybrid athletes.",
+    "PARTNER_KIT_CTA": "Shop lululemon",
+    "PARTNER_KIT_URL": "https://www.lululemon.co.uk/en-gb/home",
+    "GYM_CODE": "GFG",
+    "PHOTO_BUDDY": "Zara Piergianni",
+    "ACCENT": "#e63946",
+    "ACCENT_DARK": "#9b2226",
+    "ACCENT_SOFT": "#2a1616",
+    "BRAND_SHORT_UPPER": "GET FIT GABBY",
+    "LINKTREE_URL": "https://linktr.ee/gabriellamoriarty",
+    "VOICE_DOUBLES_HOOK": "A great partner doesn't make the race easier — they make the hard moments shared instead of lonely.",
+    "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
+    "VOICE_NEWS_TAKE": "Progress is built one honest session, one recovery day and one brave start at a time.",
+    "SOCIAL_HANDLE_UPPER": "GETFITGABBY",
+    "PARTNER_GYM_URL": "https://www.lululemon.co.uk/en-gb/home",
+    "PARTNER_SUPP_URL": "https://marchon-global.com/",
+    "STORE_NAME": "Get Fit Gabby",
+    "STORE_TAG": "Coaching hub",
+    "STORE_COPY": "Coaching enquiries, training links and the GoCardless payment page — everything runs through the hub.",
+    "STORE_CTA": "Visit the hub",
+    "SEASON_HEADLINE": "From her first HYROX to a 1:01:06 Pro Women solo in one season."
+  },
+  "stripSections": [
+    "merch",
+    "tips"
+  ],
+  "omitImageSlots": [
+    "images/finish.jpg",
+    "images/pb-venue.jpg",
+    "images/race-revel.jpg",
+    "images/sprint.jpg",
+    "images/treadmill.jpg",
+    "images/rope.jpg",
+    "images/station-lean.jpg",
+    "images/walkin.jpg"
+  ],
+  "stripPages": [
+    "watch.html"
+  ],
+  "news": [
+    {
+      "date": "2026-10-17",
+      "title": "A statement win in Budapest",
+      "summary": "Pro Doubles Women at the first-ever HYROX Budapest — fast running, strong stations, one team from start to finish.",
+      "take": "When the plan meets execution, the result takes care of itself.",
+      "link": "/getfitgabby/events.html",
+      "linkLabel": "Race calendar →"
+    },
+    {
+      "date": "2026-10-12",
+      "title": "Race-day ready",
+      "summary": "Getting my glam on isn't just vanity — it's the ritual that calms the nerves before the start pen.",
+      "take": "Find the routine that makes you feel like you, then trust it under pressure.",
+      "link": "/getfitgabby/run-zone.html",
+      "linkLabel": "Run zone →"
+    },
+    {
+      "date": "2026-10-07",
+      "title": "Make trying hard cool again",
+      "summary": "Back in the elite 15 doubles and chasing the next benchmark — the work is the reward.",
+      "take": "Progress isn't about perfect conditions. It's about showing up anyway.",
+      "link": "/getfitgabby/coaching.html",
+      "linkLabel": "Coaching →"
+    }
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
+      "replace": "Elite 15 HYROX athlete and online coach — helping people perform better through running, HYROX and strength work."
+    },
+    {
+      "pattern": "{{COACH_NAME}} \\u2014 HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} \\u2014 Elite 15 HYROX athlete, coach, and the face behind {{BRAND}}."
+    },
+    {
+      "pattern": "AJ Bell Birmingham Half",
+      "replace": "Elite 15 ranking"
+    },
+    {
+      "pattern": "Started the season at {{SEASON_START}}\\.",
+      "replace": "Coaches everyday athletes through running, HYROX and strength work."
+    },
+    {
+      "pattern": "HYROX Pro Solo {{PB_SOLO}} \\u2014 {{PB_VENUE}}\\.",
+      "replace": "Pro Women {{PB_SOLO}} \\u2014 HYROX {{PB_VENUE}}."
+    },
+    {
+      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} \\u2014 HYROX {{DOUBLES_VENUE}}\\.",
+      "replace": "Elite 15 Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} \\u2014 HYROX {{DOUBLES_VENUE}}."
+    },
+    {
+      "pattern": "Open solo {{PB_OPEN}} \\u2014 {{OPEN_VENUE}}\\. The benchmark that started it\\.",
+      "replace": "Elite 15 racing across the calendar \\u2014 from {{OPEN_VENUE}} to {{PB_VENUE}}."
+    },
+    {
+      "pattern": "building {{BRAND}} between race blocks\\. Open solo {{PB_OPEN}} at",
+      "replace": "building {{BRAND}} between race blocks. Elite 15 racing from"
+    },
+    {
+      "pattern": "The home weekend\\. Where the {{PB_OPEN}} open solo benchmark was",
+      "replace": "The home weekend. Where the Elite 15 benchmark was"
+    },
+    {
+      "pattern": "{{COACH_NAME}}\\. {{SEASON_HEADLINE}}",
+      "replace": "{{COACH_NAME}}. {{SEASON_HEADLINE}}"
+    },
+    {
+      "pattern": "One season, {{SEASON_START}} to 1:05\\. The same engine, pointed at your number\\.",
+      "replace": "From {{SEASON_START}} to a {{PB_SOLO}} Pro Women solo in one season. The same engine, pointed at your number."
+    },
+    {
+      "pattern": "{{COACH_FIRST}} has done it himself \\u2014 {{SEASON_START}} to 1:05 in a season\\.",
+      "replace": "{{COACH_FIRST}} has done it herself \\u2014 {{SEASON_START}} to {{PB_SOLO}} in a season."
+    },
+    {
+      "pattern": "your card and {{COACH_FIRST}} makes the intro himself\\.",
+      "replace": "your card and {{COACH_FIRST}} makes the intro herself."
+    },
+    {
+      "pattern": "{{COACH_FIRST}} reviews every application himself",
+      "replace": "{{COACH_FIRST}} reviews every application herself"
+    },
+    {
+      "pattern": "1:1 coaching, group programmes, {{BRAND}} 365 kit\\.",
+      "replace": "1:1 online coaching and training plans through the Get Fit Gabby hub."
+    },
+    {
+      "pattern": "{{BRAND}} 1:1 coaching by application, group programmes on FITR, and the {{BRAND}} 365 clothing line\\.",
+      "replace": "{{BRAND}} coaching enquiries, training links and the GoCardless payment page."
+    },
+    {
+      "pattern": "{{BRAND}} drops, coaching spots opening, race dates, the new vlog \\u2014",
+      "replace": "Coaching spots, race dates and training updates \\u2014"
+    },
+    {
+      "pattern": "<option>{{BRAND}} drops</option>",
+      "replace": "<option>Coaching availability</option>"
+    },
+    {
+      "pattern": "<option>Race dates &amp; vlogs</option>",
+      "replace": "<option>Race dates &amp; training updates</option>"
+    },
+    {
+      "pattern": "Hong Kong",
+      "replace": "Online"
+    },
+    {
+      "pattern": "\\s*<li><a href=\"/getfitgabby/watch.html\">Watch</a></li>",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*<a href=\"/getfitgabby/watch.html\">Watch</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "on FITR",
+      "replace": "online"
+    },
+    {
+      "pattern": "clothing line",
+      "replace": "athlete community"
+    },
+    {
+      "pattern": "365",
+      "replace": "hybrid"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} on the start line \\u2014 flat expression, miles to go",
+      "replace": "{{COACH_FIRST}} racing at HYROX {{PB_VENUE}}"
+    }
+  ],
+  "stripBlocks": [
+    "youtube-link",
+    "tiktok-link"
+  ]
+}

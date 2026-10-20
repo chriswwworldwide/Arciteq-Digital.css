@@ -7,6 +7,10 @@ import { fileURLToPath } from "node:url";
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const slotsPath = path.join(root, "chassis", "images", "slots.json");
 const manifest = JSON.parse(fs.readFileSync(slotsPath, "utf8"));
+const cuesPath = path.join(root, "chassis", "images", "station-cues.json");
+const stationCues = fs.existsSync(cuesPath)
+  ? JSON.parse(fs.readFileSync(cuesPath, "utf8"))
+  : null;
 const slots = manifest.slots;
 const allocationOrder = manifest.allocationOrder || Object.keys(slots);
 const allocatableSlots = Object.entries(slots)
@@ -287,6 +291,23 @@ function score(photo, slot, slotName) {
       proof,
       reason: "station not verified from actual file or frame sheet",
     };
+  // Station claims made from real files/frames must name the visual cues they
+  // matched (stationEvidence) — a bare "verified" boolean is how StairMasters
+  // ship as SkiErgs. Stock is exempt (its .meta.json is the evidence).
+  if (
+    stationSlot &&
+    stationCues &&
+    photo.annotation.verificationSource !== "stock"
+  ) {
+    const evidence = photo.annotation.stationEvidence;
+    const minEvidence = Number(stationCues.minEvidence) || 2;
+    if (!Array.isArray(evidence) || evidence.length < minEvidence)
+      return {
+        score: -Infinity,
+        proof,
+        reason: `station claim lacks ${minEvidence}+ recorded visual cues (stationEvidence — see chassis/images/station-cues.json)`,
+      };
+  }
   if (semanticCritical && proof.total === 0)
     return {
       score: -Infinity,

@@ -400,13 +400,31 @@ if (cfg.mode === "chassis") {
     "images",
     "gallery",
   );
+  const skippedGallery = new Set();
   if (!cfg.customCrewAssets && fs.existsSync(crewDefaults)) {
     fs.mkdirSync(path.join(dst, "images", "gallery"), { recursive: true });
-    for (const file of ["restaurant.jpg", "dance.jpg"])
-      fs.copyFileSync(
-        path.join(crewDefaults, file),
-        path.join(dst, "images", "gallery", file),
-      );
+    // Collect existing image hashes when strict to avoid gallery/tenant dupes
+    const existingHashes = new Set();
+    if (cfg.strictImages) {
+      const walkImg = (dir) => {
+        if (!fs.existsSync(dir)) return;
+        for (const f of fs.readdirSync(dir, { withFileTypes: true })) {
+          if (f.isDirectory()) walkImg(path.join(dir, f.name));
+          else if (/\.(jpe?g|png|webp)$/i.test(f.name))
+            existingHashes.add(crypto.createHash("md5").update(fs.readFileSync(path.join(dir, f.name))).digest("hex"));
+        }
+      };
+      walkImg(path.join(dst, "images"));
+    }
+    for (const file of ["restaurant.jpg", "dance.jpg", "stock-arena.jpg", "stock-barbell.jpg", "stock-rower.jpg"]) {
+      const src = path.join(crewDefaults, file);
+      if (!fs.existsSync(src)) continue;
+      if (cfg.strictImages) {
+        const h = crypto.createHash("md5").update(fs.readFileSync(src)).digest("hex");
+        if (existingHashes.has(h)) { console.log(`  gallery skip: ${file} (duplicate of tenant image)`); skippedGallery.add(file); continue; }
+      }
+      fs.copyFileSync(src, path.join(dst, "images", "gallery", file));
+    }
   }
   if (!cfg.strictImages) {
     const legacyImageFallbacks = {
@@ -435,6 +453,71 @@ if (cfg.mode === "chassis") {
       const source = path.join(dst, "images", sourceName);
       if (!fs.existsSync(target) && fs.existsSync(source))
         fs.copyFileSync(source, target);
+    }
+  }
+
+  // omitImageSlots: strip references to omitted images from generated pages.
+  // The pipeline uses omitImageSlots to mark slots that have no real asset;
+  // without this step the missing-image scan below would reject the build.
+  // We remove <img> tags, background-image references, and any enclosing
+  // element marked data-slot="<name>" for the omitted slots, plus any
+  // src/srcset attributes pointing at the missing file.
+  const omitSlots = (cfg.omitImageSlots || []).map((s) =>
+    s.replace(/^images\//, "").replace(/\.\w+$/, ""),
+  );
+  if (omitSlots.length) {
+    for (const file of walk(dst)) {
+      if (!/\.(html|js|css)$/.test(file)) continue;
+      let s = fs.readFileSync(file, "utf8");
+      const before = s;
+      // 1. Remove entire elements with data-slot="<name>" for omitted slots
+      for (const slotName of omitSlots) {
+        const slotAttr = new RegExp(
+          `<(\\w+)([^>]*?)data-slot="${slotName}"[^>]*>`,
+          "g",
+        );
+        let m;
+        while ((m = slotAttr.exec(s))) {
+          const tag = m[1];
+          if (m[0].endsWith("/>")) {
+            s = s.slice(0, m.index) + s.slice(m.index + m[0].length);
+            slotAttr.lastIndex = 0;
+            continue;
+          }
+          const tagRe = new RegExp(`<\\/?${tag}\\b[^>]*>`, "g");
+          tagRe.lastIndex = m.index;
+          let depth = 0;
+          let end = -1;
+          let t;
+          while ((t = tagRe.exec(s))) {
+            depth += t[0].startsWith("</") ? -1 : t[0].endsWith("/>") ? 0 : 1;
+            if (depth === 0) {
+              end = t.index + t[0].length;
+              break;
+            }
+          }
+          if (end === -1) break;
+          s = s.slice(0, m.index) + s.slice(end);
+          slotAttr.lastIndex = 0;
+        }
+      }
+      // 2. Remove standalone <img> tags referencing omitted images
+      for (const slotName of omitSlots) {
+        const imgRe = new RegExp(
+          `\\s*<img[^>]*src="[^"]*images/${slotName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.(?:jpe?g|png|webp)[^"]*"[^>]*/?>`,
+          "g",
+        );
+        s = s.replace(imgRe, "");
+      }
+      // 3. Remove <source> tags in <picture> elements referencing omitted images
+      for (const slotName of omitSlots) {
+        const srcRe = new RegExp(
+          `\\s*<source[^>]*srcset="[^"]*images/${slotName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.(?:jpe?g|png|webp)[^"]*"[^>]*/?>`,
+          "g",
+        );
+        s = s.replace(srcRe, "");
+      }
+      if (s !== before) fs.writeFileSync(file, s);
     }
   }
 
@@ -479,6 +562,20 @@ if (cfg.mode === "chassis") {
     );
     if (cfg.menu) s = replaceMenu(s);
     fs.writeFileSync(path.join(dst, f), s);
+  }
+
+  // Strip gallery.json entries for skipped (duplicate) stock images
+  if (skippedGallery.size) {
+    const gp = path.join(dst, "data", "gallery.json");
+    if (fs.existsSync(gp)) {
+      const gd = JSON.parse(fs.readFileSync(gp, "utf8"));
+      if (Array.isArray(gd.photos)) {
+        gd.photos = gd.photos.filter(
+          (p) => !skippedGallery.has(String(p.src || "").split("/").pop()),
+        );
+        fs.writeFileSync(gp, JSON.stringify(gd, null, 2) + "\n");
+      }
+    }
   }
 
   // fail loudly on unfilled tokens — the inverse of the persona-leak check

@@ -1,0 +1,29 @@
+{
+  "note": "Owner-voice feed — edit via config.",
+  "items": [
+    {
+      "date": "2026-10-17",
+      "title": "A statement win in Budapest",
+      "summary": "Pro Doubles Women at the first-ever HYROX Budapest — fast running, strong stations, one team from start to finish.",
+      "take": "When the plan meets execution, the result takes care of itself.",
+      "link": "/getfitgabby/events.html",
+      "linkLabel": "Race calendar →"
+    },
+    {
+      "date": "2026-10-12",
+      "title": "Race-day ready",
+      "summary": "Getting my glam on isn't just vanity — it's the ritual that calms the nerves before the start pen.",
+      "take": "Find the routine that makes you feel like you, then trust it under pressure.",
+      "link": "/getfitgabby/run-zone.html",
+      "linkLabel": "Run zone →"
+    },
+    {
+      "date": "2026-10-07",
+      "title": "Make trying hard cool again",
+      "summary": "Back in the elite 15 doubles and chasing the next benchmark — the work is the reward.",
+      "take": "Progress isn't about perfect conditions. It's about showing up anyway.",
+      "link": "/getfitgabby/coaching.html",
+      "linkLabel": "Coaching →"
+    }
+  ]
+}

@@ -1042,7 +1042,7 @@ section.block.alt {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: var(--ink);
+  background: var(--paper);
   color: #fff;
   padding: 72px 0;
 }
@@ -1054,8 +1054,8 @@ section.block.alt {
   height: 100%;
   object-fit: cover;
   object-position: 50% 80%;
-  opacity: 0.22;
-  filter: grayscale(1);
+  opacity: 0.38;
+  filter: grayscale(0.45);
   z-index: -1;
 }
 
@@ -1610,7 +1610,7 @@ footer a:hover {
 
 .capture .chat-line {
   margin-top: 14px;
-  color: #444;
+  color: rgba(255, 255, 255, 0.88);
 }
 .chat-zone-inline {
   display: inline-flex;

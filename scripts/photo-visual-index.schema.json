@@ -35,11 +35,13 @@
   "optionalImageFields": [
     "framing",
     "suitability",
-    "eventVerified"
+    "eventVerified",
+    "stationEvidence"
   ],
   "fieldNotes": {
     "framing": "Score the visible file, not the post. Low framing is how 'verified' sled pushes ship as floor shots.",
-    "suitability": "Plain-English sentence: what is actually in frame and whether it suits the claimed station/slot. Written evidence, not vibes — 'athlete bent over mid broad-jump' beats a bare 'burpee' tag."
+    "suitability": "Plain-English sentence: what is actually in frame and whether it suits the claimed station/slot. Written evidence, not vibes — 'athlete bent over mid broad-jump' beats a bare 'burpee' tag.",
+    "stationEvidence": "Required on any image with stationVerified=true and verificationSource fullres/framesheet: list of visual cues actually seen, copied from chassis/images/station-cues.json for the claimed station (e.g. ['round fan/flywheel housing at the top','two cords pulled downward from overhead']). photo-sort rejects station slots with fewer than minEvidence cues. Check the lookalikes list first — if a lookalike describes the image better, the claim fails."
   },
   "stationValues": [
     null,

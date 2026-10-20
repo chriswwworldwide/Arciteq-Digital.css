@@ -1,0 +1,29 @@
+{
+  "note": "Owner-voice feed — edit via config.",
+  "items": [
+    {
+      "date": "2026-10-19",
+      "title": "More than 60 chances to train every week",
+      "summary": "Classes that fit around real life, backed by 11 coaches and a community that keeps the standard high.",
+      "take": "Consistency gets easier when the right people are waiting for you on the floor.",
+      "link": "/elationfitness/coaching.html",
+      "linkLabel": "Train with Elation →"
+    },
+    {
+      "date": "2026-09-28",
+      "title": "Two ways into Elation",
+      "summary": "Small Group PT plus unlimited classes is £100 per month. Unlimited classes is £75 per month.",
+      "take": "Pick the support you need, then turn up and put the work in.",
+      "link": "/elationfitness/coaching.html",
+      "linkLabel": "See membership →"
+    },
+    {
+      "date": "2026-06-21",
+      "title": "Elite experience on the gym floor",
+      "summary": "Two Elite 15 owners, Graham Halliday and Matt Agnew, coach alongside the Elation team in Glasgow.",
+      "take": "Elite standards are useful only when they help everyday athletes make real progress.",
+      "link": "/elationfitness/stations-prep.html",
+      "linkLabel": "Prepare for HYROX →"
+    }
+  ]
+}

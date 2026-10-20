@@ -6,7 +6,7 @@ audience-led business we pitch later reuses this pattern.
 ## Status
 
 - Demo tenant: `racetoframe` → https://www.station9studio.co.uk/racetoframe/
-- Current demo is a stale city-gym clone — **not pitch-ready**, do not send.
+- Demo tenant is live and pitch-ready at https://www.station9studio.co.uk/racetoframe/
 - Source pack indexed: `scripts/reskin/racetoframe-source/` (49 files +
   SOURCE_NOTES.md). Photos gh-*.jpg; caption/post screenshots gh-*.png.
 
@@ -193,3 +193,19 @@ creator-tier builds for margin + proof, local clones as repeatable filler.
 - If they engage: ask for Shopify creds/domain access only after a
   positive reply, per existing rule.
 - Not committed yet — commit once final preview check done.
+
+## Approved pitch (sent window: Sunday evening)
+
+Hi Gregor & Hattie — unusual message. I'm Chris, founder of Station9. I build sites for HYROX creators, and Race to Frame was top of my list — love your humour together, the one about Greg's new hobby was hilarious.
+
+I've built you a preview site: podcast hub, race predictor, split analyser, race-mate board, results, race calendar — plus a Warriors Wall for listener photos. All under your brand, not a Linktree.
+
+https://www.station9studio.co.uk/racetoframe/
+
+Used your public posts to make it feel real — hope that's OK. Unlaunched, not indexed, free to view, no obligation.
+
+If you like it, it's your site — a setup fee and a small monthly, details shaped with you. It's exclusive per niche and held until Thursday.
+
+Does it feel like you? Happy to talk it through either way. Chris
+
+Decisions: "partnership" rejected (reads like asking for a cut) → "it's your site". Deadline = Thursday (4-5 days, not a week — urgency mustn't leak). Close = "Does it feel like you?" (forces the click, easy to answer) + low-pressure fallback line. "Greg's new hobby" = verified personal detail proving a human watched them.

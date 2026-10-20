@@ -120,3 +120,89 @@ Practical upshot: you can hand over a block of work and walk away in either plac
 - Database: local Postgres 17 (`brew services start postgresql@17`), db `roxjaya`; schema via `node scripts/migrate.js` (safe to re-run).
 - Checks before commit (also run by the pre-commit hook): `npm run lint`, `npm run type-check`; tests: `npx vitest run`.
 - Internal control panel: http://localhost:3000/hq (admin key is in `.env.local`).
+
+## Start here for batch tenant builds
+
+Use this section when the task is "build/pitch demos for multiple coaches".
+The full rationale and history live in `scripts/reskin/CHASSIS.md`; this is the operational quick-start.
+
+### One-line architecture
+
+`chassis/` (neutral tokenised site) + `scripts/reskin/<slug>.demo.json` (tokens/assets) → `scripts/reskin-tenant.js` → `<slug>/` (output folder) → Railway serves at `https://www.station9studio.co.uk/<slug>/`.
+
+### Build a single tenant
+
+```bash
+node scripts/reskin-tenant.js scripts/reskin/<slug>.demo.json
+```
+
+The target folder is replaced every time. Configs and assets in `scripts/reskin/` are the source of truth; tenant folders are outputs.
+
+### Build multiple tenants at once
+
+Method A — the full prospect pipeline (best when starting from Instagram handles):
+
+```bash
+# 1. qualify + create thumbnail contact sheets
+node scripts/prospect-pipeline.js prepare handle1 handle2 handle3 --run=my-batch --posts=60
+
+# 2. after human shortlist/approval, export, index, allocate and build
+node scripts/prospect-pipeline.js --resume my-batch
+```
+
+The pipeline stops at human gates:
+- thumbnail triage (`shortlist.json`)
+- visual index approval (`approval.json`)
+- allocation review (`allocation/*.jpg`)
+
+Set `decision: BUILD`, `allocation_verified: true` and `config_path` in the per-prospect `approval.json`, then rerun `--resume`.
+
+Method B — if configs and assets already exist, just loop:
+
+```bash
+for cfg in scripts/reskin/*.demo.json; do
+  node scripts/reskin-tenant.js "$cfg"
+done
+```
+
+`tenants.json` serialises writes with a lockfile, so parallel loops are safe but serial is simpler.
+
+### Regenerate the shared chassis
+
+Run this whenever the donor tenant (`joshharrison/`) has improved and the neutral base needs to catch up:
+
+```bash
+node scripts/build-chassis.js
+```
+
+This regenerates `joshharrison/`, copies it to `chassis/`, strips dead files, tokenises persona values, and fails loudly if any donor-specific string leaked into the chassis.
+
+### The photo process
+
+1. **Triage** — `ig-triage.py <handle> <dir>` creates thumbnail contact sheets of the last ~48–100 posts.
+2. **Pick** — human/agent names 1–2 candidate labels per active slot from the sheets. Labels are copied from `*-labels.json`, never transcribed by eye.
+3. **Pull** — `ig-pull.py <handle> <dir> --only CODE,CODE` fetches full-res picks. Video covers marked `[VID]` need `scripts/video-frame-sheet.py` before being assigned to station slots.
+4. **Index** — `scripts/photo-sort.js <dir> --index-only` runs Apple Vision face/OCR/classification.
+5. **Sort** — `scripts/photo-sort.js <dir>` allocates images into the fixed slot order.
+6. **Review** — `scripts/allocation-contact-sheet.py` renders the actual files per slot; set `allocation_verified: true` to allow the build.
+7. **Build** — assets are copied to `scripts/reskin/<slug>-assets/` and the tenant is generated.
+
+The canonical slot names and rules live in `chassis/images/slots.json` and `chassis/images/REQUIRED.md`.
+
+### The homepage hero / whole-site template
+
+The chassis ships two hero modes controlled by `data-hero-mode="full|ambient"` on `.hero--bleed`:
+
+- **full** — full-bleed background image with a CSS scrim; best for high-impact coach photos.
+- **ambient** — darker/minimal background with the coach portrait as the focus; best for starker brands.
+
+All three layers (CSS, `app.js` feather mask, `emerge.js` baked composite) read the same `data-hero-mode` flag. Changing one without the others is the main bug class the chassis fixes.
+
+The rest of the site template is a fixed page set: Home, Stations Prep, Run Zone, Fuel Zone, Taper Zone, coaching pages, Events, Race Planner, News, Results, Splits, Doubles, Find a Partner, Station 9, Guides, plus optional Shop/Desk/Community features toggled per tenant. Menu injection and page renames happen via the tenant config.
+
+### What to change where
+
+- **Global (affects every tenant):** edit `chassis/` or root shared files, then regenerate all tenants.
+- **Local (one prospect):** edit `scripts/reskin/<slug>.demo.json` and `scripts/reskin/<slug>-assets/`, then rerun `reskin-tenant.js`.
+
+Always run `npm run lint` and `npm run type-check` before committing.

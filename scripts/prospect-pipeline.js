@@ -117,8 +117,21 @@ function prepare() {
     ? handles.map((handle) => ({ handle, status: "PASS", dry_run: true }))
     : JSON.parse(qualificationText || "[]");
   writeJson(path.join(runDir, "qualification.json"), qualification);
+  // --force=handle1,handle2 admits handles the qualifier scored REVIEW/REJECT
+  // when a human has already cleared them manually (e.g. side-business the
+  // bio scan can't see). Forced handles are recorded in pipeline.json.
+  const forced = new Set(
+    (args.find((arg) => arg.startsWith("--force="))?.split("=")[1] || "")
+      .split(",")
+      .map(cleanHandle)
+      .filter(Boolean),
+  );
   const finalists = qualification
-    .filter((result) => result.status === "PASS")
+    .filter(
+      (result) =>
+        result.status === "PASS" ||
+        (forced.has(result.handle) && result.status !== "ERROR"),
+    )
     .map((result) => result.handle);
   if (!finalists.length) {
     writeJson(path.join(runDir, "pipeline.json"), {
@@ -190,6 +203,7 @@ function prepare() {
     prepared_at: new Date().toISOString(),
     handles,
     finalists,
+    forced: [...forced],
     posts,
     metrics: { rework_seconds: 0, corrections: [] },
     next_command: `node scripts/prospect-pipeline.js --resume ${runId}`,

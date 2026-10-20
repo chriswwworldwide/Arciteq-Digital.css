@@ -1,0 +1,187 @@
+{
+  "mode": "chassis",
+  "slug": "trainedbytr",
+  "heroMode": "full",
+  "strictImages": true,
+  "assets": "scripts/reskin/trainedbytr-assets",
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "tokens": {
+    "SLUG": "trainedbytr",
+    "COACH_NAME": "Tom Redmond",
+    "COACH_NAME_LC": "tom redmond",
+    "COACH_FIRST": "Tom",
+    "COACH_LAST": "Redmond",
+    "WORDMARK_HTML": "TRAINED BY <span class=\"o\">TR</span>",
+    "BRAND": "Trained by TR",
+    "BRAND_SHORT": "trainedbytr",
+    "BRAND_SOCIAL": "trainedbytr",
+    "CLOTHING_SHORT": "TBTR",
+    "CITY": "Widnes",
+    "REGION": "England",
+    "REGION_LC": "england",
+    "TAGLINE": "performance first. process always. results will follow.",
+    "HERO_TITLE_HTML": "Everyday athletes.<br /><em>Race ready.</em>",
+    "APPLY_URL": "https://go.trainedbytr.com/home",
+    "PROGRAMMES_URL": "https://go.trainedbytr.com/home",
+    "STORE_URL": "https://go.trainedbytr.com/home",
+    "IG_URL": "https://www.instagram.com/trainedbytr/",
+    "BRAND_IG_URL": "https://www.instagram.com/trainedbytr/",
+    "YOUTUBE_URL": "https://www.instagram.com/trainedbytr/",
+    "TIKTOK_URL": "https://www.instagram.com/trainedbytr/",
+    "THREADS_URL": "https://www.instagram.com/trainedbytr/",
+    "DOUBLES_PARTNER": "the Trained by TR team",
+    "PB_VENUE": "Manchester",
+    "PB_VENUE_LC": "manchester",
+    "DOUBLES_VENUE": "Birmingham",
+    "DOUBLES_VENUE_LC": "birmingham",
+    "OPEN_VENUE": "Manchester",
+    "PB_SOLO": "Race ready",
+    "PB_DOUBLES": "Team wins",
+    "PB_HALF": "100+ coached",
+    "PB_OPEN": "Everyday athletes",
+    "SEASON_START": "the first start line",
+    "SEASON_HEADLINE": "More than 100 everyday athletes coached to the start line.",
+    "PARTNER_GYM": "TransFit Widnes",
+    "PARTNER_GYM_LC": "transfit widnes",
+    "PARTNER_SUPP": "HYROX UK",
+    "PARTNER_SUPP_LC": "hyrox uk",
+    "PARTNER_KIT": "Trained by TR",
+    "PARTNER_KIT_LC": "trained by tr",
+    "PARTNER_KIT_TAG": "Official HYROX UK Performance Coach",
+    "PARTNER_KIT_TITLE": "Race-ready coaching",
+    "PARTNER_KIT_COPY": "Personal coaching, purposeful training and a race plan built around the athlete in front of Tom.",
+    "PARTNER_KIT_CTA": "Become race ready",
+    "PARTNER_KIT_URL": "https://go.trainedbytr.com/home",
+    "GYM_CODE": "TBTR",
+    "PHOTO_BUDDY": "the Trained by TR team",
+    "ACCENT": "#8b5cf6",
+    "ACCENT_DARK": "#5b21b6",
+    "ACCENT_SOFT": "#1d1630",
+    "BRAND_SHORT_UPPER": "TRAINED BY TR",
+    "LINKTREE_URL": "https://go.trainedbytr.com/home",
+    "VOICE_DOUBLES_HOOK": "Run your own race, trust your teammate and put the work in together.",
+    "VOICE_WEDDING": "five focused sessions will always outweigh ten average ones.",
+    "VOICE_NEWS_TAKE": "Performance first. Process always. Results will follow.",
+    "SOCIAL_HANDLE_UPPER": "TRAINEDBYTR",
+    "PARTNER_GYM_URL": "https://www.instagram.com/transfitwidnes/",
+    "PARTNER_SUPP_URL": "https://hyrox.com/",
+    "STORE_NAME": "Trained by TR Coaching",
+    "STORE_TAG": "Race-ready coaching",
+    "STORE_COPY": "Coaching information, applications and the route to your next start line.",
+    "STORE_CTA": "Become race ready"
+  },
+  "stripSections": [
+    "merch",
+    "tips"
+  ],
+  "omitImageSlots": [
+    "images/finish.jpg",
+    "images/pb-venue.jpg",
+    "images/race-revel.jpg",
+    "images/sprint.jpg",
+    "images/treadmill.jpg",
+    "images/rope.jpg",
+    "images/squad-athlos.jpg",
+    "images/detail.jpg",
+    "images/station-lean.jpg",
+    "images/walkin.jpg"
+  ],
+  "stripPages": [
+    "watch.html"
+  ],
+  "news": [
+    {
+      "date": "2026-10-19",
+      "title": "Your first HYROX: pace it properly",
+      "summary": "Going too hard on run one is the quickest way to pay for it at the sled push.",
+      "take": "Your first race isn't about a PB. Finish strong, learn what your body can do, then build from there.",
+      "link": "/trainedbytr/coaching.html",
+      "linkLabel": "Build your race plan →"
+    },
+    {
+      "date": "2026-10-16",
+      "title": "Do the things you're not good at",
+      "summary": "Prioritising three or four runs each week turned harder miles into easier, quicker work.",
+      "take": "Progress comes from giving the weak point proper attention, not avoiding it.",
+      "link": "/trainedbytr/run-zone.html",
+      "linkLabel": "Run zone →"
+    },
+    {
+      "date": "2026-02-06",
+      "title": "Performance first. Process always.",
+      "summary": "Strength, confidence and longevity come before chasing a number on the scales.",
+      "take": "When the foundations are solid, results become the by-product of doing things properly.",
+      "link": "/trainedbytr/coaching.html",
+      "linkLabel": "Coaching →"
+    }
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
+      "replace": "Official HYROX UK Performance Coach who has coached 100+ everyday athletes to the start line."
+    },
+    {
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} — Official HYROX UK Performance Coach, Head Coach at TransFit Widnes, and the face behind {{BRAND}}."
+    },
+    {
+      "pattern": "Started the season at {{SEASON_START}}\\.",
+      "replace": "Coached 100+ everyday athletes to the start line."
+    },
+    {
+      "pattern": "HYROX Pro Solo {{PB_SOLO}} — {{PB_VENUE}}\\.",
+      "replace": "Official HYROX UK Performance Coach."
+    },
+    {
+      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}\\.",
+      "replace": "Coach to everyday athletes and HYROX age-group champions."
+    },
+    {
+      "pattern": "pro solo {{PB_SOLO}} in {{PB_VENUE}}, a {{PB_DOUBLES}} pro doubles",
+      "replace": "race-day experience and more than 100 coached start lines"
+    },
+    {
+      "pattern": "One season, {{SEASON_START}} to {{PB_SOLO}}\\. The same engine, pointed at your number\\.",
+      "replace": "Purposeful training, honest feedback and a race plan built around you."
+    },
+    {
+      "pattern": "1:1 coaching, group programmes, {{BRAND}} 365 kit\\.",
+      "replace": "Personal coaching for everyday athletes who want to become race ready."
+    },
+    {
+      "pattern": "{{BRAND}} 1:1 coaching by application, group programmes on FITR, and the {{BRAND}} 365 clothing line\\.",
+      "replace": "Trained by TR performance coaching by application."
+    },
+    {
+      "pattern": "Hong Kong",
+      "replace": "Widnes"
+    },
+    {
+      "pattern": "\\s*<li><a href=\"/trainedbytr/watch.html\">Watch</a></li>",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*<a href=\"/trainedbytr/watch.html\">Watch</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "on FITR",
+      "replace": "online"
+    },
+    {
+      "pattern": "clothing line",
+      "replace": "athlete community"
+    },
+    {
+      "pattern": "365",
+      "replace": "coaching"
+    }
+  ],
+  "stripBlocks": [
+    "youtube-link",
+    "tiktok-link"
+  ]
+}

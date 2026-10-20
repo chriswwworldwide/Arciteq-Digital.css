@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>
+      HYROX race-time predictor — commit your number | Graham Halliday
+    </title>
+    <style>
+      .guide-hero-photo img { max-height: 560px; }
+      .wrap.guide { grid-template-columns: minmax(0, 1fr); }
+      .wrap.guide .article { max-width: none; }
+      .wrap.guide .article p { max-width: 72ch; }
+      .wrap.guide .calc-form { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+      .wrap.guide .dossier { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    </style>
+    <meta
+      name="description"
+      content="Tell us what you think you'll run at your next HYROX. We'll tell you what you'll actually run — here and at your next three races."
+    />
+    <link rel="stylesheet" href="/elationfitness/styles.css?v=1792513581989" />
+    <link rel="stylesheet" href="/elationfitness/guide.css?v=1792513581989" />
+  </head>
+  <body>
+    <header class="masthead wrap">
+      <a href="/elationfitness/" style="color: inherit; text-decoration: none">
+        <h1>
+          <span class="wordmark"
+            ><span class="o">E</span>LATION
+            <span class="sig" aria-label="by Graham Halliday"
+              ><span class="sig-text">by Graham Halliday</span
+              ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+                <path
+                  d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                  fill="currentColor"
+                /></svg
+            ></span>
+          </span>
+        </h1>
+      </a>
+      <p class="city">Scotland</p>
+    </header>
+
+    <div class="nav">
+      <div class="wrap">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          Menu
+        </button>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
+          <li><a href="/elationfitness/coaching.html">Coaching</a></li>
+          <li><a href="/elationfitness/watch.html">Watch</a></li>
+          <li><a href="/elationfitness/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/elationfitness/predictor.html">Race predictor</a></li>
+              <li><a href="/elationfitness/splits.html">Split analyser</a></li>
+              <li><a href="/elationfitness/results.html">Results board</a></li>
+              <li><a href="/elationfitness/stations-prep/">Stations prep</a></li>
+              <li><a href="/elationfitness/run-zone/">Run zone</a></li>
+              <li><a href="/elationfitness/taper-zone/">Taper zone</a></li>
+              <li><a href="/elationfitness/events.html">Race calendar</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/elationfitness/race-crew.html">Race crew meetups</a></li>
+              <li><a href="https://www.instagram.com/elationgymglasgow/" target="_blank" rel="noopener">Elation IG</a></li>
+              <li><a href="/elationfitness/#ask">Ask Graham</a></li>
+              <li><a href="/elationfitness/news.html">UK HYROX news</a></li>
+            </ul>
+          </li>
+          <li><a href="/elationfitness/partners.html">Partners</a></li>
+          <li><a href="/elationfitness/list.html">Join the list</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="guide-hero">
+      <div class="wrap">
+        <div class="guide-hero-text">
+          <ol class="crumbs">
+            <li><a href="/elationfitness/">Graham</a></li>
+            <li>Race-time predictor</li>
+          </ol>
+          <p class="eyebrow">Put your number on the line</p>
+          <h2>You say your time. We say the truth.</h2>
+          <p class="lead">
+            Commit your predicted finish for your next race — then we&rsquo;ll tell
+            you what you&rsquo;ll actually run there and at your next three. Fill in
+            the full dossier for a scarier answer. Hair colour is mandatory.
+            (It isn&rsquo;t. But tell us anyway.)
+          </p>
+          <p class="byline">
+            By Graham — HYROX Pro athlete, coach, part-time metronome.</p>
+        </div>
+        <figure class="guide-hero-photo">
+          <img
+            src="/elationfitness/images/predictor-hero.jpg?v=1792513581989"
+            alt="Graham mid-race in the arena — the bright kit pops against the dark"
+            width="1600"
+            height="1066"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <div class="wrap guide">
+      <div class="article">
+        <article class="station" id="stake">
+          <span class="num">Step 01</span>
+          <h3>The stake</h3>
+          <form class="calc-form" id="predict-form" autocomplete="off">
+            <label>
+              <span>Your target race</span>
+              <select name="race" id="race-select" required>
+                <option value="">Loading races…</option>
+              </select>
+            </label>
+            <label>
+              <span>Your predicted finish (h:mm or mm:ss)</span>
+              <input
+                type="text"
+                name="mypred"
+                inputmode="numeric"
+                maxlength="6"
+                required
+                placeholder="e.g. 1:30 or 88:00 — no pressure"
+              />
+            </label>
+            <label>
+              <span>Division</span>
+              <select name="division" required>
+                <option value="">Pick one…</option>
+                <option value="open">Open</option>
+                <option value="pro">Pro (heavier sleds + wall balls)</option>
+                <option value="doubles">Doubles</option>
+              </select>
+            </label>
+            <label>
+              <span>Recent benchmark</span>
+              <select name="bench" id="bench" required>
+                <option value="">Pick one…</option>
+                <option value="5k">5K time</option>
+                <option value="10k">10K time</option>
+                <option value="none">No recent race — guess from fitness</option>
+              </select>
+            </label>
+            <label id="bench-time-row">
+              <span>Your time (mm:ss)</span>
+              <input
+                type="text"
+                name="benchtime"
+                inputmode="numeric"
+                maxlength="5"
+                placeholder="e.g. 24:30"
+              />
+            </label>
+            <label id="fitness-row" hidden>
+              <span>Honest fitness check</span>
+              <select name="fitness">
+                <option value="">Pick one…</option>
+                <option value="30">I run sometimes — 5K around 30 min</option>
+                <option value="24">I&rsquo;m fit — 5K around 24 min</option>
+                <option value="20">I&rsquo;m quick — 5K around 20 min</option>
+              </select>
+            </label>
+            <label>
+              <span>Stations — honest version</span>
+              <select name="stations" required>
+                <option value="">Pick one…</option>
+                <option value="weak">The stations scare me</option>
+                <option value="balanced">I&rsquo;m balanced — no heroics, no disasters</option>
+                <option value="strong">Stations are my strength</option>
+              </select>
+            </label>
+
+            <fieldset class="dossier">
+              <legend>The full dossier — optional, but scarier</legend>
+              <label>
+                <span>Age</span>
+                <input type="number" name="age" min="16" max="90" placeholder="Years" />
+              </label>
+              <label>
+                <span>Male or female</span>
+                <select name="sex">
+                  <option value="">Prefer not to say</option>
+                  <option value="f">Female</option>
+                  <option value="m">Male</option>
+                </select>
+              </label>
+              <label>
+                <span>Height (cm)</span>
+                <input type="number" name="height" min="120" max="230" placeholder="e.g. 168" />
+              </label>
+              <label>
+                <span>Weight now (kg)</span>
+                <input type="number" name="weight" min="35" max="200" step="0.1" placeholder="e.g. 62" />
+              </label>
+              <label>
+                <span>Weight a year ago (kg)</span>
+                <input type="number" name="weight_ago" min="35" max="200" step="0.1" placeholder="The trajectory matters more than the number" />
+              </label>
+              <label>
+                <span>VO2 max (if you know it)</span>
+                <input type="number" name="vo2" min="20" max="80" placeholder="ml/kg/min" />
+              </label>
+              <p class="form-note">
+                No lab? Estimate it: Cooper 12-minute run test, your watch&rsquo;s
+                VO2 number, or resting HR — 15.3 × (max HR ÷ resting HR) is a
+                decent shortcut. Or skip it entirely.
+              </p>
+              <label>
+                <span>Wrist circumference (cm)</span>
+                <input type="number" name="wrist" min="10" max="30" step="0.1" placeholder="Frame size — for the sled&rsquo;s benefit" />
+              </label>
+              <label>
+                <span>Calf circumference (cm)</span>
+                <input type="number" name="calf" min="25" max="60" step="0.1" placeholder="Wall ball country" />
+              </label>
+              <label>
+                <span>Relationship status</span>
+                <select name="status">
+                  <option value="">Prefer not to say</option>
+                  <option value="single">Single</option>
+                  <option value="married">Married</option>
+                  <option value="complicated">It&rsquo;s complicated</option>
+                </select>
+              </label>
+              <label>
+                <span>Hair colour</span>
+                <select name="hair">
+                  <option value="">Prefer not to say</option>
+                  <option value="black">Black</option>
+                  <option value="brown">Brown</option>
+                  <option value="blonde">Blonde</option>
+                  <option value="red">Red</option>
+                  <option value="grey">Grey — earned</option>
+                  <option value="none">No comment (shaved)</option>
+                </select>
+              </label>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary">
+              Judge my number
+            </button>
+            <p class="form-note" id="predict-note" role="status"></p>
+          </form>
+        </article>
+
+        <article class="station" id="result" hidden>
+          <span class="num">Step 02</span>
+          <h3>The verdict</h3>
+          <div id="result-card" aria-live="polite"></div>
+          <form class="calc-form" id="send-form" autocomplete="off">
+            <label>
+              <span>Email it to yourself (optional)</span>
+              <input
+                type="email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@…"
+              />
+            </label>
+            <button type="submit" class="btn btn-ghost">
+              Send me my split card
+            </button>
+            <p class="form-note" id="send-note" role="status"></p>
+          </form>
+        </article>
+
+        <article class="station" id="fineprint">
+          <span class="num">Step 03</span>
+          <h3>The fine print</h3>
+          <ul class="roundup-list">
+            <li>
+              This is an estimate from typical division patterns, not a promise.
+              Race day has opinions of its own — heat, crowd, and whether you
+              respected the sled.
+            </li>
+            <li>
+              Hair colour is not a real input. The algorithm collected it
+              anyway, for science.
+            </li>
+            <li>
+              Your email only ever reaches Graham&rsquo;s desk. No lists, no spam —
+              a split card and maybe a hello.
+            </li>
+          </ul>
+          <p>
+            <a class="btn btn-primary" href="/elationfitness/#ask">Ask Graham</a>
+            <a class="btn btn-ghost" href="/elationfitness/splits/"
+              >Already raced? Analyse real splits</a
+            >
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <section class="cta-band">
+      <div class="wrap">
+        <h3>Want a number you can actually hold?</h3>
+        <p>
+          A prediction is a vibe. A coached plan is a number built from your
+          real splits — and re-checked after every race.
+        </p>
+        <a class="btn btn-light" href="/elationfitness/coaching.html">Coach with Graham</a>
+        <a class="btn btn-primary" href="/elationfitness/#ask">Ask Graham</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div>© <span id="year"></span> Graham Halliday</div>
+      </div>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+    </footer>
+
+    <script src="/elationfitness/app.js?v=1792513581989" defer></script>
+    <script src="/elationfitness/predictor.js?v=1792513581989" defer></script>
+  </body>
+</html>

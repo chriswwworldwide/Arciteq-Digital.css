@@ -1059,6 +1059,10 @@ window.roxShare = (function () {
 (() => {
   const img = document.querySelector(".hero--bleed .hero-img");
   if (!img) return;
+  // hero--full paints the photo cover-fit across the whole hero — there is
+  // no ambient backdrop to melt into, so the contain-rect feather mask
+  // would crop the photo back into a pillarbox. Leave the mask off.
+  if (img.closest(".hero--full")) return;
   // The mask goes on the .hero-mask wrapper — the img carries the enter/drift
   // transform animations, and Safari won't composite a masked element that
   // itself (or an ancestor of it) transform-animates. Masked parent + moving

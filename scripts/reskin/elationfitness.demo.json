@@ -1,0 +1,170 @@
+{
+  "mode": "chassis",
+  "slug": "elationfitness",
+  "heroMode": "ambient",
+  "strictImages": true,
+  "assets": "scripts/reskin/elationfitness-assets",
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "tokens": {
+    "SLUG": "elationfitness",
+    "COACH_NAME": "Graham Halliday",
+    "COACH_NAME_LC": "graham halliday",
+    "COACH_FIRST": "Graham",
+    "COACH_LAST": "Halliday",
+    "WORDMARK_HTML": "<span class=\"o\">E</span>LATION",
+    "BRAND": "Elation",
+    "BRAND_SHORT": "elationfitness",
+    "BRAND_SOCIAL": "elationgymglasgow",
+    "CLOTHING_SHORT": "ELATION",
+    "CITY": "Glasgow",
+    "REGION": "Scotland",
+    "REGION_LC": "scotland",
+    "TAGLINE": "Glasgow training, built around people and progress",
+    "HERO_TITLE_HTML": "Train together.<br /><em>Go further.</em>",
+    "APPLY_URL": "https://elationfitnesstraining.co.uk/",
+    "PROGRAMMES_URL": "https://elationfitnesstraining.co.uk/",
+    "STORE_URL": "https://elationfitnesstraining.co.uk/",
+    "IG_URL": "https://www.instagram.com/grahamhalliday_/",
+    "BRAND_IG_URL": "https://www.instagram.com/elationgymglasgow/",
+    "YOUTUBE_URL": "https://www.instagram.com/elationgymglasgow/",
+    "TIKTOK_URL": "https://www.instagram.com/elationgymglasgow/",
+    "THREADS_URL": "https://www.instagram.com/elationgymglasgow/",
+    "DOUBLES_PARTNER": "Liam McCroary",
+    "PB_VENUE": "Warsaw",
+    "PB_VENUE_LC": "warsaw",
+    "DOUBLES_VENUE": "Manchester",
+    "DOUBLES_VENUE_LC": "manchester",
+    "OPEN_VENUE": "Stockholm",
+    "PB_SOLO": "54:09",
+    "PB_DOUBLES": "50:54",
+    "PB_HALF": "Elite 15",
+    "PB_OPEN": "Worlds 2026",
+    "SEASON_START": "the Elation floor",
+    "PARTNER_GYM": "Elation Fitness",
+    "PARTNER_GYM_LC": "elation fitness",
+    "PARTNER_SUPP": "Myprotein",
+    "PARTNER_SUPP_LC": "myprotein",
+    "PARTNER_KIT": "Built for Athletes",
+    "PARTNER_KIT_LC": "built for athletes",
+    "PARTNER_KIT_TAG": "Training partner",
+    "PARTNER_KIT_TITLE": "Built for Athletes",
+    "PARTNER_KIT_COPY": "Training bags made for the kit, miles and early starts that come with hybrid racing.",
+    "PARTNER_KIT_CTA": "Visit Built for Athletes",
+    "PARTNER_KIT_URL": "https://builtforathletes.com/ELATION",
+    "GYM_CODE": "ELATION",
+    "PHOTO_BUDDY": "the Elation community",
+    "ACCENT": "#f4d000",
+    "ACCENT_DARK": "#aa9000",
+    "ACCENT_SOFT": "#242006",
+    "BRAND_SHORT_UPPER": "ELATION FITNESS",
+    "LINKTREE_URL": "https://linktr.ee/ElationFT",
+    "VOICE_DOUBLES_HOOK": "The best work is rarely done alone. Find someone who raises the standard and get after it together.",
+    "VOICE_WEDDING": "the session still counts when the week is busy and conditions are not perfect.",
+    "VOICE_NEWS_TAKE": "Keep showing up with quality and intent. The small gains add up.",
+    "SOCIAL_HANDLE_UPPER": "ELATIONGYMGLASGOW",
+    "PARTNER_GYM_URL": "https://elationfitnesstraining.co.uk/",
+    "PARTNER_SUPP_URL": "https://www.myprotein.com/",
+    "STORE_NAME": "Elation Fitness Training",
+    "STORE_TAG": "Glasgow training community",
+    "STORE_COPY": "Small Group PT, unlimited classes and more than 60 sessions every week at our Balmore Road home.",
+    "STORE_CTA": "Explore Elation",
+    "SEASON_HEADLINE": "Elite-level experience, brought back to the Elation floor."
+  },
+  "stripSections": [
+    "merch",
+    "tips"
+  ],
+  "omitImageSlots": [
+    "images/station-lean.jpg",
+    "images/kerb.jpg",
+    "images/rooftop.jpg",
+    "images/walkin.jpg",
+    "images/suit.jpg",
+    "images/hoodie.jpg",
+    "images/wallball.jpg",
+    "images/carry.jpg",
+    "images/splits-hero.jpg",
+    "images/startline.jpg",
+    "images/finish.jpg",
+    "images/track.jpg",
+    "images/bike.jpg",
+    "images/rope.jpg",
+    "images/momentum.jpg",
+    "images/half.jpg",
+    "images/night.jpg",
+    "images/sprint.jpg",
+    "images/run-compromised.jpg",
+    "images/squad-athlos.jpg",
+    "images/skierg-laugh.jpg"
+  ],
+  "stripPages": [
+    "watch.html"
+  ],
+  "news": [
+    {
+      "date": "2026-10-19",
+      "title": "More than 60 chances to train every week",
+      "summary": "Classes that fit around real life, backed by 11 coaches and a community that keeps the standard high.",
+      "take": "Consistency gets easier when the right people are waiting for you on the floor.",
+      "link": "/elationfitness/coaching.html",
+      "linkLabel": "Train with Elation →"
+    },
+    {
+      "date": "2026-09-28",
+      "title": "Two ways into Elation",
+      "summary": "Small Group PT plus unlimited classes is £100 per month. Unlimited classes is £75 per month.",
+      "take": "Pick the support you need, then turn up and put the work in.",
+      "link": "/elationfitness/coaching.html",
+      "linkLabel": "See membership →"
+    },
+    {
+      "date": "2026-06-21",
+      "title": "Elite experience on the gym floor",
+      "summary": "Two Elite 15 owners, Graham Halliday and Matt Agnew, coach alongside the Elation team in Glasgow.",
+      "take": "Elite standards are useful only when they help everyday athletes make real progress.",
+      "link": "/elationfitness/stations-prep.html",
+      "linkLabel": "Prepare for HYROX →"
+    }
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "HYROX Pro athlete, coach and creator",
+      "replace": "Elation co-owner, coach and Elite 15 athlete"
+    },
+    {
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} — Elite 15 athlete, coach and co-owner of {{BRAND}} Fitness Training with Matt Agnew."
+    },
+    {
+      "pattern": "1:1 coaching, group programmes, {{BRAND}} 365 kit\\.",
+      "replace": "Small Group PT, unlimited classes and a 60-plus-session weekly timetable."
+    },
+    {
+      "pattern": "{{BRAND}} 1:1 coaching by application, group programmes on FITR, and the {{BRAND}} 365 clothing line\\.",
+      "replace": "Elation offers Small Group PT plus unlimited classes for £100 per month, or unlimited classes for £75 per month."
+    },
+    {
+      "pattern": "Hong Kong",
+      "replace": "Glasgow"
+    },
+    {
+      "pattern": "on FITR",
+      "replace": "in Glasgow"
+    },
+    {
+      "pattern": "clothing line",
+      "replace": "member community"
+    },
+    {
+      "pattern": "365",
+      "replace": "community"
+    }
+  ],
+  "stripBlocks": [
+    "youtube-link",
+    "tiktok-link"
+  ]
+}

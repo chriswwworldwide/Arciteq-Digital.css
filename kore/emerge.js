@@ -1,19 +1,33 @@
-// emerge.js — tenant hero entrance picker. Runs the actual Codrops
-// "Emerging WebGL Image Effects" shader (akella/CodropsEmergingImages,
-// MIT) over the hero photo. The fragment shader is verbatim apart from
-// two WebGL1 adaptations: the derivatives extension is enabled, and
-// type 4's dynamic uniform-array index is read through a loop symbol
-// (GLSL ES 1.00 only allows const/loop indices on uniforms).
+// emerge.js — Station 9 hero reveal. Self-contained drop-in: needs only
+//   <section class="hero--bleed">
+//     <div class="hero-mask"><img class="hero-img" ...></div>
+//     <div class="wrap"> ... headline/copy ... </div>
+//   </section>
+// plus a <script defer>. No CSS, no other JS.
 //
-// Modes: ?fx=0|1|2|3 runs one effect; ?fx=demo plays all four with a
-// settle hold and a dark pause between each, labelled for client pick.
-// The texture is a baked composite of the real hero layers (ambient
-// backdrop + photo at its live box/fit/focal) so the reveal lands
-// exactly on the settled page. No WebGL / reduced-motion → page shows.
+// Fragment shader is the Codrops "Emerging WebGL Image Effects" set
+// (akella/CodropsEmergingImages, MIT) with one WebGL1 adaptation: the
+// derivatives extension is enabled.
+//
+// Choreography: hero mounts as flat stage colour → pixelated squares
+// wash down revealing a baked whole-section composite (stage colour +
+// blurred ambient where the photo sits + the real photo + the real
+// headline text drawn via Range rects) → ~1.4s cross-fade hands off to
+// the live DOM. The texture IS the finished page, so handoff is
+// seamless — do NOT try to snapshot DOM via SVG foreignObject here,
+// it taints the canvas and texImage2D throws.
+//
+// ?fx=0|1|2|3 picks one effect (0 pixel slide, 1 noise melt,
+// 2 random squares [default], 3 curtain wave); ?fx=demo auditions all
+// four with labels; ?fx=off disables. Reduced-motion and no-WebGL fall
+// straight through to the normal page.
 (() => {
   const fx = new URLSearchParams(location.search).get("fx");
   const demo = fx === "demo";
-  const solo = /^[0-3]$/.test(fx || "") ? Number(fx) : null;
+  // Default on every load: effect 2 "random squares" — pixelated tiles
+  // dropping and solidifying into the baked hero composite. ?fx=0-3
+  // overrides for previews; ?fx=off disables entirely.
+  const solo = /^[0-3]$/.test(fx || "") ? Number(fx) : fx === null ? 2 : null;
   if (!demo && solo === null) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   window.__emerge = true; // hero-reveal.js checks this and stands down
@@ -23,6 +37,14 @@
     const mask = section && section.querySelector(".hero-mask");
     const img = mask && mask.querySelector(".hero-img");
     if (!section || !mask || !img) return;
+    // Black start: hide the rendered hero now so the page never flashes
+    // a finished hero that then vanishes — the opaque canvas is the
+    // first thing anyone sees. Restored if WebGL bails.
+    // opacity (not visibility) for the wrap: hidden elements return no
+    // Range rects, and the text-stamp needs real line boxes to bake
+    const wrapEl0 = section.querySelector(".wrap");
+    mask.style.visibility = "hidden";
+    if (wrapEl0) wrapEl0.style.opacity = "0";
 
     const VS = `
       attribute vec2 a_pos;
@@ -39,7 +61,6 @@
       uniform vec3 uFillColor;
       uniform float uProgress;
       uniform float uType;
-      uniform float uPixels[36];
       uniform vec2 uTextureSize;
       uniform vec2 uElementSize;
       uniform sampler2D uTexture;
@@ -317,20 +338,6 @@
           gl_FragColor = color;
 
         }
-        else if(uType==4.){
-          int indexProgress = int(uProgress*36.);
-          float pixRand = 0.;
-          for(int i=0;i<36;i++){ if(i==indexProgress) pixRand = uPixels[i]; }
-          float pixellation = floor(uElementSize.x*pixRand);
-
-          vec2 gridSize = vec2(
-            pixellation,
-            floor(pixellation/imageAspect)
-          );
-          vec2 newUV = floor(uv * gridSize) / gridSize + 0.5/vec2(gridSize);
-          vec4 color = texture2D(uTexture, newUV);
-          gl_FragColor = color;
-        }
 
         // codrops gamma lift during the reveal, converging to raw sRGB at
         // settle so the canvas lands identical to the DOM photo (no dark
@@ -340,11 +347,13 @@
       }
     `;
 
-    // Mount the canvas exactly over the photo's painted rect (its content
-    // box resolved through live object-fit/object-position) and texture it
-    // with the raw <img> — the identical path to the standalone demo. The
-    // mask's own feather/clip applies to the canvas automatically.
-    const start = () => {
+    const unhide = () => {
+      mask.style.visibility = "";
+      if (wrapEl0) wrapEl0.style.opacity = "";
+    };
+    const start = async () => {
+      // image genuinely missing/broken → bail to the normal page
+      if (!img.naturalWidth || !img.naturalHeight) return unhide();
       const ics = getComputedStyle(img);
       // offset* gives the layout box relative to the mask (offsetParent)
       // and ignores the hero-drift transform — getBoundingClientRect
@@ -383,28 +392,43 @@
         py = by + ofy * (bh - dh);
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      // The canvas covers the WHOLE hero section — photo, backdrop AND
+      // the headline column — so the squares sweep across everything as
+      // one piece. Mounted above the .wrap text layer (z-index 3 vs 2).
+      const sectionRect = section.getBoundingClientRect();
+      const maskRect = mask.getBoundingClientRect();
+      const mx = maskRect.left - sectionRect.left + px;
+      const my = maskRect.top - sectionRect.top + py;
+      const mw = sectionRect.width,
+        mh = sectionRect.height;
+      if (getComputedStyle(section).position === "static") {
+        section.style.position = "relative";
+      }
       const canvas = document.createElement("canvas");
       canvas.className = "emerge-canvas";
+      // Opaque stage background from frame zero — the hero reads as a
+      // solid dark panel before the wave starts, and the squares reveal
+      // the finished page (text included) as they wash down. Nothing of
+      // the real DOM shows through at any point.
+      const stageBg =
+        getComputedStyle(section).backgroundColor || "#06080e";
       canvas.style.cssText =
-        "position:absolute;pointer-events:none;z-index:2;left:" +
-        px +
-        "px;top:" +
-        py +
-        "px;width:" +
-        dw +
+        "position:absolute;pointer-events:none;z-index:3;left:0;top:0;width:" +
+        mw +
         "px;height:" +
-        dh +
-        "px";
-      canvas.width = Math.max(2, Math.round(dw * dpr));
-      canvas.height = Math.max(2, Math.round(dh * dpr));
-      mask.appendChild(canvas);
+        mh +
+        "px;background:" +
+        stageBg;
+      canvas.width = Math.max(2, Math.round(mw * dpr));
+      canvas.height = Math.max(2, Math.round(mh * dpr));
+      section.appendChild(canvas);
       const gl = canvas.getContext("webgl", {
         alpha: true,
         premultipliedAlpha: false,
       });
       if (!gl) {
         canvas.remove();
-        return;
+        return unhide();
       }
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.getExtension("OES_standard_derivatives");
@@ -434,10 +458,190 @@
       gl.enableVertexAttribArray(aPos);
       gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
 
+      // Bake the whole-section composite: flat stage base, blurred
+      // ambient clipped to the photo's painted rect (plus a soft
+      // feather), the hero's overlay gradients replicated, the real
+      // photo at its painted rect, then the real words stamped on top —
+      // the texture is the finished page, so handoff is pixel-ident.
+      const bake = document.createElement("canvas");
+      bake.width = Math.max(2, Math.round(mw * dpr));
+      bake.height = Math.max(2, Math.round(mh * dpr));
+      const bctx = bake.getContext("2d");
+      const W = bake.width,
+        H = bake.height;
+      // Blurred ambient only where the photo actually sits: its painted
+      // rect plus a soft feather outward. The headline side bakes as
+      // flat stage ink — no silhouette to settle on the left.
+      bctx.fillStyle =
+        getComputedStyle(section).backgroundColor || "#0b1020";
+      bctx.fillRect(0, 0, W, H);
+      const feather = 48 * dpr;
+      bctx.save();
+      bctx.beginPath();
+      bctx.rect(mx * dpr - feather, 0, dw * dpr + feather, H);
+      bctx.clip();
+      const cs = Math.max(bake.width / iw, bake.height / ih);
+      bctx.filter = "blur(48px) brightness(0.55) saturate(1.15)";
+      bctx.drawImage(
+        img,
+        (bake.width - iw * cs) / 2,
+        (bake.height - ih * cs) / 2,
+        iw * cs,
+        ih * cs,
+      );
+      bctx.filter = "none";
+      // feather the clip's left edge into the flat stage
+      let fxg = bctx.createLinearGradient(
+        mx * dpr - feather,
+        0,
+        mx * dpr + feather,
+        0,
+      );
+      fxg.addColorStop(0, getComputedStyle(section).backgroundColor || "#0b1020");
+      fxg.addColorStop(1, "rgba(6, 8, 14, 0)");
+      bctx.fillStyle = fxg;
+      bctx.fillRect(mx * dpr - feather, 0, feather * 2, H);
+      bctx.restore();
+      let g = bctx.createLinearGradient(0, 0, 0, H);
+      g.addColorStop(0, "rgba(0, 17, 21, 0.05)");
+      g.addColorStop(0.45, "rgba(0, 17, 21, 0.2)");
+      g.addColorStop(1, "rgba(0, 17, 21, 0.86)");
+      bctx.fillStyle = g;
+      bctx.fillRect(0, 0, W, H);
+      g = bctx.createLinearGradient(0, 0, W, 0);
+      g.addColorStop(0, "rgba(0, 17, 21, 0.82)");
+      g.addColorStop(0.45, "rgba(0, 17, 21, 0.35)");
+      g.addColorStop(0.68, "rgba(0, 17, 21, 0)");
+      bctx.fillStyle = g;
+      bctx.fillRect(0, 0, W, H);
+      bctx.drawImage(img, mx * dpr, my * dpr, dw * dpr, dh * dpr);
+
+      // Stamp the real words into the bake so the wave reveals them
+      // too — walk every text node in .wrap, use Range rects for true
+      // per-line positions + wrapping, paint with each element's
+      // computed font. Button chrome comes from element boxes under
+      // the text. No foreignObject → no canvas taint.
+      const wrapForBake = section.querySelector(".wrap");
+      if (wrapForBake) {
+        // Freeze any entrance animations/transitions while we measure —
+        // Range rects captured mid-slide bake text at the wrong offset
+        // and it "pops" at handoff. Style tag scoped to the hero only.
+        const freeze = document.createElement("style");
+        freeze.textContent =
+          ".hero--bleed,.hero--bleed *{animation:none!important;transition:none!important}";
+        document.head.appendChild(freeze);
+        void wrapForBake.offsetWidth; // flush styles before measuring
+        const paintBox = (el) => {
+          const cs = getComputedStyle(el);
+          const bg = cs.backgroundColor;
+          const bw = parseFloat(cs.borderTopWidth) || 0;
+          const hasBg = bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent";
+          if (!hasBg && !bw) return;
+          const r = el.getBoundingClientRect();
+          bctx.beginPath();
+          bctx.roundRect(
+            (r.left - sectionRect.left) * dpr,
+            (r.top - sectionRect.top) * dpr,
+            r.width * dpr,
+            r.height * dpr,
+            (parseFloat(cs.borderTopLeftRadius) || 0) * dpr,
+          );
+          if (hasBg) {
+            bctx.fillStyle = bg;
+            bctx.fill();
+          }
+          if (bw) {
+            bctx.lineWidth = bw * dpr;
+            bctx.strokeStyle = cs.borderTopColor;
+            bctx.stroke();
+          }
+        };
+        paintBox(wrapForBake);
+        for (const el of wrapForBake.querySelectorAll("a,button,span"))
+          paintBox(el);
+
+        const range = document.createRange();
+        const walker = document.createTreeWalker(
+          wrapForBake,
+          NodeFilter.SHOW_TEXT,
+          {
+            acceptNode: (n) =>
+              n.textContent.trim()
+                ? NodeFilter.FILTER_ACCEPT
+                : NodeFilter.FILTER_REJECT,
+          },
+        );
+        let tn;
+        while ((tn = walker.nextNode())) {
+          const p = tn.parentElement;
+          if (!p) continue;
+          const cs = getComputedStyle(p);
+          bctx.font =
+            cs.fontStyle +
+            " " +
+            cs.fontWeight +
+            " " +
+            parseFloat(cs.fontSize) * dpr +
+            "px " +
+            cs.fontFamily;
+          bctx.fillStyle = cs.color;
+          try {
+            bctx.letterSpacing =
+              (parseFloat(cs.letterSpacing) || 0) * dpr + "px";
+          } catch (e) {
+            /* letterSpacing unsupported — draw untracked */
+          }
+          bctx.textBaseline = "top";
+          // split the node into its real wrapped lines: each char's
+          // Range rect tells us which visual line it sits on
+          const lines = [];
+          let cur = { rect: null, text: "" };
+          for (let i = 0; i < tn.length; i++) {
+            range.setStart(tn, i);
+            range.setEnd(tn, i + 1);
+            const rs = range.getClientRects();
+            const r = rs[rs.length - 1];
+            const ch = tn.textContent[i];
+            // Chars with no rect (source-indent whitespace, \n) are
+            // dropped ONLY until the line's first visible glyph —
+            // dropping them unconditionally ate real spaces like the
+            // one before "pace."
+            if (!r || r.width === 0) {
+              if (cur.rect) cur.text += ch;
+              continue;
+            }
+            if (!cur.rect) cur.rect = r;
+            if (Math.abs(r.top - cur.rect.top) > 1) {
+              lines.push(cur);
+              cur = { rect: r, text: "" };
+            }
+            cur.text += ch;
+          }
+          if (cur.text) lines.push(cur);
+          const tform = cs.textTransform;
+          for (const L of lines) {
+            if (!L.rect || !L.text.trim()) continue;
+            const txt =
+              tform === "uppercase"
+                ? L.text.toUpperCase()
+                : tform === "lowercase"
+                  ? L.text.toLowerCase()
+                  : L.text;
+            bctx.fillText(
+              txt,
+              (L.rect.left - sectionRect.left) * dpr,
+              (L.rect.top - sectionRect.top) * dpr,
+            );
+          }
+          bctx.letterSpacing = "0px";
+        }
+        freeze.remove();
+      }
+
       const tex = gl.createTexture();
       gl.bindTexture(gl.TEXTURE_2D, tex);
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, bake);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
@@ -451,36 +655,20 @@
         uFill = u("uFillColor"),
         uProgress = u("uProgress"),
         uType = u("uType"),
-        uPixels = u("uPixels"),
         uTexSize = u("uTextureSize"),
         uElSize = u("uElementSize"),
         uTex = u("uTexture");
       gl.uniform3f(uFill, 0.004, 0.002, 0.0035); // stage-matched plum —
       // the shader gamma-brightens, so the fill band lands around #150f13
       // and reads as the dark stage itself, not a sheet over it
-      gl.uniform2f(uTexSize, iw, ih);
-      gl.uniform2f(uElSize, dw, dh);
+      gl.uniform2f(uTexSize, bake.width, bake.height);
+      gl.uniform2f(uElSize, mw * dpr, mh * dpr);
       gl.uniform1i(uTex, 0);
-      gl.uniform1fv(
-        uPixels,
-        Float32Array.from({ length: 36 }, () => Math.random() * 0.5 + 0.5),
-      );
 
-      // Photo hidden for the run — the blurred ambient stays up as the
-      // dark stage; restored at the end (or on any bail). Animations are
-      // parked while hidden and restarted as drift-only on restore, so
-      // the DOM photo lands at the same pose the canvas settled at
-      // (hero-enter already played on load; replaying it here would
-      // double-animate the re-entry).
-      img.style.visibility = "hidden";
+      // Park the photo's entrance/drift animations for the run so the
+      // DOM lands at the same pose the canvas settled at.
       img.style.animation = "none";
-      const restore = () => {
-        img.style.visibility = "";
-        // Frozen for fx sessions — hero-enter ends at transform:none so
-        // this lands exactly on the canvas pose, and no drift resume
-        // means no micro-movement after the settle
-        img.style.animation = "none";
-      };
+      const restore = unhide;
 
       let tag = null;
       if (demo) {
@@ -492,7 +680,9 @@
 
       const NAMES = ["pixel slide", "noise melt", "random squares", "curtain wave"];
       const SHOW = 2200,
-        HOLD = 900,
+        // demo mode keeps a labelled hold between effects; the real
+        // run goes wave → fade with no static beat
+        HOLD = demo ? 900 : 60,
         PAUSE = 1400;
       const types = demo ? [0, 1, 2, 3] : [solo];
       const seq = types.flatMap((t, i) => {
@@ -522,13 +712,13 @@
           }
           acc += P.dur;
         }
-        // stay hidden until the reveal front is actually moving —
-        // uProgress≈0 renders a full white sheet for some effects
-        if (ph.pause || el < 0 || (!ph.hold && lt < 0.08)) {
-          canvas.style.opacity = "0";
+        // Canvas stays visible (opaque stage bg) for the whole run —
+        // transparent shader pixels show the stage, not the DOM, so the
+        // page reads as black before the wave and the reveal is the only
+        // thing ever on screen. Pauses just skip drawing.
+        if (ph.pause || el < 0 || (!ph.hold && lt < 0.02)) {
           if (tag) tag.textContent = "";
         } else {
-          canvas.style.opacity = "1";
           if (tag) tag.textContent = ph.label;
           gl.uniform1f(uTime, now * 0.001);
           gl.uniform1f(uProgress, ph.hold ? 1 : lt);
@@ -537,9 +727,14 @@
           gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
         }
         if (el < total + 150) return requestAnimationFrame(frame);
-        canvas.remove();
         if (tag) tag.remove();
         restore();
+        // Long soft cross-fade into the real page — a short fade made
+        // the swap read as a "click"; ~1.4s lets the baked texture and
+        // the DOM blend so the settle feels like landing, not dropping
+        canvas.style.transition = "opacity 1.4s ease-in-out";
+        canvas.style.opacity = "0";
+        setTimeout(() => canvas.remove(), 1500);
       };
       requestAnimationFrame(frame);
     };

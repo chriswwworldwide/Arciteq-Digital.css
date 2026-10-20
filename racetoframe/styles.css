@@ -145,7 +145,6 @@ a.wordmark {
   display: none;
   background: none;
   border: 1px solid var(--line);
-  color: var(--pink);
   border-radius: 999px;
   padding: 8px 16px;
   min-height: 44px;
@@ -530,7 +529,7 @@ button.btn {
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   align-items: stretch;
   color: #fff;
-  background: var(--paper);
+  background: var(--ink);
   overflow: hidden;
   isolation: isolate;
 }
@@ -712,15 +711,6 @@ button.btn {
 /* ---------- Sections ---------- */
 section.block {
   padding: 84px 0;
-}
-
-#zones {
-  color: var(--ink);
-  background: var(--paper);
-}
-
-#zones .zone {
-  color: var(--ink);
 }
 
 section.block.alt {
@@ -1051,7 +1041,7 @@ section.block.alt {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: var(--paper);
+  background: var(--ink);
   color: #fff;
   padding: 72px 0;
 }
@@ -1063,8 +1053,8 @@ section.block.alt {
   height: 100%;
   object-fit: cover;
   object-position: 50% 80%;
-  opacity: 0.38;
-  filter: grayscale(0.45);
+  opacity: 0.22;
+  filter: grayscale(1);
   z-index: -1;
 }
 
@@ -1437,7 +1427,7 @@ footer a:hover {
     right: 0;
     bottom: 0;
     height: 15%;
-    background: linear-gradient(180deg, transparent, var(--paper));
+    background: linear-gradient(180deg, transparent, var(--ink));
     pointer-events: none;
   }
   .hero--bleed .hero-img {
@@ -1452,7 +1442,7 @@ footer a:hover {
     background: linear-gradient(
       180deg,
       rgba(8, 20, 45, 0) 55%,
-      var(--paper) 100%
+      var(--ink) 100%
     );
   }
   .hero--bleed .wrap {
@@ -1460,18 +1450,10 @@ footer a:hover {
     width: auto;
     padding: 8px 20px 40px;
   }
-  .hero--bleed .wrap {
-    color: var(--ink);
-  }
   .hero--bleed h2 {
     font-size: clamp(40px, 11.5vw, 56px);
   }
-  .hero--bleed p,
-  .hero--bleed .stats div span {
-    color: var(--ink-2);
-  }
   .hero--bleed .stats {
-    border-top-color: var(--line);
     gap: 24px;
   }
   .coach {
@@ -1626,7 +1608,7 @@ footer a:hover {
 
 .capture .chat-line {
   margin-top: 14px;
-  color: rgba(255, 255, 255, 0.88);
+  color: #444;
 }
 .chat-zone-inline {
   display: inline-flex;
@@ -2820,3 +2802,5 @@ body[data-broadcast=locked] .bc-lock {
     justify-content: center;
   }
 }
+
+#zones { color: var(--ink); background: var(--paper); } #zones .zone { color: var(--ink); } @media (max-width: 800px) { .hero--bleed .wrap { color: var(--ink); } .hero--bleed p, .hero--bleed .stats div span { color: var(--ink-2); } .hero--bleed .stats { border-top-color: var(--line); } }

@@ -1,0 +1,29 @@
+{
+  "note": "Owner-voice feed — edit via config.",
+  "items": [
+    {
+      "date": "2026-10-19",
+      "title": "Your first HYROX: pace it properly",
+      "summary": "Going too hard on run one is the quickest way to pay for it at the sled push.",
+      "take": "Your first race isn't about a PB. Finish strong, learn what your body can do, then build from there.",
+      "link": "/trainedbytr/coaching.html",
+      "linkLabel": "Build your race plan →"
+    },
+    {
+      "date": "2026-10-16",
+      "title": "Do the things you're not good at",
+      "summary": "Prioritising three or four runs each week turned harder miles into easier, quicker work.",
+      "take": "Progress comes from giving the weak point proper attention, not avoiding it.",
+      "link": "/trainedbytr/run-zone.html",
+      "linkLabel": "Run zone →"
+    },
+    {
+      "date": "2026-02-06",
+      "title": "Performance first. Process always.",
+      "summary": "Strength, confidence and longevity come before chasing a number on the scales.",
+      "take": "When the foundations are solid, results become the by-product of doing things properly.",
+      "link": "/trainedbytr/coaching.html",
+      "linkLabel": "Coaching →"
+    }
+  ]
+}

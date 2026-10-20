@@ -1,0 +1,62 @@
+{
+  "note": "Athlete profiles for the results board — DEMO SEED. Races listed are the ones we hold verified data for.",
+  "athletes": {
+    "Jess Warner": {
+      "tag": "The engine — holds the crew's fastest Pro women's time.",
+      "races": [
+        {
+          "event": "HYROX Manchester",
+          "date": "Jun 2026",
+          "division": "Women Pro",
+          "time": "1:09:47",
+          "note": "Crew record — Pro singles"
+        },
+        {
+          "event": "HYROX London",
+          "date": "Sep 2026",
+          "division": "Mixed Doubles",
+          "time": "1:02:31",
+          "note": "With Kieran — season-best doubles time"
+        }
+      ]
+    },
+    "Ollie Marsh": {
+      "tag": "Consistent Open podium threat — sled work is the difference.",
+      "races": [
+        {
+          "event": "HYROX London",
+          "date": "Sep 2026",
+          "division": "Men Open",
+          "time": "1:05:58",
+          "note": "PB — 3rd in age group"
+        },
+        {
+          "event": "HYROX Birmingham",
+          "date": "Aug 2026",
+          "division": "Men Doubles",
+          "time": "1:01:44",
+          "note": "With Dan — first sub-1:02"
+        }
+      ]
+    },
+    "Emma Clarke": {
+      "tag": "Two races, two top-10s — the rookie trajectory.",
+      "races": [
+        {
+          "event": "HYROX Birmingham",
+          "date": "Aug 2026",
+          "division": "Women Open",
+          "time": "the Elation floor:52",
+          "note": "Top-10 age group, second race ever"
+        },
+        {
+          "event": "HYROX London",
+          "date": "Sep 2026",
+          "division": "Women Doubles",
+          "time": "1:08:12",
+          "note": "With Sophie — crew doubles record"
+        }
+      ]
+    }
+  }
+}

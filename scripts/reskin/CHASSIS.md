@@ -168,7 +168,12 @@ station slots must be confirmed against the real downloaded file (or flagged
 Station verification (added after the Jade correction pass): every station
 image needs `stationVerified: true` plus `verificationSource` of `fullres`,
 `framesheet` or `stock` in `visual-index.json`; `photo-sort` hard-rejects
-`images/station-*` slots without it. Contact sheets write `*-labels.json`
+`images/station-*` slots without it. From batch-oct19: station claims also
+need `stationEvidence` — ≥2 visual cues copied from
+`chassis/images/station-cues.json` (which also lists known lookalikes, e.g.
+StairMaster↔SkiErg). Stock is exempt (its `.meta.json` is the evidence).
+Event-photographer shots are a positive prior but check watermark/EXIF
+provenance. Contact sheets write `*-labels.json`
 alongside the tiles — always copy label strings from that file, never
 transcribe them off a tile (misread `l`/`L`/`m` shortcodes caused repeated
 missing-label warnings). Shortlisted videos for semantic slots must be rated
@@ -237,6 +242,18 @@ post: `CODE_v1f2` from a "HYROX day" reel can be a burpee even if the
 cover looked like a sled. Every video frame must be reviewed on the frame
 sheet and tagged to the station it actually depicts before it can fill a
 critical slot.
+
+## omitImageSlots (updated batch-oct19)
+
+`omitImageSlots` in a demo config declares slots that have no usable image.
+The builder now strips `<img>`, `<source>`, and `data-slot` element
+references to omitted images from generated pages, so the build no longer
+fails on missing files. Any slot can be omitted — the page simply loses
+that visual block.
+
+**Prefer filling over omitting.** A nearest-context real image or conformant
+stock (dark/arena, no recognisable faces) is always better than a hole in
+the page. Omit only when nothing honest exists.
 
 ## Speedup backlog (post batch-3)
 

@@ -2,6 +2,14 @@
   "note": "PRIVATE PITCH PREVIEW.",
   "photos": [
     {
+      "src": "/trainedbytr/images/gallery/stock-arena.jpg",
+      "alt": "Athlete walking the arena floor before a race",
+      "caption": "The calm before the storm. Arena doors open, nerves kick in, let’s go.",
+      "by": "Race day",
+      "tilt": -1.5,
+      "event": "Race day"
+    },
+    {
       "src": "/trainedbytr/images/gallery/stock-rower.jpg",
       "alt": "Athlete on a Concept2 rower mid-race",
       "caption": "1,000 metres. The monitor doesn’t lie and neither do your legs.",

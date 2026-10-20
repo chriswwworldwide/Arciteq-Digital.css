@@ -731,28 +731,31 @@ they sell themselves.
 Everything that makes a coach look professional and their athletes come back:
 - Full branded site (homepage, coaching page, about/bio)
 - Stations prep, run zone, taper zone (the content library)
+- Race tools: splits analyser, race predictor, results/PB dashboard
 - Race planner + events calendar
 - Find a race-mate / doubles partner
 - Warriors Wall community gallery
-- News feed
+- News feed (auto-updating in the coach's voice)
+- Weekly platform digest (traffic, analytics, issues, one-keystroke fixes)
 - SEO, hosting, SSL, mobile-responsive
 - Station 9 community page
+- Custom feature requests welcome — platform is modular
+
+Race tools are in the base, not an add-on — they're the main differentiator
+and the reason this is a platform, not a website. The base must not feel
+like a crippled trial.
 
 This is a complete product. A coach can replace their Linktree, Squarespace
 and scattered payment links with this alone.
 
-**Premium add-ons (visible in every demo)**
+**Premium add-on (visible in every demo)**
 
-| Add-on | What it does | Setup | Monthly |
-|---|---|---|---|
-| The Desk | Money in/out, tax set-aside, affiliate tracking, CSV import | +£200 | +£49/mo |
-| Race Tools Pack (Splits + Predictor + Results) | Interactive race analyser, time predictor, PB dashboard | +£200 | +£39/mo |
+| Add-on | What it does | Monthly |
+|---|---|---|
+| The Desk | Money in/out, tax set-aside, affiliate tracking, CSV import | +£49/mo |
 
-Bundle play: individually the Race Tools would be £400 setup; the pack
-is £200. Everyone takes the pack.
-
-**Full platform (everything):** £1,400 setup + £199/mo. Position as
-"founding rate, first 10 coaches."
+Simple offer: £1,000 setup + £129/mo. With Desk: £1,000 setup + £178/mo.
+No complex tiering. Two options. Desk sells itself in the demo.
 
 ### Current tenant pricing audit (Jan 2027)
 
@@ -790,6 +793,66 @@ they can be brought level with a rebuild. No reason to tier differently.
 5. Don't bundle setup into monthly. £0 setup + higher monthly reads as
    SaaS. A setup fee + monthly reads as bespoke build with ongoing service.
    The second churns less because they've invested.
+
+## Pitch video / email notes (Jan 2027)
+
+These are the talking points for the Loom-style walkthrough and the email
+that wraps it. The video should be 45–90 seconds per prospect. The email
+is 3–4 sentences max with the video link.
+
+### What to show and say
+
+1. **The Desk** — it's not obvious in the nav. Point it out explicitly:
+   "There's a business dashboard built in — click 'The Desk' in the menu.
+   It tracks money in, money out, tax set-aside, affiliate income, and
+   imports your data from a CSV. When it's plugged in it runs the boring
+   bits of your coaching business so you don't have to."
+
+2. **Auto-updating content** — "The site auto-updates with HYROX news
+   written in your voice. You don't touch it. It also sends you a weekly
+   update: what's new on the site, traffic and analytics, and any issues
+   it found — like an event date it couldn't verify — that you can fix
+   with one keystroke."
+
+3. **SEO** — "Every page is fine-tuned for search. Your name, your brand,
+   your location, HYROX-specific terms — all baked into every page title,
+   description and structured data. You've got 18 indexable pages where
+   most coaches have 3–5. That means you show up for long-tail searches
+   like 'HYROX race predictor [your city]' that nobody else is targeting."
+
+4. **Custom features** — "If you come up with something new — a training
+   log, a booking flow, a race countdown — it can be built. The platform
+   is modular. This is your starting point, not your ceiling."
+
+5. **Race tools in the walkthrough** — show the splits analyser and race
+   predictor actually working. These are the strongest visual proof that
+   this is a platform, not a website.
+
+### What NOT to say in the pitch
+
+- **Do not mention premium add-ons or tiers.** The demo shows everything.
+  Let them see the full platform and want it. The tiering conversation
+  happens on the pricing call, not in the cold outreach. Saying "some of
+  this is premium" in the pitch video makes the coach's brain switch from
+  "this is mine" to "what don't I get?" — net negative at the outreach
+  stage.
+- **Do not criticise their current site.** Frame as "here's what's
+  possible" not "your current site is bad."
+- **Do not quote a price in the video.** The video creates the pull; the
+  price comes in the follow-up conversation.
+
+### Pitch email structure
+
+Subject: something specific to them — their name, their brand, a recent
+race result. Not generic.
+
+Body (3–4 sentences):
+1. One sentence that proves you know who they are.
+2. "I built this for you — [link to demo]."
+3. "60-second walkthrough: [link to Loom video]."
+4. "If it's interesting, happy to jump on a call."
+
+Signature: Chris Wood, Founder, Station 9. Link to station9studio.co.uk.
 
 ## Open questions
 

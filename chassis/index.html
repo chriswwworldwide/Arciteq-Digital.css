@@ -34,6 +34,10 @@
     <link rel="stylesheet" href="/{{SLUG}}/styles.css?v=1792260946527" />
     <script>
       document.documentElement.classList.add("js");
+      // Refresh = top of page + the hero entrance plays; deep links
+      // (#ask etc.) still land where they point.
+      if ("scrollRestoration" in history && !location.hash)
+        history.scrollRestoration = "manual";
     </script>
     <script type="application/ld+json">
       {

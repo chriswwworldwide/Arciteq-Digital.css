@@ -378,6 +378,8 @@ if (cfg.mode === "chassis") {
       );
       // the whole hero contract is this one attribute — CSS + JS both key off it
       s = s.replace('data-hero-mode="full"', `data-hero-mode="${heroMode}"`);
+      if (heroMode !== "full")
+        s = s.replace(' data-hero-roll="full"', "");
     }
     if (file.endsWith("styles.css")) {
       s += `\n${DEMO_NAV_CSS}\n`;

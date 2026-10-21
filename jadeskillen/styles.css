@@ -2859,7 +2859,6 @@ section.cta-band .btn-light { background: var(--ink); color: #14141a; }
   }
 }
 
-/* Dublin piggyback hero: portrait source — anchor the cover crop lower
-   so both faces survive on wide screens (background layers only; the
-   contain hero-img keeps its right-edge pin) */
-.hero--bleed img:not(.hero-img) { object-position: 55% 42%; }
+/* Dublin piggyback hero: portrait source — push the cover anchor
+   down so both faces survive the zoom */
+.hero--bleed{--hero-focus:50% 38%;}

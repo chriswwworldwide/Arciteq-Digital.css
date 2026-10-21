@@ -157,5 +157,5 @@
   "stripBlocks": [
     "tiktok-link"
   ],
-  "extraCss": "/* Dublin piggyback hero: portrait source — anchor the cover crop lower\n   so both faces survive on wide screens (background layers only; the\n   contain hero-img keeps its right-edge pin) */\n.hero--bleed img:not(.hero-img) { object-position: 55% 42%; }"
+  "extraCss": "/* Dublin piggyback hero: portrait source — push the cover anchor\n   down so both faces survive the zoom */\n.hero--bleed{--hero-focus:50% 38%;}"
 }

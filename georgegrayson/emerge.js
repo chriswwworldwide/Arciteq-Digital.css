@@ -24,10 +24,10 @@
 (() => {
   const fx = new URLSearchParams(location.search).get("fx");
   const demo = fx === "demo";
-  // Default on every load: effect 2 "random squares" — pixelated tiles
-  // dropping and solidifying into the baked hero composite. ?fx=0-3
-  // overrides for previews; ?fx=off disables entirely.
-  const solo = /^[0-3]$/.test(fx || "") ? Number(fx) : fx === null ? 2 : null;
+  // Default load belongs to hero-reveal.js (unroll + shimmer + confetti).
+  // emerge only runs when ?fx= is passed: ?fx=0-3 picks one effect,
+  // ?fx=demo auditions all four, ?fx=off also stands down.
+  const solo = /^[0-3]$/.test(fx || "") ? Number(fx) : null;
   if (!demo && solo === null) return;
   if (window.matchMedia("(max-width: 800px)").matches) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;

@@ -1,4 +1,50 @@
 {
-  "note": "PRIVATE PITCH PREVIEW.",
-  "items": []
+  "note": "Receptionist answers — the questions every HYROX coach gets asked, answered instantly in the Ask section. Tokenised; reskin-tenant substitutes coach/brand per tenant. Anything unmatched still goes to the coach's inbox.",
+  "items": [
+    {
+      "q": "How much does coaching cost?",
+      "keywords": ["price", "cost", "harga", "berapa", "membership", "expensive", "fee", "charge", "pay"],
+      "a": "It depends on the level — group programming, sims and 1:1 are priced differently. Everything's laid out on the coaching page, and Jamie reviews every application personally."
+    },
+    {
+      "q": "I've never done HYROX — can I join?",
+      "keywords": ["beginner", "never done", "first time", "new to", "start", "pemula", "belum"],
+      "a": "Yes — that's most people who sign up. Jamie builds you up from base fitness: technique on the stations first, then race-pace work. Nobody starts as a racer."
+    },
+    {
+      "q": "What actually is HYROX?",
+      "keywords": ["what is hyrox", "sebenarnya", "apa sih", "explain", "format", "race format"],
+      "a": "8km of running split by 8 workout stations — SkiErg, sled push, sled pull, burpee broad jumps, rowing, farmers carry, sandbag lunges and wall balls. Same format worldwide, so your time compares globally."
+    },
+    {
+      "q": "Where do you train?",
+      "keywords": ["where", "lokasi", "location", "gym", "address", "di mana"],
+      "a": "Online-based — exact location and session times go out with the cohort announcements. Leave your email and you'll get the details directly."
+    },
+    {
+      "q": "When is the next race?",
+      "keywords": ["when", "kapan", "next race", "date", "calendar", "schedule"],
+      "a": "Confirmed dates are on the race planner and events pages — updated the day HYROX announces them. Join the list and race-weekend plans land in your inbox."
+    },
+    {
+      "q": "How do I join a sim day?",
+      "keywords": ["sim", "simulation", "practice race", "trial", "try out"],
+      "a": "Sim days get announced on the events page and to the email list first — they fill fast. Leave your email here and you'll hear before public announcement."
+    },
+    {
+      "q": "Can you find me a doubles partner?",
+      "keywords": ["partner", "doubles", "pair", "team", "mate", "relay"],
+      "a": "That's literally what the find-a-partner page is for — post your target division and pace, and Jamie's community matches people up. Free to use."
+    },
+    {
+      "q": "Do you programme for races abroad?",
+      "keywords": ["abroad", "overseas", "luar negeri", "travel", "international", "europe", "foreign"],
+      "a": "Yes — remote programming works for any race on the calendar. Athletes have raced Birmingham, Warsaw, Glasgow and beyond on Jamie's plans."
+    },
+    {
+      "q": "How do I get started?",
+      "keywords": ["start", "begin", "mulai", "cara", "book", "booking", "sign up", "first session"],
+      "a": "Leave your email and goal here, or apply direct through the coaching page. Jamie replies personally — usually within a day or two."
+    }
+  ]
 }

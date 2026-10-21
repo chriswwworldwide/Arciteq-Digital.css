@@ -1,26 +1,23 @@
 {
-  "_doc": "Chassis build recipe. build-chassis.js regenerates the donor tenant from its config, then applies these replacements to a copy. 'find' strings are literal unless regex:true. Applied longest-first automatically, so list order here is just for readability. After the pass, every {{TOKEN}} left in chassis/ is a slot a new tenant config must fill — the build FAILS if any forbiddenString survives (that's the whole point: no silent persona ghosts).",
-
+  "_doc": "Chassis build recipe. build-chassis.js regenerates the donor tenant from its config, then applies these replacements to a copy. 'find' strings are literal unless regex:true. Applied longest-first automatically, so list order here is just for readability. After the pass, every {{TOKEN}} left in chassis/ is a slot a new tenant config must fill \u2014 the build FAILS if any forbiddenString survives (that's the whole point: no silent persona ghosts).",
   "donorSlug": "joshharrison",
   "donorConfig": "scripts/reskin/joshharrison.demo.json",
   "outDir": "chassis",
-
   "stripFiles": [
     "alt.css",
     "coach.css",
-    "hero-reveal.js",
     "scene.js",
     "doubles.js",
     "diary.js",
-    "confetti.browser.js",
     "data/appearances.json",
     "data/bulletin.json",
     "data/diary.json",
     "data/payment.json",
     "data/scene.json"
   ],
-  "stripDirs": ["images"],
-
+  "stripDirs": [
+    "images"
+  ],
   "tokens": [
     {
       "find": "https://1hppzdej2by.typeform.com/to/LeVTUyHt",
@@ -30,8 +27,14 @@
       "find": "https://the-hybrid-hub.fitr.training/t/TheHybridHub/",
       "token": "PROGRAMMES_URL"
     },
-    { "find": "https://thehybridhubclothing.com/", "token": "STORE_URL" },
-    { "find": "https://www.instagram.com/joshharrisonfit/", "token": "IG_URL" },
+    {
+      "find": "https://thehybridhubclothing.com/",
+      "token": "STORE_URL"
+    },
+    {
+      "find": "https://www.instagram.com/joshharrisonfit/",
+      "token": "IG_URL"
+    },
     {
       "find": "https://www.instagram.com/hybrid.hub/",
       "token": "BRAND_IG_URL"
@@ -48,101 +51,230 @@
       "find": "https://www.threads.com/@joshharrisonfit",
       "token": "THREADS_URL"
     },
-    { "find": "https://linktr.ee/JHFIT", "token": "LINKTREE_URL" },
-
+    {
+      "find": "https://linktr.ee/JHFIT",
+      "token": "LINKTREE_URL"
+    },
     {
       "find": "JOSH HARRIS<span class=\\\\?\"?o\\\\?\"?>O</span>N",
       "token": "WORDMARK_HTML",
       "regex": true
     },
-    { "find": "Josh Harrison", "token": "COACH_NAME" },
-    { "find": "josh harrison", "token": "COACH_NAME_LC" },
-    { "find": "jhfit", "token": "BRAND_SHORT" },
-    { "find": "JHFIT", "token": "BRAND_SHORT_UPPER" },
-    { "find": "joshharrison", "token": "SLUG" },
-    { "find": "Josh", "token": "COACH_FIRST" },
-    { "find": "Harrison", "token": "COACH_LAST" },
-
-    { "find": "HYBRID HUB 365", "token": "CLOTHING_LINE" },
-    { "find": "HH365", "token": "CLOTHING_SHORT" },
-    { "find": "hybrid.hub", "token": "BRAND_SOCIAL" },
+    {
+      "find": "Josh Harrison",
+      "token": "COACH_NAME"
+    },
+    {
+      "find": "josh harrison",
+      "token": "COACH_NAME_LC"
+    },
+    {
+      "find": "jhfit",
+      "token": "BRAND_SHORT"
+    },
+    {
+      "find": "JHFIT",
+      "token": "BRAND_SHORT_UPPER"
+    },
+    {
+      "find": "joshharrison",
+      "token": "SLUG"
+    },
+    {
+      "find": "Josh",
+      "token": "COACH_FIRST"
+    },
+    {
+      "find": "Harrison",
+      "token": "COACH_LAST"
+    },
+    {
+      "find": "HYBRID HUB 365",
+      "token": "CLOTHING_LINE"
+    },
+    {
+      "find": "HH365",
+      "token": "CLOTHING_SHORT"
+    },
+    {
+      "find": "hybrid.hub",
+      "token": "BRAND_SOCIAL"
+    },
     {
       "find": "Hybrid Hub|HYBRID HUB|hybrid hub",
       "token": "BRAND",
       "regex": true
     },
-
-    { "find": "Worcestershire", "token": "REGION" },
-    { "find": "worcester", "token": "REGION_LC" },
-    { "find": "Bewdley", "token": "CITY" },
-
-    { "find": "Rio Quarry", "token": "DOUBLES_PARTNER" },
-    { "find": "Bologna", "token": "PB_VENUE" },
-    { "find": "bologna", "token": "PB_VENUE_LC" },
-    { "find": "Manchester", "token": "DOUBLES_VENUE" },
-    { "find": "ExCeL London", "token": "OPEN_VENUE" },
-
-    { "find": "1:05:43|01.05.43|1.05.43", "token": "PB_SOLO", "regex": true },
-    { "find": "57:14|57.14", "token": "PB_DOUBLES", "regex": true },
-    { "find": "1:32:13|1.32.13|01.32.13", "token": "PB_HALF", "regex": true },
-    { "find": "1:06:13|1.06.13", "token": "PB_OPEN", "regex": true },
-    { "find": "1:14", "token": "SEASON_START", "regex": true },
-
-    { "find": "#ff2e63", "token": "ACCENT" },
-    { "find": "#e01e4e", "token": "ACCENT_DARK" },
-    { "find": "#2a141b", "token": "ACCENT_SOFT" },
-
+    {
+      "find": "Worcestershire",
+      "token": "REGION"
+    },
+    {
+      "find": "worcester",
+      "token": "REGION_LC"
+    },
+    {
+      "find": "Bewdley",
+      "token": "CITY"
+    },
+    {
+      "find": "Rio Quarry",
+      "token": "DOUBLES_PARTNER"
+    },
+    {
+      "find": "Bologna",
+      "token": "PB_VENUE"
+    },
+    {
+      "find": "bologna",
+      "token": "PB_VENUE_LC"
+    },
+    {
+      "find": "Manchester",
+      "token": "DOUBLES_VENUE"
+    },
+    {
+      "find": "ExCeL London",
+      "token": "OPEN_VENUE"
+    },
+    {
+      "find": "1:05:43|01.05.43|1.05.43",
+      "token": "PB_SOLO",
+      "regex": true
+    },
+    {
+      "find": "57:14|57.14",
+      "token": "PB_DOUBLES",
+      "regex": true
+    },
+    {
+      "find": "1:32:13|1.32.13|01.32.13",
+      "token": "PB_HALF",
+      "regex": true
+    },
+    {
+      "find": "1:06:13|1.06.13",
+      "token": "PB_OPEN",
+      "regex": true
+    },
+    {
+      "find": "1:14",
+      "token": "SEASON_START",
+      "regex": true
+    },
+    {
+      "find": "#ff2e63",
+      "token": "ACCENT"
+    },
+    {
+      "find": "#e01e4e",
+      "token": "ACCENT_DARK"
+    },
+    {
+      "find": "#2a141b",
+      "token": "ACCENT_SOFT"
+    },
     {
       "find": "Hard work<br /><em>compounds.</em>",
       "token": "HERO_TITLE_HTML"
     },
-    { "find": "\"Obsession beats talent\\.\"", "token": "VOICE_ATHLETE_QUOTE", "regex": true },
-    { "find": "[Oo]bsession beats talent", "token": "TAGLINE", "regex": true },
-
-    { "find": "Gymshark", "token": "PARTNER_GYM" },
-    { "find": "gymshark", "token": "PARTNER_GYM_LC" },
-    { "find": "Myprotein", "token": "PARTNER_SUPP" },
-    { "find": "myprotein", "token": "PARTNER_SUPP_LC" },
-    { "find": "https://www.adidas.co.uk/training", "token": "PARTNER_KIT_URL" },
     {
-      "find": "The race-day kit\\s+— Alphafly rotation and the red gear from the\\s+events\\.",
+      "find": "\"Obsession beats talent\\.\"",
+      "token": "VOICE_ATHLETE_QUOTE",
+      "regex": true
+    },
+    {
+      "find": "[Oo]bsession beats talent",
+      "token": "TAGLINE",
+      "regex": true
+    },
+    {
+      "find": "Gymshark",
+      "token": "PARTNER_GYM"
+    },
+    {
+      "find": "gymshark",
+      "token": "PARTNER_GYM_LC"
+    },
+    {
+      "find": "Myprotein",
+      "token": "PARTNER_SUPP"
+    },
+    {
+      "find": "myprotein",
+      "token": "PARTNER_SUPP_LC"
+    },
+    {
+      "find": "https://www.adidas.co.uk/training",
+      "token": "PARTNER_KIT_URL"
+    },
+    {
+      "find": "The race-day kit\\s+\u2014 Alphafly rotation and the red gear from the\\s+events\\.",
       "token": "PARTNER_KIT_COPY",
       "regex": true
     },
-    { "find": "Shop Adidas", "token": "PARTNER_KIT_CTA" },
-    { "find": "Adidas training", "token": "PARTNER_KIT_TITLE" },
-    { "find": "Race kit", "token": "PARTNER_KIT_TAG" },
-    { "find": "Adidas", "token": "PARTNER_KIT" },
-    { "find": "adidas", "token": "PARTNER_KIT_LC" },
-    { "find": "JOSHHARRISONFIT", "token": "SOCIAL_HANDLE_UPPER" },
-    { "find": "JOSHH\\b", "token": "GYM_CODE", "regex": true },
-
-    { "find": "Emma H", "token": "PHOTO_BUDDY" },
-
     {
-      "find": "Forget three dinner dates — thirty seconds on a sled tells you everything you need.",
+      "find": "Shop Adidas",
+      "token": "PARTNER_KIT_CTA"
+    },
+    {
+      "find": "Adidas training",
+      "token": "PARTNER_KIT_TITLE"
+    },
+    {
+      "find": "Race kit",
+      "token": "PARTNER_KIT_TAG"
+    },
+    {
+      "find": "Adidas",
+      "token": "PARTNER_KIT"
+    },
+    {
+      "find": "adidas",
+      "token": "PARTNER_KIT_LC"
+    },
+    {
+      "find": "JOSHHARRISONFIT",
+      "token": "SOCIAL_HANDLE_UPPER"
+    },
+    {
+      "find": "JOSHH\\b",
+      "token": "GYM_CODE",
+      "regex": true
+    },
+    {
+      "find": "Emma H",
+      "token": "PHOTO_BUDDY"
+    },
+    {
+      "find": "Forget three dinner dates \u2014 thirty seconds on a sled tells you everything you need.",
       "token": "VOICE_DOUBLES_HOOK"
     }
   ],
-
   "renames": [
-    { "find": "inWorcestershire", "replace": "inHomeCity" },
-    { "find": "for women who race", "replace": "for people who race" },
     {
-      "find": "If he thinks it fits — pace, format, race — he connects you both. He races this circuit; he knows who would actually suit you.",
-      "replace": "If it fits — pace, format, race — you're connected. Josh races this circuit and knows who'd actually suit you."
+      "find": "inWorcestershire",
+      "replace": "inHomeCity"
     },
     {
-      "find": "he'll intro you himself. He races this circuit — he knows who'd actually suit you.",
-      "replace": "the intro happens personally — Josh races this circuit and knows who'd actually suit you."
+      "find": "for women who race",
+      "replace": "for people who race"
+    },
+    {
+      "find": "If he thinks it fits \u2014 pace, format, race \u2014 he connects you both. He races this circuit; he knows who would actually suit you.",
+      "replace": "If it fits \u2014 pace, format, race \u2014 you're connected. Josh races this circuit and knows who'd actually suit you."
+    },
+    {
+      "find": "he'll intro you himself. He races this circuit \u2014 he knows who'd actually suit you.",
+      "replace": "the intro happens personally \u2014 Josh races this circuit and knows who'd actually suit you."
     },
     {
       "find": "he books for the RSVPs he has.",
       "replace": "the table's booked for the RSVPs in."
     },
     {
-      "find": "books for the numbers he has — tell him you're coming",
-      "replace": "books for the numbers confirmed — say you're coming"
+      "find": "books for the numbers he has \u2014 tell him you're coming",
+      "replace": "books for the numbers confirmed \u2014 say you're coming"
     },
     {
       "find": "carries a small bottle in his race belt",
@@ -164,33 +296,59 @@
       "find": "reads every card himself",
       "replace": "reads every card personally"
     },
-    { "find": "and she'll see your", "replace": "and the coach sees your" },
+    {
+      "find": "and she'll see your",
+      "replace": "and the coach sees your"
+    },
     {
       "find": "them, on his private desk.",
       "replace": "them on the private desk."
     },
-    { "find": "without his OK", "replace": "without the coach's OK" },
+    {
+      "find": "without his OK",
+      "replace": "without the coach's OK"
+    },
     {
       "find": "He's the matchmaker, not an algorithm",
       "replace": "The coach is the matchmaker, not an algorithm"
     },
-    { "find": "on his own login", "replace": "on the coach's own login" },
+    {
+      "find": "on his own login",
+      "replace": "on the coach's own login"
+    },
     {
       "find": "Applications go through his existing forms",
       "replace": "Applications go through the existing forms"
     },
-    { "find": "go through his existing", "replace": "go through the existing" },
-    { "find": "for the RSVPs he has.", "replace": "for the RSVPs in." },
-    { "find": "His own · drops", "replace": "Own line · drops" },
     {
-      "find": "and he'll take your card down — credit at the wedding is non-negotiable.",
-      "replace": "and your card comes down — {{VOICE_WEDDING}}"
+      "find": "go through his existing",
+      "replace": "go through the existing"
     },
-    { "find": "images/hero-reveal.jpg", "replace": "images/hero.jpg" },
-    { "find": "images/josh-bologna.jpg", "replace": "images/pb-venue.jpg" },
-    { "find": "images/josh-", "replace": "images/" }
+    {
+      "find": "for the RSVPs he has.",
+      "replace": "for the RSVPs in."
+    },
+    {
+      "find": "His own \u00b7 drops",
+      "replace": "Own line \u00b7 drops"
+    },
+    {
+      "find": "and he'll take your card down \u2014 credit at the wedding is non-negotiable.",
+      "replace": "and your card comes down \u2014 {{VOICE_WEDDING}}"
+    },
+    {
+      "find": "images/hero-reveal.jpg",
+      "replace": "images/hero.jpg"
+    },
+    {
+      "find": "images/josh-bologna.jpg",
+      "replace": "images/pb-venue.jpg"
+    },
+    {
+      "find": "images/josh-",
+      "replace": "images/"
+    }
   ],
-
   "forbiddenStrings": [
     "josh",
     "harrison",

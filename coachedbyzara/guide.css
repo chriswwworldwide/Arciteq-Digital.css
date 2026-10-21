@@ -363,8 +363,8 @@
 }
 
 .guide-hero-photo img {
-  aspect-ratio: 4 / 5;
-  max-height: 460px;
+  max-height: 520px;
+  object-fit: contain;
 }
 
 /* Pair shots: the taller athlete's head sits at the frame's top edge —

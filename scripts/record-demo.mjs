@@ -104,6 +104,14 @@ async function scrollToSelector(page, selector, pauseMs) {
     },
   });
   const page = await context.newPage();
+  // Pre-accept Google-style consent walls so external click-throughs
+  // land on the partner site, not an interstitial.
+  await context
+    .addCookies([
+      { name: "SOCS", value: "CAI", domain: ".google.com", path: "/" },
+      { name: "CONSENT", value: "YES+", domain: ".google.com", path: "/" },
+    ])
+    .catch(() => {});
 
   for (const scene of scenes) {
     const url = `${base}/${slug}/${scene.path}`;
@@ -141,6 +149,27 @@ async function scrollToSelector(page, selector, pauseMs) {
             if (act.click) {
               await page.click(act.click).catch(() => {});
               await page.waitForTimeout(act.pause || 600);
+            }
+            if (act.navClick) {
+              // Click-through for external/target=_blank links: force same-tab
+              // so the recording follows the navigation, then go back.
+              await page
+                .evaluate((sel) => {
+                  const a = document.querySelector(sel);
+                  if (a) a.removeAttribute("target");
+                }, act.navClick)
+                .catch(() => {});
+              await Promise.all([
+                page
+                  .waitForNavigation({ timeout: 12000, waitUntil: "domcontentloaded" })
+                  .catch(() => {}),
+                page.click(act.navClick).catch(() => {}),
+              ]);
+              await page.waitForTimeout(act.holdMs || 2500);
+              await page.goBack({ waitUntil: "domcontentloaded" }).catch(() => {});
+              await page.waitForTimeout(800);
+              await injectSubtitleBar(page);
+              await showSub(page, sub.text);
             }
             if (act.type) {
               // Slow-type for visual effect

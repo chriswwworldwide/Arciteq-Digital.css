@@ -3802,269 +3802,6 @@
       "demo": true
     },
     {
-      "tenant_id": "joshharrison",
-      "vertical": "coaching",
-      "hostnames": [
-        "joshharrison.localhost",
-        "demo-joshharrison.localhost"
-      ],
-      "canonicalHost": "joshharrison.localhost",
-      "currency": "GBP",
-      "language": "en",
-      "catalog": {
-        "nicheCategorySlugs": [],
-        "heroProductIds": [],
-        "productTypeSlugs": []
-      },
-      "seo": {
-        "brandName": "Josh Harrison",
-        "tagline": "Hyrox coaching, online programming and race prep from Worcestershire.",
-        "supportEmail": "",
-        "about": "Hyrox coaching by Josh — podium athlete and Worcestershire personal trainer. Structured programming, station technique and run pacing for women who race.",
-        "meta": {
-          "homeDescription": "Hyrox coaching in Worcestershire and online with Josh — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
-          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
-          "cartDescription": "Review your plan and subscribe securely."
-        },
-        "sameAs": [],
-        "staticPages": [
-          {
-            "path": "/joshharrison/",
-            "priority": "1.0"
-          },
-          {
-            "path": "/joshharrison/stations-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/run-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/fuel-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/taper-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/warrior-program/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/hybrid-coaching-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/elite-race-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/events/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/joshharrison/hyrox-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/race-planner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/news/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/joshharrison/london-hybrid-scene/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/advertise/",
-            "priority": "0.5"
-          },
-          {
-            "path": "/joshharrison/coaching.html",
-            "priority": "0.7"
-          },
-          {
-            "path": "/joshharrison/results/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/splits/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/doubles/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/find-a-partner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/joshharrison/race-crew/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/joshharrison/guides/",
-            "priority": "0.8"
-          }
-        ]
-      },
-      "submissions": {
-        "kinds": [
-          "race_splits",
-          "wall_photo",
-          "sponsor",
-          "bank_transfer",
-          "date_alert",
-          "partner_search",
-          "travel_party",
-          "station9_rsvp",
-          "race_result",
-          "predictor"
-        ]
-      },
-      "features": {
-        "predictor": true,
-        "chatbot": false
-      },
-      "analytics": {
-        "pageviews": true
-      },
-      "automation": {
-        "inbox": "joshharrison/data/inbox.json",
-        "writable": [
-          "joshharrison/data/events.json",
-          "joshharrison/data/cities.json",
-          "joshharrison/data/news.json",
-          "joshharrison/data/partners.json",
-          "joshharrison/data/matchboard.json",
-          "joshharrison/data/travelboard.json"
-        ],
-        "partners": "joshharrison/data/partners.json",
-        "matchboard": "joshharrison/data/matchboard.json",
-        "travelboard": "joshharrison/data/travelboard.json",
-        "autoApprove": [
-          "event",
-          "news",
-          "alert",
-          "sponsor"
-        ],
-        "coachPath": "/joshharrison/coach/",
-        "digestTo": "demo@example.com",
-        "digestDayUtc": 1,
-        "digestHourUtc": 0,
-        "welcomePath": "/joshharrison/welcome/",
-        "welcomeIntro": "Hi Josh — this is the first of your Monday emails from joshharrison.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
-      },
-      "offers": {},
-      "guides": {
-        "basePath": "/joshharrison/guides/",
-        "brand": "Josh Harrison",
-        "homePath": "/joshharrison/",
-        "language": "en",
-        "author": {
-          "name": "Josh Harrison",
-          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
-        },
-        "byline": "By Josh — HYROX Certified Coach, podium athlete, Worcestershire personal trainer.",
-        "indexTitle": "HYROX training guides by Josh — Josh Harrison",
-        "indexHeading": "HYROX training guides",
-        "indexDescription": "Practical HYROX guides from Worcestershire: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
-        "stylesheets": [
-          "/joshharrison/styles.css",
-          "/joshharrison/guide.css"
-        ],
-        "scripts": [
-          "/joshharrison/app.js",
-          "/joshharrison/partners.js"
-        ],
-        "headerHtml": "<a href=\"/joshharrison/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">JOSH HARRIS<span class=\"o\">O</span>N <span class=\"sig\" aria-label=\"by Josh Harrison\"><span class=\"sig-text\">by Josh Harrison</span></span></span></h1></a><p class=\"city\">Worcestershire</p>",
-        "nav": [
-          {
-            "href": "/joshharrison/",
-            "label": "Home"
-          },
-          {
-            "href": "/joshharrison/stations-prep/",
-            "label": "Stations Prep"
-          },
-          {
-            "href": "/joshharrison/run-zone/",
-            "label": "Run Zone"
-          },
-          {
-            "href": "/joshharrison/fuel-zone/",
-            "label": "Fuel Zone"
-          },
-          {
-            "href": "/joshharrison/taper-zone/",
-            "label": "Taper Zone"
-          },
-          {
-            "href": "/joshharrison/guides/",
-            "label": "Guides"
-          },
-          {
-            "href": "/joshharrison/events/",
-            "label": "Upcoming Events"
-          },
-          {
-            "href": "/joshharrison/hyrox-london/",
-            "label": "Hyrox Worcestershire"
-          },
-          {
-            "href": "/joshharrison/race-planner/",
-            "label": "Race planner"
-          },
-          {
-            "href": "/joshharrison/news/",
-            "label": "News"
-          },
-          {
-            "href": "/joshharrison/results/",
-            "label": "Results"
-          },
-          {
-            "href": "/joshharrison/splits/",
-            "label": "Split analyser"
-          },
-          {
-            "href": "/joshharrison/#plans",
-            "label": "Subscriptions"
-          }
-        ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Josh</h3><p>Hybrid coaching in Worcestershire or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/joshharrison/hybrid-coaching-london/\">See coaching plans</a></section>"
-      },
-      "channels": [
-        {
-          "label": "TikTok @joshharrisonfit",
-          "url": "https://www.tiktok.com/@joshharrisonfit"
-        },
-        {
-          "label": "YouTube — JOSHHARRISONFIT",
-          "url": "https://www.youtube.com/@Joshharrisonfit"
-        },
-        {
-          "label": "Hybrid Hub @hybrid.hub",
-          "url": "https://www.instagram.com/hybrid.hub/"
-        },
-        {
-          "label": "HYBRID HUB 365",
-          "url": "https://thehybridhubclothing.com/"
-        },
-        {
-          "label": "All links",
-          "url": "https://linktr.ee/JHFIT"
-        }
-      ],
-      "demo": true
-    },
-    {
       "tenant_id": "kore",
       "vertical": "coaching",
       "hostnames": [
@@ -5853,6 +5590,269 @@
         {
           "label": "All links",
           "url": "https://go.trainedbytr.com/home"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "joshharrison",
+      "vertical": "coaching",
+      "hostnames": [
+        "joshharrison.localhost",
+        "demo-joshharrison.localhost"
+      ],
+      "canonicalHost": "joshharrison.localhost",
+      "currency": "GBP",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Josh Harrison",
+        "tagline": "Hyrox coaching, online programming and race prep from Worcestershire.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Josh — podium athlete and Worcestershire personal trainer. Structured programming, station technique and run pacing for women who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Worcestershire and online with Josh — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/joshharrison/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/joshharrison/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/joshharrison/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/joshharrison/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/joshharrison/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/joshharrison/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/joshharrison/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/joshharrison/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "joshharrison/data/inbox.json",
+        "writable": [
+          "joshharrison/data/events.json",
+          "joshharrison/data/cities.json",
+          "joshharrison/data/news.json",
+          "joshharrison/data/partners.json",
+          "joshharrison/data/matchboard.json",
+          "joshharrison/data/travelboard.json"
+        ],
+        "partners": "joshharrison/data/partners.json",
+        "matchboard": "joshharrison/data/matchboard.json",
+        "travelboard": "joshharrison/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/joshharrison/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/joshharrison/welcome/",
+        "welcomeIntro": "Hi Josh — this is the first of your Monday emails from joshharrison.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/joshharrison/guides/",
+        "brand": "Josh Harrison",
+        "homePath": "/joshharrison/",
+        "language": "en",
+        "author": {
+          "name": "Josh Harrison",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Josh — HYROX Certified Coach, podium athlete, Worcestershire personal trainer.",
+        "indexTitle": "HYROX training guides by Josh — Josh Harrison",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Worcestershire: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/joshharrison/styles.css",
+          "/joshharrison/guide.css"
+        ],
+        "scripts": [
+          "/joshharrison/app.js",
+          "/joshharrison/partners.js"
+        ],
+        "headerHtml": "<a href=\"/joshharrison/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\">JOSH HARRIS<span class=\"o\">O</span>N <span class=\"sig\" aria-label=\"by Josh Harrison\"><span class=\"sig-text\">by Josh Harrison</span></span></span></h1></a><p class=\"city\">Worcestershire</p>",
+        "nav": [
+          {
+            "href": "/joshharrison/",
+            "label": "Home"
+          },
+          {
+            "href": "/joshharrison/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/joshharrison/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/joshharrison/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/joshharrison/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/joshharrison/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/joshharrison/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/joshharrison/hyrox-london/",
+            "label": "Hyrox Worcestershire"
+          },
+          {
+            "href": "/joshharrison/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/joshharrison/news/",
+            "label": "News"
+          },
+          {
+            "href": "/joshharrison/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/joshharrison/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/joshharrison/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Josh</h3><p>Hybrid coaching in Worcestershire or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/joshharrison/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @joshharrisonfit",
+          "url": "https://www.tiktok.com/@joshharrisonfit"
+        },
+        {
+          "label": "YouTube — JOSHHARRISONFIT",
+          "url": "https://www.youtube.com/@Joshharrisonfit"
+        },
+        {
+          "label": "Hybrid Hub @hybrid.hub",
+          "url": "https://www.instagram.com/hybrid.hub/"
+        },
+        {
+          "label": "HYBRID HUB 365",
+          "url": "https://thehybridhubclothing.com/"
+        },
+        {
+          "label": "All links",
+          "url": "https://linktr.ee/JHFIT"
         }
       ],
       "demo": true

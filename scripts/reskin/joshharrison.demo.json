@@ -555,7 +555,7 @@
     },
     {
       "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"eyebrow\">The athlete</p>\n          <h3>Josh Harrison. 1:14 to 1:05 in one season.</h3>\n          <p class=\"lead\">\n            Bewdley, Worcestershire. HYROX Pro athlete, coach and creator —\n            building Hybrid Hub between race blocks. Open solo 1:06:13 at\n            ExCeL London, pro solo 1:05:43 in Bologna, a 57:14 pro doubles\n            with Rio Quarry in Manchester. The training blocks, the race\n            weekends and the honest debriefs all go on the channel.\n          </p>\n          <p class=\"quote\">\n            \"Obsession beats talent.\"\n          </p>"
+      "replace": "<p class=\"eyebrow\">The athlete</p>\n          <h3>Josh Harrison. 1:14 to 1:05 in one season.</h3>\n          <p class=\"lead\">\n            Bewdley, Worcestershire. HYROX Pro athlete, coach and creator —\n            building Hybrid Hub between race blocks. Open solo 1:06:13 at\n            ExCeL London, pro solo 1:05:43 in Bologna, a 57:14 pro doubles\n            with Rio Quarry in Manchester. The training blocks, the race\n            weekends and the honest debriefs all go on the channel.\n          </p>\n          <p class=\"quote\">\n            \"What failure has taught me so far: obsession beats talent.\"\n          </p>"
     },
     {
       "pattern": "Podium and 1st in age group 35–39[\\s\\S]*?16 active\\s*athletes\\s*</li>",

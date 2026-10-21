@@ -3,23 +3,51 @@
     "path": "",
     "subs": [
       {
-        "text": "Graham, I built this for you. 60 seconds, then delete this if it's not for you.",
+        "text": "Graham — this is your brand, your name, your photos, your voice.",
         "holdMs": 5000
       },
       {
-        "text": "That finish line in the hero? That's yours. Every image on this site is from your Instagram.",
-        "scroll": true,
-        "holdMs": 5500
+        "text": "We just gave it somewhere to live.",
+        "holdMs": 4500
       },
       {
-        "text": "This isn't a website \u2014 it's what your Instagram should have been building towards all along.",
-        "scrollTo": ".reveal",
-        "holdMs": 5500
+        "text": "Run zone, stations prep, taper zone — your coaching, structured like a season.",
+        "scrollTo": "#zones",
+        "holdMs": 5000
       },
       {
-        "text": "Your words. Your philosophy. Not marketing copy \u2014 the actual quote from your 114K post.",
-        "scrollTo": ".quote",
-        "holdMs": 5500
+        "text": "Your story — the gym, the races, the AGAIN mentality. Not a template with a logo swapped.",
+        "scrollTo": "#story",
+        "holdMs": 5000
+      },
+      {
+        "text": "Coaching plans front and centre. One click and they're applying to train with you.",
+        "scrollTo": "#plans",
+        "holdMs": 5000
+      },
+      {
+        "text": "Your race calendar, your crew, the Elation community — all under one roof.",
+        "scrollTo": "#events",
+        "holdMs": 4500
+      },
+      {
+        "text": "The Warriors Wall — race faces, finish-line tears, the squad being daft.",
+        "scrollTo": "#wall-photos",
+        "holdMs": 4500
+      },
+      {
+        "text": "Members send their shots, you approve, it goes up. Community that builds itself.",
+        "holdMs": 4500
+      },
+      {
+        "text": "The stuff that's not in the rulebook. Your actual race-day knowledge, in your voice.",
+        "scrollTo": "#tips",
+        "holdMs": 5000
+      },
+      {
+        "text": "Ask Graham — questions come to you properly, not buried in DMs.",
+        "scrollTo": "#ask",
+        "holdMs": 5000
       }
     ]
   },
@@ -27,66 +55,7 @@
     "path": "coaching.html",
     "subs": [
       {
-        "text": "Coaching applications come through here. Not a Linktree link, not a DM.",
-        "holdMs": 4500
-      },
-      {
-        "text": "ELATION COACH on your chest, your gym behind you. This is the first thing they see.",
-        "scroll": true,
-        "holdMs": 5000
-      }
-    ]
-  },
-  {
-    "path": "stations-prep.html",
-    "subs": [
-      {
-        "text": "Every station photo is you. Your sled push, your rowing, your burpees. Not stock.",
-        "scroll": true,
-        "holdMs": 5000
-      },
-      {
-        "text": "Your SkiErg through the flywheel. Your farmers carry. Your lunges with the ELATION tattoo showing.",
-        "scroll": true,
-        "holdMs": 5000
-      }
-    ]
-  },
-  {
-    "path": "splits.html",
-    "subs": [
-      {
-        "text": "Split analyser. They paste a result, see exactly where to improve.",
-        "holdMs": 4500
-      },
-      {
-        "text": "That's you face-down on the arena floor. You gave everything. Now the data tells them why.",
-        "holdMs": 5000
-      },
-      {
-        "text": "",
-        "actions": [
-          { "scrollTo": "#splits-form" },
-          { "selector": "input[name='name']", "fill": "Kieran", "pause": 400 },
-          { "selector": "input[name='event']", "fill": "HYROX Glasgow 2026", "pause": 400 },
-          { "selector": "select[name='division']", "select": "Men Open", "pause": 400 },
-          { "selector": "input[name='roxzone']", "fill": "1:12:18", "pause": 500 },
-          { "click": "#splits-form button[type='submit'], #splits-form input[type='submit'], #splits-form .btn", "pause": 1200 }
-        ],
-        "holdMs": 1500
-      },
-      {
-        "text": "Instant breakdown. Every station benchmarked. Under your brand.",
-        "scroll": true,
-        "holdMs": 4500
-      }
-    ]
-  },
-  {
-    "path": "predictor.html",
-    "subs": [
-      {
-        "text": "Race calculator. Your 54:42 on the board \u2014 they set their target, it tells them what each station needs to be.",
+        "text": "Click Coaching and it takes you here — applications, not a payment link.",
         "scroll": true,
         "holdMs": 5500
       }
@@ -96,11 +65,52 @@
     "path": "find-a-partner.html",
     "subs": [
       {
-        "text": "Race-mate finder. You and Hannah running together is the hero image here.",
-        "holdMs": 4500
+        "text": "Find a race-mate. Doubles partners pair up on your site — it keeps them coming back.",
+        "scrollTo": "#partner-form",
+        "holdMs": 5500
       },
       {
-        "text": "Doubles partners pair up on your site, not in your DMs. No admin for you.",
+        "text": "They post a card, find each other. Zero admin for you.",
+        "scroll": true,
+        "holdMs": 4500
+      }
+    ]
+  },
+  {
+    "path": "predictor.html",
+    "subs": [
+      {
+        "text": "Race Tools menu — click Race predictor and it takes you here.",
+        "holdMs": 4000
+      },
+      {
+        "text": "They put in a time, it tells them their predicted finish. Your site becomes the tool they train with.",
+        "scroll": true,
+        "holdMs": 5500
+      }
+    ]
+  },
+  {
+    "path": "splits.html",
+    "subs": [
+      {
+        "text": "Click Split analyser and it takes you here — paste a result, get a station-by-station breakdown.",
+        "scrollTo": "#splits-form",
+        "holdMs": 5500
+      },
+      {
+        "text": "",
+        "actions": [
+          { "scrollTo": "#splits-form" },
+          { "selector": "input[name='name']", "fill": "Jamie", "pause": 400 },
+          { "selector": "input[name='event']", "fill": "HYROX Glasgow 2026", "pause": 400 },
+          { "selector": "input[name='roxzone']", "fill": "1:14:20", "pause": 500 },
+          { "click": "#splits-form button[type='submit'], #splits-form input[type='submit'], #splits-form .btn", "pause": 1500 }
+        ],
+        "holdMs": 1500
+      },
+      {
+        "text": "Instant analysis. That used to be a spreadsheet — now it's the reason people join your list.",
         "scroll": true,
         "holdMs": 5000
       }
@@ -110,9 +120,126 @@
     "path": "results.html",
     "subs": [
       {
-        "text": "Results board. You and Hannah, 1:00:41. That's not a stock photo \u2014 that's your actual PB board.",
+        "text": "Results board — your times, your members' times, all in one place.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "stations-prep/",
+    "subs": [
+      {
+        "text": "Stations prep — all eight stations, coached in your voice, shot with your race photos.",
         "scroll": true,
         "holdMs": 5500
+      }
+    ]
+  },
+  {
+    "path": "run-zone/",
+    "subs": [
+      {
+        "text": "Run zone — pacing, compromised running, the work between the stations.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "taper-zone/",
+    "subs": [
+      {
+        "text": "Taper zone — the week before race day, done properly.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "events.html",
+    "subs": [
+      {
+        "text": "Race calendar — where you're competing, where the Elation crew is heading.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "race-crew.html",
+    "subs": [
+      {
+        "text": "Race crew meetups — the ninth station. Your community, organised on your own platform.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "news.html",
+    "subs": [
+      {
+        "text": "UK HYROX news — fresh content under your name. Google loves this part.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "partners.html",
+    "subs": [
+      {
+        "text": "Partners page — Built for Athletes, Myprotein, and your own Elation training hub.",
+        "scroll": true,
+        "holdMs": 5000
+      },
+      {
+        "text": "Click the Built for Athletes button and it takes you straight to their store — your ELATION code already in the link.",
+        "actions": [
+          { "navClick": "a.pc-cta[href='https://builtforathletes.com/ELATION']", "holdMs": 4000 }
+        ],
+        "holdMs": 2500
+      },
+      {
+        "text": "Click Myprotein — same again. Every partner click is a conversion path, not a dead link.",
+        "actions": [
+          { "navClick": "a.pc-cta[href='https://www.myprotein.com/']", "holdMs": 3500 }
+        ],
+        "holdMs": 2000
+      },
+      {
+        "text": "That's the difference from a Linktree — traffic that starts on your brand, not borrowed from it.",
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "list.html",
+    "subs": [
+      {
+        "text": "Join the list — every visitor becomes a contact you own, not an audience you rent.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "desk.html",
+    "subs": [
+      {
+        "text": "And the bit nobody builds for coaches — the Desk.",
+        "holdMs": 4500
+      },
+      {
+        "text": "Coaching income, race costs, affiliate earnings — one view. No spreadsheet.",
+        "scrollTo": ".desk-stats",
+        "holdMs": 5000
+      },
+      {
+        "text": "It runs itself. You coach; it keeps score.",
+        "scroll": true,
+        "holdMs": 4500
       }
     ]
   },
@@ -120,16 +247,12 @@
     "path": "",
     "subs": [
       {
-        "text": "Instagram is disposable. Stories vanish, posts get buried. This is permanent.",
+        "text": "Everything you sell, everything the Elation community needs — under your name.",
         "holdMs": 5000
       },
       {
-        "text": "Your photography, your philosophy, your race tools, your coaching \u2014 under your name, on your domain.",
-        "holdMs": 5500
-      },
-      {
-        "text": "Have a look around. I'd love to hear what you think.",
-        "holdMs": 5000
+        "text": "Have a look around, Graham. Would love to hear what you think.",
+        "holdMs": 4500
       }
     ]
   }

@@ -61,7 +61,8 @@
     "ACCENT_SOFT": "#1c2410",
     "BRAND_SHORT_UPPER": "JADE SKILLEN",
     "LINKTREE_URL": "https://smashyourhyrox.com/",
-    "VOICE_DOUBLES_HOOK": "With my best mate — it doesn't get much better than that.", "VOICE_ATHLETE_QUOTE": "“I lead. You lead. We both lead. Team players to the core. Let's go!”",
+    "VOICE_DOUBLES_HOOK": "With my best mate \u2014 it doesn't get much better than that.",
+    "VOICE_ATHLETE_QUOTE": "\u201cI lead. You lead. We both lead. Team players to the core. Let's go!\u201d",
     "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
     "VOICE_NEWS_TAKE": "Performance isn't about having perfect conditions. It's about finding a way to execute anyway.",
     "SOCIAL_HANDLE_UPPER": "JADE_SKILLEN",
@@ -155,5 +156,6 @@
   ],
   "stripBlocks": [
     "tiktok-link"
-  ]
+  ],
+  "extraCss": "/* Dublin piggyback hero: portrait source \u2014 anchor the cover crop lower\n   so both faces survive on wide screens (background layers only; the\n   contain hero-img keeps its right-edge pin) */\n.hero--bleed img:not(.hero-img) { object-position: 55% 42%; }"
 }

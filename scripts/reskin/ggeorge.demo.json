@@ -51,7 +51,7 @@
     "PARTNER_KIT_LC": "castore",
     "PARTNER_KIT_TAG": "Partner",
     "PARTNER_KIT_TITLE": "Castore x George Grayson",
-    "PARTNER_KIT_COPY": "George races and trains in Castore \u2014 performance kit built for hybrid racing.",
+    "PARTNER_KIT_COPY": "George races and trains in Castore — performance kit built for hybrid racing.",
     "PARTNER_KIT_CTA": "Shop Castore",
     "PARTNER_KIT_URL": "https://www.castore.com/",
     "GYM_CODE": "GGCOACHING",
@@ -63,13 +63,13 @@
     "LINKTREE_URL": "https://www.liinks.co/georgegraysoncoaching",
     "VOICE_DOUBLES_HOOK": "Nothing beats grafting through a session with your partner next to you.",
     "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
-    "VOICE_NEWS_TAKE": "Consistency beats intensity \u2014 the plan only works if you do.",
+    "VOICE_NEWS_TAKE": "Consistency beats intensity — the plan only works if you do.",
     "SOCIAL_HANDLE_UPPER": "GGEORGE_GRAYSON",
     "PARTNER_GYM_URL": "https://georgegraysonfitness.co.uk/",
     "PARTNER_SUPP_URL": "https://www.myprotein.com/",
     "STORE_NAME": "GG Coaching",
     "STORE_TAG": "Coaching base",
-    "STORE_COPY": "George's coaching home \u2014 programmes, applications and contact. Everything runs through there.",
+    "STORE_COPY": "George's coaching home — programmes, applications and contact. Everything runs through there.",
     "STORE_CTA": "Visit the site",
     "SEASON_HEADLINE": "From his first HYROX to the Pro division in one season."
   },
@@ -91,27 +91,27 @@
   "copyOverrides": [
     {
       "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
-      "replace": "Online coach and hybrid athlete \u2014 running, HYROX, fat loss and strength."
+      "replace": "Online coach and hybrid athlete — running, HYROX, fat loss and strength."
     },
     {
       "pattern": "AJ Bell Birmingham Half",
       "replace": "Ultramarathon"
     },
     {
-      "pattern": "{{COACH_NAME}} \u2014 HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
-      "replace": "{{COACH_NAME}} \u2014 online coach, hybrid athlete, and the face behind {{BRAND}}."
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} — online coach, hybrid athlete, and the face behind {{BRAND}}."
     },
     {
       "pattern": "Started the season at {{SEASON_START}}\\.",
       "replace": "Coaches everyday athletes through running, HYROX and strength work."
     },
     {
-      "pattern": "HYROX Pro Solo {{PB_SOLO}} \u2014 {{PB_VENUE}}\\.",
-      "replace": "HYROX Pro \u2014 {{PB_VENUE}}."
+      "pattern": "HYROX Pro Solo {{PB_SOLO}} — {{PB_VENUE}}\\.",
+      "replace": "HYROX Pro — {{PB_VENUE}}."
     },
     {
-      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} \u2014 HYROX {{DOUBLES_VENUE}}\\.",
-      "replace": "Doubles {{PB_DOUBLES}} \u2014 HYROX {{DOUBLES_VENUE}}."
+      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}\\.",
+      "replace": "Doubles {{PB_DOUBLES}} — HYROX {{DOUBLES_VENUE}}."
     },
     {
       "pattern": "pro solo {{PB_SOLO}} in {{PB_VENUE}}, a {{PB_DOUBLES}} pro doubles",

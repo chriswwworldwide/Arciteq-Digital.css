@@ -51,7 +51,7 @@
     "PARTNER_KIT_LC": "puma",
     "PARTNER_KIT_TAG": "Official partner",
     "PARTNER_KIT_TITLE": "PUMA x Jade Skillen",
-    "PARTNER_KIT_COPY": "Jade races and trains in PUMA \u2014 race-day kit and training footwear built for hybrid racing.",
+    "PARTNER_KIT_COPY": "Jade races and trains in PUMA — race-day kit and training footwear built for hybrid racing.",
     "PARTNER_KIT_CTA": "Shop PUMA",
     "PARTNER_KIT_URL": "https://uk.puma.com/",
     "GYM_CODE": "JADESKILLEN",
@@ -61,8 +61,8 @@
     "ACCENT_SOFT": "#1c2410",
     "BRAND_SHORT_UPPER": "JADE SKILLEN",
     "LINKTREE_URL": "https://smashyourhyrox.com/",
-    "VOICE_DOUBLES_HOOK": "With my best mate \u2014 it doesn't get much better than that.",
-    "VOICE_ATHLETE_QUOTE": "\u201cI lead. You lead. We both lead. Team players to the core. Let's go!\u201d",
+    "VOICE_DOUBLES_HOOK": "With my best mate — it doesn't get much better than that.",
+    "VOICE_ATHLETE_QUOTE": "“I lead. You lead. We both lead. Team players to the core. Let's go!”",
     "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
     "VOICE_NEWS_TAKE": "Performance isn't about having perfect conditions. It's about finding a way to execute anyway.",
     "SOCIAL_HANDLE_UPPER": "JADE_SKILLEN",
@@ -106,20 +106,20 @@
       "replace": "HYROX Birmingham"
     },
     {
-      "pattern": "{{COACH_NAME}} \u2014 HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
-      "replace": "{{COACH_NAME}} \u2014 HYROX Elite 15 athlete, performance coach, and the face behind {{BRAND}}."
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} — HYROX Elite 15 athlete, performance coach, and the face behind {{BRAND}}."
     },
     {
       "pattern": "Started the season at {{SEASON_START}}\\.",
       "replace": "Racing at Elite 15 level."
     },
     {
-      "pattern": "HYROX Pro Solo {{PB_SOLO}} \u2014 {{PB_VENUE}}\\.",
-      "replace": "HYROX Elite 15 \u2014 {{PB_VENUE}}."
+      "pattern": "HYROX Pro Solo {{PB_SOLO}} — {{PB_VENUE}}\\.",
+      "replace": "HYROX Elite 15 — {{PB_VENUE}}."
     },
     {
-      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} \u2014 HYROX {{DOUBLES_VENUE}}\\.",
-      "replace": "Pro Doubles with {{DOUBLES_PARTNER}} \u2014 HYROX {{DOUBLES_VENUE}}."
+      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}\\.",
+      "replace": "Pro Doubles with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}."
     },
     {
       "pattern": "pro solo {{PB_SOLO}} in {{PB_VENUE}}, a {{PB_DOUBLES}} pro doubles",
@@ -157,5 +157,5 @@
   "stripBlocks": [
     "tiktok-link"
   ],
-  "extraCss": "/* Dublin piggyback hero: portrait source \u2014 anchor the cover crop lower\n   so both faces survive on wide screens (background layers only; the\n   contain hero-img keeps its right-edge pin) */\n.hero--bleed img:not(.hero-img) { object-position: 55% 42%; }"
+  "extraCss": "/* Dublin piggyback hero: portrait source — anchor the cover crop lower\n   so both faces survive on wide screens (background layers only; the\n   contain hero-img keeps its right-edge pin) */\n.hero--bleed img:not(.hero-img) { object-position: 55% 42%; }"
 }

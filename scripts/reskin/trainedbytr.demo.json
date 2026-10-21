@@ -103,7 +103,7 @@
       "summary": "Going too hard on run one is the quickest way to pay for it at the sled push.",
       "take": "Your first race isn't about a PB. Finish strong, learn what your body can do, then build from there.",
       "link": "/trainedbytr/coaching.html",
-      "linkLabel": "Build your race plan \u2192"
+      "linkLabel": "Build your race plan →"
     },
     {
       "date": "2026-10-16",
@@ -111,7 +111,7 @@
       "summary": "Prioritising three or four runs each week turned harder miles into easier, quicker work.",
       "take": "Progress comes from giving the weak point proper attention, not avoiding it.",
       "link": "/trainedbytr/run-zone.html",
-      "linkLabel": "Run zone \u2192"
+      "linkLabel": "Run zone →"
     },
     {
       "date": "2026-02-06",
@@ -119,7 +119,7 @@
       "summary": "Strength, confidence and longevity come before chasing a number on the scales.",
       "take": "When the foundations are solid, results become the by-product of doing things properly.",
       "link": "/trainedbytr/coaching.html",
-      "linkLabel": "Coaching \u2192"
+      "linkLabel": "Coaching →"
     }
   ],
   "copyOverrides": [
@@ -128,19 +128,19 @@
       "replace": "Official HYROX UK Performance Coach who has coached 100+ everyday athletes to the start line."
     },
     {
-      "pattern": "{{COACH_NAME}} \u2014 HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
-      "replace": "{{COACH_NAME}} \u2014 Official HYROX UK Performance Coach, Head Coach at TransFit Widnes, and the face behind {{BRAND}}."
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\.",
+      "replace": "{{COACH_NAME}} — Official HYROX UK Performance Coach, Head Coach at TransFit Widnes, and the face behind {{BRAND}}."
     },
     {
       "pattern": "Started the season at {{SEASON_START}}\\.",
       "replace": "Coached 100+ everyday athletes to the start line."
     },
     {
-      "pattern": "HYROX Pro Solo {{PB_SOLO}} \u2014 {{PB_VENUE}}\\.",
+      "pattern": "HYROX Pro Solo {{PB_SOLO}} — {{PB_VENUE}}\\.",
       "replace": "Official HYROX UK Performance Coach."
     },
     {
-      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} \u2014 HYROX {{DOUBLES_VENUE}}\\.",
+      "pattern": "Pro Doubles {{PB_DOUBLES}} with {{DOUBLES_PARTNER}} — HYROX {{DOUBLES_VENUE}}\\.",
       "replace": "Coach to everyday athletes and HYROX age-group champions."
     },
     {
@@ -192,7 +192,7 @@
     {
       "src": "gallery/gym-squad.jpg",
       "alt": "Tom coaching team session at the gym",
-      "caption": "The squad \u2014 another session in the books",
+      "caption": "The squad — another session in the books",
       "event": "Training",
       "tilt": -1.2
     },
@@ -206,14 +206,14 @@
     {
       "src": "gallery/event-crew.jpg",
       "alt": "Team at HYROX event",
-      "caption": "Race day \u2014 the full crew",
+      "caption": "Race day — the full crew",
       "event": "Race day",
       "tilt": 0.8
     },
     {
       "src": "gallery/race-doubles.jpg",
       "alt": "Tom sprinting through HYROX arch with doubles partner",
-      "caption": "Doubles \u2014 under the arch",
+      "caption": "Doubles — under the arch",
       "event": "Race day",
       "tilt": -0.5
     }

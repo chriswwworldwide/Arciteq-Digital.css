@@ -52,7 +52,7 @@
     "PARTNER_KIT_LC": "fivepointfive",
     "PARTNER_KIT_TAG": "Performance & recovery",
     "PARTNER_KIT_TITLE": "FivePointFive breathwork",
-    "PARTNER_KIT_COPY": "Functional breathwork for athletes \u2014 performance, recovery, focus and sleep in one measurable app.",
+    "PARTNER_KIT_COPY": "Functional breathwork for athletes — performance, recovery, focus and sleep in one measurable app.",
     "PARTNER_KIT_CTA": "Explore FivePointFive",
     "PARTNER_KIT_URL": "https://fivepointfive.com/",
     "GYM_CODE": "ZARALSKD",
@@ -69,7 +69,7 @@
     "PARTNER_GYM_URL": "https://lskd.co/",
     "PARTNER_SUPP_URL": "https://www.esn.com/",
     "STORE_NAME": "Coached by Zara",
-    "STORE_COPY": "Programmes, coaching and links \u2014 everything in one place.",
+    "STORE_COPY": "Programmes, coaching and links — everything in one place.",
     "STORE_CTA": "Visit the hub"
   },
   "stripSections": [
@@ -106,7 +106,7 @@
       "summary": "Returning to a race that has always meant something, with the standard higher than ever.",
       "take": "We know the standard will be up there with the best. We'll fight until the last wall ball.",
       "link": "/coachedbyzara/events.html",
-      "linkLabel": "Race calendar \u2192"
+      "linkLabel": "Race calendar →"
     },
     {
       "date": "2026-09-03",
@@ -114,7 +114,7 @@
       "summary": "Tracking gives context. It doesn't automatically decide what an athlete can do that day.",
       "take": "Use the information, assess how you feel, then make the right training decision for you.",
       "link": "/coachedbyzara/coaching.html",
-      "linkLabel": "Coaching \u2192"
+      "linkLabel": "Coaching →"
     },
     {
       "date": "2026-05-27",
@@ -122,24 +122,24 @@
       "summary": "Wrong shoes, dead headphones, hard session. The work can still get done.",
       "take": "Performance isn't about waiting for the perfect environment. It's about executing anyway.",
       "link": "/coachedbyzara/run-zone.html",
-      "linkLabel": "Run zone \u2192"
+      "linkLabel": "Run zone →"
     }
   ],
   "copyOverrides": [
     {
       "pattern": "AJ Bell Birmingham Half",
-      "replace": "EMEA Championships \u2014 London 2026"
+      "replace": "EMEA Championships — London 2026"
     },
     {
       "pattern": "HYROX Pro athlete, coach and creator",
       "replace": "Elite 15 HYROX athlete and online coach"
     },
     {
-      "pattern": "Zara Piergianni \u2014 HYROX Pro athlete, coach, and the face behind Coached by Zara\\. Went from 1:05 to a 1:01:35 pro solo in one season\\. simple to understand, simple to implement; the rest is reps\\.",
-      "replace": "Elite 15 athlete and online coach Zara Piergianni makes performance simple to understand and practical to implement \u2014 personalised training, nutrition and lifestyle support built around the athlete."
+      "pattern": "Zara Piergianni — HYROX Pro athlete, coach, and the face behind Coached by Zara\\. Went from 1:05 to a 1:01:35 pro solo in one season\\. simple to understand, simple to implement; the rest is reps\\.",
+      "replace": "Elite 15 athlete and online coach Zara Piergianni makes performance simple to understand and practical to implement — personalised training, nutrition and lifestyle support built around the athlete."
     },
     {
-      "pattern": "Zara Piergianni driving the sled, head-on \u2014 the station nobody enjoys",
+      "pattern": "Zara Piergianni driving the sled, head-on — the station nobody enjoys",
       "replace": "Zara Piergianni racing on the SkiErg at HYROX"
     },
     {
@@ -151,15 +151,15 @@
       "replace": "your card and Zara makes the introduction personally."
     },
     {
-      "pattern": "Form checks, race strategy, training through pregnancy \u2014 ask\\s+directly, get a real answer\\.",
-      "replace": "Form checks, race strategy and programming questions \u2014 ask directly, get a real answer."
+      "pattern": "Form checks, race strategy, training through pregnancy — ask\\s+directly, get a real answer\\.",
+      "replace": "Form checks, race strategy and programming questions — ask directly, get a real answer."
     },
     {
       "pattern": "training through pregnancy, as Zara did\\.",
       "replace": "training around the demands of your own life."
     },
     {
-      "pattern": "Zara has done it himself \u2014 1:05 to 1:05 in a season\\.",
+      "pattern": "Zara has done it himself — 1:05 to 1:05 in a season\\.",
       "replace": "Zara has raced at Elite 15 level and coaches from experience."
     },
     {
@@ -187,8 +187,8 @@
       "replace": "Coached by Zara"
     },
     {
-      "pattern": "CBZ drops, coaching spots opening, race dates, the new vlog \u2014",
-      "replace": "Coaching availability, race dates and training updates \u2014"
+      "pattern": "CBZ drops, coaching spots opening, race dates, the new vlog —",
+      "replace": "Coaching availability, race dates and training updates —"
     },
     {
       "pattern": "<option>Coached by Zara drops</option>",
@@ -215,11 +215,11 @@
       "replace": "Elite experience, applied to your training and your next number."
     },
     {
-      "pattern": "Training through pregnancy or a comeback is exactly where Zara's own experience counts \u2014 floor time for form checks plus weekly video review\\.",
-      "replace": "A comeback or a change in circumstances is where personalised coaching counts \u2014 direct form feedback plus regular review."
+      "pattern": "Training through pregnancy or a comeback is exactly where Zara's own experience counts — floor time for form checks plus weekly video review\\.",
+      "replace": "A comeback or a change in circumstances is where personalised coaching counts — direct form feedback plus regular review."
     },
     {
-      "pattern": "Zara on the start line \u2014 flat expression, miles to go",
+      "pattern": "Zara on the start line — flat expression, miles to go",
       "replace": "Zara completing sandbag lunges on the HYROX race floor"
     }
   ],

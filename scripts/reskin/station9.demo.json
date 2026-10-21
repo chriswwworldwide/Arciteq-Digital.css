@@ -58,9 +58,9 @@
     "ACCENT": "#ff3b3b",
     "ACCENT_DARK": "#d92626",
     "ACCENT_SOFT": "#2a1414",
-    "VOICE_DOUBLES_HOOK": "The network does the matching \u2014 coaches keep the relationship.",
+    "VOICE_DOUBLES_HOOK": "The network does the matching — coaches keep the relationship.",
     "VOICE_WEDDING": "the platform remembers so you don't have to.",
-    "VOICE_NEWS_TAKE": "Every coach on Station 9 brings their athletes with them \u2014 and every athlete makes the next coach's site better.",
+    "VOICE_NEWS_TAKE": "Every coach on Station 9 brings their athletes with them — and every athlete makes the next coach's site better.",
     "SOCIAL_HANDLE_UPPER": "STATION9STUDIO",
     "PARTNER_GYM_URL": "/station9/#zones",
     "PARTNER_SUPP_URL": "/station9/#zones"
@@ -72,23 +72,23 @@
       "summary": "Link-in-bio tools list links. A Station 9 site runs the business: coaching, programmes, race tools, community and the money desk.",
       "take": "The difference isn't the features. It's that everything a creator's audience needs lives in one place, under their brand.",
       "link": "/station9/coaching.html",
-      "linkLabel": "What a Station 9 site does \u2192"
+      "linkLabel": "What a Station 9 site does →"
     },
     {
       "date": "2026-09-20",
       "title": "The race tools nobody else ships",
-      "summary": "Race predictor, split analyser, station prep, race-mate boards \u2014 tools built for hybrid athletes, not generic widgets.",
+      "summary": "Race predictor, split analyser, station prep, race-mate boards — tools built for hybrid athletes, not generic widgets.",
       "take": "A calculator that knows what wall balls do to your run splits isn't a gimmick. It's the reason athletes keep coming back.",
       "link": "/station9/predictor.html",
-      "linkLabel": "Try the predictor \u2192"
+      "linkLabel": "Try the predictor →"
     },
     {
       "date": "2026-09-05",
       "title": "Where the athletes' data lives",
-      "summary": "Every athlete on a Station 9 site gets one account across the network \u2014 their cards, RSVPs and results follow them, not the site.",
-      "take": "Coaches keep their athletes. The network just makes every community bigger \u2014 that's the deal, written into the contract.",
+      "summary": "Every athlete on a Station 9 site gets one account across the network — their cards, RSVPs and results follow them, not the site.",
+      "take": "Coaches keep their athletes. The network just makes every community bigger — that's the deal, written into the contract.",
       "link": "/station9/find-a-partner.html",
-      "linkLabel": "See the race-mate board \u2192"
+      "linkLabel": "See the race-mate board →"
     }
   ],
   "stripSections": [
@@ -96,12 +96,12 @@
     "merch",
     "tips"
   ],
-  "htmlTitle": "Station 9 \u2014 the platform behind the coaches",
-  "metaDescription": "Station 9 builds the sites coaches' businesses deserve: coaching links, race tools, community boards and the money desk \u2014 one platform, their brand.",
+  "htmlTitle": "Station 9 — the platform behind the coaches",
+  "metaDescription": "Station 9 builds the sites coaches' businesses deserve: coaching links, race tools, community boards and the money desk — one platform, their brand.",
   "copyOverrides": [
     {
-      "pattern": "Station 9 \u2014 HYROX Pro athlete, coach, and the face behind Station 9. Went from Day one to a 300 pro solo in one season. the platform behind the coaches; the rest is reps.",
-      "replace": "Station 9 builds the sites coaches' businesses deserve \u2014 coaching links, race tools, community boards and the money desk, in one place, under your brand."
+      "pattern": "Station 9 — HYROX Pro athlete, coach, and the face behind Station 9. Went from Day one to a 300 pro solo in one season. the platform behind the coaches; the rest is reps.",
+      "replace": "Station 9 builds the sites coaches' businesses deserve — coaching links, race tools, community boards and the money desk, in one place, under your brand."
     },
     {
       "pattern": "<a class=\"btn btn-primary\" href=\"/station9/coaching.html\">Coach with Station 9</a>",
@@ -112,11 +112,11 @@
       "replace": "<a class=\"btn btn-light\" href=\"#ask\">Talk to us</a>"
     },
     {
-      "pattern": "<strong>300</strong><span>HYROX Pro Solo PB \u2014 London</span>",
+      "pattern": "<strong>300</strong><span>HYROX Pro Solo PB — London</span>",
       "replace": "<strong>8</strong><span>station tools, zero plugins</span>"
     },
     {
-      "pattern": "<strong>coaches</strong><span>Pro Doubles \u2014 Birmingham, with the network</span>",
+      "pattern": "<strong>coaches</strong><span>Pro Doubles — Birmingham, with the network</span>",
       "replace": "<strong>1</strong><span>network behind every site</span>"
     },
     {
@@ -124,8 +124,8 @@
       "replace": "<strong>100%</strong><span>your brand, not ours</span>"
     },
     {
-      "pattern": "Form checks, race strategy, training through pregnancy \u2014 ask\\s+directly, get a real answer.",
-      "replace": "Demos, pricing, migrating your stack \u2014 ask directly, get a real answer."
+      "pattern": "Form checks, race strategy, training through pregnancy — ask\\s+directly, get a real answer.",
+      "replace": "Demos, pricing, migrating your stack — ask directly, get a real answer."
     },
     {
       "pattern": "Ask Station 9</h4>",
@@ -136,28 +136,28 @@
       "replace": "<h3>Station 9. Built because coaches deserve better plumbing.</h3>"
     },
     {
-      "pattern": "Everywhere, the UK. HYROX Pro athlete, coach and creator \u2014\\s*building Station 9 between race blocks. Open solo one platform at\\s*Manchester, pro solo 300 in London, a coaches pro doubles\\s*with the network in Birmingham. The training blocks, the race\\s*weekends and the honest debriefs all go on the channel.",
-      "replace": "We're the platform behind the coach sites athletes keep landing on. One engine runs the coaching links, the race tools, the community boards and the money desk \u2014 under each creator's own brand, not ours."
+      "pattern": "Everywhere, the UK. HYROX Pro athlete, coach and creator —\\s*building Station 9 between race blocks. Open solo one platform at\\s*Manchester, pro solo 300 in London, a coaches pro doubles\\s*with the network in Birmingham. The training blocks, the race\\s*weekends and the honest debriefs all go on the channel.",
+      "replace": "We're the platform behind the coach sites athletes keep landing on. One engine runs the coaching links, the race tools, the community boards and the money desk — under each creator's own brand, not ours."
     },
     {
-      "pattern": "HYROX Pro Solo 300 \u2014 London. Started the season at Day one.",
-      "replace": "Every site ships race tools athletes actually use \u2014 predictor, splits, station prep."
+      "pattern": "HYROX Pro Solo 300 — London. Started the season at Day one.",
+      "replace": "Every site ships race tools athletes actually use — predictor, splits, station prep."
     },
     {
-      "pattern": "Open solo one platform \u2014 Manchester. The benchmark that started it.",
+      "pattern": "Open solo one platform — Manchester. The benchmark that started it.",
       "replace": "Race-mate boards and crew pages keep communities on the coach's own domain."
     },
     {
-      "pattern": "Pro Doubles coaches with the network \u2014 HYROX Birmingham.",
+      "pattern": "Pro Doubles coaches with the network — HYROX Birmingham.",
       "replace": "The money desk gives coaches a live read on income, spend and tax set-aside."
     },
     {
       "pattern": "Station 9: 1:1 coaching, group programmes, Station 9 365 kit.",
-      "replace": "Athletes get one account across the network \u2014 coaches keep the relationship."
+      "replace": "Athletes get one account across the network — coaches keep the relationship."
     },
     {
-      "pattern": "Cohorts open twelve weeks before each race. Train together, race\\s*together. Not racing yet\\? Watch the vlogs first \u2014 you'll want a start line by the end.",
-      "replace": "Every Station 9 site carries the live calendar \u2014 race countdowns, city planners, hotels, flights, food. The feed updates itself; nobody babysits it."
+      "pattern": "Cohorts open twelve weeks before each race. Train together, race\\s*together. Not racing yet\\? Watch the vlogs first — you'll want a start line by the end.",
+      "replace": "Every Station 9 site carries the live calendar — race countdowns, city planners, hotels, flights, food. The feed updates itself; nobody babysits it."
     },
     {
       "pattern": "Post your card, Station 9 does the intros.",
@@ -172,7 +172,7 @@
       "replace": "<p class=\"eyebrow\">Inside a Station 9 build</p>"
     },
     {
-      "pattern": "<p class=\"eyebrow\">Ask Station 9 \u00b7 Chat Zone</p>",
+      "pattern": "<p class=\"eyebrow\">Ask Station 9 · Chat Zone</p>",
       "replace": "<p class=\"eyebrow\">Talk to Station 9</p>"
     },
     {
@@ -180,8 +180,8 @@
       "replace": "Got a coaching business that deserves a real site? Just ask."
     },
     {
-      "pattern": "Leave your email and your question. Station 9 reads them personally \u2014 and\\s*you'll be first to hear when cohorts open.",
-      "replace": "Leave your email and your question. A human reads them \u2014 and you'll be first to hear when new builds open."
+      "pattern": "Leave your email and your question. Station 9 reads them personally — and\\s*you'll be first to hear when cohorts open.",
+      "replace": "Leave your email and your question. A human reads them — and you'll be first to hear when new builds open."
     },
     {
       "pattern": "30 seconds more and Station 9 can reply with a real plan.",
@@ -204,16 +204,16 @@
       "replace": "<p class=\"eyebrow\">The platform</p>"
     },
     {
-      "pattern": "The off-season test \u2014 raced it to see where the block stands\\s*before tapering for the bigger targets. Watch for the vlog.",
-      "replace": "Demo entry \u2014 every client site runs the same live countdown their athletes see."
+      "pattern": "The off-season test — raced it to see where the block stands\\s*before tapering for the bigger targets. Watch for the vlog.",
+      "replace": "Demo entry — every client site runs the same live countdown their athletes see."
     },
     {
-      "pattern": "The home weekend. Where the one platform open solo benchmark was\\s*set \u2014 now it's the number everyone else is chasing.",
-      "replace": "Demo entry \u2014 city planner with hotels, flights and the night-after built in."
+      "pattern": "The home weekend. Where the one platform open solo benchmark was\\s*set — now it's the number everyone else is chasing.",
+      "replace": "Demo entry — city planner with hotels, flights and the night-after built in."
     },
     {
-      "pattern": "The target the season was built towards. Building with each\\s*session \u2014 watch the build on the channel.",
-      "replace": "Demo entry \u2014 the feed updates itself; the coach never touches a CMS."
+      "pattern": "The target the season was built towards. Building with each\\s*session — watch the build on the channel.",
+      "replace": "Demo entry — the feed updates itself; the coach never touches a CMS."
     },
     {
       "pattern": "\\s*<a href=\"/station9/desk.html\">The desk</a>",
@@ -292,16 +292,16 @@
       "replace": "<a href=\"/station9/watch.html\">Watch</a>"
     },
     {
-      "pattern": "Station 9 \u2014 HYROX Pro athlete, coach and creator\\. Station 9 1:1 coaching and programmes, race tools and race-mate finder\\.",
-      "replace": "Station 9 \u2014 the platform behind coach sites: coaching links, race tools, community boards and the money desk, under each creator's own brand."
+      "pattern": "Station 9 — HYROX Pro athlete, coach and creator\\. Station 9 1:1 coaching and programmes, race tools and race-mate finder\\.",
+      "replace": "Station 9 — the platform behind coach sites: coaching links, race tools, community boards and the money desk, under each creator's own brand."
     },
     {
       "pattern": "first news on Station 9 365 drops, coaching spots, race dates and the new vlog\\.",
       "replace": "first news on new builds, platform features and the athletes' network."
     },
     {
-      "pattern": "S9 drops, coaching spots opening, race dates, the new vlog \u2014",
-      "replace": "New builds opening, platform features, network news \u2014"
+      "pattern": "S9 drops, coaching spots opening, race dates, the new vlog —",
+      "replace": "New builds opening, platform features, network news —"
     },
     {
       "pattern": "<option>Race dates &amp; vlogs</option>",
@@ -316,8 +316,8 @@
       "replace": "\"jobTitle\": \"Coaching-platform studio\""
     },
     {
-      "pattern": "alt=\"Station 9 \u2014 HYROX Pro athlete and coach\"",
-      "replace": "alt=\"Station 9 \u2014 the platform behind the coaches\""
+      "pattern": "alt=\"Station 9 — HYROX Pro athlete and coach\"",
+      "replace": "alt=\"Station 9 — the platform behind the coaches\""
     }
   ],
   "stripPages": [

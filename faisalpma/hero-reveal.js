@@ -740,6 +740,8 @@
     // sheet covers the whole hero but stays under the headline copy.
     const host = section.querySelector(".hero-mask") || section;
     if (fullRoll) {
+      canvas.style.position = "absolute";
+      canvas.style.zIndex = "1";
       const wrap = section.querySelector(".wrap");
       section.insertBefore(canvas, wrap || null);
     } else {

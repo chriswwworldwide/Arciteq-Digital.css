@@ -295,6 +295,14 @@ if (cfg.mode === "chassis") {
     `{{${k}}}`,
     v,
   ]);
+  // VOICE_ATHLETE_QUOTE defaults to the quoted tagline so existing configs
+  // keep working unchanged.
+  if (cfg.tokens && !cfg.tokens.VOICE_ATHLETE_QUOTE && cfg.tokens.TAGLINE) {
+    tokenPairs.push([
+      "{{VOICE_ATHLETE_QUOTE}}",
+      `"${cfg.tokens.TAGLINE}."`,
+    ]);
+  }
   const heroMode = cfg.heroMode || "full"; // "full" | "ambient"
 
   for (const file of walk(dst)) {

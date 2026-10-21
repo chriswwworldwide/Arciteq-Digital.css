@@ -96,6 +96,7 @@
       "find": "Hard work<br /><em>compounds.</em>",
       "token": "HERO_TITLE_HTML"
     },
+    { "find": "\"Obsession beats talent\\.\"", "token": "VOICE_ATHLETE_QUOTE", "regex": true },
     { "find": "[Oo]bsession beats talent", "token": "TAGLINE", "regex": true },
 
     { "find": "Gymshark", "token": "PARTNER_GYM" },

@@ -34,10 +34,14 @@
     <link rel="stylesheet" href="/{{SLUG}}/styles.css?v=1792260946527" />
     <script>
       document.documentElement.classList.add("js");
-      // Refresh = top of page + the hero entrance plays; deep links
-      // (#ask etc.) still land where they point.
-      if ("scrollRestoration" in history && !location.hash)
+      // Refresh = top of page + the hero entrance plays. Any hash left in
+      // the URL by nav clicks gets cleared before it can force a jump;
+      // in-page anchor clicks still scroll as normal.
+      if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
+        if (location.hash)
+          history.replaceState(null, "", location.pathname + location.search);
+      }
     </script>
     <script type="application/ld+json">
       {

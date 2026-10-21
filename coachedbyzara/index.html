@@ -28,16 +28,20 @@
     <link
       rel="preload"
       as="image"
-      href="/coachedbyzara/images/hero.jpg?v=1792613079035"
+      href="/coachedbyzara/images/hero.jpg?v=1792613357473"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/coachedbyzara/styles.css?v=1792613079035" />
+    <link rel="stylesheet" href="/coachedbyzara/styles.css?v=1792613357473" />
     <script>
       document.documentElement.classList.add("js");
-      // Refresh = top of page + the hero entrance plays; deep links
-      // (#ask etc.) still land where they point.
-      if ("scrollRestoration" in history && !location.hash)
+      // Refresh = top of page + the hero entrance plays. Any hash left in
+      // the URL by nav clicks gets cleared before it can force a jump;
+      // in-page anchor clicks still scroll as normal.
+      if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
+        if (location.hash)
+          history.replaceState(null, "", location.pathname + location.search);
+      }
     </script>
     <script type="application/ld+json">
       {
@@ -114,7 +118,7 @@
     <section class="hero hero--bleed" data-hero-mode="full" data-hero-roll="full">
       <img
         class="hero-amb"
-        src="/coachedbyzara/images/hero.jpg?v=1792613079035"
+        src="/coachedbyzara/images/hero.jpg?v=1792613357473"
         alt=""
         aria-hidden="true"
         width="1125"
@@ -123,7 +127,7 @@
       <div class="hero-mask">
         <img
           class="hero-img"
-          src="/coachedbyzara/images/hero.jpg?v=1792613079035"
+          src="/coachedbyzara/images/hero.jpg?v=1792613357473"
           alt="Zara Piergianni racing on the SkiErg at HYROX"
           width="1125"
           height="1080"
@@ -216,7 +220,7 @@
       <div class="wrap story">
         <figure class="reveal">
           <img
-            src="/coachedbyzara/images/startline.jpg?v=1792613079035"
+            src="/coachedbyzara/images/startline.jpg?v=1792613357473"
             alt="Zara completing sandbag lunges on the HYROX race floor"
             width="985"
             height="1150"
@@ -266,7 +270,7 @@
         <div class="plan plan-crew reveal">
           <img
             class="crew-photo"
-            src="/coachedbyzara/images/doubles.jpg?v=1792613079035"
+            src="/coachedbyzara/images/doubles.jpg?v=1792613357473"
             alt="Zara Piergianni driving the sled in a HYROX Pro Doubles race in Warsaw"
             loading="lazy"
           />
@@ -435,7 +439,7 @@
     <section class="capture" id="ask">
       <img
         class="capture-bg"
-        src="/coachedbyzara/images/coaching.jpg?v=1792613079035"
+        src="/coachedbyzara/images/coaching.jpg?v=1792613357473"
         alt=""
         width="948"
         height="870"
@@ -445,7 +449,7 @@
         <div class="reveal coach">
           <img
             class="bio"
-            src="/coachedbyzara/images/bio.jpg?v=1792613079035"
+            src="/coachedbyzara/images/bio.jpg?v=1792613357473"
             alt="Zara Piergianni — HYROX Pro athlete and coach"
             width="120"
             height="120"
@@ -740,8 +744,8 @@
       <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/coachedbyzara/app.js?v=1792613079035" defer></script>
-    <script src="/coachedbyzara/emerge.js?v=1792613079035" defer></script>
-    <script src="/coachedbyzara/partners.js?v=1792613079035" defer></script>
+    <script src="/coachedbyzara/app.js?v=1792613357473" defer></script>
+    <script src="/coachedbyzara/emerge.js?v=1792613357473" defer></script>
+    <script src="/coachedbyzara/partners.js?v=1792613357473" defer></script>
   </body>
 </html>

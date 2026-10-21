@@ -73,8 +73,7 @@
     "STORE_CTA": "Visit the hub"
   },
   "stripSections": [
-    "merch",
-    "tips"
+    "merch"
   ],
   "omitImageSlots": [
     "images/finish.jpg",
@@ -84,7 +83,6 @@
     "images/track.jpg",
     "images/treadmill.jpg",
     "images/bike.jpg",
-    "images/wallball.jpg",
     "images/carry.jpg",
     "images/rope.jpg",
     "images/squad-athlos.jpg",

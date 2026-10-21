@@ -219,8 +219,5 @@ Everything is committed to `main` and pushed.
 
 ## 8. Files changed but not committed
 
-As of last check:
-- Modified: `GREGORHATTIE.md`, `JOSHHARRISON.md`, `data/tenants.json`, `racetoframe/data/inbox.json`
-- Untracked: `FAISAL.md`, `JADESKILLEN.md`
-
-Do not commit until the mailbox is verified and any pitch sends are logged.
+STALE — cleared Oct 21. Everything is now committed; `git status` is clean on `main`.
+This section may safely be deleted the next time this file is touched.

@@ -12,7 +12,7 @@ export default [
   // ✅ Global ignores — vendored third-party bundles must not be linted
   // (this applies to every config block, including configs.recommended)
   {
-    ignores: ["**/*.browser.js", "coverage/**", "archive/**"]
+    ignores: ["**/*.browser.js", "coverage/**", "archive/**", ".venv/**"]
   },
 
   // ✅ Base ESLint recommended rules
@@ -20,7 +20,7 @@ export default [
 
   {
     // ✅ Apply rules only to JavaScript source files
-    files: ["**/*.js"],
+    files: ["**/*.js", "**/*.mjs"],
 
     // ✅ Skip non‑source or generated directories
     ignores: [

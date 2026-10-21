@@ -21,7 +21,8 @@ data/exceptions.json
 # Cached public prospect records (regenerated via Bright Data; may contain emails)
 data/prospect-cache/
 data/*qualified-prospects*
-scripts/reskin/prospects/
+scripts/reskin/prospects/*
+!scripts/reskin/prospects/**/*.md
 
 # Database backups (npm run backup) — never commit
 backups/

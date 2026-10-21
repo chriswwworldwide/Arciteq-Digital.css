@@ -69,8 +69,11 @@ All pitch demos are static folders under `https://www.station9studio.co.uk/<slug
 | `htcfisher` | https://www.station9studio.co.uk/htcfisher/ | Ross Fisher / HTCC Christchurch | Live; already pitched on Instagram |
 | `jamiebarker` | https://www.station9studio.co.uk/jamiebarker/ | Jamie Barker / Edge | Live; only verified route is Edge support |
 | `coachedbyzara` | https://www.station9studio.co.uk/coachedbyzara/ | Zara Piergianni | Live; no verified business email yet |
+| `elationfitness` | `/elationfitness/` (local) | Graham Halliday / Elation Gym Glasgow | Built locally, fully reskinned with his own IG event photography — pitch-ready pending deploy |
+| `getfitgabby` | `/getfitgabby/` (local) | Gabby Moriarty | Built locally with her real station imagery |
+| `trainedbytr` | `/trainedbytr/` (local) | Tom Redmond / TransFit Widnes | Built locally; coaching-page photo moved above plan cards |
 
-Other tenant folders exist (`hustle`, `pacegym`, `gym64`, `nutrifit`, `kore`, `fennellfitness`, `hyroxdoncaster`, `htc...`) but are not currently pitch-ready.
+Other tenant folders exist (`hustle`, `pacegym`, `gym64`, `nutrifit`, `kore`, `fennellfitness`, `hyroxdoncaster`, `htc...`) but are not currently pitch-ready. `hyroxdoncaster/` is an old pre-chassis demo (Nigel Wood) — needs a chassis rebuild before pitching.
 
 ## 3. Repository and deployment
 
@@ -172,6 +175,17 @@ Use these as the starting point. Each pitch should be 45–90 seconds in a Loom-
 - **Status:** Demo live. Not yet pitched.
 - **Angle:** Hold until a legitimate business route exists. Do not pitch through Instagram DM again.
 
+### Graham Halliday / Elation Fitness
+- **URL:** local build `elationfitness/` — deploy to Railway before pitching.
+- **Route:** IG `@grahamhalliday_` (personal), `@elationgymglasgow` (gym). Email TBD.
+- **Status:** Demo built and reskinned entirely with his own Instagram event photography. Pitch walkthrough script written: `scripts/reskin/elationfitness.pitch.json`. Pitch strategy logged in `scripts/reskin/prospects/BATCH-gabby-tom-graham.md`.
+- **Core angle — "a celebration of the athlete", not a coaching site.** Every image is his own professional HYROX race photography; the quote in The Athlete section is his own words from his 114K-like "AGAIN" post. The line: *"This isn't a website — it's what your Instagram should have been building towards all along."*
+- **Image map worth naming in the walkthrough:** hero = his actual finish-line shot (arms wide, HYROX FINISH, Red Bull stage); Athlete = "AGAIN" sled image + his own quote; splits = face-down on the arena floor; all 8 stations = his real event shots (sled push/pull, SkiErg, row, burpees, farmers carry, sandbag lunges, wall balls); predictor = his 54:42 finish board; results = him and Hannah (@elationhannah, team member, NOT his girlfriend — girlfriend is Jen) at the 1:00:41 board; find-a-partner = running with Hannah.
+- **Chassis notes:** Watch page stripped and links removed via copyOverrides (header + footer regexes). Coaching page photo moved above plan cards (global chassis change). `.guide-hero-photo img` now uses `object-fit: contain` + `max-height: 520px` so full-body images don't crop heads (global change).
+
+### Gabby Moriarty and Tom Redmond
+- Local demos `getfitgabby/` and `trainedbytr/` built via the same chassis. Gabby's station roster is all real imagery from her own reels. Tom's is thinner — his station content is caption-overlay coaching reels, several slots use explicit stock.
+
 ## 6. Roxjaya and Dina’s role
 
 - `roxjaya/` is the **original tenant** built for Dina Rosdiana — the flagship proof case.
@@ -183,9 +197,25 @@ Use these as the starting point. Each pitch should be 45–90 seconds in a Loom-
 ## 7. What a new session should do first
 
 1. **Finish the mailbox.** Check DNS again; do not pitch before bidirectional mail works.
-2. **Pick the top 2–3 un-pitched prospects** (suggested: Gregor & Hattie, Faisal, Hannah) and prepare personalised 45–90 second video scripts using the angles above.
-3. **Record and send** only after the mailbox is verified.
-4. For batch demo production, read `AGENTS.md` → "Start here for batch tenant builds" and `scripts/reskin/CHASSIS.md`.
+2. **Deploy the new tenants** — `elationfitness`, `getfitgabby`, `trainedbytr` are committed to `main` but verify they render on Railway before sending links.
+3. **Record Graham's walkthrough** using `scripts/reskin/elationfitness.pitch.json` as the script. It is the strongest demo yet — every image is his own.
+4. **Pick the top un-pitched prospects** and prepare personalised 45–90 second video scripts using the angles above.
+5. **Excavate the HYROX UK ambassador list** — see `PROSPECTS.md` "HYROX UK & Ireland ambassadors" section. ~25+ ambassadors, no public list; best route is pulling `@hyroxuk`'s followees via Instaloader once the IG session cools off (it was rate-limited 401 during this session).
+6. For batch demo production, read `AGENTS.md` → "Start here for batch tenant builds" and `scripts/reskin/CHASSIS.md`.
+
+## 7a. Image pipeline — what was fixed this session (Oct 20)
+
+The root cause of "3 hours of stock-photo hunting while 15 better images sat in the prospect's IG grid" was found and fixed:
+
+- **Bright Data was returning exactly 12 posts per profile** for a 120-post request, with zero carousel children expanded. The "HYROX Rome" 12-shot professional carousel was never in the data — the visual selector couldn't pick what it never received.
+- **`assess-finalists.js`** now validates pull quality: warns on shallow pulls (<50% of requested) and zero carousel expansion.
+- **`prospect-pipeline.js`** auto-falls through to `ig-triage.py` (Instaloader via Chrome session) when Bright Data is shallow or unexpanded. Deeper-IG retry happens before any stock fallback; every stock fill is logged.
+- **`ig-triage.py` `MAX_CAROUSEL` raised 6 → 20.** Both triage paths now tag professional event carousels with `[PRO]` — detected via 6+ children, HYROX location keywords in captions (Rome, London, Warsaw, Athens, etc.) or photographer credit signals (📸, "photo by", @hyrox).
+- **Candidate caps widened:** 4 candidates per slot (was 2), 20 spares (was 10).
+- **Broken envs:** `/tmp/igenv` venv has a broken `browser_cookie3` (only a `__pycache__` stub) and wrong site-packages path. The repo `.venv` now has `instaloader` + `browser-cookie3` + `rembg[cpu]` (rembg is broken on Python 3.14 via numba; use the Apple Vision Swift cutout at `/tmp/cutout` instead — `swiftc` source was inline in this session, recreate if needed).
+- **IG session was rate-limited (401)** at end of session. Followees pull for the ambassador excavation needs a cooled-down session — wait 30+ min.
+
+Everything is committed to `main` and pushed.
 
 ## 8. Files changed but not committed
 

@@ -116,6 +116,7 @@ Strict-shape tier (~12 confirmed):
 | **Kat Parnell** | Elite 15 | Coaching £200/mo + programming subs | Has polished site — pitch is consolidation, harder door |
 | **Jade Skillen** | Top UK coach | 350+ athletes coached, own platform | Established — only pitchable as upgrade |
 | **Jake Dearden** | UK top male, big sponsors | Master trainer | Huge audience, thin platform — good fit, hard access |
+| **Hannah Heggarty** (@elationhannah) | ~6.5k IG, official **@hyrox women's ambassador** | PT + online coach, Elation Gym Glasgow | Small but elite-credentialed; ambassador badge = network reach into every UK HYROX gym; warm intro via Graham if he lands; her own PT page separate from the gym brand — pitch the personal-brand lane (like Gabby, not like Elation) |
 
 Too big / parked: Zoe Rae (380k TikTok, agency-protected), Lucy Davis
 (864k, MyCoach app + Millar Agency — doesn't need us).
@@ -124,6 +125,44 @@ Pool maths: strict shape ≈ 12–20 UK; expanding to Elite 15 athletes
 with coaching side-hustles + 10–50k hybrid creators ≈ 50–90 total.
 Enough for a year of 1–2-pitch days before widening to
 Spartan/CrossFit-adjacent coaches (see BILLIONS.md outriggers).
+
+## HYROX UK & Ireland ambassadors — excavation in progress
+
+HYROX runs an official UK & Ireland Ambassador Programme: ~25+ ambassadors for
+the 2025/26 season, workshopped annually at Red Bull HQ London (Graham Halliday
+and Zara Piergianni co-led the athlete Q&A + workout at the 24/25 launch). Every
+ambassador is a coach/creator already bought into HYROX — a pre-qualified
+prospect list for the creator-commerce tier.
+
+**No public roster exists.** Excavation plan, in effort order:
+
+1. **@hyroxuk followees via Instaloader** (`scripts/` — build a small
+   `ig-followees.py`; session was rate-limited 401 Oct 20, wait 30+ min). Filter
+   bios for "ambassador"/"hyrox". Near-complete list in ~30 min.
+2. **LinkedIn** — ambassadors self-announce: search `"HYROX UK & Ireland
+   Ambassador" 25/26`. Craig Brown and the Red Bull workshop posts confirm the
+   format.
+3. **Ambassador Day tagged posts** — Graham's own workshop posts tag attendees.
+4. **Sports Direct ambassador features** — Emma Kirk-Odunubi, Gede Foster.
+
+Confirmed/likely ambassadors so far:
+
+| Name | Handle | Notes |
+|---|---|---|
+| Graham Halliday | @grahamhalliday_ | Elite 15, PUMA athlete, Elation Glasgow — demo built |
+| Zara Piergianni | @coachedbyzara | Elite 15, PUMA athlete — demo live |
+| Hannah Heggarty | @elationhannah | Women's ambassador, PT + online coach, ~6.5k — on watchlist |
+| Ciaran Parkinson | @ciaran_fit4rox | FIT4ROX programmes — already on strict-shape list |
+| Robert James | @r.jamescoaching | 29.5k, Head Coach at The Park HQ, PUMA/MyProtein codes |
+| Craig Brown | — | Rage Fitness, Chester — LinkedIn-announced 25/26 return |
+| Emma Kirk-Odunubi | — | Third Space London coach, Sports Direct feature |
+| Gede Foster | — | Fiit Director of Fitness, London, Sports Direct feature |
+| Zoe Hague | — | Named HYROX ambassador on hyroxuk.com women's fitness |
+
+**Next steps:** pull @hyroxuk followees → dedupe → run `qualify-prospects.js`
+on the list → anyone scoring ≥ hot gets the full pipeline. Ambassadors have
+unusually high photo quality (sponsored content + event access) so they suit
+the "celebration of the athlete" pitch we built for Graham.
 
 ## Watchlist / parked
 

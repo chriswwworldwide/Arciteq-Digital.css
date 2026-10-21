@@ -1,0 +1,256 @@
+[
+  {
+    "path": "",
+    "subs": [
+      {
+        "text": "Jade — this is your brand, your name, your photos, your voice.",
+        "holdMs": 5000
+      },
+      {
+        "text": "We just gave it somewhere to live.",
+        "holdMs": 4500
+      },
+      {
+        "text": "Run zone, stations prep, taper zone — your coaching, structured like a season.",
+        "scrollTo": "#zones",
+        "holdMs": 5000
+      },
+      {
+        "text": "Your story. Elite-level racing and real coaching — not a template with a logo swapped.",
+        "scrollTo": "#story",
+        "holdMs": 5000
+      },
+      {
+        "text": "Coaching plans front and centre. One click and they're applying to train with you.",
+        "scrollTo": "#plans",
+        "holdMs": 5000
+      },
+      {
+        "text": "Your race calendar, your crew, your community — all under one roof.",
+        "scrollTo": "#events",
+        "holdMs": 4500
+      },
+      {
+        "text": "The Warriors Wall — race faces, finish-line tears, the squad being daft.",
+        "scrollTo": "#wall-photos",
+        "holdMs": 4500
+      },
+      {
+        "text": "Members send their shots, you approve, it goes up. Community that builds itself.",
+        "holdMs": 4500
+      },
+      {
+        "text": "The stuff that's not in the rulebook. Your actual race-day knowledge, in your voice.",
+        "scrollTo": "#tips",
+        "holdMs": 5000
+      },
+      {
+        "text": "Ask Jade — questions come to you properly, not buried in DMs.",
+        "scrollTo": "#ask",
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "coaching.html",
+    "subs": [
+      {
+        "text": "Click Coaching and it takes you here — applications, not a payment link.",
+        "scroll": true,
+        "holdMs": 5500
+      }
+    ]
+  },
+  {
+    "path": "find-a-partner.html",
+    "subs": [
+      {
+        "text": "Find a race-mate. Doubles partners pair up on your site — it keeps them coming back.",
+        "scrollTo": "#partner-form",
+        "holdMs": 5500
+      },
+      {
+        "text": "They post a card, find each other. Zero admin for you.",
+        "scroll": true,
+        "holdMs": 4500
+      }
+    ]
+  },
+  {
+    "path": "predictor.html",
+    "subs": [
+      {
+        "text": "Race Tools menu — click Race predictor and it takes you here.",
+        "holdMs": 4000
+      },
+      {
+        "text": "They put in a time, it tells them their predicted finish. Your site becomes the tool they train with.",
+        "scroll": true,
+        "holdMs": 5500
+      }
+    ]
+  },
+  {
+    "path": "splits.html",
+    "subs": [
+      {
+        "text": "Click Split analyser and it takes you here — paste a result, get a station-by-station breakdown.",
+        "scrollTo": "#splits-form",
+        "holdMs": 5500
+      },
+      {
+        "text": "",
+        "actions": [
+          { "scrollTo": "#splits-form" },
+          { "selector": "input[name='name']", "fill": "Sarah", "pause": 400 },
+          { "selector": "input[name='event']", "fill": "HYROX London 2026", "pause": 400 },
+          { "selector": "input[name='roxzone']", "fill": "1:09:45", "pause": 500 },
+          { "click": "#splits-form button[type='submit'], #splits-form input[type='submit'], #splits-form .btn", "pause": 1500 }
+        ],
+        "holdMs": 1500
+      },
+      {
+        "text": "Instant analysis. That used to be a spreadsheet — now it's the reason people join your list.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "results.html",
+    "subs": [
+      {
+        "text": "Results board — your times, your crew's times, all in one place.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "stations-prep/",
+    "subs": [
+      {
+        "text": "Stations prep — all eight stations, coached in your voice, shot with your race photos.",
+        "scroll": true,
+        "holdMs": 5500
+      }
+    ]
+  },
+  {
+    "path": "run-zone/",
+    "subs": [
+      {
+        "text": "Run zone — pacing, compromised running, the work between the stations.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "taper-zone/",
+    "subs": [
+      {
+        "text": "Taper zone — the week before race day, done properly.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "events.html",
+    "subs": [
+      {
+        "text": "Race calendar — where you're competing, where the crew is heading.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "race-crew.html",
+    "subs": [
+      {
+        "text": "Race crew meetups — the ninth station. Your community, organised on your own platform.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "news.html",
+    "subs": [
+      {
+        "text": "UK HYROX news — fresh content under your name. Google loves this part.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "partners.html",
+    "subs": [
+      {
+        "text": "Partners page — Smash Your HYROX, PUMA, your own performance hub. Codes that actually convert.",
+        "scroll": true,
+        "holdMs": 5000
+      },
+      {
+        "text": "Click the PUMA button and it takes you straight to their store — a live door, not a screenshot.",
+        "actions": [
+          { "navClick": "a.pc-cta[href='https://uk.puma.com/']", "holdMs": 4000 }
+        ],
+        "holdMs": 2500
+      },
+      {
+        "text": "Same again for Mirafit, Hilltop Honey and Smash Your HYROX — every partner click is a conversion path, not a dead link.",
+        "holdMs": 5000
+      },
+      {
+        "text": "That's the difference from a Linktree — traffic that starts on your brand, not borrowed from it.",
+        "holdMs": 4500
+      }
+    ]
+  },
+  {
+    "path": "list.html",
+    "subs": [
+      {
+        "text": "Join the list — every visitor becomes a contact you own, not an audience you rent.",
+        "scroll": true,
+        "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "desk.html",
+    "subs": [
+      {
+        "text": "And the bit nobody builds for coaches — the Desk.",
+        "holdMs": 4500
+      },
+      {
+        "text": "Coaching income, race costs, affiliate earnings — one view. No spreadsheet.",
+        "scrollTo": ".desk-stats",
+        "holdMs": 5000
+      },
+      {
+        "text": "It runs itself. You coach; it keeps score.",
+        "scroll": true,
+        "holdMs": 4500
+      }
+    ]
+  },
+  {
+    "path": "",
+    "subs": [
+      {
+        "text": "Everything you sell, everything your community needs — under your name.",
+        "holdMs": 5000
+      },
+      {
+        "text": "Have a look around, Jade. Would love to hear what you think.",
+        "holdMs": 4500
+      }
+    ]
+  }
+]

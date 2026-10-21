@@ -710,532 +710,6 @@
       "demo": true
     },
     {
-      "tenant_id": "elationfitness",
-      "vertical": "coaching",
-      "hostnames": [
-        "elationfitness.localhost",
-        "demo-elationfitness.localhost"
-      ],
-      "canonicalHost": "elationfitness.localhost",
-      "currency": "gbp",
-      "language": "en",
-      "catalog": {
-        "nicheCategorySlugs": [],
-        "heroProductIds": [],
-        "productTypeSlugs": []
-      },
-      "seo": {
-        "brandName": "Graham Halliday",
-        "tagline": "Hyrox coaching, online programming and race prep from Scotland.",
-        "supportEmail": "",
-        "about": "Hyrox coaching by Graham — podium athlete and Scotland personal trainer. Structured programming, station technique and run pacing for people who race.",
-        "meta": {
-          "homeDescription": "Hyrox coaching in Scotland and online with Graham — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
-          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
-          "cartDescription": "Review your plan and subscribe securely."
-        },
-        "sameAs": [],
-        "staticPages": [
-          {
-            "path": "/elationfitness/",
-            "priority": "1.0"
-          },
-          {
-            "path": "/elationfitness/stations-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/run-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/fuel-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/taper-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/warrior-program/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/hybrid-coaching-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/elite-race-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/events/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/elationfitness/hyrox-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/race-planner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/news/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/elationfitness/london-hybrid-scene/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/advertise/",
-            "priority": "0.5"
-          },
-          {
-            "path": "/elationfitness/coaching.html",
-            "priority": "0.7"
-          },
-          {
-            "path": "/elationfitness/results/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/splits/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/doubles/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/find-a-partner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/elationfitness/race-crew/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/elationfitness/guides/",
-            "priority": "0.8"
-          }
-        ]
-      },
-      "submissions": {
-        "kinds": [
-          "race_splits",
-          "wall_photo",
-          "sponsor",
-          "bank_transfer",
-          "date_alert",
-          "partner_search",
-          "travel_party",
-          "station9_rsvp",
-          "race_result",
-          "predictor"
-        ]
-      },
-      "features": {
-        "predictor": true,
-        "chatbot": false
-      },
-      "analytics": {
-        "pageviews": true
-      },
-      "automation": {
-        "inbox": "elationfitness/data/inbox.json",
-        "writable": [
-          "elationfitness/data/events.json",
-          "elationfitness/data/cities.json",
-          "elationfitness/data/news.json",
-          "elationfitness/data/partners.json",
-          "elationfitness/data/matchboard.json",
-          "elationfitness/data/travelboard.json"
-        ],
-        "partners": "elationfitness/data/partners.json",
-        "matchboard": "elationfitness/data/matchboard.json",
-        "travelboard": "elationfitness/data/travelboard.json",
-        "autoApprove": [
-          "event",
-          "news",
-          "alert",
-          "sponsor"
-        ],
-        "coachPath": "/elationfitness/coach/",
-        "digestTo": "demo@example.com",
-        "digestDayUtc": 1,
-        "digestHourUtc": 0,
-        "welcomePath": "/elationfitness/welcome/",
-        "welcomeIntro": "Hi Graham — this is the first of your Monday emails from elationfitness.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
-      },
-      "offers": {},
-      "guides": {
-        "basePath": "/elationfitness/guides/",
-        "brand": "Graham Halliday",
-        "homePath": "/elationfitness/",
-        "language": "en",
-        "author": {
-          "name": "Graham Halliday",
-          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
-        },
-        "byline": "By Graham — HYROX Certified Coach, podium athlete, Scotland personal trainer.",
-        "indexTitle": "HYROX training guides by Graham — Graham Halliday",
-        "indexHeading": "HYROX training guides",
-        "indexDescription": "Practical HYROX guides from Scotland: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
-        "stylesheets": [
-          "/elationfitness/styles.css",
-          "/elationfitness/guide.css"
-        ],
-        "scripts": [
-          "/elationfitness/app.js",
-          "/elationfitness/partners.js"
-        ],
-        "headerHtml": "<a href=\"/elationfitness/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">E</span>LATION <span class=\"sig\" aria-label=\"by Graham Halliday\"><span class=\"sig-text\">by Graham Halliday</span></span></span></h1></a><p class=\"city\">Scotland</p>",
-        "nav": [
-          {
-            "href": "/elationfitness/",
-            "label": "Home"
-          },
-          {
-            "href": "/elationfitness/stations-prep/",
-            "label": "Stations Prep"
-          },
-          {
-            "href": "/elationfitness/run-zone/",
-            "label": "Run Zone"
-          },
-          {
-            "href": "/elationfitness/fuel-zone/",
-            "label": "Fuel Zone"
-          },
-          {
-            "href": "/elationfitness/taper-zone/",
-            "label": "Taper Zone"
-          },
-          {
-            "href": "/elationfitness/guides/",
-            "label": "Guides"
-          },
-          {
-            "href": "/elationfitness/events/",
-            "label": "Upcoming Events"
-          },
-          {
-            "href": "/elationfitness/hyrox-london/",
-            "label": "Hyrox Scotland"
-          },
-          {
-            "href": "/elationfitness/race-planner/",
-            "label": "Race planner"
-          },
-          {
-            "href": "/elationfitness/news/",
-            "label": "News"
-          },
-          {
-            "href": "/elationfitness/results/",
-            "label": "Results"
-          },
-          {
-            "href": "/elationfitness/splits/",
-            "label": "Split analyser"
-          },
-          {
-            "href": "/elationfitness/#plans",
-            "label": "Subscriptions"
-          }
-        ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Graham</h3><p>Hybrid coaching in Scotland or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/elationfitness/hybrid-coaching-london/\">See coaching plans</a></section>"
-      },
-      "channels": [
-        {
-          "label": "TikTok @elationfitnessfit",
-          "url": "https://www.instagram.com/elationgymglasgow/"
-        },
-        {
-          "label": "YouTube — ELATIONGYMGLASGOW",
-          "url": "https://www.instagram.com/elationgymglasgow/"
-        },
-        {
-          "label": "Elation @elationgymglasgow",
-          "url": "https://www.instagram.com/elationgymglasgow/"
-        },
-        {
-          "label": "Elation 365",
-          "url": "https://elationfitnesstraining.co.uk/"
-        },
-        {
-          "label": "All links",
-          "url": "https://linktr.ee/ElationFT"
-        }
-      ],
-      "demo": true
-    },
-    {
-      "tenant_id": "faisalpma",
-      "vertical": "coaching",
-      "hostnames": [
-        "faisalpma.localhost",
-        "demo-faisalpma.localhost"
-      ],
-      "canonicalHost": "faisalpma.localhost",
-      "currency": "gbp",
-      "language": "en",
-      "catalog": {
-        "nicheCategorySlugs": [],
-        "heroProductIds": [],
-        "productTypeSlugs": []
-      },
-      "seo": {
-        "brandName": "Faisal Abdalla",
-        "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
-        "supportEmail": "",
-        "about": "Hyrox coaching by Faisal — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
-        "meta": {
-          "homeDescription": "Hyrox coaching in United Kingdom and online with Faisal — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
-          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
-          "cartDescription": "Review your plan and subscribe securely."
-        },
-        "sameAs": [],
-        "staticPages": [
-          {
-            "path": "/faisalpma/",
-            "priority": "1.0"
-          },
-          {
-            "path": "/faisalpma/stations-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/run-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/fuel-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/taper-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/warrior-program/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/hybrid-coaching-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/elite-race-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/events/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/faisalpma/hyrox-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/race-planner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/news/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/faisalpma/london-hybrid-scene/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/advertise/",
-            "priority": "0.5"
-          },
-          {
-            "path": "/faisalpma/coaching.html",
-            "priority": "0.7"
-          },
-          {
-            "path": "/faisalpma/results/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/splits/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/doubles/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/find-a-partner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/faisalpma/race-crew/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/faisalpma/guides/",
-            "priority": "0.8"
-          }
-        ]
-      },
-      "submissions": {
-        "kinds": [
-          "race_splits",
-          "wall_photo",
-          "sponsor",
-          "bank_transfer",
-          "date_alert",
-          "partner_search",
-          "travel_party",
-          "station9_rsvp",
-          "race_result",
-          "predictor"
-        ]
-      },
-      "features": {
-        "predictor": true,
-        "chatbot": false
-      },
-      "analytics": {
-        "pageviews": true
-      },
-      "automation": {
-        "inbox": "faisalpma/data/inbox.json",
-        "writable": [
-          "faisalpma/data/events.json",
-          "faisalpma/data/cities.json",
-          "faisalpma/data/news.json",
-          "faisalpma/data/partners.json",
-          "faisalpma/data/matchboard.json",
-          "faisalpma/data/travelboard.json"
-        ],
-        "partners": "faisalpma/data/partners.json",
-        "matchboard": "faisalpma/data/matchboard.json",
-        "travelboard": "faisalpma/data/travelboard.json",
-        "autoApprove": [
-          "event",
-          "news",
-          "alert",
-          "sponsor"
-        ],
-        "coachPath": "/faisalpma/coach/",
-        "digestTo": "demo@example.com",
-        "digestDayUtc": 1,
-        "digestHourUtc": 0,
-        "welcomePath": "/faisalpma/welcome/",
-        "welcomeIntro": "Hi Faisal — this is the first of your Monday emails from faisalpma.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
-      },
-      "offers": {},
-      "guides": {
-        "basePath": "/faisalpma/guides/",
-        "brand": "Faisal Abdalla",
-        "homePath": "/faisalpma/",
-        "language": "en",
-        "author": {
-          "name": "Faisal Abdalla",
-          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
-        },
-        "byline": "By Faisal — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
-        "indexTitle": "HYROX training guides by Faisal — Faisal Abdalla",
-        "indexHeading": "HYROX training guides",
-        "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
-        "stylesheets": [
-          "/faisalpma/styles.css",
-          "/faisalpma/guide.css"
-        ],
-        "scripts": [
-          "/faisalpma/app.js",
-          "/faisalpma/partners.js"
-        ],
-        "headerHtml": "<a href=\"/faisalpma/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">P</span>MA <span class=\"sig\" aria-label=\"by Faisal Abdalla\"><span class=\"sig-text\">by Faisal Abdalla</span></span></span></h1></a><p class=\"city\">United Kingdom</p>",
-        "nav": [
-          {
-            "href": "/faisalpma/",
-            "label": "Home"
-          },
-          {
-            "href": "/faisalpma/stations-prep/",
-            "label": "Stations Prep"
-          },
-          {
-            "href": "/faisalpma/run-zone/",
-            "label": "Run Zone"
-          },
-          {
-            "href": "/faisalpma/fuel-zone/",
-            "label": "Fuel Zone"
-          },
-          {
-            "href": "/faisalpma/taper-zone/",
-            "label": "Taper Zone"
-          },
-          {
-            "href": "/faisalpma/guides/",
-            "label": "Guides"
-          },
-          {
-            "href": "/faisalpma/events/",
-            "label": "Upcoming Events"
-          },
-          {
-            "href": "/faisalpma/hyrox-london/",
-            "label": "Hyrox United Kingdom"
-          },
-          {
-            "href": "/faisalpma/race-planner/",
-            "label": "Race planner"
-          },
-          {
-            "href": "/faisalpma/news/",
-            "label": "News"
-          },
-          {
-            "href": "/faisalpma/results/",
-            "label": "Results"
-          },
-          {
-            "href": "/faisalpma/splits/",
-            "label": "Split analyser"
-          },
-          {
-            "href": "/faisalpma/#plans",
-            "label": "Subscriptions"
-          }
-        ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Faisal</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/faisalpma/hybrid-coaching-london/\">See coaching plans</a></section>"
-      },
-      "channels": [
-        {
-          "label": "TikTok @faisalpmafit",
-          "url": "https://www.instagram.com/faisalpmafitness/"
-        },
-        {
-          "label": "YouTube — FAISALPMAFITNESS",
-          "url": "https://www.youtube.com/@PMAFitness"
-        },
-        {
-          "label": "PMA Fitness @faisalpmafitness",
-          "url": "https://www.instagram.com/faisalpmafitness/"
-        },
-        {
-          "label": "PMA Fitness 365",
-          "url": "https://linktr.ee/pmafitness"
-        },
-        {
-          "label": "All links",
-          "url": "https://linktr.ee/pmafitness"
-        }
-      ],
-      "demo": true
-    },
-    {
       "tenant_id": "fennellfitness",
       "vertical": "coaching",
       "hostnames": [
@@ -3008,269 +2482,6 @@
         {
           "label": "Official website",
           "url": "https://www.hyroxdoncaster.com/"
-        }
-      ],
-      "demo": true
-    },
-    {
-      "tenant_id": "jadeskillen",
-      "vertical": "coaching",
-      "hostnames": [
-        "jadeskillen.localhost",
-        "demo-jadeskillen.localhost"
-      ],
-      "canonicalHost": "jadeskillen.localhost",
-      "currency": "gbp",
-      "language": "en",
-      "catalog": {
-        "nicheCategorySlugs": [],
-        "heroProductIds": [],
-        "productTypeSlugs": []
-      },
-      "seo": {
-        "brandName": "Jade Skillen",
-        "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
-        "supportEmail": "",
-        "about": "Hyrox coaching by Jade — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
-        "meta": {
-          "homeDescription": "Hyrox coaching in United Kingdom and online with Jade — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
-          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
-          "cartDescription": "Review your plan and subscribe securely."
-        },
-        "sameAs": [],
-        "staticPages": [
-          {
-            "path": "/jadeskillen/",
-            "priority": "1.0"
-          },
-          {
-            "path": "/jadeskillen/stations-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/run-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/fuel-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/taper-zone/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/warrior-program/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/hybrid-coaching-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/elite-race-prep/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/events/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/jadeskillen/hyrox-london/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/race-planner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/news/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/jadeskillen/london-hybrid-scene/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/advertise/",
-            "priority": "0.5"
-          },
-          {
-            "path": "/jadeskillen/coaching.html",
-            "priority": "0.7"
-          },
-          {
-            "path": "/jadeskillen/results/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/splits/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/doubles/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/find-a-partner/",
-            "priority": "0.9"
-          },
-          {
-            "path": "/jadeskillen/race-crew/",
-            "priority": "0.8"
-          },
-          {
-            "path": "/jadeskillen/guides/",
-            "priority": "0.8"
-          }
-        ]
-      },
-      "submissions": {
-        "kinds": [
-          "race_splits",
-          "wall_photo",
-          "sponsor",
-          "bank_transfer",
-          "date_alert",
-          "partner_search",
-          "travel_party",
-          "station9_rsvp",
-          "race_result",
-          "predictor"
-        ]
-      },
-      "features": {
-        "predictor": true,
-        "chatbot": false
-      },
-      "analytics": {
-        "pageviews": true
-      },
-      "automation": {
-        "inbox": "jadeskillen/data/inbox.json",
-        "writable": [
-          "jadeskillen/data/events.json",
-          "jadeskillen/data/cities.json",
-          "jadeskillen/data/news.json",
-          "jadeskillen/data/partners.json",
-          "jadeskillen/data/matchboard.json",
-          "jadeskillen/data/travelboard.json"
-        ],
-        "partners": "jadeskillen/data/partners.json",
-        "matchboard": "jadeskillen/data/matchboard.json",
-        "travelboard": "jadeskillen/data/travelboard.json",
-        "autoApprove": [
-          "event",
-          "news",
-          "alert",
-          "sponsor"
-        ],
-        "coachPath": "/jadeskillen/coach/",
-        "digestTo": "demo@example.com",
-        "digestDayUtc": 1,
-        "digestHourUtc": 0,
-        "welcomePath": "/jadeskillen/welcome/",
-        "welcomeIntro": "Hi Jade — this is the first of your Monday emails from jadeskillen.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
-      },
-      "offers": {},
-      "guides": {
-        "basePath": "/jadeskillen/guides/",
-        "brand": "Jade Skillen",
-        "homePath": "/jadeskillen/",
-        "language": "en",
-        "author": {
-          "name": "Jade Skillen",
-          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
-        },
-        "byline": "By Jade — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
-        "indexTitle": "HYROX training guides by Jade — Jade Skillen",
-        "indexHeading": "HYROX training guides",
-        "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
-        "stylesheets": [
-          "/jadeskillen/styles.css",
-          "/jadeskillen/guide.css"
-        ],
-        "scripts": [
-          "/jadeskillen/app.js",
-          "/jadeskillen/partners.js"
-        ],
-        "headerHtml": "<a href=\"/jadeskillen/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">J</span>ADE <span class=\"sig\" aria-label=\"by Jade Skillen\"><span class=\"sig-text\">by Jade Skillen</span></span></span></h1></a><p class=\"city\">United Kingdom</p>",
-        "nav": [
-          {
-            "href": "/jadeskillen/",
-            "label": "Home"
-          },
-          {
-            "href": "/jadeskillen/stations-prep/",
-            "label": "Stations Prep"
-          },
-          {
-            "href": "/jadeskillen/run-zone/",
-            "label": "Run Zone"
-          },
-          {
-            "href": "/jadeskillen/fuel-zone/",
-            "label": "Fuel Zone"
-          },
-          {
-            "href": "/jadeskillen/taper-zone/",
-            "label": "Taper Zone"
-          },
-          {
-            "href": "/jadeskillen/guides/",
-            "label": "Guides"
-          },
-          {
-            "href": "/jadeskillen/events/",
-            "label": "Upcoming Events"
-          },
-          {
-            "href": "/jadeskillen/hyrox-london/",
-            "label": "Hyrox United Kingdom"
-          },
-          {
-            "href": "/jadeskillen/race-planner/",
-            "label": "Race planner"
-          },
-          {
-            "href": "/jadeskillen/news/",
-            "label": "News"
-          },
-          {
-            "href": "/jadeskillen/results/",
-            "label": "Results"
-          },
-          {
-            "href": "/jadeskillen/splits/",
-            "label": "Split analyser"
-          },
-          {
-            "href": "/jadeskillen/#plans",
-            "label": "Subscriptions"
-          }
-        ],
-        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Jade</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/jadeskillen/hybrid-coaching-london/\">See coaching plans</a></section>"
-      },
-      "channels": [
-        {
-          "label": "TikTok @jadeskillenfit",
-          "url": "https://www.instagram.com/jade_skillen/"
-        },
-        {
-          "label": "YouTube — JADE_SKILLEN",
-          "url": "https://www.youtube.com/channel/UCzInwf7-85RjXrzZ590CMww"
-        },
-        {
-          "label": "Jade Skillen @jade_skillen",
-          "url": "https://www.instagram.com/jade_skillen/"
-        },
-        {
-          "label": "Jade Skillen 365",
-          "url": "https://smashyourhyrox.com/"
-        },
-        {
-          "label": "All links",
-          "url": "https://smashyourhyrox.com/"
         }
       ],
       "demo": true
@@ -5853,6 +5064,795 @@
         {
           "label": "All links",
           "url": "https://linktr.ee/coachedbyzara"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "faisalpma",
+      "vertical": "coaching",
+      "hostnames": [
+        "faisalpma.localhost",
+        "demo-faisalpma.localhost"
+      ],
+      "canonicalHost": "faisalpma.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Faisal Abdalla",
+        "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Faisal — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in United Kingdom and online with Faisal — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/faisalpma/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/faisalpma/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/faisalpma/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/faisalpma/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/faisalpma/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/faisalpma/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/faisalpma/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/faisalpma/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "faisalpma/data/inbox.json",
+        "writable": [
+          "faisalpma/data/events.json",
+          "faisalpma/data/cities.json",
+          "faisalpma/data/news.json",
+          "faisalpma/data/partners.json",
+          "faisalpma/data/matchboard.json",
+          "faisalpma/data/travelboard.json"
+        ],
+        "partners": "faisalpma/data/partners.json",
+        "matchboard": "faisalpma/data/matchboard.json",
+        "travelboard": "faisalpma/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/faisalpma/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/faisalpma/welcome/",
+        "welcomeIntro": "Hi Faisal — this is the first of your Monday emails from faisalpma.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/faisalpma/guides/",
+        "brand": "Faisal Abdalla",
+        "homePath": "/faisalpma/",
+        "language": "en",
+        "author": {
+          "name": "Faisal Abdalla",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Faisal — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
+        "indexTitle": "HYROX training guides by Faisal — Faisal Abdalla",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/faisalpma/styles.css",
+          "/faisalpma/guide.css"
+        ],
+        "scripts": [
+          "/faisalpma/app.js",
+          "/faisalpma/partners.js"
+        ],
+        "headerHtml": "<a href=\"/faisalpma/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">P</span>MA <span class=\"sig\" aria-label=\"by Faisal Abdalla\"><span class=\"sig-text\">by Faisal Abdalla</span></span></span></h1></a><p class=\"city\">United Kingdom</p>",
+        "nav": [
+          {
+            "href": "/faisalpma/",
+            "label": "Home"
+          },
+          {
+            "href": "/faisalpma/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/faisalpma/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/faisalpma/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/faisalpma/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/faisalpma/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/faisalpma/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/faisalpma/hyrox-london/",
+            "label": "Hyrox United Kingdom"
+          },
+          {
+            "href": "/faisalpma/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/faisalpma/news/",
+            "label": "News"
+          },
+          {
+            "href": "/faisalpma/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/faisalpma/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/faisalpma/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Faisal</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/faisalpma/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @faisalpmafit",
+          "url": "https://www.instagram.com/faisalpmafitness/"
+        },
+        {
+          "label": "YouTube — FAISALPMAFITNESS",
+          "url": "https://www.youtube.com/@PMAFitness"
+        },
+        {
+          "label": "PMA Fitness @faisalpmafitness",
+          "url": "https://www.instagram.com/faisalpmafitness/"
+        },
+        {
+          "label": "PMA Fitness 365",
+          "url": "https://linktr.ee/pmafitness"
+        },
+        {
+          "label": "All links",
+          "url": "https://linktr.ee/pmafitness"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "jadeskillen",
+      "vertical": "coaching",
+      "hostnames": [
+        "jadeskillen.localhost",
+        "demo-jadeskillen.localhost"
+      ],
+      "canonicalHost": "jadeskillen.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Jade Skillen",
+        "tagline": "Hyrox coaching, online programming and race prep from United Kingdom.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Jade — podium athlete and United Kingdom personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in United Kingdom and online with Jade — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/jadeskillen/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/jadeskillen/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/jadeskillen/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/jadeskillen/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/jadeskillen/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/jadeskillen/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/jadeskillen/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/jadeskillen/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "jadeskillen/data/inbox.json",
+        "writable": [
+          "jadeskillen/data/events.json",
+          "jadeskillen/data/cities.json",
+          "jadeskillen/data/news.json",
+          "jadeskillen/data/partners.json",
+          "jadeskillen/data/matchboard.json",
+          "jadeskillen/data/travelboard.json"
+        ],
+        "partners": "jadeskillen/data/partners.json",
+        "matchboard": "jadeskillen/data/matchboard.json",
+        "travelboard": "jadeskillen/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/jadeskillen/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/jadeskillen/welcome/",
+        "welcomeIntro": "Hi Jade — this is the first of your Monday emails from jadeskillen.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/jadeskillen/guides/",
+        "brand": "Jade Skillen",
+        "homePath": "/jadeskillen/",
+        "language": "en",
+        "author": {
+          "name": "Jade Skillen",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Jade — HYROX Certified Coach, podium athlete, United Kingdom personal trainer.",
+        "indexTitle": "HYROX training guides by Jade — Jade Skillen",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from United Kingdom: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/jadeskillen/styles.css",
+          "/jadeskillen/guide.css"
+        ],
+        "scripts": [
+          "/jadeskillen/app.js",
+          "/jadeskillen/partners.js"
+        ],
+        "headerHtml": "<a href=\"/jadeskillen/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">J</span>ADE <span class=\"sig\" aria-label=\"by Jade Skillen\"><span class=\"sig-text\">by Jade Skillen</span></span></span></h1></a><p class=\"city\">United Kingdom</p>",
+        "nav": [
+          {
+            "href": "/jadeskillen/",
+            "label": "Home"
+          },
+          {
+            "href": "/jadeskillen/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/jadeskillen/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/jadeskillen/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/jadeskillen/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/jadeskillen/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/jadeskillen/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/jadeskillen/hyrox-london/",
+            "label": "Hyrox United Kingdom"
+          },
+          {
+            "href": "/jadeskillen/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/jadeskillen/news/",
+            "label": "News"
+          },
+          {
+            "href": "/jadeskillen/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/jadeskillen/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/jadeskillen/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Jade</h3><p>Hybrid coaching in United Kingdom or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/jadeskillen/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @jadeskillenfit",
+          "url": "https://www.instagram.com/jade_skillen/"
+        },
+        {
+          "label": "YouTube — JADE_SKILLEN",
+          "url": "https://www.youtube.com/channel/UCzInwf7-85RjXrzZ590CMww"
+        },
+        {
+          "label": "Jade Skillen @jade_skillen",
+          "url": "https://www.instagram.com/jade_skillen/"
+        },
+        {
+          "label": "Jade Skillen 365",
+          "url": "https://smashyourhyrox.com/"
+        },
+        {
+          "label": "All links",
+          "url": "https://smashyourhyrox.com/"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "tenant_id": "elationfitness",
+      "vertical": "coaching",
+      "hostnames": [
+        "elationfitness.localhost",
+        "demo-elationfitness.localhost"
+      ],
+      "canonicalHost": "elationfitness.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Graham Halliday",
+        "tagline": "Hyrox coaching, online programming and race prep from Scotland.",
+        "supportEmail": "",
+        "about": "Hyrox coaching by Graham — podium athlete and Scotland personal trainer. Structured programming, station technique and run pacing for people who race.",
+        "meta": {
+          "homeDescription": "Hyrox coaching in Scotland and online with Graham — podium athlete and personal trainer. Monthly programs, hybrid coaching and race prep.",
+          "shopDescription": "Hyrox coaching subscriptions: self-serve program, hybrid coaching and elite race prep.",
+          "cartDescription": "Review your plan and subscribe securely."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/elationfitness/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/elationfitness/stations-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/run-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/fuel-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/taper-zone/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/warrior-program/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/hybrid-coaching-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/elite-race-prep/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/events/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/elationfitness/hyrox-london/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/race-planner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/news/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/elationfitness/london-hybrid-scene/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/advertise/",
+            "priority": "0.5"
+          },
+          {
+            "path": "/elationfitness/coaching.html",
+            "priority": "0.7"
+          },
+          {
+            "path": "/elationfitness/results/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/splits/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/doubles/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/find-a-partner/",
+            "priority": "0.9"
+          },
+          {
+            "path": "/elationfitness/race-crew/",
+            "priority": "0.8"
+          },
+          {
+            "path": "/elationfitness/guides/",
+            "priority": "0.8"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "sponsor",
+          "bank_transfer",
+          "date_alert",
+          "partner_search",
+          "travel_party",
+          "station9_rsvp",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "automation": {
+        "inbox": "elationfitness/data/inbox.json",
+        "writable": [
+          "elationfitness/data/events.json",
+          "elationfitness/data/cities.json",
+          "elationfitness/data/news.json",
+          "elationfitness/data/partners.json",
+          "elationfitness/data/matchboard.json",
+          "elationfitness/data/travelboard.json"
+        ],
+        "partners": "elationfitness/data/partners.json",
+        "matchboard": "elationfitness/data/matchboard.json",
+        "travelboard": "elationfitness/data/travelboard.json",
+        "autoApprove": [
+          "event",
+          "news",
+          "alert",
+          "sponsor"
+        ],
+        "coachPath": "/elationfitness/coach/",
+        "digestTo": "demo@example.com",
+        "digestDayUtc": 1,
+        "digestHourUtc": 0,
+        "welcomePath": "/elationfitness/welcome/",
+        "welcomeIntro": "Hi Graham — this is the first of your Monday emails from elationfitness.com. Before the numbers, please read your welcome guide: what the site is, why it exists, how each part works, how you get paid, and how to move your gym clients to the hybrid model (with the words to use). It's private and stays at this link:"
+      },
+      "offers": {},
+      "guides": {
+        "basePath": "/elationfitness/guides/",
+        "brand": "Graham Halliday",
+        "homePath": "/elationfitness/",
+        "language": "en",
+        "author": {
+          "name": "Graham Halliday",
+          "jobTitle": "HYROX Certified Coach, Hyrox athlete & personal trainer"
+        },
+        "byline": "By Graham — HYROX Certified Coach, podium athlete, Scotland personal trainer.",
+        "indexTitle": "HYROX training guides by Graham — Graham Halliday",
+        "indexHeading": "HYROX training guides",
+        "indexDescription": "Practical HYROX guides from Scotland: stations, pacing, race travel across the UK and training through winter. New guide every fortnight.",
+        "stylesheets": [
+          "/elationfitness/styles.css",
+          "/elationfitness/guide.css"
+        ],
+        "scripts": [
+          "/elationfitness/app.js",
+          "/elationfitness/partners.js"
+        ],
+        "headerHtml": "<a href=\"/elationfitness/\" style=\"color: inherit; text-decoration: none\"><h1><span class=\"wordmark\"><span class=\"o\">E</span>LATION <span class=\"sig\" aria-label=\"by Graham Halliday\"><span class=\"sig-text\">by Graham Halliday</span></span></span></h1></a><p class=\"city\">Scotland</p>",
+        "nav": [
+          {
+            "href": "/elationfitness/",
+            "label": "Home"
+          },
+          {
+            "href": "/elationfitness/stations-prep/",
+            "label": "Stations Prep"
+          },
+          {
+            "href": "/elationfitness/run-zone/",
+            "label": "Run Zone"
+          },
+          {
+            "href": "/elationfitness/fuel-zone/",
+            "label": "Fuel Zone"
+          },
+          {
+            "href": "/elationfitness/taper-zone/",
+            "label": "Taper Zone"
+          },
+          {
+            "href": "/elationfitness/guides/",
+            "label": "Guides"
+          },
+          {
+            "href": "/elationfitness/events/",
+            "label": "Upcoming Events"
+          },
+          {
+            "href": "/elationfitness/hyrox-london/",
+            "label": "Hyrox Scotland"
+          },
+          {
+            "href": "/elationfitness/race-planner/",
+            "label": "Race planner"
+          },
+          {
+            "href": "/elationfitness/news/",
+            "label": "News"
+          },
+          {
+            "href": "/elationfitness/results/",
+            "label": "Results"
+          },
+          {
+            "href": "/elationfitness/splits/",
+            "label": "Split analyser"
+          },
+          {
+            "href": "/elationfitness/#plans",
+            "label": "Subscriptions"
+          }
+        ],
+        "ctaHtml": "<section class=\"cta-band\"><h3>Train this with Graham</h3><p>Hybrid coaching in Scotland or fully online — programming, station technique and race-week support.</p><a class=\"btn btn-light\" href=\"/elationfitness/hybrid-coaching-london/\">See coaching plans</a></section>"
+      },
+      "channels": [
+        {
+          "label": "TikTok @elationfitnessfit",
+          "url": "https://www.instagram.com/elationgymglasgow/"
+        },
+        {
+          "label": "YouTube — ELATIONGYMGLASGOW",
+          "url": "https://www.instagram.com/elationgymglasgow/"
+        },
+        {
+          "label": "Elation @elationgymglasgow",
+          "url": "https://www.instagram.com/elationgymglasgow/"
+        },
+        {
+          "label": "Elation 365",
+          "url": "https://elationfitnesstraining.co.uk/"
+        },
+        {
+          "label": "All links",
+          "url": "https://linktr.ee/ElationFT"
         }
       ],
       "demo": true

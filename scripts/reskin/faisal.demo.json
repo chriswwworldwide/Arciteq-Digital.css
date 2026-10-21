@@ -74,8 +74,7 @@
     "SEASON_HEADLINE": "Five-time HYROX World Championships MC turned coach."
   },
   "stripSections": [
-    "merch",
-    "tips"
+    "merch"
   ],
   "omitImageSlots": [
     "images/station-lean.jpg",
@@ -84,8 +83,7 @@
     "images/walkin.jpg",
     "images/suit.jpg",
     "images/hoodie.jpg",
-    "images/bike.jpg",
-    "images/wallball.jpg"
+    "images/bike.jpg"
   ],
   "stripPages": [
     "watch.html"

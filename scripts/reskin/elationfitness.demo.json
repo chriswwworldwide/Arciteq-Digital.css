@@ -108,8 +108,7 @@
     "SEASON_HEADLINE": "Elite-level experience, brought back to the Elation floor."
   },
   "stripSections": [
-    "merch",
-    "tips"
+    "merch"
   ],
   "omitImageSlots": [
     "images/station-lean.jpg",
@@ -118,7 +117,6 @@
     "images/walkin.jpg",
     "images/suit.jpg",
     "images/hoodie.jpg",
-    "images/wallball.jpg",
     "images/carry.jpg",
     "images/finish.jpg",
     "images/track.jpg",

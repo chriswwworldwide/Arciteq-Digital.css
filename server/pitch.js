@@ -102,6 +102,27 @@ async function notifyViaWeb3Forms({ slug, event, pct }) {
   }
 }
 
+async function notifyViaNtfy({ slug, event, pct }) {
+  const topic = cleanStr(process.env.PITCH_NTFY_TOPIC, 80);
+  if (!topic) return false;
+  const label = { view: "opened the pitch page", play: "started the video", complete: "watched to the end" }[event] || event;
+  try {
+    const r = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
+      method: "POST",
+      headers: {
+        Title: `Pitch: ${slug} ${label}`,
+        Priority: event === "complete" ? "4" : "3",
+        Tags: event === "complete" ? "eyes,fire" : "eyes",
+      },
+      body: `${pct !== null ? `Progress: ${pct}%  ` : ""}https://www.station9studio.co.uk/pitch/${slug}/`,
+      signal: AbortSignal.timeout(8000),
+    });
+    return r.ok;
+  } catch {
+    return false;
+  }
+}
+
 export function createPitchRouter({ adminApiKey }) {
   const router = express.Router();
 
@@ -132,10 +153,12 @@ export function createPitchRouter({ adminApiKey }) {
     if (EMAIL_EVENTS.has(event)) {
       // Fire-and-forget: Web3Forms when configured (zero-setup delivery to
       // any inbox), otherwise the Resend/sendmail path. Never block the page.
-      const useWeb3 = Boolean(cleanStr(process.env.PITCH_WEB3FORMS_KEY));
-      const task = useWeb3
-        ? notifyViaWeb3Forms({ slug, event, pct })
-        : notify({ slug, event, pct });
+      const task =
+        (cleanStr(process.env.PITCH_NTFY_TOPIC) &&
+          notifyViaNtfy({ slug, event, pct })) ||
+        (cleanStr(process.env.PITCH_WEB3FORMS_KEY) &&
+          notifyViaWeb3Forms({ slug, event, pct })) ||
+        notify({ slug, event, pct });
       task.catch(() => {});
     }
 

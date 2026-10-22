@@ -57,6 +57,8 @@ Instagram direct messaging is now high-risk. The `@station9.studio` business acc
 
 All pitch demos are static folders under `https://www.station9studio.co.uk/<slug>/`. Railway serves the `main` branch.
 
+**URL rule for pitches (Oct 22):** always send `https://www.station9studio.co.uk/<slug>` — WITH the `www`. The apex domain (`station9studio.co.uk`, no www) points at a dead Namecheap parking IP (192.64.119.235) and times out. Bare-domain links in emails will silently fail for recipients. Permanent fix queued: Namecheap Advanced DNS → replace apex A record with URL Redirect to `https://www.station9studio.co.uk/`.
+
 | Slug | Public URL | Prospect | Status |
 |---|---|---|---|
 | `station9` | https://www.station9studio.co.uk/station9/ | Station 9 hub / product front door | Live |

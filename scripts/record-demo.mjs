@@ -95,7 +95,7 @@ async function scrollToSelector(page, selector, pauseMs) {
 }
 
 (async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, args: ["--enable-unsafe-swiftshader"] });
   const context = await browser.newContext({
     viewport: { width: 1280, height: 720 },
     recordVideo: {
@@ -214,8 +214,12 @@ async function scrollToSelector(page, selector, pauseMs) {
         <div style="font-size:1.1rem;color:rgba(255,255,255,0.6);margin-bottom:2rem">
           Built for ${s}
         </div>
-        <div style="font-size:0.85rem;color:rgba(255,255,255,0.4)">
-          station9studio.co.uk
+        <div style="font-size:1.5rem;margin-bottom:1rem;text-align:center;line-height:1.6">
+          Your platform is ready to explore.<br>
+          Tap <b>Explore your live platform</b> below this video.<br>↓
+        </div>
+        <div style="font-size:1.1rem;color:rgba(255,255,255,0.7)">
+          https://www.station9studio.co.uk/${s}/
         </div>
       </div>`;
   }, slug);

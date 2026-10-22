@@ -28,10 +28,10 @@
     <link
       rel="preload"
       as="image"
-      href="/jamiebarker/images/hero.jpg?v=1792661954692"
+      href="/jamiebarker/images/hero.jpg?v=1792700913499"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/jamiebarker/styles.css?v=1792661954692" />
+    <link rel="stylesheet" href="/jamiebarker/styles.css?v=1792700913499" />
     <script>
       document.documentElement.classList.add("js");
       // Refresh = top of page + the hero entrance plays. Any hash left in
@@ -39,7 +39,7 @@
       // in-page anchor clicks still scroll as normal.
       if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
-        if (location.hash)
+        if (location.hash && performance.getEntriesByType("navigation")[0]?.type === "reload")
           history.replaceState(null, "", location.pathname + location.search);
       }
     </script>
@@ -115,50 +115,7 @@
       </div>
     </div>
 
-    <section class="hero hero--bleed" data-hero-mode="full" data-hero-roll="full">
-      <img
-        class="hero-amb"
-        src="/jamiebarker/images/hero.jpg?v=1792661954692"
-        alt=""
-        aria-hidden="true"
-        width="1125"
-        height="1080"
-      />
-      <div class="hero-mask">
-        <img
-          class="hero-img"
-          src="/jamiebarker/images/hero.jpg?v=1792661954692"
-          alt="Jamie Barker driving the sled, head-on — the station nobody enjoys"
-          width="1125"
-          height="1080"
-          fetchpriority="high"
-        />
-      </div>
-      <div class="wrap">
-        <span class="kicker"
-          >Hyrox · United Kingdom · the real hybrid life — running, hyrox and strength that fits around yours</span
-        >
-        <h2>
-          Hybrid athlete.<br /><em>Real-life coach.</em>
-        </h2>
-        <p>
-          Jamie Barker — hybrid athlete, coach, and the face behind Jamie Barker. From first HYROX to a sub-60 debut — and an Ironman 70.3 along the way. the real hybrid life — running, hyrox and strength that fits around yours; the rest is reps.
-        </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="/jamiebarker/coaching.html">Coach with Jamie</a>
-          <a class="btn btn-light" href="#ask">Ask Jamie</a>
-        </div>
-        <div class="stats">
-          <div>
-            <strong>0:59:47</strong><span>HYROX Pro Solo PB — Manchester</span>
-          </div>
-          <div>
-            <strong>1:04:09</strong><span>Pro Doubles — Cardiff, with Stuart Allan</span>
-          </div>
-          <div><strong>70.3</strong><span>HYROX Birmingham</span></div>
-        </div>
-      </div>
-    </section>
+    <section class="hero hero--bleed hero--editorial" data-hero-mode="full" data-hero-roll="full"><div class="wrap hero-intro"><span class="kicker">Jamie Barker · Hybrid coaching</span><h2>Hybrid athlete.<br /><em>Real-life coach.</em></h2><p>Running, HYROX and strength with Jamie Barker.<br />Coaching built around real life.</p></div><div class="hero-visual"><div class="hero-mask"><img class="hero-img" src="/jamiebarker/images/hero.jpg?v=1792700913499" alt="Jamie Barker working the battle ropes during a group training session" width="640" height="428" fetchpriority="high" /></div></div><div class="wrap hero-footer"><div class="actions"><a class="btn btn-primary" href="/jamiebarker/coaching.html">Coach with Jamie</a><a class="btn btn-light" href="/jamiebarker/#ask">Ask Jamie</a></div><div class="stats"><div><strong>HYROX</strong><span>Race preparation</span></div><div><strong>Running + strength</strong><span>Hybrid training</span></div><div><strong>Find Your Edge</strong><span>Coaching and community</span></div></div></div></section>
 
     <section class="block" id="zones">
       <div class="wrap">
@@ -221,7 +178,7 @@
       <div class="wrap story">
         <figure class="reveal">
           <img
-            src="/jamiebarker/images/startline.jpg?v=1792661954692"
+            src="/jamiebarker/images/startline.jpg?v=1792700913499"
             alt="Jamie on the start line — flat expression, miles to go"
             width="985"
             height="1150"
@@ -271,8 +228,8 @@
         <div class="plan plan-crew reveal">
           <img
             class="crew-photo"
-            src="/jamiebarker/images/doubles.jpg?v=1792661954692"
-            alt="Jamie Barker driving the sled in a HYROX Pro Doubles race in Cardiff"
+            src="/jamiebarker/images/doubles.jpg?v=1792700913499"
+            alt="Jamie and his race partner at the Madrid finish board showing 0:59:47"
             loading="lazy"
           />
           <div class="crew-copy">
@@ -440,7 +397,7 @@
     <section class="capture" id="ask">
       <img
         class="capture-bg"
-        src="/jamiebarker/images/coaching.jpg?v=1792661954692"
+        src="/jamiebarker/images/coaching.jpg?v=1792700913499"
         alt=""
         width="948"
         height="870"
@@ -450,7 +407,7 @@
         <div class="reveal coach">
           <img
             class="bio"
-            src="/jamiebarker/images/bio.jpg?v=1792661954692"
+            src="/jamiebarker/images/bio.jpg?v=1792700913499"
             alt="Jamie Barker — HYROX Pro athlete and coach"
             width="120"
             height="120"
@@ -705,8 +662,7 @@
       <a class="btn btn-light" href="/jamiebarker/splits/">Free split analysis</a>
     </div>
 
-    <footer>
-      <div class="wrap">
+    <aside class="coach-question" aria-label="Ask Jamie"><p>Got a training or race-day question?</p><a class="btn btn-primary" href="/jamiebarker/#ask">Ask Jamie</a></aside><footer><div class="wrap">
         <div>© <span id="year"></span> Jamie Barker</div>
         <nav>
           <a href="#plans">Subscriptions</a>
@@ -745,8 +701,8 @@
       <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/jamiebarker/app.js?v=1792661954692" defer></script>
-    <script src="/jamiebarker/emerge.js?v=1792661954692" defer></script>
-    <script src="/jamiebarker/partners.js?v=1792661954692" defer></script>
+    <script src="/jamiebarker/app.js?v=1792700913499" defer></script>
+    <script src="/jamiebarker/emerge.js?v=1792700913499" defer></script>
+    <script src="/jamiebarker/partners.js?v=1792700913499" defer></script>
   </body>
 </html>

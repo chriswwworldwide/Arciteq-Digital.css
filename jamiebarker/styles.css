@@ -704,10 +704,26 @@ button.btn {
   max-width: 46ch;
 }
 
-.hero--bleed .stats {
-  margin-top: 28px;
-  padding-top: 18px;
-}
+.hero.hero--editorial { display: block; min-height: 0; padding: 0; background: #0b0b0e; }
+.hero.hero--editorial::after, .hero.hero--editorial .hero-amb { display: none; }
+.hero.hero--editorial .wrap { min-height: 0; align-items: center; text-align: center; }
+.hero.hero--editorial .hero-intro { padding: 44px 0 30px; }
+.hero.hero--editorial h2 { margin: 16px 0; font-size: clamp(38px, 4.6vw, 76px); }
+.hero.hero--editorial .kicker { max-width: 100%; letter-spacing: .12em; color: #c7c7ce; }
+.hero.hero--editorial p { max-width: 64ch; margin: 0; font-size: clamp(14px, 1.5vw, 19px); color: #dedee4; text-wrap: balance; }
+.hero.hero--editorial .hero-visual { position: relative; width: 100%; aspect-ratio: 640 / 428; max-height: 76vh; overflow: hidden; }
+.hero.hero--editorial .hero-mask { position: absolute; inset: 0; width: 100%; height: 100%; transform: none; mask-image: none; -webkit-mask-image: none; }
+.hero.hero--editorial .hero-img { padding: 0; object-fit: contain; object-position: center; }
+.hero.hero--editorial .hero-mask::after { display: none; }
+.hero.hero--editorial .hero-footer { padding: 24px 0 34px; }
+.hero.hero--editorial .actions { justify-content: center; flex-wrap: wrap; }
+.hero.hero--editorial .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 20px; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.16); }
+.hero.hero--editorial .stats div strong { font-size: clamp(18px, 2vw, 27px); }
+.hero.hero--editorial .stats div span { display: block; margin-top: 8px; letter-spacing: .05em; line-height: 1.5; }
+.coach-question { padding: 32px 20px; background: #111115; border-top: 1px solid rgba(255,255,255,.12); text-align: center; }
+.coach-question p { margin: 0 0 16px; color: #e2e2e8; }
+#ask { scroll-margin-top: 100px; }
+@media (max-width: 600px) { .hero.hero--editorial .hero-intro { padding: 30px 0 24px; } .hero.hero--editorial .stats { grid-template-columns: 1fr; gap: 20px; } .hero.hero--editorial .hero-visual { max-height: 60vh; } }
 
 /* ---------- Sections ---------- */
 section.block {

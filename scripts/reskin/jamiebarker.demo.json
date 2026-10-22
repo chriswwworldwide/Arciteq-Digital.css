@@ -1,5 +1,6 @@
 {
   "mode": "chassis",
+  "sharedPack": "scripts/reskin/editorial-hero.pack.json",
   "slug": "jamiebarker",
   "heroMode": "full",
   "strictImages": true,
@@ -9,6 +10,12 @@
     "mode": "hidden"
   },
   "tokens": {
+    "HERO_KICKER": "Jamie Barker · Hybrid coaching",
+    "HERO_INTRO_HTML": "Running, HYROX and strength with Jamie Barker.<br />Coaching built around real life.",
+    "HERO_PHOTO_ALT": "Jamie Barker working the battle ropes during a group training session",
+    "HERO_PHOTO_WIDTH": "640",
+    "HERO_PHOTO_HEIGHT": "428",
+    "HERO_STATS_HTML": "<div><strong>HYROX</strong><span>Race preparation</span></div><div><strong>Running + strength</strong><span>Hybrid training</span></div><div><strong>Find Your Edge</strong><span>Coaching and community</span></div>",
     "SLUG": "jamiebarker",
     "COACH_NAME": "Jamie Barker",
     "COACH_NAME_LC": "jamie barker",
@@ -91,6 +98,38 @@
     "watch.html"
   ],
   "copyOverrides": [
+    {
+      "pattern": "src=\"/jamiebarker/images/station-skierg\\.jpg\"\\s+alt=\"[^\"]*\"\\s+width=\"[^\"]*\"\\s+height=\"[^\"]*\"",
+      "replace": "src=\"/jamiebarker/images/station-skierg.jpg\" alt=\"Concept2 SkiErg frame, cords and performance monitor\" width=\"640\" height=\"800\""
+    },
+    {
+      "pattern": "src=\"/jamiebarker/images/stations-hero\\.jpg\"\\s+alt=\"[^\"]*\"\\s+width=\"[^\"]*\"\\s+height=\"[^\"]*\"",
+      "replace": "src=\"/jamiebarker/images/stations-hero.jpg\" alt=\"Cropped side view of rowing technique, showing handle, legs and rowing machine\" width=\"709\" height=\"549\""
+    },
+    {
+      "pattern": "src=\"/jamiebarker/images/station-row\\.jpg\"\\s+alt=\"[^\"]*\"\\s+width=\"[^\"]*\"\\s+height=\"[^\"]*\"",
+      "replace": "src=\"/jamiebarker/images/station-row.jpg\" alt=\"Cropped front view of the rowing station, showing grip and foot placement\" width=\"723\" height=\"690\""
+    },
+    {
+      "pattern": "src=\"/jamiebarker/images/station-farmers-carry\\.jpg\"\\s+alt=\"[^\"]*\"\\s+width=\"[^\"]*\"\\s+height=\"[^\"]*\"",
+      "replace": "src=\"/jamiebarker/images/station-farmers-carry.jpg\" alt=\"Jamie carrying kettlebells at the Red Bull HYROX Coaches Camp\" width=\"897\" height=\"1024\""
+    },
+    {
+      "pattern": "{{COACH_NAME}} driving the sled in a HYROX Pro Doubles race in {{DOUBLES_VENUE}}",
+      "replace": "Jamie and his race partner at the Madrid finish board showing 0:59:47"
+    },
+    {
+      "pattern": "src=\"/jamiebarker/images/station-sled-push\\.jpg\"\\s+alt=\"[^\"]*\"\\s+width=\"[^\"]*\"\\s+height=\"[^\"]*\"",
+      "replace": "src=\"/jamiebarker/images/station-sled-push.jpg\" alt=\"Jamie driving forward during the HYROX sled push\" width=\"1024\" height=\"895\""
+    },
+    {
+      "pattern": "src=\"/jamiebarker/images/station-sled-pull\\.jpg\"\\s+alt=\"[^\"]*\"\\s+width=\"[^\"]*\"\\s+height=\"[^\"]*\"",
+      "replace": "src=\"/jamiebarker/images/station-sled-pull.jpg\" alt=\"Jamie pulling the HYROX sled rope hand over hand\" width=\"1024\" height=\"925\""
+    },
+    {
+      "pattern": "src=\"/jamiebarker/images/run-hero\\.jpg\"\\s+alt=\"[^\"]*\"\\s+width=\"[^\"]*\"\\s+height=\"[^\"]*\"",
+      "replace": "src=\"/jamiebarker/images/run-hero.jpg\" alt=\"Jamie running through the HYROX arena\" width=\"1024\" height=\"902\""
+    },
     {
       "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
       "replace": "From first HYROX to a sub-60 debut — and an Ironman 70.3 along the way."

@@ -2,6 +2,11 @@
 
 This file catches a new session up on exactly where we are, what is live, and what must happen next.
 
+## Photo review status
+
+- GetFitGabby: photos approved by Chris; no further photo sourcing needed (22 October 2026).
+- Jamie Barker: five additional race photos supplied by Chris for farmers carry, doubles finish, sled push, sled pull and Run Zone (22 October 2026).
+
 ## 1. Current operational state
 
 ### Microsoft 365 email setup — INCOMPLETE

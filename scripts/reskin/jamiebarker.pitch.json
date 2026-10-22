@@ -1,0 +1,32 @@
+[
+  {"path":"","subs":[
+    {"text":"Jamie — your name, your photos, your hybrid coaching. Already built into a working platform.","holdMs":6000},
+    {"text":"A home for your brand, with coaching, race tools and community together.","scrollTo":".hero-visual","holdMs":5500},
+    {"text":"The Zones — station prep, running and the race-day details athletes come back for.","scrollTo":"#zones","holdMs":5500},
+    {"text":"Your story, with your own race imagery giving it some personality.","scrollTo":"#story","holdMs":5500},
+    {"text":"The Madrid finish shot is here. Free tools first, then a clear route into your coaching.","scrollTo":"#plans","holdMs":6500},
+    {"text":"Events and race plans sit alongside the coaching, rather than getting lost in a feed.","scrollTo":"#events","holdMs":5000},
+    {"text":"The Warriors Wall — space for your community's race photos. Demo entries show the layout for now.","scrollTo":"#wall-photos","holdMs":6000},
+    {"text":"Ask Jamie — a dedicated place for training questions and race advice.","scrollTo":"#ask","holdMs":5500}
+  ]},
+  {"path":"coaching.html","subs":[{"text":"Coaching gets its own page — with the onward route into Find Your Edge, not a replacement for it.","scroll":true,"holdMs":7500}]},
+  {"path":"find-a-partner.html","subs":[{"text":"Find a race-mate — doubles, mixed and relay partners have somewhere to find each other.","scrollTo":"#partner-form","holdMs":6000},{"text":"A practical community feature that gives athletes another reason to return.","scroll":true,"holdMs":5000}]},
+  {"path":"predictor.html","subs":[{"text":"Race Tools: the predictor gives athletes a place to explore their target finish time.","holdMs":5500},{"text":"Your site becomes useful between race weekends, not just when someone wants a coaching link.","scroll":true,"holdMs":6000}]},
+  {"path":"splits.html","subs":[{"text":"Split analyser — a place to break down a race and look for improvement opportunities.","scrollTo":"#splits-form","holdMs":6500},{"text":"A useful starting point for the next coaching conversation.","scroll":true,"holdMs":5500}]},
+  {"path":"results.html","subs":[{"text":"A results board for progress and race times. The demo shows the structure ready to populate.","scroll":true,"holdMs":6000}]},
+  {"path":"stations-prep/","subs":[{"text":"Station prep — all eight stations, each with technique, pacing and coaching cues.","holdMs":5500},{"text":"Your new sled push, rope pull and carry photos are wired into the relevant station guides.","scroll":true,"holdMs":8500}]},
+  {"path":"run-zone/","subs":[{"text":"Run Zone — your race running shot leads into pacing and compromised-running advice.","scroll":true,"holdMs":7500}]},
+  {"path":"taper-zone/","subs":[{"text":"Taper Zone — the final week, organised clearly so athletes know what to focus on.","scroll":true,"holdMs":6500}]},
+  {"path":"events.html","subs":[{"text":"Race calendar — a central place to plan the event and the trip around it.","scroll":true,"holdMs":6500}]},
+  {"path":"race-crew.html","subs":[{"text":"Race crew meetups — your community has somewhere to organise the social side of race day.","scroll":true,"holdMs":6500}]},
+  {"path":"news.html","subs":[{"text":"News and updates under your own name — a home for coaching notes and race recaps.","scroll":true,"holdMs":6500}]},
+  {"path":"partners.html","subs":[
+    {"text":"Your destinations in one place: Find Your Edge, MyProtein and the Red Bull Coaches Camp information.","scroll":true,"holdMs":6500},
+    {"text":"Click Find Your Edge and the journey continues into your existing coaching app.","actions":[{"navClick":"a.pc-cta[href='https://findyouredge.app/']","holdMs":5000}],"holdMs":4000},
+    {"text":"The MyProtein button links to their store; Red Bull links to their site. No discount code or commission is implied.","holdMs":6500},
+    {"text":"The platform brings those routes together while keeping your brand at the start of the journey.","holdMs":5500}
+  ]},
+  {"path":"list.html","subs":[{"text":"Join the list — a direct way to keep in touch with people interested in your coaching.","scroll":true,"holdMs":6000}]},
+  {"path":"desk.html","subs":[{"text":"Behind the public site: the Desk.","holdMs":5000},{"text":"Coaching income, race costs and partner activity in a dashboard. These figures are demo data, not your accounts.","scrollTo":".desk-stats","holdMs":6500},{"text":"A place for the business side as well as the coaching side.","scroll":true,"holdMs":6000}]},
+  {"path":"","subs":[{"text":"Your coaching, useful race tools and your community — all under your name.","holdMs":6000},{"text":"Have a look around, Jamie. I'd love to hear what you think.","holdMs":6000}]}
+]

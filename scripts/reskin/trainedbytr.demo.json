@@ -1,5 +1,6 @@
 {
   "mode": "chassis",
+  "sharedPack": "scripts/reskin/editorial-hero.pack.json",
   "slug": "trainedbytr",
   "heroMode": "full",
   "strictImages": true,
@@ -9,6 +10,12 @@
     "mode": "hidden"
   },
   "tokens": {
+    "HERO_KICKER": "Trained by TR · Widnes",
+    "HERO_INTRO_HTML": "HYROX coaching with Tom Redmond.<br />Purposeful training. A race plan built around you.",
+    "HERO_PHOTO_ALT": "Tom Redmond running through the HYROX race tunnel",
+    "HERO_PHOTO_WIDTH": "1024",
+    "HERO_PHOTO_HEIGHT": "557",
+    "HERO_STATS_HTML": "<div><strong>Performance first</strong><span>Purposeful training</span></div><div><strong>Process always</strong><span>A plan built around you</span></div><div><strong>100+ coached</strong><span>Everyday athletes</span></div>",
     "SLUG": "trainedbytr",
     "COACH_NAME": "Tom Redmond",
     "COACH_NAME_LC": "tom redmond",
@@ -123,6 +130,18 @@
     }
   ],
   "copyOverrides": [
+    {
+      "pattern": "src=\"/trainedbytr/images/doubles\\.jpg\"\\s+alt=\"[^\"]*\"",
+      "replace": "src=\"/trainedbytr/images/coaching.jpg\" alt=\"Tom Redmond directing an athlete during a coaching session\""
+    },
+    {
+      "pattern": "src=\"/trainedbytr/images/station-burpees\\.jpg\"\\s+alt=\"[^\"]*\"\\s+width=\"[^\"]*\"\\s+height=\"[^\"]*\"",
+      "replace": "src=\"/trainedbytr/images/station-burpees.jpg\" alt=\"Cropped race action during burpee broad jumps\" width=\"847\" height=\"614\""
+    },
+    {
+      "pattern": "<figure class=\"art-photo\">\\s*<img\\s+src=\"/trainedbytr/images/run-compromised\\.jpg\"[^>]*>\\s*<figcaption>Farmers carry — grip goes before legs do\\.</figcaption>",
+      "replace": "<figure class=\"art-photo\"><img src=\"/trainedbytr/images/run-detail.jpg\" alt=\"Tom mid-stride on the HYROX carpet, neon soles off the deck\" width=\"848\" height=\"1024\" loading=\"lazy\" /><figcaption>Every step after the stations is compromised running.</figcaption>"
+    },
     {
       "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
       "replace": "Official HYROX UK Performance Coach who has coached 100+ everyday athletes to the start line."

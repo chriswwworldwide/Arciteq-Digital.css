@@ -1,5 +1,6 @@
 {
   "mode": "chassis",
+  "sharedPack": "scripts/reskin/editorial-hero.pack.json",
   "slug": "getfitgabby",
   "heroMode": "full",
   "strictImages": true,
@@ -39,6 +40,12 @@
     }
   ],
   "tokens": {
+    "HERO_KICKER": "Get Fit Gabby · HYROX coaching",
+    "HERO_INTRO_HTML": "Train for your next race with Gabby.<br />Strength, running and a plan that fits your life.",
+    "HERO_PHOTO_ALT": "Gabby Moriarty on the HYROX race floor",
+    "HERO_PHOTO_WIDTH": "563",
+    "HERO_PHOTO_HEIGHT": "640",
+    "HERO_STATS_HTML": "<div><strong>Race ready</strong><span>HYROX preparation</span></div><div><strong>Stronger together</strong><span>Coaching and community</span></div><div><strong>Get Fit Gabby</strong><span>Training with purpose</span></div>",
     "SLUG": "getfitgabby",
     "COACH_NAME": "Gabriella Moriarty",
     "COACH_NAME_LC": "gabriella moriarty",

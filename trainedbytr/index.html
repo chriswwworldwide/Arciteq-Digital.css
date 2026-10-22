@@ -28,10 +28,10 @@
     <link
       rel="preload"
       as="image"
-      href="/trainedbytr/images/hero.jpg?v=1792685981373"
+      href="/trainedbytr/images/hero.jpg?v=1792700913214"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/trainedbytr/styles.css?v=1792685981373" />
+    <link rel="stylesheet" href="/trainedbytr/styles.css?v=1792700913214" />
     <script>
       document.documentElement.classList.add("js");
       // Refresh = top of page + the hero entrance plays. Any hash left in
@@ -39,7 +39,7 @@
       // in-page anchor clicks still scroll as normal.
       if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
-        if (location.hash)
+        if (location.hash && performance.getEntriesByType("navigation")[0]?.type === "reload")
           history.replaceState(null, "", location.pathname + location.search);
       }
     </script>
@@ -115,50 +115,7 @@
       </div>
     </div>
 
-    <section class="hero hero--bleed" data-hero-mode="full" data-hero-roll="full">
-      <img
-        class="hero-amb"
-        src="/trainedbytr/images/hero.jpg?v=1792685981373"
-        alt=""
-        aria-hidden="true"
-        width="1125"
-        height="1080"
-      />
-      <div class="hero-mask">
-        <img
-          class="hero-img"
-          src="/trainedbytr/images/hero.jpg?v=1792685981373"
-          alt="Tom Redmond driving the sled, head-on — the station nobody enjoys"
-          width="1125"
-          height="1080"
-          fetchpriority="high"
-        />
-      </div>
-      <div class="wrap">
-        <span class="kicker"
-          >Hyrox · England · performance first. process always. results will follow.</span
-        >
-        <h2>
-          Everyday athletes.<br /><em>Race ready.</em>
-        </h2>
-        <p>
-          Tom Redmond — Official HYROX UK Performance Coach, Head Coach at TransFit Widnes, and the face behind Trained by TR. Official HYROX UK Performance Coach who has coached 100+ everyday athletes to the start line. performance first. process always. results will follow.; the rest is reps.
-        </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="/trainedbytr/coaching.html">Coach with Tom</a>
-          <a class="btn btn-light" href="#ask">Ask Tom</a>
-        </div>
-        <div class="stats">
-          <div>
-            <strong>Race ready</strong><span>HYROX Pro Solo PB — Manchester</span>
-          </div>
-          <div>
-            <strong>Team wins</strong><span>Pro Doubles — Birmingham, with the Trained by TR team</span>
-          </div>
-          <div><strong>100+ coached</strong><span>AJ Bell Birmingham Half</span></div>
-        </div>
-      </div>
-    </section>
+    <section class="hero hero--bleed hero--editorial" data-hero-mode="full" data-hero-roll="full"><div class="wrap hero-intro"><span class="kicker">Trained by TR · Widnes</span><h2>Everyday athletes.<br /><em>Race ready.</em></h2><p>HYROX coaching with Tom Redmond.<br />Purposeful training. A race plan built around you.</p></div><div class="hero-visual"><div class="hero-mask"><img class="hero-img" src="/trainedbytr/images/hero.jpg?v=1792700913214" alt="Tom Redmond running through the HYROX race tunnel" width="1024" height="557" fetchpriority="high" /></div></div><div class="wrap hero-footer"><div class="actions"><a class="btn btn-primary" href="/trainedbytr/coaching.html">Coach with Tom</a><a class="btn btn-light" href="/trainedbytr/#ask">Ask Tom</a></div><div class="stats"><div><strong>Performance first</strong><span>Purposeful training</span></div><div><strong>Process always</strong><span>A plan built around you</span></div><div><strong>100+ coached</strong><span>Everyday athletes</span></div></div></div></section>
 
     <section class="block" id="zones">
       <div class="wrap">
@@ -221,7 +178,7 @@
       <div class="wrap story">
         <figure class="reveal">
           <img
-            src="/trainedbytr/images/startline.jpg?v=1792685981373"
+            src="/trainedbytr/images/startline.jpg?v=1792700913214"
             alt="Tom on the start line — flat expression, miles to go"
             width="985"
             height="1150"
@@ -271,8 +228,7 @@
         <div class="plan plan-crew reveal">
           <img
             class="crew-photo"
-            src="/trainedbytr/images/coaching.jpg?v=1792685981373"
-            alt="Tom Redmond mid-session, pointing out splits and directing an athlete"
+            src="/trainedbytr/images/coaching.jpg?v=1792700913214" alt="Tom Redmond directing an athlete during a coaching session"
             loading="lazy"
           />
           <div class="crew-copy">
@@ -440,7 +396,7 @@
     <section class="capture" id="ask">
       <img
         class="capture-bg"
-        src="/trainedbytr/images/coaching.jpg?v=1792685981373"
+        src="/trainedbytr/images/coaching.jpg?v=1792700913214"
         alt=""
         width="948"
         height="870"
@@ -450,7 +406,7 @@
         <div class="reveal coach">
           <img
             class="bio"
-            src="/trainedbytr/images/bio.jpg?v=1792685981373"
+            src="/trainedbytr/images/bio.jpg?v=1792700913214"
             alt="Tom Redmond — HYROX Pro athlete and coach"
             width="120"
             height="120"
@@ -705,8 +661,7 @@
       <a class="btn btn-light" href="/trainedbytr/splits/">Free split analysis</a>
     </div>
 
-    <footer>
-      <div class="wrap">
+    <aside class="coach-question" aria-label="Ask Tom"><p>Got a training or race-day question?</p><a class="btn btn-primary" href="/trainedbytr/#ask">Ask Tom</a></aside><footer><div class="wrap">
         <div>© <span id="year"></span> Tom Redmond</div>
         <nav>
           <a href="#plans">Subscriptions</a>
@@ -745,8 +700,8 @@
       <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/trainedbytr/app.js?v=1792685981373" defer></script>
-    <script src="/trainedbytr/emerge.js?v=1792685981373" defer></script>
-    <script src="/trainedbytr/partners.js?v=1792685981373" defer></script>
+    <script src="/trainedbytr/app.js?v=1792700913214" defer></script>
+    <script src="/trainedbytr/emerge.js?v=1792700913214" defer></script>
+    <script src="/trainedbytr/partners.js?v=1792700913214" defer></script>
   </body>
 </html>

@@ -1,0 +1,24 @@
+{
+  "copyOverrides": [
+    {
+      "pattern": "const section = document\\.querySelector\\(\"\\.hero--bleed\"\\);",
+      "replace": "const section = document.querySelector(\".hero--bleed .hero-visual\") || document.querySelector(\".hero--bleed\");"
+    },
+    {
+      "pattern": "if \\(location\\.hash\\)",
+      "replace": "if (location.hash && performance.getEntriesByType(\"navigation\")[0]?.type === \"reload\")"
+    },
+    {
+      "pattern": "<section class=\"hero hero--bleed\"[^>]*>[\\s\\S]*?</section>",
+      "replace": "<section class=\"hero hero--bleed hero--editorial\" data-hero-mode=\"full\" data-hero-roll=\"full\"><div class=\"wrap hero-intro\"><span class=\"kicker\">{{HERO_KICKER}}</span><h2>{{HERO_TITLE_HTML}}</h2><p>{{HERO_INTRO_HTML}}</p></div><div class=\"hero-visual\"><div class=\"hero-mask\"><img class=\"hero-img\" src=\"/{{SLUG}}/images/hero.jpg\" alt=\"{{HERO_PHOTO_ALT}}\" width=\"{{HERO_PHOTO_WIDTH}}\" height=\"{{HERO_PHOTO_HEIGHT}}\" fetchpriority=\"high\" /></div></div><div class=\"wrap hero-footer\"><div class=\"actions\"><a class=\"btn btn-primary\" href=\"/{{SLUG}}/coaching.html\">Coach with {{COACH_FIRST}}</a><a class=\"btn btn-light\" href=\"/{{SLUG}}/#ask\">Ask {{COACH_FIRST}}</a></div><div class=\"stats\">{{HERO_STATS_HTML}}</div></div></section>"
+    },
+    {
+      "pattern": "\\.hero--bleed \\.stats \\{\\s*margin-top: 28px;\\s*padding-top: 18px;\\s*\\}",
+      "replace": ".hero.hero--editorial { display: block; min-height: 0; padding: 0; background: #0b0b0e; }\n.hero.hero--editorial::after, .hero.hero--editorial .hero-amb { display: none; }\n.hero.hero--editorial .wrap { min-height: 0; align-items: center; text-align: center; }\n.hero.hero--editorial .hero-intro { padding: 44px 0 30px; }\n.hero.hero--editorial h2 { margin: 16px 0; font-size: clamp(38px, 4.6vw, 76px); }\n.hero.hero--editorial .kicker { max-width: 100%; letter-spacing: .12em; color: #c7c7ce; }\n.hero.hero--editorial p { max-width: 64ch; margin: 0; font-size: clamp(14px, 1.5vw, 19px); color: #dedee4; text-wrap: balance; }\n.hero.hero--editorial .hero-visual { position: relative; width: 100%; aspect-ratio: {{HERO_PHOTO_WIDTH}} / {{HERO_PHOTO_HEIGHT}}; max-height: 76vh; overflow: hidden; }\n.hero.hero--editorial .hero-mask { position: absolute; inset: 0; width: 100%; height: 100%; transform: none; mask-image: none; -webkit-mask-image: none; }\n.hero.hero--editorial .hero-img { padding: 0; object-fit: contain; object-position: center; }\n.hero.hero--editorial .hero-mask::after { display: none; }\n.hero.hero--editorial .hero-footer { padding: 24px 0 34px; }\n.hero.hero--editorial .actions { justify-content: center; flex-wrap: wrap; }\n.hero.hero--editorial .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 20px; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.16); }\n.hero.hero--editorial .stats div strong { font-size: clamp(18px, 2vw, 27px); }\n.hero.hero--editorial .stats div span { display: block; margin-top: 8px; letter-spacing: .05em; line-height: 1.5; }\n.coach-question { padding: 32px 20px; background: #111115; border-top: 1px solid rgba(255,255,255,.12); text-align: center; }\n.coach-question p { margin: 0 0 16px; color: #e2e2e8; }\n#ask { scroll-margin-top: 100px; }\n@media (max-width: 600px) { .hero.hero--editorial .hero-intro { padding: 30px 0 24px; } .hero.hero--editorial .stats { grid-template-columns: 1fr; gap: 20px; } .hero.hero--editorial .hero-visual { max-height: 60vh; } }"
+    },
+    {
+      "pattern": "<footer>\\s*<div class=\"wrap\">",
+      "replace": "<aside class=\"coach-question\" aria-label=\"Ask {{COACH_FIRST}}\"><p>Got a training or race-day question?</p><a class=\"btn btn-primary\" href=\"/{{SLUG}}/#ask\">Ask {{COACH_FIRST}}</a></aside><footer><div class=\"wrap\">"
+    }
+  ]
+}

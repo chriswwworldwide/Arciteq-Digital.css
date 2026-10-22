@@ -31,6 +31,9 @@ const VALID_SLUGS = new Set([
   "jadeskillen",
   "elationfitness",
   "coachedbyzara",
+  "trainedbytr",
+  "jamiebarker",
+  "getfitgabby",
 ]);
 
 let tableReady = false;
@@ -167,8 +170,8 @@ export function createPitchRouter({ adminApiKey }) {
 
   // Pretty URLs: /pitch/<slug>/ → the per-prospect page. Static middleware
   // doesn't resolve directory indexes, so the route does it.
-  router.get("/pitch/:slug/", (req, res) => {
-    const slug = cleanStr(req.params.slug, 40);
+  router.get(/^\/pitch\/([a-z0-9-]+)\/?$/, (req, res) => {
+    const slug = cleanStr(req.params[0], 40);
     if (!VALID_SLUGS.has(slug)) return res.status(404).send("not found");
     res.sendFile(path.join(pitchRoot, slug, "index.html"));
   });

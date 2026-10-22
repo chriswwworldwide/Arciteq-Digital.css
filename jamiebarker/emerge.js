@@ -33,7 +33,7 @@
   window.__emerge = true; // hero-reveal.js checks this and stands down
 
   const boot = () => {
-    const section = document.querySelector(".hero--bleed");
+    const section = document.querySelector(".hero--bleed .hero-visual") || document.querySelector(".hero--bleed");
     const mask = section && section.querySelector(".hero-mask");
     const img = mask && mask.querySelector(".hero-img");
     if (!section || !mask || !img) return;

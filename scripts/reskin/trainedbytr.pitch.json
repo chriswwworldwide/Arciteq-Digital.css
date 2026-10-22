@@ -1,0 +1,31 @@
+[
+  {"path":"","subs":[
+    {"text":"Tom — your name, your race photos, your coaching. Already built into a working platform.","holdMs":6000},
+    {"text":"A clear home for Trained by TR — with the race photo doing the talking.","scrollTo":".hero-visual","holdMs":5500},
+    {"text":"The Zones: station technique, running and race-day preparation, all in one place.","scrollTo":"#zones","holdMs":5500},
+    {"text":"Your story and your coaching approach, not just another link in a bio.","scrollTo":"#story","holdMs":5000},
+    {"text":"Start with the free tools. When they want a plan, the route to coaching is right here.","scrollTo":"#plans","holdMs":6500},
+    {"text":"Your race calendar and community have a home alongside the coaching.","scrollTo":"#events","holdMs":5000},
+    {"text":"The Warriors Wall — a place for your community's race photos. These demo entries show the layout.","scrollTo":"#wall-photos","holdMs":5500},
+    {"text":"Ask Tom — a dedicated place for training and race-day questions.","scrollTo":"#ask","holdMs":5500}
+  ]},
+  {"path":"coaching.html","subs":[{"text":"Coaching has its own page, with clear routes through to your existing Trained by TR applications.","scroll":true,"holdMs":7000}]},
+  {"path":"find-a-partner.html","subs":[{"text":"Find a race-mate — doubles, mixed or relay partners, without hunting through comment threads.","scrollTo":"#partner-form","holdMs":6000},{"text":"A reason for athletes to return between coaching sessions and race weekends.","scroll":true,"holdMs":5000}]},
+  {"path":"predictor.html","subs":[{"text":"Race Tools starts with the predictor — a way to explore a target finish time.","holdMs":5000},{"text":"Useful tools bring athletes back to your platform, not someone else's feed.","scroll":true,"holdMs":6000}]},
+  {"path":"splits.html","subs":[{"text":"The split analyser puts race data and improvement opportunities in one place.","scrollTo":"#splits-form","holdMs":6500},{"text":"A practical starting point for a coaching conversation about where the next minutes come from.","scroll":true,"holdMs":6000}]},
+  {"path":"results.html","subs":[{"text":"Results board — a home for race times and progress. The demo shows how it is organised.","scroll":true,"holdMs":6000}]},
+  {"path":"stations-prep/","subs":[{"text":"All eight stations: technique, pacing and coaching cues in a guide athletes can keep coming back to.","holdMs":5500},{"text":"Clear sections for each station, with race imagery alongside the practical advice.","scroll":true,"holdMs":8500}]},
+  {"path":"run-zone/","subs":[{"text":"Run Zone — pacing and compromised running, because eight kilometres feels different after the sleds.","scroll":true,"holdMs":7500}]},
+  {"path":"taper-zone/","subs":[{"text":"Taper Zone — the final week laid out clearly, when athletes most want reassurance.","scroll":true,"holdMs":6500}]},
+  {"path":"events.html","subs":[{"text":"Race calendar — a central place to plan the next event and the trip around it.","scroll":true,"holdMs":6500}]},
+  {"path":"race-crew.html","subs":[{"text":"Race crew meetups — space for the community around the training, not just the training itself.","scroll":true,"holdMs":6500}]},
+  {"path":"news.html","subs":[{"text":"A news and updates page under your own brand, ready for your next coaching update or race recap.","scroll":true,"holdMs":6500}]},
+  {"path":"partners.html","subs":[
+    {"text":"Your links, organised: TransFit Widnes, HYROX and your Trained by TR coaching destination.","scroll":true,"holdMs":6500},
+    {"text":"The coaching button leads to your existing application page — we are not replacing your current coaching setup.","actions":[{"navClick":"a.pc-cta[href='https://go.trainedbytr.com/home']","holdMs":5000}],"holdMs":4000},
+    {"text":"TransFit and HYROX keep their own destinations too. This is a useful front door, not a collection of screenshots.","holdMs":6000}
+  ]},
+  {"path":"list.html","subs":[{"text":"Join the list — a direct route to stay in touch with people interested in your coaching.","scroll":true,"holdMs":6000}]},
+  {"path":"desk.html","subs":[{"text":"And behind the public pages: the Desk.","holdMs":5000},{"text":"A working dashboard layout for coaching income, race costs and partner activity. The figures here are demo data.","scrollTo":".desk-stats","holdMs":6500},{"text":"One place to review the business side alongside the athlete-facing platform.","scroll":true,"holdMs":6000}]},
+  {"path":"","subs":[{"text":"Your coaching, useful race tools and your community — brought together as Trained by TR.","holdMs":6000},{"text":"Have a look around, Tom. I'd love to hear what you think.","holdMs":6000}]}
+]

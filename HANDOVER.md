@@ -120,6 +120,7 @@ For the full build/photo process, see `AGENTS.md` section "Start here for batch 
 - **Proof lives in the P.S.:** Dina's live site (`roxjaya.com`) as the "already out in the wild" line — it's evidence, not a third ask.
 - **Subject stays ambiguous** — reads like a client enquiry ("Quick question about your sessions, X").
 - **Deliverability gate:** test-send to own Yahoo/Gmail before each batch; 14MB attachments from a cold domain are the biggest failure mode.
+- **Next iteration — own video platform (decided Oct 22):** replace attachments with `station9studio.co.uk/pitch/<slug>/` — our own branded video page (video on top, demo link underneath = single CTA). Build in view tracking (pageview + play/watch events pinged to a lightweight endpoint) so we know if and when a prospect watches — that timing drives the follow-up. The page itself is product proof. Avoid Loom/YouTube chrome; ours is the brand.
 - **Stagger sends one per day**, P.S. deadline = send date +4 days (keeps the one-per-city story honest).
 
 Use these as the starting point. Each pitch should be 45–90 seconds in a Loom-style video, then wrapped in a short email.

@@ -114,6 +114,14 @@ For the full build/photo process, see `AGENTS.md` section "Start here for batch 
 
 ## 5. The pitches — current angle for each receiver
 
+**Copy rules agreed Oct 22 (apply to every future draft):**
+- **No analogy/justification lines.** Coaches know whether they want a platform and why — the "you need a website like you need a phone" framing was dropped as salesy. Open with "I've already built your platform" and let the demo do the persuading.
+- **Two asks max:** attached video + demo link. Everything else is supporting detail.
+- **Proof lives in the P.S.:** Dina's live site (`roxjaya.com`) as the "already out in the wild" line — it's evidence, not a third ask.
+- **Subject stays ambiguous** — reads like a client enquiry ("Quick question about your sessions, X").
+- **Deliverability gate:** test-send to own Yahoo/Gmail before each batch; 14MB attachments from a cold domain are the biggest failure mode.
+- **Stagger sends one per day**, P.S. deadline = send date +4 days (keeps the one-per-city story honest).
+
 Use these as the starting point. Each pitch should be 45–90 seconds in a Loom-style video, then wrapped in a short email.
 
 ### Gregor & Hattie / Race to Frame

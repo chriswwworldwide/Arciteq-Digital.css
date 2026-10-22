@@ -11,8 +11,6 @@ Graham —
 
 Quick one — bit unusual, this: I've already built your platform.
 
-You'd never programme a member without knowing their numbers first — yet Elation's whole digital presence runs on borrowed kit: an Instagram grid, a booking link, whoever's algorithm decides you exist this week.
-
 So I built it first. A full platform under your name — your race photos, your voice, coaching applications, race tools your members can actually use (split analyser, race predictor, results board), a partners page where your ELATION code is a real door, not a line in a bio. Before you've paid a penny.
 
 There's a 5-minute walkthrough video attached — hit play, it's the whole pitch. No call, no deck. And the live demo's up if you'd rather click around yourself: https://www.station9studio.co.uk/elationfitness
@@ -25,7 +23,7 @@ Chris
 Station 9
 station9studio.co.uk
 
-P.S. I'll hold your build until **Sunday 26th**. After that it goes to the next gym on the list — no drama either way.
+P.S. I'll hold your build until **Sunday 26th**. After that it goes to the next gym on the list — no drama either way. And if you want to see one out in the wild, a coach already runs on it: roxjaya.com
 
 ---
 

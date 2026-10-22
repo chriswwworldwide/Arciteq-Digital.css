@@ -54,6 +54,7 @@ import { createDeskAuth } from "./server/desk-auth.js";
 import { createAccountsRouter } from "./server/accounts.js";
 import { createAdminOrdersRouter } from "./server/admin-orders.js";
 import { createCheckoutRouter } from "./server/checkout.js";
+import { createPitchRouter } from "./server/pitch.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -141,6 +142,7 @@ app.post(
 app.use(createAdminOpsRouter({ alertEmailTo, heartbeatState }));
 
 app.use(express.json({ limit: "2mb" }));
+app.use(createPitchRouter({ adminApiKey }));
 app.use(cachePolicy());
 app.use(createSeoRouter({ publicBaseUrl }));
 app.use(staticFiles(__dirname));

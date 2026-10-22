@@ -2,7 +2,7 @@
 
 **To:** jade@smashyourhyrox.com (confirmed on her official Facebook page)
 **Subject:** Quick question about your coaching, Jade
-**Attachment:** jadeskillen-pitch-attach.mp4 (~14MB compressed)
+**Walkthrough link:** https://www.station9studio.co.uk/pitch/jadeskillen/ (replaces attachment — tracked)
 **Demo URL:** https://www.station9studio.co.uk/jadeskillen (www. required — apex times out)
 
 ---
@@ -13,7 +13,7 @@ Quick one — bit unusual, this: I've already built your platform.
 
 So I built it first. A full platform, live under your name — your photos, your voice, coaching applications, race tools your athletes can actually use (split analyser, race predictor, results board), partner links that go somewhere real. Before you've paid a penny.
 
-There's a 5-minute walkthrough video attached — hit play, it's the whole pitch. No call, no deck. And the live demo's up if you'd rather click around yourself: https://www.station9studio.co.uk/jadeskillen
+There's a 5-minute walkthrough here — hit play, it's the whole pitch. No call, no deck: https://www.station9studio.co.uk/pitch/jadeskillen/
 
 You're the most visible HYROX coach in the UK — when someone Googles you, this is where they should land.
 

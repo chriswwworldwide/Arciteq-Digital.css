@@ -2,7 +2,7 @@
 
 **To:** elationgymgroup@gmail.com (from elationfitnesstraining.co.uk)
 **Subject:** Quick question about Elation, Graham
-**Attachment:** elation-walkthrough.mp4 (~14MB compressed)
+**Walkthrough link:** https://www.station9studio.co.uk/pitch/elationfitness/ (replaces attachment — tracked)
 **Demo URL:** https://www.station9studio.co.uk/elationfitness (www. required — apex times out)
 
 ---
@@ -13,7 +13,7 @@ Quick one — bit unusual, this: I've already built your platform.
 
 So I built it first. A full platform under your name — your race photos, your voice, coaching applications, race tools your members can actually use (split analyser, race predictor, results board), a partners page where your ELATION code is a real door, not a line in a bio. Before you've paid a penny.
 
-There's a 5-minute walkthrough video attached — hit play, it's the whole pitch. No call, no deck. And the live demo's up if you'd rather click around yourself: https://www.station9studio.co.uk/elationfitness
+There's a 5-minute walkthrough here — hit play, it's the whole pitch. No call, no deck: https://www.station9studio.co.uk/pitch/elationfitness/
 
 The gym, the races, the AGAIN mentality — when someone Googles Elation, this is where they should land.
 

@@ -2,7 +2,7 @@
 
 **To:** faisalpmafitness@gmail.com
 **Subject:** Quick question about your sessions, Faisal
-**Attachment:** pma-walkthrough.mp4 (~14MB compressed)
+**Walkthrough link:** https://www.station9studio.co.uk/pitch/faisalpma/ (replaces attachment — tracked)
 **Demo URL:** https://www.station9studio.co.uk/faisalpma (www. required — apex times out)
 
 ---
@@ -13,7 +13,7 @@ Quick one — bit unusual, this: I've already built your platform.
 
 So I built it first. A full platform, live under your name — your photos, your voice, coaching applications, race tools your athletes can actually use, partner links that go somewhere real. Before you've paid a penny.
 
-There's a 5-minute walkthrough video attached — hit play, it's the whole pitch. No call, no deck. And the live demo's up if you'd rather click around yourself: https://www.station9studio.co.uk/faisalpma
+There's a 5-minute walkthrough here — hit play, it's the whole pitch. No call, no deck: https://www.station9studio.co.uk/pitch/faisalpma/
 
 When someone Googles "HYROX coach", this is where they should land.
 

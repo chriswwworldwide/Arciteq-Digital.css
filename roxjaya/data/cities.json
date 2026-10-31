@@ -686,13 +686,13 @@
     {
       "name": "HYROX Guangzhou",
       "city": "Guangzhou",
-      "flag": "🇨🇳",
-      "nickname": "The Big Rice Roll",
-      "dates": "21–22 November 2026",
-      "start": "2026-11-21",
-      "venue": "Venue TBA — confirm on hyrox.com",
-      "note": "Same weekend cluster as Seoul — pick one.",
-      "source": "https://hyrox.com/events/"
+      "flag": "",
+      "nickname": "",
+      "dates": "20–22 November 2026",
+      "start": "2026-11-20",
+      "venue": "No. 1000 Xinggang East Road, Haizhu District, Guangzhou, China",
+      "note": "Asia-Pacific race listed by HYROX.",
+      "source": "https://hyrox.com/event/hyrox-guangzhou/"
     }
   ],
   "alsoTba": "Sydney, Melbourne, Perth, Taipei, Osaka, Chiba, Incheon, Delhi, Bengaluru and Auckland are all expected back — dates land on hyrox.com first."

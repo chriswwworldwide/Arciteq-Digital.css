@@ -3029,7 +3029,7 @@ section.cta-band .btn-light {
     object-position: 50% 0%;
   }
 }
-.pg-conversations > .wrap {
+.guide-hero.pg-conversations > .wrap {
   grid-template-columns: minmax(0, 1fr);
 }
 .pg-conversations .guide-hero-text {

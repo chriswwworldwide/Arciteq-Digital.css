@@ -44,8 +44,8 @@
     window.revealScan?.();
     const status = $("video-library-status");
     if (status) {
-      status.hidden = Boolean(manager && visible.length);
-      status.textContent = visible.length ? manager ? "" : `${visible.length} ${visible.length === 1 ? "item" : "items"}${filter === "All" ? "" : ` · ${filter}`}` : "Your published cards will appear here. Start by adding a video or podcast episode.";
+      status.hidden = Boolean(visible.length && (manager || library.dataset.hideCount === "true"));
+      status.textContent = visible.length ? (manager || library.dataset.hideCount === "true") ? "" : `${visible.length} ${visible.length === 1 ? "item" : "items"}${filter === "All" ? "" : ` · ${filter}`}` : "Your published cards will appear here. Start by adding a video or podcast episode.";
     }
     document.querySelectorAll("[data-video-filter]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.videoFilter === filter)));
   }

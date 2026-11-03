@@ -3029,6 +3029,12 @@ section.cta-band .btn-light {
     object-position: 50% 0%;
   }
 }
+.pg-conversations > .wrap {
+  grid-template-columns: minmax(0, 1fr);
+}
+.pg-conversations .guide-hero-text {
+  max-width: 64ch;
+}
 .pg-reach {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);

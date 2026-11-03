@@ -1,0 +1,1816 @@
+{
+  "mode": "chassis",
+  "slug": "paulgillingham",
+  "partnerOffers": [
+    {
+      "title": "HYBRYD",
+      "type": "Affiliate apparel code",
+      "description": "Paul's public partner hub lists 10% off HYBRYD training apparel with PG10.",
+      "code": "PG10",
+      "affiliate": true,
+      "url": "https://hybryd.fit/",
+      "action": "Shop HYBRYD",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    },
+    {
+      "title": "Londevity",
+      "type": "Affiliate link",
+      "description": "Explore Londevity's chocolate range through Paul's partner link.",
+      "affiliate": true,
+      "url": "https://londevity.com/PAUL",
+      "action": "Explore Londevity",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    },
+    {
+      "title": "NXTWAVE socks",
+      "type": "Partner code",
+      "description": "Grip socks through the brand linked by Paul. Check the current offer terms with the store.",
+      "code": "PAULG50",
+      "affiliate": true,
+      "url": "https://www.nextwavesocks.com/",
+      "action": "Shop NXTWAVE socks",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    },
+    {
+      "title": "Beet It Sport",
+      "type": "Affiliate link and code",
+      "description": "Beet It Sport products through Paul's published referral link. Check the current product information and code terms in store.",
+      "code": "PAUL25",
+      "affiliate": true,
+      "url": "https://bit.ly/PAUL25BEETS",
+      "action": "Visit Beet It Sport",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    },
+    {
+      "title": "Xendurance",
+      "type": "Affiliate code",
+      "description": "Paul's public partner hub lists a 20% discount with PAUL20.",
+      "code": "PAUL20",
+      "affiliate": true,
+      "url": "https://xendurance.eu/",
+      "action": "Visit Xendurance",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    },
+    {
+      "title": "Built for Athletes",
+      "type": "Partner code",
+      "description": "Training backpacks and bags. Use Paul's listed PAUL15 code subject to the store's current terms.",
+      "code": "PAUL15",
+      "affiliate": true,
+      "url": "https://builtforathletes.com/",
+      "action": "Shop Built for Athletes",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    },
+    {
+      "title": "PUMA",
+      "type": "Affiliate code",
+      "description": "Paul's partner hub lists ROXLYFE30 for 30% off eligible running and training wear. Check current exclusions in store.",
+      "code": "ROXLYFE30",
+      "affiliate": true,
+      "url": "https://uk.puma.com/uk/en",
+      "action": "Shop PUMA",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    },
+    {
+      "title": "Zone8",
+      "type": "Partner code",
+      "description": "Nasal strips from Zone8's current official store, linked by Paul.",
+      "code": "PAUL10",
+      "affiliate": true,
+      "url": "https://zone-eight.com/",
+      "action": "Visit Zone8",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    },
+    {
+      "title": "Gloovz",
+      "type": "Affiliate link",
+      "description": "Hybrid-racing gloves through Paul's published referral link.",
+      "affiliate": true,
+      "url": "https://gloovz.com?sca_ref=9911698.HQbqSHsDGci9inid",
+      "action": "Explore Gloovz",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    },
+    {
+      "title": "TrailMaps",
+      "type": "Partner artwork link",
+      "description": "Explore the current personalised route-map and artwork catalogue. Check which products accept Paul's listed code.",
+      "code": "PAULG10",
+      "affiliate": true,
+      "url": "https://trailmaps.com/",
+      "action": "Visit TrailMaps",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    },
+    {
+      "title": "HYROX framed keepsakes",
+      "type": "Etsy listing · partner code",
+      "description": "The framed-keepsake listing linked by Paul. His hub lists MAKEITYOURS for 20% off; check current availability and terms at Etsy.",
+      "code": "MAKEITYOURS",
+      "affiliate": true,
+      "url": "https://www.etsy.com/listing/1662395287",
+      "action": "View the Etsy listing",
+      "sourceURL": "https://linktr.ee/paulgillingham_"
+    }
+  ],
+  "partnerAudit": {
+    "checkedAt": "2026-11-02",
+    "notes": [
+      "All entries sourced from Paul's current verified Linktree; no purchases or coupon submissions performed.",
+      "builtforathletes.com/PAUL15 is 404; use the live official store with the source-listed code, without inventing an automatic discount link.",
+      "TrailMaps' old HYROX-retouch product redirects to the homepage; do not advertise that discontinued URL as a product detail page.",
+      "Etsy challenges the automated browser; listing preserved from the original public link, eligibility and stock not independently confirmed.",
+      "Referral identifiers preserved for Londevity, Beet It Sport and Gloovz. Coaching cards and testimonial content left intact."
+    ]
+  },
+  "heroMode": "full",
+  "strictImages": true,
+  "customCrewAssets": true,
+  "assets": "scripts/reskin/paulgillingham-assets",
+  "currency": "gbp",
+  "raceRegion": "United Kingdom",
+  "htmlTitle": "Paul Gillingham | HYROX coaching, race tools and partner offers",
+  "metaDescription": "Paul Gillingham — hybrid athlete, HYROX coach and Team GB age-group racer. Explore coaching routes, race tools, station guidance, crew travel and verified partner links.",
+  "booking": {
+    "timeZone": "Europe/London"
+  },
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "coachPreview": true,
+  "contentPublishing": {
+    "podcast": true
+  },
+  "navLabels": {
+    "shop.html": "Links",
+    "podcast.html": "Interviews"
+  },
+  "extraCss": ":root{--hero-focus:50% 0%;}\n.hero--bleed[data-hero-mode=\"full\"] .hero-img{object-position:var(--hero-focus);}\n@media(max-width:800px){.hero--bleed[data-hero-mode=\"full\"] .hero-img{object-position:50% 0%;}}\n.pg-reach{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;align-items:center;margin:2rem 0;padding:1.5rem;border:1px solid var(--line);border-radius:0 24px 0 0;}.pg-reach figure{margin:0;max-width:472px;justify-self:center;}.pg-reach img{display:block;width:100%;height:auto;background:#000;}.pg-reach figcaption{font-size:.75rem;line-height:1.5;color:var(--ink-2);padding-top:.6rem;}.pg-reach h4{margin:.4rem 0 .8rem;}.pg-reach p{margin:0 0 .8rem;}@media(max-width:700px){.pg-reach{grid-template-columns:1fr;gap:1.25rem;padding:1rem;}}\n#plans{padding-bottom:44px;}\n#athletes-say{padding-top:32px;}.block#athletes-say{padding-bottom:32px;}.block#athletes-say + #events{padding-top:32px;background:color-mix(in srgb,var(--paper) 94%,white);}\n.home-lab #story .story figure img{object-position:50% 100%;}\n.guidance--raceday .art-photo img.shift-up[src*='/images/finish.jpg']{object-position:50% 20%;}\n.art-photo img{object-position:50% 32%;}\n#burpee-broad-jumps+figure.art-photo img{object-position:50% 45%;}\n.tips-photo img{object-position:50% 28%;}\n@media(max-width:600px){.hero--bleed .wrap{align-items:end;padding-bottom:26px;}#plans{padding-bottom:36px;}#athletes-say{padding-top:28px;}}\n.guidance--field .guide-hero .guide-hero-photo img[src*='/images/stations-hero.jpg']{height:auto;max-height:none;aspect-ratio:1024/895;object-fit:contain;}\n.guidance--coach .guide-hero .guide-hero-photo img{height:auto;max-height:none;aspect-ratio:849/1024;object-fit:contain;object-position:center;}\n.pg-team{margin-bottom:2.5rem;}.pg-team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin:1.5rem 0;}.pg-team-grid article{border-top:1px solid var(--line);padding-top:1rem;}.pg-team-grid h4{margin:0 0 .5rem;}.pg-offers .plan{min-width:0;}.pg-offers .btn{white-space:normal;text-align:center;}.pg-offer-detail{display:block;margin-top:1rem;font-size:.85rem;}.pg-price-note,.pg-source{font-size:.85rem;line-height:1.6;color:var(--ink-2);margin:1.2rem 0 2rem;}.pg-client-stories{margin-top:2.5rem;}.pg-client-stories .quote{background:var(--paper-2);color:var(--ink);}.pg-client-stories .quote footer{color:var(--ink-2);}.pg-client-stories .quote footer strong{color:var(--ink);}.pg-choice-intro{margin-bottom:1.5rem;}#athletes-say .quote footer{padding:12px 0 0;margin:0;line-height:1.6;}\n@media(max-width:800px){.pg-team-grid{grid-template-columns:1fr;}}\n",
+  "tokens": {
+    "HERO_DEK": "Coaching since 2005. Over 38 HYROX races. Train with Paul for your first start line or a faster finish.",
+    "SLUG": "paulgillingham",
+    "COACH_NAME": "Paul Gillingham",
+    "COACH_NAME_LC": "paul gillingham",
+    "COACH_FIRST": "Paul",
+    "COACH_LAST": "Gillingham",
+    "WORDMARK_HTML": "PAUL <span class=\"o\">GILLINGHAM</span>",
+    "BRAND": "Paul Gillingham",
+    "BRAND_SHORT": "PG",
+    "BRAND_SHORT_UPPER": "PAUL GILLINGHAM",
+    "BRAND_SOCIAL": "paulgillingham_",
+    "CLOTHING_SHORT": "Partner offers",
+    "CITY": "Crawley",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "Fortunate, not lucky",
+    "HERO_TITLE_HTML": "Years of coaching.<br /><em>Race experience that counts.</em>",
+    "APPLY_URL": "https://roxlyfecoaching.paperform.co/",
+    "PROGRAMMES_URL": "https://roxlyfe.com/coaching/",
+    "STORE_URL": "https://roxlyfe.com/",
+    "IG_URL": "https://www.instagram.com/paulgillingham_/",
+    "BRAND_IG_URL": "https://www.instagram.com/paulgillingham_/",
+    "YOUTUBE_URL": "https://linktr.ee/paulgillingham_",
+    "TIKTOK_URL": "https://linktr.ee/paulgillingham_",
+    "THREADS_URL": "https://linktr.ee/paulgillingham_",
+    "LINKTREE_URL": "https://linktr.ee/paulgillingham_",
+    "DOUBLES_PARTNER": "a race partner",
+    "PB_VENUE": "Gdańsk",
+    "PB_VENUE_LC": "gdańsk",
+    "DOUBLES_VENUE": "Gdańsk",
+    "DOUBLES_VENUE_LC": "gdańsk",
+    "OPEN_VENUE": "Maastricht",
+    "PB_SOLO": "1:10:57",
+    "PB_DOUBLES": "1:09:08",
+    "PB_HALF": "38+",
+    "PB_OPEN": "1:10:57",
+    "SEASON_START": "2005",
+    "SEASON_HEADLINE": "The coach who still races.",
+    "PARTNER_GYM": "HYBRYD",
+    "PARTNER_GYM_LC": "hybryd",
+    "PARTNER_SUPP": "Beet It Sport",
+    "PARTNER_SUPP_LC": "beet it sport",
+    "PARTNER_KIT": "Built for Athletes",
+    "PARTNER_KIT_LC": "built for athletes",
+    "PARTNER_KIT_TAG": "Affiliate · training kit",
+    "PARTNER_KIT_TITLE": "Built for Athletes",
+    "PARTNER_KIT_COPY": "Gym and travel bags built for the kit, miles and early starts that come with hybrid racing.",
+    "PARTNER_KIT_CTA": "Use code PAUL15",
+    "PARTNER_KIT_URL": "https://builtforathletes.com/",
+    "PARTNER_GYM_URL": "https://hybryd.fit/",
+    "PARTNER_SUPP_URL": "https://bit.ly/PAUL25BEETS",
+    "GYM_CODE": "PG10",
+    "PHOTO_BUDDY": "Paul's race community",
+    "ACCENT": "#f4c20d",
+    "ACCENT_DARK": "#b88900",
+    "ACCENT_SOFT": "#2a2308",
+    "SOCIAL_HANDLE_UPPER": "PAULGILLINGHAM_",
+    "VOICE_ATHLETE_QUOTE": "“I’m someone who cares. I’m someone that listens.”",
+    "PG_CLIENT_MAP_HTML": "<aside class=\"pg-reach\" aria-label=\"Rox Lyfe worldwide coaching\"><figure><img src=\"/paulgillingham/images/roxlyfe-client-map.jpg\" alt=\"Rox Lyfe client map showing coaching across Europe, North and South America, Asia, Africa and Australia\" width=\"472\" height=\"267\" loading=\"lazy\" /><figcaption>Rox Lyfe’s client map, shared by Paul.</figcaption></figure><div><p class=\"eyebrow\">Coaching without borders</p><h4>Different countries. One coaching partnership.</h4><p>Rox Lyfe supports athletes across countries and time zones. With personalised coaching, Paul builds your training around your goals, equipment and the time you have.</p><p><a href=\"https://www.instagram.com/paulgillingham_/\" target=\"_blank\" rel=\"noopener\">Paul’s coaching story →</a></p></div></aside>",
+    "VOICE_DOUBLES_HOOK": "Paul has raced with dozens of HYROX partners, so the brief is practical from the start.",
+    "VOICE_WEDDING": "the good partnerships make the work lighter.",
+    "VOICE_NEWS_TAKE": "Keep the next decision simple: choose the race your training and travel can support.",
+    "STORE_NAME": "Paul's Linktree",
+    "STORE_TAG": "Current links",
+    "STORE_COPY": "Coaching application, Rox Lyfe plans and current partner codes in one verified place.",
+    "STORE_CTA": "Open all links",
+    "CURRENCY": "GBP",
+    "BIO_ROLE": "Team GB age-group racer and coach",
+    "RACE_RECORD": "38+ HYROX races and an age-group world-record relay milestone",
+    "RACE_COUNT": "2005",
+    "RACE_COUNT_LABEL": "Coaching since",
+    "OFFER_SUMMARY": "Rox Lyfe coaching — application, 12-week and doubles training plans.",
+    "PROG_ONE": "12 Week Training Plan",
+    "PROG_ONE_TAG": "Rox Lyfe · 12 weeks",
+    "PROG_ONE_URL": "https://roxlyfe.com/12-week-training-plan/",
+    "PROG_TWO": "Doubles Training Plan",
+    "PROG_TWO_TAG": "Rox Lyfe · doubles",
+    "PROG_TWO_URL": "https://roxlyfe.com/doubles-training-plan/",
+    "PG_PLAN_CARDS_HTML": "<div class=\"plans coach-plans pg-offers\"><article class=\"plan featured reveal\" data-pg-offer=\"personalised\"><span class=\"tag\">Personalised · Rox Lyfe</span><h4>Coaching with Paul</h4><div class=\"price\">Built around you</div><p class=\"per\">A training plan shaped around your goals, lifestyle, equipment and starting point.</p><ul><li>Personalised programming and coaching support</li><li>Adjustments as your training and circumstances change</li><li>Rox Lyfe support with race preparation and strategy</li></ul><a class=\"btn btn-primary\" href=\"https://roxlyfecoaching.paperform.co/\" target=\"_blank\" rel=\"noopener\">Apply for personalised coaching</a><a class=\"pg-offer-detail\" href=\"https://roxlyfe.com/coaching/\" target=\"_blank\" rel=\"noopener\">How Rox Lyfe coaching works →</a></article><article class=\"plan reveal\" data-pg-offer=\"12-week\"><span class=\"tag\">12 weeks · PDF plan</span><h4>12-week training plan</h4><div class=\"price\">£55 <small>one-off</small></div><p class=\"per\">A structured build towards your next HYROX, created by Paul with Greg.</p><ul><li>Running, strength and HYROX-specific sessions</li><li>Options for your fitness, schedule and equipment</li><li>Race-week preparation, tips and tactics</li></ul><a class=\"btn btn-ghost\" href=\"https://roxlyfe.com/12-week-training-plan/\" target=\"_blank\" rel=\"noopener\">View the 12-week plan</a></article><article class=\"plan reveal\" data-pg-offer=\"doubles\"><span class=\"tag\">12 weeks · Doubles PDF plan</span><h4>Doubles training plan</h4><div class=\"price\">£55 <small>one-off</small></div><p class=\"per\">Prepare for the demands of racing together with a plan programmed by Paul.</p><ul><li>A full 12-week build for your doubles race</li><li>Training adaptable to your ability and available time</li><li>Doubles-specific race tips and preparation</li></ul><a class=\"btn btn-ghost\" href=\"https://roxlyfe.com/doubles-training-plan/\" target=\"_blank\" rel=\"noopener\">View the doubles plan</a></article></div><p class=\"pg-price-note\">Plans are sold and delivered by Rox Lyfe. Prices shown are their current listed prices; check the plan page before purchasing.</p>",
+    "LINK_CARD_TAG": "Rox Lyfe · official",
+    "LINK_CARD_NAME": "Rox Lyfe Coaching",
+    "LINK_CARD_DESC": "Coaching application, training plans and Paul's verified partner links.",
+    "LINK_CARD_CTA": "Open Rox Lyfe →"
+  },
+  "tenantGallery": [
+    {
+      "src": "gallery/philosophy.jpg",
+      "alt": "Paul Gillingham training with the quote Fitness is like a relationship",
+      "caption": "Fitness is like a relationship. You can’t cheat on it and expect it to work.",
+      "by": "Paul Gillingham",
+      "event": "Coach notes",
+      "tilt": -1.1
+    },
+    {
+      "src": "gallery/world-wall.jpg",
+      "alt": "Paul Gillingham looking for his name on the championship athlete wall",
+      "caption": "The name wall does the talking.",
+      "by": "World Championships",
+      "event": "World-level racing",
+      "tilt": 1.2
+    },
+    {
+      "src": "gallery/valencia-table.jpg",
+      "alt": "HYROX Valencia patches on a table after racing",
+      "caption": "Race weekend done properly — patches, people and a table afterwards.",
+      "by": "Race weekend",
+      "event": "Race weekend",
+      "tilt": -0.8
+    },
+    {
+      "src": "gallery/finish-hug.jpg",
+      "alt": "Paul Gillingham embracing a race partner after the finish",
+      "caption": "The bit the splits sheet never records.",
+      "by": "Race day",
+      "event": "Race day",
+      "tilt": 1
+    }
+  ],
+  "trainingPlatform": {
+    "name": "Paul's current coaching links",
+    "coachURL": "",
+    "clientURL": "",
+    "programmesURL": "https://roxlyfe.com/coaching/",
+    "applicationURL": "https://roxlyfecoaching.paperform.co/",
+    "offerTitle": "Rox Lyfe training plans",
+    "offerDescription": "Paul's current coaching routes live through Rox Lyfe — programmes, application and updates in one trusted place.",
+    "note": "The Linktree, Paperform application and Rox Lyfe coaching pages are Paul's verified public routes. No client records, workout sync or provider sign-in are connected to this preview."
+  },
+  "news": [
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "The useful lesson for everyday racers is planning: pick the event, then build the weeks backwards from it.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. Travel, sleep and recovery need the same attention as the race plan.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Paul's travel-heavy race history makes the practical side matter: arrive with a plan, not just a ticket.",
+      "takeStatus": "draft-for-review",
+      "link": "/paulgillingham/events.html",
+      "linkLabel": "Race Calendar & Travel →"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "The points table matters, but the calendar still has to fit real training and real life.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "A big target is useful when it turns into manageable sessions this week.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "Support matters, but the day-to-day work still decides who gets close enough to use it.",
+      "takeStatus": "draft-for-review"
+    }
+  ],
+  "seedFiles": {
+    "faq.json": {
+      "note": "Paul Gillingham answers — practical guidance, with pricing and diary details confirmed directly.",
+      "items": [
+        {
+          "q": "How much does coaching cost?",
+          "keywords": [
+            "price",
+            "cost",
+            "membership",
+            "expensive",
+            "fee",
+            "charge",
+            "pay"
+          ],
+          "a": "Paul's public coaching routes are linked here — the application form and Rox Lyfe plans. Exact pricing stays on those official pages."
+        },
+        {
+          "q": "I've never done HYROX — can I join?",
+          "keywords": [
+            "beginner",
+            "never done",
+            "first time",
+            "new to",
+            "start"
+          ],
+          "a": "Yes. Paul's coaching covers beginners through experienced racers; the application asks for your starting point, goal and available training time."
+        },
+        {
+          "q": "What actually is HYROX?",
+          "keywords": ["what is hyrox", "explain", "format", "race format"],
+          "a": "8km of running split by 8 workout stations — SkiErg, sled push, sled pull, burpee broad jumps, rowing, farmers carry, sandbag lunges and wall balls. Same format worldwide."
+        },
+        {
+          "q": "Where do you coach from?",
+          "keywords": ["where", "location", "gym", "address", "crawley"],
+          "a": "Paul is based around Crawley in West Sussex and coaches remotely. Use the application or Linktree for the current coaching route."
+        },
+        {
+          "q": "When is the next race?",
+          "keywords": ["when", "next race", "date", "calendar", "schedule"],
+          "a": "Confirmed dates sit on the Race Calendar & Travel page, sourced from the official HYROX listings."
+        },
+        {
+          "q": "Can you find me a doubles partner?",
+          "keywords": ["partner", "doubles", "pair", "team", "mate", "relay"],
+          "a": "Use Find a Race-mate to post your division and pace. Paul's race history includes dozens of HYROX partners, so matching is part of the community offer."
+        },
+        {
+          "q": "Do you programme for races abroad?",
+          "keywords": [
+            "abroad",
+            "overseas",
+            "travel",
+            "international",
+            "europe",
+            "foreign"
+          ],
+          "a": "Yes — remote coaching and race-weekend planning are part of the offer. Paul's own racing has covered the UK, Europe and international championship events."
+        },
+        {
+          "q": "How do I get started?",
+          "keywords": [
+            "start",
+            "begin",
+            "book",
+            "booking",
+            "sign up",
+            "first session"
+          ],
+          "a": "Use Paul's coaching application, open his Linktree for the current routes, or leave a question through Ask Paul."
+        }
+      ]
+    },
+    "testimonials.json": {
+      "note": "Verbatim excerpts from public Rox Lyfe personalised-coaching testimonials. Chris approved their use in this showcase. These describe Rox Lyfe coaching, not this website platform.",
+      "sourceURL": "https://roxlyfe.com/coaching/",
+      "items": [
+        {
+          "quote": "Paul is an awesome coach, always available and always encouraging.",
+          "name": "Adam Willingale",
+          "detail": "Rox Lyfe personalised coaching client",
+          "sourceURL": "https://roxlyfe.com/coaching/"
+        },
+        {
+          "quote": "He can dial the program up or down depending on how you are feeling, and make it flexible to work on your weaknesses.",
+          "name": "Barry Trout",
+          "detail": "Rox Lyfe personalised coaching client",
+          "sourceURL": "https://roxlyfe.com/coaching/"
+        },
+        {
+          "quote": "Paul and Greg work as a team, with Paul providing personalized training plans designed to fit your schedule and HYROX goals.",
+          "name": "Lauren Whyte",
+          "detail": "Rox Lyfe personalised coaching client",
+          "sourceURL": "https://roxlyfe.com/coaching/"
+        }
+      ]
+    },
+    "videos.json": {
+      "note": "Verified public interview destinations only; Paul is the guest, not the channel owner.",
+      "items": [
+        {
+          "id": "roxlyfe-world-record",
+          "title": "Paul Gillingham: HYROX World Record Holder and Rox Lyfe Coach",
+          "description": "A guest conversation on the Rox Lyfe HYROX Podcast covering Paul's racing and coaching background.",
+          "category": "Podcast episodes",
+          "url": "https://castro.fm/episode/zfSSAj",
+          "thumbnail": "/paulgillingham/images/coaching-hero.jpg",
+          "status": "published",
+          "linkLabel": "Open the episode"
+        },
+        {
+          "id": "roxlyfe-experienced",
+          "title": "UK's Most Experienced HYROX Athlete — Paul Gillingham",
+          "description": "A later Rox Lyfe interview about Paul's race history, world-level age-group racing and coaching work.",
+          "category": "Podcast episodes",
+          "url": "https://castro.fm/episode/ylwNvX",
+          "thumbnail": "/paulgillingham/images/stations-hero.jpg",
+          "status": "published",
+          "linkLabel": "Open the episode"
+        },
+        {
+          "id": "travel-for-hyrox",
+          "title": "Travelling the world for HYROX",
+          "description": "A guest interview focused on racing abroad, travel lessons and Paul's early HYROX run.",
+          "category": "Race stories",
+          "url": "https://ukhxr.libsyn.com/paul-gillingham-travelling-the-world-for-hyrox",
+          "thumbnail": "/paulgillingham/images/events-hero.jpg",
+          "status": "published",
+          "linkLabel": "Open the interview"
+        }
+      ]
+    },
+    "campaign-offers.json": {
+      "offers": [
+        {
+          "id": "coaching",
+          "name": "Paul's coaching application",
+          "goal": "Coaching enquiries",
+          "destination": "https://roxlyfecoaching.paperform.co/",
+          "image": "/paulgillingham/images/coaching-hero.jpg",
+          "headline": "Apply through Paul's current coaching form.",
+          "actionLabel": "Open application"
+        },
+        {
+          "id": "programme",
+          "name": "Rox Lyfe 12-week training plan",
+          "goal": "Training-plan visits",
+          "destination": "https://roxlyfe.com/12-week-training-plan/",
+          "image": "/paulgillingham/images/stations-hero.jpg",
+          "headline": "A structured 12-week build for your next HYROX.",
+          "actionLabel": "View the 12-week plan"
+        },
+        {
+          "id": "shop",
+          "name": "Paul's partner links",
+          "goal": "Partner-link visits",
+          "destination": "https://linktr.ee/paulgillingham_",
+          "image": "/paulgillingham/images/hero.jpg",
+          "headline": "Affiliate codes and current links in one place.",
+          "actionLabel": "Open Linktree"
+        }
+      ]
+    },
+    "results.json": {
+      "updated": "2026-10-26",
+      "note": "Results seed — Paul's verified rows sit beside clearly labelled format rows.",
+      "divisions": {
+        "women": {
+          "label": "Women Singles (Open & Pro)",
+          "results": [
+            {
+              "athlete": "Format athlete A",
+              "time": "1:12:52",
+              "category": "Open · format row",
+              "event": "HYROX Dublin",
+              "date": "Format",
+              "city": "Dublin"
+            }
+          ]
+        },
+        "men": {
+          "label": "Men Singles (Open & Pro)",
+          "results": [
+            {
+              "athlete": "Paul Gillingham",
+              "time": "1:10:57",
+              "category": "Men · finish photo",
+              "event": "HYROX Gdańsk",
+              "date": "On record",
+              "city": "Gdańsk"
+            },
+            {
+              "athlete": "Format athlete B",
+              "time": "1:05:58",
+              "category": "Open · format row",
+              "event": "HYROX London",
+              "date": "Format",
+              "city": "London"
+            }
+          ]
+        },
+        "doubles-women": {
+          "label": "Women Doubles",
+          "results": [
+            {
+              "athlete": "Format pair",
+              "time": "1:08:12",
+              "category": "Open · format row",
+              "event": "HYROX London",
+              "date": "Format",
+              "city": "London"
+            }
+          ]
+        },
+        "doubles-men": {
+          "label": "Men Doubles",
+          "results": [
+            {
+              "athlete": "Paul Gillingham & Lee Forrester",
+              "time": "1:03:11",
+              "category": "Pro Doubles · 4th age group",
+              "event": "HYROX Pro Doubles",
+              "date": "Instagram caption",
+              "city": "Race post"
+            },
+            {
+              "athlete": "Format pair",
+              "time": "1:01:44",
+              "category": "Open · format row",
+              "event": "HYROX Dublin",
+              "date": "Format",
+              "city": "Dublin"
+            }
+          ]
+        },
+        "doubles-mixed": {
+          "label": "Mixed Doubles",
+          "results": [
+            {
+              "athlete": "Format pair",
+              "time": "1:02:31",
+              "category": "Open · format row",
+              "event": "HYROX London",
+              "date": "Format",
+              "city": "London"
+            }
+          ]
+        },
+        "relay": {
+          "label": "Team Relay",
+          "results": [
+            {
+              "athlete": "Paul Gillingham relay team",
+              "time": "World record",
+              "category": "Age-group mixed relay",
+              "event": "HYROX relay",
+              "date": "Profile source",
+              "city": "Team GB"
+            }
+          ]
+        }
+      }
+    },
+    "athletes.json": {
+      "note": "Athlete profile — Paul's verified public race milestones, with format rows clearly labelled.",
+      "athletes": {
+        "Paul Gillingham": {
+          "tag": "Mr HYROX — coach, judge and Team GB age-group racer.",
+          "races": [
+            {
+              "event": "HYROX Gdańsk",
+              "date": "On record",
+              "division": "Men",
+              "time": "1:10:57",
+              "note": "Finish-board photo"
+            },
+            {
+              "event": "HYROX Pro Doubles",
+              "date": "Instagram caption",
+              "division": "Pro Doubles",
+              "time": "1:03:11",
+              "note": "4th in age group with Lee Forrester"
+            },
+            {
+              "event": "HYROX Maastricht",
+              "date": "On record",
+              "division": "Pro Doubles Men",
+              "time": "Podium",
+              "note": "Podium photo"
+            }
+          ]
+        },
+        "Paul Gillingham & Lee Forrester": {
+          "tag": "Pro Doubles — 1:03:11, 4th in age group per Paul's public caption.",
+          "races": [
+            {
+              "event": "HYROX Pro Doubles",
+              "date": "Instagram caption",
+              "division": "Pro Doubles",
+              "time": "1:03:11",
+              "note": "Paul's 10th Pro Doubles race and 50th HYROX partner milestone"
+            }
+          ]
+        }
+      }
+    },
+    "roundups.json": {
+      "note": "Race-weekend stories built from verified Paul race evidence.",
+      "items": [
+        {
+          "date": "",
+          "race": "HYROX Gdańsk",
+          "weekend": "Race-floor photography",
+          "highlights": [
+            "Finish-board photo shows Paul at 1:10:57",
+            "A paired Gdańsk photo shows a 1:09:08 finish"
+          ],
+          "take": "A race weekend can hold more than one result — solo proof, partner work and the story around both.",
+          "source": "https://www.instagram.com/paulgillingham_/",
+          "sourceName": "Paul Gillingham on Instagram"
+        },
+        {
+          "date": "",
+          "race": "HYROX Maastricht",
+          "weekend": "Podium photography",
+          "highlights": [
+            "Pro Doubles Men podium photo",
+            "Paul appears with the HYROX podium flag"
+          ],
+          "take": "Results matter, but so does the evidence trail that lets athletes trust the board.",
+          "source": "https://www.instagram.com/paulgillingham_/",
+          "sourceName": "Paul Gillingham on Instagram"
+        }
+      ]
+    },
+    "partners.json": {
+      "note": "Verified public affiliate routes from Paul's Linktree.",
+      "items": [
+        {
+          "id": "hybryd",
+          "name": "HYBRYD",
+          "url": "https://hybryd.fit/",
+          "tagline": "Code PG10",
+          "slot": "partner",
+          "from": "2026-10-26",
+          "until": "2026-12-31"
+        },
+        {
+          "id": "beet-it",
+          "name": "Beet It Sport",
+          "url": "https://bit.ly/PAUL25BEETS",
+          "tagline": "Code PAUL25",
+          "slot": "partner",
+          "from": "2026-10-26",
+          "until": "2026-12-31"
+        },
+        {
+          "id": "built-for-athletes",
+          "name": "Built for Athletes",
+          "url": "https://builtforathletes.com/",
+          "tagline": "Code PAUL15",
+          "slot": "results",
+          "from": "2026-10-26",
+          "until": "2026-12-31"
+        }
+      ]
+    },
+    "links.json": {
+      "note": "External tools can be linked once Paul confirms the current client-login destination; empty strings keep provider links hidden in this preview.",
+      "truecoach": ""
+    }
+  },
+  "stripSections": ["merch"],
+  "stripBlocks": ["tiktok-link", "youtube-link"],
+  "copyOverrides": [
+    {
+      "pattern": "if \\(\"scrollRestoration\" in history && reloaded\\) \\{\\s*history\\.scrollRestoration = \"manual\";\\s*if \\(location\\.hash\\)\\s*history\\.replaceState\\(null, \"\", location\\.pathname \\+ location\\.search\\);\\s*\\}",
+      "replace": "(() => {\n        const key = \"__s9HomeScroll\";\n        const returning = navEntry ? navEntry.type === \"back_forward\" : Boolean(performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD);\n        const auto = () => { if (\"scrollRestoration\" in history) history.scrollRestoration = \"auto\"; };\n        let restoring = false, stopRestore = () => {}, lastAnchor = null, activationEvent = null;\n        const findHomeAnchor = anchor => {\n          if (!anchor || !Number.isInteger(anchor.index) || anchor.index < 0 || typeof anchor.href !== \"string\" || !Number.isFinite(anchor.top)) return null;\n          const root = anchor.section ? document.getElementById(anchor.section) : anchor.footer ? document.querySelector(\"body > footer\") : null;\n          const node = root && Array.from(root.querySelectorAll(\"a[href]\")).filter(link => link.href === anchor.href)[anchor.index];\n          return node?.getClientRects().length ? node : null;\n        };\n        const remember = (link, event) => {\n          if (restoring) return;\n          if (link) {\n            const section = link.closest(\"section[id]\"), footer = link.closest(\"footer\");\n            const root = section || (footer?.parentElement === document.body ? footer : null);\n            lastAnchor = root ? { href: link.href, section: section?.id || \"\", footer: root === footer, index: Array.from(root.querySelectorAll(\"a[href]\")).filter(node => node.href === link.href).indexOf(link), top: link.getBoundingClientRect().top } : null;\n            activationEvent = event;\n          } else if (!activationEvent || activationEvent.defaultPrevented) {\n            const node = findHomeAnchor(lastAnchor);\n            if (!node || Math.abs(node.getBoundingClientRect().top - lastAnchor.top) > 12) lastAnchor = null;\n          }\n          try { history.replaceState({ ...history.state, [key]: { x: scrollX, y: scrollY, anchor: lastAnchor } }, \"\"); } catch {}\n        };\n        if (\"scrollRestoration\" in history) history.scrollRestoration = reloaded || (returning && history.state?.[key]) ? \"manual\" : \"auto\";\n        if (reloaded && location.hash) history.replaceState(history.state, \"\", location.pathname + location.search);\n        addEventListener(\"pagehide\", () => { remember(); stopRestore(); auto(); });\n        document.addEventListener(\"click\", event => {\n          const link = event.target?.closest?.(\"a[href]\");\n          if (link && (!link.target || link.target === \"_self\") && [\"http:\", \"https:\"].includes(link.protocol) && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { stopRestore(); remember(link, event); }\n        }, true);\n        addEventListener(\"pageshow\", event => {\n          stopRestore();\n          const point = history.state?.[key];\n          lastAnchor = null; activationEvent = null;\n          if ((event.persisted || returning) && Number.isFinite(point?.x) && Number.isFinite(point?.y)) {\n            restoring = true; lastAnchor = point.anchor || null;\n            if (\"scrollRestoration\" in history) history.scrollRestoration = \"manual\";\n            const inputs = [\"wheel\", \"touchstart\", \"pointerdown\", \"keydown\"];\n            const restore = () => {\n              if (!restoring) return;\n              const node = findHomeAnchor(point.anchor);\n              const top = node ? node.getBoundingClientRect().top + scrollY - point.anchor.top : point.y;\n              window.scrollTo({ left: point.x, top, behavior: \"instant\" });\n            };\n            let observer, frame, deadline, retries = [];\n            const stop = () => {\n              restoring = false; observer?.disconnect(); cancelAnimationFrame(frame); clearTimeout(deadline); retries.forEach(clearTimeout);\n              inputs.forEach(type => removeEventListener(type, stop, true)); auto(); stopRestore = () => {};\n            };\n            stopRestore = stop;\n            inputs.forEach(type => addEventListener(type, stop, { capture: true, passive: true, once: true }));\n            if (typeof ResizeObserver === \"function\") { observer = new ResizeObserver(restore); observer.observe(document.body); }\n            frame = requestAnimationFrame(restore);\n            retries = [200, 600, 1200].map(delay => setTimeout(restore, delay));\n            deadline = setTimeout(stop, 2500);\n          } else if (reloaded && !event.persisted) {\n            window.scrollTo({ left: 0, top: 0, behavior: \"instant\" }); requestAnimationFrame(auto);\n          } else auto();\n        });\n      })();"
+    },
+    {
+      "pattern": "alt=\"Crossing the Hyrox finish line under the event arch\"",
+      "replace": "alt=\"Paul Gillingham with a race partner beside their HYROX finish-time board\""
+    },
+    {
+      "pattern": "alt=\"Paul Gillingham in race paint beside a HYROX wall\"",
+      "replace": "alt=\"Paul Gillingham looking for his name on the championship athlete wall\""
+    },
+    {
+      "pattern": "alt=\"Athletes on the Hyrox start line waiting for the gun\"",
+      "replace": "alt=\"Paul Gillingham looking for his name on the championship athlete wall\""
+    },
+    {
+      "pattern": "Paul Gillingham and athletes in race kit on event day",
+      "replace": "Paul Gillingham pointing to his name on the championship athlete wall"
+    },
+    {
+      "pattern": "Paul coaching a relaxed SkiErg session",
+      "replace": "Paul Gillingham smiling in sunglasses"
+    },
+    {
+      "pattern": "(class=\"hero-img\"\\s+src=\"[^\"]+\"\\s+alt=\"[^\"]+\"\\s+)width=\"\\d+\"\\s+height=\"\\d+\"",
+      "replace": "$1width=\"870\" height=\"1024\""
+    },
+    {
+      "pattern": "Paul Gillingham taking a lighter training moment by the gym bar",
+      "replace": "Paul Gillingham relaxing beside the waterfront at sunset"
+    },
+    {
+      "pattern": "Track walk with the bottle — the taper is the training",
+      "replace": "Paul Gillingham in the gym beneath the neon training motto"
+    },
+    {
+      "pattern": "\"sameAs\": \\[\"{{IG_URL}}\", \"{{YOUTUBE_URL}}\", \"{{TIKTOK_URL}}\", \"{{THREADS_URL}}\"\\]",
+      "replace": "\"sameAs\": [\"{{IG_URL}}\", \"{{LINKTREE_URL}}\"]",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} driving the sled, head-on — the station nobody enjoys\"",
+      "replace": "alt=\"Paul Gillingham pulling the sled rope during a HYROX race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\. Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\. {{TAGLINE}}; the rest is reps\\.",
+      "replace": "Paul Gillingham — hybrid racer, coach and “Mr HYROX”. Team GB age-group racing across 2022–25, 38+ HYROX races and a coaching career that began in 2005. Fortunate, not lucky; the work is the point.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<strong>{{PB_SOLO}}</strong><span>HYROX Pro Solo PB — {{PB_VENUE}}</span>",
+      "replace": "<strong>38+</strong><span>HYROX races across the UK, Europe and beyond</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<strong>{{PB_DOUBLES}}</strong><span>Pro Doubles — {{DOUBLES_VENUE}}, with {{DOUBLES_PARTNER}}</span>",
+      "replace": "<strong>Team GB</strong><span>Europeans &amp; Worlds · 2022–25</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<div><strong>{{PB_HALF}}</strong><span>AJ Bell Birmingham Half</span></div>",
+      "replace": "<div><strong>20+</strong><span>years in coaching and fitness</span></div>",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{CITY}}, {{REGION}}\\. HYROX Pro athlete, coach and creator —[\\s\\S]*?the honest debriefs all go on the channel\\.",
+      "replace": "Crawley, West Sussex. Coach, hybrid racer and event insider — building a clearer home for Paul's coaching, race tools, crew and partner links alongside his existing Rox Lyfe work.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<p class=\"quote\">\\s*{{VOICE_ATHLETE_QUOTE}}\\s*</p>\\s*<ul>[\\s\\S]*?</ul>",
+      "replace": "<p class=\"quote\">{{VOICE_ATHLETE_QUOTE}}</p><ul><li>Team GB age-group racing across the 2022–25 European and World Championships.</li><li>38+ HYROX races and an age-group world-record relay milestone.</li><li>Pro Doubles podium in Maastricht; 1:03:11 racing with Lee Forrester.</li><li>Coaching athletes across countries, time zones and starting points.</li></ul>",
+      "flags": "g"
+    },
+    {
+      "pattern": "What {{COACH_FIRST}} sells: 1:1 coaching, group programmes on FITR, and the[\\s\\S]*?forms — no new inbox to check\\.",
+      "replace": "What Paul's site can do: keep the public race tools free, point coaching enquiries to his current application, show the Rox Lyfe plans clearly and bring the affiliate links out of a crowded Linktree.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<span class=\"tag\">On FITR</span>",
+      "replace": "<span class=\"tag\">Rox Lyfe</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Structured blocks with the Hub cohort",
+      "replace": "Paul's existing public plans via Rox Lyfe",
+      "flags": "g"
+    },
+    {
+      "pattern": "Programmed blocks in the FITR app",
+      "replace": "HYROX-focused plans linked from Paul's Linktree",
+      "flags": "g"
+    },
+    {
+      "pattern": "Start with the cohort, progress through blocks",
+      "replace": "Choose the plan that fits your next race",
+      "flags": "g"
+    },
+    {
+      "pattern": "The same engine behind {{COACH_FIRST}}'s own season",
+      "replace": "Created with Paul's HYROX coaching experience",
+      "flags": "g"
+    },
+    {
+      "pattern": ">See programmes on FITR<",
+      "replace": ">View Rox Lyfe plans<",
+      "flags": "g"
+    },
+    {
+      "pattern": "Every route is {{COACH_FIRST}}'s official one — applications, programmes and the store\\. One tap out, nothing in between\\.",
+      "replace": "Every route is labelled honestly: Paul's application, his existing Rox Lyfe plans and his verified partner links.",
+      "flags": "g"
+    },
+    {
+      "pattern": "training through pregnancy",
+      "replace": "training around real life",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} says",
+      "replace": "Coach notes",
+      "flags": "g"
+    },
+    {
+      "pattern": "Three things per station that {{COACH_FIRST}} actually does on race day — including the embarrassing ones\\.",
+      "replace": "Three practical checks per station — written for race day, not recycled gym content.",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} on the start line — flat expression, miles to go\"",
+      "replace": "alt=\"Paul Gillingham looking for his name on the championship athlete wall\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} driving the sled in a HYROX Pro Doubles race in {{DOUBLES_VENUE}}\"",
+      "replace": "alt=\"Paul Gillingham running beside a race partner during HYROX\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} mid burpee broad jump — arms up, eyes on the line\"",
+      "replace": "alt=\"Paul Gillingham recovering beside a wall ball during a HYROX race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} — HYROX Pro athlete and coach\"",
+      "replace": "alt=\"Paul Gillingham — hybrid racer and coach\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} — coaching\"",
+      "replace": "alt=\"Paul Gillingham beside the championship athlete-name wall\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Two {{COACH_FIRST}} athletes racing side by side at Hyrox\"",
+      "replace": "alt=\"Paul Gillingham and a race partner running side by side at HYROX\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} putting in treadmill miles between race blocks\"",
+      "replace": "alt=\"Paul Gillingham running toward camera during a HYROX race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} on the HYROX floor after the {{PB_VENUE}} PB\"",
+      "replace": "alt=\"Paul Gillingham on the Maastricht Pro Doubles podium\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} and {{DOUBLES_PARTNER}} celebrating at the finish\"",
+      "replace": "alt=\"Paul Gillingham and a race partner celebrating at the finish\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} mid-race in the arena — the bright kit pops against the dark\"",
+      "replace": "alt=\"Paul Gillingham under the HYROX Gdańsk finish board\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} mid-pull on the RowErg, side view\"",
+      "replace": "alt=\"Paul Gillingham working on the RowErg during a race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Race-weekend photography for {{BRAND}}\"",
+      "replace": "alt=\"Paul Gillingham racing through a busy HYROX arena\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} walking into the arena ahead of a race\"",
+      "replace": "alt=\"Paul Gillingham moving through the HYROX race floor near the SkiErg arch\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"An athlete at the SkiErg station\"",
+      "replace": "alt=\"Paul Gillingham mid-pull on the SkiErg\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"An athlete driving a loaded sled\"",
+      "replace": "alt=\"Paul Gillingham driving a loaded HYROX sled\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"An athlete working through the sled-pull station\"",
+      "replace": "alt=\"Paul Gillingham pulling a heavy sled rope\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Burpee broad-jump movement reference\"",
+      "replace": "alt=\"Paul Gillingham mid burpee broad jump during a HYROX race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"RowErg movement reference\"",
+      "replace": "alt=\"Paul Gillingham on the RowErg during a HYROX race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"An athlete carrying competition kettlebells\"",
+      "replace": "alt=\"Paul Gillingham carrying competition kettlebells\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Sandbag-lunge movement reference\"",
+      "replace": "alt=\"Paul Gillingham carrying a HYROX sandbag through the lunge lane\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Wall-ball movement reference\"",
+      "replace": "alt=\"Paul Gillingham beside a wall ball during a HYROX race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} on the SkiErg at a Hyrox race\"",
+      "replace": "alt=\"Paul Gillingham travelling between race weekends\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "src=\"/{{SLUG}}/images/skierg-laugh\\.jpg\"",
+      "replace": "src=\"/{{SLUG}}/images/kerb.jpg\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "src=\"/{{SLUG}}/images/kerb\\.jpg\"\\s+alt=\"Paul Gillingham travelling between race weekends\"\\s+width=\"932\"\\s+height=\"1024\"",
+      "replace": "src=\"/{{SLUG}}/images/kerb.jpg\" alt=\"Paul Gillingham travelling between race weekends\" width=\"1024\" height=\"866\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Track walk with the bottle — the taper is the training\"",
+      "replace": "alt=\"Paul Gillingham running hard during a HYROX race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} kerbside post-race — recovery starts before the next session\"",
+      "replace": "alt=\"Paul Gillingham travelling between race weekends\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} mid-stride on the farmers carry — legs like this don't fuel themselves\"",
+      "replace": "alt=\"Paul Gillingham carrying kettlebells during the farmers carry\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} at the AJ Bell Birmingham Half — {{PB_HALF}} on the day\"",
+      "replace": "alt=\"Paul Gillingham driving a sled during a HYROX race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "@{{SLUG}}fit",
+      "replace": "@paulgillingham_",
+      "flags": "g"
+    },
+    {
+      "pattern": "Visit the video channel",
+      "replace": "Open Paul's links",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore the podcast",
+      "replace": "Hear guest interviews",
+      "flags": "g"
+    },
+    {
+      "pattern": "Podcast \\| {{BRAND}}",
+      "replace": "Guest interviews | {{BRAND}}",
+      "flags": "g"
+    },
+    {
+      "pattern": "Catch a short interview clip, follow the full conversation and hear the stories around the sport\\. Teasers and full-episode links stay together\\.",
+      "replace": "Paul's verified guest conversations sit here without pretending he owns the shows. Short clips and full-episode links can stay together.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Clips &amp; conversations",
+      "replace": "Guest conversations",
+      "flags": "g"
+    },
+    {
+      "pattern": "The brands {{COACH_FIRST}} actually trains in — codes, links and what they do\\.",
+      "replace": "Paul's public affiliate routes — codes, links and what each partner sells.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Protein, pre-workout, recovery — the fuel side of a heavy block\\.",
+      "replace": "Beet It Sport endurance nutrition — the current code is shown clearly.",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{COACH_FIRST}}'s official one",
+      "replace": "Paul's official route",
+      "flags": "g"
+    },
+    {
+      "pattern": "your own clothing line",
+      "replace": "your own link hub",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"{{COACH_NAME}}'s home on the web: {{BRAND}} 1:1 coaching and group programmes, free race tools, the race-mate finder, vlogs and partner codes — all in one place\\.\"",
+      "replace": "content=\"Paul Gillingham's home on the web: coaching routes, free HYROX race tools, the race-mate finder, crew features and partner links — all in one place.\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"{{COACH_NAME_LC}}, {{BRAND_SHORT}}, {{BRAND}}, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, {{REGION_LC}}shire hyrox\"",
+      "replace": "content=\"paul gillingham, hyrox coach, hybrid athlete, hyrox uk, hyrox coaching, race predictor, hyrox training plans, race crew, west sussex hyrox\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "\"keywords\": \"{{COACH_NAME_LC}}, {{BRAND_SHORT}}, {{BRAND}}, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, {{REGION_LC}}shire hyrox\"",
+      "replace": "\"keywords\": \"paul gillingham, hyrox coach, hybrid athlete, hyrox uk, hyrox coaching, race predictor, hyrox training plans, race crew, west sussex hyrox\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{CLOTHING_SHORT}} drops, coaching spots opening, race dates, the new vlog —[\\s\\S]*?one email when it matters, none when it doesn't\\.",
+      "replace": "Coaching routes, race dates, travel notes and partner offers — one email when it matters, none when it doesn't.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<option>{{BRAND}} 365 drops</option>",
+      "replace": "<option>Coaching and programmes</option>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<option>Race dates &amp; vlogs</option>",
+      "replace": "<option>Race dates and training updates</option>",
+      "flags": "g"
+    },
+    {
+      "pattern": "first news on {{BRAND}} 365 drops, coaching spots, race dates and the new vlog\\.",
+      "replace": "first news on coaching routes, race dates, travel notes and partner offers.",
+      "flags": "g"
+    },
+    {
+      "pattern": "drops, race dates &amp; first news",
+      "replace": "race dates & first news",
+      "flags": "g"
+    },
+    {
+      "pattern": "FITR cohort — spring block",
+      "replace": "Rox Lyfe plans — spring block",
+      "flags": "g"
+    },
+    {
+      "pattern": "FITR \\+ hosting \\+ editing apps",
+      "replace": "Coaching software + hosting + editing apps",
+      "flags": "g"
+    },
+    {
+      "pattern": "the Hub is here when you want the structured version\\.",
+      "replace": "the coaching routes are here when you want the structured version.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Stories, ideas and the collection\\.",
+      "replace": "Stories, tools and partner links.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Read a race story, pick up a technique cue or explore the collection\\.",
+      "replace": "Read a race story, pick up a technique cue or use the verified partner links.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<article class=\"showcase-card\"><h4>Shop</h4><p>Explore the collection and head straight to the store\\.</p><a class=\"btn btn-ghost\" href=\"/{{SLUG}}/shop\\.html\">Visit the shop</a></article>",
+      "replace": "<article class=\"showcase-card\"><h4>Partner links</h4><p>Open Paul's verified affiliate and programme routes.</p><a class=\"btn btn-ghost\" href=\"/{{SLUG}}/partners.html\">View partners</a></article>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Browse the latest collection, find your next training programme and head straight to the store for the full range\\.",
+      "replace": "Use Paul's verified Linktree to reach the coaching application, Rox Lyfe plans and current partner codes.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Visit the store",
+      "replace": "Open all links",
+      "flags": "g"
+    },
+    {
+      "pattern": "Sample collection cards demonstrate the shop format; replace them with the coach's real products before publication\\.",
+      "replace": "Paul’s key routes in one place — application, programmes, partner links and race tools.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Sample collection",
+      "replace": "Verified routes",
+      "flags": "g"
+    },
+    {
+      "pattern": "Apparel &amp; accessories",
+      "replace": "Paul's current links",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore the current collection and check the full range in the store\\.",
+      "replace": "Open the coaching application, Rox Lyfe plans and current partner offers from one verified route.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Browse the store",
+      "replace": "Open Linktree",
+      "flags": "g"
+    },
+    {
+      "pattern": "HYROX Pro athlete, coach & creator",
+      "replace": "HYROX coach, racer & event insider",
+      "flags": "g"
+    },
+    {
+      "pattern": "HYROX Pro athlete, coach and creator",
+      "replace": "HYROX coach, racer and event insider",
+      "flags": "g"
+    },
+    {
+      "pattern": "HYROX Pro athlete, coach, part-time metronome\\.",
+      "replace": "HYROX coach, judge and experienced racer.",
+      "flags": "g"
+    },
+    {
+      "pattern": "href=\"/{{SLUG}}/shop\\.html\">Shop",
+      "replace": "href=\"/{{SLUG}}/shop.html\">Links",
+      "flags": "g"
+    },
+    {
+      "pattern": "href=\"/{{SLUG}}/podcast\\.html\">Podcast",
+      "replace": "href=\"/{{SLUG}}/podcast.html\">Interviews",
+      "flags": "g"
+    },
+    {
+      "pattern": "Shop \\| Paul Gillingham",
+      "replace": "Links & offers | Paul Gillingham",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore the collection and training offers from Paul Gillingham\\.",
+      "replace": "Open Paul Gillingham's verified coaching, programme and partner links.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore <em>the collection\\.</em>",
+      "replace": "Open <em>Paul's links.</em>",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Collection photography\"",
+      "replace": "alt=\"Paul Gillingham beside the championship athlete-name wall\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "the\\s+Hub is here when you want the structured version\\.",
+      "replace": "the coaching routes are here when you want the structured version.",
+      "flags": "g"
+    },
+    {
+      "pattern": "United Kingdom halls get warm\\.",
+      "replace": "HYROX halls get warm.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul Gillingham IG",
+      "replace": "Paul on Instagram",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"Coach with Paul Gillingham: Paul Gillingham 1:1 coaching by application, group programmes on FITR, and the Paul Gillingham 365 clothing line\\. Applications go through the existing forms\\.\"",
+      "replace": "content=\"Coach with Paul Gillingham: apply through his current coaching form, explore the clearly labelled Rox Lyfe plans, or return to your existing training route.\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "By Paul — HYROX Pro athlete, coach, occasional matchmaker\\.",
+      "replace": "By Paul — HYROX coach, racer and experienced race-mate.",
+      "flags": "g"
+    },
+    {
+      "pattern": "By Paul — HYROX Group Coach, podium athlete, United Kingdom personal\\s+trainer\\.",
+      "replace": "By Paul — HYROX coach, racer and event insider.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<h4>Paul's cue</h4>",
+      "replace": "<h4>Coach cue</h4>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<p class=\"eyebrow reveal\">The Paul Gillingham</p>",
+      "replace": "<p class=\"eyebrow reveal\">Coaching routes</p>",
+      "flags": "g"
+    },
+    {
+      "pattern": "href=\"/{{SLUG}}/podcast\\.html\">Podcast",
+      "replace": "href=\"/{{SLUG}}/podcast.html\">Interviews",
+      "flags": "g"
+    },
+    {
+      "pattern": "href=\"/{{SLUG}}/shop\\.html\">Shop",
+      "replace": "href=\"/{{SLUG}}/shop.html\">Links",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"GB-WOR\"",
+      "replace": "content=\"GB-WSX\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "By Paul — HYROX Group Coach, pro athlete, head of the table\\.",
+      "replace": "By Paul — HYROX coach, racer and crew regular.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Wherever there's an British flag in the results",
+      "replace": "Wherever there's a British flag in the results",
+      "flags": "g"
+    },
+    {
+      "pattern": "Only Paul sees this",
+      "replace": "Private to the site owner in a live setup",
+      "flags": "g"
+    },
+    {
+      "pattern": "message Paul on WhatsApp\\.",
+      "replace": "message Paul through one of the linked routes.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul books for the numbers confirmed",
+      "replace": "The crew organiser books for the numbers confirmed",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul's read on every UK &amp; Ireland weekend where British athletes[\\s\\S]*?raced\\. Newest first\\.",
+      "replace": "Race-weekend results and race-floor photography, newest first.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Captions from Paul to follow\\.",
+      "replace": "Finish-line proof from the race floor.",
+      "flags": "g"
+    },
+    {
+      "pattern": "This board is built by hand from public official results, so[\\s\\S]*?spellings and nationalities occasionally slip\\.",
+      "replace": "The board is built from verified race evidence, with corrections easy to send in.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Someone asks for the intro\\.</b> They tap your card, Paul[\\s\\S]*?connects you both on WhatsApp, and from there it's between you and[\\s\\S]*?the RoxZone\\.",
+      "replace": "Someone asks for the intro.</b> They tap your card, the coach connects you through the chosen private route, and from there it's between you and the RoxZone.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul checks every post\\.",
+      "replace": "The coach checks every post.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul reads every card personally\\.",
+      "replace": "The owner reviews every card personally.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul\\s+Warriors",
+      "replace": "Paul Gillingham",
+      "flags": "g"
+    },
+    {
+      "pattern": "Team Paul Gillingham",
+      "replace": "Paul Gillingham race crew",
+      "flags": "g"
+    },
+    {
+      "pattern": "Quarterly United Kingdom meetup and race-weekend dinners for British Hyrox athletes, participants and the curious — followed by optional dancing\\.",
+      "replace": "A race-weekend meetup format for HYROX athletes, partners, supporters and the curious — with the social side shown as a site capability.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Home edition — United Kingdom, every three months\\.",
+      "replace": "Home edition — a UK race-crew meetup format.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Every three months — the next venue gets picked soon\\.",
+      "replace": "A race-crew meetup format — the next venue is announced when confirmed.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul books the table for the RSVPs in\\.",
+      "replace": "The organiser books the table for confirmed RSVPs.",
+      "flags": "g"
+    },
+    {
+      "pattern": "only Paul sees\\s+them on the private desk\\.",
+      "replace": "only the site owner sees them in the private workflow.",
+      "flags": "g"
+    },
+    {
+      "pattern": "crew broadcast list",
+      "replace": "private crew channel",
+      "flags": "g"
+    },
+    {
+      "pattern": "See subscriptions",
+      "replace": "See coaching options",
+      "flags": "g"
+    },
+    {
+      "pattern": ">Subscriptions<",
+      "replace": ">Coaching<",
+      "flags": "g"
+    },
+    {
+      "pattern": "Warriors Wall",
+      "replace": "Race Wall",
+      "flags": "g"
+    },
+    {
+      "pattern": "Rookie Crew",
+      "replace": "Race Crew",
+      "flags": "g"
+    },
+    {
+      "pattern": "Warrior Program",
+      "replace": "Rox Lyfe plan",
+      "flags": "g"
+    },
+    {
+      "pattern": "Hybrid Coaching",
+      "replace": "1:1 coaching application",
+      "flags": "g"
+    },
+    {
+      "pattern": "You've never raced and you're in United Kingdom — that's exactly who the Race Crew is for: a weekly group session at your own pace, and a crew that grows as people join\\. No experience needed\\.",
+      "replace": "New racers can start with the free tools, then use Paul's application or the clearly labelled Rox Lyfe plans when they want structure.",
+      "flags": "g"
+    },
+    {
+      "pattern": "You're in United Kingdom, so two floor sessions a month with Paul fix the technical stations while the program does the conditioning week to week\\.",
+      "replace": "For UK racers, Paul's application is the right route for a plan built around race location, kit access and schedule.",
+      "flags": "g"
+    },
+    {
+      "pattern": "The Paul program — built for your level — with structured[\\s\\S]*?Workouts you can do anywhere, monthly progress check-ins, and nutrition guidance\\.",
+      "replace": "A structured plan can set the goal clearly. Paul's existing public programme route is Rox Lyfe; personal coaching starts with the application.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Structured weekly programme with station library and monthly Q&A",
+      "replace": "Structured Rox Lyfe plan, with the application available when personal review is needed",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul programmes around your stage and checks your form on video each week; tell her in the notes where you are and she'll adjust\\.",
+      "replace": "Paul's application asks for context first; use the notes to explain your stage, medical guidance and training history.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Training through pregnancy or a comeback is exactly where Paul's own experience counts — floor time for form checks plus weekly video review\\.",
+      "replace": "Training through pregnancy or a comeback needs individual clearance and planning — the application is the right route.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Thanks — Paul has your details and will reply with a plan\\. Coached athletes get their programme in the TrueCoach app\\.",
+      "replace": "Thanks — the application route is connected here. The live version would send these details to Paul's chosen coaching inbox.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Couldn't send just now\\. DM @paulgillinghamwarriors on Instagram instead\\.",
+      "replace": "Couldn't send just now — use Paul's Linktree or Instagram instead.",
+      "flags": "g"
+    },
+    {
+      "pattern": "send Paul a message below and she'll set you up",
+      "replace": "use Paul's verified links below",
+      "flags": "g"
+    },
+    {
+      "pattern": "Couldn't save that just now — your email still went through\\.",
+      "replace": "Couldn't save that just now — use the application or Linktree route.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Halo Paul! I saw",
+      "replace": "Hi Paul — I saw",
+      "flags": "g"
+    },
+    {
+      "pattern": "once Paul approves them on her desk",
+      "replace": "once the site owner approves them in the private workflow",
+      "flags": "g"
+    },
+    {
+      "pattern": "Got it — your card is on Paul's desk\\. She lists every approved card herself, so give her a day or two\\.",
+      "replace": "Got it — your card is queued for review. Approved cards are listed after the owner checks them.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Got it — private card sent\\. Paul will reach out if she spots a match for you\\.",
+      "replace": "Got it — private card sent. The coach can reach out if there is a match for you.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Got it — your trip is on Paul's desk\\. She lists every approved one herself, so give her a day or two\\.",
+      "replace": "Got it — your trip is queued for review. Approved trips are listed after the owner checks them.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Got it — private trip sent\\. Paul will reach out if someone matches your plans\\.",
+      "replace": "Got it — private trip sent. The coach can reach out if someone matches your plans.",
+      "flags": "g"
+    },
+    {
+      "pattern": "message Paul directly on WhatsApp\\.",
+      "replace": "use Paul's verified Linktree or Instagram.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul sees these real numbers on her desk\\.",
+      "replace": "Saved numbers appear in the coach's private review workflow.",
+      "flags": "g"
+    },
+    {
+      "pattern": "split card's with Paul\\. If the number needs talking through, she'll know where to find you\\.",
+      "replace": "split card is with Paul. If the number needs talking through, he can follow up.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Got it — photo and caption on Paul's desk\\. It goes up once she's had a look\\.",
+      "replace": "Got it — photo and caption are queued for review. They go up after approval.",
+      "flags": "g"
+    },
+    {
+      "pattern": "send the photo and caption to Paul on Instagram \\(@paulgillingham_\\) and she'll put it up\\.",
+      "replace": "send the photo and caption to Paul on Instagram (@paulgillingham_) for review.",
+      "flags": "g"
+    },
+    {
+      "pattern": "a photo for the Warriors Wall\\.",
+      "replace": "a photo for the Race Wall.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul has done it himself — 2005 to 1:05 in a season\\.",
+      "replace": "Paul's public race evidence includes a Gdańsk finish board, championship name walls and a Maastricht Pro Doubles podium.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Spots limited",
+      "replace": "Application route",
+      "flags": "g"
+    },
+    {
+      "pattern": "Tell Paul where you are starting and where you want to go",
+      "replace": "The application asks where they start and where they want to go",
+      "flags": "g"
+    },
+    {
+      "pattern": "Programme built around your life and race calendar",
+      "replace": "Show how coaching adapts to life and the race calendar",
+      "flags": "g"
+    },
+    {
+      "pattern": "Weekly check-ins and video form review",
+      "replace": "Set out check-in and form-review expectations",
+      "flags": "g"
+    },
+    {
+      "pattern": "Pacing, stations, race plan — built to a number",
+      "replace": "Explain pacing, stations and the target race plan",
+      "flags": "g"
+    },
+    {
+      "pattern": "Direct line to Paul between sessions",
+      "replace": "Make the coaching contact route clear before someone applies",
+      "flags": "g"
+    },
+    {
+      "pattern": "Leave your email and your question\\. Paul reads them personally — and\\s*you'll be first to hear when cohorts open\\.",
+      "replace": "Leave your email and your question — Paul will point you to the right next step.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Leave your email and your question\\. Paul reads them personally — and you'll be first to hear when cohorts open\\.",
+      "replace": "Leave your email and your question — Paul will point you to the right next step.",
+      "flags": "g"
+    },
+    {
+      "pattern": "The coaching arm\\.",
+      "replace": "Coaching, without the mystery.",
+      "flags": "g"
+    },
+    {
+      "pattern": "an British",
+      "replace": "a British",
+      "flags": "g"
+    },
+    {
+      "pattern": "The Paul program includes",
+      "replace": "Paul's coaching route includes",
+      "flags": "g"
+    },
+    {
+      "pattern": "one program —",
+      "replace": "one programme —",
+      "flags": "g"
+    },
+    {
+      "pattern": "the program does",
+      "replace": "the programme does",
+      "flags": "g"
+    },
+    {
+      "pattern": "The Paul program, not PDF fragments",
+      "replace": "A coherent coaching programme, not PDF fragments",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul's whole program",
+      "replace": "Paul's whole programme",
+      "flags": "g"
+    },
+    {
+      "pattern": "March drop — first weekend",
+      "replace": "Partner-link payout — walkthrough row",
+      "flags": "g"
+    },
+    {
+      "pattern": "Clothing \\(Partner offers\\)",
+      "replace": "Partner offers",
+      "flags": "g"
+    },
+    {
+      "pattern": "The Paul\\s+program includes swaps for whatever your gym has\\.",
+      "replace": "The coaching route can explain swaps for whatever your gym has.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Your email and WhatsApp go only to Paul, who makes intros himself\\.",
+      "replace": "Your email and contact details stay private; the owner reviews and makes introductions through the chosen route.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Someone sees your card and asks Paul for an intro over WhatsApp\\. If it fits — pace, format, race — you're connected\\. Paul races this circuit and knows who'd actually suit you\\.",
+      "replace": "Someone sees your card and asks the owner for an intro. If it fits — pace, format, race — you're connected through the chosen private route.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Start the Program",
+      "replace": "Open Rox Lyfe plans",
+      "flags": "g"
+    },
+    {
+      "pattern": "Elite Race Prep",
+      "replace": "Individual race build",
+      "flags": "g"
+    },
+    {
+      "pattern": "Enquire about Elite",
+      "replace": "Apply for coaching",
+      "flags": "g"
+    },
+    {
+      "pattern": "\\/london\\|jkt\\|tangerang\\|bekasi\\|depok\\|bogor\\/i",
+      "replace": "/crawley|west sussex|london|uk|united kingdom/i",
+      "flags": "g"
+    },
+    {
+      "pattern": "You're in United Kingdom, so two floor sessions a month with Paul fix the station technique that costs first-timers and PB-chasers the most time\\.",
+      "replace": "For UK racers, the application is the right route for a plan built around race location, kit access and schedule.",
+      "flags": "g"
+    },
+    {
+      "pattern": "A structured weekly programme with the station library and monthly Q&A covers your goal — and Paul can move you to 1:1 coaching any time\\.",
+      "replace": "A structured Rox Lyfe plan covers the goal, with Paul's application available if personal coaching is the right fit.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<div class=\"price\">Paul Gillingham</div>\\s*<div class=\"per\">Paul's existing public plans via Rox Lyfe</div>",
+      "replace": "<div class=\"price\">Rox Lyfe</div><div class=\"per\">Paul's existing public plans via Rox Lyfe</div>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Application route — Paul reviews every application",
+      "replace": "Application route — the enquiry starts on Paul's current form",
+      "flags": "g"
+    },
+    {
+      "pattern": "Programme built around your life and your race calendar",
+      "replace": "Show how coaching adapts to life and the race calendar",
+      "flags": "g"
+    },
+    {
+      "pattern": "<span class=\"tag\">Application only</span>",
+      "replace": "<span class=\"tag\">1:1 route</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Athlete login \\(TrueCoach\\)",
+      "replace": "Athlete login",
+      "flags": "g"
+    },
+    {
+      "pattern": "all 8 stations explained \\(women's weights, pacing,\\s*technique\\)",
+      "replace": "all 8 stations explained — division standards, pacing and technique",
+      "flags": "g"
+    },
+    {
+      "pattern": "with women's Open and Pro standards, pacing targets and the technique cues Paul coaches in United Kingdom\\.",
+      "replace": "with division-aware standards, pacing targets and the technique cues Paul coaches in the UK.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Women's Open and Pro standards, pacing targets and technique cues for every Hyrox station\\.",
+      "replace": "Division-aware standards, pacing targets and technique cues for every Hyrox station.",
+      "flags": "g"
+    },
+    {
+      "pattern": "How heavy is the sled for women in Hyrox\\?",
+      "replace": "How heavy is the sled in Hyrox?",
+      "flags": "g"
+    },
+    {
+      "pattern": "Women's Open sled push is 102 kg including the sled and sled pull is 78 kg\\. Women's Pro is 152 kg push and 103 kg pull\\. Always confirm against the current season's rulebook on hyrox\\.com\\.",
+      "replace": "Sled loads vary by division and season. Always confirm the current rulebook on hyrox.com before race day.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Women's Open and Pro standards, the pace you should hold, and the\\s*one cue that fixes each station\\. Written from the floor in United Kingdom,\\s*not from a rulebook\\.",
+      "replace": "Division-aware standards, the pace to hold, and the one cue that fixes each station. Written from race-floor experience, not copied from a rulebook.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Standards below are the women's\\s*divisions as published in recent seasons — check the current\\s*rulebook on hyrox\\.com before race day, weights do get revised\\.",
+      "replace": "Standards vary by division and season — check the current rulebook on hyrox.com before race day; weights and targets do get revised.",
+      "flags": "g"
+    },
+    {
+      "pattern": "4:15–5:00 for most women's Open",
+      "replace": "4:15–5:00 for a controlled first-station effort",
+      "flags": "g"
+    },
+    {
+      "pattern": "4:30–5:15 for most women's Open",
+      "replace": "4:30–5:15 for a controlled middle-station effort",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>102 kg incl\\. sled</li>",
+      "replace": "<li><strong>Load</strong>Division-specific — confirm current rules</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Pro</strong>152 kg incl\\. sled</li>",
+      "replace": "<li><strong>Format</strong>4 × 12.5 m</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>78 kg incl\\. sled</li>",
+      "replace": "<li><strong>Load</strong>Division-specific — confirm current rules</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Pro</strong>103 kg incl\\. sled</li>",
+      "replace": "<li><strong>Format</strong>4 × 12.5 m</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>2 × 16 kg kettlebells</li>",
+      "replace": "<li><strong>Load</strong>Division-specific competition kettlebells</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Pro</strong>2 × 24 kg kettlebells</li>",
+      "replace": "<li><strong>Distance</strong>200 m</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>10 kg sandbag on shoulders</li>",
+      "replace": "<li><strong>Load</strong>Division-specific sandbag on shoulders</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Pro</strong>20 kg sandbag on shoulders</li>",
+      "replace": "<li><strong>Distance</strong>100 m</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>75 reps · 4 kg · 2\\.7 m target</li>",
+      "replace": "<li><strong>Format</strong>Division-specific reps, ball and target</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Pro</strong>100 reps · 6 kg · 2\\.7 m target</li>",
+      "replace": "<li><strong>Check</strong>Confirm the current rulebook before race day</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "The single most useful Hyrox lift\\s*for women\\.",
+      "replace": "The single most useful HYROX lift in this block.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Women's Open: 102 kg push, 78 kg pull \\(including the sled\\)\\. Women's\\s*Pro: 152 kg push, 103 kg pull\\. Check the current season's rulebook\\s*before you race\\.",
+      "replace": "Loads vary by division and season. Check the current rulebook before you race.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<option value=\"open\" selected>Women Open</option>",
+      "replace": "<option value=\"open\" selected>Open pace</option>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<option value=\"pro\">Women Pro</option>",
+      "replace": "<option value=\"pro\">Faster pace</option>",
+      "flags": "g"
+    },
+    {
+      "pattern": "blocks use typical women's splits at each level\\.",
+      "replace": "blocks use typical Open and faster splits at each level.",
+      "flags": "g"
+    },
+    {
+      "pattern": "fab\\.innerHTML =\\s*'<svg[\\s\\S]*?<span>Message Paul<\\/span>';",
+      "replace": "fab.innerHTML = '<span>Message Paul</span>';",
+      "flags": "g"
+    },
+    {
+      "pattern": "Athlete login \\(TrueCoach\\)",
+      "replace": "Athlete login",
+      "flags": "g"
+    },
+    {
+      "pattern": "(</div>\\s*<p class=\"shop-note\">)",
+      "replace": "  <div class=\"partner-card\"><span class=\"pc-tag\">Affiliate · code</span><h4>HYBRYD apparel</h4><p>Fitness & performance apparel — 10% off.</p><span class=\"code\">PG10</span><a class=\"pc-cta\" href=\"https://hybryd.fit\" target=\"_blank\" rel=\"noopener\">Open →</a></div>\n  <div class=\"partner-card\"><span class=\"pc-tag\">Affiliate · code</span><h4>PUMA</h4><p>30% off running and training wear.</p><span class=\"code\">ROXLYFE30</span><a class=\"pc-cta\" href=\"https://uk.puma.com/uk/en\" target=\"_blank\" rel=\"noopener\">Open →</a></div>\n  <div class=\"partner-card\"><span class=\"pc-tag\">Affiliate · code</span><h4>Beet It Sport</h4><p>Endurance supplement — beetroot power.</p><span class=\"code\">PAUL25</span><a class=\"pc-cta\" href=\"https://bit.ly/PAUL25BEETS\" target=\"_blank\" rel=\"noopener\">Open →</a></div>\n  <div class=\"partner-card\"><span class=\"pc-tag\">Affiliate · code</span><h4>Xendurance</h4><p>20% discount across the range.</p><span class=\"code\">PAUL20</span><a class=\"pc-cta\" href=\"http://xendurance.eu/\" target=\"_blank\" rel=\"noopener\">Open →</a></div>\n  <div class=\"partner-card\"><span class=\"pc-tag\">Affiliate · code</span><h4>Built for Athletes</h4><p>Gym & training backpacks.</p><span class=\"code\">PAUL15</span><a class=\"pc-cta\" href=\"http://builtforathletes.com/PAUL15\" target=\"_blank\" rel=\"noopener\">Open →</a></div>\n  <div class=\"partner-card\"><span class=\"pc-tag\">Affiliate · code</span><h4>Zone 8</h4><p>Nasal strips — race-day breathing aid.</p><span class=\"code\">PAUL10</span><a class=\"pc-cta\" href=\"https://zone-eight.com\" target=\"_blank\" rel=\"noopener\">Open →</a></div>\n          $1"
+    },
+    {
+      "pattern": "<section class=\"block\" id=\"plans\">[\\s\\S]*?</section>",
+      "replace": "<section class=\"block\" id=\"plans\"><div class=\"wrap\"><p class=\"eyebrow reveal\">Paul Gillingham × Rox Lyfe</p><h3 class=\"reveal\">Paul's coaching. <em>Your next step.</em></h3><p class=\"lead reveal\">Paul brings the training experience. Rox Lyfe founder and nutritionist Greg Williams brings nutrition expertise, race insight and tactics. They first discussed building something together in 2022. Today, that partnership helps athletes train across countries and time zones.</p>{{PG_CLIENT_MAP_HTML}}<p class=\"pg-choice-intro\">Choose personalised coaching through Rox Lyfe, or a downloadable plan for your next solo or doubles race.</p>{{PG_PLAN_CARDS_HTML}}<p class=\"plans-note\">Not sure which route fits? <a href=\"/paulgillingham/coaching.html\">Meet the coaching team and hear from clients →</a></p><div class=\"plan plan-crew reveal\"><img class=\"crew-photo\" src=\"/paulgillingham/images/doubles.jpg\" alt=\"Paul racing alongside a HYROX partner\" loading=\"lazy\" /><div class=\"crew-copy\"><span class=\"tag\">New to HYROX?</span><h4>Start with Prep Club</h4><p class=\"crew-line\">Explore free race tools, training guidance and the community before choosing your next step.</p></div><div class=\"crew-side\"><div class=\"price\">Free</div><a class=\"btn btn-primary\" href=\"/paulgillingham/prep-club.html\">Explore Prep Club</a></div></div></div></section>"
+    },
+    {
+      "pattern": "<div class=\"plans coach-plans\" data-training-platform>[\\s\\S]*?(?=<p class=\"shop-note\">)",
+      "replace": "<section class=\"pg-team\" aria-labelledby=\"pg-team-title\"><p class=\"eyebrow\">The coaching partnership</p><h3 id=\"pg-team-title\">Training with Paul. Supported by Rox Lyfe.</h3><p>An idea Paul and Greg discussed in 2022 has grown into a coaching partnership reaching athletes around the world. Personalised coaching brings together Paul's programming with Greg Williams's nutrition expertise, race analysis and tactical insight. The downloadable plans below remain separate options for athletes who want a structured programme to follow.</p><div class=\"pg-team-grid\"><article><h4>Paul Gillingham</h4><p class=\"tag\">Athlete and coach</p><p>Paul retrained as a personal trainer at 25 because he wanted to help people get fitter and healthier. He coaches people of different ages, sizes and abilities, listening first and adapting the training to their goals, available time, equipment and progress.</p></article><article><h4>Greg Williams</h4><p class=\"tag\">Rox Lyfe founder and nutritionist</p><p>Greg brings nutrition knowledge, race-data analysis and tactical insight, alongside his experience as a HYROX athlete and Elite race commentator.</p></article></div><p><a href=\"https://roxlyfe.com/coaching/\" target=\"_blank\" rel=\"noopener\">Explore coaching at Rox Lyfe →</a></p>{{PG_CLIENT_MAP_HTML}}</section><section aria-labelledby=\"pg-offers-title\"><h3 id=\"pg-offers-title\">Choose the support that fits.</h3>{{PG_PLAN_CARDS_HTML}}</section><section class=\"pg-client-stories\" id=\"athletes-say\" hidden><p class=\"eyebrow\">Coached by Paul through Rox Lyfe</p><h3>What working with Paul feels like.</h3><p>Responsiveness. Adaptability. A plan that fits real life. These are excerpts from clients' accounts of Rox Lyfe personalised coaching.</p><div class=\"quotes\" id=\"testimonials\"></div><p class=\"pg-source\"><a href=\"https://roxlyfe.com/coaching/\" target=\"_blank\" rel=\"noopener\">Read the full client testimonials at Rox Lyfe →</a></p></section>"
+    },
+    {
+      "pattern": "Build towards your next start line with training that fits your goals\\s+and the time you can give it\\. Explore a structured programme or talk\\s+to Paul about personal coaching\\.",
+      "replace": "Your training, your timetable, your next start line. Explore personalised coaching with Paul through Rox Lyfe, or choose a 12-week plan built for solo or doubles racing."
+    },
+    {
+      "pattern": "Paul Gillingham coaching an outdoor group training session",
+      "replace": "Paul Gillingham pointing to his name on the championship athlete wall"
+    },
+    {
+      "pattern": "<div class=\"quotes reveal\" id=\"testimonials\"></div>",
+      "replace": "<p class=\"pg-source\">Clients on their experience of Paul's personalised coaching through Rox Lyfe. <a href=\"https://roxlyfe.com/coaching/\" target=\"_blank\" rel=\"noopener\">Read the full testimonials →</a></p><div class=\"quotes reveal\" id=\"testimonials\"></div>"
+    },
+    {
+      "pattern": "{{BIO_ROLE}}\\. {{RACE_RECORD}}\\. Discover the approach behind {{BRAND}} — and find a way forward that fits your goals\\.",
+      "replace": "Paul retrained as a personal trainer at 25 because he wanted to help people get fitter and healthier. Coaching since 2005 and with more than 38 HYROX races behind him, he brings experience, encouragement and a listening ear—whether you’re finding your feet or chasing your next finish."
+    },
+    {
+      "pattern": "content=\"Coach with Paul Gillingham:[^\"]*\"",
+      "replace": "content=\"Explore personalised coaching with Paul Gillingham through Rox Lyfe, plus the £55 12-week and doubles training plans. Meet Paul and Greg and hear from their coaching clients.\""
+    }
+  ],
+  "colors": {
+    "zoneAccent": "#1d4ed8"
+  },
+  "omitImageSlots": [
+    "images/avatar.jpg",
+    "images/bike.jpg",
+    "images/carry.jpg",
+    "images/detail.jpg",
+    "images/gallery/dinner-template.jpg",
+    "images/hoodie.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/race-revel.jpg",
+    "images/rooftop.jpg",
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/skierg-laugh.jpg",
+    "images/sprint.jpg",
+    "images/station-lean.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg"
+  ]
+}

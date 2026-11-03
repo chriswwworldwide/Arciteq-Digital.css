@@ -1,0 +1,37 @@
+{
+  "note": "PRIVATE PITCH PREVIEW.",
+  "photos": [
+    {
+      "src": "/paulgillingham/images/gallery/philosophy.jpg",
+      "alt": "Paul Gillingham training with the quote Fitness is like a relationship",
+      "caption": "Fitness is like a relationship. You can’t cheat on it and expect it to work.",
+      "by": "Paul Gillingham",
+      "event": "Coach notes",
+      "tilt": -1.1
+    },
+    {
+      "src": "/paulgillingham/images/gallery/world-wall.jpg",
+      "alt": "Paul Gillingham looking for his name on the championship athlete wall",
+      "caption": "The name wall does the talking.",
+      "by": "World Championships",
+      "event": "World-level racing",
+      "tilt": 1.2
+    },
+    {
+      "src": "/paulgillingham/images/gallery/valencia-table.jpg",
+      "alt": "HYROX Valencia patches on a table after racing",
+      "caption": "Race weekend done properly — patches, people and a table afterwards.",
+      "by": "Race weekend",
+      "event": "Race weekend",
+      "tilt": -0.8
+    },
+    {
+      "src": "/paulgillingham/images/gallery/finish-hug.jpg",
+      "alt": "Paul Gillingham embracing a race partner after the finish",
+      "caption": "The bit the splits sheet never records.",
+      "by": "Race day",
+      "event": "Race day",
+      "tilt": 1
+    }
+  ]
+}

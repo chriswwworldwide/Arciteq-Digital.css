@@ -1,0 +1,35 @@
+{
+  "note": "Verified public interview destinations only; Paul is the guest, not the channel owner.",
+  "items": [
+    {
+      "id": "roxlyfe-world-record",
+      "title": "Paul Gillingham: HYROX World Record Holder and Rox Lyfe Coach",
+      "description": "A guest conversation on the Rox Lyfe HYROX Podcast covering Paul's racing and coaching background.",
+      "category": "Podcast episodes",
+      "url": "https://castro.fm/episode/zfSSAj",
+      "thumbnail": "/paulgillingham/images/coaching-hero.jpg",
+      "status": "published",
+      "linkLabel": "Open the episode"
+    },
+    {
+      "id": "roxlyfe-experienced",
+      "title": "UK's Most Experienced HYROX Athlete — Paul Gillingham",
+      "description": "A later Rox Lyfe interview about Paul's race history, world-level age-group racing and coaching work.",
+      "category": "Podcast episodes",
+      "url": "https://castro.fm/episode/ylwNvX",
+      "thumbnail": "/paulgillingham/images/stations-hero.jpg",
+      "status": "published",
+      "linkLabel": "Open the episode"
+    },
+    {
+      "id": "travel-for-hyrox",
+      "title": "Travelling the world for HYROX",
+      "description": "A guest interview focused on racing abroad, travel lessons and Paul's early HYROX run.",
+      "category": "Race stories",
+      "url": "https://ukhxr.libsyn.com/paul-gillingham-travelling-the-world-for-hyrox",
+      "thumbnail": "/paulgillingham/images/events-hero.jpg",
+      "status": "published",
+      "linkLabel": "Open the interview"
+    }
+  ]
+}

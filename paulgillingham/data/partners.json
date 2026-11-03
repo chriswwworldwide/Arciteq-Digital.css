@@ -1,0 +1,32 @@
+{
+  "note": "Verified public affiliate routes from Paul's Linktree.",
+  "items": [
+    {
+      "id": "hybryd",
+      "name": "HYBRYD",
+      "url": "https://hybryd.fit/",
+      "tagline": "Code PG10",
+      "slot": "partner",
+      "from": "2026-10-26",
+      "until": "2026-12-31"
+    },
+    {
+      "id": "beet-it",
+      "name": "Beet It Sport",
+      "url": "https://bit.ly/PAUL25BEETS",
+      "tagline": "Code PAUL25",
+      "slot": "partner",
+      "from": "2026-10-26",
+      "until": "2026-12-31"
+    },
+    {
+      "id": "built-for-athletes",
+      "name": "Built for Athletes",
+      "url": "https://builtforathletes.com/",
+      "tagline": "Code PAUL15",
+      "slot": "results",
+      "from": "2026-10-26",
+      "until": "2026-12-31"
+    }
+  ]
+}

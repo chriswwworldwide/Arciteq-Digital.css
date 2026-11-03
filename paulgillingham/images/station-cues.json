@@ -1,0 +1,116 @@
+{
+  "description": "Visual verification rubric for HYROX station slots. A station claim is verified when stationEvidence lists at least `minEvidence` cues the rater actually saw in the file (copied from `cues`, not paraphrased loosely). Lookalikes list the known mislabel traps — if a lookalike matches better, the claim fails. Not all cues must be present; a genuine shot missing some still verifies.",
+  "minEvidence": 2,
+  "positiveMarkers": {
+    "eventPhotographer": "Shots taken by official event photographers (arena branding, photographer pit positions, Sportograf-style framing) are a positive prior for BOTH station correctness and quality — they shoot real stations in real events. Caveat: check for watermarks/EXIF provenance (e.g. Sportograf); flag provenance in notes since demo-use ≠ licensed use."
+  },
+  "stations": {
+    "skierg": {
+      "cues": [
+        "tall vertical machine with a round fan/flywheel housing at the top",
+        "two cords or handles pulled downward from overhead",
+        "athlete standing upright pulling arms down past chest/hips",
+        "wall-mounted or floor-stand base, no moving staircase"
+      ],
+      "lookalikes": [
+        "stair-climber/stepmill — has steps and side rails, no overhead cords",
+        "versa climber — thin rail with pegs, no fan housing"
+      ]
+    },
+    "sled-push": {
+      "cues": [
+        "sled/prowler with tall vertical push posts",
+        "athlete leaning forward, arms extended, behind the sled driving it",
+        "weight plates loaded on the sled",
+        "pushing along a marked lane or track"
+      ],
+      "lookalikes": [
+        "sled pull — rope in hands instead of posts",
+        "tank/push-resistance machine — fixed-frame machine, not a free sled"
+      ]
+    },
+    "sled-pull": {
+      "cues": [
+        "thick rope held in both hands",
+        "athlete leaning back or walking backward hauling",
+        "sled visible at the far end of the rope or rope taut toward it",
+        "pulling along a lane"
+      ],
+      "lookalikes": [
+        "battle ropes — ropes in waves, no sled",
+        "cable machine pull — fixed pulley, no free sled"
+      ]
+    },
+    "burpees": {
+      "cues": [
+        "athlete chest or hands on the floor",
+        "or athlete airborne mid forward broad jump",
+        "no equipment in frame",
+        "marked lane or open floor"
+      ],
+      "lookalikes": [
+        "push-up/plank photo — static floor hold, not the forward-jump discipline",
+        "generic stretching on floor"
+      ]
+    },
+    "row": {
+      "cues": [
+        "seated athlete on a sliding seat",
+        "handle on a chain/strap pulled toward the torso",
+        "round fan housing at the foot end of the machine",
+        "legs bent driving back, monitor arm visible"
+      ],
+      "lookalikes": [
+        "cable-row on a weight-stack machine — no flywheel fan, fixed seat",
+        "seated lat pulldown — overhead bar not a low handle"
+      ]
+    },
+    "farmers-carry": {
+      "cues": [
+        "one kettlebell or dumbbell in EACH hand",
+        "weights held at the sides while walking or standing mid-stride",
+        "athlete upright in a lane",
+        "two matching implements visible"
+      ],
+      "lookalikes": [
+        "single-bell carry or goblet hold — one implement only",
+        "luggage or bags — not training implements"
+      ]
+    },
+    "sandbag-lunges": {
+      "cues": [
+        "soft cylindrical sandbag resting across shoulders/upper back",
+        "lunge stride — front knee bent, back knee toward floor",
+        "athlete moving along a lane",
+        "bag visibly load-bearing not held in hands"
+      ],
+      "lookalikes": [
+        "barbell lunges — rigid bar not a soft bag",
+        "sandbag set-down/setup area — no lunge in progress"
+      ]
+    },
+    "wall-balls": {
+      "cues": [
+        "large soft medicine ball visible",
+        "ball in the air heading to a high target, or athlete squatting to throw",
+        "target line or cross marked high on a wall/rig",
+        "athlete facing the wall"
+      ],
+      "lookalikes": [
+        "slam ball to the floor — downward throw, no high target",
+        "basketball or small ball — wrong implement"
+      ]
+    },
+    "running": {
+      "cues": [
+        "athlete mid-stride with visible flight or contact",
+        "arena track lane, marked run course, or treadmill",
+        "running posture not a station movement"
+      ],
+      "lookalikes": [
+        "walking between stations — upright, no stride",
+        "warm-up jog in group shot — not a race run"
+      ]
+    }
+  }
+}

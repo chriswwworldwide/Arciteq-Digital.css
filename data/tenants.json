@@ -5856,6 +5856,36 @@
         }
       ],
       "demo": true
+    },
+    {
+      "tenant_id": "paulgillingham",
+      "vertical": "coaching",
+      "hostnames": ["paulgillingham.localhost", "demo-paulgillingham.localhost"],
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {"nicheCategorySlugs": [], "heroProductIds": [], "productTypeSlugs": []},
+      "seo": {
+        "brandName": "Paul Gillingham",
+        "tagline": "HYROX coaching through Rox Lyfe",
+        "about": "Coaching since 2005. Over 38 HYROX races. Personalised coaching and training plans through Rox Lyfe.",
+        "supportEmail": "",
+        "meta": {"homeDescription": "Paul Gillingham — HYROX coach and Team GB age-group racer. Coaching, race tools and partner links."},
+        "sameAs": ["https://www.instagram.com/paulgillingham_/"],
+        "staticPages": [
+          {"path": "/paulgillingham/", "priority": "1.0"},
+          {"path": "/paulgillingham/coaching.html", "priority": "0.9"},
+          {"path": "/paulgillingham/stations-prep.html", "priority": "0.8"},
+          {"path": "/paulgillingham/events.html", "priority": "0.8"}
+        ]
+      },
+      "features": {"predictor": true, "chatbot": false},
+      "automation": {
+        "inbox": "paulgillingham/data/inbox.json",
+        "writable": [],
+        "autoApprove": [],
+        "coachPath": "/paulgillingham/desk.html?audience=coach"
+      },
+      "demo": true
     }
   ]
 }

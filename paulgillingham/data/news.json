@@ -1,0 +1,59 @@
+{
+  "items": [
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "The useful lesson for everyday racers is planning: pick the event, then build the weeks backwards from it.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. Travel, sleep and recovery need the same attention as the race plan.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Paul's travel-heavy race history makes the practical side matter: arrive with a plan, not just a ticket.",
+      "takeStatus": "draft-for-review",
+      "link": "/paulgillingham/events.html",
+      "linkLabel": "Race Calendar & Travel →"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "The points table matters, but the calendar still has to fit real training and real life.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "A big target is useful when it turns into manageable sessions this week.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "Support matters, but the day-to-day work still decides who gets close enough to use it.",
+      "takeStatus": "draft-for-review"
+    }
+  ]
+}

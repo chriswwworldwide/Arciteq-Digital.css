@@ -1,0 +1,43 @@
+{
+  "note": "Athlete profile — Paul's verified public race milestones, with format rows clearly labelled.",
+  "athletes": {
+    "Paul Gillingham": {
+      "tag": "Mr HYROX — coach, judge and Team GB age-group racer.",
+      "races": [
+        {
+          "event": "HYROX Gdańsk",
+          "date": "On record",
+          "division": "Men",
+          "time": "1:10:57",
+          "note": "Finish-board photo"
+        },
+        {
+          "event": "HYROX Pro Doubles",
+          "date": "Instagram caption",
+          "division": "Pro Doubles",
+          "time": "1:03:11",
+          "note": "4th in age group with Lee Forrester"
+        },
+        {
+          "event": "HYROX Maastricht",
+          "date": "On record",
+          "division": "Pro Doubles Men",
+          "time": "Podium",
+          "note": "Podium photo"
+        }
+      ]
+    },
+    "Paul Gillingham & Lee Forrester": {
+      "tag": "Pro Doubles — 1:03:11, 4th in age group per Paul's public caption.",
+      "races": [
+        {
+          "event": "HYROX Pro Doubles",
+          "date": "Instagram caption",
+          "division": "Pro Doubles",
+          "time": "1:03:11",
+          "note": "Paul's 10th Pro Doubles race and 50th HYROX partner milestone"
+        }
+      ]
+    }
+  }
+}

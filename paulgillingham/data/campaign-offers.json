@@ -1,0 +1,31 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Paul's coaching application",
+      "goal": "Coaching enquiries",
+      "destination": "https://roxlyfecoaching.paperform.co/",
+      "image": "/paulgillingham/images/coaching-hero.jpg",
+      "headline": "Apply through Paul's current coaching form.",
+      "actionLabel": "Open application"
+    },
+    {
+      "id": "programme",
+      "name": "Rox Lyfe 12-week training plan",
+      "goal": "Training-plan visits",
+      "destination": "https://roxlyfe.com/12-week-training-plan/",
+      "image": "/paulgillingham/images/stations-hero.jpg",
+      "headline": "A structured 12-week build for your next HYROX.",
+      "actionLabel": "View the 12-week plan"
+    },
+    {
+      "id": "shop",
+      "name": "Paul's partner links",
+      "goal": "Partner-link visits",
+      "destination": "https://linktr.ee/paulgillingham_",
+      "image": "/paulgillingham/images/hero.jpg",
+      "headline": "Affiliate codes and current links in one place.",
+      "actionLabel": "Open Linktree"
+    }
+  ]
+}

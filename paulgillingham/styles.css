@@ -3097,6 +3097,15 @@ section.cta-band .btn-light {
 .tips-photo img {
   object-position: 50% 28%;
 }
+@media (max-width: 900px) {
+  .tips-photo img[src*="/images/wallball.jpg"],
+  .guidance .guide-hero-photo img[src*="/images/run-hero.jpg"] {
+    object-position: 50% 0%;
+  }
+  .video-card img[src*="/images/coaching-hero.jpg"] {
+    object-position: 50% 65%;
+  }
+}
 @media (max-width: 600px) {
   .hero--bleed .wrap {
     align-items: end;

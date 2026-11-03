@@ -3105,7 +3105,8 @@ section.cta-band .btn-light {
 }
 @media (max-width: 900px) {
   .tips-photo img[src*="/images/wallball.jpg"],
-  .guidance .guide-hero-photo img[src*="/images/run-hero.jpg"] {
+  .guidance .guide-hero-photo img[src*="/images/run-hero.jpg"],
+  .community .guide-hero-photo img[src*="/images/events-secondary.jpg"] {
     object-position: 50% 0%;
   }
   .video-card img[src*="/images/coaching-hero.jpg"] {

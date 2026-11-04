@@ -1,0 +1,57 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "1-2-1 Online Coaching",
+      "goal": "Offer enquiries",
+      "destination": "https://appgeorgegrayson.fitr.training/p/379019",
+      "image": "/georgegrayson/images/coaching-hero.jpg",
+      "headline": "Training and nutrition tailored to your lifestyle and goals, with weekly check-ins and progress reviews.",
+      "actionLabel": "Explore 1-2-1 coaching"
+    },
+    {
+      "id": "programme",
+      "name": "Your Hybrid Program",
+      "goal": "Offer enquiries",
+      "destination": "https://appgeorgegrayson.fitr.training/p/373964",
+      "image": "/georgegrayson/images/coaching-hero.jpg",
+      "headline": "Structured strength and running training with community support, progress tracking and coaching guidance.",
+      "actionLabel": "Explore the hybrid programme"
+    },
+    {
+      "id": "programme-3",
+      "name": "Eight-week programme",
+      "goal": "Offer enquiries",
+      "destination": "https://georgegraysonfitness.co.uk/8-week-program/",
+      "image": "/georgegrayson/images/coaching-hero.jpg",
+      "headline": "Personal targets, weekly check-ins, a programme guide and access to George's member resources. Register interest through the programme page.",
+      "actionLabel": "Explore the eight-week programme"
+    },
+    {
+      "id": "programme-4",
+      "name": "Beginner running and strength plan",
+      "goal": "Offer enquiries",
+      "destination": "https://buy.stripe.com/bIYcPg3Ftf7E2T628g",
+      "image": "/georgegrayson/images/coaching-hero.jpg",
+      "headline": "Two running sessions and two strength sessions each week, building towards stronger 5K, 10K and half-marathon running.",
+      "actionLabel": "View the beginner plan checkout"
+    },
+    {
+      "id": "programme-5",
+      "name": "Advanced running and strength plan",
+      "goal": "Offer enquiries",
+      "destination": "https://buy.stripe.com/3csbLc2Bpe3A51e7sB",
+      "image": "/georgegrayson/images/coaching-hero.jpg",
+      "headline": "Three running days and two strength workouts each week, designed for speed, endurance and stronger race preparation.",
+      "actionLabel": "View the advanced plan checkout"
+    },
+    {
+      "id": "shop",
+      "name": "Shop collection",
+      "goal": "Shop visits",
+      "destination": "https://georgegraysonfitness.co.uk/",
+      "image": "/georgegrayson/images/coaching-hero.jpg",
+      "headline": "Explore the collection."
+    }
+  ]
+}

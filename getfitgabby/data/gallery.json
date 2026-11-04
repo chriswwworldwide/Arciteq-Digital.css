@@ -2,32 +2,74 @@
   "note": "PRIVATE PITCH PREVIEW.",
   "photos": [
     {
+      "src": "/getfitgabby/images/gm-world-champion.jpg",
+      "alt": "Gabby and David O'Toole on the Chicago world championship podium",
+      "caption": "Chicago. 54:36. Mixed Doubles World Champion.",
+      "event": "Race day",
+      "tilt": -1.1
+    },
+    {
       "src": "/getfitgabby/images/gallery/squad-gym.jpg",
       "alt": "Get Fit Gabby squad on the gym floor",
-      "caption": "The squad — ready for the next block",
+      "caption": "The squad — ready for the next block.",
       "event": "Training",
-      "tilt": 0.6
+      "tilt": 0.7
     },
     {
-      "src": "/getfitgabby/images/gallery/stock-barbell.jpg",
-      "alt": "Deadlift on gym floor",
-      "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
-      "event": "Training",
-      "tilt": 1
+      "src": "/getfitgabby/images/gm-huns-bw.jpg",
+      "alt": "Black and white portrait of Gabby and Zara — the Hyrox Huns",
+      "caption": "The Hyrox Huns, by @j8frames_.",
+      "event": "Race trip",
+      "tilt": -0.9
     },
     {
-      "src": "/getfitgabby/images/gallery/race-mates.jpg",
-      "alt": "Gabby and race partner at HYROX",
-      "caption": "Race mates — HYROX event",
+      "src": "/getfitgabby/images/gm-floor-sit.jpg",
+      "alt": "Gabby and Zara slumped on the floor after the finish",
+      "caption": "Everything left out there. That's the deal.",
       "event": "Race day",
-      "tilt": -1
+      "tilt": 1.3
+    },
+    {
+      "src": "/getfitgabby/images/startline-wall.jpg",
+      "alt": "Gabby under the HYROX arch in MORIARTY kit",
+      "caption": "The arch. The name on the chest.",
+      "event": "Race day",
+      "tilt": -0.7
+    },
+    {
+      "src": "/getfitgabby/images/gm-neon-startpen.jpg",
+      "alt": "Gabby under the pink neon HYROX start pen",
+      "caption": "Where every race starts — under the lights.",
+      "event": "Race day",
+      "tilt": 0.9
     },
     {
       "src": "/getfitgabby/images/gallery/arena-run.jpg",
-      "alt": "Running past the water station at HYROX arena",
-      "caption": "PGE Narodowy — doubles on the run",
+      "alt": "Gabby and Zara running past the water station",
+      "caption": "Warsaw laps. PGE Narodowy floor.",
       "event": "Race day",
-      "tilt": -0.4
+      "tilt": -1.4
+    },
+    {
+      "src": "/getfitgabby/images/gm-run-moriarty.jpg",
+      "alt": "Gabby mid-stride in the MORIARTY bib, black and white",
+      "caption": "Race face on. Flag on the chest.",
+      "event": "Race day",
+      "tilt": 1
+    },
+    {
+      "src": "/getfitgabby/images/gm-bordeaux-flags.jpg",
+      "alt": "Gabby and Zara holding Bordeaux podium flags",
+      "caption": "Bordeaux flags — earned, not given.",
+      "event": "Race trip",
+      "tilt": -0.8
+    },
+    {
+      "src": "/getfitgabby/images/gm-finish-celebrate.jpg",
+      "alt": "Gabby and Zara crossing the finish line together",
+      "caption": "Cross the line the way you trained — together.",
+      "event": "Race day",
+      "tilt": 0.6
     }
   ]
 }

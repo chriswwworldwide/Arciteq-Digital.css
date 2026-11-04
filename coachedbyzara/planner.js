@@ -2,306 +2,59 @@
 // Used by /coachedbyzara/race-planner/ (all cities, tabbed) and /coachedbyzara/hyrox-london/ (one city).
 (function () {
   const root = document.getElementById("planner");
-  if (!root) return;
-  const only = root.dataset.city || "";
-  const tabsEl = document.getElementById("city-tabs");
-  const seasonEl = document.getElementById("season-list");
-  const nextEl = document.getElementById("next-race");
-
-  const esc = (s) =>
-    String(s ?? "").replace(
-      /[&<>"']/g,
-      (c) =>
-        ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;",
-        })[c],
-    );
-  const list = (items, lang) =>
-    `<ul class="plan-list"${lang ? ` lang="${lang}"` : ""}>${(items || []).map((i) => `<li>${esc(i)}</li>`).join("")}</ul>`;
-  const fmtDate = (iso) =>
-    new Date(`${iso}T00:00:00+07:00`).toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-      timeZone: "the UK/United Kingdom",
-    });
-  const daysUntil = (iso) =>
-    Math.ceil(
-      (new Date(`${iso}T00:00:00+07:00`).getTime() - Date.now()) / 864e5,
-    );
-
-  function raceBlock(c) {
-    const r = c.race || {};
-    let when;
-    if (r.status === "confirmed" && r.start) {
-      const d = daysUntil(r.start);
-      when = `<p class="plan-when"><strong>${esc(r.dates)}</strong>${
-        d > 0
-          ? ` <span class="plan-days">${d} days to go</span>`
-          : d > -4
-            ? ` <span class="plan-days">race week</span>`
-            : ` <span class="plan-days">raced — see the <a href="/coachedbyzara/results/">results board</a></span>`
-      }</p>`;
-    } else {
-      when = `<p class="plan-when plan-tbc"><strong>Date TBC</strong> ${esc(r.expected || "")}${
-        r.last
-          ? ` <span class="plan-last">Last edition: ${esc(r.last.dates)}${
-              r.last.athletes ? `, ${esc(r.last.athletes)} athletes` : ""
-            }.</span>`
-          : ""
-      }</p>`;
-    }
-    return `<div class="plan-race">
-      <p class="eyebrow">${esc(r.name || "Race")}</p>
-      ${when}
-      <p class="plan-venue"><strong>${esc(r.venue || "")}</strong><br />${esc(r.address || "")}</p>
-      <p class="plan-source">Source: <a href="${esc(r.source || "https://hyrox.com")}" rel="noopener" target="_blank">${esc(
-        r.sourceLabel || "hyrox.com",
-      )}</a> — confirm on the official page before booking.</p>
-    </div>`;
+  const cards = document.getElementById("race-cards");
+  const season = document.getElementById("season-list");
+  const tabs = document.getElementById("city-tabs");
+  const prep = document.getElementById("race-prep");
+  if (!root && !cards && !season && !prep) return;
+  const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+  const when = iso => new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", {day:"numeric",month:"short",year:"numeric",timeZone:"UTC"});
+  const list = items => `<ul class="plan-list">${(items || []).map(s => `<li>${esc(s)}</li>`).join("")}</ul>`;
+  const source = c => `<a href="${esc(c.race.source)}" target="_blank" rel="noopener">Official event and venue information</a>`;
+  const section = (title, html) => html ? `<section class="plan-section"><h3>${title}</h3>${html}</section>` : "";
+  function city(c) {
+    const hotels = (c.hotels || []).map(h => `<div class="plan-card reveal"><h4>${esc(h.area)}</h4><p>${esc(h.picks)}</p><p class="plan-range">${esc(h.range)}</p></div>`).join("");
+    return `<article class="plan-city" id="city-${esc(c.slug)}"><header class="plan-city-head"><h2>${esc(c.name)} <small>${esc(c.country)}</small></h2><p class="lead">${esc(c.tagline)}</p></header><div class="plan-race reveal"><p class="eyebrow">${esc(c.race.name)}</p><p class="plan-when"><strong>${esc(when(c.race.start))} – ${esc(when(c.race.end || c.race.start))}</strong></p>${source(c)}</div>${section("Venue &amp; getting there", c.gettingThere?.length ? list(c.gettingThere) : "")}${section("Where to stay", hotels ? `<div class="plan-cards">${hotels}</div>` : "")}${section("Athlete-friendly eating", c.food?.length ? list(c.food) : "")}${section("After the finish", c.nightAfter?.length ? list(c.nightAfter) : "")}<p><a class="btn btn-primary" href="/coachedbyzara/find-a-partner.html">Find a race-mate</a> <a class="btn btn-ghost" href="/coachedbyzara/race-crew.html">Plan with the crew</a></p></article>`;
   }
-
-  function hotelsBlock(hotels) {
-    return `<div class="plan-cards">${(hotels || [])
-      .map(
-        (h) => `<div class="plan-card">
-          <h4>${esc(h.area)}</h4>
-          <p>${esc(h.picks)}</p>
-          <p class="plan-range">${esc(h.range)}</p>
-          ${
-            h.link
-              ? `<p class="plan-link"><a href="${esc(h.link)}" target="_blank" rel="nofollow sponsored noopener">Search stays here →</a></p>`
-              : ""
-          }
-        </div>`,
-      )
-      .join("")}</div>`;
-  }
-
-  function flightsBlock(flights) {
-    return `<div class="plan-table-wrap"><table class="plan-table">
-      <thead><tr><th>From</th><th>Flight</th><th>Airlines</th><th>Approx. return</th></tr></thead>
-      <tbody>${(flights || [])
-        .map(
-          (f) =>
-            `<tr><td>${esc(f.from)}</td><td>${esc(f.time)}</td><td>${esc(f.airlines)}</td><td>${esc(f.fare)}</td></tr>`,
-        )
-        .join("")}</tbody></table></div>`;
-  }
-
-  function meetupBlock(m) {
-    if (!m || !m.when) return "";
-    return `<section class="plan-section plan-meetup" id="meetup">
-      <h3>Warriors meet-up</h3>
-      <p><strong>${esc(m.when)}</strong>${m.where ? ` · ${esc(m.where)}` : ""}</p>
-      ${m.note ? `<p>${esc(m.note)}</p>` : ""}
-      <a class="btn btn-primary" href="/coachedbyzara/#ask">Tell Zara you're coming</a>
-    </section>`;
-  }
-
-  function indoMeetupBlock(m) {
-    if (!m || !m.when) return "";
-    return `<section class="plan-section plan-meetup" id="indo-meetup">
-      <h3>the ninth station — Team Coached by Zara meetup</h3>
-      <p><strong>${esc(m.when)}</strong></p>
-      ${m.note ? `<p>${esc(m.note)}</p>` : ""}
-      <a class="btn btn-primary" href="/coachedbyzara/race-crew/#rsvp">Join — RSVP here</a>
-      <a class="btn btn-ghost" href="/coachedbyzara/find-a-partner/#travel">Travelling? Post your trip</a>
-    </section>`;
-  }
-
-  function renderCity(c) {
-    const stamp = `<p class="plan-stamp">Hotel, fare and food notes are pointers, not quotes — check live prices before you book.</p>`;
-    const photo = c.photo
-      ? `<figure class="plan-city-photo"><img src="${esc(c.photo.src)}" alt="${esc(c.photo.alt || "")}" loading="lazy" width="1600" height="685" />${
-          c.photo.credit
-            ? `<figcaption>${esc(c.photo.credit)}</figcaption>`
-            : ""
-        }</figure>`
-      : "";
-    return `<article class="plan-city" id="city-${esc(c.slug)}">
-      ${photo}
-      <header class="plan-city-head">
-        <h2><span aria-hidden="true">${esc(c.flag || "")}</span> ${esc(c.name)} <small>${esc(c.country)}</small></h2>
-        ${c.nickname ? `<p class="city-aka">a.k.a. <span class="city-nick">${esc(c.nickname)}</span></p>` : ""}
-        <p class="lead">${esc(c.tagline)}</p>
-        ${c.coachSays ? `<blockquote class="plan-coach"><p>${esc(c.coachSays)}</p><cite>— Zara</cite></blockquote>` : ""}
-      </header>
-      ${raceBlock(c)}
-      <section class="plan-section" id="getting-there"><h3>Venue &amp; getting there</h3>${list(c.gettingThere, c.cityLang)}</section>
-      <section class="plan-section" id="hotels"><h3>Where to stay</h3>${hotelsBlock(c.hotels)}</section>
-      <section class="plan-section" id="flights"><h3>Flights</h3>${flightsBlock(c.flights)}</section>
-      <section class="plan-section" id="food"><h3>Athlete-friendly eating</h3>${list(c.food, c.cityLang)}</section>
-      <section class="plan-section" id="city"><h3>Around the city</h3>${list(c.city, c.cityLang)}</section>
-      <section class="plan-section" id="night-after"><h3>The night after</h3>${list(c.nightAfter, c.cityLang)}</section>
-      ${meetupBlock(c.meetup)}
-      ${indoMeetupBlock(c.indoMeetup)}
-      ${
-        c.coachNote
-          ? `<div class="callout plan-coach"><p><strong>Zara's note.</strong> ${
-              c.cityLang
-                ? `<span lang="${esc(c.cityLang)}">${esc(c.coachNote)}</span>`
-                : esc(c.coachNote)
-            }</p>
-          <p><a class="btn btn-primary" href="/coachedbyzara/#plans">Train for ${esc(c.name)} with Zara</a> <a class="btn" href="/coachedbyzara/taper-zone/">Taper Zone guide</a></p></div>`
-          : ""
+  fetch("/coachedbyzara/data/cities.json", {cache:"no-cache"}).then(r => r.ok ? r.json() : Promise.reject(new Error("load"))).then(data => {
+    const today = new Date().toISOString().slice(0, 10);
+    const cities = (data.cities || []).filter(c => c.race?.status === "confirmed" && c.race.start && c.race.start >= today && /^https:\/\//.test(c.race.source || ""));
+    if (!cities.length) throw new Error("No confirmed upcoming races");
+    if (prep) {
+      const selected = cities.find(c => c.slug === new URLSearchParams(location.search).get("race"));
+      if (selected) {
+        const days = Math.max(0, Math.ceil((new Date(`${selected.race.start}T12:00:00Z`) - new Date()) / 86400000));
+        prep.hidden = false;
+        prep.innerHTML = `<p class="eyebrow">Your start line</p><h3>Prepare for ${esc(selected.race.name)}</h3><p>${esc(when(selected.race.start))} · ${days} days to go</p><p>${days >= 84 ? "There is time to explore a structured build. First race? Look at Race Ready below, or ask Zara about individual coaching." : days >= 21 ? "Your preparation needs to fit the weeks left and the training you already do. Ask Zara about a focused approach rather than squeezing in a full programme." : "The race is close. Prioritise pacing, practical preparation and tapering rather than starting a new training block."}</p><div class="actions"><a class="btn btn-primary" href="/coachedbyzara/?race=${encodeURIComponent(selected.race.name)}&audience=public#ask">Ask Zara about this race</a><a class="btn btn-ghost" href="/coachedbyzara/${days < 21 ? "taper-zone.html" : "prep-club.html"}">${days < 21 ? "Race-week guidance" : "Explore free preparation"}</a></div>`;
+        prep.scrollIntoView({ block: "start" });
       }
-      ${stamp}
-    </article>`;
-  }
-
-  function renderSeason(cities, home, alsoOn, alsoTba) {
-    if (!seasonEl) return;
-    const rows = cities
-      .map((c) => ({ c, r: c.race || {} }))
-      .filter(
-        ({ r }) =>
-          r.status === "confirmed" && r.start && daysUntil(r.start) > -4,
-      )
-      .sort((a, b) => a.r.start.localeCompare(b.r.start));
-    const tbc = cities.filter(
-      (c) => c.slug !== home && (c.race || {}).status !== "confirmed",
-    );
-    const href = (c) =>
-      c.slug === home
-        ? "/coachedbyzara/hyrox-london/"
-        : `/coachedbyzara/race-planner/#${c.slug}`;
-    const alsoRows = (alsoOn || [])
-      .filter((r) => !r.start || daysUntil(r.start) > -4)
-      .slice()
-      .sort((a, b) =>
-        String(a.start || "").localeCompare(String(b.start || "")),
-      );
-    seasonEl.innerHTML =
-      rows
-        .map(
-          ({ c, r }, i) => `<li class="event" data-i="${i}">
-          <time datetime="${esc(r.start)}">${esc(r.dates)}</time>
-          <div><h4><a href="${href(c)}">${esc(r.name)}</a>${
-            c.nickname
-              ? ` <span class="city-nick">${esc(c.nickname)}</span>`
-              : ""
-          }</h4><p>${esc(r.venue)} · ${
-            daysUntil(r.start) > 0
-              ? `${daysUntil(r.start)} days to go`
-              : "this week"
-          }<button class="share-btn" type="button" aria-label="Share race">Share</button></p></div></li>`,
-        )
-        .join("") +
-        tbc
-          .map(
-            (c) => `<li class="event">
-          <time>Date TBC</time>
-          <div><h4><a href="${href(c)}">${esc(c.race.name)}</a>${
-            c.nickname
-              ? ` <span class="city-nick">${esc(c.nickname)}</span>`
-              : ""
-          }</h4><p>${esc(c.race.expected || "Awaiting the official date.")}</p></div></li>`,
-          )
-          .join("") +
-        (alsoRows.length
-          ? `<li class="event-subhead"><p>More UK & Ireland races this season</p></li>` +
-            alsoRows
-              .map(
-                (r) => `<li class="event">
-          <time datetime="${esc(r.start || "")}">${esc(r.dates || "Dates TBA")}</time>
-          <div><h4><a href="${esc(r.source || "https://hyrox.com/events/")}" rel="noopener" target="_blank">${esc(r.name)}</a>${
-            r.nickname
-              ? ` <span class="city-nick">${esc(r.nickname)}</span>`
-              : ""
-          }</h4><p>${esc([r.venue, r.note].filter(Boolean).join(" · "))}</p></div></li>`,
-              )
-              .join("")
-          : "") +
-        (alsoTba
-          ? `<li class="event"><time>TBA</time>
-          <div><h4>Also expected back</h4><p>${esc(alsoTba)}</p></div></li>`
-          : "") ||
-      `<li class="event"><time>Break</time>
-        <div><h4>Between seasons</h4><p>No confirmed UK & Ireland dates right now — new races land on <a href="https://hyrox.com/events/" rel="noopener" target="_blank">hyrox.com</a> first, and we update the board when they do.</p></div></li>`;
-    seasonEl.querySelectorAll(".share-btn").forEach((btn) =>
-      btn.addEventListener("click", () => {
-        const { c, r } = rows[Number(btn.closest("li").dataset.i)];
-        window.roxShare?.(btn, {
-          title: r.name,
-          text: `${r.name} — ${r.dates} at ${r.venue}. Who's in?`,
-          url: `${location.origin}${href(c)}`,
-        });
-      }),
-    );
-    if (nextEl && rows.length) {
-      const { c, r } = rows[0];
-      nextEl.hidden = false;
-      nextEl.innerHTML = `<p class="eyebrow">Next confirmed race in the region</p>
-        <h3><a href="${href(c)}">${esc(r.name)}</a></h3>
-        <p><strong>${daysUntil(r.start)}</strong> days · ${esc(fmtDate(r.start))} · ${esc(r.venue)}</p>`;
     }
-  }
-
-  function renderTabs(cities, home, active) {
-    if (!tabsEl) return;
-    tabsEl.innerHTML = cities
-      .map((c) =>
-        c.slug === home
-          ? `<a class="city-tab" href="https://hyrox.com" target="_blank" rel="noopener">${esc(c.flag || "")} ${esc(c.name)} <small>home race →</small></a>`
-          : `<button type="button" class="city-tab${c.slug === active ? " is-active" : ""}" data-slug="${esc(c.slug)}" aria-pressed="${
-              c.slug === active
-            }">${esc(c.flag || "")} ${esc(c.name)}</button>`,
-      )
-      .join("");
-  }
-
-  fetch("/coachedbyzara/data/cities.json", { cache: "no-cache" })
-    .then((r) => (r.ok ? r.json() : null))
-    .then((json) => {
-      const cities = Array.isArray(json?.cities) ? json.cities : [];
-      const home = String(json?.home || "london");
-      if (!cities.length) throw new Error("no cities");
-
-      if (only) {
-        const c = cities.find((x) => x.slug === only);
-        root.innerHTML = c
-          ? renderCity(c)
-          : `<p class="callout">City guide coming soon.</p>`;
-        return;
-      }
-
-      renderSeason(cities, home, json.alsoOn, json.alsoTba);
-      const away = cities.filter((c) => c.slug !== home);
-      const fromHash = location.hash.replace(/^#/, "");
-      let active = away.some((c) => c.slug === fromHash)
-        ? fromHash
-        : away[0].slug;
-      const show = (slug) => {
-        active = slug;
-        const c = away.find((x) => x.slug === slug) || away[0];
-        root.innerHTML = renderCity(c);
-        renderTabs(cities, home, active);
-      };
-      show(active);
-      tabsEl?.addEventListener("click", (e) => {
-        const b = e.target.closest("button[data-slug]");
-        if (!b) return;
-        history.replaceState(null, "", `#${b.dataset.slug}`);
-        show(b.dataset.slug);
-        const nav = document.querySelector(".nav");
-        const offset = (nav ? nav.getBoundingClientRect().height : 0) + 16;
-        const top = root.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: "smooth" });
-      });
-      window.addEventListener("hashchange", () => {
-        const s = location.hash.replace(/^#/, "");
-        if (away.some((c) => c.slug === s)) show(s);
-      });
-    })
-    .catch(() => {
-      const msg = `<p class="callout">Couldn't load the city guides just now — try again in a moment, or check <a href="https://hyrox.com/find-my-race/" rel="noopener">hyrox.com</a> for dates.</p>`;
-      root.innerHTML = msg;
-      if (seasonEl) seasonEl.innerHTML = msg;
-      if (nextEl) nextEl.hidden = true;
-    });
+    if (cards) cards.innerHTML = [...cities].sort((a,b) => a.race.start.localeCompare(b.race.start)).slice(0,3).map(c => {
+      const days = Math.max(0, Math.ceil((new Date(`${c.race.start}T12:00:00Z`) - new Date()) / 86400000));
+      const prep = days >= 84 ? "Time for a structured build — explore a first-race programme or personal coaching." : days >= 21 ? "Make the remaining weeks count — ask Zara which preparation fits your current training." : "Close to race day — focus on pacing, race-week preparation and a sensible taper.";
+      return `<div class="event reveal"><div class="date"><strong><time datetime="${esc(c.race.start)}">${esc(when(c.race.start))}</time></strong><span>${esc(c.name)}</span><small>${days} days to go</small></div><div><h4>${esc(c.race.name)}</h4><p>${esc(c.race.dates || when(c.race.start))} · ${esc(c.country)}</p>${source(c)}<p class="event-prep">${prep}</p></div><div class="event-actions"><a class="btn btn-primary" href="/coachedbyzara/coaching.html?race=${encodeURIComponent(c.slug)}#race-prep">Prepare for this race</a><a class="btn btn-ghost" href="/coachedbyzara/find-a-partner.html?race=${encodeURIComponent(c.slug)}#partner-form">Find a partner for this race</a><a href="/coachedbyzara/events.html#${esc(c.slug)}">Plan the weekend →</a></div></div>`;
+    }).join("");
+    if (season) season.innerHTML = cities.map(c => `<li class="event reveal"><time datetime="${esc(c.race.start)}">${esc(c.race.dates || when(c.race.start))}</time><div><h4><a href="#${esc(c.slug)}">${esc(c.race.name)}</a></h4><p>${esc(c.country)} · ${source(c)}</p><p><a href="#${esc(c.slug)}">Plan this race weekend →</a></p></div></li>`).join("");
+    const stamp = document.getElementById("race-checked");
+    if (stamp) stamp.textContent = `Official listings checked ${when(data.checked)}. Check current entry availability with the organiser.`;
+    window.revealScan?.();
+    if (!root) return;
+    let active = cities[0].slug;
+    function show(slug, scroll = false) {
+      const c = cities.find(c => c.slug === slug) || cities[0];
+      active = c.slug;
+      root.innerHTML = city(c);
+      if (tabs) tabs.innerHTML = cities.map(c => `<button class="city-tab${c.slug === active ? " is-active" : ""}" type="button" data-slug="${esc(c.slug)}" aria-pressed="${c.slug === active}">${esc(c.name)}</button>`).join("");
+      window.revealScan?.();
+      if (scroll) root.scrollIntoView({behavior:"smooth",block:"start"});
+    }
+    show(root.dataset.city || location.hash.slice(1));
+    tabs?.addEventListener("click", e => { const button = e.target.closest("button[data-slug]"); if (!button) return; history.replaceState(null, "", `#${button.dataset.slug}`); show(button.dataset.slug); });
+    addEventListener("hashchange", () => { const slug = location.hash.slice(1); if (cities.some(c => c.slug === slug)) show(slug, true); });
+    if (cities.some(c => c.slug === location.hash.slice(1))) root.scrollIntoView({block:"start"});
+  }).catch(() => {
+    const message = '<p class="callout">Race information needs refreshing. <a href="https://hyrox.com/find-my-race/" target="_blank" rel="noopener">Browse confirmed races with HYROX</a>.</p>';
+    if (root) root.innerHTML = message;
+    if (season) season.innerHTML = `<li>${message}</li>`;
+  });
 })();

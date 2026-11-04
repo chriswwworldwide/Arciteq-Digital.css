@@ -1,0 +1,13 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Online coaching with Zara",
+      "goal": "Offer enquiries",
+      "destination": "https://linktr.ee/coachedbyzara",
+      "image": "/coachedbyzara/images/coaching-hero.jpg",
+      "headline": "Tell Zara what you're training for and discuss the support that fits your experience, schedule and next goal.",
+      "actionLabel": "Enquire through Zara's hub"
+    }
+  ]
+}

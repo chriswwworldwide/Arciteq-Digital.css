@@ -1,0 +1,8 @@
+{
+  "source": "chassis",
+  "mode": "chassis",
+  "templateHash": "bc5ad23810e2b60e9531c6e2c39137929d1bb1992f7aeb12a06dcd46704a471f",
+  "builtAt": "2026-11-02T21:36:35.182Z",
+  "rules": ".devin/rules/platform-build-and-video.md",
+  "raceSourcesChecked": "2026-10-25"
+}

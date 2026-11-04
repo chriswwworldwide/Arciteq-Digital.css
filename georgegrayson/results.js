@@ -101,7 +101,7 @@
       }
 
       const art = document.createElement("article");
-      art.className = "station results-division";
+      art.className = "station results-division reveal";
       art.id = `div-${key}`;
       let body;
       if (rows.length === 0) {
@@ -134,6 +134,7 @@
       }
       root.appendChild(art);
     });
+    window.revealScan?.();
 
     if (toc && document.getElementById("roundups-root")) {
       const li = document.createElement("li");
@@ -155,7 +156,7 @@
     }
     rroot.innerHTML = rows
       .map(
-        (n) => `<div class="roundup">
+        (n) => `<div class="roundup reveal">
         <p class="roundup-meta"><strong>${esc(n.race)}</strong>${
           n.weekend ? ` · ${esc(n.weekend)}` : ""
         }</p>
@@ -175,6 +176,7 @@
       </div>`,
       )
       .join("");
+    window.revealScan?.();
   }
 
   fetch("/georgegrayson/data/roundups.json", { cache: "no-cache" })
@@ -258,7 +260,7 @@
     }
     timeNote.textContent = ok
       ? "Got it — George'll check it against the official results and add it."
-      : "Couldn't send just now — DM your time to @georgegraysonfit instead.";
+      : "Couldn't send just now — DM your time to @georgegrayson instead.";
     if (ok) timeForm.querySelector("button[type=submit]").disabled = true;
   });
 

@@ -1,68 +1,82 @@
 {
-  "note": "Seeded community picks \u2014 generic event photos standing in until real submissions land.",
+  "note": "PRIVATE PITCH PREVIEW.",
   "photos": [
     {
-      "src": "/georgegrayson/images/gallery/malaga-crew.jpg",
-      "alt": "HTCC crew on the race floor at HYROX M\u00e1laga",
-      "caption": "An unforgettable weekend full of PBs, sun, sangria and more laughs than I've had in a while. We'll be back next year \u2014 who's joining us?",
-      "by": "@sunday.squad",
-      "tilt": -1.5,
-      "event": "Race trip"
+      "src": "/georgegrayson/images/gallery/gg-games-crew.jpg",
+      "alt": "The GG Games community gathered on the gym floor",
+      "caption": "GG Games 4.0 — the whole crew in yellow, and the best day of the year by a mile.",
+      "event": "Community",
+      "tilt": -1.3
     },
     {
-      "src": "/georgegrayson/images/gallery/malaga-three.jpg",
-      "alt": "Three HTCC athletes grinning after racing in M\u00e1laga",
-      "caption": "Dee's first ever HYROX. Hooked right from that first race.",
-      "by": "@hyrox.huns",
-      "tilt": 2,
-      "event": "Race trip"
+      "src": "/georgegrayson/images/gallery/gg-alex-medal.jpg",
+      "alt": "Client Alex with her Sheffield Half Marathon medal",
+      "caption": "Sheffield Half — 1:50:40 down to 1:49:12. That's what a block of consistent work does.",
+      "event": "Race day",
+      "tilt": -0.8
     },
     {
-      "src": "/georgegrayson/images/gallery/istanbul-podium.jpg",
-      "alt": "Michelle and Ellie with the Union flag on the podium at HYROX Istanbul",
-      "caption": "Michelle & Ellie \u2014 podium, Istanbul. Keep setting the standard.",
-      "by": "@racefloor.crew",
-      "tilt": 1,
-      "event": "Race day"
+      "src": "/georgegrayson/images/gallery/stock-arena.jpg",
+      "alt": "Race-day crowd on the arena floor",
+      "caption": "Race day feels like this. Loud floor, long queue for the wall balls.",
+      "event": "Race day",
+      "tilt": -1
     },
     {
-      "src": "/georgegrayson/images/gallery/glasgow-doors.jpg",
-      "alt": "Ross outside the HYROX Glasgow entrance",
-      "caption": "Glasgow. Just enjoy it they say. But don't underestimate the challenge.",
-      "by": "@sleds.and.regrets",
-      "tilt": -2,
-      "event": "Race day"
+      "src": "/georgegrayson/images/gallery/gg-friday-gang.jpg",
+      "alt": "The Friday night class lined up at the dumbbell wall",
+      "caption": "Friday night gang. Good to be back with the hybrid crew.",
+      "event": "Training",
+      "tilt": 1.1
     },
     {
-      "src": "/georgegrayson/images/gallery/glasgow-oxworld.jpg",
-      "alt": "HTCC crew at the OX World stand in Glasgow",
-      "caption": "Crew at Glasgow. Half of them didn't know each other a year ago.",
-      "by": "@the8amheat",
-      "tilt": 1.5,
-      "event": "Race day"
+      "src": "/georgegrayson/images/gallery/gg-birmingham-finish.jpg",
+      "alt": "George under the finish clock at HYROX Birmingham",
+      "caption": "HYROX Birmingham — 1:00:42, a 2:23 PB. The sub-60 is coming.",
+      "event": "Race day",
+      "tilt": -0.9
     },
     {
-      "src": "/georgegrayson/images/gallery/doubles-finish.jpg",
-      "alt": "A doubles pair celebrating at the finish",
-      "caption": "You've smashed your training \u2014 now go smash this race. They did.",
-      "by": "@roxzone",
-      "event": "Race day"
+      "src": "/georgegrayson/images/gallery/stock-rower.jpg",
+      "alt": "Rower mid-stroke in race conditions",
+      "caption": "Erg splits don't lie. Put the metres in now.",
+      "event": "Training",
+      "tilt": -1.4
     },
     {
-      "src": "/georgegrayson/images/gallery/crew-faces.jpg",
-      "alt": "HTCC members in club tees after a group run",
-      "caption": "Sunny springy group runs. Run Club, Tuesdays and Wednesdays.",
-      "by": "@pb_chasers",
-      "tilt": 1,
-      "event": "Run club"
+      "src": "/georgegrayson/images/gallery/gg-games-tee.jpg",
+      "alt": "The GG Games yellow tee from behind",
+      "caption": "The GG Games uniform. Worn with pride.",
+      "event": "Community",
+      "tilt": 0.7
     },
     {
-      "src": "/georgegrayson/images/gallery/crew-selfie.jpg",
-      "alt": "Post-race crew selfie",
-      "caption": "It's not just a club \u2014 it's friends & family.",
-      "by": "@finishline.fam",
-      "tilt": -1.5,
-      "event": "Race day"
+      "src": "/georgegrayson/images/gallery/stock-burpee.jpg",
+      "alt": "Athlete mid burpee on the race floor",
+      "caption": "Station 5: everyone's least favourite minute.",
+      "event": "Race day",
+      "tilt": 0.9
+    },
+    {
+      "src": "/georgegrayson/images/gallery/gg-games-floor.jpg",
+      "alt": "An athlete at the sled lane during GG Games",
+      "caption": "GG Games floor. Everyone works, nobody hides.",
+      "event": "Community",
+      "tilt": 1.6
+    },
+    {
+      "src": "/georgegrayson/images/gallery/gg-trainers-turf.jpg",
+      "alt": "Racing trainers on the gym turf before a session",
+      "caption": "Fresh FuelCells on the turf. Session pending.",
+      "event": "Training",
+      "tilt": 1.2
+    },
+    {
+      "src": "/georgegrayson/images/gallery/stock-finish.jpg",
+      "alt": "Athletes celebrating at the finish line",
+      "caption": "The finish line makes the early starts worth it.",
+      "event": "Race day",
+      "tilt": 1.5
     }
   ]
 }

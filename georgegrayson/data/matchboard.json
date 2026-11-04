@@ -1,4 +1,24 @@
 {
-  "note": "PRIVATE PITCH PREVIEW — sample race-mate posts only.",
-  "items": []
+  "preview": true,
+  "note": "Early race-mate cards for the community board. Event names and expiry dates come from the confirmed race catalogue.",
+  "items": [
+    {
+      "name": "Alex M.",
+      "format": "open",
+      "pace": "80–90 minute target",
+      "note": "Looking for a partner with a similar steady pace and time to practise together.",
+      "posted": "This week",
+      "event": "Amazon HYROX London",
+      "until": "2026-12-06"
+    },
+    {
+      "name": "Sam R.",
+      "format": "mixed",
+      "pace": "70–80 minute target",
+      "note": "A balanced approach to running and stations, with clear communication on race day.",
+      "posted": "This week",
+      "event": "HYROX Manchester",
+      "until": "2027-01-31"
+    }
+  ]
 }

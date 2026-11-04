@@ -1,0 +1,66 @@
+[
+  {
+    "type": "Start here",
+    "title": "The stations do not need to be scary",
+    "copy": "A plain-English pass through the eight stations, what matters and what beginners can ignore for now.",
+    "href": "/coachedbyzara/stations-prep/",
+    "cta": "Open station prep",
+    "img": "/coachedbyzara/images/stations-hero.jpg",
+    "signal": "Opened station prep"
+  },
+  {
+    "type": "Free tool",
+    "title": "What time should you actually target?",
+    "copy": "Use the race predictor before you start guessing what a good HYROX finish looks like for you.",
+    "href": "/coachedbyzara/predictor.html",
+    "cta": "Try the predictor",
+    "img": "/coachedbyzara/images/predictor-hero.jpg",
+    "signal": "Used race predictor"
+  },
+  {
+    "type": "Community",
+    "title": "Need a partner, not a lecture?",
+    "copy": "Find a race-mate, crew or doubles partner before you convince yourself you need to do it alone.",
+    "href": "/coachedbyzara/find-a-partner.html",
+    "cta": "Find a race-mate",
+    "img": "/coachedbyzara/images/race-pair.jpg",
+    "signal": "Looked for a race-mate"
+  },
+  {
+    "type": "Confidence",
+    "title": "Wall balls without the panic",
+    "copy": "The station everyone worries about, broken into reps, rhythm and what to practise first.",
+    "href": "/coachedbyzara/stations-prep/#wall-balls",
+    "cta": "Practise wall balls",
+    "img": "/coachedbyzara/images/station-wall-balls.jpg",
+    "signal": "Checked wall-ball guidance"
+  },
+  {
+    "type": "Route",
+    "title": "When a programme starts making sense",
+    "copy": "A coached programme is the softer route into structured prep — enough guidance to feel held, not thrown in.",
+    "href": "/coachedbyzara/coaching.html",
+    "cta": "See coaching routes",
+    "img": "/coachedbyzara/images/coaching-hero.jpg",
+    "signal": "Viewed coaching routes",
+    "hot": true
+  },
+  {
+    "type": "Stories",
+    "title": "Borrow confidence from other races",
+    "copy": "Race stories, coach notes and useful lessons from athletes who were beginners not long ago.",
+    "href": "/coachedbyzara/news.html",
+    "cta": "Read the brief",
+    "img": "/coachedbyzara/images/finish.jpg",
+    "signal": "Read race stories"
+  },
+  {
+    "type": "Travel",
+    "title": "Turn the race into a weekend you can handle",
+    "copy": "Calendar, travel and crew planning so the race feels exciting rather than administratively feral.",
+    "href": "/coachedbyzara/events.html",
+    "cta": "Plan the race",
+    "img": "/coachedbyzara/images/events-hero.jpg",
+    "signal": "Checked race plans"
+  }
+]

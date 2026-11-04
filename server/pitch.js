@@ -19,13 +19,21 @@ const pitchRoot = path.join(
 
 const VALID_EVENTS = new Set([
   "view",
+  "revisit",
   "play",
   "progress",
   "complete",
   "cta_demo",
   "cta_reply",
 ]);
-const EMAIL_EVENTS = new Set(["view", "play", "complete"]);
+const EMAIL_EVENTS = new Set([
+  "view",
+  "revisit",
+  "play",
+  "complete",
+  "cta_demo",
+  "cta_reply",
+]);
 const VALID_SLUGS = new Set([
   "faisalpma",
   "jadeskillen",
@@ -35,6 +43,7 @@ const VALID_SLUGS = new Set([
   "jamiebarker",
   "getfitgabby",
   "paulgillingham",
+  "georgegrayson",
 ]);
 
 let tableReady = false;
@@ -70,7 +79,15 @@ function cleanStr(v, max = 120) {
 async function notify({ slug, event, pct }) {
   const to = cleanStr(process.env.PITCH_NOTIFY_TO || "chriswworldwide@outlook.com");
   if (!to) return;
-  const label = { view: "opened the pitch page", play: "started the video", complete: "watched to the end" }[event] || event;
+  const label = {
+    view: "opened the pitch page",
+    revisit: "came back to the pitch page",
+    play: "started the video",
+    progress: "video progress",
+    complete: "watched to the end",
+    cta_demo: "tapped Explore your live platform",
+    cta_reply: "tapped reply to Chris",
+  }[event] || event;
   const body = [
     `Prospect: ${slug}`,
     `Event: ${label}`,
@@ -87,7 +104,15 @@ async function notify({ slug, event, pct }) {
 async function notifyViaWeb3Forms({ slug, event, pct }) {
   const key = cleanStr(process.env.PITCH_WEB3FORMS_KEY);
   if (!key) return false;
-  const label = { view: "opened the pitch page", play: "started the video", complete: "watched to the end" }[event] || event;
+  const label = {
+    view: "opened the pitch page",
+    revisit: "came back to the pitch page",
+    play: "started the video",
+    progress: "video progress",
+    complete: "watched to the end",
+    cta_demo: "tapped Explore your live platform",
+    cta_reply: "tapped reply to Chris",
+  }[event] || event;
   try {
     const r = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -109,7 +134,15 @@ async function notifyViaWeb3Forms({ slug, event, pct }) {
 async function notifyViaNtfy({ slug, event, pct }) {
   const topic = cleanStr(process.env.PITCH_NTFY_TOPIC, 80);
   if (!topic) return false;
-  const label = { view: "opened the pitch page", play: "started the video", complete: "watched to the end" }[event] || event;
+  const label = {
+    view: "opened the pitch page",
+    revisit: "came back to the pitch page",
+    play: "started the video",
+    progress: "video progress",
+    complete: "watched to the end",
+    cta_demo: "tapped Explore your live platform",
+    cta_reply: "tapped reply to Chris",
+  }[event] || event;
   try {
     const r = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
       method: "POST",

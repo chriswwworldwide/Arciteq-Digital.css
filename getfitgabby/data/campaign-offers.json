@@ -1,0 +1,13 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Online coaching with Gabby",
+      "goal": "Offer enquiries",
+      "destination": "https://linktr.ee/gabriellamoriarty",
+      "image": "/getfitgabby/images/coaching-hero.jpg",
+      "headline": "Start with your goals, training experience and available time. Use Gabby's online-coaching contact form to discuss the next step.",
+      "actionLabel": "Open Gabby's coaching hub"
+    }
+  ]
+}

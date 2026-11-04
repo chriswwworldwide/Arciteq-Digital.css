@@ -1,4 +1,23 @@
 {
-  "note": "Real client quotes only, in the athlete's own words, with their permission. The home page section stays hidden until at least one row has `quote` and `name`. Fields: quote, name, detail (e.g. 'Hyrox UK 2025, 1:21'), plan (optional).",
-  "items": []
+  "sourceURL": "https://georgegraysonfitness.co.uk/8-week-program/",
+  "items": [
+    {
+      "name": "Rebecca Prime",
+      "quote": "The plan is not a diet, it’s an education to understand your body, your strength and your aspirations.",
+      "detail": "GG eight-week programme client",
+      "sourceURL": "https://georgegraysonfitness.co.uk/8-week-program/"
+    },
+    {
+      "name": "Emily Harmen",
+      "quote": "The WhatsApp group chats were really encouraging and kept you focused with other like minded people.",
+      "detail": "GG eight-week programme client",
+      "sourceURL": "https://georgegraysonfitness.co.uk/8-week-program/"
+    },
+    {
+      "name": "Emma Ryder",
+      "quote": "He has a friendly nature coupled with a real focus on training & helping you to achieve your goals.",
+      "detail": "GG coaching client",
+      "sourceURL": "https://georgegraysonfitness.co.uk/8-week-program/"
+    }
+  ]
 }

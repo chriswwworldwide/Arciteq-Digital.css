@@ -88,6 +88,7 @@ async function notify({ slug, event, pct }) {
     play: "started the video",
     progress: "video progress",
     complete: "watched to the end",
+    site_visit: "visited your live platform",
     cta_demo: "tapped Explore your live platform",
     cta_reply: "tapped reply to Chris",
   }[event] || event;
@@ -113,6 +114,7 @@ async function notifyViaWeb3Forms({ slug, event, pct }) {
     play: "started the video",
     progress: "video progress",
     complete: "watched to the end",
+    site_visit: "visited your live platform",
     cta_demo: "tapped Explore your live platform",
     cta_reply: "tapped reply to Chris",
   }[event] || event;
@@ -143,6 +145,7 @@ async function notifyViaNtfy({ slug, event, pct }) {
     play: "started the video",
     progress: "video progress",
     complete: "watched to the end",
+    site_visit: "visited your live platform",
     cta_demo: "tapped Explore your live platform",
     cta_reply: "tapped reply to Chris",
   }[event] || event;
@@ -165,6 +168,44 @@ async function notifyViaNtfy({ slug, event, pct }) {
 
 export function createPitchRouter({ adminApiKey }) {
   const router = express.Router();
+  const recentSiteVisits = new Map(); // `${slug}:${ip}` -> last-pinged ms
+
+  // Platform visit beacon: GET /<slug>/ (or index.html) on a tracked coach
+  // logs a site_visit and pings once per IP+slug per hour. Static assets are
+  // two segments deep, so only the front door counts. The middleware only
+  // observes — the request still falls through to the static site.
+  router.use((req, res, next) => {
+    if (req.method !== "GET" && req.method !== "HEAD") return next();
+    const match = req.path.match(/^\/([a-z0-9-]+)\/?(?:index\.html)?$/);
+    if (!match || !VALID_SLUGS.has(match[1])) return next();
+    const slug = match[1];
+    const ua = cleanStr(req.headers["user-agent"], 200);
+    const ip = cleanStr(req.ip || "", 60);
+    if (/bot|crawler|spider|preview|headless|slurp/i.test(ua)) return next();
+
+    (async () => {
+      if (await ensureTable())
+        dbQuery(
+          "INSERT INTO pitch_events (slug, event, session_id, ua, ip) VALUES ($1,'site_visit',$2,$3,$4)",
+          [slug, `site:${ip || ua.slice(0, 40)}`, ua || null, ip || null],
+        ).catch(() => {});
+    })().catch(() => {});
+
+    const dedupeKey = `${slug}:${ip}`;
+    const now = Date.now();
+    if (now - (recentSiteVisits.get(dedupeKey) || 0) > 3600000) {
+      recentSiteVisits.set(dedupeKey, now);
+      if (recentSiteVisits.size > 5000) recentSiteVisits.clear();
+      const task =
+        (cleanStr(process.env.PITCH_NTFY_TOPIC) &&
+          notifyViaNtfy({ slug, event: "site_visit", pct: null })) ||
+        (cleanStr(process.env.PITCH_WEB3FORMS_KEY) &&
+          notifyViaWeb3Forms({ slug, event: "site_visit", pct: null })) ||
+        notify({ slug, event: "site_visit", pct: null });
+      task.catch(() => {});
+    }
+    next();
+  });
 
   router.post("/api/pitch-event", async (req, res) => {
     const slug = cleanStr(req.body?.slug, 40);

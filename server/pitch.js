@@ -30,6 +30,7 @@ const EMAIL_EVENTS = new Set([
   "view",
   "revisit",
   "play",
+  "progress",
   "complete",
   "cta_demo",
   "cta_reply",
@@ -189,7 +190,10 @@ export function createPitchRouter({ adminApiKey }) {
       ).catch(() => {});
     }
 
-    if (EMAIL_EVENTS.has(event)) {
+    if (
+      EMAIL_EVENTS.has(event) &&
+      (event !== "progress" || (pct !== null && pct >= 50))
+    ) {
       // Fire-and-forget: Web3Forms when configured (zero-setup delivery to
       // any inbox), otherwise the Resend/sendmail path. Never block the page.
       const task =
@@ -227,7 +231,7 @@ export function createPitchRouter({ adminApiKey }) {
        ORDER BY slug, event`,
     );
     const latest = await dbQuery(
-      `SELECT slug, event, pct, session_id, created_at
+      `SELECT slug, event, pct, session_id, ua, ip, created_at
        FROM pitch_events ORDER BY created_at DESC LIMIT 40`,
     );
     return res.json({

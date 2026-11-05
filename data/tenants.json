@@ -5887,5 +5887,35 @@
       },
       "demo": true
     }
-  ]
+,
+    {
+      "tenant_id": "coachedbykim",
+      "vertical": "coaching",
+      "hostnames": ["coachedbykim.localhost", "demo-coachedbykim.localhost"],
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {"nicheCategorySlugs": [], "heroProductIds": [], "productTypeSlugs": []},
+      "seo": {
+        "brandName": "Après London",
+        "tagline": "HYROX coaching, strength training and race prep with Kim at Après London.",
+        "about": "Coaching with Kim at Après London — HYROX prep, strength and running support, and a community to share the work.",
+        "supportEmail": "",
+        "meta": {"homeDescription": "Après London — HYROX coach and Team GB age-group racer. Coaching, race tools and partner links."},
+        "sameAs": ["https://www.instagram.com/apreslondon/"],
+        "staticPages": [
+          {"path": "/coachedbykim/", "priority": "1.0"},
+          {"path": "/coachedbykim/coaching.html", "priority": "0.9"},
+          {"path": "/coachedbykim/stations-prep.html", "priority": "0.8"},
+          {"path": "/coachedbykim/events.html", "priority": "0.8"}
+        ]
+      },
+      "features": {"predictor": true, "chatbot": false},
+      "automation": {
+        "inbox": "coachedbykim/data/inbox.json",
+        "writable": [],
+        "autoApprove": [],
+        "coachPath": "/coachedbykim/desk.html?audience=coach"
+      },
+      "demo": true
+    }  ]
 }

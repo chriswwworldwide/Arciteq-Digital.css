@@ -35,6 +35,15 @@ const EMAIL_EVENTS = new Set([
   "cta_demo",
   "cta_reply",
 ]);
+const SELF_IPS = new Set(
+  (process.env.PITCH_SELF_IPS || "152.233.29.1,152.233.29.2,152.233.29.4,152.233.29.5")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean),
+);
+const isSelfVisitor = (ip, ua) =>
+  SELF_IPS.has(ip) || /selftest|probe-check/i.test(ua);
+
 const VALID_SLUGS = new Set([
   "faisalpma",
   "jadeskillen",
@@ -79,7 +88,7 @@ function cleanStr(v, max = 120) {
     .slice(0, max);
 }
 
-async function notify({ slug, event, pct }) {
+async function notify({ slug, event, pct, self = false }) {
   const to = cleanStr(process.env.PITCH_NOTIFY_TO || "chriswworldwide@outlook.com");
   if (!to) return;
   const label = {
@@ -102,10 +111,16 @@ async function notify({ slug, event, pct }) {
   ]
     .filter(Boolean)
     .join("\n");
-  await sendAlertEmail({ to, subject: `Pitch: ${slug} ${label}`, body });
+  const result = await sendAlertEmail({
+    to,
+    subject: `${self ? "TEST · " : ""}Pitch: ${slug} ${label}`,
+    body,
+  });
+  if (!result?.ok)
+    console.warn(`[pitch-alert] ${slug} ${event} send failed:`, result);
 }
 
-async function notifyViaWeb3Forms({ slug, event, pct }) {
+async function notifyViaWeb3Forms({ slug, event, pct, self = false }) {
   const key = cleanStr(process.env.PITCH_WEB3FORMS_KEY);
   if (!key) return false;
   const label = {
@@ -124,7 +139,7 @@ async function notifyViaWeb3Forms({ slug, event, pct }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         access_key: key,
-        subject: `Pitch: ${slug} ${label}`,
+        subject: `${self ? "TEST · " : ""}Pitch: ${slug} ${label}`,
         from_name: "Station 9 pitch tracker",
         message: `Prospect: ${slug}\nEvent: ${label}\n${pct !== null ? `Progress: ${pct}%\n` : ""}Time: ${new Date().toISOString()}\n\nhttps://www.station9studio.co.uk/pitch/${slug}/`,
       }),
@@ -136,7 +151,7 @@ async function notifyViaWeb3Forms({ slug, event, pct }) {
   }
 }
 
-async function notifyViaNtfy({ slug, event, pct }) {
+async function notifyViaNtfy({ slug, event, pct, self = false }) {
   const topic = cleanStr(process.env.PITCH_NTFY_TOPIC, 80);
   if (!topic) return false;
   const label = {
@@ -153,7 +168,7 @@ async function notifyViaNtfy({ slug, event, pct }) {
     const r = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
       method: "POST",
       headers: {
-        Title: `Pitch: ${slug} ${label}`,
+        Title: `${self ? "TEST · " : ""}Pitch: ${slug} ${label}`,
         Priority: event === "complete" ? "4" : "3",
         Tags: event === "complete" ? "eyes,fire" : "eyes",
       },
@@ -205,6 +220,7 @@ export function createPitchRouter({ adminApiKey }) {
     const ua = cleanStr(req.headers["user-agent"], 200);
     const ip = cleanStr(req.ip || "", 60);
     if (/bot|crawler|spider|preview|headless|slurp/i.test(ua)) return next();
+    const self = isSelfVisitor(ip, ua);
 
     (async () => {
       if (await ensureTable())
@@ -221,10 +237,10 @@ export function createPitchRouter({ adminApiKey }) {
       if (recentSiteVisits.size > 5000) recentSiteVisits.clear();
       enqueueAlert(() =>
         (cleanStr(process.env.PITCH_NTFY_TOPIC) &&
-          notifyViaNtfy({ slug, event: "site_visit", pct: null })) ||
+          notifyViaNtfy({ slug, event: "site_visit", pct: null, self })) ||
         (cleanStr(process.env.PITCH_WEB3FORMS_KEY) &&
-          notifyViaWeb3Forms({ slug, event: "site_visit", pct: null })) ||
-        notify({ slug, event: "site_visit", pct: null }),
+          notifyViaWeb3Forms({ slug, event: "site_visit", pct: null, self })) ||
+        notify({ slug, event: "site_visit", pct: null, self }),
       );
     }
     next();
@@ -245,6 +261,7 @@ export function createPitchRouter({ adminApiKey }) {
 
     const ua = cleanStr(req.headers["user-agent"], 200);
     const ip = cleanStr(req.ip || "", 60);
+    const self = isSelfVisitor(ip, ua);
 
     const ok = await ensureTable();
     if (ok) {
@@ -263,10 +280,10 @@ export function createPitchRouter({ adminApiKey }) {
       // block the page.
       enqueueAlert(() =>
         (cleanStr(process.env.PITCH_NTFY_TOPIC) &&
-          notifyViaNtfy({ slug, event, pct })) ||
+          notifyViaNtfy({ slug, event, pct, self })) ||
         (cleanStr(process.env.PITCH_WEB3FORMS_KEY) &&
-          notifyViaWeb3Forms({ slug, event, pct })) ||
-        notify({ slug, event, pct }),
+          notifyViaWeb3Forms({ slug, event, pct, self })) ||
+        notify({ slug, event, pct, self }),
       );
     }
 

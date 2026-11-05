@@ -1,0 +1,29 @@
+{
+  "note": "Race-weekend stories built from Kim's recorded race history.",
+  "items": [
+    {
+      "date": "2024",
+      "race": "HYROX London",
+      "weekend": "Mixed doubles",
+      "highlights": [
+        "1:01:55 race result",
+        "Her fastest recorded doubles time"
+      ],
+      "take": "A shared race works when the pair can split the work honestly — nine partners teaches you that fast.",
+      "source": "https://www.instagram.com/coachedby_kim/",
+      "sourceName": "Kim Mansell on Instagram"
+    },
+    {
+      "date": "2023",
+      "race": "HYROX Barcelona",
+      "weekend": "Mixed doubles",
+      "highlights": [
+        "1:04:19 race result",
+        "Race photography from Barcelona"
+      ],
+      "take": "Barcelona is proof the studio-owner version of Kim still has race-floor receipts behind it.",
+      "source": "https://www.instagram.com/coachedby_kim/",
+      "sourceName": "Kim Mansell on Instagram"
+    }
+  ]
+}

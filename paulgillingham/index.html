@@ -38,7 +38,7 @@
     />
     <link
       rel="stylesheet"
-      href="/paulgillingham/styles.css?v=mobile-crops-20261103"
+      href="/paulgillingham/styles.css?v=crop-fix-20261103"
     />
     <script>
       document.documentElement.classList.add("js");
@@ -124,6 +124,27 @@
             );
           } catch {}
         };
+        const holdScroll = (target, duration = 2500, delays = [200, 600, 1200]) => {
+          restoring = true;
+          if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+          const inputs = ["wheel", "touchstart", "pointerdown", "keydown"];
+          const restore = () => {
+            if (!restoring) return;
+            const point = target();
+            window.scrollTo({ left: point.x, top: point.y, behavior: "instant" });
+          };
+          let observer, frame, deadline, retries = [];
+          const stop = () => {
+            restoring = false; observer?.disconnect(); cancelAnimationFrame(frame); clearTimeout(deadline); retries.forEach(clearTimeout);
+            inputs.forEach(type => removeEventListener(type, stop, true)); auto(); stopRestore = () => {};
+          };
+          stopRestore = stop;
+          inputs.forEach(type => addEventListener(type, stop, { capture: true, passive: true, once: true }));
+          if (typeof ResizeObserver === "function") { observer = new ResizeObserver(restore); observer.observe(document.body); }
+          frame = requestAnimationFrame(restore);
+          retries = delays.map(delay => setTimeout(restore, delay));
+          deadline = setTimeout(stop, duration);
+        };
         if ("scrollRestoration" in history)
           history.scrollRestoration =
             reloaded || (returning && history.state?.[key]) ? "manual" : "auto";
@@ -168,54 +189,19 @@
             Number.isFinite(point?.x) &&
             Number.isFinite(point?.y)
           ) {
-            restoring = true;
             lastAnchor = point.anchor || null;
-            if ("scrollRestoration" in history)
-              history.scrollRestoration = "manual";
-            const inputs = ["wheel", "touchstart", "pointerdown", "keydown"];
-            const restore = () => {
-              if (!restoring) return;
+            holdScroll(() => {
               const node = findHomeAnchor(point.anchor);
-              const top = node
-                ? node.getBoundingClientRect().top + scrollY - point.anchor.top
-                : point.y;
-              window.scrollTo({ left: point.x, top, behavior: "instant" });
-            };
-            let observer,
-              frame,
-              deadline,
-              retries = [];
-            const stop = () => {
-              restoring = false;
-              observer?.disconnect();
-              cancelAnimationFrame(frame);
-              clearTimeout(deadline);
-              retries.forEach(clearTimeout);
-              inputs.forEach((type) => removeEventListener(type, stop, true));
-              auto();
-              stopRestore = () => {};
-            };
-            stopRestore = stop;
-            inputs.forEach((type) =>
-              addEventListener(type, stop, {
-                capture: true,
-                passive: true,
-                once: true,
-              }),
-            );
-            if (typeof ResizeObserver === "function") {
-              observer = new ResizeObserver(restore);
-              observer.observe(document.body);
-            }
-            frame = requestAnimationFrame(restore);
-            retries = [200, 600, 1200].map((delay) =>
-              setTimeout(restore, delay),
-            );
-            deadline = setTimeout(stop, 2500);
-          } else if (reloaded && !event.persisted) {
-            window.scrollTo({ left: 0, top: 0, behavior: "instant" });
-            requestAnimationFrame(auto);
-          } else auto();
+              return {
+                x: point.x,
+                y: node
+                  ? node.getBoundingClientRect().top + scrollY - point.anchor.top
+                  : point.y,
+              };
+            });
+          } else if (reloaded && !event.persisted)
+            holdScroll(() => ({ x: 0, y: 0 }), 500, [50, 150, 350]);
+          else auto();
         });
       })();
     </script>

@@ -277,12 +277,8 @@ body.shelf .join-form select:focus {
 }
 
 @media (max-width: 900px) {
-  body.shelf .guide-hero-photo img {
-    height: 210px;
-  }
+  body.shelf .guide-hero-photo img { height: 210px; }
 }
 @media (max-width: 600px) {
-  body.shelf .guide-hero-photo img {
-    height: 190px;
-  }
+  body.shelf .guide-hero-photo img { height: 190px; }
 }

@@ -1,0 +1,38 @@
+{
+  "note": "The Après London channel is verified; format cards show where Kim's own clips can sit.",
+  "items": [
+    {
+      "id": "apres-youtube",
+      "title": "Après London on YouTube",
+      "description": "The studio's verified video channel — the right public home for class, race and behind-the-scenes content.",
+      "category": "Studio",
+      "url": "https://www.youtube.com/@Apr%C3%A8s.London",
+      "thumbnail": "/coachedbykim/images/coaching-hero.jpg",
+      "status": "published",
+      "sample": false,
+      "linkLabel": "Open Après London"
+    },
+    {
+      "id": "technique-library",
+      "title": "Technique library",
+      "description": "Station cues and form checks — the training shelf is ready for Kim's clips.",
+      "category": "Training",
+      "url": "https://www.youtube.com/@Apr%C3%A8s.London",
+      "thumbnail": "/coachedbykim/images/stations-hero.jpg",
+      "status": "published",
+      "sample": true,
+      "linkLabel": "Open the channel"
+    },
+    {
+      "id": "race-weekend-stories",
+      "title": "Race-weekend stories",
+      "description": "Race stories and weekend debriefs — the shelf is ready for Kim's own videos.",
+      "category": "Race stories",
+      "url": "https://www.youtube.com/@Apr%C3%A8s.London",
+      "thumbnail": "/coachedbykim/images/run-hero.jpg",
+      "status": "published",
+      "sample": true,
+      "linkLabel": "Open the channel"
+    }
+  ]
+}

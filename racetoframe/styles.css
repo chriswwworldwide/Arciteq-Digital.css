@@ -1,18 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Allura&display=swap");
 
 :root{
-  --hero-focus: 50% 35%;
-  --ink: #0f0f11;
-  --ink-2: #3a3a40;
-  --ink-3: #7a7a85;
-  --paper: #f8faff;
-  --paper-2: #eef3fc;
-  --line: #dbe4f0;
+  --hero-focus: 70% 50%;
+  --hero-fill: url("/racetoframe/images/hero.jpg");
+  --ink: #f2f2f0;
+  --ink-2: #cfcfd6;
+  --ink-3: #9c9ca6;
+  --paper: #0b0b0e;
+  --paper-2: #16161c;
+  --line: #2a2a32;
   --pink: #2563eb;
   --pink-600: #1d4ed8;
   --pink-100: #dbeafe;
+  --zone-accent: #b45309;
   --radius: 14px;
-  --shadow: 0 10px 30px rgba(8, 20, 45, 0.08);
+  --shadow: 0 10px 30px rgba(11, 11, 14, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
 }
 
@@ -126,7 +128,7 @@ a.wordmark {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(12, 12, 16, 0.92);
   backdrop-filter: blur(8px);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -145,6 +147,7 @@ a.wordmark {
   display: none;
   background: none;
   border: 1px solid var(--line);
+  color: var(--pink);
   border-radius: 999px;
   padding: 8px 16px;
   min-height: 44px;
@@ -193,6 +196,21 @@ a.wordmark {
   background: var(--paper-2);
 }
 
+/* nav zone colours — every tenant MUST allocate --zone-accent in its config
+   (colors.zoneAccent): a dark complement of the signature colour, readable
+   (>= ~4:1) on both white and the dark menu. nav-sell marks the coach's offer
+   in signature colour; nav-acc marks the shared visitor-benefit drawers. */
+.menu > li > a.nav-sell,
+.menu > li > button.nav-sell {
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.menu > li > a.nav-acc,
+.menu > li > button.nav-acc {
+  color: var(--zone-accent);
+}
+
 .menu .caret {
   width: 8px;
   height: 8px;
@@ -230,7 +248,7 @@ a.wordmark {
 }
 
 .sub a:hover {
-  background: var(--pink-100);
+  background: color-mix(in srgb, var(--pink) 18%, var(--paper-2));
   color: var(--ink);
 }
 
@@ -259,7 +277,7 @@ a.wordmark {
   height: 8px;
   border-radius: 50%;
   background: var(--pink);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 0 0 3px rgba(255, 46, 99, 0.25);
 }
 
 .chat-zone:hover .dot {
@@ -329,7 +347,7 @@ a.wordmark {
 
 .s9-zone:hover {
   color: var(--pink) !important;
-  background: var(--pink-100) !important;
+  background: color-mix(in srgb, var(--pink) 18%, var(--paper-2)) !important;
 }
 
 /* ---------- Buttons ---------- */
@@ -378,7 +396,7 @@ button.btn {
   margin: 0 0 12px;
   padding: 10px 12px;
   border-left: 3px solid var(--pink);
-  background: var(--pink-soft, #eff6ff);
+  background: var(--pink-soft, #1f1218);
   font-size: 13px;
   line-height: 1.5;
   color: var(--ink-2, #444);
@@ -400,7 +418,7 @@ button.btn {
   padding: 18px 22px;
   border: 1px solid var(--line, #e6e6ea);
   border-radius: 14px;
-  background: #fff;
+  background: #14141a;
 }
 
 .wall-times {
@@ -435,7 +453,7 @@ button.btn {
   margin-top: 40px;
   padding: 24px 26px;
   border-radius: 14px;
-  background: var(--pink-soft, #eff6ff);
+  background: var(--pink-soft, #1f1218);
 }
 
 .week ul {
@@ -506,7 +524,7 @@ button.btn {
 }
 
 .btn-ghost {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(18, 18, 22, 0.88);
   color: var(--ink);
 }
 
@@ -517,7 +535,7 @@ button.btn {
 }
 
 .btn-light:hover {
-  background: #fff;
+  background: #14141a;
   color: var(--ink);
 }
 
@@ -529,7 +547,7 @@ button.btn {
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   align-items: stretch;
   color: #fff;
-  background: var(--ink);
+  background: var(--paper);
   overflow: hidden;
   isolation: isolate;
 }
@@ -553,9 +571,9 @@ button.btn {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(8, 20, 45, 1) 0%,
-    rgba(8, 20, 45, 0) 22%,
-    rgba(8, 20, 45, 0) 100%
+    rgba(11, 11, 14, 1) 0%,
+    rgba(11, 11, 14, 0) 22%,
+    rgba(11, 11, 14, 0) 100%
   );
 }
 
@@ -626,7 +644,7 @@ button.btn {
 /* Full-bleed hero variant: photo fills the section, copy sits bottom-left */
 .hero--bleed {
   display: block;
-  min-height: min(84vh, 800px);
+  min-height: min(98vh, 960px);
 }
 
 .hero--bleed img {
@@ -636,15 +654,6 @@ button.btn {
   height: 100%;
   object-fit: cover;
   object-position: 55% 30%;
-}
-
-/* Desktop: show the whole photo over a blurred stretch of itself —
-   a near-square image cropped by a wide hero loses her head otherwise */
-.hero--bleed .hero-amb {
-  object-fit: cover;
-  object-position: 55% 30%;
-  filter: blur(48px) brightness(0.55) saturate(1.15);
-  transform: scale(1.15);
 }
 
 .hero--bleed .hero-img {
@@ -663,15 +672,15 @@ button.btn {
   background:
     linear-gradient(
       180deg,
-      rgba(8, 20, 45, 0.05) 0%,
-      rgba(8, 20, 45, 0.2) 45%,
-      rgba(8, 20, 45, 0.86) 100%
+      rgba(11, 11, 14, 0.05) 0%,
+      rgba(11, 11, 14, 0.2) 45%,
+      rgba(11, 11, 14, 0.86) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(8, 20, 45, 0.82) 0%,
-      rgba(8, 20, 45, 0.35) 45%,
-      rgba(8, 20, 45, 0) 68%
+      rgba(11, 11, 14, 0.82) 0%,
+      rgba(11, 11, 14, 0.35) 45%,
+      rgba(11, 11, 14, 0) 68%
     );
 }
 
@@ -679,7 +688,7 @@ button.btn {
   position: relative;
   width: min(1180px, 100% - 40px);
   margin: 0 auto;
-  min-height: min(84vh, 800px);
+  min-height: min(98vh, 960px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -762,7 +771,7 @@ section.block.alt {
 .zone--hook {
   grid-column: 1 / -1;
   border-color: var(--pink);
-  background: linear-gradient(180deg, var(--paper), #eff6ff);
+  background: linear-gradient(180deg, var(--paper), #0e0e12);
 }
 
 .zone:hover {
@@ -887,7 +896,7 @@ section.block.alt {
 
 .plan.featured {
   border-color: var(--pink);
-  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.14);
+  box-shadow: 0 16px 40px rgba(255, 46, 99, 0.14);
 }
 
 .plan .tag {
@@ -985,6 +994,14 @@ section.block.alt {
   text-align: right;
 }
 
+/* Prep Club card sits on a pale panel — local dark ink, not the theme's near-white */
+.plan-crew .crew-copy h4,
+.plan-crew .price { color: #0b0b0e; }
+.plan-crew .crew-line { color: #2a2a33; }
+.plan-crew .crew-note,
+.plan-crew .price small,
+.plan-crew .crew-side .per { color: #5a5a66; }
+
 /* Events */
 .events {
   display: grid;
@@ -994,7 +1011,7 @@ section.block.alt {
 
 .event {
   display: grid;
-  grid-template-columns: 90px 1fr auto;
+  grid-template-columns: 120px 1fr auto;
   gap: 20px;
   align-items: center;
   padding: 18px 22px;
@@ -1041,7 +1058,7 @@ section.block.alt {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: var(--ink);
+  background: var(--paper);
   color: #fff;
   padding: 72px 0;
 }
@@ -1052,9 +1069,9 @@ section.block.alt {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 80%;
-  opacity: 0.22;
-  filter: grayscale(1);
+  object-position: 50% 60%;
+  opacity: 0.38;
+  filter: grayscale(0.45);
   z-index: -1;
 }
 
@@ -1065,8 +1082,8 @@ section.block.alt {
   z-index: -1;
   background: linear-gradient(
     90deg,
-    rgba(8, 20, 45, 0.95) 0%,
-    rgba(8, 20, 45, 0.55) 100%
+    rgba(11, 11, 14, 0.95) 0%,
+    rgba(11, 11, 14, 0.55) 100%
   );
 }
 
@@ -1083,7 +1100,7 @@ section.block.alt {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--pink);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 0 0 4px rgba(255, 46, 99, 0.25);
 }
 
 .capture .wrap {
@@ -1189,7 +1206,7 @@ section.block.alt {
   margin-top: 22px;
   padding: 24px;
   border-radius: 20px;
-  border: 1px solid rgba(37, 99, 235, 0.45);
+  border: 1px solid rgba(255, 46, 99, 0.45);
   background: rgba(0, 0, 0, 0.35);
 }
 
@@ -1214,7 +1231,7 @@ section.block.alt {
   margin-top: 22px;
   padding: 22px;
   border-radius: 20px;
-  border: 1px solid rgba(37, 99, 235, 0.45);
+  border: 1px solid rgba(255, 46, 99, 0.45);
   background: rgba(0, 0, 0, 0.35);
 }
 
@@ -1286,7 +1303,8 @@ section.block.alt {
 }
 
 /* Footer */
-$1padding: 40px 0 96px;
+footer {
+  padding: 40px 0 96px;
   border-top: 1px solid var(--line);
   color: var(--ink-3);
   font-size: 14px;
@@ -1376,7 +1394,7 @@ footer a:hover {
     grid-row: 1;
     background: linear-gradient(
       180deg,
-      rgba(8, 20, 45, 0) 55%,
+      rgba(11, 11, 14, 0) 55%,
       var(--ink) 100%
     );
   }
@@ -1395,9 +1413,6 @@ footer a:hover {
     height: auto;
     max-height: 70vh;
     object-position: 65% 45%;
-  }
-  .hero--bleed .hero-amb {
-    display: none;
   }
   /* The mask wrapper is desktop-only positioning — on phones it must stay in
      the grid: row 1 with the ::after fade overlaying it, copy in row 2 —
@@ -1427,7 +1442,7 @@ footer a:hover {
     right: 0;
     bottom: 0;
     height: 15%;
-    background: linear-gradient(180deg, transparent, var(--ink));
+    background: linear-gradient(180deg, transparent, var(--paper));
     pointer-events: none;
   }
   .hero--bleed .hero-img {
@@ -1441,8 +1456,8 @@ footer a:hover {
     position: static;
     background: linear-gradient(
       180deg,
-      rgba(8, 20, 45, 0) 55%,
-      var(--ink) 100%
+      rgba(11, 11, 14, 0) 55%,
+      var(--paper) 100%
     );
   }
   .hero--bleed .wrap {
@@ -1481,12 +1496,18 @@ footer a:hover {
   }
 }
 
+@media (min-width: 801px) {
+  .event {
+    column-gap: 48px;
+  }
+}
+
 @media (max-width: 560px) {
   .zones {
     grid-template-columns: 1fr;
   }
   .masthead h1 {
-    font-size: 7.4vw;
+    font-size: 5.9vw;
     letter-spacing: 0.04em;
   }
   .masthead .sig {
@@ -1509,6 +1530,8 @@ footer a:hover {
 .tips {
   background: var(--pink-100);
 }
+.tips h3 { color: #0b0b0e; }
+.block.tips p.lead { color: #3a3a44; }
 .tips .lead a {
   color: var(--pink-600);
   font-weight: 700;
@@ -1520,7 +1543,7 @@ footer a:hover {
   margin-top: 28px;
 }
 .tips-grid details {
-  background: #fff;
+  background: #14141a;
   border-radius: 14px;
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -1603,12 +1626,13 @@ footer a:hover {
   }
   .tips-photo img {
     aspect-ratio: 16 / 10;
+    object-position: 50% 20%;
   }
 }
 
 .capture .chat-line {
   margin-top: 14px;
-  color: #444;
+  color: rgba(255, 255, 255, 0.88);
 }
 .chat-zone-inline {
   display: inline-flex;
@@ -1660,7 +1684,7 @@ footer a:hover {
   color: var(--ink-3);
 }
 
-/* The G&amp;H Wall — polaroid scatter */
+/* Race Wall — polaroid scatter */
 .gallery {
   background: var(--paper-2);
   overflow: hidden;
@@ -1680,7 +1704,7 @@ footer a:hover {
   position: relative;
   width: clamp(190px, 22vw, 260px);
   padding: 12px 12px 14px;
-  background: #fff;
+  background: #14141a;
   border: 0;
   border-radius: 3px;
   box-shadow:
@@ -1708,7 +1732,7 @@ footer a:hover {
   width: 64px;
   height: 22px;
   margin-left: -32px;
-  background: rgba(37, 99, 235, 0.35);
+  background: rgba(224, 30, 78, 0.35);
   transform: rotate(calc(var(--tilt) * -1.5));
   border-radius: 2px;
 }
@@ -1768,7 +1792,7 @@ footer a:hover {
 .shot-form {
   margin-top: 22px;
   padding: 22px;
-  background: #fff;
+  background: #14141a;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   text-align: left;
@@ -1863,12 +1887,12 @@ footer a:hover {
 }
 
 .lightbox::backdrop {
-  background: rgba(8, 20, 45, 0.92);
+  background: rgba(11, 11, 14, 0.92);
 }
 
 .lightbox figure {
   margin: 0;
-  background: #fff;
+  background: #14141a;
   padding: 14px 14px 18px;
   border-radius: 4px;
 }
@@ -1906,7 +1930,7 @@ footer a:hover {
   height: 44px;
   border: 0;
   border-radius: 50%;
-  background: #fff;
+  background: #14141a;
   color: var(--ink);
   font-size: 26px;
   line-height: 1;
@@ -1952,7 +1976,7 @@ footer a:hover {
   flex-direction: column;
   min-width: 180px;
   padding: 6px;
-  background: #fff;
+  background: #14141a;
   border: 1.5px solid var(--ink);
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
@@ -2007,7 +2031,7 @@ footer a:hover {
   padding: 8px 16px;
   border-radius: 999px;
   border: 1px solid rgba(0, 0, 0, 0.14);
-  background: #fff;
+  background: #14141a;
   color: var(--ink-2);
   font: inherit;
   font-size: 13px;
@@ -2017,9 +2041,9 @@ footer a:hover {
 }
 
 .event-tabs button[aria-selected="true"] {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #0b0b0e;
 }
 
 .event-tabs button span {
@@ -2084,6 +2108,12 @@ footer a:hover {
 }
 
 /* Testimonials (hidden until testimonials.json has a real quote) */
+.plans.verified-offers,.guidance--coach .plans.verified-offers{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));}
+.verified-offers .plan{min-width:0;}
+.verified-offers .btn{white-space:normal;text-align:center;}
+.offer-terms{font-size:.85rem;line-height:1.6;color:var(--ink-2);margin:1rem 0 1.5rem;}.coaching-testimonials{margin:2rem 0;}.quote-source{display:block;margin-top:.6rem;font-size:.8rem;}
+#athletes-say .quote{background:var(--paper-2);color:var(--ink);}
+#athletes-say .quote footer{padding:12px 0 0;margin:0;line-height:1.6;color:var(--ink-2);}.block#athletes-say:not([hidden]){padding-bottom:32px;}.block#athletes-say:not([hidden]) + #events{padding-top:32px;background:color-mix(in srgb,var(--paper) 94%,white);}
 .quotes {
   display: grid;
   gap: 18px;
@@ -2094,7 +2124,7 @@ footer a:hover {
   padding: 24px 26px;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: #fff;
+  background: #14141a;
 }
 .quote p {
   margin: 0 0 14px;
@@ -2171,18 +2201,6 @@ body.has-sticky-cta {
   }
 }
 
-#pelatih ul {
-  list-style: none;
-  padding: 0;
-  margin: 18px 0 0;
-  display: grid;
-  gap: 10px;
-}
-
-#pelatih li a {
-  font-weight: 700;
-}
-
 .hp {
   position: absolute !important;
   left: -9999px;
@@ -2191,15 +2209,15 @@ body.has-sticky-cta {
   overflow: hidden;
 }
 
-/* WhatsApp: hero button + floating bubble (app.js fills the number) */
+/* Message: hero button + floating Instagram button */
 .btn[hidden] {
   display: none;
 }
 
 .btn-wa {
-  background: #1c1c1e;
+  background: #2563eb;
   color: #ffffff;
-  border-color: #1c1c1e;
+  border-color: #2563eb;
 }
 
 .btn-wa:hover {
@@ -2253,13 +2271,19 @@ body.has-sticky-cta .wa-fab {
 /* --- Motion layer: quiet life, transform/opacity only --- */
 
 /* White sheen sweeps the signature every few seconds */
+.masthead .sig { --signature-ink:color-mix(in srgb,var(--pink) 78%,#fff); color:var(--signature-ink); }
+.masthead .sig-text,.masthead .sig-line {
+  background-image:linear-gradient(105deg,var(--signature-ink) 42%,#fff 50%,var(--signature-ink) 58%);
+  background-size:300% 100%;
+  animation:sig-shine 7s ease-in-out infinite;
+}
+.masthead .sig-line {
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14'%3E%3Cpath fill='white' d='M3 10.5 C50 3.5 120 3 197 6.5 C120 6 50 8 3 10.5 Z'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14'%3E%3Cpath fill='white' d='M3 10.5 C50 3.5 120 3 197 6.5 C120 6 50 8 3 10.5 Z'/%3E%3C/svg%3E");
+  -webkit-mask-size:100% 100%; mask-size:100% 100%; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+}
+.masthead .sig-line path { fill:transparent; }
 .masthead .sig-text {
-  background: linear-gradient(
-    105deg,
-    var(--pink-600) 42%,
-    #eff6ff 50%,
-    var(--pink-600) 58%
-  );
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -2295,7 +2319,7 @@ body.has-sticky-cta .wa-fab {
   inset: 0;
 }
 
-/* Desktop only: melt the photo's left edge into its own ambient blur —
+/* Desktop only: melt the photo's left edge into the flat stage —
    the headline tail can graze the fade without ever touching a hard
    crop. Mobile's mask stays unmasked (its own grid row + rules). */
 @media (min-width: 801px) {
@@ -2384,7 +2408,7 @@ figure.reveal {
   transform: rotate(0deg) scale(1.05);
 }
 
-/* WhatsApp bubble takes a breath every ~9s */
+/* Floating message button takes a breath every ~9s */
 .wa-fab {
   animation: wa-breathe 9s ease-in-out infinite;
 }
@@ -2403,7 +2427,9 @@ figure.reveal {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .masthead .sig-text,.masthead .sig-line { background-image:linear-gradient(var(--signature-ink),var(--signature-ink)); }
   .masthead .sig-text,
+  .masthead .sig-line,
   .hero--bleed .hero-img,
   .wa-fab {
     animation: none;
@@ -2457,7 +2483,7 @@ figure.reveal {
   padding: 16px 18px;
   border: 1px solid rgba(15, 15, 17, 0.1);
   border-radius: 12px;
-  background: #fff;
+  background: #14141a;
 }
 
 .roundup-meta {
@@ -2491,6 +2517,15 @@ figure.reveal {
   text-decoration-style: dotted;
   text-underline-offset: 3px;
   cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .athlete-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 0;
+  }
 }
 
 .athlete-modal {
@@ -2583,7 +2618,7 @@ figure.reveal {
   border: 1px solid var(--pink-100);
   border-radius: 14px;
   padding: 22px;
-  box-shadow: 0 10px 30px rgba(8, 20, 45, 0.06);
+  box-shadow: 0 10px 30px rgba(11, 11, 14, 0.06);
   overflow: hidden;
 }
 .bc-head {
@@ -2803,4 +2838,103 @@ body[data-broadcast=locked] .bc-lock {
   }
 }
 
-#zones { color: var(--ink); background: var(--paper); } #zones .zone { color: var(--ink); } @media (max-width: 800px) { .hero--bleed .wrap { color: var(--ink); } .hero--bleed p, .hero--bleed .stats div span { color: var(--ink-2); } .hero--bleed .stats { border-top-color: var(--line); } }
+/* hero--full: photo covers the whole hero; reveal unrolls across the
+   full background. Opt-in per tenant via "heroFull": true. */
+/* Fit-with-fill hero: the full photo stays visible (no decapitations); the
+   blurred extension of the same shot fills the rest of the frame. */
+.hero--bleed[data-hero-mode="full"] .hero-mask::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--hero-fill);
+  background-size: cover;
+  background-position: center;
+  filter: blur(34px) brightness(0.42) saturate(1.05);
+  transform: scale(1.12);
+}
+.hero--bleed[data-hero-mode="full"] .hero-img {
+  z-index: 1;
+  object-fit: contain;
+  object-position: var(--hero-focus, 72% 50%);
+  filter: none;
+  padding: 0;
+}
+
+.hero--bleed[data-hero-mode="full"]::after {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(11, 11, 14, 0) 0%,
+      rgba(11, 11, 14, 0.02) 60%,
+      rgba(11, 11, 14, 0.18) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(11, 11, 14, 0.2) 0%,
+      rgba(11, 11, 14, 0.07) 35%,
+      rgba(11, 11, 14, 0) 50%
+    );
+}
+
+@media (min-width: 801px) {
+  .hero--bleed[data-hero-mode="full"] .hero-mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+/* Phones: the cover crop already reads well — keep it */
+@media (max-width: 800px) {
+  .hero--bleed[data-hero-mode="full"] .hero-mask::before { display: none; }
+  .hero--bleed[data-hero-mode="full"] .hero-img {
+    object-fit: cover;
+    object-position: 50% 20%;
+  }
+}
+
+/* readability: no orphan words in leads/standfirst, full-white copy in dark tips cards */
+.lead, .hero p { text-wrap: pretty; }
+.tips-grid ol, .tips-grid details p { color: #fff; }
+/* adjacent panels share one gap; delineate alt panels; tighten block before a CTA band */
+section.block + section.block { padding-top: 48px; }
+section.block:has(+ .cta-band) { padding-bottom: 40px; }
+.block.alt { box-shadow: inset 0 1px 0 var(--line); }
+section.cta-band { background: #14141a; }
+section.cta-band .btn-light { background: var(--ink); color: #14141a; }
+
+/* Hero copy on the photo is headline + max two-line subhead; buttons and stats sit below the photo. */
+.hero-below{background:#0b0b0e;color:#fff;padding:22px 0 30px;border-bottom:1px solid rgba(255,255,255,.08)}
+.hero-below .wrap{width:min(1180px,100% - 40px);margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 40px}
+.hero-below .actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-below .stats{display:flex;gap:34px;flex-wrap:wrap}
+.hero-below .stats div strong{display:block;font-size:22px;font-weight:800}
+.hero-below .stats div span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+@media (max-width:700px){.hero-below .wrap{flex-direction:column;align-items:flex-start}.hero-below .stats{gap:16px 26px}}
+
+/* Mobile: the floating message button waits until the hero has scrolled away, so it never sits on the headline or hero buttons. */
+.wa-fab { transition: opacity 0.3s ease; }
+@media (max-width: 800px) { body.hero-in-view .wa-fab { opacity: 0; pointer-events: none; } }
+
+@media (min-width: 901px) {
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 901px) {
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* crop focal fixes 2026-11-03 — shift banded crops up so heads/faces stay in frame */
+.guide-hero-photo img[src*='coaching-hero.jpg'],figure img[src*='coaching-hero.jpg'],#prep-feed img[src*='coaching-hero.jpg']{object-position:50% 15%!important}
+.race-instrument .guide-hero-photo img[src*='pb.jpg'],figure img[src*='pb.jpg']{object-position:50% 20%!important}
+figure img[src*='momentum.jpg'],.guide-hero-photo img[src*='momentum.jpg']{object-position:50% 20%!important}

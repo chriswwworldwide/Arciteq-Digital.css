@@ -1,0 +1,207 @@
+{
+  "checked": "2026-10-25",
+  "source": "https://hyrox.com/find-my-race/",
+  "timeZone": "UTC",
+  "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
+  "cities": [
+    {
+      "slug": "london",
+      "name": "London",
+      "country": "United Kingdom",
+      "timeZone": "Europe/London",
+      "tagline": "Choose the race slot first, then make the capital work around it.",
+      "race": {
+        "name": "Amazon HYROX London",
+        "status": "confirmed",
+        "start": "2026-12-02",
+        "end": "2026-12-06",
+        "source": "https://hyrox.com/event/hyrox-london-excel/",
+        "sourceLabel": "Official Amazon HYROX London event",
+        "dates": "2 Dec 2026 – 6 Dec 2026"
+      },
+      "gettingThere": [
+        "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
+        "Compare your arrival station or airport with the venue journey, including weekend service changes."
+      ],
+      "hotels": [
+        {
+          "area": "Venue access first",
+          "picks": "Prioritise a straightforward early journey over a small saving on a room across the city. Check breakfast and bag storage around your wave.",
+          "range": "Hotel rates vary by date; check live prices."
+        }
+      ],
+      "food": [
+        "Book a familiar meal near your hotel and carry the race fuel you have already practised with."
+      ],
+      "nightAfter": [
+        "Pick a post-race meeting point before the venue gets busy."
+      ]
+    },
+    {
+      "slug": "manchester",
+      "name": "Manchester",
+      "country": "United Kingdom",
+      "timeZone": "Europe/London",
+      "tagline": "A city race with an easy plan for the days around it.",
+      "race": {
+        "name": "HYROX Manchester",
+        "status": "confirmed",
+        "start": "2027-01-20",
+        "end": "2027-01-31",
+        "source": "https://hyrox.com/event/hyrox-manchester/",
+        "sourceLabel": "Official HYROX Manchester event",
+        "dates": "20 Jan 2027 – 31 Jan 2027"
+      },
+      "gettingThere": [
+        "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
+        "Allow extra time if your route crosses the city, and include registration and warm-up in the plan."
+      ],
+      "hotels": [
+        {
+          "area": "Central or close to the venue",
+          "picks": "Compare a central base for the crew meal with a shorter early journey to the race. Check breakfast, checkout and bag storage.",
+          "range": "Check current rates for your particular race dates."
+        }
+      ],
+      "food": [
+        "Choose a familiar pre-race dinner and an uncomplicated breakfast."
+      ],
+      "nightAfter": [
+        "Agree where to meet and leave room for tired legs after the finish."
+      ]
+    },
+    {
+      "slug": "dublin",
+      "name": "Dublin",
+      "country": "Ireland",
+      "timeZone": "Europe/Dublin",
+      "tagline": "A short hop can still deserve a proper race-weekend plan.",
+      "race": {
+        "name": "HYROX Dublin",
+        "status": "confirmed",
+        "start": "2026-11-11",
+        "end": "2026-11-15",
+        "source": "https://hyrox.com/event/hyrox-dublin/",
+        "sourceLabel": "Official HYROX Dublin event",
+        "dates": "11 Nov 2026 – 15 Nov 2026"
+      },
+      "gettingThere": [
+        "Check the official RDS event information and your division start time before booking travel.",
+        "Compare flight, ferry and local transport against the venue journey, including luggage and registration time."
+      ],
+      "hotels": [
+        {
+          "area": "Ballsbridge or central Dublin",
+          "picks": "Balance a practical journey to the RDS with food, sleep and somewhere easy for the crew to meet.",
+          "range": "Check live rates and flexible booking terms."
+        }
+      ],
+      "food": [
+        "Keep race-morning food familiar and check early breakfast options near your stay."
+      ],
+      "nightAfter": [
+        "Plan a relaxed post-race meal and leave recovery time before the journey home."
+      ]
+    },
+    {
+      "slug": "singapore",
+      "name": "Singapore",
+      "country": "Singapore",
+      "timeZone": "Asia/Singapore",
+      "tagline": "Make an overseas race a shared weekend, not a rushed turnaround.",
+      "race": {
+        "name": "AIA HYROX Singapore",
+        "status": "confirmed",
+        "start": "2026-11-26",
+        "end": "2026-11-29",
+        "source": "https://hyrox.com/event/aia-hyrox-singapore/",
+        "sourceLabel": "Official AIA HYROX Singapore event",
+        "dates": "26 Nov 2026 – 29 Nov 2026"
+      },
+      "gettingThere": [
+        "Check passport, entry and airline baggage requirements before paying for travel.",
+        "Allow time to adjust to the local time zone and plan the venue journey from your chosen accommodation."
+      ],
+      "hotels": [
+        {
+          "area": "An easy venue journey",
+          "picks": "Choose a base with straightforward early transport, familiar food nearby and somewhere to recover after the finish.",
+          "range": "Compare live prices and flexible booking terms."
+        }
+      ],
+      "food": [
+        "Keep race-morning food familiar; leave the food adventure for after the finish."
+      ],
+      "nightAfter": [
+        "Plan a crew meal with enough recovery time before the flight home."
+      ]
+    },
+    {
+      "slug": "melbourne",
+      "name": "Melbourne",
+      "country": "Australia",
+      "timeZone": "Australia/Melbourne",
+      "tagline": "A longer-haul target deserves room for travel and recovery.",
+      "race": {
+        "name": "BYD HYROX Melbourne",
+        "status": "confirmed",
+        "start": "2026-12-09",
+        "end": "2026-12-13",
+        "source": "https://hyrox.com/event/hyrox-melbourne/",
+        "sourceLabel": "Official BYD HYROX Melbourne event",
+        "dates": "9 Dec 2026 – 13 Dec 2026"
+      },
+      "gettingThere": [
+        "Check the official venue and your race day before choosing flights and accommodation.",
+        "For long-haul travel, build in arrival, recovery and local time-zone adjustment rather than landing straight into a race."
+      ],
+      "hotels": [
+        {
+          "area": "Simple transport and recovery",
+          "picks": "Compare a venue-area stay with a base near reliable public transport. Ask about early breakfast and late checkout.",
+          "range": "Check live accommodation and flight prices."
+        }
+      ],
+      "food": [
+        "Arrange familiar race-morning food before exploring the local options afterwards."
+      ],
+      "nightAfter": [
+        "Keep the day after the race flexible before the journey home."
+      ]
+    },
+    {
+      "slug": "hong-kong",
+      "name": "Hong Kong",
+      "country": "Hong Kong",
+      "timeZone": "Asia/Hong_Kong",
+      "tagline": "Turn an international start line into a well-organised race trip.",
+      "race": {
+        "name": "AIA HYROX Hong Kong",
+        "status": "confirmed",
+        "start": "2027-01-07",
+        "end": "2027-01-10",
+        "source": "https://hyrox.com/event/hyrox-hong-kong/",
+        "sourceLabel": "Official AIA HYROX Hong Kong event",
+        "dates": "7 Jan 2027 – 10 Jan 2027"
+      },
+      "gettingThere": [
+        "Check entry requirements, airline baggage and official venue instructions before booking.",
+        "Compare the airport-to-hotel and hotel-to-venue journeys, allowing for your check-in and start time."
+      ],
+      "hotels": [
+        {
+          "area": "A practical race-weekend base",
+          "picks": "Balance easy venue access with food, sleep and a relaxed meeting place for your crew.",
+          "range": "Compare live rates and cancellation terms."
+        }
+      ],
+      "food": [
+        "Keep the meal before racing predictable and enjoy the city after your finish."
+      ],
+      "nightAfter": [
+        "Allow recovery time before sightseeing or flying home."
+      ]
+    }
+  ],
+  "home": "london"
+}

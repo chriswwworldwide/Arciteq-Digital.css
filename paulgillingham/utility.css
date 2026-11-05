@@ -279,12 +279,8 @@ body.utility .intake-done {
 }
 
 @media (max-width: 900px) {
-  body.utility .guide-hero-photo img {
-    height: 210px;
-  }
+  body.utility .guide-hero-photo img { height: 210px; }
 }
 @media (max-width: 600px) {
-  body.utility .guide-hero-photo img {
-    height: 190px;
-  }
+  body.utility .guide-hero-photo img { height: 190px; }
 }

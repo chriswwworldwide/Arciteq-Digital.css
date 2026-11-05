@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "type": "news",
+      "date": "2026-10-29",
+      "dateLabel": "Checked",
+      "title": "Après London positions itself as a hybrid studio for everyday athletes",
+      "summary": "The studio's official site presents coached, scalable hybrid training in Deptford — built around strength, conditioning, competition prep and community.",
+      "source": "https://apreslondon.co.uk/",
+      "sourceName": "Après London · official site",
+      "take": "This is the clearest version of the offer: progressive training people can actually keep showing up to.",
+      "takeStatus": "draft-for-review",
+      "link": "/coachedbykim/coaching.html",
+      "linkLabel": "Coaching routes →"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-29",
+      "dateLabel": "Checked",
+      "title": "Amazon HYROX London returns to ExCeL on 2–6 December",
+      "summary": "The official event page confirms a five-day London race at ExCeL, including Elite15 and Challenger15 racing on 3–4 December.",
+      "source": "https://hyrox.com/event/hyrox-london-excel/",
+      "sourceName": "HYROX · official London event",
+      "take": "For Après-ers, the useful move is picking the right division and building backwards — not collecting a start line and hoping.",
+      "takeStatus": "draft-for-review",
+      "link": "/coachedbykim/events.html",
+      "linkLabel": "Race calendar →"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-29",
+      "dateLabel": "Checked",
+      "title": "The official HYROX Gym Finder is the safest route for club listings",
+      "summary": "HYROX's training finder is the official directory for gym affiliation and class discovery. Après London's own site remains the source for timetable, memberships and booking.",
+      "source": "https://hyrox-training-finder.hyrox.com/",
+      "sourceName": "HYROX · official Gym Finder",
+      "take": "The official directory handles discovery; Après London's own site handles the timetable, memberships and booking.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-29",
+      "dateLabel": "Checked",
+      "title": "The Après London channel is the verified video home",
+      "summary": "The public YouTube handle resolves to Après London, making it the correct destination for studio videos and race-weekend content.",
+      "source": "https://www.youtube.com/@Apr%C3%A8s.London",
+      "sourceName": "Après London · YouTube",
+      "take": "This is where a form library and studio content can live without scattering links across profiles.",
+      "takeStatus": "draft-for-review",
+      "link": "/coachedbykim/watch.html",
+      "linkLabel": "Watch & Learn →"
+    }
+  ]
+}

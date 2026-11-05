@@ -1,415 +1,52 @@
 <!doctype html>
 <html lang="en" data-coach-preview="true" data-coach-page="false">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex,nofollow" />
-    <title>Your platform in action | Paul Gillingham</title>
-    <meta
-      name="description"
-      content="See how Paul Gillingham's race tools, community and coaching workspace work together."
-    />
-    <link rel="stylesheet" href="/paulgillingham/styles.css?v=1793655402793" />
-    <link rel="stylesheet" href="/paulgillingham/guide.css?v=1793655402793" />
-    <link
-      rel="stylesheet"
-      href="/paulgillingham/showcase.css?v=1793655402793"
-    />
-    <link rel="stylesheet" href="/paulgillingham/desk.css?v=desk1" />
-    <style>
-      .tour-grid {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        margin: 1.2rem 0 2rem;
-      }
-      .tour-card {
-        background: var(--paper-2);
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 1.2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.7rem;
-        min-width: 0;
-      }
-      .tour-card .step {
-        color: var(--pink);
-        font-weight: 850;
-        font-size: 0.75rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
-      .tour-card h4,
-      .tour-card p {
-        margin: 0;
-      }
-      .tour-card p {
-        color: var(--ink-2);
-        font-size: 0.95rem;
-      }
-      .tour-card .outcome {
-        border-top: 1px solid var(--line);
-        padding-top: 0.7rem;
-      }
-      .tour-card a {
-        margin-top: auto;
-        align-self: flex-start;
-      }
-      .tour-phase {
-        margin: 2rem 0 3rem;
-      }
-      .tour-community {
-        border: 1px solid var(--pink);
-        border-radius: 18px;
-        padding: 1.5rem;
-        background: color-mix(in srgb, var(--pink) 9%, var(--paper));
-      }
-      .tour-note {
-        color: var(--ink-3);
-        font-size: 0.85rem;
-      }
-      @media (max-width: 800px) {
-        .tour-grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
-      }
-    </style>
-    <script src="/paulgillingham/coach-view.js?v=1793655402793"></script>
-  </head>
-  <body class="desk-page">
-    <aside
-      class="coach-view wrap"
-      data-coach-view
-      data-coach-expanded="false"
-      aria-label="The Desk coaching tools"
-    >
-      <div class="coach-view-heading">
-        <strong
-          ><a
-            class="coach-home-link"
-            data-coach-link
-            href="/paulgillingham/?audience=coach"
-            aria-label="Coach homepage — The Desk"
-            >The Desk</a
-          ></strong
-        ><span>Your coaching tools</span>
-      </div>
-      <button
-        class="coach-view-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="coach-view-actions"
-      >
-        Show tools
-      </button>
-      <nav
-        class="coach-view-actions"
-        id="coach-view-actions"
-        aria-label="Coach tools"
-      >
-        <a
-          data-coach-link
-          href="/paulgillingham/planner.html?view=coach&amp;audience=coach"
-          >Bookings</a
-        ><a data-coach-link href="/paulgillingham/desk.html?audience=coach"
-          >Finance</a
-        ><a data-coach-link href="/paulgillingham/campaigns.html?audience=coach"
-          >Campaigns</a
-        ><a
-          data-coach-link
-          href="/paulgillingham/manage-programmes.html?audience=coach"
-          >Programmes</a
-        ><a
-          data-coach-link
-          href="/paulgillingham/manage-videos.html?audience=coach"
-          >Content</a
-        >
-      </nav>
-      <a
-        class="coach-public-link"
-        href="/paulgillingham/?audience=public"
-        target="_blank"
-        rel="noopener"
-        >Preview public site ↗</a
-      >
-    </aside>
-    <header class="masthead wrap">
-      <a
-        href="/paulgillingham/today.html?audience=coach"
-        style="color: inherit; text-decoration: none"
-        ><h1>
-          <span class="wordmark">PAUL <span class="o">GILLINGHAM</span></span>
-        </h1></a
-      >
-      <p class="city">The Desk</p>
-    </header>
-
-    <section class="guide-hero">
-      <div class="wrap">
-        <p class="eyebrow">Your brand. More possibilities.</p>
-        <h2>A website people use.<br />A business you can run.</h2>
-        <p class="lead">
-          Race insight, a teammate for the start line, a community worth coming
-          back to — all under Paul Gillingham. Then the tools to turn interest
-          into lasting coaching relationships.
-        </p>
-        <a
-          class="btn btn-primary"
-          href="/paulgillingham/?audience=public"
-          target="_blank"
-          rel="noopener"
-          >See your public site ↗</a
-        >
-        <p class="tour-note">
-          Public previews open in another tab so you can keep your place. Desk
-          actions use browser-local walkthrough data.
-        </p>
-      </div>
-    </section>
-    <main class="wrap">
-      <section class="tour-phase">
-        <p class="eyebrow">Journey one · Expertise people can use</p>
-        <h3>A finish time becomes a coaching conversation.</h3>
-        <div class="tour-grid">
-          <article class="tour-card">
-            <span class="step">1 · Understand</span>
-            <h4>Go beyond the finish time</h4>
-            <p>
-              Enter a race's running and station splits. See strengths, pace
-              fade and where the time went.
-            </p>
-            <p class="outcome">
-              <strong>Why it matters:</strong> athletes get useful insight, not
-              just another page about coaching.
-            </p>
-            <a
-              class="btn btn-ghost"
-              href="/paulgillingham/splits.html?audience=public"
-              target="_blank"
-              rel="noopener"
-              >Try the split analyser ↗</a
-            >
-          </article>
-          <article class="tour-card">
-            <span class="step">2 · Find the next step</span>
-            <h4>Put a target on the next race</h4>
-            <p>
-              Try the predictor, explore station guidance and see the coaching
-              routes. Useful answers make the next conversation more specific.
-            </p>
-            <p class="outcome">
-              <strong>Why it matters:</strong> your expertise has a practical
-              role before and after race day.
-            </p>
-            <a
-              class="btn btn-ghost"
-              href="/paulgillingham/predictor.html?audience=public"
-              target="_blank"
-              rel="noopener"
-              >Try the predictor ↗</a
-            >
-          </article>
-          <article class="tour-card">
-            <span class="step">3 · Respond</span>
-            <h4>Make the conversation personal</h4>
-            <p>
-              Open a walkthrough enquiry about running and stations. Read the
-              question, review the suggested reply and respond from The Desk.
-            </p>
-            <p class="outcome">
-              <strong>Why it matters:</strong> the enquiry starts with a real
-              training problem rather than a vague sales pitch.
-            </p>
-            <a
-              class="btn btn-ghost"
-              href="/paulgillingham/leads.html?audience=coach&amp;lead=marcus"
-              >Open a training enquiry</a
-            >
-          </article>
-        </div>
-      </section>
-      <section class="tour-phase">
-        <p class="eyebrow">Journey two · Help people reach the start line</p>
-        <h3>A race. A teammate. A preparation plan.</h3>
-        <div class="tour-grid">
-          <article class="tour-card">
-            <span class="step">1 · Choose the race</span>
-            <h4>Make the date mean something</h4>
-            <p>
-              Each event links to its own partner search, preparation route and
-              weekend guide. The weeks remaining help frame a sensible next
-              step.
-            </p>
-            <p class="outcome">
-              <strong>Try it:</strong> choose an event, then follow its partner
-              or preparation button.
-            </p>
-            <a
-              class="btn btn-ghost"
-              href="/paulgillingham/?audience=public#events"
-              target="_blank"
-              rel="noopener"
-              >Explore connected events ↗</a
-            >
-          </article>
-          <article class="tour-card">
-            <span class="step">2 · Find your people</span>
-            <h4>Remove a practical barrier</h4>
-            <p>
-              The partner board brings race, format and pace together. Contact
-              details stay off the public cards; introductions go through the
-              coach.
-            </p>
-            <p class="outcome">
-              <strong>Why it matters:</strong> your brand becomes a useful
-              meeting point, not just a brochure.
-            </p>
-            <a
-              class="btn btn-ghost"
-              href="/paulgillingham/find-a-partner.html?audience=public"
-              target="_blank"
-              rel="noopener"
-              >See the partner board ↗</a
-            >
-          </article>
-          <article class="tour-card">
-            <span class="step">3 · Start without pressure</span>
-            <h4>Keep the door open</h4>
-            <p>
-              Prep Club gives curious beginners useful tools and guidance before
-              they choose paid coaching. Join, then inspect the resulting lead
-              in The Desk.
-            </p>
-            <p class="outcome">
-              <strong>Why it matters:</strong> not ready to buy does not have to
-              mean goodbye.
-            </p>
-            <a
-              class="btn btn-ghost"
-              href="/paulgillingham/prep-club.html?audience=public"
-              target="_blank"
-              rel="noopener"
-              >Explore Prep Club ↗</a
-            ><a
-              href="/paulgillingham/leads.html?audience=coach&amp;lead=club-sam"
-              >See a warm-club example →</a
-            >
-          </article>
-        </div>
-        <div class="tour-community">
-          <p class="eyebrow">A home for your community</p>
-          <h3>Your people, under your brand.</h3>
-          <p>
-            Race partners, shared weekends and training moments belong together.
-            Explore the community wall, its event filters and contribution form
-            — recognition and belonging alongside the race numbers.
-          </p>
-          <a
-            class="btn btn-primary"
-            href="/paulgillingham/?audience=public#wall-photos"
-            target="_blank"
-            rel="noopener"
-            >Open the community wall ↗</a
-          >
-        </div>
-      </section>
-      <section class="tour-phase">
-        <p class="eyebrow">Journey three · Grow without losing track</p>
-        <h3>The next client, and the relationship after that.</h3>
-        <div class="tour-grid">
-          <article class="tour-card">
-            <span class="step">1 · Run your day</span>
-            <h4>Know what needs you</h4>
-            <p>
-              Today's diary, payment decisions, messages, check-ins and renewals
-              in one place. Each task opens the relevant booking or client
-              action.
-            </p>
-            <p class="outcome">
-              <strong>Try it:</strong> resolve an item, then return to Today to
-              see the queue update.
-            </p>
-            <a
-              class="btn btn-ghost"
-              href="/paulgillingham/today.html?audience=coach"
-              >Open Today</a
-            >
-          </article>
-          <article class="tour-card">
-            <span class="step">2 · Keep the relationship</span>
-            <h4>Support the client between sessions</h4>
-            <p>
-              Explore Theo's training focus and check-in, then Marcus's renewal
-              workflow. Keep useful history without letting it take over the
-              page.
-            </p>
-            <p class="outcome">
-              <strong>Why it matters:</strong> the platform supports the
-              relationship after the first booking.
-            </p>
-            <a
-              class="btn btn-ghost"
-              href="/paulgillingham/client.html?audience=coach&amp;client=theo#programme-event"
-              >Open a client record</a
-            ><a
-              href="/paulgillingham/client.html?audience=coach&amp;client=marcus#renewal-box"
-              >See a renewal case →</a
-            >
-          </article>
-          <article class="tour-card">
-            <span class="step">3 · Bring the next enquiry</span>
-            <h4>Close the growth loop</h4>
-            <p>
-              Prepare an offer campaign, review its creative, approve and launch
-              the walkthrough. Open the enquiry it creates and follow its
-              progress.
-            </p>
-            <p class="outcome">
-              <strong>Why it matters:</strong> promotion and follow-up live in
-              the same business workflow.
-            </p>
-          </article>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <div class="wrap">
-        <div>© <span id="year"></span> Paul Gillingham</div>
-        <nav>
-          <a href="/paulgillingham/today.html?audience=coach">Back to Today</a
-          ><a
-            href="/paulgillingham/?audience=public"
-            target="_blank"
-            rel="noopener"
-            >Public site ↗</a
-          >
-        </nav>
-      </div>
-      <p class="site-credit" style="text-align: center; margin: 2rem 0 0">
-        <a
-          href="/"
-          rel="noopener"
-          style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45em;
-            padding: 0.45em 0.9em;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 999px;
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-          "
-          >Built with
-          <b style="color: #ff3b3b; font-weight: 700">Station 9</b></a
-        >
-      </p>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Your platform in action | Paul Gillingham</title>
+  <meta name="description" content="See how Paul Gillingham's race tools, community and coaching workspace work together." />
+  <link rel="stylesheet" href="/paulgillingham/styles.css?v=crop-fix-20261103" />
+  <link rel="stylesheet" href="/paulgillingham/guide.css?v=1793655402793" />
+  <link rel="stylesheet" href="/paulgillingham/showcase.css?v=1793655402793" /><link rel="stylesheet" href="/paulgillingham/desk.css?v=desk1" />
+  <style>
+    .tour-grid { display:grid; gap:1rem; grid-template-columns:repeat(3,minmax(0,1fr)); margin:1.2rem 0 2rem; }
+    .tour-card { background:var(--paper-2); border:1px solid var(--line); border-radius:16px; padding:1.2rem; display:flex; flex-direction:column; gap:.7rem; min-width:0; }
+    .tour-card .step { color:var(--pink); font-weight:850; font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; }
+    .tour-card h4,.tour-card p { margin:0; }
+    .tour-card p { color:var(--ink-2); font-size:.95rem; }
+    .tour-card .outcome { border-top:1px solid var(--line); padding-top:.7rem; }
+    .tour-card a { margin-top:auto; align-self:flex-start; }
+    .tour-phase { margin:2rem 0 3rem; }
+    .tour-community { border:1px solid var(--pink); border-radius:18px; padding:1.5rem; background:color-mix(in srgb,var(--pink) 9%,var(--paper)); }
+    .tour-note { color:var(--ink-3); font-size:.85rem; }
+    @media(max-width:800px) { .tour-grid { grid-template-columns:minmax(0,1fr); } }
+  </style>
+  <script src="/paulgillingham/coach-view.js?v=1793655402793"></script>
+</head>
+<body class="desk-page"><aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/paulgillingham/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/paulgillingham/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/paulgillingham/desk.html?audience=coach">Finance</a><a data-coach-link href="/paulgillingham/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/paulgillingham/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/paulgillingham/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/paulgillingham/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+  <header class="masthead wrap"><a href="/paulgillingham/today.html?audience=coach" style="color:inherit;text-decoration:none"><h1><span class="wordmark">PAUL <span class="o">GILLINGHAM</span></span></h1></a><p class="city">The Desk</p></header>
+  
+  <section class="guide-hero"><div class="wrap"><p class="eyebrow">Your brand. More possibilities.</p><h2>A website people use.<br />A business you can run.</h2><p class="lead">Race insight, a teammate for the start line, a community worth coming back to — all under Paul Gillingham. Then the tools to turn interest into lasting coaching relationships.</p><a class="btn btn-primary" href="/paulgillingham/?audience=public" target="_blank" rel="noopener">See your public site ↗</a><p class="tour-note">Public previews open in another tab so you can keep your place. Desk actions use browser-local walkthrough data.</p></div></section>
+  <main class="wrap">
+    <section class="tour-phase"><p class="eyebrow">Journey one · Expertise people can use</p><h3>A finish time becomes a coaching conversation.</h3><div class="tour-grid">
+      <article class="tour-card"><span class="step">1 · Understand</span><h4>Go beyond the finish time</h4><p>Enter a race's running and station splits. See strengths, pace fade and where the time went.</p><p class="outcome"><strong>Why it matters:</strong> athletes get useful insight, not just another page about coaching.</p><a class="btn btn-ghost" href="/paulgillingham/splits.html?audience=public" target="_blank" rel="noopener">Try the split analyser ↗</a></article>
+      <article class="tour-card"><span class="step">2 · Find the next step</span><h4>Put a target on the next race</h4><p>Try the predictor, explore station guidance and see the coaching routes. Useful answers make the next conversation more specific.</p><p class="outcome"><strong>Why it matters:</strong> your expertise has a practical role before and after race day.</p><a class="btn btn-ghost" href="/paulgillingham/predictor.html?audience=public" target="_blank" rel="noopener">Try the predictor ↗</a></article>
+      <article class="tour-card"><span class="step">3 · Respond</span><h4>Make the conversation personal</h4><p>Open a walkthrough enquiry about running and stations. Read the question, review the suggested reply and respond from The Desk.</p><p class="outcome"><strong>Why it matters:</strong> the enquiry starts with a real training problem rather than a vague sales pitch.</p><a class="btn btn-ghost" href="/paulgillingham/leads.html?audience=coach&amp;lead=marcus">Open a training enquiry</a></article>
+    </div></section>
+    <section class="tour-phase"><p class="eyebrow">Journey two · Help people reach the start line</p><h3>A race. A teammate. A preparation plan.</h3><div class="tour-grid">
+      <article class="tour-card"><span class="step">1 · Choose the race</span><h4>Make the date mean something</h4><p>Each event links to its own partner search, preparation route and weekend guide. The weeks remaining help frame a sensible next step.</p><p class="outcome"><strong>Try it:</strong> choose an event, then follow its partner or preparation button.</p><a class="btn btn-ghost" href="/paulgillingham/?audience=public#events" target="_blank" rel="noopener">Explore connected events ↗</a></article>
+      <article class="tour-card"><span class="step">2 · Find your people</span><h4>Remove a practical barrier</h4><p>The partner board brings race, format and pace together. Contact details stay off the public cards; introductions go through the coach.</p><p class="outcome"><strong>Why it matters:</strong> your brand becomes a useful meeting point, not just a brochure.</p><a class="btn btn-ghost" href="/paulgillingham/find-a-partner.html?audience=public" target="_blank" rel="noopener">See the partner board ↗</a></article>
+      <article class="tour-card"><span class="step">3 · Start without pressure</span><h4>Keep the door open</h4><p>Prep Club gives curious beginners useful tools and guidance before they choose paid coaching. Join, then inspect the resulting lead in The Desk.</p><p class="outcome"><strong>Why it matters:</strong> not ready to buy does not have to mean goodbye.</p><a class="btn btn-ghost" href="/paulgillingham/prep-club.html?audience=public" target="_blank" rel="noopener">Explore Prep Club ↗</a><a href="/paulgillingham/leads.html?audience=coach&amp;lead=club-sam">See a warm-club example →</a></article>
+    </div><div class="tour-community"><p class="eyebrow">A home for your community</p><h3>Your people, under your brand.</h3><p>Race partners, shared weekends and training moments belong together. Explore the community wall, its event filters and contribution form — recognition and belonging alongside the race numbers.</p><a class="btn btn-primary" href="/paulgillingham/?audience=public#wall-photos" target="_blank" rel="noopener">Open the community wall ↗</a></div></section>
+    <section class="tour-phase"><p class="eyebrow">Journey three · Grow without losing track</p><h3>The next client, and the relationship after that.</h3><div class="tour-grid">
+      <article class="tour-card"><span class="step">1 · Run your day</span><h4>Know what needs you</h4><p>Today's diary, payment decisions, messages, check-ins and renewals in one place. Each task opens the relevant booking or client action.</p><p class="outcome"><strong>Try it:</strong> resolve an item, then return to Today to see the queue update.</p><a class="btn btn-ghost" href="/paulgillingham/today.html?audience=coach">Open Today</a></article>
+      <article class="tour-card"><span class="step">2 · Keep the relationship</span><h4>Support the client between sessions</h4><p>Explore Theo's training focus and check-in, then Marcus's renewal workflow. Keep useful history without letting it take over the page.</p><p class="outcome"><strong>Why it matters:</strong> the platform supports the relationship after the first booking.</p><a class="btn btn-ghost" href="/paulgillingham/client.html?audience=coach&amp;client=theo#programme-event">Open a client record</a><a href="/paulgillingham/client.html?audience=coach&amp;client=marcus#renewal-box">See a renewal case →</a></article>
+      <article class="tour-card"><span class="step">3 · Bring the next enquiry</span><h4>Close the growth loop</h4><p>Prepare an offer campaign, review its creative, approve and launch the walkthrough. Open the enquiry it creates and follow its progress.</p><p class="outcome"><strong>Why it matters:</strong> promotion and follow-up live in the same business workflow.</p></article>
+    </div></section>
+  </main>
+  <footer><div class="wrap"><div>© <span id="year"></span> Paul Gillingham</div><nav><a href="/paulgillingham/today.html?audience=coach">Back to Today</a><a href="/paulgillingham/?audience=public" target="_blank" rel="noopener">Public site ↗</a></nav></div>  <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
 </html>

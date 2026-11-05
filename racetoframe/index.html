@@ -1,23 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gregor & Hattie — Race to Frame, coaching, podcast & race tools</title>
+    <title>Gregor & Hattie | Gregor & Hattie coaching, race tools and booking</title>
     <meta
       name="description"
-      content="Gregor and Hattie’s home on the web: Race to Frame finisher and podium frames, HYROX coaching and programming, the podcast, race predictor tools and partner offers — all in one place."
+      content="Gregor & Hattie — HYROX racers and coaches and founder of Gregor & Hattie in United Kingdom. Coaching applications, SheBuilds 1:1, Sculpt & Shape and GJ programming, race tools and verified links."
     />
     <meta
       name="keywords"
-      content="gregor and hattie, race to frame, hyrox frame, podium flag frame, hyrox coaching, hyrox podcast, hyrox predictor"
+      content="gregor & hattie, G&H, Gregor & Hattie, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdom hyrox"
     />
-    <meta name="geo.region" content="ID-JK" />
-    <meta name="geo.placename" content="UK" />
+    <meta name="geo.region" content="GB-WOR" />
+    <meta name="geo.placename" content="United Kingdom" />
     <link rel="canonical" href="https://racetoframe.localhost/racetoframe/" />
     <link
       rel="alternate"
-      hreflang="en-ID"
+      hreflang="en-GB"
       href="https://racetoframe.localhost/racetoframe/"
     />
     <link
@@ -28,39 +28,129 @@
     <link
       rel="preload"
       as="image"
-      href="/racetoframe/images/skierg-laugh.jpg?v=1792613362034"
+      href="/racetoframe/images/hero.jpg?v=1793655400937"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/racetoframe/styles.css?v=1792613362034" />
+    <link rel="stylesheet" href="/racetoframe/styles.css?v=r6-20261105" />
     <script>
       document.documentElement.classList.add("js");
+      // Refresh = top of page + the hero entrance plays. Ordinary navigation
+      // keeps any #section so links from other pages land where promised.
+      const navEntry = performance.getEntriesByType?.("navigation")?.[0];
+      const reloaded = navEntry
+        ? navEntry.type === "reload"
+        : performance.navigation?.type === performance.navigation?.TYPE_RELOAD;
+      (() => {
+        const key = "__s9HomeScroll";
+        const returning = navEntry ? navEntry.type === "back_forward" : Boolean(performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD);
+        const auto = () => { if ("scrollRestoration" in history) history.scrollRestoration = "auto"; };
+        let restoring = false, stopRestore = () => {}, lastAnchor = null, activationEvent = null;
+        const findHomeAnchor = anchor => {
+          if (!anchor || !Number.isInteger(anchor.index) || anchor.index < 0 || typeof anchor.href !== "string" || !Number.isFinite(anchor.top)) return null;
+          const root = anchor.section ? document.getElementById(anchor.section) : anchor.footer ? document.querySelector("body > footer") : null;
+          const node = root && Array.from(root.querySelectorAll("a[href]")).filter(link => link.href === anchor.href)[anchor.index];
+          return node?.getClientRects().length ? node : null;
+        };
+        const remember = (link, event) => {
+          if (restoring) return;
+          if (link) {
+            const section = link.closest("section[id]"), footer = link.closest("footer");
+            const root = section || (footer?.parentElement === document.body ? footer : null);
+            lastAnchor = root ? { href: link.href, section: section?.id || "", footer: root === footer, index: Array.from(root.querySelectorAll("a[href]")).filter(node => node.href === link.href).indexOf(link), top: link.getBoundingClientRect().top } : null;
+            activationEvent = event;
+          } else if (!activationEvent || activationEvent.defaultPrevented) {
+            const node = findHomeAnchor(lastAnchor);
+            if (!node || Math.abs(node.getBoundingClientRect().top - lastAnchor.top) > 12) lastAnchor = null;
+          }
+          try { history.replaceState({ ...history.state, [key]: { x: scrollX, y: scrollY, anchor: lastAnchor } }, ""); } catch {}
+        };
+        const holdScroll = (target, duration = 2500, delays = [200, 600, 1200]) => {
+          restoring = true;
+          if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+          const inputs = ["wheel", "touchstart", "pointerdown", "keydown"];
+          const restore = () => {
+            if (!restoring) return;
+            const point = target();
+            window.scrollTo({ left: point.x, top: point.y, behavior: "instant" });
+          };
+          let observer, frame, deadline, retries = [];
+          const stop = () => {
+            restoring = false; observer?.disconnect(); cancelAnimationFrame(frame); clearTimeout(deadline); retries.forEach(clearTimeout);
+            inputs.forEach(type => removeEventListener(type, stop, true)); auto(); stopRestore = () => {};
+          };
+          stopRestore = stop;
+          inputs.forEach(type => addEventListener(type, stop, { capture: true, passive: true, once: true }));
+          if (typeof ResizeObserver === "function") { observer = new ResizeObserver(restore); observer.observe(document.body); }
+          frame = requestAnimationFrame(restore);
+          retries = delays.map(delay => setTimeout(restore, delay));
+          deadline = setTimeout(stop, duration);
+        };
+        if ("scrollRestoration" in history) history.scrollRestoration = reloaded || (returning && history.state?.[key]) ? "manual" : "auto";
+        if (reloaded && location.hash) history.replaceState(history.state, "", location.pathname + location.search);
+        addEventListener("pagehide", () => { remember(); stopRestore(); auto(); });
+        document.addEventListener("click", event => {
+          const link = event.target?.closest?.("a[href]");
+          if (link && (!link.target || link.target === "_self") && ["http:", "https:"].includes(link.protocol) && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { stopRestore(); remember(link, event); }
+        }, true);
+        addEventListener("pageshow", event => {
+          stopRestore();
+          const point = history.state?.[key];
+          lastAnchor = null; activationEvent = null;
+          if ((event.persisted || returning) && Number.isFinite(point?.x) && Number.isFinite(point?.y)) {
+            lastAnchor = point.anchor || null;
+            holdScroll(() => {
+              const node = findHomeAnchor(point.anchor);
+              return { x: point.x, y: node ? node.getBoundingClientRect().top + scrollY - point.anchor.top : point.y };
+            });
+          } else if (reloaded && !event.persisted) holdScroll(() => ({ x: 0, y: 0 }), 500, [50, 150, 350]);
+          else auto();
+        });
+      })();
     </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
         "name": "Gregor & Hattie",
-        "description": "HYROX coaching in $1 — online training program, split analysis and race prep from $1.",
+        "description": "Gregor & Hattie — HYROX racers and coaches and Gregor & Hattie founder. Coaching routes, race tools and race-mate finder.",
         "url": "https://racetoframe.localhost/racetoframe/",
-        "areaServed": ["UK", "the UK", "Southeast the UK"],
-        "knowsLanguage": ["en", "id"],
-        "keywords": "gregor and hattie, race to frame, hyrox frame, podium flag frame, hyrox coaching, hyrox podcast, hyrox predictor",
+        "areaServed": ["United Kingdom", "the UK", "Europe"],
+        "knowsLanguage": ["en"],
+        "keywords": "gregor & hattie, G&H, Gregor & Hattie, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdom hyrox",
         "founder": {
           "@type": "Person",
           "name": "Gregor & Hattie",
-          "jobTitle": "HYROX athlete & coach",
-          "sameAs": ["https://www.instagram.com/gregorandhattie/"]
+          "jobTitle": "HYROX coach & founder",
+          "sameAs": ["https://www.instagram.com/gregorandhattie/", "https://www.instagram.com/gregorandhattie/", "https://www.instagram.com/gregorandhattie/", "https://www.instagram.com/gregorandhattie/"]
         }
       }
     </script>
-  </head>
-  <body>
+  <style>
+    .pitch-tools { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.5rem 0; }
+    .pitch-tool { padding:1.5rem; border:1px solid var(--line); border-radius:18px; background:var(--paper-2); display:flex; flex-direction:column; gap:.8rem; min-width:0; }
+    .pitch-tool h4 { font-size:1.5rem; line-height:1.15; margin:.3rem 0; }
+    .pitch-tool p { color:var(--ink-2); margin:0 0 1rem; }
+    .pitch-tool .btn { align-self:flex-start; margin-top:auto; }
+    .pitch-tool-main { grid-column:1/-1; display:grid; grid-template-columns:1.2fr 1fr; gap:2rem; border-color:var(--pink); background:linear-gradient(125deg,color-mix(in srgb,var(--pink) 12%,var(--paper)),var(--paper-2)); }
+    .pitch-tool-main h4 { font-size:clamp(1.7rem,3vw,2.5rem); }
+    .tool-preview { display:grid; gap:.4rem; align-content:center; padding:1.2rem; background:var(--paper); border-radius:12px; }
+    .tool-preview span { color:var(--pink); font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; margin-top:.5rem; }
+    .tool-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; }
+    .tool-chips span { padding:.35rem .7rem; border:1px solid var(--line); border-radius:999px; font-size:.8rem; }
+    .pitch-start { color:var(--ink-2); } .pitch-start a { color:var(--pink); }
+    .pitch-guides > summary { cursor:pointer; padding:1rem 0; min-height:44px; }
+    .event-actions { display:flex; flex-direction:column; gap:.6rem; min-width:190px; }
+    .event-prep { color:var(--ink-2); font-size:.85rem; }
+    @media(max-width:760px) { .pitch-tools,.pitch-tool-main { grid-template-columns:minmax(0,1fr); } .pitch-tool { padding:1.1rem; } .event-actions { min-width:0; } }
+  </style>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/racetoframe/showcase.css?v=1793655400937" /><link rel="stylesheet" href="/racetoframe/home-editorial.css?v=r2-20261105" /><script src="/racetoframe/coach-view.js?v=1793655400937"></script></head>
+  <body class="home-lab">
     <header class="masthead wrap">
       <h1>
         <a class="wordmark" href="/racetoframe/"
           >GREG<span class="o">O</span>R &amp; HATTIE
-          <span class="sig" aria-label="by Gregor & Hattie"
-            ><span class="sig-text">by Gregor & Hattie</span
+          <span class="sig" aria-label="Gregor & Hattie"
+            ><span class="sig-text">Gregor & Hattie</span
             ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
               <path
                 d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
@@ -72,105 +162,104 @@
       <p class="city">UK</p>
     </header>
 
-    <div class="nav">
+    
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/racetoframe/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/racetoframe/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/racetoframe/desk.html?audience=coach">Finance</a><a data-coach-link href="/racetoframe/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/racetoframe/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/racetoframe/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/racetoframe/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
-          <li><a href="/racetoframe/shop.html">Shop</a></li>
-          <li><a href="/racetoframe/coaching.html">Coaching</a></li>
-          <li><a href="/racetoframe/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
-          <li><a href="https://racetoframe.com/pages/mailing-list" target="_blank" rel="noopener">Mailing list</a></li>
-          <li><a href="/racetoframe/podcast.html">Podcast</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/racetoframe/planner.html?view=client" style="color:var(--pink,#b69aff);font-weight:800">Book a session</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
             <ul class="sub">
-              <li><a href="/racetoframe/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
-              <li><a href="/racetoframe/predictor.html">Race predictor</a></li>
-              <li><a href="/racetoframe/splits.html">Split analyser</a></li>
-              <li><a href="/racetoframe/results.html">Results board</a></li>
-              <li><a href="/racetoframe/stations-prep/">Stations prep</a></li>
-              <li><a href="/racetoframe/run-zone/">Run zone</a></li>
-              <li><a href="/racetoframe/events.html">Race calendar</a></li>
+              <li><a href="/racetoframe/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/racetoframe/training.html">Access your training</a></li>
+              <li><a href="/racetoframe/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/racetoframe/podcast.html">Studio series</a></li>
+              <li><a href="/racetoframe/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/racetoframe/#ask">Ask Gregor & Hattie</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/racetoframe/predictor.html">Race predictor</a></li>
+              <li><a href="/racetoframe/splits.html">Split analyser</a></li>
+              <li><a href="/racetoframe/results.html">Results board</a></li>
+              <li><a href="/racetoframe/stations-prep.html">Stations prep</a></li>
+              <li><a href="/racetoframe/find-a-partner.html">Find a race-mate</a></li>
+              <li><a href="/racetoframe/run-zone.html">Run zone</a></li>
+              <li><a href="/racetoframe/taper-zone.html">Taper zone</a></li>
+              <li><a href="/racetoframe/race-day.html">Race day</a></li>
+              <li><a href="/racetoframe/events.html">Race Calendar &amp; Travel</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/racetoframe/race-crew.html">Race crew meetups</a></li>
-              <li><a href="https://nozzlemedia.app/PublicForm?slug=Gregor-Hattie-Podcast" target="_blank" rel="noopener">Tell your story</a></li>
-              <li><a href="/racetoframe/#ask">Ask G&amp;H</a></li>
-              <li><a href="/racetoframe/partners.html">Partner offers</a></li>
+              <li><a href="https://www.instagram.com/gregorandhattie/" target="_blank" rel="noopener">Gregor & Hattie IG</a></li>
+              <li><a href="/racetoframe/news.html">HYROX news</a></li>
+              <li><a href="/racetoframe/list.html">Join the list</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/racetoframe/partners.html">Partners</a></li>
+              <li><a href="/racetoframe/shop.html">Links</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
 
-    <section class="hero hero--bleed">
-      <img
-        class="hero-amb"
-        src="/racetoframe/images/skierg-laugh.jpg?v=1792613362034"
-        alt=""
-        aria-hidden="true"
-        width="1125"
-        height="1080"
-      />
+    <section class="hero hero--bleed" data-hero-mode="full" data-hero-roll="full">
       <div class="hero-mask">
         <img
           class="hero-img"
-          src="/racetoframe/images/skierg-laugh.jpg?v=1792613362034"
-          alt="Gregor & Hattie laughing with both arms in the air on the SkiErg mid-race at Hyrox, in her lilac kit"
+          src="/racetoframe/images/hero.jpg?v=1793655400937"
+          alt="Gregor & Hattie driving the sled, head-on — the station nobody enjoys"
           width="1125"
           height="1080"
           fetchpriority="high"
         />
       </div>
       <div class="wrap">
-        <span class="kicker"
-          >Hyrox · UK · race weekend community</span
-        >
         <h2>
-          Run your own race,<br /><em>with <i>your</i> pace.</em>
+          Race it.<br /><em>Remember it.</em>
         </h2>
         <p>
-          We're Gregor &amp; Hattie — the couple behind Race to Frame. Racing most weekends, coaching in between, podcasting about all of it. Real travel, real race-day chaos, your real first finish. Never raced? Even better — we remember ours.
+          The training. The race. The moment worth keeping. Explore Gregor and Hattie's HYROX world — and turn a hard-earned finish into something to frame.
         </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#plans">Shop + crew</a>
-          <a class="btn btn-light" href="#ask">Ask Gregor & Hattie</a>
-        </div>
-        <div class="stats">
-          <div>
-            <strong>Gymshark &amp; DFYNE</strong><span>Partner athletes — codes on the partners page</span>
-          </div>
-          <div>
-            <strong>~Every</strong><span>Weekend at a HYROX race somewhere in Europe</span>
-          </div>
-          <div><strong>2024</strong><span>Race to Frame founded</span></div>
-        </div>
       </div>
     </section>
-
-    <section class="block" id="zones">
+    <div class="hero-below"><div class="wrap"><div class="actions">
+          <a class="btn btn-primary" href="/racetoframe/coaching.html">Coach with Gregor & Hattie</a>
+          <a class="btn btn-light" href="#ask">Ask Gregor & Hattie</a>
+        </div><div class="stats">
+          <div>
+            <strong>Open</strong><span>HYROX Pro Solo PB — UK</span>
+          </div>
+          <div>
+            <strong>Doubles</strong><span>Pro Doubles — Birmingham, with the crew</span>
+          </div>
+          <div><strong>Raced</strong><span>on the start line — real experience, real times</span></div>
+        </div></div></div><!-- /hero-below --><section class="block" id="zones">
       <div class="wrap">
-        <p class="eyebrow reveal">The Zones</p>
-        <h3 class="reveal">Every metre of the race, we break it down.</h3>
-        <p class="lead reveal">
-          Pick your weakness. We'll turn it into your fastest split — no drama.
-        </p>
+        <p class="eyebrow reveal">More than a finish time</p>
+        <h3 class="reveal">Know your race. Find your people.</h3>
+        <p class="lead reveal">Your first start line or your next personal best — useful tools to turn a race idea into a plan.</p>
+        <div class="pitch-tools">
+          <article class="pitch-tool pitch-tool-main reveal"><div><span class="tag">After the finish</span><h4>Your finish time tells half the story.</h4><p>See where the minutes went, where you were strong and what deserves your next training block.</p><a class="btn btn-primary" href="/racetoframe/splits.html">Analyse my splits</a></div><div class="tool-preview" aria-label="What the analysis covers"><span>01 · Running</span><strong>Did your pace fade?</strong><span>02 · Stations</span><strong>Where did time get away?</strong><span>03 · Next steps</span><strong>Know what to work on.</strong></div></article>
+          <article class="pitch-tool reveal"><span class="tag">Better together</span><h4>Got the ticket. Missing the partner?</h4><p>Find someone aiming for your race, your format and a pace that fits. Doubles, relay or company for the race trip.</p><div class="tool-chips"><span>Race</span><span>Division</span><span>Pace</span></div><a class="btn btn-ghost" href="/racetoframe/find-a-partner.html">Find my race-mate</a></article>
+          <article class="pitch-tool reveal"><span class="tag">Before the start</span><h4>What time could you aim for?</h4><p>Bring your running and station benchmarks together for a race estimate — and a clearer starting point for training.</p><div class="tool-chips"><span>8 runs</span><span>8 stations</span><span>One target</span></div><a class="btn btn-ghost" href="/racetoframe/predictor.html">Predict my race</a></article>
+        </div>
+        <p class="pitch-start">New to all of this? <a href="/racetoframe/prep-club.html">Start with the free HYROX Prep Club →</a></p>
+        <details class="pitch-guides"><summary>Explore station guides, running plans and race preparation</summary>
         <div class="zones">
-          <a class="zone zone--hook reveal" href="/racetoframe/find-a-partner/">
-            <span class="num">New</span>
-            <h4>Got a ticket, need a partner?</h4>
-            <p>
-              Doubles, mixed, relay, or just someone to share the London trip — post
-              your card and the crew finds your match.
-            </p>
-            <span class="more">Find a partner</span>
-          </a>
-          <a class="zone reveal" href="/racetoframe/stations-prep/">
+          <a class="zone reveal" href="/racetoframe/stations-prep.html">
             <span class="num">01</span>
             <h4>Stations Prep</h4>
             <p>
@@ -179,34 +268,34 @@
             </p>
             <span class="more">Open station guides</span>
           </a>
-          <a class="zone reveal" href="/racetoframe/run-zone/">
+          <a class="zone reveal" href="/racetoframe/run-zone.html">
             <span class="num">02</span>
             <h4>Run Zone</h4>
             <p>
               8 × 1 km with heavy legs. Compromised-running sessions built for
-              UK halls get warm.
+              HYROX halls get warm.
             </p>
             <span class="more">Run plans</span>
           </a>
-          <a class="zone reveal" href="/racetoframe/events/">
+          <a class="zone reveal" href="/racetoframe/events.html">
             <span class="num">03</span>
             <h4>Upcoming Events</h4>
             <p>
-              UK countdown plus city planners for London, Birmingham, Hong
-              Kong and Glasgow — hotels, flights, food, the night after.
+              Confirmed start lines in the region and around the world — dates,
+              travel guidance, the crew and the weekend around the race.
             </p>
-            <span class="more">Race calendar</span>
+            <span class="more">Race Calendar &amp; Travel</span>
           </a>
           <a class="zone reveal" href="#ask">
             <span class="num">04</span>
-            <h4>Ask G&H</h4>
+            <h4>Ask Gregor & Hattie</h4>
             <p>
-              Form checks, race strategy, training through pregnancy — ask
+              Form checks, race strategy, training around real life — ask
               directly, get a real answer.
             </p>
             <span class="more">Ask a question</span>
           </a>
-        </div>
+        </div></details>
       </div>
     </section>
 
@@ -214,126 +303,60 @@
       <div class="wrap story">
         <figure class="reveal">
           <img
-            src="/racetoframe/images/hattie-run.jpg?v=1792613362034"
-            alt="Hattie mid sled-pull at a HYROX race — the other half of Race to Frame"
+            src="/racetoframe/images/startline.jpg?v=1793655400937"
+            alt="Gregor & Hattie in race paint beside a HYROX wall"
             width="985"
             height="1150"
             loading="lazy"
           />
+          <svg class="profile-hairline" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 A48 60 0 0 1 48 0 H50" /></svg>
         </figure>
         <div class="reveal">
-          <p class="eyebrow">Meet the pair</p>
-          <h3>Gregor &amp; Hattie. From a kitchen-table frame idea to every HYROX weekend in Europe.</h3>
+          <p class="eyebrow">The athlete</p>
+          <h3>Meet Gregor & Hattie. <em>The experience behind the coaching.</em></h3>
           <p class="lead">
-            The couple who turned "we should frame that patch"
-            into Race to Frame — finisher and podium flag frames,
-            coaching, and a podcast that's basically group therapy.
-            Gregor collects podium flags most weekends; Hattie's
-            build is the one to watch.
+            HYROX racers and coaches. Experience earned on the start line. Discover the approach behind Gregor & Hattie — and find a way forward that fits your goals.
           </p>
-          <p class="quote">
-            "The patch on your wall is the excuse. The crew is the point."
-          </p>
-          <ul>
-            <li>
-              Podium flags at HYROX Cardiff — the flags that became a
-              frame business
-            </li>
-            <li>
-              Sub-60 finishers; Gregor races most weekends across Europe
-            </li>
-            <li>
-              SheBuilds 1:1, Sculpt &amp; Shape and GJ programming — the
-              coaching side
-            </li>
-            <li>
-              Gymshark &amp; DFYNE partner athletes — codes on the partners
-              page
-            </li>
-          </ul>
+          <p class="quote">The patch on your wall is the excuse. The crew is the point.</p>
+          <ul><li>Sub-60 finishers; Gregor races most weekends across Europe.</li><li>Gymshark &amp; DFYNE partner athletes — codes on the partners page.</li><li>SheBuilds 1:1, Sculpt &amp; Shape and GJ programming — the coaching side.</li><li>The frames stay — this is the community around them.</li></ul>
         </div>
       </div>
     </section>
 
     <section class="block" id="plans">
       <div class="wrap">
-        <p class="eyebrow reveal">Shop + crew</p>
-        <h3 class="reveal">The frames stay. This is the community around them.</h3>
-        <p class="lead reveal">
-          Your patch, your flag, your finish-line photo — framed. And a crew
-          to earn the next one with.
-        </p>
+        <p class="eyebrow reveal">Gregor & Hattie coaching</p>
+        <h3 class="reveal">Find your way forward.</h3>
+        <p class="lead reveal">Hattie&#39;s online coaching and eight-week Sculpt &amp; Shape programme sit alongside Gregor&#39;s HYROX programming. Choose the dedicated enquiry route for the support you&#39;re looking for.</p>
         <div class="plan plan-crew reveal">
           <img
             class="crew-photo"
-            src="/racetoframe/images/coaching.jpg?v=1792613362034"
-            alt="Gregor & Hattie — the pair behind Race to Frame"
+            src="/racetoframe/images/doubles.jpg?v=1793655400937"
+            alt="Hattie in training kit beside the gym dumbbell rack"
             loading="lazy"
           />
           <div class="crew-copy">
-            <span class="tag">Free — always</span>
-            <h4>Join the crew</h4>
+            <span class="tag">New here?</span>
+            <h4>Join the HYROX Prep Club</h4>
             <p class="crew-line">
-              Race crews for every UK weekend — travel together, find a
-              doubles partner, post-race meet-ups at the stall, your name on
-              the results wall. The shop sells the frame; the crew gives you
-              something to put in it.
+              Not ready for coaching — or not sure HYROX is for you yet? Start
+              with free race tools, clear training guidance and a community
+              to help you find your feet.
             </p>
             <p class="crew-note">
-              Travel board · partner finder · results wall · finish-line
-              stalls · the podcast. Free, because community isn't a product.
+              Free to join · beginner-safe · race tools · community prompts —
+              coaching only when it makes sense.
             </p>
           </div>
           <div class="crew-side">
-            <div class="price">£0 <small>/ forever</small></div>
-            <div class="per">Race weekends · meet-ups · the wall</div>
-            <a class="btn btn-primary" href="#ask">Join the crew</a>
+            <div class="price">£0 <small>/ always</small></div>
+            <div class="per">The softer first step</div>
+            <a class="btn btn-primary" href="/racetoframe/prep-club.html">Join Prep Club</a>
           </div>
         </div>
-        <div class="plans">
-          <div class="plan featured reveal">
-            <span class="tag">Best seller</span>
-            <h4>Finisher Patch Frame</h4>
-            <div class="price">£25.99</div>
-            <div class="per">Your patch + your race photo, framed</div>
-            <ul>
-              <li>Fits 25/26 &amp; 26/27 season patches</li>
-              <li>Portrait + landscape photo windows</li>
-              <li>Pine frame — hangs or stands</li>
-              <li>The gift every first-timer actually wants</li>
-            </ul>
-            <a class="btn btn-primary" href="https://racetoframe.com/products/hyrox-finisher-patch-frame-25-26-season" target="_blank" rel="noopener">Shop the frame</a>
-            <a class="plan-more" href="https://racetoframe.com/collections/hyrox-frames" target="_blank" rel="noopener">All frames →</a>
-          </div>
-          <div class="plan reveal">
-            <span class="tag">Podium</span>
-            <h4>Podium Flag Frame</h4>
-            <div class="price">£72.99</div>
-            <div class="per">The flag earned the wall</div>
-            <ul>
-              <li>Tailored to official HYROX podium flags</li>
-              <li>Full frame 94 × 64 cm</li>
-              <li>Pine, lacquered, ready to hang</li>
-              <li>First podium or fifth — same pride</li>
-            </ul>
-            <a class="btn btn-ghost" href="https://racetoframe.com/products/podium-frame-25-26-season" target="_blank" rel="noopener">Shop the frame</a>
-            <a class="plan-more" href="https://racetoframe.com/collections/hyrox-frames" target="_blank" rel="noopener">All frames →</a>
-          </div>
-          <div class="plan reveal">
-            <span class="tag">At the races</span>
-            <h4>Find the stall</h4>
-            <div class="price">Finish line</div>
-            <div class="per">Photo printed and framed before you've cooled down</div>
-            <ul>
-              <li>Live photo printing at finish lines</li>
-              <li>Patch + photo framed on the spot</li>
-              <li>Meet G&amp;H — argue about stations in person</li>
-              <li>Event calendar on the community board</li>
-            </ul>
-            <a class="btn btn-ghost" href="/racetoframe/events/">Where we'll be</a>
-            <a class="plan-more" href="/racetoframe/events/">Event calendar →</a>
-          </div>
-        </div>
+        <div class="plans coach-plans verified-offers"><article class="plan featured reveal" data-offer-id="0"><span class="tag">Personal coaching enquiry</span><h4>Online coaching with Hattie</h4><p class="per">Start a conversation about your training and goals through Hattie&#39;s online-coaching enquiry form.</p><a class="btn btn-primary" href="https://8r41m23r9yp.typeform.com/to/wwA4T5WC" target="_blank" rel="noopener">Enquire about Hattie&#39;s coaching</a></article><article class="plan reveal" data-offer-id="1"><span class="tag">Eight-week workout programme</span><h4>Sculpt &amp; Shape</h4><p class="per">Explore Hattie&#39;s eight-week programme through its own enquiry form. Ask about the current format, support and joining options.</p><a class="btn btn-ghost" href="https://8r41m23r9yp.typeform.com/to/T4zmSwW5" target="_blank" rel="noopener">Enquire about Sculpt &amp; Shape</a></article><article class="plan reveal" data-offer-id="2"><span class="tag">Gregor&#39;s programme enquiry</span><h4>GJ HYROX programming</h4><p class="per">Choose beginner, advanced, doubles or 1:1 HYROX coaching in Gregor&#39;s dedicated programme form.</p><a class="btn btn-ghost" href="https://form.typeform.com/to/BDmLn8Cw" target="_blank" rel="noopener">Explore Gregor&#39;s HYROX options</a></article></div><p class="offer-terms">Offer details and prices are set by the provider. Check the linked page for current terms.</p><p class="plans-note">
+          Not sure which route fits? <a href="#ask">Ask Gregor & Hattie</a>. For patch frames, podium flags and the shop, <a href="https://racetoframe.com/" target="_blank" rel="noopener">visit Race to Frame →</a>
+        </p>
       </div>
     </section>
 
@@ -345,59 +368,32 @@
       </div>
     </section>
 
+    <section class="block" id="stories"><div class="wrap"><p class="eyebrow">Between the start lines</p><h3>Keep learning between sessions.</h3><p class="lead">Race stories, coaching clips and useful places to explore next.</p><div class="showcase-grid">
+      <article class="showcase-card"><h4>HYROX news</h4><p>Race stories from around the world, with Gregor & Hattie's perspective on what matters.</p><a class="btn btn-ghost" href="/racetoframe/news.html">Read the news</a></article>
+      <article class="showcase-card"><h4>Watch &amp; listen</h4><p>Training clips, race footage and longer conversations — ready when you are.</p><p><a class="btn btn-ghost" href="/racetoframe/watch.html">Watch &amp; Learn</a> <a href="/racetoframe/podcast.html">Studio series →</a></p></article>
+      <article class="showcase-card"><h4>More from Gregor & Hattie</h4><p>Coaching routes, sessions and official channels.</p><a class="btn btn-ghost" href="/racetoframe/shop.html">Open the links</a></article>
+    </div></div></section>
+
     <section class="block alt" id="events">
       <div class="wrap">
         <p class="eyebrow reveal">Upcoming Events</p>
-        <h3 class="reveal">Put a race on the calendar.</h3>
+        <h3 class="reveal">Pick the start line. Build towards it.</h3>
         <p class="lead reveal">
-          Cohorts open twelve weeks before each race. Train together, race
-          together. Not ready to race? Come watch with the crew — free, still a great day out.
+          Choose a confirmed race, plan the weekend and build the training
+          around it. Find a teammate, bring the crew and make the start line a shared target.
         </p>
-        <div class="events">
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>UK</span></div>
-            <div>
-              <h4>HYROX UK 2027</h4>
-              <p>
-                The home race. Dates confirmed when HYROX announces — join the mailing list and it lands in your inbox the day it drops.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="#ask">Get notified</a>
-          </div>
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>London</span></div>
-            <div>
-              <h4>HYROX London</h4>
-              <p>
-                The home weekend — biggest venue, loudest crowd. Crew cohort
-                with pacing plans built for ExCeL.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="#ask">Get notified</a>
-          </div>
-          <div class="event reveal">
-            <div class="date"><strong>Sat</strong><span>Monthly</span></div>
-            <div>
-              <h4>Race crew meetups</h4>
-              <p>
-                Post-race dinners and HYROX-curious hangs — the crew
-                table, open to anyone who raced, supported, or just wants in.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="#ask">Get notified</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="events" id="race-cards" aria-live="polite"><div class="event"><div class="date"><strong><time datetime="2026-12-02">2 Dec 2026</time></strong><span>London</span></div><div><h4>Amazon HYROX London</h4><p>2 Dec 2026 – 6 Dec 2026 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-london-excel/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/racetoframe/events.html#london">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2027-01-20">20 Jan 2027</time></strong><span>Manchester</span></div><div><h4>HYROX Manchester</h4><p>20 Jan 2027 – 31 Jan 2027 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-manchester/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/racetoframe/events.html#manchester">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2026-11-11">11 Nov 2026</time></strong><span>Dublin</span></div><div><h4>HYROX Dublin</h4><p>11 Nov 2026 – 15 Nov 2026 · Ireland</p><a href="https://hyrox.com/event/hyrox-dublin/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/racetoframe/events.html#dublin">Plan the weekend</a></div></div></div></section>
 
     <section class="cta-band" id="find-partner">
       <div class="wrap">
         <h3>Got the ticket. Missing the partner.</h3>
         <p>
           Open doubles, pro, mixed — yes, that one too — relay, or just
-          race-trip company. Post your card, G&H does the intros.
+          race-trip company. Post your card, Gregor & Hattie does the intros.
         </p>
-        <a class="btn btn-light" href="/racetoframe/find-a-partner/"
+        <a class="btn btn-light" href="/racetoframe/find-a-partner.html"
           >Find a partner</a
         >
       </div>
@@ -408,8 +404,7 @@
         <p class="eyebrow reveal">Results wall</p>
         <h3 class="reveal">Real athletes. Real times.</h3>
         <p class="lead reveal">
-          Every result here is a G&H athlete who said yes to being on the
-          wall. Before and after, race by race.
+          Every result here is athlete-approved. Before and after, race by race.
         </p>
         <ul class="wall" id="wall-list"></ul>
         <div class="week" id="week" hidden>
@@ -421,19 +416,20 @@
 
     <section class="block tips" id="tips">
       <div class="wrap">
-        <p class="eyebrow reveal">$1 says</p>
+        <p class="eyebrow reveal">Gregor & Hattie says</p>
         <h3 class="reveal">The stuff that's not in the rulebook.</h3>
         <p class="lead reveal">
-          Three things per station that Gregor & Hattie actually does on race day — including the embarrassing ones. Spot a gap? <a href="#ask">Ask Gregor & Hattie</a> — it might make the list.
+          Three practical checks per station — race-floor lessons from a coach who has raced across divisions, partners and cities. Spot a gap? <a href="#ask">Ask Gregor & Hattie</a> — it might make the list.
         </p>
         <figure class="tips-photo reveal">
           <img
-            src="/racetoframe/images/station-lean.jpg?v=1792613362034"
-            alt="Gregor post-race in his Puresport cap — the man with the field notes"
+            src="/racetoframe/images/wallball.jpg?v=1793655400937"
+            alt="Gregor & Hattie coaching wall balls in a class setting"
             width="970"
             height="1024"
             loading="lazy"
           />
+          <svg class="tips-hairline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 65 V5 Q0 0 5 0 H62" /></svg>
         </figure>
         <div class="tips-grid reveal">
           <details open>
@@ -477,7 +473,7 @@
             <summary>SkiErg</summary>
             <ol>
               <li>
-                Set the damper before the clock starts — 6–7 for most women.
+                Set the damper before the clock starts — 6–7 for most athletes.
                 Fiddling mid-station costs 10 seconds you never get back.
               </li>
               <li>
@@ -494,8 +490,7 @@
             <summary>Sled Push</summary>
             <ol>
               <li>
-                Test the carpet in the warm-up area — every venue is different,
-                UK's was notoriously slow. If it's slow, drop the shoulder,
+                Test the carpet in the warm-up area — every venue is different — some carpets just never let go. If it's slow, drop the shoulder,
                 push from lower, and add 10–15 s to your target so you don't
                 blow the next run chasing a number.
               </li>
@@ -618,20 +613,20 @@
             </ol>
           </details>
           <details>
-            <summary>Heat & travel</summary>
+            <summary>Travel &amp; away races</summary>
             <ol>
               <li>
                 Pre-cool: an ice slushie 20 minutes before the start measurably
-                drops core temperature. Racing from UK, this is the free
+                drops core temperature. Racing from United Kingdom, this is the free
                 minute.
               </li>
               <li>
-                Flying to London, Birmingham or KL? Land two days early, race
+                Flying to United Kingdom, Dublin or Singapore? Land two days early, race
                 day minus one is legs up, and pack your own gel — the expo runs
                 out.
               </li>
               <li>
-                Train outdoors at UK effort, race indoors at pace. Aircon
+                Train outdoors at United Kingdom effort, race indoors at pace. Aircon
                 venues are 10°C cooler than your Sunday run, so your race pace
                 is faster than your training says.
               </li>
@@ -646,11 +641,11 @@
               </li>
               <li>
                 Race doubles first. Splitting the stations means you can go
-                hard for 30 seconds and recover — banking confidence instead of
-                a blow-up.
+                hard for 30 seconds and recover — banking confidence instead
+                of a blow-up.
               </li>
               <li>
-                A plan beats guesswork. Ask G&amp;H — that's what the coaching
+                A plan beats guesswork. Ask Gregor & Hattie — that's what the coaching
                 page is for.
               </li>
             </ol>
@@ -662,7 +657,7 @@
     <section class="capture" id="ask">
       <img
         class="capture-bg"
-        src="/racetoframe/images/avatar.jpg?v=1792613362034"
+        src="/racetoframe/images/coaching.jpg?v=1793655400937"
         alt=""
         width="948"
         height="870"
@@ -670,26 +665,24 @@
       />
       <div class="wrap">
         <div class="reveal coach">
-          <img
+          <span class="coach-portrait"><img
             class="bio"
-            src="/racetoframe/images/duo-patches.jpg?v=1792613362034"
-            alt="Gregor & Hattie after their Manchester finish — ask them anything"
+            src="/racetoframe/images/bio.jpg?v=1793655400937"
+            alt="Gregor & Hattie — HYROX racer, coach and Gregor & Hattie founder"
             width="120"
             height="120"
             loading="lazy"
-          />
+          /><svg class="portrait-hairline" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M33 3 A50 50 0 0 0 33 97" /></svg></span>
           <div>
-            <p class="eyebrow">Ask G&H · Chat Zone</p>
+            <p class="eyebrow">Ask Gregor & Hattie · Chat Zone</p>
             <h3>Got a race, a station or a target? Just ask.</h3>
             <p>
-              Leave your email and your question. Gregor & Hattie answers personally — and
-              you'll be first to hear when cohorts open.
+              Have a training question or a race in mind? Send it to Gregor & Hattie
+              and start the conversation.
             </p>
             <p class="chat-line">
-              Prefer chat? Subscribers get G&H on
-              <a class="chat-zone chat-zone-inline" href="#ask" data-whatsapp=""
-                ><span class="dot"></span> WhatsApp</a
-              >
+              Prefer chat? Find Gregor & Hattie on
+              <a class="chat-zone chat-zone-inline" href="https://www.instagram.com/gregorandhattie/" target="_blank" rel="noopener"><span class="dot"></span> Instagram</a>
             </p>
           </div>
         </div>
@@ -717,7 +710,7 @@
               name="question"
               placeholder="Your question (optional)"
             />
-            <button class="btn btn-primary" type="submit">Ask G&H</button>
+            <button class="btn btn-primary" type="submit">Ask Gregor & Hattie</button>
           </form>
           <p class="fine" id="ask-note" role="status">
             No spam. Unsubscribe any time.
@@ -741,8 +734,8 @@
                   <option>Faster time</option>
                   <option>Podium / elite</option>
                   <option>Doubles / relay</option>
-                  <option>Fit through pregnancy</option>
-                  <option>Post-natal comeback</option>
+                  <option>Doubles partner hunt</option>
+                  <option>Injury comeback</option>
                   <option>General strength &amp; running</option>
                 </select>
               </label>
@@ -772,7 +765,7 @@
               </label>
               <label>
                 <span>Where are you based?</span>
-                <input type="text" name="city" placeholder="UK" />
+                <input type="text" name="city" placeholder="United Kingdom" />
               </label>
               <label>
                 <span>Instagram / TikTok handle</span>
@@ -781,7 +774,7 @@
             </div>
             <label class="onboard-wide">
               <span
-                >Injuries, pregnancy stage, or anything Gregor & Hattie should know</span
+                >Injuries, race history, or anything Gregor & Hattie should know</span
               >
               <textarea name="notes" rows="3"></textarea>
             </label>
@@ -815,11 +808,11 @@
 
     <section class="block gallery" id="wall-photos" hidden>
       <div class="wrap">
-        <p class="eyebrow reveal">The G&amp;H Wall</p>
-        <h3 class="reveal">Your shots. Your words.</h3>
+        <p class="eyebrow reveal">Race Wall</p>
+        <h3 class="reveal">Your people. Your progress. Your wall.</h3>
         <p class="lead reveal">
-          Race faces, finish-line tears, the squad being daft. Send yours and it
-          goes up here once Gregor & Hattie has your OK.
+          Race faces, finish-line tears, the squad being daft. Share the moments
+          that make this community yours.
         </p>
         <div
           class="event-tabs reveal"
@@ -883,7 +876,7 @@
             <label class="check">
               <input name="consent" type="checkbox" required />
               <span
-                >I'm in the photo (or everyone in it is happy), and G&H can
+                >I'm in the photo (or everyone in it is happy), and Gregor & Hattie can
                 show it on this page and on @racetoframe. Ask Gregor & Hattie any time to take
                 it down.</span
               >
@@ -913,28 +906,7 @@
       </dialog>
     </section>
 
-    <section class="block" id="merch">
-      <div class="wrap merch-grid">
-        <div>
-          <p class="eyebrow reveal">Merchandise</p>
-          <h3 class="reveal">Race to Frame — the shop.</h3>
-          <p class="lead reveal">
-            Finisher patch frames, podium flag frames, medal frames and
-            keyrings — the stuff your race weekend deserves.
-          </p>
-          <a class="btn btn-ghost reveal" href="/racetoframe/shop.html">Browse the shop</a>
-        </div>
-        <figure class="merch-photo reveal">
-          <img
-            src="/racetoframe/images/frame-manchester.jpg?v=1792613362034"
-            alt="A Race to Frame finisher frame on the wall — patch and race photo inside"
-            width="1200"
-            height="800"
-            loading="lazy"
-          />
-        </figure>
-      </div>
-    </section>
+
 
 
 
@@ -946,55 +918,56 @@
     ></div>
 
     <div class="sticky-cta" id="sticky-cta" hidden>
-      <a class="btn btn-primary" href="#plans">Start training</a>
-      <a class="btn btn-light" href="/racetoframe/splits/">Free split analysis</a>
+      <a class="btn btn-primary" href="/racetoframe/coaching.html">Coach with Gregor & Hattie</a>
+      <a class="btn btn-light" href="/racetoframe/splits.html">Free split analysis</a>
     </div>
 
     <footer>
       <div class="wrap">
         <div>© <span id="year"></span> Gregor & Hattie</div>
         <nav>
-          <a href="#plans">Subscriptions</a>
-          <a href="/racetoframe/stations-prep/">Stations Prep</a>
-          <a href="/racetoframe/run-zone/">Run Zone</a>
-          <a href="/racetoframe/fuel-zone/">Fuel Zone</a>
-          <a href="/racetoframe/taper-zone/">Taper Zone</a>
-          <a href="/racetoframe/events/">Events</a>
+          <a href="#plans">Coaching</a>
+          <a href="/racetoframe/stations-prep.html">Stations Prep</a>
+          <a href="/racetoframe/run-zone.html">Run Zone</a>
+          <a href="/racetoframe/taper-zone.html">Taper Zone</a>
+          <a href="/racetoframe/race-day.html">Race Day</a>
+          <a href="/racetoframe/events.html">Events</a>
           <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
-          <a href="/racetoframe/race-planner/">Race planner</a>
-          <a href="/racetoframe/news/">News</a>
-          <a href="/racetoframe/news.html">UK scene</a>
-          <a href="/racetoframe/race-crew/">the ninth station</a>
-          <a href="/racetoframe/results/">Results</a>
-          $1
-          <a href="/racetoframe/predictor/">Race Predictor</a>
-          <a href="/racetoframe/find-a-partner/">Find a Partner</a>
-          <a href="#wall-photos">The G&amp;H Wall</a>
+          <a href="/racetoframe/events.html#cities">Race planner</a>
+          <a href="/racetoframe/news.html">News</a>
+          <a href="/racetoframe/race-crew.html">the ninth station</a>
+          <a href="/racetoframe/results.html">Results</a>
+          <a href="/racetoframe/splits.html">Splits</a>
+          <a href="/racetoframe/find-a-partner.html">Find a Partner</a>
+          <a href="#wall-photos">Race Wall</a>
           <a href="#ask">Ask Gregor & Hattie</a>
-          <a data-link="truecoach" target="_blank" rel="noopener" hidden
-            >Athlete login (TrueCoach)</a
+          <a data-link="athleteLogin" target="_blank" rel="noopener" hidden
+            >Athlete login</a
           >
           <a
             href="https://www.instagram.com/gregorandhattie/"
             target="_blank"
             rel="noopener"
-            >Instagram @gregorandhattie</a
+            >Instagram @racetoframe</a
           >
-          <a href="https://www.tiktok.com/@gregorandhattie" target="_blank" rel="noopener">TikTok @gregorandhattie</a>
-          <a href="https://racetoframe.com/" target="_blank" rel="noopener">Race to Frame shop</a>
-          <a href="/racetoframe/podcast.html" target="_blank" rel="noopener">Podcast</a>
-          <a href="https://racetoframe.com/pages/mailing-list" target="_blank" rel="noopener">Mailing list</a>
+          <a data-strip="tiktok-link" href="https://www.instagram.com/gregorandhattie/" target="_blank" rel="noopener">TikTok @racetoframe</a>
+          <a data-strip="youtube-link" href="https://www.instagram.com/gregorandhattie/" target="_blank" rel="noopener">YouTube — GREGORANDHATTIE</a>
+          <a href="https://racetoframe.com/" target="_blank" rel="noopener">Race to Frame</a>
+          <a href="https://www.instagram.com/gregorandhattie/" target="_blank" rel="noopener">All links</a>
 
           <a href="/racetoframe/coaching.html">Book Gregor & Hattie</a>
-          <a href="/racetoframe/partners.html">Advertise</a>
-          <a href="/racetoframe/desk.html">The desk</a>
+          <a href="/racetoframe/partners.html">Partners</a>
+          
         </nav>
       </div>
-          <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">the ninth station</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/racetoframe/app.js?v=1792613362034" defer></script>
-    <script src="/racetoframe/emerge.js?v=1792613362034" defer></script>
-    <script src="/racetoframe/partners.js?v=1792613362034" defer></script>
+    <script src="/racetoframe/app.js?v=r6-20261105" defer></script>
+    <script src="/racetoframe/emerge.js?v=1793655400937" defer></script>
+    <script src="/racetoframe/partners.js?v=1793655400937" defer></script>
+    <script src="/racetoframe/planner.js?v=1793655400937" defer></script>
+    <script src="/racetoframe/home-editorial.js?v=1793655400937" defer></script>
+  <script>(()=>{const h=document.querySelector(".hero--bleed");if(!h||!("IntersectionObserver" in window))return;new IntersectionObserver(([e])=>document.body.classList.toggle("hero-in-view",e.isIntersecting)).observe(h);})();</script>
   </body>
 </html>

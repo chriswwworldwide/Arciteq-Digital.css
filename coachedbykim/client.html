@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en" data-coach-preview="true" data-coach-page="false">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Client | The Desk | Après London</title>
+    <meta name="description" content="A private client record for the Kim Mansell site — package history, attention state, programme messages and renewal workflow." />
+    <link rel="stylesheet" href="/coachedbykim/styles.css?v=scrim-rhythm-20261104" />
+    <link rel="stylesheet" href="/coachedbykim/guide.css?v=1793655390068" />
+    <link rel="stylesheet" href="/coachedbykim/showcase.css?v=1793655390068" /><link rel="stylesheet" href="/coachedbykim/desk.css?v=desk1" /><script src="/coachedbykim/desk-more.js?v=1793655390068"></script>
+    <style>
+      .client-wrap { padding: 48px 0 84px; }
+      .client-disclaimer, .record-card, .attention-box, .renewal-box, .message-panel {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--paper-2);
+      }
+      .client-disclaimer {
+        border-style: dashed;
+        padding: .8rem 1.1rem;
+        font-size: .85rem;
+        color: var(--ink-3);
+        margin-bottom: 1.4rem;
+      }
+      .record-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .record-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+      .record-card, .attention-box, .renewal-box, .message-panel { padding: 1.1rem; margin-bottom: 1rem; }
+      .record-card h3, .renewal-box h4, .message-panel h4 { margin: 0 0 .45rem; }
+      .client-detail {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: .8rem;
+      }
+      .client-detail div {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: .85rem;
+        background: var(--paper);
+      }
+      .client-detail span {
+        display: block;
+        font-size: .72rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: .3rem;
+      }
+      .client-detail strong { font-size: 1rem; overflow-wrap: anywhere; }
+      details.record-card > summary { cursor: pointer; list-style-position: inside; }
+      details.record-card > summary h3 { display: inline; margin: 0; }
+      .checkin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .8rem; margin-bottom: .8rem; }
+      .checkin-grid label { display: block; font-size: .85rem; color: var(--ink-2); }
+      .checkin-grid select { width: 100%; margin-top: .3rem; }
+      #checkin-box textarea { width: 100%; min-height: 64px; }
+      .attention-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border-color: color-mix(in srgb, var(--pink) 42%, transparent);
+        background: color-mix(in srgb, var(--pink) 10%, var(--paper));
+      }
+      .attention-owner {
+        flex: 0 0 auto;
+        border-radius: 999px;
+        padding: .35rem .7rem;
+        background: var(--paper);
+        color: var(--pink);
+        font-size: .72rem;
+        font-weight: 850;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+      }
+      .timeline { display: grid; }
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 112px 1fr;
+        gap: .85rem;
+        padding: .7rem 0 .7rem .9rem;
+        border-left: 2px solid var(--line);
+        position: relative;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -5px;
+        top: 1rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--pink);
+      }
+      .timeline-item time { color: var(--ink-3); font-size: .76rem; font-weight: 750; }
+      .timeline-item strong { display: block; font-size: .92rem; }
+      .timeline-item p { font-size: .82rem; margin-top: .15rem !important; }
+      .renewal-box { border-color: color-mix(in srgb, var(--pink) 42%, transparent); background: color-mix(in srgb, var(--pink) 8%, var(--paper)); }
+      .prompt-preview {
+        border-left: 3px solid var(--pink);
+        padding: .8rem 1rem;
+        margin-top: .8rem;
+        background: var(--paper);
+        border-radius: 0 10px 10px 0;
+        line-height: 1.5;
+      }
+      .timing-notes { display: grid; gap: .45rem; margin-top: 1rem; font-size: .82rem; color: var(--ink-3); }
+      .client-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1rem; }
+      .booking-control { display: flex; align-items: center; gap: .45rem; font-size: .78rem; color: var(--ink-3); }
+      .booking-control select { min-height: 42px; border: 1px solid var(--line); border-radius: 9px; padding: .45rem .6rem; background: var(--paper); color: var(--ink); font: inherit; }
+      .client-actions .sent-action { opacity: .65; }
+      .thread { display: grid; gap: .7rem; margin: .8rem 0; }
+      .bubble { border-radius: 14px; padding: .85rem 1rem; max-width: 92%; }
+      .bubble span { display: block; font-size: .72rem; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3); margin-bottom: .3rem; }
+      .bubble p { line-height: 1.5; }
+      .bubble.inbound { background: var(--paper); }
+      .bubble.outbound { background: color-mix(in srgb, var(--pink) 13%, var(--paper)); justify-self: end; }
+      .empty-message {
+        border: 1px dashed var(--line);
+        border-radius: 12px;
+        padding: .9rem 1rem;
+        color: var(--ink-2);
+      }
+      .empty-message p { margin-top: .25rem; color: var(--ink-3); }
+      .message-panel textarea:disabled, .message-panel button:disabled { opacity: .55; cursor: not-allowed; }
+      .message-panel textarea {
+        width: 100%;
+        min-height: 110px;
+        padding: .9rem 1rem;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--paper);
+        color: var(--ink);
+        font: inherit;
+        line-height: 1.55;
+        box-sizing: border-box;
+        resize: vertical;
+      }
+      .client-note { font-size: .82rem; color: var(--ink-3); margin-top: .8rem; }
+      .client-toast { margin-top: .9rem; color: var(--pink); font-weight: 700; }
+      .message-history summary { min-height: 44px; cursor: pointer; color: var(--pink); font-weight: 800; }
+      .support-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1rem 1.1rem;
+        background: var(--paper-2);
+      }
+      .support-card h3 { margin: 0 0 .3rem; }
+      .support-card p:not(.eyebrow) { color: var(--ink-3); margin: 0; }
+      .programme-grid, .event-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: .75rem;
+        margin-bottom: 1rem;
+      }
+      .programme-grid div, .event-grid div, .check-card, .station-row {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: .8rem;
+        background: var(--paper);
+      }
+      .programme-grid span, .event-grid span, .check-card span, .station-row span {
+        display: block;
+        font-size: .7rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: .25rem;
+      }
+      .asset-list, .progression-list, .station-list { display: grid; gap: .55rem; margin-top: .8rem; }
+      .asset-list li {
+        list-style: none;
+        border-left: 3px solid var(--line);
+        padding-left: .75rem;
+        color: var(--ink-2);
+      }
+      .asset-list li.is-current { border-left-color: var(--pink); font-weight: 800; color: var(--ink); }
+      .check-card { display: flex; align-items: center; gap: .65rem; }
+      .check-dot {
+        width: 12px;
+        height: 12px;
+        flex: 0 0 12px;
+        border-radius: 50%;
+        background: #f2b84b;
+      }
+      .check-card.pass .check-dot { background: #55c987; }
+      .check-card strong { font-size: .88rem; }
+      .station-row {
+        display: grid;
+        grid-template-columns: minmax(110px, .8fr) minmax(110px, .8fr) minmax(150px, 1.3fr) auto;
+        gap: .6rem;
+        align-items: center;
+      }
+      .station-row [data-station-remove] { padding: .2rem .6rem; font-size: .95rem; line-height: 1; }
+      .station-row strong { font-size: .88rem; }
+      .station-pill {
+        justify-self: start;
+        border-radius: 999px;
+        padding: .3rem .6rem;
+        font-size: .7rem;
+        font-weight: 850;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+      }
+      .station-pill.good { background: rgba(85, 201, 135, .18); color: #2d8a59; }
+      .station-pill.watch { background: rgba(242, 184, 75, .22); color: #9a6415; }
+      .station-pill.risk { background: color-mix(in srgb, var(--pink) 18%, var(--paper)); color: var(--pink); }
+      .event-form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+        gap: .65rem;
+        margin-top: .8rem;
+      }
+      .event-form label, .note-composer label { display: grid; gap: .3rem; font-size: .74rem; color: var(--ink-3); }
+      .event-form input, .event-form select, .station-row input, .station-row select, .note-composer textarea {
+        min-height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: .55rem .65rem;
+        background: var(--paper);
+        color: var(--ink);
+        font: inherit;
+      }
+      .note-composer { margin-top: 1rem; }
+      .note-composer textarea { min-height: 74px; resize: vertical; }
+      @media (max-width: 820px) {
+        .record-top, .attention-box, .support-card { display: grid; }
+        .timeline-item { grid-template-columns: 84px 1fr; }
+        .station-row { grid-template-columns: 1fr; }
+        .bubble { max-width: 100%; }
+      }
+    </style>
+    <script src="/coachedbykim/coach-view.js?v=1793655390068"></script>
+  </head>
+  <body class="desk-page"><aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/coachedbykim/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/coachedbykim/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/coachedbykim/desk.html?audience=coach">Finance</a><a data-coach-link href="/coachedbykim/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/coachedbykim/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/coachedbykim/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/coachedbykim/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+    <header class="masthead wrap">
+      <a href="/coachedbykim/" style="color: inherit; text-decoration: none">
+        <h1><span class="wordmark">APRÈS <span class="o">LONDON</span></span></h1>
+      </a>
+      <p class="city">The Desk</p>
+    </header>
+    
+
+    <main class="wrap client-wrap">
+      <div class="record-top">
+        <div>
+          <p class="eyebrow">The Desk / Clients</p>
+          <h2 id="client-title">Client record</h2>
+          <p class="client-note" id="client-subtitle"></p>
+        </div>
+        <div class="record-actions">
+          <button class="btn btn-ghost" id="pause-client" type="button">Pause automation</button>
+          <button class="btn btn-ghost" id="archive-client" type="button">Archive client</button>
+          <a class="btn btn-ghost" href="/coachedbykim/clients.html?audience=coach">Back to clients</a>
+        </div>
+      </div>
+      <p class="client-disclaimer"><b>Client workflow preview.</b> This record is driven by the local staged Client Desk. A connected build would update it from website bookings, package payments and programme activity.</p>
+      <div class="client-detail" id="client-detail"></div>
+      <div class="attention-box" id="attention-box"><div><h4 id="attention-action-title">Current attention</h4><p id="attention-action-copy"></p><div class="client-actions" id="attention-actions"></div></div><span class="attention-owner" id="attention-owner"></span></div>
+
+      <section class="record-card" id="programme-event">
+        <p class="eyebrow">Programme & event</p>
+        <h3>Programme content and race goal</h3>
+        <p class="client-note">A content set is the group of videos/workouts assigned for this programme cycle. Renewing keeps the programme but moves the client to the next set; progressing to a new programme starts again at Set 1.</p>
+        <div class="programme-grid" id="programme-summary"></div>
+        <ul class="asset-list" id="asset-list"></ul>
+        <div class="client-actions">
+          <button class="btn btn-ghost" id="assign-next-assets" type="button">Use next content set</button>
+          
+        </div>
+        <p class="client-note">Sets deliver from your own coaching library — no platform required. Already using one — Trainerize, for example? Link it in .</p>
+        <h3>Progression check</h3>
+        <p class="client-note" id="progression-copy"></p>
+        <div class="progression-list" id="progression-list"></div>
+        <div class="client-actions">
+          <button class="btn btn-primary" id="progress-client" type="button">Ready to progress</button>
+          <button class="btn btn-ghost" data-progression="keep" type="button">Keep current programme</button>
+          <button class="btn btn-ghost" data-progression="discuss" type="button">Needs a chat</button>
+        </div>
+        <h3>Event goal</h3>
+        <div class="event-grid" id="event-goal"></div>
+        <div class="event-form">
+          <label>Event <input id="event-name" /></label>
+          <label>Date <input id="event-date" /></label>
+          <label>Target <input id="event-target" placeholder="1:30:00" /></label>
+          <label>Latest sim <input id="event-sim" placeholder="1:35:00" /></label>
+          <label>Status <select id="event-status"><option>Ahead</option><option>On track</option><option>Behind target</option><option>Building base</option><option>Recalibrate goal</option></select></label>
+          <label>Programme adaptation <input id="event-adaptation" /></label>
+        </div>
+        <div class="client-actions">
+          <button class="btn btn-ghost" id="save-event" type="button">Save event goal</button>
+          <a class="btn btn-primary" id="race-tool" href="/coachedbykim/predictor.html?audience=coach">Open race-time calculator</a>
+        </div>
+        <h3>Watch list — stations & running</h3>
+        <p class="client-note">The few things being tracked this block — the full split profile lives in the race tools. Remove one when it's fixed; add the next thing you're watching.</p>
+        <div class="station-list" id="station-list"></div>
+        <div class="client-actions">
+          <label class="booking-control">Watch another area <select id="add-station"></select></label>
+          <button class="btn btn-ghost" id="add-station-btn" type="button">Add to watch list</button>
+          <button class="btn btn-ghost" id="save-stations" type="button">Save station snapshot</button>
+        </div>
+        <div class="note-composer">
+          <label>Quick coach note <textarea id="coach-note" placeholder="e.g. Progressing faster than expected — recalibrate after the next sim."></textarea></label>
+          <div class="client-actions"><button class="btn btn-primary" id="add-note" type="button">Add note to timeline</button></div>
+        </div>
+      </section>
+
+      <details class="record-card"><summary><h3>Client timeline</h3></summary><div class="timeline" id="client-timeline"></div></details>
+      <div class="renewal-box" id="floor-box"><h4 id="floor-title">Floor-session reminder</h4><p id="floor-copy"></p><div class="prompt-preview" id="floor-preview"></div><div class="client-actions"><button class="btn btn-ghost" id="stop-floor" type="button">Stop auto reminder</button><button class="btn btn-ghost" id="mark-floor-booked" type="button">Mark floor booked</button><label class="booking-control">Session status <select id="booking-state"><option>Booked</option><option>Completed</option><option>No-show</option><option>Cancelled</option><option>Rescheduled</option><option>Cancel requested</option><option>Reschedule requested</option></select></label><button class="btn btn-ghost" id="update-booking" type="button">Update booking</button></div><div class="client-actions" id="cancel-decision" hidden><p class="client-note" id="cancel-decision-copy" style="width:100%"></p><button class="btn btn-primary" id="charge-session" type="button">Charge session</button><button class="btn btn-ghost" id="waive-session" type="button">Waive — reschedule free</button></div></div>
+      <div class="renewal-box" id="renewal-box"><h4 id="renewal-title">Renewal prompt</h4><p id="renewal-copy"></p><div class="prompt-preview" id="prompt-preview"></div><div class="timing-notes"><span><strong>Warm-up:</strong> before the last session or renewal day.</span><span><strong>Renew today:</strong> after the final session/day.</span><span><strong>Follow-up:</strong> next morning if nothing comes back.</span></div><div class="client-actions"><button class="btn btn-primary" id="send-early" type="button">Send early reminder</button><button class="btn btn-primary" id="send-final" type="button">Send renew-today prompt</button><button class="btn btn-ghost" id="send-followup" type="button">Send follow-up</button><button class="btn btn-ghost" id="mark-renewed" type="button">Mark renewed</button></div></div>
+      <section class="record-card" id="intake-review"><h3>Client intake</h3><p class="client-note" id="intake-summary"></p><button class="btn btn-ghost" id="review-intake" type="button" hidden>Mark intake reviewed</button></section>
+      <details class="record-card" id="checkin-box"><summary><h3>Weekly check-in</h3></summary>
+        <p class="client-note" id="checkin-summary">No structured check-in logged yet — log what the client reported this week.</p>
+        <div class="checkin-grid">
+          <label>Energy <select id="checkin-energy"><option>Good</option><option>OK</option><option>Low</option></select></label>
+          <label>Sleep <select id="checkin-sleep"><option>Good</option><option>OK</option><option>Poor</option></select></label>
+          <label>Training difficulty this week <select id="checkin-rpe"><option>About right</option><option>Too easy</option><option>Too hard</option></select></label>
+          <label>Pain or discomfort <select id="checkin-pain"><option>None</option><option>Minor — watching</option><option>Needs attention</option></select></label>
+        </div>
+        <label>Coach note <textarea id="checkin-note" placeholder="e.g. Left knee grumbling on lunges — swap to split squats next block."></textarea></label>
+        <div class="client-actions"><button class="btn btn-primary" id="save-checkin" type="button">Save client's check-in</button><button class="btn btn-ghost" id="review-checkin" type="button" hidden>Mark flagged check-in reviewed</button></div>
+      </details>
+      <section class="message-panel" id="message-panel"><h4>Programme message</h4><div class="thread" id="latest-message"></div><details class="message-history"><summary>Show message history</summary><div class="thread" id="message-history"></div></details><textarea id="client-reply" aria-label="Client reply"></textarea><div class="client-actions"><button class="btn btn-primary" id="send-reply" type="button">Send client reply</button><button class="btn btn-ghost" id="log-checkin" type="button">Mark check-in received</button></div><p class="client-toast" id="client-toast" role="status" hidden></p></section>
+      <section class="support-card"><div><p class="eyebrow">Station 9 support</p><h3>Something not working?</h3><p>Send this client record and page context straight to Chris.</p></div><a class="btn btn-primary" id="support-link" href="mailto:chris@station9studio.co.uk">Contact Station 9</a></section>
+    </main>
+    <footer><div class="wrap">© <span id="year"></span> Kim Mansell <a data-coach-link href="/coachedbykim/?audience=coach">Back to coach homepage</a></div>  <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+    </footer>
+    <script src="/coachedbykim/desk-config.js?v=1793655390068"></script>
+    <script src="/coachedbykim/contacts.js?v=1793655390068"></script>
+    <script src="/coachedbykim/integrations.js?v=1793655390068"></script>
+    <script src="/coachedbykim/clients.js?v=1793655390068"></script>
+    <script src="/coachedbykim/client.js?v=1793655390068"></script>
+  </body>
+</html>

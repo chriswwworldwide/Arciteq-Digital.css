@@ -3202,3 +3202,50 @@ section.cta-band .btn-light {
     grid-template-columns: 1fr;
   }
 }
+
+/* Ask Paul: mobile bg focus shifts right so the portrait circle never covers the face */
+@media (max-width: 600px) {
+  .capture-bg {
+    object-position: 30% 75%;
+  }
+}
+/* Race-instrument pages never loaded guidance.css — port the hero partial-frame
+   + curved bottom so results/splits/predictor heroes match the guidance treatment */
+.race-instrument .guide-hero-photo {
+  position: relative;
+}
+.race-instrument .guide-hero-photo img {
+  object-fit: cover;
+  object-position: 50% 30%;
+  aspect-ratio: 16 / 9;
+  max-height: 420px;
+  border-radius: 0 0 48% 8% / 0 0 7% 2%;
+}
+.race-instrument .guide-hero-photo::after {
+  content: "";
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  left: -8px;
+  top: -8px;
+  border-left: 2px solid var(--pink);
+  border-top: 2px solid var(--pink);
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .race-instrument .guide-hero-photo img {
+    aspect-ratio: 16 / 10;
+    max-height: none;
+  }
+}
+@media (max-width: 600px) {
+  /* race-instruments.css hides the hero photo on phones, leaving the page
+     with no hero visual at all — restore it with the same treatment */
+  body.race-instrument .guide-hero .guide-hero-photo {
+    display: block;
+  }
+}
+
+/* crop focal fixes 2026-11-03 — shift banded crops up so heads/faces stay in frame */
+figure img[src*='station-burpees.jpg'],.station img[src*='station-burpees.jpg']{object-position:50% 20%!important}
+figure img[src*='station-sled-pull.jpg'],.station img[src*='station-sled-pull.jpg']{object-position:50% 25%!important}

@@ -1,0 +1,61 @@
+{
+  "note": "PRIVATE PITCH PREVIEW.",
+  "photos": [
+    {
+      "src": "/coachedbykim/images/gallery/stock-arena.jpg",
+      "alt": "Athlete walking the arena floor before a race",
+      "caption": "The calm before the storm. Arena doors open, nerves kick in, let's go.",
+      "by": "Race day",
+      "tilt": -1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/coachedbykim/images/gallery/wall-crew-left.jpg",
+      "alt": "Après members cheering at the A wall",
+      "caption": "Saturdays hit different with this lot.",
+      "by": "Member post",
+      "event": "Après",
+      "tilt": 0.9
+    },
+    {
+      "src": "/coachedbykim/images/gallery/stock-rower.jpg",
+      "alt": "Athlete on a Concept2 rower mid-race",
+      "caption": "1,000 metres. The monitor doesn't lie and neither do your legs.",
+      "by": "Training",
+      "tilt": 1.2,
+      "event": "Training"
+    },
+    {
+      "src": "/coachedbykim/images/gallery/stock-finish.jpg",
+      "alt": "A doubles pair celebrating at the sled pull",
+      "caption": "That finish-line feeling. Shared, it's even better.",
+      "by": "Race day",
+      "tilt": -0.9,
+      "event": "Training"
+    },
+    {
+      "src": "/coachedbykim/images/gallery/wall-crew-right.jpg",
+      "alt": "Après members celebrating together at the A wall",
+      "caption": "Medals on, still buzzing.",
+      "by": "Member post",
+      "event": "Après",
+      "tilt": 1.1
+    },
+    {
+      "src": "/coachedbykim/images/gallery/stock-burpee.jpg",
+      "alt": "Burpee broad jump at HYROX event",
+      "caption": "Chest down, broad jump, repeat. Eighty metres.",
+      "by": "Race day",
+      "tilt": 0.7,
+      "event": "Race day"
+    },
+    {
+      "src": "/coachedbykim/images/studio-anniversary.jpg",
+      "alt": "The Après London crew celebrating one year — medals on, arms out",
+      "caption": "One year in. Day one to twelve months — the floor that fills.",
+      "by": "Après London",
+      "event": "Après",
+      "tilt": -0.7
+    }
+  ]
+}

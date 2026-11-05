@@ -1,0 +1,24 @@
+{
+  "contentSets": {
+    "Sculpt & Shape": ["Foundations: stations 1–4", "Engine + confidence set", "Race rehearsal basics"],
+    "Hybrid programming & testing · intro package": ["Movement confidence set", "Base strength set", "First HYROX skills set"],
+    "GJ programming · monthly": ["Base engine + technique", "Strength endurance + compromised runs", "Race-specific sets + pacing"],
+    "Race Ready · 8 sessions": ["Race pacing + transitions", "Weak-station sharpening", "Simulation + taper prep"],
+    "Strength Foundations · 8 sessions": ["Lift technique set", "Strength endurance set", "HYROX transfer set"],
+    "Performance · 8 sessions": ["Advanced engine set", "Power + station speed", "Race execution set"]
+  },
+  "progressionMap": {
+    "Sculpt & Shape": "Race Ready · 8 sessions",
+    "Hybrid programming & testing · intro package": "GJ programming · monthly",
+    "GJ programming · monthly": "Race Ready · 8 sessions",
+    "Strength Foundations · 8 sessions": "GJ programming · monthly",
+    "Performance · 8 sessions": "Race Ready · 8 sessions",
+    "Race Ready · 8 sessions": "Performance · 8 sessions"
+  },
+  "defaultStations": [
+    { "name": "Sled push", "state": "watch", "latest": "Baseline set", "note": "Keep under review" },
+    { "name": "Wall balls", "state": "good", "latest": "Technique improving", "note": "Maintain" },
+    { "name": "Compromised running", "state": "watch", "latest": "Post-station pacing", "note": "Key limiter" },
+    { "name": "Roxzone", "state": "good", "latest": "Transitions tidy", "note": "Keep fast" }
+  ]
+}

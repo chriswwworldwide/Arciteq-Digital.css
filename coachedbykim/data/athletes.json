@@ -1,0 +1,31 @@
+{
+  "note": "Kim's recorded race history; no third-party partner names are published.",
+  "athletes": {
+    "Kim Mansell": {
+      "tag": "HYROX Pro racer, coach and Après London founder.",
+      "races": [
+        {
+          "event": "HYROX London",
+          "date": "2023",
+          "division": "Open Women",
+          "time": "1:12:20",
+          "note": "Fastest recorded solo time"
+        },
+        {
+          "event": "HYROX London",
+          "date": "2024",
+          "division": "Mixed Doubles",
+          "time": "1:01:55",
+          "note": "Fastest recorded doubles time"
+        },
+        {
+          "event": "Recorded race history",
+          "date": "22 Oct 2025 caption",
+          "division": "All formats",
+          "time": "18 races",
+          "note": "Seven divisions and nine partners — her own count"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "note": "Verified public routes for Kim and Après London — not affiliate offers and no public discount codes.",
+  "items": [
+    {
+      "id": "apres-studio",
+      "name": "Après London",
+      "url": "https://apreslondon.co.uk/",
+      "tagline": "Studio, timetable and memberships",
+      "slot": "partner",
+      "from": "2026-10-29",
+      "until": "2026-12-31"
+    },
+    {
+      "id": "first-time-heroes",
+      "name": "First Time Heroes",
+      "url": "https://3dxl5l929b0.typeform.com/to/vHubNv45",
+      "tagline": "12-week programme application",
+      "slot": "partner",
+      "from": "2026-10-29",
+      "until": "2026-12-31"
+    },
+    {
+      "id": "apres-youtube",
+      "name": "Après London on YouTube",
+      "url": "https://www.youtube.com/@Apr%C3%A8s.London",
+      "tagline": "Verified studio channel",
+      "slot": "results",
+      "from": "2026-10-29",
+      "until": "2026-12-31"
+    }
+  ]
+}

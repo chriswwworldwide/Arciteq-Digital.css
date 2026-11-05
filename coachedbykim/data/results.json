@@ -1,0 +1,122 @@
+{
+  "updated": "2026-10-29",
+  "note": "Kim's recorded race history; partner names are omitted from public rows.",
+  "divisions": {
+    "women": {
+      "label": "Women Singles (Open & Pro)",
+      "results": [
+        {
+          "athlete": "Kim Mansell",
+          "time": "1:12:20",
+          "category": "Open Women — fastest recorded solo",
+          "event": "HYROX London",
+          "date": "2023",
+          "city": "London"
+        },
+        {
+          "athlete": "Kim Mansell",
+          "time": "1:12:49",
+          "category": "Open Women — recorded result",
+          "event": "HYROX Rotterdam",
+          "date": "2023",
+          "city": "Rotterdam"
+        },
+        {
+          "athlete": "Kim Mansell",
+          "time": "1:12:51",
+          "category": "Open Women — recorded result",
+          "event": "HYROX Malmö",
+          "date": "2023",
+          "city": "Malmö"
+        },
+        {
+          "athlete": "Kim Mansell",
+          "time": "1:24:39",
+          "category": "Pro Women — recorded result",
+          "event": "HYROX London",
+          "date": "2023",
+          "city": "London"
+        },
+        {
+          "athlete": "Kim Mansell",
+          "time": "1:24:07",
+          "category": "Pro Women — recorded result",
+          "event": "HYROX Nice",
+          "date": "2024",
+          "city": "Nice"
+        }
+      ]
+    },
+    "men": {
+      "label": "Men Singles (Open & Pro)",
+      "results": []
+    },
+    "doubles-women": {
+      "label": "Women Doubles",
+      "results": [
+        {
+          "athlete": "Kim + doubles partner",
+          "time": "1:23:35",
+          "category": "Women Doubles — recorded result",
+          "event": "HYROX London",
+          "date": "2022",
+          "city": "London"
+        },
+        {
+          "athlete": "Kim + doubles partner",
+          "time": "1:10:42",
+          "category": "Pro Women Doubles — recorded result",
+          "event": "HYROX Manchester",
+          "date": "2025",
+          "city": "Manchester"
+        }
+      ]
+    },
+    "doubles-men": {
+      "label": "Men Doubles",
+      "results": []
+    },
+    "doubles-mixed": {
+      "label": "Mixed Doubles",
+      "results": [
+        {
+          "athlete": "Kim + doubles partner",
+          "time": "1:04:19",
+          "category": "Mixed Doubles — recorded result",
+          "event": "HYROX Barcelona",
+          "date": "2023",
+          "city": "Barcelona"
+        },
+        {
+          "athlete": "Kim + doubles partner",
+          "time": "1:01:55",
+          "category": "Mixed Doubles — fastest recorded doubles",
+          "event": "HYROX London",
+          "date": "2024",
+          "city": "London"
+        }
+      ]
+    },
+    "relay": {
+      "label": "Team Relay",
+      "results": [
+        {
+          "athlete": "Kim + relay team",
+          "time": "1:04:48",
+          "category": "Mixed Relay — recorded result",
+          "event": "HYROX Birmingham",
+          "date": "2023",
+          "city": "Birmingham"
+        },
+        {
+          "athlete": "Kim + relay team",
+          "time": "1:02:51",
+          "category": "Women Relay — recorded result",
+          "event": "HYROX Manchester",
+          "date": "2025",
+          "city": "Manchester"
+        }
+      ]
+    }
+  }
+}

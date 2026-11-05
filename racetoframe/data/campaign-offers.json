@@ -1,0 +1,39 @@
+{
+  "offers": [
+    {
+      "id": "shop",
+      "name": "Shop collection",
+      "goal": "Shop visits",
+      "destination": "https://racetoframe.com/",
+      "image": "/racetoframe/images/coaching-hero.jpg",
+      "headline": "Explore the collection."
+    },
+    {
+      "id": "coaching",
+      "name": "Online coaching with Hattie",
+      "goal": "Offer enquiries",
+      "destination": "https://8r41m23r9yp.typeform.com/to/wwA4T5WC",
+      "image": "/racetoframe/images/coaching-hero.jpg",
+      "headline": "Start a conversation about your training and goals through Hattie's online-coaching enquiry form.",
+      "actionLabel": "Enquire about Hattie's coaching"
+    },
+    {
+      "id": "programme",
+      "name": "Sculpt & Shape",
+      "goal": "Offer enquiries",
+      "destination": "https://8r41m23r9yp.typeform.com/to/T4zmSwW5",
+      "image": "/racetoframe/images/coaching-hero.jpg",
+      "headline": "Explore Hattie's eight-week programme through its own enquiry form. Ask about the current format, support and joining options.",
+      "actionLabel": "Enquire about Sculpt & Shape"
+    },
+    {
+      "id": "programme-3",
+      "name": "GJ HYROX programming",
+      "goal": "Offer enquiries",
+      "destination": "https://form.typeform.com/to/BDmLn8Cw",
+      "image": "/racetoframe/images/coaching-hero.jpg",
+      "headline": "Choose beginner, advanced, doubles or 1:1 HYROX coaching in Gregor's dedicated programme form.",
+      "actionLabel": "Explore Gregor's HYROX options"
+    }
+  ]
+}

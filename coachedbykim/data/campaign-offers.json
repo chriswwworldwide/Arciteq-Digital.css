@@ -1,0 +1,49 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "1:1 online coaching",
+      "goal": "Offer enquiries",
+      "destination": "https://3dxl5l929b0.typeform.com/to/YrCzbiGc",
+      "image": "/coachedbykim/images/coaching-hero.jpg",
+      "headline": "Talk to Kim about your training goals and next HYROX race through her dedicated online-coaching enquiry form.",
+      "actionLabel": "Enquire about 1:1 coaching"
+    },
+    {
+      "id": "programme",
+      "name": "First Time Heroes",
+      "goal": "Offer enquiries",
+      "destination": "https://3dxl5l929b0.typeform.com/to/vHubNv45",
+      "image": "/coachedbykim/images/coaching-hero.jpg",
+      "headline": "Kim's programme for building towards a first HYROX. Open the programme-specific form to discuss joining.",
+      "actionLabel": "Explore First Time Heroes"
+    },
+    {
+      "id": "programme-3",
+      "name": "Gym Confidence",
+      "goal": "Offer enquiries",
+      "destination": "https://3dxl5l929b0.typeform.com/to/jyoGk2ng",
+      "image": "/coachedbykim/images/coaching-hero.jpg",
+      "headline": "Structured workouts to help you feel more confident using weights and machines, with education alongside progression.",
+      "actionLabel": "Explore Gym Confidence"
+    },
+    {
+      "id": "programme-4",
+      "name": "Train at Après London",
+      "goal": "Offer enquiries",
+      "destination": "https://apreslondon.co.uk/memberships/",
+      "image": "/coachedbykim/images/coaching-hero.jpg",
+      "headline": "Coached hybrid training with membership options for different weekly schedules. Explore the studio's passes and current terms.",
+      "actionLabel": "View studio memberships"
+    },
+    {
+      "id": "studio",
+      "name": "Après London trial",
+      "goal": "Studio sessions",
+      "destination": "https://apreslondon.co.uk/trial/",
+      "image": "/coachedbykim/images/race-pair.jpg",
+      "headline": "Start at the Deptford studio through the official route.",
+      "actionLabel": "Book the official trial"
+    }
+  ]
+}

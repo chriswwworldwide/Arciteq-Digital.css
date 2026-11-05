@@ -44,6 +44,8 @@ const VALID_SLUGS = new Set([
   "getfitgabby",
   "paulgillingham",
   "georgegrayson",
+  "coachedbykim",
+  "racetoframe",
 ]);
 
 let tableReady = false;

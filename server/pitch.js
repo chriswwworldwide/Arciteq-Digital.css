@@ -170,6 +170,29 @@ export function createPitchRouter({ adminApiKey }) {
   const router = express.Router();
   const recentSiteVisits = new Map(); // `${slug}:${ip}` -> last-pinged ms
 
+  // Alert sends are serialised: bursts (e.g. a prospect clicking through
+  // several pages, or a batch test) otherwise hit Resend's per-second limit
+  // and fail silently — sendViaResend returns a truthy error object, so the
+  // sendmail fallback never runs on a failed API call either.
+  const alertQueue = [];
+  let alertDraining = false;
+  function enqueueAlert(send) {
+    alertQueue.push(send);
+    if (alertDraining) return;
+    alertDraining = true;
+    (async () => {
+      while (alertQueue.length) {
+        try {
+          await alertQueue.shift()();
+        } catch {
+          // alert delivery is best-effort; never stall the queue
+        }
+        await new Promise((r) => setTimeout(r, 600));
+      }
+      alertDraining = false;
+    })();
+  }
+
   // Platform visit beacon: GET /<slug>/ (or index.html) on a tracked coach
   // logs a site_visit and pings once per IP+slug per hour. Static assets are
   // two segments deep, so only the front door counts. The middleware only
@@ -196,13 +219,13 @@ export function createPitchRouter({ adminApiKey }) {
     if (now - (recentSiteVisits.get(dedupeKey) || 0) > 3600000) {
       recentSiteVisits.set(dedupeKey, now);
       if (recentSiteVisits.size > 5000) recentSiteVisits.clear();
-      const task =
+      enqueueAlert(() =>
         (cleanStr(process.env.PITCH_NTFY_TOPIC) &&
           notifyViaNtfy({ slug, event: "site_visit", pct: null })) ||
         (cleanStr(process.env.PITCH_WEB3FORMS_KEY) &&
           notifyViaWeb3Forms({ slug, event: "site_visit", pct: null })) ||
-        notify({ slug, event: "site_visit", pct: null });
-      task.catch(() => {});
+        notify({ slug, event: "site_visit", pct: null }),
+      );
     }
     next();
   });
@@ -235,15 +258,16 @@ export function createPitchRouter({ adminApiKey }) {
       EMAIL_EVENTS.has(event) &&
       (event !== "progress" || (pct !== null && pct >= 50))
     ) {
-      // Fire-and-forget: Web3Forms when configured (zero-setup delivery to
-      // any inbox), otherwise the Resend/sendmail path. Never block the page.
-      const task =
+      // Fire-and-forget via the queue: Web3Forms when configured (zero-setup
+      // delivery to any inbox), otherwise the Resend/sendmail path. Never
+      // block the page.
+      enqueueAlert(() =>
         (cleanStr(process.env.PITCH_NTFY_TOPIC) &&
           notifyViaNtfy({ slug, event, pct })) ||
         (cleanStr(process.env.PITCH_WEB3FORMS_KEY) &&
           notifyViaWeb3Forms({ slug, event, pct })) ||
-        notify({ slug, event, pct });
-      task.catch(() => {});
+        notify({ slug, event, pct }),
+      );
     }
 
     return res.json({ ok: true });

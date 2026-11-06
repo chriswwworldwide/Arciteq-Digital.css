@@ -18,17 +18,17 @@
       "event": "Training"
     },
     {
-      "src": "/{{SLUG}}/images/gallery/stock-barbell.jpg",
-      "alt": "Deadlift on gym floor \u2014 no face visible",
-      "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
-      "by": "Training",
+      "src": "/{{SLUG}}/images/gallery/stock-finish.jpg",
+      "alt": "A doubles pair celebrating at the sled pull",
+      "caption": "That finish-line feeling. Shared, it's even better.",
+      "by": "Race day",
       "tilt": 1,
       "event": "Training"
     },
     {
       "src": "/{{SLUG}}/images/gallery/stock-burpee.jpg",
       "alt": "Burpee broad jump at HYROX event",
-      "caption": "Chest down, broad jump, repeat. Eighty times.",
+      "caption": "Chest down, broad jump, repeat. Eighty metres.",
       "by": "Race day",
       "tilt": -0.8,
       "event": "Race day"

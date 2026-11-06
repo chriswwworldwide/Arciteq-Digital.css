@@ -1,4 +1,8 @@
 {
-  "note": "PRIVATE PITCH PREVIEW — sample travel-board posts only.",
-  "items": []
+  "preview": true,
+  "note": "Early crew travel cards for the community board — post yours to start the convoy.",
+  "items": [
+    {"name":"Jordan L.","mode":"have","hotel":"Comparing a venue-area stay with a central base","note":"Planning an easy journey to the race and a relaxed crew meal afterwards.","posted":"This week"},
+    {"name":"Casey W.","mode":"looking","hotel":"Looking for a practical race-weekend base","note":"Interested in sharing the weekend with others racing at a similar time.","posted":"This week"}
+  ]
 }

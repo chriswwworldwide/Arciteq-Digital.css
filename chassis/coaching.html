@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Coaching — {{BRAND}} 1:1, group programmes &amp; {{CLOTHING_SHORT}} | {{COACH_NAME}}</title>
+    <title>Coaching &amp; training options | {{BRAND}}</title>
     <meta
       name="description"
-      content="Coach with {{COACH_NAME}}: {{BRAND}} 1:1 coaching by application, group programmes on FITR, and the {{BRAND}} 365 clothing line. Applications go through the existing forms."
+      content="Explore coaching and training options with {{BRAND}}. Compare the available routes and follow each official link for current details."
     />
     <link rel="stylesheet" href="/{{SLUG}}/styles.css?v=1792260946527" />
     <link rel="stylesheet" href="/{{SLUG}}/guide.css?v=1792260946527" />
+    <link rel="stylesheet" href="/{{SLUG}}/guidance.css?v=1792260946527" />
     <style>
       .coach-wrap {
         padding: 48px 0 84px;
@@ -22,19 +23,9 @@
       .coach-plans ul {
         padding-left: 0;
       }
-      .coach-photo {
-        display: block;
-        width: min(100%, 720px);
-        max-height: 520px;
-        object-fit: cover;
-        object-position: center 20%;
-        border-radius: var(--radius);
-        margin: 1.4rem auto 2rem;
-        border: 1px solid var(--line);
-      }
     </style>
-  </head>
-  <body>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/{{SLUG}}/showcase.css" /><script src="/{{SLUG}}/coach-view.js"></script></head>
+  <body class="guidance guidance--coach">
     <header class="masthead wrap">
       <a href="/{{SLUG}}/" style="color: inherit; text-decoration: none">
         <h1>
@@ -54,132 +45,95 @@
       <p class="city">Coaching</p>
     </header>
 
-    <div class="nav">
+    <aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/{{SLUG}}/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/{{SLUG}}/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/{{SLUG}}/leads.html?audience=coach">Leads</a><a data-coach-link href="/{{SLUG}}/desk.html?audience=coach">Finance</a><a data-coach-link href="/{{SLUG}}/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/{{SLUG}}/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/{{SLUG}}/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/{{SLUG}}/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
-          <li><a href="/{{SLUG}}/coaching.html">Coaching</a></li>
-          <li><a href="/{{SLUG}}/watch.html">Watch</a></li>
-          <li><a href="/{{SLUG}}/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/{{SLUG}}/planner.html?view=client" style="color:var(--pink,#b69aff);font-weight:800">Book a session</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/{{SLUG}}/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/{{SLUG}}/training.html">Access your training</a></li>
+              <li><a href="/{{SLUG}}/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/{{SLUG}}/podcast.html">Studio series</a></li>
+              <li><a href="/{{SLUG}}/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/{{SLUG}}/#ask">Ask {{COACH_FIRST}}</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/{{SLUG}}/predictor.html">Race predictor</a></li>
               <li><a href="/{{SLUG}}/splits.html">Split analyser</a></li>
               <li><a href="/{{SLUG}}/results.html">Results board</a></li>
-              <li><a href="/{{SLUG}}/stations-prep/">Stations prep</a></li>
-              <li><a href="/{{SLUG}}/run-zone/">Run zone</a></li>
-              <li><a href="/{{SLUG}}/fuel-zone/">Fuel zone</a></li>
-              <li><a href="/{{SLUG}}/taper-zone/">Taper zone</a></li>
-              <li><a href="/{{SLUG}}/events.html">Race calendar</a></li>
+              <li><a href="/{{SLUG}}/stations-prep.html">Stations prep</a></li>
+              <li><a href="/{{SLUG}}/find-a-partner.html">Find a race-mate</a></li>
+              <li><a href="/{{SLUG}}/run-zone.html">Run zone</a></li>
+              <li><a href="/{{SLUG}}/taper-zone.html">Taper zone</a></li>
+              <li><a href="/{{SLUG}}/race-day.html">Race day</a></li>
+              <li><a href="/{{SLUG}}/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/{{SLUG}}/race-crew.html">Race crew meetups</a></li>
               <li><a href="{{BRAND_IG_URL}}" target="_blank" rel="noopener">{{BRAND}} IG</a></li>
-              <li><a href="/{{SLUG}}/#ask">Ask {{COACH_FIRST}}</a></li>
-              <li><a href="/{{SLUG}}/news.html">UK HYROX news</a></li>
+              <li><a href="/{{SLUG}}/news.html">HYROX news</a></li>
+              <li><a href="/{{SLUG}}/list.html">Join the list</a></li>
             </ul>
           </li>
-          <li><a href="/{{SLUG}}/partners.html">Partners</a></li>
-          <li><a href="/{{SLUG}}/list.html">Join the list</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/{{SLUG}}/partners.html">Partners</a></li>
+              <li><a href="/{{SLUG}}/shop.html">Links</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
 
     <section class="guide-hero">
       <div class="wrap">
-        <div class="guide-hero-text">
+        <div class="guide-hero-text reveal">
           <ol class="crumbs">
             <li><a href="/{{SLUG}}/">{{COACH_NAME}}</a></li>
             <li>Coaching</li>
           </ol>
           <p class="eyebrow">{{BRAND}}</p>
-          <h2>Train like it races.</h2>
+          <h2>Your goal. <em>A plan that fits.</em></h2>
           <p class="lead">
-            One season, {{SEASON_START}} to 1:05. The same engine, pointed at your number.
-            Applications run through {{COACH_FIRST}}'s own forms — no middle step, no new
-            inbox.
+            Build towards your next start line with training that fits your goals
+            and the time you can give it. Explore a structured programme or talk
+            to {{COACH_FIRST}} about personal coaching.
+          </p>
+          <p class="byline">
+            {{BRAND}} · Coaching and race preparation.
           </p>
         </div>
+        <figure class="guide-hero-photo reveal">
+          <img
+            src="/{{SLUG}}/images/coaching-hero.jpg?v=1792260946527"
+            alt="{{COACH_NAME}} coaching an outdoor group training session"
+            loading="lazy"
+          />
+        </figure>
       </div>
     </section>
 
     <div class="wrap coach-wrap">
-      <div class="article" style="max-width: none">
-        <img
-          class="coach-photo"
-          src="/{{SLUG}}/images/coaching-hero.jpg"
-          alt="{{COACH_NAME}} — coaching"
-          loading="lazy"
-        />
-
-        <div class="plans coach-plans">
-          <div class="plan featured reveal">
-            <span class="tag">1:1 · application</span>
-            <h4>{{BRAND}} 1:1</h4>
-            <div class="price">Spots limited</div>
-            <div class="per">{{COACH_FIRST}} reviews every application himself</div>
-            <ul>
-              <li>Programme built around your life and race calendar</li>
-              <li>Weekly check-ins and video form review</li>
-              <li>Pacing, stations, race plan — built to a number</li>
-              <li>Direct line to {{COACH_FIRST}} between sessions</li>
-            </ul>
-            <a
-              class="btn btn-primary"
-              href="{{APPLY_URL}}"
-              target="_blank"
-              rel="noopener"
-              >Apply for 1:1</a
-            >
-          </div>
-          <div class="plan reveal">
-            <span class="tag">On FITR</span>
-            <h4>Group Programmes</h4>
-            <div class="price">{{BRAND}}</div>
-            <div class="per">Structured blocks with the Hub cohort</div>
-            <ul>
-              <li>Programmed blocks in the FITR app</li>
-              <li>HYROX-specific work, not generic circuits</li>
-              <li>Start with the cohort, progress through blocks</li>
-              <li>The same engine behind {{COACH_FIRST}}'s own season</li>
-            </ul>
-            <a
-              class="btn btn-ghost"
-              href="{{PROGRAMMES_URL}}"
-              target="_blank"
-              rel="noopener"
-              >See programmes on FITR</a
-            >
-          </div>
-          <div class="plan reveal">
-            <span class="tag">Drops</span>
-            <h4>{{BRAND}} 365</h4>
-            <div class="price">Kit</div>
-            <div class="per">Tees, hoodies, tanks — open per drop</div>
-            <ul>
-              <li>The clothing side of the Hub</li>
-              <li>Doors open per drop, not year-round</li>
-              <li>The list hears first when the next one lands</li>
-            </ul>
-            <a
-              class="btn btn-ghost"
-              href="{{STORE_URL}}"
-              target="_blank"
-              rel="noopener"
-              >Visit the store</a
-            >
-          </div>
+      <div class="article reveal" style="max-width: none">
+        <section class="plan reveal" id="race-prep" hidden aria-live="polite" style="margin-bottom:1.5rem"></section>
+        <div class="plans coach-plans" data-training-platform>
+          <article class="plan featured reveal"><span class="tag">Coaching</span><h4>Explore your options</h4><p>Find out which coaching support fits your experience, available time and next goal.</p><a class="btn btn-primary" href="{{APPLY_URL}}" target="_blank" rel="noopener">Ask about coaching</a></article>
         </div>
 
         <p class="shop-note">
-          Every route is {{COACH_FIRST}}'s official one — applications, programmes and
-          the store. Nothing between you and the Hub.
+          Already coaching with {{COACH_FIRST}}? Use the training link they shared with you, or <a href="/{{SLUG}}/?audience=public#ask">ask {{COACH_FIRST}} for your access details</a>. Not ready to choose? <a href="/{{SLUG}}/prep-club.html">Start free in Prep Club →</a>
         </p>
       </div>
     </div>
@@ -191,13 +145,15 @@
           <a href="/{{SLUG}}/coaching.html">Coaching</a>
           <a href="/{{SLUG}}/watch.html">Watch</a>
           <a href="/{{SLUG}}/partners.html">Partners</a>
-          <a href="/{{SLUG}}/desk.html">The desk</a>
+          
           <a href="{{IG_URL}}" target="_blank" rel="noopener">Instagram</a>
         </nav>
       </div>
-      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
     <script src="/{{SLUG}}/app.js?v=1792260946527" defer></script>
+    <script src="/{{SLUG}}/training-platform.js?v=1792260946527" defer></script>
+    <script src="/{{SLUG}}/planner.js" defer></script>
   </body>
 </html>

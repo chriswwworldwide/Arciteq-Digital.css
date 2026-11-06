@@ -1,19 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Hyrox Taper: the last two weeks before your race, day by day — {{COACH_FIRST}}
-      Warriors
+      Hyrox Taper: the last two weeks before your race, day by day — {{COACH_NAME}}
     </title>
     <meta
       name="description"
-      content="How to taper for Hyrox: how much to cut training in the final two weeks, what to keep sharp, sleep and travel, and a race-week checklist — from HYROX Group Coach and podium athlete {{COACH_FIRST}}."
+      content="How to taper for Hyrox: how much to cut training in the final two weeks, what to keep sharp, sleep and travel, and a race-week checklist — race preparation with {{BRAND}}."
     />
     <link rel="canonical" href="https://{{SLUG}}.localhost/{{SLUG}}/taper-zone/" />
     <link rel="stylesheet" href="/{{SLUG}}/styles.css?v=1792260946527" />
     <link rel="stylesheet" href="/{{SLUG}}/guide.css?v=1792260946527" />
+    <link rel="stylesheet" href="/{{SLUG}}/guidance.css?v=1792260946527" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -26,7 +26,7 @@
             "author": {
               "@type": "Person",
               "name": "{{COACH_NAME}}",
-              "jobTitle": "HYROX Pro athlete, coach & creator",
+              "jobTitle": "HYROX coach & founder",
               "homeLocation": "{{REGION}}, the UK"
             },
             "publisher": {
@@ -92,15 +92,15 @@
         ]
       }
     </script>
-  </head>
-  <body>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/{{SLUG}}/showcase.css" /><script src="/{{SLUG}}/coach-view.js"></script></head>
+  <body class="zone-acc guidance guidance--calm">
     <header class="masthead wrap">
       <a href="/{{SLUG}}/" style="color: inherit; text-decoration: none">
         <h1>
           <span class="wordmark"
             >{{WORDMARK_HTML}}
-            <span class="sig" aria-label="by {{COACH_NAME}}"
-              ><span class="sig-text">by {{COACH_NAME}}</span
+            <span class="sig" aria-label="{{BRAND}}"
+              ><span class="sig-text">{{BRAND}}</span
               ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
                 <path
                   d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
@@ -110,49 +110,64 @@
           </span>
         </h1>
       </a>
-      <p class="city">{{REGION}}</p>
+      <p class="city">{{CITY}}</p>
     </header>
 
-    <div class="nav">
+    <aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/{{SLUG}}/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/{{SLUG}}/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/{{SLUG}}/leads.html?audience=coach">Leads</a><a data-coach-link href="/{{SLUG}}/desk.html?audience=coach">Finance</a><a data-coach-link href="/{{SLUG}}/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/{{SLUG}}/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/{{SLUG}}/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/{{SLUG}}/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
-          <li><a href="/{{SLUG}}/coaching.html">Coaching</a></li>
-          <li><a href="/{{SLUG}}/watch.html">Watch</a></li>
-          <li><a href="/{{SLUG}}/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/{{SLUG}}/planner.html?view=client" style="color:var(--pink,#b69aff);font-weight:800">Book a session</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/{{SLUG}}/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/{{SLUG}}/training.html">Access your training</a></li>
+              <li><a href="/{{SLUG}}/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/{{SLUG}}/podcast.html">Studio series</a></li>
+              <li><a href="/{{SLUG}}/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/{{SLUG}}/#ask">Ask {{COACH_FIRST}}</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/{{SLUG}}/predictor.html">Race predictor</a></li>
               <li><a href="/{{SLUG}}/splits.html">Split analyser</a></li>
               <li><a href="/{{SLUG}}/results.html">Results board</a></li>
-              <li><a href="/{{SLUG}}/stations-prep/">Stations prep</a></li>
-              <li><a href="/{{SLUG}}/run-zone/">Run zone</a></li>
-              <li><a href="/{{SLUG}}/fuel-zone/">Fuel zone</a></li>
-              <li><a href="/{{SLUG}}/taper-zone/">Taper zone</a></li>
-              <li><a href="/{{SLUG}}/events.html">Race calendar</a></li>
+              <li><a href="/{{SLUG}}/stations-prep.html">Stations prep</a></li>
+              <li><a href="/{{SLUG}}/find-a-partner.html">Find a race-mate</a></li>
+              <li><a href="/{{SLUG}}/run-zone.html">Run zone</a></li>
+              <li><a href="/{{SLUG}}/taper-zone.html">Taper zone</a></li>
+              <li><a href="/{{SLUG}}/race-day.html">Race day</a></li>
+              <li><a href="/{{SLUG}}/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/{{SLUG}}/race-crew.html">Race crew meetups</a></li>
               <li><a href="{{BRAND_IG_URL}}" target="_blank" rel="noopener">{{BRAND}} IG</a></li>
-              <li><a href="/{{SLUG}}/#ask">Ask {{COACH_FIRST}}</a></li>
-              <li><a href="/{{SLUG}}/news.html">UK HYROX news</a></li>
+              <li><a href="/{{SLUG}}/news.html">HYROX news</a></li>
+              <li><a href="/{{SLUG}}/list.html">Join the list</a></li>
             </ul>
           </li>
-          <li><a href="/{{SLUG}}/partners.html">Partners</a></li>
-          <li><a href="/{{SLUG}}/list.html">Join the list</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/{{SLUG}}/partners.html">Partners</a></li>
+              <li><a href="/{{SLUG}}/shop.html">Links</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
 
     <section class="guide-hero">
       <div class="wrap">
-        <div class="guide-hero-text">
+        <div class="guide-hero-text reveal">
           <ol class="crumbs">
             <li><a href="/{{SLUG}}/">{{COACH_FIRST}}</a></li>
             <li>Taper Zone</li>
@@ -168,16 +183,15 @@
             you've got a spring in your legs.
           </p>
           <p class="byline">
-            By {{COACH_FIRST}} — HYROX Group Coach, podium athlete, {{REGION}} personal
-            trainer.
+            {{BRAND}} · Less fatigue. More ready.
           </p>
         </div>
-        <figure class="guide-hero-photo">
+        <figure class="guide-hero-photo reveal">
           <img
-            src="/{{SLUG}}/images/skierg-laugh.jpg"
-            alt="{{COACH_FIRST}} on the SkiErg at a Hyrox race"
-            width="932"
-            height="1024"
+            src="/{{SLUG}}/images/taper-hero.jpg?v=1792260946527"
+            alt="{{COACH_NAME}} taking a lighter training moment by the gym bar"
+            width="1024"
+            height="768"
             loading="lazy"
           />
         </figure>
@@ -197,14 +211,14 @@
         </ol>
       </aside>
 
-      <div class="article">
+      <div class="article reveal">
         <p class="approve-note">
-          {{COACH_FIRST}}'s taper, written for athletes who have trained properly for 8+
-          weeks. If you're under-trained, tapering won't save you — but racing
-          rested still beats racing tired. {{COACH_FIRST}} to approve.
+          The work is done. Now make room for recovery. Use this two-week
+          outline to plan the final stretch, adjusting it to your training
+          history, recovery needs and race date.
         </p>
 
-        <article class="station" id="why">
+        <article class="station reveal" id="why">
           <span class="num">Part 01</span>
           <h3>Why taper at all</h3>
           <p>
@@ -221,14 +235,14 @@
             or "just testing" a full race simulation on the Tuesday. None of
             them makes you faster.
           </p>
-          <h4>{{COACH_FIRST}}'s cue</h4>
+          <h4 class="cue">{{COACH_FIRST}}'s cue</h4>
           <p>
             "The training is in the bank. Race week is when you stop making
             deposits and start spending."
           </p>
         </article>
 
-        <article class="station" id="week-two">
+        <article class="station reveal" id="week-two">
           <span class="num">Part 02</span>
           <h3>Two weeks out</h3>
           <p>
@@ -264,18 +278,18 @@
 
         <figure class="art-photo">
           <img
-            src="/{{SLUG}}/images/momentum.jpg"
+            src="/{{SLUG}}/images/momentum.jpg?v=1792260946527"
             alt="Track walk with the bottle — the taper is the training"
             width="1024"
             height="849"
             loading="lazy"
           />
           <figcaption>
-            Photo slot — swap for a race-week or kit-laid-out shot.
+            Race week, kept quiet on purpose.
           </figcaption>
         </figure>
 
-        <article class="station" id="week-one">
+        <article class="station reveal" id="week-one">
           <span class="num">Part 03</span>
           <h3>Race week</h3>
           <p>
@@ -301,10 +315,7 @@
             </li>
             <li>
               <strong>Sat</strong>Travel or rest. 10–15 minutes walk, a few air
-              squats, nothing else. Kit laid out. Early dinner (<a
-                href="/{{SLUG}}/fuel-zone/#night"
-                >Fuel Zone: the night before</a
-              >).
+              squats, nothing else. Kit laid out. Early dinner.
             </li>
             <li>
               <strong>Sun</strong>Race. Warm up 15–20 minutes: easy jog, dynamic
@@ -318,7 +329,7 @@
           </p>
         </article>
 
-        <article class="station" id="sharp">
+        <article class="station reveal" id="sharp">
           <span class="num">Part 04</span>
           <h3>What to keep sharp</h3>
           <p>
@@ -352,14 +363,14 @@
             leaves you sore the next day, and any new movement, shoe, gel or
             kit. If you didn't test it three weeks ago, it isn't in the race.
           </p>
-          <h4>{{COACH_FIRST}}'s cue</h4>
+          <h4 class="cue">{{COACH_FIRST}}'s cue</h4>
           <p>
             "Sharp, not sore." If you're stiff walking downstairs on Thursday,
             you did too much.
           </p>
         </article>
 
-        <article class="station" id="sleep">
+        <article class="station reveal" id="sleep">
           <span class="num">Part 05</span>
           <h3>Sleep and travel</h3>
           <p>
@@ -375,8 +386,8 @@
               isn't a shock.
             </li>
             <li>
-              <strong>Travel two nights before, not one.</strong> Birmingham,
-              London, KL: fly Friday, race Sunday. Flight day is dehydrating
+              <strong>Travel two nights before, not one.</strong> Dublin,
+              London, Singapore: fly Friday, race Sunday. Flight day is dehydrating
               and your legs stiffen — give them a full day to recover.
             </li>
             <li>
@@ -399,7 +410,7 @@
           </ul>
         </article>
 
-        <article class="station" id="checklist">
+        <article class="station reveal" id="checklist">
           <span class="num">Part 06</span>
           <h3>Race-week checklist</h3>
           <p>Laid out on the table by Saturday night:</p>
@@ -409,9 +420,7 @@
             <li>Liquid chalk; tape for ring fingers if you use it</li>
             <li>
               Gel(s) you've trained with, electrolyte powder, pickle juice or
-              mustard sachet (<a href="/{{SLUG}}/fuel-zone/#cramps"
-                >Fuel Zone: cramps</a
-              >)
+              mustard sachet
             </li>
             <li>Race-morning breakfast — packed, not bought on the day</li>
             <li>
@@ -420,7 +429,7 @@
             <li>Warm layer for the wait and a dry top for afterwards</li>
             <li>
               Your split targets — then bring the real splits to the
-              <a href="/{{SLUG}}/splits/">Split analyser</a> after the race
+              <a href="/{{SLUG}}/splits.html">Split analyser</a> after the race
             </li>
           </ul>
           <p>
@@ -431,7 +440,7 @@
       </div>
     </div>
 
-    <section class="faq">
+    <section class="faq reveal">
       <div class="wrap">
         <p class="eyebrow">Taper FAQ</p>
         <details>
@@ -468,7 +477,7 @@
       </div>
     </section>
 
-    <section class="cta-band">
+    <section class="cta-band reveal">
       <div class="wrap">
         <h3>Want the taper written around your race date?</h3>
         <p>
@@ -481,7 +490,7 @@
     </section>
 
     <div
-      class="wrap partners"
+      class="wrap partners reveal"
       data-partners="partner"
       data-label="Partners"
       hidden
@@ -491,25 +500,25 @@
       <div class="wrap">
         <div>© <span id="year"></span> {{COACH_NAME}}</div>
         <nav>
-          <a href="/{{SLUG}}/stations-prep/">Stations Prep</a>
-          <a href="/{{SLUG}}/run-zone/">Run Zone</a>
-          <a href="/{{SLUG}}/fuel-zone/">Fuel Zone</a>
-          <a href="/{{SLUG}}/taper-zone/">Taper Zone</a>
-          <a href="/{{SLUG}}/events/">Events</a>
+          <a href="/{{SLUG}}/stations-prep.html">Stations Prep</a>
+          <a href="/{{SLUG}}/run-zone.html">Run Zone</a>
+          <a href="/{{SLUG}}/taper-zone.html">Taper Zone</a>
+          <a href="/{{SLUG}}/race-day.html">Race Day</a>
+          <a href="/{{SLUG}}/events.html">Events</a>
           <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
-          <a href="/{{SLUG}}/race-planner/">Race planner</a>
-          <a href="/{{SLUG}}/news/">News</a>
-          <a href="/{{SLUG}}/race-crew/">the ninth station</a>
-          <a href="/{{SLUG}}/results/">Results</a>
-          <a href="/{{SLUG}}/splits/">Splits</a>
-          <a href="/{{SLUG}}/find-a-partner/">Find a Partner</a>
+          <a href="/{{SLUG}}/events.html#cities">Race planner</a>
+          <a href="/{{SLUG}}/news.html">News</a>
+          <a href="/{{SLUG}}/race-crew.html">the ninth station</a>
+          <a href="/{{SLUG}}/results.html">Results</a>
+          <a href="/{{SLUG}}/splits.html">Splits</a>
+          <a href="/{{SLUG}}/find-a-partner.html">Find a Partner</a>
           <a href="/{{SLUG}}/#ask">Ask {{COACH_FIRST}}</a>
           <a href="/{{SLUG}}/coaching.html">Book {{COACH_FIRST}}</a>
           <a href="/{{SLUG}}/partners.html">Partners</a>
-          <a href="/{{SLUG}}/desk.html">The desk</a>
+          
         </nav>
       </div>
-      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
     <script src="/{{SLUG}}/app.js?v=1792260946527" defer></script>

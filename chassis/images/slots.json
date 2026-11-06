@@ -49,6 +49,18 @@
     "images/hoodie.jpg"
   ],
   "slots": {
+    "images/planner-watermark.jpg": {
+      "label": "Optional booking planner watermark — the coach's own portrait",
+      "aspect": "portrait",
+      "priority": 3,
+      "faceCritical": true,
+      "page": "planner",
+      "position": "watermark",
+      "optional": true,
+      "noTextOverlay": true,
+      "keywords": ["coach", "portrait"],
+      "note": "Manual optional slot. The neutral template leaves this empty. Fill with an approved coach portrait; no stock fallback or mandatory image required. Existing sites may reuse their own bio image."
+    },
     "images/hero.jpg": {
       "label": "Hero — cinematic full-bleed shot, creator mid-effort or iconic",
       "aspect": "landscape",
@@ -777,16 +789,16 @@
         "merch"
       ]
     },
-    "images/gallery/dance.jpg": {
-      "label": "Protected crew default — post-race dance floor",
+    "images/gallery/dinner-template.jpg": {
+      "label": "Protected crew default — post-race dinner table",
       "aspect": "landscape",
       "priority": 5,
       "faceCritical": false,
       "protectedDefault": true,
       "keywords": [
-        "dance",
-        "night",
-        "party"
+        "food",
+        "restaurant",
+        "crew"
       ]
     },
     "images/gallery/restaurant.jpg": {

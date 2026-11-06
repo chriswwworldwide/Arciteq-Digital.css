@@ -8,7 +8,7 @@
     },
     {
       "q": "I've never done HYROX — can I join?",
-      "keywords": ["beginner", "never done", "first time", "new to", "start", "pemula", "belum"],
+      "keywords": ["beginner", "never done", "first time", "new to", "start"],
       "a": "Yes — that's most people who sign up. {{COACH_FIRST}} builds you up from base fitness: technique on the stations first, then race-pace work. Nobody starts as a racer."
     },
     {
@@ -39,7 +39,7 @@
     {
       "q": "Do you programme for races abroad?",
       "keywords": ["abroad", "overseas", "luar negeri", "travel", "international", "europe", "foreign"],
-      "a": "Yes — remote programming works for any race on the calendar. Athletes have raced Birmingham, Warsaw, Glasgow and beyond on {{COACH_FIRST}}'s plans."
+      "a": "Yes — remote programming works for any race on the calendar. Athletes have raced London, Warsaw, Glasgow and beyond on {{COACH_FIRST}}'s plans."
     },
     {
       "q": "How do I get started?",

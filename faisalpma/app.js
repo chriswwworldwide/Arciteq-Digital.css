@@ -1,7 +1,7 @@
 (function () {
   const home = document.getElementById("zones");
   if (home) {
-    const order = ["zones", "story", "plans", "athletes-say", "events", "find-partner", "wall", "stories", "tips", "ask", "wall-photos"];
+    const order = ["zones", "story", "plans", "athletes-say", "stories", "events", "find-partner", "wall", "tips", "ask", "wall-photos"];
     const first = document.getElementById(order[0]);
     let previous = first;
     order.slice(1).forEach(id => {

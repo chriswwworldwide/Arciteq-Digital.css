@@ -1,0 +1,7 @@
+{
+  "offers": [
+    {"id":"coaching","name":"Coaching enquiries","goal":"Coaching enquiries","destination":"{{APPLY_URL}}","image":"/{{SLUG}}/images/coaching-hero.jpg","headline":"Your next training block starts here."},
+    {"id":"programme","name":"Training programmes","goal":"Programme enquiries","destination":"{{PROGRAMMES_URL}}","image":"/{{SLUG}}/images/coaching-hero.jpg","headline":"A plan with a clear next step."},
+    {"id":"shop","name":"Shop collection","goal":"Shop visits","destination":"{{STORE_URL}}","image":"/{{SLUG}}/images/coaching-hero.jpg","headline":"Explore the collection."}
+  ]
+}

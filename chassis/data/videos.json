@@ -1,0 +1,8 @@
+{
+  "note": "Video-library layouts for coach-approved clips.",
+  "items": [
+    {"id":"sample-technique","title":"Station technique","description":"A place for practical movement guidance and coaching cues.","category":"Training","url":"{{YOUTUBE_URL}}","thumbnail":"/{{SLUG}}/images/stations-hero.jpg","status":"published","sample":true,"linkLabel":"Visit the video channel"},
+    {"id":"sample-race","title":"The race-weekend debrief","description":"Race footage, lessons from the course and the next training target.","category":"Race stories","url":"{{YOUTUBE_URL}}","thumbnail":"/{{SLUG}}/images/run-hero.jpg","status":"published","sample":true,"linkLabel":"Visit the video channel"},
+    {"id":"sample-conversation","title":"A conversation about training","description":"A short interview clip can lead into the full podcast conversation.","category":"Podcast clips","url":"{{YOUTUBE_URL}}","thumbnail":"/{{SLUG}}/images/coaching-hero.jpg","status":"published","sample":true,"linkLabel":"Visit the video channel"}
+  ]
+}

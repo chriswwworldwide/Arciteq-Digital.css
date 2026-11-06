@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Partners — brands {{COACH_FIRST}} actually trains in | {{COACH_NAME}}</title>
+    <title>Partners &amp; official links | {{BRAND}}</title>
     <meta
       name="description"
-      content="{{COACH_NAME}}'s partner codes and affiliate links — {{PARTNER_GYM}} and {{PARTNER_SUPP}} included — all in one place, honestly labelled."
+      content="{{COACH_NAME}}'s partner codes and affiliate links — {{BRAND}} studio and {{BRAND}} coaching routes included — all in one place, honestly labelled."
     />
     <link rel="stylesheet" href="/{{SLUG}}/styles.css?v=1792260946527" />
     <link rel="stylesheet" href="/{{SLUG}}/guide.css?v=1792260946527" />
+    <link rel="stylesheet" href="/{{SLUG}}/shelf.css?v=1792260946527" />
     <style>
       .partner-wrap {
         padding: 48px 0 84px;
@@ -59,8 +60,8 @@
         display: inline-block;
       }
     </style>
-  </head>
-  <body>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/{{SLUG}}/showcase.css" /><script src="/{{SLUG}}/coach-view.js"></script></head>
+  <body class="zone-acc shelf shelf--partners">
     <header class="masthead wrap">
       <a href="/{{SLUG}}/" style="color: inherit; text-decoration: none">
         <h1>
@@ -80,106 +81,126 @@
       <p class="city">Partners</p>
     </header>
 
-    <div class="nav">
+    <aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/{{SLUG}}/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/{{SLUG}}/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/{{SLUG}}/leads.html?audience=coach">Leads</a><a data-coach-link href="/{{SLUG}}/desk.html?audience=coach">Finance</a><a data-coach-link href="/{{SLUG}}/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/{{SLUG}}/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/{{SLUG}}/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/{{SLUG}}/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
-          <li><a href="/{{SLUG}}/coaching.html">Coaching</a></li>
-          <li><a href="/{{SLUG}}/watch.html">Watch</a></li>
-          <li><a href="/{{SLUG}}/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/{{SLUG}}/planner.html?view=client" style="color:var(--pink,#b69aff);font-weight:800">Book a session</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/{{SLUG}}/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/{{SLUG}}/training.html">Access your training</a></li>
+              <li><a href="/{{SLUG}}/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/{{SLUG}}/podcast.html">Studio series</a></li>
+              <li><a href="/{{SLUG}}/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/{{SLUG}}/#ask">Ask {{COACH_FIRST}}</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/{{SLUG}}/predictor.html">Race predictor</a></li>
               <li><a href="/{{SLUG}}/splits.html">Split analyser</a></li>
               <li><a href="/{{SLUG}}/results.html">Results board</a></li>
-              <li><a href="/{{SLUG}}/stations-prep/">Stations prep</a></li>
-              <li><a href="/{{SLUG}}/run-zone/">Run zone</a></li>
-              <li><a href="/{{SLUG}}/fuel-zone/">Fuel zone</a></li>
-              <li><a href="/{{SLUG}}/taper-zone/">Taper zone</a></li>
-              <li><a href="/{{SLUG}}/events.html">Race calendar</a></li>
+              <li><a href="/{{SLUG}}/stations-prep.html">Stations prep</a></li>
+              <li><a href="/{{SLUG}}/find-a-partner.html">Find a race-mate</a></li>
+              <li><a href="/{{SLUG}}/run-zone.html">Run zone</a></li>
+              <li><a href="/{{SLUG}}/taper-zone.html">Taper zone</a></li>
+              <li><a href="/{{SLUG}}/race-day.html">Race day</a></li>
+              <li><a href="/{{SLUG}}/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/{{SLUG}}/race-crew.html">Race crew meetups</a></li>
               <li><a href="{{BRAND_IG_URL}}" target="_blank" rel="noopener">{{BRAND}} IG</a></li>
-              <li><a href="/{{SLUG}}/#ask">Ask {{COACH_FIRST}}</a></li>
-              <li><a href="/{{SLUG}}/news.html">UK HYROX news</a></li>
+              <li><a href="/{{SLUG}}/news.html">HYROX news</a></li>
+              <li><a href="/{{SLUG}}/list.html">Join the list</a></li>
             </ul>
           </li>
-          <li><a href="/{{SLUG}}/partners.html">Partners</a></li>
-          <li><a href="/{{SLUG}}/list.html">Join the list</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/{{SLUG}}/partners.html">Partners</a></li>
+              <li><a href="/{{SLUG}}/shop.html">Links</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
 
     <section class="guide-hero">
       <div class="wrap">
-        <div class="guide-hero-text">
+        <div class="guide-hero-text reveal">
           <ol class="crumbs">
             <li><a href="/{{SLUG}}/">{{COACH_NAME}}</a></li>
             <li>Partners</li>
           </ol>
           <p class="eyebrow">Partners</p>
-          <h2>Codes and kit, in one place.</h2>
+          <h2>Good connections. <em>All in one place.</em></h2>
           <p class="lead">
-            The brands {{COACH_FIRST}} actually trains in — codes, links and what they do.
-            No buried Linktree rows; everything labelled honestly.
+            Explore the brands, offers and official destinations linked here by {{BRAND}}. Check each card for the details before you head over.
           </p>
         </div>
+        <figure class="guide-hero-photo reveal">
+          <img
+            src="/{{SLUG}}/images/suit.jpg?v=1792260946527"
+            alt="{{COACH_NAME}} and athletes in race kit on event day"
+            loading="lazy"
+          />
+        </figure>
       </div>
     </section>
 
     <div class="wrap partner-wrap">
-      <div class="article" style="max-width: none">
+      <div class="article reveal" style="max-width: none">
         <div class="partner-list">
           <div class="partner-card">
-            <span class="pc-tag">Affiliate · kit</span>
-            <h4>{{PARTNER_GYM}}</h4>
+            <span class="pc-tag">{{LINK_CARD_TAG}}</span>
+            <h4>{{LINK_CARD_NAME}}</h4>
             <p>
-              The training kit — tees, hoodies, the day-to-day rotation from
-              the feed.
+              {{LINK_CARD_DESC}}
             </p>
-            <span class="code">{{GYM_CODE}}</span>
+            <span class="code">Verified link</span>
             <a
               class="pc-cta"
-              href="{{PARTNER_GYM_URL}}"
+              href="{{STORE_URL}}"
               target="_blank"
               rel="noopener"
-              >Shop {{PARTNER_GYM}} →</a
+              >{{LINK_CARD_CTA}}</a
             >
           </div>
           <div class="partner-card">
-            <span class="pc-tag">Affiliate · nutrition</span>
-            <h4>{{PARTNER_SUPP}}</h4>
+            <span class="pc-tag">{{PROG_TWO_TAG}}</span>
+            <h4>{{BRAND}} coaching routes</h4>
             <p>
-              Protein, pre-workout, recovery — the fuel side of a heavy block.
+              {{PROG_CARD_DESC}}
             </p>
-            <span class="code">{{GYM_CODE}}</span>
+            <span class="code">Verified link</span>
             <a
               class="pc-cta"
-              href="{{PARTNER_SUPP_URL}}"
+              href="{{PROG_TWO_URL}}"
               target="_blank"
               rel="noopener"
-              >Shop {{PARTNER_SUPP}} →</a
+              >Apply for {{PROG_TWO}} →</a
             >
           </div>
           <div class="partner-card">
-            <span class="pc-tag">{{PARTNER_KIT_TAG}}</span>
-            <h4>{{PARTNER_KIT_TITLE}}</h4>
+            <span class="pc-tag">Community · {{REGION}}</span>
+            <h4>{{BRAND}} community</h4>
             <p>
-              {{PARTNER_KIT_COPY}}
+              {{COMMUNITY_DESC}}
             </p>
             <a
               class="pc-cta"
-              href="{{PARTNER_KIT_URL}}"
+              href="{{IG_URL}}"
               target="_blank"
               rel="noopener"
-              >{{PARTNER_KIT_CTA}} →</a
+              >Meet the community →</a
             >
           </div>
           <div class="partner-card" data-strip="store-card">
@@ -197,9 +218,7 @@
         </div>
 
         <p class="shop-note">
-          Some links are affiliate links — {{COACH_FIRST}} earns a small commission at no
-          extra cost to you. It keeps the free race tools free. Codes current
-          as listed; if a checkout doesn't take one, the brand has rotated it.
+          These are {{COACH_FIRST}}'s verified routes. No public discount code is listed right now.
         </p>
       </div>
     </div>
@@ -211,11 +230,11 @@
           <a href="/{{SLUG}}/coaching.html">Coaching</a>
           <a href="/{{SLUG}}/watch.html">Watch</a>
           <a href="/{{SLUG}}/partners.html">Partners</a>
-          <a href="/{{SLUG}}/desk.html">The desk</a>
+          
           <a href="{{IG_URL}}" target="_blank" rel="noopener">Instagram</a>
         </nav>
       </div>
-      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
     <script src="/{{SLUG}}/app.js?v=1792260946527" defer></script>

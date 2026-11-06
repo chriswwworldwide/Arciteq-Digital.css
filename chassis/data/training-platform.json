@@ -1,0 +1,11 @@
+{
+  "name": "{{BRAND}} coaching routes",
+  "coachURL": "",
+  "clientURL": "",
+  "programmesURL": "",
+  "applicationURL": "",
+  "directCoachLink": false,
+  "offerTitle": "",
+  "offerDescription": "",
+  "note": "Public destinations are set per tenant from verified coaching and programme links. No client records, provider sign-in or workout sync are connected in this walkthrough."
+}

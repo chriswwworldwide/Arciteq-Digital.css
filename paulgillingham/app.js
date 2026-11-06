@@ -522,9 +522,14 @@
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       if (!json) return;
-      const athletes = Array.isArray(json.athletes) ? json.athletes : [];
-      const weeks = Array.isArray(json.weeks) ? json.weeks.slice(0, 3) : [];
-      if (!athletes.length && !weeks.length) return;
+      const athletes = Array.isArray(json.athletes) ? json.athletes
+        : Array.isArray(json.items) ? json.items : [];
+      if (!athletes.length) {
+        athletes.push(
+          { before: "1:34:00", after: "1:21:44", name: "Placeholder result", division: "Open", event: "Lorem ipsum event", date: "Awaiting real result", note: "Placeholder entry" },
+          { before: "1:12:30", after: "1:05:09", name: "Placeholder result", division: "Pro", event: "Lorem ipsum event", date: "Awaiting real result", note: "Placeholder entry" },
+        );
+      }
       const list = document.getElementById("wall-list");
       athletes.forEach((a) => {
         const li = document.createElement("li");
@@ -551,19 +556,6 @@
         li.append(times, who);
         list.appendChild(li);
       });
-      if (weeks.length) {
-        const wl = document.getElementById("week-list");
-        weeks.forEach((w) => {
-          const li = document.createElement("li");
-          const d = document.createElement("time");
-          d.textContent = esc(w.date);
-          const p = document.createElement("p");
-          p.textContent = esc(w.text);
-          li.append(d, p);
-          wl.appendChild(li);
-        });
-        document.getElementById("week").hidden = false;
-      }
       section.hidden = false;
       section
         .querySelectorAll(".reveal")
@@ -1033,7 +1025,12 @@ window.roxShare = (function () {
           return true;
         })
         .slice(0, 3);
-      if (rows.length < 3) return;
+      const fillers = [
+        { quote: "Lorem ipsum — placeholder athlete quote until a real one is approved.", name: "Placeholder athlete", detail: "Awaiting real quote" },
+        { quote: "Lorem ipsum dolor sit amet — second placeholder quote.", name: "Placeholder athlete", detail: "Awaiting real quote" },
+        { quote: "Lorem ipsum — third placeholder quote for layout balance.", name: "Placeholder athlete", detail: "Awaiting real quote" },
+      ];
+      while (rows.length < 3) rows.push(fillers[rows.length]);
       mount.innerHTML = rows
         .map((q) => {
           let source;

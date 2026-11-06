@@ -1,5 +1,4 @@
 {
-  "note": "PRIVATE PITCH PREVIEW — add only consented, verified HYROX Doncaster results after launch.",
-  "athletes": [],
-  "weeks": []
+  "note": "Results wall. Renders placeholders when empty. Fill `items` or `athletes` with consented entries: {before, after, name, division, event, date, note}.",
+  "athletes": []
 }

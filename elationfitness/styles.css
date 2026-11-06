@@ -1033,6 +1033,10 @@ section.block.alt {
 }
 
 /* Capture band */
+#ask {
+  scroll-margin-top: 96px;
+}
+
 .capture {
   position: relative;
   isolation: isolate;

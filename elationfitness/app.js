@@ -465,9 +465,14 @@
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       if (!json) return;
-      const athletes = Array.isArray(json.athletes) ? json.athletes : [];
-      const weeks = Array.isArray(json.weeks) ? json.weeks.slice(0, 3) : [];
-      if (!athletes.length && !weeks.length) return;
+      const athletes = Array.isArray(json.athletes) ? json.athletes
+        : Array.isArray(json.items) ? json.items : [];
+      if (!athletes.length) {
+        athletes.push(
+          { before: "1:34:00", after: "1:21:44", name: "Placeholder result", division: "Open", event: "Lorem ipsum event", date: "Awaiting real result", note: "Placeholder entry" },
+          { before: "1:12:30", after: "1:05:09", name: "Placeholder result", division: "Pro", event: "Lorem ipsum event", date: "Awaiting real result", note: "Placeholder entry" },
+        );
+      }
       const list = document.getElementById("wall-list");
       athletes.forEach((a) => {
         const li = document.createElement("li");
@@ -494,19 +499,6 @@
         li.append(times, who);
         list.appendChild(li);
       });
-      if (weeks.length) {
-        const wl = document.getElementById("week-list");
-        weeks.forEach((w) => {
-          const li = document.createElement("li");
-          const d = document.createElement("time");
-          d.textContent = esc(w.date);
-          const p = document.createElement("p");
-          p.textContent = esc(w.text);
-          li.append(d, p);
-          wl.appendChild(li);
-        });
-        document.getElementById("week").hidden = false;
-      }
       section.hidden = false;
       section
         .querySelectorAll(".reveal")
@@ -781,7 +773,13 @@ window.roxShare = (function () {
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       const photos = Array.isArray(json?.photos) ? json.photos : [];
-      if (!photos.length) return;
+      if (!photos.length) {
+        const ph = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><rect width="100%" height="100%" fill="#26262d"/><text x="50%" y="50%" fill="#8a8a93" font-family="sans-serif" font-size="26" text-anchor="middle">Your photo here</text></svg>');
+        photos.push(
+          { src: ph, alt: "Placeholder — wall photo slot", caption: "Lorem ipsum — your shot lands here once wall photos arrive.", by: "Placeholder", event: "" },
+          { src: ph, alt: "Placeholder — wall photo slot", caption: "Lorem ipsum — second wall slot waiting for a real photo.", by: "Placeholder", event: "" },
+        );
+      }
       photos.forEach((p, i) => grid.appendChild(polaroid(p, i)));
       buildTabs(photos.map((p) => String(p.event || "")).filter(Boolean));
       if (options) {
@@ -985,7 +983,7 @@ window.roxShare = (function () {
           return true;
         })
         .slice(0, 3);
-      if (rows.length < 3) return;
+      if (!rows.length) return;
       mount.innerHTML = rows
         .map(
           (q) => `<blockquote class="quote">

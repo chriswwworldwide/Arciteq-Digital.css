@@ -1,7 +1,7 @@
 (function () {
   const home = document.getElementById("zones");
   if (home) {
-    const order = ["zones", "story", "plans", "athletes-say", "events", "find-partner", "wall", "wall-photos", "stories", "tips", "ask"];
+    const order = ["zones", "story", "plans", "athletes-say", "events", "find-partner", "wall", "stories", "tips", "ask", "wall-photos"];
     const first = document.getElementById(order[0]);
     let previous = first;
     order.slice(1).forEach(id => {
@@ -835,7 +835,13 @@ window.roxShare = (function () {
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       const photos = Array.isArray(json?.photos) ? json.photos : [];
-      if (!photos.length) return;
+      if (!photos.length) {
+        const ph = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><rect width="100%" height="100%" fill="#26262d"/><text x="50%" y="50%" fill="#8a8a93" font-family="sans-serif" font-size="26" text-anchor="middle">Your photo here</text></svg>');
+        photos.push(
+          { src: ph, alt: "Placeholder — wall photo slot", caption: "Lorem ipsum — your shot lands here once wall photos arrive.", by: "Placeholder", event: "" },
+          { src: ph, alt: "Placeholder — wall photo slot", caption: "Lorem ipsum — second wall slot waiting for a real photo.", by: "Placeholder", event: "" },
+        );
+      }
       photos.forEach((p, i) => grid.appendChild(polaroid(p, i)));
       buildTabs(photos.map((p) => String(p.event || "")).filter(Boolean));
       if (options) {
@@ -1026,12 +1032,7 @@ window.roxShare = (function () {
           return true;
         })
         .slice(0, 3);
-      const fillers = [
-        { quote: "Lorem ipsum — placeholder athlete quote until a real one is approved.", name: "Placeholder athlete", detail: "Awaiting real quote" },
-        { quote: "Lorem ipsum dolor sit amet — second placeholder quote.", name: "Placeholder athlete", detail: "Awaiting real quote" },
-        { quote: "Lorem ipsum — third placeholder quote for layout balance.", name: "Placeholder athlete", detail: "Awaiting real quote" },
-      ];
-      while (rows.length < 3) rows.push(fillers[rows.length]);
+      if (!rows.length) return;
       mount.innerHTML = rows
         .map((q) => {
           let source;

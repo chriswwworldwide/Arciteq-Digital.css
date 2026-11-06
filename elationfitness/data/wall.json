@@ -1,4 +1,5 @@
 {
-  "note": "PRIVATE PITCH PREVIEW — athlete wall shows placeholder entries only; real photos added with consent after launch.",
-  "items": []
+  "note": "Results wall + Graham's week. Renders placeholders when empty. Fill EITHER `items` or `athletes` with consented entries: {before, after, name, division, event, date, note}. `weeks`: {date, text}.",
+  "items": [],
+  "weeks": []
 }

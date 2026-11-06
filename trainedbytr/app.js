@@ -14,6 +14,17 @@
   if (event && question && !question.value) question.value = `I'd like help preparing for ${event.slice(0, 120)}. My current training and target are: `;
 })();
 
+// Anchors to late sections (#ask, #tips) land short because wall/photo/quote
+// sections hydrate above them after the initial jump — re-anchor once settled.
+(function () {
+  if (!location.hash) return;
+  const target = document.getElementById(location.hash.slice(1));
+  if (!target) return;
+  const reanchor = () => target.scrollIntoView({ block: "start" });
+  window.addEventListener("load", () => setTimeout(reanchor, 300));
+  setTimeout(reanchor, 1200);
+})();
+
 (function () {
   const menu = document.getElementById("menu");
   const toggle = document.querySelector(".nav-toggle");
@@ -514,7 +525,7 @@
     .catch(() => {});
 })();
 
-// Results wall + Tom's week from trainedbytr/data/wall.json (consented entries only; empty lists stay hidden).
+// Results wall (consented entries only; renders placeholders when empty).
 (function () {
   const section = document.getElementById("wall");
   if (!section) return;
@@ -1217,3 +1228,12 @@ window.roxShare = (function () {
   window.addEventListener("resize", rerun);
   wide.addEventListener("change", rerun);
 })();
+
+// Deep-link anchor fix: re-scroll to the target once everything has settled
+// (lazy content can shift the target below the initial browser scroll position)
+window.addEventListener("load", () => {
+  if (location.hash) {
+    const t = document.querySelector(location.hash);
+    if (t) setTimeout(() => t.scrollIntoView(), 60);
+  }
+});

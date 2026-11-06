@@ -2885,3 +2885,8 @@ section.cta-band .btn-light { background: var(--ink); color: #14141a; }
 .menu > li > button.nav-acc {
   color: var(--zone-accent);
 }
+
+.plans.verified-offers,.guidance--coach .plans.verified-offers{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));}
+.offer-terms{font-size:.85rem;line-height:1.6;color:var(--ink-2);margin:1rem 0 1.5rem;}.coaching-testimonials{margin:2rem 0;}.quote-source{display:block;margin-top:.6rem;font-size:.8rem;}
+#athletes-say .quote{background:var(--paper-2);color:var(--ink);}
+#athletes-say .quote footer{padding:12px 0 0;margin:0;line-height:1.6;color:var(--ink-2);}.block#athletes-say:not([hidden]){padding-bottom:32px;}.block#athletes-say:not([hidden]) + #events{padding-top:32px;background:color-mix(in srgb,var(--paper) 94%,white);}

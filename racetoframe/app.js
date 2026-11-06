@@ -525,7 +525,7 @@
     .catch(() => {});
 })();
 
-// Results wall + Gregor & Hattie's week from racetoframe/data/wall.json (consented entries only; empty lists stay hidden).
+// Results wall (consented entries only; renders placeholders when empty).
 (function () {
   const section = document.getElementById("wall");
   if (!section) return;
@@ -1228,3 +1228,12 @@ window.roxShare = (function () {
   window.addEventListener("resize", rerun);
   wide.addEventListener("change", rerun);
 })();
+
+// Deep-link anchor fix: re-scroll to the target once everything has settled
+// (lazy content can shift the target below the initial browser scroll position)
+window.addEventListener("load", () => {
+  if (location.hash) {
+    const t = document.querySelector(location.hash);
+    if (t) setTimeout(() => t.scrollIntoView(), 60);
+  }
+});

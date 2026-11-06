@@ -525,7 +525,7 @@
     .catch(() => {});
 })();
 
-// Results wall from {{SLUG}}/data/wall.json (consented entries only; renders placeholders when empty).
+// Results wall (consented entries only; renders placeholders when empty).
 (function () {
   const section = document.getElementById("wall");
   if (!section) return;

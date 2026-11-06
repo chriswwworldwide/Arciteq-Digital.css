@@ -1,4 +1,31 @@
 (function () {
+  const home = document.getElementById("zones");
+  if (home) {
+    const order = ["zones", "story", "plans", "athletes-say", "stories", "events", "find-partner", "wall", "tips", "ask", "wall-photos"];
+    const first = document.getElementById(order[0]);
+    let previous = first;
+    order.slice(1).forEach(id => {
+      const section = document.getElementById(id);
+      if (section) { previous.after(section); previous = section; }
+    });
+  }
+  const event = new URLSearchParams(location.search).get("race");
+  const question = document.querySelector('#ask-form [name="question"]');
+  if (event && question && !question.value) question.value = `I'd like help preparing for ${event.slice(0, 120)}. My current training and target are: `;
+})();
+
+// Anchors to late sections (#ask, #tips) land short because wall/photo/quote
+// sections hydrate above them after the initial jump — re-anchor once settled.
+(function () {
+  if (!location.hash) return;
+  const target = document.getElementById(location.hash.slice(1));
+  if (!target) return;
+  const reanchor = () => target.scrollIntoView({ block: "start" });
+  window.addEventListener("load", () => setTimeout(reanchor, 300));
+  setTimeout(reanchor, 1200);
+})();
+
+(function () {
   const menu = document.getElementById("menu");
   const toggle = document.querySelector(".nav-toggle");
   const dropdowns = Array.from(
@@ -88,6 +115,41 @@
     if (!res.ok) throw new Error(String(res.status));
   }
 
+  const leadKey = "elationfitness-campaign-leads";
+  const pageName = document.title.split("|")[0].trim() || "Website";
+  const readLeads = () => { try { return JSON.parse(localStorage.getItem(leadKey) || "[]"); } catch { return []; } };
+  const writeLeads = leads => localStorage.setItem(leadKey, JSON.stringify(leads));
+  function queueSiteLead({ name = "Website enquiry", source, message, origin, originURL, reply }) {
+    const leads = readLeads();
+    leads.push({
+      id: `site-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+      siteLead: true,
+      name,
+      source,
+      origin: origin || `${pageName} · ${source}`,
+      originURL: originURL || location.pathname + location.hash,
+      received: "Just now",
+      status: "New",
+      message,
+      reply: reply || "Thanks for reaching out through the site. Tell me a little about where you are now, what you’re aiming for and what feels hardest at the moment — then I can point you to the right route.",
+      sentReply: ""
+    });
+    writeLeads(leads);
+  }
+
+  document.addEventListener("click", event => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    const href = link.href || "";
+    const label = link.textContent.trim();
+    if (!href.includes("typeform.com")) return;
+    queueSiteLead({
+      source: "Coaching application",
+      message: `Opened the ${label || "coaching application"} route from the site.`,
+      reply: "Thanks for taking the next step. Send over your goal, current training and anything you’re unsure about — I’ll come back with the route that fits best."
+    });
+  });
+
   // FAQ receptionist — the 10 questions every gym gets asked, answered
   // instantly from data/faq.json. Anything it can't match still lands in
   // the coach's inbox via the normal capture below.
@@ -148,9 +210,16 @@
       note.textContent = "Sending…";
       try {
         leadEmail = String(data.get("email") || "").trim();
+        const question = String(data.get("question") || "").trim();
+        queueSiteLead({
+          name: leadEmail ? leadEmail.split("@")[0] : "Ask Graham enquiry",
+          source: "Ask Graham",
+          message: question || "Sent an Ask Graham enquiry.",
+          reply: "Thanks for your question. Tell me a little about where you are now and what you’re aiming at — I’ll come back with the route that fits best."
+        });
         await capture({
           email: leadEmail,
-          message: String(data.get("question") || ""),
+          message: question,
         });
         note.textContent = "Got it — Graham will reply to your inbox.";
         const hit = matchFaq(data.get("question"));
@@ -456,7 +525,7 @@
     .catch(() => {});
 })();
 
-// Results wall + Graham's week from elationfitness/data/wall.json (consented entries only; empty lists stay hidden).
+// Results wall (consented entries only; renders placeholders when empty).
 (function () {
   const section = document.getElementById("wall");
   if (!section) return;
@@ -1169,3 +1238,12 @@ window.roxShare = (function () {
   window.addEventListener("resize", rerun);
   wide.addEventListener("change", rerun);
 })();
+
+// Deep-link anchor fix: re-scroll to the target once everything has settled
+// (lazy content can shift the target below the initial browser scroll position)
+window.addEventListener("load", () => {
+  if (location.hash) {
+    const t = document.querySelector(location.hash);
+    if (t) setTimeout(() => t.scrollIntoView(), 60);
+  }
+});

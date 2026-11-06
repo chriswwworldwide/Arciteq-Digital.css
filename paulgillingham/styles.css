@@ -1048,6 +1048,10 @@ section.block:has(+ .cta-band) { padding-bottom: 40px; }
 }
 
 /* Capture band */
+#ask {
+  scroll-margin-top: 96px;
+}
+
 .capture {
   position: relative;
   isolation: isolate;

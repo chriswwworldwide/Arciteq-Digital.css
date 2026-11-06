@@ -725,6 +725,9 @@ section.block.alt {
   background: var(--paper-2);
 }
 
+section.block + section.block { padding-top: 48px; }
+section.block:has(+ .cta-band) { padding-bottom: 40px; }
+
 .eyebrow {
   font-size: 12px;
   letter-spacing: 0.3em;
@@ -2869,8 +2872,6 @@ body[data-broadcast=locked] .bc-lock {
 .lead, .hero p { text-wrap: pretty; }
 .tips-grid ol, .tips-grid details p { color: #fff; }
 /* adjacent panels share one gap; delineate alt panels; tighten block before a CTA band */
-section.block + section.block { padding-top: 48px; }
-section.block:has(+ .cta-band) { padding-bottom: 40px; }
 .block.alt { box-shadow: inset 0 1px 0 var(--line); }
 section.cta-band { background: #14141a; }
 section.cta-band .btn-light { background: var(--ink); color: #14141a; }

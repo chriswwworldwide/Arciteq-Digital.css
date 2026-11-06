@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en" data-coach-preview="true" data-coach-page="false">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michele Wilder | HYROX coaching, Hyrox Newbies and race tools</title>
+    <meta
+      name="description"
+      content="Michele Wilder — HYROX Head Judge, official coach and founder of the 70,000-strong Hyrox Newbies community. Coaching routes, free race tools, station guidance and crew travel."
+    />
+    <meta
+      name="keywords"
+      content="michele wilder, WF, Wilder Fitness, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdom hyrox"
+    />
+    <meta name="geo.region" content="GB-KEN" />
+    <meta name="geo.placename" content="United Kingdom" />
+    <link rel="canonical" href="https://michelewilder.localhost/michelewilder/" />
+    <link
+      rel="alternate"
+      hreflang="en-GB"
+      href="https://michelewilder.localhost/michelewilder/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://michelewilder.localhost/michelewilder/"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/michelewilder/images/hero.jpg?v=1793655399952"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="/michelewilder/styles.css?v=crop-fix2-20261103" />
+    <script>
+      document.documentElement.classList.add("js");
+      // Refresh = top of page + the hero entrance plays. Ordinary navigation
+      // keeps any #section so links from other pages land where promised.
+      const navEntry = performance.getEntriesByType?.("navigation")?.[0];
+      const reloaded = navEntry
+        ? navEntry.type === "reload"
+        : performance.navigation?.type === performance.navigation?.TYPE_RELOAD;
+      (() => {
+        const key = "__s9HomeScroll";
+        const returning = navEntry ? navEntry.type === "back_forward" : Boolean(performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD);
+        const auto = () => { if ("scrollRestoration" in history) history.scrollRestoration = "auto"; };
+        let restoring = false, stopRestore = () => {}, lastAnchor = null, activationEvent = null;
+        const findHomeAnchor = anchor => {
+          if (!anchor || !Number.isInteger(anchor.index) || anchor.index < 0 || typeof anchor.href !== "string" || !Number.isFinite(anchor.top)) return null;
+          const root = anchor.section ? document.getElementById(anchor.section) : anchor.footer ? document.querySelector("body > footer") : null;
+          const node = root && Array.from(root.querySelectorAll("a[href]")).filter(link => link.href === anchor.href)[anchor.index];
+          return node?.getClientRects().length ? node : null;
+        };
+        const remember = (link, event) => {
+          if (restoring) return;
+          if (link) {
+            const section = link.closest("section[id]"), footer = link.closest("footer");
+            const root = section || (footer?.parentElement === document.body ? footer : null);
+            lastAnchor = root ? { href: link.href, section: section?.id || "", footer: root === footer, index: Array.from(root.querySelectorAll("a[href]")).filter(node => node.href === link.href).indexOf(link), top: link.getBoundingClientRect().top } : null;
+            activationEvent = event;
+          } else if (!activationEvent || activationEvent.defaultPrevented) {
+            const node = findHomeAnchor(lastAnchor);
+            if (!node || Math.abs(node.getBoundingClientRect().top - lastAnchor.top) > 12) lastAnchor = null;
+          }
+          try { history.replaceState({ ...history.state, [key]: { x: scrollX, y: scrollY, anchor: lastAnchor } }, ""); } catch {}
+        };
+        const holdScroll = (target, duration = 2500, delays = [200, 600, 1200]) => {
+          restoring = true;
+          if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+          const inputs = ["wheel", "touchstart", "pointerdown", "keydown"];
+          const restore = () => {
+            if (!restoring) return;
+            const point = target();
+            window.scrollTo({ left: point.x, top: point.y, behavior: "instant" });
+          };
+          let observer, frame, deadline, retries = [];
+          const stop = () => {
+            restoring = false; observer?.disconnect(); cancelAnimationFrame(frame); clearTimeout(deadline); retries.forEach(clearTimeout);
+            inputs.forEach(type => removeEventListener(type, stop, true)); auto(); stopRestore = () => {};
+          };
+          stopRestore = stop;
+          inputs.forEach(type => addEventListener(type, stop, { capture: true, passive: true, once: true }));
+          if (typeof ResizeObserver === "function") { observer = new ResizeObserver(restore); observer.observe(document.body); }
+          frame = requestAnimationFrame(restore);
+          retries = delays.map(delay => setTimeout(restore, delay));
+          deadline = setTimeout(stop, duration);
+        };
+        if ("scrollRestoration" in history) history.scrollRestoration = reloaded || (returning && history.state?.[key]) ? "manual" : "auto";
+        if (reloaded && location.hash) history.replaceState(history.state, "", location.pathname + location.search);
+        addEventListener("pagehide", () => { remember(); stopRestore(); auto(); });
+        document.addEventListener("click", event => {
+          const link = event.target?.closest?.("a[href]");
+          if (link && (!link.target || link.target === "_self") && ["http:", "https:"].includes(link.protocol) && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { stopRestore(); remember(link, event); }
+        }, true);
+        addEventListener("pageshow", event => {
+          stopRestore();
+          const point = history.state?.[key];
+          lastAnchor = null; activationEvent = null;
+          if ((event.persisted || returning) && Number.isFinite(point?.x) && Number.isFinite(point?.y)) {
+            lastAnchor = point.anchor || null;
+            holdScroll(() => {
+              const node = findHomeAnchor(point.anchor);
+              return { x: point.x, y: node ? node.getBoundingClientRect().top + scrollY - point.anchor.top : point.y };
+            });
+          } else if (reloaded && !event.persisted) holdScroll(() => ({ x: 0, y: 0 }), 500, [50, 150, 350]);
+          else auto();
+        });
+      })();
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsActivityLocation",
+        "name": "Michele Wilder",
+        "description": "Michele Wilder — Official HYROX performance coach and Wilder Fitness founder. Coaching routes, race tools and race-mate finder.",
+        "url": "https://michelewilder.localhost/michelewilder/",
+        "areaServed": ["United Kingdom", "the UK", "Europe"],
+        "knowsLanguage": ["en"],
+        "keywords": "michele wilder, WF, Wilder Fitness, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdom hyrox",
+        "founder": {
+          "@type": "Person",
+          "name": "Michele Wilder",
+          "jobTitle": "HYROX coach & founder",
+          "sameAs": ["https://www.instagram.com/michele_wilderfitness/", "https://www.instagram.com/wilderfitnessuk/", "https://coaches.hyrox.com/coach/michelewilder/"]
+        }
+      }
+    </script>
+  <style>
+    .pitch-tools { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.5rem 0; }
+    .pitch-tool { padding:1.5rem; border:1px solid var(--line); border-radius:18px; background:var(--paper-2); display:flex; flex-direction:column; gap:.8rem; min-width:0; }
+    .pitch-tool h4 { font-size:1.5rem; line-height:1.15; margin:.3rem 0; }
+    .pitch-tool p { color:var(--ink-2); margin:0 0 1rem; }
+    .pitch-tool .btn { align-self:flex-start; margin-top:auto; }
+    .pitch-tool-main { grid-column:1/-1; display:grid; grid-template-columns:1.2fr 1fr; gap:2rem; border-color:var(--pink); background:linear-gradient(125deg,color-mix(in srgb,var(--pink) 12%,var(--paper)),var(--paper-2)); }
+    .pitch-tool-main h4 { font-size:clamp(1.7rem,3vw,2.5rem); }
+    .tool-preview { display:grid; gap:.4rem; align-content:center; padding:1.2rem; background:var(--paper); border-radius:12px; }
+    .tool-preview span { color:var(--pink); font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; margin-top:.5rem; }
+    .tool-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; }
+    .tool-chips span { padding:.35rem .7rem; border:1px solid var(--line); border-radius:999px; font-size:.8rem; }
+    .pitch-start { color:var(--ink-2); } .pitch-start a { color:var(--pink); }
+    .pitch-guides > summary { cursor:pointer; padding:1rem 0; min-height:44px; }
+    .event-actions { display:flex; flex-direction:column; gap:.6rem; min-width:190px; }
+    .event-prep { color:var(--ink-2); font-size:.85rem; }
+    @media(max-width:760px) { .pitch-tools,.pitch-tool-main { grid-template-columns:minmax(0,1fr); } .pitch-tool { padding:1.1rem; } .event-actions { min-width:0; } }
+  </style>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/michelewilder/showcase.css?v=1793655399952" /><link rel="stylesheet" href="/michelewilder/home-editorial.css?v=1793655399952" /><script src="/michelewilder/coach-view.js?v=1793655399952"></script></head>
+  <body class="home-lab">
+    <header class="masthead wrap">
+      <h1>
+        <a class="wordmark" href="/michelewilder/"
+          >WILDER <span class="o">FITNESS</span>
+          <span class="sig" aria-label="Wilder Fitness"
+            ><span class="sig-text">Wilder Fitness</span
+            ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+              <path
+                d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                fill="currentColor"
+              /></svg
+          ></span>
+        </a>
+      </h1>
+      <p class="city">Maidstone</p>
+    </header>
+
+    
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/michelewilder/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/michelewilder/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/michelewilder/desk.html?audience=coach">Finance</a><a data-coach-link href="/michelewilder/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/michelewilder/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/michelewilder/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/michelewilder/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
+      <div class="wrap">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          Menu
+        </button>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/michelewilder/planner.html?view=client" style="color:var(--pink,#b69aff);font-weight:800">Book a session</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/michelewilder/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/michelewilder/training.html">Access your training</a></li>
+              <li><a href="/michelewilder/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/michelewilder/podcast.html">Studio series</a></li>
+              <li><a href="/michelewilder/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/michelewilder/#ask">Ask Michele</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/michelewilder/predictor.html">Race predictor</a></li>
+              <li><a href="/michelewilder/splits.html">Split analyser</a></li>
+              <li><a href="/michelewilder/results.html">Results board</a></li>
+              <li><a href="/michelewilder/stations-prep.html">Stations prep</a></li>
+              <li><a href="/michelewilder/find-a-partner.html">Find a race-mate</a></li>
+              <li><a href="/michelewilder/run-zone.html">Run zone</a></li>
+              <li><a href="/michelewilder/taper-zone.html">Taper zone</a></li>
+              <li><a href="/michelewilder/race-day.html">Race day</a></li>
+              <li><a href="/michelewilder/events.html">Race Calendar &amp; Travel</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/michelewilder/race-crew.html">Race crew meetups</a></li>
+              <li><a href="https://www.instagram.com/wilderfitnessuk/" target="_blank" rel="noopener">Wilder Fitness IG</a></li>
+              <li><a href="/michelewilder/news.html">HYROX news</a></li>
+              <li><a href="/michelewilder/list.html">Join the list</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/michelewilder/partners.html">Partners</a></li>
+              <li><a href="/michelewilder/shop.html">Links</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="hero hero--bleed" data-hero-mode="full" data-hero-roll="full">
+      <div class="hero-mask">
+        <img
+          class="hero-img"
+          src="/michelewilder/images/hero.jpg?v=1793655399952"
+          alt="Michele Wilder pulling a heavy sled rope during a HYROX race"
+          width="1125"
+          height="1080"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="wrap">
+        <h2>
+          This is my journey.<br /><em>Now I help others write theirs.</em>
+        </h2>
+        <p>
+          Your starting point is yours. So is the next chapter. Build strength, confidence and race readiness with Michele at Wilder Fitness.
+        </p>
+      </div>
+    </section>
+    <div class="hero-below"><div class="wrap"><div class="actions">
+          <a class="btn btn-primary" href="/michelewilder/coaching.html">Coach with Michele</a>
+          <a class="btn btn-light" href="#ask">Ask Michele</a>
+        </div><div class="stats">
+          <div>
+            <strong>1:26:30</strong><span>HYROX Cardiff — Cardiff finish board</span>
+          </div>
+          <div>
+            <strong>Head Judge</strong><span>official HYROX race official at major events</span>
+          </div>
+          <div><strong>70k+</strong><span>Hyrox Newbies members — the community she built</span></div>
+        </div></div></div><!-- /hero-below --><section class="block" id="zones">
+      <div class="wrap">
+        <p class="eyebrow reveal">More than a finish time</p>
+        <h3 class="reveal">Know your race. Find your people.</h3>
+        <p class="lead reveal">Your first start line or your next personal best — useful tools to turn a race idea into a plan.</p>
+        <div class="pitch-tools">
+          <article class="pitch-tool pitch-tool-main reveal"><div><span class="tag">After the finish</span><h4>Your finish time tells half the story.</h4><p>See where the minutes went, where you were strong and what deserves your next training block.</p><a class="btn btn-primary" href="/michelewilder/splits.html">Analyse my splits</a></div><div class="tool-preview" aria-label="What the analysis covers"><span>01 · Running</span><strong>Did your pace fade?</strong><span>02 · Stations</span><strong>Where did time get away?</strong><span>03 · Next steps</span><strong>Know what to work on.</strong></div></article>
+          <article class="pitch-tool reveal"><span class="tag">Better together</span><h4>Got the ticket. Missing the partner?</h4><p>Find someone aiming for your race, your format and a pace that fits. Doubles, relay or company for the race trip.</p><div class="tool-chips"><span>Race</span><span>Division</span><span>Pace</span></div><a class="btn btn-ghost" href="/michelewilder/find-a-partner.html">Find my race-mate</a></article>
+          <article class="pitch-tool reveal"><span class="tag">Before the start</span><h4>What time could you aim for?</h4><p>Bring your running and station benchmarks together for a race estimate — and a clearer starting point for training.</p><div class="tool-chips"><span>8 runs</span><span>8 stations</span><span>One target</span></div><a class="btn btn-ghost" href="/michelewilder/predictor.html">Predict my race</a></article>
+        </div>
+        <p class="pitch-start">New to all of this? <a href="/michelewilder/prep-club.html">Start with the free HYROX Prep Club →</a></p>
+        <details class="pitch-guides"><summary>Explore station guides, running plans and race preparation</summary>
+        <div class="zones">
+          <a class="zone reveal" href="/michelewilder/stations-prep.html">
+            <span class="num">01</span>
+            <h4>Stations Prep</h4>
+            <p>
+              Technique, pacing and transitions for all eight stations — from
+              SkiErg to the last wall ball.
+            </p>
+            <span class="more">Open station guides</span>
+          </a>
+          <a class="zone reveal" href="/michelewilder/run-zone.html">
+            <span class="num">02</span>
+            <h4>Run Zone</h4>
+            <p>
+              8 × 1 km with heavy legs. Compromised-running sessions built for
+              HYROX halls get warm.
+            </p>
+            <span class="more">Run plans</span>
+          </a>
+          <a class="zone reveal" href="/michelewilder/events.html">
+            <span class="num">03</span>
+            <h4>Upcoming Events</h4>
+            <p>
+              Confirmed start lines in the region and around the world — dates,
+              travel guidance, the crew and the weekend around the race.
+            </p>
+            <span class="more">Race Calendar &amp; Travel</span>
+          </a>
+          <a class="zone reveal" href="#ask">
+            <span class="num">04</span>
+            <h4>Ask Michele</h4>
+            <p>
+              Form checks, race strategy, training around real life — ask
+              directly, get a real answer.
+            </p>
+            <span class="more">Ask a question</span>
+          </a>
+        </div></details>
+      </div>
+    </section>
+
+    <section class="block alt" id="story">
+      <div class="wrap story">
+        <figure class="reveal">
+          <img
+            src="/michelewilder/images/startline.jpg?v=1793655399952"
+            alt="Michele Wilder in race paint beside a HYROX wall"
+            width="985"
+            height="1150"
+            loading="lazy"
+          />
+          <svg class="profile-hairline" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 A48 60 0 0 1 48 0 H50" /></svg>
+        </figure>
+        <div class="reveal">
+          <p class="eyebrow">The athlete</p>
+          <h3>Meet Michele Wilder. <em>The experience behind the coaching.</em></h3>
+          <p class="lead">
+            Official HYROX performance coach. 100+ athletes coached over three seasons. Discover the approach behind Wilder Fitness — and find a way forward that fits your goals.
+          </p>
+          <p class="quote">“Every session should have a purpose. And a HYROX sim has to earn its place just like everything else.”</p><ul><li>HYROX Head Judge and official coach — inside the sport, not just beside it.</li><li>Founded Hyrox Newbies, now 70,000+ members strong.</li><li>First HYROX in 1:23, twelve weeks after being told to try it.</li><li>Foundations: structured beginner training, no race ticket required.</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="plans">
+      <div class="wrap">
+        <p class="eyebrow reveal">Wilder Fitness coaching</p>
+        <h3 class="reveal">Find your way forward.</h3>
+        <p class="lead reveal">Structured HYROX coaching for everyday athletes, especially newcomers to the sport. Michele&#39;s approach brings running, strength, pacing and station skills together with supportive guidance.</p>
+        <div class="plan plan-crew reveal">
+          <img
+            class="crew-photo"
+            src="/michelewilder/images/doubles.jpg?v=1793655399952"
+            alt="Michele Wilder and a race partner reaching for the finish line in Barcelona"
+            loading="lazy"
+          />
+          <div class="crew-copy">
+            <span class="tag">New here?</span>
+            <h4>Join the HYROX Prep Club</h4>
+            <p class="crew-line">
+              Not ready for coaching — or not sure HYROX is for you yet? Start
+              with free race tools, clear training guidance and a community
+              to help you find your feet.
+            </p>
+            <p class="crew-note">
+              Free to join · beginner-safe · race tools · community prompts —
+              coaching only when it makes sense.
+            </p>
+          </div>
+          <div class="crew-side">
+            <div class="price">£0 <small>/ always</small></div>
+            <div class="per">The softer first step</div>
+            <a class="btn btn-primary" href="/michelewilder/prep-club.html">Join Prep Club</a>
+          </div>
+        </div>
+        <div class="plans coach-plans verified-offers"><article class="plan featured reveal" data-offer-id="0"><span class="tag">Online coaching enquiry</span><h4>HYROX coaching with Michele</h4><p class="per">Discuss preparation for your first HYROX or a stronger next race. Michele&#39;s official HYROX profile explains her focus and provides current contact details.</p><a class="btn btn-primary" href="https://coaches.hyrox.com/coach/michelewilder/" target="_blank" rel="noopener">Meet Michele and get in touch</a></article></div><p class="offer-terms">Offer details and prices are set by the provider. Check the linked page for current terms.</p><p class="plans-note">
+          Not sure which route fits? <a href="#ask">Ask Michele</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="block" id="athletes-say" hidden>
+      <div class="wrap">
+        <p class="eyebrow reveal">Athletes say</p>
+        <h2 class="reveal">In their words.</h2>
+        <div class="quotes reveal" id="testimonials"></div>
+      </div>
+    </section>
+
+
+
+    <section class="block alt" id="events">
+      <div class="wrap">
+        <p class="eyebrow reveal">Upcoming Events</p>
+        <h3 class="reveal">Pick the start line. Build towards it.</h3>
+        <p class="lead reveal">
+          Choose a confirmed race, plan the weekend and build the training
+          around it. Find a teammate, bring the crew and make the start line a shared target.
+        </p>
+        <div class="events" id="race-cards" aria-live="polite"><div class="event"><div class="date"><strong><time datetime="2026-12-02">2 Dec 2026</time></strong><span>London</span></div><div><h4>Amazon HYROX London</h4><p>2 Dec 2026 – 6 Dec 2026 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-london-excel/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/michelewilder/events.html#london">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2027-01-20">20 Jan 2027</time></strong><span>Manchester</span></div><div><h4>HYROX Manchester</h4><p>20 Jan 2027 – 31 Jan 2027 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-manchester/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/michelewilder/events.html#manchester">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2026-11-11">11 Nov 2026</time></strong><span>Dublin</span></div><div><h4>HYROX Dublin</h4><p>11 Nov 2026 – 15 Nov 2026 · Ireland</p><a href="https://hyrox.com/event/hyrox-dublin/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/michelewilder/events.html#dublin">Plan the weekend</a></div></div></div></section>
+
+    <section class="cta-band" id="find-partner">
+      <div class="wrap">
+        <h3>Got the ticket. Missing the partner.</h3>
+        <p>
+          Open doubles, pro, mixed — yes, that one too — relay, or just
+          race-trip company. Post your card, Michele does the intros.
+        </p>
+        <a class="btn btn-light" href="/michelewilder/find-a-partner.html"
+          >Find a partner</a
+        >
+      </div>
+    </section>
+
+    <section class="block" id="wall" hidden>
+      <div class="wrap">
+        <p class="eyebrow reveal">Results wall</p>
+        <h3 class="reveal">Real athletes. Real times.</h3>
+        <p class="lead reveal">
+          Every result here is athlete-approved. Before and after, race by race.
+        </p>
+        <ul class="wall" id="wall-list"></ul>
+        <div class="week" id="week" hidden>
+          <p class="eyebrow">Michele's week</p>
+          <ul id="week-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block tips" id="tips">
+      <div class="wrap">
+        <p class="eyebrow reveal">Coach notes</p>
+        <h3 class="reveal">The stuff that's not in the rulebook.</h3>
+        <p class="lead reveal">
+          Three practical checks per station — race-floor lessons from a coach who has raced across divisions, partners and cities. Spot a gap? <a href="#ask">Ask Michele</a> — it might make the list.
+        </p>
+        <figure class="tips-photo reveal">
+          <img
+            src="/michelewilder/images/wallball.jpg?v=1793655399952"
+            alt="Michele Wilder coaching wall balls in a class setting"
+            width="970"
+            height="1024"
+            loading="lazy"
+          />
+          <svg class="tips-hairline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 65 V5 Q0 0 5 0 H62" /></svg>
+        </figure>
+        <div class="tips-grid reveal">
+          <details open>
+            <summary>Running</summary>
+            <ol>
+              <li>
+                Heel-lock your laces (the extra loop through the top eyelets).
+                No heel slip means no wasted push-off — it genuinely makes you
+                faster, for free.
+              </li>
+              <li>
+                Cramping mid-race? A sachet of mustard or a shot of pickle juice
+                stops it faster than water — it's the nerve reflex, not the
+                salt. Keep one in your kit bag.
+              </li>
+              <li>
+                Walk the Roxzone before your heat and count steps from the
+                run-in to your station lane and back out. Most lost time in
+                Hyrox is wandering the Roxzone, not on the stations.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Race-day kit</summary>
+            <ol>
+              <li>
+                Race belt for your bib, not pins. Pins tear on sled poles and
+                the sandbag, and a lost bib means a fight at the checkpoints.
+              </li>
+              <li>
+                Tape your ring fingers before the start. Rope burn on that one
+                finger is what costs you the farmers carry two stations later.
+              </li>
+              <li>
+                Liquid chalk on in the start pen, not at the sled pull. Your
+                hands are already sweating from run 1.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>SkiErg</summary>
+            <ol>
+              <li>
+                Set the damper before the clock starts — 6–7 for most athletes.
+                Fiddling mid-station costs 10 seconds you never get back.
+              </li>
+              <li>
+                Fall into it. Hips and heels drive the pull, not arms — if your
+                triceps are burning you're doing it wrong.
+              </li>
+              <li>
+                Watch the /500 m split, not the metres. Pick a number you can
+                hold for 1000 m and don't dip under it in the first 200.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Sled Push</summary>
+            <ol>
+              <li>
+                Test the carpet in the warm-up area — every venue is different — some carpets just never let go. If it's slow, drop the shoulder,
+                push from lower, and add 10–15 s to your target so you don't
+                blow the next run chasing a number.
+              </li>
+              <li>
+                Arms straight, hands low, forehead down. Bent arms leak power
+                into your shoulders.
+              </li>
+              <li>
+                Don't turn the sled at the line — push straight through, walk
+                around, reset. Turning under load is where hamstrings go.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Sled Pull</summary>
+            <ol>
+              <li>
+                Walk back with the rope until you hit the box line, then
+                hand-over-hand. Pulling from standing at the box from the start
+                is a step-out waiting to happen.
+              </li>
+              <li>
+                Lean back with straight arms and step backwards — pull with your
+                bodyweight, not your biceps. Biceps-only pulling dies at 25 m.
+              </li>
+              <li>
+                Coil the slack behind you, never in front. Standing on your own
+                rope is the classic mid-station tangle.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Burpee Broad Jumps</summary>
+            <ol>
+              <li>
+                Land with your feet already staggered so your hands drop
+                straight down without a shuffle. Saves about a second a rep, and
+                you'll do 20+.
+              </li>
+              <li>
+                Step back into the burpee, don't kick both feet. Slower per rep,
+                but you arrive at the run breathing instead of dying.
+              </li>
+              <li>
+                Jump a distance you can repeat every time, not your best. Two
+                big jumps that cost you a breath each are slower than three
+                steady ones.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Rowing</summary>
+            <ol>
+              <li>
+                Flick the footstrap tabs loose before you sit down and leave
+                them loose enough to kick out of. Strapping in and out is 15–20
+                seconds most people never train.
+              </li>
+              <li>
+                Damper 5–6, rate 26–28. Anything faster and you're just moving
+                air.
+              </li>
+              <li>
+                Unstrap with 50 m to go and keep pulling light. You'll be up and
+                running while others are still bending down.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Farmers Carry</summary>
+            <ol>
+              <li>
+                Deadlift both bells up together, not one at a time — that first
+                grip is your grip for 200 m.
+              </li>
+              <li>
+                Drop them on the line, don't set them down neatly. The tidy
+                put-down means a re-grip and a judge's second look.
+              </li>
+              <li>
+                If your grip is going, it goes suddenly. Stop a metre early on
+                your terms, shake once, go — never wait for the drop.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Sandbag Lunges</summary>
+            <ol>
+              <li>
+                Bag high across the traps, not the neck — hands only hold it in
+                place. If your arms are carrying it you'll feel it on the wall
+                balls.
+              </li>
+              <li>
+                Kiss the floor with the back knee, don't slam it. Bruised knees
+                at 80 m are avoidable.
+              </li>
+              <li>
+                Exhale up out of every lunge. Holding your breath here is why
+                the wall balls feel impossible.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Wall Balls</summary>
+            <ol>
+              <li>
+                Every 10 reps take one full standing breath with the ball on
+                your chest. Never put it on the floor — the pick-up is where the
+                shoulders die.
+              </li>
+              <li>
+                Stand close enough that the ball drops straight back into your
+                hands. Every step forward or back is a lost rep.
+              </li>
+              <li>
+                Eyes on the target line the whole time. Looking at the ball is
+                how you drop it on rep 68.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Travel &amp; away races</summary>
+            <ol>
+              <li>
+                Pre-cool: an ice slushie 20 minutes before the start measurably
+                drops core temperature. Racing from United Kingdom, this is the free
+                minute.
+              </li>
+              <li>
+                Flying to United Kingdom, Dublin or Singapore? Land two days early, race
+                day minus one is legs up, and pack your own gel — the expo runs
+                out.
+              </li>
+              <li>
+                Train outdoors at United Kingdom effort, race indoors at pace. Aircon
+                venues are 10°C cooler than your Sunday run, so your race pace
+                is faster than your training says.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Coming back from a layoff</summary>
+            <ol>
+              <li>
+                Drop intensity before volume — keep the sessions, cut the
+                load. The habit is the hard part; the fitness comes back.
+              </li>
+              <li>
+                Race doubles first. Splitting the stations means you can go
+                hard for 30 seconds and recover — banking confidence instead
+                of a blow-up.
+              </li>
+              <li>
+                A plan beats guesswork. Ask Michele — that's what the coaching
+                page is for.
+              </li>
+            </ol>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="capture" id="ask">
+      <img
+        class="capture-bg"
+        src="/michelewilder/images/coaching.jpg?v=1793655399952"
+        alt=""
+        width="948"
+        height="870"
+        loading="lazy"
+      />
+      <div class="wrap">
+        <div class="reveal coach">
+          <span class="coach-portrait"><img
+            class="bio"
+            src="/michelewilder/images/bio.jpg?v=1793655399952"
+            alt="Michele Wilder — HYROX racer, coach and Wilder Fitness founder"
+            width="120"
+            height="120"
+            loading="lazy"
+          /><svg class="portrait-hairline" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M33 3 A50 50 0 0 0 33 97" /></svg></span>
+          <div>
+            <p class="eyebrow">Ask Michele · Chat Zone</p>
+            <h3>Got a race, a station or a target? Just ask.</h3>
+            <p>
+              Have a training question or a race in mind? Send it to Michele
+              and start the conversation.
+            </p>
+            <p class="chat-line">
+              Prefer chat? Find Michele on
+              <a class="chat-zone chat-zone-inline" href="https://www.instagram.com/michele_wilderfitness/" target="_blank" rel="noopener"><span class="dot"></span> Instagram</a>
+            </p>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="faq-quick" id="faq-quick" hidden>
+            <p class="faq-quick-label">Fast answers — tap one:</p>
+            <div class="faq-chips" id="faq-chips"></div>
+            <div class="faq-answer" id="faq-answer" role="status" hidden></div>
+          </div>
+          <form
+            id="ask-form"
+            action="/api/capture-email"
+            method="post"
+            data-tenant="michelewilder"
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="you@email.com"
+              required
+              autocomplete="email"
+            />
+            <input
+              type="text"
+              name="question"
+              placeholder="Your question (optional)"
+            />
+            <button class="btn btn-primary" type="submit">Ask Michele</button>
+          </form>
+          <p class="fine" id="ask-note" role="status">
+            No spam. Unsubscribe any time.
+          </p>
+          <form
+            class="onboard"
+            id="onboard-form"
+            action="/api/capture-email"
+            method="post"
+            hidden
+          >
+            <p class="onboard-title">
+              30 seconds more and Michele can reply with a real plan.
+            </p>
+            <div class="onboard-grid">
+              <label>
+                <span>Your goal</span>
+                <select name="goal" required>
+                  <option value="">Choose…</option>
+                  <option>First Hyrox</option>
+                  <option>Faster time</option>
+                  <option>Podium / elite</option>
+                  <option>Doubles / relay</option>
+                  <option>Doubles partner hunt</option>
+                  <option>Injury comeback</option>
+                  <option>General strength &amp; running</option>
+                </select>
+              </label>
+              <label>
+                <span>Race date (if any)</span>
+                <input type="date" name="race_date" />
+              </label>
+              <label>
+                <span>Hyrox experience</span>
+                <select name="experience">
+                  <option value="">Choose…</option>
+                  <option>Never raced</option>
+                  <option>1 race</option>
+                  <option>2–4 races</option>
+                  <option>5+ races</option>
+                </select>
+              </label>
+              <label>
+                <span>Training days / week</span>
+                <select name="days_per_week">
+                  <option value="">Choose…</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5+</option>
+                </select>
+              </label>
+              <label>
+                <span>Where are you based?</span>
+                <input type="text" name="city" placeholder="United Kingdom" />
+              </label>
+              <label>
+                <span>Instagram / TikTok handle</span>
+                <input type="text" name="social_handle" placeholder="@" />
+              </label>
+            </div>
+            <label class="onboard-wide">
+              <span
+                >Injuries, race history, or anything Michele should know</span
+              >
+              <textarea name="notes" rows="3"></textarea>
+            </label>
+            <div class="onboard-actions">
+              <button class="btn btn-primary" type="submit">
+                Send to Michele
+              </button>
+              <button class="btn btn-ghost" type="button" data-skip>
+                Skip for now
+              </button>
+            </div>
+          </form>
+          <div class="zone-result" id="zone-result" hidden aria-live="polite">
+            <p class="eyebrow">Your zone</p>
+            <h4 id="zone-plan"></h4>
+            <p id="zone-why"></p>
+            <div class="onboard-actions">
+              <a class="btn btn-primary" id="zone-cta" href="#plans"
+                >See the plan</a
+              >
+              <a class="btn btn-ghost" href="#plans">Compare all plans</a>
+            </div>
+            <p class="fine">
+              A starting point, not a verdict — Michele reads every answer and will
+              say if a different zone fits better.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block gallery" id="wall-photos" hidden>
+      <div class="wrap">
+        <p class="eyebrow reveal">Race Wall</p>
+        <h3 class="reveal">Your people. Your progress. Your wall.</h3>
+        <p class="lead reveal">
+          Race faces, finish-line tears, the squad being daft. Share the moments
+          that make this community yours.
+        </p>
+        <div
+          class="event-tabs reveal"
+          id="event-tabs"
+          role="tablist"
+          aria-label="Filter photos by event"
+        ></div>
+        <div class="polaroids" id="polaroids"></div>
+        <div class="send-shot reveal">
+          <button class="btn btn-primary" type="button" id="send-shot-btn">
+            Send your shot
+          </button>
+          <form class="shot-form" id="shot-form" hidden novalidate>
+            <label>
+              Your caption
+              <textarea
+                name="caption"
+                rows="3"
+                maxlength="280"
+                required
+                placeholder="What was happening? Your words, any tone."
+              ></textarea>
+            </label>
+            <div class="shot-row">
+              <label>
+                Name or @handle
+                <input name="by" type="text" maxlength="60" required />
+              </label>
+              <label>
+                Which event?
+                <input
+                  name="event"
+                  type="text"
+                  maxlength="60"
+                  list="event-options"
+                  required
+                  placeholder="Hyrox UK 2026"
+                />
+                <datalist id="event-options"></datalist>
+              </label>
+            </div>
+            <label>
+              Email <span class="opt">(so Michele can reply)</span>
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <label>
+              The photo
+              <span class="opt">(from your IG post or camera roll)</span>
+              <input name="photo" type="file" accept="image/*" required />
+            </label>
+            <img class="shot-preview" id="shot-preview" alt="" hidden />
+            <label class="hp" aria-hidden="true">
+              Website
+              <input
+                name="website"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </label>
+            <label class="check">
+              <input name="consent" type="checkbox" required />
+              <span
+                >I'm in the photo (or everyone in it is happy), and Michele can
+                show it on this page and on @michelewilder. Ask Michele any time to take
+                it down.</span
+              >
+            </label>
+            <div class="shot-actions">
+              <button class="btn btn-primary" type="submit">Send it</button>
+              <p class="fine" id="shot-note">
+                Already posted it on IG? Same photo works — pick it here and it
+                lands on Michele's desk with your caption. Nothing goes live until
+                Michele approves it.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <dialog class="lightbox" id="lightbox">
+        <button class="lightbox-close" type="button" aria-label="Close">
+          &times;
+        </button>
+        <button class="lightbox-share" type="button" aria-label="Share photo">
+          Share
+        </button>
+        <figure>
+          <img alt="" />
+          <figcaption></figcaption>
+        </figure>
+      </dialog>
+    </section>
+
+
+
+
+
+    <div
+      class="wrap partners"
+      data-partners="partner"
+      data-label="Partners"
+      hidden
+    ></div>
+
+    <div class="sticky-cta" id="sticky-cta" hidden>
+      <a class="btn btn-primary" href="/michelewilder/coaching.html">Coach with Michele</a>
+      <a class="btn btn-light" href="/michelewilder/splits.html">Free split analysis</a>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div>© <span id="year"></span> Michele Wilder</div>
+        <nav>
+          <a href="#plans">Coaching</a>
+          <a href="/michelewilder/stations-prep.html">Stations Prep</a>
+          <a href="/michelewilder/run-zone.html">Run Zone</a>
+          <a href="/michelewilder/taper-zone.html">Taper Zone</a>
+          <a href="/michelewilder/race-day.html">Race Day</a>
+          <a href="/michelewilder/events.html">Events</a>
+          <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
+          <a href="/michelewilder/events.html#cities">Race planner</a>
+          <a href="/michelewilder/news.html">News</a>
+          <a href="/michelewilder/race-crew.html">the ninth station</a>
+          <a href="/michelewilder/results.html">Results</a>
+          <a href="/michelewilder/splits.html">Splits</a>
+          <a href="/michelewilder/find-a-partner.html">Find a Partner</a>
+          <a href="#wall-photos">Race Wall</a>
+          <a href="#ask">Ask Michele</a>
+          <a data-link="athleteLogin" target="_blank" rel="noopener" hidden
+            >Athlete login</a
+          >
+          <a
+            href="https://www.instagram.com/michele_wilderfitness/"
+            target="_blank"
+            rel="noopener"
+            >Instagram @michelewilder</a
+          >
+          
+          
+          <a href="https://www.instagram.com/michele_wilderfitness/" target="_blank" rel="noopener">Wilder Fitness links</a>
+          <a href="https://coaches.hyrox.com/coach/michelewilder/" target="_blank" rel="noopener">All links</a>
+
+          <a href="/michelewilder/coaching.html">Book Michele</a>
+          <a href="/michelewilder/partners.html">Partners</a>
+          
+        </nav>
+      </div>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+    </footer>
+
+    <script src="/michelewilder/app.js?v=1793655399952" defer></script>
+    <script src="/michelewilder/emerge.js?v=1793655399952" defer></script>
+    <script src="/michelewilder/partners.js?v=1793655399952" defer></script>
+    <script src="/michelewilder/planner.js?v=1793655399952" defer></script>
+    <script src="/michelewilder/home-editorial.js?v=1793655399952" defer></script>
+  <script>(()=>{const h=document.querySelector(".hero--bleed");if(!h||!("IntersectionObserver" in window))return;new IntersectionObserver(([e])=>document.body.classList.toggle("hero-in-view",e.isIntersecting)).observe(h);})();</script>
+  </body>
+</html>

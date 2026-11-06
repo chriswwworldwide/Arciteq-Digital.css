@@ -1,0 +1,92 @@
+{
+  "updated": "2026-10-28",
+  "note": "Results seed — Michele's verified rows sit beside clearly labelled format rows.",
+  "divisions": {
+    "women": {
+      "label": "Women Singles (Open & Pro)",
+      "results": [
+        {
+          "athlete": "Michele Wilder",
+          "time": "1:26:30",
+          "category": "Cardiff finish board",
+          "event": "HYROX Cardiff",
+          "date": "On record",
+          "city": "Cardiff"
+        },
+        {
+          "athlete": "Format athlete A",
+          "time": "1:12:52",
+          "category": "Open · format row",
+          "event": "HYROX Dublin",
+          "date": "Format",
+          "city": "Dublin"
+        }
+      ]
+    },
+    "men": {
+      "label": "Men Singles (Open & Pro)",
+      "results": [
+        {
+          "athlete": "Format athlete B",
+          "time": "1:05:58",
+          "category": "Open · format row",
+          "event": "HYROX London",
+          "date": "Format",
+          "city": "London"
+        }
+      ]
+    },
+    "doubles-women": {
+      "label": "Women Doubles",
+      "results": [
+        {
+          "athlete": "Format pair",
+          "time": "1:08:12",
+          "category": "Open · format row",
+          "event": "HYROX London",
+          "date": "Format",
+          "city": "London"
+        }
+      ]
+    },
+    "doubles-men": {
+      "label": "Men Doubles",
+      "results": [
+        {
+          "athlete": "Format pair",
+          "time": "1:01:44",
+          "category": "Open · format row",
+          "event": "HYROX Dublin",
+          "date": "Format",
+          "city": "Dublin"
+        }
+      ]
+    },
+    "doubles-mixed": {
+      "label": "Mixed Doubles",
+      "results": [
+        {
+          "athlete": "Format pair",
+          "time": "1:02:31",
+          "category": "Open · format row",
+          "event": "HYROX London",
+          "date": "Format",
+          "city": "London"
+        }
+      ]
+    },
+    "relay": {
+      "label": "Team Relay",
+      "results": [
+        {
+          "athlete": "Format relay team",
+          "time": "—",
+          "category": "Format row",
+          "event": "HYROX London",
+          "date": "Format",
+          "city": "London"
+        }
+      ]
+    }
+  }
+}

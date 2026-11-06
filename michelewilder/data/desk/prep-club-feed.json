@@ -1,0 +1,48 @@
+[
+  {
+    "type": "Start here",
+    "title": "The stations do not need to be scary",
+    "copy": "A plain-English pass through the eight stations, what matters and what beginners can ignore for now.",
+    "href": "/michelewilder/stations-prep/",
+    "cta": "Open station prep",
+    "img": "/michelewilder/images/stations-hero.jpg",
+    "signal": "Opened station prep"
+  },
+  {
+    "type": "Free tool",
+    "title": "What time should you actually target?",
+    "copy": "Use the race predictor before you start guessing what a good HYROX finish looks like for you.",
+    "href": "/michelewilder/predictor.html",
+    "cta": "Try the predictor",
+    "img": "/michelewilder/images/predictor-hero.jpg",
+    "signal": "Used race predictor"
+  },
+  {
+    "type": "Confidence",
+    "title": "Wall balls without the panic",
+    "copy": "The station everyone worries about, broken into reps, rhythm and what to practise first.",
+    "href": "/michelewilder/stations-prep/#wall-balls",
+    "cta": "Practise wall balls",
+    "img": "/michelewilder/images/station-wall-balls.jpg",
+    "signal": "Checked wall-ball guidance"
+  },
+  {
+    "type": "Route",
+    "title": "When a programme starts making sense",
+    "copy": "A coached programme is the softer route into structured prep — enough guidance to feel held, not thrown in.",
+    "href": "/michelewilder/coaching.html",
+    "cta": "See coaching routes",
+    "img": "/michelewilder/images/coaching-hero.jpg",
+    "signal": "Viewed coaching routes",
+    "hot": true
+  },
+  {
+    "type": "Travel",
+    "title": "Turn the race into a weekend you can handle",
+    "copy": "Calendar, travel and crew planning so the race feels exciting rather than administratively feral.",
+    "href": "/michelewilder/events.html",
+    "cta": "Plan the race",
+    "img": "/michelewilder/images/events-hero.jpg",
+    "signal": "Checked race plans"
+  }
+]

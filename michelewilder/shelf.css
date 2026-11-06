@@ -1,0 +1,284 @@
+/* shelf.css — "The Shelf" family: partners.html, shop.html, prep-club.html.
+   Opt-in via body.shelf. Verified routes, links and joining: cards read as
+   tagged shelf items — mono stamps, ticket-stub accents, pink top line on
+   hover. Teal (--zone-accent) marks structure on zone-acc pages; pink stays
+   Michele's signature/action colour. */
+
+body.shelf {
+  --shelf-accent: var(--pink);
+}
+body.shelf.zone-acc {
+  --shelf-accent: var(--zone-accent);
+}
+
+/* ---------- Hero ---------- */
+
+body.shelf .guide-hero {
+  padding-block: 3rem 2.4rem;
+}
+body.shelf .guide-hero h2 {
+  letter-spacing: -0.03em;
+}
+body.shelf .guide-hero .eyebrow,
+body.shelf .prep-wrap .eyebrow,
+body.shelf .block .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--shelf-accent);
+}
+body.shelf .guide-hero .eyebrow::before,
+body.shelf .prep-wrap .eyebrow::before,
+body.shelf .block .eyebrow::before {
+  content: "";
+  width: 1.4em;
+  border-top: 1px solid var(--shelf-accent);
+  opacity: 0.7;
+}
+body.shelf .guide-hero h2 em {
+  color: var(--shelf-accent);
+  font-style: normal;
+}
+body.shelf .module-preview-note {
+  font-size: 0.84rem;
+  color: var(--ink-3);
+  border-left: 2px solid var(--shelf-accent);
+  padding-left: 0.8rem;
+}
+
+/* Hero photo — homepage bottom curve + larger corner tick */
+body.shelf .guide-hero-photo {
+  position: relative;
+}
+body.shelf .guide-hero-photo img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 0 0 48% 8% / 0 0 7% 2%;
+}
+body.shelf .guide-hero-photo::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 56px;
+  height: 56px;
+  border-top: 2px solid var(--pink);
+  border-left: 2px solid var(--pink);
+  pointer-events: none;
+}
+
+/* ---------- Shelf cards (partners + shop showcase) ---------- */
+
+body.shelf .partner-card,
+body.shelf .showcase-card,
+body.shelf .prep-card,
+body.shelf .feed-card {
+  position: relative;
+  border-top: 2px solid var(--line);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  body.shelf .partner-card:hover,
+  body.shelf .showcase-card:hover,
+  body.shelf .prep-card:hover,
+  body.shelf .feed-card:hover {
+    border-top-color: var(--pink);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.7);
+  }
+  body.shelf .partner-card:hover .pc-cta,
+  body.shelf .feed-card:hover a {
+    color: var(--pink);
+  }
+  body.shelf .partner-card:hover .pc-cta {
+    transform: translateX(3px);
+  }
+}
+
+/* Stamp-style tag chip */
+body.shelf .pc-tag,
+body.shelf .prep-card > span,
+body.shelf .feed-card span {
+  display: inline-block;
+  padding: 0.28em 0.6em;
+  border: 1px solid var(--shelf-accent);
+  border-radius: 4px;
+  color: var(--shelf-accent);
+  font-size: 0.66rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+body.shelf .feed-card span {
+  margin-bottom: 0.2rem;
+}
+
+/* Ticket-stub "verified" line */
+body.shelf .code {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.2rem;
+  padding: 0.3em 0.65em;
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+body.shelf .code::before {
+  content: "✓";
+  color: var(--shelf-accent);
+}
+
+/* Card call-to-action — arrow slides, pink on hover */
+body.shelf .pc-cta,
+body.shelf .showcase-card .btn,
+body.shelf .feed-card a {
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Small-print note — ruled margin note */
+body.shelf .shop-note {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+  color: var(--ink-3);
+  font-size: 0.85rem;
+}
+body.shelf .shop-note::before {
+  content: "— ";
+  color: var(--pink);
+}
+
+/* ---------- Shop showcase cards ---------- */
+
+body.shelf .showcase-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+body.shelf .showcase-card h4 {
+  font-size: 1.15rem;
+}
+body.shelf .showcase-card .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* ---------- Prep Club ---------- */
+
+body.shelf .prep-hero-card {
+  position: relative;
+  overflow: visible;
+}
+body.shelf .prep-hero-card img {
+  border-radius: 0 0 48% 8% / 0 0 7% 2%;
+}
+body.shelf .prep-hero-card .prep-hero-photo img {
+  height: auto;
+  max-height: none;
+  aspect-ratio: auto;
+}
+body.shelf.shelf--partners .guide-hero > .wrap {
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 300px);
+}
+body.shelf.shelf--partners .guide-hero-photo {
+  width: 100%;
+  max-width: 300px;
+  justify-self: end;
+}
+body.shelf.shelf--partners .guide-hero-photo img {
+  height: auto;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+@media (max-width: 800px) {
+  body.shelf.shelf--partners .guide-hero > .wrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.shelf.shelf--partners .guide-hero-photo {
+    justify-self: start;
+  }
+}
+
+/* Ruled feature cells */
+body.shelf .prep-points {
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+body.shelf .prep-points div {
+  border: 0;
+  border-radius: 0;
+  border-top: 2px solid transparent;
+  padding-left: 0;
+}
+body.shelf .prep-points strong {
+  color: var(--ink);
+}
+body.shelf .prep-points strong::after {
+  content: "";
+  display: block;
+  width: 1.2em;
+  margin-top: 0.35em;
+  border-top: 2px solid var(--pink);
+}
+
+/* Prep cards — same tag family, quieter */
+body.shelf .prep-card h4 {
+  margin: 0.6rem 0 0.4rem;
+}
+
+/* Join panel — warm signup strip */
+body.shelf .join-panel {
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--pink);
+  border-radius: 18px;
+}
+body.shelf .join-form input,
+body.shelf .join-form select {
+  transition: border-color 0.2s ease;
+}
+body.shelf .join-form input:focus,
+body.shelf .join-form select:focus {
+  border-color: var(--shelf-accent);
+  outline: none;
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  body.shelf .partner-card,
+  body.shelf .showcase-card,
+  body.shelf .prep-card,
+  body.shelf .feed-card,
+  body.shelf .pc-cta {
+    transition: none;
+  }
+  body.shelf .partner-card:hover,
+  body.shelf .showcase-card:hover,
+  body.shelf .prep-card:hover,
+  body.shelf .feed-card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  body.shelf .guide-hero-photo img { height: 210px; }
+}
+@media (max-width: 600px) {
+  body.shelf .guide-hero-photo img { height: 190px; }
+}

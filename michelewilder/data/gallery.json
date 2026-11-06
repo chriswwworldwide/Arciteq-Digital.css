@@ -1,0 +1,37 @@
+{
+  "note": "PRIVATE PITCH PREVIEW.",
+  "photos": [
+    {
+      "src": "/michelewilder/images/gallery/dinner.jpg",
+      "alt": "Michele Wilder and the HYROX crew at a post-race dinner in Barcelona",
+      "caption": "Race weekend done properly — the table afterwards is part of it.",
+      "by": "Race weekend",
+      "event": "HYROX Barcelona",
+      "tilt": -1.1
+    },
+    {
+      "src": "/michelewilder/images/gallery/finish.jpg",
+      "alt": "Michele Wilder and her running mate crossing the finish together",
+      "caption": "The bit the splits sheet never records.",
+      "by": "Race day",
+      "event": "Race day",
+      "tilt": 1.2
+    },
+    {
+      "src": "/michelewilder/images/gallery/crew-arch.jpg",
+      "alt": "Michele Wilder and the crew under the Wall Balls station arch",
+      "caption": "Station 08. Better with company.",
+      "by": "The crew",
+      "event": "Race weekend",
+      "tilt": -0.8
+    },
+    {
+      "src": "/michelewilder/images/gallery/kiss-race.jpg",
+      "alt": "Two athletes on the HYROX Kiss and Race podium in Stockholm",
+      "caption": "Kiss and Race. Yes, it's a real thing.",
+      "by": "HYROX Stockholm",
+      "event": "HYROX Stockholm",
+      "tilt": 1
+    }
+  ]
+}

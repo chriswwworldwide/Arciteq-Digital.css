@@ -1,0 +1,32 @@
+{
+  "note": "Verified public routes from Michele's profiles — community and programme routes, not affiliate codes.",
+  "items": [
+    {
+      "id": "hyrox-newbies",
+      "name": "Hyrox Newbies",
+      "url": "https://coaches.hyrox.com/coach/michelewilder/",
+      "tagline": "70,000+ member community",
+      "slot": "partner",
+      "from": "2026-10-28",
+      "until": "2026-12-31"
+    },
+    {
+      "id": "wilder-fitness",
+      "name": "Wilder Fitness",
+      "url": "https://coaches.hyrox.com/coach/michelewilder/",
+      "tagline": "Coaching & Foundations",
+      "slot": "partner",
+      "from": "2026-10-28",
+      "until": "2026-12-31"
+    },
+    {
+      "id": "perform-crew",
+      "name": "PERFORM crew",
+      "url": "https://www.instagram.com/wilderfitnessuk/",
+      "tagline": "Michele's coached athletes",
+      "slot": "results",
+      "from": "2026-10-28",
+      "until": "2026-12-31"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "note": "Athlete profile — Michele's verified race evidence, with format rows clearly labelled.",
+  "athletes": {
+    "Michele Wilder": {
+      "tag": "HYROX Head Judge, official coach and Hyrox Newbies founder.",
+      "races": [
+        {
+          "event": "HYROX Cardiff",
+          "date": "On record",
+          "division": "Women",
+          "time": "1:26:30",
+          "note": "Finish-board photo"
+        },
+        {
+          "event": "First HYROX race",
+          "date": "Her caption",
+          "division": "Solo",
+          "time": "1:23",
+          "note": "12 weeks after her coach told her to try HYROX — performance over aesthetics"
+        }
+      ]
+    }
+  }
+}

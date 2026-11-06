@@ -1,0 +1,13 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "HYROX coaching with Michele",
+      "goal": "Offer enquiries",
+      "destination": "https://coaches.hyrox.com/coach/michelewilder/",
+      "image": "/michelewilder/images/coaching-hero.jpg",
+      "headline": "Discuss preparation for your first HYROX or a stronger next race. Michele's official HYROX profile explains her focus and provides current contact details.",
+      "actionLabel": "Meet Michele and get in touch"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "PMA x HYROX",
+      "goal": "Offer enquiries",
+      "destination": "https://pmafitness.fitr.training/p/PMAHYROX",
+      "image": "/faisalpma/images/coaching-hero.jpg",
+      "headline": "A rolling monthly training programme with six optional HYROX-themed workouts each week.",
+      "actionLabel": "Explore PMA x HYROX"
+    },
+    {
+      "id": "programme",
+      "name": "The PMA Method",
+      "goal": "Offer enquiries",
+      "destination": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/",
+      "image": "/faisalpma/images/coaching-hero.jpg",
+      "headline": "Faisal's paperback brings workouts, recipes and positive mental attitude together in a guide you can use at home or in the gym.",
+      "actionLabel": "Explore the book and retailers"
+    }
+  ]
+}

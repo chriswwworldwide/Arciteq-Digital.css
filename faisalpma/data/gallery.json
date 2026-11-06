@@ -1,67 +1,36 @@
 {
-  "note": "Seeded community picks \u2014 generic event photos standing in until real submissions land.",
+  "note": "PRIVATE PITCH PREVIEW.",
   "photos": [
     {
-      "src": "/faisalpma/images/gallery/malaga-crew.jpg",
-      "alt": "HTCC crew on the race floor at HYROX M\u00e1laga",
-      "caption": "An unforgettable weekend full of PBs, sun, sangria and more laughs than I've had in a while. We'll be back next year \u2014 who's joining us?",
-      "by": "@sunday.squad",
+      "src": "/faisalpma/images/gallery/stock-arena.jpg",
+      "alt": "Athlete walking the arena floor before a race",
+      "caption": "The calm before the storm. Arena doors open, nerves kick in, let\u2019s go.",
+      "by": "Race day",
       "tilt": -1.5,
-      "event": "Race trip"
+      "event": "Race day"
     },
     {
-      "src": "/faisalpma/images/gallery/malaga-three.jpg",
-      "alt": "Three HTCC athletes grinning after racing in M\u00e1laga",
-      "caption": "Dee's first ever HYROX. Hooked right from that first race.",
-      "by": "@hyrox.huns",
+      "src": "/faisalpma/images/gallery/stock-rower.jpg",
+      "alt": "Athlete on a Concept2 rower mid-race",
+      "caption": "1,000 metres. The monitor doesn\u2019t lie and neither do your legs.",
+      "by": "Training",
       "tilt": 2,
-      "event": "Race trip"
+      "event": "Training"
     },
     {
-      "src": "/faisalpma/images/gallery/istanbul-podium.jpg",
-      "alt": "Michelle and Ellie with the Union flag on the podium at HYROX Istanbul",
-      "caption": "Michelle & Ellie \u2014 podium, Istanbul. Keep setting the standard.",
-      "by": "@racefloor.crew",
+      "src": "/faisalpma/images/gallery/stock-finish.jpg",
+      "alt": "A doubles pair celebrating at the sled pull",
+      "caption": "That finish-line feeling. Shared, it's even better.",
+      "by": "Race day",
       "tilt": 1,
-      "event": "Race day"
+      "event": "Training"
     },
     {
-      "src": "/faisalpma/images/gallery/glasgow-doors.jpg",
-      "alt": "Ross outside the HYROX Glasgow entrance",
-      "caption": "Glasgow. Just enjoy it they say. But don't underestimate the challenge.",
-      "by": "@sleds.and.regrets",
-      "tilt": -2,
-      "event": "Race day"
-    },
-    {
-      "src": "/faisalpma/images/gallery/glasgow-oxworld.jpg",
-      "alt": "HTCC crew at the OX World stand in Glasgow",
-      "caption": "Crew at Glasgow. Half of them didn't know each other a year ago.",
-      "by": "@the8amheat",
-      "tilt": 1.5,
-      "event": "Race day"
-    },
-    {
-      "src": "/faisalpma/images/gallery/doubles-finish.jpg",
-      "alt": "A doubles pair celebrating at the finish",
-      "caption": "You've smashed your training \u2014 now go smash this race. They did.",
-      "by": "@roxzone",
-      "event": "Race day"
-    },
-    {
-      "src": "/faisalpma/images/gallery/crew-faces.jpg",
-      "alt": "HTCC members in club tees after a group run",
-      "caption": "Sunny springy group runs. Run Club, Tuesdays and Wednesdays.",
-      "by": "@pb_chasers",
-      "tilt": 1,
-      "event": "Run club"
-    },
-    {
-      "src": "/faisalpma/images/gallery/crew-selfie.jpg",
-      "alt": "Post-race crew selfie",
-      "caption": "It's not just a club \u2014 it's friends & family.",
-      "by": "@finishline.fam",
-      "tilt": -1.5,
+      "src": "/faisalpma/images/gallery/stock-burpee.jpg",
+      "alt": "Burpee broad jump at HYROX event",
+      "caption": "Chest down, broad jump, repeat. Eighty metres.",
+      "by": "Race day",
+      "tilt": -0.8,
       "event": "Race day"
     }
   ]

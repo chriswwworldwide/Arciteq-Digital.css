@@ -1,0 +1,30 @@
+{
+  "Coaching": [
+    {
+      "label": "HYROX Prep Club",
+      "href": "/faisalpma/prep-club.html"
+    }
+  ],
+  "Community": [
+    {
+      "label": "Race crew meetups",
+      "href": "/faisalpma/race-crew.html"
+    },
+    {
+      "label": "News & coach takes",
+      "href": "/faisalpma/news.html"
+    }
+  ],
+  "Race Tools": [
+    {
+      "label": "Find a race-mate",
+      "href": "/faisalpma/find-a-partner.html",
+      "position": 5
+    },
+    {
+      "label": "Race day",
+      "href": "/faisalpma/race-day.html",
+      "position": 8
+    }
+  ]
+}

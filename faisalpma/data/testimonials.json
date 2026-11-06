@@ -1,4 +1,23 @@
 {
-  "note": "Real client quotes only, in the athlete's own words, with their permission. The home page section stays hidden until at least one row has `quote` and `name`. Fields: quote, name, detail (e.g. 'Hyrox UK 2025, 1:21'), plan (optional).",
-  "items": []
+  "sourceURL": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/",
+  "items": [
+    {
+      "name": "Joe Wicks",
+      "quote": "If you think I’m motivated, you should check this guy out. He will get you up on a Monday morning",
+      "detail": "Book endorsement published by Hachette",
+      "sourceURL": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/"
+    },
+    {
+      "name": "Ellie Goulding",
+      "quote": "The more I started doing classes and also working out with my trainer, Faisal Abdalla, the better I felt about myself",
+      "detail": "Endorsement published with The PMA Method",
+      "sourceURL": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/"
+    },
+    {
+      "name": "Michael Jennings",
+      "quote": "Honest and applicable training and nutrition advice full of innovative workouts for all abilities and seriously delicious looking recipe ideas.",
+      "detail": "Men’s Health Fitness Editor · book endorsement",
+      "sourceURL": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/"
+    }
+  ]
 }

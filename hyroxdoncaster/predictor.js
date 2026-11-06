@@ -30,11 +30,12 @@
     doubles: { station: 0.92, label: "Doubles" },
   };
   const VENUE = {
+    dublin: { mod: 1.0, note: "Short hop, big noise — arrive fresh and keep it simple." },
+    singapore: { mod: 1.02, note: "Travel and heat cost something — build in adjustment time." },
     london: { mod: 1.0, note: "ExCeL aircon is kind — no excuses here." },
+    melbourne: { mod: 1.01, note: "Long-haul legs are real — arrive early." },
+    "hong-kong": { mod: 1.01, note: "The journey is part of the race plan — arrive early." },
     manchester: { mod: 1.0, note: "Flat, fast, friendly — PB territory." },
-    birmingham: { mod: 1.01, note: "NEC halls run warm — the crowd makes up for it." },
-    cardiff: { mod: 1.0, note: "Compact venue — the noise stays close." },
-    glasgow: { mod: 0.99, note: "Scottish air is free PB. Layers for the queue." },
   };
   const MONTHS = {
     january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
@@ -57,7 +58,7 @@
   };
 
   function parseClock(str) {
-    const m = String(str || "").trim().match(/^(\d{1,3}):(\d{1,2})(?::(\d{1,2}))?$/);
+    const m = String(str || "").trim().replace(/[,.]/g, ":").match(/^(\d{1,3}):(\d{1,2})(?::(\d{1,2}))?$/);
     if (!m) return null;
     const a = Number(m[1]);
     const b = Number(m[2]);
@@ -68,7 +69,7 @@
   }
 
   function parseTime(str) {
-    const m = String(str || "").trim().match(/^(\d{1,2}):([0-5]\d)$/);
+    const m = String(str || "").trim().replace(/[,.]/g, ":").match(/^(\d{1,2}):([0-5]\d)$/);
     if (!m) return null;
     return Number(m[1]) * 60 + Number(m[2]);
   }
@@ -97,11 +98,12 @@
           name: c.name,
           dates: c.race?.dates || "",
           expected: c.race?.expected || "",
-          when: parseRaceDate(c.race?.dates),
+          when: c.race?.start ? new Date(`${c.race.start}T12:00:00Z`) : parseRaceDate(c.race?.dates),
+          end: c.race?.end ? new Date(`${c.race.end}T23:59:59Z`) : null,
         }))
         .filter((r) => r.when || r.expected);
       races.sort((a, b) => (a.when || 9e15) - (b.when || 9e15));
-      races = races.filter((r) => !r.when || r.when.getTime() > now - 86400000);
+      races = races.filter((r) => !r.when || r.when.toISOString().slice(0, 10) >= new Date(now).toISOString().slice(0, 10));
       sel.innerHTML = '<option value="">Pick one…</option>';
       races.forEach((r, i) => {
         const o = document.createElement("option");
@@ -138,7 +140,7 @@
 
       if (!race) { note.textContent = "Pick your target race."; return; }
       if (!myPred || myPred < 2400 || myPred > 14400) {
-        note.textContent = "Your prediction should look like 1:30 or 88:00 — between 40 min and 4 hours.";
+        note.textContent = "Enter your predicted finish time — e.g. 1:30 for 1 hour 30, or 88:00 for 88 minutes. Anything between 40 minutes and 4 hours works.";
         return;
       }
       if (!DIV[division] || !RATING[rating]) {
@@ -156,7 +158,7 @@
       } else {
         const t = parseTime(d.get("benchtime"));
         if (!t || t < 720 || t > 3600) {
-          note.textContent = "Benchmark should look like 24:30 — between 12:00 and 60:00.";
+          note.textContent = "Enter your benchmark time as mm:ss — e.g. 24:30 for a 24-and-a-half-minute 5K. Between 12 and 60 minutes.";
           return;
         }
         pace5k = benchVal === "10k" ? (t / 10) * 0.96 : t / 5;
@@ -291,18 +293,19 @@
 
       $("result-card").innerHTML = `
         <div class="pred-total">
-          <p class="pred-eyebrow">${esc(race.name)} — the verdict</p>
+          <p class="pred-eyebrow">${esc(race.name)} — predicted finish time</p>
           <p class="pred-time">${fmt(ours)}</p>
           <p class="pred-range">${esc(verdict)}</p>
         </div>
+        <p class="pred-eyebrow" style="margin-bottom:6px">Where that time comes from</p>
         <table class="pred-table">
           <tbody>
-            <tr><td>Run — 8 × 1km</td><td>${fmt(runS)}</td><td>${paceFmt(runS / 8)}</td></tr>
-            <tr><td>Stations — all eight</td><td>${fmt(stationS)}</td><td>${share}% of race</td></tr>
-            <tr><td>Roxzone — transitions</td><td>${fmt(roxS)}</td><td>free time if you move</td></tr>
+            <tr><td>Running — the 8 × 1km legs</td><td>${fmt(runS)}</td><td>${paceFmt(runS / 8)}</td></tr>
+            <tr><td>Stations — the 8 workout stations</td><td>${fmt(stationS)}</td><td>${share}% of your race</td></tr>
+            <tr><td>Between stations — walking, transitions</td><td>${fmt(roxS)}</td><td>free time if you keep moving</td></tr>
           </tbody>
         </table>
-        <p class="pred-eyebrow" style="margin-bottom:6px">Same you, next races</p>
+        <p class="pred-eyebrow" style="margin-bottom:6px">Same fitness, upcoming races</p>
         <table class="pred-table">
           <tbody>
             ${predictions
@@ -346,7 +349,7 @@
         if (!res.ok) throw new Error(out.error || "save failed");
         e.target.reset();
         note.textContent =
-          "Done — split card's with Nigel. If the number needs talking through, he'll know where to find you.";
+          "Done — split card's with Nigel. If the number needs talking through, they'll know where to find you.";
       } catch {
         note.textContent = "Couldn't send just now — try again in a bit.";
       }

@@ -9,23 +9,65 @@
       "tilt": -0.5
     },
     {
-      "src": "/elationfitness/images/gallery/stock-barbell.jpg",
-      "alt": "Deadlift on gym floor",
-      "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
+      "src": "/elationfitness/images/gallery/contrib-six-am-crew.jpg",
+      "alt": "Early-morning crew photo before a session",
+      "caption": "6AM hits different. Every week, same crew.",
       "event": "Training",
       "tilt": 1
     },
     {
-      "src": "/elationfitness/images/gallery/race-pack.jpg",
-      "alt": "Graham leading the pack at HYROX",
-      "caption": "Leading from the front — HYROX arena",
-      "event": "Race day",
-      "tilt": -1.2
+      "src": "/elationfitness/images/gallery/contrib-train-recover.jpg",
+      "alt": "Members stretching and recovering after a session",
+      "caption": "Train hard. Recover properly. Repeat weekly.",
+      "event": "Training",
+      "tilt": -1.1
     },
     {
-      "src": "/elationfitness/images/gallery/doubles-medal.jpg",
-      "alt": "Graham and Liam at HYROX Glasgow with medal",
-      "caption": "Pro Doubles 50:54 — HYROX Glasgow",
+      "src": "/elationfitness/images/gallery/stock-barbell.jpg",
+      "alt": "Deadlift on gym floor",
+      "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
+      "event": "Training",
+      "tilt": 0.9
+    },
+    {
+      "src": "/elationfitness/images/gallery/el-crew-wall.jpg",
+      "alt": "The Elation crew gathered at the gym's HYROX wall",
+      "caption": "Glasgow, we're ready — the crew before HYROX weekend",
+      "event": "Race day",
+      "tilt": -0.8
+    },
+    {
+      "src": "/elationfitness/images/gallery/contrib-crew-race-day.jpg",
+      "alt": "Crew together on race morning",
+      "caption": "Race day crew. Half of them didn't know each other a year ago.",
+      "event": "Race day",
+      "tilt": 1.2
+    },
+    {
+      "src": "/elationfitness/images/gallery/contrib-finish-tunnel.jpg",
+      "alt": "Athlete in the finish tunnel under the lights",
+      "caption": "The last thing you see before the floor goes loud.",
+      "event": "Race day",
+      "tilt": -1
+    },
+    {
+      "src": "/elationfitness/images/gallery/contrib-doubles-finish.jpg",
+      "alt": "Two athletes crossing the finish together",
+      "caption": "You've smashed your training — now go smash this race. They did.",
+      "event": "Race day",
+      "tilt": 0.7
+    },
+    {
+      "src": "/elationfitness/images/gallery/contrib-crew-selfie.jpg",
+      "alt": "Squad selfie after the race",
+      "caption": "It's not just a club — it's friends & family.",
+      "event": "Race day",
+      "tilt": -1.4
+    },
+    {
+      "src": "/elationfitness/images/gallery/contrib-church-crew.jpg",
+      "alt": "Crew at a local road race",
+      "caption": "The town turns out when the crew races.",
       "event": "Race day",
       "tilt": 1.1
     }

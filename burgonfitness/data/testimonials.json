@@ -1,4 +1,23 @@
 {
-  "note": "Real client quotes only, in the athlete's own words, with their permission. The home page section stays hidden until at least one row has `quote` and `name`. Fields: quote, name, detail (e.g. 'Hyrox Stockport 2025, 1:21'), plan (optional).",
-  "items": []
+  "sourceURL": "https://hannahburgonfitness.com/hyroxonlineprogramming",
+  "items": [
+    {
+      "name": "Ben",
+      "quote": "Her sessions are challenging and always enjoyable.",
+      "detail": "Hannah Burgon coaching client",
+      "sourceURL": "https://hannahburgonfitness.com/hyroxonlineprogramming"
+    },
+    {
+      "name": "Reid",
+      "quote": "Hannah has helped me a huge amount in my fitness journey",
+      "detail": "Hannah Burgon coaching client",
+      "sourceURL": "https://hannahburgonfitness.com/hyroxonlineprogramming"
+    },
+    {
+      "name": "Jo",
+      "quote": "Her HYROX sim days are well organised and so much fun :)",
+      "detail": "Hannah Burgon coaching client",
+      "sourceURL": "https://hannahburgonfitness.com/hyroxonlineprogramming"
+    }
+  ]
 }

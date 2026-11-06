@@ -1,0 +1,22 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "1-1 Private Coaching",
+      "goal": "Offer enquiries",
+      "destination": "https://calendly.com/trainedbytr/hyroxconsultation",
+      "image": "/trainedbytr/images/coaching-hero.jpg",
+      "headline": "Personal programming, weekly check-ins with video feedback, direct WhatsApp support and race preparation.",
+      "actionLabel": "Book a coaching call with Tom"
+    },
+    {
+      "id": "programme",
+      "name": "Benchmark to Breakthrough",
+      "goal": "Offer enquiries",
+      "destination": "https://trainedbytr.fitr.training/p/TBTRB2B",
+      "image": "/trainedbytr/images/coaching-hero.jpg",
+      "headline": "A testing week, 12-week training block and retest week. Follow the structured programme at your own pace.",
+      "actionLabel": "Explore the self-led programme"
+    }
+  ]
+}

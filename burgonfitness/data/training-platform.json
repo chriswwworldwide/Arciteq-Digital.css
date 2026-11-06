@@ -1,0 +1,11 @@
+{
+  "name": "Your coaching platform",
+  "coachURL": "",
+  "clientURL": "",
+  "programmesURL": "https://buy.stripe.com/3cIfZj1kj0pR0JoeS21ZS0c",
+  "applicationURL": "https://linktr.ee/hannah_burgon",
+  "directCoachLink": false,
+  "offerTitle": "Couch to HYROX",
+  "offerDescription": "A beginner-friendly programme delivered in three progressive four-week blocks.",
+  "note": "Open your existing coaching setup. Training delivery and client records stay on that platform; no workout or progress-data sync is connected here."
+}

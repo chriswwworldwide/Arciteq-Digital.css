@@ -1,29 +1,71 @@
 {
-  "note": "Owner-voice feed — edit via config.",
+  "checked": "2026-10-25",
+  "note": "International source-linked briefings. Coach-voice takes are editorial drafts for review, not quotations or claims of the coach's personal experiences.",
   "items": [
     {
-      "date": "2026-10-19",
-      "title": "More than 60 chances to train every week",
-      "summary": "Classes that fit around real life, backed by 11 coaches and a community that keeps the standard high.",
-      "take": "Consistency gets easier when the right people are waiting for you on the floor.",
-      "link": "/elationfitness/coaching.html",
-      "linkLabel": "Train with Elation →"
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "Elite racing is useful when it gives everyday athletes something practical to bring back to the gym floor.",
+      "takeStatus": "draft-for-review"
     },
     {
-      "date": "2026-09-28",
-      "title": "Two ways into Elation",
-      "summary": "Small Group PT plus unlimited classes is £100 per month. Unlimited classes is £75 per month.",
-      "take": "Pick the support you need, then turn up and put the work in.",
-      "link": "/elationfitness/coaching.html",
-      "linkLabel": "See membership →"
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. An away race also means planning travel, sleep and recovery.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Pick a start line the crew can prepare for properly. Leave enough room around it to enjoy the achievement.",
+      "takeStatus": "draft-for-review",
+      "link": "/elationfitness/events.html",
+      "linkLabel": "Race Calendar & Travel →"
     },
     {
-      "date": "2026-06-21",
-      "title": "Elite experience on the gym floor",
-      "summary": "Two Elite 15 owners, Graham Halliday and Matt Agnew, coach alongside the Elation team in Glasgow.",
-      "take": "Elite standards are useful only when they help everyday athletes make real progress.",
-      "link": "/elationfitness/stations-prep.html",
-      "linkLabel": "Prepare for HYROX →"
+      "type": "news",
+      "date": "2026-06-23",
+      "title": "Stockholm: Australia defends its mixed-relay world title",
+      "summary": "PUMA's World Championships report records Australia's mixed-relay win in 50:19, with Jess Pettrow on the title-defending team. Joanna Wietrzyk also finished second in the women's Elite 15 solo race.",
+      "source": "https://mediahub.puma.com/articles/puma-dominates-hyrox-world-championships-from-elite-athlete-performances-to-community-initiatives",
+      "sourceName": "PUMA · World Championships report",
+      "take": "A relay result belongs to the whole team. Agree the roles and help each other arrive prepared.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's new framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "A season is more than a list of entries. Choose the races that support the work you can sustain.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027. Qualification gives the season a clear international destination.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "Big targets are earned through the smaller weeks. Keep showing up with quality and intent.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season, with kit, resources and performance support.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "It is encouraging to see more athletes recognised. Keep the focus on progress and the people doing the work.",
+      "takeStatus": "draft-for-review"
     }
   ]
 }

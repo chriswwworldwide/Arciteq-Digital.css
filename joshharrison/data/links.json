@@ -1,4 +1,4 @@
 {
-  "note": "External tools Josh uses. Set 'truecoach' to her client-login URL (e.g. https://app.truecoach.co/) once her account exists; empty string keeps the links hidden. Coaching delivery lives in TrueCoach \u2014 Josh acquires and bills.",
-  "truecoach": ""
+  "note": "External athlete-login destination for Josh's chosen coaching platform. Set 'athleteLogin' to the verified client-login URL once it exists; an empty string keeps the link hidden.",
+  "athleteLogin": ""
 }

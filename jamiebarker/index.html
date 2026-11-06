@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jamie Barker — HYROX Pro athlete, coach & creator | JAMIE BARKER</title>
+    <title>Jamie Barker | Jamie Barker coaching, race tools and booking</title>
     <meta
       name="description"
-      content="Jamie Barker's home on the web: Jamie Barker 1:1 coaching and group programmes, free race tools, the race-mate finder, vlogs and partner codes — all in one place."
+      content="Jamie Barker — HYROX racer and coach and founder of Jamie Barker in United Kingdom. Coaching applications, coaching routes, programmes and booking, race tools and verified links."
     />
     <meta
       name="keywords"
-      content="jamie barker, jamiebarker, Jamie Barker, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdomshire hyrox"
+      content="jamie barker, jamiebarker, Jamie Barker, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdom hyrox"
     />
     <meta name="geo.region" content="GB-WOR" />
     <meta name="geo.placename" content="United Kingdom" />
@@ -28,47 +28,129 @@
     <link
       rel="preload"
       as="image"
-      href="/jamiebarker/images/hero.jpg?v=1792700913499"
+      href="/jamiebarker/images/hero.jpg?v=1793712669337"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/jamiebarker/styles.css?v=1792700913499" />
+    <link rel="stylesheet" href="/jamiebarker/styles.css?v=crop-fix-20261103" />
     <script>
       document.documentElement.classList.add("js");
-      // Refresh = top of page + the hero entrance plays. Any hash left in
-      // the URL by nav clicks gets cleared before it can force a jump;
-      // in-page anchor clicks still scroll as normal.
-      if ("scrollRestoration" in history) {
-        history.scrollRestoration = "manual";
-        if (location.hash && performance.getEntriesByType("navigation")[0]?.type === "reload")
-          history.replaceState(null, "", location.pathname + location.search);
-      }
+      // Refresh = top of page + the hero entrance plays. Ordinary navigation
+      // keeps any #section so links from other pages land where promised.
+      const navEntry = performance.getEntriesByType?.("navigation")?.[0];
+      const reloaded = navEntry
+        ? navEntry.type === "reload"
+        : performance.navigation?.type === performance.navigation?.TYPE_RELOAD;
+      (() => {
+        const key = "__s9HomeScroll";
+        const returning = navEntry ? navEntry.type === "back_forward" : Boolean(performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD);
+        const auto = () => { if ("scrollRestoration" in history) history.scrollRestoration = "auto"; };
+        let restoring = false, stopRestore = () => {}, lastAnchor = null, activationEvent = null;
+        const findHomeAnchor = anchor => {
+          if (!anchor || !Number.isInteger(anchor.index) || anchor.index < 0 || typeof anchor.href !== "string" || !Number.isFinite(anchor.top)) return null;
+          const root = anchor.section ? document.getElementById(anchor.section) : anchor.footer ? document.querySelector("body > footer") : null;
+          const node = root && Array.from(root.querySelectorAll("a[href]")).filter(link => link.href === anchor.href)[anchor.index];
+          return node?.getClientRects().length ? node : null;
+        };
+        const remember = (link, event) => {
+          if (restoring) return;
+          if (link) {
+            const section = link.closest("section[id]"), footer = link.closest("footer");
+            const root = section || (footer?.parentElement === document.body ? footer : null);
+            lastAnchor = root ? { href: link.href, section: section?.id || "", footer: root === footer, index: Array.from(root.querySelectorAll("a[href]")).filter(node => node.href === link.href).indexOf(link), top: link.getBoundingClientRect().top } : null;
+            activationEvent = event;
+          } else if (!activationEvent || activationEvent.defaultPrevented) {
+            const node = findHomeAnchor(lastAnchor);
+            if (!node || Math.abs(node.getBoundingClientRect().top - lastAnchor.top) > 12) lastAnchor = null;
+          }
+          try { history.replaceState({ ...history.state, [key]: { x: scrollX, y: scrollY, anchor: lastAnchor } }, ""); } catch {}
+        };
+        const holdScroll = (target, duration = 2500, delays = [200, 600, 1200]) => {
+          restoring = true;
+          if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+          const inputs = ["wheel", "touchstart", "pointerdown", "keydown"];
+          const restore = () => {
+            if (!restoring) return;
+            const point = target();
+            window.scrollTo({ left: point.x, top: point.y, behavior: "instant" });
+          };
+          let observer, frame, deadline, retries = [];
+          const stop = () => {
+            restoring = false; observer?.disconnect(); cancelAnimationFrame(frame); clearTimeout(deadline); retries.forEach(clearTimeout);
+            inputs.forEach(type => removeEventListener(type, stop, true)); auto(); stopRestore = () => {};
+          };
+          stopRestore = stop;
+          inputs.forEach(type => addEventListener(type, stop, { capture: true, passive: true, once: true }));
+          if (typeof ResizeObserver === "function") { observer = new ResizeObserver(restore); observer.observe(document.body); }
+          frame = requestAnimationFrame(restore);
+          retries = delays.map(delay => setTimeout(restore, delay));
+          deadline = setTimeout(stop, duration);
+        };
+        if ("scrollRestoration" in history) history.scrollRestoration = reloaded || (returning && history.state?.[key]) ? "manual" : "auto";
+        if (reloaded && location.hash) history.replaceState(history.state, "", location.pathname + location.search);
+        addEventListener("pagehide", () => { remember(); stopRestore(); auto(); });
+        document.addEventListener("click", event => {
+          const link = event.target?.closest?.("a[href]");
+          if (link && (!link.target || link.target === "_self") && ["http:", "https:"].includes(link.protocol) && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { stopRestore(); remember(link, event); }
+        }, true);
+        addEventListener("pageshow", event => {
+          stopRestore();
+          const point = history.state?.[key];
+          lastAnchor = null; activationEvent = null;
+          if ((event.persisted || returning) && Number.isFinite(point?.x) && Number.isFinite(point?.y)) {
+            lastAnchor = point.anchor || null;
+            holdScroll(() => {
+              const node = findHomeAnchor(point.anchor);
+              return { x: point.x, y: node ? node.getBoundingClientRect().top + scrollY - point.anchor.top : point.y };
+            });
+          } else if (reloaded && !event.persisted) holdScroll(() => ({ x: 0, y: 0 }), 500, [50, 150, 350]);
+          else auto();
+        });
+      })();
     </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
         "name": "Jamie Barker",
-        "description": "Jamie Barker — HYROX Pro athlete, coach and creator. Jamie Barker 1:1 coaching and programmes, race tools and race-mate finder.",
+        "description": "Jamie Barker — HYROX racer and coach and Jamie Barker founder. Coaching routes, race tools and race-mate finder.",
         "url": "https://jamiebarker.localhost/jamiebarker/",
         "areaServed": ["United Kingdom", "the UK", "Europe"],
         "knowsLanguage": ["en"],
-        "keywords": "jamie barker, jamiebarker, Jamie Barker, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdomshire hyrox",
+        "keywords": "jamie barker, jamiebarker, Jamie Barker, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdom hyrox",
         "founder": {
           "@type": "Person",
           "name": "Jamie Barker",
-          "jobTitle": "HYROX Pro athlete, coach & creator",
+          "jobTitle": "HYROX coach & founder",
           "sameAs": ["https://www.instagram.com/jamiebarker_fit/", "https://www.instagram.com/jamiebarker_fit/", "https://www.instagram.com/jamiebarker_fit/", "https://www.threads.net/@jamiebarker_fit"]
         }
       }
     </script>
-  </head>
-  <body>
+  <style>
+    .pitch-tools { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.5rem 0; }
+    .pitch-tool { padding:1.5rem; border:1px solid var(--line); border-radius:18px; background:var(--paper-2); display:flex; flex-direction:column; gap:.8rem; min-width:0; }
+    .pitch-tool h4 { font-size:1.5rem; line-height:1.15; margin:.3rem 0; }
+    .pitch-tool p { color:var(--ink-2); margin:0 0 1rem; }
+    .pitch-tool .btn { align-self:flex-start; margin-top:auto; }
+    .pitch-tool-main { grid-column:1/-1; display:grid; grid-template-columns:1.2fr 1fr; gap:2rem; border-color:var(--pink); background:linear-gradient(125deg,color-mix(in srgb,var(--pink) 12%,var(--paper)),var(--paper-2)); }
+    .pitch-tool-main h4 { font-size:clamp(1.7rem,3vw,2.5rem); }
+    .tool-preview { display:grid; gap:.4rem; align-content:center; padding:1.2rem; background:var(--paper); border-radius:12px; }
+    .tool-preview span { color:var(--pink); font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; margin-top:.5rem; }
+    .tool-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; }
+    .tool-chips span { padding:.35rem .7rem; border:1px solid var(--line); border-radius:999px; font-size:.8rem; }
+    .pitch-start { color:var(--ink-2); } .pitch-start a { color:var(--pink); }
+    .pitch-guides > summary { cursor:pointer; padding:1rem 0; min-height:44px; }
+    .event-actions { display:flex; flex-direction:column; gap:.6rem; min-width:190px; }
+    .event-prep { color:var(--ink-2); font-size:.85rem; }
+    @media(max-width:760px) { .pitch-tools,.pitch-tool-main { grid-template-columns:minmax(0,1fr); } .pitch-tool { padding:1.1rem; } .event-actions { min-width:0; } }
+  </style>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/jamiebarker/showcase.css?v=1793712669337" /><link rel="stylesheet" href="/jamiebarker/home-editorial.css?v=1793712669337" /><script src="/jamiebarker/coach-view.js?v=1793712669337"></script></head>
+  <body class="home-lab">
     <header class="masthead wrap">
       <h1>
         <a class="wordmark" href="/jamiebarker/"
           ><span class="o">J</span>AMIE
-          <span class="sig" aria-label="by Jamie Barker"
-            ><span class="sig-text">by Jamie Barker</span
+          <span class="sig" aria-label="Jamie Barker"
+            ><span class="sig-text">Jamie Barker</span
             ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
               <path
                 d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
@@ -77,64 +159,76 @@
           ></span>
         </a>
       </h1>
-      <p class="city">United Kingdom</p>
+      <p class="city">Online</p>
     </header>
 
-    <div class="nav">
+    
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/jamiebarker/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/jamiebarker/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/jamiebarker/desk.html?audience=coach">Finance</a><a data-coach-link href="/jamiebarker/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/jamiebarker/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/jamiebarker/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/jamiebarker/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
-          <li><a href="/jamiebarker/coaching.html">Coaching</a></li>
-          <li><a href="/jamiebarker/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/jamiebarker/planner.html?view=client" style="color:var(--pink,#b69aff);font-weight:800">Book a session</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/jamiebarker/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/jamiebarker/training.html">Access your training</a></li>
+              <li><a href="/jamiebarker/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/jamiebarker/podcast.html">Studio series</a></li>
+              <li><a href="/jamiebarker/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/jamiebarker/#ask">Ask Jamie</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/jamiebarker/predictor.html">Race predictor</a></li>
               <li><a href="/jamiebarker/splits.html">Split analyser</a></li>
               <li><a href="/jamiebarker/results.html">Results board</a></li>
-              <li><a href="/jamiebarker/stations-prep/">Stations prep</a></li>
-              <li><a href="/jamiebarker/run-zone/">Run zone</a></li>
-              <li><a href="/jamiebarker/taper-zone/">Taper zone</a></li>
-              <li><a href="/jamiebarker/events.html">Race calendar</a></li>
+              <li><a href="/jamiebarker/stations-prep.html">Stations prep</a></li>
+              <li><a href="/jamiebarker/find-a-partner.html">Find a race-mate</a></li>
+              <li><a href="/jamiebarker/run-zone.html">Run zone</a></li>
+              <li><a href="/jamiebarker/taper-zone.html">Taper zone</a></li>
+              <li><a href="/jamiebarker/race-day.html">Race day</a></li>
+              <li><a href="/jamiebarker/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/jamiebarker/race-crew.html">Race crew meetups</a></li>
               <li><a href="https://www.instagram.com/jamiebarker_fit/" target="_blank" rel="noopener">Jamie Barker IG</a></li>
-              <li><a href="/jamiebarker/#ask">Ask Jamie</a></li>
-              <li><a href="/jamiebarker/news.html">UK HYROX news</a></li>
+              <li><a href="/jamiebarker/news.html">HYROX news</a></li>
+              <li><a href="/jamiebarker/list.html">Join the list</a></li>
             </ul>
           </li>
-          <li><a href="/jamiebarker/partners.html">Partners</a></li>
-          <li><a href="/jamiebarker/list.html">Join the list</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/jamiebarker/partners.html">Partners</a></li>
+              <li><a href="/jamiebarker/shop.html">Links</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
 
-    <section class="hero hero--bleed hero--editorial" data-hero-mode="full" data-hero-roll="full"><div class="wrap hero-intro"><span class="kicker">Jamie Barker · Hybrid coaching</span><h2>Hybrid athlete.<br /><em>Real-life coach.</em></h2><p>Running, HYROX and strength with Jamie Barker.<br />Coaching built around real life.</p></div><div class="hero-visual"><div class="hero-mask"><img class="hero-img" src="/jamiebarker/images/hero.jpg?v=1792700913499" alt="Jamie Barker working the battle ropes during a group training session" width="640" height="428" fetchpriority="high" /></div></div><div class="wrap hero-footer"><div class="actions"><a class="btn btn-primary" href="/jamiebarker/coaching.html">Coach with Jamie</a><a class="btn btn-light" href="/jamiebarker/#ask">Ask Jamie</a></div><div class="stats"><div><strong>HYROX</strong><span>Race preparation</span></div><div><strong>Running + strength</strong><span>Hybrid training</span></div><div><strong>Find Your Edge</strong><span>Coaching and community</span></div></div></div></section>
-
-    <section class="block" id="zones">
+    <section class="hero hero--bleed hero--editorial" data-hero-mode="full" data-hero-roll="full"><div class="hero-visual"><div class="hero-mask"><img class="hero-img" src="/jamiebarker/images/hero.jpg?v=1793712669337" alt="Jamie Barker working the battle ropes during a group training session" width="640" height="428" fetchpriority="high" /></div><div class="wrap hero-intro"><h2>Hybrid athlete.<br /><em>Real-life coach.</em></h2><p>Running, HYROX and strength with Jamie Barker.<br /> Coaching built around real life.</p></div></div><div class="wrap hero-footer"><div class="actions"><a class="btn btn-primary" href="/jamiebarker/planner.html?view=client">Book a session</a><a class="btn btn-primary" href="/jamiebarker/coaching.html">Coach with Jamie</a><a class="btn btn-light" href="/jamiebarker/#ask">Ask Jamie</a></div><div class="stats"><div><strong>HYROX</strong><span>Race preparation</span></div><div><strong>Running + strength</strong><span>Hybrid training</span></div><div><strong>Find Your Edge</strong><span>Coaching and community</span></div></div></div></section><section class="block" id="zones">
       <div class="wrap">
-        <p class="eyebrow reveal">The Zones</p>
-        <h3 class="reveal">Every metre, every station, every excuse.</h3>
-        <p class="lead reveal">
-          Pick the weak link. Make it the weapon.
-        </p>
+        <p class="eyebrow reveal">More than a finish time</p>
+        <h3 class="reveal">Know your race. Find your people.</h3>
+        <p class="lead reveal">Your first start line or your next personal best — useful tools to turn a race idea into a plan.</p>
+        <div class="pitch-tools">
+          <article class="pitch-tool pitch-tool-main reveal"><div><span class="tag">After the finish</span><h4>Your finish time tells half the story.</h4><p>See where the minutes went, where you were strong and what deserves your next training block.</p><a class="btn btn-primary" href="/jamiebarker/splits.html">Analyse my splits</a></div><div class="tool-preview" aria-label="What the analysis covers"><span>01 · Running</span><strong>Did your pace fade?</strong><span>02 · Stations</span><strong>Where did time get away?</strong><span>03 · Next steps</span><strong>Know what to work on.</strong></div></article>
+          <article class="pitch-tool reveal"><span class="tag">Better together</span><h4>Got the ticket. Missing the partner?</h4><p>Find someone aiming for your race, your format and a pace that fits. Doubles, relay or company for the race trip.</p><div class="tool-chips"><span>Race</span><span>Division</span><span>Pace</span></div><a class="btn btn-ghost" href="/jamiebarker/find-a-partner.html">Find my race-mate</a></article>
+          <article class="pitch-tool reveal"><span class="tag">Before the start</span><h4>What time could you aim for?</h4><p>Bring your running and station benchmarks together for a race estimate — and a clearer starting point for training.</p><div class="tool-chips"><span>8 runs</span><span>8 stations</span><span>One target</span></div><a class="btn btn-ghost" href="/jamiebarker/predictor.html">Predict my race</a></article>
+        </div>
+        <p class="pitch-start">New to all of this? <a href="/jamiebarker/prep-club.html">Start with the free HYROX Prep Club →</a></p>
+        <details class="pitch-guides"><summary>Explore station guides, running plans and race preparation</summary>
         <div class="zones">
-          <a class="zone zone--hook reveal" href="/jamiebarker/find-a-partner/">
-            <span class="num">New</span>
-            <h4>Got a ticket, need a partner?</h4>
-            <p>
-              Doubles, mixed, relay, or just someone to share the race trip — post
-              your card and Jamie makes the intro himself.
-            </p>
-            <span class="more">Find a partner</span>
-          </a>
-          <a class="zone reveal" href="/jamiebarker/stations-prep/">
+          <a class="zone reveal" href="/jamiebarker/stations-prep.html">
             <span class="num">01</span>
             <h4>Stations Prep</h4>
             <p>
@@ -143,34 +237,34 @@
             </p>
             <span class="more">Open station guides</span>
           </a>
-          <a class="zone reveal" href="/jamiebarker/run-zone/">
+          <a class="zone reveal" href="/jamiebarker/run-zone.html">
             <span class="num">02</span>
             <h4>Run Zone</h4>
             <p>
               8 × 1 km with heavy legs. Compromised-running sessions built for
-              United Kingdom halls get warm.
+              HYROX halls get warm.
             </p>
             <span class="more">Run plans</span>
           </a>
-          <a class="zone reveal" href="/jamiebarker/events/">
+          <a class="zone reveal" href="/jamiebarker/events.html">
             <span class="num">03</span>
             <h4>Upcoming Events</h4>
             <p>
-              United Kingdom countdown plus city planners for London, Birmingham, Hong
-              Kong and Glasgow — hotels, flights, food, the night after.
+              Confirmed start lines in the region and around the world — dates,
+              travel guidance, the crew and the weekend around the race.
             </p>
-            <span class="more">Race calendar</span>
+            <span class="more">Race Calendar &amp; Travel</span>
           </a>
           <a class="zone reveal" href="#ask">
             <span class="num">04</span>
             <h4>Ask Jamie</h4>
             <p>
-              Form checks, race strategy, training through pregnancy — ask
+              Form checks, race strategy, training around real life — ask
               directly, get a real answer.
             </p>
             <span class="more">Ask a question</span>
           </a>
-        </div>
+        </div></details>
       </div>
     </section>
 
@@ -178,190 +272,88 @@
       <div class="wrap story">
         <figure class="reveal">
           <img
-            src="/jamiebarker/images/startline.jpg?v=1792700913499"
-            alt="Jamie on the start line — flat expression, miles to go"
+            src="/jamiebarker/images/startline.jpg?v=1793712669337"
+            alt="Jamie Barker in race paint beside a HYROX wall"
             width="985"
             height="1150"
             loading="lazy"
           />
+          <svg class="profile-hairline" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 A48 60 0 0 1 48 0 H50" /></svg>
         </figure>
         <div class="reveal">
           <p class="eyebrow">The athlete</p>
-          <h3>Jamie Barker. From his first HYROX to a sub-60 debut.</h3>
+          <h3>Meet Jamie Barker. <em>The experience behind the coaching.</em></h3>
           <p class="lead">
-            Online, United Kingdom. HYROX Pro athlete, coach and creator —
-            building Jamie Barker between race blocks. Open solo Pro at
-            Birmingham, a 0:59:47 debut in Manchester, doubles in Cardiff
-            with Stuart Allan in Cardiff. The training blocks, the race
-            weekends and the honest debriefs all go on the channel.
+            HYROX racer and coach. Experience earned on the start line. Discover the approach behind Jamie Barker — and find a way forward that fits your goals.
           </p>
-          <p class="quote">
-            "the real hybrid life — running, hyrox and strength that fits around yours."
-          </p>
-          <ul>
-            <li>
-              HYROX 0:59:47 debut — Manchester. Raced his first HYROX and broke 60 minutes on debut.
-            </li>
-            <li>
-              Open solo Pro — Birmingham. The benchmark that started it.
-            </li>
-            <li>
-              Doubles 1:04:09 with Stuart Allan — HYROX Cardiff.
-            </li>
-            <li>
-              Jamie Barker: 1:1 coaching, group programmes, Jamie Barker hybrid kit.
-            </li>
-          </ul>
+          <p class="quote">"the real hybrid life — running, hyrox and strength that fits around yours."</p>
+          <ul><li>Experience earned on the start line.</li><li>Fastest solo: 0:59:47 — Manchester.</li><li>Fastest doubles: 1:04:09 — Cardiff.</li><li>Find Your Edge coaching — programming, testing and race crew.</li><li>One of 60 coaches selected worldwide for the Red Bull and HYROX coaches camp in São Paulo.</li></ul>
         </div>
       </div>
     </section>
 
     <section class="block" id="plans">
       <div class="wrap">
-        <p class="eyebrow reveal">The Jamie Barker</p>
-        <h3 class="reveal">The coaching arm.</h3>
-        <p class="lead reveal">
-          What Jamie sells: 1:1 coaching, group programmes by application, and the
-          Jamie Barker hybrid athlete community. Applications go through the existing
-          forms — no new inbox to check.
-        </p>
+        <p class="eyebrow reveal">Jamie Barker coaching</p>
+        <h3 class="reveal">Find your way forward.</h3>
+        <p class="lead reveal">Bring strength, running and conditioning into one week with Edge. Explore the app&#39;s membership for coordinated programming and in-app support from Edge&#39;s coaching team, where Jamie is a Performance Coach.</p>
         <div class="plan plan-crew reveal">
           <img
             class="crew-photo"
-            src="/jamiebarker/images/doubles.jpg?v=1792700913499"
-            alt="Jamie and his race partner at the Madrid finish board showing 0:59:47"
+            src="/jamiebarker/images/doubles.jpg?v=1793712669337"
+            alt="Jamie Barker and a race partner reaching for the finish line in Barcelona"
             loading="lazy"
           />
           <div class="crew-copy">
             <span class="tag">New here?</span>
-            <h4>Start with the free stuff</h4>
+            <h4>Join the HYROX Prep Club</h4>
             <p class="crew-line">
-              Not ready for coaching? The race tools are free — predictor,
-              split analyser, stations prep. Use them, race better, and the
-              Hub is here when you want the structured version.
+              Not ready for coaching — or not sure HYROX is for you yet? Start
+              with free race tools, clear training guidance and a community
+              to help you find your feet.
             </p>
             <p class="crew-note">
-              Race predictor · split analyser · stations prep · race-mate
-              finder — free, always.
+              Free to join · beginner-safe · race tools · community prompts —
+              coaching only when it makes sense.
             </p>
           </div>
           <div class="crew-side">
             <div class="price">£0 <small>/ always</small></div>
-            <div class="per">The tools below</div>
-            <a class="btn btn-primary" href="#zones">Use the tools</a>
+            <div class="per">The softer first step</div>
+            <a class="btn btn-primary" href="/jamiebarker/prep-club.html">Join Prep Club</a>
           </div>
         </div>
-        <div class="plans">
-          <div class="plan featured reveal">
-            <span class="tag">Application only</span>
-            <h4>1:1 Coaching</h4>
-            <div class="price">Jamie Barker</div>
-            <div class="per">Spots limited — Jamie reviews every application</div>
-            <ul>
-              <li>Programme built around your life and your race calendar</li>
-              <li>Weekly check-ins and video form review</li>
-              <li>Pacing, stations, race plan — built to a number</li>
-              <li>Direct line to Jamie between sessions</li>
-            </ul>
-            <a
-              class="btn btn-primary"
-              href="https://findyouredge.app/"
-              target="_blank"
-              rel="noopener"
-              >Apply for 1:1</a
-            >
-          </div>
-          <div class="plan reveal">
-            <span class="tag">On FITR</span>
-            <h4>Group Programmes</h4>
-            <div class="price">Jamie Barker</div>
-            <div class="per">Structured blocks with the Hub cohort</div>
-            <ul>
-              <li>Programmed blocks in the FITR app</li>
-              <li>HYROX-specific work, not generic circuits</li>
-              <li>Start with the cohort, progress through blocks</li>
-              <li>The same engine behind Jamie's own season</li>
-            </ul>
-            <a
-              class="btn btn-ghost"
-              href="https://findyouredge.app/"
-              target="_blank"
-              rel="noopener"
-              >See programmes by application</a
-            >
-          </div>
-          <div class="plan reveal" data-strip="store-card">
-            <span class="tag">Coaching app</span>
-            <h4>Find Your Edge</h4>
-            <div class="per">Jamie's coaching platform — his plans and community live inside the EDGE app.</div>
-            <a
-              class="btn btn-ghost"
-              href="https://findyouredge.app/"
-              target="_blank"
-              rel="noopener"
-              >Visit EDGE</a
-            >
-          </div>
-        </div>
-        <p class="plans-note">
-          Every route is Jamie's official one — applications, programmes and the store. One tap out, nothing in between.
+        <div class="plans coach-plans verified-offers"><article class="plan featured reveal" data-offer-id="0"><span class="tag">App membership</span><h4>Edge hybrid training app</h4><div class="price">From £22.99/month</div><p class="per">Running, strength, HIIT and mobility planned around your goals, schedule and equipment.</p><ul><li>Six-month option listed at £84.99; annual option £129.99</li><li>Progressive sessions and exercise demonstrations</li><li>In-app support from the Edge coaching team</li></ul><a class="btn btn-primary" href="https://findyouredge.app/" target="_blank" rel="noopener">Explore Edge membership</a></article></div><p class="offer-terms">Offer details and prices are set by the provider. Check the linked page for current terms.</p><p class="plans-note">
+          Not sure which route fits? <a href="#ask">Ask Jamie</a>.
         </p>
       </div>
     </section>
 
     <section class="block" id="athletes-say" hidden>
       <div class="wrap">
-        <p class="eyebrow reveal">Athletes say</p>
+        <p class="eyebrow reveal">Edge app member reviews</p>
         <h2 class="reveal">In their words.</h2>
         <div class="quotes reveal" id="testimonials"></div>
       </div>
     </section>
 
+    <section class="block" id="stories"><div class="wrap"><p class="eyebrow">Between the start lines</p><h3>Keep learning between sessions.</h3><p class="lead">Race stories, coaching clips and useful places to explore next.</p><div class="showcase-grid">
+      <article class="showcase-card"><h4>HYROX news</h4><p>Race stories from around the world, with Jamie's perspective on what matters.</p><a class="btn btn-ghost" href="/jamiebarker/news.html">Read the news</a></article>
+      <article class="showcase-card"><h4>Watch &amp; listen</h4><p>Training clips, race footage and longer conversations — ready when you are.</p><p><a class="btn btn-ghost" href="/jamiebarker/watch.html">Watch &amp; Learn</a> <a href="/jamiebarker/podcast.html">Studio series →</a></p></article>
+      <article class="showcase-card"><h4>More from Jamie Barker</h4><p>Coaching routes, sessions and official channels.</p><a class="btn btn-ghost" href="/jamiebarker/shop.html">Open the links</a></article>
+    </div></div></section>
+
     <section class="block alt" id="events">
       <div class="wrap">
         <p class="eyebrow reveal">Upcoming Events</p>
-        <h3 class="reveal">Put a race on the calendar.</h3>
+        <h3 class="reveal">Pick the start line. Build towards it.</h3>
         <p class="lead reveal">
-          Cohorts open twelve weeks before each race. Train together, race
-          together. Not racing yet? Watch the vlogs first — you'll want a start line by the end.
+          Choose a confirmed race, plan the weekend and build the training
+          around it. Find a teammate, bring the crew and make the start line a shared target.
         </p>
-        <div class="events">
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>Budapest</span></div>
-            <div>
-              <h4>HYROX Budapest</h4>
-              <p>
-                The off-season test — raced it to see where the block stands
-                before tapering for the bigger targets. Watch for the vlog.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="/jamiebarker/list.html">Get notified</a>
-          </div>
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>London</span></div>
-            <div>
-              <h4>HYROX London — ExCeL</h4>
-              <p>
-                The home weekend. Where the Pro open solo benchmark was
-                set — now it's the number everyone else is chasing.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="/jamiebarker/list.html">Get notified</a>
-          </div>
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>Glasgow</span></div>
-            <div>
-              <h4>HYROX Glasgow — pro solo</h4>
-              <p>
-                The target the season was built towards. Building with each
-                session — watch the build on the channel.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="/jamiebarker/list.html">Get notified</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="events" id="race-cards" aria-live="polite"><div class="event"><div class="date"><strong><time datetime="2026-12-02">2 Dec 2026</time></strong><span>London</span></div><div><h4>Amazon HYROX London</h4><p>2 Dec 2026 – 6 Dec 2026 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-london-excel/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/jamiebarker/events.html#london">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2027-01-20">20 Jan 2027</time></strong><span>Manchester</span></div><div><h4>HYROX Manchester</h4><p>20 Jan 2027 – 31 Jan 2027 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-manchester/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/jamiebarker/events.html#manchester">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2026-11-11">11 Nov 2026</time></strong><span>Dublin</span></div><div><h4>HYROX Dublin</h4><p>11 Nov 2026 – 15 Nov 2026 · Ireland</p><a href="https://hyrox.com/event/hyrox-dublin/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/jamiebarker/events.html#dublin">Plan the weekend</a></div></div></div></section>
 
     <section class="cta-band" id="find-partner">
       <div class="wrap">
@@ -370,7 +362,7 @@
           Open doubles, pro, mixed — yes, that one too — relay, or just
           race-trip company. Post your card, Jamie does the intros.
         </p>
-        <a class="btn btn-light" href="/jamiebarker/find-a-partner/"
+        <a class="btn btn-light" href="/jamiebarker/find-a-partner.html"
           >Find a partner</a
         >
       </div>
@@ -381,8 +373,7 @@
         <p class="eyebrow reveal">Results wall</p>
         <h3 class="reveal">Real athletes. Real times.</h3>
         <p class="lead reveal">
-          Every result here is a Jamie athlete who said yes to being on the
-          wall. Before and after, race by race.
+          Every result here is athlete-approved. Before and after, race by race.
         </p>
         <ul class="wall" id="wall-list"></ul>
         <div class="week" id="week" hidden>
@@ -397,7 +388,7 @@
     <section class="capture" id="ask">
       <img
         class="capture-bg"
-        src="/jamiebarker/images/coaching.jpg?v=1792700913499"
+        src="/jamiebarker/images/coaching.jpg?v=1793712669337"
         alt=""
         width="948"
         height="870"
@@ -405,20 +396,20 @@
       />
       <div class="wrap">
         <div class="reveal coach">
-          <img
+          <span class="coach-portrait"><img
             class="bio"
-            src="/jamiebarker/images/bio.jpg?v=1792700913499"
-            alt="Jamie Barker — HYROX Pro athlete and coach"
+            src="/jamiebarker/images/bio.jpg?v=1793712669337"
+            alt="Jamie Barker — HYROX racer, coach and Jamie Barker founder"
             width="120"
             height="120"
             loading="lazy"
-          />
+          /><svg class="portrait-hairline" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M33 3 A50 50 0 0 0 33 97" /></svg></span>
           <div>
             <p class="eyebrow">Ask Jamie · Chat Zone</p>
             <h3>Got a race, a station or a target? Just ask.</h3>
             <p>
-              Leave your email and your question. Jamie reads them personally — and
-              you'll be first to hear when cohorts open.
+              Have a training question or a race in mind? Send it to Jamie
+              and start the conversation.
             </p>
             <p class="chat-line">
               Prefer chat? Find Jamie on
@@ -548,11 +539,11 @@
 
     <section class="block gallery" id="wall-photos" hidden>
       <div class="wrap">
-        <p class="eyebrow reveal">Warriors Wall</p>
-        <h3 class="reveal">Your shots. Your words.</h3>
+        <p class="eyebrow reveal">Race Wall</p>
+        <h3 class="reveal">Your people. Your progress. Your wall.</h3>
         <p class="lead reveal">
-          Race faces, finish-line tears, the squad being daft. Send yours and it
-          goes up here once Jamie has your OK.
+          Race faces, finish-line tears, the squad being daft. Share the moments
+          that make this community yours.
         </p>
         <div
           class="event-tabs reveal"
@@ -658,35 +649,36 @@
     ></div>
 
     <div class="sticky-cta" id="sticky-cta" hidden>
-      <a class="btn btn-primary" href="/jamiebarker/coaching.html">Train with Jamie</a>
-      <a class="btn btn-light" href="/jamiebarker/splits/">Free split analysis</a>
+      <a class="btn btn-primary" href="/jamiebarker/coaching.html">Coach with Jamie</a>
+      <a class="btn btn-light" href="/jamiebarker/splits.html">Free split analysis</a>
     </div>
 
     <aside class="coach-question" aria-label="Ask Jamie"><p>Got a training or race-day question?</p><a class="btn btn-primary" href="/jamiebarker/#ask">Ask Jamie</a></aside><footer><div class="wrap">
         <div>© <span id="year"></span> Jamie Barker</div>
         <nav>
-          <a href="#plans">Subscriptions</a>
-          <a href="/jamiebarker/stations-prep/">Stations Prep</a>
-          <a href="/jamiebarker/run-zone/">Run Zone</a>
-          <a href="/jamiebarker/taper-zone/">Taper Zone</a>
-          <a href="/jamiebarker/events/">Events</a>
+          <a href="#plans">Coaching</a>
+          <a href="/jamiebarker/stations-prep.html">Stations Prep</a>
+          <a href="/jamiebarker/run-zone.html">Run Zone</a>
+          <a href="/jamiebarker/taper-zone.html">Taper Zone</a>
+          <a href="/jamiebarker/race-day.html">Race Day</a>
+          <a href="/jamiebarker/events.html">Events</a>
           <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
-          <a href="/jamiebarker/race-planner/">Race planner</a>
-          <a href="/jamiebarker/news/">News</a>
-          <a href="/jamiebarker/race-crew/">the ninth station</a>
-          <a href="/jamiebarker/results/">Results</a>
-          <a href="/jamiebarker/splits/">Splits</a>
-          <a href="/jamiebarker/find-a-partner/">Find a Partner</a>
-          <a href="#wall-photos">Warriors Wall</a>
+          <a href="/jamiebarker/events.html#cities">Race planner</a>
+          <a href="/jamiebarker/news.html">News</a>
+          <a href="/jamiebarker/race-crew.html">the ninth station</a>
+          <a href="/jamiebarker/results.html">Results</a>
+          <a href="/jamiebarker/splits.html">Splits</a>
+          <a href="/jamiebarker/find-a-partner.html">Find a Partner</a>
+          <a href="#wall-photos">Race Wall</a>
           <a href="#ask">Ask Jamie</a>
-          <a data-link="truecoach" target="_blank" rel="noopener" hidden
-            >Athlete login (TrueCoach)</a
+          <a data-link="athleteLogin" target="_blank" rel="noopener" hidden
+            >Athlete login</a
           >
           <a
             href="https://www.instagram.com/jamiebarker_fit/"
             target="_blank"
             rel="noopener"
-            >Instagram @jamiebarkerfit</a
+            >Instagram @jamiebarker</a
           >
           
           
@@ -695,14 +687,17 @@
 
           <a href="/jamiebarker/coaching.html">Book Jamie</a>
           <a href="/jamiebarker/partners.html">Partners</a>
-          <a href="/jamiebarker/desk.html">The desk</a>
+
         </nav>
       </div>
-      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/jamiebarker/app.js?v=1792700913499" defer></script>
-    <script src="/jamiebarker/emerge.js?v=1792700913499" defer></script>
-    <script src="/jamiebarker/partners.js?v=1792700913499" defer></script>
+    <script src="/jamiebarker/app.js?v=1793712669337" defer></script>
+    <script src="/jamiebarker/emerge.js?v=1793712669337" defer></script>
+    <script src="/jamiebarker/partners.js?v=1793712669337" defer></script>
+    <script src="/jamiebarker/planner.js?v=1793712669337" defer></script>
+    <script src="/jamiebarker/home-editorial.js?v=1793712669337" defer></script>
+  <script>(()=>{const h=document.querySelector(".hero--bleed");if(!h||!("IntersectionObserver" in window))return;new IntersectionObserver(([e])=>document.body.classList.toggle("hero-in-view",e.isIntersecting)).observe(h);})();</script>
   </body>
 </html>

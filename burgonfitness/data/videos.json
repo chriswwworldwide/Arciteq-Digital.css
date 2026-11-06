@@ -1,0 +1,16 @@
+{
+  "note": "Video-library layouts for coach-approved clips.",
+  "items": [
+    {
+      "id": "sample-conversation",
+      "title": "A conversation about training",
+      "description": "A short interview clip can lead into the full podcast conversation.",
+      "category": "Podcast clips",
+      "url": "https://www.instagram.com/hannahburgon_pt/",
+      "thumbnail": "/burgonfitness/images/coaching-hero.jpg",
+      "status": "published",
+      "sample": true,
+      "linkLabel": "Visit the video channel"
+    }
+  ]
+}

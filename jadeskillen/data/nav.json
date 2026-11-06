@@ -1,0 +1,30 @@
+{
+  "Coaching": [
+    {
+      "label": "HYROX Prep Club",
+      "href": "/jadeskillen/prep-club.html"
+    }
+  ],
+  "Community": [
+    {
+      "label": "Race crew meetups",
+      "href": "/jadeskillen/race-crew.html"
+    },
+    {
+      "label": "News & coach takes",
+      "href": "/jadeskillen/news.html"
+    }
+  ],
+  "Race Tools": [
+    {
+      "label": "Find a race-mate",
+      "href": "/jadeskillen/find-a-partner.html",
+      "position": 5
+    },
+    {
+      "label": "Race day",
+      "href": "/jadeskillen/race-day.html",
+      "position": 8
+    }
+  ]
+}

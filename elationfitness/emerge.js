@@ -351,9 +351,12 @@
       mask.style.visibility = "";
       if (wrapEl0) wrapEl0.style.opacity = "";
     };
+    let started = false;
     const start = async () => {
+      if (started) return;
       // image genuinely missing/broken → bail to the normal page
       if (!img.naturalWidth || !img.naturalHeight) return unhide();
+      started = true;
       const ics = getComputedStyle(img);
       // offset* gives the layout box relative to the mask (offsetParent)
       // and ignores the hero-drift transform — getBoundingClientRect
@@ -701,7 +704,24 @@
 
       const t0 = performance.now() + 350;
       const total = seq.reduce((a, P) => a + P.dur, 0);
+      let stopped = false;
+      let sizeObserver;
+      const stopStaleCanvas = () => {
+        const bounds = section.getBoundingClientRect();
+        if (canvas.isConnected && Math.abs(bounds.width - mw) <= 1 && Math.abs(bounds.height - mh) <= 1) return false;
+        stopped = true;
+        sizeObserver?.disconnect();
+        if (tag) tag.remove();
+        restore();
+        canvas.remove();
+        return true;
+      };
+      if (typeof ResizeObserver !== "undefined") {
+        sizeObserver = new ResizeObserver(stopStaleCanvas);
+        sizeObserver.observe(section);
+      }
       const frame = (now) => {
+        if (stopped || stopStaleCanvas()) return;
         const el = now - t0;
         let acc = 0,
           ph = seq[seq.length - 1],
@@ -736,7 +756,10 @@
         // the DOM blend so the settle feels like landing, not dropping
         canvas.style.transition = "opacity 1.4s ease-in-out";
         canvas.style.opacity = "0";
-        setTimeout(() => canvas.remove(), 1500);
+        setTimeout(() => {
+          sizeObserver?.disconnect();
+          canvas.remove();
+        }, 1500);
       };
       requestAnimationFrame(frame);
     };

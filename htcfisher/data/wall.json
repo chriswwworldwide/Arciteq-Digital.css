@@ -1,33 +1,4 @@
 {
-  "note": "Results wall + coach's week. 'athletes': consented client results only — first name (or handle) as agreed, before/after times, race, date (YYYY-MM). 'weeks': short dated notes, newest first; page shows latest 3. Empty lists hide their block. DEMO SEED — never add anyone without their OK.",
-  "athletes": [
-    {
-      "name": "Sam",
-      "division": "Men Open",
-      "before": "1:24:10",
-      "after": "1:17:44",
-      "event": "HYROX Manchester → HYROX London",
-      "date": "2026-09",
-      "note": "First sub-1:20 — wall balls finally held together"
-    },
-    {
-      "name": "Emma",
-      "division": "Women Open",
-      "before": "1:21:30",
-      "after": "1:14:52",
-      "event": "HYROX Birmingham",
-      "date": "2026-08",
-      "note": "Top-10 age group, second race ever"
-    }
-  ],
-  "weeks": [
-    {
-      "date": "2026-09-22",
-      "note": "Six PBs at London. The boring Tuesdays won again."
-    },
-    {
-      "date": "2026-09-15",
-      "note": "Taper week — mobility block and early nights, nothing clever."
-    }
-  ]
+  "note": "PRIVATE PITCH PREVIEW — athlete wall shows placeholder entries only; real photos added with consent after launch.",
+  "items": []
 }

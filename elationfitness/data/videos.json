@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": "fitness-racing-pod",
+      "title": "From 1st HYROX to sub-58 in a year — Fitness Racing Podcast",
+      "description": "Graham's guest episode on the UK Fitness Racing Podcast: from lifting to fitness racing, taking on 55 Games, and the road to the World Championships.",
+      "category": "Podcast clips",
+      "url": "https://ukhxr.libsyn.com/graham-haliday-from-1st-hyrox-to-sub-58-in-a-year",
+      "linkLabel": "Listen to the episode",
+      "publishedAt": "Mar 2023"
+    },
+    {
+      "id": "hybrid-experiment-ep6",
+      "title": "Improving your HYROX time — The Hybrid Experiment",
+      "description": "Episode 6 guest spot: how Graham reads HYROX splits and builds a training plan to cut overall time.",
+      "category": "Podcast clips",
+      "url": "https://podcasts.apple.com/gb/podcast/the-hybrid-experiment/id1696888375",
+      "linkLabel": "Listen on Apple Podcasts",
+      "publishedAt": "Oct 2023"
+    },
+    {
+      "id": "bfa-get-to-know",
+      "title": "Get To Know: Graham Halliday — Built for Athletes",
+      "description": "Episode 1 of Built for Athletes' Get To Know video series — the athlete behind the ELATION partner code.",
+      "category": "Race stories",
+      "url": "https://builtforathletes.com/blogs/news/get-to-know-graham-halliday",
+      "linkLabel": "Watch the feature",
+      "publishedAt": "Aug 2023"
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+/* utility.css — "Utility" family: watch.html, podcast.html, training.html,
+   intake.html. Opt-in via body.utility. Viewing library and functional
+   routes: instrument-adjacent — mono labels, quiet rules, pink reserved for
+   actions. planner.html (booking surface) keeps its own booking.css theme;
+   it does not load this file. */
+
+body.utility {
+  --utility-accent: var(--pink);
+}
+body.utility.zone-acc {
+  --utility-accent: var(--zone-accent);
+}
+
+/* ---------- Hero & headings ---------- */
+
+body.utility .guide-hero {
+  padding-block: 3rem 2.4rem;
+}
+body.utility .eyebrow,
+body.utility .video-card .eyebrow,
+body.utility .showcase-card .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--utility-accent);
+}
+body.utility .guide-hero .eyebrow::before,
+body.utility .video-workspace > .eyebrow::before,
+body.utility .intake-wrap > .eyebrow::before {
+  content: "";
+  width: 1.4em;
+  border-top: 1px solid var(--utility-accent);
+  opacity: 0.7;
+}
+body.utility h2 em,
+body.utility h3 em {
+  color: var(--utility-accent);
+  font-style: normal;
+}
+
+/* Hero photo — homepage bottom curve + larger corner tick */
+body.utility .guide-hero-photo {
+  position: relative;
+}
+body.utility .guide-hero-photo img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 0 0 48% 8% / 0 0 7% 2%;
+}
+body.utility .guide-hero-photo::after {
+  content: "";
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  left: -8px;
+  top: -8px;
+  border-left: 2px solid var(--pink);
+  border-top: 2px solid var(--pink);
+  pointer-events: none;
+}
+
+/* ---------- Video library (watch + podcast) ---------- */
+
+body.utility .video-hub h3 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  letter-spacing: -0.02em;
+}
+
+/* Filter buttons — instrument tabs */
+body.utility .video-filters button {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 8px;
+}
+body.utility .video-filters button[aria-pressed="true"] {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #fff;
+}
+
+/* Video cards — poster plates, approved hover rule */
+body.utility .video-card {
+  position: relative;
+  border-top: 2px solid var(--line);
+  border-radius: 0 0 14px 14px;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+body.utility .video-card img {
+  transition: transform 0.5s ease;
+}
+body.utility .video-card .eyebrow {
+  color: var(--ink-3);
+}
+@media (hover: hover) and (pointer: fine) {
+  body.utility .video-card:hover {
+    border-top-color: var(--pink);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.7);
+  }
+  body.utility .video-card:hover img {
+    transform: scale(1.025);
+  }
+  body.utility .video-card:hover .eyebrow {
+    color: var(--utility-accent);
+  }
+}
+
+/* Library status line */
+body.utility #video-library-status {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* ---------- Training route cards ---------- */
+
+body.utility .showcase-card {
+  position: relative;
+  border-top: 2px solid var(--line);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  body.utility .showcase-card:hover {
+    border-top-color: var(--pink);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.7);
+  }
+}
+body.utility .showcase-card h3 {
+  letter-spacing: -0.01em;
+}
+body.utility .video-workspace > h2 {
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  letter-spacing: -0.03em;
+}
+
+/* ---------- Intake form ---------- */
+
+body.utility .intake-wrap h2 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  letter-spacing: -0.03em;
+}
+body.utility .calc-form {
+  margin-top: 1.6rem;
+}
+
+/* Health questions — ruled rows with radio pill chips */
+body.utility .health-item {
+  margin: 0;
+  padding: 1.05rem 0;
+  border-bottom: 1px solid var(--line);
+}
+body.utility .health-item:first-of-type {
+  border-top: 1px solid var(--line);
+}
+body.utility .health-item .yesno {
+  display: inline-flex;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+body.utility .health-item .yesno label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  min-width: 84px;
+  padding: 0.4em 1.2em;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+body.utility .health-item .yesno label + label {
+  border-left: 1px solid var(--line);
+}
+body.utility .health-item .yesno label input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  body.utility .health-item .yesno label:hover {
+    color: var(--ink);
+  }
+}
+body.utility .health-item .yesno label:has(input:checked) {
+  background: var(--utility-accent);
+  color: #fff;
+  font-weight: 800;
+}
+body.utility .health-item .yesno label:has(input:focus-visible) {
+  outline: 2px solid var(--utility-accent);
+  outline-offset: 3px;
+}
+
+/* Instrument inputs */
+body.utility .calc-form input:not([type="radio"]):not([type="checkbox"]),
+body.utility .calc-form textarea {
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  padding: 0.7rem 0.85rem;
+  transition: border-color 0.2s ease;
+}
+body.utility .calc-form input:focus,
+body.utility .calc-form textarea:focus {
+  border-color: var(--utility-accent);
+  outline: none;
+}
+body.utility .calc-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+body.utility .check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top: 1.4rem;
+  padding: 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+body.utility .check input {
+  width: 20px;
+  height: 20px;
+  min-height: 0;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  accent-color: var(--utility-accent);
+}
+body.utility .intake-done {
+  border-top: 2px solid var(--utility-accent);
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  body.utility .video-card,
+  body.utility .video-card img,
+  body.utility .showcase-card,
+  body.utility .yesno label {
+    transition: none;
+  }
+  body.utility .video-card:hover,
+  body.utility .video-card:hover img,
+  body.utility .showcase-card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  body.utility .guide-hero-photo img { height: 210px; }
+}
+@media (max-width: 600px) {
+  body.utility .guide-hero-photo img { height: 190px; }
+}

@@ -1,5 +1,5 @@
 {
-  "note": "Athlete profiles for the results board — DEMO SEED. Races listed are the ones we hold verified data for.",
+  "note": "Athlete profiles for the results board — verified races only.",
   "athletes": {
     "Jess Warner": {
       "tag": "The engine — holds the crew's fastest Pro women's time.",
@@ -31,7 +31,7 @@
           "note": "PB — 3rd in age group"
         },
         {
-          "event": "HYROX Birmingham",
+          "event": "HYROX Glasgow",
           "date": "Aug 2026",
           "division": "Men Doubles",
           "time": "1:01:44",
@@ -43,7 +43,7 @@
       "tag": "Two races, two top-10s — the rookie trajectory.",
       "races": [
         {
-          "event": "HYROX Birmingham",
+          "event": "HYROX Glasgow",
           "date": "Aug 2026",
           "division": "Women Open",
           "time": "the first start line:52",

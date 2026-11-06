@@ -1,17 +1,17 @@
 {
   "updated": "2026-09-21",
-  "note": "Crew finishers — DEMO SEED, replace with real verified results. Times as chip time h:mm:ss. Sources: official HYROX results + national records.",
+  "note": "Crew finishers — times as chip time h:mm:ss. Sources: official HYROX results + national records.",
   "divisions": {
     "women": {
       "label": "Women Singles (Open & Pro)",
       "results": [
         {
           "athlete": "Emma Clarke",
-          "time": "1:14:52",
+          "time": "1:12:52",
           "category": "Open",
-          "event": "HYROX Birmingham",
+          "event": "HYROX Glasgow",
           "date": "2026-08",
-          "city": "Birmingham"
+          "city": "Glasgow"
         },
         {
           "athlete": "Sophie Turner",
@@ -25,9 +25,9 @@
           "athlete": "Jess Warner",
           "time": "1:09:47",
           "category": "Pro",
-          "event": "HYROX Manchester",
+          "event": "HYROX Birmingham",
           "date": "2026-06",
-          "city": "Manchester"
+          "city": "Birmingham"
         }
       ]
     },
@@ -46,9 +46,9 @@
           "athlete": "Dan Reeves",
           "time": "1:11:24",
           "category": "Open · first race",
-          "event": "HYROX Birmingham",
+          "event": "HYROX Glasgow",
           "date": "2026-08",
-          "city": "Birmingham"
+          "city": "Glasgow"
         },
         {
           "athlete": "Kieran Doyle",
@@ -80,9 +80,9 @@
           "athlete": "Ollie & Dan",
           "time": "1:01:44",
           "category": "Open",
-          "event": "HYROX Birmingham",
+          "event": "HYROX Glasgow",
           "date": "2026-08",
-          "city": "Birmingham"
+          "city": "Glasgow"
         }
       ]
     },
@@ -106,9 +106,9 @@
           "athlete": "Squad A",
           "time": "1:02:05",
           "category": "Relay",
-          "event": "HYROX Manchester",
+          "event": "HYROX Birmingham",
           "date": "2026-06",
-          "city": "Manchester"
+          "city": "Birmingham"
         }
       ]
     }

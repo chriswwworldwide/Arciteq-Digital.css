@@ -1,23 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Burgon Fitness — Hannah Burgon | HYROX coaching, sims & programming, Stockport</title>
+    <title>Hannah Burgon | Burgon Fitness coaching, race tools and booking</title>
     <meta
       name="description"
-      content="HYROX coaching with 3x Worlds qualifier Hannah Burgon — online programming, monthly sims at Pyramid Performance Stockport, and the crew that races together."
+      content="Hannah Burgon — HYROX racer and coach and founder of Burgon Fitness in United Kingdom. Coaching applications, coaching routes, programmes and booking, race tools and verified links."
     />
     <meta
       name="keywords"
-      content="hyrox coach stockport, hyrox programming uk, hyrox personal trainer manchester, hyrox sims stockport, hybrid athlete coach"
+      content="hannah burgon, Burgon, Burgon Fitness, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdom hyrox"
     />
-    <meta name="geo.region" content="ID-JK" />
-    <meta name="geo.placename" content="Stockport" />
+    <meta name="geo.region" content="GB-WOR" />
+    <meta name="geo.placename" content="United Kingdom" />
     <link rel="canonical" href="https://burgonfitness.localhost/burgonfitness/" />
     <link
       rel="alternate"
-      hreflang="en-ID"
+      hreflang="en-GB"
       href="https://burgonfitness.localhost/burgonfitness/"
     />
     <link
@@ -28,39 +28,129 @@
     <link
       rel="preload"
       as="image"
-      href="/burgonfitness/images/skierg-laugh.jpg?v=1792661955867"
+      href="/burgonfitness/images/hero.jpg?v=1793655388527"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/burgonfitness/styles.css?v=1792661955867" />
+    <link rel="stylesheet" href="/burgonfitness/styles.css?v=crop-fix-20261103" />
     <script>
       document.documentElement.classList.add("js");
+      // Refresh = top of page + the hero entrance plays. Ordinary navigation
+      // keeps any #section so links from other pages land where promised.
+      const navEntry = performance.getEntriesByType?.("navigation")?.[0];
+      const reloaded = navEntry
+        ? navEntry.type === "reload"
+        : performance.navigation?.type === performance.navigation?.TYPE_RELOAD;
+      (() => {
+        const key = "__s9HomeScroll";
+        const returning = navEntry ? navEntry.type === "back_forward" : Boolean(performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD);
+        const auto = () => { if ("scrollRestoration" in history) history.scrollRestoration = "auto"; };
+        let restoring = false, stopRestore = () => {}, lastAnchor = null, activationEvent = null;
+        const findHomeAnchor = anchor => {
+          if (!anchor || !Number.isInteger(anchor.index) || anchor.index < 0 || typeof anchor.href !== "string" || !Number.isFinite(anchor.top)) return null;
+          const root = anchor.section ? document.getElementById(anchor.section) : anchor.footer ? document.querySelector("body > footer") : null;
+          const node = root && Array.from(root.querySelectorAll("a[href]")).filter(link => link.href === anchor.href)[anchor.index];
+          return node?.getClientRects().length ? node : null;
+        };
+        const remember = (link, event) => {
+          if (restoring) return;
+          if (link) {
+            const section = link.closest("section[id]"), footer = link.closest("footer");
+            const root = section || (footer?.parentElement === document.body ? footer : null);
+            lastAnchor = root ? { href: link.href, section: section?.id || "", footer: root === footer, index: Array.from(root.querySelectorAll("a[href]")).filter(node => node.href === link.href).indexOf(link), top: link.getBoundingClientRect().top } : null;
+            activationEvent = event;
+          } else if (!activationEvent || activationEvent.defaultPrevented) {
+            const node = findHomeAnchor(lastAnchor);
+            if (!node || Math.abs(node.getBoundingClientRect().top - lastAnchor.top) > 12) lastAnchor = null;
+          }
+          try { history.replaceState({ ...history.state, [key]: { x: scrollX, y: scrollY, anchor: lastAnchor } }, ""); } catch {}
+        };
+        const holdScroll = (target, duration = 2500, delays = [200, 600, 1200]) => {
+          restoring = true;
+          if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+          const inputs = ["wheel", "touchstart", "pointerdown", "keydown"];
+          const restore = () => {
+            if (!restoring) return;
+            const point = target();
+            window.scrollTo({ left: point.x, top: point.y, behavior: "instant" });
+          };
+          let observer, frame, deadline, retries = [];
+          const stop = () => {
+            restoring = false; observer?.disconnect(); cancelAnimationFrame(frame); clearTimeout(deadline); retries.forEach(clearTimeout);
+            inputs.forEach(type => removeEventListener(type, stop, true)); auto(); stopRestore = () => {};
+          };
+          stopRestore = stop;
+          inputs.forEach(type => addEventListener(type, stop, { capture: true, passive: true, once: true }));
+          if (typeof ResizeObserver === "function") { observer = new ResizeObserver(restore); observer.observe(document.body); }
+          frame = requestAnimationFrame(restore);
+          retries = delays.map(delay => setTimeout(restore, delay));
+          deadline = setTimeout(stop, duration);
+        };
+        if ("scrollRestoration" in history) history.scrollRestoration = reloaded || (returning && history.state?.[key]) ? "manual" : "auto";
+        if (reloaded && location.hash) history.replaceState(history.state, "", location.pathname + location.search);
+        addEventListener("pagehide", () => { remember(); stopRestore(); auto(); });
+        document.addEventListener("click", event => {
+          const link = event.target?.closest?.("a[href]");
+          if (link && (!link.target || link.target === "_self") && ["http:", "https:"].includes(link.protocol) && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { stopRestore(); remember(link, event); }
+        }, true);
+        addEventListener("pageshow", event => {
+          stopRestore();
+          const point = history.state?.[key];
+          lastAnchor = null; activationEvent = null;
+          if ((event.persisted || returning) && Number.isFinite(point?.x) && Number.isFinite(point?.y)) {
+            lastAnchor = point.anchor || null;
+            holdScroll(() => {
+              const node = findHomeAnchor(point.anchor);
+              return { x: point.x, y: node ? node.getBoundingClientRect().top + scrollY - point.anchor.top : point.y };
+            });
+          } else if (reloaded && !event.persisted) holdScroll(() => ({ x: 0, y: 0 }), 500, [50, 150, 350]);
+          else auto();
+        });
+      })();
     </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
-        "name": "Burgon Fitness",
-        "description": "HYROX coaching in $1 — online training program, split analysis and race prep from $1.",
+        "name": "Hannah Burgon",
+        "description": "Hannah Burgon — HYROX racer and coach and Burgon Fitness founder. Coaching routes, race tools and race-mate finder.",
         "url": "https://burgonfitness.localhost/burgonfitness/",
-        "areaServed": ["Stockport", "the UK", "Southeast the UK"],
-        "knowsLanguage": ["en", "id"],
-        "keywords": "hyrox coach stockport, hyrox programming uk, hyrox personal trainer manchester, hyrox sims stockport, hybrid athlete coach",
+        "areaServed": ["United Kingdom", "the UK", "Europe"],
+        "knowsLanguage": ["en"],
+        "keywords": "hannah burgon, Burgon, Burgon Fitness, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdom hyrox",
         "founder": {
           "@type": "Person",
           "name": "Hannah Burgon",
-          "jobTitle": "HYROX Group Coach, Hyrox athlete & personal trainer",
-          "sameAs": ["https://www.instagram.com/hannahburgon_pt/"]
+          "jobTitle": "HYROX coach & founder",
+          "sameAs": ["https://www.instagram.com/hannahburgon_pt/", "https://www.instagram.com/hannahburgon_pt/", "https://www.instagram.com/hannahburgon_pt/", "https://www.instagram.com/hannahburgon_pt/"]
         }
       }
     </script>
-  </head>
-  <body>
+  <style>
+    .pitch-tools { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.5rem 0; }
+    .pitch-tool { padding:1.5rem; border:1px solid var(--line); border-radius:18px; background:var(--paper-2); display:flex; flex-direction:column; gap:.8rem; min-width:0; }
+    .pitch-tool h4 { font-size:1.5rem; line-height:1.15; margin:.3rem 0; }
+    .pitch-tool p { color:var(--ink-2); margin:0 0 1rem; }
+    .pitch-tool .btn { align-self:flex-start; margin-top:auto; }
+    .pitch-tool-main { grid-column:1/-1; display:grid; grid-template-columns:1.2fr 1fr; gap:2rem; border-color:var(--pink); background:linear-gradient(125deg,color-mix(in srgb,var(--pink) 12%,var(--paper)),var(--paper-2)); }
+    .pitch-tool-main h4 { font-size:clamp(1.7rem,3vw,2.5rem); }
+    .tool-preview { display:grid; gap:.4rem; align-content:center; padding:1.2rem; background:var(--paper); border-radius:12px; }
+    .tool-preview span { color:var(--pink); font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; margin-top:.5rem; }
+    .tool-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; }
+    .tool-chips span { padding:.35rem .7rem; border:1px solid var(--line); border-radius:999px; font-size:.8rem; }
+    .pitch-start { color:var(--ink-2); } .pitch-start a { color:var(--pink); }
+    .pitch-guides > summary { cursor:pointer; padding:1rem 0; min-height:44px; }
+    .event-actions { display:flex; flex-direction:column; gap:.6rem; min-width:190px; }
+    .event-prep { color:var(--ink-2); font-size:.85rem; }
+    @media(max-width:760px) { .pitch-tools,.pitch-tool-main { grid-template-columns:minmax(0,1fr); } .pitch-tool { padding:1.1rem; } .event-actions { min-width:0; } }
+  </style>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/burgonfitness/showcase.css?v=1793655388527" /><link rel="stylesheet" href="/burgonfitness/home-editorial.css?v=1793655388527" /><script src="/burgonfitness/coach-view.js?v=1793655388527"></script></head>
+  <body class="home-lab">
     <header class="masthead wrap">
       <h1>
         <a class="wordmark" href="/burgonfitness/"
           >BURG<span class="o">O</span>N FITNESS
-          <span class="sig" aria-label="by Hannah Burgon"
-            ><span class="sig-text">by Hannah Burgon</span
+          <span class="sig" aria-label="Burgon Fitness"
+            ><span class="sig-text">Burgon Fitness</span
             ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
               <path
                 d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
@@ -72,134 +162,104 @@
       <p class="city">Stockport</p>
     </header>
 
-    <div class="nav">
+    
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/burgonfitness/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/burgonfitness/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/burgonfitness/desk.html?audience=coach">Finance</a><a data-coach-link href="/burgonfitness/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/burgonfitness/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/burgonfitness/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/burgonfitness/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-                <ul class="menu" id="menu">
-          <li><a href="/burgonfitness/predictor/">Race Predictor</a></li>
-          <li><a href="/burgonfitness/splits/">Split Analyser</a></li>
-          <li><a class="match-zone" href="/burgonfitness/find-a-partner/">Find a Race Mate</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/burgonfitness/planner.html?view=client" style="color:var(--pink,#b69aff);font-weight:800">Book a session</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">
-              <img class="avatar" src="/burgonfitness/images/avatar.jpg?v=1792661955867" alt="" width="30" height="30" />
-              Ask Hannah <span class="caret"></span>
-            </button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
             <ul class="sub">
-              <li><a href="/burgonfitness/#tips">Hannah's 3 tips</a></li>
-              <li><a href="/burgonfitness/#ask">Ask a question</a></li>
-              <li><a href="/burgonfitness/#story">Hannah's story</a></li>
-              <li><a href="/burgonfitness/#plans">Book a 1:1 call</a></li>
+              <li><a href="/burgonfitness/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/burgonfitness/training.html">Access your training</a></li>
+              <li><a href="/burgonfitness/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/burgonfitness/podcast.html">Studio series</a></li>
+              <li><a href="/burgonfitness/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/burgonfitness/#ask">Ask Hannah</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Train With Hannah <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
             <ul class="sub">
-              <li><a href="/burgonfitness/#plans">Coaching plans</a></li>
-              <li><a href="/burgonfitness/hyrox-coaching-stockport/">Hybrid coaching</a></li>
-              <li><a href="/burgonfitness/elite-race-prep/">Elite race prep</a></li>
-              <li><a href="/burgonfitness/events/#cohorts">12-week cohorts</a></li>
+              <li><a href="/burgonfitness/predictor.html">Race predictor</a></li>
+              <li><a href="/burgonfitness/splits.html">Split analyser</a></li>
+              <li><a href="/burgonfitness/results.html">Results board</a></li>
+              <li><a href="/burgonfitness/stations-prep.html">Stations prep</a></li>
+              <li><a href="/burgonfitness/find-a-partner.html">Find a race-mate</a></li>
+              <li><a href="/burgonfitness/run-zone.html">Run zone</a></li>
+              <li><a href="/burgonfitness/taper-zone.html">Taper zone</a></li>
+              <li><a href="/burgonfitness/race-day.html">Race day</a></li>
+              <li><a href="/burgonfitness/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">UK Race Planner <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
-              <li><a href="/burgonfitness/race-planner/">UK race planner</a></li>
-              <li><a href="/burgonfitness/events/#races">Race calendar</a></li>
-              <li><a href="/burgonfitness/hyrox-stockport/">Hyrox Stockport guide</a></li>
-              <li><a href="/burgonfitness/news/">UK Hyrox news</a></li>
-            </ul>
-          </li>
-          <li><a href="/burgonfitness/stockport-hybrid-scene/">Stockport Scene</a></li>
-          <li><a href="/burgonfitness/results/">Results Board</a></li>
-          <li>
-            <button aria-expanded="false" aria-haspopup="true">Stations Prep <span class="caret"></span></button>
-            <ul class="sub">
-              <li><a href="/burgonfitness/stations-prep/">All eight stations</a></li>
-              <li><a href="/burgonfitness/run-zone/">Run training &amp; pace calculator</a></li>
-              <li><a href="/burgonfitness/fuel-zone/">Race nutrition</a></li>
-              <li><a href="/burgonfitness/taper-zone/">Final two-week taper</a></li>
+              <li><a href="/burgonfitness/race-crew.html">Race crew meetups</a></li>
+              <li><a href="https://www.instagram.com/hannahburgon_pt/" target="_blank" rel="noopener">Burgon Fitness IG</a></li>
+              <li><a href="/burgonfitness/news.html">HYROX news</a></li>
+              <li><a href="/burgonfitness/list.html">Join the list</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Station 9 <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
             <ul class="sub">
-              <li><a href="/burgonfitness/station-9/">Station 9 meetups</a></li>
-              <li><a href="/burgonfitness/broadcast/">Weekly broadcast</a></li>
-              <li><a href="/burgonfitness/diary/">This week's diary</a></li>
-              <li><a href="/burgonfitness/#wall-photos">Warriors Wall</a></li>
-              <li><a href="/burgonfitness/#merch">Merchandise</a></li>
-              <li><a href="/burgonfitness/#ask">Chat Zone</a></li>
+              <li><a href="/burgonfitness/partners.html">Partners</a></li>
+              <li><a href="/burgonfitness/shop.html">Links</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
 
-    <section class="hero hero--bleed hero--full" data-hero-roll="full">
-      <img
-        class="hero-amb"
-        src="/burgonfitness/images/skierg-laugh.jpg?v=1792661955867"
-        alt=""
-        aria-hidden="true"
-        width="1125"
-        height="1080"
-      />
+    <section class="hero hero--bleed" data-hero-mode="full" data-hero-roll="full">
       <div class="hero-mask">
         <img
           class="hero-img"
-          src="/burgonfitness/images/skierg-laugh.jpg?v=1792661955867"
-          alt="Hannah laughing with both arms in the air on the SkiErg mid-race at Hyrox, in her lilac kit"
+          src="/burgonfitness/images/hero.jpg?v=1793655388527"
+          alt="Hannah Burgon driving the sled, head-on — the station nobody enjoys"
           width="1125"
           height="1080"
           fetchpriority="high"
         />
       </div>
       <div class="wrap">
-        <span class="kicker"
-          >Hyrox · Stockport · podium-tested coaching</span
-        >
         <h2>
-          Run your own race,<br /><em>with <i>your</i> pace.</em>
+          HYROX coach.<br /><em>Stockport.</em>
         </h2>
         <p>
-          I'm Hannah — I help driven people become stronger and fitter in under 90 days. World Championship competitor, 1hr 12 Pro. MSc sport nutrition, BSc sport science, six years of coaching — and I make sessions FUN. Never raced? Even better. You just have to start.
+          Strength from within. Train with Hannah in Stockport or online, with coaching that brings strength, race preparation and nutrition together.
         </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#plans">See subscriptions</a>
-          <a class="btn btn-light" href="#ask">Ask Hannah</a>
-        </div>
-        <div class="stats">
-          <div>
-            <strong>1hr 12</strong><span>HYROX Pro PB — World Champs competitor</span>
-          </div>
-          <div>
-            <strong>MSc + BSc</strong><span>Sport nutrition and sport science</span>
-          </div>
-          <div><strong>Monthly</strong><span>HYROX sims at Pyramid Performance</span></div>
-        </div>
       </div>
     </section>
-
-    <section class="block" id="zones">
+    <div class="hero-below"><div class="wrap"><div class="actions">
+          <a class="btn btn-primary" href="/burgonfitness/coaching.html">Coach with Hannah</a>
+          <a class="btn btn-light" href="#ask">Ask Hannah</a>
+        </div><div class="stats">
+          <div>
+            <strong>1:11:13</strong><span>HYROX Pro Solo PB — Birmingham</span>
+          </div>
+          <div>
+            <strong>Doubles</strong><span>Pro Doubles — Birmingham, with the crew</span>
+          </div>
+          <div><strong>Raced</strong><span>on the start line — real experience, real times</span></div>
+        </div></div></div><!-- /hero-below --><section class="block" id="zones">
       <div class="wrap">
-        <p class="eyebrow reveal">The Zones</p>
-        <h3 class="reveal">Every metre of the race, we break it down.</h3>
-        <p class="lead reveal">
-          Pick your weakness. We'll turn it into your fastest split — no drama.
-        </p>
+        <p class="eyebrow reveal">More than a finish time</p>
+        <h3 class="reveal">Know your race. Find your people.</h3>
+        <p class="lead reveal">Your first start line or your next personal best — useful tools to turn a race idea into a plan.</p>
+        <div class="pitch-tools">
+          <article class="pitch-tool pitch-tool-main reveal"><div><span class="tag">After the finish</span><h4>Your finish time tells half the story.</h4><p>See where the minutes went, where you were strong and what deserves your next training block.</p><a class="btn btn-primary" href="/burgonfitness/splits.html">Analyse my splits</a></div><div class="tool-preview" aria-label="What the analysis covers"><span>01 · Running</span><strong>Did your pace fade?</strong><span>02 · Stations</span><strong>Where did time get away?</strong><span>03 · Next steps</span><strong>Know what to work on.</strong></div></article>
+          <article class="pitch-tool reveal"><span class="tag">Better together</span><h4>Got the ticket. Missing the partner?</h4><p>Find someone aiming for your race, your format and a pace that fits. Doubles, relay or company for the race trip.</p><div class="tool-chips"><span>Race</span><span>Division</span><span>Pace</span></div><a class="btn btn-ghost" href="/burgonfitness/find-a-partner.html">Find my race-mate</a></article>
+          <article class="pitch-tool reveal"><span class="tag">Before the start</span><h4>What time could you aim for?</h4><p>Bring your running and station benchmarks together for a race estimate — and a clearer starting point for training.</p><div class="tool-chips"><span>8 runs</span><span>8 stations</span><span>One target</span></div><a class="btn btn-ghost" href="/burgonfitness/predictor.html">Predict my race</a></article>
+        </div>
+        <p class="pitch-start">New to all of this? <a href="/burgonfitness/prep-club.html">Start with the free HYROX Prep Club →</a></p>
+        <details class="pitch-guides"><summary>Explore station guides, running plans and race preparation</summary>
         <div class="zones">
-          <a class="zone zone--hook reveal" href="/burgonfitness/find-a-partner/">
-            <span class="num">New</span>
-            <h4>Got a ticket, need a partner?</h4>
-            <p>
-              Doubles, mixed, relay, or just someone to share the London trip — post
-              your card and Hannah intros you herself.
-            </p>
-            <span class="more">Find a partner</span>
-          </a>
-          <a class="zone reveal" href="/burgonfitness/stations-prep/">
+          <a class="zone reveal" href="/burgonfitness/stations-prep.html">
             <span class="num">01</span>
             <h4>Stations Prep</h4>
             <p>
@@ -208,34 +268,34 @@
             </p>
             <span class="more">Open station guides</span>
           </a>
-          <a class="zone reveal" href="/burgonfitness/run-zone/">
+          <a class="zone reveal" href="/burgonfitness/run-zone.html">
             <span class="num">02</span>
             <h4>Run Zone</h4>
             <p>
               8 × 1 km with heavy legs. Compromised-running sessions built for
-              Stockport halls get warm.
+              HYROX halls get warm.
             </p>
             <span class="more">Run plans</span>
           </a>
-          <a class="zone reveal" href="/burgonfitness/events/">
+          <a class="zone reveal" href="/burgonfitness/events.html">
             <span class="num">03</span>
             <h4>Upcoming Events</h4>
             <p>
-              Stockport countdown plus city planners for London, Birmingham, Hong
-              Kong and Glasgow — hotels, flights, food, the night after.
+              Confirmed start lines in the region and around the world — dates,
+              travel guidance, the crew and the weekend around the race.
             </p>
-            <span class="more">Race calendar</span>
+            <span class="more">Race Calendar &amp; Travel</span>
           </a>
           <a class="zone reveal" href="#ask">
             <span class="num">04</span>
             <h4>Ask Hannah</h4>
             <p>
-              Form checks, race strategy, training through pregnancy — ask
+              Form checks, race strategy, training around real life — ask
               directly, get a real answer.
             </p>
             <span class="more">Ask a question</span>
           </a>
-        </div>
+        </div></details>
       </div>
     </section>
 
@@ -243,178 +303,54 @@
       <div class="wrap story">
         <figure class="reveal">
           <img
-            src="/burgonfitness/images/hero-reveal.jpg?v=1792661955867"
-            alt="Hannah and her doubles partner laughing at the Hyrox Birmingham finish line, BOY / GIRL? written on her stomach"
+            src="/burgonfitness/images/startline.jpg?v=1793655388527"
+            alt="Hannah Burgon in race paint beside a HYROX wall"
             width="985"
             height="1150"
             loading="lazy"
           />
+          <svg class="profile-hairline" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 A48 60 0 0 1 48 0 H50" /></svg>
         </figure>
         <div class="reveal">
-          <p class="eyebrow">Meet Hannah</p>
-          <h3>Hannah. Everyday people, impossible goals, done anyway.</h3>
+          <p class="eyebrow">The athlete</p>
+          <h3>Meet Hannah Burgon. <em>The experience behind the coaching.</em></h3>
           <p class="lead">
-            My purpose: I coach everyday people to become the strongest,
-            fittest versions of themselves — achieving goals they once
-            thought impossible. MSc sport nutrition, BSc sport science,
-            six years coaching, and my own race experience — World
-            Championship competitor, 1hr 12 Pro — all in the room with you.
+            HYROX racer and coach. HYROX Pro Solo racer — 1:11:13 PB. Discover the approach behind Burgon Fitness — and find a way forward that fits your goals.
           </p>
-          <p class="quote">
-            "I’ll celebrate your wins and help you through the tough spots
-            — every step of the way. And I make sessions FUN."
-          </p>
-          <ul>
-            <li>
-              Podium and 1st in age group 35–39, Women's Doubles, at the
-              inaugural Hyrox Stockport (1:11:20) — raced at 7 weeks pregnant
-            </li>
-            <li>
-              1:16:31 Doubles Pro Women, Hyrox Birmingham — with the gender reveal
-              at the finish line
-            </li>
-            <li>1:31 Pro Singles in Stockport; 12+ Hyrox races</li>
-            <li>
-              HYROX Group Coach and certified personal trainer, 16 active
-              athletes
-            </li>
-          </ul>
+          <p class="quote">"everyday people to the strongest, fittest versions of themselves."</p>
+          <ul><li>HYROX Pro Solo racer — 1:11:13 PB.</li><li>Fastest solo: 1:11:13 — Birmingham.</li><li>Fastest doubles: Doubles — Birmingham.</li><li>Monthly HYROX sims at Pyramid Performance, programming and race crew.</li></ul>
         </div>
       </div>
     </section>
 
     <section class="block" id="plans">
       <div class="wrap">
-        <p class="eyebrow reveal">Subscriptions</p>
-        <h3 class="reveal">Pick your zone. Cancel any time, no drama.</h3>
-        <p class="lead reveal">
-          Monthly coaching that fits around your life — from self-guided
-          programming to full race prep.
-        </p>
+        <p class="eyebrow reveal">Burgon Fitness coaching</p>
+        <h3 class="reveal">Find your way forward.</h3>
+        <p class="lead reveal">From your first HYROX to a personalised race build: choose Hannah&#39;s online programming, small-group coaching, personal training or a simulation at Pyramid Performance.</p>
         <div class="plan plan-crew reveal">
-          <img
-            class="crew-photo"
-            src="/burgonfitness/images/squad-athlos.jpg?v=1792661955867"
-            alt="Six women from the Warriors squad flexing and laughing together after a session"
-            loading="lazy"
-          />
           <div class="crew-copy">
             <span class="tag">New here?</span>
-            <h4>Rookie Crew</h4>
+            <h4>Join the HYROX Prep Club</h4>
             <p class="crew-line">
-              Never raced and not sure where to start? Start here. One group
-              session a week in Stockport — start whenever, your own pace, nobody
-              judging. Then once a month there's a meetup: class first, then
-              coffee, food and gossip — and honestly, that's the important
-              part. Sit with crew who've done it and see your next step in the
-              flesh.
+              Not ready for coaching — or not sure HYROX is for you yet? Start
+              with free race tools, clear training guidance and a community
+              to help you find your feet.
             </p>
             <p class="crew-note">
-              Weekly group session · monthly meetup — class first, then coffee
-              and treats (the important part, honestly) · starter programme in
-              the app · crew WhatsApp group. Walkers welcome — the podium's a
-              bonus.
+              Free to join · beginner-safe · race tools · community prompts —
+              coaching only when it makes sense.
             </p>
           </div>
           <div class="crew-side">
-            <div class="price">£45 <small>/ month</small></div>
-            <div class="per">Start any time · cancel any time</div>
-            <button
-              class="btn btn-primary"
-              type="button"
-              data-plan="burgonfitness-plan-crew-001"
-            >
-              Join the Crew
-            </button>
+            <div class="price">£0 <small>/ always</small></div>
+            <div class="per">The softer first step</div>
+            <a class="btn btn-primary" href="/burgonfitness/prep-club.html">Join Prep Club</a>
           </div>
         </div>
-        <div class="plans">
-          <div class="plan reveal">
-            <span class="tag">Program</span>
-            <h4>Warrior Program</h4>
-            <div class="price">£35 <small>/ month</small></div>
-            <div class="per">Weekly Hyrox programming in your pocket</div>
-            <ul>
-              <li>New training week every Monday</li>
-              <li>Station technique library</li>
-              <li>Private community group</li>
-              <li>Monthly live Q&amp;A with Hannah</li>
-              <li>Written by a HYROX Group Coach</li>
-              <li>Delivered in the TrueCoach app</li>
-            </ul>
-            <button
-              class="btn btn-ghost"
-              type="button"
-              data-plan="burgonfitness-plan-warrior-001"
-            >
-              Start the Program
-            </button>
-            <a class="plan-more" href="/burgonfitness/warrior-program/"
-              >Program details →</a
-            >
-          </div>
-          <div class="plan featured reveal">
-            <span class="tag">Most popular</span>
-            <h4>Hybrid Coaching</h4>
-            <div class="price">£120 <small>/ month</small></div>
-            <div class="per">Online 1:1 coaching + 2 floor sessions</div>
-            <ul>
-              <li>Personalised programme</li>
-              <li>Weekly check-in &amp; form video review</li>
-              <li>Two in-person sessions in Stockport</li>
-              <li>Direct WhatsApp access</li>
-              <li>Coached 1:1 by a HYROX Group Coach</li>
-              <li>Programme delivered in the TrueCoach app</li>
-            </ul>
-            <p class="plan-note">
-              Travelling or carrying a knock? Floor sessions can switch to
-              video form reviews, or bank them for when you're back — your
-              call, no loss.
-            </p>
-            <p class="seats" data-seats="burgonfitness-plan-hybrid-001" hidden></p>
-            <a class="plan-more" href="/burgonfitness/hyrox-coaching-stockport/"
-              >Hybrid details →</a
-            >
-            <button
-              class="btn btn-primary"
-              type="button"
-              data-plan="burgonfitness-plan-hybrid-001"
-            >
-              Start Hybrid Coaching
-            </button>
-          </div>
-          <div class="plan reveal">
-            <span class="tag">Race prep</span>
-            <h4>Elite Race Prep</h4>
-            <div class="price">£250 <small>/ month</small></div>
-            <div class="per">12-week build · 3-month minimum</div>
-            <ul>
-              <li>Fully individualised race build</li>
-              <li>Pacing &amp; station strategy</li>
-              <li>Race-week and race-day plan</li>
-              <li>Priority access, doubles welcome</li>
-              <li>Coached 1:1 by a HYROX Group Coach</li>
-              <li>Programme delivered in the TrueCoach app</li>
-            </ul>
-            <p class="seats" data-seats="burgonfitness-plan-elite-001" hidden></p>
-            <a class="btn btn-ghost" href="#ask">Enquire</a>
-            <a class="plan-more" href="/burgonfitness/elite-race-prep/"
-              >Elite details →</a
-            >
-          </div>
-        </div>
-        <p class="plans-note" id="plans-note" role="status" aria-live="polite">
-          Monthly, cancel anytime. Pay by bank transfer or direct debit — no card needed.
+        <div class="plans coach-plans verified-offers"><article class="plan featured reveal" data-offer-id="0"><span class="tag">12 weeks · PDF blocks</span><h4>Couch to HYROX</h4><div class="price">£30/month</div><p class="per">A beginner-friendly programme delivered in three progressive four-week blocks.</p><ul><li>Two difficulty options; 2–3 sessions each week</li><li>Running and HYROX sessions included</li><li>Cancel anytime; future blocks stop when you cancel</li></ul><a class="btn btn-primary" href="https://buy.stripe.com/3cIfZj1kj0pR0JoeS21ZS0c" target="_blank" rel="noopener">View Couch to HYROX enrolment</a></article><article class="plan reveal" data-offer-id="1"><span class="tag">App programme · all abilities</span><h4>HYROX Lite</h4><p class="per">HYROX programming with video demonstrations, coaching notes and monthly check-ins.</p><ul><li>Two HYROX sessions plus 1–2 runs per week</li><li>Benchmark sessions to follow your progress</li><li>90-day minimum commitment</li></ul><a class="btn btn-ghost" href="https://buy.stripe.com/8x27sN3srdcDeAedNY1ZS0b" target="_blank" rel="noopener">View HYROX Lite enrolment</a></article><article class="plan reveal" data-offer-id="2"><span class="tag">Personalised online coaching</span><h4>HYROX Compete</h4><div class="price">From £120/month</div><p class="per">Programming tailored to you, with running included and weekly check-ins.</p><ul><li>Adjusted as your training progresses</li><li>Race and nutrition calls around your races</li><li>90-day minimum commitment</li></ul><a class="btn btn-ghost" href="https://calendly.com/hannahburgonfitness/consultation" target="_blank" rel="noopener">Book a free consultation</a></article><article class="plan reveal" data-offer-id="3"><span class="tag">Maximum four athletes</span><h4>Small-group performance coaching</h4><div class="price">£89/month</div><p class="per">One weekly coached session at Pyramid Performance, with individual feedback in a small group.</p><ul><li>Tuesday 7am or Thursday 6pm</li><li>£25 PAYG, subject to availability</li><li>£160/month for both weekly sessions</li></ul><a class="btn btn-ghost" href="https://hannahburgonfitness.com/hyrox-performance-coaching-groups" target="_blank" rel="noopener">View small-group coaching</a></article><article class="plan reveal" data-offer-id="4"><span class="tag">Half and full simulations</span><h4>HYROX simulation events</h4><p class="per">Rehearse the race format at Pyramid Performance. Choose a date and read the event instructions before booking.</p><a class="btn btn-ghost" href="https://hannahburgonfitness.com/all-upcoming-events" target="_blank" rel="noopener">View simulation dates</a></article><article class="plan reveal" data-offer-id="5"><span class="tag">Pyramid Performance · Stockport</span><h4>Face-to-face personal training</h4><p class="per">Weekly sessions tailored to your goals, with technique feedback, progress tracking and nutrition analysis.</p><a class="btn btn-ghost" href="https://hannahburgonfitness.com/face-to-face-personal-training" target="_blank" rel="noopener">Explore personal training</a></article></div><p class="offer-terms">Offer details and prices are set by the provider. Check the linked page for current terms.</p><p class="plans-note">
+          Not sure which route fits? <a href="#ask">Ask Hannah</a>.
         </p>
-        <details class="plan-faq reveal">
-          <summary>How do floor sessions work?</summary>
-          <p>
-            Floor sessions run at the Performance Centre in Stockport — coached,
-            capped in size, and built around your programme. Can't make one?
-            Swap it for a video form review that week. Your programme,
-            check-ins and reviews carry on in the app and WhatsApp regardless.
-          </p>
-        </details>
       </div>
     </section>
 
@@ -426,51 +362,23 @@
       </div>
     </section>
 
+    <section class="block" id="stories"><div class="wrap"><p class="eyebrow">Between the start lines</p><h3>Keep learning between sessions.</h3><p class="lead">Race stories, coaching clips and useful places to explore next.</p><div class="showcase-grid">
+      <article class="showcase-card"><h4>HYROX news</h4><p>Race stories from around the world, with Hannah's perspective on what matters.</p><a class="btn btn-ghost" href="/burgonfitness/news.html">Read the news</a></article>
+      <article class="showcase-card"><h4>Watch &amp; listen</h4><p>Training clips, race footage and longer conversations — ready when you are.</p><p><a class="btn btn-ghost" href="/burgonfitness/watch.html">Watch &amp; Learn</a> <a href="/burgonfitness/podcast.html">Studio series →</a></p></article>
+      <article class="showcase-card"><h4>More from Burgon Fitness</h4><p>Coaching routes, sessions and official channels.</p><a class="btn btn-ghost" href="/burgonfitness/shop.html">Open the links</a></article>
+    </div></div></section>
+
     <section class="block alt" id="events">
       <div class="wrap">
         <p class="eyebrow reveal">Upcoming Events</p>
-        <h3 class="reveal">Put a race on the calendar.</h3>
+        <h3 class="reveal">Pick the start line. Build towards it.</h3>
         <p class="lead reveal">
-          Cohorts open twelve weeks before each race. Train together, race
-          together. Not ready to race? Come watch with the crew — free, still a great day out.
+          Choose a confirmed race, plan the weekend and build the training
+          around it. Find a teammate, bring the crew and make the start line a shared target.
         </p>
-        <div class="events">
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>Stockport</span></div>
-            <div>
-              <h4>HYROX Stockport 2027</h4>
-              <p>
-                The home race. Twelve-week Warriors cohort — dates confirmed
-                when HYROX announces.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="#ask">Get notified</a>
-          </div>
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>London</span></div>
-            <div>
-              <h4>HYROX London</h4>
-              <p>
-                The home weekend — biggest venue, loudest crowd. Crew cohort
-                with pacing plans built for ExCeL.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="#ask">Get notified</a>
-          </div>
-          <div class="event reveal">
-            <div class="date"><strong>Sat</strong><span>Monthly</span></div>
-            <div>
-              <h4>Warriors Sim Day — Stockport</h4>
-              <p>
-                Full race simulation on the floor. Open to all subscribers;
-                bring a doubles partner.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="#ask">Get notified</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="events" id="race-cards" aria-live="polite"><div class="event"><div class="date"><strong><time datetime="2026-12-02">2 Dec 2026</time></strong><span>London</span></div><div><h4>Amazon HYROX London</h4><p>2 Dec 2026 – 6 Dec 2026 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-london-excel/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/burgonfitness/events.html#london">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2027-01-20">20 Jan 2027</time></strong><span>Manchester</span></div><div><h4>HYROX Manchester</h4><p>20 Jan 2027 – 31 Jan 2027 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-manchester/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/burgonfitness/events.html#manchester">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2026-11-11">11 Nov 2026</time></strong><span>Dublin</span></div><div><h4>HYROX Dublin</h4><p>11 Nov 2026 – 15 Nov 2026 · Ireland</p><a href="https://hyrox.com/event/hyrox-dublin/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/burgonfitness/events.html#dublin">Plan the weekend</a></div></div></div></section>
 
     <section class="cta-band" id="find-partner">
       <div class="wrap">
@@ -479,7 +387,7 @@
           Open doubles, pro, mixed — yes, that one too — relay, or just
           race-trip company. Post your card, Hannah does the intros.
         </p>
-        <a class="btn btn-light" href="/burgonfitness/find-a-partner/"
+        <a class="btn btn-light" href="/burgonfitness/find-a-partner.html"
           >Find a partner</a
         >
       </div>
@@ -490,8 +398,7 @@
         <p class="eyebrow reveal">Results wall</p>
         <h3 class="reveal">Real athletes. Real times.</h3>
         <p class="lead reveal">
-          Every result here is a Burgon athlete who said yes to being on the
-          wall. Before and after, race by race.
+          Every result here is athlete-approved. Before and after, race by race.
         </p>
         <ul class="wall" id="wall-list"></ul>
         <div class="week" id="week" hidden>
@@ -503,16 +410,20 @@
 
     <section class="block tips" id="tips">
       <div class="wrap">
-        <p class="eyebrow reveal">$1 says</p>
+        <p class="eyebrow reveal">Hannah says</p>
         <h3 class="reveal">The stuff that's not in the rulebook.</h3>
         <p class="lead reveal">
-          Three things per station that Hannah actually does on race day — including the embarrassing ones. Spot a gap? <a href="#ask">Ask Hannah</a> — it might make the list.
+          Three practical checks per station — race-floor lessons from a coach who has raced across divisions, partners and cities. Spot a gap? <a href="#ask">Ask Hannah</a> — it might make the list.
         </p>
-        $1src="/burgonfitness/images/station-lean.jpg?v=1792661955867" alt="Hannah mid goblet squat in the gym"
+        <figure class="tips-photo reveal">
+          <img
+            src="/burgonfitness/images/wallball.jpg?v=1793655388527"
+            alt="Hannah Burgon coaching wall balls in a class setting"
             width="970"
             height="1024"
             loading="lazy"
           />
+          <svg class="tips-hairline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 65 V5 Q0 0 5 0 H62" /></svg>
         </figure>
         <div class="tips-grid reveal">
           <details open>
@@ -556,7 +467,7 @@
             <summary>SkiErg</summary>
             <ol>
               <li>
-                Set the damper before the clock starts — 6–7 for most women.
+                Set the damper before the clock starts — 6–7 for most athletes.
                 Fiddling mid-station costs 10 seconds you never get back.
               </li>
               <li>
@@ -573,8 +484,7 @@
             <summary>Sled Push</summary>
             <ol>
               <li>
-                Test the carpet in the warm-up area — every venue is different,
-                Stockport's was notoriously slow. If it's slow, drop the shoulder,
+                Test the carpet in the warm-up area — every venue is different — some carpets just never let go. If it's slow, drop the shoulder,
                 push from lower, and add 10–15 s to your target so you don't
                 blow the next run chasing a number.
               </li>
@@ -697,41 +607,40 @@
             </ol>
           </details>
           <details>
-            <summary>Heat & travel</summary>
+            <summary>Travel &amp; away races</summary>
             <ol>
               <li>
                 Pre-cool: an ice slushie 20 minutes before the start measurably
-                drops core temperature. Racing from Stockport, this is the free
+                drops core temperature. Racing from United Kingdom, this is the free
                 minute.
               </li>
               <li>
-                Flying to London, Birmingham or KL? Land two days early, race
+                Flying to United Kingdom, Dublin or Singapore? Land two days early, race
                 day minus one is legs up, and pack your own gel — the expo runs
                 out.
               </li>
               <li>
-                Train outdoors at Stockport effort, race indoors at pace. Aircon
+                Train outdoors at United Kingdom effort, race indoors at pace. Aircon
                 venues are 10°C cooler than your Sunday run, so your race pace
                 is faster than your training says.
               </li>
             </ol>
           </details>
           <details>
-            <summary>Training pregnant</summary>
+            <summary>Coming back from a layoff</summary>
             <ol>
               <li>
-                Talk test on every run: if you can't hold a sentence, ease off.
-                Hannah raced doubles at 7 and 12 weeks this way.
+                Drop intensity before volume — keep the sessions, cut the
+                load. The habit is the hard part; the fitness comes back.
               </li>
               <li>
-                Swap burpee broad jumps for step-back burpees and broad jumps
-                for standing long steps — same station rhythm, no impact on your
-                core.
+                Race doubles first. Splitting the stations means you can go
+                hard for 30 seconds and recover — banking confidence instead
+                of a blow-up.
               </li>
               <li>
-                Doubles, not singles. Splitting the stations means you can race
-                hard for 30 seconds and recover, which is exactly what your body
-                wants.
+                A plan beats guesswork. Ask Hannah — that's what the coaching
+                page is for.
               </li>
             </ol>
           </details>
@@ -742,7 +651,7 @@
     <section class="capture" id="ask">
       <img
         class="capture-bg"
-        src="/burgonfitness/images/coaching.jpg?v=1792661955867"
+        src="/burgonfitness/images/coaching.jpg?v=1793655388527"
         alt=""
         width="948"
         height="870"
@@ -750,26 +659,24 @@
       />
       <div class="wrap">
         <div class="reveal coach">
-          <img
+          <span class="coach-portrait"><img
             class="bio"
-            src="/burgonfitness/images/bio.jpg?v=1792661955867"
-            alt="Hannah, head coach"
+            src="/burgonfitness/images/bio.jpg?v=1793655388527"
+            alt="Hannah Burgon — HYROX racer, coach and Burgon Fitness founder"
             width="120"
             height="120"
             loading="lazy"
-          />
+          /><svg class="portrait-hairline" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M33 3 A50 50 0 0 0 33 97" /></svg></span>
           <div>
             <p class="eyebrow">Ask Hannah · Chat Zone</p>
             <h3>Got a race, a station or a target? Just ask.</h3>
             <p>
-              Leave your email and your question. Hannah answers personally — and
-              you'll be first to hear when cohorts open.
+              Have a training question or a race in mind? Send it to Hannah
+              and start the conversation.
             </p>
             <p class="chat-line">
-              Prefer chat? Subscribers get Hannah on
-              <a class="chat-zone chat-zone-inline" href="#ask" data-whatsapp=""
-                ><span class="dot"></span> WhatsApp</a
-              >
+              Prefer chat? Find Hannah on
+              <a class="chat-zone chat-zone-inline" href="https://www.instagram.com/hannahburgon_pt/" target="_blank" rel="noopener"><span class="dot"></span> Instagram</a>
             </p>
           </div>
         </div>
@@ -821,8 +728,8 @@
                   <option>Faster time</option>
                   <option>Podium / elite</option>
                   <option>Doubles / relay</option>
-                  <option>Fit through pregnancy</option>
-                  <option>Post-natal comeback</option>
+                  <option>Doubles partner hunt</option>
+                  <option>Injury comeback</option>
                   <option>General strength &amp; running</option>
                 </select>
               </label>
@@ -852,7 +759,7 @@
               </label>
               <label>
                 <span>Where are you based?</span>
-                <input type="text" name="city" placeholder="Stockport" />
+                <input type="text" name="city" placeholder="United Kingdom" />
               </label>
               <label>
                 <span>Instagram / TikTok handle</span>
@@ -861,7 +768,7 @@
             </div>
             <label class="onboard-wide">
               <span
-                >Injuries, pregnancy stage, or anything Hannah should know</span
+                >Injuries, race history, or anything Hannah should know</span
               >
               <textarea name="notes" rows="3"></textarea>
             </label>
@@ -895,11 +802,11 @@
 
     <section class="block gallery" id="wall-photos" hidden>
       <div class="wrap">
-        <p class="eyebrow reveal">Warriors Wall</p>
-        <h3 class="reveal">Your shots. Your words.</h3>
+        <p class="eyebrow reveal">Race Wall</p>
+        <h3 class="reveal">Your people. Your progress. Your wall.</h3>
         <p class="lead reveal">
-          Race faces, finish-line tears, the squad being daft. Send yours and it
-          goes up here once Hannah has your OK.
+          Race faces, finish-line tears, the squad being daft. Share the moments
+          that make this community yours.
         </p>
         <div
           class="event-tabs reveal"
@@ -936,7 +843,7 @@
                   maxlength="60"
                   list="event-options"
                   required
-                  placeholder="Hyrox Stockport 2026"
+                  placeholder="Hyrox UK 2026"
                 />
                 <datalist id="event-options"></datalist>
               </label>
@@ -963,7 +870,7 @@
             <label class="check">
               <input name="consent" type="checkbox" required />
               <span
-                >I'm in the photo (or everyone in it is happy), and Burgon can
+                >I'm in the photo (or everyone in it is happy), and Hannah can
                 show it on this page and on @burgonfitness. Ask Hannah any time to take
                 it down.</span
               >
@@ -993,28 +900,7 @@
       </dialog>
     </section>
 
-    <section class="block" id="merch">
-      <div class="wrap merch-grid">
-        <div>
-          <p class="eyebrow reveal">Merchandise</p>
-          <h3 class="reveal">Warriors kit — coming soon.</h3>
-          <p class="lead reveal">
-            Training tees, race-day singlets and the R<span class="o">O</span>X
-            cap. Subscribers get first drop.
-          </p>
-          <a class="btn btn-ghost reveal" href="#ask">Tell me when it drops</a>
-        </div>
-        <figure class="merch-photo reveal">
-          <img
-            src="/burgonfitness/images/rope.jpg?v=1792661955867"
-            alt="Burgon Fitness kit — photo coming soon"
-            width="1200"
-            height="800"
-            loading="lazy"
-          />
-        </figure>
-      </div>
-    </section>
+
 
 
 
@@ -1026,54 +912,56 @@
     ></div>
 
     <div class="sticky-cta" id="sticky-cta" hidden>
-      <a class="btn btn-primary" href="#plans">Start training</a>
-      <a class="btn btn-light" href="/burgonfitness/splits/">Free split analysis</a>
+      <a class="btn btn-primary" href="/burgonfitness/coaching.html">Coach with Hannah</a>
+      <a class="btn btn-light" href="/burgonfitness/splits.html">Free split analysis</a>
     </div>
 
     <footer>
       <div class="wrap">
-        <div>© <span id="year"></span> Burgon Fitness</div>
+        <div>© <span id="year"></span> Hannah Burgon</div>
         <nav>
-          <a href="#plans">Subscriptions</a>
-          <a href="/burgonfitness/stations-prep/">Stations Prep</a>
-          <a href="/burgonfitness/run-zone/">Run Zone</a>
-          <a href="/burgonfitness/fuel-zone/">Fuel Zone</a>
-          <a href="/burgonfitness/taper-zone/">Taper Zone</a>
-          <a href="/burgonfitness/events/">Events</a>
-          <a href="/burgonfitness/hyrox-stockport/">Hyrox Stockport</a>
-          <a href="/burgonfitness/race-planner/">Race planner</a>
-          <a href="/burgonfitness/news/">News</a>
-          <a href="/burgonfitness/stockport-hybrid-scene/">Stockport scene</a>
-          <a href="/burgonfitness/station-9/">Station 9</a>
-          <a href="/burgonfitness/broadcast/">Broadcast</a>
-          <a href="/burgonfitness/diary/">Diary</a>
-          <a href="/burgonfitness/results/">Results</a>
-          $1
-          <a href="/burgonfitness/predictor/">Race Predictor</a>
-          <a href="/burgonfitness/find-a-partner/">Find a Partner</a>
-          <a href="#wall-photos">Warriors Wall</a>
+          <a href="#plans">Coaching</a>
+          <a href="/burgonfitness/stations-prep.html">Stations Prep</a>
+          <a href="/burgonfitness/run-zone.html">Run Zone</a>
+          <a href="/burgonfitness/taper-zone.html">Taper Zone</a>
+          <a href="/burgonfitness/race-day.html">Race Day</a>
+          <a href="/burgonfitness/events.html">Events</a>
+          <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
+          <a href="/burgonfitness/events.html#cities">Race planner</a>
+          <a href="/burgonfitness/news.html">News</a>
+          <a href="/burgonfitness/race-crew.html">the ninth station</a>
+          <a href="/burgonfitness/results.html">Results</a>
+          <a href="/burgonfitness/splits.html">Splits</a>
+          <a href="/burgonfitness/find-a-partner.html">Find a Partner</a>
+          <a href="#wall-photos">Race Wall</a>
           <a href="#ask">Ask Hannah</a>
-          <a data-link="truecoach" target="_blank" rel="noopener" hidden
-            >Athlete login (TrueCoach)</a
+          <a data-link="athleteLogin" target="_blank" rel="noopener" hidden
+            >Athlete login</a
           >
           <a
             href="https://www.instagram.com/hannahburgon_pt/"
             target="_blank"
             rel="noopener"
-            >Instagram @hannahburgon_pt</a
+            >Instagram @burgonfitness</a
           >
-          <a href="https://www.facebook.com/HannahBurgonPersonalTraining/" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://www.tiktok.com/@hannahburgonpt" target="_blank" rel="noopener">TikTok</a>
+          <a data-strip="tiktok-link" href="https://www.instagram.com/hannahburgon_pt/" target="_blank" rel="noopener">TikTok @burgonfitness</a>
+          <a data-strip="youtube-link" href="https://www.instagram.com/hannahburgon_pt/" target="_blank" rel="noopener">YouTube — HANNAHBURGON_PT</a>
+          <a href="https://linktr.ee/hannah_burgon" target="_blank" rel="noopener">Burgon Fitness</a>
+          <a href="https://linktr.ee/hannah_burgon" target="_blank" rel="noopener">All links</a>
 
-          <a href="/burgonfitness/book/">Book Hannah</a>
-          <a href="/burgonfitness/advertise/">Advertise</a>
+          <a href="/burgonfitness/coaching.html">Book Hannah</a>
+          <a href="/burgonfitness/partners.html">Partners</a>
+          
         </nav>
       </div>
-          <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/burgonfitness/app.js?v=1792661955867" defer></script>
-    <script src="/burgonfitness/emerge.js?v=1792661955867" defer></script>
-    <script src="/burgonfitness/partners.js?v=1792661955867" defer></script>
+    <script src="/burgonfitness/app.js?v=1793655388527" defer></script>
+    <script src="/burgonfitness/emerge.js?v=1793655388527" defer></script>
+    <script src="/burgonfitness/partners.js?v=1793655388527" defer></script>
+    <script src="/burgonfitness/planner.js?v=1793655388527" defer></script>
+    <script src="/burgonfitness/home-editorial.js?v=1793655388527" defer></script>
+  <script>(()=>{const h=document.querySelector(".hero--bleed");if(!h||!("IntersectionObserver" in window))return;new IntersectionObserver(([e])=>document.body.classList.toggle("hero-in-view",e.isIntersecting)).observe(h);})();</script>
   </body>
 </html>

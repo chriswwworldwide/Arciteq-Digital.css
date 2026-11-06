@@ -30,11 +30,12 @@
     doubles: { station: 0.92, label: "Doubles" },
   };
   const VENUE = {
+    dublin: { mod: 1.0, note: "Short hop, big noise — arrive fresh and keep it simple." },
+    singapore: { mod: 1.02, note: "Travel and heat cost something — build in adjustment time." },
     london: { mod: 1.0, note: "ExCeL aircon is kind — no excuses here." },
+    melbourne: { mod: 1.01, note: "Long-haul legs are real — arrive early." },
+    "hong-kong": { mod: 1.01, note: "The journey is part of the race plan — arrive early." },
     manchester: { mod: 1.0, note: "Flat, fast, friendly — PB territory." },
-    birmingham: { mod: 1.01, note: "NEC halls run warm — the crowd makes up for it." },
-    cardiff: { mod: 1.0, note: "Compact venue — the noise stays close." },
-    glasgow: { mod: 0.99, note: "Scottish air is free PB. Layers for the queue." },
   };
   const MONTHS = {
     january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
@@ -97,11 +98,12 @@
           name: c.name,
           dates: c.race?.dates || "",
           expected: c.race?.expected || "",
-          when: parseRaceDate(c.race?.dates),
+          when: c.race?.start ? new Date(`${c.race.start}T12:00:00Z`) : parseRaceDate(c.race?.dates),
+          end: c.race?.end ? new Date(`${c.race.end}T23:59:59Z`) : null,
         }))
         .filter((r) => r.when || r.expected);
       races.sort((a, b) => (a.when || 9e15) - (b.when || 9e15));
-      races = races.filter((r) => !r.when || r.when.getTime() > now - 86400000);
+      races = races.filter((r) => !r.when || r.when.toISOString().slice(0, 10) >= new Date(now).toISOString().slice(0, 10));
       sel.innerHTML = '<option value="">Pick one…</option>';
       races.forEach((r, i) => {
         const o = document.createElement("option");
@@ -346,7 +348,7 @@
         if (!res.ok) throw new Error(out.error || "save failed");
         e.target.reset();
         note.textContent =
-          "Done — split card's with Graham. If the number needs talking through, she'll know where to find you.";
+          "Done — split card's with Graham. If the number needs talking through, he'll know where to find you.";
       } catch {
         note.textContent = "Couldn't send just now — try again in a bit.";
       }

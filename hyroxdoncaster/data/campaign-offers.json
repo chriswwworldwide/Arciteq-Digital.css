@@ -1,0 +1,39 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Six-week HYROX introduction",
+      "goal": "Offer enquiries",
+      "destination": "https://www.hyroxdoncaster.com/",
+      "image": "/hyroxdoncaster/images/coaching-hero.jpg",
+      "headline": "A structured introduction to strength, conditioning, station technique and the gym community. Enquire about the next intake through the official site.",
+      "actionLabel": "Explore the six-week introduction"
+    },
+    {
+      "id": "programme",
+      "name": "Club memberships",
+      "goal": "Offer enquiries",
+      "destination": "https://www.hyroxdoncaster.com/membership",
+      "image": "/hyroxdoncaster/images/coaching-hero.jpg",
+      "headline": "Choose the training frequency that fits your week, from regular sessions to unlimited coached training.",
+      "actionLabel": "Compare club memberships"
+    },
+    {
+      "id": "programme-3",
+      "name": "Simulation sessions",
+      "goal": "Offer enquiries",
+      "destination": "https://www.hyroxdoncaster.com/sim",
+      "image": "/hyroxdoncaster/images/coaching-hero.jpg",
+      "headline": "Practise all eight stations and the race format at the Kirk Sandall gym. Open to members and non-members; check the simulation page for current dates and booking details.",
+      "actionLabel": "Explore simulation sessions"
+    },
+    {
+      "id": "shop",
+      "name": "Shop collection",
+      "goal": "Shop visits",
+      "destination": "https://www.instagram.com/hyrox_doncaster/",
+      "image": "/hyroxdoncaster/images/coaching-hero.jpg",
+      "headline": "Explore the collection."
+    }
+  ]
+}

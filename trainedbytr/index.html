@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tom Redmond — HYROX Pro athlete, coach & creator | TRAINED BY TR</title>
+    <title>Tom Redmond | Trained by TR coaching, race tools and booking</title>
     <meta
       name="description"
-      content="Tom Redmond's home on the web: Trained by TR 1:1 coaching and group programmes, free race tools, the race-mate finder, vlogs and partner codes — all in one place."
+      content="Tom Redmond — Official HYROX UK Performance Coach and founder of Trained by TR in England. Coaching applications, 1-1 private coaching and the self-led 14-week programme, race tools and verified links."
     />
     <meta
       name="keywords"
-      content="tom redmond, trainedbytr, Trained by TR, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, englandshire hyrox"
+      content="tom redmond, trainedbytr, Trained by TR, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, england hyrox"
     />
     <meta name="geo.region" content="GB-WOR" />
     <meta name="geo.placename" content="England" />
@@ -28,47 +28,129 @@
     <link
       rel="preload"
       as="image"
-      href="/trainedbytr/images/hero.jpg?v=1792700913214"
+      href="/trainedbytr/images/hero.jpg?v=1793655401793"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/trainedbytr/styles.css?v=1792700913214" />
+    <link rel="stylesheet" href="/trainedbytr/styles.css?v=1793655401793" />
     <script>
       document.documentElement.classList.add("js");
-      // Refresh = top of page + the hero entrance plays. Any hash left in
-      // the URL by nav clicks gets cleared before it can force a jump;
-      // in-page anchor clicks still scroll as normal.
-      if ("scrollRestoration" in history) {
-        history.scrollRestoration = "manual";
-        if (location.hash && performance.getEntriesByType("navigation")[0]?.type === "reload")
-          history.replaceState(null, "", location.pathname + location.search);
-      }
+      // Refresh = top of page + the hero entrance plays. Ordinary navigation
+      // keeps any #section so links from other pages land where promised.
+      const navEntry = performance.getEntriesByType?.("navigation")?.[0];
+      const reloaded = navEntry
+        ? navEntry.type === "reload"
+        : performance.navigation?.type === performance.navigation?.TYPE_RELOAD;
+      (() => {
+        const key = "__s9HomeScroll";
+        const returning = navEntry ? navEntry.type === "back_forward" : Boolean(performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD);
+        const auto = () => { if ("scrollRestoration" in history) history.scrollRestoration = "auto"; };
+        let restoring = false, stopRestore = () => {}, lastAnchor = null, activationEvent = null;
+        const findHomeAnchor = anchor => {
+          if (!anchor || !Number.isInteger(anchor.index) || anchor.index < 0 || typeof anchor.href !== "string" || !Number.isFinite(anchor.top)) return null;
+          const root = anchor.section ? document.getElementById(anchor.section) : anchor.footer ? document.querySelector("body > footer") : null;
+          const node = root && Array.from(root.querySelectorAll("a[href]")).filter(link => link.href === anchor.href)[anchor.index];
+          return node?.getClientRects().length ? node : null;
+        };
+        const remember = (link, event) => {
+          if (restoring) return;
+          if (link) {
+            const section = link.closest("section[id]"), footer = link.closest("footer");
+            const root = section || (footer?.parentElement === document.body ? footer : null);
+            lastAnchor = root ? { href: link.href, section: section?.id || "", footer: root === footer, index: Array.from(root.querySelectorAll("a[href]")).filter(node => node.href === link.href).indexOf(link), top: link.getBoundingClientRect().top } : null;
+            activationEvent = event;
+          } else if (!activationEvent || activationEvent.defaultPrevented) {
+            const node = findHomeAnchor(lastAnchor);
+            if (!node || Math.abs(node.getBoundingClientRect().top - lastAnchor.top) > 12) lastAnchor = null;
+          }
+          try { history.replaceState({ ...history.state, [key]: { x: scrollX, y: scrollY, anchor: lastAnchor } }, ""); } catch {}
+        };
+        const holdScroll = (target, duration = 2500, delays = [200, 600, 1200]) => {
+          restoring = true;
+          if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+          const inputs = ["wheel", "touchstart", "pointerdown", "keydown"];
+          const restore = () => {
+            if (!restoring) return;
+            const point = target();
+            window.scrollTo({ left: point.x, top: point.y, behavior: "instant" });
+          };
+          let observer, frame, deadline, retries = [];
+          const stop = () => {
+            restoring = false; observer?.disconnect(); cancelAnimationFrame(frame); clearTimeout(deadline); retries.forEach(clearTimeout);
+            inputs.forEach(type => removeEventListener(type, stop, true)); auto(); stopRestore = () => {};
+          };
+          stopRestore = stop;
+          inputs.forEach(type => addEventListener(type, stop, { capture: true, passive: true, once: true }));
+          if (typeof ResizeObserver === "function") { observer = new ResizeObserver(restore); observer.observe(document.body); }
+          frame = requestAnimationFrame(restore);
+          retries = delays.map(delay => setTimeout(restore, delay));
+          deadline = setTimeout(stop, duration);
+        };
+        if ("scrollRestoration" in history) history.scrollRestoration = reloaded || (returning && history.state?.[key]) ? "manual" : "auto";
+        if (reloaded && location.hash) history.replaceState(history.state, "", location.pathname + location.search);
+        addEventListener("pagehide", () => { remember(); stopRestore(); auto(); });
+        document.addEventListener("click", event => {
+          const link = event.target?.closest?.("a[href]");
+          if (link && (!link.target || link.target === "_self") && ["http:", "https:"].includes(link.protocol) && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { stopRestore(); remember(link, event); }
+        }, true);
+        addEventListener("pageshow", event => {
+          stopRestore();
+          const point = history.state?.[key];
+          lastAnchor = null; activationEvent = null;
+          if ((event.persisted || returning) && Number.isFinite(point?.x) && Number.isFinite(point?.y)) {
+            lastAnchor = point.anchor || null;
+            holdScroll(() => {
+              const node = findHomeAnchor(point.anchor);
+              return { x: point.x, y: node ? node.getBoundingClientRect().top + scrollY - point.anchor.top : point.y };
+            });
+          } else if (reloaded && !event.persisted) holdScroll(() => ({ x: 0, y: 0 }), 500, [50, 150, 350]);
+          else auto();
+        });
+      })();
     </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
         "name": "Tom Redmond",
-        "description": "Tom Redmond — HYROX Pro athlete, coach and creator. Trained by TR 1:1 coaching and programmes, race tools and race-mate finder.",
+        "description": "Tom Redmond — Official HYROX UK Performance Coach and Trained by TR founder. Coaching routes, race tools and race-mate finder.",
         "url": "https://trainedbytr.localhost/trainedbytr/",
         "areaServed": ["England", "the UK", "Europe"],
         "knowsLanguage": ["en"],
-        "keywords": "tom redmond, trainedbytr, Trained by TR, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, englandshire hyrox",
+        "keywords": "tom redmond, trainedbytr, Trained by TR, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, england hyrox",
         "founder": {
           "@type": "Person",
           "name": "Tom Redmond",
-          "jobTitle": "HYROX Pro athlete, coach & creator",
+          "jobTitle": "HYROX coach & founder",
           "sameAs": ["https://www.instagram.com/trainedbytr/", "https://www.instagram.com/trainedbytr/", "https://www.instagram.com/trainedbytr/", "https://www.instagram.com/trainedbytr/"]
         }
       }
     </script>
-  </head>
-  <body>
+  <style>
+    .pitch-tools { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.5rem 0; }
+    .pitch-tool { padding:1.5rem; border:1px solid var(--line); border-radius:18px; background:var(--paper-2); display:flex; flex-direction:column; gap:.8rem; min-width:0; }
+    .pitch-tool h4 { font-size:1.5rem; line-height:1.15; margin:.3rem 0; }
+    .pitch-tool p { color:var(--ink-2); margin:0 0 1rem; }
+    .pitch-tool .btn { align-self:flex-start; margin-top:auto; }
+    .pitch-tool-main { grid-column:1/-1; display:grid; grid-template-columns:1.2fr 1fr; gap:2rem; border-color:var(--pink); background:linear-gradient(125deg,color-mix(in srgb,var(--pink) 12%,var(--paper)),var(--paper-2)); }
+    .pitch-tool-main h4 { font-size:clamp(1.7rem,3vw,2.5rem); }
+    .tool-preview { display:grid; gap:.4rem; align-content:center; padding:1.2rem; background:var(--paper); border-radius:12px; }
+    .tool-preview span { color:var(--pink); font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; margin-top:.5rem; }
+    .tool-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; }
+    .tool-chips span { padding:.35rem .7rem; border:1px solid var(--line); border-radius:999px; font-size:.8rem; }
+    .pitch-start { color:var(--ink-2); } .pitch-start a { color:var(--pink); }
+    .pitch-guides > summary { cursor:pointer; padding:1rem 0; min-height:44px; }
+    .event-actions { display:flex; flex-direction:column; gap:.6rem; min-width:190px; }
+    .event-prep { color:var(--ink-2); font-size:.85rem; }
+    @media(max-width:760px) { .pitch-tools,.pitch-tool-main { grid-template-columns:minmax(0,1fr); } .pitch-tool { padding:1.1rem; } .event-actions { min-width:0; } }
+  </style>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/trainedbytr/showcase.css?v=1793655401793" /><link rel="stylesheet" href="/trainedbytr/home-editorial.css?v=1793655401793" /><script src="/trainedbytr/coach-view.js?v=1793655401793"></script></head>
+  <body class="home-lab">
     <header class="masthead wrap">
       <h1>
         <a class="wordmark" href="/trainedbytr/"
           >TRAINED BY <span class="o">TR</span>
-          <span class="sig" aria-label="by Tom Redmond"
-            ><span class="sig-text">by Tom Redmond</span
+          <span class="sig" aria-label="Trained by TR"
+            ><span class="sig-text">Trained by TR</span
             ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
               <path
                 d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
@@ -77,64 +159,76 @@
           ></span>
         </a>
       </h1>
-      <p class="city">England</p>
+      <p class="city">Widnes</p>
     </header>
 
-    <div class="nav">
+    
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/trainedbytr/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/trainedbytr/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/trainedbytr/desk.html?audience=coach">Finance</a><a data-coach-link href="/trainedbytr/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/trainedbytr/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/trainedbytr/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/trainedbytr/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
-          <li><a href="/trainedbytr/coaching.html">Coaching</a></li>
-          <li><a href="/trainedbytr/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/trainedbytr/planner.html?view=client" style="color:var(--pink,#b69aff);font-weight:800">Book a session</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/trainedbytr/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/trainedbytr/training.html">Access your training</a></li>
+              <li><a href="/trainedbytr/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/trainedbytr/podcast.html">Studio series</a></li>
+              <li><a href="/trainedbytr/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/trainedbytr/#ask">Ask Tom</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/trainedbytr/predictor.html">Race predictor</a></li>
               <li><a href="/trainedbytr/splits.html">Split analyser</a></li>
               <li><a href="/trainedbytr/results.html">Results board</a></li>
-              <li><a href="/trainedbytr/stations-prep/">Stations prep</a></li>
-              <li><a href="/trainedbytr/run-zone/">Run zone</a></li>
-              <li><a href="/trainedbytr/taper-zone/">Taper zone</a></li>
-              <li><a href="/trainedbytr/events.html">Race calendar</a></li>
+              <li><a href="/trainedbytr/stations-prep.html">Stations prep</a></li>
+              <li><a href="/trainedbytr/find-a-partner.html">Find a race-mate</a></li>
+              <li><a href="/trainedbytr/run-zone.html">Run zone</a></li>
+              <li><a href="/trainedbytr/taper-zone.html">Taper zone</a></li>
+              <li><a href="/trainedbytr/race-day.html">Race day</a></li>
+              <li><a href="/trainedbytr/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/trainedbytr/race-crew.html">Race crew meetups</a></li>
               <li><a href="https://www.instagram.com/trainedbytr/" target="_blank" rel="noopener">Trained by TR IG</a></li>
-              <li><a href="/trainedbytr/#ask">Ask Tom</a></li>
-              <li><a href="/trainedbytr/news.html">UK HYROX news</a></li>
+              <li><a href="/trainedbytr/news.html">HYROX news</a></li>
+              <li><a href="/trainedbytr/list.html">Join the list</a></li>
             </ul>
           </li>
-          <li><a href="/trainedbytr/partners.html">Partners</a></li>
-          <li><a href="/trainedbytr/list.html">Join the list</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/trainedbytr/partners.html">Partners</a></li>
+              <li><a href="/trainedbytr/shop.html">Links</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
 
-    <section class="hero hero--bleed hero--editorial" data-hero-mode="full" data-hero-roll="full"><div class="wrap hero-intro"><span class="kicker">Trained by TR · Widnes</span><h2>Everyday athletes.<br /><em>Race ready.</em></h2><p>HYROX coaching with Tom Redmond.<br />Purposeful training. A race plan built around you.</p></div><div class="hero-visual"><div class="hero-mask"><img class="hero-img" src="/trainedbytr/images/hero.jpg?v=1792700913214" alt="Tom Redmond running through the HYROX race tunnel" width="1024" height="557" fetchpriority="high" /></div></div><div class="wrap hero-footer"><div class="actions"><a class="btn btn-primary" href="/trainedbytr/coaching.html">Coach with Tom</a><a class="btn btn-light" href="/trainedbytr/#ask">Ask Tom</a></div><div class="stats"><div><strong>Performance first</strong><span>Purposeful training</span></div><div><strong>Process always</strong><span>A plan built around you</span></div><div><strong>100+ coached</strong><span>Everyday athletes</span></div></div></div></section>
-
-    <section class="block" id="zones">
+    <section class="hero hero--bleed hero--editorial" data-hero-mode="full" data-hero-roll="full"><div class="hero-visual"><div class="hero-mask"><img class="hero-img" src="/trainedbytr/images/hero.jpg?v=1793655401793" alt="Tom Redmond running through the HYROX race tunnel" width="1024" height="557" fetchpriority="high" /></div><div class="wrap hero-intro"><h2>Everyday athletes.<br /><em>Race ready.</em></h2><p>HYROX coaching with Tom Redmond.<br /> Purposeful training. A race plan built around you.</p></div></div><div class="wrap hero-footer"><div class="actions"><a class="btn btn-primary" href="/trainedbytr/planner.html?view=client">Book a session</a><a class="btn btn-light" href="/trainedbytr/coaching.html">Coach with Tom</a><a class="btn btn-light" href="/trainedbytr/#ask">Ask Tom</a></div><div class="stats"><div><strong>Performance first</strong><span>Purposeful training</span></div><div><strong>Process always</strong><span>A plan built around you</span></div><div><strong>100+ coached</strong><span>Everyday athletes</span></div></div></div></section><section class="block" id="zones">
       <div class="wrap">
-        <p class="eyebrow reveal">The Zones</p>
-        <h3 class="reveal">Every metre, every station, every excuse.</h3>
-        <p class="lead reveal">
-          Pick the weak link. Make it the weapon.
-        </p>
+        <p class="eyebrow reveal">More than a finish time</p>
+        <h3 class="reveal">Know your race. Find your people.</h3>
+        <p class="lead reveal">Your first start line or your next personal best — useful tools to turn a race idea into a plan.</p>
+        <div class="pitch-tools">
+          <article class="pitch-tool pitch-tool-main reveal"><div><span class="tag">After the finish</span><h4>Your finish time tells half the story.</h4><p>See where the minutes went, where you were strong and what deserves your next training block.</p><a class="btn btn-primary" href="/trainedbytr/splits.html">Analyse my splits</a></div><div class="tool-preview" aria-label="What the analysis covers"><span>01 · Running</span><strong>Did your pace fade?</strong><span>02 · Stations</span><strong>Where did time get away?</strong><span>03 · Next steps</span><strong>Know what to work on.</strong></div></article>
+          <article class="pitch-tool reveal"><span class="tag">Better together</span><h4>Got the ticket. Missing the partner?</h4><p>Find someone aiming for your race, your format and a pace that fits. Doubles, relay or company for the race trip.</p><div class="tool-chips"><span>Race</span><span>Division</span><span>Pace</span></div><a class="btn btn-ghost" href="/trainedbytr/find-a-partner.html">Find my race-mate</a></article>
+          <article class="pitch-tool reveal"><span class="tag">Before the start</span><h4>What time could you aim for?</h4><p>Bring your running and station benchmarks together for a race estimate — and a clearer starting point for training.</p><div class="tool-chips"><span>8 runs</span><span>8 stations</span><span>One target</span></div><a class="btn btn-ghost" href="/trainedbytr/predictor.html">Predict my race</a></article>
+        </div>
+        <p class="pitch-start">New to all of this? <a href="/trainedbytr/prep-club.html">Start with the free HYROX Prep Club →</a></p>
+        <details class="pitch-guides"><summary>Explore station guides, running plans and race preparation</summary>
         <div class="zones">
-          <a class="zone zone--hook reveal" href="/trainedbytr/find-a-partner/">
-            <span class="num">New</span>
-            <h4>Got a ticket, need a partner?</h4>
-            <p>
-              Doubles, mixed, relay, or just someone to share the race trip — post
-              your card and Tom makes the intro himself.
-            </p>
-            <span class="more">Find a partner</span>
-          </a>
-          <a class="zone reveal" href="/trainedbytr/stations-prep/">
+          <a class="zone reveal" href="/trainedbytr/stations-prep.html">
             <span class="num">01</span>
             <h4>Stations Prep</h4>
             <p>
@@ -143,34 +237,34 @@
             </p>
             <span class="more">Open station guides</span>
           </a>
-          <a class="zone reveal" href="/trainedbytr/run-zone/">
+          <a class="zone reveal" href="/trainedbytr/run-zone.html">
             <span class="num">02</span>
             <h4>Run Zone</h4>
             <p>
               8 × 1 km with heavy legs. Compromised-running sessions built for
-              England halls get warm.
+              HYROX halls get warm.
             </p>
             <span class="more">Run plans</span>
           </a>
-          <a class="zone reveal" href="/trainedbytr/events/">
+          <a class="zone reveal" href="/trainedbytr/events.html">
             <span class="num">03</span>
             <h4>Upcoming Events</h4>
             <p>
-              England countdown plus city planners for London, Birmingham, Hong
-              Kong and Glasgow — hotels, flights, food, the night after.
+              Confirmed start lines in the region and around the world — dates,
+              travel guidance, the crew and the weekend around the race.
             </p>
-            <span class="more">Race calendar</span>
+            <span class="more">Race Calendar &amp; Travel</span>
           </a>
           <a class="zone reveal" href="#ask">
             <span class="num">04</span>
             <h4>Ask Tom</h4>
             <p>
-              Form checks, race strategy, training through pregnancy — ask
+              Form checks, race strategy, training around real life — ask
               directly, get a real answer.
             </p>
             <span class="more">Ask a question</span>
           </a>
-        </div>
+        </div></details>
       </div>
     </section>
 
@@ -178,132 +272,58 @@
       <div class="wrap story">
         <figure class="reveal">
           <img
-            src="/trainedbytr/images/startline.jpg?v=1792700913214"
-            alt="Tom on the start line — flat expression, miles to go"
+            src="/trainedbytr/images/startline.jpg?v=1793655401793"
+            alt="Tom Redmond in race paint beside a HYROX wall"
             width="985"
             height="1150"
             loading="lazy"
           />
+          <svg class="profile-hairline" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 A48 60 0 0 1 48 0 H50" /></svg>
         </figure>
         <div class="reveal">
           <p class="eyebrow">The athlete</p>
-          <h3>Tom Redmond. More than 100 everyday athletes coached to the start line.</h3>
+          <h3>Meet Tom Redmond. <em>The experience behind the coaching.</em></h3>
           <p class="lead">
-            Widnes, England. HYROX Pro athlete, coach and creator —
-            building Trained by TR between race blocks. Open solo Everyday athletes at
-            Manchester, race-day experience and more than 100 coached start lines
-            with the Trained by TR team in Birmingham. The training blocks, the race
-            weekends and the honest debriefs all go on the channel.
+            Official HYROX UK Performance Coach. 15+ races — PB 1:16:16 at Cardiff. Discover the approach behind Trained by TR — and find a way forward that fits your goals.
           </p>
-          <p class="quote">
-            "performance first. process always. results will follow.."
-          </p>
-          <ul>
-            <li>
-              Official HYROX UK Performance Coach. Coached 100+ everyday athletes to the start line.
-            </li>
-            <li>
-              Open solo Everyday athletes — Manchester. The benchmark that started it.
-            </li>
-            <li>
-              Coach to everyday athletes and HYROX age-group champions.
-            </li>
-            <li>
-              Trained by TR: Personal coaching for everyday athletes who want to become race ready.
-            </li>
-          </ul>
+          <p class="quote">"performance first. process always. results will follow.."</p>
+          <ul><li>15+ races — PB 1:16:16 at Cardiff.</li><li>Fastest solo: 1:16:16 — Cardiff.</li><li>Fastest doubles: Team wins — Birmingham.</li><li>Official HYROX UK Performance Coach; Head Coach at TransFit Widnes — athletes with 100+ race finishes.</li></ul>
         </div>
       </div>
     </section>
 
     <section class="block" id="plans">
       <div class="wrap">
-        <p class="eyebrow reveal">The Trained by TR</p>
-        <h3 class="reveal">The coaching arm.</h3>
-        <p class="lead reveal">
-          What Tom sells: 1:1 coaching, group programmes online, and the
-          Trained by TR coaching athlete community. Applications go through the existing
-          forms — no new inbox to check.
-        </p>
+        <p class="eyebrow reveal">Trained by TR coaching</p>
+        <h3 class="reveal">Find your way forward.</h3>
+        <p class="lead reveal">Two routes, with a real difference: private coaching with Tom adapting your training each week, or a self-led programme to follow through FITR.</p>
         <div class="plan plan-crew reveal">
           <img
             class="crew-photo"
-            src="/trainedbytr/images/coaching.jpg?v=1792700913214" alt="Tom Redmond directing an athlete during a coaching session"
+            src="/trainedbytr/images/gallery/tr-class-gymking.jpg?v=1793655401793" alt="A Trained by TR class mid-session under the Gym King sign at TransFit Widnes"
             loading="lazy"
           />
           <div class="crew-copy">
             <span class="tag">New here?</span>
-            <h4>Start with the free stuff</h4>
+            <h4>Join the HYROX Prep Club</h4>
             <p class="crew-line">
-              Not ready for coaching? The race tools are free — predictor,
-              split analyser, stations prep. Use them, race better, and the
-              Hub is here when you want the structured version.
+              Not ready for coaching — or not sure HYROX is for you yet? Start
+              with free race tools, clear training guidance and a community
+              to help you find your feet.
             </p>
             <p class="crew-note">
-              Race predictor · split analyser · stations prep · race-mate
-              finder — free, always.
+              Free to join · beginner-safe · race tools · community prompts —
+              coaching only when it makes sense.
             </p>
           </div>
           <div class="crew-side">
             <div class="price">£0 <small>/ always</small></div>
-            <div class="per">The tools below</div>
-            <a class="btn btn-primary" href="#zones">Use the tools</a>
+            <div class="per">The softer first step</div>
+            <a class="btn btn-primary" href="/trainedbytr/prep-club.html">Join Prep Club</a>
           </div>
         </div>
-        <div class="plans">
-          <div class="plan featured reveal">
-            <span class="tag">Application only</span>
-            <h4>1:1 Coaching</h4>
-            <div class="price">Trained by TR</div>
-            <div class="per">Spots limited — Tom reviews every application</div>
-            <ul>
-              <li>Programme built around your life and your race calendar</li>
-              <li>Weekly check-ins and video form review</li>
-              <li>Pacing, stations, race plan — built to a number</li>
-              <li>Direct line to Tom between sessions</li>
-            </ul>
-            <a
-              class="btn btn-primary"
-              href="https://go.trainedbytr.com/home"
-              target="_blank"
-              rel="noopener"
-              >Apply for 1:1</a
-            >
-          </div>
-          <div class="plan reveal">
-            <span class="tag">On FITR</span>
-            <h4>Group Programmes</h4>
-            <div class="price">Trained by TR</div>
-            <div class="per">Structured blocks with the Hub cohort</div>
-            <ul>
-              <li>Programmed blocks in the FITR app</li>
-              <li>HYROX-specific work, not generic circuits</li>
-              <li>Start with the cohort, progress through blocks</li>
-              <li>The same engine behind Tom's own season</li>
-            </ul>
-            <a
-              class="btn btn-ghost"
-              href="https://go.trainedbytr.com/home"
-              target="_blank"
-              rel="noopener"
-              >See programmes online</a
-            >
-          </div>
-          <div class="plan reveal" data-strip="store-card">
-            <span class="tag">Race-ready coaching</span>
-            <h4>Trained by TR Coaching</h4>
-            <div class="per">Coaching information, applications and the route to your next start line.</div>
-            <a
-              class="btn btn-ghost"
-              href="https://go.trainedbytr.com/home"
-              target="_blank"
-              rel="noopener"
-              >Become race ready</a
-            >
-          </div>
-        </div>
-        <p class="plans-note">
-          Every route is Tom's official one — applications, programmes and the store. One tap out, nothing in between.
+        <div class="plans coach-plans verified-offers"><article class="plan featured reveal" data-offer-id="0"><span class="tag">Bespoke coaching · FITR</span><h4>1-1 Private Coaching</h4><div class="price">£179/month</div><p class="per">Personal programming, weekly check-ins with video feedback, direct WhatsApp support and race preparation.</p><ul><li>Three-month minimum commitment</li><li>£159/month for a six-month commitment or duo arrangement</li><li>Self-led programme access included</li></ul><a class="btn btn-primary" href="https://calendly.com/trainedbytr/hyroxconsultation" target="_blank" rel="noopener">Book a coaching call with Tom</a></article><article class="plan reveal" data-offer-id="1"><span class="tag">14-week self-led FITR programme</span><h4>Benchmark to Breakthrough</h4><div class="price">£120 one-off</div><p class="per">A testing week, 12-week training block and retest week. Follow the structured programme at your own pace.</p><ul><li>Five dedicated training days; optional cardio day</li><li>Station technique library</li><li>Pacing calculator and race-day checklist</li></ul><a class="btn btn-ghost" href="https://trainedbytr.fitr.training/p/TBTRB2B" target="_blank" rel="noopener">Explore the self-led programme</a></article></div><p class="offer-terms">Offer details and prices are set by the provider. Check the linked page for current terms.</p><p class="plans-note">
+          Not sure which route fits? <a href="#ask">Ask Tom</a>. For sessions at TransFit Widnes and more, <a href="https://go.trainedbytr.com/home" target="_blank" rel="noopener">visit the site →</a>
         </p>
       </div>
     </section>
@@ -316,51 +336,23 @@
       </div>
     </section>
 
+    <section class="block" id="stories"><div class="wrap"><p class="eyebrow">Between the start lines</p><h3>Keep learning between sessions.</h3><p class="lead">Race stories, coaching clips and useful places to explore next.</p><div class="showcase-grid">
+      <article class="showcase-card"><h4>HYROX news</h4><p>Race stories from around the world, with Tom's perspective on what matters.</p><a class="btn btn-ghost" href="/trainedbytr/news.html">Read the news</a></article>
+      <article class="showcase-card"><h4>Watch &amp; listen</h4><p>Training clips, race footage and longer conversations — ready when you are.</p><p><a class="btn btn-ghost" href="/trainedbytr/watch.html">Watch &amp; Learn</a> <a href="/trainedbytr/podcast.html">Studio series →</a></p></article>
+      <article class="showcase-card"><h4>More from Trained by TR</h4><p>Coaching routes, sessions and official channels.</p><a class="btn btn-ghost" href="/trainedbytr/shop.html">Open the links</a></article>
+    </div></div></section>
+
     <section class="block alt" id="events">
       <div class="wrap">
         <p class="eyebrow reveal">Upcoming Events</p>
-        <h3 class="reveal">Put a race on the calendar.</h3>
+        <h3 class="reveal">Pick the start line. Build towards it.</h3>
         <p class="lead reveal">
-          Cohorts open twelve weeks before each race. Train together, race
-          together. Not racing yet? Watch the vlogs first — you'll want a start line by the end.
+          Choose a confirmed race, plan the weekend and build the training
+          around it. Find a teammate, bring the crew and make the start line a shared target.
         </p>
-        <div class="events">
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>Budapest</span></div>
-            <div>
-              <h4>HYROX Budapest</h4>
-              <p>
-                The off-season test — raced it to see where the block stands
-                before tapering for the bigger targets. Watch for the vlog.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="/trainedbytr/list.html">Get notified</a>
-          </div>
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>London</span></div>
-            <div>
-              <h4>HYROX London — ExCeL</h4>
-              <p>
-                The home weekend. Where the Everyday athletes open solo benchmark was
-                set — now it's the number everyone else is chasing.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="/trainedbytr/list.html">Get notified</a>
-          </div>
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>Glasgow</span></div>
-            <div>
-              <h4>HYROX Glasgow — pro solo</h4>
-              <p>
-                The target the season was built towards. Building with each
-                session — watch the build on the channel.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="/trainedbytr/list.html">Get notified</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="events" id="race-cards" aria-live="polite"><div class="event"><div class="date"><strong><time datetime="2026-12-02">2 Dec 2026</time></strong><span>London</span></div><div><h4>Amazon HYROX London</h4><p>2 Dec 2026 – 6 Dec 2026 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-london-excel/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/trainedbytr/events.html#london">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2027-01-20">20 Jan 2027</time></strong><span>Manchester</span></div><div><h4>HYROX Manchester</h4><p>20 Jan 2027 – 31 Jan 2027 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-manchester/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/trainedbytr/events.html#manchester">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2026-11-11">11 Nov 2026</time></strong><span>Dublin</span></div><div><h4>HYROX Dublin</h4><p>11 Nov 2026 – 15 Nov 2026 · Ireland</p><a href="https://hyrox.com/event/hyrox-dublin/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/trainedbytr/events.html#dublin">Plan the weekend</a></div></div></div></section>
 
     <section class="cta-band" id="find-partner">
       <div class="wrap">
@@ -369,7 +361,7 @@
           Open doubles, pro, mixed — yes, that one too — relay, or just
           race-trip company. Post your card, Tom does the intros.
         </p>
-        <a class="btn btn-light" href="/trainedbytr/find-a-partner/"
+        <a class="btn btn-light" href="/trainedbytr/find-a-partner.html"
           >Find a partner</a
         >
       </div>
@@ -380,8 +372,7 @@
         <p class="eyebrow reveal">Results wall</p>
         <h3 class="reveal">Real athletes. Real times.</h3>
         <p class="lead reveal">
-          Every result here is a Tom athlete who said yes to being on the
-          wall. Before and after, race by race.
+          Every result here is athlete-approved. Before and after, race by race.
         </p>
         <ul class="wall" id="wall-list"></ul>
         <div class="week" id="week" hidden>
@@ -396,7 +387,7 @@
     <section class="capture" id="ask">
       <img
         class="capture-bg"
-        src="/trainedbytr/images/coaching.jpg?v=1792700913214"
+        src="/trainedbytr/images/coaching.jpg?v=1793655401793"
         alt=""
         width="948"
         height="870"
@@ -404,20 +395,20 @@
       />
       <div class="wrap">
         <div class="reveal coach">
-          <img
+          <span class="coach-portrait"><img
             class="bio"
-            src="/trainedbytr/images/bio.jpg?v=1792700913214"
-            alt="Tom Redmond — HYROX Pro athlete and coach"
+            src="/trainedbytr/images/bio.jpg?v=1793655401793"
+            alt="Tom Redmond — HYROX racer, coach and Trained by TR founder"
             width="120"
             height="120"
             loading="lazy"
-          />
+          /><svg class="portrait-hairline" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M33 3 A50 50 0 0 0 33 97" /></svg></span>
           <div>
             <p class="eyebrow">Ask Tom · Chat Zone</p>
             <h3>Got a race, a station or a target? Just ask.</h3>
             <p>
-              Leave your email and your question. Tom reads them personally — and
-              you'll be first to hear when cohorts open.
+              Have a training question or a race in mind? Send it to Tom
+              and start the conversation.
             </p>
             <p class="chat-line">
               Prefer chat? Find Tom on
@@ -547,11 +538,11 @@
 
     <section class="block gallery" id="wall-photos" hidden>
       <div class="wrap">
-        <p class="eyebrow reveal">Warriors Wall</p>
-        <h3 class="reveal">Your shots. Your words.</h3>
+        <p class="eyebrow reveal">Race Wall</p>
+        <h3 class="reveal">Your people. Your progress. Your wall.</h3>
         <p class="lead reveal">
-          Race faces, finish-line tears, the squad being daft. Send yours and it
-          goes up here once Tom has your OK.
+          Race faces, finish-line tears, the squad being daft. Share the moments
+          that make this community yours.
         </p>
         <div
           class="event-tabs reveal"
@@ -657,35 +648,36 @@
     ></div>
 
     <div class="sticky-cta" id="sticky-cta" hidden>
-      <a class="btn btn-primary" href="/trainedbytr/coaching.html">Train with Tom</a>
-      <a class="btn btn-light" href="/trainedbytr/splits/">Free split analysis</a>
+      <a class="btn btn-primary" href="/trainedbytr/coaching.html">Coach with Tom</a>
+      <a class="btn btn-light" href="/trainedbytr/splits.html">Free split analysis</a>
     </div>
 
     <aside class="coach-question" aria-label="Ask Tom"><p>Got a training or race-day question?</p><a class="btn btn-primary" href="/trainedbytr/#ask">Ask Tom</a></aside><footer><div class="wrap">
         <div>© <span id="year"></span> Tom Redmond</div>
         <nav>
-          <a href="#plans">Subscriptions</a>
-          <a href="/trainedbytr/stations-prep/">Stations Prep</a>
-          <a href="/trainedbytr/run-zone/">Run Zone</a>
-          <a href="/trainedbytr/taper-zone/">Taper Zone</a>
-          <a href="/trainedbytr/events/">Events</a>
+          <a href="#plans">Coaching</a>
+          <a href="/trainedbytr/stations-prep.html">Stations Prep</a>
+          <a href="/trainedbytr/run-zone.html">Run Zone</a>
+          <a href="/trainedbytr/taper-zone.html">Taper Zone</a>
+          <a href="/trainedbytr/race-day.html">Race Day</a>
+          <a href="/trainedbytr/events.html">Events</a>
           <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
-          <a href="/trainedbytr/race-planner/">Race planner</a>
-          <a href="/trainedbytr/news/">News</a>
-          <a href="/trainedbytr/race-crew/">the ninth station</a>
-          <a href="/trainedbytr/results/">Results</a>
-          <a href="/trainedbytr/splits/">Splits</a>
-          <a href="/trainedbytr/find-a-partner/">Find a Partner</a>
-          <a href="#wall-photos">Warriors Wall</a>
+          <a href="/trainedbytr/events.html#cities">Race planner</a>
+          <a href="/trainedbytr/news.html">News</a>
+          <a href="/trainedbytr/race-crew.html">the ninth station</a>
+          <a href="/trainedbytr/results.html">Results</a>
+          <a href="/trainedbytr/splits.html">Splits</a>
+          <a href="/trainedbytr/find-a-partner.html">Find a Partner</a>
+          <a href="#wall-photos">Race Wall</a>
           <a href="#ask">Ask Tom</a>
-          <a data-link="truecoach" target="_blank" rel="noopener" hidden
-            >Athlete login (TrueCoach)</a
+          <a data-link="athleteLogin" target="_blank" rel="noopener" hidden
+            >Athlete login</a
           >
           <a
             href="https://www.instagram.com/trainedbytr/"
             target="_blank"
             rel="noopener"
-            >Instagram @trainedbytrfit</a
+            >Instagram @trainedbytr</a
           >
           
           
@@ -694,14 +686,17 @@
 
           <a href="/trainedbytr/coaching.html">Book Tom</a>
           <a href="/trainedbytr/partners.html">Partners</a>
-          <a href="/trainedbytr/desk.html">The desk</a>
+          
         </nav>
       </div>
-      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/trainedbytr/app.js?v=1792700913214" defer></script>
-    <script src="/trainedbytr/emerge.js?v=1792700913214" defer></script>
-    <script src="/trainedbytr/partners.js?v=1792700913214" defer></script>
+    <script src="/trainedbytr/app.js?v=1793655401793" defer></script>
+    <script src="/trainedbytr/emerge.js?v=1793655401793" defer></script>
+    <script src="/trainedbytr/partners.js?v=1793655401793" defer></script>
+    <script src="/trainedbytr/planner.js?v=1793655401793" defer></script>
+    <script src="/trainedbytr/home-editorial.js?v=1793655401793" defer></script>
+  <script>(()=>{const h=document.querySelector(".hero--bleed");if(!h||!("IntersectionObserver" in window))return;new IntersectionObserver(([e])=>document.body.classList.toggle("hero-in-view",e.isIntersecting)).observe(h);})();</script>
   </body>
 </html>

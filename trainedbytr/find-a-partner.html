@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,8 +12,9 @@
       content="Got a ticket, need a partner? Post your card on Tom's match board — first name and pace only, no contact details — and Tom intros you to a Hyrox partner at your level. Open, pro and mixed doubles, relay teams and race-trip company across the UK."
     />
     <link rel="canonical" href="https://trainedbytr.localhost/trainedbytr/find-a-partner/" />
-    <link rel="stylesheet" href="/trainedbytr/styles.css?v=1792700913214" />
-    <link rel="stylesheet" href="/trainedbytr/guide.css?v=1792700913214" />
+    <link rel="stylesheet" href="/trainedbytr/styles.css?v=1793655401793" />
+    <link rel="stylesheet" href="/trainedbytr/guide.css?v=1793655401793" />
+    <link rel="stylesheet" href="/trainedbytr/community.css?v=1793655401793" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -59,7 +60,7 @@
                 "name": "Is this a dating thing?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "No — it's a racing thing. Whatever happens after someone watches you dominate the sled push is between you and the RoxZone."
+                  "text": "No — it's a racing thing. Whatever happens after someone watches you dominate the sled push is between you and the race-mate board."
                 }
               },
               {
@@ -67,7 +68,7 @@
                 "name": "Who can see my details?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "The public board shows your first name, last initial, pace band, the race and format you want, and your one-line note. Your email and WhatsApp go only to Tom, who makes intros himself."
+                  "text": "The public board shows your first name, last initial, pace band, the race and format you want, and your one-line note. Your email and private contact route go only to Tom, who makes intros personally."
                 }
               },
               {
@@ -75,7 +76,7 @@
                 "name": "How does a match actually happen?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Someone sees your card and asks Tom for an intro over WhatsApp. If it fits — pace, format, race — you're connected. Tom races this circuit and knows who'd actually suit you."
+                  "text": "Someone sees your card and asks Tom for an intro. If it fits — pace, format, race — you're connected through the chosen private route. Tom races this circuit and knows who'd actually suit you."
                 }
               }
             ]
@@ -83,15 +84,15 @@
         ]
       }
     </script>
-  </head>
-  <body>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/trainedbytr/showcase.css?v=1793655401793" /><script src="/trainedbytr/coach-view.js?v=1793655401793"></script></head>
+  <body class="community" data-match-preview="true">
     <header class="masthead wrap">
       <a href="/trainedbytr/" style="color: inherit; text-decoration: none">
         <h1>
           <span class="wordmark"
             >TRAINED BY <span class="o">TR</span>
-            <span class="sig" aria-label="by Tom Redmond"
-              ><span class="sig-text">by Tom Redmond</span
+            <span class="sig" aria-label="Trained by TR"
+              ><span class="sig-text">Trained by TR</span
               ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
                 <path
                   d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
@@ -101,47 +102,65 @@
           </span>
         </h1>
       </a>
-      <p class="city">England</p>
+      <p class="city">Widnes</p>
     </header>
 
-    <div class="nav">
+    
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/trainedbytr/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/trainedbytr/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/trainedbytr/desk.html?audience=coach">Finance</a><a data-coach-link href="/trainedbytr/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/trainedbytr/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/trainedbytr/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/trainedbytr/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
-          <li><a href="/trainedbytr/coaching.html">Coaching</a></li>
-          <li><a href="/trainedbytr/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/trainedbytr/planner.html?view=client" style="color:var(--pink,#b69aff);font-weight:800">Book a session</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/trainedbytr/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/trainedbytr/training.html">Access your training</a></li>
+              <li><a href="/trainedbytr/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/trainedbytr/podcast.html">Studio series</a></li>
+              <li><a href="/trainedbytr/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/trainedbytr/#ask">Ask Tom</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/trainedbytr/predictor.html">Race predictor</a></li>
               <li><a href="/trainedbytr/splits.html">Split analyser</a></li>
               <li><a href="/trainedbytr/results.html">Results board</a></li>
-              <li><a href="/trainedbytr/stations-prep/">Stations prep</a></li>
-              <li><a href="/trainedbytr/run-zone/">Run zone</a></li>
-              <li><a href="/trainedbytr/taper-zone/">Taper zone</a></li>
-              <li><a href="/trainedbytr/events.html">Race calendar</a></li>
+              <li><a href="/trainedbytr/stations-prep.html">Stations prep</a></li>
+              <li><a href="/trainedbytr/find-a-partner.html">Find a race-mate</a></li>
+              <li><a href="/trainedbytr/run-zone.html">Run zone</a></li>
+              <li><a href="/trainedbytr/taper-zone.html">Taper zone</a></li>
+              <li><a href="/trainedbytr/race-day.html">Race day</a></li>
+              <li><a href="/trainedbytr/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/trainedbytr/race-crew.html">Race crew meetups</a></li>
               <li><a href="https://www.instagram.com/trainedbytr/" target="_blank" rel="noopener">Trained by TR IG</a></li>
-              <li><a href="/trainedbytr/#ask">Ask Tom</a></li>
-              <li><a href="/trainedbytr/news.html">UK HYROX news</a></li>
+              <li><a href="/trainedbytr/news.html">HYROX news</a></li>
+              <li><a href="/trainedbytr/list.html">Join the list</a></li>
             </ul>
           </li>
-          <li><a href="/trainedbytr/partners.html">Partners</a></li>
-          <li><a href="/trainedbytr/list.html">Join the list</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/trainedbytr/partners.html">Partners</a></li>
+              <li><a href="/trainedbytr/shop.html">Links</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
 
     <section class="guide-hero">
       <div class="wrap">
-        <div class="guide-hero-text">
+        <div class="guide-hero-text reveal">
           <ol class="crumbs">
             <li><a href="/trainedbytr/">Tom</a></li>
             <li>Race Mates</li>
@@ -154,15 +173,15 @@
             buy. Post your card, tell Tom what you're looking for, and the intro happens personally — Tom races this circuit and knows who'd actually suit you.
           </p>
           <p class="lead">
-            <b>Yes, also for mixed doubles.</b> Run your own race, trust your teammate and put the work in together.
+            <b>Yes, also for mixed doubles.</b> Nine partners and seven divisions in — Tom knows a good pairing is a skill, not luck.
           </p>
           <p class="byline">
             By Tom — HYROX Pro athlete, coach, occasional matchmaker.
           </p>
         </div>
-        <figure class="guide-hero-photo pair">
+        <figure class="guide-hero-photo reveal pair">
           <img
-            src="/trainedbytr/images/race-mate-hero.jpg?v=1792700913214"
+            src="/trainedbytr/images/race-mate-hero.jpg?v=1793655401793"
             alt="Two Tom athletes racing side by side at Hyrox"
             width="787"
             height="940"
@@ -186,13 +205,13 @@
         </ol>
       </aside>
 
-      <div class="article">
-        <article class="station" id="kinds">
+      <div class="article reveal">
+        <article class="station reveal" id="kinds">
           <span class="num">Step 01</span>
           <h3>What are you looking for?</h3>
           <div class="zones">
-            <div class="zone">
-              <h4>Your Hyrox sister (or brother)</h4>
+            <div class="zone reveal">
+              <h4>Your doubles partner</h4>
               <p>
                 Open or pro doubles. Someone at your pace who drags you through
                 the sled and doesn't quit when the lunges start biting.
@@ -200,16 +219,15 @@
                 talks the biggest game.
               </p>
             </div>
-            <div class="zone">
+            <div class="zone reveal">
               <h4>Mixed doubles</h4>
               <p>
-                The one everyone whispers about. One woman, one man, 8km and 8
-                stations between you and a very honest first impression. We make
-                no promises about love. We make excellent promises about
-                teamwork.
+                Different strengths. One shared finish line. Find a partner
+                whose pace, goals and approach complement yours — then agree
+                how you'll share the work before race day.
               </p>
             </div>
-            <div class="zone">
+            <div class="zone reveal">
               <h4>Your relay crew's missing fourth</h4>
               <p>
                 Three's a squad, four's a relay team. If your crew is one person
@@ -217,21 +235,21 @@
                 the fourth lives.
               </p>
             </div>
-            <div class="zone">
+            <div class="zone reveal">
               <h4>Just your people</h4>
               <p>
-                Not ready to commit? Find someone to share the flight to KL, the
-                hotel, the pre-race jitters, the celebratory nasi lemak. No
-                partner category required.
+                Racing solo doesn't have to mean travelling alone. Find company
+                for the journey, the pre-race nerves and the meal afterwards.
+                No doubles entry required.
               </p>
             </div>
           </div>
         </article>
 
-        <article class="station" id="how">
+        <article class="station reveal" id="how">
           <span class="num">Step 02</span>
           <h3>How it works</h3>
-          <ol class="roundup-list">
+          <ol class="roundup-list reveal">
             <li>
               <b>Post your card.</b> First name and last initial only, your
               event, your format, your pace band, one line about you. No contact
@@ -244,13 +262,13 @@
             </li>
             <li>
               <b>Someone asks for the intro.</b> They tap your card, Tom
-              connects you both on WhatsApp, and from there it's between you and
-              the RoxZone.
+              connects you through the chosen private route, and from there it's
+              between you and the race-mate board.
             </li>
           </ol>
         </article>
 
-        <article class="station" id="board">
+        <article class="station reveal" id="board">
           <span class="num">Step 03</span>
           <h3>Who's looking</h3>
           <p id="board-intro">
@@ -260,15 +278,16 @@
           <div id="match-board" aria-live="polite"></div>
         </article>
 
-        <article class="station" id="post">
+        <article class="station reveal" id="post">
           <span class="num">Step 04</span>
           <h3>Post your card</h3>
           <p>
             Tom reads every card personally. Use the same email you used in the
-            <a href="/trainedbytr/splits/">split analyser</a> and the coach sees your
+            <a href="/trainedbytr/splits.html">split analyser</a> and the coach sees your
             real numbers next to your card — much better matching than
             self-reported confidence.
           </p>
+          <p class="module-preview-note">Try the community boards here — new cards stay in this browser session while you explore.</p>
           <form class="calc-form" id="partner-form" autocomplete="off">
             <label>
               <span>Name</span>
@@ -295,7 +314,7 @@
               <span>Phone (private, optional)</span>
               <input
                 type="tel"
-                name="whatsapp"
+                name="contact"
                 maxlength="20"
                 autocomplete="tel"
                 placeholder="62… — faster intros"
@@ -345,7 +364,7 @@
                 required
                 maxlength="140"
                 rows="2"
-                placeholder="e.g. First Hyrox, strong runner, terrified of the sled. Looking for a sister who laughs while suffering."
+                placeholder="e.g. First HYROX, confident runner, still working on the sled. Looking for a partner with a similar target and a sense of humour."
               ></textarea>
             </label>
             <label class="consent">
@@ -368,14 +387,14 @@
           </form>
         </article>
 
-        <article class="station" id="analyse">
+        <article class="station reveal" id="analyse">
           <span class="num">Step 05</span>
           <h3>Prove your pace — drop your splits</h3>
           <p>
             Your card asks for an estimate. This is better: enter your last
             race's splits and Tom matches you on real numbers, not
             self-reported confidence. It saves to your athlete record — same
-            place as the <a href="/trainedbytr/splits/">split analyser</a> — and
+            place as the <a href="/trainedbytr/splits.html">split analyser</a> — and
             your card's pace fills itself in. Never raced? An honest estimate
             still works; skip this.
           </p>
@@ -417,7 +436,7 @@
                 <option>Mixed Doubles</option>
               </select>
             </label>
-            <div class="splits-grid" id="pace-grid"></div>
+            <div class="splits-grid reveal" id="pace-grid"></div>
             <label>
               <span>Roxzone total (optional)</span>
               <input
@@ -433,7 +452,7 @@
           </form>
         </article>
 
-        <article class="station" id="travel">
+        <article class="station reveal" id="travel">
           <span class="num">Step 06</span>
           <h3>Team Trained by TR — travel together</h3>
           <p>
@@ -469,7 +488,7 @@
               <span>Phone (private, optional)</span>
               <input
                 type="tel"
-                name="whatsapp"
+                name="contact"
                 maxlength="20"
                 autocomplete="tel"
                 placeholder="62… — faster intros"
@@ -540,10 +559,10 @@
           </form>
         </article>
 
-        <article class="station" id="rules">
+        <article class="station reveal" id="rules">
           <span class="num">Step 07</span>
           <h3>The fine print</h3>
-          <ul class="roundup-list">
+          <ul class="roundup-list reveal">
             <li>
               Your email and number never appear on the site — only Tom sees
               them on the private desk.
@@ -553,18 +572,18 @@
               first.
             </li>
             <li>
-              Matched? Tell Tom and your card comes down — five focused sessions will always outweigh ten average ones.
+              Matched? Tell Tom and your card comes down — and they've learned the hard way what makes a team work.
             </li>
             <li>
               This is a racing-matching board. Whatever happens after someone
-              watches you dominate the sled push is between you and the RoxZone.
+              watches you dominate the sled push is between you and the race-mate board.
             </li>
           </ul>
         </article>
       </div>
     </div>
 
-    <section class="cta-band">
+    <section class="cta-band reveal">
       <div class="wrap">
         <h3>Found each other? Now split the work.</h3>
         <p>
@@ -577,7 +596,7 @@
     </section>
 
     <div
-      class="wrap partners"
+      class="wrap partners reveal"
       data-partners="partner"
       data-label="Partners"
       hidden
@@ -586,28 +605,29 @@
     <aside class="coach-question" aria-label="Ask Tom"><p>Got a training or race-day question?</p><a class="btn btn-primary" href="/trainedbytr/#ask">Ask Tom</a></aside><footer><div class="wrap">
         <div>© <span id="year"></span> Tom Redmond</div>
         <nav>
-          <a href="/trainedbytr/stations-prep/">Stations Prep</a>
-          <a href="/trainedbytr/run-zone/">Run Zone</a>
-          <a href="/trainedbytr/taper-zone/">Taper Zone</a>
-          <a href="/trainedbytr/events/">Events</a>
+          <a href="/trainedbytr/stations-prep.html">Stations Prep</a>
+          <a href="/trainedbytr/run-zone.html">Run Zone</a>
+          <a href="/trainedbytr/taper-zone.html">Taper Zone</a>
+          <a href="/trainedbytr/race-day.html">Race Day</a>
+          <a href="/trainedbytr/events.html">Events</a>
           <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
-          <a href="/trainedbytr/race-planner/">Race planner</a>
-          <a href="/trainedbytr/news/">News</a>
-          <a href="/trainedbytr/race-crew/">the ninth station</a>
-          <a href="/trainedbytr/results/">Results</a>
-          <a href="/trainedbytr/splits/">Split Analyser</a>
-          <a href="/trainedbytr/find-a-partner/">Find a Partner</a>
+          <a href="/trainedbytr/events.html#cities">Race planner</a>
+          <a href="/trainedbytr/news.html">News</a>
+          <a href="/trainedbytr/race-crew.html">the ninth station</a>
+          <a href="/trainedbytr/results.html">Results</a>
+          <a href="/trainedbytr/splits.html">Split Analyser</a>
+          <a href="/trainedbytr/find-a-partner.html">Find a Partner</a>
           <a href="/trainedbytr/#ask">Ask Tom</a>
           <a href="/trainedbytr/coaching.html">Book Tom</a>
           <a href="/trainedbytr/partners.html">Partners</a>
-          <a href="/trainedbytr/desk.html">The desk</a>
+          
         </nav>
       </div>
-      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/trainedbytr/app.js?v=1792700913214" defer></script>
-    <script src="/trainedbytr/partners.js?v=1792700913214" defer></script>
-    <script src="/trainedbytr/match.js?v=1792700913214" defer></script>
+    <script src="/trainedbytr/app.js?v=1793655401793" defer></script>
+    <script src="/trainedbytr/partners.js?v=1793655401793" defer></script>
+    <script src="/trainedbytr/match.js?v=1793655401793" defer></script>
   </body>
 </html>

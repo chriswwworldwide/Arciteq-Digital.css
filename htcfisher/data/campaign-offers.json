@@ -1,0 +1,39 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Online HYROX coaching",
+      "goal": "Offer enquiries",
+      "destination": "https://www.hyroxtrainingclubchristchurch.co.uk/online-hyrox-coaching",
+      "image": "/htcfisher/images/coaching-hero.jpg",
+      "headline": "A race-date-led 12–16 week build with adaptive programming, check-ins and race strategy. Discuss your goals and current pricing with Ross.",
+      "actionLabel": "Enquire about online coaching"
+    },
+    {
+      "id": "programme",
+      "name": "Club classes and drop-ins",
+      "goal": "Offer enquiries",
+      "destination": "https://www.hyroxtrainingclubchristchurch.co.uk/timetable",
+      "image": "/htcfisher/images/coaching-hero.jpg",
+      "headline": "Explore strength, conditioning and race-specific sessions. Club membership options are listed alongside the timetable.",
+      "actionLabel": "View classes and membership"
+    },
+    {
+      "id": "programme-3",
+      "name": "Run club",
+      "goal": "Offer enquiries",
+      "destination": "https://www.hyroxtrainingclubchristchurch.co.uk/runclub",
+      "image": "/htcfisher/images/coaching-hero.jpg",
+      "headline": "The club's interval sessions sit alongside the training week. The timetable describes these as programmed, non-coached sessions.",
+      "actionLabel": "Explore the run club"
+    },
+    {
+      "id": "shop",
+      "name": "Shop collection",
+      "goal": "Shop visits",
+      "destination": "https://www.hyroxtrainingclubchristchurch.co.uk/",
+      "image": "/htcfisher/images/coaching-hero.jpg",
+      "headline": "Explore the collection."
+    }
+  ]
+}

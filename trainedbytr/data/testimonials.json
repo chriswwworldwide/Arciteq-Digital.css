@@ -1,4 +1,23 @@
 {
-  "note": "Real client quotes only, in the athlete's own words, with their permission. The home page section stays hidden until at least one row has `quote` and `name`. Fields: quote, name, detail (e.g. 'Hyrox UK 2025, 1:21'), plan (optional).",
-  "items": []
+  "sourceURL": "https://go.trainedbytr.com/home",
+  "items": [
+    {
+      "name": "Tia",
+      "quote": "You've been an incredible coach, a friend, and a shoulder to cry on.",
+      "detail": "Trained by TR coaching client",
+      "sourceURL": "https://go.trainedbytr.com/home"
+    },
+    {
+      "name": "Sadie",
+      "quote": "Having set sessions each week based on my weaknesses really helped me during the race.",
+      "detail": "Trained by TR coaching client",
+      "sourceURL": "https://go.trainedbytr.com/home"
+    },
+    {
+      "name": "Jamie",
+      "quote": "Tom's programme improved us on the stations we weren't getting the most out of.",
+      "detail": "Trained by TR coaching client",
+      "sourceURL": "https://go.trainedbytr.com/home"
+    }
+  ]
 }

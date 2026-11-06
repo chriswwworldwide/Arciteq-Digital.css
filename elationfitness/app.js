@@ -200,7 +200,7 @@
     const goal = String(p.goal || "");
     const exp = String(p.experience || "");
     const days = String(p.days_per_week || "");
-    const inHomeCity = /london|jkt|tangerang|bekasi|depok|bogor/i.test(
+    const inHomeCity = /norwich|stockport|cheltenham|london|birmingham|manchester|cardiff|glasgow|leeds|liverpool/i.test(
       String(p.city || ""),
     );
     const raced = exp === "2–4 races" || exp === "5+ races";
@@ -226,7 +226,7 @@
         key: inHomeCity ? "hybrid" : "program",
         why: inHomeCity
           ? "Training through pregnancy or a comeback is exactly where Graham's own experience counts — floor time for form checks plus weekly video review."
-          : "Graham programmes around your stage and checks your form on video each week; tell her in the notes where you are and she'll adjust.",
+          : "Graham programmes around your stage and checks your form on video each week; tell him in the notes where you are and he'll adjust.",
       };
     }
     if (inHomeCity && exp === "Never raced") {
@@ -347,7 +347,7 @@
         if (plansNote) {
           plansNote.classList.add("error");
           plansNote.textContent =
-            "Checkout isn't open yet — send Graham a message below and she'll set you up. (" +
+            "Checkout isn't open yet — send Graham a message below and he'll set you up. (" +
             String(err && err.message ? err.message : "error") +
             ")";
         }
@@ -536,7 +536,7 @@
     .then((json) => (json && json.next) || fromPlanner())
     .then((next) => {
       if (!next || !/^\d{4}-\d{2}-\d{2}$/.test(String(next.date || ""))) return;
-      const target = new Date(`${next.date}T00:00:00+07:00`).getTime();
+      const target = new Date(`${next.date}T00:00:00Z`).getTime();
       if (!Number.isFinite(target) || target < Date.now()) return;
       document.getElementById("countdown-name").textContent = String(
         next.name || "",
@@ -548,7 +548,7 @@
         day: "numeric",
         month: "long",
         year: "numeric",
-        timeZone: "the UK/Scotland",
+        timeZone: "UTC",
       });
       if (typeof next.url === "string" && /^https:\/\//.test(next.url)) {
         const link = document.getElementById("countdown-link");
@@ -559,9 +559,16 @@
       }
       const tick = () => {
         const left = Math.max(0, target - Date.now());
-        document.getElementById("cd-days").textContent = String(
-          Math.floor(left / 864e5),
-        );
+        const days = Math.ceil(left / 864e5);
+        document.getElementById("cd-days").textContent =
+          days === 0 ? "Today" : String(days);
+        const label = document.getElementById("cd-label");
+        if (label) {
+          label.textContent =
+            days === 0
+              ? "— listed race date"
+              : `${days === 1 ? "day" : "days"} to the listed race date`;
+        }
         document.getElementById("cd-hours").textContent = String(
           Math.floor((left % 864e5) / 36e5),
         );
@@ -869,7 +876,7 @@ window.roxShare = (function () {
     }
     if (saved) {
       note.textContent =
-        "Got it — photo and caption on Graham's desk. It goes up once she's had a look.";
+        "Got it — photo and caption on Graham's desk. It goes up once he's had a look.";
       form.querySelector("button[type=submit]").disabled = true;
       return;
     }
@@ -885,7 +892,7 @@ window.roxShare = (function () {
         "Upload didn't go through — WhatsApp is open, send the photo there instead.";
     } else {
       note.textContent =
-        "Upload didn't go through — send the photo and caption to Graham on Instagram (@elationfitnessfit) and she'll put it up.";
+        "Upload didn't go through — send the photo and caption to Graham on Instagram (@elationfitnessfit) and he'll put it up.";
     }
   });
 })();
@@ -893,7 +900,7 @@ window.roxShare = (function () {
 // Page-view beacon: cookie-free, no personal data. A random visitor id lives
 // in localStorage for 30 days so returning visitors can be counted without
 // identifying anyone. Athletes who already have a private splits token are stitched
-// onto their own record so Graham can see which pages her leads read.
+// onto their own record so Graham can see which pages his leads read.
 (function () {
   if (/\/coach\/?$/.test(location.pathname)) return;
   let visitor = "";
@@ -968,10 +975,17 @@ window.roxShare = (function () {
   fetch("/elationfitness/data/testimonials.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : null))
     .then((j) => {
+      const seen = new Set();
       const rows = (j?.items || [])
         .filter((q) => q && String(q.quote || "").trim() && q.name)
+        .filter((q) => {
+          const key = String(q.quote).trim().toLowerCase();
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        })
         .slice(0, 3);
-      if (!rows.length) return;
+      if (rows.length < 3) return;
       mount.innerHTML = rows
         .map(
           (q) => `<blockquote class="quote">
@@ -995,9 +1009,10 @@ window.roxShare = (function () {
   bar.hidden = false;
   document.body.classList.add("has-sticky-cta");
   let heroVisible = true;
+  let heroBelowVisible = true;
   let plansVisible = false;
   const update = () =>
-    bar.classList.toggle("is-visible", !heroVisible && !plansVisible);
+    bar.classList.toggle("is-visible", !heroVisible && !heroBelowVisible && !plansVisible);
   new IntersectionObserver(
     (entries) => {
       heroVisible = entries[0].isIntersecting;
@@ -1005,6 +1020,15 @@ window.roxShare = (function () {
     },
     { threshold: 0.15 },
   ).observe(hero);
+  const heroBelow = document.querySelector(".hero-below");
+  if (heroBelow)
+    new IntersectionObserver(
+      (entries) => {
+        heroBelowVisible = entries[0].isIntersecting;
+        update();
+      },
+      { threshold: 0.15 },
+    ).observe(heroBelow);
   if (plans) {
     new IntersectionObserver(
       (entries) => {

@@ -1,0 +1,40 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "1-1 Online Coaching",
+      "goal": "Offer enquiries",
+      "destination": "https://the-hybrid-hub.fitr.training/p/79339",
+      "image": "/joshharrison/images/coaching-hero.jpg",
+      "headline": "A tailored training and nutrition plan with coaching support, calorie and macro guidance, and check-ins.",
+      "actionLabel": "Explore bespoke coaching"
+    },
+    {
+      "id": "programme",
+      "name": "HYROX 365",
+      "goal": "Offer enquiries",
+      "destination": "https://the-hybrid-hub.fitr.training/p/HYROX365_",
+      "image": "/joshharrison/images/coaching-hero.jpg",
+      "headline": "Keep a HYROX focus through the year with the Hub's ongoing programme. Joining opens FITR enrolment.",
+      "actionLabel": "Join HYROX 365 on FITR"
+    },
+    {
+      "id": "programme-3",
+      "name": "12 Week HYROX Plan 1.0",
+      "goal": "Offer enquiries",
+      "destination": "https://the-hybrid-hub.fitr.training/p/HYROXPRESEASON",
+      "image": "/joshharrison/images/coaching-hero.jpg",
+      "headline": "A progressive race build combining strength, running, HYROX conditioning, technique and recovery.",
+      "actionLabel": "View the 12-week plan"
+    },
+    {
+      "id": "programme-4",
+      "name": "Hybrid Performance",
+      "goal": "Offer enquiries",
+      "destination": "https://the-hybrid-hub.fitr.training/p/79437",
+      "image": "/joshharrison/images/coaching-hero.jpg",
+      "headline": "Strength and endurance sessions for becoming a more rounded athlete, with exercise demonstrations and teaching points.",
+      "actionLabel": "Explore Hybrid Performance"
+    }
+  ]
+}

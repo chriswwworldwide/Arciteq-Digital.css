@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en" data-coach-preview="true" data-coach-page="false">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Clients | The Desk | Hybrid Hub</title>
+    <meta
+      name="description"
+      content="A private client desk for the Josh Harrison site — packages, hybrid check-ins, messages and renewals in one place."
+    />
+    <link rel="stylesheet" href="/joshharrison/styles.css?v=crop-fix-20261103" />
+    <link rel="stylesheet" href="/joshharrison/guide.css?v=1793655399019" />
+    <link rel="stylesheet" href="/joshharrison/showcase.css?v=1793655399019" /><link rel="stylesheet" href="/joshharrison/desk.css?v=desk1" /><script src="/joshharrison/desk-more.js?v=1793655399019"></script>
+    <style>
+      .client-wrap { padding: 48px 0 84px; }
+      .client-disclaimer {
+        background: var(--paper-2);
+        border: 1px dashed var(--line);
+        border-radius: 12px;
+        padding: .8rem 1.1rem;
+        font-size: .85rem;
+        color: var(--ink-3);
+        margin: 0 0 1.4rem;
+      }
+      .client-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin: 0 0 1.6rem;
+      }
+      .client-stat {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1rem 1.1rem;
+        background: #14141a;
+      }
+      .client-stat span {
+        display: block;
+        font-size: .72rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      .client-stat strong { display: block; font-size: 1.7rem; margin-top: .2rem; }
+      .daily-digest {
+        border: 1px solid color-mix(in srgb, var(--pink) 35%, transparent);
+        border-radius: 12px;
+        padding: .8rem 1rem;
+        background: color-mix(in srgb, var(--pink) 8%, var(--paper));
+        color: var(--ink-2);
+        margin: -0.4rem 0 1.4rem;
+        font-size: .86rem;
+      }
+      .support-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1rem 1.1rem;
+        background: var(--paper-2);
+        margin-top: 1.4rem;
+      }
+      .support-card h3 { margin: 0 0 .3rem; }
+      .support-card p:not(.eyebrow) { color: var(--ink-3); margin: 0; }
+      .client-settings {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0;
+        background: var(--paper-2);
+        margin-top: 1.4rem;
+      }
+      .client-settings > summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        min-height: 54px;
+        padding: 1rem 1.1rem;
+        cursor: pointer;
+        list-style: none;
+      }
+      .client-settings > summary::-webkit-details-marker { display: none; }
+      .client-settings > summary strong { display: block; margin-top: .15rem; }
+      .settings-hint { color: var(--pink); font-weight: 800; font-size: .82rem; }
+      .client-settings[open] > summary { border-bottom: 1px solid var(--line); }
+      .client-settings[open] { padding-bottom: 1.1rem; }
+      .client-settings[open] .settings-heading,
+      .client-settings[open] .settings-grid,
+      .client-settings[open] .client-actions { margin-left: 1.1rem; margin-right: 1.1rem; }
+      .settings-heading {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+      }
+      .settings-heading h3 { margin: 0; }
+      .settings-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .settings-grid article {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 1rem;
+        background: var(--paper);
+      }
+      .settings-grid h4 { margin: 0 0 .75rem; }
+      .settings-grid label {
+        display: grid;
+        gap: .45rem;
+        margin-bottom: .8rem;
+        font-size: .82rem;
+        color: var(--ink-2);
+      }
+      .settings-grid input:not([type=checkbox]),
+      .settings-grid select,
+      .settings-grid textarea {
+        width: 100%;
+        min-height: 44px;
+        padding: .65rem .75rem;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--paper-2);
+        color: var(--ink);
+        font: inherit;
+        box-sizing: border-box;
+      }
+      .settings-grid textarea { min-height: 86px; resize: vertical; }
+      .settings-check { grid-template-columns: auto 1fr !important; align-items: center; }
+      .settings-check input { width: 20px; height: 20px; min-height: 20px; }
+      .attention-list { display: flex; flex-wrap: wrap; gap: .55rem; padding: 0; margin: 0; list-style: none; }
+      .attention-list li {
+        border: 1px solid color-mix(in srgb, var(--pink) 40%, transparent);
+        border-radius: 999px;
+        padding: .45rem .75rem;
+        font-size: .8rem;
+        color: var(--ink-2);
+      }
+      .client-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+      .client-index,
+      .client-panel,
+      .client-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--paper-2);
+      }
+      .client-index { padding: .9rem; }
+      .client-index-head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+        gap: .8rem;
+        margin-bottom: .8rem;
+      }
+      .client-index-head h3, .client-panel h3 { margin: 0 0 .35rem; }
+      .index-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; }
+      .client-filters { display: flex; flex-wrap: wrap; gap: .45rem; }
+      .add-client-panel {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: .7rem;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: .9rem;
+        margin-bottom: .8rem;
+        background: var(--paper);
+      }
+      .add-client-panel[hidden] { display: none; }
+      .register-controls {
+        display: grid;
+        grid-template-columns: minmax(180px, 1fr) minmax(150px, .35fr);
+        gap: .7rem;
+        margin-bottom: .7rem;
+      }
+      .register-controls label { display: grid; gap: .3rem; font-size: .74rem; color: var(--ink-3); }
+      .register-controls input,
+      .register-controls select {
+        width: 100%;
+        min-height: 40px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: .55rem .65rem;
+        background: var(--paper);
+        color: var(--ink);
+        font: inherit;
+        box-sizing: border-box;
+      }
+      .add-client-panel label { display: grid; gap: .35rem; font-size: .78rem; color: var(--ink-3); }
+      .add-client-panel input,
+      .add-client-panel select {
+        width: 100%;
+        min-height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: .55rem .65rem;
+        background: var(--paper-2);
+        color: var(--ink);
+        font: inherit;
+        box-sizing: border-box;
+      }
+      .filter-chip {
+        min-height: 40px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: .45rem .8rem;
+        background: var(--paper);
+        color: var(--ink-2);
+        font: inherit;
+        font-weight: 750;
+        cursor: pointer;
+      }
+      .filter-chip.is-active { border-color: var(--pink); color: var(--pink); }
+      .client-legend {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .45rem;
+        margin: 0 0 .65rem !important;
+        font-size: .74rem;
+        color: var(--ink-3);
+      }
+      .client-legend span {
+        width: .65rem;
+        height: .65rem;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      .legend-high { background: #55c987; }
+      .legend-watch { background: #f2b84b; }
+      .legend-risk { background: var(--pink); }
+      .client-list { display: grid; gap: .45rem; }
+      .client-card {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr .72fr .82fr .72fr .68fr .68fr .8fr;
+        gap: .7rem;
+        align-items: center;
+        width: 100%;
+        padding: .65rem .75rem;
+        text-align: left;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+      .client-card[aria-pressed="true"] { border-color: var(--pink); }
+      .client-card.health-high { border-left: 4px solid #55c987; }
+      .client-card.health-watch { border-left: 4px solid #f2b84b; }
+      .client-card.health-risk { border-left: 4px solid var(--pink); }
+      .client-cell { min-width: 0; }
+      .client-cell span {
+        display: block;
+        font-size: .64rem;
+        letter-spacing: .07em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: .16rem;
+      }
+      .client-cell strong {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: .9rem;
+      }
+      .client-status { color: var(--pink); }
+      .attention-good { color: #55c987; }
+      .attention-watch { color: #f2b84b; }
+      .attention-risk { color: var(--pink); }
+      .client-card p, .client-panel p { color: var(--ink-2); margin: 0; }
+      .client-detail {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: .8rem;
+        margin: 1rem 0;
+      }
+      .client-detail div {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: .85rem;
+        background: var(--paper);
+      }
+      .client-detail span {
+        display: block;
+        font-size: .72rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: .3rem;
+      }
+      .client-detail strong { font-size: 1.05rem; }
+      .attention-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border: 1px solid color-mix(in srgb, var(--pink) 42%, transparent);
+        border-radius: 12px;
+        padding: .9rem 1rem;
+        background: color-mix(in srgb, var(--pink) 10%, var(--paper));
+        margin: 1rem 0;
+      }
+      .attention-box h4 { margin: 0 0 .3rem; }
+      .attention-owner {
+        flex: 0 0 auto;
+        border-radius: 999px;
+        padding: .35rem .7rem;
+        background: var(--paper);
+        color: var(--pink);
+        font-size: .72rem;
+        font-weight: 850;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+      }
+      .client-history { margin: 1.1rem 0; }
+      .client-history h4 { margin: 0 0 .7rem; display: inline; }
+      .client-history > summary { cursor: pointer; }
+      .timeline { display: grid; gap: 0; }
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 112px 1fr;
+        gap: .85rem;
+        padding: .7rem 0 .7rem .9rem;
+        border-left: 2px solid var(--line);
+        position: relative;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -5px;
+        top: 1rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--pink);
+      }
+      .timeline-item time {
+        color: var(--ink-3);
+        font-size: .76rem;
+        font-weight: 750;
+      }
+      .timeline-item strong { display: block; font-size: .92rem; }
+      .timeline-item p { font-size: .82rem; margin-top: .15rem !important; }
+      .renewal-box {
+        border: 1px solid color-mix(in srgb, var(--pink) 42%, transparent);
+        border-radius: 12px;
+        padding: 1rem;
+        background: color-mix(in srgb, var(--pink) 8%, var(--paper));
+        margin: 1rem 0;
+      }
+      .renewal-box h4 { margin: 0 0 .45rem; }
+      .thread { display: grid; gap: .7rem; margin: 1rem 0; }
+      .bubble { border-radius: 14px; padding: .85rem 1rem; max-width: 92%; }
+      .bubble span {
+        display: block;
+        font-size: .72rem;
+        letter-spacing: .07em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: .3rem;
+      }
+      .bubble p { line-height: 1.5; }
+      .bubble.inbound { background: var(--paper); justify-self: start; }
+      .bubble.outbound {
+        background: color-mix(in srgb, var(--pink) 13%, var(--paper));
+        justify-self: end;
+      }
+      .client-panel textarea {
+        width: 100%;
+        min-height: 120px;
+        padding: .9rem 1rem;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--paper);
+        color: var(--ink);
+        font: inherit;
+        line-height: 1.55;
+        box-sizing: border-box;
+        resize: vertical;
+      }
+      .client-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1rem; }
+      .client-note { font-size: .82rem; color: var(--ink-3); margin-top: .8rem; }
+      .client-toast { margin-top: .9rem; color: var(--pink); font-weight: 700; }
+      .timing-notes {
+        display: grid;
+        gap: .45rem;
+        margin: 1rem 0 0;
+        font-size: .82rem;
+        color: var(--ink-3);
+      }
+      .prompt-preview {
+        border-left: 3px solid var(--pink);
+        padding: .8rem 1rem;
+        margin-top: .8rem;
+        background: var(--paper);
+        border-radius: 0 10px 10px 0;
+        line-height: 1.5;
+      }
+      .client-actions .sent-action { opacity: .65; }
+      @media (max-width: 820px) {
+        .client-grid,
+        .settings-grid { grid-template-columns: 1fr; }
+        .client-index-head { display: grid; }
+        .register-controls { grid-template-columns: 1fr; }
+        .client-card { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: .6rem; }
+        .attention-box { display: grid; }
+        .timeline-item { grid-template-columns: 84px 1fr; }
+        .settings-heading { display: grid; }
+        .bubble { max-width: 100%; }
+      }
+    </style>
+    <script src="/joshharrison/coach-view.js?v=1793655399019"></script>
+  </head>
+  <body class="desk-page"><aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/joshharrison/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/joshharrison/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/joshharrison/desk.html?audience=coach">Finance</a><a data-coach-link href="/joshharrison/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/joshharrison/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/joshharrison/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/joshharrison/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+    <header class="masthead wrap">
+      <a href="/joshharrison/" style="color: inherit; text-decoration: none">
+        <h1>
+          <span class="wordmark"
+            >JOSH HARRIS<span class="o">O</span>N
+            <span class="sig" aria-label="Hybrid Hub"
+              ><span class="sig-text">Hybrid Hub</span
+              ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+                <path
+                  d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                  fill="currentColor"
+                /></svg
+            ></span>
+          </span>
+        </h1>
+      </a>
+      <p class="city">The Desk</p>
+    </header>
+
+    <section class="guide-hero">
+      <div class="wrap">
+        <div class="guide-hero-text">
+          <ol class="crumbs">
+            <li><a href="/joshharrison/">Josh Harrison</a></li>
+            <li>Clients</li>
+          </ol>
+          <p class="eyebrow">The Desk / Clients</p>
+          <h2>More clients. <em>Still personal.</em></h2>
+          <p class="lead">
+            Keep the next session, the unanswered question and the renewal
+            conversation in view. A clearer picture of each client means less
+            chasing — and more attention where it counts.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <main class="wrap client-wrap">
+      <p class="client-disclaimer">
+        <b>Client workflow preview.</b> Bookings, package state, check-ins,
+        replies and renewal prompts are simulated locally. A connected build
+        would sync the booking system, payment/subscription status and the
+        coach’s programme provider.
+      </p>
+
+      <div class="client-stats" aria-label="Client summary">
+        <div class="client-stat"><span>Active clients</span><strong id="stat-active">0</strong></div>
+        <div class="client-stat"><span>Renewal prompts due</span><strong id="stat-renewals">0</strong></div>
+        <div class="client-stat"><span>Floor prompts active</span><strong id="stat-checkins">0</strong></div>
+        <div class="client-stat"><span>Unread questions</span><strong id="stat-messages">0</strong></div>
+        <div class="client-stat"><span>Payment issues</span><strong id="stat-payments">0</strong></div>
+        <div class="client-stat"><span>Automations paused</span><strong id="stat-paused">0</strong></div>
+      </div>
+      <p class="daily-digest" id="daily-digest"></p>
+
+      <div class="client-grid">
+        <section class="client-index" aria-label="All clients">
+          <div class="client-index-head">
+            <div>
+              <p class="eyebrow">All clients</p>
+              <h3 id="attention-title">Client register</h3>
+            </div>
+            <div class="index-actions">
+              <button class="btn btn-primary" id="toggle-add-client" type="button">Add client</button>
+              <button class="btn btn-ghost" id="simulate-booking" type="button">Simulate website booking</button>
+              <div class="client-filters" id="client-filters" aria-label="Client filters">
+              <button type="button" class="filter-chip is-active" data-filter="all">All</button>
+              <button type="button" class="filter-chip" data-filter="top">Top clients</button>
+              <button type="button" class="filter-chip" data-filter="renewal">Renewals</button>
+              <button type="button" class="filter-chip" data-filter="floor">Floor prompts</button>
+              <button type="button" class="filter-chip" data-filter="checkin">Check-ins</button>
+              <button type="button" class="filter-chip" data-filter="message">Messages</button>
+              <button type="button" class="filter-chip" data-filter="payment">Payment</button>
+              <button type="button" class="filter-chip" data-filter="paused">Paused</button>
+              <button type="button" class="filter-chip" data-filter="progression">Progression</button>
+              <button type="button" class="filter-chip" data-filter="archived">Archived</button>
+              </div>
+            </div>
+          </div>
+          <div class="register-controls">
+            <label>Search <input id="client-search" type="search" placeholder="Client, programme or status" /></label>
+            <label>Sort
+              <select id="client-sort">
+                <option value="attention">Attention first</option>
+                <option value="value">Highest value</option>
+                <option value="attendance">Best attendance</option>
+                <option value="renewal">Renewal soonest</option>
+                <option value="last">Last contacted</option>
+              </select>
+            </label>
+          </div>
+          <form class="add-client-panel" id="add-client-panel" hidden>
+            <label>Client name <input id="new-client-name" required placeholder="e.g. Sam R." /></label>
+            <label>Programme
+              <select id="new-client-plan"><option>Monthly coaching</option><option>HYROX 365</option><option>1-1 Bespoke Coaching · intro package</option><option>Race Ready · 8 sessions</option></select>
+            </label>
+            <label>Package type
+              <select id="new-client-type"><option value="monthly">Monthly</option><option value="sessions">Session block</option></select>
+            </label>
+            <label>Package position <input id="new-client-position" type="number" min="1" max="45" value="30" /></label>
+            <label>Value <input id="new-client-value" placeholder="£320/mo" /></label>
+            <label>Email <input id="new-client-email" type="email" placeholder="client@email.co.uk" /></label>
+            <label>Client mobile/WhatsApp <input id="new-client-phone" inputmode="tel" placeholder="4477..." /></label>
+            <label>Preferred contact
+              <select id="new-client-contact"><option>Desk message</option><option>WhatsApp</option><option>Email</option></select>
+            </label>
+            <label>Payment status
+              <select id="new-client-payment"><option>Paid</option><option>Package paid</option><option>Payment pending</option><option>Payment issue</option></select>
+            </label>
+            <label>Auto renew
+              <select id="new-client-autorenew"><option value="true">On</option><option value="false">Off</option></select>
+            </label>
+            <label>Next floor session <input id="new-client-floor" placeholder="Tue · 18:30" /></label>
+            <button class="btn btn-primary" type="submit">Add to Client Desk</button>
+          </form>
+          <p class="client-legend"><span class="legend-high"></span>High engagement <span class="legend-watch"></span>Watch <span class="legend-risk"></span>At risk</p>
+          <div class="client-list" id="client-list"></div>
+          <ul class="attention-list" id="attention-list" hidden></ul>
+        </section>
+
+        <section class="client-panel" aria-live="polite" hidden>
+          <p class="eyebrow">Client workspace</p>
+          <h3 id="client-title">Pick a client.</h3>
+          <p class="client-note" id="client-subtitle"></p>
+
+          <div class="client-detail" id="client-detail"></div>
+
+          <div class="attention-box" id="attention-box">
+            <div>
+              <h4 id="attention-action-title">Current attention</h4>
+              <p id="attention-action-copy"></p>
+            </div>
+            <span class="attention-owner" id="attention-owner"></span>
+          </div>
+
+          <details class="client-history">
+            <summary><h4 id="history-title">Client timeline</h4></summary>
+            <div class="timeline" id="client-timeline"></div>
+          </details>
+
+          <div class="renewal-box" id="floor-box">
+            <h4 id="floor-title">Floor-session reminder</h4>
+            <p id="floor-copy"></p>
+            <div class="prompt-preview" id="floor-preview"></div>
+            <div class="client-actions">
+              <button class="btn btn-ghost" id="stop-floor" type="button">Stop auto reminder</button>
+              <button class="btn btn-ghost" id="mark-floor-booked" type="button">Mark floor booked</button>
+            </div>
+          </div>
+
+          <div class="renewal-box">
+            <h4 id="renewal-title">Renewal prompt</h4>
+            <p id="renewal-copy"></p>
+            <div class="prompt-preview" id="prompt-preview"></div>
+            <div class="timing-notes" aria-label="Recommended renewal timing">
+              <span><strong>Warm-up:</strong> send while value is still clear — before the last session or monthly renewal day.</span>
+              <span><strong>Renew today:</strong> send after the final session/day while momentum is high.</span>
+              <span><strong>Follow-up:</strong> if nothing comes back, send the next morning rather than chasing immediately.</span>
+            </div>
+            <div class="client-actions">
+              <button class="btn btn-primary" id="send-early" type="button">Send early reminder</button>
+              <button class="btn btn-primary" id="send-final" type="button">Send renew-today prompt</button>
+              <button class="btn btn-ghost" id="send-followup" type="button">Send follow-up</button>
+              <button class="btn btn-ghost" id="mark-renewed" type="button">Mark renewed</button>
+            </div>
+          </div>
+
+          <h4>Programme message</h4>
+          <div class="thread" id="thread"></div>
+          <textarea id="client-reply" aria-label="Client reply"></textarea>
+          <div class="client-actions">
+            <button class="btn btn-primary" id="send-reply" type="button">Send client reply</button>
+            <button class="btn btn-ghost" id="log-checkin" type="button">Mark check-in received</button>
+          </div>
+          <p class="client-note">
+            The cadence starts early — not at zero. Clients get a warm-up reminder,
+            a final-session renewal prompt, then a follow-up if nothing comes back.
+          </p>
+          <p class="client-toast" id="client-toast" role="status" hidden></p>
+        </section>
+      </div>
+
+      <section class="support-card">
+        <div>
+          <p class="eyebrow">Station 9 support</p>
+          <h3>Something not working?</h3>
+          <p>Send the page context straight to Chris instead of trying to describe it from memory.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:chris@station9studio.co.uk?subject=Client%20Desk%20support&body=Page%3A%20Client%20register%0AWhat%20happened%3A%20">Contact Station 9</a>
+      </section>
+
+      <details class="client-settings" aria-labelledby="settings-title">
+        <summary>
+          <span>
+            <span class="eyebrow">Client Desk settings</span>
+            <strong id="settings-title">Renewal rules, prompt wording and package defaults.</strong>
+          </span>
+          <span class="settings-hint">Open settings</span>
+        </summary>
+        <div class="settings-heading">
+          <div>
+            <p>These defaults shape the client register, renewal prompts and automatic floor-session reminders.</p>
+          </div>
+          <button class="btn btn-ghost" id="reset-settings" type="button">Reset defaults</button>
+        </div>
+        <div class="settings-grid">
+          <article>
+            <h4>Timing rules</h4>
+            <label>Session-package reminder at <input id="set-session-threshold" type="number" min="1" max="8" /> sessions left</label>
+            <label>Monthly reminder at <input id="set-day-threshold" type="number" min="1" max="30" /> days left</label>
+            <label>Final prompt timing
+              <select id="set-final-moment"><option>After the final session</option><option>On the final renewal day</option><option>That evening</option></select>
+            </label>
+            <label>Floor-session reminder <input id="set-floor-days" type="number" min="1" max="10" /> days before due</label>
+            <label>Follow-up timing
+              <select id="set-followup"><option>Next morning</option><option>Same evening</option><option>Two days later</option></select>
+            </label>
+          </article>
+          <article>
+            <h4>Package defaults</h4>
+            <label>Default block size <input id="set-block-size" type="number" min="1" max="20" /> sessions</label>
+            <label>Monthly length <input id="set-month-length" type="number" min="7" max="45" /> days</label>
+            <label>Monthly floor sessions <input id="set-floor-total" type="number" min="1" max="8" /></label>
+            <label>Online sessions per cycle <input id="set-online-total" type="number" min="1" max="20" /></label>
+            <label>Quiet hours <input id="set-quiet-hours" placeholder="21:00–07:00" /></label>
+            <label class="settings-check"><input id="set-stop-payment" type="checkbox" /> Stop automation on payment issues</label>
+            <label class="settings-check"><input id="set-hybrid-checkins" type="checkbox" /> Count online check-ins in the attention queue</label>
+            <p class="client-note">Use numbered sessions for prepaid blocks and days remaining for monthly coaching.</p>
+          </article>
+          <article>
+            <h4>Prompt wording</h4>
+            <label>Early reminder template<textarea id="set-early-template"></textarea></label>
+            <label>Final-session prompt<textarea id="set-final-template"></textarea></label>
+            <label>Follow-up prompt<textarea id="set-followup-template"></textarea></label>
+            <label>Floor-session reminder<textarea id="set-floor-template"></textarea></label>
+          </article>
+        </div>
+        <div class="client-actions">
+          <button class="btn btn-primary" id="save-settings" type="button">Save settings</button>
+          <span class="client-note">Templates can use {name}, {remaining} and {due}.</span>
+        </div>
+      </details>
+    </main>
+
+    <aside class="coach-question" aria-label="Ask Josh"><p>Got a training or race-day question?</p><a class="btn btn-primary" href="/joshharrison/#ask">Ask Josh</a></aside><footer><div class="wrap">© <span id="year"></span> Josh Harrison <a data-coach-link href="/joshharrison/?audience=coach">Back to coach homepage</a></div>  <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+    </footer>
+
+    <script src="/joshharrison/desk-config.js?v=1793655399019"></script>
+    <script src="/joshharrison/contacts.js?v=1793655399019"></script>
+    <script src="/joshharrison/integrations.js?v=1793655399019"></script>
+    <script src="/joshharrison/clients.js?v=1793655399019"></script>
+  </body>
+</html>

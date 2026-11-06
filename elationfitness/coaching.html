@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,8 +33,8 @@
         border: 1px solid var(--line);
       }
     </style>
-  </head>
-  <body>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/elationfitness/guidance.css?v=2026102605" /><link rel="stylesheet" href="/elationfitness/showcase.css?v=2026102605" /><script src="/elationfitness/coach-view.js?v=2026102604"></script></head>
+  <body class="guidance guidance--coach">
     <header class="masthead wrap">
       <a href="/elationfitness/" style="color: inherit; text-decoration: none">
         <h1>
@@ -54,16 +54,25 @@
       <p class="city">Coaching</p>
     </header>
 
-    <div class="nav">
+    
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/elationfitness/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/elationfitness/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/elationfitness/desk.html?audience=coach">Finance</a><a data-coach-link href="/elationfitness/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/elationfitness/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/elationfitness/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/elationfitness/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
-          <li><a href="/elationfitness/coaching.html">Coaching</a></li>
-          <li><a href="/elationfitness/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/elationfitness/planner.html?view=client">Book a session</a></li>
+          <li><a href="/elationfitness/find-a-partner.html">Find a race-mate</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/elationfitness/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/elationfitness/training.html">Access your training</a></li>
+              <li><a href="/elationfitness/watch.html">Watch &amp; Learn</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/elationfitness/predictor.html">Race predictor</a></li>
               <li><a href="/elationfitness/splits.html">Split analyser</a></li>
@@ -71,20 +80,26 @@
               <li><a href="/elationfitness/stations-prep/">Stations prep</a></li>
               <li><a href="/elationfitness/run-zone/">Run zone</a></li>
               <li><a href="/elationfitness/taper-zone/">Taper zone</a></li>
-              <li><a href="/elationfitness/events.html">Race calendar</a></li>
+              <li><a href="/elationfitness/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/elationfitness/race-crew.html">Race crew meetups</a></li>
               <li><a href="https://www.instagram.com/elationgymglasgow/" target="_blank" rel="noopener">Elation IG</a></li>
               <li><a href="/elationfitness/#ask">Ask Graham</a></li>
-              <li><a href="/elationfitness/news.html">UK HYROX news</a></li>
+              <li><a href="/elationfitness/news.html">The Hybrid Brief</a></li>
+              <li><a href="/elationfitness/list.html">Join the list</a></li>
             </ul>
           </li>
-          <li><a href="/elationfitness/partners.html">Partners</a></li>
-          <li><a href="/elationfitness/list.html">Join the list</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/elationfitness/partners.html">Partners</a></li>
+              <li><a href="/elationfitness/shop.html">Shop</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -115,6 +130,41 @@
           alt="Graham Halliday — coaching"
           loading="lazy"
         />
+
+        <div class="coach" style="margin: 0 0 8px">
+          <img
+            class="bio"
+            src="/elationfitness/images/bio.jpg?v=1792661953407"
+            alt="Graham Halliday — Elation co-owner and Elite 15 athlete"
+            width="120"
+            height="120"
+            loading="lazy"
+          />
+          <div>
+            <h4 style="margin: 0 0 6px">Graham Halliday</h4>
+            <p style="margin: 0">
+              Co-owner and the race side of Elation — Elite 15 athlete, leads
+              1:1 and the programming.
+            </p>
+          </div>
+        </div>
+        <div class="coach" style="margin: 0 0 28px">
+          <img
+            class="bio"
+            src="/elationfitness/images/matt-floor.jpg?v=1792661953407"
+            alt="Matt Agnew — Elation co-owner and CEO"
+            width="120"
+            height="120"
+            loading="lazy"
+          />
+          <div>
+            <h4 style="margin: 0 0 6px">Matt Agnew</h4>
+            <p style="margin: 0">
+              Co-owner and CEO — coaches on the floor and runs the business
+              behind the timetable.
+            </p>
+          </div>
+        </div>
 
         <div class="plans coach-plans">
           <div class="plan featured reveal">
@@ -188,7 +238,7 @@
         <nav>
           <a href="/elationfitness/coaching.html">Coaching</a>
           <a href="/elationfitness/partners.html">Partners</a>
-          <a href="/elationfitness/desk.html">The desk</a>
+          
           <a href="https://www.instagram.com/grahamhalliday_/" target="_blank" rel="noopener">Instagram</a>
         </nav>
       </div>

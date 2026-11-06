@@ -36,6 +36,11 @@
     }
   }
 
+  function safeLink(value) {
+    if (!value) return "";
+    try { const url = new URL(value, location.origin); return url.protocol === "https:" || (url.origin === location.origin && url.protocol === location.protocol) ? url.href : ""; } catch { return ""; }
+  }
+
   function render(items) {
     if (!items.length) {
       list.innerHTML =
@@ -44,18 +49,19 @@
     }
     list.innerHTML = items
       .map((n, i) => {
-        const src = n.source
-          ? `<a href="${esc(n.source)}" rel="noopener nofollow" target="_blank">${esc(n.sourceName || host(n.source) || "Source")} ↗</a>`
+        const src = safeLink(n.source)
+          ? `<a href="${esc(safeLink(n.source))}" rel="noopener nofollow" target="_blank">${esc(n.sourceName || host(n.source) || "Source")} ↗</a>`
           : "";
         const take = n.take
-          ? `<p class="news-take"><strong>Jade's take:</strong> ${esc(n.take)}</p>`
+          ? `<p class="news-take"><strong>Jade's take:</strong> ${esc(n.take)}${n.takeStatus === "draft-for-review" ? '<small class="take-status">Editorial draft for coach review</small>' : ""}</p>`
           : "";
-        const guide = n.link
-          ? `<p class="news-src"><a href="${esc(n.link)}">${esc(n.linkLabel || "Race guide →")}</a></p>`
+        const guide = safeLink(n.link)
+          ? `<p class="news-src"><a href="${esc(safeLink(n.link))}">${esc(n.linkLabel || "Race guide →")}</a></p>`
           : "";
-        return `<li class="event" data-i="${i}"><time datetime="${esc(n.date || "")}">${esc(when(n.date))}</time><div><h4>${esc(n.title)}</h4><p>${esc(n.summary)}</p>${take}<p class="news-src">${guide} ${src}<button class="share-btn" type="button">Share</button></p></div></li>`;
+        return `<li class="event reveal" data-i="${i}"><time datetime="${esc(n.date || "")}">${n.dateLabel ? `${esc(n.dateLabel)}<br />` : ""}${esc(when(n.date))}</time><div><p class="eyebrow">${n.type === "editorial" ? "Training note" : "News briefing"}</p><h4>${esc(n.title)}</h4><p>${esc(n.summary)}</p>${take}${guide}<p class="news-src">${src}<button class="share-btn" type="button">Share</button></p></div></li>`;
       })
       .join("");
+    window.revealScan?.();
     list.querySelectorAll(".share-btn").forEach((btn) =>
       btn.addEventListener("click", () => {
         const n = items[Number(btn.closest("li").dataset.i)];

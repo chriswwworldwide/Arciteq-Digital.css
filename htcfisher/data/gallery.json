@@ -78,6 +78,38 @@
       "by": "HTCC",
       "tilt": -1.5,
       "event": "Race day"
+    },
+    {
+      "src": "/htcfisher/images/htc-crew-lineup.jpg",
+      "alt": "HTCC athletes lining up on the club sled track",
+      "caption": "Back-to-back sled heats. Nobody hides on sled day.",
+      "by": "HTCC",
+      "tilt": 1.5,
+      "event": "Club night"
+    },
+    {
+      "src": "/htcfisher/images/htc-class-sled-endure.jpg",
+      "alt": "Members pushing sleds mid-session at the club",
+      "caption": "Sled pushes while the rower queue watches. Character building.",
+      "by": "HTCC",
+      "tilt": -1,
+      "event": "Club night"
+    },
+    {
+      "src": "/htcfisher/images/htc-venue-endure.jpg",
+      "alt": "The club's training floor — sleds, ropes and ergs under the lights",
+      "caption": "Home turf. Sleds loaded, ergs warm, doors open.",
+      "by": "HTCC",
+      "tilt": 2,
+      "event": "Home"
+    },
+    {
+      "src": "/htcfisher/images/htc-ross-gtc-neon.jpg",
+      "alt": "Coach Ross in front of the club wall at the GTC venue",
+      "caption": "In-house Hyrox Performance Coach at GTC. Find him under the neon.",
+      "by": "Coach Ross",
+      "tilt": -2,
+      "event": "Home"
     }
   ]
 }

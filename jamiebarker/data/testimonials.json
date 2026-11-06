@@ -1,4 +1,23 @@
 {
-  "note": "Real client quotes only, in the athlete's own words, with their permission. The home page section stays hidden until at least one row has `quote` and `name`. Fields: quote, name, detail (e.g. 'Hyrox UK 2025, 1:21'), plan (optional).",
-  "items": []
+  "sourceURL": "https://findyouredge.app/",
+  "items": [
+    {
+      "name": "Lucy D",
+      "quote": "The workouts are clear, progressive and easy to follow, and I love having everything in one place.",
+      "detail": "Edge app review published by Edge",
+      "sourceURL": "https://findyouredge.app/"
+    },
+    {
+      "name": "Chris S",
+      "quote": "So well thought out. Takes into account running and any conditioning you want to do, all programmed around your own specific schedule.",
+      "detail": "Edge app review published by Edge",
+      "sourceURL": "https://findyouredge.app/"
+    },
+    {
+      "name": "Jason H",
+      "quote": "I’ve finally found a good balance between running and lifting. The app gives me a personalised plan to help me reach my goals.",
+      "detail": "Edge app review published by Edge",
+      "sourceURL": "https://findyouredge.app/"
+    }
+  ]
 }

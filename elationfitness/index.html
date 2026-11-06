@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,8 +61,26 @@
         }
       }
     </script>
-  </head>
-  <body>
+  <style>
+    .pitch-tools { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.5rem 0; }
+    .pitch-tool { padding:1.5rem; border:1px solid var(--line); border-radius:18px; background:var(--paper-2); display:flex; flex-direction:column; gap:.8rem; min-width:0; }
+    .pitch-tool h4 { font-size:1.5rem; line-height:1.15; margin:.3rem 0; }
+    .pitch-tool p { color:var(--ink-2); margin:0 0 1rem; }
+    .pitch-tool .btn { align-self:flex-start; margin-top:auto; }
+    .pitch-tool-main { grid-column:1/-1; display:grid; grid-template-columns:1.2fr 1fr; gap:2rem; border-color:var(--pink); background:linear-gradient(125deg,color-mix(in srgb,var(--pink) 12%,var(--paper)),var(--paper-2)); }
+    .pitch-tool-main h4 { font-size:clamp(1.7rem,3vw,2.5rem); }
+    .tool-preview { display:grid; gap:.4rem; align-content:center; padding:1.2rem; background:var(--paper); border-radius:12px; }
+    .tool-preview span { color:var(--pink); font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; margin-top:.5rem; }
+    .tool-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; }
+    .tool-chips span { padding:.35rem .7rem; border:1px solid var(--line); border-radius:999px; font-size:.8rem; }
+    .pitch-start { color:var(--ink-2); } .pitch-start a { color:var(--pink); }
+    .pitch-guides > summary { cursor:pointer; padding:1rem 0; min-height:44px; }
+    .event-actions { display:flex; flex-direction:column; gap:.6rem; min-width:190px; }
+    .event-prep { color:var(--ink-2); font-size:.85rem; }
+    @media(max-width:760px) { .pitch-tools,.pitch-tool-main { grid-template-columns:minmax(0,1fr); } .pitch-tool { padding:1.1rem; } .event-actions { min-width:0; } }
+  </style>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/elationfitness/showcase.css?v=2026102605" /><link rel="stylesheet" href="/elationfitness/home-editorial.css?v=2026102605" /><script src="/elationfitness/coach-view.js?v=2026102604"></script></head>
+  <body class="home-lab">
     <header class="masthead wrap">
       <h1>
         <a class="wordmark" href="/elationfitness/"
@@ -80,16 +98,25 @@
       <p class="city">Scotland</p>
     </header>
 
-    <div class="nav">
+    
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/elationfitness/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/elationfitness/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/elationfitness/desk.html?audience=coach">Finance</a><a data-coach-link href="/elationfitness/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/elationfitness/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/elationfitness/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/elationfitness/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu">
-          <li><a href="/elationfitness/coaching.html">Coaching</a></li>
-          <li><a href="/elationfitness/find-a-partner.html" style="color:var(--pink);font-weight:700">Find a race-mate</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/elationfitness/planner.html?view=client">Book a session</a></li>
+          <li><a href="/elationfitness/find-a-partner.html">Find a race-mate</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Race Tools <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/elationfitness/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/elationfitness/training.html">Access your training</a></li>
+              <li><a href="/elationfitness/watch.html">Watch &amp; Learn</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/elationfitness/predictor.html">Race predictor</a></li>
               <li><a href="/elationfitness/splits.html">Split analyser</a></li>
@@ -97,20 +124,26 @@
               <li><a href="/elationfitness/stations-prep/">Stations prep</a></li>
               <li><a href="/elationfitness/run-zone/">Run zone</a></li>
               <li><a href="/elationfitness/taper-zone/">Taper zone</a></li>
-              <li><a href="/elationfitness/events.html">Race calendar</a></li>
+              <li><a href="/elationfitness/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Community <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/elationfitness/race-crew.html">Race crew meetups</a></li>
               <li><a href="https://www.instagram.com/elationgymglasgow/" target="_blank" rel="noopener">Elation IG</a></li>
               <li><a href="/elationfitness/#ask">Ask Graham</a></li>
-              <li><a href="/elationfitness/news.html">UK HYROX news</a></li>
+              <li><a href="/elationfitness/news.html">The Hybrid Brief</a></li>
+              <li><a href="/elationfitness/list.html">Join the list</a></li>
             </ul>
           </li>
-          <li><a href="/elationfitness/partners.html">Partners</a></li>
-          <li><a href="/elationfitness/list.html">Join the list</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
+            <ul class="sub">
+              <li><a href="/elationfitness/partners.html">Partners</a></li>
+              <li><a href="/elationfitness/shop.html">Shop</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -135,20 +168,18 @@
         />
       </div>
       <div class="wrap">
-        <span class="kicker"
-          >Hyrox · Scotland · You can do everything right and still fall short. But if you keep showing up, day after day, year after year, the lessons compound. Same in life</span
-        >
         <h2>
           Train together.<br /><em>Go further.</em>
         </h2>
         <p>
-          Graham Halliday — Elite 15 athlete, coach and co-owner of Elation Fitness Training with Matt Agnew. Went from the Elation floor to a 54:09 pro solo in one season. You can do everything right and still fall short. But if you keep showing up, day after day, year after year, the lessons compound. Same in life; the rest is reps.
+          Elation Fitness co-owner. From the Elation floor to a 54:09 pro solo in one season.
         </p>
-        <div class="actions">
+      </div>
+    </section>
+    <div class="hero-below"><div class="wrap"><div class="actions">
           <a class="btn btn-primary" href="/elationfitness/coaching.html">Coach with Graham</a>
           <a class="btn btn-light" href="#ask">Ask Graham</a>
-        </div>
-        <div class="stats">
+        </div><div class="stats">
           <div>
             <strong>54:09</strong><span>HYROX Pro Solo PB — Warsaw</span>
           </div>
@@ -156,28 +187,21 @@
             <strong>50:54</strong><span>Pro Doubles — Manchester, with Liam McCroary</span>
           </div>
           <div><strong>Elite 15</strong><span>AJ Bell Birmingham Half</span></div>
-        </div>
-      </div>
-    </section>
+        </div></div></div>
 
     <section class="block" id="zones">
       <div class="wrap">
-        <p class="eyebrow reveal">The Zones</p>
-        <h3 class="reveal">Every metre, every station, every excuse.</h3>
-        <p class="lead reveal">
-          Pick the weak link. Make it the weapon.
-        </p>
+        <p class="eyebrow reveal">More than a finish time</p>
+        <h3 class="reveal">Know your race. Find your people.</h3>
+        <p class="lead reveal">Your first start line or your next personal best — useful tools to turn a race idea into a plan.</p>
+        <div class="pitch-tools">
+          <article class="pitch-tool pitch-tool-main reveal"><div><span class="tag">After the finish</span><h4>Your finish time tells half the story.</h4><p>See where the minutes went, where you were strong and what deserves your next training block.</p><a class="btn btn-primary" href="/elationfitness/splits.html">Analyse my splits</a></div><div class="tool-preview" aria-label="What the analysis covers"><span>01 · Running</span><strong>Did your pace fade?</strong><span>02 · Stations</span><strong>Where did time get away?</strong><span>03 · Next steps</span><strong>Know what to work on.</strong></div></article>
+          <article class="pitch-tool reveal"><span class="tag">Better together</span><h4>Got the ticket. Missing the partner?</h4><p>Find someone aiming for your race, your format and a pace that fits. Doubles, relay or company for the race trip.</p><div class="tool-chips"><span>Race</span><span>Division</span><span>Pace</span></div><a class="btn btn-ghost" href="/elationfitness/find-a-partner.html">Find my race-mate</a></article>
+          <article class="pitch-tool reveal"><span class="tag">Before the start</span><h4>What time could you aim for?</h4><p>Bring your running and station benchmarks together for a race estimate — and a clearer starting point for training.</p><div class="tool-chips"><span>8 runs</span><span>8 stations</span><span>One target</span></div><a class="btn btn-ghost" href="/elationfitness/predictor.html">Predict my race</a></article>
+        </div>
+        <details class="pitch-guides"><summary>Explore station guides, running plans and race preparation</summary>
         <div class="zones">
-          <a class="zone zone--hook reveal" href="/elationfitness/find-a-partner/">
-            <span class="num">New</span>
-            <h4>Got a ticket, need a partner?</h4>
-            <p>
-              Doubles, mixed, relay, or just someone to share the race trip — post
-              your card and Graham makes the intro himself.
-            </p>
-            <span class="more">Find a partner</span>
-          </a>
-          <a class="zone reveal" href="/elationfitness/stations-prep/">
+          <a class="zone reveal" href="/elationfitness/stations-prep.html">
             <span class="num">01</span>
             <h4>Stations Prep</h4>
             <p>
@@ -186,34 +210,34 @@
             </p>
             <span class="more">Open station guides</span>
           </a>
-          <a class="zone reveal" href="/elationfitness/run-zone/">
+          <a class="zone reveal" href="/elationfitness/run-zone.html">
             <span class="num">02</span>
             <h4>Run Zone</h4>
             <p>
               8 × 1 km with heavy legs. Compromised-running sessions built for
-              Scotland halls get warm.
+              HYROX halls get warm.
             </p>
             <span class="more">Run plans</span>
           </a>
-          <a class="zone reveal" href="/elationfitness/events/">
+          <a class="zone reveal" href="/elationfitness/events.html">
             <span class="num">03</span>
             <h4>Upcoming Events</h4>
             <p>
-              Scotland countdown plus city planners for London, Birmingham, Hong
-              Kong and Glasgow — hotels, flights, food, the night after.
+              Confirmed start lines in the region and around the world — dates,
+              travel guidance, the crew and the weekend around the race.
             </p>
-            <span class="more">Race calendar</span>
+            <span class="more">Race Calendar &amp; Travel</span>
           </a>
           <a class="zone reveal" href="#ask">
             <span class="num">04</span>
             <h4>Ask Graham</h4>
             <p>
-              Form checks, race strategy, training through pregnancy — ask
+              Form checks, race strategy, training around real life — ask
               directly, get a real answer.
             </p>
             <span class="more">Ask a question</span>
           </a>
-        </div>
+        </div></details>
       </div>
     </section>
 
@@ -227,6 +251,7 @@
             height="1150"
             loading="lazy"
           />
+          <svg class="profile-hairline" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 A48 60 0 0 1 48 0 H50" /></svg>
         </figure>
         <div class="reveal">
           <p class="eyebrow">The athlete</p>
@@ -256,6 +281,48 @@
             </li>
           </ul>
         </div>
+      </div>
+      <div class="wrap story story--flip" style="margin-top: 88px">
+        <div class="reveal">
+          <p class="eyebrow">The co-owner</p>
+          <h3>Matt Agnew. The CEO behind the floor.</h3>
+          <p class="lead">
+            The other half of Elation. Matt co-owns the gym and runs the
+            business end — growth, operations, the day-to-day that keeps a
+            60-session timetable on the rails. He races too: 57:17 pro
+            doubles at Abu Dhabi, 58:25 solo in London — but he'll tell you
+            himself: business owner and coach first.
+          </p>
+          <p class="quote">
+            "All in isn't forever. It's a block — 8, 10, 12 weeks of one thing
+            done properly. Then the next goal gets its turn."
+          </p>
+          <ul>
+            <li>
+              Co-owner &amp; CEO — Elation's growth and day-to-day are his desk.
+            </li>
+            <li>
+              Pro doubles 57:17 at Abu Dhabi with Paul Callander — 1st in age group.
+            </li>
+            <li>
+              Solo 58:25 at HYROX London — under the hour.
+            </li>
+            <li>
+              200-plus Elation members raced Glasgow on home turf.
+            </li>
+          </ul>
+        </div>
+        <figure class="reveal">
+          <img
+            src="/elationfitness/images/matt-finish-london.jpg"
+            alt="Matt Agnew — Elation co-owner and CEO, flexing under his 58:25 HYROX London finish board"
+            width="872"
+            height="1024"
+            loading="lazy"
+            style="object-position: 50% 24%"
+          />
+          <svg class="profile-hairline profile-hairline--flip" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 A48 60 0 0 1 48 0 H50" /></svg>
+        </figure>
       </div>
     </section>
 
@@ -368,43 +435,9 @@
           Cohorts open twelve weeks before each race. Train together, race
           together. Not racing yet? Watch the vlogs first — you'll want a start line by the end.
         </p>
-        <div class="events">
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>Budapest</span></div>
-            <div>
-              <h4>HYROX Budapest</h4>
-              <p>
-                The off-season test — raced it to see where the block stands
-                before tapering for the bigger targets. Watch for the vlog.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="/elationfitness/list.html">Get notified</a>
-          </div>
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>London</span></div>
-            <div>
-              <h4>HYROX London — ExCeL</h4>
-              <p>
-                The home weekend. Where the Worlds 2026 open solo benchmark was
-                set — now it's the number everyone else is chasing.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="/elationfitness/list.html">Get notified</a>
-          </div>
-          <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>Glasgow</span></div>
-            <div>
-              <h4>HYROX Glasgow — pro solo</h4>
-              <p>
-                The target the season was built towards. Building with each
-                session — watch the build on the channel.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="/elationfitness/list.html">Get notified</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="events" id="race-cards"><div class="event"><div class="date"><strong><time datetime="2026-11-11">11 Nov 2026</time></strong><span>Dublin</span></div><div><h4>HYROX Dublin</h4><p>11 Nov 2026 – 15 Nov 2026 · Ireland</p><a href="https://hyrox.com/event/hyrox-dublin/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/elationfitness/events.html#dublin">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2026-11-26">26 Nov 2026</time></strong><span>Singapore</span></div><div><h4>AIA HYROX Singapore</h4><p>26 Nov 2026 – 29 Nov 2026 · Singapore</p><a href="https://hyrox.com/event/aia-hyrox-singapore/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/elationfitness/events.html#singapore">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2026-12-02">2 Dec 2026</time></strong><span>London</span></div><div><h4>Amazon HYROX London</h4><p>2 Dec 2026 – 6 Dec 2026 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-london-excel/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/elationfitness/events.html#london">Plan the weekend</a></div></div></div></section>
 
     <section class="cta-band" id="find-partner">
       <div class="wrap">
@@ -450,6 +483,7 @@
             height="1024"
             loading="lazy"
           />
+          <svg class="tips-hairline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 65 V5 Q0 0 5 0 H62" /></svg>
         </figure>
         <div class="tips-grid reveal">
           <details open>
@@ -641,7 +675,7 @@
                 minute.
               </li>
               <li>
-                Flying to London, Birmingham or KL? Land two days early, race
+                Flying to Dublin, London or Singapore? Land two days early, race
                 day minus one is legs up, and pack your own gel — the expo runs
                 out.
               </li>
@@ -685,14 +719,14 @@
       />
       <div class="wrap">
         <div class="reveal coach">
-          <img
+          <span class="coach-portrait"><img
             class="bio"
             src="/elationfitness/images/bio.jpg?v=1792661953407"
             alt="Graham Halliday — HYROX Pro athlete and coach"
             width="120"
             height="120"
             loading="lazy"
-          />
+          /><svg class="portrait-hairline" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M33 3 A50 50 0 0 0 33 97" /></svg></span>
           <div>
             <p class="eyebrow">Ask Graham · Chat Zone</p>
             <h3>Got a race, a station or a target? Just ask.</h3>
@@ -938,7 +972,7 @@
     ></div>
 
     <div class="sticky-cta" id="sticky-cta" hidden>
-      <a class="btn btn-primary" href="/elationfitness/coaching.html">Train with Graham</a>
+      <a class="btn btn-primary" href="/elationfitness/coaching.html">Coach with Graham</a>
       <a class="btn btn-light" href="/elationfitness/splits/">Free split analysis</a>
     </div>
 
@@ -952,7 +986,7 @@
           <a href="/elationfitness/taper-zone/">Taper Zone</a>
           <a href="/elationfitness/events/">Events</a>
           <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
-          <a href="/elationfitness/race-planner/">Race planner</a>
+          <a href="/elationfitness/events.html#cities">Race planner</a>
           <a href="/elationfitness/news/">News</a>
           <a href="/elationfitness/race-crew/">the ninth station</a>
           <a href="/elationfitness/results/">Results</a>
@@ -976,7 +1010,7 @@
 
           <a href="/elationfitness/coaching.html">Book Graham</a>
           <a href="/elationfitness/partners.html">Partners</a>
-          <a href="/elationfitness/desk.html">The desk</a>
+          
         </nav>
       </div>
       <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
@@ -984,6 +1018,8 @@
 
     <script src="/elationfitness/app.js?v=1792661953407" defer></script>
     <script src="/elationfitness/emerge.js?v=1792661953407" defer></script>
+    <script src="/elationfitness/home-editorial.js?v=2026102605" defer></script>
     <script src="/elationfitness/partners.js?v=1792661953407" defer></script>
-  </body>
+  <script>(()=>{const h=document.querySelector(".hero--bleed");if(!h||!("IntersectionObserver" in window))return;new IntersectionObserver(([e])=>document.body.classList.toggle("hero-in-view",e.isIntersecting)).observe(h);})();</script>
+  <script src="/elationfitness/planner.js" defer></script></body>
 </html>

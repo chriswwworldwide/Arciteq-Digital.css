@@ -1,68 +1,61 @@
 {
+  "note": "PRIVATE PITCH PREVIEW.",
   "photos": [
     {
-      "src": "/jadeskillen/images/gallery/malaga-crew.jpg",
-      "alt": "HTCC crew on the race floor at HYROX M\u00e1laga",
-      "caption": "An unforgettable weekend full of PBs, sun, sangria and more laughs than I've had in a while. We'll be back next year \u2014 who's joining us?",
-      "by": "@sunday.squad",
-      "tilt": -1.5,
-      "event": "Race trip"
+      "src": "/jadeskillen/images/gallery/stock-arena.jpg",
+      "alt": "Race-day crowd on the arena floor",
+      "caption": "The calm before the storm. Arena doors open, nerves kick in.",
+      "event": "Race day",
+      "tilt": -1
     },
     {
-      "src": "/jadeskillen/images/gallery/malaga-three.jpg",
-      "alt": "Three HTCC athletes grinning after racing in M\u00e1laga",
-      "caption": "Dee's first ever HYROX. Hooked right from that first race.",
-      "by": "@hyrox.huns",
-      "tilt": 2,
-      "event": "Race trip"
+      "src": "/jadeskillen/images/js-bordeaux-hug.jpg",
+      "alt": "Jade and Kat hugging after winning age-group gold in Bordeaux",
+      "caption": "Bordeaux season opener — Mixed Doubles AG gold, 53:33.",
+      "event": "Race day",
+      "tilt": 1.2
     },
     {
-      "src": "/jadeskillen/images/gallery/istanbul-podium.jpg",
-      "alt": "Michelle and Ellie with the Union flag on the podium at HYROX Istanbul",
-      "caption": "Michelle & Ellie \u2014 podium, Istanbul. Keep setting the standard.",
-      "by": "@racefloor.crew",
-      "tilt": 1,
-      "event": "Race day"
+      "src": "/jadeskillen/images/gallery/stock-rower.jpg",
+      "alt": "Rower mid-stroke in race conditions",
+      "caption": "1,000 metres. The monitor doesn't lie and neither do your legs.",
+      "event": "Training",
+      "tilt": -1.4
     },
     {
-      "src": "/jadeskillen/images/gallery/glasgow-doors.jpg",
-      "alt": "Ross outside the HYROX Glasgow entrance",
-      "caption": "Glasgow. Just enjoy it they say. But don't underestimate the challenge.",
-      "by": "@sleds.and.regrets",
-      "tilt": -2,
-      "event": "Race day"
+      "src": "/jadeskillen/images/js-podium-check.jpg",
+      "alt": "Third place podium check for E15 Doubles Women",
+      "caption": "E15 Doubles Women — third place. The cheque's nice; the podium's nicer.",
+      "event": "Race day",
+      "tilt": 0.9
     },
     {
-      "src": "/jadeskillen/images/gallery/glasgow-oxworld.jpg",
-      "alt": "HTCC crew at the OX World stand in Glasgow",
-      "caption": "Crew at Glasgow. Half of them didn't know each other a year ago.",
-      "by": "@the8amheat",
-      "tilt": 1.5,
-      "event": "Race day"
+      "src": "/jadeskillen/images/js-arena-flag.jpg",
+      "alt": "Jade and Kat with the England flag at the Strawberry Arena",
+      "caption": "Flag over the shoulder at the Strawberry Arena. Still work to do.",
+      "event": "Race day",
+      "tilt": -0.8
     },
     {
-      "src": "/jadeskillen/images/gallery/doubles-finish.jpg",
-      "alt": "A doubles pair celebrating at the finish",
-      "caption": "You've smashed your training \u2014 now go smash this race. They did.",
-      "by": "@roxzone",
-      "event": "Race day"
+      "src": "/jadeskillen/images/gallery/stock-burpee.jpg",
+      "alt": "Athlete mid burpee on the race floor",
+      "caption": "Chest down, broad jump, repeat. Eighty metres of honesty.",
+      "event": "Race day",
+      "tilt": 1.5
     },
     {
-      "src": "/jadeskillen/images/gallery/crew-faces.jpg",
-      "alt": "HTCC members in club tees after a group run",
-      "caption": "Sunny springy group runs. Run Club, Tuesdays and Wednesdays.",
-      "by": "@pb_chasers",
-      "tilt": 1,
-      "event": "Run club"
+      "src": "/jadeskillen/images/js-flag-fan.jpg",
+      "alt": "Jade and Kat with a young fan holding the England flag",
+      "caption": "The best part of race day. Someone's watching and dreaming.",
+      "event": "Community",
+      "tilt": -1.1
     },
     {
-      "src": "/jadeskillen/images/gallery/crew-selfie.jpg",
-      "alt": "Post-race crew selfie",
-      "caption": "It's not just a club \u2014 it's friends & family.",
-      "by": "@finishline.fam",
-      "tilt": -1.5,
-      "event": "Race day"
+      "src": "/jadeskillen/images/gallery/stock-finish.jpg",
+      "alt": "Athletes celebrating at the finish line",
+      "caption": "That finish-line feeling. Shared, it's even better.",
+      "event": "Race day",
+      "tilt": 0.7
     }
-  ],
-  "note": "Seeded community picks \u2014 generic event photos standing in until real submissions land."
+  ]
 }

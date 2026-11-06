@@ -1,0 +1,11 @@
+{
+  "name": "Your coaching platform",
+  "coachURL": "",
+  "clientURL": "",
+  "programmesURL": "https://www.hyroxdoncaster.com/",
+  "applicationURL": "https://www.instagram.com/hyrox_doncaster/",
+  "directCoachLink": false,
+  "offerTitle": "Six-week HYROX introduction",
+  "offerDescription": "A structured introduction to strength, conditioning, station technique and the gym community. Enquire about the next intake through the official site.",
+  "note": "Open your existing coaching setup. Training delivery and client records stay on that platform; no workout or progress-data sync is connected here."
+}

@@ -1,287 +1,207 @@
 {
-  "note": "DEMO SEED — UK race planner data for the HYROX Doncaster demo. Dates/venues are placeholders from public HYROX listings; refresh from hyrox.com before real use.",
-  "checked": "2026-11",
-  "home": "london",
+  "checked": "2026-10-25",
+  "source": "https://hyrox.com/find-my-race/",
+  "timeZone": "UTC",
+  "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
   "cities": [
     {
       "slug": "london",
       "name": "London",
-      "nickname": "The Smoke",
-      "cityLang": "en",
       "country": "United Kingdom",
-      "flag": "🇬🇧",
-      "tagline": "The big one. Multiple HYROX weekends a year and the fastest-selling tickets in the UK calendar.",
-      "coachSays": "Closest major race to us — two hours on the train and you're on the start line. Half the crew has raced here; the other half is about to.",
+      "timeZone": "Europe/London",
+      "tagline": "Choose the race slot first, then make the capital work around it.",
       "race": {
-        "name": "HYROX London",
-        "status": "tbc",
-        "dates": null,
-        "expected": "Next edition expected — dates land on hyrox.com first and sell out fast.",
-        "last": {
-          "dates": "May 2026",
-          "athletes": "~12,000"
-        },
-        "venue": "Olympia London",
-        "address": "Hammersmith Rd, London W14 8UX",
-        "source": "https://hyrox.com/events/",
-        "sourceLabel": "hyrox.com event list"
+        "name": "Amazon HYROX London",
+        "status": "confirmed",
+        "start": "2026-12-02",
+        "end": "2026-12-06",
+        "source": "https://hyrox.com/event/hyrox-london-excel/",
+        "sourceLabel": "Official Amazon HYROX London event",
+        "dates": "2 Dec 2026 – 6 Dec 2026"
       },
       "gettingThere": [
-        "Doncaster to London Liverpool Street is about 1h 50m — book advance singles early, race weekend fills up.",
-        "Olympia is a short walk from Kensington (Olympia) station or Barons Court on the Piccadilly line.",
-        "Driving? Race-weekend parking around Kensington is painful and pricey — the train wins."
+        "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
+        "Compare your arrival station or airport with the venue journey, including weekend service changes."
       ],
       "hotels": [
         {
-          "area": "Kensington / Hammersmith (closest)",
-          "picks": "Walk-to-venue options — the stress-free race morning.",
-          "range": "£120 – £220 / night",
-          "link": "https://www.booking.com/searchresults.html?ss=Olympia%20London"
-        },
-        {
-          "area": "Earl's Court",
-          "picks": "Cheaper beds ten minutes from the venue.",
-          "range": "£80 – £140 / night",
-          "link": "https://www.booking.com/searchresults.html?ss=Earls%20Court%20London"
+          "area": "Venue access first",
+          "picks": "Prioritise a straightforward early journey over a small saving on a room across the city. Check breakfast and bag storage around your wave.",
+          "range": "Hotel rates vary by date; check live prices."
         }
       ],
-      "flights": [],
       "food": [
-        "Race morning: porridge or a bagel 3–4 hours out. Familiar food only — race day is not the day to experiment."
-      ],
-      "city": [
-        "Contactless or Oyster everywhere on the Tube — no cash needed.",
-        "London HYROX weekends sell out hotels near the venue — book when tickets drop, not after."
+        "Book a familiar meal near your hotel and carry the race fuel you have already practised with."
       ],
       "nightAfter": [
-        "Kensington and Hammersmith pubs do a roaring post-race trade — Sunday roast is basically mandatory."
-      ],
-      "meetup": null,
-      "coachNote": "This is the crew's home race — we take a proper contingent. If you're racing London, a 12-week block ending on race week is the sweet spot.",
-      "indoMeetup": {
-        "when": "Sunday evening after the race",
-        "note": "Station 9 travels: whoever's racing finds the dinner. Pub booked near the venue, all levels welcome, race stories compulsory."
-      }
+        "Pick a post-race meeting point before the venue gets busy."
+      ]
     },
     {
       "slug": "manchester",
       "name": "Manchester",
-      "nickname": "The Rainy City",
-      "cityLang": "en",
       "country": "United Kingdom",
-      "flag": "🇬🇧",
-      "tagline": "The UK's biggest HYROX residency — multiple days, tens of thousands of athletes.",
-      "coachSays": "Eleven days of racing — if you can't find a wave that fits, that's on you. Worth the trip for the crowd alone.",
+      "timeZone": "Europe/London",
+      "tagline": "A city race with an easy plan for the days around it.",
       "race": {
         "name": "HYROX Manchester",
-        "status": "tbc",
-        "dates": null,
-        "expected": "Next residency expected — check hyrox.com for the announced block.",
-        "last": {
-          "dates": "January 2026",
-          "athletes": "~30,000 across the residency"
-        },
-        "venue": "Manchester Central",
-        "address": "Petersfield, Manchester M2 3GX",
-        "source": "https://hyrox.com/events/",
-        "sourceLabel": "hyrox.com event list"
+        "status": "confirmed",
+        "start": "2027-01-20",
+        "end": "2027-01-31",
+        "source": "https://hyrox.com/event/hyrox-manchester/",
+        "sourceLabel": "Official HYROX Manchester event",
+        "dates": "20 Jan 2027 – 31 Jan 2027"
       },
       "gettingThere": [
-        "Doncaster to Manchester Piccadilly is around 4h 30m with one change — an overnighter makes sense.",
-        "Manchester Central is ten minutes on foot from Deansgate station."
+        "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
+        "Allow extra time if your route crosses the city, and include registration and warm-up in the plan."
       ],
       "hotels": [
         {
-          "area": "Deansgate / city centre",
-          "picks": "Walk everywhere, food on the doorstep.",
-          "range": "£80 – £150 / night",
-          "link": "https://www.booking.com/searchresults.html?ss=Manchester%20Central"
+          "area": "Central or close to the venue",
+          "picks": "Compare a central base for the crew meal with a shorter early journey to the race. Check breakfast, checkout and bag storage.",
+          "range": "Check current rates for your particular race dates."
         }
       ],
-      "flights": [],
       "food": [
-        "Northern Quarter for carbs the night before — pasta options everywhere."
-      ],
-      "city": [
-        "Stay near Deansgate and you won't need transport at all."
+        "Choose a familiar pre-race dinner and an uncomplicated breakfast."
       ],
       "nightAfter": [
-        "Northern Quarter — the obvious post-race dinner territory."
-      ],
-      "meetup": null,
-      "coachNote": "The multi-day format means we can get several crews through in one weekend — good first away race.",
-      "indoMeetup": {
-        "when": "Sunday evening after the race",
-        "note": "Station 9 travels: crew dinner near the venue, all welcome."
-      }
+        "Agree where to meet and leave room for tired legs after the finish."
+      ]
     },
     {
-      "slug": "birmingham",
-      "name": "Birmingham",
-      "nickname": "Brum",
-      "cityLang": "en",
-      "country": "United Kingdom",
-      "flag": "🇬🇧",
-      "tagline": "NEC-scale HYROX — huge hall, huge field.",
-      "coachSays": "Big-arena energy. The NEC crowd makes you feel like a pro even when your sled disagrees.",
+      "slug": "dublin",
+      "name": "Dublin",
+      "country": "Ireland",
+      "timeZone": "Europe/Dublin",
+      "tagline": "A short hop can still deserve a proper race-weekend plan.",
       "race": {
-        "name": "HYROX Birmingham",
-        "status": "tbc",
-        "dates": null,
-        "expected": "Next edition expected — dates land on hyrox.com.",
-        "last": {
-          "dates": "October 2026",
-          "athletes": "~15,000"
-        },
-        "venue": "NEC Birmingham",
-        "address": "North Ave, Marston Green, Birmingham B40 1NT",
-        "source": "https://hyrox.com/events/",
-        "sourceLabel": "hyrox.com event list"
+        "name": "HYROX Dublin",
+        "status": "confirmed",
+        "start": "2026-11-11",
+        "end": "2026-11-15",
+        "source": "https://hyrox.com/event/hyrox-dublin/",
+        "sourceLabel": "Official HYROX Dublin event",
+        "dates": "11 Nov 2026 – 15 Nov 2026"
       },
       "gettingThere": [
-        "Birmingham International station is inside the NEC campus — trains via one change from Doncaster, ~3h.",
-        "Driving is easy — the NEC is built for it, parking on site."
+        "Check the official RDS event information and your division start time before booking travel.",
+        "Compare flight, ferry and local transport against the venue journey, including luggage and registration time."
       ],
       "hotels": [
         {
-          "area": "NEC / Birmingham International",
-          "picks": "On-campus hotels mean a five-minute walk to your wave.",
-          "range": "£90 – £160 / night",
-          "link": "https://www.booking.com/searchresults.html?ss=NEC%20Birmingham"
+          "area": "Ballsbridge or central Dublin",
+          "picks": "Balance a practical journey to the RDS with food, sleep and somewhere easy for the crew to meet.",
+          "range": "Check live rates and flexible booking terms."
         }
       ],
-      "flights": [],
       "food": [
-        "Resorts World next door covers pre-race dinner."
-      ],
-      "city": [
-        "The NEC campus is self-contained — you won't see much of Birmingham itself unless you plan to."
+        "Keep race-morning food familiar and check early breakfast options near your stay."
       ],
       "nightAfter": [
-        "Resorts World — restaurants five minutes from the hall."
-      ],
-      "meetup": null,
-      "coachNote": "Easiest logistics of the UK races — venue, hotel and dinner all within five minutes of each other.",
-      "indoMeetup": {
-        "when": "Sunday evening after the race",
-        "note": "Station 9 travels: crew dinner at Resorts World, all welcome."
-      }
+        "Plan a relaxed post-race meal and leave recovery time before the journey home."
+      ]
     },
     {
-      "slug": "cardiff",
-      "name": "Cardiff",
-      "nickname": "The Diff",
-      "cityLang": "en",
-      "country": "United Kingdom",
-      "flag": "🇬🇧",
-      "tagline": "Welsh HYROX — a loud arena and a proper race-weekend city.",
-      "coachSays": "Long trip, worth it. Cardiff on race weekend is a city that actually notices you're there.",
+      "slug": "singapore",
+      "name": "Singapore",
+      "country": "Singapore",
+      "timeZone": "Asia/Singapore",
+      "tagline": "Make an overseas race a shared weekend, not a rushed turnaround.",
       "race": {
-        "name": "HYROX Cardiff",
-        "status": "tbc",
-        "dates": null,
-        "expected": "Next edition expected — dates land on hyrox.com.",
-        "last": {
-          "dates": "June 2026",
-          "athletes": "~9,000"
-        },
-        "venue": "Utilita Arena Cardiff",
-        "address": "Mary Ann St, Cardiff CF10 2EQ",
-        "source": "https://hyrox.com/events/",
-        "sourceLabel": "hyrox.com event list"
+        "name": "AIA HYROX Singapore",
+        "status": "confirmed",
+        "start": "2026-11-26",
+        "end": "2026-11-29",
+        "source": "https://hyrox.com/event/aia-hyrox-singapore/",
+        "sourceLabel": "Official AIA HYROX Singapore event",
+        "dates": "26 Nov 2026 – 29 Nov 2026"
       },
       "gettingThere": [
-        "Cardiff Central station is a ten-minute walk from the arena — trains via one change, ~4h from Doncaster."
+        "Check passport, entry and airline baggage requirements before paying for travel.",
+        "Allow time to adjust to the local time zone and plan the venue journey from your chosen accommodation."
       ],
       "hotels": [
         {
-          "area": "City centre",
-          "picks": "Everything's walkable — venue, food, the lot.",
-          "range": "£70 – £130 / night",
-          "link": "https://www.booking.com/searchresults.html?ss=Cardiff%20city%20centre"
+          "area": "An easy venue journey",
+          "picks": "Choose a base with straightforward early transport, familiar food nearby and somewhere to recover after the finish.",
+          "range": "Compare live prices and flexible booking terms."
         }
       ],
-      "flights": [],
       "food": [
-        "Carbs on St Mary Street — you won't struggle."
-      ],
-      "city": [
-        "Compact centre — book central and forget taxis."
+        "Keep race-morning food familiar; leave the food adventure for after the finish."
       ],
       "nightAfter": [
-        "St Mary Street for the post-race feed."
-      ],
-      "meetup": null,
-      "coachNote": "Furthest of the UK trips — we usually make a weekend of it.",
-      "indoMeetup": {
-        "when": "Sunday evening after the race",
-        "note": "Station 9 travels: crew dinner in the city centre, all welcome."
-      }
+        "Plan a crew meal with enough recovery time before the flight home."
+      ]
     },
     {
-      "slug": "glasgow",
-      "name": "Glasgow",
-      "nickname": "The Dear Green Place",
-      "cityLang": "en",
-      "country": "United Kingdom",
-      "flag": "🇬🇧",
-      "tagline": "Scottish HYROX at the SEC — the furthest trip and the friendliest crowd.",
-      "coachSays": "A proper expedition for us — fly it, don't sit on a train for seven hours.",
+      "slug": "melbourne",
+      "name": "Melbourne",
+      "country": "Australia",
+      "timeZone": "Australia/Melbourne",
+      "tagline": "A longer-haul target deserves room for travel and recovery.",
       "race": {
-        "name": "HYROX Glasgow",
-        "status": "tbc",
-        "dates": null,
-        "expected": "Next edition expected — dates land on hyrox.com.",
-        "last": {
-          "dates": "March 2026",
-          "athletes": "~8,000"
-        },
-        "venue": "SEC Glasgow",
-        "address": "Exhibition Way, Glasgow G3 8YW",
-        "source": "https://hyrox.com/events/",
-        "sourceLabel": "hyrox.com event list"
+        "name": "BYD HYROX Melbourne",
+        "status": "confirmed",
+        "start": "2026-12-09",
+        "end": "2026-12-13",
+        "source": "https://hyrox.com/event/hyrox-melbourne/",
+        "sourceLabel": "Official BYD HYROX Melbourne event",
+        "dates": "9 Dec 2026 – 13 Dec 2026"
       },
       "gettingThere": [
-        "Fly via a connection, or London direct — much easier than the 7h train."
+        "Check the official venue and your race day before choosing flights and accommodation.",
+        "For long-haul travel, build in arrival, recovery and local time-zone adjustment rather than landing straight into a race."
       ],
       "hotels": [
         {
-          "area": "Finnieston / SEC",
-          "picks": "Walk to the venue and the best food street in town.",
-          "range": "£80 – £150 / night",
-          "link": "https://www.booking.com/searchresults.html?ss=SEC%20Glasgow"
+          "area": "Simple transport and recovery",
+          "picks": "Compare a venue-area stay with a base near reliable public transport. Ask about early breakfast and late checkout.",
+          "range": "Check live accommodation and flight prices."
         }
       ],
-      "flights": [],
       "food": [
-        "Finnieston is Glasgow's food strip — pick anywhere."
-      ],
-      "city": [
-        "Cold even in spring — pack layers for queuing outside."
+        "Arrange familiar race-morning food before exploring the local options afterwards."
       ],
       "nightAfter": [
-        "Finnieston for dinner, done."
+        "Keep the day after the race flexible before the journey home."
+      ]
+    },
+    {
+      "slug": "hong-kong",
+      "name": "Hong Kong",
+      "country": "Hong Kong",
+      "timeZone": "Asia/Hong_Kong",
+      "tagline": "Turn an international start line into a well-organised race trip.",
+      "race": {
+        "name": "AIA HYROX Hong Kong",
+        "status": "confirmed",
+        "start": "2027-01-07",
+        "end": "2027-01-10",
+        "source": "https://hyrox.com/event/hyrox-hong-kong/",
+        "sourceLabel": "Official AIA HYROX Hong Kong event",
+        "dates": "7 Jan 2027 – 10 Jan 2027"
+      },
+      "gettingThere": [
+        "Check entry requirements, airline baggage and official venue instructions before booking.",
+        "Compare the airport-to-hotel and hotel-to-venue journeys, allowing for your check-in and start time."
       ],
-      "meetup": null,
-      "coachNote": "Only worth it as a committed trip — but as a crew weekend it's brilliant.",
-      "indoMeetup": {
-        "when": "Sunday evening after the race",
-        "note": "Station 9 travels: crew dinner in Finnieston, all welcome."
-      }
+      "hotels": [
+        {
+          "area": "A practical race-weekend base",
+          "picks": "Balance easy venue access with food, sleep and a relaxed meeting place for your crew.",
+          "range": "Compare live rates and cancellation terms."
+        }
+      ],
+      "food": [
+        "Keep the meal before racing predictable and enjoy the city after your finish."
+      ],
+      "nightAfter": [
+        "Allow recovery time before sightseeing or flying home."
+      ]
     }
   ],
-  "alsoOn": [
-    {
-      "name": "HYROX Dublin",
-      "city": "Dublin",
-      "flag": "🇮🇪",
-      "nickname": "The Pale",
-      "dates": "check hyrox.com",
-      "start": null,
-      "venue": "RDS",
-      "note": "Short hop and a huge atmosphere — Dublin weekends sell out early.",
-      "source": "https://hyrox.com/events/"
-    }
-  ],
-  "alsoTba": "Bristol, Leeds and Edinburgh are all expected back — dates land on hyrox.com first."
+  "home": "london"
 }

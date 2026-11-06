@@ -34,7 +34,7 @@
 
     if (card) {
       if (next && next.label) {
-        card.innerHTML = `<div class="plan-meetup">
+        card.innerHTML = `<div class="plan-meetup reveal">
           <p><strong>${esc(next.label)}</strong>${
             next.date ? ` · ${esc(next.date)}` : ""
           }</p>
@@ -44,15 +44,16 @@
       } else {
         card.innerHTML = `<p>
           <strong>Every three months — the next venue gets picked soon.</strong>
-          The venue lands here (and in the crew broadcast list) once it's booked.
+          The venue lands here (and in the crew message list) once it's booked.
           RSVP below so there's a chair with your name on it either way.
         </p>`;
       }
+      window.revealScan?.();
     }
 
     if (sel) {
       const opts = [
-        next?.label || "Next home edition — United Kingdom",
+        next?.label || "Next home edition — London",
         ...away.map((a) => a?.label).filter(Boolean),
         "An away-race edition — I'll say which race",
         "Keep me posted for any edition",
@@ -74,7 +75,7 @@
       const data = new FormData(form);
       const payload = {
         name: String(data.get("name") || "").trim(),
-        whatsapp: String(data.get("whatsapp") || "").trim(),
+        contact: String(data.get("contact") || "").trim(),
         edition: String(data.get("edition") || ""),
         seats: String(data.get("seats") || ""),
         note: String(data.get("note") || "").trim(),
@@ -94,10 +95,10 @@
         if (!res.ok) throw new Error(out.error || "save failed");
         form.reset();
         note.textContent =
-          "Done — you're on the list. Venue lands in the crew broadcast list once the table's booked. Station 10 shoes optional.";
+          "Done — you're on the list. Venue lands in the crew message list once the table's booked. Station 10 shoes optional.";
       } catch {
         note.textContent =
-          "Couldn't send just now — try again in a bit, or message Jamie on WhatsApp.";
+          "Couldn't send just now — try again in a bit, or use Jamie's verified social route.";
       }
     });
   }

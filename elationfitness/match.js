@@ -4,6 +4,9 @@
 // intros go through Graham on WhatsApp.
 (() => {
   const KIND = "partner_search";
+  const previewMode = document.body.dataset.matchPreview === "true";
+  let previewCards = null;
+  let previewTrips = null;
   const WA = "";
   const FORMATS = {
     open: "Open doubles",
@@ -75,7 +78,7 @@
   function waLink(card) {
     const fmt = FORMATS[card.format] || card.format;
     const msg = `Halo Graham! I saw ${card.name}'s card on Find a Partner — ${fmt}${card.event ? ` for ${card.event}` : ""}. Can you intro us?`;
-    return `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+    return WA && !previewMode ? `https://wa.me/${WA}?text=${encodeURIComponent(msg)}` : "/elationfitness/#ask";
   }
 
   function renderBoard(items) {
@@ -91,7 +94,7 @@
       box.innerHTML = "";
       return;
     }
-    intro.textContent = `${live.length} athlete${live.length === 1 ? "" : "s"} looking right now. First name, pace, what they're after — that's all anyone sees.`;
+    intro.textContent = previewMode ? `${live.length} walkthrough race-mate cards — post yours to start the board.` : `${live.length} athlete${live.length === 1 ? "" : "s"} looking right now. First name, pace, what they're after — that's all anyone sees.`;
     const byEvent = new Map();
     for (const c of live) {
       const k = c.event || "Any race";
@@ -127,11 +130,13 @@
   }
 
   async function loadBoard() {
+    if (previewMode && previewCards) { renderBoard(previewCards); return; }
     try {
       const res = await fetch("/elationfitness/data/matchboard.json", {
         cache: "no-store",
       });
       const data = await res.json();
+      if (previewMode) previewCards = data.items || [];
       renderBoard(data.items);
     } catch {
       $("board-intro").textContent =
@@ -162,6 +167,14 @@
       note: String(data.get("note") || "").trim(),
       consent: data.get("consent") ? "yes" : "no",
     };
+    if (previewMode) {
+      if (payload.consent === "yes") {
+        previewCards = [...(previewCards || []), { name: payload.name, event: payload.event, format: payload.format, pace: String(data.get("total") || "Target to discuss"), note: payload.note, posted: "Just now", until: payload.until }];
+        renderBoard(previewCards);
+      }
+      note.textContent = "For demo purposes only — your card stays on this device.";
+      return;
+    }
     note.textContent = "Sending your card to Graham's desk…";
     try {
       const res = await fetch("/api/submissions", {
@@ -178,8 +191,8 @@
       form.reset();
       note.textContent =
         payload.consent === "yes"
-          ? "Got it — your card is on Graham's desk. She lists every approved card herself, so give her a day or two."
-          : "Got it — private card sent. Graham will reach out if she spots a match for you.";
+          ? "Got it — your card is on Graham's desk. He lists every approved card himself, so give him a day or two."
+          : "Got it — private card sent. Graham will reach out if he spots a match for you.";
     } catch {
       note.textContent =
         "Couldn't send just now — try again in a bit, or message Graham directly on WhatsApp.";
@@ -187,7 +200,7 @@
   });
 
   // ---- Team Elation travel board: trips land on data/travelboard.json
-  // once Graham approves them on her desk. Same privacy rule as partner
+  // once Graham approves them on his desk. Same privacy rule as partner
   // cards — first name + initial only, intros via WhatsApp.
   const TRAVEL_MODES = {
     have: "join me",
@@ -196,7 +209,7 @@
 
   function waTravel(card) {
     const msg = `Halo Graham! I saw ${card.name}'s trip on the travel board — ${card.race}${card.hotel ? `, staying around ${card.hotel}` : ""}. Can you intro us?`;
-    return `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+    return WA && !previewMode ? `https://wa.me/${WA}?text=${encodeURIComponent(msg)}` : "/elationfitness/#ask";
   }
 
   function renderTravel(items) {
@@ -213,7 +226,7 @@
       box.innerHTML = "";
       return;
     }
-    intro.textContent = `${live.length} trip${live.length === 1 ? "" : "s"} on the board. Name, race, rough plans — that's all anyone sees.`;
+    intro.textContent = previewMode ? `${live.length} walkthrough travel plans — post yours to start the convoy.` : `${live.length} trip${live.length === 1 ? "" : "s"} on the board. Name, race, rough plans — that's all anyone sees.`;
     const byRace = new Map();
     for (const c of live) {
       const k = c.race || "Any race";
@@ -249,11 +262,13 @@
   }
 
   async function loadTravel() {
+    if (previewMode && previewTrips) { renderTravel(previewTrips); return; }
     try {
       const res = await fetch("/elationfitness/data/travelboard.json", {
         cache: "no-store",
       });
       const data = await res.json();
+      if (previewMode) previewTrips = data.items || [];
       renderTravel(data.items);
     } catch {
       const intro = $("travel-intro");
@@ -315,6 +330,14 @@
           ?.dataset?.until,
         consent: data.get("consent") ? "yes" : "no",
       };
+      if (previewMode) {
+        if (payload.consent === "yes") {
+          previewTrips = [...(previewTrips || []), { name: payload.name, race: payload.race, mode: payload.mode, dates: payload.dates, hotel: payload.hotel, note: payload.note, until: payload.until, posted: "Just now" }];
+          renderTravel(previewTrips);
+        }
+        travelNote.textContent = "For demo purposes only — your trip stays on this device.";
+        return;
+      }
       travelNote.textContent = "Sending your trip to Graham's desk…";
       try {
         const res = await fetch("/api/submissions", {
@@ -331,7 +354,7 @@
         travelForm.reset();
         travelNote.textContent =
           payload.consent === "yes"
-            ? "Got it — your trip is on Graham's desk. She lists every approved one herself, so give her a day or two."
+            ? "Got it — your trip is on Graham's desk. He lists every approved one himself, so give him a day or two."
             : "Got it — private trip sent. Graham will reach out if someone matches your plans.";
       } catch {
         travelNote.textContent =
@@ -471,6 +494,13 @@
       );
       payload.total = payload.run_total + payload.station_total + (rz || 0);
 
+      if (previewMode) {
+        const time = `${Math.floor(payload.total / 60)}:${String(payload.total % 60).padStart(2, "0")}`;
+        const totalField = form.querySelector('[name="total"]');
+        if (totalField) totalField.value = time;
+        paceNote.textContent = `${time} total puts this preview in the ${bandOf(payload.total)} band. No athlete record was sent.`;
+        return;
+      }
       paceNote.textContent = "Saving to your athlete record…";
       try {
         const token = localStorage.getItem(STORE) || "";
@@ -491,7 +521,7 @@
         const mmss = `${Math.floor(payload.total / 60)}:${String(payload.total % 60).padStart(2, "0")}`;
         const cardTotal = form.querySelector('[name="total"]');
         if (cardTotal) cardTotal.value = mmss;
-        paceNote.textContent = `Saved — ${mmss} total puts you in the ${band} band, and your card is updated. Graham sees these real numbers on her desk.`;
+        paceNote.textContent = `Saved — ${mmss} total puts you in the ${band} band, and your card is updated. Graham sees these real numbers on his desk.`;
       } catch {
         paceNote.textContent =
           "Couldn't save just now — try again in a bit. Your card above still works with an estimate.";

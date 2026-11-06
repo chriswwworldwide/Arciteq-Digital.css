@@ -1,0 +1,13 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Edge hybrid training app",
+      "goal": "Offer enquiries",
+      "destination": "https://findyouredge.app/",
+      "image": "/jamiebarker/images/coaching-hero.jpg",
+      "headline": "Running, strength, HIIT and mobility planned around your goals, schedule and equipment.",
+      "actionLabel": "Explore Edge membership"
+    }
+  ]
+}

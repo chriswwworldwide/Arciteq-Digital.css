@@ -1,23 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HYROX Doncaster — Dedicated HYROX Gym | Training, Sims & Community</title>
+    <title>Nigel Wood | HYROX Doncaster coaching, race tools and booking</title>
     <meta
       name="description"
-      content="HYROX Doncaster in Kirk Sandall: a six-week introduction, 17 coached sessions each week, movement coaching, full simulations and a welcoming local community."
+      content="Nigel Wood — HYROX racer and coach and founder of HYROX Doncaster in United Kingdom. Coaching applications, coaching routes, programmes and booking, race tools and verified links."
     />
     <meta
       name="keywords"
-      content="hyrox gym doncaster, hyrox training doncaster, hyrox simulation south yorkshire, hyrox coach doncaster"
+      content="nigel wood, HYROX Doncaster, HYROX Doncaster, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdom hyrox"
     />
-    <meta name="geo.region" content="ID-JK" />
-    <meta name="geo.placename" content="Doncaster" />
+    <meta name="geo.region" content="GB-WOR" />
+    <meta name="geo.placename" content="United Kingdom" />
     <link rel="canonical" href="https://hyroxdoncaster.localhost/hyroxdoncaster/" />
     <link
       rel="alternate"
-      hreflang="en-ID"
+      hreflang="en-GB"
       href="https://hyroxdoncaster.localhost/hyroxdoncaster/"
     />
     <link
@@ -28,39 +28,129 @@
     <link
       rel="preload"
       as="image"
-      href="/hyroxdoncaster/images/skierg-laugh.jpg?v=1792613360268"
+      href="/hyroxdoncaster/images/hero.jpg?v=1793655396429"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/hyroxdoncaster/styles.css?v=1792613360268" />
+    <link rel="stylesheet" href="/hyroxdoncaster/styles.css?v=crop-fix-20261103" />
     <script>
       document.documentElement.classList.add("js");
+      // Refresh = top of page + the hero entrance plays. Ordinary navigation
+      // keeps any #section so links from other pages land where promised.
+      const navEntry = performance.getEntriesByType?.("navigation")?.[0];
+      const reloaded = navEntry
+        ? navEntry.type === "reload"
+        : performance.navigation?.type === performance.navigation?.TYPE_RELOAD;
+      (() => {
+        const key = "__s9HomeScroll";
+        const returning = navEntry ? navEntry.type === "back_forward" : Boolean(performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD);
+        const auto = () => { if ("scrollRestoration" in history) history.scrollRestoration = "auto"; };
+        let restoring = false, stopRestore = () => {}, lastAnchor = null, activationEvent = null;
+        const findHomeAnchor = anchor => {
+          if (!anchor || !Number.isInteger(anchor.index) || anchor.index < 0 || typeof anchor.href !== "string" || !Number.isFinite(anchor.top)) return null;
+          const root = anchor.section ? document.getElementById(anchor.section) : anchor.footer ? document.querySelector("body > footer") : null;
+          const node = root && Array.from(root.querySelectorAll("a[href]")).filter(link => link.href === anchor.href)[anchor.index];
+          return node?.getClientRects().length ? node : null;
+        };
+        const remember = (link, event) => {
+          if (restoring) return;
+          if (link) {
+            const section = link.closest("section[id]"), footer = link.closest("footer");
+            const root = section || (footer?.parentElement === document.body ? footer : null);
+            lastAnchor = root ? { href: link.href, section: section?.id || "", footer: root === footer, index: Array.from(root.querySelectorAll("a[href]")).filter(node => node.href === link.href).indexOf(link), top: link.getBoundingClientRect().top } : null;
+            activationEvent = event;
+          } else if (!activationEvent || activationEvent.defaultPrevented) {
+            const node = findHomeAnchor(lastAnchor);
+            if (!node || Math.abs(node.getBoundingClientRect().top - lastAnchor.top) > 12) lastAnchor = null;
+          }
+          try { history.replaceState({ ...history.state, [key]: { x: scrollX, y: scrollY, anchor: lastAnchor } }, ""); } catch {}
+        };
+        const holdScroll = (target, duration = 2500, delays = [200, 600, 1200]) => {
+          restoring = true;
+          if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+          const inputs = ["wheel", "touchstart", "pointerdown", "keydown"];
+          const restore = () => {
+            if (!restoring) return;
+            const point = target();
+            window.scrollTo({ left: point.x, top: point.y, behavior: "instant" });
+          };
+          let observer, frame, deadline, retries = [];
+          const stop = () => {
+            restoring = false; observer?.disconnect(); cancelAnimationFrame(frame); clearTimeout(deadline); retries.forEach(clearTimeout);
+            inputs.forEach(type => removeEventListener(type, stop, true)); auto(); stopRestore = () => {};
+          };
+          stopRestore = stop;
+          inputs.forEach(type => addEventListener(type, stop, { capture: true, passive: true, once: true }));
+          if (typeof ResizeObserver === "function") { observer = new ResizeObserver(restore); observer.observe(document.body); }
+          frame = requestAnimationFrame(restore);
+          retries = delays.map(delay => setTimeout(restore, delay));
+          deadline = setTimeout(stop, duration);
+        };
+        if ("scrollRestoration" in history) history.scrollRestoration = reloaded || (returning && history.state?.[key]) ? "manual" : "auto";
+        if (reloaded && location.hash) history.replaceState(history.state, "", location.pathname + location.search);
+        addEventListener("pagehide", () => { remember(); stopRestore(); auto(); });
+        document.addEventListener("click", event => {
+          const link = event.target?.closest?.("a[href]");
+          if (link && (!link.target || link.target === "_self") && ["http:", "https:"].includes(link.protocol) && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { stopRestore(); remember(link, event); }
+        }, true);
+        addEventListener("pageshow", event => {
+          stopRestore();
+          const point = history.state?.[key];
+          lastAnchor = null; activationEvent = null;
+          if ((event.persisted || returning) && Number.isFinite(point?.x) && Number.isFinite(point?.y)) {
+            lastAnchor = point.anchor || null;
+            holdScroll(() => {
+              const node = findHomeAnchor(point.anchor);
+              return { x: point.x, y: node ? node.getBoundingClientRect().top + scrollY - point.anchor.top : point.y };
+            });
+          } else if (reloaded && !event.persisted) holdScroll(() => ({ x: 0, y: 0 }), 500, [50, 150, 350]);
+          else auto();
+        });
+      })();
     </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
-        "name": "HYROX Doncaster",
-        "description": "HYROX coaching in $1 — online training program, split analysis and race prep from $1.",
+        "name": "Nigel Wood",
+        "description": "Nigel Wood — HYROX racer and coach and HYROX Doncaster founder. Coaching routes, race tools and race-mate finder.",
         "url": "https://hyroxdoncaster.localhost/hyroxdoncaster/",
-        "areaServed": ["Doncaster", "the UK", "Southeast the UK"],
-        "knowsLanguage": ["en", "id"],
-        "keywords": "hyrox gym doncaster, hyrox training doncaster, hyrox simulation south yorkshire, hyrox coach doncaster",
+        "areaServed": ["United Kingdom", "the UK", "Europe"],
+        "knowsLanguage": ["en"],
+        "keywords": "nigel wood, HYROX Doncaster, HYROX Doncaster, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, united kingdom hyrox",
         "founder": {
           "@type": "Person",
           "name": "Nigel Wood",
-          "jobTitle": "HYROX Group Coach, Hyrox athlete & personal trainer",
-          "sameAs": ["https://www.instagram.com/hyrox_doncaster/"]
+          "jobTitle": "HYROX coach & founder",
+          "sameAs": ["https://www.instagram.com/hyrox_doncaster/", "https://www.instagram.com/hyrox_doncaster/", "https://www.instagram.com/hyrox_doncaster/", "https://www.instagram.com/hyrox_doncaster/"]
         }
       }
     </script>
-  </head>
-  <body>
+  <style>
+    .pitch-tools { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.5rem 0; }
+    .pitch-tool { padding:1.5rem; border:1px solid var(--line); border-radius:18px; background:var(--paper-2); display:flex; flex-direction:column; gap:.8rem; min-width:0; }
+    .pitch-tool h4 { font-size:1.5rem; line-height:1.15; margin:.3rem 0; }
+    .pitch-tool p { color:var(--ink-2); margin:0 0 1rem; }
+    .pitch-tool .btn { align-self:flex-start; margin-top:auto; }
+    .pitch-tool-main { grid-column:1/-1; display:grid; grid-template-columns:1.2fr 1fr; gap:2rem; border-color:var(--pink); background:linear-gradient(125deg,color-mix(in srgb,var(--pink) 12%,var(--paper)),var(--paper-2)); }
+    .pitch-tool-main h4 { font-size:clamp(1.7rem,3vw,2.5rem); }
+    .tool-preview { display:grid; gap:.4rem; align-content:center; padding:1.2rem; background:var(--paper); border-radius:12px; }
+    .tool-preview span { color:var(--pink); font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; margin-top:.5rem; }
+    .tool-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; }
+    .tool-chips span { padding:.35rem .7rem; border:1px solid var(--line); border-radius:999px; font-size:.8rem; }
+    .pitch-start { color:var(--ink-2); } .pitch-start a { color:var(--pink); }
+    .pitch-guides > summary { cursor:pointer; padding:1rem 0; min-height:44px; }
+    .event-actions { display:flex; flex-direction:column; gap:.6rem; min-width:190px; }
+    .event-prep { color:var(--ink-2); font-size:.85rem; }
+    @media(max-width:760px) { .pitch-tools,.pitch-tool-main { grid-template-columns:minmax(0,1fr); } .pitch-tool { padding:1.1rem; } .event-actions { min-width:0; } }
+  </style>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/hyroxdoncaster/showcase.css?v=1793655396429" /><link rel="stylesheet" href="/hyroxdoncaster/home-editorial.css?v=1793655396429" /><script src="/hyroxdoncaster/coach-view.js?v=1793655396429"></script></head>
+  <body class="home-lab">
     <header class="masthead wrap">
       <h1>
         <a class="wordmark" href="/hyroxdoncaster/"
           >HYROX D<span class="o">O</span>NCASTER
-          <span class="sig" aria-label="by Nigel Wood"
-            ><span class="sig-text">by Nigel Wood</span
+          <span class="sig" aria-label="HYROX Doncaster"
+            ><span class="sig-text">HYROX Doncaster</span
             ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
               <path
                 d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
@@ -72,127 +162,104 @@
       <p class="city">Doncaster</p>
     </header>
 
-    <div class="nav">
+    
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/hyroxdoncaster/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/hyroxdoncaster/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/hyroxdoncaster/desk.html?audience=coach">Finance</a><a data-coach-link href="/hyroxdoncaster/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/hyroxdoncaster/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/hyroxdoncaster/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/hyroxdoncaster/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-                <ul class="menu" id="menu">
-          <li><a href="/hyroxdoncaster/predictor/">Race Predictor</a></li>
-          <li><a href="/hyroxdoncaster/splits/">Split Analyser</a></li>
-          <li><a class="match-zone" href="/hyroxdoncaster/find-a-partner/">Find a Race Mate</a></li>
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class="menu" id="menu" data-booking-navigation><li><a href="/hyroxdoncaster/planner.html?view=client" style="color:var(--pink,#b69aff);font-weight:800">Book a session</a></li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">
-              <img class="avatar" src="/hyroxdoncaster/images/avatar.jpg?v=1792613360268" alt="" width="30" height="30" />
-              Ask Nigel <span class="caret"></span>
-            </button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">Coaching <span class="caret"></span></button>
             <ul class="sub">
-              <li><a href="/hyroxdoncaster/#tips">Station tips</a></li>
-              <li><a href="/hyroxdoncaster/#ask">Ask a question</a></li>
-              <li><a href="/hyroxdoncaster/#story">Nigel's story</a></li>
-              <li><a href="/hyroxdoncaster/#plans">Book a 1:1 call</a></li>
+              <li><a href="/hyroxdoncaster/coaching.html">Coaching &amp; programmes</a></li>
+              <li><a href="/hyroxdoncaster/training.html">Access your training</a></li>
+              <li><a href="/hyroxdoncaster/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/hyroxdoncaster/podcast.html">Studio series</a></li>
+              <li><a href="/hyroxdoncaster/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/hyroxdoncaster/#ask">Ask Nigel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Train With Nigel <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Race Tools <span class="caret"></span></button>
             <ul class="sub">
-              <li><a href="/hyroxdoncaster/#plans">6-week introduction</a></li>
-              <li><a href="/hyroxdoncaster/#plans">17 coached sessions each week</a></li>
-              <li><a href="/hyroxdoncaster/#events">Full simulations</a></li>
+              <li><a href="/hyroxdoncaster/predictor.html">Race predictor</a></li>
+              <li><a href="/hyroxdoncaster/splits.html">Split analyser</a></li>
+              <li><a href="/hyroxdoncaster/results.html">Results board</a></li>
+              <li><a href="/hyroxdoncaster/stations-prep.html">Stations prep</a></li>
+              <li><a href="/hyroxdoncaster/find-a-partner.html">Find a race-mate</a></li>
+              <li><a href="/hyroxdoncaster/run-zone.html">Run zone</a></li>
+              <li><a href="/hyroxdoncaster/taper-zone.html">Taper zone</a></li>
+              <li><a href="/hyroxdoncaster/race-day.html">Race day</a></li>
+              <li><a href="/hyroxdoncaster/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">UK Race Planner <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
-              <li><a href="/hyroxdoncaster/race-planner/">UK race planner</a></li>
-              <li><a href="/hyroxdoncaster/events/#races">Race calendar</a></li>
-              <li><a href="/hyroxdoncaster/news/">UK Hyrox news</a></li>
-            </ul>
-          </li>
-          <li><a href="/hyroxdoncaster/doncaster-hybrid-scene/">Doncaster Scene</a></li>
-          <li><a href="/hyroxdoncaster/results/">Results Board</a></li>
-          <li>
-            <button aria-expanded="false" aria-haspopup="true">Stations Prep <span class="caret"></span></button>
-            <ul class="sub">
-              <li><a href="/hyroxdoncaster/stations-prep/">All eight stations</a></li>
-              <li><a href="/hyroxdoncaster/run-zone/">Run training &amp; pace calculator</a></li>
-              <li><a href="/hyroxdoncaster/fuel-zone/">Race nutrition</a></li>
-              <li><a href="/hyroxdoncaster/taper-zone/">Final two-week taper</a></li>
+              <li><a href="/hyroxdoncaster/race-crew.html">Race crew meetups</a></li>
+              <li><a href="https://www.instagram.com/hyrox_doncaster/" target="_blank" rel="noopener">HYROX Doncaster IG</a></li>
+              <li><a href="/hyroxdoncaster/news.html">HYROX news</a></li>
+              <li><a href="/hyroxdoncaster/list.html">Join the list</a></li>
             </ul>
           </li>
           <li>
-            <button aria-expanded="false" aria-haspopup="true">Station 9 <span class="caret"></span></button>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
             <ul class="sub">
-              <li><a href="/hyroxdoncaster/station-9/">Station 9 meetups</a></li>
-              <li><a href="/hyroxdoncaster/broadcast/">Weekly broadcast</a></li>
-              <li><a href="/hyroxdoncaster/diary/">This week's diary</a></li>
-              <li><a href="/hyroxdoncaster/#wall-photos">Crew Wall</a></li>
-              <li><a href="/hyroxdoncaster/#ask">Chat Zone</a></li>
+              <li><a href="/hyroxdoncaster/partners.html">Partners</a></li>
+              <li><a href="/hyroxdoncaster/shop.html">Links</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
 
-    <section class="hero hero--bleed">
-      <img
-        class="hero-amb"
-        src="/hyroxdoncaster/images/skierg-laugh.jpg?v=1792613360268"
-        alt=""
-        aria-hidden="true"
-        width="1125"
-        height="1080"
-      />
+    <section class="hero hero--bleed" data-hero-mode="full" data-hero-roll="full">
       <div class="hero-mask">
         <img
           class="hero-img"
-          src="/hyroxdoncaster/images/skierg-laugh.jpg?v=1792613360268"
-          alt="HYROX athlete pulling the sled rope directly towards the camera"
+          src="/hyroxdoncaster/images/hero.jpg?v=1793655396429"
+          alt="Nigel Wood driving the sled, head-on — the station nobody enjoys"
           width="1125"
           height="1080"
           fetchpriority="high"
         />
       </div>
       <div class="wrap">
-        <span class="kicker"
-          >The Home of Hard Work · Kirk Sandall</span
-        >
         <h2>
-          Run your own race,<br /><em>with <i>your</i> pace.</em>
+          HYROX coach.<br /><em>Doncaster.</em>
         </h2>
         <p>
-          We're HYROX Doncaster — the first HYROX partner gym in Doncaster. Seventeen coached sessions each week, every movement taught properly, and a room full of Doncaster folk who know that showing up is the hard bit. First race or faster race, start with six guided weeks.
+          Welcome to the Home of Hard Work. Build strength, running confidence and station skills in Doncaster — from your first session to your next start line.
         </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#plans">See the 6-week intro</a>
-          <a class="btn btn-light" href="#ask">Ask Nigel</a>
-        </div>
-        <div class="stats">
-          <div><strong>17</strong><span>coached sessions every week</span></div>
-          <div><strong>6 weeks</strong><span>guided introduction — no experience needed</span></div>
-          <div><strong>8 stations</strong><span>technique, safe lifting and race preparation</span></div>
-        </div>
       </div>
     </section>
-
-    <section class="block" id="zones">
+    <div class="hero-below"><div class="wrap"><div class="actions">
+          <a class="btn btn-primary" href="/hyroxdoncaster/coaching.html">Coach with Nigel</a>
+          <a class="btn btn-light" href="#ask">Ask Nigel</a>
+        </div><div class="stats">
+          <div>
+            <strong>Open</strong><span>HYROX Pro Solo PB — Doncaster</span>
+          </div>
+          <div>
+            <strong>Doubles</strong><span>Pro Doubles — Birmingham, with the crew</span>
+          </div>
+          <div><strong>Raced</strong><span>on the start line — real experience, real times</span></div>
+        </div></div></div><!-- /hero-below --><section class="block" id="zones">
       <div class="wrap">
-        <p class="eyebrow reveal">The Zones</p>
-        <h3 class="reveal">Every metre of the race, we break it down.</h3>
-        <p class="lead reveal">
-          Pick your weakness. We'll turn it into your fastest split — no drama.
-        </p>
+        <p class="eyebrow reveal">More than a finish time</p>
+        <h3 class="reveal">Know your race. Find your people.</h3>
+        <p class="lead reveal">Your first start line or your next personal best — useful tools to turn a race idea into a plan.</p>
+        <div class="pitch-tools">
+          <article class="pitch-tool pitch-tool-main reveal"><div><span class="tag">After the finish</span><h4>Your finish time tells half the story.</h4><p>See where the minutes went, where you were strong and what deserves your next training block.</p><a class="btn btn-primary" href="/hyroxdoncaster/splits.html">Analyse my splits</a></div><div class="tool-preview" aria-label="What the analysis covers"><span>01 · Running</span><strong>Did your pace fade?</strong><span>02 · Stations</span><strong>Where did time get away?</strong><span>03 · Next steps</span><strong>Know what to work on.</strong></div></article>
+          <article class="pitch-tool reveal"><span class="tag">Better together</span><h4>Got the ticket. Missing the partner?</h4><p>Find someone aiming for your race, your format and a pace that fits. Doubles, relay or company for the race trip.</p><div class="tool-chips"><span>Race</span><span>Division</span><span>Pace</span></div><a class="btn btn-ghost" href="/hyroxdoncaster/find-a-partner.html">Find my race-mate</a></article>
+          <article class="pitch-tool reveal"><span class="tag">Before the start</span><h4>What time could you aim for?</h4><p>Bring your running and station benchmarks together for a race estimate — and a clearer starting point for training.</p><div class="tool-chips"><span>8 runs</span><span>8 stations</span><span>One target</span></div><a class="btn btn-ghost" href="/hyroxdoncaster/predictor.html">Predict my race</a></article>
+        </div>
+        <p class="pitch-start">New to all of this? <a href="/hyroxdoncaster/prep-club.html">Start with the free HYROX Prep Club →</a></p>
+        <details class="pitch-guides"><summary>Explore station guides, running plans and race preparation</summary>
         <div class="zones">
-          <a class="zone zone--hook reveal" href="/hyroxdoncaster/find-a-partner/">
-            <span class="num">New</span>
-            <h4>Got a ticket, need a partner?</h4>
-            <p>
-              Doubles, mixed, relay, or just someone to share the London trip — post
-              your card and Nigel makes the intro himself.
-            </p>
-            <span class="more">Find a partner</span>
-          </a>
-          <a class="zone reveal" href="/hyroxdoncaster/stations-prep/">
+          <a class="zone reveal" href="/hyroxdoncaster/stations-prep.html">
             <span class="num">01</span>
             <h4>Stations Prep</h4>
             <p>
@@ -201,84 +268,95 @@
             </p>
             <span class="more">Open station guides</span>
           </a>
-          <a class="zone reveal" href="/hyroxdoncaster/run-zone/">
+          <a class="zone reveal" href="/hyroxdoncaster/run-zone.html">
             <span class="num">02</span>
             <h4>Run Zone</h4>
             <p>
-              Eight kilometres under fatigue. Build the engine, learn the pace and stop the stations wrecking the next run.
+              8 × 1 km with heavy legs. Compromised-running sessions built for
+              HYROX halls get warm.
             </p>
             <span class="more">Run plans</span>
           </a>
-          <a class="zone reveal" href="/hyroxdoncaster/events/">
+          <a class="zone reveal" href="/hyroxdoncaster/events.html">
             <span class="num">03</span>
             <h4>Upcoming Events</h4>
             <p>
-              Doncaster countdown plus city planners for London, Birmingham, Hong
-              Kong and Glasgow — hotels, flights, food, the night after.
+              Confirmed start lines in the region and around the world — dates,
+              travel guidance, the crew and the weekend around the race.
             </p>
-            <span class="more">Race calendar</span>
+            <span class="more">Race Calendar &amp; Travel</span>
           </a>
           <a class="zone reveal" href="#ask">
             <span class="num">04</span>
             <h4>Ask Nigel</h4>
             <p>
-              First race, faster race, movement technique or where to start — ask directly and get a straight answer.
+              Form checks, race strategy, training around real life — ask
+              directly, get a real answer.
             </p>
             <span class="more">Ask a question</span>
           </a>
-        </div>
+        </div></details>
       </div>
     </section>
 
-    $1src="/hyroxdoncaster/images/bio.jpg?v=1792613360268"
-            alt="HYROX Doncaster coach with an athlete after an event"
+    <section class="block alt" id="story">
+      <div class="wrap story">
+        <figure class="reveal">
+          <img
+            src="/hyroxdoncaster/images/startline.jpg?v=1793655396429"
+            alt="Nigel Wood in race paint beside a HYROX wall"
             width="985"
             height="1150"
             loading="lazy"
           />
+          <svg class="profile-hairline" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 A48 60 0 0 1 48 0 H50" /></svg>
         </figure>
         <div class="reveal">
-          <p class="eyebrow">Meet the crew</p>
-          <h3>The Home of Hard Work.</h3>
+          <p class="eyebrow">The athlete</p>
+          <h3>Meet Nigel Wood. <em>The experience behind the coaching.</em></h3>
           <p class="lead">
-            HYROX Doncaster is a dedicated training floor in Kirk Sandall: beginners, returning racers and PB chasers training side by side. The six-week introduction teaches every movement from the ground up; full simulations test it under race conditions.
+            HYROX racer and coach. The Home of Hard Work — beginners and experienced racers side by side. Discover the approach behind HYROX Doncaster — and find a way forward that fits your goals.
           </p>
-          <p class="quote">
-            "No egos, no judgement — just a friendly community that makes showing up the best part of your week."
-          </p>
-          <ul>
-            <li>Doncaster's first HYROX partner gym</li>
-            <li>17 coached sessions each week</li>
-            <li>Full HYROX simulations with real-time coaching and technique fixes</li>
-          </ul>
+          <p class="quote">Claim your patch. Test your limits. Let's get to work.</p>
+          <ul><li>The Home of Hard Work — beginners and experienced racers side by side.</li><li>Fastest solo: Open — Doncaster.</li><li>Fastest doubles: Doubles — Birmingham.</li><li>HYROX Doncaster: 17 coached sessions a week, six-week intro cohorts and open sims.</li></ul>
         </div>
       </div>
     </section>
 
     <section class="block" id="plans">
       <div class="wrap">
-        <p class="eyebrow reveal">Start here</p>
-        <h3 class="reveal">Six weeks. No guesswork.</h3>
-        <p class="lead reveal">The current introduction is six guided weeks for Doncaster folk who are ready to get fitter, stronger or properly prepared for HYROX. No experience needed — just a willingness to show up.</p>
+        <p class="eyebrow reveal">HYROX Doncaster coaching</p>
+        <h3 class="reveal">Find your way forward.</h3>
+        <p class="lead reveal">Start with the six-week introduction, explore the regular training schedule or rehearse race day at a simulation. HYROX Doncaster welcomes different starting points with coached, scalable sessions.</p>
         <div class="plan plan-crew reveal">
-          <img class="crew-photo" src="/hyroxdoncaster/images/squad-athlos.jpg?v=1792613360268" alt="HYROX Doncaster members together after training" loading="lazy" />
+          <img
+            class="crew-photo"
+            src="/hyroxdoncaster/images/gallery/doncaster-72.jpg?v=1793655396429"
+            alt="The HYROX Doncaster squad celebrating together outside the gym"
+            loading="lazy"
+          />
           <div class="crew-copy">
-            <span class="tag">6-week introduction</span>
-            <h4>Train. Community. Support. Results.</h4>
-            <ul>
-              <li>Unlimited access to 17 coached sessions each week</li>
-              <li>Every movement demonstrated, coached and corrected</li>
-              <li>Fitness training scaled to your current level</li>
-              <li>Practical nutrition guidance</li>
-              <li>A friendly community — no egos, no judgement</li>
-            </ul>
+            <span class="tag">New here?</span>
+            <h4>Join the HYROX Prep Club</h4>
+            <p class="crew-line">
+              Not ready for coaching — or not sure HYROX is for you yet? Start
+              with free race tools, clear training guidance and a community
+              to help you find your feet.
+            </p>
+            <p class="crew-note">
+              Free to join · beginner-safe · race tools · community prompts —
+              coaching only when it makes sense.
+            </p>
           </div>
           <div class="crew-side">
-            <div class="per">Limited places keep the coaching personal</div>
-            <a class="btn btn-primary" href="https://www.hyroxdoncaster.com/" target="_blank" rel="noopener">Check the next start</a>
+            <div class="price">£0 <small>/ always</small></div>
+            <div class="per">The softer first step</div>
+            <a class="btn btn-primary" href="/hyroxdoncaster/prep-club.html">Join Prep Club</a>
           </div>
         </div>
-        <p class="plans-note">Current prices and start dates come directly from HYROX Doncaster.</p>
+        <div class="plans coach-plans verified-offers"><article class="plan featured reveal" data-offer-id="0"><span class="tag">Six-week coached introduction</span><h4>Six-week HYROX introduction</h4><p class="per">A structured introduction to strength, conditioning, station technique and the gym community. Enquire about the next intake through the official site.</p><a class="btn btn-primary" href="https://www.hyroxdoncaster.com/" target="_blank" rel="noopener">Explore the six-week introduction</a></article><article class="plan reveal" data-offer-id="1"><span class="tag">Monthly coached training</span><h4>Club memberships</h4><div class="price">From £67/month</div><p class="per">Choose the training frequency that fits your week, from regular sessions to unlimited coached training.</p><ul><li>Starter: £67/month for eight coached sessions</li><li>Racer: £83/month for twelve coached sessions</li><li>Elite: £99/month for unlimited coached sessions</li></ul><a class="btn btn-ghost" href="https://www.hyroxdoncaster.com/membership" target="_blank" rel="noopener">Compare club memberships</a></article><article class="plan reveal" data-offer-id="2"><span class="tag">Race-format practice</span><h4>Simulation sessions</h4><div class="price">£20 members · £40 non-members</div><p class="per">Practise all eight stations and the race format at the Kirk Sandall gym. Open to members and non-members; check the simulation page for current dates and booking details.</p><a class="btn btn-ghost" href="https://www.hyroxdoncaster.com/sim" target="_blank" rel="noopener">Explore simulation sessions</a></article></div><p class="offer-terms">Offer details and prices are set by the provider. Check the linked page for current terms.</p><p class="plans-note">
+          Not sure which route fits? <a href="#ask">Ask Nigel</a>.
+        </p>
       </div>
     </section>
 
@@ -290,20 +368,23 @@
       </div>
     </section>
 
+    <section class="block" id="stories"><div class="wrap"><p class="eyebrow">Between the start lines</p><h3>Keep learning between sessions.</h3><p class="lead">Race stories, coaching clips and useful places to explore next.</p><div class="showcase-grid">
+      <article class="showcase-card"><h4>HYROX news</h4><p>Race stories from around the world, with Nigel's perspective on what matters.</p><a class="btn btn-ghost" href="/hyroxdoncaster/news.html">Read the news</a></article>
+      <article class="showcase-card"><h4>Watch &amp; listen</h4><p>Training clips, race footage and longer conversations — ready when you are.</p><p><a class="btn btn-ghost" href="/hyroxdoncaster/watch.html">Watch &amp; Learn</a> <a href="/hyroxdoncaster/podcast.html">Studio series →</a></p></article>
+      <article class="showcase-card"><h4>More from HYROX Doncaster</h4><p>Coaching routes, sessions and official channels.</p><a class="btn btn-ghost" href="/hyroxdoncaster/shop.html">Open the links</a></article>
+    </div></div></section>
+
     <section class="block alt" id="events">
       <div class="wrap">
-        <p class="eyebrow reveal">Test the work</p>
-        <h3 class="reveal">Full HYROX simulations.</h3>
-        <p class="lead reveal">Members and non-members can test themselves under race conditions, with real-time coaching, technique tweaks and fault fixes that could save minutes on race day.</p>
-        <div class="events">
-          <div class="event reveal">
-            <div class="date"><strong>SIM</strong><span>Doncaster</span></div>
-            <div><h4>Claim your patch. Test your limits.</h4><p>Solo, doubles and pro categories are announced by the gym. Places are limited and previous simulations have sold quickly.</p></div>
-            <a class="btn btn-ghost" href="https://www.instagram.com/hyrox_doncaster/" target="_blank" rel="noopener">See current dates</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <p class="eyebrow reveal">Upcoming Events</p>
+        <h3 class="reveal">Pick the start line. Build towards it.</h3>
+        <p class="lead reveal">
+          Choose a confirmed race, plan the weekend and build the training
+          around it. Find a teammate, bring the crew and make the start line a shared target.
+        </p>
+        <div class="events" id="race-cards" aria-live="polite"><div class="event"><div class="date"><strong><time datetime="2026-12-02">2 Dec 2026</time></strong><span>London</span></div><div><h4>Amazon HYROX London</h4><p>2 Dec 2026 – 6 Dec 2026 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-london-excel/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/hyroxdoncaster/events.html#london">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2027-01-20">20 Jan 2027</time></strong><span>Manchester</span></div><div><h4>HYROX Manchester</h4><p>20 Jan 2027 – 31 Jan 2027 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-manchester/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/hyroxdoncaster/events.html#manchester">Plan the weekend</a></div>
+<div class="event"><div class="date"><strong><time datetime="2026-11-11">11 Nov 2026</time></strong><span>Dublin</span></div><div><h4>HYROX Dublin</h4><p>11 Nov 2026 – 15 Nov 2026 · Ireland</p><a href="https://hyrox.com/event/hyrox-dublin/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/hyroxdoncaster/events.html#dublin">Plan the weekend</a></div></div></div></section>
 
     <section class="cta-band" id="find-partner">
       <div class="wrap">
@@ -312,7 +393,7 @@
           Open doubles, pro, mixed — yes, that one too — relay, or just
           race-trip company. Post your card, Nigel does the intros.
         </p>
-        <a class="btn btn-light" href="/hyroxdoncaster/find-a-partner/"
+        <a class="btn btn-light" href="/hyroxdoncaster/find-a-partner.html"
           >Find a partner</a
         >
       </div>
@@ -323,8 +404,7 @@
         <p class="eyebrow reveal">Results wall</p>
         <h3 class="reveal">Real athletes. Real times.</h3>
         <p class="lead reveal">
-          Every result here is a HYROX Doncaster athlete who said yes to being on the
-          wall. Before and after, race by race.
+          Every result here is athlete-approved. Before and after, race by race.
         </p>
         <ul class="wall" id="wall-list"></ul>
         <div class="week" id="week" hidden>
@@ -336,19 +416,20 @@
 
     <section class="block tips" id="tips">
       <div class="wrap">
-        <p class="eyebrow reveal">Nigel's playbook</p>
+        <p class="eyebrow reveal">Nigel says</p>
         <h3 class="reveal">The stuff that's not in the rulebook.</h3>
         <p class="lead reveal">
-          Three things per station that Nigel actually does on race day — including the embarrassing ones. Spot a gap? <a href="#ask">Ask Nigel</a> — it might make the list.
+          Three practical checks per station — race-floor lessons from a coach who has raced across divisions, partners and cities. Spot a gap? <a href="#ask">Ask Nigel</a> — it might make the list.
         </p>
         <figure class="tips-photo reveal">
           <img
-            src="/hyroxdoncaster/images/wallball.jpg?v=1792613360268"
-            alt="Nigel mid wall-ball rep at a Hyrox race"
+            src="/hyroxdoncaster/images/wallball.jpg?v=1793655396429"
+            alt="Nigel Wood coaching wall balls in a class setting"
             width="970"
             height="1024"
             loading="lazy"
           />
+          <svg class="tips-hairline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 65 V5 Q0 0 5 0 H62" /></svg>
         </figure>
         <div class="tips-grid reveal">
           <details open>
@@ -392,7 +473,7 @@
             <summary>SkiErg</summary>
             <ol>
               <li>
-                Set the damper before the clock starts — 6–7 for most women.
+                Set the damper before the clock starts — 6–7 for most athletes.
                 Fiddling mid-station costs 10 seconds you never get back.
               </li>
               <li>
@@ -409,8 +490,7 @@
             <summary>Sled Push</summary>
             <ol>
               <li>
-                Test the carpet in the warm-up area — every venue is different,
-                Doncaster's was notoriously slow. If it's slow, drop the shoulder,
+                Test the carpet in the warm-up area — every venue is different — some carpets just never let go. If it's slow, drop the shoulder,
                 push from lower, and add 10–15 s to your target so you don't
                 blow the next run chasing a number.
               </li>
@@ -527,18 +607,57 @@
                 hands. Every step forward or back is a lost rep.
               </li>
               <li>
-                Eyes on the target line and let the ball drop back into your hands — chasing it wastes the next rep.
+                Eyes on the target line the whole time. Looking at the ball is
+                how you drop it on rep 68.
               </li>
             </ol>
           </details>
-</div>
+          <details>
+            <summary>Travel &amp; away races</summary>
+            <ol>
+              <li>
+                Pre-cool: an ice slushie 20 minutes before the start measurably
+                drops core temperature. Racing from United Kingdom, this is the free
+                minute.
+              </li>
+              <li>
+                Flying to United Kingdom, Dublin or Singapore? Land two days early, race
+                day minus one is legs up, and pack your own gel — the expo runs
+                out.
+              </li>
+              <li>
+                Train outdoors at United Kingdom effort, race indoors at pace. Aircon
+                venues are 10°C cooler than your Sunday run, so your race pace
+                is faster than your training says.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Coming back from a layoff</summary>
+            <ol>
+              <li>
+                Drop intensity before volume — keep the sessions, cut the
+                load. The habit is the hard part; the fitness comes back.
+              </li>
+              <li>
+                Race doubles first. Splitting the stations means you can go
+                hard for 30 seconds and recover — banking confidence instead
+                of a blow-up.
+              </li>
+              <li>
+                A plan beats guesswork. Ask Nigel — that's what the coaching
+                page is for.
+              </li>
+            </ol>
+          </details>
+        </div>
       </div>
     </section>
 
     <section class="capture" id="ask">
       <img
         class="capture-bg"
-        src="/hyroxdoncaster/images/coaching.jpg?v=1792613360268"
+        src="/hyroxdoncaster/images/coaching.jpg?v=1793655396429"
         alt=""
         width="948"
         height="870"
@@ -546,26 +665,24 @@
       />
       <div class="wrap">
         <div class="reveal coach">
-          <img
+          <span class="coach-portrait"><img
             class="bio"
-            src="/hyroxdoncaster/images/bio.jpg?v=1792613360268"
-            alt="The HYROX Doncaster crew after a race-day community run"
+            src="/hyroxdoncaster/images/bio.jpg?v=1793655396429"
+            alt="Nigel Wood — HYROX racer, coach and HYROX Doncaster founder"
             width="120"
             height="120"
             loading="lazy"
-          />
+          /><svg class="portrait-hairline" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M33 3 A50 50 0 0 0 33 97" /></svg></span>
           <div>
             <p class="eyebrow">Ask Nigel · Chat Zone</p>
             <h3>Got a race, a station or a target? Just ask.</h3>
             <p>
-              Leave your email and your question. Nigel answers personally — and
-              you'll be first to hear when cohorts open.
+              Have a training question or a race in mind? Send it to Nigel
+              and start the conversation.
             </p>
             <p class="chat-line">
-              Prefer chat? Subscribers get Nigel on
-              <a class="chat-zone chat-zone-inline" href="#ask" data-whatsapp=""
-                ><span class="dot"></span> WhatsApp</a
-              >
+              Prefer chat? Find Nigel on
+              <a class="chat-zone chat-zone-inline" href="https://www.instagram.com/hyrox_doncaster/" target="_blank" rel="noopener"><span class="dot"></span> Instagram</a>
             </p>
           </div>
         </div>
@@ -617,8 +734,8 @@
                   <option>Faster time</option>
                   <option>Podium / elite</option>
                   <option>Doubles / relay</option>
-                  <option>Fit through pregnancy</option>
-                  <option>Post-natal comeback</option>
+                  <option>Doubles partner hunt</option>
+                  <option>Injury comeback</option>
                   <option>General strength &amp; running</option>
                 </select>
               </label>
@@ -648,7 +765,7 @@
               </label>
               <label>
                 <span>Where are you based?</span>
-                <input type="text" name="city" placeholder="Doncaster" />
+                <input type="text" name="city" placeholder="United Kingdom" />
               </label>
               <label>
                 <span>Instagram / TikTok handle</span>
@@ -657,7 +774,7 @@
             </div>
             <label class="onboard-wide">
               <span
-                >Injuries, pregnancy stage, or anything Nigel should know</span
+                >Injuries, race history, or anything Nigel should know</span
               >
               <textarea name="notes" rows="3"></textarea>
             </label>
@@ -691,11 +808,11 @@
 
     <section class="block gallery" id="wall-photos" hidden>
       <div class="wrap">
-        <p class="eyebrow reveal">Crew Wall</p>
-        <h3 class="reveal">Your shots. Your words.</h3>
+        <p class="eyebrow reveal">Race Wall</p>
+        <h3 class="reveal">Your people. Your progress. Your wall.</h3>
         <p class="lead reveal">
-          Race faces, finish-line tears, the squad being daft. Send yours and it
-          goes up here once Nigel has your OK.
+          Race faces, finish-line tears, the squad being daft. Share the moments
+          that make this community yours.
         </p>
         <div
           class="event-tabs reveal"
@@ -732,7 +849,7 @@
                   maxlength="60"
                   list="event-options"
                   required
-                  placeholder="Hyrox Doncaster 2026"
+                  placeholder="Hyrox UK 2026"
                 />
                 <datalist id="event-options"></datalist>
               </label>
@@ -759,7 +876,7 @@
             <label class="check">
               <input name="consent" type="checkbox" required />
               <span
-                >I'm in the photo (or everyone in it is happy), and HYROX Doncaster can
+                >I'm in the photo (or everyone in it is happy), and Nigel can
                 show it on this page and on @hyroxdoncaster. Ask Nigel any time to take
                 it down.</span
               >
@@ -801,53 +918,56 @@
     ></div>
 
     <div class="sticky-cta" id="sticky-cta" hidden>
-      <a class="btn btn-primary" href="#plans">Start training</a>
-      <a class="btn btn-light" href="/hyroxdoncaster/splits/">Free split analysis</a>
+      <a class="btn btn-primary" href="/hyroxdoncaster/coaching.html">Coach with Nigel</a>
+      <a class="btn btn-light" href="/hyroxdoncaster/splits.html">Free split analysis</a>
     </div>
 
     <footer>
       <div class="wrap">
-        <div>© <span id="year"></span> HYROX Doncaster</div>
+        <div>© <span id="year"></span> Nigel Wood</div>
         <nav>
-          <a href="#plans">6-week introduction</a>
-          <a href="/hyroxdoncaster/stations-prep/">Stations Prep</a>
-          <a href="/hyroxdoncaster/run-zone/">Run Zone</a>
-          <a href="/hyroxdoncaster/fuel-zone/">Fuel Zone</a>
-          <a href="/hyroxdoncaster/taper-zone/">Taper Zone</a>
-          <a href="/hyroxdoncaster/events/">Events</a>
-          <a href="/hyroxdoncaster/events/">Hyrox Doncaster</a>
-          <a href="/hyroxdoncaster/race-planner/">Race planner</a>
-          <a href="/hyroxdoncaster/news/">News</a>
-          <a href="/hyroxdoncaster/doncaster-hybrid-scene/">Doncaster scene</a>
-          <a href="/hyroxdoncaster/station-9/">Station 9</a>
-          <a href="/hyroxdoncaster/broadcast/">Broadcast</a>
-          <a href="/hyroxdoncaster/diary/">Diary</a>
-          <a href="/hyroxdoncaster/results/">Results</a>
-          $1
-          <a href="/hyroxdoncaster/predictor/">Race Predictor</a>
-          <a href="/hyroxdoncaster/find-a-partner/">Find a Partner</a>
-          <a href="#wall-photos">Crew Wall</a>
+          <a href="#plans">Coaching</a>
+          <a href="/hyroxdoncaster/stations-prep.html">Stations Prep</a>
+          <a href="/hyroxdoncaster/run-zone.html">Run Zone</a>
+          <a href="/hyroxdoncaster/taper-zone.html">Taper Zone</a>
+          <a href="/hyroxdoncaster/race-day.html">Race Day</a>
+          <a href="/hyroxdoncaster/events.html">Events</a>
+          <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
+          <a href="/hyroxdoncaster/events.html#cities">Race planner</a>
+          <a href="/hyroxdoncaster/news.html">News</a>
+          <a href="/hyroxdoncaster/race-crew.html">the ninth station</a>
+          <a href="/hyroxdoncaster/results.html">Results</a>
+          <a href="/hyroxdoncaster/splits.html">Splits</a>
+          <a href="/hyroxdoncaster/find-a-partner.html">Find a Partner</a>
+          <a href="#wall-photos">Race Wall</a>
           <a href="#ask">Ask Nigel</a>
-          <a data-link="truecoach" target="_blank" rel="noopener" hidden
-            >Athlete login (coaching platform)</a
+          <a data-link="athleteLogin" target="_blank" rel="noopener" hidden
+            >Athlete login</a
           >
           <a
             href="https://www.instagram.com/hyrox_doncaster/"
             target="_blank"
             rel="noopener"
-            >Instagram @hyrox_doncaster</a
+            >Instagram @hyroxdoncaster</a
           >
-          <a href="https://www.hyroxdoncaster.com/" target="_blank" rel="noopener">Official website</a>
+          <a data-strip="tiktok-link" href="https://www.instagram.com/hyrox_doncaster/" target="_blank" rel="noopener">TikTok @hyroxdoncaster</a>
+          <a data-strip="youtube-link" href="https://www.instagram.com/hyrox_doncaster/" target="_blank" rel="noopener">YouTube — HYROX_DONCASTER</a>
+          <a href="https://www.instagram.com/hyrox_doncaster/" target="_blank" rel="noopener">HYROX Doncaster</a>
+          <a href="https://www.instagram.com/hyrox_doncaster/" target="_blank" rel="noopener">All links</a>
 
-          <a href="/hyroxdoncaster/book/">Book a session</a>
-          <a href="/hyroxdoncaster/advertise/">Advertise</a>
+          <a href="/hyroxdoncaster/coaching.html">Book Nigel</a>
+          <a href="/hyroxdoncaster/partners.html">Partners</a>
+          
         </nav>
       </div>
-          <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/hyroxdoncaster/app.js?v=1792613360268" defer></script>
-    <script src="/hyroxdoncaster/emerge.js?v=1792613360268" defer></script>
-    <script src="/hyroxdoncaster/partners.js?v=1792613360268" defer></script>
+    <script src="/hyroxdoncaster/app.js?v=1793655396429" defer></script>
+    <script src="/hyroxdoncaster/emerge.js?v=1793655396429" defer></script>
+    <script src="/hyroxdoncaster/partners.js?v=1793655396429" defer></script>
+    <script src="/hyroxdoncaster/planner.js?v=1793655396429" defer></script>
+    <script src="/hyroxdoncaster/home-editorial.js?v=1793655396429" defer></script>
+  <script>(()=>{const h=document.querySelector(".hero--bleed");if(!h||!("IntersectionObserver" in window))return;new IntersectionObserver(([e])=>document.body.classList.toggle("hero-in-view",e.isIntersecting)).observe(h);})();</script>
   </body>
 </html>

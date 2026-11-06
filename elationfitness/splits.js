@@ -1,6 +1,8 @@
 (function () {
   const form = document.getElementById("splits-form");
   if (!form) return;
+  const previewMode = form.dataset.preview === "true";
+  const previewHistory = [];
   const note = document.getElementById("splits-note");
   const grid = document.getElementById("splits-grid");
   const KIND = "race_splits";
@@ -415,6 +417,20 @@
   }
 
   async function loadHistory(token) {
+    if (previewMode) {
+      if (!previewHistory.length) for (const [index, multiplier] of [1.06, 1].entries()) {
+        const payload = Object.fromEntries(SEGMENTS.map(s => [s.key, Math.round(s.ref * multiplier)]));
+        payload.event = `Sample race ${index + 1}`;
+        payload.run_total = SEGMENTS.filter(s => s.kind === "run").reduce((sum, s) => sum + payload[s.key], 0);
+        payload.station_total = SEGMENTS.filter(s => s.kind === "station").reduce((sum, s) => sum + payload[s.key], 0);
+        payload.total = payload.run_total + payload.station_total;
+        previewHistory.push({ payload });
+      }
+      renderHistory(previewHistory, "preview");
+      document.getElementById("history-intro").textContent = "Illustrative race history, held in this browser session only. Submit your splits above to add a preview comparison.";
+      document.getElementById("history-link").href = "#history";
+      return;
+    }
     if (!token) return;
     try {
       const res = await fetch(
@@ -436,9 +452,15 @@
       const q = division
         ? `&field=division&value=${encodeURIComponent(division)}`
         : "";
-      const res = await fetch(`/api/submissions/stats?kind=${KIND}${q}`);
-      if (!res.ok) throw new Error("stats");
-      const data = await res.json();
+      let data;
+      if (previewMode) {
+        const example = previewHistory[1]?.payload || {};
+        data = { fields: Object.fromEntries(HISTORY_COLS.map(c => [c.key, { best: Math.round((example[c.key] || 300) * 0.8), p25: Math.round((example[c.key] || 300) * 0.9), median: example[c.key] || 300, n: 12 }])) };
+      } else {
+        const res = await fetch(`/api/submissions/stats?kind=${KIND}${q}`);
+        if (!res.ok) throw new Error("stats");
+        data = await res.json();
+      }
       const f = data.fields || {};
       if (!f.total) {
         intro.textContent = division
@@ -446,7 +468,7 @@
           : "The databank is growing — medians appear once a division has five races.";
         return;
       }
-      intro.textContent = `${division || "All divisions"}: medians from ${f.total.n} British races. Beat the median and you're in the faster half.`;
+      intro.textContent = previewMode ? "Illustrative benchmark comparison — these are demonstration figures, not collected athlete results." : `${division || "All divisions"}: medians from ${f.total.n} races. Beat the median and you're in the faster half.`;
       const thead = el("thead");
       const hr = el("tr");
       [
@@ -520,6 +542,14 @@
     payload.total = a.total + (rz || 0);
 
     render(a, payload);
+
+    if (previewMode) {
+      previewHistory.push({ payload });
+      await loadHistory("preview");
+      await loadDatabank(payload.division, payload);
+      note.textContent = "Analysis ready. This browser preview sent no athlete submission or email.";
+      return;
+    }
 
     const email = String(data.get("email") || "").trim();
     const token = localStorage.getItem(STORE) || "";

@@ -124,6 +124,38 @@
         "race with"
       ],
       "a": "Post a card on the find-a-partner board — pace band, race target, one line about you. Ross matches people by hand, because doubles is chemistry, not just split times."
+    },
+    {
+      "q": "What training options and prices are available?",
+      "keywords": [
+        "price",
+        "cost",
+        "fee",
+        "programme",
+        "program",
+        "coaching"
+      ],
+      "a": "Online HYROX coaching — enquire for current terms; Club classes and drop-ins — £15 non-member drop-in; Run club — enquire for current terms. Read the Coaching page for each offer's format and its official link. The provider sets current prices and terms."
+    },
+    {
+      "q": "How do I get started?",
+      "keywords": [
+        "start",
+        "book",
+        "sign up",
+        "join"
+      ],
+      "a": "Choose the offer that fits your goal on the Coaching page, then follow its own official button. Use Ask if you want to discuss your starting point first."
+    },
+    {
+      "q": "Where are the partner links and codes?",
+      "keywords": [
+        "discount",
+        "code",
+        "affiliate",
+        "partner brand"
+      ],
+      "a": "The Partners page lists GTC Health Clubs, HTC Christchurch. Check the linked provider for current eligibility and terms."
     }
   ]
 }

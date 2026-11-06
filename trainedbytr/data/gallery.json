@@ -28,6 +28,20 @@
       "caption": "Doubles — under the arch",
       "event": "Race day",
       "tilt": -0.5
+    },
+    {
+      "src": "/trainedbytr/images/gallery/tr-crew-attitude-wall.jpg",
+      "alt": "The TransFit Widnes class grouped at the Attitude is Everything wall",
+      "caption": "Full house again — class numbers keep climbing.",
+      "event": "Training",
+      "tilt": 1.1
+    },
+    {
+      "src": "/trainedbytr/images/gallery/tr-headcoach-poster.jpg",
+      "alt": "Trained by TR head coach promo shot",
+      "caption": "Head coach. TransFit Widnes.",
+      "event": "Training",
+      "tilt": -0.9
     }
   ]
 }

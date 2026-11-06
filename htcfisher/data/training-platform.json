@@ -1,0 +1,11 @@
+{
+  "name": "Your coaching platform",
+  "coachURL": "",
+  "clientURL": "",
+  "programmesURL": "https://www.hyroxtrainingclubchristchurch.co.uk/online-hyrox-coaching",
+  "applicationURL": "https://www.instagram.com/hyroxchristchurch/",
+  "directCoachLink": false,
+  "offerTitle": "Online HYROX coaching",
+  "offerDescription": "A race-date-led 12–16 week build with adaptive programming, check-ins and race strategy. Discuss your goals and current pricing with Ross.",
+  "note": "Open your existing coaching setup. Training delivery and client records stay on that platform; no workout or progress-data sync is connected here."
+}

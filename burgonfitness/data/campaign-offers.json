@@ -1,0 +1,66 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Couch to HYROX",
+      "goal": "Offer enquiries",
+      "destination": "https://buy.stripe.com/3cIfZj1kj0pR0JoeS21ZS0c",
+      "image": "/burgonfitness/images/coaching-hero.jpg",
+      "headline": "A beginner-friendly programme delivered in three progressive four-week blocks.",
+      "actionLabel": "View Couch to HYROX enrolment"
+    },
+    {
+      "id": "programme",
+      "name": "HYROX Lite",
+      "goal": "Offer enquiries",
+      "destination": "https://buy.stripe.com/8x27sN3srdcDeAedNY1ZS0b",
+      "image": "/burgonfitness/images/coaching-hero.jpg",
+      "headline": "HYROX programming with video demonstrations, coaching notes and monthly check-ins.",
+      "actionLabel": "View HYROX Lite enrolment"
+    },
+    {
+      "id": "programme-3",
+      "name": "HYROX Compete",
+      "goal": "Offer enquiries",
+      "destination": "https://calendly.com/hannahburgonfitness/consultation",
+      "image": "/burgonfitness/images/coaching-hero.jpg",
+      "headline": "Programming tailored to you, with running included and weekly check-ins.",
+      "actionLabel": "Book a free consultation"
+    },
+    {
+      "id": "programme-4",
+      "name": "Small-group performance coaching",
+      "goal": "Offer enquiries",
+      "destination": "https://hannahburgonfitness.com/hyrox-performance-coaching-groups",
+      "image": "/burgonfitness/images/coaching-hero.jpg",
+      "headline": "One weekly coached session at Pyramid Performance, with individual feedback in a small group.",
+      "actionLabel": "View small-group coaching"
+    },
+    {
+      "id": "programme-5",
+      "name": "HYROX simulation events",
+      "goal": "Offer enquiries",
+      "destination": "https://hannahburgonfitness.com/all-upcoming-events",
+      "image": "/burgonfitness/images/coaching-hero.jpg",
+      "headline": "Rehearse the race format at Pyramid Performance. Choose a date and read the event instructions before booking.",
+      "actionLabel": "View simulation dates"
+    },
+    {
+      "id": "programme-6",
+      "name": "Face-to-face personal training",
+      "goal": "Offer enquiries",
+      "destination": "https://hannahburgonfitness.com/face-to-face-personal-training",
+      "image": "/burgonfitness/images/coaching-hero.jpg",
+      "headline": "Weekly sessions tailored to your goals, with technique feedback, progress tracking and nutrition analysis.",
+      "actionLabel": "Explore personal training"
+    },
+    {
+      "id": "shop",
+      "name": "Shop collection",
+      "goal": "Shop visits",
+      "destination": "https://linktr.ee/hannah_burgon",
+      "image": "/burgonfitness/images/coaching-hero.jpg",
+      "headline": "Explore the collection."
+    }
+  ]
+}

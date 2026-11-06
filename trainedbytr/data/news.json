@@ -1,29 +1,69 @@
 {
-  "note": "Owner-voice feed — edit via config.",
   "items": [
     {
-      "date": "2026-10-19",
-      "title": "Your first HYROX: pace it properly",
-      "summary": "Going too hard on run one is the quickest way to pay for it at the sled push.",
-      "take": "Your first race isn't about a PB. Finish strong, learn what your body can do, then build from there.",
-      "link": "/trainedbytr/coaching.html",
-      "linkLabel": "Build your race plan →"
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "Performance first: look at pacing and transitions before copying an elite athlete’s session.",
+      "takeStatus": "draft-for-review"
     },
     {
-      "date": "2026-10-16",
-      "title": "Do the things you're not good at",
-      "summary": "Prioritising three or four runs each week turned harder miles into easier, quicker work.",
-      "take": "Progress comes from giving the weak point proper attention, not avoiding it.",
-      "link": "/trainedbytr/run-zone.html",
-      "linkLabel": "Run zone →"
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. An away race also means planning travel, sleep and recovery.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Choose the start line, then plan the process. Arriving rested is part of being race ready.",
+      "takeStatus": "draft-for-review",
+      "link": "/trainedbytr/events.html",
+      "linkLabel": "Race Calendar & Travel →"
     },
     {
-      "date": "2026-02-06",
-      "title": "Performance first. Process always.",
-      "summary": "Strength, confidence and longevity come before chasing a number on the scales.",
-      "take": "When the foundations are solid, results become the by-product of doing things properly.",
-      "link": "/trainedbytr/coaching.html",
-      "linkLabel": "Coaching →"
+      "type": "news",
+      "date": "2026-06-23",
+      "title": "Stockholm: Australia defends its mixed-relay world title",
+      "summary": "PUMA's World Championships report records Australia's mixed-relay win in 50:19, with Jess Pettrow on the title-defending team. Joanna Wietrzyk also finished second in the women's Elite 15 solo race.",
+      "source": "https://mediahub.puma.com/articles/puma-dominates-hyrox-world-championships-from-elite-athlete-performances-to-community-initiatives",
+      "sourceName": "PUMA · World Championships report",
+      "take": "Be clear about the job each teammate owns. Practise it rather than hoping race-day excitement sorts it out.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's new framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "The qualification rules shape the season. Check them before committing to a string of races.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027. Qualification gives the season a clear international destination.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "A championship target starts with an honest look at where you are now. Build the next block from there.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season, with kit, resources and performance support.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "The opportunity is exciting, but the everyday process still comes first.",
+      "takeStatus": "draft-for-review"
     }
   ]
 }

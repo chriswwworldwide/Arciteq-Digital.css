@@ -1,4 +1,23 @@
 {
-  "note": "Real client quotes only, in the athlete's own words, with their permission. The home page section stays hidden until at least one row has `quote` and `name`. Fields: quote, name, detail (e.g. 'Hyrox Doncaster 2025, 1:21'), plan (optional).",
-  "items": []
+  "sourceURL": "https://www.hyroxdoncaster.com/",
+  "items": [
+    {
+      "name": "Donna Wilson",
+      "quote": "A fantastic gym for all ages and abilities — no egos, just friendly people encouraging each other.",
+      "detail": "Member review published by HYROX Doncaster",
+      "sourceURL": "https://www.hyroxdoncaster.com/"
+    },
+    {
+      "name": "Adam",
+      "quote": "Super friendly, fully structured — you'll enjoy it and get fitter than before.",
+      "detail": "Member review published by HYROX Doncaster",
+      "sourceURL": "https://www.hyroxdoncaster.com/"
+    },
+    {
+      "name": "Greg Newton",
+      "quote": "Every session is different. A superb community to train and improve in.",
+      "detail": "Member review published by HYROX Doncaster",
+      "sourceURL": "https://www.hyroxdoncaster.com/"
+    }
+  ]
 }

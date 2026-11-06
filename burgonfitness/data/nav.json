@@ -1,0 +1,30 @@
+{
+  "Coaching": [
+    {
+      "label": "HYROX Prep Club",
+      "href": "/burgonfitness/prep-club.html"
+    }
+  ],
+  "Community": [
+    {
+      "label": "Race crew meetups",
+      "href": "/burgonfitness/race-crew.html"
+    },
+    {
+      "label": "News & coach takes",
+      "href": "/burgonfitness/news.html"
+    }
+  ],
+  "Race Tools": [
+    {
+      "label": "Find a race-mate",
+      "href": "/burgonfitness/find-a-partner.html",
+      "position": 5
+    },
+    {
+      "label": "Race day",
+      "href": "/burgonfitness/race-day.html",
+      "position": 8
+    }
+  ]
+}

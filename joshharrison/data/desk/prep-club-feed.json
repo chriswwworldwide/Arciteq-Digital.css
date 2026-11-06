@@ -1,0 +1,66 @@
+[
+  {
+    "type": "Start here",
+    "title": "The stations do not need to be scary",
+    "copy": "A plain-English pass through the eight stations, what matters and what beginners can ignore for now.",
+    "href": "/joshharrison/stations-prep/",
+    "cta": "Open station prep",
+    "img": "/joshharrison/images/stations-hero.jpg",
+    "signal": "Opened station prep"
+  },
+  {
+    "type": "Free tool",
+    "title": "What time should you actually target?",
+    "copy": "Use the race predictor before you start guessing what a good HYROX finish looks like for you.",
+    "href": "/joshharrison/predictor.html",
+    "cta": "Try the predictor",
+    "img": "/joshharrison/images/predictor-hero.jpg",
+    "signal": "Used race predictor"
+  },
+  {
+    "type": "Confidence",
+    "title": "Wall balls without the panic",
+    "copy": "The station everyone worries about, broken into reps, rhythm and what to practise first.",
+    "href": "/joshharrison/stations-prep/#wall-balls",
+    "cta": "Practise wall balls",
+    "img": "/joshharrison/images/station-wall-balls.jpg",
+    "signal": "Checked wall-ball guidance"
+  },
+  {
+    "type": "Route",
+    "title": "When a programme starts making sense",
+    "copy": "A coached programme is the softer route into structured prep — enough guidance to feel held, not thrown in.",
+    "href": "/joshharrison/coaching.html",
+    "cta": "See coaching routes",
+    "img": "/joshharrison/images/coaching-hero.jpg",
+    "signal": "Viewed coaching routes",
+    "hot": true
+  },
+  {
+    "type": "Stories",
+    "title": "Borrow confidence from other races",
+    "copy": "Race stories, coach notes and useful lessons from athletes who were beginners not long ago.",
+    "href": "/joshharrison/news.html",
+    "cta": "Read the brief",
+    "img": "/joshharrison/images/finish.jpg",
+    "signal": "Read race stories"
+  },
+  {
+    "type": "Race week",
+    "title": "Do not guess the last fortnight",
+    "copy": "Taper guidance for the final stretch — what to keep, what to stop and what to stop panicking about.",
+    "href": "/joshharrison/taper-zone/",
+    "cta": "Open taper zone",
+    "img": "/joshharrison/images/taper-hero.jpg",
+    "signal": "Checked taper guidance"
+  },
+  {
+    "type": "Travel",
+    "title": "Turn the race into a weekend you can handle",
+    "copy": "Calendar, travel and crew planning so the race feels exciting rather than administratively feral.",
+    "href": "/joshharrison/events.html",
+    "cta": "Plan the race",
+    "img": "/joshharrison/images/events-hero.jpg",
+    "signal": "Checked race plans"
+  }
+]

@@ -1,4 +1,4 @@
-/* HYROX Doncaster content pages (Stations Prep, Run Zone, Events). Loads after styles.css. */
+/* Nigel content pages (Stations Prep, Run Zone, Events). Loads after styles.css. */
 
 .guide-hero {
   padding: 56px 0 36px;
@@ -248,7 +248,7 @@
 }
 
 .cta-band .btn-light {
-  background: #fff;
+  background: #14141a;
   color: var(--ink);
 }
 
@@ -363,8 +363,8 @@
 }
 
 .guide-hero-photo img {
-  aspect-ratio: 4 / 5;
-  max-height: 460px;
+  max-height: 520px;
+  object-fit: contain;
 }
 
 /* Pair shots: the taller athlete's head sits at the frame's top edge —
@@ -395,6 +395,7 @@
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
+  max-height: 420px;
   object-fit: cover;
   border-radius: 14px;
 }
@@ -519,7 +520,15 @@
   border-radius: 12px;
   font: inherit;
   font-size: 1rem;
-  background: #fff;
+  background: #14141a;
+  color: var(--ink);
+}
+.calc-form input::placeholder {
+  color: var(--ink-3);
+}
+.calc-form select option {
+  color: var(--ink);
+  background: #14141a;
 }
 .calc-form input:focus,
 .calc-form select:focus {
@@ -582,7 +591,7 @@
   margin: 0 0 24px;
   padding: 12px 16px;
   border-left: 3px solid var(--pink);
-  background: var(--pink-soft, #edf9f6);
+  background: var(--pink-soft, #1f1218);
   font-size: 14px;
   color: var(--ink-2, #444);
 }
@@ -622,8 +631,9 @@
   margin: 0 0 32px;
   padding: 26px 28px;
   border-radius: 16px;
-  background: var(--ink, #111);
-  color: #fff;
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.12));
+  background: var(--paper-2, #fff);
+  color: var(--ink, #111);
 }
 
 .countdown .eyebrow {
@@ -654,7 +664,7 @@
   font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ink-3, rgba(0, 0, 0, 0.66));
 }
 
 .countdown-meta {
@@ -667,7 +677,7 @@
 }
 
 .countdown-meta time {
-  color: #fff;
+  color: var(--ink, #111);
 }
 
 .countdown-meta a {
@@ -824,9 +834,9 @@
 }
 
 .city-tab.is-active {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #0b0b0e;
 }
 
 .plan-city-photo {
@@ -1112,7 +1122,7 @@
   margin-top: 8px !important;
   padding: 10px 12px;
   border-left: 3px solid var(--pink-600);
-  background: #fff;
+  background: #14141a;
   border-radius: 6px;
 }
 
@@ -1125,7 +1135,7 @@
   color: var(--ink-3);
 }
 
-/* Doncaster Hybrid Scene */
+/* United Kingdom Hybrid Scene */
 .scene-card .kind {
   display: block;
   font-size: 12px;
@@ -1218,7 +1228,7 @@
   color: var(--ink-3);
 }
 
-/* Book a session */
+/* Book Nigel */
 .checklist {
   padding-left: 20px;
   display: grid;
@@ -1232,7 +1242,7 @@
   border-radius: 12px;
   font: inherit;
   font-size: 1rem;
-  background: #fff;
+  background: #14141a;
   resize: vertical;
 }
 .calc-form textarea:focus {
@@ -1276,7 +1286,7 @@
   padding: 6px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: #fff;
+  background: #14141a;
   color: var(--ink-2);
   font: inherit;
   font-size: 13px;
@@ -1385,4 +1395,72 @@
   margin: 10px 0 0;
   font-size: 14px;
   color: var(--ink-2);
+}
+
+/* Shared-benefit pages keep the tenant's signature colour for brand/actions,
+   but use the nav zone accent inside the page so the navigation promise is
+   visible in the content. */
+body.zone-acc .eyebrow,
+body.zone-acc .guide-hero h2 em,
+body.zone-acc .toc p,
+body.zone-acc .station .num,
+body.zone-acc .faq summary::after,
+body.zone-acc .event time,
+body.zone-acc .carry .for,
+body.zone-acc .countdown .eyebrow,
+body.zone-acc .countdown-meta a,
+body.zone-acc .splits-list a,
+body.zone-acc .city-nick,
+body.zone-acc .plan-race .eyebrow,
+body.zone-acc .next-race .eyebrow,
+body.zone-acc .next-race strong,
+body.zone-acc .scene-card .kind,
+body.zone-acc .chip-accent {
+  color: var(--zone-accent);
+}
+
+body.zone-acc .btn-primary,
+body.zone-acc .city-tab.is-active {
+  background: var(--zone-accent);
+  border-color: var(--zone-accent);
+  color: #fff;
+}
+
+body.zone-acc .toc a:hover,
+body.zone-acc .toc a:focus-visible,
+body.zone-acc .callout,
+body.zone-acc .approve-note,
+body.zone-acc .plan-race,
+body.zone-acc .plan-coach,
+body.zone-acc .news-take,
+body.zone-acc .plan-meetup,
+body.zone-acc .chip-accent {
+  border-left-color: var(--zone-accent);
+}
+
+body.zone-acc .callout,
+body.zone-acc .approve-note,
+body.zone-acc .plan-meetup {
+  background: color-mix(in srgb, var(--zone-accent) 16%, var(--paper-2));
+}
+
+body.zone-acc .plan-days {
+  background: var(--zone-accent);
+  color: #fff;
+}
+
+body.zone-acc .chip-accent {
+  border-color: var(--zone-accent);
+}
+
+body.zone-acc .plan-coach p,
+body.zone-acc .plan-coach p::before,
+body.zone-acc .plan-coach p::after {
+  color: var(--zone-accent);
+}
+
+body.zone-acc .results-mode input,
+body.zone-acc .splits-consent input,
+body.zone-acc .calc-form .consent input {
+  accent-color: var(--zone-accent);
 }

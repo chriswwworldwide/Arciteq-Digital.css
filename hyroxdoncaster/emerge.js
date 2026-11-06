@@ -1,4 +1,4 @@
-// emerge.js — Station 9 hero reveal. Self-contained drop-in: needs only
+// emerge.js — the ninth station hero reveal. Self-contained drop-in: needs only
 //   <section class="hero--bleed">
 //     <div class="hero-mask"><img class="hero-img" ...></div>
 //     <div class="wrap"> ... headline/copy ... </div>
@@ -11,7 +11,7 @@
 //
 // Choreography: hero mounts as flat stage colour → pixelated squares
 // wash down revealing a baked whole-section composite (stage colour +
-// blurred ambient where the photo sits + the real photo + the real
+// the hero's overlay scrim + the real photo + the real
 // headline text drawn via Range rects) → ~1.4s cross-fade hands off to
 // the live DOM. The texture IS the finished page, so handoff is
 // seamless — do NOT try to snapshot DOM via SVG foreignObject here,
@@ -342,7 +342,7 @@
         // codrops gamma lift during the reveal, converging to raw sRGB at
         // settle so the canvas lands identical to the DOM photo (no dark
         // click at handoff)
-        gl_FragColor.rgb = pow(gl_FragColor.rgb, vec3(1.0));
+        gl_FragColor.rgb = pow(gl_FragColor.rgb,vec3(mix(1./2.2,1.0,smoothstep(0.55,1.,uProgress))));
 
       }
     `;
@@ -351,9 +351,12 @@
       mask.style.visibility = "";
       if (wrapEl0) wrapEl0.style.opacity = "";
     };
+    let started = false;
     const start = async () => {
+      if (started) return;
       // image genuinely missing/broken → bail to the normal page
       if (!img.naturalWidth || !img.naturalHeight) return unhide();
+      started = true;
       const ics = getComputedStyle(img);
       // offset* gives the layout box relative to the mask (offsetParent)
       // and ignores the hero-drift transform — getBoundingClientRect
@@ -423,7 +426,7 @@
       canvas.height = Math.max(2, Math.round(mh * dpr));
       section.appendChild(canvas);
       const gl = canvas.getContext("webgl", {
-        alpha: true,
+        alpha: false,
         premultipliedAlpha: false,
       });
       if (!gl) {
@@ -458,10 +461,9 @@
       gl.enableVertexAttribArray(aPos);
       gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
 
-      // Bake the whole-section composite: flat stage base, blurred
-      // ambient clipped to the photo's painted rect (plus a soft
-      // feather), the hero's overlay gradients replicated, the real
-      // photo at its painted rect, then the real words stamped on top —
+      // Bake the whole-section composite: flat stage base, the hero's
+      // overlay gradients replicated, the real photo at its painted
+      // rect, then the real words stamped on top —
       // the texture is the finished page, so handoff is pixel-ident.
       const bake = document.createElement("canvas");
       bake.width = Math.max(2, Math.round(mw * dpr));
@@ -469,52 +471,60 @@
       const bctx = bake.getContext("2d");
       const W = bake.width,
         H = bake.height;
-      // Blurred ambient only where the photo actually sits: its painted
-      // rect plus a soft feather outward. The headline side bakes as
-      // flat stage ink — no silhouette to settle on the left.
       bctx.fillStyle =
         getComputedStyle(section).backgroundColor || "#0b1020";
       bctx.fillRect(0, 0, W, H);
-      const feather = 48 * dpr;
-      bctx.save();
-      bctx.beginPath();
-      bctx.rect(mx * dpr - feather, 0, dw * dpr + feather, H);
-      bctx.clip();
-      const cs = Math.max(bake.width / iw, bake.height / ih);
-      bctx.filter = "blur(48px) brightness(0.55) saturate(1.15)";
-      bctx.drawImage(
-        img,
-        (bake.width - iw * cs) / 2,
-        (bake.height - ih * cs) / 2,
-        iw * cs,
-        ih * cs,
-      );
-      bctx.filter = "none";
-      // feather the clip's left edge into the flat stage
-      let fxg = bctx.createLinearGradient(
-        mx * dpr - feather,
-        0,
-        mx * dpr + feather,
-        0,
-      );
-      fxg.addColorStop(0, getComputedStyle(section).backgroundColor || "#0b1020");
-      fxg.addColorStop(1, "rgba(6, 8, 14, 0)");
-      bctx.fillStyle = fxg;
-      bctx.fillRect(mx * dpr - feather, 0, feather * 2, H);
-      bctx.restore();
+      // Two hero options: "full" covers the section with the photo;
+      // "ambient" is the contain photo pinned right on flat stage.
+      // The scrim recipe differs — ambient keeps the heavy left
+      // gradient that darkens the empty stage for headline contrast.
+      const ambMode = section.getAttribute("data-hero-mode") === "ambient";
       let g = bctx.createLinearGradient(0, 0, 0, H);
-      g.addColorStop(0, "rgba(8, 28, 25, 0.05)");
-      g.addColorStop(0.45, "rgba(8, 28, 25, 0.2)");
-      g.addColorStop(1, "rgba(8, 28, 25, 0.86)");
+      if (ambMode) {
+        g.addColorStop(0, "rgba(11, 11, 14, 0.05)");
+        g.addColorStop(0.45, "rgba(11, 11, 14, 0.2)");
+        g.addColorStop(1, "rgba(11, 11, 14, 0.86)");
+      } else {
+        g.addColorStop(0, "rgba(11, 11, 14, 0)");
+        g.addColorStop(0.6, "rgba(11, 11, 14, 0.02)");
+        g.addColorStop(1, "rgba(11, 11, 14, 0.18)");
+      }
       bctx.fillStyle = g;
       bctx.fillRect(0, 0, W, H);
       g = bctx.createLinearGradient(0, 0, W, 0);
-      g.addColorStop(0, "rgba(8, 28, 25, 0.82)");
-      g.addColorStop(0.45, "rgba(8, 28, 25, 0.35)");
-      g.addColorStop(0.68, "rgba(8, 28, 25, 0)");
+      if (ambMode) {
+        g.addColorStop(0, "rgba(11, 11, 14, 0.82)");
+        g.addColorStop(0.45, "rgba(11, 11, 14, 0.35)");
+        g.addColorStop(0.68, "rgba(11, 11, 14, 0)");
+      } else {
+        g.addColorStop(0, "rgba(11, 11, 14, 0.2)");
+        g.addColorStop(0.35, "rgba(11, 11, 14, 0.07)");
+        g.addColorStop(0.5, "rgba(11, 11, 14, 0)");
+      }
       bctx.fillStyle = g;
       bctx.fillRect(0, 0, W, H);
+      // brightness lift is a full-bleed-mode filter only — ambient
+      // hero-img renders unfiltered, so match that or the photo lands
+      // brighter at handoff than it looked during the reveal
+      bctx.filter = ambMode ? "none" : "brightness(1.22) contrast(1.02)";
       bctx.drawImage(img, mx * dpr, my * dpr, dw * dpr, dh * dpr);
+      bctx.filter = "none";
+      // Contain photos (ambient heroes) get their left edge melted
+      // into the stage like the live mask does — a hard crop at bake
+      // vs a feathered edge at handoff reads as a seam pop
+      if (ics.objectFit === "contain") {
+        const feather = 48 * dpr;
+        const fxg = bctx.createLinearGradient(
+          mx * dpr - feather,
+          0,
+          mx * dpr + feather,
+          0,
+        );
+        fxg.addColorStop(0, getComputedStyle(section).backgroundColor || "#0b1020");
+        fxg.addColorStop(1, "rgba(6, 8, 14, 0)");
+        bctx.fillStyle = fxg;
+        bctx.fillRect(mx * dpr - feather, 0, feather * 2, H);
+      }
 
       // Stamp the real words into the bake so the wave reveals them
       // too — walk every text node in .wrap, use Range rects for true
@@ -699,7 +709,24 @@
 
       const t0 = performance.now() + 350;
       const total = seq.reduce((a, P) => a + P.dur, 0);
+      let stopped = false;
+      let sizeObserver;
+      const stopStaleCanvas = () => {
+        const bounds = section.getBoundingClientRect();
+        if (canvas.isConnected && Math.abs(bounds.width - mw) <= 1 && Math.abs(bounds.height - mh) <= 1) return false;
+        stopped = true;
+        sizeObserver?.disconnect();
+        if (tag) tag.remove();
+        restore();
+        canvas.remove();
+        return true;
+      };
+      if (typeof ResizeObserver !== "undefined") {
+        sizeObserver = new ResizeObserver(stopStaleCanvas);
+        sizeObserver.observe(section);
+      }
       const frame = (now) => {
+        if (stopped || stopStaleCanvas()) return;
         const el = now - t0;
         let acc = 0,
           ph = seq[seq.length - 1],
@@ -734,7 +761,10 @@
         // the DOM blend so the settle feels like landing, not dropping
         canvas.style.transition = "opacity 1.4s ease-in-out";
         canvas.style.opacity = "0";
-        setTimeout(() => canvas.remove(), 1500);
+        setTimeout(() => {
+          sizeObserver?.disconnect();
+          canvas.remove();
+        }, 1500);
       };
       requestAnimationFrame(frame);
     };

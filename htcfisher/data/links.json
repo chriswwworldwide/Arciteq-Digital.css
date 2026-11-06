@@ -1,4 +1,4 @@
 {
-  "note": "External tools Ross uses. Set 'truecoach' to his client-login URL (e.g. https://app.truecoach.co/) once his account exists; empty string keeps the links hidden. Coaching delivery lives in HTC app \u2014 HTC acquires and bills.",
-  "truecoach": ""
+  "note": "External athlete-login destination for Ross's chosen coaching platform. Set 'athleteLogin' to the verified client-login URL once it exists; an empty string keeps the link hidden.",
+  "athleteLogin": ""
 }

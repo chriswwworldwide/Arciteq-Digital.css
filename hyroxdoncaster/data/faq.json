@@ -112,7 +112,7 @@
         "quit",
         "leave"
       ],
-      "a": "Ask HYROX Doncaster for the current membership and cancellation terms before joining; this preview does not invent contract details."
+      "a": "Ask HYROX Doncaster for the current membership and cancellation terms before joining; the details stay with the gym."
     },
     {
       "q": "I'm looking for a doubles partner",
@@ -124,6 +124,38 @@
         "race with"
       ],
       "a": "Post a private card on the demo partner board with your pace band and target race. On launch, the gym would approve introductions without publishing phone numbers."
+    },
+    {
+      "q": "What training options and prices are available?",
+      "keywords": [
+        "price",
+        "cost",
+        "fee",
+        "programme",
+        "program",
+        "coaching"
+      ],
+      "a": "Six-week HYROX introduction — enquire for current terms; Club memberships — From £67/month; Simulation sessions — £20 members · £40 non-members. Read the Coaching page for each offer's format and its official link. The provider sets current prices and terms."
+    },
+    {
+      "q": "How do I get started?",
+      "keywords": [
+        "start",
+        "book",
+        "sign up",
+        "join"
+      ],
+      "a": "Choose the offer that fits your goal on the Coaching page, then follow its own official button. Use Ask if you want to discuss your starting point first."
+    },
+    {
+      "q": "Where are the partner links and codes?",
+      "keywords": [
+        "discount",
+        "code",
+        "affiliate",
+        "partner brand"
+      ],
+      "a": "The Partners page lists HYROX Doncaster, The Doncaster community. Check the linked provider for current eligibility and terms."
     }
   ]
 }

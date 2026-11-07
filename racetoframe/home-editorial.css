@@ -46,7 +46,7 @@
 .home-lab #plans .plans > .plan h4 { font-size:1.6rem; letter-spacing:-.04em; }
 .home-lab #plans .plan.featured { box-shadow:none; background:linear-gradient(180deg,color-mix(in srgb,var(--pink) 8%,transparent),transparent); }
 .home-lab #plans .plan-crew { border-radius:0 32px 0 32px; border-width:1px; margin-bottom:2rem; }
-.home-lab #events { background:var(--paper); }
+.home-lab #events { background:#14141a; }
 .home-lab #race-cards .event { border:0; border-top:1px solid var(--line); border-radius:0; padding:1.6rem 0; background:transparent; }
 .home-lab #race-cards .date { border-left:3px solid var(--pink); padding-left:1rem; }
 .home-lab #race-cards .date strong { font-size:1.65rem; line-height:1.15; letter-spacing:-.04em; }

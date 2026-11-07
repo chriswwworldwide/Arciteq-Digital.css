@@ -2843,7 +2843,7 @@ body[data-broadcast=locked] .bc-lock {
 /* readability: no orphan words in leads/standfirst, full-white copy in dark tips cards */
 .lead, .hero p { text-wrap: pretty; }
 .tips-grid ol, .tips-grid details p { color: #fff; }
-section.cta-band { background: #14141a; }
+section.cta-band { background: #1e1e28; }
 section.cta-band .btn-light { background: var(--ink); color: #14141a; }
 
 @media (min-width: 901px) {
@@ -2890,3 +2890,11 @@ section.cta-band .btn-light { background: var(--ink); color: #14141a; }
 .offer-terms{font-size:.85rem;line-height:1.6;color:var(--ink-2);margin:1rem 0 1.5rem;}.coaching-testimonials{margin:2rem 0;}.quote-source{display:block;margin-top:.6rem;font-size:.8rem;}
 #athletes-say .quote{background:var(--paper-2);color:var(--ink);}
 #athletes-say .quote footer{padding:12px 0 0;margin:0;line-height:1.6;color:var(--ink-2);}.block#athletes-say:not([hidden]){padding-bottom:32px;}.block#athletes-say:not([hidden]) + #events{padding-top:32px;background:color-mix(in srgb,var(--paper) 94%,white);}
+/* Events head: photo pinned right of the headline, hero-style corner + curve */
+.events-head { display: grid; grid-template-columns: 1fr minmax(280px, 360px); gap: clamp(2rem, 5vw, 4rem); align-items: center; margin-bottom: 1.5rem; }
+.events-head h3 { font-size: clamp(2.8rem, 6vw, 5.6rem); }
+.events-head .lead { max-width: 46ch; }
+.events-photo { position: relative; margin: 0; }
+.events-photo img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 30%; border-radius: 0 0 8% 48% / 0 0 2% 7%; }
+.events-photo::after { content: ""; position: absolute; width: 56px; height: 56px; right: -8px; top: -8px; border-right: 2px solid var(--pink); border-top: 2px solid var(--pink); pointer-events: none; }
+@media (max-width: 700px) { .events-head { grid-template-columns: 1fr; } .events-photo { max-width: 320px; margin-top: .5rem; } }

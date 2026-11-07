@@ -3256,3 +3256,11 @@ section.cta-band .btn-light {
 /* crop focal fixes 2026-11-03 — shift banded crops up so heads/faces stay in frame */
 figure img[src*='station-burpees.jpg'],.station img[src*='station-burpees.jpg']{object-position:50% 20%!important}
 figure img[src*='station-sled-pull.jpg'],.station img[src*='station-sled-pull.jpg']{object-position:50% 25%!important}
+/* Events head: photo pinned right of the headline, hero-style corner + curve */
+.events-head { display: grid; grid-template-columns: 1fr minmax(280px, 360px); gap: clamp(2rem, 5vw, 4rem); align-items: center; margin-bottom: 1.5rem; }
+.events-head h3 { font-size: clamp(2.8rem, 6vw, 5.6rem); }
+.events-head .lead { max-width: 46ch; }
+.events-photo { position: relative; margin: 0; }
+.events-photo img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 30%; border-radius: 0 0 8% 48% / 0 0 2% 7%; }
+.events-photo::after { content: ""; position: absolute; width: 56px; height: 56px; right: -8px; top: -8px; border-right: 2px solid var(--pink); border-top: 2px solid var(--pink); pointer-events: none; }
+@media (max-width: 700px) { .events-head { grid-template-columns: 1fr; } .events-photo { max-width: 320px; margin-top: .5rem; } }

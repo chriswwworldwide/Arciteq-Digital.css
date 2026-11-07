@@ -2870,7 +2870,7 @@ body[data-broadcast=locked] .bc-lock {
 section.block + section.block { padding-top: 48px; }
 section.block:has(+ .cta-band) { padding-bottom: 40px; }
 .block.alt { box-shadow: inset 0 1px 0 var(--line); }
-section.cta-band { background: #14141a; }
+section.cta-band { background: #1e1e28; }
 section.cta-band .btn-light { background: var(--ink); color: #14141a; }
 
 /* Hero copy on the photo is headline + max two-line subhead; buttons and stats sit below the photo. */
@@ -2915,8 +2915,10 @@ section.cta-band .btn-light { background: var(--ink); color: #14141a; }
 @media(max-width:600px){.art-photo.race-smile-photo img{object-position:50% 24%;}.art-photo.crew-cruise-photo img{aspect-ratio:4/3;object-position:50% 62%;}.guidance--calm .art-photo.taper-offday-photo img, .art-photo.taper-offday-photo img{aspect-ratio:4/3;object-position:50% 52%;}}
 
 /* Events head: photo pinned right of the headline, corner frame + bottom-left curve */
-.events-head { display: grid; grid-template-columns: 1fr minmax(240px, 320px); gap: clamp(1.5rem, 4vw, 3rem); align-items: end; margin-bottom: 1.5rem; }
+.events-head { display: grid; grid-template-columns: 1fr minmax(280px, 360px); gap: clamp(2rem, 5vw, 4rem); align-items: center; margin-bottom: 1.5rem; }
+.events-head h3 { font-size: clamp(2.8rem, 6vw, 5.6rem); }
+.events-head .lead { max-width: 46ch; }
 .events-photo { position: relative; margin: 0; }
-.events-photo img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 30%; border-radius: 0 0 48% 8% / 0 0 7% 2%; }
+.events-photo img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 30%; border-radius: 0 0 8% 48% / 0 0 2% 7%; }
 .events-photo::after { content: ""; position: absolute; width: 56px; height: 56px; right: -8px; top: -8px; border-right: 2px solid var(--pink); border-top: 2px solid var(--pink); pointer-events: none; }
 @media (max-width: 700px) { .events-head { grid-template-columns: 1fr; } .events-photo { max-width: 320px; margin-top: .5rem; } }

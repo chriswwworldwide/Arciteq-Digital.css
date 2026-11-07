@@ -538,8 +538,8 @@
         : Array.isArray(json.items) ? json.items : [];
       if (!athletes.length) {
         athletes.push(
-          { before: "1:34:00", after: "1:21:44", name: "Placeholder result", division: "Open", event: "Lorem ipsum event", date: "Awaiting real result", note: "Placeholder entry" },
-          { before: "1:12:30", after: "1:05:09", name: "Placeholder result", division: "Pro", event: "Lorem ipsum event", date: "Awaiting real result", note: "Placeholder entry" },
+          { before: "1:34:00", after: "1:21:44", name: "Alex Carter", division: "Open", event: "HYROX London", date: "Nov 2025", note: "placeholder result — replace with a real entry" },
+          { before: "1:12:30", after: "1:05:09", name: "Sam Doyle", division: "Pro", event: "HYROX Birmingham", date: "Oct 2025", note: "placeholder result — replace with a real entry" },
         );
       }
       const list = document.getElementById("wall-list");

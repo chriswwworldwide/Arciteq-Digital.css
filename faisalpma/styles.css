@@ -8,10 +8,10 @@
   --paper: #0b0b0e;
   --paper-2: #16161c;
   --line: #2a2a32;
-  --pink: #f5c518;
-  --pink-600: #a88408;
-  --pink-100: #241c08;
-  --zone-accent: #1d4ed8;
+  --pink: #ff2e63;
+  --pink-600: #e01e4e;
+  --pink-100: #2a141b;
+  --zone-accent: #7c3aed;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(11, 11, 14, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
@@ -2201,13 +2201,13 @@ body.has-sticky-cta {
 }
 
 .btn-wa {
-  background: #f5c518;
+  background: #ff2e63;
   color: #ffffff;
-  border-color: #f5c518;
+  border-color: #ff2e63;
 }
 
 .btn-wa:hover {
-  background: #a88408;
+  background: #e01e4e;
   color: #ffffff;
 }
 

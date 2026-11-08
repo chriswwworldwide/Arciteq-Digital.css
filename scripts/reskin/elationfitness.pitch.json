@@ -1,6 +1,11 @@
 [
   {
     "path": "",
+    "waitUntil": "domcontentloaded",
+    "startAt": {
+      "selector": ".hero--bleed",
+      "offset": 66
+    },
     "subs": [
       {
         "text": "Graham — this is your brand, your name, your photos, your voice.",
@@ -8,6 +13,8 @@
       },
       {
         "text": "We just gave it somewhere to live.",
+        "scrollTo": "body",
+        "align": "start",
         "holdMs": 4500
       },
       {
@@ -101,11 +108,28 @@
       {
         "text": "",
         "actions": [
-          { "scrollTo": "#splits-form" },
-          { "selector": "input[name='name']", "fill": "Jamie", "pause": 400 },
-          { "selector": "input[name='event']", "fill": "HYROX Glasgow 2026", "pause": 400 },
-          { "selector": "input[name='roxzone']", "fill": "1:14:20", "pause": 500 },
-          { "click": "#splits-form button[type='submit'], #splits-form input[type='submit'], #splits-form .btn", "pause": 1500 }
+          {
+            "scrollTo": "#splits-form"
+          },
+          {
+            "selector": "input[name='name']",
+            "fill": "Jamie",
+            "pause": 400
+          },
+          {
+            "selector": "input[name='event']",
+            "fill": "HYROX Glasgow 2026",
+            "pause": 400
+          },
+          {
+            "selector": "input[name='roxzone']",
+            "fill": "1:14:20",
+            "pause": 500
+          },
+          {
+            "click": "#splits-form button[type='submit'], #splits-form input[type='submit'], #splits-form .btn",
+            "pause": 1500
+          }
         ],
         "holdMs": 1500
       },
@@ -197,14 +221,20 @@
       {
         "text": "Click the Built for Athletes button and it takes you straight to their store — your ELATION code already in the link.",
         "actions": [
-          { "navClick": "a.pc-cta[href='https://builtforathletes.com/ELATION']", "holdMs": 4000 }
+          {
+            "navClick": "a.pc-cta[href='https://builtforathletes.com/ELATION']",
+            "holdMs": 4000
+          }
         ],
         "holdMs": 2500
       },
       {
         "text": "Click Myprotein — same again. Every partner click is a conversion path, not a dead link.",
         "actions": [
-          { "navClick": "a.pc-cta[href='https://www.myprotein.com/']", "holdMs": 3500 }
+          {
+            "navClick": "a.pc-cta[href='https://www.myprotein.com/']",
+            "holdMs": 3500
+          }
         ],
         "holdMs": 2000
       },

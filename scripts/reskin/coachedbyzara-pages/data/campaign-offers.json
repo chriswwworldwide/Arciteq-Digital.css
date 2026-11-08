@@ -1,0 +1,20 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Coached by Zara coaching",
+      "headline": "Take the next step with Zara",
+      "destination": "https://linktr.ee/coachedbyzara",
+      "image": "/coachedbyzara/images/coaching-hero.jpg?v=1792661953695",
+      "goal": "Coaching enquiries"
+    },
+    {
+      "id": "programme",
+      "name": "Coached by Zara training options",
+      "headline": "Find the right training support",
+      "destination": "https://linktr.ee/coachedbyzara",
+      "image": "/coachedbyzara/images/coaching-hero.jpg?v=1792661953695",
+      "goal": "Programme and coaching enquiries"
+    }
+  ]
+}

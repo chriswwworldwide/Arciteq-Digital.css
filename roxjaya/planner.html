@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Your week, made simple · Roxjaya Warriors Jakarta</title>
+    <link rel="stylesheet" href="/roxjaya/booking.css?v=r1794139095612" />
+  </head>
+  <body>
+    <a class="skip" href="#calendar">Skip to diary</a>
+    <div class="preview-banner">
+      <span class="preview-dot"></span><strong>Design preview</strong
+      ><span
+        >Fictional appointments. No real bookings, payments or messages.</span
+      >
+    </div>
+    <header class="topbar">
+      <a class="wordmark" href="/roxjaya/"
+        ><span>Your coaching platform</span
+        ><small>Your training. Your time.</small></a
+      >
+      <nav aria-label="Planner navigation">
+        <a href="/roxjaya/">Back to platform</a
+        ><a href="/roxjaya/coaching.html">Coaching</a
+        ><a class="nav-active" href="/roxjaya/planner.html">The planner</a>
+      </nav>
+      <span class="coach-avatar" aria-label="Your coach">CP</span>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow"><span></span>THE SESSION PLANNER</p>
+          <h1 id="headline">
+            Good sessions.<br /><em>Less back-and-forth.</em>
+          </h1>
+          <p class="standfirst" id="standfirst">
+            Find a time that works. Make room for your next step.
+          </p>
+        </div>
+        <div class="intro-side">
+          <div
+            class="background-switch"
+            role="group"
+            aria-label="Compare backgrounds"
+          >
+            <span>Background</span
+            ><button type="button" data-background="subtle" aria-pressed="true">
+              Original</button
+            ><button
+              type="button"
+              data-background="watermark"
+              aria-pressed="false"
+            >
+              Watermark
+            </button>
+          </div>
+          <div
+            class="view-switch"
+            role="group"
+            aria-label="Preview perspective"
+          >
+            <button type="button" data-mode="client" aria-pressed="true">
+              Client view</button
+            ><button type="button" data-mode="coach" aria-pressed="false">
+              Coach preview
+            </button>
+          </div>
+          <p id="perspective-note">
+            The same diary. Only the details you need to see.
+          </p>
+        </div>
+      </section>
+      <div class="workspace">
+        <aside class="sidebar">
+          <section class="panel coach-card">
+            <div class="coach-heading">
+              <img data-coach-portrait alt="" hidden />
+              <div>
+                <span class="eyebrow">YOUR COACH</span>
+                <h2>Your coach</h2>
+                <p>Your coaching platform · Your training venue</p>
+              </div>
+            </div>
+            <div class="coach-rule"></div>
+            <p class="coach-quote">Your training.<br />Your time.</p>
+            <span class="small-note"
+              >Demo schedule — not your coach’s actual diary.</span
+            >
+          </section>
+          <section class="panel session-panel">
+            <label class="eyebrow" for="session">MAKE IT YOUR SESSION</label
+            ><select id="session">
+              <option value="assessment">Initial assessment</option>
+              <option value="hyrox" selected>1:1 HYROX coaching</option>
+              <option value="technique">Station technique</option>
+              <option value="intro">First conversation</option>
+            </select>
+            <div class="session-details">
+              <span id="duration-label">60 minutes</span
+              ><span id="location-label">In person · Your training venue</span>
+            </div>
+            <p class="small-note">
+              Session lengths and locations are examples. Prices are not set in
+              this preview.
+            </p>
+            <label class="client-type" id="returning-wrap"
+              ><input type="checkbox" id="returning" /><span
+                >Preview as an existing client<small
+                  >New clients request a first session.</small
+                ></span
+              ></label
+            >
+            <div class="coach-controls" id="coach-controls" hidden>
+              <button
+                class="button group-button"
+                id="group-button"
+                type="button"
+              >
+                + Add group class
+              </button>
+              <button
+                class="button secondary"
+                id="holiday-button"
+                type="button"
+              >
+                Holidays &amp; time away
+              </button>
+              <button class="button secondary" id="export-week" type="button">
+                Export week to phone calendar
+              </button>
+              <button
+                class="button secondary"
+                id="calendar-connect"
+                type="button"
+              >
+                Phone calendar · not connected
+              </button>
+              <span class="small-note"
+                >Exports are calendar-file imports, not automatic sync.</span
+              >
+              <button class="button secondary" id="hours-button" type="button">
+                Set working hours</button
+              ><button class="button secondary" id="block-button" type="button">
+                Block time
+              </button>
+            </div>
+          </section>
+          <section class="panel policy-card">
+            <span class="policy-icon" aria-hidden="true">24h</span>
+            <h3>A little notice goes a long way.</h3>
+            <p>
+              Cancel or reschedule at least 24 hours before your session. Inside
+              that window, contact your coach.
+            </p>
+            <p class="small-note">
+              Any fee or lost-session rule must be agreed with your coach. No
+              charges are taken here.
+            </p>
+          </section>
+        </aside>
+        <section class="diary-column">
+          <div
+            id="away-notice"
+            class="panel away-notice"
+            role="status"
+            hidden
+          ></div>
+          <div class="metrics" id="metrics" aria-label="Weekly overview"></div>
+          <section
+            class="panel group-section"
+            id="group-section"
+            aria-labelledby="group-heading"
+          >
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">BETTER TOGETHER</span>
+                <h2 id="group-heading">Train with the crew.</h2>
+              </div>
+              <span class="group-tag">Group sessions</span>
+            </div>
+            <div id="group-cards" class="group-cards"></div>
+            <p class="small-note">
+              Fictional class times and capacities for this preview.
+            </p>
+          </section>
+          <section class="panel diary-panel" aria-labelledby="week-label">
+            <div class="diary-toolbar">
+              <div>
+                <span class="eyebrow" id="diary-eyebrow">FIND YOUR TIME</span>
+                <h2 id="week-label"></h2>
+              </div>
+              <div class="week-controls">
+                <button
+                  type="button"
+                  class="icon-button"
+                  id="previous-week"
+                  aria-label="Previous week"
+                >
+                  ‹</button
+                ><button type="button" class="today-button" id="today">
+                  Today</button
+                ><button
+                  type="button"
+                  class="icon-button"
+                  id="next-week"
+                  aria-label="Next week"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+            <div class="diary-meta">
+              <span id="week-note">Tap an available slot to get started.</span
+              ><span class="timezone">06:00–20:00 · Europe/London</span>
+            </div>
+            <div
+              class="day-strip"
+              id="day-strip"
+              aria-label="Select a day"
+            ></div>
+            <div
+              class="calendar"
+              id="calendar"
+              tabindex="-1"
+              aria-label="Weekly session availability"
+            ></div>
+            <div class="calendar-footer">
+              <div class="legend">
+                <span><i class="free-dot"></i>Available</span
+                ><span
+                  ><i class="booked-dot"></i
+                  ><span id="booked-legend">Unavailable</span></span
+                ><span><i class="group-dot"></i>Group class</span
+                ><span id="pending-legend" hidden
+                  ><i class="pending-dot"></i>Request</span
+                >
+              </div>
+              <span class="small-note"
+                >Tap a block · no drag-and-drop needed</span
+              >
+            </div>
+          </section>
+          <section
+            class="panel booking-summary"
+            id="booking-summary"
+            hidden
+            aria-live="polite"
+          ></section>
+          <section class="panel agenda-panel" id="agenda-panel" hidden>
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">OFF THE NOTES APP. INTO YOUR WEEK.</span>
+                <h2 id="agenda-title">Your upcoming sessions</h2>
+              </div>
+              <button class="button primary" id="add-button" type="button">
+                + Add a session
+              </button>
+            </div>
+            <div id="agenda"></div>
+          </section>
+          <div class="privacy-note">
+            <span aria-hidden="true">◇</span>
+            <p id="privacy-copy">
+              Your coach sees the bookings. You only see availability.<br /><strong
+                >No client names appear in the public diary.</strong
+              >
+            </p>
+          </div>
+        </section>
+      </div>
+      <footer class="pilot-footer">
+        <a href="/roxjaya/">Your coaching platform</a>
+        <p>Less organising. More coaching.</p>
+        <button type="button" id="reset-demo">Reset preview</button
+        ><span>Built with Station 9</span>
+      </footer>
+    </main>
+    <dialog id="planner-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-top">
+        <span class="eyebrow" id="dialog-eyebrow">LET’S MAKE A PLAN</span
+        ><button
+          class="icon-button"
+          type="button"
+          id="close-dialog"
+          aria-label="Close dialog"
+        >
+          ×
+        </button>
+      </div>
+      <h2 id="dialog-title"></h2>
+      <div id="dialog-body"></div>
+    </dialog>
+    <div class="toast" id="toast" role="status" hidden></div>
+    <script id="booking-profile" type="application/json">{"slug":"roxjaya","brand":"Roxjaya Warriors Jakarta","coachFull":"Dina Rosdiana","coachFirst":"Dina","city":"Jakarta","timeZone":"Asia/Jakarta","coachingPath":"/roxjaya/#plans","tagline":"Your training. Your time.","accent":"#8b5cf6","portrait":"/roxjaya/images/dina-avatar.jpg","watermark":"/roxjaya/images/dina-avatar.jpg"}</script>
+    <script type="module" src="/roxjaya/booking-ui.js?v=r1794139095612"></script>
+  </body>
+</html>

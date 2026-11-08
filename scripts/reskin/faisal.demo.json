@@ -1,6 +1,74 @@
 {
   "mode": "chassis",
   "slug": "faisalpma",
+  "coachingIntro": "Train with PMA x HYROX in FITR, or explore Faisal's book for workouts, recipes and a positive-mental-attitude approach.",
+  "coachingOffers": [
+    {
+      "title": "PMA x HYROX",
+      "type": "FITR subscription",
+      "price": "£55/month",
+      "description": "A rolling monthly training programme with six optional HYROX-themed workouts each week.",
+      "features": [
+        "Two runs, one skill session and three strength/conditioning sessions",
+        "Movement demonstrations",
+        "PMA programme group chat"
+      ],
+      "url": "https://pmafitness.fitr.training/p/PMAHYROX",
+      "action": "Explore PMA x HYROX",
+      "sourceURL": "https://pmafitness.fitr.training/p/PMAHYROX"
+    },
+    {
+      "title": "The PMA Method",
+      "type": "Book · paperback",
+      "price": "£14.99 publisher list price",
+      "description": "Faisal's paperback brings workouts, recipes and positive mental attitude together in a guide you can use at home or in the gym.",
+      "url": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/",
+      "action": "Explore the book and retailers",
+      "sourceURL": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/"
+    }
+  ],
+  "partnerOffers": [
+    {
+      "title": "PMA's official links",
+      "type": "Faisal's public hub",
+      "description": "Training, workouts, playlists and book links, collected by Faisal.",
+      "url": "https://linktr.ee/pmafitness",
+      "action": "Open PMA's links",
+      "sourceURL": "https://linktr.ee/pmafitness"
+    },
+    {
+      "title": "PUMA",
+      "type": "Brand destination",
+      "description": "Training apparel and footwear from the official UK PUMA store.",
+      "url": "https://uk.puma.com/uk/en",
+      "action": "Shop PUMA",
+      "sourceURL": "https://www.instagram.com/faisalpmafitness/"
+    },
+    {
+      "title": "Everlast Gyms",
+      "type": "Gym brand link",
+      "description": "Explore clubs, facilities and membership options through Everlast's own site.",
+      "url": "https://www.everlastgyms.com/",
+      "action": "Explore Everlast Gyms",
+      "sourceURL": "https://www.instagram.com/faisalpmafitness/"
+    },
+    {
+      "title": "Applied Nutrition",
+      "type": "Brand destination",
+      "description": "Sports nutrition and product information from the official store.",
+      "url": "https://appliednutrition.com/",
+      "action": "Visit Applied Nutrition",
+      "sourceURL": "https://www.instagram.com/faisalpmafitness/"
+    }
+  ],
+  "offerAudit": {
+    "checkedAt": "2026-11-02",
+    "notes": [
+      "pmafitness.co.uk does not resolve; replace STORE_URL with the live official Linktree.",
+      "Amazon returned 503; use the publisher's live book page and retailer choices instead.",
+      "No separate current 1:1 application found in Faisal's public hub; do not manufacture one."
+    ]
+  },
   "heroMode": "full",
   "strictImages": true,
   "assets": "scripts/reskin/faisalpma-assets",
@@ -9,13 +77,14 @@
     "mode": "hidden"
   },
   "tokens": {
+    "HERO_DEK": "Bring a positive mental attitude. Give it somewhere to go. Explore training, race preparation and the energy behind PMA Fitness with Faisal.",
     "SLUG": "faisalpma",
     "COACH_NAME": "Faisal Abdalla",
     "COACH_NAME_LC": "faisal abdalla",
     "COACH_FIRST": "Faisal",
     "COACH_LAST": "Abdalla",
     "WORDMARK_HTML": "<span class=\"o\">P</span>MA",
-    "BRAND": "PMA Fitness",
+    "BRAND": "by Faisal",
     "BRAND_SHORT": "faisalpma",
     "BRAND_SOCIAL": "faisalpmafitness",
     "CLOTHING_SHORT": "PMA",
@@ -29,7 +98,7 @@
     "STORE_URL": "https://linktr.ee/pmafitness",
     "IG_URL": "https://www.instagram.com/faisalpmafitness/",
     "BRAND_IG_URL": "https://www.instagram.com/faisalpmafitness/",
-    "YOUTUBE_URL": "https://www.youtube.com/@PMAFitness",
+    "YOUTUBE_URL": "https://www.youtube.com/channel/UCSYr9PbKKbL-OdIEnIvqVOw",
     "TIKTOK_URL": "https://www.instagram.com/faisalpmafitness/",
     "THREADS_URL": "https://www.threads.net/@faisalpmafitness",
     "DOUBLES_PARTNER": "Swa",
@@ -67,27 +136,48 @@
     "SOCIAL_HANDLE_UPPER": "FAISALPMAFITNESS",
     "PARTNER_GYM_URL": "https://www.everlastgyms.com/",
     "PARTNER_SUPP_URL": "https://appliednutrition.com/",
-    "STORE_NAME": "PMA Fitness",
-    "STORE_TAG": "All things PMA",
-    "STORE_COPY": "Faisal's own hub — PMAHYROX on FITR, The PMA Method and every link that matters.",
-    "STORE_CTA": "Visit PMA",
-    "SEASON_HEADLINE": "Five-time HYROX World Championships MC turned coach."
+    "STORE_NAME": "PMA's official links",
+    "STORE_TAG": "PMA Fitness · official",
+    "STORE_COPY": "Programmes, blogs, YouTube workouts and the PMA Method book.",
+    "STORE_CTA": "Open the site",
+    "SEASON_HEADLINE": "Five-time HYROX World Championships MC turned coach.",
+    "PROG_ONE": "PMAHYROX",
+    "PROG_ONE_TAG": "FITR programme",
+    "PROG_TWO": "The PMA Method",
+    "PROG_TWO_TAG": "the book",
+    "OFFER_SUMMARY": "PMAHYROX on FITR, the PMA Method and 1:1 coaching.",
+    "PROG_TWO_URL": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/",
+    "LINK_CARD_TAG": "PMA Fitness · official",
+    "LINK_CARD_NAME": "PMA's official links",
+    "LINK_CARD_DESC": "Faisal's official hub for his training programme, workouts, playlists and book.",
+    "LINK_CARD_CTA": "Open PMA's links →",
+    "SIG": "by Faisal"
   },
   "stripSections": [
     "merch"
   ],
   "omitImageSlots": [
-    "images/station-lean.jpg",
-    "images/kerb.jpg",
-    "images/rooftop.jpg",
-    "images/walkin.jpg",
-    "images/suit.jpg",
+    "images/avatar.jpg",
+    "images/bike.jpg",
+    "images/carry.jpg",
+    "images/detail.jpg",
+    "images/gallery/dinner-template.jpg",
     "images/hoodie.jpg",
-    "images/bike.jpg"
+    "images/kerb.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/race-revel.jpg",
+    "images/rooftop.jpg",
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/sprint.jpg",
+    "images/station-lean.jpg",
+    "images/taper-hero.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg"
   ],
-  "stripPages": [
-    "watch.html"
-  ],
+  "stripPages": [],
   "copyOverrides": [
     {
       "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
@@ -126,14 +216,6 @@
       "replace": "London"
     },
     {
-      "pattern": "\\s*<li><a href=\"/faisalpma/watch.html\">Watch</a></li>",
-      "replace": ""
-    },
-    {
-      "pattern": "\\s*<a href=\"/faisalpma/watch.html\">Watch</a>",
-      "replace": ""
-    },
-    {
       "pattern": "on FITR",
       "replace": "with PMA"
     },
@@ -144,9 +226,361 @@
     {
       "pattern": "365",
       "replace": "positive"
+    },
+    {
+      "pattern": "(<figure class=\"art-photo\">[\\s\\S]*?finish\\.jpg[\\s\\S]*?</figure>)\\s*<article class=\"station reveal\" id=\"during\">",
+      "replace": "$1\n\n<figure class=\"art-photo race-smile-photo\"><img src=\"/{{SLUG}}/images/race-smile.jpg\" alt=\"Faisal mid-race at the sled, grinning at the camera\" width=\"845\" height=\"1024\" loading=\"lazy\" /><figcaption>Somewhere in the middle of it — and still smiling.</figcaption></figure>\n\n<article class=\"station reveal\" id=\"during\">",
+      "flags": "g"
+    },
+    {
+      "pattern": "(<article class=\"station reveal\" id=\"what\">[\\s\\S]*?</article>)\\s*<article class=\"station reveal\" id=\"station10\">",
+      "replace": "$1\n\n<figure class=\"art-photo crew-cruise-photo\"><img src=\"/{{SLUG}}/images/cruise-crew.jpg\" alt=\"Faisal and the HYROX cruise group selfie on deck, Barcelona behind them\" width=\"839\" height=\"1024\" loading=\"lazy\" /><figcaption>This is the community — it turns up everywhere.</figcaption></figure>\n\n<article class=\"station reveal\" id=\"station10\">",
+      "flags": "g"
+    },
+    {
+      "pattern": "(ask Faisal for your access details</a>\\.[\\s\\S]*?</p>)",
+      "replace": "$1\n\n<figure class=\"art-photo coach-cruise-photo\" style=\"margin:1.5rem auto 0\"><img src=\"/{{SLUG}}/images/cruise-trio.jpg\" alt=\"Faisal with two athletes on the official HYROX cruise\" width=\"839\" height=\"1024\" loading=\"lazy\" /><figcaption>On the recent HYROX cruise with the crew.</figcaption></figure>",
+      "flags": "g"
+    },
+    {
+      "pattern": "(<article class=\"station reveal\" id=\"sleep\">[\\s\\S]*?</article>)\\s*<article class=\"station reveal\" id=\"checklist\">",
+      "replace": "$1\n\n<figure class=\"art-photo taper-offday-photo\"><img src=\"/{{SLUG}}/images/cruise-crew.jpg\" alt=\"Faisal and the HYROX cruise group on deck — time away from training still counts\" width=\"839\" height=\"1024\" loading=\"lazy\" /><figcaption>Plan something that isn't training. It counts.</figcaption></figure>\n\n<article class=\"station reveal\" id=\"checklist\">",
+      "flags": "g"
     }
   ],
+  "extraCss": ".art-photo.race-smile-photo img{object-position:50% 28%;}\n.art-photo.crew-cruise-photo img{aspect-ratio:4/3;object-position:50% 65%;}\n.guidance--calm .art-photo.taper-offday-photo img, .art-photo.taper-offday-photo img{aspect-ratio:4/3;object-position:50% 55%;}\n.coach-cruise-photo img{width:100%;height:auto;object-fit:cover;object-position:50% 30%;border-radius:14px;}\n@media(max-width:600px){.art-photo.race-smile-photo img{object-position:50% 24%;}.art-photo.crew-cruise-photo img{aspect-ratio:4/3;object-position:50% 62%;}.guidance--calm .art-photo.taper-offday-photo img, .art-photo.taper-offday-photo img{aspect-ratio:4/3;object-position:50% 52%;}}",
   "stripBlocks": [
     "tiktok-link"
-  ]
+  ],
+  "testimonialLabel": "On The PMA Method · publisher endorsements",
+  "testimonialHeading": "What readers and reviewers say.",
+  "seedFiles": {
+    "testimonials.json": {
+      "sourceURL": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/",
+      "items": [
+        {
+          "name": "Joe Wicks",
+          "quote": "If you think I’m motivated, you should check this guy out. He will get you up on a Monday morning",
+          "detail": "Book endorsement published by Hachette",
+          "sourceURL": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/"
+        },
+        {
+          "name": "Ellie Goulding",
+          "quote": "The more I started doing classes and also working out with my trainer, Faisal Abdalla, the better I felt about myself",
+          "detail": "Endorsement published with The PMA Method",
+          "sourceURL": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/"
+        },
+        {
+          "name": "Michael Jennings",
+          "quote": "Honest and applicable training and nutrition advice full of innovative workouts for all abilities and seriously delicious looking recipe ideas.",
+          "detail": "Men’s Health Fitness Editor · book endorsement",
+          "sourceURL": "https://www.hachette.co.uk/titles/faisal-abdalla/the-pma-method/9781912023370/"
+        }
+      ]
+    },
+    "campaign-offers.json": "@scripts/reskin/faisalpma-pages/data/campaign-offers.json",
+    "cities.json": "@scripts/reskin/faisalpma-pages/data/cities.json",
+    "events.json": "@scripts/reskin/faisalpma-pages/data/events.json",
+    "matchboard.json": "@scripts/reskin/faisalpma-pages/data/matchboard.json",
+    "news.json": "@scripts/reskin/faisalpma-pages/data/news.json",
+    "training-platform.json": "@scripts/reskin/faisalpma-pages/data/training-platform.json",
+    "travelboard.json": "@scripts/reskin/faisalpma-pages/data/travelboard.json",
+    "videos.json": "@scripts/reskin/faisalpma-pages/data/videos.json"
+  },
+  "coachPreview": true,
+  "news": [
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "Energy matters, but watch the control as well. The best racing pairs confidence with a pace that can last.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. An away race also means planning travel, sleep and recovery.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Make the trip part of the plan. Give yourself the chance to arrive with energy rather than spending it all getting there.",
+      "takeStatus": "draft-for-review",
+      "link": "/faisalpma/events.html",
+      "linkLabel": "Race Calendar & Travel →"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-23",
+      "title": "Stockholm: Australia defends its mixed-relay world title",
+      "summary": "PUMA's World Championships report records Australia's mixed-relay win in 50:19, with Jess Pettrow on the title-defending team. Joanna Wietrzyk also finished second in the women's Elite 15 solo race.",
+      "source": "https://mediahub.puma.com/articles/puma-dominates-hyrox-world-championships-from-elite-athlete-performances-to-community-initiatives",
+      "sourceName": "PUMA · World Championships report",
+      "take": "Bring the positive attitude and a clear team plan. Encouragement works best when everyone knows their job.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's new framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "Know the rules, choose the races and give the build a purpose. Confidence needs preparation behind it.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027. Qualification gives the season a clear international destination.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "A world-stage target should energise the work, not replace it. Start with the next session you can execute well.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season, with kit, resources and performance support.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "More routes to support are encouraging. Keep showing up with intent while the opportunities develop.",
+      "takeStatus": "draft-for-review"
+    }
+  ],
+  "races": {
+    "checked": "2026-10-25",
+    "source": "https://hyrox.com/find-my-race/",
+    "timeZone": "UTC",
+    "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
+    "cities": [
+      {
+        "slug": "dublin",
+        "name": "Dublin",
+        "country": "Ireland",
+        "timeZone": "Europe/Dublin",
+        "tagline": "A short hop can still deserve a proper race-weekend plan.",
+        "race": {
+          "name": "HYROX Dublin",
+          "status": "confirmed",
+          "start": "2026-11-11",
+          "end": "2026-11-15",
+          "source": "https://hyrox.com/event/hyrox-dublin/",
+          "sourceLabel": "Official HYROX Dublin event",
+          "dates": "11 Nov 2026 – 15 Nov 2026"
+        },
+        "gettingThere": [
+          "Check the official RDS event information and your division start time before booking travel.",
+          "Compare flight, ferry and local transport against the venue journey, including luggage and registration time."
+        ],
+        "hotels": [
+          {
+            "area": "Ballsbridge or central Dublin",
+            "picks": "Balance a practical journey to the RDS with food, sleep and somewhere easy for the crew to meet.",
+            "range": "Check live rates and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar and check early breakfast options near your stay."
+        ],
+        "nightAfter": [
+          "Plan a relaxed post-race meal and leave recovery time before the journey home."
+        ]
+      },
+      {
+        "slug": "singapore",
+        "name": "Singapore",
+        "country": "Singapore",
+        "timeZone": "Asia/Singapore",
+        "tagline": "Make an overseas race a shared weekend, not a rushed turnaround.",
+        "race": {
+          "name": "AIA HYROX Singapore",
+          "status": "confirmed",
+          "start": "2026-11-26",
+          "end": "2026-11-29",
+          "source": "https://hyrox.com/event/aia-hyrox-singapore/",
+          "sourceLabel": "Official AIA HYROX Singapore event",
+          "dates": "26 Nov 2026 – 29 Nov 2026"
+        },
+        "gettingThere": [
+          "Check passport, entry and airline baggage requirements before paying for travel.",
+          "Allow time to adjust to the local time zone and plan the venue journey from your chosen accommodation."
+        ],
+        "hotels": [
+          {
+            "area": "An easy venue journey",
+            "picks": "Choose a base with straightforward early transport, familiar food nearby and somewhere to recover after the finish.",
+            "range": "Compare live prices and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar; leave the food adventure for after the finish."
+        ],
+        "nightAfter": [
+          "Plan a crew meal with enough recovery time before the flight home."
+        ]
+      },
+      {
+        "slug": "london",
+        "name": "London",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "Choose the race slot first, then make the capital work around it.",
+        "race": {
+          "name": "Amazon HYROX London",
+          "status": "confirmed",
+          "start": "2026-12-02",
+          "end": "2026-12-06",
+          "source": "https://hyrox.com/event/hyrox-london-excel/",
+          "sourceLabel": "Official Amazon HYROX London event",
+          "dates": "2 Dec 2026 – 6 Dec 2026"
+        },
+        "gettingThere": [
+          "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
+          "Compare your arrival station or airport with the venue journey, including weekend service changes."
+        ],
+        "hotels": [
+          {
+            "area": "Venue access first",
+            "picks": "Prioritise a straightforward early journey over a small saving on a room across the city. Check breakfast and bag storage around your wave.",
+            "range": "Hotel rates vary by date; check live prices."
+          }
+        ],
+        "food": [
+          "Book a familiar meal near your hotel and carry the race fuel you have already practised with."
+        ],
+        "nightAfter": [
+          "Pick a post-race meeting point before the venue gets busy."
+        ]
+      },
+      {
+        "slug": "melbourne",
+        "name": "Melbourne",
+        "country": "Australia",
+        "timeZone": "Australia/Melbourne",
+        "tagline": "A longer-haul target deserves room for travel and recovery.",
+        "race": {
+          "name": "BYD HYROX Melbourne",
+          "status": "confirmed",
+          "start": "2026-12-09",
+          "end": "2026-12-13",
+          "source": "https://hyrox.com/event/hyrox-melbourne/",
+          "sourceLabel": "Official BYD HYROX Melbourne event",
+          "dates": "9 Dec 2026 – 13 Dec 2026"
+        },
+        "gettingThere": [
+          "Check the official venue and your race day before choosing flights and accommodation.",
+          "For long-haul travel, build in arrival, recovery and local time-zone adjustment rather than landing straight into a race."
+        ],
+        "hotels": [
+          {
+            "area": "Simple transport and recovery",
+            "picks": "Compare a venue-area stay with a base near reliable public transport. Ask about early breakfast and late checkout.",
+            "range": "Check live accommodation and flight prices."
+          }
+        ],
+        "food": [
+          "Arrange familiar race-morning food before exploring the local options afterwards."
+        ],
+        "nightAfter": [
+          "Keep the day after the race flexible before the journey home."
+        ]
+      },
+      {
+        "slug": "hong-kong",
+        "name": "Hong Kong",
+        "country": "Hong Kong",
+        "timeZone": "Asia/Hong_Kong",
+        "tagline": "Turn an international start line into a well-organised race trip.",
+        "race": {
+          "name": "AIA HYROX Hong Kong",
+          "status": "confirmed",
+          "start": "2027-01-07",
+          "end": "2027-01-10",
+          "source": "https://hyrox.com/event/hyrox-hong-kong/",
+          "sourceLabel": "Official AIA HYROX Hong Kong event",
+          "dates": "7 Jan 2027 – 10 Jan 2027"
+        },
+        "gettingThere": [
+          "Check entry requirements, airline baggage and official venue instructions before booking.",
+          "Compare the airport-to-hotel and hotel-to-venue journeys, allowing for your check-in and start time."
+        ],
+        "hotels": [
+          {
+            "area": "A practical race-weekend base",
+            "picks": "Balance easy venue access with food, sleep and a relaxed meeting place for your crew.",
+            "range": "Compare live rates and cancellation terms."
+          }
+        ],
+        "food": [
+          "Keep the meal before racing predictable and enjoy the city after your finish."
+        ],
+        "nightAfter": [
+          "Allow recovery time before sightseeing or flying home."
+        ]
+      },
+      {
+        "slug": "manchester",
+        "name": "Manchester",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "A city race with an easy plan for the days around it.",
+        "race": {
+          "name": "HYROX Manchester",
+          "status": "confirmed",
+          "start": "2027-01-20",
+          "end": "2027-01-31",
+          "source": "https://hyrox.com/event/hyrox-manchester/",
+          "sourceLabel": "Official HYROX Manchester event",
+          "dates": "20 Jan 2027 – 31 Jan 2027"
+        },
+        "gettingThere": [
+          "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
+          "Allow extra time if your route crosses the city, and include registration and warm-up in the plan."
+        ],
+        "hotels": [
+          {
+            "area": "Central or close to the venue",
+            "picks": "Compare a central base for the crew meal with a shorter early journey to the race. Check breakfast, checkout and bag storage.",
+            "range": "Check current rates for your particular race dates."
+          }
+        ],
+        "food": [
+          "Choose a familiar pre-race dinner and an uncomplicated breakfast."
+        ],
+        "nightAfter": [
+          "Agree where to meet and leave room for tired legs after the finish."
+        ]
+      }
+    ],
+    "home": "london"
+  },
+  "trainingPlatform": {
+    "name": "FITR",
+    "coachURL": "https://app.fitr.training/",
+    "clientURL": "https://app.fitr.training/",
+    "programmesURL": "https://pmafitness.fitr.training/p/PMAHYROX",
+    "applicationURL": "https://linktr.ee/pmafitness",
+    "directCoachLink": true,
+    "offerTitle": "PMA Fitness coaching",
+    "offerDescription": "Explore the existing coaching and programme options, then choose the support that fits your next goal.",
+    "note": "Official FITR sign-in; use your existing account. The programme catalogue remains on the coach’s own FITR destination. No workout or client-data sync is connected."
+  },
+  "contentPublishing": {
+    "podcast": false
+  },
+  "colors": {
+    "zoneAccent": "#1d4ed8"
+  },
+  "imageMap": {
+    "hero.jpg": "hero-wide.jpg"
+  },
+  "brandingNote": "Wordmark PMA from @faisalpmafitness — brand leads with his first name, so SIG is the mononym."
 }

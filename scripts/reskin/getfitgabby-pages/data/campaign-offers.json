@@ -1,0 +1,20 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Get Fit Gabby coaching",
+      "headline": "Take the next step with Gabby",
+      "destination": "https://linktr.ee/gabriellamoriarty",
+      "image": "/getfitgabby/images/coaching-hero.jpg?v=1792700913723",
+      "goal": "Coaching enquiries"
+    },
+    {
+      "id": "programme",
+      "name": "Get Fit Gabby training options",
+      "headline": "Find the right training support",
+      "destination": "https://linktr.ee/gabriellamoriarty",
+      "image": "/getfitgabby/images/coaching-hero.jpg?v=1792700913723",
+      "goal": "Programme and coaching enquiries"
+    }
+  ]
+}

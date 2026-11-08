@@ -1,0 +1,278 @@
+[
+  {
+    "path": "",
+    "waitUntil": "domcontentloaded",
+    "startAt": {
+      "selector": ".hero-mask",
+      "offset": 66
+    },
+    "subs": [
+      {
+        "text": "Gregor & Hattie — this is your athletic brand: your name, your photos, your voice. Already a working platform.",
+        "holdMs": 9650
+      },
+      {
+        "text": "A private preview — only you have this link. Nothing here is published or indexed.",
+        "holdMs": 7000
+      },
+      {
+        "text": "A home for the Gregor & Hattie brand — coaching, race tools and community, with Race to Frame running through it.",
+        "scrollTo": "body",
+        "align": "start",
+        "holdMs": 9845
+      },
+      {
+        "text": "Your coaching, structured like a season — the athletic profile your results deserve.",
+        "scrollTo": "#zones",
+        "holdMs": 8500
+      },
+      {
+        "text": "Your story and race imagery give the platform its personality. A brand, not a template.",
+        "scrollTo": "#story",
+        "holdMs": 8155
+      },
+      {
+        "text": "Free tools give people a reason to visit your brand. Coaching has a clear next step when they're ready.",
+        "scrollTo": "#plans",
+        "holdMs": 9195
+      },
+      {
+        "text": "Events and race planning sit alongside the coaching — one roof for the whole operation.",
+        "scrollTo": "#events",
+        "holdMs": 8155
+      },
+      {
+        "text": "The community wall — race-day photos in your colours. The demo entries show the layout.",
+        "scrollTo": "#wall-photos",
+        "holdMs": 8155
+      },
+      {
+        "text": "Ask Gregor & Hattie — questions reach you both, under your brand, not buried in DMs.",
+        "scrollTo": "#ask",
+        "holdMs": 7635
+      }
+    ]
+  },
+  {
+    "path": "coaching.html",
+    "subs": [
+      {
+        "text": "Your coaching page sells the offer like a brand — clear packages, hybrid coaching offers and a real application route.",
+        "scroll": true,
+        "holdMs": 10170
+      }
+    ]
+  },
+  {
+    "path": "find-a-partner.html",
+    "subs": [
+      {
+        "text": "Find a race-mate — doubles, mixed and relay partners, inside your brand's home.",
+        "scrollTo": "#partner-form",
+        "holdMs": 7635
+      },
+      {
+        "text": "A community feature that runs itself between race weekends.",
+        "scroll": true,
+        "holdMs": 6335
+      }
+    ]
+  },
+  {
+    "path": "predictor.html",
+    "subs": [
+      {
+        "text": "The predictor lets athletes explore a target finish — inside your platform.",
+        "holdMs": 7375
+      },
+      {
+        "text": "Tools like this make your brand part of their training week.",
+        "scroll": true,
+        "holdMs": 6400
+      }
+    ]
+  },
+  {
+    "path": "splits.html",
+    "subs": [
+      {
+        "text": "The split analyser turns a finish time into station-by-station insight.",
+        "holdMs": 7115
+      },
+      {
+        "text": "",
+        "scroll": true,
+        "holdMs": 6000
+      }
+    ]
+  },
+  {
+    "path": "results.html",
+    "subs": [
+      {
+        "text": "Results — a living record of race performances, wearing your name.",
+        "scroll": true,
+        "holdMs": 7000
+      }
+    ]
+  },
+  {
+    "path": "stations-prep.html",
+    "subs": [
+      {
+        "text": "Stations Prep — every HYROX station, coached in your voice, shot in your colours.",
+        "holdMs": 7765
+      },
+      {
+        "text": "Coaching value before anyone has paid you — that's brand-building.",
+        "scroll": true,
+        "holdMs": 7000
+      }
+    ]
+  },
+  {
+    "path": "run-zone.html",
+    "subs": [
+      {
+        "text": "Run Zone — pacing and race-day running guidance under your name.",
+        "scroll": true,
+        "holdMs": 6660
+      }
+    ]
+  },
+  {
+    "path": "taper-zone.html",
+    "subs": [
+      {
+        "text": "Taper Zone — the final week, structured so athletes actually do it. Your brand in their race week.",
+        "scroll": true,
+        "holdMs": 8870
+      }
+    ]
+  },
+  {
+    "path": "events.html",
+    "subs": [
+      {
+        "text": "Calendar & Travel — race dates with official links, kept current without you lifting a finger.",
+        "scroll": true,
+        "holdMs": 8610
+      }
+    ]
+  },
+  {
+    "path": "race-crew.html",
+    "subs": [
+      {
+        "text": "Race Crew — your community organised on your own platform, home and abroad.",
+        "scroll": true,
+        "holdMs": 7375
+      }
+    ]
+  },
+  {
+    "path": "news.html",
+    "subs": [
+      {
+        "text": "HYROX news under the Gregor & Hattie name — fresh content keeps the brand alive between races.",
+        "scroll": true,
+        "holdMs": 8610
+      }
+    ]
+  },
+  {
+    "path": "partners.html",
+    "subs": [
+      {
+        "text": "Your partners — frames, offers, affiliates — presented like a professional outfit. Brand deals, not a link dump.",
+        "scroll": true,
+        "holdMs": 9780
+      }
+    ]
+  },
+  {
+    "path": "list.html",
+    "subs": [
+      {
+        "text": "Join the list — every visitor becomes a contact your brand owns, not an audience you rent.",
+        "scroll": true,
+        "holdMs": 8350
+      }
+    ]
+  },
+  {
+    "path": "leads.html",
+    "subs": [
+      {
+        "text": "And the part that lets you take control of the business — the Desk. First, Leads.",
+        "holdMs": 7765
+      },
+      {
+        "text": "Every enquiry lands here — ask forms, session requests, partner interest — enquiry to reply.",
+        "scroll": true,
+        "holdMs": 8480
+      },
+      {
+        "text": "Attention on the public site becomes conversations, then clients. That's control.",
+        "scroll": true,
+        "holdMs": 7765
+      }
+    ]
+  },
+  {
+    "path": "campaigns.html",
+    "subs": [
+      {
+        "text": "Campaigns — scale with social media campaigns, deployed at the tap of a button.",
+        "holdMs": 7635
+      },
+      {
+        "text": "Pick a photo, set when to advertise — a race weekend, a location, an audience.",
+        "scroll": true,
+        "holdMs": 7570
+      },
+      {
+        "text": "The platform drafts the post and story — set a spend cap, approve, and you're scaling.",
+        "scroll": true,
+        "holdMs": 8090
+      },
+      {
+        "text": "Client results become campaigns too — with their sign-off built in.",
+        "scroll": true,
+        "holdMs": 6855
+      }
+    ]
+  },
+  {
+    "path": "desk.html",
+    "subs": [
+      {
+        "text": "And Finance — the money side of the brand, under your control.",
+        "holdMs": 6530
+      },
+      {
+        "text": "Coaching income, race costs and partner activity — one dashboard.",
+        "scrollTo": ".desk-stats",
+        "holdMs": 6725
+      },
+      {
+        "text": "Know what comes in, see what goes out — the whole business in one place.",
+        "scroll": true,
+        "holdMs": 7180
+      }
+    ]
+  },
+  {
+    "path": "",
+    "subs": [
+      {
+        "text": "Your coaching, your tools, your community — one brand, one roof.",
+        "holdMs": 6660
+      },
+      {
+        "text": "Have a look around, Gregor & Hattie. I'd love to hear what you think.",
+        "holdMs": 6985
+      }
+    ]
+  }
+]

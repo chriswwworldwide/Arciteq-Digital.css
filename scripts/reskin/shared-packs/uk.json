@@ -18,7 +18,7 @@
     ],
     [
       "Bangkok",
-      "Birmingham"
+      "Dublin"
     ],
     [
       "Seoul",
@@ -54,7 +54,7 @@
     ],
     [
       "Singapore · Seoul · Hong Kong · Bangkok",
-      "London · Birmingham · Manchester · Cardiff · Glasgow"
+      "Dublin · Singapore · London · Melbourne · Hong Kong · Manchester"
     ],
     [
       "HYROX Singapore 2026",
@@ -316,7 +316,7 @@
   "copyOverrides": [
     {
       "pattern": "const VENUE = \\{[\\s\\S]*?\\};",
-      "replace": "const VENUE = {\n    london: { mod: 1.0, note: \"ExCeL aircon is kind — no excuses here.\" },\n    manchester: { mod: 1.0, note: \"Flat, fast, friendly — PB territory.\" },\n    birmingham: { mod: 1.01, note: \"NEC halls run warm — the crowd makes up for it.\" },\n    cardiff: { mod: 1.0, note: \"Compact venue — the noise stays close.\" },\n    glasgow: { mod: 0.99, note: \"Scottish air is free PB. Layers for the queue.\" },\n  };"
+      "replace": "const VENUE = {\n    dublin: { mod: 1.0, note: \"Short hop, big noise — arrive fresh and keep it simple.\" },\n    singapore: { mod: 1.02, note: \"Travel and heat cost something — build in adjustment time.\" },\n    london: { mod: 1.0, note: \"ExCeL aircon is kind — no excuses here.\" },\n    melbourne: { mod: 1.01, note: \"Long-haul legs are real — arrive early.\" },\n    \"hong-kong\": { mod: 1.01, note: \"The journey is part of the race plan — arrive early.\" },\n    manchester: { mod: 1.0, note: \"Flat, fast, friendly — PB territory.\" },\n  };"
     },
     {
       "pattern": "<h2>Apa yang lagi rame[^<]*<em>[^<]*</em>[^<]*</h2>",
@@ -336,7 +336,7 @@
     },
     {
       "pattern": "city planners for London, Birmingham, Hong\\s+Kong and Seoul[^<]*|city planners for Singapore, Bangkok, Hong\\s+Kong and Seoul[^<]*",
-      "replace": "city guides for London, Manchester, Birmingham and Glasgow — hotels, trains, food, the night after."
+      "replace": "city guides for Dublin, London, Manchester, Singapore, Melbourne and Hong Kong — hotels, trains, food, the night after."
     },
     {
       "pattern": "<strong>TBA</strong><span>London</span></div>\\s*<div>\\s*<h4>HYROX London</h4>\\s*<p>[^<]*</p>",
@@ -348,7 +348,7 @@
     },
     {
       "pattern": "Birmingham,\\s*London, Manchester: fly Friday, race Sunday[^<]*|Bangkok,\\s*Singapore, KL: fly Friday, race Sunday[^<]*",
-      "replace": "London, Birmingham, Manchester: travel the day before, race the next — race-morning trains are the original PB-killer."
+      "replace": "Dublin, London, Manchester: travel the day before, race the next — race-morning trains are the original PB-killer."
     },
     {
       "pattern": "Many \\w+ athletes race Birmingham, London, Kuala Lumpur or Hong\\s*Kong[^<]*|Many \\w+ athletes race Bangkok, Singapore, Kuala Lumpur or Hong\\s*Kong[^<]*",
@@ -356,7 +356,7 @@
     },
     {
       "pattern": "Hyrox the UK race planner:[^<]*",
-      "replace": "HYROX UK race planner: London, Birmingham, Manchester, Cardiff, Glasgow — dates, venues, travel and where to stay."
+      "replace": "HYROX race planner: Dublin, London, Manchester, Singapore, Melbourne and Hong Kong — dates, venues, travel and where to stay."
     },
     {
       "pattern": "Plan your next Hyrox race abroad from \\w+:[^\"]*",
@@ -364,19 +364,19 @@
     },
     {
       "pattern": "London \\(under 2 hours\\)[^\"]*|Singapore \\(under 2 hours\\)[^\"]*",
-      "replace": "Birmingham and Manchester are the easiest by train for most of the country; London, Cardiff and Glasgow take a little longer. Confirmed 2026/27 dates are listed on this page with their official source."
+      "replace": "Dublin, London and Manchester are the practical headline races; Singapore, Melbourne and Hong Kong are the longer-haul options. Confirmed 2026/27 dates are listed on this page with their official source."
     },
     {
       "pattern": "London \\(under 2 h\\)[^<]*|Singapore \\(under 2 h\\)[^<]*",
-      "replace": "Birmingham and Manchester are the easiest by train for most UK athletes; London, Cardiff and Glasgow take a little longer. All five are on this page with confirmed 2026/27 dates."
+      "replace": "Dublin, London and Manchester are the practical headline races; Singapore, Melbourne and Hong Kong are the longer-haul options. All six are on this page with confirmed 2026/27 dates."
     },
     {
       "pattern": "London, Kuala Lumpur and Birmingham are all short direct flights[^\"]*|Singapore, Kuala Lumpur and Bangkok are all short direct flights[^\"]*",
-      "replace": "London, Birmingham, Manchester, Cardiff and Glasgow are the core UK season. Check hyrox.com for the current season's confirmed dates."
+      "replace": "Dublin, London, Manchester, Singapore, Melbourne and Hong Kong are the confirmed upcoming calendar. Check hyrox.com for the current season's confirmed dates."
     },
     {
       "pattern": "London, Kuala Lumpur and Birmingham — short direct flights and[^<]*|Singapore, Kuala Lumpur and Bangkok — short direct flights and[^<]*",
-      "replace": "London, Birmingham, Manchester, Cardiff and Glasgow — short hops for most UK athletes, and the fixtures every UK season builds around."
+      "replace": "Dublin, London and Manchester are the short-haul fixtures; Singapore, Melbourne and Hong Kong are the bigger race trips."
     },
     {
       "pattern": "London — and the coaching itself moves to your phone|Singapore — and the coaching itself moves to your phone",
@@ -384,7 +384,7 @@
     },
     {
       "pattern": "city guides \\(Hong Kong, Bangkok,\\s*Singapore, KL…\\)|city guides \\(Cardiff, Birmingham,\\s*London, Manchester…\\)",
-      "replace": "city guides (London, Birmingham, Manchester…)"
+      "replace": "city guides (Dublin, London, Manchester…)"
     },
     {
       "pattern": "Athletes racing Birmingham, London or Manchester are coached the same way|Athletes racing Bangkok, Singapore or KL are coached the same way",

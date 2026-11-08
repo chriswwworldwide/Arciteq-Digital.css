@@ -7,36 +7,63 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  sonarcloud:
-    name: Run Linter + SonarCloud Scan
+  quality:
+    name: Lint and formatting
     runs-on: ubuntu-latest
-
+    timeout-minutes: 15
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          fetch-depth: 0
-
+          persist-credentials: false
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
-          node-version: 18
-
+          node-version: 22
+          cache: npm
       - name: Install dependencies
-        run: npm ci
-
+        run: npm ci --ignore-scripts
       - name: Run ESLint
-        run: npx eslint . || true
-
+        run: npx eslint .
       - name: Run Prettier
-        run: npx prettier --write .
+        if: always()
+        run: npm run format:check
 
+  sonarcloud:
+    name: Run SonarCloud Scan
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      - name: Check SonarCloud configuration
+        run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo '::error::SONAR_TOKEN is missing. Configure SonarCloud before relying on this check.'
+            exit 1
+          fi
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v2
+        uses: SonarSource/sonarqube-scan-action@d209202bc7d53ff1cc128f7f907dac145c9d6ae9
         with:
           projectBaseDir: .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

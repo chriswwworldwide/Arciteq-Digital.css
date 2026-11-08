@@ -456,7 +456,7 @@
     .catch(() => {});
 })();
 
-// Results wall + Maya's week from mayaokafor/data/wall.json (consented entries only; empty lists stay hidden).
+// Results wall (consented entries only; renders placeholders when empty).
 (function () {
   const section = document.getElementById("wall");
   if (!section) return;
@@ -686,6 +686,7 @@ window.roxShare = (function () {
     img.src = String(p.src || "");
     img.alt = String(p.alt || p.caption || "");
     img.loading = "lazy";
+    if (p.pos) img.style.objectPosition = p.pos;
     img.width = 600;
     img.height = 600;
     const cap = document.createElement("p");

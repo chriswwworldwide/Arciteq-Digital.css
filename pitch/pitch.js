@@ -18,12 +18,7 @@
     }
   }
 
-  var seen = null;
-  try {
-    seen = localStorage.getItem("pitch-seen-" + slug);
-    if (!seen) localStorage.setItem("pitch-seen-" + slug, "1");
-  } catch (e) {}
-  send(seen ? "revisit" : "view");
+  send("view");
 
   var video = document.getElementById("pitchVideo");
   var cover = document.getElementById("playerCover");

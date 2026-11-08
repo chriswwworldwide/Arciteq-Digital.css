@@ -1,0 +1,71 @@
+{
+  "checked": "2026-10-25",
+  "note": "International source-linked briefings. Coach-voice takes are editorial drafts for review, not quotations or claims of the coach's personal experiences.",
+  "items": [
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "Watch the execution: controlled running, deliberate transitions and quality reps under fatigue.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. An away race also means planning travel, sleep and recovery.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Protect sleep and recovery when planning an away race. Travel is part of the performance plan.",
+      "takeStatus": "draft-for-review",
+      "link": "/jadeskillen/events.html",
+      "linkLabel": "Race Calendar & Travel →"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-23",
+      "title": "Stockholm: Australia defends its mixed-relay world title",
+      "summary": "PUMA's World Championships report records Australia's mixed-relay win in 50:19, with Jess Pettrow on the title-defending team. Joanna Wietrzyk also finished second in the women's Elite 15 solo race.",
+      "source": "https://mediahub.puma.com/articles/puma-dominates-hyrox-world-championships-from-elite-athlete-performances-to-community-initiatives",
+      "sourceName": "PUMA · World Championships report",
+      "take": "Be precise about handovers, pacing and who takes responsibility for each part of the race.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's new framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "Qualification now rewards a planned season. Check which results count before selecting your races.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027. Qualification gives the season a clear international destination.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "Work backwards from the standard required. Make the next block specific to the athlete, not the headline.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season, with kit, resources and performance support.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "Support helps, but clear training priorities and repeatable execution remain essential.",
+      "takeStatus": "draft-for-review"
+    }
+  ]
+}

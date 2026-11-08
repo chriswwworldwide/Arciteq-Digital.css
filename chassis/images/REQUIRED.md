@@ -58,4 +58,16 @@ files into its assets folder (same names, any real photo per slot):
 Optional extras (gallery/, lifestyle) can be added per tenant; filenames
 in pages are the contract — rename files to match, not the other way round.
 
+Faster allocation: instead of renaming the batch, keep original filenames
+and add an `imageMap` to the demo config, e.g.
+`"imageMap": { "hero.jpg": "coach-finish-01.jpg" }` — the build copies each
+source onto its slot and fails loudly on a missing source. Slot-named files
+still work; imageMap wins on conflict.
+
+Composition note: `coaching.jpg` is the ask-panel background — the circular
+avatar overlays its TOP-RIGHT corner. Prefer a shot with clear space (or only
+dark background) in that quadrant; a face there collides with the portrait.
+A corner scrim mitigates it, and `--ask-circle-top`/`--ask-circle-right` on
+`.capture` can move the circle via extraCss, but a clean photo beats both.
+
 Optional booking photo slot: `images/planner-watermark.jpg` — an approved portrait of the site's own coach. The neutral booking template has no watermark or portrait selected. A missing watermark never blocks a build; existing sites may reuse their own `bio.jpg`. No stock fallback is required. Set `booking.watermark` in the tenant build config to choose another local image, and `booking.timeZone` to override the default timezone.

@@ -9,9 +9,9 @@
           "athlete": "Emma Clarke",
           "time": "1:14:52",
           "category": "Open",
-          "event": "HYROX Birmingham",
+          "event": "HYROX Glasgow",
           "date": "2026-08",
-          "city": "Birmingham"
+          "city": "Glasgow"
         },
         {
           "athlete": "Sophie Turner",
@@ -46,9 +46,9 @@
           "athlete": "Dan Reeves",
           "time": "1:11:24",
           "category": "Open · first race",
-          "event": "HYROX Birmingham",
+          "event": "HYROX Glasgow",
           "date": "2026-08",
-          "city": "Birmingham"
+          "city": "Glasgow"
         },
         {
           "athlete": "Kieran Doyle",
@@ -80,9 +80,9 @@
           "athlete": "Ollie & Dan",
           "time": "1:01:44",
           "category": "Open",
-          "event": "HYROX Birmingham",
+          "event": "HYROX Glasgow",
           "date": "2026-08",
-          "city": "Birmingham"
+          "city": "Glasgow"
         }
       ]
     },

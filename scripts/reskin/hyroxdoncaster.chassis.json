@@ -1,0 +1,651 @@
+{
+  "mode": "chassis",
+  "slug": "hyroxdoncaster",
+  "coachingIntro":"Start with the six-week introduction, explore the regular training schedule or rehearse race day at a simulation. HYROX Doncaster welcomes different starting points with coached, scalable sessions.",
+  "coachingOffers":[
+    {"title":"Six-week HYROX introduction","type":"Six-week coached introduction","description":"A structured introduction to strength, conditioning, station technique and the gym community. Enquire about the next intake through the official site.","url":"https://www.hyroxdoncaster.com/","action":"Explore the six-week introduction","sourceURL":"https://www.hyroxdoncaster.com/"},
+    {"title":"Club memberships","type":"Monthly coached training","price":"From £67/month","description":"Choose the training frequency that fits your week, from regular sessions to unlimited coached training.","features":["Starter: £67/month for eight coached sessions","Racer: £83/month for twelve coached sessions","Elite: £99/month for unlimited coached sessions"],"url":"https://www.hyroxdoncaster.com/membership","action":"Compare club memberships","sourceURL":"https://www.hyroxdoncaster.com/membership"},
+    {"title":"Simulation sessions","type":"Race-format practice","price":"£20 members · £40 non-members","description":"Practise all eight stations and the race format at the Kirk Sandall gym. Open to members and non-members; check the simulation page for current dates and booking details.","url":"https://www.hyroxdoncaster.com/sim","action":"Explore simulation sessions","sourceURL":"https://www.hyroxdoncaster.com/sim"}
+  ],
+  "partnerOffers":[
+    {"title":"HYROX Doncaster","type":"Official gym website","description":"Memberships, session schedules and simulation information directly from the club.","url":"https://www.hyroxdoncaster.com/","action":"Explore the club","sourceURL":"https://www.hyroxdoncaster.com/"},
+    {"title":"The Doncaster community","type":"Official social channel","description":"Training updates and community news from the club's Instagram account.","url":"https://www.instagram.com/hyrox_doncaster/","action":"Visit the community channel","sourceURL":"https://www.instagram.com/hyrox_doncaster/"}
+  ],
+  "offerAudit":{"checkedAt":"2026-11-02","notes":["Official site verified in a JavaScript browser; fetched HTML alone is empty.","No generic standalone 1:1 offer inferred from group training.","Scarcity counts, transformation photos and live cohort countdowns are not copied."]},
+  "heroMode": "full",
+  "strictImages": true,
+  "assets": [
+    "scripts/reskin/hyroxdoncaster-assets"
+  ],
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "omitImageSlots": [
+    "images/bike.jpg",
+    "images/carry.jpg",
+    "images/detail.jpg",
+    "images/doubles.jpg",
+    "images/events-hero.jpg",
+    "images/half.jpg",
+    "images/hoodie.jpg",
+    "images/kerb.jpg",
+    "images/links-hero.jpg",
+    "images/momentum.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/pb.jpg",
+    "images/planner-watermark.jpg",
+    "images/predictor-hero.jpg",
+    "images/race-mate-hero.jpg",
+    "images/race-revel.jpg",
+    "images/rooftop.jpg",
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/run-hero.jpg",
+    "images/splits-hero.jpg",
+    "images/sprint.jpg",
+    "images/station-farmers-carry.jpg",
+    "images/station-lean.jpg",
+    "images/station-sandbag-lunges.jpg",
+    "images/station-wall-balls.jpg",
+    "images/stations-hero.jpg",
+    "images/taper-hero.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg"
+  ],
+  "seedFiles": {
+    "testimonials.json":{"sourceURL":"https://www.hyroxdoncaster.com/","items":[{"name":"Donna Wilson","quote":"A fantastic gym for all ages and abilities — no egos, just friendly people encouraging each other.","detail":"Member review published by HYROX Doncaster","sourceURL":"https://www.hyroxdoncaster.com/"},{"name":"Adam","quote":"Super friendly, fully structured — you'll enjoy it and get fitter than before.","detail":"Member review published by HYROX Doncaster","sourceURL":"https://www.hyroxdoncaster.com/"},{"name":"Greg Newton","quote":"Every session is different. A superb community to train and improve in.","detail":"Member review published by HYROX Doncaster","sourceURL":"https://www.hyroxdoncaster.com/"}]},
+    "wall.json": {
+      "note": "PRIVATE PITCH PREVIEW \u2014 add only consented, verified HYROX Doncaster results after launch.",
+      "athletes": [],
+      "weeks": []
+    },
+    "cities.json": {
+      "note": "DEMO SEED \u2014 UK race planner data for the HYROX Doncaster demo. Dates/venues are placeholders from public HYROX listings; refresh from hyrox.com before real use.",
+      "checked": "2026-11",
+      "home": "london",
+      "cities": [
+        {
+          "slug": "london",
+          "name": "London",
+          "nickname": "The Smoke",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "The big one. Multiple HYROX weekends a year and the fastest-selling tickets in the UK calendar.",
+          "coachSays": "Closest major race to us \u2014 two hours on the train and you're on the start line. Half the crew has raced here; the other half is about to.",
+          "race": {
+            "name": "HYROX London",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com first and sell out fast.",
+            "last": {
+              "dates": "May 2026",
+              "athletes": "~12,000"
+            },
+            "venue": "Olympia London",
+            "address": "Hammersmith Rd, London W14 8UX",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Doncaster to London Liverpool Street is about 1h 50m \u2014 book advance singles early, race weekend fills up.",
+            "Olympia is a short walk from Kensington (Olympia) station or Barons Court on the Piccadilly line.",
+            "Driving? Race-weekend parking around Kensington is painful and pricey \u2014 the train wins."
+          ],
+          "hotels": [
+            {
+              "area": "Kensington / Hammersmith (closest)",
+              "picks": "Walk-to-venue options \u2014 the stress-free race morning.",
+              "range": "\u00a3120 \u2013 \u00a3220 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Olympia%20London"
+            },
+            {
+              "area": "Earl's Court",
+              "picks": "Cheaper beds ten minutes from the venue.",
+              "range": "\u00a380 \u2013 \u00a3140 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Earls%20Court%20London"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Race morning: porridge or a bagel 3\u20134 hours out. Familiar food only \u2014 race day is not the day to experiment."
+          ],
+          "city": [
+            "Contactless or Oyster everywhere on the Tube \u2014 no cash needed.",
+            "London HYROX weekends sell out hotels near the venue \u2014 book when tickets drop, not after."
+          ],
+          "nightAfter": [
+            "Kensington and Hammersmith pubs do a roaring post-race trade \u2014 Sunday roast is basically mandatory."
+          ],
+          "meetup": null,
+          "coachNote": "This is the crew's home race \u2014 we take a proper contingent. If you're racing London, a 12-week block ending on race week is the sweet spot.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: whoever's racing finds the dinner. Pub booked near the venue, all levels welcome, race stories compulsory."
+          }
+        },
+        {
+          "slug": "manchester",
+          "name": "Manchester",
+          "nickname": "The Rainy City",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "The UK's biggest HYROX residency \u2014 multiple days, tens of thousands of athletes.",
+          "coachSays": "Eleven days of racing \u2014 if you can't find a wave that fits, that's on you. Worth the trip for the crowd alone.",
+          "race": {
+            "name": "HYROX Manchester",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next residency expected \u2014 check hyrox.com for the announced block.",
+            "last": {
+              "dates": "January 2026",
+              "athletes": "~30,000 across the residency"
+            },
+            "venue": "Manchester Central",
+            "address": "Petersfield, Manchester M2 3GX",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Doncaster to Manchester Piccadilly is around 4h 30m with one change \u2014 an overnighter makes sense.",
+            "Manchester Central is ten minutes on foot from Deansgate station."
+          ],
+          "hotels": [
+            {
+              "area": "Deansgate / city centre",
+              "picks": "Walk everywhere, food on the doorstep.",
+              "range": "\u00a380 \u2013 \u00a3150 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Manchester%20Central"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Northern Quarter for carbs the night before \u2014 pasta options everywhere."
+          ],
+          "city": [
+            "Stay near Deansgate and you won't need transport at all."
+          ],
+          "nightAfter": [
+            "Northern Quarter \u2014 the obvious post-race dinner territory."
+          ],
+          "meetup": null,
+          "coachNote": "The multi-day format means we can get several crews through in one weekend \u2014 good first away race.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner near the venue, all welcome."
+          }
+        },
+        {
+          "slug": "birmingham",
+          "name": "Birmingham",
+          "nickname": "Brum",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "NEC-scale HYROX \u2014 huge hall, huge field.",
+          "coachSays": "Big-arena energy. The NEC crowd makes you feel like a pro even when your sled disagrees.",
+          "race": {
+            "name": "HYROX Birmingham",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com.",
+            "last": {
+              "dates": "October 2026",
+              "athletes": "~15,000"
+            },
+            "venue": "NEC Birmingham",
+            "address": "North Ave, Marston Green, Birmingham B40 1NT",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Birmingham International station is inside the NEC campus \u2014 trains via one change from Doncaster, ~3h.",
+            "Driving is easy \u2014 the NEC is built for it, parking on site."
+          ],
+          "hotels": [
+            {
+              "area": "NEC / Birmingham International",
+              "picks": "On-campus hotels mean a five-minute walk to your wave.",
+              "range": "\u00a390 \u2013 \u00a3160 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=NEC%20Birmingham"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Resorts World next door covers pre-race dinner."
+          ],
+          "city": [
+            "The NEC campus is self-contained \u2014 you won't see much of Birmingham itself unless you plan to."
+          ],
+          "nightAfter": [
+            "Resorts World \u2014 restaurants five minutes from the hall."
+          ],
+          "meetup": null,
+          "coachNote": "Easiest logistics of the UK races \u2014 venue, hotel and dinner all within five minutes of each other.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner at Resorts World, all welcome."
+          }
+        },
+        {
+          "slug": "cardiff",
+          "name": "Cardiff",
+          "nickname": "The Diff",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "Welsh HYROX \u2014 a loud arena and a proper race-weekend city.",
+          "coachSays": "Long trip, worth it. Cardiff on race weekend is a city that actually notices you're there.",
+          "race": {
+            "name": "HYROX Cardiff",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com.",
+            "last": {
+              "dates": "June 2026",
+              "athletes": "~9,000"
+            },
+            "venue": "Utilita Arena Cardiff",
+            "address": "Mary Ann St, Cardiff CF10 2EQ",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Cardiff Central station is a ten-minute walk from the arena \u2014 trains via one change, ~4h from Doncaster."
+          ],
+          "hotels": [
+            {
+              "area": "City centre",
+              "picks": "Everything's walkable \u2014 venue, food, the lot.",
+              "range": "\u00a370 \u2013 \u00a3130 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Cardiff%20city%20centre"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Carbs on St Mary Street \u2014 you won't struggle."
+          ],
+          "city": [
+            "Compact centre \u2014 book central and forget taxis."
+          ],
+          "nightAfter": [
+            "St Mary Street for the post-race feed."
+          ],
+          "meetup": null,
+          "coachNote": "Furthest of the UK trips \u2014 we usually make a weekend of it.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner in the city centre, all welcome."
+          }
+        },
+        {
+          "slug": "glasgow",
+          "name": "Glasgow",
+          "nickname": "The Dear Green Place",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "Scottish HYROX at the SEC \u2014 the furthest trip and the friendliest crowd.",
+          "coachSays": "A proper expedition for us \u2014 fly it, don't sit on a train for seven hours.",
+          "race": {
+            "name": "HYROX Glasgow",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com.",
+            "last": {
+              "dates": "March 2026",
+              "athletes": "~8,000"
+            },
+            "venue": "SEC Glasgow",
+            "address": "Exhibition Way, Glasgow G3 8YW",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Fly via a connection, or London direct \u2014 much easier than the 7h train."
+          ],
+          "hotels": [
+            {
+              "area": "Finnieston / SEC",
+              "picks": "Walk to the venue and the best food street in town.",
+              "range": "\u00a380 \u2013 \u00a3150 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=SEC%20Glasgow"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Finnieston is Glasgow's food strip \u2014 pick anywhere."
+          ],
+          "city": [
+            "Cold even in spring \u2014 pack layers for queuing outside."
+          ],
+          "nightAfter": [
+            "Finnieston for dinner, done."
+          ],
+          "meetup": null,
+          "coachNote": "Only worth it as a committed trip \u2014 but as a crew weekend it's brilliant.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner in Finnieston, all welcome."
+          }
+        }
+      ],
+      "alsoOn": [
+        {
+          "name": "HYROX Dublin",
+          "city": "Dublin",
+          "flag": "\ud83c\uddee\ud83c\uddea",
+          "nickname": "The Pale",
+          "dates": "check hyrox.com",
+          "start": null,
+          "venue": "RDS",
+          "note": "Short hop and a huge atmosphere \u2014 Dublin weekends sell out early.",
+          "source": "https://hyrox.com/events/"
+        }
+      ],
+      "alsoTba": "Bristol, Leeds and Edinburgh are all expected back \u2014 dates land on hyrox.com first."
+    },
+    "gallery.json": {
+      "note": "PRIVATE PITCH PREVIEW \u2014 public HYROX Doncaster photos supplied by Chris. Confirm member consent and final captions with Nigel before launch.",
+      "photos": [
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-96.jpg",
+          "alt": "HYROX Doncaster members together on the gym floor",
+          "caption": "The crew. Different starting points, same room.",
+          "by": "HYROX Doncaster",
+          "tilt": -1.5,
+          "event": "Community"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-84.jpg",
+          "alt": "HYROX Doncaster group after a coached session",
+          "caption": "Doncaster folk putting the work in together.",
+          "by": "HYROX Doncaster",
+          "tilt": 1.5,
+          "event": "Training"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-83.jpg",
+          "alt": "Coach and athlete together at HYROX Doncaster",
+          "caption": "Coached properly. Supported properly.",
+          "by": "HYROX Doncaster",
+          "tilt": -1,
+          "event": "Coaching"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-90.jpg",
+          "alt": "HYROX Doncaster athletes training inside the gym",
+          "caption": "No egos. No judgement. Get the work done.",
+          "by": "HYROX Doncaster",
+          "tilt": 2,
+          "event": "Training"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-103.jpg",
+          "alt": "Women from the HYROX Doncaster community together after training",
+          "caption": "Everyone starts somewhere.",
+          "by": "HYROX Doncaster",
+          "event": "Community"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-105.jpg",
+          "alt": "Coach and athlete together after a HYROX event",
+          "caption": "The coaching carries through to race day.",
+          "by": "HYROX Doncaster",
+          "tilt": -1.5,
+          "event": "Race day"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-98.jpg",
+          "alt": "HYROX Doncaster athlete with a race result",
+          "caption": "Show up ready. See the result.",
+          "by": "HYROX Doncaster",
+          "tilt": 1,
+          "event": "Results"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-99.jpg",
+          "alt": "HYROX Doncaster athlete celebrating a completed race",
+          "caption": "Everyone's a winner when they step beyond the comfort zone.",
+          "by": "HYROX Doncaster",
+          "tilt": -2,
+          "event": "Race day"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-107.jpg",
+          "alt": "HYROX Doncaster athlete holding a result board",
+          "caption": "The clock tells the truth. Then the next block starts.",
+          "by": "HYROX Doncaster",
+          "tilt": 1.5,
+          "event": "Results"
+        },
+        {
+          "src": "/hyroxdoncaster/images/gallery/doncaster-125.jpg",
+          "alt": "HYROX Doncaster athletes competing inside a HYROX arena",
+          "caption": "Train together. Put it to work under the lights.",
+          "by": "HYROX Doncaster",
+          "event": "Race day"
+        }
+      ]
+    },
+    "faq.json": {
+      "note": "Receptionist answers \u2014 the 10 questions HYROX Doncaster gets asked most. Instant answers in the Ask section; anything else goes to the inbox.",
+      "items": [
+        {
+          "q": "How much is membership?",
+          "keywords": [
+            "price",
+            "cost",
+            "membership",
+            "how much",
+            "plans",
+            "expensive",
+            "monthly",
+            "pay"
+          ],
+          "a": "HYROX Doncaster publishes current prices with each six-week intake. Use the official website or message the gym directly for the next start date and price."
+        },
+        {
+          "q": "Is there a trial?",
+          "keywords": [
+            "trial",
+            "taster",
+            "try",
+            "free",
+            "first session",
+            "test"
+          ],
+          "a": "The current public starting point is a six-week introduction with limited places. Ask the gym directly if you need a shorter taster before committing."
+        },
+        {
+          "q": "I've never done HYROX \u2014 can beginners join?",
+          "keywords": [
+            "beginner",
+            "never done",
+            "new",
+            "first time",
+            "unfit",
+            "start"
+          ],
+          "a": "Yes. The six-week introduction needs no previous HYROX experience. Movements are demonstrated, coached and scaled to your current level \u2014 no egos, no judgement."
+        },
+        {
+          "q": "What actually is HYROX?",
+          "keywords": [
+            "what is",
+            "hyrox",
+            "format",
+            "rules",
+            "stations",
+            "race"
+          ],
+          "a": "An indoor fitness race: eight 1km runs with a workout station between each \u2014 SkiErg, sled push, sled pull, burpee broad jumps, row, farmers carry, lunges, wall balls. Open, Pro, Doubles and Relay divisions, so everyone can race."
+        },
+        {
+          "q": "Where are you based?",
+          "keywords": [
+            "where",
+            "location",
+            "address",
+            "based",
+            "parking",
+            "directions",
+            "find you"
+          ],
+          "a": "Unit 9, Guildhall Industrial Estate, Kirk Sandall, Doncaster DN3 1QR. Check directly with the gym for arrival and parking instructions."
+        },
+        {
+          "q": "When are the sessions?",
+          "keywords": [
+            "when",
+            "times",
+            "timetable",
+            "schedule",
+            "sessions",
+            "classes",
+            "morning",
+            "evening"
+          ],
+          "a": "The current website states 17 coached sessions each week. Use the official HYROX Doncaster website or Instagram for the live timetable."
+        },
+        {
+          "q": "Do you run HYROX sim days?",
+          "keywords": [
+            "sim",
+            "simulation",
+            "sim day",
+            "practice race",
+            "test run",
+            "tryout"
+          ],
+          "a": "Yes. Full simulations are open in announced categories to members and non-members, with real-time coaching, technique tweaks and race-condition practice. Dates are posted by the gym."
+        },
+        {
+          "q": "Do you do 1:1 coaching?",
+          "keywords": [
+            "1:1",
+            "pt",
+            "personal training",
+            "one to one",
+            "private",
+            "individual"
+          ],
+          "a": "Public posts confirm personal training is available. Message HYROX Doncaster directly to ask about current 1:1 availability and the right starting point."
+        },
+        {
+          "q": "Can I cancel any time?",
+          "keywords": [
+            "cancel",
+            "contract",
+            "lock",
+            "commitment",
+            "quit",
+            "leave"
+          ],
+          "a": "Ask HYROX Doncaster for the current membership and cancellation terms before joining; the details stay with the gym."
+        },
+        {
+          "q": "I'm looking for a doubles partner",
+          "keywords": [
+            "partner",
+            "doubles",
+            "pair",
+            "teammate",
+            "race with"
+          ],
+          "a": "Post a private card on the demo partner board with your pace band and target race. On launch, the gym would approve introductions without publishing phone numbers."
+        }
+      ]
+    }
+  },
+  "tokens": {
+    "HERO_DEK": "Welcome to the Home of Hard Work. Build strength, running confidence and station skills in Doncaster — from your first session to your next start line.",
+    "SLUG": "hyroxdoncaster",
+    "COACH_NAME": "Nigel Wood",
+    "COACH_NAME_LC": "nigel wood",
+    "COACH_FIRST": "Nigel",
+    "COACH_LAST": "Wood",
+    "WORDMARK_HTML": "HYROX D<span class=\"o\">O</span>NCASTER",
+    "BRAND": "HYROX Doncaster",
+    "BRAND_SHORT": "HYROX Doncaster",
+    "BRAND_SOCIAL": "hyrox_doncaster",
+    "CLOTHING_SHORT": "HYROX Doncaster",
+    "CITY": "Doncaster",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "hyrox coaching, programming and race crew \u2014 doncaster",
+    "HERO_TITLE_HTML": "HYROX coach.<br /><em>Doncaster.</em>",
+    "APPLY_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "PROGRAMMES_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "STORE_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "IG_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "BRAND_IG_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "YOUTUBE_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "TIKTOK_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "THREADS_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "LINKTREE_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "DOUBLES_PARTNER": "the crew",
+    "PB_VENUE": "Doncaster",
+    "PB_VENUE_LC": "doncaster",
+    "DOUBLES_VENUE": "Birmingham",
+    "DOUBLES_VENUE_LC": "birmingham",
+    "OPEN_VENUE": "London",
+    "PB_SOLO": "Open",
+    "PB_DOUBLES": "Doubles",
+    "PB_HALF": "the next start line",
+    "PB_OPEN": "Open",
+    "SEASON_START": "their first start line",
+    "PARTNER_GYM": "HYROX Doncaster",
+    "PARTNER_GYM_LC": "hyrox doncaster",
+    "PARTNER_GYM_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "PARTNER_SUPP": "HYROX",
+    "PARTNER_SUPP_LC": "hyrox",
+    "PARTNER_SUPP_URL": "https://hyrox.com/",
+    "PARTNER_KIT": "HYROX Doncaster",
+    "PARTNER_KIT_LC": "hyrox doncaster",
+    "PARTNER_KIT_TAG": "Crew kit",
+    "PARTNER_KIT_TITLE": "HYROX Doncaster crew kit",
+    "PARTNER_KIT_COPY": "Rep the crew \u2014 HYROX Doncaster kit for race day and training.",
+    "PARTNER_KIT_CTA": "Ask Nigel",
+    "PARTNER_KIT_URL": "https://www.instagram.com/hyrox_doncaster/",
+    "GYM_CODE": "HYROX DONCASTER",
+    "PHOTO_BUDDY": "the crew",
+    "ACCENT": "#0d9488",
+    "ACCENT_DARK": "#0f766e",
+    "ACCENT_SOFT": "#ccfbf1",
+    "BRAND_SHORT_UPPER": "HYROX DONCASTER",
+    "SOCIAL_HANDLE_UPPER": "HYROX_DONCASTER",
+    "VOICE_DOUBLES_HOOK": "Racing's better with a crew beside you.",
+    "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
+    "VOICE_NEWS_TAKE": "Consistency beats intensity \u2014 the plan only works if you do.",
+    "STORE_NAME": "HYROX Doncaster",
+    "STORE_TAG": "Crew base",
+    "STORE_COPY": "HYROX Doncaster home \u2014 sessions, crew and contact. Everything runs through there.",
+    "STORE_CTA": "Get in touch",
+    "WHATSAPP_URL": "https://wa.me/447742353825",
+    "OFFER_SUMMARY": "HYROX Doncaster: 17 coached sessions a week, six-week intro cohorts and open sims.",
+    "ATHLETE_FOCUS": "gym-owner focus",
+    "LINK_CARD_DESC": "The Doncaster hub \u2014 session info, crew news and contact. Everything runs through there.",
+    "COMMUNITY_DESC": "'The Home of Hard Work' \u2014 Doncaster folk training together, no egos, no judgement.",
+    "RACE_RECORD": "The Home of Hard Work \u2014 beginners and experienced racers side by side",
+    "VOICE_ATHLETE_QUOTE": "Claim your patch. Test your limits. Let's get to work.",
+    "PROG_ONE": "Six-week HYROX intro",
+    "PROG_ONE_TAG": "intro cohort \u00b7 limited places",
+    "PROG_TWO": "sim sessions",
+    "PROG_TWO_TAG": "open to non-members"
+  },
+  "copyOverrides": [
+    {
+      "pattern": "(<img\\s+class=\"crew-photo\"\\s+src=\"[^\"]*)doubles\\.jpg",
+      "replace": "$1gallery/doncaster-72.jpg"
+    },
+    {
+      "pattern": "(class=\"crew-photo\"[^>]*?alt=\")[^\"]*\"",
+      "replace": "$1The HYROX Doncaster squad celebrating together outside the gym\""
+    }
+  ]
+}

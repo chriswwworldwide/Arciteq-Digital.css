@@ -51,7 +51,7 @@
     "Singapore": "London",
     "Kuala Lumpur": "Manchester",
     "Seoul": "Glasgow",
-    "Hong Kong": "Birmingham",
+    "Hong Kong": "Dublin",
     "Bangkok": "Cardiff",
     "PIK": "the Performance Centre",
     "macet": "A47 traffic"
@@ -237,7 +237,7 @@
     ],
     [
       "data-city=\"london\"",
-      "data-city=\"birmingham\""
+      "data-city=\"dublin\""
     ],
     [
       "jakarta-top10",
@@ -405,11 +405,11 @@
     ],
     [
       "women, doubles, mixed and relay. Official chip times, updated after",
-      "women, doubles, mixed and relay. Sample entries for the preview — official chip times once live, updated after"
+      "women, doubles, mixed and relay. Official chip times, updated after"
     ],
     [
       "under an British nationality. All times are official chip times.",
-      "under a British nationality. Sample entries for the preview — official chip times once live."
+      "under a British nationality. Finish times are checked against official result links where available."
     ],
     [
       "href=\"/racetoframe/hyrox-london/\"",
@@ -827,11 +827,11 @@
     },
     {
       "pattern": "<div class=\"results-tools\">",
-      "replace": "<p style=\"font-size:12px;opacity:.55;margin:-6px 0 10px\">Sample entries — the board fills from real submissions and results once live.</p>\n        <div class=\"results-tools\">"
+      "replace": "<p style=\"font-size:12px;opacity:.55;margin:-6px 0 10px\">The board fills as results and athlete submissions land.</p>\n        <div class=\"results-tools\">"
     },
     {
       "pattern": "(<h3>Race weekend roundups</h3>\\s*<p class=\"plan-source\">[\\s\\S]*?</p>)",
-      "replace": "$1\n          <p style=\"font-size:12px;opacity:.55;margin-top:-6px\">Sample roundups — the format, not the real write-ups yet.</p>"
+      "replace": "$1\n          <p style=\"font-size:12px;opacity:.55;margin-top:-6px\">Race weekends, read through the results and the story around them.</p>"
     },
     {
       "pattern": "src=\"/racetoframe/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Gregor mid-run between stations at a HYROX race\"",
@@ -867,15 +867,15 @@
     },
     {
       "pattern": "\"text\": \"From the official Hyrox results \\(results\\.hyrox\\.com\\), hyresult\\.com and the hyranking\\.com the UK records board, filtered to athletes racing under an British nationality\\. Times are official chip times\\.\"",
-      "replace": "\"text\": \"Sample entries for the preview — the live board compiles finish times from official HYROX results (results.hyrox.com), hyresult.com and hyranking.com once connected.\""
+      "replace": "\"text\": \"Finish times are checked against official HYROX result links where available.\""
     },
     {
       "pattern": "\"description\": \"Finish times and personal bests of British Hyrox athletes by division, compiled from official Hyrox results\\.\"",
-      "replace": "\"description\": \"Finish times and personal bests by division — sample board for the preview; live data compiles official HYROX results.\""
+      "replace": "\"description\": \"Finish times and personal bests by division — the season in one clear board.\""
     },
     {
       "pattern": "from official Hyrox results\\. Updated after every race\\. Hasil dan leaderboard HYROX the UK\\.",
-      "replace": "from official HYROX results once live. Updated after every race."
+      "replace": "from official HYROX results. Updated after every race."
     },
     {
       "pattern": "src=\"/racetoframe/images/run\\.jpg\"\\s*\\n\\s*alt=\"Gregor mid-run between stations at a HYROX race\"",
@@ -896,6 +896,38 @@
     {
       "pattern": "(footer \\{[^}]*?)padding: 40px 0;",
       "replace": "$1padding: 40px 0 96px;"
+    },
+    {
+      "pattern": "alt=\"Gregor\\ \\&\\ Hattie\\ laughing\\ with\\ both\\ arms\\ in\\ the\\ air\\ on\\ the\\ SkiErg\\ mid\\-race\\ at\\ Hyrox,\\ in\\ her\\ lilac\\ kit\"",
+      "replace": "alt=\"A Race to Frame athlete in a black cap gripping the sled poles at a Hybrid X race\""
+    },
+    {
+      "pattern": "\\s*<li>\\s*<a\\b[^>]*href=\"/racetoframe/fuel-zone[^\"\\n]*\"[^>]*>[\\s\\S]*?</a>\\s*</li>",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*\\(\\s*<a\\b[^>]*href=\"/racetoframe/fuel-zone[^\"\\n]*\"[^>]*>[\\s\\S]*?</a\\s*>\\s*\\)",
+      "replace": ""
+    },
+    {
+      "pattern": "\\s*<a\\b[^>]*href=\"/racetoframe/fuel-zone[^\"\\n]*\"[^>]*>[\\s\\S]*?</a\\s*>",
+      "replace": ""
+    },
+    {
+      "pattern": ">UK scene<",
+      "replace": ">The Hybrid Brief<"
+    },
+    {
+      "pattern": "<a href=\"/racetoframe/news/?\">News</a>",
+      "replace": ""
+    },
+    {
+      "pattern": "(<a href=\"/racetoframe/events(?:\\.html|/)?\">)(?:Race calendar|Events)(</a>)",
+      "replace": "$1Race Calendar &amp; Travel$2"
+    },
+    {
+      "pattern": "href=\"/racetoframe/race-planner/?\"",
+      "replace": "href=\"/racetoframe/events.html#cities\""
     }
   ],
   "stripSections": [
@@ -903,17 +935,216 @@
   ],
   "seedFiles": {
     "cities.json": {
-      "note": "UK race cities for the predictor demo.",
-      "items": []
+      "checked": "2026-10-25",
+      "source": "https://hyrox.com/find-my-race/",
+      "timeZone": "UTC",
+      "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
+      "cities": [
+        {
+          "slug": "dublin",
+          "name": "Dublin",
+          "country": "Ireland",
+          "timeZone": "Europe/Dublin",
+          "tagline": "A short hop can still deserve a proper race-weekend plan.",
+          "race": {
+            "name": "HYROX Dublin",
+            "status": "confirmed",
+            "start": "2026-11-11",
+            "end": "2026-11-15",
+            "source": "https://hyrox.com/event/hyrox-dublin/",
+            "sourceLabel": "Official HYROX Dublin event",
+            "dates": "11 Nov 2026 – 15 Nov 2026"
+          },
+          "gettingThere": [
+            "Check the official RDS event information and your division start time before booking travel.",
+            "Compare flight, ferry and local transport against the venue journey, including luggage and registration time."
+          ],
+          "hotels": [
+            {
+              "area": "Ballsbridge or central Dublin",
+              "picks": "Balance a practical journey to the RDS with food, sleep and somewhere easy for the crew to meet.",
+              "range": "Check live rates and flexible booking terms."
+            }
+          ],
+          "food": [
+            "Keep race-morning food familiar and check early breakfast options near your stay."
+          ],
+          "nightAfter": [
+            "Plan a relaxed post-race meal and leave recovery time before the journey home."
+          ]
+        },
+        {
+          "slug": "singapore",
+          "name": "Singapore",
+          "country": "Singapore",
+          "timeZone": "Asia/Singapore",
+          "tagline": "Make an overseas race a shared weekend, not a rushed turnaround.",
+          "race": {
+            "name": "AIA HYROX Singapore",
+            "status": "confirmed",
+            "start": "2026-11-26",
+            "end": "2026-11-29",
+            "source": "https://hyrox.com/event/aia-hyrox-singapore/",
+            "sourceLabel": "Official AIA HYROX Singapore event",
+            "dates": "26 Nov 2026 – 29 Nov 2026"
+          },
+          "gettingThere": [
+            "Check passport, entry and airline baggage requirements before paying for travel.",
+            "Allow time to adjust to the local time zone and plan the venue journey from your chosen accommodation."
+          ],
+          "hotels": [
+            {
+              "area": "An easy venue journey",
+              "picks": "Choose a base with straightforward early transport, familiar food nearby and somewhere to recover after the finish.",
+              "range": "Compare live prices and flexible booking terms."
+            }
+          ],
+          "food": [
+            "Keep race-morning food familiar; leave the food adventure for after the finish."
+          ],
+          "nightAfter": [
+            "Plan a crew meal with enough recovery time before the flight home."
+          ]
+        },
+        {
+          "slug": "london",
+          "name": "London",
+          "country": "United Kingdom",
+          "timeZone": "Europe/London",
+          "tagline": "Choose the race slot first, then make the capital work around it.",
+          "race": {
+            "name": "Amazon HYROX London",
+            "status": "confirmed",
+            "start": "2026-12-02",
+            "end": "2026-12-06",
+            "source": "https://hyrox.com/event/hyrox-london-excel/",
+            "sourceLabel": "Official Amazon HYROX London event",
+            "dates": "2 Dec 2026 – 6 Dec 2026"
+          },
+          "gettingThere": [
+            "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
+            "Compare your arrival station or airport with the venue journey, including weekend service changes."
+          ],
+          "hotels": [
+            {
+              "area": "Venue access first",
+              "picks": "Prioritise a straightforward early journey over a small saving on a room across the city. Check breakfast and bag storage around your wave.",
+              "range": "Hotel rates vary by date; check live prices."
+            }
+          ],
+          "food": [
+            "Book a familiar meal near your hotel and carry the race fuel you have already practised with."
+          ],
+          "nightAfter": [
+            "Pick a post-race meeting point before the venue gets busy."
+          ]
+        },
+        {
+          "slug": "melbourne",
+          "name": "Melbourne",
+          "country": "Australia",
+          "timeZone": "Australia/Melbourne",
+          "tagline": "A longer-haul target deserves room for travel and recovery.",
+          "race": {
+            "name": "BYD HYROX Melbourne",
+            "status": "confirmed",
+            "start": "2026-12-09",
+            "end": "2026-12-13",
+            "source": "https://hyrox.com/event/hyrox-melbourne/",
+            "sourceLabel": "Official BYD HYROX Melbourne event",
+            "dates": "9 Dec 2026 – 13 Dec 2026"
+          },
+          "gettingThere": [
+            "Check the official venue and your race day before choosing flights and accommodation.",
+            "For long-haul travel, build in arrival, recovery and local time-zone adjustment rather than landing straight into a race."
+          ],
+          "hotels": [
+            {
+              "area": "Simple transport and recovery",
+              "picks": "Compare a venue-area stay with a base near reliable public transport. Ask about early breakfast and late checkout.",
+              "range": "Check live accommodation and flight prices."
+            }
+          ],
+          "food": [
+            "Arrange familiar race-morning food before exploring the local options afterwards."
+          ],
+          "nightAfter": [
+            "Keep the day after the race flexible before the journey home."
+          ]
+        },
+        {
+          "slug": "hong-kong",
+          "name": "Hong Kong",
+          "country": "Hong Kong",
+          "timeZone": "Asia/Hong_Kong",
+          "tagline": "Turn an international start line into a well-organised race trip.",
+          "race": {
+            "name": "AIA HYROX Hong Kong",
+            "status": "confirmed",
+            "start": "2027-01-07",
+            "end": "2027-01-10",
+            "source": "https://hyrox.com/event/hyrox-hong-kong/",
+            "sourceLabel": "Official AIA HYROX Hong Kong event",
+            "dates": "7 Jan 2027 – 10 Jan 2027"
+          },
+          "gettingThere": [
+            "Check entry requirements, airline baggage and official venue instructions before booking.",
+            "Compare the airport-to-hotel and hotel-to-venue journeys, allowing for your check-in and start time."
+          ],
+          "hotels": [
+            {
+              "area": "A practical race-weekend base",
+              "picks": "Balance easy venue access with food, sleep and a relaxed meeting place for your crew.",
+              "range": "Compare live rates and cancellation terms."
+            }
+          ],
+          "food": [
+            "Keep the meal before racing predictable and enjoy the city after your finish."
+          ],
+          "nightAfter": [
+            "Allow recovery time before sightseeing or flying home."
+          ]
+        },
+        {
+          "slug": "manchester",
+          "name": "Manchester",
+          "country": "United Kingdom",
+          "timeZone": "Europe/London",
+          "tagline": "A city race with an easy plan for the days around it.",
+          "race": {
+            "name": "HYROX Manchester",
+            "status": "confirmed",
+            "start": "2027-01-20",
+            "end": "2027-01-31",
+            "source": "https://hyrox.com/event/hyrox-manchester/",
+            "sourceLabel": "Official HYROX Manchester event",
+            "dates": "20 Jan 2027 – 31 Jan 2027"
+          },
+          "gettingThere": [
+            "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
+            "Allow extra time if your route crosses the city, and include registration and warm-up in the plan."
+          ],
+          "hotels": [
+            {
+              "area": "Central or close to the venue",
+              "picks": "Compare a central base for the crew meal with a shorter early journey to the race. Check breakfast, checkout and bag storage.",
+              "range": "Check current rates for your particular race dates."
+            }
+          ],
+          "food": [
+            "Choose a familiar pre-race dinner and an uncomplicated breakfast."
+          ],
+          "nightAfter": [
+            "Agree where to meet and leave room for tired legs after the finish."
+          ]
+        }
+      ]
     },
     "wall.json": {
       "note": "PRIVATE PITCH PREVIEW — athlete wall shows placeholder entries only; real photos added with consent after launch.",
       "items": []
     },
-    "news.json": {
-      "note": "PRIVATE PITCH PREVIEW — demo headlines only.",
-      "items": []
-    },
+    "news.json": "@scripts/reskin/racetoframe-pages/news.json",
     "partners.json": {
       "note": "PRIVATE PITCH PREVIEW — partner offers below are illustrative.",
       "items": []
@@ -1010,9 +1241,11 @@
     "faq.json": {
       "note": "PRIVATE PITCH PREVIEW.",
       "items": []
-    }
+    },
+    "training-platform.json": "@scripts/reskin/racetoframe-pages/data/training-platform.json",
+    "videos.json": "@scripts/reskin/racetoframe-pages/data/videos.json"
   },
-  "extraCss": "#zones { color: var(--ink); background: var(--paper); } #zones .zone { color: var(--ink); } @media (max-width: 800px) { .hero--bleed .wrap { color: var(--ink); } .hero--bleed p, .hero--bleed .stats div span { color: var(--ink-2); } .hero--bleed .stats { border-top-color: var(--line); } }",
+  "extraCss": "#zones { color: var(--ink); background: var(--paper); } #zones .zone { color: var(--ink); } @media (max-width: 800px) { .hero--bleed .wrap { color: var(--ink); } .hero--bleed p, .hero--bleed .stats div span { color: var(--ink-2); } .hero--bleed .stats { border-top-color: var(--line); } }@media (max-width:800px){.hero--bleed .wrap{color:#fff}.hero--bleed .wrap p{color:rgba(255,255,255,.85)}}.art-photo img[src*=\"/images/station-\"],.art-photo img[src*=\"/images/hero-tattoo\"],.art-photo img[src*=\"/images/race-week-bag\"]{aspect-ratio:auto;width:auto;max-width:100%;max-height:560px;margin:0 auto}.hero--bleed .hero-img{object-fit:cover!important;object-position:50% 34%!important;padding:0!important}@media (min-width:801px){.hero--bleed .hero-mask{-webkit-mask-image:none!important;mask-image:none!important}}@media (min-width:801px){.hero--bleed,.hero--bleed .wrap{min-height:min(100vh,1000px)}.hero--bleed .wrap{justify-content:flex-start;padding-top:max(300px,calc(100vh - 500px))}}@media (max-width:800px){.guide-hero-photo img{aspect-ratio:4/3;max-height:none;object-position:50% 15%}}",
   "imageOverrides": [
     "scripts/reskin/racetoframe-assets"
   ],
@@ -1021,23 +1254,63 @@
     "(coach|advertise|pay|book|planner|broadcast)\\.js$",
     "images/dina-",
     "images/gallery/",
-    "images/(squad-anya|squad-athlos|carry|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station-lean|venue-|wallball|wall-balls|sandbag|rowing|sled-|ski|burpee|bio|avatar|coaching|farmers|race-|finish|station9|station10).*\\.jpg$"
+    "images/(squad-anya|squad-athlos|carry|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station-lean|venue-|wallball|wall-balls|sandbag|rowing|sled-|ski|burpee|bio|avatar|coaching|farmers|race-|finish|station9|station10).*\\.jpg$",
+    "fuel-zone\\.html$"
   ],
   "currency": "GBP",
   "sharedPack": "scripts/reskin/shared-packs/uk.json",
   "broadcastDemo": true,
-  "menu": "<style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class=\"menu\" id=\"menu\">\n          <li><a href=\"/racetoframe/shop.html\">Shop</a></li>\n          <li><a href=\"/racetoframe/coaching.html\">Coaching</a></li>\n          <li><a href=\"/racetoframe/find-a-partner.html\" style=\"color:var(--pink);font-weight:700\">Find a race-mate</a></li>\n          <li><a href=\"https://racetoframe.com/pages/mailing-list\" target=\"_blank\" rel=\"noopener\">Mailing list</a></li>\n          <li><a href=\"/racetoframe/podcast.html\">Podcast</a></li>\n          <li>\n            <button aria-expanded=\"false\" aria-haspopup=\"true\">Race Tools <span class=\"caret\"></span></button>\n            <ul class=\"sub\">\n              <li><a href=\"/racetoframe/find-a-partner.html\" style=\"color:var(--pink);font-weight:700\">Find a race-mate</a></li>\n              <li><a href=\"/racetoframe/predictor.html\">Race predictor</a></li>\n              <li><a href=\"/racetoframe/splits.html\">Split analyser</a></li>\n              <li><a href=\"/racetoframe/results.html\">Results board</a></li>\n              <li><a href=\"/racetoframe/stations-prep/\">Stations prep</a></li>\n              <li><a href=\"/racetoframe/run-zone/\">Run zone</a></li>\n              <li><a href=\"/racetoframe/events.html\">Race calendar</a></li>\n            </ul>\n          </li>\n          <li>\n            <button aria-expanded=\"false\" aria-haspopup=\"true\">Community <span class=\"caret\"></span></button>\n            <ul class=\"sub\">\n              <li><a href=\"/racetoframe/race-crew.html\">Race crew meetups</a></li>\n              <li><a href=\"https://nozzlemedia.app/PublicForm?slug=Gregor-Hattie-Podcast\" target=\"_blank\" rel=\"noopener\">Tell your story</a></li>\n              <li><a href=\"/racetoframe/#ask\">Ask G&amp;H</a></li>\n              <li><a href=\"/racetoframe/partners.html\">Partner offers</a></li>\n            </ul>\n          </li>\n        </ul>",
+  "menu": "<ul class=\"menu\" id=\"menu\" data-booking-navigation><li><a href=\"/racetoframe/planner.html?view=client\" style=\"color:var(--pink,#b69aff);font-weight:800\">Book a slot</a></li>\n          <li><a href=\"/racetoframe/shop.html\">Shop</a></li>\n          <li><a href=\"/racetoframe/coaching.html\">Coaching</a></li>\n          <li><a href=\"/racetoframe/find-a-partner.html\" style=\"color:var(--pink);font-weight:700\">Find a race-mate</a></li>\n          <li><a href=\"https://racetoframe.com/pages/mailing-list\" target=\"_blank\" rel=\"noopener\">Mailing list</a></li>\n          <li><a href=\"/racetoframe/podcast.html\">Podcast</a></li>\n          <li>\n            <button aria-expanded=\"false\" aria-haspopup=\"true\">Race Tools <span class=\"caret\"></span></button>\n            <ul class=\"sub\">\n              <li><a href=\"/racetoframe/find-a-partner.html\" style=\"color:var(--pink);font-weight:700\">Find a race-mate</a></li>\n              <li><a href=\"/racetoframe/predictor.html\">Race predictor</a></li>\n              <li><a href=\"/racetoframe/splits.html\">Split analyser</a></li>\n              <li><a href=\"/racetoframe/results.html\">Results board</a></li>\n              <li><a href=\"/racetoframe/stations-prep/\">Stations prep</a></li>\n              <li><a href=\"/racetoframe/run-zone/\">Run zone</a></li>\n              <li><a href=\"/racetoframe/events.html\">Race calendar</a></li>\n            </ul>\n          </li>\n          <li>\n            <button aria-expanded=\"false\" aria-haspopup=\"true\">Community <span class=\"caret\"></span></button>\n            <ul class=\"sub\">\n              <li><a href=\"/racetoframe/race-crew.html\">Race crew meetups</a></li><li><a href=\"/racetoframe/news.html\">The Hybrid Brief</a></li>\n              <li><a href=\"https://nozzlemedia.app/PublicForm?slug=Gregor-Hattie-Podcast\" target=\"_blank\" rel=\"noopener\">Tell your story</a></li>\n              <li><a href=\"/racetoframe/#ask\">Ask G&amp;H</a></li>\n              <li><a href=\"/racetoframe/partners.html\">Partner offers</a></li>\n            </ul>\n          </li>\n        </ul>",
   "pageFiles": {
     "shop.html": "@scripts/reskin/racetoframe-pages/shop.html",
     "coaching.html": "@scripts/reskin/racetoframe-pages/coaching.html",
     "podcast.html": "@scripts/reskin/racetoframe-pages/podcast.html",
     "partners.html": "@scripts/reskin/racetoframe-pages/partners.html",
-    "desk.html": "@scripts/reskin/racetoframe-pages/desk.html"
+    "desk.html": "@scripts/reskin/racetoframe-pages/desk.html",
+    "predictor.html": "@scripts/reskin/racetoframe-pages/predictor.html",
+    "results.html": "@scripts/reskin/racetoframe-pages/results.html",
+    "run-zone.html": "@scripts/reskin/racetoframe-pages/run-zone.html",
+    "taper-zone.html": "@scripts/reskin/racetoframe-pages/taper-zone.html",
+    "events.html": "@scripts/reskin/racetoframe-pages/events.html",
+    "race-planner.html": "@scripts/reskin/racetoframe-pages/race-planner.html",
+    "news.html": "@scripts/reskin/racetoframe-pages/news.html",
+    "news.js": "@scripts/reskin/racetoframe-pages/news.js",
+    "coach-view.js": "@scripts/reskin/racetoframe-pages/coach-view.js",
+    "find-a-partner.html": "@scripts/reskin/racetoframe-pages/find-a-partner.html",
+    "index.html": "@scripts/reskin/racetoframe-pages/index.html",
+    "manage-programmes.html": "@scripts/reskin/racetoframe-pages/manage-programmes.html",
+    "manage-videos.html": "@scripts/reskin/racetoframe-pages/manage-videos.html",
+    "planner.html": "@scripts/reskin/racetoframe-pages/planner.html",
+    "race-crew.html": "@scripts/reskin/racetoframe-pages/race-crew.html",
+    "showcase.css": "@scripts/reskin/racetoframe-pages/showcase.css",
+    "splits.html": "@scripts/reskin/racetoframe-pages/splits.html",
+    "stations-prep.html": "@scripts/reskin/racetoframe-pages/stations-prep.html",
+    "training-platform.js": "@scripts/reskin/racetoframe-pages/training-platform.js",
+    "video-library.js": "@scripts/reskin/racetoframe-pages/video-library.js",
+    "campaigns.html": "@scripts/reskin/racetoframe-pages/campaigns.html",
+    "client-success.js": "@scripts/reskin/racetoframe-pages/client-success.js",
+    "platform-setup.html": "@scripts/reskin/racetoframe-pages/platform-setup.html"
   },
   "seedEventsNext": {
     "name": "HYROX London",
     "date": "2026-12-02",
     "url": "https://hyrox.com/events/"
   },
-  "wallLabel": "The G&H Wall"
+  "wallLabel": "The G&H Wall",
+  "coachPreview": true,
+  "trainingPlatform": {
+    "name": "Provider to confirm",
+    "coachURL": "",
+    "clientURL": "",
+    "programmesURL": "https://8r41m23r9yp.typeform.com/to/T4zmSwW5",
+    "applicationURL": "https://8r41m23r9yp.typeform.com/to/wwA4T5WC",
+    "directCoachLink": false,
+    "offerTitle": "Coaching with Gregor & Hattie",
+    "offerDescription": "Explore the existing coaching and programme options, then choose the support that fits your next goal.",
+    "note": "Coach and client sign-in destinations still need confirmation. The existing public offer links below are not software logins. No workout or client-data sync is connected."
+  },
+  "tokens": {
+    "SIG": "by G&H"
+  },
+  "brandingNote": "Wordmark GREGOR & HATTIE — both names ARE the brand (@gregorandhattie). SIG = initials by G&H."
 }

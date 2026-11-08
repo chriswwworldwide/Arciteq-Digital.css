@@ -1,0 +1,20 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "PMA Fitness coaching",
+      "headline": "Take the next step with Faisal",
+      "destination": "https://linktr.ee/pmafitness",
+      "image": "/faisalpma/images/coaching-hero.jpg?v=1792661952656",
+      "goal": "Coaching enquiries"
+    },
+    {
+      "id": "programme",
+      "name": "PMA Fitness training options",
+      "headline": "Find the right training support",
+      "destination": "https://pmafitness.fitr.training/p/PMAHYROX",
+      "image": "/faisalpma/images/coaching-hero.jpg?v=1792661952656",
+      "goal": "Programme and coaching enquiries"
+    }
+  ]
+}

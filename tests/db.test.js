@@ -82,10 +82,31 @@ describe("db pool creation and querying (pg mocked)", () => {
 
     expect(poolInstances).toHaveLength(1);
     expect(pool.config.connectionString).toBe(process.env.DATABASE_URL);
-    expect(pool.config.ssl).toEqual({ rejectUnauthorized: false });
+    expect(pool.config.ssl).toEqual({ rejectUnauthorized: true });
     // Second call with the same URL returns the cached pool.
     expect(db.getDbPool()).toBe(pool);
     expect(poolInstances).toHaveLength(1);
+  });
+
+  it("passes explicit private transport to pg and rebuilds when transport changes", () => {
+    vi.stubEnv("DATABASE_TRANSPORT", "railway-private");
+    vi.stubEnv("RAILWAY_PROJECT_ID", "test-project");
+    vi.stubEnv("RAILWAY_ENVIRONMENT_ID", "test-environment");
+    vi.stubEnv("RAILWAY_SERVICE_ID", "test-service");
+    vi.stubEnv("DATABASE_SSL_CA", "");
+    process.env.DATABASE_URL =
+      "postgres://user:example@postgres.railway.internal/app";
+    try {
+      const privatePool = db.getDbPool();
+      expect(privatePool.config.ssl).toBe(false);
+      vi.stubEnv("DATABASE_TRANSPORT", "verify-full");
+      const verifiedPool = db.getDbPool();
+      expect(verifiedPool).not.toBe(privatePool);
+      expect(privatePool.ended).toBe(true);
+      expect(verifiedPool.config.ssl).toEqual({ rejectUnauthorized: true });
+    } finally {
+      vi.unstubAllEnvs();
+    }
   });
 
   it("normalizes postgresql:// and disables SSL for localhost", () => {

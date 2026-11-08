@@ -1,16 +1,19 @@
 #!/usr/bin/env node
-// build-chassis.js — regenerate the donor tenant, copy it to the neutral
-// chassis, tokenise all persona-specific values, strip dead files and photos,
-// then FAIL if any persona string survived. No silent ghosts.
+// build-chassis.js — validate the maintained canonical chassis directly.
+// Historical donor-migration code below the validation exit is inactive;
+// it must never overwrite the canonical template or a coach's generated site.
 //
 //   node scripts/build-chassis.js
 //
-// Source of truth for what gets blanked: scripts/reskin/chassis.tokens.json
+// Canonical validation flag and historical mappings: scripts/reskin/chassis.tokens.json
 
 import fs from "node:fs";
 import path from "node:path";
+import os from "node:os";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { installBookingPlanner } from "./booking-planner.js";
+import { validateCanonicalTemplate } from "../src/template-showcase.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const recipe = JSON.parse(
@@ -20,14 +23,18 @@ const recipe = JSON.parse(
   ),
 );
 
-const donorDir = path.join(root, recipe.donorSlug);
+if (recipe.canonical !== true) throw new Error("Donor-based template regeneration is retired. Maintain chassis/ directly and set canonical: true.");
+console.log(validateCanonicalTemplate(root));
+process.exit(0);
+
+const donorDir = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "s9-chassis-donor-")), recipe.donorSlug);
 const outDir = path.join(root, recipe.outDir);
 
 // ---- 1. regenerate the donor so the chassis tracks its latest state --------
 console.log(`regenerating ${recipe.donorSlug} from ${recipe.donorConfig}…`);
 execFileSync(
   "node",
-  [path.join(root, "scripts/reskin-tenant.js"), recipe.donorConfig],
+  [path.join(root, "scripts/reskin-tenant.js"), recipe.donorConfig, "--template-donor", `--output-dir=${donorDir}`],
   {
     cwd: root,
     stdio: "inherit",
@@ -216,6 +223,7 @@ while (news.items.length < 3) {
   });
 }
 fs.writeFileSync(newsPath, JSON.stringify(news, null, 2) + "\n");
+installBookingPlanner({ root, slug: recipe.outDir, template: true });
 
 // ---- 5. the point of the whole exercise: fail loudly --------------------------
 const forbidden = recipe.forbiddenStrings.map((f) => f.toLowerCase());
@@ -256,6 +264,8 @@ fs.writeFileSync(
       "\n",
     )}\n\nOptional extras (gallery/, lifestyle) can be added per tenant; filenames\nin pages are the contract — rename files to match, not the other way round.\n`,
 );
+
+fs.appendFileSync(path.join(outDir, "images", "REQUIRED.md"), "\nOptional booking photo slot: `images/planner-watermark.jpg` — approved coach portrait; blank in the neutral template. Missing is allowed. Existing sites may reuse bio.jpg. Override using booking.watermark and booking.timeZone in the tenant config.\n");
 
 console.log(
   `\nchassis built → ${recipe.outDir}/  (${tokenised} files tokenised, ${imgRefs.size} image slots, 0 leaks)`,

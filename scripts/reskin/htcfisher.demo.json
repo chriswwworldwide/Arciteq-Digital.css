@@ -570,7 +570,7 @@
   "copyOverrides": [
     {
       "pattern": "src=\"/htcfisher/images/coaching\\.jpg\"(\\s*)alt=\"Ross laughing mid-lunge[^\"]*\"(\\s*)width=\"\\d+\"(\\s*)height=\"\\d+\"",
-      "replace": "src=\"/htcfisher/images/gym-crew.jpg\"$1alt=\"The HTC Christchurch crew under the club banner at ROXBOX\"$2width=\"1024\"$3height=\"903\""
+      "replace": "src=\"/htcfisher/images/gym-crew.jpg\"$1alt=\"The HTC Christchurch crew on the club sled track after a session\"$2width=\"1024\"$3height=\"880\""
     },
     {
       "pattern": "src=\"/htcfisher/images/skierg-laugh\\.jpg\"(\\s*)alt=\"Ross at full extension on the SkiErg[^\"]*\"(\\s*)width=\"\\d+\"(\\s*)height=\"\\d+\"",
@@ -602,11 +602,11 @@
     },
     {
       "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"eyebrow\">Meet the crew</p>\n          <h3>HTCC. Christchurch's first and only HYROX-only club.</h3>\n          <p class=\"lead\">\n            It's not just a club — it's friends &amp; family. A crew that trains\n            together at ROXBOX in Mudeford, travels to races together (Málaga,\n            Glasgow, Manchester, Cardiff…) and ends up in the same bar after.\n            Run by Ross — Level 1 HYROX Performance Coach, three seasons, 14\n            races, 60+ athletes coached, 2 podiums.\n          </p>\n          <p class=\"quote\">\n            \"Authenticity is a deep value of mine &amp; it's harder to come by\n            these days. I love this sport — it's become my passion and my\n            entire living.\"\n          </p>"
+      "replace": "<p class=\"eyebrow\">Meet the crew</p>\n          <h3>HTCC. Christchurch's first and only HYROX-only club.</h3>\n          <p class=\"lead\">\n            It's not just a club — it's friends &amp; family. A crew that trains\n            together at ROXBOX in Mudeford, travels to races together (Málaga,\n            Glasgow, Manchester, Cardiff…) and ends up in the same bar after.\n            Run by Ross — Level 1 HYROX Performance Coach, three seasons, 14\n            races, 60+ athletes coached, 1 podium.\n          </p>\n          <p class=\"quote\">\n            \"Authenticity is a deep value of mine &amp; it's harder to come by\n            these days. I love this sport — it's become my passion and my\n            entire living.\"\n          </p>"
     },
     {
       "pattern": "<ul>\\s*<li>\\s*Podium and 1st in age group[\\s\\S]*?</ul>",
-      "replace": "<ul>\n            <li>Level 1 HYROX Performance Coach — 10+ years coaching, ex-national swimmer, Ironman</li>\n            <li>Solo 1:24:34 → 1:10:32 · Doubles 0:59:19 (Dublin, with Steve)</li>\n            <li>3 seasons · 14 races · 60+ athletes coached · 2 podiums</li>\n          </ul>"
+      "replace": "<ul>\n            <li>Level 1 HYROX Performance Coach — 10+ years coaching, ex-national swimmer, Ironman</li>\n            <li>Solo 1:24:34 → 1:10:32 · Doubles 0:59:19 (Dublin, with Steve)</li>\n            <li>3 seasons · 14 races · 60+ athletes coached · 1 podium</li>\n          </ul>"
     },
     {
       "pattern": "alt=\"Ross and her doubles partner[^\"]*\"",
@@ -831,6 +831,18 @@
     {
       "pattern": ":root\\s*\\{",
       "replace": ":root{\n  --hero-focus: 50% 68%;"
+    },
+    {
+      "pattern": "\\s*<div class=\"week\" id=\"week\" hidden>[\\s\\S]*?</div>",
+      "replace": ""
+    },
+    {
+      "pattern": "if \\(weeks\\.length\\) \\{",
+      "replace": "if (weeks.length && document.getElementById(\"week-list\") && document.getElementById(\"week\")) {"
+    },
+    {
+      "pattern": "(By Ross — HYROX Certified Coach, podium athlete, part-time oracle\\.\\s*</p>\\s*</div>)(\\s*</div>\\s*</section>)",
+      "replace": "$1<figure class=\"guide-hero-photo reveal\"><img src=\"/htcfisher/images/bio.jpg\" alt=\"Ross Fisher smiling between efforts at a HYROX race\" width=\"861\" height=\"1024\" loading=\"eager\" /></figure>$2"
     }
   ],
   "stripSections": [
@@ -1250,6 +1262,38 @@
           "by": "HTCC",
           "tilt": -1.5,
           "event": "Race day"
+        },
+        {
+          "src": "/htcfisher/images/htc-crew-lineup.jpg",
+          "alt": "HTCC athletes lining up on the club sled track",
+          "caption": "Back-to-back sled heats. Nobody hides on sled day.",
+          "by": "HTCC",
+          "tilt": 1.5,
+          "event": "Club night"
+        },
+        {
+          "src": "/htcfisher/images/htc-class-sled-endure.jpg",
+          "alt": "Members pushing sleds mid-session at the club",
+          "caption": "Sled pushes while the rower queue watches. Character building.",
+          "by": "HTCC",
+          "tilt": -1,
+          "event": "Club night"
+        },
+        {
+          "src": "/htcfisher/images/htc-venue-endure.jpg",
+          "alt": "The club's training floor — sleds, ropes and ergs under the lights",
+          "caption": "Home turf. Sleds loaded, ergs warm, doors open.",
+          "by": "HTCC",
+          "tilt": 2,
+          "event": "Home"
+        },
+        {
+          "src": "/htcfisher/images/htc-ross-gtc-neon.jpg",
+          "alt": "Coach Ross in front of the club wall at the GTC venue",
+          "caption": "In-house Hyrox Performance Coach at GTC. Find him under the neon.",
+          "by": "Coach Ross",
+          "tilt": -2,
+          "event": "Home"
         }
       ]
     },
@@ -1470,5 +1514,10 @@
   "_prospectNote": "PROSPECT Ross Fisher / HTC Christchurch — bolt-on, elite racer, 60+ athletes. TODO: IG, WhatsApp, photos.",
   "overrideExclude": [
     "ncfc-"
-  ]
+  ],
+  "menu": "<ul class=\"menu\" id=\"menu\" data-booking-navigation><li><a href=\"/htcfisher/planner.html\">Book a slot</a></li><li><a href=\"/htcfisher/hyrox-coaching-christchurch.html\">Coaching</a></li><li><button aria-expanded=\"false\" aria-haspopup=\"true\">Race Tools <span class=\"caret\"></span></button><ul class=\"sub\"><li><a href=\"/htcfisher/predictor.html\">Race predictor</a></li><li><a href=\"/htcfisher/splits.html\">Split analyser</a></li><li><a href=\"/htcfisher/results.html\">Results board</a></li><li><a href=\"/htcfisher/stations-prep.html\">Stations prep</a></li><li><a href=\"/htcfisher/run-zone.html\">Run zone</a></li><li><a href=\"/htcfisher/fuel-zone.html\">Fuel zone</a></li><li><a href=\"/htcfisher/taper-zone.html\">Taper zone</a></li><li><a href=\"/htcfisher/events.html\">Race calendar</a></li><li><a href=\"/htcfisher/race-planner.html\">Race-trip planner</a></li></ul></li><li><button aria-expanded=\"false\" aria-haspopup=\"true\">Community <span class=\"caret\"></span></button><ul class=\"sub\"><li><a href=\"/htcfisher/find-a-partner.html\">Find a race-mate</a></li><li><a href=\"/htcfisher/station-9.html\">Race crew meetups</a></li><li><a href=\"/htcfisher/#wall-photos\">Warriors Wall</a></li><li><a href=\"/htcfisher/#ask\">Ask Ross</a></li><li><a href=\"/htcfisher/news.html\">UK HYROX news</a></li><li><a href=\"/htcfisher/christchurch-hybrid-scene.html\">Christchurch scene</a></li><li><a href=\"/htcfisher/broadcast.html\">Weekly broadcast</a></li></ul></li><li><a href=\"/htcfisher/advertise.html\">Partners</a></li><li><a href=\"/htcfisher/book.html\">Enquire</a></li></ul>",
+  "tokens": {
+    "SIG": "by Ross Fisher"
+  },
+  "brandingNote": "Wordmark HYROX TRAINING CLUB from @hyroxchristchurch community brand. SIG supplies owner Ross Fisher."
 }

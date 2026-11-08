@@ -29,11 +29,26 @@
         prep.scrollIntoView({ block: "start" });
       }
     }
-    if (cards) cards.innerHTML = [...cities].sort((a,b) => a.race.start.localeCompare(b.race.start)).slice(0,3).map(c => {
+    if (cards) {
+      // Homepage board: races inside the 14-day lead window have already slipped
+      // past the pitch window, so they drop off the top and the next race rises
+      // behind it. First card visible, the rest fold behind "+ N more races".
+      const lead = new Date(Date.now() + 14 * 864e5).toISOString().slice(0, 10);
+      const sorted = [...cities].sort((a, b) => a.race.start.localeCompare(b.race.start));
+      const eligible = sorted.filter(c => c.race.start >= lead);
+      const board = (eligible.length ? eligible : sorted).slice(0, 4);
+      const renderCard = c => {
       const days = Math.max(0, Math.ceil((new Date(`${c.race.start}T12:00:00Z`) - new Date()) / 86400000));
       const prep = days >= 84 ? "Time for a structured build — explore a first-race programme or personal coaching." : days >= 21 ? "Make the remaining weeks count — ask Faisal which preparation fits your current training." : "Close to race day — focus on pacing, race-week preparation and a sensible taper.";
       return `<div class="event reveal"><div class="date"><strong><time datetime="${esc(c.race.start)}">${esc(when(c.race.start))}</time></strong><span>${esc(c.name)}</span><small>${days} days to go</small></div><div><h4>${esc(c.race.name)}</h4><p>${esc(c.race.dates || when(c.race.start))} · ${esc(c.country)}</p>${source(c)}<p class="event-prep">${prep}</p></div><div class="event-actions"><a class="btn btn-primary" href="/faisalpma/coaching.html?race=${encodeURIComponent(c.slug)}#race-prep">Prepare for this race</a><a class="btn btn-ghost" href="/faisalpma/find-a-partner.html?race=${encodeURIComponent(c.slug)}#partner-form">Find a partner for this race</a><a href="/faisalpma/events.html#${esc(c.slug)}">Plan the weekend →</a></div></div>`;
-    }).join("");
+    };
+      const extra = board.slice(1);
+      cards.innerHTML = renderCard(board[0]) + (extra.length ? `<details class="events-more"><summary>${extra.length} more race${extra.length > 1 ? "s" : ""}</summary>${extra.map(renderCard).join("")}</details>` : "");
+      const more = cards.querySelector(".events-more");
+      more?.addEventListener("toggle", () => {
+        more.querySelector("summary").textContent = more.open ? "Show fewer races" : `${extra.length} more race${extra.length > 1 ? "s" : ""}`;
+      });
+    }
     if (season) season.innerHTML = cities.map(c => `<li class="event reveal"><time datetime="${esc(c.race.start)}">${esc(c.race.dates || when(c.race.start))}</time><div><h4><a href="#${esc(c.slug)}">${esc(c.race.name)}</a></h4><p>${esc(c.country)} · ${source(c)}</p><p><a href="#${esc(c.slug)}">Plan this race weekend →</a></p></div></li>`).join("");
     const stamp = document.getElementById("race-checked");
     if (stamp) stamp.textContent = `Official listings checked ${when(data.checked)}. Check current entry availability with the organiser.`;

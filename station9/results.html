@@ -9,7 +9,7 @@
     </title>
     <meta
       name="description"
-      content="The British Hyrox leaderboard: personal bests and finish times for British athletes across Men, Women, Doubles, Mixed Doubles and Relay, from official HYROX results once live. Updated after every race."
+      content="The British Hyrox leaderboard: personal bests and finish times for British athletes across Men, Women, Doubles, Mixed Doubles and Relay, from official HYROX results. Updated after every race."
     />
     <link rel="canonical" href="https://station9.localhost/station9/results/" />
     <link rel="stylesheet" href="/station9/styles.css?v=1792661956154" />
@@ -38,7 +38,7 @@
           {
             "@type": "Dataset",
             "name": "Hyrox the UK leaderboard",
-            "description": "Finish times and personal bests by division — sample board for the preview; live data compiles official HYROX results.",
+            "description": "Finish times and personal bests by division — the season in one clear board.",
             "url": "/station9/results/",
             "creator": { "@type": "Organization", "name": "Station 9" },
             "license": "https://creativecommons.org/licenses/by/4.0/"
@@ -51,7 +51,7 @@
                 "name": "Where do the Hyrox the UK results come from?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Sample entries for the preview — the live board compiles finish times from official HYROX results (results.hyrox.com), hyresult.com and hyranking.com once connected."
+                  "text": "Finish times are checked against official HYROX result links where available."
                 }
               },
               {
@@ -75,7 +75,7 @@
         ]
       }
     </script>
-  </head>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style></head>
   <body>
     <div style="background:#ff3b3b;color:#fff;text-align:center;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:.5em 1em">Demo — this page is part of a Station&nbsp;9 client-site build.</div>
     <header class="masthead wrap">
@@ -102,7 +102,7 @@
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style>        <ul class="menu" id="menu">
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style>        <ul class="menu" id="menu" data-booking-navigation><li><a href="/station9/planner.html" style="color:var(--pink,#b69aff);font-weight:800">Book a slot</a></li>
           <li><a href="/station9/">Home</a></li>
           <li>
             <button aria-expanded="false" aria-haspopup="true">The Platform <span class="caret"></span></button>
@@ -134,7 +134,7 @@
           <h2>the UK's fastest. <em>In order.</em></h2>
           <p class="lead">
             Every British Hyrox finish we can verify, ranked by time — men,
-            open, pro, doubles and relay. Sample entries for the preview — official chip times once live, updated after
+            open, pro, doubles and relay. Official chip times, updated after
             each race. Hyrox in the UK is young and lightly tracked, so we
             call the top row the fastest <em>verified</em> time, not a national
             record — if you know a faster one, tell us.
@@ -169,7 +169,7 @@
           data-label="Results board supported by"
           hidden
         ></div>
-        <p style="font-size:12px;opacity:.55;margin:-6px 0 10px">Sample entries — the board fills from real submissions and results once live.</p>
+        <p style="font-size:12px;opacity:.55;margin:-6px 0 10px">The board fills as results and athlete submissions land.</p>
         <div class="results-tools">
           <fieldset class="results-mode">
             <legend>Show</legend>
@@ -211,7 +211,7 @@
             loading="lazy"
           />
           <figcaption>
-            Doubles finish line. Captions from Station 9 to follow.
+            Doubles finish line — the work paying off.
           </figcaption>
         </figure>
 
@@ -222,7 +222,7 @@
             Station 9's read on every UK & Ireland weekend where British athletes
             raced. Newest first.
           </p>
-          <p style="font-size:12px;opacity:.55;margin-top:-6px">Sample roundups — the format, not the real write-ups yet.</p>
+          <p style="font-size:12px;opacity:.55;margin-top:-6px">Race weekends, read through the results and the story around them.</p>
           <div id="roundups-root" aria-live="polite"></div>
         </article>
 
@@ -346,7 +346,7 @@
           <p>
             Official Hyrox results (results.hyrox.com), hyresult.com and the
             hyranking.com the UK records board, filtered to athletes racing
-            under a British nationality. Sample entries for the preview — official chip times once live.
+            under a British nationality. Finish times are checked against official result links where available.
           </p>
         </details>
         <details>

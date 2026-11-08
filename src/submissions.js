@@ -49,22 +49,25 @@ export function spamReason(body) {
 export function createRateLimiter({
   max = 10,
   windowMs = 10 * 60 * 1000,
+  maxKeys = 5000,
 } = {}) {
   const hits = new Map();
   return {
     check(key, now = Date.now()) {
       const k = String(key || "anon");
       const cur = hits.get(k);
-      if (!cur || now - cur.start >= windowMs) {
-        hits.set(k, { start: now, n: 1 });
-        return { ok: true, remaining: max - 1 };
+      if (cur && now - cur.start < windowMs) {
+        cur.n += 1;
+        return { ok: cur.n <= max, remaining: Math.max(0, max - cur.n) };
       }
-      cur.n += 1;
-      if (hits.size > 5000) {
-        for (const [kk, v] of hits)
-          if (now - v.start >= windowMs) hits.delete(kk);
+      if (cur) hits.delete(k);
+      if (hits.size >= maxKeys) {
+        for (const [other, value] of hits)
+          if (now - value.start >= windowMs) hits.delete(other);
+        if (hits.size >= maxKeys) return { ok: false, remaining: 0 };
       }
-      return { ok: cur.n <= max, remaining: Math.max(0, max - cur.n) };
+      hits.set(k, { start: now, n: 1 });
+      return { ok: true, remaining: max - 1 };
     },
   };
 }

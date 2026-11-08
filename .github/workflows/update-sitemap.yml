@@ -1,76 +1,18 @@
-name: CI Pipeline
+name: Manual combined checks
 
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 🛎️ Checkout repository
-        uses: actions/checkout@v4
-
-      - name: 🔧 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: 📦 Install dependencies
-        run: npm ci
-
-      - name: 🧹 Lint & Format Check
-        run: npm run lint && npm run format:check
-
-      - name: 🧾 TypeScript Check
-        run: npm run type-check
-
-      - name: 🏗️ Build Validation
-        run: npm run build
-
-      - name: 🧪 Run Tests with Coverage
-        run: npm run test
-
-      - name: 📈 Generate Coverage Badge
-        if: success()
-        run: |
-          mkdir -p .github/badges
-          npx coverage-badges save .github/badges/coverage.svg
-
-      - name: 🕵️ Secrets Scan (Trufflehog)
-        uses: trufflesecurity/trufflehog@v3
-        with:
-          base: main
-          head: HEAD
-        continue-on-error: true
-
-      - name: 🧱 Container Scan (Trivy)
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: fs
-          ignore-unfixed: true
-          format: table
-          exit-code: 0
-          severity: HIGH,CRITICAL
-
-      - name: 🛡️ Dependency Audit
-        run: npm audit --omit=dev --audit-level=moderate
-
-      # 8️⃣ License Compliance (optional: requires FOSSA_API_KEY secret)
-      - name: ⚖️ License Compliance
-        if: ${{ secrets.FOSSA_API_KEY != '' }}
-        uses: fossas/fossa-action@v1
-        with:
-          api-key: ${{ secrets.FOSSA_API_KEY }}
-
-      # 9️⃣ Advanced Static Security — CodeQL
-      - name: 🧠 Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: javascript
-
-      - name: 🔍 Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+  combined-checks:
+    permissions:
+      contents: read
+      actions: read
+      security-events: write
+    # 8️⃣ License Compliance (optional: requires FOSSA_API_KEY secret)
+    # 9️⃣ Advanced Static Security — CodeQL
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit

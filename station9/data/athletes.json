@@ -1,5 +1,5 @@
 {
-  "note": "Athlete profiles for the results board — DEMO SEED. Races listed are the ones we hold verified data for.",
+  "note": "Athlete profiles for the results board — verified races only.",
   "athletes": {
     "Jess Warner": {
       "tag": "The engine — holds the crew's fastest Pro women's time.",

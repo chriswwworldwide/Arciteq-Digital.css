@@ -1,6 +1,11 @@
 [
   {
     "path": "",
+    "waitUntil": "domcontentloaded",
+    "startAt": {
+      "selector": ".hero--bleed",
+      "offset": 66
+    },
     "subs": [
       {
         "text": "Jade — this is your brand, your name, your photos, your voice.",
@@ -8,6 +13,8 @@
       },
       {
         "text": "We just gave it somewhere to live.",
+        "scrollTo": "body",
+        "align": "start",
         "holdMs": 4500
       },
       {
@@ -101,11 +108,28 @@
       {
         "text": "",
         "actions": [
-          { "scrollTo": "#splits-form" },
-          { "selector": "input[name='name']", "fill": "Sarah", "pause": 400 },
-          { "selector": "input[name='event']", "fill": "HYROX London 2026", "pause": 400 },
-          { "selector": "input[name='roxzone']", "fill": "1:09:45", "pause": 500 },
-          { "click": "#splits-form button[type='submit'], #splits-form input[type='submit'], #splits-form .btn", "pause": 1500 }
+          {
+            "scrollTo": "#splits-form"
+          },
+          {
+            "selector": "input[name='name']",
+            "fill": "Sarah",
+            "pause": 400
+          },
+          {
+            "selector": "input[name='event']",
+            "fill": "HYROX London 2026",
+            "pause": 400
+          },
+          {
+            "selector": "input[name='roxzone']",
+            "fill": "1:09:45",
+            "pause": 500
+          },
+          {
+            "click": "#splits-form button[type='submit'], #splits-form input[type='submit'], #splits-form .btn",
+            "pause": 1500
+          }
         ],
         "holdMs": 1500
       },
@@ -197,7 +221,10 @@
       {
         "text": "Click the PUMA button and it takes you straight to their store — a live door, not a screenshot.",
         "actions": [
-          { "navClick": "a.pc-cta[href='https://uk.puma.com/']", "holdMs": 4000 }
+          {
+            "navClick": "a.pc-cta[href='https://uk.puma.com/']",
+            "holdMs": 4000
+          }
         ],
         "holdMs": 2500
       },

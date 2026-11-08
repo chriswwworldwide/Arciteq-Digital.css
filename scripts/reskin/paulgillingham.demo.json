@@ -143,7 +143,7 @@
     "shop.html": "Links",
     "podcast.html": "Interviews"
   },
-  "extraCss": ":root{--hero-focus:50% 0%;}\n.hero--bleed[data-hero-mode=\"full\"] .hero-img{object-position:var(--hero-focus);}\n@media(max-width:800px){.hero--bleed[data-hero-mode=\"full\"] .hero-img{object-position:50% 0%;}}\n.guide-hero.pg-conversations>.wrap{grid-template-columns:minmax(0,1fr);}.pg-conversations .guide-hero-text{max-width:64ch;}\n.pg-reach{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;align-items:center;margin:2rem 0;padding:1.5rem;border:1px solid var(--line);border-radius:0 24px 0 0;}.pg-reach figure{margin:0;max-width:472px;justify-self:center;}.pg-reach img{display:block;width:100%;height:auto;background:#000;}.pg-reach figcaption{font-size:.75rem;line-height:1.5;color:var(--ink-2);padding-top:.6rem;}.pg-reach h4{margin:.4rem 0 .8rem;}.pg-reach p{margin:0 0 .8rem;}@media(max-width:700px){.pg-reach{grid-template-columns:1fr;gap:1.25rem;padding:1rem;}}\n#plans{padding-bottom:44px;}\n#athletes-say{padding-top:32px;}.block#athletes-say{padding-bottom:32px;}.block#athletes-say + #events{padding-top:32px;background:color-mix(in srgb,var(--paper) 94%,white);}\n.home-lab #story .story figure img{object-position:50% 100%;}\n.guidance--raceday .art-photo img.shift-up[src*='/images/finish.jpg']{object-position:50% 20%;}\n.art-photo img{object-position:50% 32%;}\n#burpee-broad-jumps+figure.art-photo img{object-position:50% 45%;}\n.tips-photo img{object-position:50% 28%;}\n@media(max-width:900px){.tips-photo img[src*='/images/wallball.jpg'],.guidance .guide-hero-photo img[src*='/images/run-hero.jpg'],.community .guide-hero-photo img[src*='/images/events-secondary.jpg']{object-position:50% 0%;}.video-card img[src*='/images/coaching-hero.jpg']{object-position:50% 65%;}}\n@media(max-width:600px){.hero--bleed .wrap{align-items:end;padding-bottom:26px;}#plans{padding-bottom:36px;}#athletes-say{padding-top:28px;}}\n.guidance--field .guide-hero .guide-hero-photo img[src*='/images/stations-hero.jpg']{height:auto;max-height:none;aspect-ratio:1024/895;object-fit:contain;}\n.guidance--coach .guide-hero .guide-hero-photo img{height:auto;max-height:none;aspect-ratio:849/1024;object-fit:contain;object-position:center;}\n.pg-team{margin-bottom:2.5rem;}.pg-team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin:1.5rem 0;}.pg-team-grid article{border-top:1px solid var(--line);padding-top:1rem;}.pg-team-grid h4{margin:0 0 .5rem;}.pg-offers .plan{min-width:0;}.pg-offers .btn{white-space:normal;text-align:center;}.pg-offer-detail{display:block;margin-top:1rem;font-size:.85rem;}.pg-price-note,.pg-source{font-size:.85rem;line-height:1.6;color:var(--ink-2);margin:1.2rem 0 2rem;}.pg-client-stories{margin-top:2.5rem;}.pg-client-stories .quote{background:var(--paper-2);color:var(--ink);}.pg-client-stories .quote footer{color:var(--ink-2);}.pg-client-stories .quote footer strong{color:var(--ink);}.pg-choice-intro{margin-bottom:1.5rem;}#athletes-say .quote footer{padding:12px 0 0;margin:0;line-height:1.6;}\n@media(max-width:800px){.pg-team-grid{grid-template-columns:1fr;}}\n",
+  "extraCss": ":root{--hero-focus:50% 0%;}\n.hero--bleed[data-hero-mode=\"full\"] .hero-img{object-position:var(--hero-focus);}\n@media(max-width:800px){.hero--bleed[data-hero-mode=\"full\"] .hero-img{object-position:50% 0%;}}\n.guide-hero.pg-conversations>.wrap{grid-template-columns:minmax(0,1fr);}.pg-conversations .guide-hero-text{max-width:64ch;}\n.pg-reach{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;align-items:center;margin:2rem 0;padding:1.5rem;border:1px solid var(--line);border-radius:0 24px 0 0;}.pg-reach figure{margin:0;max-width:472px;justify-self:center;}.pg-reach img{display:block;width:100%;height:auto;background:#000;}.pg-reach figcaption{font-size:.75rem;line-height:1.5;color:var(--ink-2);padding-top:.6rem;}.pg-reach h4{margin:.4rem 0 .8rem;}.pg-reach p{margin:0 0 .8rem;}@media(max-width:700px){.pg-reach{grid-template-columns:1fr;gap:1.25rem;padding:1rem;}}\n#plans{padding-bottom:44px;}\n#athletes-say{padding-top:32px;}.block#athletes-say{padding-bottom:32px;}.block#athletes-say + #events{padding-top:32px;background:color-mix(in srgb,var(--paper) 94%,white);}\n.home-lab #story .story figure img{object-position:50% 100%;}\n.guidance--raceday .art-photo img.shift-up[src*='/images/finish.jpg']{object-position:50% 20%;}\n.art-photo img{object-position:50% 32%;}\n#burpee-broad-jumps+figure.art-photo img{object-position:50% 45%;}\n.tips-photo img{object-position:50% 28%;}\n@media(max-width:900px){.tips-photo img[src*='/images/wallball.jpg'],.guidance .guide-hero-photo img[src*='/images/run-hero.jpg'],.community .guide-hero-photo img[src*='/images/events-secondary.jpg']{object-position:50% 0%;}.video-card img[src*='/images/coaching-hero.jpg']{object-position:50% 65%;}}\n@media(max-width:600px){.hero--bleed .wrap{align-items:end;padding-bottom:26px;}#plans{padding-bottom:36px;}#athletes-say{padding-top:28px;}}\n.guidance--field .guide-hero .guide-hero-photo img[src*='/images/stations-hero.jpg']{height:auto;max-height:none;aspect-ratio:1024/895;object-fit:contain;}\n.guidance--coach .guide-hero .guide-hero-photo img{height:auto;max-height:none;aspect-ratio:849/1024;object-fit:contain;object-position:center;}\n.pg-team{margin-bottom:2.5rem;}.pg-team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin:1.5rem 0;}.pg-team-grid article{border-top:1px solid var(--line);padding-top:1rem;}.pg-team-grid h4{margin:0 0 .5rem;}.pg-offers .plan{min-width:0;}.pg-offers .btn{white-space:normal;text-align:center;}.pg-offer-detail{display:block;margin-top:1rem;font-size:.85rem;}.pg-price-note,.pg-source{font-size:.85rem;line-height:1.6;color:var(--ink-2);margin:1.2rem 0 2rem;}.pg-client-stories{margin-top:2.5rem;}.pg-client-stories .quote{background:var(--paper-2);color:var(--ink);}.pg-client-stories .quote footer{color:var(--ink-2);}.pg-client-stories .quote footer strong{color:var(--ink);}.pg-choice-intro{margin-bottom:1.5rem;}#athletes-say .quote footer{padding:12px 0 0;margin:0;line-height:1.6;}\n@media(max-width:800px){.pg-team-grid{grid-template-columns:1fr;}}\n/* Ask Paul: mobile bg focus shifts right so the portrait circle never covers the face */\n@media(max-width:600px){.capture-bg{object-position:30% 75%;}}\n/* Race-instrument pages never loaded guidance.css — port the hero partial-frame + curved bottom so results/splits/predictor heroes match the guidance treatment */\n.race-instrument .guide-hero-photo{position:relative;}\n.race-instrument .guide-hero-photo img{object-fit:cover;object-position:50% 30%;aspect-ratio:16/9;max-height:420px;border-radius:0 0 48% 8% / 0 0 7% 2%;}\n.race-instrument .guide-hero-photo::after{content:\"\";position:absolute;width:56px;height:56px;left:-8px;top:-8px;border-left:2px solid var(--pink);border-top:2px solid var(--pink);pointer-events:none;}\n@media(max-width:900px){.race-instrument .guide-hero-photo img{aspect-ratio:16/10;max-height:none;}}\n@media(max-width:600px){body.race-instrument .guide-hero .guide-hero-photo{display:block;}}",
   "tokens": {
     "HERO_DEK": "Coaching since 2005. Over 38 HYROX races. Train with Paul for your first start line or a faster finish.",
     "SLUG": "paulgillingham",
@@ -152,7 +152,7 @@
     "COACH_FIRST": "Paul",
     "COACH_LAST": "Gillingham",
     "WORDMARK_HTML": "PAUL <span class=\"o\">GILLINGHAM</span>",
-    "BRAND": "Paul Gillingham",
+    "BRAND": "by Paul Gillingham",
     "BRAND_SHORT": "PG",
     "BRAND_SHORT_UPPER": "PAUL GILLINGHAM",
     "BRAND_SOCIAL": "paulgillingham_",
@@ -227,7 +227,8 @@
     "LINK_CARD_TAG": "Rox Lyfe · official",
     "LINK_CARD_NAME": "Rox Lyfe Coaching",
     "LINK_CARD_DESC": "Coaching application, training plans and Paul's verified partner links.",
-    "LINK_CARD_CTA": "Open Rox Lyfe →"
+    "LINK_CARD_CTA": "Open Rox Lyfe →",
+    "SIG": "by Paul Gillingham"
   },
   "tenantGallery": [
     {
@@ -360,22 +361,46 @@
         },
         {
           "q": "What actually is HYROX?",
-          "keywords": ["what is hyrox", "explain", "format", "race format"],
+          "keywords": [
+            "what is hyrox",
+            "explain",
+            "format",
+            "race format"
+          ],
           "a": "8km of running split by 8 workout stations — SkiErg, sled push, sled pull, burpee broad jumps, rowing, farmers carry, sandbag lunges and wall balls. Same format worldwide."
         },
         {
           "q": "Where do you coach from?",
-          "keywords": ["where", "location", "gym", "address", "crawley"],
+          "keywords": [
+            "where",
+            "location",
+            "gym",
+            "address",
+            "crawley"
+          ],
           "a": "Paul is based around Crawley in West Sussex and coaches remotely. Use the application or Linktree for the current coaching route."
         },
         {
           "q": "When is the next race?",
-          "keywords": ["when", "next race", "date", "calendar", "schedule"],
+          "keywords": [
+            "when",
+            "next race",
+            "date",
+            "calendar",
+            "schedule"
+          ],
           "a": "Confirmed dates sit on the Race Calendar & Travel page, sourced from the official HYROX listings."
         },
         {
           "q": "Can you find me a doubles partner?",
-          "keywords": ["partner", "doubles", "pair", "team", "mate", "relay"],
+          "keywords": [
+            "partner",
+            "doubles",
+            "pair",
+            "team",
+            "mate",
+            "relay"
+          ],
           "a": "Use Find a Race-mate to post your division and pace. Paul's race history includes dozens of HYROX partners, so matching is part of the community offer."
         },
         {
@@ -703,13 +728,14 @@
       "truecoach": ""
     }
   },
-  "stripSections": ["merch"],
-  "stripBlocks": ["tiktok-link", "youtube-link"],
+  "stripSections": [
+    "merch"
+  ],
+  "stripBlocks": [
+    "tiktok-link",
+    "youtube-link"
+  ],
   "copyOverrides": [
-    {
-      "pattern": "if \\(\"scrollRestoration\" in history && reloaded\\) \\{\\s*history\\.scrollRestoration = \"manual\";\\s*if \\(location\\.hash\\)\\s*history\\.replaceState\\(null, \"\", location\\.pathname \\+ location\\.search\\);\\s*\\}",
-      "replace": "(() => {\n        const key = \"__s9HomeScroll\";\n        const returning = navEntry ? navEntry.type === \"back_forward\" : Boolean(performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD);\n        const auto = () => { if (\"scrollRestoration\" in history) history.scrollRestoration = \"auto\"; };\n        let restoring = false, stopRestore = () => {}, lastAnchor = null, activationEvent = null;\n        const findHomeAnchor = anchor => {\n          if (!anchor || !Number.isInteger(anchor.index) || anchor.index < 0 || typeof anchor.href !== \"string\" || !Number.isFinite(anchor.top)) return null;\n          const root = anchor.section ? document.getElementById(anchor.section) : anchor.footer ? document.querySelector(\"body > footer\") : null;\n          const node = root && Array.from(root.querySelectorAll(\"a[href]\")).filter(link => link.href === anchor.href)[anchor.index];\n          return node?.getClientRects().length ? node : null;\n        };\n        const remember = (link, event) => {\n          if (restoring) return;\n          if (link) {\n            const section = link.closest(\"section[id]\"), footer = link.closest(\"footer\");\n            const root = section || (footer?.parentElement === document.body ? footer : null);\n            lastAnchor = root ? { href: link.href, section: section?.id || \"\", footer: root === footer, index: Array.from(root.querySelectorAll(\"a[href]\")).filter(node => node.href === link.href).indexOf(link), top: link.getBoundingClientRect().top } : null;\n            activationEvent = event;\n          } else if (!activationEvent || activationEvent.defaultPrevented) {\n            const node = findHomeAnchor(lastAnchor);\n            if (!node || Math.abs(node.getBoundingClientRect().top - lastAnchor.top) > 12) lastAnchor = null;\n          }\n          try { history.replaceState({ ...history.state, [key]: { x: scrollX, y: scrollY, anchor: lastAnchor } }, \"\"); } catch {}\n        };\n        if (\"scrollRestoration\" in history) history.scrollRestoration = reloaded || (returning && history.state?.[key]) ? \"manual\" : \"auto\";\n        if (reloaded && location.hash) history.replaceState(history.state, \"\", location.pathname + location.search);\n        addEventListener(\"pagehide\", () => { remember(); stopRestore(); auto(); });\n        document.addEventListener(\"click\", event => {\n          const link = event.target?.closest?.(\"a[href]\");\n          if (link && (!link.target || link.target === \"_self\") && [\"http:\", \"https:\"].includes(link.protocol) && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { stopRestore(); remember(link, event); }\n        }, true);\n        addEventListener(\"pageshow\", event => {\n          stopRestore();\n          const point = history.state?.[key];\n          lastAnchor = null; activationEvent = null;\n          if ((event.persisted || returning) && Number.isFinite(point?.x) && Number.isFinite(point?.y)) {\n            restoring = true; lastAnchor = point.anchor || null;\n            if (\"scrollRestoration\" in history) history.scrollRestoration = \"manual\";\n            const inputs = [\"wheel\", \"touchstart\", \"pointerdown\", \"keydown\"];\n            const restore = () => {\n              if (!restoring) return;\n              const node = findHomeAnchor(point.anchor);\n              const top = node ? node.getBoundingClientRect().top + scrollY - point.anchor.top : point.y;\n              window.scrollTo({ left: point.x, top, behavior: \"instant\" });\n            };\n            let observer, frame, deadline, retries = [];\n            const stop = () => {\n              restoring = false; observer?.disconnect(); cancelAnimationFrame(frame); clearTimeout(deadline); retries.forEach(clearTimeout);\n              inputs.forEach(type => removeEventListener(type, stop, true)); auto(); stopRestore = () => {};\n            };\n            stopRestore = stop;\n            inputs.forEach(type => addEventListener(type, stop, { capture: true, passive: true, once: true }));\n            if (typeof ResizeObserver === \"function\") { observer = new ResizeObserver(restore); observer.observe(document.body); }\n            frame = requestAnimationFrame(restore);\n            retries = [200, 600, 1200].map(delay => setTimeout(restore, delay));\n            deadline = setTimeout(stop, 2500);\n          } else if (reloaded && !event.persisted) {\n            window.scrollTo({ left: 0, top: 0, behavior: \"instant\" }); requestAnimationFrame(auto);\n          } else auto();\n        });\n      })();"
-    },
     {
       "pattern": "alt=\"Crossing the Hyrox finish line under the event arch\"",
       "replace": "alt=\"Paul Gillingham with a race partner beside their HYROX finish-time board\""
@@ -1836,5 +1862,6 @@
     "images/track.jpg",
     "images/treadmill.jpg",
     "images/walkin.jpg"
-  ]
+  ],
+  "brandingNote": "Wordmark PAUL G abbreviated (@paulgillingham_ full-name handle). SIG expands to full name."
 }

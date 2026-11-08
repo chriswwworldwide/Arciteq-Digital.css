@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name != 'schedule' || github.event.schedule == '15 22 * * *'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
-          node-version: 20
+          node-version: 22
       - name: Discover and publish Asia race dates
         env:
           AUTO_PUBLISH: "true"
@@ -39,13 +39,13 @@ jobs:
 
   digest:
     runs-on: ubuntu-latest
-    # On hold (owner on leave): flip back to the schedule condition to resume.
-    if: false
+    # On hold (owner on leave): set ROXJAYA_DIGEST_ENABLED=true to resume.
+    if: vars.ROXJAYA_DIGEST_ENABLED == 'true' && (github.event_name == 'workflow_dispatch' || github.event.schedule == '0 0 * * 1')
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
-          node-version: 20
+          node-version: 22
       - name: Send weekly digest
         env:
           SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}
@@ -61,10 +61,10 @@ jobs:
     if: github.event_name == 'schedule' && github.event.schedule == '0 0 * * 1' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
-          node-version: 20
+          node-version: 22
       - run: node roxjaya/automation/guide-autopilot.js
         env:
           SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}

@@ -1,0 +1,487 @@
+{
+  "mode": "chassis",
+  "slug": "racetoframe",
+  "primaryCampaignOffer": "shop",
+  "coachingIntro":"Hattie's online coaching and eight-week Sculpt & Shape programme sit alongside Gregor's HYROX programming. Choose the dedicated enquiry route for the support you're looking for.",
+  "coachingOffers":[
+    {"title":"Online coaching with Hattie","type":"Personal coaching enquiry","description":"Start a conversation about your training and goals through Hattie's online-coaching enquiry form.","url":"https://8r41m23r9yp.typeform.com/to/wwA4T5WC","action":"Enquire about Hattie's coaching","sourceURL":"https://8r41m23r9yp.typeform.com/to/wwA4T5WC"},
+    {"title":"Sculpt & Shape","type":"Eight-week workout programme","description":"Explore Hattie's eight-week programme through its own enquiry form. Ask about the current format, support and joining options.","url":"https://8r41m23r9yp.typeform.com/to/T4zmSwW5","action":"Enquire about Sculpt & Shape","sourceURL":"https://8r41m23r9yp.typeform.com/to/T4zmSwW5"},
+    {"title":"GJ HYROX programming","type":"Gregor's programme enquiry","description":"Choose beginner, advanced, doubles or 1:1 HYROX coaching in Gregor's dedicated programme form.","url":"https://form.typeform.com/to/BDmLn8Cw","action":"Explore Gregor's HYROX options","sourceURL":"https://form.typeform.com/to/BDmLn8Cw"}
+  ],
+  "partnerOffers":[
+    {"title":"Race to Frame","type":"Own product store","description":"Patch frames, medal frames and keepsakes for the races you want to remember. Browse current products and prices in their shop.","url":"https://racetoframe.com/","action":"Shop Race to Frame","sourceURL":"https://racetoframe.com/"},
+    {"title":"Gymshark","type":"Athlete affiliate code","description":"Gregor and Hattie's athlete code. Check the current eligible products and terms in the Gymshark store.","code":"GREGORHATTIE10","affiliate":true,"url":"https://uk.gymshark.com/","action":"Shop Gymshark","sourceURL":"https://www.instagram.com/gregorandhattie/"},
+    {"title":"DFYNE","type":"Athlete affiliate code","description":"Gregor and Hattie's DFYNE code for use with the brand's current offer terms.","code":"GREGORHATTIE","affiliate":true,"url":"https://uk.dfyne.com/","action":"Visit DFYNE","sourceURL":"https://www.instagram.com/gregorandhattie/"},
+    {"title":"TRYKA","type":"Race ticket code","description":"Explore TRYKA's official race-ticket page and check current code eligibility when booking.","code":"GREG","affiliate":true,"url":"https://tryka.fit/get-tickets","action":"Explore TRYKA tickets","sourceURL":"https://www.instagram.com/gregorandhattie/"}
+  ],
+  "offerAudit":{"checkedAt":"2026-11-02","notes":["All three Typeform entry screens checked; no form submitted. GJ form explicitly lists beginner, advanced, doubles and 1:1 choices.","Prices are not exposed on the public form entry screens; none invented.","Existing athlete codes retained from approved source pack; checkout eligibility not tested. DFYNE challenges automated requests.","Race to Frame product store kept separate from coaching and affiliate destinations."]},
+  "heroMode": "full",
+  "strictImages": true,
+  "assets": [
+    "scripts/reskin/racetoframe-assets"
+  ],
+  "currency": "GBP",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "omitImageSlots": [
+    "images/bike.jpg",
+    "images/carry.jpg",
+    "images/detail.jpg",
+    "images/gallery/dinner-template.jpg",
+    "images/hoodie.jpg",
+    "images/kerb.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/planner-watermark.jpg",
+    "images/race-revel.jpg",
+    "images/rooftop.jpg",
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/sprint.jpg",
+    "images/station-lean.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg"
+  ],
+  "seedFiles": {
+    "cities.json": {
+      "checked": "2026-10-25",
+      "source": "https://hyrox.com/find-my-race/",
+      "timeZone": "UTC",
+      "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
+      "cities": [
+        {
+          "slug": "dublin",
+          "name": "Dublin",
+          "country": "Ireland",
+          "timeZone": "Europe/Dublin",
+          "tagline": "A short hop can still deserve a proper race-weekend plan.",
+          "race": {
+            "name": "HYROX Dublin",
+            "status": "confirmed",
+            "start": "2026-11-11",
+            "end": "2026-11-15",
+            "source": "https://hyrox.com/event/hyrox-dublin/",
+            "sourceLabel": "Official HYROX Dublin event",
+            "dates": "11 Nov 2026 \u2013 15 Nov 2026"
+          },
+          "gettingThere": [
+            "Check the official RDS event information and your division start time before booking travel.",
+            "Compare flight, ferry and local transport against the venue journey, including luggage and registration time."
+          ],
+          "hotels": [
+            {
+              "area": "Ballsbridge or central Dublin",
+              "picks": "Balance a practical journey to the RDS with food, sleep and somewhere easy for the crew to meet.",
+              "range": "Check live rates and flexible booking terms."
+            }
+          ],
+          "food": [
+            "Keep race-morning food familiar and check early breakfast options near your stay."
+          ],
+          "nightAfter": [
+            "Plan a relaxed post-race meal and leave recovery time before the journey home."
+          ]
+        },
+        {
+          "slug": "singapore",
+          "name": "Singapore",
+          "country": "Singapore",
+          "timeZone": "Asia/Singapore",
+          "tagline": "Make an overseas race a shared weekend, not a rushed turnaround.",
+          "race": {
+            "name": "AIA HYROX Singapore",
+            "status": "confirmed",
+            "start": "2026-11-26",
+            "end": "2026-11-29",
+            "source": "https://hyrox.com/event/aia-hyrox-singapore/",
+            "sourceLabel": "Official AIA HYROX Singapore event",
+            "dates": "26 Nov 2026 \u2013 29 Nov 2026"
+          },
+          "gettingThere": [
+            "Check passport, entry and airline baggage requirements before paying for travel.",
+            "Allow time to adjust to the local time zone and plan the venue journey from your chosen accommodation."
+          ],
+          "hotels": [
+            {
+              "area": "An easy venue journey",
+              "picks": "Choose a base with straightforward early transport, familiar food nearby and somewhere to recover after the finish.",
+              "range": "Compare live prices and flexible booking terms."
+            }
+          ],
+          "food": [
+            "Keep race-morning food familiar; leave the food adventure for after the finish."
+          ],
+          "nightAfter": [
+            "Plan a crew meal with enough recovery time before the flight home."
+          ]
+        },
+        {
+          "slug": "london",
+          "name": "London",
+          "country": "United Kingdom",
+          "timeZone": "Europe/London",
+          "tagline": "Choose the race slot first, then make the capital work around it.",
+          "race": {
+            "name": "Amazon HYROX London",
+            "status": "confirmed",
+            "start": "2026-12-02",
+            "end": "2026-12-06",
+            "source": "https://hyrox.com/event/hyrox-london-excel/",
+            "sourceLabel": "Official Amazon HYROX London event",
+            "dates": "2 Dec 2026 \u2013 6 Dec 2026"
+          },
+          "gettingThere": [
+            "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
+            "Compare your arrival station or airport with the venue journey, including weekend service changes."
+          ],
+          "hotels": [
+            {
+              "area": "Venue access first",
+              "picks": "Prioritise a straightforward early journey over a small saving on a room across the city. Check breakfast and bag storage around your wave.",
+              "range": "Hotel rates vary by date; check live prices."
+            }
+          ],
+          "food": [
+            "Book a familiar meal near your hotel and carry the race fuel you have already practised with."
+          ],
+          "nightAfter": [
+            "Pick a post-race meeting point before the venue gets busy."
+          ]
+        },
+        {
+          "slug": "melbourne",
+          "name": "Melbourne",
+          "country": "Australia",
+          "timeZone": "Australia/Melbourne",
+          "tagline": "A longer-haul target deserves room for travel and recovery.",
+          "race": {
+            "name": "BYD HYROX Melbourne",
+            "status": "confirmed",
+            "start": "2026-12-09",
+            "end": "2026-12-13",
+            "source": "https://hyrox.com/event/hyrox-melbourne/",
+            "sourceLabel": "Official BYD HYROX Melbourne event",
+            "dates": "9 Dec 2026 \u2013 13 Dec 2026"
+          },
+          "gettingThere": [
+            "Check the official venue and your race day before choosing flights and accommodation.",
+            "For long-haul travel, build in arrival, recovery and local time-zone adjustment rather than landing straight into a race."
+          ],
+          "hotels": [
+            {
+              "area": "Simple transport and recovery",
+              "picks": "Compare a venue-area stay with a base near reliable public transport. Ask about early breakfast and late checkout.",
+              "range": "Check live accommodation and flight prices."
+            }
+          ],
+          "food": [
+            "Arrange familiar race-morning food before exploring the local options afterwards."
+          ],
+          "nightAfter": [
+            "Keep the day after the race flexible before the journey home."
+          ]
+        },
+        {
+          "slug": "hong-kong",
+          "name": "Hong Kong",
+          "country": "Hong Kong",
+          "timeZone": "Asia/Hong_Kong",
+          "tagline": "Turn an international start line into a well-organised race trip.",
+          "race": {
+            "name": "AIA HYROX Hong Kong",
+            "status": "confirmed",
+            "start": "2027-01-07",
+            "end": "2027-01-10",
+            "source": "https://hyrox.com/event/hyrox-hong-kong/",
+            "sourceLabel": "Official AIA HYROX Hong Kong event",
+            "dates": "7 Jan 2027 \u2013 10 Jan 2027"
+          },
+          "gettingThere": [
+            "Check entry requirements, airline baggage and official venue instructions before booking.",
+            "Compare the airport-to-hotel and hotel-to-venue journeys, allowing for your check-in and start time."
+          ],
+          "hotels": [
+            {
+              "area": "A practical race-weekend base",
+              "picks": "Balance easy venue access with food, sleep and a relaxed meeting place for your crew.",
+              "range": "Compare live rates and cancellation terms."
+            }
+          ],
+          "food": [
+            "Keep the meal before racing predictable and enjoy the city after your finish."
+          ],
+          "nightAfter": [
+            "Allow recovery time before sightseeing or flying home."
+          ]
+        },
+        {
+          "slug": "manchester",
+          "name": "Manchester",
+          "country": "United Kingdom",
+          "timeZone": "Europe/London",
+          "tagline": "A city race with an easy plan for the days around it.",
+          "race": {
+            "name": "HYROX Manchester",
+            "status": "confirmed",
+            "start": "2027-01-20",
+            "end": "2027-01-31",
+            "source": "https://hyrox.com/event/hyrox-manchester/",
+            "sourceLabel": "Official HYROX Manchester event",
+            "dates": "20 Jan 2027 \u2013 31 Jan 2027"
+          },
+          "gettingThere": [
+            "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
+            "Allow extra time if your route crosses the city, and include registration and warm-up in the plan."
+          ],
+          "hotels": [
+            {
+              "area": "Central or close to the venue",
+              "picks": "Compare a central base for the crew meal with a shorter early journey to the race. Check breakfast, checkout and bag storage.",
+              "range": "Check current rates for your particular race dates."
+            }
+          ],
+          "food": [
+            "Choose a familiar pre-race dinner and an uncomplicated breakfast."
+          ],
+          "nightAfter": [
+            "Agree where to meet and leave room for tired legs after the finish."
+          ]
+        }
+      ]
+    },
+    "wall.json": {
+      "note": "PRIVATE PITCH PREVIEW \u2014 athlete wall shows placeholder entries only; real photos added with consent after launch.",
+      "items": []
+    },
+    "news.json": "@scripts/reskin/racetoframe-pages/news.json",
+    "partners.json": {
+      "note": "PRIVATE PITCH PREVIEW \u2014 partner offers below are illustrative.",
+      "items": []
+    },
+    "matchboard.json": {
+      "note": "PRIVATE PITCH PREVIEW \u2014 sample race-mate posts only.",
+      "items": []
+    },
+    "travelboard.json": {
+      "note": "PRIVATE PITCH PREVIEW \u2014 sample travel-board posts only.",
+      "items": []
+    },
+    "station9.json": {
+      "note": "PRIVATE PITCH PREVIEW \u2014 meetup listings are illustrative.",
+      "next": null,
+      "away": []
+    },
+    "gallery.json": {
+      "photos": [
+        {
+          "src": "/racetoframe/images/gallery/malaga-crew.jpg",
+          "alt": "HTCC crew on the race floor at HYROX M\u00e1laga",
+          "caption": "An unforgettable weekend full of PBs, sun, sangria and more laughs than I've had in a while. We'll be back next year \u2014 who's joining us?",
+          "by": "@sunday.squad",
+          "tilt": -1.5,
+          "event": "Race trip"
+        },
+        {
+          "src": "/racetoframe/images/gallery/malaga-three.jpg",
+          "alt": "Three HTCC athletes grinning after racing in M\u00e1laga",
+          "caption": "Dee's first ever HYROX. Hooked right from that first race.",
+          "by": "@hyrox.huns",
+          "tilt": 2,
+          "event": "Race trip"
+        },
+        {
+          "src": "/racetoframe/images/gallery/istanbul-podium.jpg",
+          "alt": "Michelle and Ellie with the Union flag on the podium at HYROX Istanbul",
+          "caption": "Michelle & Ellie \u2014 podium, Istanbul. Keep setting the standard.",
+          "by": "@racefloor.crew",
+          "tilt": 1,
+          "event": "Race day"
+        },
+        {
+          "src": "/racetoframe/images/gallery/glasgow-doors.jpg",
+          "alt": "Ross outside the HYROX Glasgow entrance",
+          "caption": "Glasgow. Just enjoy it they say. But don't underestimate the challenge.",
+          "by": "@sleds.and.regrets",
+          "tilt": -2,
+          "event": "Race day"
+        },
+        {
+          "src": "/racetoframe/images/gallery/glasgow-oxworld.jpg",
+          "alt": "HTCC crew at the OX World stand in Glasgow",
+          "caption": "Crew at Glasgow. Half of them didn't know each other a year ago.",
+          "by": "@the8amheat",
+          "tilt": 1.5,
+          "event": "Race day"
+        },
+        {
+          "src": "/racetoframe/images/gallery/doubles-finish.jpg",
+          "alt": "A doubles pair celebrating at the finish",
+          "caption": "You've smashed your training \u2014 now go smash this race. They did.",
+          "by": "@roxzone",
+          "event": "Race day"
+        },
+        {
+          "src": "/racetoframe/images/gallery/crew-faces.jpg",
+          "alt": "HTCC members in club tees after a group run",
+          "caption": "Sunny springy group runs. Run Club, Tuesdays and Wednesdays.",
+          "by": "@pb_chasers",
+          "tilt": 1,
+          "event": "Run club"
+        },
+        {
+          "src": "/racetoframe/images/gallery/crew-selfie.jpg",
+          "alt": "Post-race crew selfie",
+          "caption": "It's not just a club \u2014 it's friends & family.",
+          "by": "@finishline.fam",
+          "tilt": -1.5,
+          "event": "Race day"
+        }
+      ],
+      "note": "Seeded community picks \u2014 generic event photos standing in until real submissions land."
+    },
+    "faq.json": {
+      "note": "PRIVATE PITCH PREVIEW.",
+      "items": []
+    },
+    "training-platform.json": "@scripts/reskin/racetoframe-pages/data/training-platform.json",
+    "videos.json": "@scripts/reskin/racetoframe-pages/data/videos.json"
+  },
+  "tokens": {
+    "HERO_DEK": "The training. The race. The moment worth keeping. Explore Gregor and Hattie's HYROX world — and turn a hard-earned finish into something to frame.",
+    "SLUG": "racetoframe",
+    "COACH_NAME": "Gregor & Hattie",
+    "COACH_NAME_LC": "gregor & hattie",
+    "COACH_FIRST": "Gregor & Hattie",
+    "COACH_LAST": "Hattie",
+    "WORDMARK_HTML": "GREG<span class=\"o\">O</span>R &amp; HATTIE",
+    "BRAND": "Gregor & Hattie",
+    "BRAND_SHORT": "G&H",
+    "BRAND_SOCIAL": "gregorandhattie",
+    "CLOTHING_SHORT": "G&H",
+    "CITY": "UK",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "hyrox coaching, programming and race crew \u2014 uk",
+    "HERO_TITLE_HTML": "Race it.<br /><em>Remember it.</em>",
+    "APPLY_URL": "https://8r41m23r9yp.typeform.com/to/wwA4T5WC",
+    "PROGRAMMES_URL": "https://www.instagram.com/gregorandhattie/",
+    "STORE_URL": "https://racetoframe.com/",
+    "IG_URL": "https://www.instagram.com/gregorandhattie/",
+    "BRAND_IG_URL": "https://www.instagram.com/gregorandhattie/",
+    "YOUTUBE_URL": "https://www.instagram.com/gregorandhattie/",
+    "TIKTOK_URL": "https://www.instagram.com/gregorandhattie/",
+    "THREADS_URL": "https://www.instagram.com/gregorandhattie/",
+    "LINKTREE_URL": "https://www.instagram.com/gregorandhattie/",
+    "DOUBLES_PARTNER": "the crew",
+    "PB_VENUE": "UK",
+    "PB_VENUE_LC": "uk",
+    "DOUBLES_VENUE": "Birmingham",
+    "DOUBLES_VENUE_LC": "birmingham",
+    "OPEN_VENUE": "London",
+    "PB_SOLO": "Open",
+    "PB_DOUBLES": "Doubles",
+    "PB_HALF": "the next start line",
+    "PB_OPEN": "Open",
+    "SEASON_START": "their first start line",
+    "PARTNER_GYM": "Gregor & Hattie",
+    "PARTNER_GYM_LC": "gregor & hattie",
+    "PARTNER_GYM_URL": "https://www.instagram.com/gregorandhattie/",
+    "PARTNER_SUPP": "HYROX",
+    "PARTNER_SUPP_LC": "hyrox",
+    "PARTNER_SUPP_URL": "https://hyrox.com/",
+    "PARTNER_KIT": "Gregor & Hattie",
+    "PARTNER_KIT_LC": "gregor & hattie",
+    "PARTNER_KIT_TAG": "Crew kit",
+    "PARTNER_KIT_TITLE": "Gregor & Hattie crew kit",
+    "PARTNER_KIT_COPY": "Rep the crew \u2014 Gregor & Hattie kit for race day and training.",
+    "PARTNER_KIT_CTA": "Ask Gregor & Hattie",
+    "PARTNER_KIT_URL": "https://www.instagram.com/gregorandhattie/",
+    "GYM_CODE": "G&H",
+    "PHOTO_BUDDY": "the crew",
+    "ACCENT": "#2563eb",
+    "ACCENT_DARK": "#1d4ed8",
+    "ACCENT_SOFT": "#dbeafe",
+    "BRAND_SHORT_UPPER": "GREGOR & HATTIE",
+    "SOCIAL_HANDLE_UPPER": "GREGORANDHATTIE",
+    "VOICE_DOUBLES_HOOK": "Racing's better with a crew beside you.",
+    "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
+    "VOICE_NEWS_TAKE": "Consistency beats intensity \u2014 the plan only works if you do.",
+    "STORE_NAME": "Race to Frame",
+    "STORE_TAG": "The frames business",
+    "STORE_COPY": "Patch frames, podium flag frames, medal frames and keyrings \u2014 the stuff your race weekend deserves.",
+    "STORE_CTA": "Open the shop",
+    "BIO_ROLE": "HYROX racers and coaches",
+    "VOICE_ATHLETE_QUOTE": "The patch on your wall is the excuse. The crew is the point.",
+    "OFFER_SUMMARY": "SheBuilds 1:1, Sculpt & Shape and GJ programming \u2014 the coaching side.",
+    "PLANS_LEAD": "One clear route \u2014 SheBuilds 1:1, Sculpt & Shape and Gregor's programming, plus the frames side. Less hunting, more training.",
+    "PROGRAMMES_SUMMARY": "SheBuilds 1:1, Sculpt & Shape and GJ programming",
+    "PROG_ONE": "Sculpt & Shape",
+    "PROG_ONE_TAG": "8-week block",
+    "PROG_ONE_URL": "https://8r41m23r9yp.typeform.com/to/T4zmSwW5",
+    "PROG_TWO": "Hybrid programming & testing",
+    "PROG_TWO_TAG": "HYROX \u00b7 with Gregor",
+    "PROG_TWO_URL": "https://form.typeform.com/to/BDmLn8Cw",
+    "STUDIO_NOTE": " For patch frames, podium flags and the shop, <a href=\"https://racetoframe.com/\" target=\"_blank\" rel=\"noopener\">visit Race to Frame \u2192</a>",
+    "ATHLETE_FOCUS": "crew-builder focus",
+    "LINK_CARD_TAG": "Shop \u00b7 official",
+    "LINK_CARD_NAME": "Race to Frame",
+    "LINK_CARD_DESC": "Finisher patch frames, podium flag frames, medal frames and keyrings \u2014 the stuff your race weekend deserves.",
+    "LINK_CARD_CTA": "Open the shop \u2192",
+    "PROG_CARD_DESC": "Hybrid programming & testing \u2014 Gregor's HYROX blocks, applied through the verified Typeform route.",
+    "COMMUNITY_DESC": "The crew around the frames \u2014 race-mates, travel plans, the wall and the podcast.",
+    "PKG_MONTHLY": "GJ programming \u00b7 monthly"
+  },
+  "allowDuplicateSlots": [
+    "bio.jpg",
+    "avatar.jpg"
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "Gregor & Hattie and a race partner reaching for the finish line in Barcelona",
+      "replace": "Hattie in training kit beside the gym dumbbell rack"
+    },
+    {
+      "pattern": "<ul><li>{{RACE_RECORD}}.</li><li>Fastest solo: {{PB_SOLO}} \u2014 {{PB_VENUE}}.</li><li>Fastest doubles: {{PB_DOUBLES}} \u2014 {{DOUBLES_VENUE}}.</li><li>{{OFFER_SUMMARY}}</li></ul>",
+      "replace": "<ul><li>Sub-60 finishers; Gregor races most weekends across Europe.</li><li>Gymshark &amp; DFYNE partner athletes \u2014 codes on the partners page.</li><li>SheBuilds 1:1, Sculpt &amp; Shape and GJ programming \u2014 the coaching side.</li><li>The frames stay \u2014 this is the community around them.</li></ul>"
+    },
+    {
+      "pattern": "(</div>\\s*<p class=\"shop-note\">)",
+      "replace": "  <div class=\"partner-card\"><span class=\"pc-tag\">Affiliate \u00b7 code</span><h4>Gymshark</h4><p>10% off \u2014 partner athlete code.</p><span class=\"code\">GREGORHATTIE10</span><a class=\"pc-cta\" href=\"https://uk.gymshark.com\" target=\"_blank\" rel=\"noopener\">Open \u2192</a></div>\n  <div class=\"partner-card\"><span class=\"pc-tag\">Affiliate \u00b7 code</span><h4>DFYNE</h4><p>Partner athlete code.</p><span class=\"code\">GREGORHATTIE</span><a class=\"pc-cta\" href=\"https://uk.dfyne.com/\" target=\"_blank\" rel=\"noopener\">Open \u2192</a></div>\n  <div class=\"partner-card\"><span class=\"pc-tag\">Affiliate \u00b7 code</span><h4>TRYKA</h4><p>Race tickets \u2014 use the code at checkout.</p><span class=\"code\">GREG</span><a class=\"pc-cta\" href=\"https://tryka.fit/get-tickets\" target=\"_blank\" rel=\"noopener\">Open \u2192</a></div>\n          $1"
+    },
+    {
+      "pattern": "Gregor & Hattie checks every post",
+      "replace": "Gregor & Hattie check every post"
+    },
+    {
+      "pattern": "Nothing goes up without the coach's OK",
+      "replace": "Nothing goes up without the coaches' OK"
+    },
+    {
+      "pattern": "and the coach sees your",
+      "replace": "and the coaches see your"
+    },
+    {
+      "pattern": "contact your coach",
+      "replace": "contact your coaches"
+    },
+    {
+      "pattern": "agreed with your coach",
+      "replace": "agreed with your coaches"
+    },
+    {
+      "pattern": "with your coach to access",
+      "replace": "with your coaches to access"
+    }
+  ],
+  "tenantGallery": [
+    {
+      "src": "/{{SLUG}}/images/frame-on-wall.jpg",
+      "alt": "A framed HYROX Cardiff print hung on the wall",
+      "caption": "The Cardiff flag, framed. This is where it started.",
+      "by": "G&H",
+      "event": "Race to Frame"
+    }
+  ]
+}

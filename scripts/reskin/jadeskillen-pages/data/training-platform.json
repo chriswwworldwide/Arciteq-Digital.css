@@ -1,0 +1,11 @@
+{
+  "name": "Provider to confirm",
+  "coachURL": "",
+  "clientURL": "",
+  "programmesURL": "https://smashyourhyrox.com/",
+  "applicationURL": "https://start.jadeskillen.com/",
+  "directCoachLink": false,
+  "offerTitle": "Jade Skillen coaching",
+  "offerDescription": "Explore the existing coaching and programme options, then choose the support that fits your next goal.",
+  "note": "Coach and client sign-in destinations still need confirmation. The existing public offer links below are not software logins. No workout or client-data sync is connected."
+}

@@ -1,32 +1,297 @@
 [
-  {"path":"","subs":[
-    {"text":"Gabby — your name, your photos, your coaching. Already built into a working platform.","holdMs":6000},
-    {"text":"A home for Get Fit Gabby — coaching, race tools and community, together.","scrollTo":".hero-visual","holdMs":5500},
-    {"text":"The Zones — station preparation, running and race-day planning.","scrollTo":"#zones","holdMs":5500},
-    {"text":"Your story and your race imagery give the platform its personality.","scrollTo":"#story","holdMs":5500},
-    {"text":"Free tools give people a reason to visit. Coaching has a clear next step when they are ready.","scrollTo":"#plans","holdMs":6500},
-    {"text":"Events and race planning sit alongside the coaching, all under your name.","scrollTo":"#events","holdMs":5000},
-    {"text":"The Warriors Wall — a home for community race photos. The demo entries show the layout.","scrollTo":"#wall-photos","holdMs":6000},
-    {"text":"Ask Gabby — training and race questions have a dedicated home.","scrollTo":"#ask","holdMs":5500}
-  ]},
-  {"path":"coaching.html","subs":[{"text":"Your coaching page brings the offer and the application route together, with links to your existing setup.","scroll":true,"holdMs":7500}]},
-  {"path":"find-a-partner.html","subs":[{"text":"Find a race-mate — a place to find doubles, mixed and relay partners.","scrollTo":"#partner-form","holdMs":6000},{"text":"A useful community feature between race weekends, not another comment thread to search.","scroll":true,"holdMs":5000}]},
-  {"path":"predictor.html","subs":[{"text":"Race Tools: the predictor helps athletes explore a target finish time.","holdMs":5500},{"text":"Practical tools give people a reason to keep returning to your platform.","scroll":true,"holdMs":6000}]},
-  {"path":"splits.html","subs":[{"text":"Split analyser — a place to break down a race and look for improvement opportunities.","scrollTo":"#splits-form","holdMs":6500},{"text":"Something useful to bring into a coaching conversation about the next race.","scroll":true,"holdMs":5500}]},
-  {"path":"results.html","subs":[{"text":"Results board — a home for times and progress. The demo shows the structure ready to populate.","scroll":true,"holdMs":6000}]},
-  {"path":"stations-prep/","subs":[{"text":"Station prep — technique, pacing and coaching cues for all eight stations.","holdMs":5500},{"text":"Your race photos bring the guides to life alongside advice athletes can revisit.","scroll":true,"holdMs":8500}]},
-  {"path":"run-zone/","subs":[{"text":"Run Zone — pacing and compromised running, the work between the stations.","scroll":true,"holdMs":7500}]},
-  {"path":"taper-zone/","subs":[{"text":"Taper Zone — a clear guide to the final week before race day.","scroll":true,"holdMs":6500}]},
-  {"path":"events.html","subs":[{"text":"Race calendar — somewhere to plan the event and the trip around it.","scroll":true,"holdMs":6500}]},
-  {"path":"race-crew.html","subs":[{"text":"Race crew meetups — space for the community around your coaching to organise race day together.","scroll":true,"holdMs":6500}]},
-  {"path":"news.html","subs":[{"text":"News and updates under your own name, ready for coaching notes and race recaps.","scroll":true,"holdMs":6500}]},
-  {"path":"partners.html","subs":[
-    {"text":"Your current destinations together: lululemon, Marchon and your Get Fit Gabby links.","scroll":true,"holdMs":6500},
-    {"text":"The Marchon button takes visitors straight to their site — a working onward link.","actions":[{"navClick":"a.pc-cta[href='https://marchon-global.com/']","holdMs":5000}],"holdMs":4000},
-    {"text":"lululemon has its own route too, and your Linktree remains available. No codes or commission are assumed.","holdMs":6500},
-    {"text":"One branded starting point for the coaching, kit and community destinations people already look for.","holdMs":5500}
-  ]},
-  {"path":"list.html","subs":[{"text":"Join the list — a direct way to stay in touch with people interested in your coaching.","scroll":true,"holdMs":6000}]},
-  {"path":"desk.html","subs":[{"text":"And behind the public pages: the Desk.","holdMs":5000},{"text":"Coaching income, race costs and partner activity in one dashboard. These figures are demo data.","scrollTo":".desk-stats","holdMs":6500},{"text":"A place to review the business side alongside the athlete-facing platform.","scroll":true,"holdMs":6000}]},
-  {"path":"","subs":[{"text":"Your coaching, useful race tools and your community — all under Get Fit Gabby.","holdMs":6000},{"text":"Have a look around, Gabby. I'd love to hear what you think.","holdMs":6000}]}
+  {
+    "path": "",
+    "waitUntil": "domcontentloaded",
+    "startAt": {
+      "selector": ".hero-visual",
+      "offset": 66
+    },
+    "subs": [
+      {
+        "text": "Gabby — this is your athletic brand: your name, your photos, your voice. Already a working platform.",
+        "holdMs": 9000
+      },
+      {
+        "text": "A private preview — only you have this link. Nothing here is published or indexed.",
+        "holdMs": 7000
+      },
+      {
+        "text": "A home for the Get Fit Gabby brand — coaching, race tools and the commercial engine behind them.",
+        "scrollTo": "body",
+        "align": "start",
+        "holdMs": 8740
+      },
+      {
+        "text": "Your coaching, structured like a season — the athletic profile your results deserve.",
+        "scrollTo": "#zones",
+        "holdMs": 8500
+      },
+      {
+        "text": "Your story and race imagery give the platform its personality. A brand, not a template.",
+        "scrollTo": "#story",
+        "holdMs": 8155
+      },
+      {
+        "text": "Free tools give people a reason to visit your brand. Coaching has a clear next step when they're ready.",
+        "scrollTo": "#plans",
+        "holdMs": 9195
+      },
+      {
+        "text": "Events and race planning sit alongside the coaching — one roof for the whole operation.",
+        "scrollTo": "#events",
+        "holdMs": 8155
+      },
+      {
+        "text": "The community wall — race-day photos in your colours. The demo entries show the layout.",
+        "scrollTo": "#wall-photos",
+        "holdMs": 8155
+      },
+      {
+        "text": "Ask Gabby — questions reach you properly, under your brand, not buried in DMs.",
+        "scrollTo": "#ask",
+        "holdMs": 7570
+      }
+    ]
+  },
+  {
+    "path": "coaching.html",
+    "subs": [
+      {
+        "text": "Your coaching page sells the offer like a brand — clear packages, hybrid coaching offers and a real application route.",
+        "scroll": true,
+        "holdMs": 10170
+      }
+    ]
+  },
+  {
+    "path": "find-a-partner.html",
+    "subs": [
+      {
+        "text": "Find a race-mate — doubles, mixed and relay partners, inside your brand's home.",
+        "scrollTo": "#partner-form",
+        "holdMs": 7635
+      },
+      {
+        "text": "A community feature that runs itself between race weekends.",
+        "scroll": true,
+        "holdMs": 6335
+      }
+    ]
+  },
+  {
+    "path": "predictor.html",
+    "subs": [
+      {
+        "text": "The predictor lets athletes explore a target finish — inside your platform.",
+        "holdMs": 7375
+      },
+      {
+        "text": "Tools like this make your brand part of their training week.",
+        "scroll": true,
+        "holdMs": 6400
+      }
+    ]
+  },
+  {
+    "path": "splits.html",
+    "subs": [
+      {
+        "text": "The split analyser turns a finish time into station-by-station insight.",
+        "scrollTo": "#splits-form",
+        "holdMs": 7115
+      },
+      {
+        "text": "",
+        "scroll": true,
+        "holdMs": 5500
+      }
+    ]
+  },
+  {
+    "path": "results.html",
+    "subs": [
+      {
+        "text": "Results — a living record of race performances, wearing your name.",
+        "scroll": true,
+        "holdMs": 6790
+      }
+    ]
+  },
+  {
+    "path": "stations-prep.html",
+    "subs": [
+      {
+        "text": "Stations Prep — every HYROX station, coached in your voice, shot in your colours.",
+        "holdMs": 7765
+      },
+      {
+        "text": "Coaching value before anyone has paid you — that's brand-building.",
+        "scroll": true,
+        "holdMs": 8500
+      }
+    ]
+  },
+  {
+    "path": "run-zone.html",
+    "subs": [
+      {
+        "text": "Run Zone — pacing and race-day running guidance under your name.",
+        "scroll": true,
+        "holdMs": 7500
+      }
+    ]
+  },
+  {
+    "path": "taper-zone.html",
+    "subs": [
+      {
+        "text": "Taper Zone — the final week, structured so athletes actually do it. Your brand in their race week.",
+        "scroll": true,
+        "holdMs": 8870
+      }
+    ]
+  },
+  {
+    "path": "events.html",
+    "subs": [
+      {
+        "text": "Calendar & Travel — race dates with official links, kept current without you lifting a finger.",
+        "scroll": true,
+        "holdMs": 8610
+      }
+    ]
+  },
+  {
+    "path": "race-crew.html",
+    "subs": [
+      {
+        "text": "Race Crew — your community organised on your own platform, home and abroad.",
+        "scroll": true,
+        "holdMs": 7375
+      }
+    ]
+  },
+  {
+    "path": "news.html",
+    "subs": [
+      {
+        "text": "HYROX news under the Get Fit Gabby name — fresh content keeps the brand alive between races.",
+        "scroll": true,
+        "holdMs": 8480
+      }
+    ]
+  },
+  {
+    "path": "partners.html",
+    "subs": [
+      {
+        "text": "Your partners and offers presented like a professional outfit — brand deals, not a link dump.",
+        "scroll": true,
+        "holdMs": 8545
+      },
+      {
+        "text": "Every partner click is a conversion path — on your platform, with your data.",
+        "actions": [
+          {
+            "navClick": "a.pc-cta[href='https://marchon-global.com/']",
+            "holdMs": 5000
+          }
+        ],
+        "holdMs": 7440
+      },
+      {
+        "text": "Sponsors and affiliates get a proper shopfront — and you get the click data to prove it.",
+        "holdMs": 8220
+      },
+      {
+        "text": "That's the difference from a bio link — the traffic and the proof stay with your brand.",
+        "holdMs": 8155
+      }
+    ]
+  },
+  {
+    "path": "list.html",
+    "subs": [
+      {
+        "text": "Join the list — every visitor becomes a contact your brand owns, not an audience you rent.",
+        "scroll": true,
+        "holdMs": 8350
+      }
+    ]
+  },
+  {
+    "path": "leads.html",
+    "subs": [
+      {
+        "text": "And the part that lets you take control of the business — the Desk. First, Leads.",
+        "holdMs": 7765
+      },
+      {
+        "text": "Every enquiry lands here — ask forms, session requests, partner interest — enquiry to reply.",
+        "scroll": true,
+        "holdMs": 8480
+      },
+      {
+        "text": "Attention on the public site becomes conversations, then clients. That's control.",
+        "scroll": true,
+        "holdMs": 7765
+      }
+    ]
+  },
+  {
+    "path": "campaigns.html",
+    "subs": [
+      {
+        "text": "Campaigns — scale with social media campaigns, deployed at the tap of a button.",
+        "holdMs": 7635
+      },
+      {
+        "text": "Pick a photo, set when to advertise — a race weekend, a location, an audience.",
+        "scroll": true,
+        "holdMs": 7570
+      },
+      {
+        "text": "The platform drafts the post and story — set a spend cap, approve, and you're scaling.",
+        "scroll": true,
+        "holdMs": 8090
+      },
+      {
+        "text": "Client results become campaigns too — with their sign-off built in.",
+        "scroll": true,
+        "holdMs": 6855
+      }
+    ]
+  },
+  {
+    "path": "desk.html",
+    "subs": [
+      {
+        "text": "And Finance — the money side of the brand, under your control.",
+        "holdMs": 6530
+      },
+      {
+        "text": "Coaching income, race costs and partner activity — one dashboard.",
+        "scrollTo": ".desk-stats",
+        "holdMs": 6725
+      },
+      {
+        "text": "Know what comes in, see what goes out — the whole business in one place.",
+        "scroll": true,
+        "holdMs": 7180
+      }
+    ]
+  },
+  {
+    "path": "",
+    "subs": [
+      {
+        "text": "Your coaching, your tools, your community — one brand, one roof.",
+        "holdMs": 6660
+      },
+      {
+        "text": "Have a look around, Gabby. I'd love to hear what you think.",
+        "holdMs": 6335
+      }
+    ]
+  }
 ]

@@ -21,7 +21,6 @@ import {
 } from "../src/analytics.js";
 import { rangeDays } from "./http-utils.js";
 import { ROOT_DIR } from "./data-files.js";
-import { sendAlertEmail } from "./email.js";
 import express from "express";
 
 // Live values still owned by server.js, linked in when the router mounts.
@@ -281,35 +280,6 @@ export function createLeadsRouter(deps) {
         email = c?.rows?.[0]?.email || null;
       }
       const r = checked.row;
-      // Pitch handoff ping: a prospect tapped through from their video page.
-      // Email once per visitor per tenant (first pitch-tagged pageview only),
-      // fire-and-forget so it never slows the beacon.
-      if (r.utm_source === "pitch" && r.visitor) {
-        (async () => {
-          const seen = await dbQuery(
-            "SELECT 1 FROM page_views WHERE tenant_id = $1 AND visitor = $2 AND utm_source = 'pitch' LIMIT 1",
-            [tenantId, r.visitor],
-          );
-          if (seen?.rowCount) return;
-          const count = await dbQuery(
-            "SELECT count(*) AS n FROM page_views WHERE tenant_id = $1 AND visitor = $2",
-            [tenantId, r.visitor],
-          );
-          const pages = Number(count?.rows?.[0]?.n || 0) + 1;
-          const to = String(process.env.PITCH_NOTIFY_TO || "chriswworldwide@outlook.com").trim();
-          await sendAlertEmail({
-            to,
-            subject: `Site visit: ${tenantId} prospect is exploring`,
-            body: `Prospect: ${tenantId}
-Event: tapped through from the pitch page
-First page: ${r.path}
-Pages viewed so far: ${pages}
-Time: ${new Date().toISOString()}
-
-https://www.station9studio.co.uk/${tenantId}/`,
-          });
-        })().catch(() => {});
-      }
       await dbQuery(
         "INSERT INTO page_views (tenant_id, path, referrer_host, utm_source, utm_medium, utm_campaign, visitor, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
         [

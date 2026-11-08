@@ -1,26 +1,74 @@
 {
   "mode": "chassis",
   "slug": "coachedbyzara",
+  "coachingIntro": "World-level race experience, personal attention to your goals. Start a coaching conversation with Zara through her official enquiry hub.",
+  "coachingOffers": [
+    {
+      "title": "Online coaching with Zara",
+      "type": "Coaching enquiry",
+      "description": "Tell Zara what you're training for and discuss the support that fits your experience, schedule and next goal.",
+      "url": "https://linktr.ee/coachedbyzara",
+      "action": "Enquire through Zara's hub",
+      "sourceURL": "https://linktr.ee/coachedbyzara"
+    }
+  ],
+  "partnerOffers": [
+    {
+      "title": "LSKD",
+      "type": "Athlete partner · code",
+      "description": "Training and race-day apparel from LSKD. Use Zara's code ZARALSKD and check the store's current offer terms.",
+      "code": "ZARALSKD",
+      "affiliate": true,
+      "url": "https://lskd.co/",
+      "action": "Shop LSKD",
+      "sourceURL": "https://www.instagram.com/coachedbyzara/"
+    },
+    {
+      "title": "ESN",
+      "type": "Athlete brand link",
+      "description": "Explore ESN's sports-nutrition and supplement range through the official store.",
+      "url": "https://www.esn.com/",
+      "action": "Visit ESN",
+      "sourceURL": "https://www.instagram.com/coachedbyzara/"
+    },
+    {
+      "title": "FivePointFive",
+      "type": "Breathwork app",
+      "description": "Functional breathwork for athletes, with sessions built around training, recovery and focus.",
+      "url": "https://fivepointfive.com/",
+      "action": "Explore FivePointFive",
+      "sourceURL": "https://fivepointfive.com/"
+    }
+  ],
+  "offerAudit": {
+    "checkedAt": "2026-11-02",
+    "notes": [
+      "Official Linktree currently offers one coaching contact route; removed invented Race Ready and six-week offers.",
+      "ZARALSKD checked against supplied zb-post-profile.png; checkout eligibility was not tested. The same bio also lists ZARAFPF beside ESN/FivePointFive; do not assign that code to a merchant or invent a percentage without clearer offer terms.",
+      "No public price or duration found for Zara's coaching."
+    ]
+  },
   "heroMode": "full",
   "strictImages": true,
   "assets": "scripts/reskin/coachedbyzara-assets",
   "currency": "gbp",
-  "extraCss": "@media (max-width: 600px) { .hero h2 { font-size: 34px; } }",
+  "extraCss": "@media (max-width: 600px) { .hero h2 { font-size: 34px; } }\n/* sled hero: keep her head inside the cover crop */\n.hero--bleed{--hero-focus:50% 38%;}\n.story-cap{margin-top:9px;font:700 .68rem/1.5 monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);}\n.art-photo.partner-posed-photo img{aspect-ratio:4/5;object-position:50% 22%;}\n.guidance--calm .art-photo.taper-run-photo img{aspect-ratio:4/5;object-position:50% 30%;}\n@media(max-width:600px){.art-photo.partner-posed-photo img{aspect-ratio:4/5;object-position:50% 20%;}.guidance--calm .art-photo.taper-run-photo img{aspect-ratio:4/5;object-position:50% 27%;}}",
   "nutrition": {
     "mode": "hidden"
   },
   "tokens": {
+    "HERO_DEK": "World-level race experience. A plan built around you. Online coaching with Zara to bring strength, running and station confidence together.",
     "SLUG": "coachedbyzara",
     "COACH_NAME": "Zara Piergianni",
     "COACH_NAME_LC": "zara piergianni",
     "COACH_FIRST": "Zara",
     "COACH_LAST": "Piergianni",
     "WORDMARK_HTML": "<span class=\"o\">Z</span>ARA",
-    "BRAND": "Coached by Zara",
+    "BRAND": "by Zara",
     "BRAND_SHORT": "coachedbyzara",
     "BRAND_SOCIAL": "coachedbyzara",
     "CLOTHING_SHORT": "CBZ",
-    "CITY": "Online",
+    "CITY": "Stamford",
     "REGION": "United Kingdom",
     "REGION_LC": "united kingdom",
     "TAGLINE": "simple to understand, simple to implement",
@@ -70,60 +118,116 @@
     "PARTNER_SUPP_URL": "https://www.esn.com/",
     "STORE_NAME": "Coached by Zara",
     "STORE_COPY": "Programmes, coaching and links — everything in one place.",
-    "STORE_CTA": "Visit the hub"
+    "STORE_CTA": "Visit the hub",
+    "BIO_ROLE": "HYROX Elite 15 athlete and online coach",
+    "RACE_RECORD": "Women's Doubles World Champion and Relay World Champion",
+    "OFFER_SUMMARY": "Online coaching — a chat first, then a plan built round your race.",
+    "LINK_CARD_TAG": "Official hub · verified",
+    "LINK_CARD_NAME": "Coached by Zara hub",
+    "LINK_CARD_DESC": "1-1 coaching applications, LSKD code ZARALSKD, ESN and FivePointFive links — everything in one place.",
+    "LINK_CARD_CTA": "Open the hub",
+    "PROG_TWO": "1-1 coaching",
+    "PROG_TWO_TAG": "application · elite insight",
+    "COMMUNITY_DESC": "Race partner Gabriella Moriarty, the Hyrox Huns crew and a double world champion at the centre of it — training partners and race-weekend support included.",
+    "SIG": "by Zara"
   },
   "stripSections": [
     "merch"
   ],
   "omitImageSlots": [
-    "images/finish.jpg",
-    "images/pb-venue.jpg",
-    "images/race-revel.jpg",
-    "images/sprint.jpg",
-    "images/track.jpg",
-    "images/treadmill.jpg",
+    "images/avatar.jpg",
     "images/bike.jpg",
     "images/carry.jpg",
-    "images/rope.jpg",
-    "images/squad-athlos.jpg",
     "images/detail.jpg",
-    "images/station-lean.jpg",
+    "images/hoodie.jpg",
     "images/kerb.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/race-revel.jpg",
     "images/rooftop.jpg",
-    "images/walkin.jpg",
-    "images/suit.jpg",
-    "images/hoodie.jpg"
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/sprint.jpg",
+    "images/startline.jpg",
+    "images/station-lean.jpg",
+    "images/taper-hero.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg"
   ],
-  "stripPages": [
-    "watch.html"
-  ],
+  "stripPages": [],
   "news": [
     {
-      "date": "2026-10-07",
-      "title": "Back to Hamburg",
-      "summary": "Returning to a race that has always meant something, with the standard higher than ever.",
-      "take": "We know the standard will be up there with the best. We'll fight until the last wall ball.",
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "Keep the lesson simple: look for a repeatable pace and clean transitions rather than copying every elite detail.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. An away race also means planning travel, sleep and recovery.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Make the weekend practical. Sort sleep, familiar food and the venue journey before adding anything complicated.",
+      "takeStatus": "draft-for-review",
       "link": "/coachedbyzara/events.html",
-      "linkLabel": "Race calendar →"
+      "linkLabel": "Race Calendar & Travel →"
     },
     {
-      "date": "2026-09-03",
-      "title": "Training with your cycle, not beneath it",
-      "summary": "Tracking gives context. It doesn't automatically decide what an athlete can do that day.",
-      "take": "Use the information, assess how you feel, then make the right training decision for you.",
-      "link": "/coachedbyzara/coaching.html",
-      "linkLabel": "Coaching →"
+      "type": "news",
+      "date": "2026-06-23",
+      "title": "Stockholm: Australia defends its mixed-relay world title",
+      "summary": "PUMA's World Championships report records Australia's mixed-relay win in 50:19, with Jess Pettrow on the title-defending team. Joanna Wietrzyk also finished second in the women's Elite 15 solo race.",
+      "source": "https://mediahub.puma.com/articles/puma-dominates-hyrox-world-championships-from-elite-athlete-performances-to-community-initiatives",
+      "sourceName": "PUMA · World Championships report",
+      "take": "Know your role and communicate it clearly. A good shared plan makes race-day decisions simpler.",
+      "takeStatus": "draft-for-review"
     },
     {
-      "date": "2026-05-27",
-      "title": "Conditions won't always be perfect",
-      "summary": "Wrong shoes, dead headphones, hard session. The work can still get done.",
-      "take": "Performance isn't about waiting for the perfect environment. It's about executing anyway.",
-      "link": "/coachedbyzara/run-zone.html",
-      "linkLabel": "Run zone →"
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's new framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "Check what counts, then choose a season you can prepare for. More races are not automatically better.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027. Qualification gives the season a clear international destination.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "Turn the ambition into a clear next step. Training should be simple to understand and practical to carry out.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season, with kit, resources and performance support.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "New opportunities are positive. Keep the next training decision focused on what will genuinely help you progress.",
+      "takeStatus": "draft-for-review"
     }
   ],
   "copyOverrides": [
+    {
+      "pattern": "Crossing the Hyrox finish line under the event arch",
+      "replace": "Zara racing on the HYROX course"
+    },
     {
       "pattern": "AJ Bell Birmingham Half",
       "replace": "EMEA Championships — London 2026"
@@ -138,7 +242,7 @@
     },
     {
       "pattern": "Zara Piergianni driving the sled, head-on — the station nobody enjoys",
-      "replace": "Zara Piergianni racing on the SkiErg at HYROX"
+      "replace": "alt=\"Zara Piergianni and doubles partner Gabby Moriarty crossing the HYROX finish line, arms out\""
     },
     {
       "pattern": "Zara Piergianni\\. 1:05 to 1:05 in one season\\.",
@@ -171,14 +275,6 @@
     {
       "pattern": "Coached by Zara 1:1 coaching by application, group programmes on FITR, and the Coached by Zara 365 clothing line\\.",
       "replace": "Coached by Zara personalised 1:1 online coaching by application."
-    },
-    {
-      "pattern": "\\s*<li><a href=\"/coachedbyzara/watch.html\">Watch</a></li>",
-      "replace": ""
-    },
-    {
-      "pattern": "\\s*<a href=\"/coachedbyzara/watch.html\">Watch</a>",
-      "replace": ""
     },
     {
       "pattern": "Coached by Zara 365",
@@ -219,10 +315,329 @@
     {
       "pattern": "Zara on the start line — flat expression, miles to go",
       "replace": "Zara completing sandbag lunges on the HYROX race floor"
+    },
+    {
+      "file": "race-day.html",
+      "pattern": "src=\"/coachedbyzara/images/startline\\.jpg(\\?v=\\d+)?\"(\\s*)alt=\"Athletes on the Hyrox start line waiting for the gun\"(\\s*)width=\"1024\"(\\s*)height=\"768\"",
+      "replace": "src=\"/coachedbyzara/images/zb-gabby-budapest.jpg$1\"$2alt=\"Zara and Gabby under the neon start pen in Budapest\"$3width=\"544\"$4height=\"562\""
+    },
+    {
+      "file": "index.html",
+      "pattern": "src=\"/coachedbyzara/images/startline\\.jpg(\\?v=\\d+)?\"(\\s*)alt=\"Zara Piergianni in race paint beside a HYROX wall\"(\\s*)width=\"985\"(\\s*)height=\"1150\"",
+      "replace": "src=\"/coachedbyzara/images/zb-gabby-bw-3.jpg$1\"$2alt=\"Zara Piergianni (left) with doubles partner Gabby Moriarty — photo @j8frames_\"$3width=\"853\"$4height=\"1024\""
+    },
+    {
+      "file": "index.html",
+      "pattern": "(<svg class=\\\"profile-hairline\\\"[\\s\\S]*?</svg>)\\s*</figure>",
+      "replace": "$1<figcaption class=\"story-cap\">Zara Piergianni (left), with doubles partner Gabby Moriarty — photo @j8frames_</figcaption></figure>"
+    },
+    {
+      "pattern": "<figure class=\"art-photo\">\\s*<img\\s*src=\"/{{SLUG}}/images/momentum\\.jpg\\?v=\\d+\"[\\s\\S]*?</figure>",
+      "replace": "<figure class=\"art-photo taper-run-photo\"><img src=\"/{{SLUG}}/images/momentum.jpg\" alt=\"Zara out front on a sunny group run by the water\" width=\"850\" height=\"1024\" loading=\"lazy\" /><figcaption>Race week, kept quiet on purpose.</figcaption></figure>",
+      "flags": "g"
+    },
+    {
+      "pattern": "(<article class=\"station reveal\" id=\"kinds\">[\\s\\S]*?</article>)\\s*<article class=\"station reveal\" id=\"how\">",
+      "replace": "$1\n\n<figure class=\"art-photo partner-posed-photo\"><img src=\"/{{SLUG}}/images/partner-posed.jpg\" alt=\"Zara and doubles partner Gabby back to back at the Warsaw arena — the real thing\" width=\"661\" height=\"1024\" loading=\"lazy\" /><figcaption>Doubles is a different sport when the pair is real.</figcaption></figure>\n\n<article class=\"station reveal\" id=\"how\">",
+      "flags": "g"
     }
   ],
   "stripBlocks": [
     "youtube-link",
     "tiktok-link"
-  ]
+  ],
+  "seedFiles": {
+    "campaign-offers.json": "@scripts/reskin/coachedbyzara-pages/data/campaign-offers.json",
+    "cities.json": "@scripts/reskin/coachedbyzara-pages/data/cities.json",
+    "events.json": "@scripts/reskin/coachedbyzara-pages/data/events.json",
+    "matchboard.json": "@scripts/reskin/coachedbyzara-pages/data/matchboard.json",
+    "news.json": "@scripts/reskin/coachedbyzara-pages/data/news.json",
+    "training-platform.json": "@scripts/reskin/coachedbyzara-pages/data/training-platform.json",
+    "travelboard.json": "@scripts/reskin/coachedbyzara-pages/data/travelboard.json",
+    "videos.json": "@scripts/reskin/coachedbyzara-pages/data/videos.json"
+  },
+  "coachPreview": true,
+  "races": {
+    "checked": "2026-10-25",
+    "source": "https://hyrox.com/find-my-race/",
+    "timeZone": "UTC",
+    "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
+    "cities": [
+      {
+        "slug": "dublin",
+        "name": "Dublin",
+        "country": "Ireland",
+        "timeZone": "Europe/Dublin",
+        "tagline": "A short hop can still deserve a proper race-weekend plan.",
+        "race": {
+          "name": "HYROX Dublin",
+          "status": "confirmed",
+          "start": "2026-11-11",
+          "end": "2026-11-15",
+          "source": "https://hyrox.com/event/hyrox-dublin/",
+          "sourceLabel": "Official HYROX Dublin event",
+          "dates": "11 Nov 2026 – 15 Nov 2026"
+        },
+        "gettingThere": [
+          "Check the official RDS event information and your division start time before booking travel.",
+          "Compare flight, ferry and local transport against the venue journey, including luggage and registration time."
+        ],
+        "hotels": [
+          {
+            "area": "Ballsbridge or central Dublin",
+            "picks": "Balance a practical journey to the RDS with food, sleep and somewhere easy for the crew to meet.",
+            "range": "Check live rates and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar and check early breakfast options near your stay."
+        ],
+        "nightAfter": [
+          "Plan a relaxed post-race meal and leave recovery time before the journey home."
+        ]
+      },
+      {
+        "slug": "singapore",
+        "name": "Singapore",
+        "country": "Singapore",
+        "timeZone": "Asia/Singapore",
+        "tagline": "Make an overseas race a shared weekend, not a rushed turnaround.",
+        "race": {
+          "name": "AIA HYROX Singapore",
+          "status": "confirmed",
+          "start": "2026-11-26",
+          "end": "2026-11-29",
+          "source": "https://hyrox.com/event/aia-hyrox-singapore/",
+          "sourceLabel": "Official AIA HYROX Singapore event",
+          "dates": "26 Nov 2026 – 29 Nov 2026"
+        },
+        "gettingThere": [
+          "Check passport, entry and airline baggage requirements before paying for travel.",
+          "Allow time to adjust to the local time zone and plan the venue journey from your chosen accommodation."
+        ],
+        "hotels": [
+          {
+            "area": "An easy venue journey",
+            "picks": "Choose a base with straightforward early transport, familiar food nearby and somewhere to recover after the finish.",
+            "range": "Compare live prices and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar; leave the food adventure for after the finish."
+        ],
+        "nightAfter": [
+          "Plan a crew meal with enough recovery time before the flight home."
+        ]
+      },
+      {
+        "slug": "london",
+        "name": "London",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "Choose the race slot first, then make the capital work around it.",
+        "race": {
+          "name": "Amazon HYROX London",
+          "status": "confirmed",
+          "start": "2026-12-02",
+          "end": "2026-12-06",
+          "source": "https://hyrox.com/event/hyrox-london-excel/",
+          "sourceLabel": "Official Amazon HYROX London event",
+          "dates": "2 Dec 2026 – 6 Dec 2026"
+        },
+        "gettingThere": [
+          "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
+          "Compare your arrival station or airport with the venue journey, including weekend service changes."
+        ],
+        "hotels": [
+          {
+            "area": "Venue access first",
+            "picks": "Prioritise a straightforward early journey over a small saving on a room across the city. Check breakfast and bag storage around your wave.",
+            "range": "Hotel rates vary by date; check live prices."
+          }
+        ],
+        "food": [
+          "Book a familiar meal near your hotel and carry the race fuel you have already practised with."
+        ],
+        "nightAfter": [
+          "Pick a post-race meeting point before the venue gets busy."
+        ]
+      },
+      {
+        "slug": "melbourne",
+        "name": "Melbourne",
+        "country": "Australia",
+        "timeZone": "Australia/Melbourne",
+        "tagline": "A longer-haul target deserves room for travel and recovery.",
+        "race": {
+          "name": "BYD HYROX Melbourne",
+          "status": "confirmed",
+          "start": "2026-12-09",
+          "end": "2026-12-13",
+          "source": "https://hyrox.com/event/hyrox-melbourne/",
+          "sourceLabel": "Official BYD HYROX Melbourne event",
+          "dates": "9 Dec 2026 – 13 Dec 2026"
+        },
+        "gettingThere": [
+          "Check the official venue and your race day before choosing flights and accommodation.",
+          "For long-haul travel, build in arrival, recovery and local time-zone adjustment rather than landing straight into a race."
+        ],
+        "hotels": [
+          {
+            "area": "Simple transport and recovery",
+            "picks": "Compare a venue-area stay with a base near reliable public transport. Ask about early breakfast and late checkout.",
+            "range": "Check live accommodation and flight prices."
+          }
+        ],
+        "food": [
+          "Arrange familiar race-morning food before exploring the local options afterwards."
+        ],
+        "nightAfter": [
+          "Keep the day after the race flexible before the journey home."
+        ]
+      },
+      {
+        "slug": "hong-kong",
+        "name": "Hong Kong",
+        "country": "Hong Kong",
+        "timeZone": "Asia/Hong_Kong",
+        "tagline": "Turn an international start line into a well-organised race trip.",
+        "race": {
+          "name": "AIA HYROX Hong Kong",
+          "status": "confirmed",
+          "start": "2027-01-07",
+          "end": "2027-01-10",
+          "source": "https://hyrox.com/event/hyrox-hong-kong/",
+          "sourceLabel": "Official AIA HYROX Hong Kong event",
+          "dates": "7 Jan 2027 – 10 Jan 2027"
+        },
+        "gettingThere": [
+          "Check entry requirements, airline baggage and official venue instructions before booking.",
+          "Compare the airport-to-hotel and hotel-to-venue journeys, allowing for your check-in and start time."
+        ],
+        "hotels": [
+          {
+            "area": "A practical race-weekend base",
+            "picks": "Balance easy venue access with food, sleep and a relaxed meeting place for your crew.",
+            "range": "Compare live rates and cancellation terms."
+          }
+        ],
+        "food": [
+          "Keep the meal before racing predictable and enjoy the city after your finish."
+        ],
+        "nightAfter": [
+          "Allow recovery time before sightseeing or flying home."
+        ]
+      },
+      {
+        "slug": "manchester",
+        "name": "Manchester",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "A city race with an easy plan for the days around it.",
+        "race": {
+          "name": "HYROX Manchester",
+          "status": "confirmed",
+          "start": "2027-01-20",
+          "end": "2027-01-31",
+          "source": "https://hyrox.com/event/hyrox-manchester/",
+          "sourceLabel": "Official HYROX Manchester event",
+          "dates": "20 Jan 2027 – 31 Jan 2027"
+        },
+        "gettingThere": [
+          "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
+          "Allow extra time if your route crosses the city, and include registration and warm-up in the plan."
+        ],
+        "hotels": [
+          {
+            "area": "Central or close to the venue",
+            "picks": "Compare a central base for the crew meal with a shorter early journey to the race. Check breakfast, checkout and bag storage.",
+            "range": "Check current rates for your particular race dates."
+          }
+        ],
+        "food": [
+          "Choose a familiar pre-race dinner and an uncomplicated breakfast."
+        ],
+        "nightAfter": [
+          "Agree where to meet and leave room for tired legs after the finish."
+        ]
+      }
+    ],
+    "home": "london"
+  },
+  "trainingPlatform": {
+    "name": "Zara's coaching contact",
+    "coachURL": "",
+    "clientURL": "",
+    "programmesURL": "https://linktr.ee/coachedbyzara",
+    "applicationURL": "https://linktr.ee/coachedbyzara",
+    "directCoachLink": false,
+    "offerTitle": "Coached by Zara coaching",
+    "offerDescription": "Explore the existing coaching and programme options, then choose the support that fits your next goal.",
+    "note": "Coach and client sign-in destinations still need confirmation. The existing public offer links below are not software logins. No workout or client-data sync is connected."
+  },
+  "contentPublishing": {
+    "podcast": false
+  },
+  "colors": {
+    "zoneAccent": "#15803d"
+  },
+  "tenantGallery": [
+    {
+      "src": "/coachedbyzara/images/zb-hug-floor.jpg",
+      "alt": "Zara and Gabby in a post-race hug on the floor",
+      "caption": "Sixteen elite races in. Still the best bit.",
+      "event": "Race day",
+      "tilt": -1.2
+    },
+    {
+      "src": "/coachedbyzara/images/zb-sled-push.jpg",
+      "alt": "Zara driving the sled, head-down",
+      "caption": "The station nobody enjoys. She does it anyway.",
+      "event": "Race day",
+      "tilt": 0.8
+    },
+    {
+      "src": "/coachedbyzara/images/zb-gabby-run.jpg",
+      "alt": "Zara and Gabby mid-race with the 56:27 result on screen",
+      "caption": "Budapest. 56:27. OV1 and AG1 — Pro Doubles winners.",
+      "event": "Race day",
+      "tilt": -0.6
+    },
+    {
+      "src": "/coachedbyzara/images/zb-gabby-bw-1.jpg",
+      "alt": "Black and white race portrait of Zara and Gabby",
+      "caption": "The Hyrox Huns, by @j8frames_.",
+      "event": "Race trip",
+      "tilt": 1.1
+    },
+    {
+      "src": "/coachedbyzara/images/zb-farmers-carry.jpg",
+      "alt": "Zara under the farmers carry load",
+      "caption": "Farmers carry — where the grip goes, the race follows.",
+      "event": "Race day",
+      "tilt": -0.9
+    },
+    {
+      "src": "/coachedbyzara/images/zb-bordeaux-flags.jpg",
+      "alt": "Zara and Gabby holding Bordeaux podium flags at night",
+      "caption": "Bordeaux flags. The kind you have to earn.",
+      "event": "Race trip",
+      "tilt": 0.7
+    },
+    {
+      "src": "/coachedbyzara/images/zb-gabby-bw-2.jpg",
+      "alt": "Black and white portrait of Zara mid-race",
+      "caption": "Race face. Also by @j8frames_.",
+      "event": "Race trip",
+      "tilt": -1.4
+    },
+    {
+      "src": "/coachedbyzara/images/zb-gabby-runs.jpg",
+      "alt": "Zara and Gabby running together in the arena",
+      "caption": "Mile by mile. Nobody carries you through this bit.",
+      "event": "Training",
+      "tilt": 1
+    }
+  ],
+  "brandingNote": "Wordmark ZARA from @coachedbyzara mononym brand. SIG repeats her mononym — unavoidable, acceptable."
 }

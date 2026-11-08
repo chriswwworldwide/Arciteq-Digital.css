@@ -1,0 +1,1584 @@
+{
+  "mode": "chassis",
+  "slug": "michelewilder",
+  "coachingIntro": "Structured HYROX coaching for everyday athletes, especially newcomers to the sport. Michele's approach brings running, strength, pacing and station skills together with supportive guidance.",
+  "coachingOffers": [
+    {
+      "title": "HYROX coaching with Michele",
+      "type": "Online coaching enquiry",
+      "description": "Discuss preparation for your first HYROX or a stronger next race. Michele's official HYROX profile explains her focus and provides current contact details.",
+      "url": "https://coaches.hyrox.com/coach/michelewilder/",
+      "action": "Meet Michele and get in touch",
+      "sourceURL": "https://coaches.hyrox.com/coach/michelewilder/"
+    }
+  ],
+  "partnerOffers": [
+    {
+      "title": "Wilder Fitness UK",
+      "type": "Official coaching community",
+      "description": "Training updates and coaching information from Wilder Fitness UK's Instagram channel.",
+      "url": "https://www.instagram.com/wilderfitnessuk/",
+      "action": "Visit Wilder Fitness UK",
+      "sourceURL": "https://www.instagram.com/wilderfitnessuk/"
+    },
+    {
+      "title": "HYROX Newbies",
+      "type": "Michele's community",
+      "description": "A HYROX community for everyday athletes and people finding their way into the sport.",
+      "url": "https://www.facebook.com/groups/hyroxnewbiesuk",
+      "action": "Explore HYROX Newbies",
+      "sourceURL": "https://coaches.hyrox.com/coach/michelewilder/"
+    },
+    {
+      "title": "Michele's HYROX coach profile",
+      "type": "Official directory",
+      "description": "Read Michele's coaching focus and use the contact details on her official HYROX profile.",
+      "url": "https://coaches.hyrox.com/coach/michelewilder/",
+      "action": "Open the coach profile",
+      "sourceURL": "https://coaches.hyrox.com/coach/michelewilder/"
+    }
+  ],
+  "offerAudit": {
+    "checkedAt": "2026-11-02",
+    "notes": [
+      "Both wilderfitness.co.uk and www.wilderfitness.co.uk fail certificate hostname validation. No TLS bypass attempted.",
+      "Use the live official HYROX coach profile and official social routes while the domain is unresolved.",
+      "Previous config described Foundations at £175 for eight weeks or £99 in two instalments, but its website is currently certificate-blocked. Preserve that historical lead for confirmation rather than declaring the product nonexistent or advertising its old price as current. Race Ready was a template default.",
+      "Third-party reviews found but not republished as new testimonials without first-party confirmation."
+    ]
+  },
+  "heroMode": "full",
+  "strictImages": true,
+  "customCrewAssets": true,
+  "assets": "scripts/reskin/michelewilder-assets",
+  "currency": "gbp",
+  "raceRegion": "United Kingdom",
+  "htmlTitle": "Michele Wilder | HYROX coaching, Hyrox Newbies and race tools",
+  "metaDescription": "Michele Wilder — HYROX Head Judge, official coach and founder of the 70,000-strong Hyrox Newbies community. Coaching routes, free race tools, station guidance and crew travel.",
+  "booking": {
+    "timeZone": "Europe/London"
+  },
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "coachPreview": true,
+  "navLabels": {
+    "shop.html": "Links",
+    "podcast.html": "Guides"
+  },
+  "extraCss": ":root{--hero-focus:50% 62%;}\n.hero--bleed[data-hero-mode=\"full\"] .hero-img{object-position:var(--hero-focus);}\n@media(max-width:800px){.hero--bleed[data-hero-mode=\"full\"] .hero-img{object-position:50% 40%;}}\n\n\n#plans{padding-bottom:44px;}\n#athletes-say{padding-top:32px;}\n.art-photo img{object-position:50% 32%;}\n.tips-photo img{object-position:50% 28%;}\n.guidance--calm .art-photo.taper-rocks-photo img{object-position:50% 38%;}\n.guidance--calm .art-photo.taper-venue-photo img{object-position:50% 68%;}\n@media(max-width:600px){.hero--bleed .wrap{align-items:end;padding-bottom:26px;}#plans{padding-bottom:36px;}#athletes-say{padding-top:28px;}.guidance--calm .art-photo.taper-rocks-photo img{object-position:50% 40%;}.guidance--calm .art-photo.taper-venue-photo img{object-position:50% 70%;}}",
+  "tokens": {
+    "HERO_DEK": "Your starting point is yours. So is the next chapter. Build strength, confidence and race readiness with Michele at Wilder Fitness.",
+    "SLUG": "michelewilder",
+    "COACH_NAME": "Michele Wilder",
+    "COACH_NAME_LC": "michele wilder",
+    "COACH_FIRST": "Michele",
+    "COACH_LAST": "Wilder",
+    "WORDMARK_HTML": "WILDER <span class=\"o\">FITNESS</span>",
+    "BRAND": "by Michele",
+    "BRAND_SHORT": "WF",
+    "BRAND_SHORT_UPPER": "WILDER FITNESS",
+    "BRAND_SOCIAL": "michele_wilderfitness",
+    "CLOTHING_SHORT": "Partner offers",
+    "CITY": "Maidstone",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "Build the athlete first. Then make the athlete specific.",
+    "HERO_TITLE_HTML": "This is my journey.<br /><em>Now I help others write theirs.</em>",
+    "APPLY_URL": "https://coaches.hyrox.com/coach/michelewilder/",
+    "PROGRAMMES_URL": "https://coaches.hyrox.com/coach/michelewilder/",
+    "STORE_URL": "https://www.instagram.com/michele_wilderfitness/",
+    "IG_URL": "https://www.instagram.com/michele_wilderfitness/",
+    "BRAND_IG_URL": "https://www.instagram.com/wilderfitnessuk/",
+    "YOUTUBE_URL": "https://coaches.hyrox.com/coach/michelewilder/",
+    "TIKTOK_URL": "https://coaches.hyrox.com/coach/michelewilder/",
+    "THREADS_URL": "https://coaches.hyrox.com/coach/michelewilder/",
+    "LINKTREE_URL": "https://coaches.hyrox.com/coach/michelewilder/",
+    "DOUBLES_PARTNER": "a race partner",
+    "PB_VENUE": "Cardiff",
+    "PB_VENUE_LC": "cardiff",
+    "DOUBLES_VENUE": "Stockholm",
+    "DOUBLES_VENUE_LC": "stockholm",
+    "OPEN_VENUE": "Dublin",
+    "PB_SOLO": "1:26:30",
+    "PB_DOUBLES": "Head Judge",
+    "PB_HALF": "1:23",
+    "PB_OPEN": "1:26:30",
+    "SEASON_START": "12 weeks",
+    "SEASON_HEADLINE": "Performance over aesthetics.",
+    "PARTNER_GYM": "Hyrox Newbies",
+    "PARTNER_GYM_LC": "hyrox newbies",
+    "PARTNER_SUPP": "Wilder Fitness",
+    "PARTNER_SUPP_LC": "wilder fitness",
+    "PARTNER_KIT": "PERFORM",
+    "PARTNER_KIT_LC": "perform",
+    "PARTNER_KIT_TAG": "Coached athletes · the crew",
+    "PARTNER_KIT_TITLE": "PERFORM",
+    "PARTNER_KIT_COPY": "The name on the kit Michele's coached athletes race in — weekend podiums, PBs and race trips included.",
+    "PARTNER_KIT_CTA": "Meet the crew",
+    "PARTNER_KIT_URL": "https://www.instagram.com/wilderfitnessuk/",
+    "PARTNER_GYM_URL": "https://coaches.hyrox.com/coach/michelewilder/",
+    "PARTNER_SUPP_URL": "https://coaches.hyrox.com/coach/michelewilder/",
+    "GYM_CODE": "NEWBIES",
+    "PHOTO_BUDDY": "Michele's race community",
+    "ACCENT": "#17b8a6",
+    "ACCENT_DARK": "#0e7f74",
+    "ACCENT_SOFT": "#062c29",
+    "SOCIAL_HANDLE_UPPER": "MICHELE_WILDERFITNESS",
+    "VOICE_ATHLETE_QUOTE": "“Every session should have a purpose. And a HYROX sim has to earn its place just like everything else.”",
+    "VOICE_DOUBLES_HOOK": "Michele built a 70,000-strong HYROX community, so the matchmaking brief starts with real people, not guesswork.",
+    "VOICE_WEDDING": "and she knows a good partnership when she sees one.",
+    "VOICE_NEWS_TAKE": "Pick the race your life can support, then build the weeks backwards from the start line.",
+    "STORE_NAME": "Wilder Fitness links",
+    "STORE_TAG": "Current links",
+    "STORE_COPY": "The Wilder Fitness site, Hyrox Newbies community and Michele's Instagram in one verified place.",
+    "STORE_CTA": "Open all links",
+    "CURRENCY": "GBP",
+    "BIO_ROLE": "Official HYROX performance coach",
+    "RACE_RECORD": "100+ athletes coached over three seasons",
+    "RACE_COUNT": "70k+",
+    "RACE_COUNT_LABEL": "Hyrox Newbies members — the community she built",
+    "OFFER_SUMMARY": "Official HYROX performance coach — 100+ athletes over three seasons and founder of the Hyrox Newbies community.",
+    "SIG": "by Michele"
+  },
+  "tenantGallery": [
+    {
+      "src": "gallery/dinner.jpg",
+      "alt": "Michele Wilder and the HYROX crew at a post-race dinner in Barcelona",
+      "caption": "Race weekend done properly — the table afterwards is part of it.",
+      "by": "Race weekend",
+      "event": "HYROX Barcelona",
+      "tilt": -1.1
+    },
+    {
+      "src": "gallery/finish.jpg",
+      "alt": "Michele Wilder and her running mate crossing the finish together",
+      "caption": "The bit the splits sheet never records.",
+      "by": "Race day",
+      "event": "Race day",
+      "tilt": 1.2
+    },
+    {
+      "src": "gallery/crew-arch.jpg",
+      "alt": "Michele Wilder and the crew under the Wall Balls station arch",
+      "caption": "Station 08. Better with company.",
+      "by": "The crew",
+      "event": "Race weekend",
+      "tilt": -0.8
+    },
+    {
+      "src": "gallery/kiss-race.jpg",
+      "alt": "Two athletes on the HYROX Kiss and Race podium in Stockholm",
+      "caption": "Kiss and Race. Yes, it's a real thing.",
+      "by": "HYROX Stockholm",
+      "event": "HYROX Stockholm",
+      "tilt": 1
+    }
+  ],
+  "trainingPlatform": {
+    "name": "Wilder Fitness coaching routes",
+    "coachURL": "",
+    "clientURL": "",
+    "programmesURL": "https://coaches.hyrox.com/coach/michelewilder/",
+    "applicationURL": "https://coaches.hyrox.com/coach/michelewilder/",
+    "offerTitle": "HYROX coaching with Michele",
+    "offerDescription": "Supportive, structured HYROX preparation for everyday athletes, from a first race to a stronger next finish.",
+    "note": "The Wilder Fitness site and Hyrox Newbies community are Michele's verified public routes. No client records, workout sync or provider sign-in are connected to this preview."
+  },
+  "news": [
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "The useful lesson for everyday racers is planning: pick the event, then build the weeks backwards from it.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "First-timers don't need a ticket to start training",
+      "summary": "Michele's Foundations programme is built for exactly that gap: structured HYROX training before you've ever booked a start line, with the Hyrox Newbies community behind it.",
+      "source": "https://coaches.hyrox.com/coach/michelewilder/",
+      "sourceName": "Wilder Fitness · Foundations",
+      "take": "HYROX isn't a 5k you can just wing — but where you are now is your starting point.",
+      "takeStatus": "draft-for-review",
+      "link": "/michelewilder/coaching.html",
+      "linkLabel": "Coaching routes →"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "The points table matters, but the calendar still has to fit real training and real life.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "A big target is useful when it turns into manageable sessions this week.",
+      "takeStatus": "draft-for-review"
+    }
+  ],
+  "seedFiles": {
+    "faq.json": {
+      "note": "Michele Wilder answers — practical guidance, with pricing and diary details confirmed directly.",
+      "items": [
+        {
+          "q": "How much does coaching cost?",
+          "keywords": [
+            "price",
+            "cost",
+            "membership",
+            "expensive",
+            "fee",
+            "charge",
+            "pay"
+          ],
+          "a": "Michele's public coaching routes are linked here — Wilder Fitness and the Foundations programme. Exact pricing stays on those official pages."
+        },
+        {
+          "q": "I've never done HYROX — can I join?",
+          "keywords": [
+            "beginner",
+            "never done",
+            "first time",
+            "new to",
+            "start"
+          ],
+          "a": "Yes — that's exactly who Michele's Foundations programme and the Hyrox Newbies community are for. You don't need a race booked to start training."
+        },
+        {
+          "q": "What actually is HYROX?",
+          "keywords": [
+            "what is hyrox",
+            "explain",
+            "format",
+            "race format"
+          ],
+          "a": "8km of running split by 8 workout stations — SkiErg, sled push, sled pull, burpee broad jumps, rowing, farmers carry, sandbag lunges and wall balls. Same format worldwide."
+        },
+        {
+          "q": "Where do you coach from?",
+          "keywords": [
+            "where",
+            "location",
+            "gym",
+            "address",
+            "maidstone",
+            "kent"
+          ],
+          "a": "Michele is based around Maidstone in Kent and coaches online UK-wide. The Hyrox Newbies community runs nationally."
+        },
+        {
+          "q": "When is the next race?",
+          "keywords": [
+            "when",
+            "next race",
+            "date",
+            "calendar",
+            "schedule"
+          ],
+          "a": "Confirmed dates sit on the Race Calendar & Travel page, sourced from the official HYROX listings."
+        },
+        {
+          "q": "Can you find me a doubles partner?",
+          "keywords": [
+            "partner",
+            "doubles",
+            "pair",
+            "team",
+            "mate",
+            "relay"
+          ],
+          "a": "Use Find a Race-mate to post your division and pace. Michele runs a 70,000-strong HYROX community, so matchmaking is home turf."
+        },
+        {
+          "q": "Do you programme for races abroad?",
+          "keywords": [
+            "abroad",
+            "overseas",
+            "travel",
+            "international",
+            "europe",
+            "foreign"
+          ],
+          "a": "Yes — remote coaching and race-weekend planning are part of the offer. Michele's crew has raced across the UK and Europe."
+        },
+        {
+          "q": "How do I get started?",
+          "keywords": [
+            "start",
+            "begin",
+            "book",
+            "booking",
+            "sign up",
+            "first session"
+          ],
+          "a": "Use the Wilder Fitness site for coaching routes, join Hyrox Newbies for community support, or leave a question through Ask Michele."
+        }
+      ]
+    },
+    "testimonials.json": {
+      "note": "No approved client quotes yet — the section stays hidden until Michele supplies approved testimonials. Michael's 'HYROX is a puzzle' wording is held back pending approval.",
+      "items": []
+    },
+    "campaign-offers.json": {
+      "offers": [
+        {
+          "id": "foundations",
+          "name": "Foundations by Wilder Fitness",
+          "goal": "Programme enquiries",
+          "destination": "https://coaches.hyrox.com/coach/michelewilder/",
+          "image": "/michelewilder/images/coaching-hero.jpg",
+          "headline": "You don't need a HYROX race booked to start training.",
+          "actionLabel": "View Foundations"
+        },
+        {
+          "id": "coaching",
+          "name": "Michele's coaching routes",
+          "goal": "Coaching enquiries",
+          "destination": "https://coaches.hyrox.com/coach/michelewilder/",
+          "image": "/michelewilder/images/stations-hero.jpg",
+          "headline": "Apply through the Wilder Fitness site.",
+          "actionLabel": "Open coaching routes"
+        },
+        {
+          "id": "community",
+          "name": "Hyrox Newbies community",
+          "goal": "Community joins",
+          "destination": "https://coaches.hyrox.com/coach/michelewilder/",
+          "image": "/michelewilder/images/race-pair.jpg",
+          "headline": "The 70,000-strong beginner HYROX community.",
+          "actionLabel": "Find Hyrox Newbies"
+        }
+      ]
+    },
+    "results.json": {
+      "updated": "2026-10-28",
+      "note": "Results seed — Michele's verified rows sit beside clearly labelled format rows.",
+      "divisions": {
+        "women": {
+          "label": "Women Singles (Open & Pro)",
+          "results": [
+            {
+              "athlete": "Michele Wilder",
+              "time": "1:26:30",
+              "category": "Cardiff finish board",
+              "event": "HYROX Cardiff",
+              "date": "On record",
+              "city": "Cardiff"
+            },
+            {
+              "athlete": "Format athlete A",
+              "time": "1:12:52",
+              "category": "Open · format row",
+              "event": "HYROX Dublin",
+              "date": "Format",
+              "city": "Dublin"
+            }
+          ]
+        },
+        "men": {
+          "label": "Men Singles (Open & Pro)",
+          "results": [
+            {
+              "athlete": "Format athlete B",
+              "time": "1:05:58",
+              "category": "Open · format row",
+              "event": "HYROX London",
+              "date": "Format",
+              "city": "London"
+            }
+          ]
+        },
+        "doubles-women": {
+          "label": "Women Doubles",
+          "results": [
+            {
+              "athlete": "Format pair",
+              "time": "1:08:12",
+              "category": "Open · format row",
+              "event": "HYROX London",
+              "date": "Format",
+              "city": "London"
+            }
+          ]
+        },
+        "doubles-men": {
+          "label": "Men Doubles",
+          "results": [
+            {
+              "athlete": "Format pair",
+              "time": "1:01:44",
+              "category": "Open · format row",
+              "event": "HYROX Dublin",
+              "date": "Format",
+              "city": "Dublin"
+            }
+          ]
+        },
+        "doubles-mixed": {
+          "label": "Mixed Doubles",
+          "results": [
+            {
+              "athlete": "Format pair",
+              "time": "1:02:31",
+              "category": "Open · format row",
+              "event": "HYROX London",
+              "date": "Format",
+              "city": "London"
+            }
+          ]
+        },
+        "relay": {
+          "label": "Team Relay",
+          "results": [
+            {
+              "athlete": "Format relay team",
+              "time": "—",
+              "category": "Format row",
+              "event": "HYROX London",
+              "date": "Format",
+              "city": "London"
+            }
+          ]
+        }
+      }
+    },
+    "athletes.json": {
+      "note": "Athlete profile — Michele's verified race evidence, with format rows clearly labelled.",
+      "athletes": {
+        "Michele Wilder": {
+          "tag": "HYROX Head Judge, official coach and Hyrox Newbies founder.",
+          "races": [
+            {
+              "event": "HYROX Cardiff",
+              "date": "On record",
+              "division": "Women",
+              "time": "1:26:30",
+              "note": "Finish-board photo"
+            },
+            {
+              "event": "First HYROX race",
+              "date": "Her caption",
+              "division": "Solo",
+              "time": "1:23",
+              "note": "12 weeks after her coach told her to try HYROX — performance over aesthetics"
+            }
+          ]
+        }
+      }
+    },
+    "roundups.json": {
+      "note": "Race-weekend stories built from verified Michele race evidence.",
+      "items": [
+        {
+          "date": "",
+          "race": "HYROX Cardiff",
+          "weekend": "Race-floor photography",
+          "highlights": [
+            "Finish-board photo shows Michele at 1:26:30",
+            "Post-race pen and run-floor shots from the same weekend"
+          ],
+          "take": "A finish board is proof — but the photos around it are the story.",
+          "source": "https://www.instagram.com/michele_wilderfitness/",
+          "sourceName": "Michele Wilder on Instagram"
+        },
+        {
+          "date": "",
+          "race": "Perform crew weekend",
+          "weekend": "Her public caption, September",
+          "highlights": [
+            "Two podiums at Trycka",
+            "5-minute PB at the Deadly Dozen Doubles Championship",
+            "3-minute HYROX Doubles PB in Tenerife"
+          ],
+          "take": "Not coaching people to complete one race — building better athletes.",
+          "source": "https://www.instagram.com/michele_wilderfitness/",
+          "sourceName": "Michele Wilder on Instagram"
+        }
+      ]
+    },
+    "partners.json": {
+      "note": "Verified public routes from Michele's profiles — community and programme routes, not affiliate codes.",
+      "items": [
+        {
+          "id": "hyrox-newbies",
+          "name": "Hyrox Newbies",
+          "url": "https://coaches.hyrox.com/coach/michelewilder/",
+          "tagline": "70,000+ member community",
+          "slot": "partner",
+          "from": "2026-10-28",
+          "until": "2026-12-31"
+        },
+        {
+          "id": "wilder-fitness",
+          "name": "Wilder Fitness",
+          "url": "https://coaches.hyrox.com/coach/michelewilder/",
+          "tagline": "Coaching & Foundations",
+          "slot": "partner",
+          "from": "2026-10-28",
+          "until": "2026-12-31"
+        },
+        {
+          "id": "perform-crew",
+          "name": "PERFORM crew",
+          "url": "https://www.instagram.com/wilderfitnessuk/",
+          "tagline": "Michele's coached athletes",
+          "slot": "results",
+          "from": "2026-10-28",
+          "until": "2026-12-31"
+        }
+      ]
+    },
+    "links.json": {
+      "note": "External tools can be linked once Michele confirms the current client-login destination; empty strings keep provider links hidden in this preview.",
+      "truecoach": ""
+    }
+  },
+  "stripSections": [
+    "merch",
+    "stories"
+  ],
+  "stripBlocks": [
+    "tiktok-link",
+    "youtube-link"
+  ],
+  "copyOverrides": [
+    {
+      "pattern": "\"sameAs\": \\[\"{{IG_URL}}\", \"{{YOUTUBE_URL}}\", \"{{TIKTOK_URL}}\", \"{{THREADS_URL}}\"\\]",
+      "replace": "\"sameAs\": [\"{{IG_URL}}\", \"{{BRAND_IG_URL}}\", \"{{LINKTREE_URL}}\"]",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\. Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\. {{TAGLINE}}; the rest is reps\\.",
+      "replace": "Michele Wilder — HYROX Head Judge, official coach, founder of Hyrox Newbies (70k+). First race: 12 weeks of training, 1:23 finish.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<strong>{{PB_SOLO}}</strong><span>HYROX Pro Solo PB — {{PB_VENUE}}</span>",
+      "replace": "<strong>1:26:30</strong><span>HYROX Cardiff — Cardiff finish board</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<strong>{{PB_DOUBLES}}</strong><span>Pro Doubles — {{DOUBLES_VENUE}}, with {{DOUBLES_PARTNER}}</span>",
+      "replace": "<strong>Head Judge</strong><span>official HYROX race official at major events</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<strong>1:23</strong><span>Recorded half-marathon</span>",
+      "replace": "<strong>70k+</strong><span>Hyrox Newbies community</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{CITY}}, {{REGION}}\\. HYROX Pro athlete, coach and creator —[\\s\\S]*?the honest debriefs all go on the channel\\.",
+      "replace": "Maidstone, Kent — coaching online UK-wide. HYROX Head Judge, official coach and Hyrox Newbies founder: a clearer home for Michele's coaching, the beginner community, race tools and the PERFORM crew.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<p class=\"quote\">\\s*{{VOICE_ATHLETE_QUOTE}}\\s*</p>\\s*<ul>[\\s\\S]*?</ul>",
+      "replace": "<p class=\"quote\">{{VOICE_ATHLETE_QUOTE}}</p><ul><li>HYROX Head Judge and official coach — inside the sport, not just beside it.</li><li>Founded Hyrox Newbies, now 70,000+ members strong.</li><li>First HYROX in 1:23, twelve weeks after being told to try it.</li><li>Foundations: structured beginner training, no race ticket required.</li></ul>",
+      "flags": "g"
+    },
+    {
+      "pattern": "What {{COACH_FIRST}} sells: 1:1 coaching, group programmes on FITR, and the[\\s\\S]*?forms — no new inbox to check\\.",
+      "replace": "What Michele's site can do: keep the public race tools free, show the Foundations route clearly, give Hyrox Newbies a proper home and bring her coaching links out of the bio.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<span class=\"tag\">On FITR</span>",
+      "replace": "<span class=\"tag\">Foundations</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Structured blocks with the Hub cohort",
+      "replace": "Foundations — Michele's beginner programme",
+      "flags": "g"
+    },
+    {
+      "pattern": "Programmed blocks in the FITR app",
+      "replace": "Structured HYROX training, no race ticket needed",
+      "flags": "g"
+    },
+    {
+      "pattern": "Start with the cohort, progress through blocks",
+      "replace": "Start where you are, progress at your pace",
+      "flags": "g"
+    },
+    {
+      "pattern": "The same engine behind {{COACH_FIRST}}'s own season",
+      "replace": "Built by a coach who judges the sport",
+      "flags": "g"
+    },
+    {
+      "pattern": ">See programmes on FITR<",
+      "replace": ">View Wilder Fitness routes<",
+      "flags": "g"
+    },
+    {
+      "pattern": "Every route is {{COACH_FIRST}}'s official one — applications, programmes and the store\\. One tap out, nothing in between\\.",
+      "replace": "Every link goes to its real destination — the Wilder Fitness site, Foundations and the Hyrox Newbies community.",
+      "flags": "g"
+    },
+    {
+      "pattern": "training through pregnancy",
+      "replace": "training around real life",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} says",
+      "replace": "Coach notes",
+      "flags": "g"
+    },
+    {
+      "pattern": "Three things per station that {{COACH_FIRST}} actually does on race day — including the embarrassing ones\\.",
+      "replace": "Three practical checks per station — written by someone who judges the floor, not a spectator.",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} driving the sled, head-on — the station nobody enjoys\"",
+      "replace": "alt=\"Michele Wilder pulling a heavy sled rope during a HYROX race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} on the SkiErg at a Hyrox race\"",
+      "replace": "alt=\"Michele Wilder judging the wall balls at a HYROX event\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Two {{COACH_FIRST}} athletes racing side by side at Hyrox\"",
+      "replace": "alt=\"Michele Wilder and her running mate in matching race kit\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} and {{DOUBLES_PARTNER}} celebrating at the finish\"",
+      "replace": "alt=\"Michele Wilder with a Team HYROX athlete at the finish\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} in the black hoodie on a training run — {{BRAND}} 365 kit lands per drop\"",
+      "replace": "alt=\"Michele Wilder post-gym selfie\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} kerbside post-race — recovery starts before the next session\"",
+      "replace": "alt=\"Michele Wilder post-session flex selfie\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} mid-stride on the farmers carry — legs like this don't fuel themselves\"",
+      "replace": "alt=\"Farmers carry — HYROX stock reference, no faces\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} on the HYROX floor after the {{PB_VENUE}} PB\"",
+      "replace": "alt=\"Michele Wilder with a Team HYROX athlete at the finish\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} on the start line — flat expression, miles to go\"",
+      "replace": "alt=\"Michele Wilder in the crowded post-race pen\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} putting in treadmill miles between race blocks\"",
+      "replace": "alt=\"Gym equipment — stock reference, no faces\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} racing a half-marathon — {{PB_HALF}} on the day\"",
+      "replace": "alt=\"Michele Wilder with the HYROX Dublin event crew\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} walking into the arena ahead of a race\"",
+      "replace": "alt=\"HYROX arena crowd — stock reference, no faces\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} driving the sled in a HYROX Pro Doubles race in {{DOUBLES_VENUE}}\"",
+      "replace": "alt=\"Michele Wilder mid sled pull during a HYROX race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} mid burpee broad jump — arms up, eyes on the line\"",
+      "replace": "alt=\"Burpee broad-jump movement reference — stock\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} — HYROX Pro athlete and coach\"",
+      "replace": "alt=\"Michele Wilder — HYROX Head Judge and coach\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} — coaching\"",
+      "replace": "alt=\"Michele Wilder coaching in the gym\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Wall-ball movement reference\"",
+      "replace": "alt=\"Michele Wilder and Team HYROX under the Wall Balls arch\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"The post-race dance floor — Station 10 is non-negotiable for some\"",
+      "replace": "alt=\"Michele Wilder with the HYROX event crew after the race\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Track walk with the bottle — the taper is the training\"",
+      "replace": "alt=\"HYROX arena — stock reference, no faces\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "@{{SLUG}}fit",
+      "replace": "@michele_wilderfitness",
+      "flags": "g"
+    },
+    {
+      "pattern": "Visit the video channel",
+      "replace": "Open Michele's links",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore the podcast",
+      "replace": "Explore guides",
+      "flags": "g"
+    },
+    {
+      "pattern": "Podcast \\| {{BRAND}}",
+      "replace": "Guides | {{BRAND}}",
+      "flags": "g"
+    },
+    {
+      "pattern": "Catch a short interview clip, follow the full conversation and hear the stories around the sport\\. Teasers and full-episode links stay together\\.",
+      "replace": "Guide and conversation slots sit here without pretending Michele owns a channel. Hosted episodes and teasers can stay together.",
+      "flags": "g"
+    },
+    {
+      "pattern": "The brands {{COACH_FIRST}} actually trains in — codes, links and what they do\\.",
+      "replace": "Michele's verified community and programme routes — and what each one is for.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Protein, pre-workout, recovery — the fuel side of a heavy block\\.",
+      "replace": "The Wilder Fitness site — coaching routes and the Foundations programme.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Shop {{PARTNER_SUPP}} →",
+      "replace": "Open Wilder Fitness →",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{COACH_FIRST}}'s official one",
+      "replace": "Michele's official route",
+      "flags": "g"
+    },
+    {
+      "pattern": "your own clothing line",
+      "replace": "your own link hub",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"{{COACH_NAME}}'s home on the web: {{BRAND}} 1:1 coaching and group programmes, free race tools, the race-mate finder, vlogs and partner codes — all in one place\\.\"",
+      "replace": "content=\"Michele Wilder's home on the web: coaching routes, the Hyrox Newbies community, free race tools, the race-mate finder and verified links — all in one place.\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"{{COACH_NAME_LC}}, {{BRAND_SHORT}}, {{BRAND}}, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, {{REGION_LC}}shire hyrox\"",
+      "replace": "content=\"michele wilder, wilder fitness, hyrox coach, hyrox head judge, hyrox newbies, hyrox uk, hyrox coaching, race predictor, hyrox training plans, kent hyrox\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "\"keywords\": \"{{COACH_NAME_LC}}, {{BRAND_SHORT}}, {{BRAND}}, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, {{REGION_LC}}shire hyrox\"",
+      "replace": "\"keywords\": \"michele wilder, wilder fitness, hyrox coach, hyrox head judge, hyrox newbies, hyrox uk, hyrox coaching, race predictor, hyrox training plans, kent hyrox\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{CLOTHING_SHORT}} drops, coaching spots opening, race dates, the new vlog —[\\s\\S]*?one email when it matters, none when it doesn't\\.",
+      "replace": "Coaching routes, Foundations cohorts, race dates and community news — one email when it matters, none when it doesn't.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<option>{{BRAND}} 365 drops</option>",
+      "replace": "<option>Coaching and Foundations</option>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<option>Race dates &amp; vlogs</option>",
+      "replace": "<option>Race dates and community news</option>",
+      "flags": "g"
+    },
+    {
+      "pattern": "first news on {{BRAND}} 365 drops, coaching spots, race dates and the new vlog\\.",
+      "replace": "first news on coaching routes, Foundations cohorts, race dates and community updates.",
+      "flags": "g"
+    },
+    {
+      "pattern": "drops, race dates &amp; first news",
+      "replace": "race dates & community news",
+      "flags": "g"
+    },
+    {
+      "pattern": "FITR cohort — spring block",
+      "replace": "Foundations — next cohort",
+      "flags": "g"
+    },
+    {
+      "pattern": "FITR \\+ hosting \\+ editing apps",
+      "replace": "Coaching software + hosting + editing apps",
+      "flags": "g"
+    },
+    {
+      "pattern": "the Hub is here when you want the structured version\\.",
+      "replace": "Foundations is here when you want the structured version.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Stories, ideas and the collection\\.",
+      "replace": "Stories, tools and community links.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Read a race story, pick up a technique cue or explore the collection\\.",
+      "replace": "Read a race story, pick up a technique cue or join the Hyrox Newbies community.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<article class=\"showcase-card\"><h4>Shop</h4><p>Explore the collection and head straight to the store\\.</p><a class=\"btn btn-ghost\" href=\"/{{SLUG}}/shop\\.html\">Visit the shop</a></article>",
+      "replace": "<article class=\"showcase-card\"><h4>Community &amp; links</h4><p>Open Michele's verified programme and community routes.</p><a class=\"btn btn-ghost\" href=\"/{{SLUG}}/shop.html\">View links</a></article>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Browse the latest collection, find your next training programme and head straight to the store for the full range\\.",
+      "replace": "Open the Wilder Fitness site, Foundations details and the Hyrox Newbies community from one verified route.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Visit the store",
+      "replace": "Open all links",
+      "flags": "g"
+    },
+    {
+      "pattern": "Sample collection cards demonstrate the shop format; replace them with the coach's real products before publication\\.",
+      "replace": "Michele’s key routes in one place — coaching, community and official destinations.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Sample collection",
+      "replace": "Verified routes",
+      "flags": "g"
+    },
+    {
+      "pattern": "Apparel &amp; accessories",
+      "replace": "Michele's current links",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore the current collection and check the full range in the store\\.",
+      "replace": "Open the Wilder Fitness site, Foundations and community routes from one verified place.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Browse the store",
+      "replace": "Open links",
+      "flags": "g"
+    },
+    {
+      "pattern": "HYROX Pro athlete, coach & creator",
+      "replace": "HYROX Head Judge, coach & community founder",
+      "flags": "g"
+    },
+    {
+      "pattern": "HYROX Pro athlete, coach and creator",
+      "replace": "HYROX Head Judge, coach and community founder",
+      "flags": "g"
+    },
+    {
+      "pattern": "HYROX Pro athlete, coach, part-time metronome\\.",
+      "replace": "HYROX Head Judge, coach and Hyrox Newbies founder.",
+      "flags": "g"
+    },
+    {
+      "pattern": "href=\"/{{SLUG}}/shop\\.html\">Shop",
+      "replace": "href=\"/{{SLUG}}/shop.html\">Links",
+      "flags": "g"
+    },
+    {
+      "pattern": "href=\"/{{SLUG}}/podcast\\.html\">Podcast",
+      "replace": "href=\"/{{SLUG}}/podcast.html\">Guides",
+      "flags": "g"
+    },
+    {
+      "pattern": "Shop \\| Paul Gillingham",
+      "replace": "Links &amp; offers | Michele Wilder",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore the collection and training offers from Paul Gillingham\\.",
+      "replace": "Open Michele Wilder's verified coaching, programme and community links.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore <em>the collection\\.</em>",
+      "replace": "Open <em>Michele's links.</em>",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"Collection photography\"",
+      "replace": "alt=\"Michele Wilder and the HYROX crew\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "the\\s+Hub is here when you want the structured version\\.",
+      "replace": "Foundations is here when you want the structured version.",
+      "flags": "g"
+    },
+    {
+      "pattern": "United Kingdom halls get warm\\.",
+      "replace": "HYROX halls get warm.",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"Coach with Paul Gillingham: Paul Gillingham 1:1 coaching by application, group programmes on FITR, and the Paul Gillingham 365 clothing line\\. Applications go through the existing forms\\.\"",
+      "replace": "content=\"Coach with Michele Wilder: Foundations for beginners, coaching routes via Wilder Fitness, and the 70,000-strong Hyrox Newbies community.\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "By Paul — HYROX Pro athlete, coach, occasional matchmaker\\.",
+      "replace": "By Michele — HYROX Head Judge, coach and community matchmaker.",
+      "flags": "g"
+    },
+    {
+      "pattern": "By Paul — HYROX Group Coach, podium athlete, United Kingdom personal\\s+trainer\\.",
+      "replace": "By Michele — HYROX Head Judge, coach and Hyrox Newbies founder.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<h4>Paul's cue</h4>",
+      "replace": "<h4>Coach cue</h4>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<p class=\"eyebrow reveal\">The Paul Gillingham</p>",
+      "replace": "<p class=\"eyebrow reveal\">Coaching routes</p>",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"GB-WOR\"",
+      "replace": "content=\"GB-KEN\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "By Paul — HYROX Group Coach, pro athlete, head of the table\\.",
+      "replace": "By Michele — HYROX Head Judge, coach and crew regular.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Wherever there's an British flag in the results",
+      "replace": "Wherever there's a British flag in the results",
+      "flags": "g"
+    },
+    {
+      "pattern": "Only Paul sees this",
+      "replace": "Private to the site owner in a live setup",
+      "flags": "g"
+    },
+    {
+      "pattern": "message Paul on WhatsApp\\.",
+      "replace": "use Michele's verified routes — the Wilder Fitness site or Instagram.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul books for the numbers confirmed",
+      "replace": "The crew organiser books for the numbers confirmed",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul's read on every UK &amp; Ireland weekend where British athletes[\\s\\S]*?raced\\. Newest first\\.",
+      "replace": "Race-weekend results and race-floor photography, newest first.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Captions from Paul to follow\\.",
+      "replace": "Race-floor photography and Michele’s public captions.",
+      "flags": "g"
+    },
+    {
+      "pattern": "This board is built by hand from public official results, so[\\s\\S]*?spellings and nationalities occasionally slip\\.",
+      "replace": "The board is built from verified race evidence, with corrections easy to send in.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Someone asks for the intro\\.</b> They tap your card, Paul[\\s\\S]*?connects you both on WhatsApp, and from there it's between you and[\\s\\S]*?the RoxZone\\.",
+      "replace": "Someone asks for the intro.</b> They tap your card, the coach connects you through the chosen private route, and from there it's between you and the RoxZone.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul checks every post\\.",
+      "replace": "The coach checks every post.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul reads every card personally\\.",
+      "replace": "The owner reviews every card personally.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul\\s+Warriors",
+      "replace": "Hyrox Newbies",
+      "flags": "g"
+    },
+    {
+      "pattern": "Team Paul Gillingham",
+      "replace": "PERFORM crew",
+      "flags": "g"
+    },
+    {
+      "pattern": "Quarterly United Kingdom meetup and race-weekend dinners for British Hyrox athletes, participants and the curious — followed by optional dancing\\.",
+      "replace": "A race-weekend meetup format for HYROX athletes, partners, supporters and the curious — the social side shown as a site capability.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Home edition — United Kingdom, every three months\\.",
+      "replace": "Home edition — a UK race-crew meetup format.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Every three months — the next venue gets picked soon\\.",
+      "replace": "A race-crew meetup format — the next venue is announced when confirmed.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul books the table for the RSVPs in\\.",
+      "replace": "The organiser books the table for confirmed RSVPs.",
+      "flags": "g"
+    },
+    {
+      "pattern": "only Paul sees\\s+them on the private desk\\.",
+      "replace": "only the site owner sees them in the private workflow.",
+      "flags": "g"
+    },
+    {
+      "pattern": "crew broadcast list",
+      "replace": "private crew channel",
+      "flags": "g"
+    },
+    {
+      "pattern": "See subscriptions",
+      "replace": "See coaching options",
+      "flags": "g"
+    },
+    {
+      "pattern": ">Subscriptions<",
+      "replace": ">Coaching<",
+      "flags": "g"
+    },
+    {
+      "pattern": "Warriors Wall",
+      "replace": "Newbies Wall",
+      "flags": "g"
+    },
+    {
+      "pattern": "Rookie Crew",
+      "replace": "Hyrox Newbies",
+      "flags": "g"
+    },
+    {
+      "pattern": "Warrior Program",
+      "replace": "Foundations",
+      "flags": "g"
+    },
+    {
+      "pattern": "Hybrid Coaching",
+      "replace": "Coaching routes",
+      "flags": "g"
+    },
+    {
+      "pattern": "You've never raced and you're in United Kingdom — that's exactly who the Race Crew is for: a weekly group session at your own pace, and a crew that grows as people join\\. No experience needed\\.",
+      "replace": "Never raced? Michele's whole model is built for you — Foundations training before you've even booked a race, backed by the Hyrox Newbies community.",
+      "flags": "g"
+    },
+    {
+      "pattern": "You're in United Kingdom, so two floor sessions a month with Paul fix the technical stations while the program does the conditioning week to week\\.",
+      "replace": "UK racers start with Foundations or the Wilder Fitness routes — a plan built around kit access, schedule and where you actually are.",
+      "flags": "g"
+    },
+    {
+      "pattern": "The Paul program — built for your level — with structured[\\s\\S]*?Workouts you can do anywhere, monthly progress check-ins, and nutrition guidance\\.",
+      "replace": "Foundations — structured HYROX training for people who haven't booked a race yet, plus coaching routes for athletes who want more.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Structured weekly programme with station library and monthly Q&A",
+      "replace": "Foundations — an eight-week structured start, no race ticket required",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul programmes around your stage and checks your form on video each week; tell her in the notes where you are and she'll adjust\\.",
+      "replace": "Michele's routes start with context — where you're starting, what kit you have and what your week actually looks like.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Training through pregnancy or a comeback is exactly where Paul's own experience counts — floor time for form checks plus weekly video review\\.",
+      "replace": "Training through pregnancy or a comeback needs individual clearance and planning — the coaching route is the right place to start.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Thanks — Paul has your details and will reply with a plan\\. Coached athletes get their programme in the TrueCoach app\\.",
+      "replace": "Thanks — the route is connected here. The live version would send these details to Michele's chosen inbox.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Couldn't send just now\\. DM @paulgillinghamwarriors on Instagram instead\\.",
+      "replace": "Couldn't send just now — use the Wilder Fitness site or Instagram instead.",
+      "flags": "g"
+    },
+    {
+      "pattern": "send Paul a message below and she'll set you up",
+      "replace": "use Michele's verified links below",
+      "flags": "g"
+    },
+    {
+      "pattern": "Couldn't save that just now — your email still went through\\.",
+      "replace": "Couldn't save that just now — use the Wilder Fitness route.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Halo Paul! I saw",
+      "replace": "Hi Michele — I saw",
+      "flags": "g"
+    },
+    {
+      "pattern": "once Paul approves them on her desk",
+      "replace": "once the site owner approves them in the private workflow",
+      "flags": "g"
+    },
+    {
+      "pattern": "Got it — your card is on Paul's desk\\. She lists every approved card herself, so give her a day or two\\.",
+      "replace": "Got it — your card is queued for review. Approved cards are listed after the owner checks them.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Got it — private card sent\\. Paul will reach out if she spots a match for you\\.",
+      "replace": "Got it — private card sent. The coach can reach out if there is a match for you.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Got it — your trip is on Paul's desk\\. She lists every approved one herself, so give her a day or two\\.",
+      "replace": "Got it — your trip is queued for review. Approved trips are listed after the owner checks them.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Got it — private trip sent\\. Paul will reach out if someone matches your plans\\.",
+      "replace": "Got it — private trip sent. The coach can reach out if someone matches your plans.",
+      "flags": "g"
+    },
+    {
+      "pattern": "message Paul directly on WhatsApp\\.",
+      "replace": "use Michele's verified routes — the Wilder Fitness site or Instagram.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul sees these real numbers on her desk\\.",
+      "replace": "Saved numbers appear in the coach's private review workflow.",
+      "flags": "g"
+    },
+    {
+      "pattern": "split card's with Paul\\. If the number needs talking through, she'll know where to find you\\.",
+      "replace": "split card is with the coach. If the number needs talking through, they can follow up.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Got it — photo and caption on Paul's desk\\. It goes up once she's had a look\\.",
+      "replace": "Got it — photo and caption are queued for review. They go up after approval.",
+      "flags": "g"
+    },
+    {
+      "pattern": "send the photo and caption to Paul on Instagram \\(@paulgillingham_\\) and she'll put it up\\.",
+      "replace": "send the photo and caption to Michele on Instagram (@michele_wilderfitness) for review.",
+      "flags": "g"
+    },
+    {
+      "pattern": "a photo for the Warriors Wall\\.",
+      "replace": "a photo for the Newbies Wall.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul has done it himself — 2005 to 1:05 in a season\\.",
+      "replace": "Michele's own first HYROX came twelve weeks after her coach said try it — 1:23, and a switch to performance over aesthetics.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Spots limited",
+      "replace": "Cohort route",
+      "flags": "g"
+    },
+    {
+      "pattern": "Tell Paul where you are starting and where you want to go",
+      "replace": "The routes ask where they start and where they want to go",
+      "flags": "g"
+    },
+    {
+      "pattern": "Programme built around your life and race calendar",
+      "replace": "Show how coaching adapts to life and the race calendar",
+      "flags": "g"
+    },
+    {
+      "pattern": "Weekly check-ins and video form review",
+      "replace": "Set out check-in and form-review expectations",
+      "flags": "g"
+    },
+    {
+      "pattern": "Pacing, stations, race plan — built to a number",
+      "replace": "Explain pacing, stations and the target race plan",
+      "flags": "g"
+    },
+    {
+      "pattern": "Direct line to Paul between sessions",
+      "replace": "Make the coaching contact route clear before someone applies",
+      "flags": "g"
+    },
+    {
+      "pattern": "Leave your email and your question\\. Paul reads them personally — and\\s*you'll be first to hear when cohorts open\\.",
+      "replace": "Leave your email and your question. Leave your email and your question — Michele will point you to the right next step.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Leave your email and your question\\. Paul reads them personally — and you'll be first to hear when cohorts open\\.",
+      "replace": "Leave your email and your question. Leave your email and your question — Michele will point you to the right next step.",
+      "flags": "g"
+    },
+    {
+      "pattern": "The coaching arm\\.",
+      "replace": "Coaching, without the gatekeeping.",
+      "flags": "g"
+    },
+    {
+      "pattern": "an British",
+      "replace": "a British",
+      "flags": "g"
+    },
+    {
+      "pattern": "The Paul program includes",
+      "replace": "Michele's coaching routes include",
+      "flags": "g"
+    },
+    {
+      "pattern": "one program —",
+      "replace": "one programme —",
+      "flags": "g"
+    },
+    {
+      "pattern": "the program does",
+      "replace": "the programme does",
+      "flags": "g"
+    },
+    {
+      "pattern": "The Paul program, not PDF fragments",
+      "replace": "A coherent coaching programme, not PDF fragments",
+      "flags": "g"
+    },
+    {
+      "pattern": "Paul's whole program",
+      "replace": "Michele's whole programme",
+      "flags": "g"
+    },
+    {
+      "pattern": "March drop — first weekend",
+      "replace": "Community update — walkthrough row",
+      "flags": "g"
+    },
+    {
+      "pattern": "Clothing \\(Partner offers\\)",
+      "replace": "Partner offers",
+      "flags": "g"
+    },
+    {
+      "pattern": "The Paul\\s+program includes swaps for whatever your gym has\\.",
+      "replace": "The coaching route can explain swaps for whatever your gym has.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Your email and WhatsApp go only to Paul, who makes intros himself\\.",
+      "replace": "Your email and contact details stay private; the owner reviews and makes introductions through the chosen route.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Someone sees your card and asks Paul for an intro over WhatsApp\\. If it fits — pace, format, race — you're connected\\. Paul races this circuit and knows who'd actually suit you\\.",
+      "replace": "Someone sees your card and asks the owner for an intro. If it fits — pace, format, race — you're connected through the chosen private route.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Start the Program",
+      "replace": "View Foundations",
+      "flags": "g"
+    },
+    {
+      "pattern": "Elite Race Prep",
+      "replace": "Individual race build",
+      "flags": "g"
+    },
+    {
+      "pattern": "Enquire about Elite",
+      "replace": "Apply for coaching",
+      "flags": "g"
+    },
+    {
+      "pattern": "\\/london\\|jkt\\|tangerang\\|bekasi\\|depok\\|bogor\\/i",
+      "replace": "/maidstone|kent|london|uk|united kingdom/i",
+      "flags": "g"
+    },
+    {
+      "pattern": "You're in United Kingdom, so two floor sessions a month with Paul fix the station technique that costs first-timers and PB-chasers the most time\\.",
+      "replace": "UK racers start with Foundations or the Wilder Fitness routes — a plan built around kit access, schedule and where you actually are.",
+      "flags": "g"
+    },
+    {
+      "pattern": "A structured weekly programme with the station library and monthly Q&A covers your goal — and Paul can move you to 1:1 coaching any time\\.",
+      "replace": "Foundations covers the goal, with Michele's coaching routes available if personal coaching is the right fit.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<div class=\"price\">Paul Gillingham</div>\\s*<div class=\"per\">Paul's existing public plans via Rox Lyfe</div>",
+      "replace": "<div class=\"price\">Foundations</div><div class=\"per\">Michele's beginner programme via Wilder Fitness</div>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Application route — Paul reviews every application",
+      "replace": "Cohort route — Foundations enrols through Wilder Fitness",
+      "flags": "g"
+    },
+    {
+      "pattern": "<span class=\"tag\">Application only</span>",
+      "replace": "<span class=\"tag\">Beginners</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Athlete login \\(TrueCoach\\)",
+      "replace": "Athlete login",
+      "flags": "g"
+    },
+    {
+      "pattern": "all 8 stations explained \\(women's weights, pacing,\\s*technique\\)",
+      "replace": "all 8 stations explained — division standards, pacing and technique",
+      "flags": "g"
+    },
+    {
+      "pattern": "with women's Open and Pro standards, pacing targets and the technique cues Paul coaches in United Kingdom\\.",
+      "replace": "with division-aware standards, pacing targets and the technique cues Michele judges on race weekends.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Women's Open and Pro standards, pacing targets and technique cues for every Hyrox station\\.",
+      "replace": "Division-aware standards, pacing targets and technique cues for every Hyrox station.",
+      "flags": "g"
+    },
+    {
+      "pattern": "How heavy is the sled for women in Hyrox\\?",
+      "replace": "How heavy is the sled in Hyrox?",
+      "flags": "g"
+    },
+    {
+      "pattern": "Women's Open sled push is 102 kg including the sled and sled pull is 78 kg\\. Women's Pro is 152 kg push and 103 kg pull\\. Always confirm against the current season's rulebook on hyrox\\.com\\.",
+      "replace": "Sled loads vary by division and season. Always confirm the current rulebook on hyrox.com before race day.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Women's Open and Pro standards, the pace you should hold, and the\\s*one cue that fixes each station\\. Written from the floor in United Kingdom,\\s*not from a rulebook\\.",
+      "replace": "Division-aware standards, the pace to hold, and the one cue that fixes each station. Written from the race floor, not copied from a rulebook.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Standards below are the women's\\s*divisions as published in recent seasons — check the current\\s*rulebook on hyrox\\.com before race day, weights do get revised\\.",
+      "replace": "Standards vary by division and season — check the current rulebook on hyrox.com before race day; weights and targets do get revised.",
+      "flags": "g"
+    },
+    {
+      "pattern": "4:15–5:00 for most women's Open",
+      "replace": "4:15–5:00 for a controlled first-station effort",
+      "flags": "g"
+    },
+    {
+      "pattern": "4:30–5:15 for most women's Open",
+      "replace": "4:30–5:15 for a controlled middle-station effort",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>102 kg incl\\. sled</li>",
+      "replace": "<li><strong>Load</strong>Division-specific — confirm current rules</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Pro</strong>152 kg incl\\. sled</li>",
+      "replace": "<li><strong>Format</strong>4 × 12.5 m</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>78 kg incl\\. sled</li>",
+      "replace": "<li><strong>Load</strong>Division-specific — confirm current rules</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Pro</strong>103 kg incl\\. sled</li>",
+      "replace": "<li><strong>Format</strong>4 × 12.5 m</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>2 × 16 kg kettlebells</li>",
+      "replace": "<li><strong>Load</strong>Division-specific competition kettlebells</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Pro</strong>2 × 24 kg kettlebells</li>",
+      "replace": "<li><strong>Distance</strong>200 m</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>10 kg sandbag on shoulders</li>",
+      "replace": "<li><strong>Load</strong>Division-specific sandbag on shoulders</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Pro</strong>20 kg sandbag on shoulders</li>",
+      "replace": "<li><strong>Distance</strong>100 m</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>75 reps · 4 kg · 2\\.7 m target</li>",
+      "replace": "<li><strong>Format</strong>Division-specific reps, ball and target</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li><strong>Women Pro</strong>100 reps · 6 kg · 2\\.7 m target</li>",
+      "replace": "<li><strong>Check</strong>Confirm the current rulebook before race day</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "The single most useful Hyrox lift\\s*for women\\.",
+      "replace": "The single most useful HYROX lift in this block.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Women's Open: 102 kg push, 78 kg pull \\(including the sled\\)\\. Women's\\s*Pro: 152 kg push, 103 kg pull\\. Check the current season's rulebook\\s*before you race\\.",
+      "replace": "Loads vary by division and season. Check the current rulebook before you race.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<option value=\"open\" selected>Women Open</option>",
+      "replace": "<option value=\"open\" selected>Open pace</option>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<option value=\"pro\">Women Pro</option>",
+      "replace": "<option value=\"pro\">Faster pace</option>",
+      "flags": "g"
+    },
+    {
+      "pattern": "blocks use typical women's splits at each level\\.",
+      "replace": "blocks use typical Open and faster splits at each level.",
+      "flags": "g"
+    },
+    {
+      "pattern": "fab\\.innerHTML =\\s*'<svg[\\s\\S]*?<span>Message Paul<\\/span>';",
+      "replace": "fab.innerHTML = '<span>Message Michele</span>';",
+      "flags": "g"
+    },
+    {
+      "pattern": "Michele\\s+Warriors",
+      "replace": "Hyrox Newbies",
+      "flags": "g"
+    },
+    {
+      "pattern": "@michelewilderwarriors",
+      "replace": "@michele_wilderfitness",
+      "flags": "g"
+    },
+    {
+      "pattern": "warriors_wall",
+      "replace": "newbies_wall",
+      "flags": "g"
+    },
+    {
+      "pattern": "michelewilder-plan-warrior-",
+      "replace": "michelewilder-plan-",
+      "flags": "g"
+    },
+    {
+      "pattern": "with women's Open and Pro standards, pacing targets and the technique cues Michele coaches in United Kingdom\\.",
+      "replace": "with division-aware standards, pacing targets and the technique cues Michele judges on race weekends.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Wilder Fitness 1:1 coaching by application, group programmes on FITR, and the Wilder Fitness 365 clothing line\\. Applications go through the existing forms\\.",
+      "replace": "Foundations beginner training, coaching routes via Wilder Fitness, and the 70,000-strong Hyrox Newbies community.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Wilder Fitness 1:1, group programmes &amp; Partner offers",
+      "replace": "Foundations, coaching routes &amp; community",
+      "flags": "g"
+    },
+    {
+      "pattern": "group programmes on FITR",
+      "replace": "Foundations beginner programme",
+      "flags": "g"
+    },
+    {
+      "pattern": "the {{BRAND}} 365 clothing line",
+      "replace": "the Hyrox Newbies community",
+      "flags": "g"
+    },
+    {
+      "pattern": "<figure class=\"art-photo\">\\s*<img\\s*src=\"/{{SLUG}}/images/momentum\\.jpg\\?v=\\d+\"[\\s\\S]*?</figure>",
+      "replace": "<figure class=\"art-photo taper-rocks-photo\"><img src=\"/{{SLUG}}/images/momentum.jpg\" alt=\"Michele taking a relaxed outdoor recovery walk among red rocks\" width=\"859\" height=\"1024\" loading=\"lazy\" /><figcaption>Keep moving, but let the volume come down.</figcaption></figure>",
+      "flags": "g"
+    },
+    {
+      "pattern": "(<article class=\"station reveal\" id=\"sleep\">[\\s\\S]*?</article>)\\s*<article class=\"station reveal\" id=\"checklist\">",
+      "replace": "$1\n\n<figure class=\"art-photo taper-venue-photo\"><img src=\"/{{SLUG}}/images/taper-venue-walkthrough.jpg\" alt=\"Michele outside the Principality Stadium before a race weekend\" width=\"936\" height=\"1024\" loading=\"lazy\" /><figcaption>Do the venue admin early — then get back off your feet.</figcaption></figure>\n\n<article class=\"station reveal\" id=\"checklist\">",
+      "flags": "g"
+    }
+  ],
+  "colors": {
+    "zoneAccent": "#be123c"
+  },
+  "omitImageSlots": [
+    "images/avatar.jpg",
+    "images/bike.jpg",
+    "images/carry.jpg",
+    "images/detail.jpg",
+    "images/finish.jpg",
+    "images/gallery/dinner-template.jpg",
+    "images/hoodie.jpg",
+    "images/kerb.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/race-pair.jpg",
+    "images/race-revel.jpg",
+    "images/rooftop.jpg",
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/sprint.jpg",
+    "images/station-lean.jpg",
+    "images/taper-hero.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg"
+  ],
+  "brandingNote": "Wordmark WILDER FITNESS from @wilderfitnessuk. SIG drops the surname already in the mark."
+}

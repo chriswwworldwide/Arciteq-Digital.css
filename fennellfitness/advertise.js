@@ -51,7 +51,7 @@
   function render() {
     if (!products.length) {
       list.innerHTML =
-        '<li class="event"><time>Soon</time><div><p>Slots aren\u2019t open yet \u2014 message Dan and she\u2019ll set you up by hand.</p></div></li>';
+        '<li class="event"><time>Soon</time><div><p>Slots aren\u2019t open yet \u2014 message Dan and he\u2019ll set you up by hand.</p></div></li>';
       return;
     }
     list.innerHTML = products
@@ -172,8 +172,8 @@
       note.classList.add("error");
       note.textContent =
         (detailsSaved
-          ? "Couldn\u2019t start checkout \u2014 your details are saved; message Dan and she\u2019ll finish it by hand. ("
-          : "Couldn\u2019t send your details \u2014 message Dan directly and she\u2019ll set it up by hand. (") +
+          ? "Couldn\u2019t start checkout \u2014 your details are saved; message Dan and he\u2019ll finish it by hand. ("
+          : "Couldn\u2019t send your details \u2014 message Dan directly and he\u2019ll set it up by hand. (") +
         String(err && err.message ? err.message : "error") +
         ")";
       if (btn) btn.disabled = false;

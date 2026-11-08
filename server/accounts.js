@@ -53,7 +53,8 @@ export const METHODS = [
 
 const isoDate = (v) => /^\d{4}-\d{2}-\d{2}$/.test(String(v || ""));
 // submissions.id is a uuid.
-const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const clean = (v, max) => {
   const s = String(v ?? "").trim();
   return s ? s.slice(0, max) : null;
@@ -66,16 +67,18 @@ export function validateEntry(body, { currency }) {
     return { error: "direction must be income or expense" };
   }
   const direction = b.direction;
-  const allowed = direction === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
+  const allowed =
+    direction === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
   if (!allowed.includes(b.category)) return { error: "invalid category" };
   if (!isoDate(b.entry_date)) return { error: "entry_date must be YYYY-MM-DD" };
   const amount = Math.round(Number(b.amount_minor));
   if (!Number.isFinite(amount) || amount <= 0) {
     return { error: "amount must be more than zero" };
   }
-  const tax = b.tax_minor === undefined || b.tax_minor === null || b.tax_minor === ""
-    ? 0
-    : Math.round(Number(b.tax_minor));
+  const tax =
+    b.tax_minor === undefined || b.tax_minor === null || b.tax_minor === ""
+      ? 0
+      : Math.round(Number(b.tax_minor));
   if (!Number.isFinite(tax) || tax < 0 || tax > amount) {
     return { error: "tax must be between zero and the amount" };
   }
@@ -115,7 +118,10 @@ export function csvCell(value) {
 
 // Column choices from the review screen: whole numbers ≥ -1 only.
 function sanitiseMapping(m) {
-  const col = (v) => (Number.isInteger(Number(v)) && Number(v) >= -1 && Number(v) < 200 ? Number(v) : -1);
+  const col = (v) =>
+    Number.isInteger(Number(v)) && Number(v) >= -1 && Number(v) < 200
+      ? Number(v)
+      : -1;
   return {
     date: col(m.date),
     description: col(m.description),
@@ -126,11 +132,14 @@ function sanitiseMapping(m) {
   };
 }
 
-const daysBetween = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
+const daysBetween = (a, b) =>
+  Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
 
 const majorUnits = (minor, currency) => {
   const n = Number(minor || 0) / 100;
-  return String(currency).toLowerCase() === "idr" ? String(Math.round(n)) : n.toFixed(2);
+  return String(currency).toLowerCase() === "idr"
+    ? String(Math.round(n))
+    : n.toFixed(2);
 };
 
 // Record-keeping picture for the Money page: which years can be downloaded,
@@ -140,10 +149,16 @@ export function recordsInfo({ country, firstDate, today, exports }) {
   const nowYear = Number(today.slice(0, 4));
   const firstYear = firstDate ? Number(String(firstDate).slice(0, 4)) : nowYear;
   const years = [];
-  for (let y = nowYear; y >= Math.min(firstYear, nowYear); y -= 1) years.push(y);
+  for (let y = nowYear; y >= Math.min(firstYear, nowYear); y -= 1)
+    years.push(y);
 
   const covered = (from, to) =>
-    exports.some((e) => e.role === "coach" && String(e.period_from) <= from && String(e.period_to) >= to);
+    exports.some(
+      (e) =>
+        e.role === "coach" &&
+        String(e.period_from) <= from &&
+        String(e.period_to) >= to,
+    );
 
   let lastPeriod = null;
   let retention = null;
@@ -170,17 +185,24 @@ export function recordsInfo({ country, firstDate, today, exports }) {
       sources: RETENTION_RULES.GB.sources,
     };
   }
-  const hadRecords = Boolean(firstDate) && lastPeriod && String(firstDate) <= lastPeriod.to;
+  const hadRecords =
+    Boolean(firstDate) && lastPeriod && String(firstDate) <= lastPeriod.to;
   return {
     first_date: firstDate || null,
     years,
     retention,
     last_period: lastPeriod,
-    needs_saving: Boolean(hadRecords && !covered(lastPeriod.from, lastPeriod.to)),
+    needs_saving: Boolean(
+      hadRecords && !covered(lastPeriod.from, lastPeriod.to),
+    ),
   };
 }
 
-export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables }) {
+export function createAccountsRouter({
+  dbQuery,
+  requireDeskAccess,
+  ensureTables,
+}) {
   const router = express.Router();
 
   async function firstRecordDate(tenantId, currency) {
@@ -197,10 +219,11 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
   // Every route: resolve the caller's site, never trust a client tenant.
   const withAccess = (handler) => async (req, res) => {
     try {
-      await ensureTables();
       const access = await requireDeskAccess(req, res);
       if (!access) return undefined;
+      await ensureTables();
       res.setHeader("X-Robots-Tag", "noindex");
+      res.setHeader("Cache-Control", "no-store, private");
       const tenantId = String(access.tenant.tenant_id);
       const profile = accountingProfile(access.tenant);
       return await handler(req, res, { ...access, tenantId, profile });
@@ -311,7 +334,11 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
       }));
       const siteSalesTotal = months.reduce((s, m) => s + m.siteSales, 0);
       if (siteSalesTotal) {
-        categories.push({ direction: "income", category: "site_sales", amount: siteSalesTotal });
+        categories.push({
+          direction: "income",
+          category: "site_sales",
+          amount: siteSalesTotal,
+        });
       }
       const totals = months.reduce(
         (t, m) => ({
@@ -321,7 +348,10 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
         { income: 0, expense: 0 },
       );
 
-      let tax = { country: profile.country || null, checked: TAX_RULES_CHECKED };
+      let tax = {
+        country: profile.country || null,
+        checked: TAX_RULES_CHECKED,
+      };
       if (profile.country === "ID") {
         tax = {
           ...tax,
@@ -337,8 +367,12 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
         };
       } else if (profile.country === "GB") {
         const ty = ukTaxYear(nowIso);
-        const rollingFrom = new Date(Date.now() - 365 * 864e5).toISOString().slice(0, 10);
-        const tomorrow = new Date(Date.now() + 864e5).toISOString().slice(0, 10);
+        const rollingFrom = new Date(Date.now() - 365 * 864e5)
+          .toISOString()
+          .slice(0, 10);
+        const tomorrow = new Date(Date.now() + 864e5)
+          .toISOString()
+          .slice(0, 10);
         const [rolling, taxYear] = await Promise.all([
           totalsBetween(tenantId, cur, rollingFrom, tomorrow),
           totalsBetween(tenantId, cur, ty.start, tomorrow),
@@ -379,12 +413,13 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
           country: profile.country,
           firstDate: await firstRecordDate(tenantId, cur),
           today: nowIso,
-          exports: (
-            await dbQuery(
-              "SELECT to_char(period_from, 'YYYY-MM-DD') AS period_from, to_char(period_to, 'YYYY-MM-DD') AS period_to, role FROM ledger_exports WHERE tenant_id = $1 ORDER BY created_at DESC LIMIT 200",
-              [tenantId],
-            )
-          ).rows || [],
+          exports:
+            (
+              await dbQuery(
+                "SELECT to_char(period_from, 'YYYY-MM-DD') AS period_from, to_char(period_to, 'YYYY-MM-DD') AS period_to, role FROM ledger_exports WHERE tenant_id = $1 ORDER BY created_at DESC LIMIT 200",
+                [tenantId],
+              )
+            ).rows || [],
         }),
         tax,
       });
@@ -416,7 +451,11 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
          LIMIT $5`,
         [tenantId, profile.currency, from, to, limit],
       );
-      return res.json({ ok: true, currency: profile.currency, entries: result.rows });
+      return res.json({
+        ok: true,
+        currency: profile.currency,
+        entries: result.rows,
+      });
     }),
   );
 
@@ -432,8 +471,17 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
             amount_minor, tax_minor, currency, method, reference, source)
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'manual') RETURNING id`,
         [
-          tenantId, e.entry_date, e.direction, e.category, e.description, e.counterparty,
-          e.amount_minor, e.tax_minor, e.currency, e.method, e.reference,
+          tenantId,
+          e.entry_date,
+          e.direction,
+          e.category,
+          e.description,
+          e.counterparty,
+          e.amount_minor,
+          e.tax_minor,
+          e.currency,
+          e.method,
+          e.reference,
         ],
       );
       return res.json({ ok: true, id: result.rows?.[0]?.id });
@@ -444,7 +492,8 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
     "/desk/accounts/entries/:id/void",
     withAccess(async (req, res, { tenantId }) => {
       const id = Number(req.params.id);
-      if (!Number.isInteger(id)) return res.status(400).json({ error: "bad id" });
+      if (!Number.isInteger(id))
+        return res.status(400).json({ error: "bad id" });
       const reason = clean(req.body?.reason, 200) || "voided";
       const voided = await dbQuery(
         `UPDATE ledger_entries SET voided_at = now(), void_reason = $3
@@ -521,11 +570,14 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
       if (decision === "dismiss") return res.json({ ok: true });
 
       const p = s.payload && typeof s.payload === "object" ? s.payload : {};
-      const amount = Math.round(Number(req.body?.amount_minor)) || reservationAmountMinor(p);
+      const amount =
+        Math.round(Number(req.body?.amount_minor)) || reservationAmountMinor(p);
       const date = isoDate(req.body?.entry_date)
         ? req.body.entry_date
         : new Date().toISOString().slice(0, 10);
-      const method = METHODS.includes(req.body?.method) ? req.body.method : "bank_transfer";
+      const method = METHODS.includes(req.body?.method)
+        ? req.body.method
+        : "bank_transfer";
       if (!amount || amount <= 0) {
         await dbQuery(
           "DELETE FROM submission_reviews WHERE tenant_id = $1 AND submission_id = $2",
@@ -573,9 +625,13 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
   async function analyseImport({ tenantId, csv, mapping, order }) {
     const text = String(csv || "");
     if (!text.trim()) return { error: "Choose a CSV file first." };
-    if (text.length > 1_800_000) return { error: "That file is too big — export a shorter date range." };
+    if (text.length > 1_800_000)
+      return { error: "That file is too big — export a shorter date range." };
     const built = buildImportRows(text, {
-      mapping: mapping && typeof mapping === "object" ? sanitiseMapping(mapping) : undefined,
+      mapping:
+        mapping && typeof mapping === "object"
+          ? sanitiseMapping(mapping)
+          : undefined,
       order: order === "mdy" || order === "dmy" ? order : undefined,
     });
     if (built.error) return built;
@@ -607,7 +663,9 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
         [tenantId],
       ),
     ]);
-    const importedSet = new Set((imported.rows || []).map((r) => r.import_hash));
+    const importedSet = new Set(
+      (imported.rows || []).map((r) => r.import_hash),
+    );
     const manualCounts = new Map();
     for (const m of manual.rows || []) {
       const k = `${m.entry_date}|${m.direction}|${m.amount_minor}`;
@@ -642,10 +700,15 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
       if (r.direction === "income" && status !== "already_imported") {
         const desc = r.description.toLowerCase();
         const sameAmount = reservations.filter(
-          (x) => !usedReservations.has(x.id) && x.amount_minor === r.amount_minor,
+          (x) =>
+            !usedReservations.has(x.id) && x.amount_minor === r.amount_minor,
         );
-        const byRef = sameAmount.find((x) => x.reference && desc.includes(x.reference.toLowerCase()));
-        const byDate = sameAmount.filter((x) => x.created <= r.date && daysBetween(x.created, r.date) <= 14);
+        const byRef = sameAmount.find(
+          (x) => x.reference && desc.includes(x.reference.toLowerCase()),
+        );
+        const byDate = sameAmount.filter(
+          (x) => x.created <= r.date && daysBetween(x.created, r.date) <= 14,
+        );
         const pick = byRef || (byDate.length === 1 ? byDate[0] : null);
         if (pick) {
           usedReservations.add(pick.id);
@@ -712,12 +775,22 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
         order: req.body?.order,
       });
       if (result.error) return res.status(400).json({ error: result.error });
-      const method = METHODS.includes(req.body?.method) ? req.body.method : "bank_transfer";
+      const method = METHODS.includes(req.body?.method)
+        ? req.body.method
+        : "bank_transfer";
       const choices = new Map(
-        (Array.isArray(req.body?.rows) ? req.body.rows : []).map((c) => [Number(c?.line), c]),
+        (Array.isArray(req.body?.rows) ? req.body.rows : []).map((c) => [
+          Number(c?.line),
+          c,
+        ]),
       );
 
-      const counts = { imported: 0, reservations: 0, skipped_duplicates: 0, not_selected: 0 };
+      const counts = {
+        imported: 0,
+        reservations: 0,
+        skipped_duplicates: 0,
+        not_selected: 0,
+      };
       for (const row of result.rows) {
         const choice = choices.get(row.line);
         if (!choice?.include) {
@@ -728,8 +801,11 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
           counts.skipped_duplicates += 1;
           continue;
         }
-        const allowed = row.direction === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
-        const category = allowed.includes(choice.category) ? choice.category : row.category;
+        const allowed =
+          row.direction === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
+        const category = allowed.includes(choice.category)
+          ? choice.category
+          : row.category;
 
         // Matched bank-transfer reservation: confirm it with this bank row.
         let submissionId = null;
@@ -823,12 +899,22 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
       );
       const cur = profile.currency.toUpperCase();
       const header = [
-        "Date", "Type", "Category", "Description", "Who", "Method",
-        "Reference", `Amount (${cur})`, `Tax included (${cur})`, "Source",
+        "Date",
+        "Type",
+        "Category",
+        "Description",
+        "Who",
+        "Method",
+        "Reference",
+        `Amount (${cur})`,
+        `Tax included (${cur})`,
+        "Source",
       ];
       const lines = (result.rows || []).map((r) =>
         [
-          String(r.date instanceof Date ? r.date.toISOString().slice(0, 10) : r.date).slice(0, 10),
+          String(
+            r.date instanceof Date ? r.date.toISOString().slice(0, 10) : r.date,
+          ).slice(0, 10),
           r.direction === "income" ? "Money in" : "Money out",
           r.category,
           r.description,
@@ -838,19 +924,26 @@ export function createAccountsRouter({ dbQuery, requireDeskAccess, ensureTables 
           majorUnits(r.amount_minor, profile.currency),
           majorUnits(r.tax_minor, profile.currency),
           r.source,
-        ].map(csvCell).join(","),
+        ]
+          .map(csvCell)
+          .join(","),
       );
       await dbQuery(
         "INSERT INTO ledger_exports (tenant_id, period_from, period_to, role, rows) VALUES ($1, $2, $3, $4, $5)",
         [tenantId, from, to, role, lines.length],
       );
-      const brand = String(tenant?.seo?.brandName || tenantId).replace(/[^\w-]+/g, "-");
+      const brand = String(tenant?.seo?.brandName || tenantId).replace(
+        /[^\w-]+/g,
+        "-",
+      );
       res.setHeader("Content-Type", "text/csv; charset=utf-8");
       res.setHeader(
         "Content-Disposition",
         `attachment; filename="${brand}-accounts-${from}-to-${to}.csv"`,
       );
-      return res.send(`\uFEFF${[header.map(csvCell).join(","), ...lines].join("\r\n")}\r\n`);
+      return res.send(
+        `\uFEFF${[header.map(csvCell).join(","), ...lines].join("\r\n")}\r\n`,
+      );
     }),
   );
 

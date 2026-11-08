@@ -5,6 +5,10 @@ Everything here is observation from the Oct 2026 strategy sessions —
 what the machine is, what the maths says, and what the real competition
 is doing.
 
+## Companion strategy files
+
+- [Gym builds and pitches](GYM_BUILDS_AND_PITCHES.md) — active lead generation, campaign-agent subscription tiers, automated advertising, data stitching, competitors and the first gym pilot. Future strategy, not an instruction to build.
+
 ## What we're actually building
 
 Not a website company. Not a website generator. **A machine that produces
@@ -389,6 +393,28 @@ Next step if pursued: proper dossier — competitor teardown, UK
 death-care channel map, unit economics, and the Pat-and-Graham capture
 protocol (what to collect, in what order, no marathon sessions).
 
+### Outrigger #6 — artist sites, networked (Oct 2026)
+
+Origin: Chris asking whether we should build sites for artists and
+network them.
+
+**Verdict:** portfolio sites for artists are commodity (Squarespace,
+Bandcamp, Linktree, Wix — free/cheap, low ARPU, high churn). Do not
+compete there. But the *networked* version maps directly onto the
+chassis pattern: gig listings = race calendar, releases/credits =
+results board, find-a-bandmate = find-a-race-mate, scene community =
+race crew, booking desk = The Desk. The product would be a **scene or
+venue network** — artists in one city/genre on connected sites sharing
+a gig calendar — where the network is the thing, not each site.
+
+**Cost:** a parallel chassis — different design language, audio embeds,
+tour tooling. Dilutes the coaching pitch engine mid-build.
+
+**Position:** same business, second vertical. One experimental tenant to
+prove the map holds, only after the HYROX engine is earning or a warm
+music lead exists. Do not build speculatively. Bonus: it strengthens
+the "content-led platform builder" story for agency work.
+
 ## The chassis pipeline — done, committed (2a4bec0, devin/gh-dossier)
 
 The "clone" machine is real now. End state: scan → pull → build → QC → pitch.
@@ -566,6 +592,38 @@ Each buyer becomes a node: footer credit + cross-linked community features
 = a network a Linktree can't copy. Move markets when reply rate drops,
 not when lists empty.
 
+**Niche re-validation — 5 Nov 2026** (full scan: does a better vertical
+exist for the engine? Conclusion: stay on HYROX/fitness-racing.)
+
+- **The moat is the tools layer, not the multi-tenant engine.** Predictor,
+  splits, station guides, countdown, race-mates — that's why the platform
+  feels built-for-them vs "Squarespace with a logo". Any pivot must find
+  an equivalent niche-specific tools layer; almost none exist.
+- **Market data:** HYROX ~100% YoY (€135m→€300m revenue, 1.5m→2.5m
+  athletes, ~1,700 UK affiliate gyms, ~75k coaches in ecosystem).
+  Prospect pool mints faster than we saturate it — the "ceiling" is a
+  year out, by which point referrals carry it.
+- **Coaches' incumbent stack is duct tape** (Linktree + Google Form +
+  WhatsApp threads) — displacement is easy, no entrenched software.
+- **Watch, don't block:** HYROX Performance Hub 2.0 (ONE FIIT,
+  HYROX365) delivers programming content to gyms — different layer
+  (workout vs brand/business platform). Revisit if it expands into
+  personal-coach sites.
+- **Rejected pivots:** generic PT (no hook), golf/music teachers
+  (booking solved), tattoo/barbers (Fresha/Booksy entrenched), wedding
+  pros (no recurring — wrong shape), running clubs (volunteer-run, no
+  budget), generic ecommerce micro-brands (Shopify's home turf).
+- **Adjacent ladder, in order:** (1) other race formats — ATHX (10k+
+  athletes, 9 countries), DEKA (Spartan), Deadly Dozen, Turf Games —
+  same coach profile, swap event data only; (2) HYROX gyms (Elation
+  shape — business lane); (3) padel (fastest-growing racket sport,
+  club-centric — needs NEW tools layer: courts/ladders; reserve as
+  niche #2 if race niche ever exhausts).
+- Product variation plan: 2-3 layout variants in chassis over time so the
+  fleet doesn't read as one template; bespoke sections for flagship tier
+  (Faisal). Proof-site selection: point each prospect at whichever live
+  example least resembles their demo.
+
 **Honest gaps:** Josh/G&H stay on pair-mode until they buy (migrating
 working demos risks regressions for zero gain — migrate at purchase).
 token map will leak a few strings on tenant #1; expect one patch round.
@@ -620,6 +678,167 @@ locale packs (first German bite triggers it), GDPR hygiene path (consent
 copy on boards + real deletion route — needed before federation, not before
 first pitch).
 
+## Mindbody / Playlist — comparison, lessons, market sizing (23 Oct 2026)
+
+Prompted by a Mindbody offer seen on WhatsApp. Published figures are cited;
+everything marked **estimate** is Devin's assumption, not fact. These
+estimates do not overwrite the decided pricing or the full-arc figures above
+— they are a fresh cross-check to replace with real outreach data.
+
+### Decisions from the discussion
+
+- Do NOT address competitors in videos or pitches.
+- Real bookings/payments are not a pitch problem at this stage: we show a
+  working branded demo where Mindbody's sales process shows a sample/talks
+  through what it will do.
+- Wording note: the planner currently offers a one-time .ics calendar import
+  and a "connect calendar" preview panel — call it calendar export/import,
+  not "sync", until two-way provider sync is built.
+
+### Mindbody's offer (from its own pages, Oct 2026)
+
+- Starter from $79/mo per location (US); third-party sites quote £89/mo UK.
+  Accelerate/Ultimate priced on a sales call. Starter cut from $99 to $79 in
+  July 2026 (per ohelloo, a competitor).
+- Includes booking, payments/POS, staff, reporting, booking widgets, a
+  "done-for-you customized website" via parent Playlist, and a Mindbody app
+  listing (3M+ users, 22k first purchases/month — Mindbody's figures).
+- Extras per competitor write-ups: card fees, 20% of a new client's first
+  app purchase (cap $30), add-ons (branded app), 12/24/36-month
+  auto-renewing contracts. Owners report $249–300+/mo, one ~$600 with fees.
+- Its own blog says it suits businesses "with their own space", 2–10 staff;
+  solo practitioners without a location "may not be the best fit". That is
+  most of our coach list. Gyms (e.g. Elation) are its natural customers.
+
+| | Mindbody | Station 9 |
+|---|---|---|
+| Price | From $79/mo per location; more via sales | £1,000 setup + £129/mo (£178 with Desk) |
+| Website | Done-for-you site + booking widgets | Full branded platform from the coach's own photos, shown before paying |
+| HYROX tools | None | Predictor, splits, results, station/run/taper guides, race-mate, race-trip planner, crew |
+| Booking/payments | Production | Demo/preview stage |
+| Client discovery | Mindbody app, ClassPass | None yet — coach's audience + SEO |
+| Marketing | Email/SMS, pipeline, AI front desk (top plan) | Weekly digest, auto news feed |
+| Money tools | Reporting | The Desk |
+
+### How the business is doing
+
+- Vista bought Mindbody 2018 for ~$1.9B (7.4x revenue — Pharus Q4 2018);
+  Mindbody bought ClassPass 2021; group renamed Playlist 2025.
+- Merged with EGYM (smart gym equipment), completed Mar 2026, valued $7.5B,
+  $785M new equity led by Affinity Partners; IPO plans dropped
+  (Reuters/TechCrunch).
+- Combined 2025 net revenue $800M+, "profitable" (Dealroom lists ~$32M
+  EBITDA — thin). 40,000+ Mindbody businesses, 88,000 ClassPass venues.
+- A Jan 2026 Glassdoor review from a Mindbody sales rep: "slowly becoming
+  churn and burn".
+
+### Lessons for us
+
+1. **The value is owning discovery, not the software.** ClassPass/app is the
+   moat; software is the hook. Confirms sites → rails → network. Our
+   equivalent: Station 9 hub, race-mate finder, crew meetups across coaches.
+2. **Solo coaches are underserved.** The biggest player openly says they
+   are not its best fit. That is our niche.
+3. **The low end is being squeezed** (price cuts, top tiers via sales). Never
+   compete on monthly price; setup + monthly is a different category.
+4. **Take-rates are accepted.** A first-booking referral fee is an
+   established industry norm if the network sends a coach a new athlete.
+5. **Consolidators buy niche platforms with engaged users** — a credible exit
+   route exists.
+6. **Avoid their churn complaints:** keep pricing simple, no surprise extras.
+
+### Conversion estimate — finished branded site + video
+
+Benchmarks (B2B, not fitness): generic cold email 1–3% reply; one-to-one
+personalised video 15–25% reply (Sendspark); 8,385-prospect split test:
+video 40% reply / 6.4% meetings vs text 29% / 4.1% (Prospectio 2025). Ours
+should beat these (a finished platform with their name, not a whiteboard
+video); the £1,000 decision pulls the other way.
+
+**Estimate per 100 well-chosen coaches:**
+
+| | Bear | Central | Bull |
+|---|---|---|---|
+| Watch video | 25 | 40 | 60 |
+| Reply | 8 | 15 | 25 |
+| Buy | 2 | 5 | 10 |
+
+No closed-sale data yet. The first 30–50 sends after the mailbox gate set
+the real figure — track watched / replied / bought for every send.
+
+### Market size
+
+Published: UK personal-training businesses 25,934 (IBISWorld via Statista,
+Nov 2025); UK gyms 7,202 (Leisure DB, Mar 2025); HYROX-affiliated gyms 1,700
+UK (HYROX via press); HYROX365 globally 15,000 affiliate gyms and 75,000
+coaches (endurance.biz, 2026).
+
+Coach revenue ~£1,550–2,140/yr + £1,000 setup. Gym price not decided —
+**estimate £399/mo (~£4,800/yr)**; needs Chris's decision.
+
+| Scenario (**estimates**) | Coaches | Gyms | Recurring/yr | Value at 3–6x |
+|---|---|---|---|---|
+| UK sensible (~5 yrs) | 500 (~2% UK PT businesses) | 200 (~12% UK HYROX gyms) | ~£1.9M | ~£6–11M |
+| Global HYROX | 2,250 (3% of 75k) | 750 (5% of 15k) | ~£7.6M | ~£25–45M |
+| Global + network fees | as above | as above | ~£10–15M | ~£50–100M (premium multiple) |
+
+Multiples: small private vertical SaaS under $10M recurring revenue sells
+for 3–8x (CT Acquisitions 2026); founder-dependent micro-SaaS nearer 2x
+revenue / 3.4x profit (2026 small-SaaS sale data).
+
+**Is this the whole business? No.** At Playlist's ~9x revenue, £1B needs
+£100M+/yr — ~50,000 paying customers at ~£2k, two-thirds of every HYROX
+coach worldwide. Subscriptions alone cannot get there; the billion still
+depends on the athlete network and adjacent verticals (see billion thesis).
+
+### Gyms
+
+Gyms already run Mindbody/Wodify/PushPress for operations. HYROX Performance
+Hub 2.0 now delivers workouts through Wodify/PushPress (endurance.biz 2026).
+Pitch to gyms: a branded HYROX member platform (race tools, race-mate,
+community) that **sits on top of** their booking system, not a replacement.
+Decide a provisional gym price and one-line pitch before building gym demos.
+
+### Network fees — what to do now vs after scaling
+
+Most of the network build waits (see "Non-negotiables for later" above). A
+few cheap things should be right from the start because they are painful
+to retrofit:
+
+- **Pitch/contract wording now:** promise "no commission on your own
+  clients", not "no commission ever". That keeps optional network referral
+  fees (e.g. on a new athlete the network sends) open without breaking
+  trust. Keep the existing contract line: coach keeps their athlete
+  relationships.
+- **Data now (already partly true):** athlete-facing records live in
+  central Postgres with tenant_id (e.g. `submissions` has tenant_id +
+  email). When real booking/athlete accounts are built, add the global
+  athlete_id decided above at that point rather than per-tenant storage.
+- **Attribution now:** keep recording which coach site an athlete arrived
+  through, so future referral fees can be credited correctly.
+- **Consent before federation, not before first pitch:** privacy copy that
+  allows Station 9 network features, with a real deletion route.
+- **Wait until scale:** marketplace/discovery, cross-tenant boards, SSO,
+  take-rate billing, commerce rails, partner revenue share.
+
+### TRIGGER: first client says yes — check this before signing/onboarding
+
+Reminder only; nothing here is approved work until Chris says go.
+
+1. **Contract wording:** "no commission on your own clients" (never "no
+   commission ever"); coach keeps their athlete relationships; optional
+   future Station 9 network features/referral fees are allowed, opt-in.
+2. **Privacy/consent copy** on their live site: allows Station 9 network
+   features later, with a real data-deletion route.
+3. **Calendar wording:** describe .ics export/import, not "sync", unless
+   two-way provider sync has been built by then.
+4. **Real bookings/athlete accounts:** if building production booking for
+   them, use central Postgres with tenant_id + a global athlete_id — never
+   per-tenant files or localStorage.
+5. **Attribution:** record which coach site each athlete arrived through.
+6. **Track the sale:** log watched / replied / bought for that pitch to
+   start replacing the conversion estimate with real data.
+
 ## Brand structure (decided)
 
 Arciteq Digital = parent/holding entity — trading name, contracts,
@@ -630,6 +849,9 @@ asset that compounds. Structure: Arciteq Digital owns the pipeline;
 Station 9 owns the network.
 
 ## Chat notes
+
+- **Scope control (amended 23 Oct 2026):** the point is to stop massive side projects that burn credit. Small, obvious fixes in the area being worked on — just do them and report; don't ask or list obvious suggestions. Ask before big side projects. See AGENTS.md. Older wording below:
+- **Scope control is mandatory.** Do only what Chris specifically asked for. If you think you should widen scope, ASK FIRST and wait for approval, even for apparently useful fixes, extra checks, refactors or reusable-library work. "Go", "continue" and "finish" apply to the agreed task only. Do offer suggestions, inspired ideas and useful observations; initiative in thinking is welcome. Keep them concise, recommend where appropriate, then ask and wait before acting beyond the agreed task. Photo swaps and template updates must not become engineering projects. This supersedes older autonomy/follow-on wording; see the mandatory agreement at the top of AGENTS.md.
 
 - **Tone: dry British sarcasm, on tap.** Not sitcom energy — deadpan,
   underplayed, the kind of funny that's easy to miss if you're skimming.
@@ -691,6 +913,67 @@ a pipeline. The chassis exists because every creator site is the same
 organism in different skin — tokenisation is only possible because the
 organism is already understood. Unproven ≠ unbuilt: sales conversion,
 paying-tenant ops and churn are the untested legs, not the platform.
+
+## Founding UK pitch + pricing — current decision (Nov 2026)
+
+This is the working offer for the first UK cohort and deliberately sits
+below the long-term pricing model below. The goal is not to maximise the
+first invoice; it is to get credible UK coaches live, collect feedback,
+and create proof for the next pitches.
+
+### Offer to put in the actual pitch note
+
+- **£99/month for an initial six months.**
+- **Setup/build included.**
+- Optional upfront alternative: **£495 upfront covering the full
+  six-month founding period**.
+- Keep the pricing signal in the personalised pitch note. Do not hide it
+  on the hub and do not put it inside a coach demo where it could be
+  mistaken for the coach's own fee.
+- £99 stays the public founding anchor; £97 feels artificially engineered.
+  A private £79/month nudge is allowed only for an especially strategic
+  prospect, never as the advertised rate.
+- The offer covers the agreed launch and normal support. Do not imply
+  unlimited bespoke changes.
+
+Suggested wording:
+
+> For the first three UK founding partners, I'm including setup and
+> keeping it to £99/month for an initial six months. No big upfront
+> agency fee — the early pricing reflects the fact that we're proving
+> the platform with the first cohort. If you'd rather keep it simple,
+> you can pay £495 upfront covering the full six-month founding period.
+
+### Long-term pricing boundary
+
+The later normal offer remains the premium model documented below:
+roughly **£1,000 setup + £129/month base**, with Desk as the visible
+add-on. Market checks support this: managed PT websites commonly sit at
+roughly £30–£300/month, done-for-you coaching sites around £995–£2,495
+setup, and a bespoke equivalent of the platform would be a five-figure
+agency build. The founding rate is early access, not the permanent price.
+
+### Social proof and positioning
+
+- Roxjaya/Dina is a **live founding partner/customer site**. She paid one
+  month, then agreed a pause until after the baby. Do not call her a
+  currently paying customer or an unrelated independent endorsement.
+- No need to volunteer the relationship. If asked, answer honestly.
+- Use Roxjaya as proof the platform exists in the wild, not proof of
+  market adoption. Update it to the current public platform standard
+  before leaning on it heavily, but only after Station 9's deployment
+  source is isolated.
+- Keep Dina's shimmer/confetti hero if it remains polished, fast,
+  responsive, does not obscure her face, avoids layout shift and respects
+  reduced-motion. It usefully shows the platform is not cookie-cutter.
+- Do not pitch “you need a website”. Pitch the Linktree/scattered stack
+  becoming one coherent branded coaching hub, while preserving the tools
+  they already use. The real barrier is attention/switching cost more
+  than £99/month.
+- An agency quoting this exact product would scope it as a custom
+  platform, plausibly £15k–£60k+ depending on integrations. The clean
+  line is: “a five-figure agency-style platform, delivered as a
+  founding-partner subscription.”
 
 ## Pricing — decided (Jan 2027)
 
@@ -841,6 +1124,50 @@ is 3–4 sentences max with the video link.
 - **Do not quote a price in the video.** The video creates the pull; the
   price comes in the follow-up conversation.
 
+### Pricing/value comparison — follow-up only
+
+Do not use this in the initial pitch. Keep it for the pricing conversation,
+follow-up email or objections after the coach has seen the full platform.
+
+A coach trying to recreate the platform elsewhere would usually stitch
+together several tools and services:
+
+| Need | Typical alternative | Rough cost |
+|---|---|---:|
+| Website / landing pages | Web designer, Squarespace, Wix | £500–£5,000 setup |
+| Booking | Calendly, Acuity, TeamUp, Momence | £10–£200/mo |
+| Programme delivery | Trainerize, FITR, TrueCoach | £10–£150/mo |
+| CRM / client records | HubSpot, Notion, spreadsheets | £0–£100+/mo |
+| Email/SMS reminders | Mailchimp, Twilio, Zapier | £10–£150/mo |
+| Payments/subscriptions | Stripe, GoCardless, gym software | fees + admin |
+| Automation glue | Zapier/Make | £10–£50+/mo |
+| Reporting/dashboards | Custom analytics or spreadsheets | £0–£100/mo |
+| Admin help | VA chasing bookings/check-ins/renewals | £10–£25/hr |
+
+A functional stack can easily cost **£100–£300/month** before anyone has
+made it coherent, branded or genuinely useful day to day. The hidden cost
+is larger: forgotten renewals, unanswered check-ins, drifting clients and
+no single view of who needs attention.
+
+A bespoke equivalent — branded site, booking flow, lead desk, client
+records, package tracking, renewal prompts, floor-session reminders,
+programme messages, campaign tracking and reporting — would plausibly be
+a **£10k–£30k+** agency build, and still might not include the HYROX
+front-end experience.
+
+The pitch is not “a website for £1,000”. It is a **coaching business
+platform** that brings clients in, manages the relationship and protects
+recurring revenue. If a coach charges £240–£320/month for hybrid coaching,
+retaining one client can cover the monthly platform cost. Across 20
+clients worth roughly £4k–£6k/month, preventing even a small amount of
+churn is commercially meaningful.
+
+Use this framing if price comes up:
+
+> The website is the wrapper. The value is the operating system underneath:
+> leads, bookings, packages, client messages, renewals, retention prompts
+> and campaign results in one place instead of six disconnected tools.
+
 ### Pitch email structure
 
 #### Subject line — do NOT "does what it says on the tin"
@@ -897,9 +1224,10 @@ payload is obviously valuable.
 #### Send timing and sequence
 
 **Send window:** 7:00am, any Tuesday–Thursday. Schedule in Outlook the
-night before. Send all prospects at the same time — no staggering needed.
-Nobody is calling back in 30 minutes; realistic response time is hours
-or days.
+night before. Normally send all prospects at the same time — no
+staggering needed. Nobody is calling back in 30 minutes; realistic
+response time is hours or days. Exception: an event-specific batch can
+split by hook freshness, as in the Birmingham correction below.
 
 **Avoid:** Monday (inbox backlog), Friday/Saturday (weekend brain, email
 gets buried by Monday). At 7am before first session, a coach's headspace
@@ -910,6 +1238,33 @@ having coffee, scrolling their phone, before the day's noise. Early
 enough that if they're interested they might reply the same day. The
 Loom video needs a quiet moment — headphones or at least sound — which
 favours pre-session, not between-session gaps on a gym floor.
+
+**Birmingham-week correction:** if a major race is live, treat the send as
+a seed rather than expecting full attention. For the post-Birmingham UK
+batch, split by verified hook rather than sending everything at once.
+Recommended send window is **Wednesday 10:00–11:30** for anyone with a
+fresh race/event hook, then **Thursday** for the rest. This supersedes
+the older blanket 7am send for this specific batch.
+
+Verified race-weekend hooks from the public boards/IG checks:
+
+- **Birmingham finishers:** Hannah Burgon (Pro Women 1:11:13),
+  George Grayson (1:00:42 solo + 54:57 doubles), Gregor Johnston/Race to
+  Frame (1:04:03), Josh Harrison (1:08:20 Pro + 58:23 mixed doubles),
+  Tom Redmond (1:07:42 relay + 1:22:30 mixed doubles).
+- **Birmingham presence, not confirmed result:** Faisal Abdalla posted
+  "48 hours at HYROX Birmingham"; Graham Halliday was on the Pro Men
+  start list but no finish result surfaced — do not congratulate him on
+  a result.
+- **Hamburg, not Birmingham:** Jade Skillen (Elite 15/8th post), Gabby
+  Moriarty and Zara Piergianni (Elite 15/doubles context). Use Hamburg
+  hooks, never pretend they raced Birmingham.
+- **Paul Gillingham:** no Birmingham 2026 result, but his own post says
+  his first HYROX was Birmingham doubles five years ago; 76 races, 23
+  podiums, 29 locations, 16 countries, 2 continents. Strong Wednesday
+  anniversary hook.
+- **No verified event hook:** Kim Mansell, Ross Fisher, Nigel Wood,
+  Jamie Barker and Michele Wilder go Thursday.
 
 **The sequence:**
 

@@ -1,7 +1,7 @@
 [
-  {"path":"","subs":[
-    {"text":"Tom — your name, your race photos, your coaching. Already built into a working platform.","holdMs":6000},
-    {"text":"A clear home for Trained by TR — with the race photo doing the talking.","scrollTo":".hero-visual","holdMs":5500},
+  {"path":"","waitUntil":"domcontentloaded","startAt":{"selector":".hero-visual","offset":66},"subs":[
+    {"text":"Tom — your name, your race photos, your coaching. Already built into a working platform.","holdMs":5000},
+    {"text":"A clear home for Trained by TR — with the race photo doing the talking.","scrollTo":"body","align":"start","holdMs":4500},
     {"text":"The Zones: station technique, running and race-day preparation, all in one place.","scrollTo":"#zones","holdMs":5500},
     {"text":"Your story and your coaching approach, not just another link in a bio.","scrollTo":"#story","holdMs":5000},
     {"text":"Start with the free tools. When they want a plan, the route to coaching is right here.","scrollTo":"#plans","holdMs":6500},

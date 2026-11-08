@@ -41,11 +41,6 @@ const SELF_IPS = new Set(
     .map((s) => s.trim())
     .filter(Boolean),
 );
-const clientIp = (req) => {
-  const fwd = cleanStr(req.headers["x-forwarded-for"], 200);
-  if (fwd) return cleanStr(fwd.split(",")[0].trim(), 60);
-  return cleanStr(req.ip || "", 60);
-};
 const isSelfVisitor = (ip, ua) =>
   SELF_IPS.has(ip) || /selftest|probe-check/i.test(ua);
 
@@ -223,7 +218,7 @@ export function createPitchRouter({ adminApiKey }) {
     if (!match || !VALID_SLUGS.has(match[1])) return next();
     const slug = match[1];
     const ua = cleanStr(req.headers["user-agent"], 200);
-    const ip = clientIp(req);
+    const ip = cleanStr(req.ip || "", 60);
     if (/bot|crawler|spider|preview|headless|slurp/i.test(ua)) return next();
     const self = isSelfVisitor(ip, ua);
 
@@ -265,7 +260,7 @@ export function createPitchRouter({ adminApiKey }) {
     }
 
     const ua = cleanStr(req.headers["user-agent"], 200);
-    const ip = clientIp(req);
+    const ip = cleanStr(req.ip || "", 60);
     const self = isSelfVisitor(ip, ua);
 
     const ok = await ensureTable();

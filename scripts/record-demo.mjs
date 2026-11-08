@@ -13,7 +13,9 @@ const base = process.argv[3] || "http://localhost:3000";
 const outPath = process.argv[4] || `/tmp/${slug}-pitch.webm`;
 
 // Pitch script: array of scenes. Each scene = page + subtitle lines + scroll.
-const pitchFile = path.join(root, "scripts", "reskin", `${slug}.pitch.json`);
+const pitchFile =
+  process.env.PITCH_SCENES_FILE ||
+  path.join(root, "scripts", "reskin", `${slug}.pitch.json`);
 let scenes;
 if (fs.existsSync(pitchFile)) {
   scenes = JSON.parse(fs.readFileSync(pitchFile, "utf8"));
@@ -29,6 +31,25 @@ if (fs.existsSync(pitchFile)) {
     { path: "find-a-partner.html", subs: [], scrollMs: 2000 },
     { path: "news.html", subs: [], scrollMs: 2000 },
   ];
+}
+
+const plannerSceneFile = path.join(
+  root,
+  "scripts",
+  "reskin",
+  "planner.segment.json",
+);
+const deskIndex = scenes.findIndex((scene) => scene.path === "desk.html");
+if (
+  deskIndex >= 0 &&
+  !scenes.some((scene) => scene.path.startsWith("planner.html")) &&
+  fs.existsSync(plannerSceneFile)
+) {
+  scenes.splice(
+    deskIndex,
+    0,
+    ...JSON.parse(fs.readFileSync(plannerSceneFile, "utf8")),
+  );
 }
 
 // Inject a fixed-position subtitle bar into the page
@@ -62,6 +83,20 @@ async function injectSubtitleBar(page) {
       WebkitBackdropFilter: "blur(8px)",
     });
     document.body.appendChild(bar);
+    // Keep the caption above whichever dialog is open. Mutation callbacks run
+    // before the next paint, so opening/closing a dialog never hides it.
+    const place = () => {
+      const open = [...document.querySelectorAll("dialog[open]")];
+      const layer = open[open.length - 1] || document.body;
+      if (bar.parentElement !== layer) layer.appendChild(bar);
+    };
+    window.__placePitchSub = place;
+    new MutationObserver(place).observe(document.body, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ["open"],
+    });
   });
 }
 
@@ -69,6 +104,7 @@ async function showSub(page, text) {
   await page.evaluate((t) => {
     const bar = document.getElementById("pitch-sub");
     if (!bar) return;
+    window.__placePitchSub?.();
     bar.textContent = t;
     bar.style.opacity = t ? "1" : "0";
   }, text);
@@ -78,24 +114,29 @@ async function smoothScroll(page, totalMs) {
   const steps = Math.max(10, Math.round(totalMs / 200));
   const delay = totalMs / steps;
   for (let i = 0; i < steps; i++) {
-    await page.evaluate(
-      () =>
-        window.scrollBy({ top: window.innerHeight / 4, behavior: "smooth" }),
+    await page.evaluate(() =>
+      window.scrollBy({ top: window.innerHeight / 4, behavior: "smooth" }),
     );
     await page.waitForTimeout(delay);
   }
 }
 
-async function scrollToSelector(page, selector, pauseMs) {
-  await page.evaluate((sel) => {
-    const el = document.querySelector(sel);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-  }, selector);
+async function scrollToSelector(page, selector, pauseMs, block = "center") {
+  await page.evaluate(
+    ({ sel, align }) => {
+      const el = document.querySelector(sel);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: align });
+    },
+    { sel: selector, align: block },
+  );
   await page.waitForTimeout(pauseMs || 1500);
 }
 
 (async () => {
-  const browser = await chromium.launch({ headless: true, args: ["--enable-unsafe-swiftshader"] });
+  const browser = await chromium.launch({
+    headless: true,
+    args: ["--enable-unsafe-swiftshader"],
+  });
   const context = await browser.newContext({
     viewport: { width: 1280, height: 720 },
     recordVideo: {
@@ -104,6 +145,15 @@ async function scrollToSelector(page, selector, pauseMs) {
     },
   });
   const page = await context.newPage();
+  // startAt scenes stay invisible until scrolled into position, so the top
+  // of the page never flashes before the framed shot.
+  await page.addInitScript(() => {
+    if (window.name !== "pitch-hide") return;
+    const style = document.createElement("style");
+    style.id = "pitch-hide";
+    style.textContent = "html{visibility:hidden!important}";
+    document.documentElement.appendChild(style);
+  });
   // Pre-accept Google-style consent walls so external click-throughs
   // land on the partner site, not an interstitial.
   await context
@@ -111,16 +161,44 @@ async function scrollToSelector(page, selector, pauseMs) {
       { name: "SOCS", value: "CAI", domain: ".google.com", path: "/" },
       { name: "CONSENT", value: "YES+", domain: ".google.com", path: "/" },
     ])
-    .catch(() => {});
+    .catch((error) => {
+      if (process.env.PITCH_STRICT === "1") throw error;
+    });
 
   for (const scene of scenes) {
     const url = `${base}/${slug}/${scene.path}`;
     console.log(`→ ${scene.path || "index"}`);
     // skip_nav: let a previous click handle navigation instead of goto
     if (!scene.skip_nav) {
+      if (scene.startAt)
+        await page.evaluate(() => (window.name = "pitch-hide")).catch(() => {});
       await page
-        .goto(url, { waitUntil: "networkidle", timeout: 15000 })
-        .catch(() => {});
+        .goto(url, {
+          waitUntil: scene.waitUntil || "networkidle",
+          timeout: 15000,
+        })
+        .catch((error) => {
+          if (process.env.PITCH_STRICT === "1") throw error;
+        });
+      // startAt: frame a section the moment the page loads (e.g. so the
+      // hero picture reveal plays in shot), offset clears the sticky menu.
+      if (scene.startAt) {
+        await page
+          .waitForSelector(scene.startAt.selector, { state: "attached" })
+          .catch(() => {});
+        await page.evaluate(({ selector, offset }) => {
+          const el = document.querySelector(selector);
+          if (el)
+            window.scrollTo({
+              top: el.getBoundingClientRect().top + window.scrollY - offset,
+              behavior: "instant",
+            });
+        }, { selector: scene.startAt.selector, offset: scene.startAt.offset || 0 });
+        await page.evaluate(() => {
+          window.name = "";
+          document.getElementById("pitch-hide")?.remove();
+        });
+      }
     } else {
       await page.waitForTimeout(800);
     }
@@ -136,18 +214,31 @@ async function scrollToSelector(page, selector, pauseMs) {
         if (sub.actions) {
           for (const act of sub.actions) {
             if (act.scrollTo) {
-              await scrollToSelector(page, act.scrollTo, 800);
+              await scrollToSelector(
+                page,
+                act.scrollTo,
+                800,
+                act.align || "center",
+              );
             }
             if (act.fill) {
-              await page.fill(act.selector, act.fill).catch(() => {});
+              await page.fill(act.selector, act.fill).catch((error) => {
+                if (process.env.PITCH_STRICT === "1") throw error;
+              });
               await page.waitForTimeout(act.pause || 400);
             }
             if (act.select) {
-              await page.selectOption(act.selector, act.select).catch(() => {});
+              await page
+                .selectOption(act.selector, act.select)
+                .catch((error) => {
+                  if (process.env.PITCH_STRICT === "1") throw error;
+                });
               await page.waitForTimeout(act.pause || 400);
             }
             if (act.click) {
-              await page.click(act.click).catch(() => {});
+              await page.click(act.click).catch((error) => {
+                if (process.env.PITCH_STRICT === "1") throw error;
+              });
               await page.waitForTimeout(act.pause || 600);
             }
             if (act.navClick) {
@@ -158,22 +249,36 @@ async function scrollToSelector(page, selector, pauseMs) {
                   const a = document.querySelector(sel);
                   if (a) a.removeAttribute("target");
                 }, act.navClick)
-                .catch(() => {});
+                .catch((error) => {
+                  if (process.env.PITCH_STRICT === "1") throw error;
+                });
               await Promise.all([
                 page
-                  .waitForNavigation({ timeout: 12000, waitUntil: "domcontentloaded" })
+                  .waitForNavigation({
+                    timeout: 12000,
+                    waitUntil: "domcontentloaded",
+                  })
                   .catch(() => {}),
                 page.click(act.navClick).catch(() => {}),
               ]);
+              // Keep the caption on screen over the partner page too.
+              await injectSubtitleBar(page).catch(() => {});
+              await showSub(page, sub.text).catch(() => {});
               await page.waitForTimeout(act.holdMs || 2500);
-              await page.goBack({ waitUntil: "domcontentloaded" }).catch(() => {});
+              await page
+                .goBack({ waitUntil: "domcontentloaded" })
+                .catch((error) => {
+                  if (process.env.PITCH_STRICT === "1") throw error;
+                });
               await page.waitForTimeout(800);
               await injectSubtitleBar(page);
               await showSub(page, sub.text);
             }
             if (act.type) {
               // Slow-type for visual effect
-              await page.click(act.selector).catch(() => {});
+              await page.click(act.selector).catch((error) => {
+                if (process.env.PITCH_STRICT === "1") throw error;
+              });
               for (const ch of act.type) {
                 await page.keyboard.type(ch, { delay: 60 });
               }
@@ -182,9 +287,16 @@ async function scrollToSelector(page, selector, pauseMs) {
           }
         }
 
+        await showSub(page, sub.text);
+
         // Optional: scroll to a specific element while sub is showing
         if (sub.scrollTo) {
-          await scrollToSelector(page, sub.scrollTo, sub.holdMs || 2500);
+          await scrollToSelector(
+            page,
+            sub.scrollTo,
+            sub.holdMs || 2500,
+            sub.align || "center",
+          );
         } else if (sub.scroll) {
           await smoothScroll(page, sub.holdMs || 2500);
         } else {
@@ -199,15 +311,14 @@ async function scrollToSelector(page, selector, pauseMs) {
     }
 
     // Scroll back to top for clean transition
-    await page.evaluate(
-      () => window.scrollTo({ top: 0, behavior: "smooth" }),
-    );
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: "smooth" }));
     await page.waitForTimeout(600);
   }
 
   // End card
-  await page.evaluate((s) => {
-    document.body.innerHTML = `
+  if (process.env.PITCH_NO_END_CARD !== "1") {
+    await page.evaluate((s) => {
+      document.body.innerHTML = `
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;
                   height:100vh;background:#0f0f11;color:#fff;font-family:-apple-system,sans-serif">
         <div style="font-size:2.2rem;font-weight:800;margin-bottom:0.8rem">Station 9</div>
@@ -222,8 +333,9 @@ async function scrollToSelector(page, selector, pauseMs) {
           https://www.station9studio.co.uk/${s}/
         </div>
       </div>`;
-  }, slug);
-  await page.waitForTimeout(3000);
+    }, slug);
+    await page.waitForTimeout(3000);
+  }
 
   await page.close();
   const video = await page.video();

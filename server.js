@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 import Stripe from "stripe";
 import dotenv from "dotenv";
 import { dbQuery } from "./db.js";
+import { databaseOptions } from "./src/database-config.js";
 import { createRateLimiter } from "./src/submissions.js";
 import { loadTenantsData, safeReadJsonFile } from "./server/data-files.js";
 import {
@@ -25,6 +26,8 @@ import {
 } from "./server/ops.js";
 import {
   cachePolicy,
+  securityHeaders,
+  requestErrorHandler,
   canonicalHostRedirect,
   staticFiles,
   trackServerErrors,
@@ -61,6 +64,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // ---- Settings (.env.local). Modules read settings at call time; values
 // passed to modules below are read here, after this line. -----------------
 dotenv.config({ path: path.join(__dirname, ".env.local") });
+if (
+  String(process.env.DATABASE_URL || "").trim() ||
+  String(process.env.DATABASE_TRANSPORT || "").trim()
+)
+  databaseOptions(process.env.DATABASE_URL);
 
 const PORT = process.env.PORT || 3000;
 // NOTE: for local tests, ADMIN_API_KEY is expected to come from .env.local
@@ -124,7 +132,9 @@ const requireDeskAccess = createDeskAuth({
 // ---- App ------------------------------------------------------------------
 const app = express();
 app.set("trust proxy", 1);
+app.disable("x-powered-by");
 
+app.use(securityHeaders());
 app.use(canonicalHostRedirect());
 app.use(trackServerErrors(recentServerErrors));
 
@@ -141,8 +151,8 @@ app.post(
 );
 app.use(createAdminOpsRouter({ alertEmailTo, heartbeatState }));
 
-app.use(express.json({ limit: "2mb" }));
 app.use(createPitchRouter({ adminApiKey }));
+app.use(express.json({ limit: "2mb" }));
 app.use(cachePolicy());
 app.use(createSeoRouter({ publicBaseUrl }));
 app.use(staticFiles(__dirname));
@@ -219,9 +229,12 @@ app.get("/hq", (req, res) => {
 
 app.use(createAdminOrdersRouter({ stripe }));
 app.use(createCheckoutRouter({ PORT, automaticTaxEnabled, stripe }));
+app.use(requestErrorHandler);
 
 app.listen(PORT, () => {
   console.log(`✅ Server running → http://localhost:${PORT}/`);
-  startHeartbeatScheduler();
-  startDigestScheduler();
+  if (process.env.NODE_ENV !== "test") {
+    startHeartbeatScheduler();
+    startDigestScheduler();
+  }
 });

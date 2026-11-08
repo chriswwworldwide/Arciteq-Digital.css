@@ -1,0 +1,23 @@
+{
+  "mode": "chassis",
+  "slug": "template-preview",
+  "heroMode": "ambient",
+  "assets": ["scripts/reskin/chassis-demo-assets", "scripts/reskin/stock"],
+  "omitImageSlots": ["station-sandbag-lunges.jpg"],
+  "copyOverrides": [
+    {"pattern":"src=\"/{{SLUG}}/images/station-burpees\\.jpg[^\"]*\"\\s*alt=\"[^\"]*\"","replace":"src=\"/{{SLUG}}/images/gallery/stock-burpee.jpg\" alt=\"Burpee broad-jump movement reference; not presented as the coach\""},
+    {"pattern":"src=\"/{{SLUG}}/images/station-row\\.jpg[^\"]*\"\\s*alt=\"[^\"]*\"","replace":"src=\"/{{SLUG}}/generic-rowing-detail.jpg\" alt=\"RowErg movement detail; generic reference with the face excluded\""},
+    {"pattern":"src=\"/{{SLUG}}/images/station-wall-balls\\.jpg[^\"]*\"\\s*alt=\"[^\"]*\"","replace":"src=\"/{{SLUG}}/generic-wallball-release.jpg\" alt=\"Wall-ball release; generic reference showing the ball and hands\""}
+  ],
+  "currency": "gbp",
+  "raceRegion": "United Kingdom",
+  "booking": {"timeZone":"Europe/London"},
+  "trainingPlatform": {"name":"ABC Trainerize","coachURL":"https://www.trainerize.com/login/","clientURL":"https://www.trainerize.com/login/","programmesURL":"https://example.com/programmes","applicationURL":"https://example.com/apply","offerTitle":"Hybrid training programmes","offerDescription":"Build running, strength and station skill together with a structured training block.","note":"This neutral preview uses Trainerize's official account finder. A real coach build uses their verified coaching-account link. Opening the provider is not a workout or progress-data sync."},
+  "tokens": {
+    "SLUG":"template-preview","COACH_NAME":"Template Review","COACH_NAME_LC":"template review","COACH_FIRST":"Coach","COACH_LAST":"Review","WORDMARK_HTML":"STATION <span class=\"o\">9</span> DEMO","BRAND":"Hybrid Platform","BRAND_SHORT":"hybrid-platform","BRAND_SOCIAL":"hybrid-platform","CLOTHING_SHORT":"Collection","CITY":"London","REGION":"United Kingdom","REGION_LC":"united kingdom","TAGLINE":"build with purpose","HERO_TITLE_HTML":"Train with purpose.<br /><em>Race with confidence.</em>",
+    "APPLY_URL":"https://example.com/apply","PROGRAMMES_URL":"https://example.com/programmes","STORE_URL":"https://example.com/store","IG_URL":"https://example.com/social","BRAND_IG_URL":"https://example.com/social","YOUTUBE_URL":"https://example.com/video","TIKTOK_URL":"https://example.com/video","THREADS_URL":"https://example.com/social","LINKTREE_URL":"https://example.com/links",
+    "DOUBLES_PARTNER":"Demo Teammate","PB_VENUE":"London","PB_VENUE_LC":"london","DOUBLES_VENUE":"Manchester","DOUBLES_VENUE_LC":"manchester","OPEN_VENUE":"Birmingham","PB_SOLO":"1:08:22","PB_DOUBLES":"59:40","PB_HALF":"1:29:05","PB_OPEN":"1:09:51","SEASON_START":"1:21",
+    "PARTNER_GYM":"Training Partner","PARTNER_GYM_LC":"training-partner","PARTNER_SUPP":"Nutrition Partner","PARTNER_SUPP_LC":"nutrition-partner","PARTNER_KIT":"Kit Partner","PARTNER_KIT_LC":"kit-partner","PARTNER_KIT_TAG":"Race kit","PARTNER_KIT_TITLE":"Training kit","PARTNER_KIT_COPY":"A clearly labelled partner-offer layout.","PARTNER_KIT_CTA":"View partner","PARTNER_KIT_URL":"https://example.com/partner","PARTNER_GYM_URL":"https://example.com/partner","PARTNER_SUPP_URL":"https://example.com/partner","GYM_CODE":"DEMO","PHOTO_BUDDY":"Demo Contributor",
+    "ACCENT":"#7c5cff","ACCENT_DARK":"#5a3fd4","ACCENT_SOFT":"#1a1430","BRAND_SHORT_UPPER":"HYBRID","SOCIAL_HANDLE_UPPER":"TEMPLATE REVIEW","VOICE_DOUBLES_HOOK":"Find a teammate who shares the work.","VOICE_WEDDING":"the next chapter starts here.","VOICE_NEWS_TAKE":"Make the next training decision a useful one."
+  }
+}

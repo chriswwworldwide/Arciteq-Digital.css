@@ -9,8 +9,8 @@
   --paper-2: #16161c;
   --line: #2a2a32;
   --pink: #17b8a6;
-  --pink-600: #0e7f74;
-  --pink-100: #062c29;
+  --pink-600: color-mix(in srgb, var(--pink) 60%, #000);
+  --pink-100: color-mix(in srgb, var(--pink) 11%, var(--paper));
   --zone-accent: #be123c;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(11, 11, 14, 0.08);
@@ -89,7 +89,7 @@ a.wordmark {
 .masthead .sig {
   position: absolute;
   right: -0.35em;
-  bottom: -0.62em;
+  bottom: -0.5em;
   display: inline-flex;
   flex-direction: column;
   align-items: flex-end;
@@ -107,14 +107,16 @@ a.wordmark {
 }
 
 .masthead .sig-line {
-  width: 4.6em;
+  position: absolute;
+  top: 0.78em;
+  left: -0.2em;
+  width: calc(100% + 0.7em);
   height: 0.32em;
-  margin-top: -0.12em;
   overflow: visible;
 }
 
 .masthead .city {
-  margin: 18px 0 0;
+  margin: 48px 0 0;
   font-size: clamp(14px, 1.6vw, 20px);
   letter-spacing: 0.42em;
   text-transform: uppercase;
@@ -909,8 +911,8 @@ section.block:has(+ .cta-band) { padding-bottom: 40px; }
   font-weight: 700;
   padding: 5px 10px;
   border-radius: 999px;
-  background: var(--pink-100);
-  color: var(--pink-600);
+  background: color-mix(in srgb, var(--pink) 9%, var(--paper-2));
+  color: var(--pink);
   margin-bottom: 14px;
 }
 
@@ -965,7 +967,7 @@ section.block:has(+ .cta-band) { padding-bottom: 40px; }
   margin: 40px 0 28px;
   border-style: dashed;
   border-color: var(--pink);
-  background: var(--pink-100);
+  background: color-mix(in srgb, var(--pink) 9%, var(--paper-2));
 }
 
 .crew-photo {
@@ -1078,7 +1080,14 @@ section.block:has(+ .cta-band) { padding-bottom: 40px; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(
+    background:
+    radial-gradient(
+      ellipse 50% 40% at 84% 6%,
+      rgba(11, 11, 14, 0.85) 0%,
+      rgba(11, 11, 14, 0.4) 55%,
+      transparent 100%
+    ),
+    linear-gradient(
     90deg,
     rgba(11, 11, 14, 0.95) 0%,
     rgba(11, 11, 14, 0.55) 100%
@@ -1470,11 +1479,20 @@ footer a:hover {
     gap: 24px;
   }
   .coach {
-    flex-direction: column;
+    position: relative;
+  }
+  .coach .coach-portrait,
+  .home-lab .coach .coach-portrait {
+    position: absolute;
+    top: -30px;
+    right: 44px;
+  }
+  .coach h3 {
+    padding-right: 105px;
   }
   .bio {
-    width: 96px;
-    height: 96px;
+    width: 88px;
+    height: 88px;
   }
   .story {
     grid-template-columns: 1fr;
@@ -1505,16 +1523,16 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
   .masthead h1 {
-    font-size: 5.9vw;
+    font-size: 9vw;
     letter-spacing: 0.04em;
   }
   .masthead .sig {
-    font-size: 0.62em;
-    bottom: -1em;
-    right: 0;
+    font-size: 5.6vw;
+    bottom: -0.85em;
+    right: 0.55em;
   }
   .masthead .city {
-    margin-top: 22px;
+    margin-top: 42px;
   }
   .masthead .city {
     letter-spacing: 0.3em;
@@ -1526,10 +1544,10 @@ footer a:hover {
 
 /* Michele's 3 tips */
 .tips {
-  background: var(--pink-100);
+  background: color-mix(in srgb, var(--zone-accent) 11%, var(--paper));
 }
 .tips .lead a {
-  color: var(--pink-600);
+  color: var(--zone-accent);
   font-weight: 700;
 }
 .tips-grid {
@@ -1576,7 +1594,7 @@ footer a:hover {
   margin-top: 10px;
 }
 .tips-grid ol li::marker {
-  color: var(--pink);
+  color: var(--zone-accent);
   font-weight: 800;
 }
 @media (max-width: 900px) {
@@ -1612,9 +1630,11 @@ footer a:hover {
   aspect-ratio: 4 / 5;
   object-fit: cover;
 }
-.tips-grid {
-  grid-template-columns: repeat(2, 1fr);
-  align-items: start;
+@media (min-width: 561px) {
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+  }
 }
 @media (max-width: 900px) {
   .tips .wrap {
@@ -1774,7 +1794,7 @@ footer a:hover {
 }
 
 .polaroid .by b {
-  color: var(--pink-600);
+  color: var(--pink);
   font-weight: 700;
 }
 
@@ -2210,9 +2230,9 @@ body.has-sticky-cta {
 }
 
 .btn-wa {
-  background: #17b8a6;
+  background: var(--pink);
   color: #ffffff;
-  border-color: #17b8a6;
+  border-color: var(--pink);
 }
 
 .btn-wa:hover {
@@ -2702,8 +2722,8 @@ figure.reveal {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--pink-600);
-  background: var(--pink-100);
+  color: var(--pink);
+  background: color-mix(in srgb, var(--pink) 9%, var(--paper-2));
   border-radius: 20px;
   padding: 2px 9px;
   margin-right: 8px;
@@ -2930,3 +2950,78 @@ figure img[src*='station-burpees.jpg'],.station img[src*='station-burpees.jpg']{
 .events-photo img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 30%; border-radius: 0 0 8% 48% / 0 0 2% 7%; }
 .events-photo::after { content: ""; position: absolute; width: 56px; height: 56px; right: -8px; top: -8px; border-right: 2px solid var(--pink); border-top: 2px solid var(--pink); pointer-events: none; }
 @media (max-width: 700px) { .events-head { grid-template-columns: 1fr; } .events-photo { max-width: 320px; margin-top: .5rem; } }
+
+/* collapsible race list — extra cards sit behind "+ N more races" */
+.events-more > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  margin-top: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  color: var(--pink);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: border-color 0.2s;
+}
+.events-more > summary::-webkit-details-marker {
+  display: none;
+}
+.events-more > summary::before {
+  content: "+";
+  font-size: 18px;
+  font-weight: 800;
+}
+.events-more[open] > summary::before {
+  content: "\2013";
+}
+.events-more > summary:hover {
+  border-color: var(--pink);
+}
+
+/* collapsible plan list — offers beyond the third sit behind "+ N more plans" */
+.plans-more > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 20px;
+  margin-top: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  color: var(--pink);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: border-color 0.2s;
+  grid-column: 1 / -1;
+}
+.plans-more > summary::-webkit-details-marker {
+  display: none;
+}
+.plans-more > summary::before {
+  content: "+";
+  font-size: 18px;
+  font-weight: 800;
+}
+.plans-more[open] > summary::before {
+  content: "\2013";
+}
+.plans-more > summary:hover {
+  border-color: var(--pink);
+}
+.plans-more {
+  grid-column: 1 / -1;
+  display: contents;
+}
+.plans-more > summary {
+  display: flex;
+}

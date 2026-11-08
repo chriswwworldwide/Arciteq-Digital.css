@@ -1,15 +1,30 @@
-// reskin-tenant.js — clone the roxjaya site into a demo tenant.
-// Usage: node scripts/reskin-tenant.js scripts/reskin/hustle.demo.json
+// reskin-tenant.js — build a demo tenant from the canonical chassis.
+// Usage: node scripts/reskin-tenant.js .devin/template-preview.json --output-dir=<new-directory>
 //
-// Steps: copy roxjaya/ → <slug>/, apply ordered brand substitutions across
-// html/js/css, seed fresh data files, remap the race calendar, register the
-// tenant in data/tenants.json. Safe to re-run — the target dir is replaced.
+// Steps: copy chassis/, fill the approved tenant tokens and media, prepare
+// sourced showcase data, validate the result, then install the booking preview.
+// Isolated output leaves existing sites and the registry unchanged. Replacement needs explicit approval.
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
+import { installBookingPlanner } from "./booking-planner.js";
+import { overrideReplacement } from "../src/reskin-overrides.js";
+import { assertTemplateBuild, prepareShowcase, wireCoachView } from "../src/template-showcase.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+// Post-build mechanical check: broken images, viewport overflow, heavy crops
+// (with before/after shots), JS errors, missing folds. Non-blocking — build
+// still succeeds, but EYE shots must be reviewed before sign-off.
+function runVerify(dir, label) {
+  if (process.env.SKIP_VERIFY) return;
+  try {
+    const r = spawnSync(process.execPath, [path.join(root, "scripts/verify-build.mjs"), dir, "--pages=index.html", `--slug=${label}`], { stdio: "inherit", cwd: root });
+    if (r.status !== 0) console.log(`verify-build: FAILs on ${label} — review before shipping. Full sweep: node scripts/verify-build.mjs ${dir}`);
+  } catch (e) { console.log("verify-build skipped:", e.message); }
+}
 
 // tenants.json is shared state — parallel builds must serialize the
 // read-modify-write or the last writer clobbers the others' registrations.
@@ -54,7 +69,26 @@ if (!cfgPath) {
   console.error("usage: node scripts/reskin-tenant.js <config.json>");
   process.exit(1);
 }
+const outputArg = process.argv.slice(3).find((arg) => arg.startsWith("--output-dir="));
+const outputDir = outputArg ? path.resolve(root, outputArg.slice("--output-dir=".length)) : null;
+const templateDonor = process.argv.includes("--template-donor");
+if (outputArg && (!outputArg.slice("--output-dir=".length) || fs.existsSync(outputDir))) throw new Error("Staged output directory must be new and nonempty");
+if (templateDonor && !outputDir) throw new Error("Template donor builds require an isolated --output-dir");
+if (templateDonor) throw new Error("Historical donor builds are retired. Validate the canonical chassis and build new sites from it.");
 const cfg = JSON.parse(fs.readFileSync(cfgPath, "utf8"));
+assertTemplateBuild(cfg, {
+  existing: typeof cfg.slug === "string" && fs.existsSync(path.join(root, cfg.slug, "index.html")),
+  legacyMaintenance: process.argv.includes("--legacy-maintenance"),
+});
+if (!/^[a-z][a-z0-9-]{1,48}$/.test(cfg.slug || "")) throw new Error("Invalid tenant slug");
+if (cfg.tokens?.SLUG && cfg.tokens.SLUG !== cfg.slug) throw new Error("SLUG token must match the new tenant slug");
+if (!outputDir && fs.existsSync(path.join(root, cfg.slug)) && !process.argv.includes("--replace-existing")) throw new Error("Existing sites are protected. Use an isolated --output-dir; replacing an existing site requires explicit approval and --replace-existing.");
+for (const assets of [cfg.assets].flat().filter(Boolean)) {
+  const assetPath = path.resolve(root, assets);
+  if (path.dirname(assetPath) === root && fs.existsSync(path.join(assetPath, "index.html"))) throw new Error("A generated tenant cannot be used as an asset pack or alternate build source.");
+}
+if (cfg.templateDonor && !templateDonor) throw new Error("Template donor configurations require --template-donor and an isolated output");
+if (templateDonor && cfg.mode === "chassis") throw new Error("A chassis consumer cannot be used as the template donor");
 // optional shared market pack — pairs/overrides/seeds every tenant in the
 // market needs (e.g. source-language cleanup). Tenant config wins conflicts.
 if (cfg.sharedPack) {
@@ -104,13 +138,110 @@ const excludeRes = excludePatterns.map((re) => new RegExp(re));
 // Store-card defaults keep the G&H 365 copy working for configs that predate
 // the tokenised card; tenants without a store should stripBlocks: ["store-card"].
 cfg.tokens = cfg.tokens || {};
+cfg.tokens.CURRENCY ??= String(cfg.currency || "GBP").toUpperCase();
 cfg.tokens.STORE_NAME ??= `${cfg.tokens.BRAND || "Shop"} 365`;
 cfg.tokens.STORE_TAG ??= "Own line · drops";
 cfg.tokens.STORE_COPY ??= `Not a partner — ${cfg.tokens.COACH_FIRST || "the coach"}'s own clothing line. Doors open per drop; the list hears first.`;
 cfg.tokens.STORE_CTA ??= "Visit the store";
+cfg.tokens.PB_HALF_LABEL ??= "Recorded benchmark";
+// SIG: masthead ownership stamp. Choose per the non-duplication rule in
+// scripts/reskin/CHASSIS.md (never restate what the wordmark already says).
+if (!cfg.tokens.SIG) {
+  cfg.tokens.SIG = cfg.coachFirst ? `by ${cfg.coachFirst}` : `by ${cfg.tokens.BRAND || "the coach"}`;
+  console.warn(`[reskin] SIG token unset — defaulted to "${cfg.tokens.SIG}". Review against the signature rule in CHASSIS.md and set tokens.SIG in the config.`);
+}
+cfg.tokens.ZONE_ACCENT ??= colors.zoneAccent || "#b45309";
+// Mobile wordmark scale: short marks (PMA, GG) need a far larger vw than long
+// names (HYROX DONCASTER) to fill the line. Estimated advance ≈0.72em per
+// uppercase glyph (spaces ≈0.4); target ≈90vw line fill, capped at 24vw.
+cfg.tokens.WM_MOBILE_SIZE ??= (() => {
+  const text = String(cfg.tokens.WORDMARK_HTML || "").replace(/<[^>]+>/g, "");
+  if (!text.trim()) return "5.9vw";
+  const n = [...text].reduce((w, ch) => w + (ch === " " ? 0.4 : 1), 0);
+  return `${Math.round(Math.min(120 / n, 24) * 10) / 10}vw`;
+})();
+// Mobile sig size is a flat 5.6vw in the chassis — agreed uniform size,
+// independent of wordmark scale.
 // SEASON_START is lowercase by design for mid-sentence use; the athlete
 // headline needs a sentence-start version.
 cfg.tokens.SEASON_HEADLINE ??= `From ${cfg.tokens.SEASON_START || "day one"} to ${cfg.tokens.PB_SOLO || "a PB"} in one season.`;
+cfg.tokens.HERO_TITLE_HTML ??= "Your next goal.<br /><em>Start here.</em>";
+cfg.tokens.HERO_DEK ??= `Explore coaching, race tools and practical training guidance — find your next step with ${cfg.tokens.BRAND || "us"}.`;
+cfg.tokens.BIO_ROLE ??= "HYROX racer and coach";
+cfg.tokens.EVENTS_PHOTO_BLOCK ??= "";
+// Homepage race cards rotate at build time: only confirmed races starting at
+// least `homepageLeadDays` out make the board (anything closer has slipped
+// inside the no-pitch window and drops off the top); the next races rise into
+// the list behind it. First card renders visible, the rest fold behind the
+// "+ N more races" toggle in app.js. Defaults: 14-day lead, 4 cards.
+cfg.tokens.RACE_CARDS ??= (() => {
+  const cities = cfg.races?.cities || [];
+  const leadDays = cfg.races?.homepageLeadDays ?? 14;
+  const count = cfg.races?.homepageCount ?? 4;
+  const cutoff = Date.now() + leadDays * 864e5;
+  const esc = (s) =>
+    String(s ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  const fmt = (iso) =>
+    new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      timeZone: "UTC",
+    });
+  const eligible = cities
+    .filter(
+      (c) =>
+        c.race?.status === "confirmed" &&
+        Date.parse(`${c.race.start}T00:00:00Z`) >= cutoff,
+    )
+    .sort(
+      (a, b) => Date.parse(`${a.race.start}T00:00:00Z`) - Date.parse(`${b.race.start}T00:00:00Z`),
+    );
+  if (cities.length && !eligible.length)
+    console.warn(
+      `  RACE CARDS: ${cities.length} configured races but none start ${leadDays}+ days out — the events board will be empty. Refresh cfg.races.`,
+    );
+  else if (cities.length && eligible.length < count)
+    console.warn(
+      `  RACE CARDS: only ${eligible.length} of ${count} board slots filled after the ${leadDays}-day cutoff — top up cfg.races.cities.`,
+    );
+  return eligible
+    .slice(0, count)
+    .map(
+      (c) =>
+        `<div class="event"><div class="date"><strong><time datetime="${c.race.start}">${fmt(c.race.start)}</time></strong><span>${esc(c.name)}</span></div><div><h4>${esc(c.race.name)}</h4><p>${esc(c.race.dates)} · ${esc(c.country)}</p><a href="${esc(c.race.source)}" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/${slug}/events.html#${c.slug}">Plan the weekend</a></div>`,
+    )
+    .join("\n");
+})();
+cfg.tokens.RACE_RECORD ??= "Experience earned on the start line";
+cfg.tokens.RACE_COUNT ??= "Raced";
+cfg.tokens.RACE_COUNT_LABEL ??= "on the start line — real experience, real times";
+cfg.tokens.PROG_ONE ??= "Race Ready";
+cfg.tokens.PROG_ONE_TAG ??= "structured programme";
+cfg.tokens.PROG_TWO ??= "Foundations";
+cfg.tokens.PROG_TWO_TAG ??= "foundation programme";
+cfg.tokens.OFFER_SUMMARY ??= "1:1 coaching, online routes and race crew.";
+cfg.tokens.PLANS_LEAD ??=
+  "One clear route — 1:1 applications, structured programmes and prep tools. Less hunting, more training.";
+cfg.tokens.PROGRAMMES_SUMMARY ??= "coaching routes, programmes and booking";
+cfg.tokens.PROG_ONE_URL ??= cfg.tokens.PROGRAMMES_URL;
+cfg.tokens.PROG_TWO_URL ??= cfg.tokens.PROGRAMMES_URL;
+cfg.tokens.STUDIO_NOTE ??= "";
+cfg.tokens.ATHLETE_FOCUS ??= "coaching focus";
+cfg.tokens.LINK_CARD_TAG ??= "Verified · routes";
+cfg.tokens.LINK_CARD_NAME ??= "Verified routes";
+cfg.tokens.LINK_CARD_DESC ??=
+  "The official channels, coaching applications and community links — all verified, no public discount codes.";
+cfg.tokens.LINK_CARD_CTA ??= "Open the route →";
+cfg.tokens.PROG_CARD_DESC ??=
+  "Structured programmes and applications — the official coaching routes in.";
+cfg.tokens.PKG_MONTHLY ??= "Monthly coaching";
+cfg.tokens.COMMUNITY_DESC ??=
+  "The community around the crew — training partners, race-weekend support and people to share the work with.";
 
 // Expand {{TOKEN}} inside override patterns so patterns written against the
 // chassis template still match the substituted output.
@@ -121,16 +252,52 @@ function overridePattern(pattern) {
       : m,
   );
 }
+function applyVerifiedOffers(s, file) {
+  const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+  const checkedURL = value => {
+    let url;
+    try { url = new URL(value); } catch { throw new Error(`Offer URLs must be absolute HTTPS URLs for ${slug}`); }
+    if (url.protocol !== "https:" || url.username || url.password) throw new Error(`Offer URLs must use HTTPS without credentials for ${slug}`);
+    return url.href;
+  };
+  const validate = offer => {
+    if (["title", "type", "description", "action", "sourceURL", "url"].some(key => typeof offer[key] !== "string" || !offer[key].trim())) throw new Error(`Incomplete sourced offer for ${slug}`);
+    if (offer.price && typeof offer.price !== "string") throw new Error(`Offer price must include its display terms for ${slug}`);
+    checkedURL(offer.sourceURL);
+    return checkedURL(offer.url);
+  };
+  if (Array.isArray(cfg.coachingOffers) && /(?:index|coaching)\.html$/.test(file)) {
+    if (!cfg.coachingOffers.length) throw new Error(`No coaching offers supplied for ${slug}`);
+    const cards = cfg.coachingOffers.map((offer, i) => `<article class="plan${i ? "" : " featured"} reveal" data-offer-id="${i}"><span class="tag">${esc(offer.type)}</span><h4>${esc(offer.title)}</h4>${offer.price ? `<div class="price">${esc(offer.price)}</div>` : ""}<p class="per">${esc(offer.description)}</p>${offer.features?.length ? `<ul>${offer.features.map(text => `<li>${esc(text)}</li>`).join("")}</ul>` : ""}<a class="btn ${i ? "btn-ghost" : "btn-primary"}" href="${esc(validate(offer))}" target="_blank" rel="noopener">${esc(offer.action)}</a></article>`).join("");
+    const home = file.endsWith("index.html");
+    const pattern = home ? /<div class="plans">[\s\S]*?(?=<p class="plans-note">)/ : /<div class="plans coach-plans" data-training-platform>[\s\S]*?(?=<p class="shop-note">)/;
+    if (!pattern.test(s)) throw new Error(`Coaching offer mount missing: ${file}`);
+    const stories = !home && cfg.seedFiles?.["testimonials.json"]?.items?.length >= 3 ? `<section class="coaching-testimonials" id="athletes-say" hidden><p class="eyebrow">${esc(cfg.testimonialLabel || "Client experiences")}</p><h3>${esc(cfg.testimonialHeading || "In their words.")}</h3><div class="quotes" id="testimonials"></div></section>` : "";
+    if (home && cfg.testimonialLabel) s = s.replace('<p class="eyebrow reveal">Athletes say</p>', () => `<p class="eyebrow reveal">${esc(cfg.testimonialLabel)}</p>`);
+    s = s.replace(pattern, () => `<div class="plans coach-plans verified-offers">${cards}</div><p class="offer-terms">Offer details and prices are set by the provider. Check the linked page for current terms.</p>${stories}`);
+    const intro = esc(cfg.coachingIntro || `Explore the coaching and training options from ${cfg.tokens.BRAND}. Choose the support that fits your next goal.`);
+    if (home) s = s.replace(/(<section class="block" id="plans">[\s\S]*?<p class="lead reveal">)[\s\S]*?(<\/p>)/, (_match, start, end) => start + intro + end);
+    else s = s.replace(/<p class="lead">[\s\S]*?<\/p>/, () => `<p class="lead">${intro}</p>`);
+  }
+  if (Array.isArray(cfg.partnerOffers) && file.endsWith("partners.html")) {
+    const cards = cfg.partnerOffers.map(offer => `<article class="partner-card"><span class="pc-tag">${esc(offer.type || "Official destination")}</span><h4>${esc(offer.title)}</h4><p>${esc(offer.description)}</p>${offer.code ? `<span class="code">${esc(offer.code)}</span>` : ""}<a class="pc-cta" href="${esc(validate(offer))}" target="_blank" rel="${offer.affiliate ? "sponsored " : ""}noopener">${esc(offer.action)}</a></article>`).join("");
+    const pattern = /<div class="partner-list">[\s\S]*?(?=<p class="shop-note">)/;
+    if (!pattern.test(s)) throw new Error(`Partner offer mount missing: ${file}`);
+    s = s.replace(pattern, () => `<div class="partner-list">${cards}</div>`);
+    s = s.replace(/<p class="shop-note">[\s\S]*?<\/p>/, '<p class="shop-note">Partner offers may earn a commission. Discounts, eligibility and availability are set by the provider; check the destination before purchasing.</p>');
+  }
+  return s;
+}
+
 function applyCopyOverrides(s) {
   for (const o of copyOverrides) {
-    // {{TOKEN}} in a replacement swaps for the real value; a function
-    // replacement keeps literal $ out of String.replace's special syntax.
-    const replacement = String(o.replace).replace(/\{\{(\w+)\}\}/g, (m, key) =>
-      Object.prototype.hasOwnProperty.call(cfg.tokens, key) ? String(cfg.tokens[key]) : m,
-    );
+    if (cfg.partnerOffers && o.pattern.includes("shop-note") && o.replace.includes("partner-card")) continue;
+    // {{TOKEN}} values escape literal dollars while authored capture
+    // references keep String.replace's normal substitution syntax.
+    const replacement = overrideReplacement(o.replace, cfg.tokens);
     s = s.replace(
       new RegExp(overridePattern(o.pattern), o.flags || "g"),
-      () => replacement,
+      replacement,
     );
   }
   return s;
@@ -166,7 +333,7 @@ function stripMarkedBlocks(s, id) {
 }
 
 const src = path.join(root, "roxjaya");
-const dst = path.join(root, slug);
+const dst = outputDir || path.join(root, slug);
 const buildV = Date.now();
 
 // Injected into a tenant's styles.css when config sets "heroFull": true —
@@ -204,10 +371,6 @@ const HERO_EDGE_COVER_CSS = `@media (min-width: 801px) {
 
 const HERO_FULL_CSS = `/* hero--full: photo covers the whole hero; reveal unrolls across the
    full background. Opt-in per tenant via "heroFull": true. */
-.hero--bleed.hero--full .hero-amb {
-  display: none;
-}
-
 .hero--bleed.hero--full .hero-img {
   object-fit: cover;
   /* --hero-focus keeps the subject clear of the bottom-left copy and is
@@ -285,7 +448,6 @@ if (cfg.mode === "chassis") {
   // stripPages: drop whole pages the tenant doesn't ship (e.g. desk.html on
   // a studio site). Nav should already omit them via cfg.menu.
   const stripPages = [...(cfg.stripPages || [])];
-  if (nutrition.mode === "hidden") stripPages.push("fuel-zone.html");
   for (const f of stripPages) {
     const p = path.join(dst, f);
     if (fs.existsSync(p)) fs.unlinkSync(p);
@@ -303,51 +465,44 @@ if (cfg.mode === "chassis") {
       `"${cfg.tokens.TAGLINE}."`,
     ]);
   }
-  const heroMode = cfg.heroMode || "full"; // "full" | "ambient"
+  const heroMode = cfg.heroMode || "full"; // "full" | "ambient";
+  const sharedBenefitPages = new Set([
+    "stations-prep.html",
+    "run-zone.html",
+    "taper-zone.html",
+    "results.html",
+    "predictor.html",
+    "splits.html",
+    "events.html",
+    "race-crew.html",
+    "news.html",
+    "list.html",
+    "partners.html",
+    "shop.html",
+  ]);
 
   for (const file of walk(dst)) {
     let s = fs.readFileSync(file, "utf8");
     const before = s;
     for (const [a, b] of tokenPairs) s = s.split(a).join(b);
     s = applyCopyOverrides(s);
+    s = applyVerifiedOffers(s, file);
     for (const id of stripBlocks) s = stripMarkedBlocks(s, id);
     if (file.endsWith(".html")) {
+      if (sharedBenefitPages.has(path.basename(file))) {
+        s = s.replace(/<body([^>]*)>/, (_m, attrs) => {
+          if (/\bzone-acc\b/.test(attrs)) return _m;
+          if (/\sclass="/.test(attrs)) {
+            return `<body${attrs.replace(/class="([^"]*)"/, 'class="$1 zone-acc"')}>`;
+          }
+          return `<body${attrs} class="zone-acc">`;
+        });
+      }
       s = s.replace(/\s*<p class="site-credit"[\s\S]*?<\/p>/g, "");
       s = s.replace(
         "</footer>",
-        '  <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>\n    </footer>',
+        '  <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>\n    </footer>',
       );
-      if (nutrition.mode === "hidden") {
-        s = s.replace(
-          /\s*<li><a href="\/[^"]+\/fuel-zone\/?">Fuel zone<\/a><\/li>/g,
-          "",
-        );
-        s = s.replace(/\s*<a href="\/[^"]+\/fuel-zone\/?">Fuel Zone<\/a>/g, "");
-      }
-      if (
-        nutrition.mode === "nutrition-led" &&
-        !nutrition.reviewed &&
-        file.endsWith("/fuel-zone.html")
-      ) {
-        s = s.replace(
-          "<head>",
-          '<head>\n    <meta name="robots" content="noindex, nofollow" />',
-        );
-        s = s.replace(
-          /(<body[^>]*>)/,
-          `$1\n    <div role="status" style="background:#ffb020;color:#141414;text-align:center;font-weight:800;padding:.75rem 1rem">NUTRITION DRAFT — this page contains inherited race-fuelling guidance and must be reviewed by the coach before publication.</div>`,
-        );
-      }
-      if (
-        nutrition.mode === "nutrition-led" &&
-        nutrition.reviewed &&
-        file.endsWith("/fuel-zone.html")
-      ) {
-        s = s.replace(
-          /(<body[^>]*>)/,
-          `$1\n    <div role="status" style="background:#173f2b;color:#d9ffe9;text-align:center;font-weight:700;padding:.6rem 1rem">Nutrition content reviewed and approved by ${nutrition.reviewer || cfg.tokens?.COACH_NAME || "the coach"}.</div>`,
-        );
-      }
       if (cfg.menu) s = replaceMenu(s); // chassis pages already carry a menu
       // demoPages: coach-shaped pages kept live as product evidence get a
       // banner so a studio/aggregator tenant doesn't claim them as its own.
@@ -400,7 +555,10 @@ if (cfg.mode === "chassis") {
   // assets: cfg.assets = dir(s) mirrored onto <slug>/ (photos, media)
   for (const dir of [cfg.assets].flat().filter(Boolean)) {
     const a = path.join(root, dir);
-    if (fs.existsSync(a)) fs.cpSync(a, dst, { recursive: true });
+    if (fs.existsSync(a)) fs.cpSync(a, dst, {
+      recursive: true,
+      filter: file => fs.statSync(file).isDirectory() || /\.(?:jpe?g|png|webp|avif|gif|svg|mp4|webm|woff2?|ttf|otf|pdf)$/i.test(file),
+    });
   }
   const crewDefaults = path.join(
     root,
@@ -426,7 +584,13 @@ if (cfg.mode === "chassis") {
       };
       walkImg(path.join(dst, "images"));
     }
-    for (const file of ["restaurant.jpg", "dance.jpg", "stock-arena.jpg", "stock-barbell.jpg", "stock-rower.jpg", "stock-burpee.jpg", "stock-sled-push.jpg"]) {
+    const waivedSlots = new Set(
+      (cfg.omitImageSlots || []).map((s) =>
+        s.startsWith("images/") ? s : `images/${s}`,
+      ),
+    );
+    for (const file of ["restaurant.jpg", "dinner-template.jpg", "dance.jpg", "stock-arena.jpg", "stock-barbell.jpg", "stock-rower.jpg", "stock-burpee.jpg", "stock-finish.jpg", "stock-sled-push.jpg"]) {
+      if (waivedSlots.has(`images/gallery/${file}`)) continue;
       const src = path.join(crewDefaults, file);
       if (!fs.existsSync(src)) continue;
       if (cfg.strictImages) {
@@ -473,7 +637,7 @@ if (cfg.mode === "chassis") {
     }
   }
 
-  // Gallery check: Warriors Wall needs exactly 4 photos with 2 event categories
+  // Gallery check: Race Wall needs exactly 4 photos with 2 event categories
   {
     const gp = path.join(dst, "data", "gallery.json");
     if (fs.existsSync(gp)) {
@@ -510,8 +674,34 @@ if (cfg.mode === "chassis") {
     )) {
       const target = path.join(dst, "images", targetName);
       const source = path.join(dst, "images", sourceName);
+      if (targetName.startsWith("station-") && !fs.existsSync(target)) {
+        cfg.omitImageSlots = [...(cfg.omitImageSlots || []), targetName];
+        continue;
+      }
       if (!fs.existsSync(target) && fs.existsSync(source))
         fs.copyFileSync(source, target);
+    }
+  }
+
+  // imageMap: allocate uploaded photos to chassis slots without renaming the
+  // batch. {"hero.jpg": "coach-finish-01.jpg"} copies that source onto the slot.
+  // Slot-named files still work; the map wins on conflict. Missing sources fail.
+  {
+    const assetsDirs = [cfg.assets].flat().filter(Boolean).map((d) => path.join(root, d));
+    for (const [slot, srcName] of Object.entries(cfg.imageMap || {})) {
+      let src = null;
+      for (const dir of assetsDirs) {
+        for (const c of [path.join(dir, "images", srcName), path.join(dir, srcName)]) {
+          if (fs.existsSync(c)) { src = c; break; }
+        }
+        if (src) break;
+      }
+      if (!src) {
+        console.error(`  imageMap: no source found for images/${slot} -> ${srcName} (check the filename in the assets folder)`);
+        process.exit(1);
+      }
+      fs.copyFileSync(src, path.join(dst, "images", slot));
+      console.log(`  imageMap: images/${slot} <- ${srcName}`);
     }
   }
 
@@ -562,6 +752,9 @@ if (cfg.mode === "chassis") {
       }
       // 2. Remove standalone <img> tags referencing omitted images
       for (const slotName of omitSlots) {
+        const escapedSlot = slotName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const figureRe = new RegExp(`\\s*<figure\\b[^>]*>(?:(?!<\\/figure>)[\\s\\S])*?images/${escapedSlot}\\.(?:jpe?g|png|webp)(?:(?!<\\/figure>)[\\s\\S])*?<\\/figure>`, "g");
+        s = s.replace(figureRe, "");
         const imgRe = new RegExp(
           `\\s*<img[^>]*src="[^"]*images/${slotName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.(?:jpe?g|png|webp)[^"]*"[^>]*/?>`,
           "g",
@@ -575,6 +768,16 @@ if (cfg.mode === "chassis") {
           "g",
         );
         s = s.replace(srcRe, "");
+      }
+      // 4. Blank JSON string values inside html/js (inline booking profiles,
+      //    data blobs) that point at omitted images — keeps the JSON valid.
+      for (const slotName of omitSlots) {
+        const esc = slotName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const kvRe = new RegExp(
+          `("[a-zA-Z]+"\\s*:\\s*")[^"]*images/${esc}\\.(?:jpe?g|png|webp)[^"]*(")`,
+          "g",
+        );
+        s = s.replace(kvRe, "$1$2");
       }
       if (s !== before) fs.writeFileSync(file, s);
     }
@@ -590,6 +793,63 @@ if (cfg.mode === "chassis") {
       path.join(dst, "data", f),
       JSON.stringify(data, null, 2) + "\n",
     );
+  }
+
+  if (Array.isArray(cfg.coachingOffers)) {
+    const faqPath = path.join(dst, "data", "faq.json");
+    const faq = JSON.parse(fs.readFileSync(faqPath, "utf8"));
+    const summary = cfg.coachingOffers.map(offer => `${offer.title}${offer.price ? ` — ${offer.price}` : " — enquire for current terms"}`).join("; ");
+    faq.items = (faq.items || []).filter(item => !/cost|price|programme|program|discount|code|how do i get started/i.test(item.q || ""));
+    faq.items.push({ q: "What training options and prices are available?", keywords: ["price", "cost", "fee", "programme", "program", "coaching"], a: `${summary}. Read the Coaching page for each offer's format and its official link. The provider sets current prices and terms.` });
+    faq.items.push({ q: "How do I get started?", keywords: ["start", "book", "sign up", "join"], a: "Choose the offer that fits your goal on the Coaching page, then follow its own official button. Use Ask if you want to discuss your starting point first." });
+    if (cfg.partnerOffers) faq.items.push({ q: "Where are the partner links and codes?", keywords: ["discount", "code", "affiliate", "partner brand"], a: `The Partners page lists ${cfg.partnerOffers.map(offer => `${offer.title}${offer.code ? ` (code ${offer.code})` : ""}`).join(", ")}. Check the linked provider for current eligibility and terms.` });
+    fs.writeFileSync(faqPath, JSON.stringify(faq, null, 2) + "\n");
+    const campaignPath = path.join(dst, "data", "campaign-offers.json");
+    if (fs.existsSync(campaignPath)) {
+      const campaigns = JSON.parse(fs.readFileSync(campaignPath, "utf8"));
+      const carried = (campaigns.offers || []).filter(offer => !["coaching", "programme", "foundations"].includes(offer.id));
+      campaigns.offers = cfg.coachingOffers.map((offer, i) => ({ id: i === 0 ? "coaching" : i === 1 ? "programme" : `programme-${i + 1}`, name: offer.title, goal: "Offer enquiries", destination: offer.url, image: `/${slug}/images/coaching-hero.jpg`, headline: offer.description, actionLabel: offer.action })).concat(carried.map(offer => offer.id === "shop" ? { ...offer, destination: cfg.tokens.STORE_URL } : offer));
+      if (cfg.primaryCampaignOffer) campaigns.offers.sort((a, b) => Number(b.id === cfg.primaryCampaignOffer) - Number(a.id === cfg.primaryCampaignOffer));
+      fs.writeFileSync(campaignPath, JSON.stringify(campaigns, null, 2) + "\n");
+    }
+  }
+
+  // JSON data files (after seeding): drop array items whose image fields
+  // point at an omitted slot — a removed card beats a broken image.
+  if (omitSlots.length) {
+    for (const file of walk(dst)) {
+      if (!file.endsWith(".json")) continue;
+      let data;
+      try {
+        data = JSON.parse(fs.readFileSync(file, "utf8"));
+      } catch {
+        continue;
+      }
+      const prune = (v) => {
+        if (Array.isArray(v)) {
+          return v
+            .filter(
+              (item) =>
+                !omitSlots.some((slot) =>
+                  new RegExp(`images/${slot.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.(?:jpe?g|png|webp)`).test(
+                    JSON.stringify(item),
+                  ),
+                ),
+            )
+            .map(prune);
+        }
+        if (v && typeof v === "object") {
+          for (const k of Object.keys(v)) v[k] = prune(v[k]);
+        }
+        return v;
+      };
+      const beforeJson = JSON.stringify(data);
+      const pruned = prune(data);
+      if (JSON.stringify(pruned) !== beforeJson) {
+        console.log("  prune:", file.split("/").slice(-2).join("/"));
+        fs.writeFileSync(file, JSON.stringify(pruned, null, 2) + "\n");
+      }
+    }
   }
 
   // cfg.news: owner's-voice feed items — replaces the chassis sample items
@@ -611,6 +871,7 @@ if (cfg.mode === "chassis") {
       : spec;
     for (const [a, b] of tokenPairs) s = s.split(a).join(b);
     s = applyCopyOverrides(s);
+    s = applyVerifiedOffers(s, file);
     for (const id of stripBlocks) s = stripMarkedBlocks(s, id);
     s = s.replace(
       new RegExp(
@@ -636,6 +897,8 @@ if (cfg.mode === "chassis") {
       }
     }
   }
+
+  prepareShowcase({ root, outputDir: dst, config: cfg });
 
   // fail loudly on unfilled tokens — the inverse of the persona-leak check
   const missing = new Set();
@@ -678,6 +941,95 @@ if (cfg.mode === "chassis") {
     );
     for (const m of [...missingImgs].sort()) console.error("  " + m);
     process.exit(1);
+  }
+
+  // slot coverage contract: every chassis-required image must either
+  // render on a page or be explicitly waived in cfg.omitImageSlots.
+  // A slot that silently renders nothing (missing file, pruned figure,
+  // copyOverride strip) is a hidden gap — fail loudly instead.
+  const requiredSlots = (() => {
+    try {
+      return (
+        fs
+          .readFileSync(
+            path.join(root, "chassis/images/REQUIRED.md"),
+            "utf8",
+          )
+          .match(/images\/[a-z0-9/_-]+\.(?:jpe?g|png|webp)/g) || []
+      );
+    } catch {
+      return [];
+    }
+  })();
+  if (requiredSlots.length) {
+    const rendered = new Set();
+    const collectRendered = (d) => {
+      for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+        const p = path.join(d, e.name);
+        if (e.isDirectory() && e.name !== "images") collectRendered(p);
+        else if (!e.isDirectory() && /\.(html|js|json)$/.test(e.name))
+          for (const m of fs
+            .readFileSync(p, "utf8")
+            .matchAll(/images\/[a-z0-9/_-]+\.(?:jpe?g|png|webp)/g))
+            rendered.add(m[0]);
+      }
+    };
+    collectRendered(dst);
+    const waived = new Set(
+      (cfg.omitImageSlots || []).map((s) =>
+        s.startsWith("images/") ? s : `images/${s}`,
+      ),
+    );
+    // planner-watermark is documented optional ("never blocks a build")
+    const enforced = requiredSlots.filter(
+      (r) => r !== "images/planner-watermark.jpg",
+    );
+    const gaps = enforced.filter(
+      (r) => !rendered.has(r) && !waived.has(r),
+    );
+    if (gaps.length) {
+      console.error(
+        "\nSLOT GAPS — required chassis images render nothing and are not waived:",
+      );
+      for (const g of gaps.sort()) console.error("  " + g);
+      console.error(
+        "  Fill each slot with a real photo, or add an explicit entry to omitImageSlots (the waiver).",
+      );
+      process.exit(1);
+    }
+    const stale = [...waived].filter(
+      (w) =>
+        enforced.includes(w) &&
+        fs.existsSync(path.join(dst, w)),
+    );
+    if (stale.length) {
+      console.warn(
+        "  STALE WAIVERS — waived slots that have a real file (un-waive or delete the file):",
+      );
+      for (const s of stale.sort()) console.warn("    " + s);
+    }
+    console.log(
+      `  slot coverage: ${requiredSlots.length - waived.size} filled, ${waived.size} waived, 0 unwaived gaps`,
+    );
+    // unused files: photos shipped in images/ that no slot references — either
+    // map them or leave them out of the batch.
+    const onDisk = [];
+    const collectFiles = (d) => {
+      for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+        const p = path.join(d, e.name);
+        if (e.isDirectory()) collectFiles(p);
+        else if (/\.(jpe?g|png|webp)$/i.test(e.name))
+          onDisk.push(path.relative(dst, p));
+      }
+    };
+    collectFiles(path.join(dst, "images"));
+    const unused = onDisk.filter(
+      (f) => !rendered.has(f) && !f.startsWith("images/gallery/"),
+    );
+    if (unused.length) {
+      console.log("  UNUSED (not referenced by any slot — safe to remove or map):");
+      for (const u of unused.sort()) console.log("    " + u);
+    }
   }
 
   if (cfg.strictImages) {
@@ -743,11 +1095,13 @@ if (cfg.mode === "chassis") {
   t.canonicalHost = `${slug}.localhost`;
   t.currency = cfg.currency || "gbp";
   t.demo = true;
-  withTenantsLock((tenants) => {
+  if (!outputDir) withTenantsLock((tenants) => {
     tenants.tenants = tenants.tenants.filter((x) => x.tenant_id !== slug);
     tenants.tenants.push(t);
   });
 
+  installBookingPlanner({ root, slug, config: cfg, tenant: t, outputDir: dst });
+  wireCoachView({ outputDir: dst, config: cfg });
   const nutritionState =
     nutrition.mode === "nutrition-led"
       ? nutrition.reviewed
@@ -758,9 +1112,10 @@ if (cfg.mode === "chassis") {
     `chassis build done → ${slug}/  (hero: ${heroMode}; ${nutritionState})`,
   );
   console.log(
-    `tenant "${slug}" registered — hostnames: ${t.hostnames.join(", ")}`,
+    outputDir ? `staged "${slug}" at ${dst}; live registry unchanged` : `tenant "${slug}" registered — hostnames: ${t.hostnames.join(", ")}`,
   );
   console.log(`open http://localhost:3000/${slug}/`);
+  runVerify(dst, slug);
   process.exit(0);
 }
 
@@ -804,6 +1159,7 @@ const pairs = [
   ["#ff2d95", colors.pink || "#ff2d95"],
   ["#e0177c", colors.pink600 || "#e0177c"],
   ["#ffe1f0", colors.pink100 || "#ffe1f0"],
+  ["#b45309", colors.zoneAccent || "#b45309"],
   ["roxjaya", slug],
 ];
 
@@ -881,7 +1237,6 @@ ${localGuideLink}              <li><a href="/${slug}/news/">UK Hyrox news</a></l
             <ul class="sub">
               <li><a href="/${slug}/stations-prep/">All eight stations</a></li>
               <li><a href="/${slug}/run-zone/">Run training &amp; pace calculator</a></li>
-              <li><a href="/${slug}/fuel-zone/">Race nutrition</a></li>
               <li><a href="/${slug}/taper-zone/">Final two-week taper</a></li>
             </ul>
           </li>
@@ -891,15 +1246,16 @@ ${localGuideLink}              <li><a href="/${slug}/news/">UK Hyrox news</a></l
               <li><a href="/${slug}/station-9/">Station 9 meetups</a></li>
               <li><a href="/${slug}/broadcast/">Weekly broadcast</a></li>
               <li><a href="/${slug}/diary/">This week's diary</a></li>
-              <li><a href="/${slug}/#wall-photos">${cfg.wallLabel || "Warriors Wall"}</a></li>
+              <li><a href="/${slug}/#wall-photos">${cfg.wallLabel || "Race Wall"}</a></li>
 ${merchandiseLink}              <li><a href="/${slug}/#ask">Chat Zone</a></li>
             </ul>
           </li>
         </ul>`;
 
 function replaceMenu(s) {
-  const marker = '<ul class="menu" id="menu">';
-  const start = s.indexOf(marker);
+  const markerRe = /<ul class="menu" id="menu"[^>]*>/;
+  const markerMatch = markerRe.exec(s);
+  const start = markerMatch ? markerMatch.index : -1;
   if (start < 0) return s;
   const tags = /<\/?ul\b[^>]*>/g;
   tags.lastIndex = start;
@@ -1167,13 +1523,15 @@ if (t.guides && t.guides.headerHtml) {
 t.features = features;
 t.channels = channels;
 t.demo = true;
-withTenantsLock((tenants) => {
+if (!outputDir) withTenantsLock((tenants) => {
   tenants.tenants = tenants.tenants.filter((x) => x.tenant_id !== slug);
   tenants.tenants.push(t);
 });
 
+installBookingPlanner({ root, slug, config: cfg, tenant: t, outputDir: dst });
 console.log(`reskin done → ${slug}/  (${touched} files touched)`);
 console.log(
-  `tenant "${slug}" registered — hostnames: ${t.hostnames.join(", ")}`,
+  outputDir ? `staged "${slug}" at ${dst}; live registry unchanged` : `tenant "${slug}" registered — hostnames: ${t.hostnames.join(", ")}`,
 );
 console.log(`open http://localhost:3000/${slug}/`);
+runVerify(dst, slug);

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en" data-coach-preview="true" data-coach-page="false">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Today | The Desk | Hybrid Hub</title>
+  <link rel="stylesheet" href="/joshharrison/styles.css?v=crop-fix-20261103" />
+  <link rel="stylesheet" href="/joshharrison/guide.css?v=1793655399019" />
+  <link rel="stylesheet" href="/joshharrison/showcase.css?v=1793655399019" /><link rel="stylesheet" href="/joshharrison/desk.css?v=desk1" />
+  <script src="/joshharrison/coach-view.js?v=1793655399019"></script>
+  <style>
+    .masthead { padding-top: 18px; padding-bottom: 8px; }
+    .masthead h1 { font-size: clamp(1.4rem, 3vw, 2rem); margin: 0; }
+    .masthead .city { display: none; }
+    .today-wrap { padding: 18px 0 60px; }
+    .today-wrap > .eyebrow { margin: 0; }
+    .day-column { grid-area: day; display: grid; gap: 1rem; }
+    .attention-column { grid-area: attention; }
+    #next-session { grid-area: next; }
+    .day-column #next-session, .day-column #floor-group { grid-area: auto; }
+    #floor-group { grid-area: schedule; }
+    #decisions { grid-area: decisions; }
+    #other-attention { grid-area: other; }
+    #next-session:empty, #decisions:empty { display: none; }
+    .next-session { display: block; padding: 1rem 1.2rem; border-left: 4px solid var(--pink); border-radius: 12px; background: var(--paper-2); color: var(--ink); text-decoration: none; }
+    .next-session strong, .next-session small { display: block; }
+    .next-session small { color: var(--ink-2); margin-top: .3rem; }
+    .queue-more > summary { cursor: pointer; min-height: 44px; padding: .6rem 0; color: var(--ink); }
+    .schedule-panel .all-clear { margin: .5rem 0; padding: .6rem 0; border: 0; }
+    #decisions .queue-group { margin-top: 0; border-top: 0; padding-top: 0; }
+    .today-wrap > h2 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.04em; margin-bottom: .6rem; }
+    .today-layout { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.4fr); grid-template-areas: "day attention"; gap: 1.2rem 2rem; margin-top: 1.4rem; align-items: start; }
+    .schedule-panel { border: 1px solid var(--pink); border-radius: 20px; padding: 1.4rem; background: linear-gradient(145deg, color-mix(in srgb, var(--pink) 12%, var(--paper-2)), var(--paper)); }
+    .schedule-panel h3 { margin: .4rem 0; }
+    .schedule-panel .btn { margin-top: 1rem; }
+    .floor-item { text-decoration: none; color: var(--ink); }
+    .floor-item time { color: var(--pink); font-weight: 800; font-size: 1.15rem; }
+    .floor-item small { display: block; }
+    .queue-group { border-top: 1px solid var(--line); padding-top: 1rem; }
+    .queue-item:focus-visible, .floor-item:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+    @media(max-width:800px) { .day-column, .attention-column { display: contents; } .day-column #next-session { grid-area: next; } .day-column #floor-group { grid-area: schedule; } .today-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "next" "decisions" "schedule" "other"; } .queue-item { flex-wrap: wrap; } .today-wrap > h2 { font-size: 1.7rem; margin-top: .4rem; } .schedule-panel { padding: 1rem; } }
+    .today-lead { color: var(--ink-2); max-width: 46rem; }
+    .queue-group { margin-top: 2rem; }
+    .queue-group > h3 { margin: 0 0 .8rem; }
+    .queue-group > h3 span { color: var(--ink-3); font-weight: 500; font-size: .85rem; }
+    .queue-item {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      border: 1px solid var(--line); border-radius: 12px; background: var(--paper-2);
+      padding: .9rem 1.1rem; margin-bottom: .6rem; text-decoration: none; color: inherit;
+    }
+    .queue-item:hover { border-color: var(--pink); }
+    .queue-item strong { display: block; }
+    .queue-item small { color: var(--ink-3); display: block; margin-top: .15rem; }
+    .queue-tag { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--pink); white-space: nowrap; }
+    .queue-tag.calm { color: var(--ink-3); }
+    .all-clear { border: 1px dashed var(--line); border-radius: 14px; padding: 1.1rem; color: var(--ink-3); margin-top: 2rem; }
+    .floor-list { display: grid; gap: .6rem; }
+    .floor-item { border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1.1rem; background: var(--paper); display: flex; justify-content: space-between; gap: 1rem; }
+    .floor-item small { color: var(--ink-3); }
+    .today-stats { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.2rem; }
+    .today-stats a { border: 1px solid var(--line); border-radius: 999px; padding: .45rem .9rem; font-size: .82rem; text-decoration: none; color: var(--ink-2); }
+    .today-stats a:hover { border-color: var(--pink); color: var(--ink); }
+  </style>
+</head>
+<body class="desk-page"><aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/joshharrison/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/joshharrison/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/joshharrison/desk.html?audience=coach">Finance</a><a data-coach-link href="/joshharrison/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/joshharrison/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/joshharrison/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/joshharrison/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+  <header class="masthead wrap">
+    <a href="/joshharrison/" style="color: inherit; text-decoration: none"><h1><span class="wordmark">JOSH HARRIS<span class="o">O</span>N</span></h1></a>
+    <p class="city">The Desk</p>
+  </header>
+  
+
+  <main class="wrap today-wrap">
+    <p class="eyebrow">The Desk / Today</p>
+    <h2 id="today-title">Today.</h2>
+    <p class="today-lead" id="today-digest"></p>
+    <div class="today-layout" id="queue">
+      <div class="day-column"><div id="next-session"></div>
+      <section class="schedule-panel" id="floor-group">
+        <p class="eyebrow">Your day, in order</p>
+        <h3>Today's schedule</h3>
+        <p class="today-lead">Planner diary · Europe/London</p>
+        <div class="floor-list" id="floor-list"></div>
+        <a class="btn btn-ghost" href="/joshharrison/planner.html?view=coach&amp;audience=coach">Open full diary</a>
+      </section></div>
+      <div class="attention-column"><div id="decisions"></div>
+      <div id="other-attention"><p class="eyebrow">Keep things moving</p><h3>Messages, check-ins & upcoming work</h3>
+        <div id="task-groups"></div>
+        <p class="all-clear" id="all-clear" hidden>Nothing needs you right now — new enquiries, requests and flags will land here first.</p>
+      </div></div>
+    </div>
+  </main>
+
+  <aside class="coach-question" aria-label="Ask Josh"><p>Got a training or race-day question?</p><a class="btn btn-primary" href="/joshharrison/#ask">Ask Josh</a></aside><footer><div class="wrap">© <span id="year"></span> Josh Harrison <a data-coach-link href="/joshharrison/?audience=coach">Back to coach homepage</a></div>  <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+    </footer>
+  <script src="/joshharrison/desk-config.js?v=1793655399019"></script>
+  <script src="/joshharrison/contacts.js?v=1793655399019"></script>
+  <script src="/joshharrison/integrations.js?v=1793655399019"></script>
+  <script src="/joshharrison/clients.js?v=1793655399019"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      await DeskConfig.ready;
+      while (!window.ClientDeskStore) await new Promise(resolve => setTimeout(resolve, 20));
+      initToday();
+    });
+    let refreshTimer;
+    const refreshToday = () => { clearTimeout(refreshTimer); refreshTimer = setTimeout(() => location.reload(), 100); };
+    window.addEventListener("storage", refreshToday);
+    window.addEventListener("pageshow", event => { if (event.persisted) refreshToday(); });
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) refreshToday(); });
+    function initToday() {
+      const $ = id => document.getElementById(id);
+      $("year").textContent = new Date().getFullYear();
+      const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      const store = window.ClientDeskStore;
+      const clients = (store && store.clients) || [];
+      const leads = (window.ContactStore ? ContactStore.leads() : []).map(c => c.lead);
+      let diary;
+      try { diary = JSON.parse(localStorage.getItem("joshharrison.planner.v1") || "null"); } catch {}
+      const dayName = new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+      $("today-title").textContent = `Today — ${dayName}.`;
+
+      const groups = [
+        { title: "Needs your decision", tag: "Decide", items: [] },
+        { title: "Messages to reply to", tag: "Reply", items: [] },
+        { title: "Renewals due now", tag: "Renew", items: [] },
+        { title: "New enquiries", tag: "Lead", items: [] },
+        { title: "Check-ins to follow up", tag: "Follow up", items: [] },
+        { title: "Upcoming renewals", tag: "Plan", items: [] }
+      ];
+      const clientHref = c => `/joshharrison/client.html?audience=coach&client=${encodeURIComponent(c.id)}`;
+      clients.filter(c => c.lifecycle !== "Archived").forEach(c => {
+        const who = `<strong>${esc(c.name)}</strong><small>${esc(c.plan)} · ${esc(c.status || "")}</small>`;
+        const intake = c.intake || ContactStore.find({ email: c.email })?.intake;
+        if (intake && !intake.reviewed)
+          groups[0].items.push({ html: who + `<small>Review new intake${intake.flags?.length ? " — health flags reported" : ""}</small>`, href: clientHref(c) + "#intake-review", tag: "Review" });
+        if (c.checkinReviewPending)
+          groups[0].items.push({ html: who + "<small>Review flagged check-in — pain or training difficulty reported</small>", href: clientHref(c) + "#checkin-box", tag: "Review" });
+        if (["Cancel requested", "Reschedule requested"].includes(c.bookingState))
+          groups[0].items.push({ html: who + `<small>${esc(c.bookingState)} — charge or waive?</small>`, href: clientHref(c) + "#floor-box", tag: "Decide" });
+        else if (store.paymentIssue ? store.paymentIssue(c) : /issue|failed/i.test(c.paymentStatus || ""))
+          groups[0].items.push({ html: who + `<small>Payment issue — ${esc(c.paymentStatus)}</small>`, href: clientHref(c) + "#attention-box", tag: "Decide" });
+        if (c.unread)
+          groups[1].items.push({ html: who + `<small>Unread message</small>`, href: clientHref(c) + "#message-panel", tag: "Reply" });
+        else if (!c.checkinReviewPending && (c.checkIn === "Overdue" || c.status === "Needs check-in"))
+          groups[4].items.push({ html: who + `<small>Follow up: check-in ${esc(c.checkIn || "due")}</small>`, href: clientHref(c) + "#checkin-box", tag: "Follow up" });
+        if (store.needsRenewal && store.needsRenewal(c)) {
+          const due = c.type === "monthly" ? c.daysRemaining <= 0 : c.sessionsTotal - c.sessionsUsed <= 0;
+          groups[due ? 2 : 5].items.push({ html: who + `<small>${due ? "Renewal due now" : "Upcoming renewal"} · ${esc(c.renewalDue || "review timing")}</small>`, href: clientHref(c) + "#renewal-box", tag: due ? "Renew" : "Plan", priority: c.type === "monthly" ? c.daysRemaining : c.sessionsTotal - c.sessionsUsed });
+        }
+      });
+      leads.filter(l => l.status === "New" || !l.status).forEach(l => {
+        const hot = l.readiness === "Hot";
+        groups[3].items.push({
+          html: `<strong>${esc(l.name)}</strong><small>${esc(l.source)} · ${esc(l.readiness || "New")} — ${esc((l.message || "").slice(0, 90))}</small>`,
+          href: `/joshharrison/leads.html?audience=coach&lead=${encodeURIComponent(l.id)}`,
+          tag: hot ? "Hot lead" : "Lead", hot
+        });
+      });
+
+      (diary?.events || []).filter(e => e.status === "pending").forEach(e => {
+        groups[0].items.push({ html: `<strong>${esc(e.name)}</strong><small>Approve booking request · ${esc(e.date)} · ${esc(e.title)}</small>`, href: `/joshharrison/planner.html?view=coach&audience=coach&booking=${encodeURIComponent(e.id)}`, tag: "Approve" });
+      });
+      const queue = $("task-groups");
+      let total = 0;
+      groups.forEach((g, index) => {
+        if (!g.items.length) return;
+        total += g.items.length;
+        const sec = document.createElement("section");
+        sec.className = "queue-group";
+        if (index === 2 || index === 5) g.items.sort((a, b) => a.priority - b.priority);
+        if (index === 3) g.items.sort((a, b) => Number(b.hot) - Number(a.hot));
+        const row = i => `<a class="queue-item" href="${i.href}"><span>${i.html}</span><span class="queue-tag${i.hot || index === 0 ? "" : " calm"}">${i.tag}</span></a>`;
+        const limit = index === 0 ? g.items.length : 3;
+        sec.innerHTML = `<h3>${g.title} <span>— ${g.items.length}</span></h3>` + g.items.slice(0, limit).map(row).join("")
+          + (g.items.length > limit ? `<details class="queue-more"><summary>Show all ${g.items.length} ${g.title.toLowerCase()}</summary>${g.items.slice(limit).map(row).join("")}</details>` : "");
+        (index === 0 ? $("decisions") : queue).append(sec);
+      });
+      $("all-clear").hidden = total > 0;
+      const counts = [];
+      if (groups[0].items.length) counts.push(`${groups[0].items.length} decision${groups[0].items.length === 1 ? "" : "s"}`);
+      if (groups[1].items.length) counts.push(`${groups[1].items.length} messages`);
+      if (groups[2].items.length) counts.push(`${groups[2].items.length} renewal${groups[2].items.length === 1 ? "" : "s"}`);
+      if (groups[3].items.length) counts.push(`${groups[3].items.length} lead${groups[3].items.length === 1 ? "" : "s"}`);
+      if (groups[4].items.length) counts.push(`${groups[4].items.length} check-ins`);
+      if (groups[5].items.length) counts.push(`${groups[5].items.length} upcoming renewals`);
+      $("today-digest").textContent = counts.length ? `Needs you: ${counts.join(" · ")}.` : "All clear — nothing flagged for today.";
+
+      const floor = $("floor-list");
+      const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/London", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+      const booked = (diary?.events || []).filter(e => e.date === today && e.status !== "cancelled").sort((a, b) => a.hour - b.hour);
+      floor.innerHTML = booked.length ? booked.map(e => {
+        const time = `${String(Math.floor(e.hour)).padStart(2, "0")}:${String(Math.round((e.hour % 1) * 60)).padStart(2, "0")}`;
+        return `<a class="floor-item" href="/joshharrison/planner.html?view=coach&audience=coach&booking=${encodeURIComponent(e.id)}"><time>${time}</time><span><strong>${esc(e.name)}</strong><small>${esc(e.title)} · ${esc(e.duration)} min</small><small>${esc(e.status === "pending" ? "Approval needed" : e.status)}</small></span></a>`;
+      }).join("") : `<p class="all-clear">${diary ? "No sessions booked today." : "No diary loaded yet. Open Bookings to start the walkthrough."}</p>`;
+      const clock = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date()).split(":").map(Number);
+      const hourNow = clock[0] + clock[1] / 60;
+      const next = booked.find(e => e.status === "confirmed" && e.hour + e.duration / 60 > hourNow);
+      if (next) {
+        const time = `${String(Math.floor(next.hour)).padStart(2, "0")}:${String(Math.round((next.hour % 1) * 60)).padStart(2, "0")}`;
+        $("next-session").innerHTML = `<a class="next-session" href="/joshharrison/planner.html?view=coach&audience=coach&booking=${encodeURIComponent(next.id)}"><span class="eyebrow">${next.hour <= hourNow ? "In progress" : "Next session"}</span><strong>${time} · ${esc(next.name)}</strong><small>${esc(next.title)} · ${esc(next.duration)} min</small></a>`;
+      }
+    }
+  </script>
+</body>
+</html>

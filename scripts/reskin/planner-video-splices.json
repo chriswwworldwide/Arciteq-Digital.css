@@ -1,0 +1,86 @@
+{
+  "trainedbytr": {
+    "sourceSha256": "0d19f560566f7248ec48704142fa6a6d8042e910ecee34dfe89049a04fc968ee",
+    "outputSha256": "fcf236792038b47dfb36a4f35bdf8a46bcafd890721c9f919594dbc0baccea97",
+    "sourceDuration": 329.48,
+    "cutBeforeDesk": 276.28,
+    "insertedDuration": 65.84000000000003,
+    "finalDuration": 384.72,
+    "review": "/Users/chri/Desktop/trainedbytr-walkthrough-23oct.mp4",
+    "workDirectory": "/var/folders/sj/037z84yd2qz33p9mhyl801g40000gn/T/s9-planner-splices-hDtalX/trainedbytr",
+    "createdAt": "2026-10-22T23:15:07.267Z",
+    "resplicedAt": "2026-10-23: homepage (new hero), partners click-through and planner re-recorded and cut in at page-load boundaries"
+  },
+  "faisalpma": {
+    "sourceSha256": "55a9940d6e40564ea2f7a9138e71a3642b6ea400f7f11d8a4152cc0d091f540c",
+    "outputSha256": "f13d66911320adf6b1224ec40d1a689856859c1c0e3030c00324179fc38f0293",
+    "sourceDuration": 302.4,
+    "cutBeforeDesk": 259,
+    "insertedDuration": 65.92000000000002,
+    "finalDuration": 360.48,
+    "review": "/Users/chri/Desktop/faisalpma-walkthrough-23oct.mp4",
+    "workDirectory": "/var/folders/sj/037z84yd2qz33p9mhyl801g40000gn/T/s9-planner-splices-RmtVZ9/faisalpma",
+    "createdAt": "2026-10-22T23:20:28.632Z",
+    "resplicedAt": "2026-10-23: homepage (new hero), partners click-through and planner re-recorded and cut in at page-load boundaries"
+  },
+  "jadeskillen": {
+    "sourceSha256": "c1cf25d1b613ae031678d12f0729095437c1e61c7608821df93bb761b9c9e300",
+    "outputSha256": "3460fb4336f1d40211f2402542efef8f561edaabd27aa4f79c3f801651c13ed5",
+    "sourceDuration": 294.6,
+    "cutBeforeDesk": 255.36,
+    "insertedDuration": 65.84000000000003,
+    "finalDuration": 356.6,
+    "review": "/Users/chri/Desktop/jadeskillen-walkthrough-23oct.mp4",
+    "workDirectory": "/var/folders/sj/037z84yd2qz33p9mhyl801g40000gn/T/s9-planner-splices-RmtVZ9/jadeskillen",
+    "createdAt": "2026-10-22T23:20:30.194Z",
+    "resplicedAt": "2026-10-23: homepage (new hero), partners click-through and planner re-recorded and cut in at page-load boundaries"
+  },
+  "elationfitness": {
+    "sourceSha256": "52463e069555de08d73fd9819584fb39ee79b99620da93508f0d338ee1bb4e79",
+    "outputSha256": "f4bda6ad2cb253a127ea5057e35422578132e000d0c6c368fffd3bae0a351d63",
+    "sourceDuration": 303.12,
+    "cutBeforeDesk": 259,
+    "insertedDuration": 65.88,
+    "finalDuration": 360.44,
+    "review": "/Users/chri/Desktop/elationfitness-walkthrough-23oct.mp4",
+    "workDirectory": "/var/folders/sj/037z84yd2qz33p9mhyl801g40000gn/T/s9-planner-splices-RmtVZ9/elationfitness",
+    "createdAt": "2026-10-22T23:20:36.607Z",
+    "resplicedAt": "2026-10-23: homepage (new hero), partners click-through and planner re-recorded and cut in at page-load boundaries"
+  },
+  "coachedbyzara": {
+    "sourceSha256": "dd7c69bd11b0ebd4f5186b17e563b99aa582c88cbb913ba15ec3f4863ee018ef",
+    "outputSha256": "83c5e67abaa820fff83d35f6c574e44f423a0eed326c89cb9dfcab423734d13f",
+    "sourceDuration": 307.16,
+    "cutBeforeDesk": 261.36,
+    "insertedDuration": 65.88,
+    "finalDuration": 362.48,
+    "review": "/Users/chri/Desktop/coachedbyzara-walkthrough-23oct.mp4",
+    "workDirectory": "/var/folders/sj/037z84yd2qz33p9mhyl801g40000gn/T/s9-planner-splices-RmtVZ9/coachedbyzara",
+    "createdAt": "2026-10-22T23:22:24.107Z",
+    "resplicedAt": "2026-10-23: homepage (new hero), partners click-through and planner re-recorded and cut in at page-load boundaries"
+  },
+  "jamiebarker": {
+    "sourceSha256": "4d1bf23f67aacad201f9111cbadc07219c3be27169cc6d847f885649921764ed",
+    "outputSha256": "82527e1882276889853da24c88d85d635aee6dd0d70f07574eda7dc474990e7c",
+    "sourceDuration": 338.4,
+    "cutBeforeDesk": 286.28,
+    "insertedDuration": 65.95999999999998,
+    "finalDuration": 394.56,
+    "review": "/Users/chri/Desktop/jamiebarker-walkthrough-23oct.mp4",
+    "workDirectory": "/var/folders/sj/037z84yd2qz33p9mhyl801g40000gn/T/s9-planner-splices-RmtVZ9/jamiebarker",
+    "createdAt": "2026-10-22T23:22:29.925Z",
+    "resplicedAt": "2026-10-23: homepage (new hero), partners click-through and planner re-recorded and cut in at page-load boundaries"
+  },
+  "getfitgabby": {
+    "sourceSha256": "d0d88fa343be42ac80ed8c79c3a1fc46ddbbf557b73b5bb48a9cf61d7bfd018a",
+    "outputSha256": "cf19f9233bbbfca00f0cd911613c2b862e9ff7f42c70d380eac883a141006d96",
+    "sourceDuration": 328.8,
+    "cutBeforeDesk": 280.72,
+    "insertedDuration": 65.88,
+    "finalDuration": 386.92,
+    "review": "/Users/chri/Desktop/getfitgabby-walkthrough-23oct.mp4",
+    "workDirectory": "/var/folders/sj/037z84yd2qz33p9mhyl801g40000gn/T/s9-planner-splices-RmtVZ9/getfitgabby",
+    "createdAt": "2026-10-22T23:22:31.789Z",
+    "resplicedAt": "2026-10-23: homepage (new hero), partners click-through and planner re-recorded and cut in at page-load boundaries"
+  }
+}

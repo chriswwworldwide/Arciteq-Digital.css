@@ -1,0 +1,680 @@
+{
+  "mode": "chassis",
+  "slug": "htcfisher",
+  "coachingIntro":"Train remotely with Ross or join the Christchurch club floor. Online coaching, local classes and programmed run sessions give you different ways to build towards your next start line.",
+  "coachingOffers":[
+    {"title":"Online HYROX coaching","type":"Personalised · TrainingPeaks","description":"A race-date-led 12–16 week build with adaptive programming, check-ins and race strategy. Discuss your goals and current pricing with Ross.","features":["Training delivered through TrainingPeaks","Review calls and programme adjustments","Solo and doubles coaching available"],"url":"https://www.hyroxtrainingclubchristchurch.co.uk/online-hyrox-coaching","action":"Enquire about online coaching","sourceURL":"https://www.hyroxtrainingclubchristchurch.co.uk/online-hyrox-coaching"},
+    {"title":"Club classes and drop-ins","type":"Christchurch training club","price":"£15 non-member drop-in","description":"Explore strength, conditioning and race-specific sessions. Club membership options are listed alongside the timetable.","url":"https://www.hyroxtrainingclubchristchurch.co.uk/timetable","action":"View classes and membership","sourceURL":"https://www.hyroxtrainingclubchristchurch.co.uk/timetable"},
+    {"title":"Run club","type":"Programmed community running","description":"The club's interval sessions sit alongside the training week. The timetable describes these as programmed, non-coached sessions.","url":"https://www.hyroxtrainingclubchristchurch.co.uk/runclub","action":"Explore the run club","sourceURL":"https://www.hyroxtrainingclubchristchurch.co.uk/timetable"}
+  ],
+  "partnerOffers":[
+    {"title":"GTC Health Clubs","type":"Club facilities and access","description":"Explore the club timetable and gym access options. The official timetable links to the GTC membership system.","url":"https://www.hyroxtrainingclubchristchurch.co.uk/timetable","action":"View club access options","sourceURL":"https://www.hyroxtrainingclubchristchurch.co.uk/timetable"},
+    {"title":"HTC Christchurch","type":"Official club destination","description":"Coaching, classes, running and practical HYROX resources from the club.","url":"https://www.hyroxtrainingclubchristchurch.co.uk/","action":"Visit the club website","sourceURL":"https://www.hyroxtrainingclubchristchurch.co.uk/"}
+  ],
+  "offerAudit":{"checkedAt":"2026-11-02","notes":["Online coaching page headline says from £49, FAQ says £150/month and doubles £100 per individual without a clear billing unit. Price intentionally omitted pending clarification.","£15 non-member drop-in is explicitly published on the timetable.","Do not duplicate the online offer as a separate generic 1:1 card or call club classes a six-week plan."]},
+  "heroMode": "full",
+  "strictImages": true,
+  "assets": [
+    "scripts/reskin/htcfisher-assets"
+  ],
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "omitImageSlots": [
+    "images/bike.jpg",
+    "images/carry.jpg",
+    "images/detail.jpg",
+    "images/doubles.jpg",
+    "images/events-hero.jpg",
+    "images/half.jpg",
+    "images/hoodie.jpg",
+    "images/kerb.jpg",
+    "images/momentum.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/pb.jpg",
+    "images/planner-watermark.jpg",
+    "images/predictor-hero.jpg",
+    "images/race-mate-hero.jpg",
+    "images/race-revel.jpg",
+    "images/rooftop.jpg",
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/run-hero.jpg",
+    "images/splits-hero.jpg",
+    "images/sprint.jpg",
+    "images/station-farmers-carry.jpg",
+    "images/station-lean.jpg",
+    "images/station-skierg.jpg",
+    "images/station-sled-pull.jpg",
+    "images/stations-hero.jpg",
+    "images/taper-hero.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg"
+  ],
+  "seedFiles": {
+    "cities.json": {
+      "note": "DEMO SEED \u2014 UK race planner data for the HTC demo. Dates/venues are placeholders from public HYROX listings; refresh from hyrox.com before real use.",
+      "checked": "2026-11",
+      "home": "london",
+      "cities": [
+        {
+          "slug": "london",
+          "name": "London",
+          "nickname": "The Smoke",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "The big one. Multiple HYROX weekends a year and the fastest-selling tickets in the UK calendar.",
+          "coachSays": "Closest major race to us \u2014 two hours on the train and you're on the start line. Half the crew has raced here; the other half is about to.",
+          "race": {
+            "name": "HYROX London",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com first and sell out fast.",
+            "last": {
+              "dates": "May 2026",
+              "athletes": "~12,000"
+            },
+            "venue": "Olympia London",
+            "address": "Hammersmith Rd, London W14 8UX",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Christchurch to London Liverpool Street is about 1h 50m \u2014 book advance singles early, race weekend fills up.",
+            "Olympia is a short walk from Kensington (Olympia) station or Barons Court on the Piccadilly line.",
+            "Driving? Race-weekend parking around Kensington is painful and pricey \u2014 the train wins."
+          ],
+          "hotels": [
+            {
+              "area": "Kensington / Hammersmith (closest)",
+              "picks": "Walk-to-venue options \u2014 the stress-free race morning.",
+              "range": "\u00a3120 \u2013 \u00a3220 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Olympia%20London"
+            },
+            {
+              "area": "Earl's Court",
+              "picks": "Cheaper beds ten minutes from the venue.",
+              "range": "\u00a380 \u2013 \u00a3140 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Earls%20Court%20London"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Race morning: porridge or a bagel 3\u20134 hours out. Familiar food only \u2014 race day is not the day to experiment."
+          ],
+          "city": [
+            "Contactless or Oyster everywhere on the Tube \u2014 no cash needed.",
+            "London HYROX weekends sell out hotels near the venue \u2014 book when tickets drop, not after."
+          ],
+          "nightAfter": [
+            "Kensington and Hammersmith pubs do a roaring post-race trade \u2014 Sunday roast is basically mandatory."
+          ],
+          "meetup": null,
+          "coachNote": "This is the crew's home race \u2014 we take a proper contingent. If you're racing London, a 12-week block ending on race week is the sweet spot.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: whoever's racing finds the dinner. Pub booked near the venue, all levels welcome, race stories compulsory."
+          }
+        },
+        {
+          "slug": "manchester",
+          "name": "Manchester",
+          "nickname": "The Rainy City",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "The UK's biggest HYROX residency \u2014 multiple days, tens of thousands of athletes.",
+          "coachSays": "Eleven days of racing \u2014 if you can't find a wave that fits, that's on you. Worth the trip for the crowd alone.",
+          "race": {
+            "name": "HYROX Manchester",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next residency expected \u2014 check hyrox.com for the announced block.",
+            "last": {
+              "dates": "January 2026",
+              "athletes": "~30,000 across the residency"
+            },
+            "venue": "Manchester Central",
+            "address": "Petersfield, Manchester M2 3GX",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Christchurch to Manchester Piccadilly is around 4h 30m with one change \u2014 an overnighter makes sense.",
+            "Manchester Central is ten minutes on foot from Deansgate station."
+          ],
+          "hotels": [
+            {
+              "area": "Deansgate / city centre",
+              "picks": "Walk everywhere, food on the doorstep.",
+              "range": "\u00a380 \u2013 \u00a3150 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Manchester%20Central"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Northern Quarter for carbs the night before \u2014 pasta options everywhere."
+          ],
+          "city": [
+            "Stay near Deansgate and you won't need transport at all."
+          ],
+          "nightAfter": [
+            "Northern Quarter \u2014 the obvious post-race dinner territory."
+          ],
+          "meetup": null,
+          "coachNote": "The multi-day format means we can get several crews through in one weekend \u2014 good first away race.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner near the venue, all welcome."
+          }
+        },
+        {
+          "slug": "birmingham",
+          "name": "Birmingham",
+          "nickname": "Brum",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "NEC-scale HYROX \u2014 huge hall, huge field.",
+          "coachSays": "Big-arena energy. The NEC crowd makes you feel like a pro even when your sled disagrees.",
+          "race": {
+            "name": "HYROX Birmingham",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com.",
+            "last": {
+              "dates": "October 2026",
+              "athletes": "~15,000"
+            },
+            "venue": "NEC Birmingham",
+            "address": "North Ave, Marston Green, Birmingham B40 1NT",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Birmingham International station is inside the NEC campus \u2014 trains via one change from Christchurch, ~3h.",
+            "Driving is easy \u2014 the NEC is built for it, parking on site."
+          ],
+          "hotels": [
+            {
+              "area": "NEC / Birmingham International",
+              "picks": "On-campus hotels mean a five-minute walk to your wave.",
+              "range": "\u00a390 \u2013 \u00a3160 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=NEC%20Birmingham"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Resorts World next door covers pre-race dinner."
+          ],
+          "city": [
+            "The NEC campus is self-contained \u2014 you won't see much of Birmingham itself unless you plan to."
+          ],
+          "nightAfter": [
+            "Resorts World \u2014 restaurants five minutes from the hall."
+          ],
+          "meetup": null,
+          "coachNote": "Easiest logistics of the UK races \u2014 venue, hotel and dinner all within five minutes of each other.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner at Resorts World, all welcome."
+          }
+        },
+        {
+          "slug": "cardiff",
+          "name": "Cardiff",
+          "nickname": "The Diff",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "Welsh HYROX \u2014 a loud arena and a proper race-weekend city.",
+          "coachSays": "Long trip, worth it. Cardiff on race weekend is a city that actually notices you're there.",
+          "race": {
+            "name": "HYROX Cardiff",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com.",
+            "last": {
+              "dates": "June 2026",
+              "athletes": "~9,000"
+            },
+            "venue": "Utilita Arena Cardiff",
+            "address": "Mary Ann St, Cardiff CF10 2EQ",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Cardiff Central station is a ten-minute walk from the arena \u2014 trains via one change, ~4h from Christchurch."
+          ],
+          "hotels": [
+            {
+              "area": "City centre",
+              "picks": "Everything's walkable \u2014 venue, food, the lot.",
+              "range": "\u00a370 \u2013 \u00a3130 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Cardiff%20city%20centre"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Carbs on St Mary Street \u2014 you won't struggle."
+          ],
+          "city": [
+            "Compact centre \u2014 book central and forget taxis."
+          ],
+          "nightAfter": [
+            "St Mary Street for the post-race feed."
+          ],
+          "meetup": null,
+          "coachNote": "Furthest of the UK trips \u2014 we usually make a weekend of it.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner in the city centre, all welcome."
+          }
+        },
+        {
+          "slug": "glasgow",
+          "name": "Glasgow",
+          "nickname": "The Dear Green Place",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "Scottish HYROX at the SEC \u2014 the furthest trip and the friendliest crowd.",
+          "coachSays": "A proper expedition for us \u2014 fly it, don't sit on a train for seven hours.",
+          "race": {
+            "name": "HYROX Glasgow",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com.",
+            "last": {
+              "dates": "March 2026",
+              "athletes": "~8,000"
+            },
+            "venue": "SEC Glasgow",
+            "address": "Exhibition Way, Glasgow G3 8YW",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Fly via a connection, or London direct \u2014 much easier than the 7h train."
+          ],
+          "hotels": [
+            {
+              "area": "Finnieston / SEC",
+              "picks": "Walk to the venue and the best food street in town.",
+              "range": "\u00a380 \u2013 \u00a3150 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=SEC%20Glasgow"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Finnieston is Glasgow's food strip \u2014 pick anywhere."
+          ],
+          "city": [
+            "Cold even in spring \u2014 pack layers for queuing outside."
+          ],
+          "nightAfter": [
+            "Finnieston for dinner, done."
+          ],
+          "meetup": null,
+          "coachNote": "Only worth it as a committed trip \u2014 but as a crew weekend it's brilliant.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner in Finnieston, all welcome."
+          }
+        }
+      ],
+      "alsoOn": [
+        {
+          "name": "HYROX Dublin",
+          "city": "Dublin",
+          "flag": "\ud83c\uddee\ud83c\uddea",
+          "nickname": "The Pale",
+          "dates": "check hyrox.com",
+          "start": null,
+          "venue": "RDS",
+          "note": "Short hop and a huge atmosphere \u2014 Dublin weekends sell out early.",
+          "source": "https://hyrox.com/events/"
+        }
+      ],
+      "alsoTba": "Bristol, Leeds and Edinburgh are all expected back \u2014 dates land on hyrox.com first."
+    },
+    "gallery.json": {
+      "note": "DEMO SEED \u2014 photos and captions from @hyroxchristchurch / @coachrossfish. Confirm usage with Ross before launch.",
+      "photos": [
+        {
+          "src": "/htcfisher/images/gallery/malaga-crew.jpg",
+          "alt": "HTCC crew on the race floor at HYROX M\u00e1laga",
+          "caption": "An unforgettable weekend full of PBs, sun, sangria and more laughs than I've had in a while. We'll be back next year \u2014 who's joining us?",
+          "by": "HTCC",
+          "tilt": -1.5,
+          "event": "M\u00e1laga"
+        },
+        {
+          "src": "/htcfisher/images/gallery/malaga-three.jpg",
+          "alt": "Three HTCC athletes grinning after racing in M\u00e1laga",
+          "caption": "Dee's first ever HYROX. Hooked right from that first race.",
+          "by": "HTCC",
+          "tilt": 2,
+          "event": "M\u00e1laga"
+        },
+        {
+          "src": "/htcfisher/images/gallery/istanbul-podium.jpg",
+          "alt": "Michelle and Ellie with the Union flag on the podium at HYROX Istanbul",
+          "caption": "Michelle & Ellie \u2014 podium, Istanbul. Keep setting the standard.",
+          "by": "HTCC",
+          "tilt": 1,
+          "event": "Istanbul"
+        },
+        {
+          "src": "/htcfisher/images/gallery/glasgow-doors.jpg",
+          "alt": "Ross outside the HYROX Glasgow entrance",
+          "caption": "Glasgow. Just enjoy it they say. But don't underestimate the challenge.",
+          "by": "Coach Ross",
+          "tilt": -2,
+          "event": "Glasgow"
+        },
+        {
+          "src": "/htcfisher/images/gallery/glasgow-oxworld.jpg",
+          "alt": "HTCC crew at the OX World stand in Glasgow",
+          "caption": "Crew at Glasgow. Half of them didn't know each other a year ago.",
+          "by": "HTCC",
+          "tilt": 1.5,
+          "event": "Glasgow"
+        },
+        {
+          "src": "/htcfisher/images/gallery/doubles-finish.jpg",
+          "alt": "A doubles pair celebrating at the finish",
+          "caption": "You've smashed your training \u2014 now go smash this race. They did.",
+          "by": "HTCC",
+          "event": "Race day"
+        },
+        {
+          "src": "/htcfisher/images/gallery/crew-kit.jpg",
+          "alt": "HTCC crew in club kit at ROXBOX",
+          "caption": "New home, new race-grade kit, expansion of the tribe. Taking it up a level this season.",
+          "by": "HTCC",
+          "event": "ROXBOX"
+        },
+        {
+          "src": "/htcfisher/images/gallery/race-day-pair.jpg",
+          "alt": "Two HTCC athletes before the start",
+          "caption": "Race-day nerves are compulsory. So is the photo.",
+          "by": "HTCC",
+          "tilt": -1,
+          "event": "Race day"
+        },
+        {
+          "src": "/htcfisher/images/gallery/crew-faces.jpg",
+          "alt": "HTCC members in club tees after a group run",
+          "caption": "Sunny springy group runs. Run Club, Tuesdays and Wednesdays.",
+          "by": "HTCC",
+          "tilt": 1,
+          "event": "Run Club"
+        },
+        {
+          "src": "/htcfisher/images/gallery/crew-selfie.jpg",
+          "alt": "Post-race crew selfie",
+          "caption": "It's not just a club \u2014 it's friends & family.",
+          "by": "HTCC",
+          "tilt": -1.5,
+          "event": "Race day"
+        },
+        {
+          "src": "/htcfisher/images/htc-crew-lineup.jpg",
+          "alt": "HTCC athletes lining up on the club sled track",
+          "caption": "Back-to-back sled heats. Nobody hides on sled day.",
+          "by": "HTCC",
+          "tilt": 1.5,
+          "event": "Club night"
+        },
+        {
+          "src": "/htcfisher/images/htc-class-sled-endure.jpg",
+          "alt": "Members pushing sleds mid-session at the club",
+          "caption": "Sled pushes while the rower queue watches. Character building.",
+          "by": "HTCC",
+          "tilt": -1,
+          "event": "Club night"
+        },
+        {
+          "src": "/htcfisher/images/htc-venue-endure.jpg",
+          "alt": "The club's training floor \u2014 sleds, ropes and ergs under the lights",
+          "caption": "Home turf. Sleds loaded, ergs warm, doors open.",
+          "by": "HTCC",
+          "tilt": 2,
+          "event": "Home"
+        },
+        {
+          "src": "/htcfisher/images/htc-ross-gtc-neon.jpg",
+          "alt": "Coach Ross in front of the club wall at the GTC venue",
+          "caption": "In-house Hyrox Performance Coach at GTC. Find him under the neon.",
+          "by": "Coach Ross",
+          "tilt": -2,
+          "event": "Home"
+        }
+      ]
+    },
+    "faq.json": {
+      "note": "Receptionist answers \u2014 the 10 questions HTC Christchurch gets asked most. Instant answers in the Ask section; anything else goes to the inbox.",
+      "items": [
+        {
+          "q": "How much is membership?",
+          "keywords": [
+            "price",
+            "cost",
+            "membership",
+            "how much",
+            "plans",
+            "expensive",
+            "monthly",
+            "pay"
+          ],
+          "a": "Drop-in is \u00a315 for non-members. Members: GTC base membership \u00a344.10/mo plus a class pack \u2014 4 classes \u00a335.99 (8, 12, 16 packs too), so from about \u00a380/mo. Online coaching with Ross is \u00a3150/mo; doubles coaching \u00a3100 each."
+        },
+        {
+          "q": "Is there a trial?",
+          "keywords": [
+            "trial",
+            "taster",
+            "try",
+            "free",
+            "first session",
+            "test"
+          ],
+          "a": "Easiest way in is a \u00a315 drop-in \u2014 Sunday Community Sesh at 8am is the one most people try first. Non-members welcome."
+        },
+        {
+          "q": "I've never done HYROX \u2014 can beginners join?",
+          "keywords": [
+            "beginner",
+            "never done",
+            "new",
+            "first time",
+            "unfit",
+            "start"
+          ],
+          "a": "That's most of the room, honestly. Every station scales, nobody's watching your numbers, and Ross will tell you the same: show up twice a week and the rest takes care of itself."
+        },
+        {
+          "q": "What actually is HYROX?",
+          "keywords": [
+            "what is",
+            "hyrox",
+            "format",
+            "rules",
+            "stations",
+            "race"
+          ],
+          "a": "An indoor fitness race: eight 1km runs with a workout station between each \u2014 SkiErg, sled push, sled pull, burpee broad jumps, row, farmers carry, lunges, wall balls. Open, Pro, Doubles and Relay divisions, so everyone can race."
+        },
+        {
+          "q": "Where are you based?",
+          "keywords": [
+            "where",
+            "location",
+            "address",
+            "based",
+            "parking",
+            "directions",
+            "find you"
+          ],
+          "a": "ROXBOX at GTC Health Clubs, inside Advantage Padel \u2014 Unit 20, Christchurch Business Park, Radar Way, Mudeford, Christchurch BH23 4FL. Free parking on site."
+        },
+        {
+          "q": "When are the sessions?",
+          "keywords": [
+            "when",
+            "times",
+            "timetable",
+            "schedule",
+            "sessions",
+            "classes",
+            "morning",
+            "evening"
+          ],
+          "a": "Mon Rebel 6:15am & 6:30pm \u00b7 Tue Lift 6:15am, Run Club 6:30pm \u00b7 Wed Run Club 6:15am, Lift 6:30pm \u00b7 Thu Engine 6:15am & 6:30pm \u00b7 Sun HYROX Community Sesh 8\u20139am."
+        },
+        {
+          "q": "Do you run HYROX sim days?",
+          "keywords": [
+            "sim",
+            "simulation",
+            "sim day",
+            "practice race",
+            "test run",
+            "tryout"
+          ],
+          "a": "Yes \u2014 full race simulations with real timing and transitions, the closest thing to race day without the ticket. Members get first shout; dates land on the events page."
+        },
+        {
+          "q": "Do you do 1:1 coaching?",
+          "keywords": [
+            "1:1",
+            "pt",
+            "personal training",
+            "one to one",
+            "private",
+            "individual"
+          ],
+          "a": "Yes \u2014 1:1 coaching is on the plans. Technique work, race prep, or just faster progress than group sessions alone. Message Ross directly and you'll get a straight answer on whether it's worth it for you."
+        },
+        {
+          "q": "Can I cancel any time?",
+          "keywords": [
+            "cancel",
+            "contract",
+            "lock",
+            "commitment",
+            "quit",
+            "leave"
+          ],
+          "a": "Rolling monthly \u2014 cancel whenever, no exit forms, no guilt-trip retention script. If you leave, the door stays open."
+        },
+        {
+          "q": "I'm looking for a doubles partner",
+          "keywords": [
+            "partner",
+            "doubles",
+            "pair",
+            "teammate",
+            "race with"
+          ],
+          "a": "Post a card on the find-a-partner board \u2014 pace band, race target, one line about you. Ross matches people by hand, because doubles is chemistry, not just split times."
+        }
+      ]
+    }
+  },
+  "tokens": {
+    "HERO_DEK": "Your next race starts with the work you do together. Explore HYROX coaching, training and race-weekend community in Christchurch.",
+    "SLUG": "htcfisher",
+    "COACH_NAME": "Ross Fisher",
+    "COACH_NAME_LC": "ross fisher",
+    "COACH_FIRST": "Ross",
+    "COACH_LAST": "Fisher",
+    "WORDMARK_HTML": "HYROX TRAINING <span class=\"o\">CLUB</span>",
+    "BRAND": "HTC Christchurch",
+    "BRAND_SHORT": "HTC",
+    "BRAND_SOCIAL": "hyroxchristchurch",
+    "CLOTHING_SHORT": "HTC",
+    "CITY": "Christchurch",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "hyrox coaching, programming and race crew \u2014 christchurch",
+    "HERO_TITLE_HTML": "HYROX coach.<br /><em>Christchurch.</em>",
+    "APPLY_URL": "https://www.instagram.com/hyroxchristchurch/",
+    "PROGRAMMES_URL": "https://www.instagram.com/hyroxchristchurch/",
+    "STORE_URL": "https://www.hyroxtrainingclubchristchurch.co.uk/",
+    "IG_URL": "https://www.instagram.com/hyroxchristchurch/",
+    "BRAND_IG_URL": "https://www.instagram.com/hyroxchristchurch/",
+    "YOUTUBE_URL": "https://www.instagram.com/hyroxchristchurch/",
+    "TIKTOK_URL": "https://www.instagram.com/hyroxchristchurch/",
+    "THREADS_URL": "https://www.instagram.com/hyroxchristchurch/",
+    "LINKTREE_URL": "https://www.instagram.com/hyroxchristchurch/",
+    "DOUBLES_PARTNER": "the crew",
+    "PB_VENUE": "Christchurch",
+    "PB_VENUE_LC": "christchurch",
+    "DOUBLES_VENUE": "Birmingham",
+    "DOUBLES_VENUE_LC": "birmingham",
+    "OPEN_VENUE": "London",
+    "PB_SOLO": "Open",
+    "PB_DOUBLES": "Doubles",
+    "PB_HALF": "the next start line",
+    "PB_OPEN": "Open",
+    "SEASON_START": "their first start line",
+    "PARTNER_GYM": "HTC Christchurch",
+    "PARTNER_GYM_LC": "htc christchurch",
+    "PARTNER_GYM_URL": "https://www.instagram.com/hyroxchristchurch/",
+    "PARTNER_SUPP": "HYROX",
+    "PARTNER_SUPP_LC": "hyrox",
+    "PARTNER_SUPP_URL": "https://hyrox.com/",
+    "PARTNER_KIT": "HTC Christchurch",
+    "PARTNER_KIT_LC": "htc christchurch",
+    "PARTNER_KIT_TAG": "Crew kit",
+    "PARTNER_KIT_TITLE": "HTC Christchurch crew kit",
+    "PARTNER_KIT_COPY": "Rep the crew \u2014 HTC Christchurch kit for race day and training.",
+    "PARTNER_KIT_CTA": "Ask Ross",
+    "PARTNER_KIT_URL": "https://www.instagram.com/hyroxchristchurch/",
+    "GYM_CODE": "HTC",
+    "PHOTO_BUDDY": "the crew",
+    "ACCENT": "#0d9488",
+    "ACCENT_DARK": "#0f766e",
+    "ACCENT_SOFT": "#ccfbf1",
+    "BRAND_SHORT_UPPER": "HTC CHRISTCHURCH",
+    "SOCIAL_HANDLE_UPPER": "HYROXCHRISTCHURCH",
+    "VOICE_DOUBLES_HOOK": "Racing's better with a crew beside you.",
+    "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
+    "VOICE_NEWS_TAKE": "Consistency beats intensity \u2014 the plan only works if you do.",
+    "STORE_NAME": "HTC Christchurch",
+    "STORE_TAG": "Crew base",
+    "STORE_COPY": "HTC Christchurch home \u2014 sessions, crew and contact. Everything runs through there.",
+    "STORE_CTA": "Get in touch",
+    "WHATSAPP_URL": "https://wa.me/447000000000",
+    "OFFER_SUMMARY": "Christchurch's first HYROX-dedicated training club \u2014 coached classes plus 1-to-1 online coaching UK-wide.",
+    "ATHLETE_FOCUS": "club-owner focus",
+    "LINK_CARD_DESC": "The club site \u2014 timetable, run club, online coaching and the contact form.",
+    "COMMUNITY_DESC": "The club at GTC Health Club, Mudeford \u2014 total beginners to podium chasers.",
+    "RACE_RECORD": "3 seasons, 14 races, all formats \u2014 60+ athletes coached",
+    "PROG_ONE": "Online HYROX Coaching",
+    "PROG_ONE_TAG": "1-to-1 online",
+    "PROG_ONE_URL": "https://www.hyroxtrainingclubchristchurch.co.uk/online-hyrox-coaching",
+    "PROG_TWO": "Club classes",
+    "PROG_TWO_TAG": "weekly coached sessions",
+    "PROG_TWO_URL": "https://www.hyroxtrainingclubchristchurch.co.uk/timetable",
+    "LINK_CARD_TAG": "Club \u00b7 official",
+    "LINK_CARD_NAME": "HTC Christchurch",
+    "LINK_CARD_CTA": "Open the club site \u2192"
+  },
+  "copyOverrides": [
+    {
+      "pattern": "(<img\\s+class=\"crew-photo\"\\s+src=\"[^\"]*)doubles\\.jpg",
+      "replace": "$1gym-crew.jpg"
+    },
+    {
+      "pattern": "(class=\"crew-photo\"[^>]*?alt=\")[^\"]*\"",
+      "replace": "$1The HYROX Training Club Christchurch crew on the club sled track after a session\""
+    }
+  ]
+}

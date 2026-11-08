@@ -1,21 +1,137 @@
 {
   "mode": "chassis",
   "slug": "georgegrayson",
+  "coachingIntro": "Choose George's ongoing hybrid programming, personalised online coaching or eight-week programme. Existing members can keep using their separate login route.",
+  "coachingOffers": [
+    {
+      "title": "1-2-1 Online Coaching",
+      "type": "Personalised FITR coaching",
+      "price": "£100/month",
+      "description": "Training and nutrition tailored to your lifestyle and goals, with weekly check-ins and progress reviews.",
+      "url": "https://appgeorgegrayson.fitr.training/p/379019",
+      "action": "Explore 1-2-1 coaching",
+      "sourceURL": "https://appgeorgegrayson.fitr.training/t/592794/"
+    },
+    {
+      "title": "Your Hybrid Program",
+      "type": "FITR subscription",
+      "price": "£45/month",
+      "description": "Structured strength and running training with community support, progress tracking and coaching guidance.",
+      "features": [
+        "Seven-day trial listed by George",
+        "Progressive training blocks",
+        "Review current trial and billing terms in FITR"
+      ],
+      "url": "https://appgeorgegrayson.fitr.training/p/373964",
+      "action": "Explore the hybrid programme",
+      "sourceURL": "https://appgeorgegrayson.fitr.training/t/592794/"
+    },
+    {
+      "title": "Eight-week programme",
+      "type": "Eight-week coaching block",
+      "description": "Personal targets, weekly check-ins, a programme guide and access to George's member resources. Register interest through the programme page.",
+      "url": "https://georgegraysonfitness.co.uk/8-week-program/",
+      "action": "Explore the eight-week programme",
+      "sourceURL": "https://georgegraysonfitness.co.uk/8-week-program/"
+    },
+    {
+      "title": "Beginner running and strength plan",
+      "type": "12-week programme",
+      "price": "£40 one-off",
+      "description": "Two running sessions and two strength sessions each week, building towards stronger 5K, 10K and half-marathon running.",
+      "url": "https://buy.stripe.com/bIYcPg3Ftf7E2T628g",
+      "action": "View the beginner plan checkout",
+      "sourceURL": "https://www.liinks.co/georgegraysoncoaching"
+    },
+    {
+      "title": "Advanced running and strength plan",
+      "type": "12-week programme",
+      "price": "£40 one-off",
+      "description": "Three running days and two strength workouts each week, designed for speed, endurance and stronger race preparation.",
+      "url": "https://buy.stripe.com/3csbLc2Bpe3A51e7sB",
+      "action": "View the advanced plan checkout",
+      "sourceURL": "https://www.liinks.co/georgegraysoncoaching"
+    }
+  ],
+  "partnerOffers": [
+    {
+      "title": "Myprotein",
+      "type": "Affiliate code",
+      "description": "Save 10% on eligible Myprotein products with GGEORGE. Check the current exclusions in store.",
+      "code": "GGEORGE",
+      "affiliate": true,
+      "url": "https://www.myprotein.com/",
+      "action": "Shop Myprotein",
+      "sourceURL": "https://www.liinks.co/georgegraysoncoaching"
+    },
+    {
+      "title": "Castore",
+      "type": "Athlete affiliate link",
+      "description": "Save 15% on eligible Castore kit with GEORGEGRAYSON15. Check the current exclusions in store.",
+      "code": "GEORGEGRAYSON15",
+      "affiliate": true,
+      "url": "https://glnk.io/ryj2p/george5vg",
+      "action": "Shop Castore through George",
+      "sourceURL": "https://www.liinks.co/georgegraysoncoaching"
+    },
+    {
+      "title": "GG members area",
+      "type": "Existing member access",
+      "description": "Sign in to the member area. This is a client-access destination, not a new training-plan purchase.",
+      "url": "https://online.georgegraysonfitness.co.uk/login",
+      "action": "Open member login",
+      "sourceURL": "https://georgegraysonfitness.co.uk/8-week-program/"
+    }
+  ],
+  "offerAudit": {
+    "checkedAt": "2026-11-02",
+    "notes": [
+      "The old Protein Works tidd.ly link is inactive; George's current hub attributes GGEORGE to Myprotein.",
+      "Castore tracking link reaches the correct merchant with attribution parameters, then Cloudflare blocks the automated browser; no bypass attempted.",
+      "Member login must not be rewritten to the eight-week sales page."
+    ]
+  },
   "heroMode": "full",
   "strictImages": true,
   "assets": "scripts/reskin/georgegrayson-assets",
   "currency": "gbp",
+  "seedFiles": {
+    "testimonials.json": {
+      "sourceURL": "https://georgegraysonfitness.co.uk/8-week-program/",
+      "items": [
+        {
+          "name": "Rebecca Prime",
+          "quote": "The plan is not a diet, it’s an education to understand your body, your strength and your aspirations.",
+          "detail": "GG eight-week programme client",
+          "sourceURL": "https://georgegraysonfitness.co.uk/8-week-program/"
+        },
+        {
+          "name": "Emily Harmen",
+          "quote": "The WhatsApp group chats were really encouraging and kept you focused with other like minded people.",
+          "detail": "GG eight-week programme client",
+          "sourceURL": "https://georgegraysonfitness.co.uk/8-week-program/"
+        },
+        {
+          "name": "Emma Ryder",
+          "quote": "He has a friendly nature coupled with a real focus on training & helping you to achieve your goals.",
+          "detail": "GG coaching client",
+          "sourceURL": "https://georgegraysonfitness.co.uk/8-week-program/"
+        }
+      ]
+    }
+  },
   "nutrition": {
     "mode": "hidden"
   },
   "tokens": {
+    "HERO_DEK": "Strength and running, working together. Explore online coaching with George and build towards a goal that gives every session a purpose.",
     "SLUG": "georgegrayson",
     "COACH_NAME": "George Grayson",
     "COACH_NAME_LC": "george grayson",
     "COACH_FIRST": "George",
     "COACH_LAST": "Grayson",
     "WORDMARK_HTML": "<span class=\"o\">G</span>G",
-    "BRAND": "GG Coaching",
+    "BRAND": "by George Grayson",
     "BRAND_SHORT": "georgegrayson",
     "BRAND_SOCIAL": "ggeorge_grayson",
     "CLOTHING_SHORT": "GG",
@@ -33,13 +149,13 @@
     "TIKTOK_URL": "https://www.instagram.com/ggeorge_grayson/",
     "THREADS_URL": "https://www.threads.net/@ggeorge_grayson",
     "DOUBLES_PARTNER": "Stuart",
-    "PB_VENUE": "London",
-    "PB_VENUE_LC": "london",
-    "DOUBLES_VENUE": "Manchester",
-    "DOUBLES_VENUE_LC": "manchester",
+    "PB_VENUE": "Birmingham",
+    "PB_VENUE_LC": "birmingham",
+    "DOUBLES_VENUE": "Birmingham",
+    "DOUBLES_VENUE_LC": "birmingham",
     "OPEN_VENUE": "Glasgow",
-    "PB_SOLO": "Pro",
-    "PB_DOUBLES": "1:16:18",
+    "PB_SOLO": "1:00:42",
+    "PB_DOUBLES": "54:57",
     "PB_HALF": "100k Ultra",
     "PB_OPEN": "Pro",
     "SEASON_START": "first HYROX",
@@ -53,7 +169,7 @@
     "PARTNER_KIT_TITLE": "Castore x George Grayson",
     "PARTNER_KIT_COPY": "George races and trains in Castore — performance kit built for hybrid racing.",
     "PARTNER_KIT_CTA": "Shop Castore",
-    "PARTNER_KIT_URL": "https://www.castore.com/",
+    "PARTNER_KIT_URL": "https://glnk.io/ryj2p/george5vg",
     "GYM_CODE": "GGCOACHING",
     "PHOTO_BUDDY": "the GG crew",
     "ACCENT": "#a3e635",
@@ -71,19 +187,44 @@
     "STORE_TAG": "Coaching base",
     "STORE_COPY": "George's coaching home — programmes, applications and contact. Everything runs through there.",
     "STORE_CTA": "Visit the site",
-    "SEASON_HEADLINE": "From his first HYROX to the Pro division in one season."
+    "SEASON_HEADLINE": "From his first HYROX to the Pro division in one season.",
+    "PROG_ONE": "8 Week Program",
+    "PROG_ONE_TAG": "8-week block",
+    "PROG_TWO": "GG workouts",
+    "PROG_TWO_TAG": "online sessions",
+    "OFFER_SUMMARY": "GG Fitness — the 8-week program, online workouts and 1:1 coaching.",
+    "PROG_ONE_URL": "https://georgegraysonfitness.co.uk/8-week-program/",
+    "PROG_TWO_URL": "https://online.georgegraysonfitness.co.uk/login",
+    "SIG": "by George Grayson"
   },
   "stripSections": [
     "merch",
     "tips"
   ],
   "omitImageSlots": [
-    "images/station-lean.jpg",
+    "images/avatar.jpg",
+    "images/bike.jpg",
+    "images/carry.jpg",
+    "images/detail.jpg",
+    "images/doubles.jpg",
+    "images/finish.jpg",
+    "images/gallery/dinner-template.jpg",
+    "images/hoodie.jpg",
     "images/kerb.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/race-revel.jpg",
     "images/rooftop.jpg",
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/sprint.jpg",
+    "images/squad-athlos.jpg",
+    "images/station-lean.jpg",
+    "images/taper-hero.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
     "images/walkin.jpg",
-    "images/suit.jpg",
-    "images/hoodie.jpg"
+    "images/wallball.jpg"
   ],
   "stripPages": [
     "watch.html"
@@ -144,10 +285,119 @@
     {
       "pattern": "365",
       "replace": "hybrid"
+    },
+    {
+      "pattern": "(<img\\s+class=\"crew-photo\"\\s+src=\"[^\"]*)doubles\\.jpg",
+      "replace": "$1gg-class-crew.jpg"
+    },
+    {
+      "pattern": "(class=\"crew-photo\"[^>]*?alt=\")[^\"]*\"",
+      "replace": "$1George and his class group on the gym floor\""
+    },
+    {
+      "pattern": "<figure class=\"art-photo\">\\s*<img\\s*src=\"/{{SLUG}}/images/momentum\\.jpg\\?v=\\d+\"[\\s\\S]*?</figure>",
+      "replace": "<figure class=\"art-photo taper-run-photo\"><img src=\"/{{SLUG}}/images/momentum.jpg\" alt=\"George out on an easy wrapped-up run — quiet miles still count\" width=\"848\" height=\"1024\" loading=\"lazy\" /><figcaption>Race week, kept quiet on purpose.</figcaption></figure>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li>GG Fitness — the 8-week program, online workouts and 1:1 coaching\\.</li>",
+      "replace": "<li>GG Fitness — the 8-week program, online workouts and 1:1 coaching.</li><li>30-plus athlete results across one HYROX Birmingham weekend — PBs and first-timers alike.</li>",
+      "flags": "g"
+    },
+    {
+      "pattern": "(<article class=\"station reveal\" id=\"sleep\">[\\s\\S]*?</article>)\\s*<article class=\"station reveal\" id=\"checklist\">",
+      "replace": "$1\n\n<figure class=\"art-photo taper-ride-photo\"><img src=\"/{{SLUG}}/images/taper-ride.jpg\" alt=\"George and the group out on a sunny ride — easy miles with good company\" width=\"1024\" height=\"884\" loading=\"lazy\" /><figcaption>Easy company miles beat another hard session this week.</figcaption></figure>\n\n<article class=\"station reveal\" id=\"checklist\">",
+      "flags": "g"
+    },
+    {
+      "pattern": "(ask George for your access details</a>\\.[\\s\\S]*?</p>)",
+      "replace": "$1\n\n<figure class=\"art-photo coach-clients-photo\" style=\"margin:1.5rem auto 0\"><img src=\"/{{SLUG}}/images/gg-clients-birmingham.jpg\" alt=\"Two of George's athletes celebrating under the HYROX sign at Birmingham\" width=\"472\" height=\"315\" loading=\"lazy\" /><figcaption>A weekend of debuts and PBs for the GG crew.</figcaption></figure>",
+      "flags": "g"
     }
   ],
+  "extraCss": ".guidance--calm .art-photo.taper-run-photo img{object-position:50% 30%;}\n.guidance--calm .art-photo.taper-ride-photo img{object-position:50% 40%;}\n.coach-clients-photo img{width:100%;height:auto;border-radius:14px;}\n@media(max-width:600px){.guidance--calm .art-photo.taper-run-photo img{object-position:50% 26%;}.guidance--calm .art-photo.taper-ride-photo img{object-position:50% 36%;}}",
   "stripBlocks": [
     "youtube-link",
     "tiktok-link"
-  ]
+  ],
+  "tenantGallery": [
+    {
+      "src": "gallery/gg-games-crew.jpg",
+      "alt": "The GG Games community gathered on the gym floor",
+      "caption": "GG Games 4.0 — the whole crew in yellow, and the best day of the year by a mile.",
+      "event": "Community",
+      "tilt": -1.3
+    },
+    {
+      "src": "gallery/gg-alex-medal.jpg",
+      "alt": "Client Alex with her Sheffield Half Marathon medal",
+      "caption": "Sheffield Half — 1:50:40 down to 1:49:12. That's what a block of consistent work does.",
+      "event": "Race day",
+      "tilt": -0.8
+    },
+    {
+      "src": "/georgegrayson/images/gallery/stock-arena.jpg",
+      "alt": "Race-day crowd on the arena floor",
+      "caption": "Race day feels like this. Loud floor, long queue for the wall balls.",
+      "event": "Race day",
+      "tilt": -1
+    },
+    {
+      "src": "gallery/gg-friday-gang.jpg",
+      "alt": "The Friday night class lined up at the dumbbell wall",
+      "caption": "Friday night gang. Good to be back with the hybrid crew.",
+      "event": "Training",
+      "tilt": 1.1
+    },
+    {
+      "src": "gallery/gg-birmingham-finish.jpg",
+      "alt": "George under the finish clock at HYROX Birmingham",
+      "caption": "HYROX Birmingham — 1:00:42, a 2:23 PB. The sub-60 is coming.",
+      "event": "Race day",
+      "tilt": -0.9
+    },
+    {
+      "src": "/georgegrayson/images/gallery/stock-rower.jpg",
+      "alt": "Rower mid-stroke in race conditions",
+      "caption": "Erg splits don't lie. Put the metres in now.",
+      "event": "Training",
+      "tilt": -1.4
+    },
+    {
+      "src": "gallery/gg-games-tee.jpg",
+      "alt": "The GG Games yellow tee from behind",
+      "caption": "The GG Games uniform. Worn with pride.",
+      "event": "Community",
+      "tilt": 0.7
+    },
+    {
+      "src": "/georgegrayson/images/gallery/stock-burpee.jpg",
+      "alt": "Athlete mid burpee on the race floor",
+      "caption": "Station 5: everyone's least favourite minute.",
+      "event": "Race day",
+      "tilt": 0.9
+    },
+    {
+      "src": "gallery/gg-games-floor.jpg",
+      "alt": "An athlete at the sled lane during GG Games",
+      "caption": "GG Games floor. Everyone works, nobody hides.",
+      "event": "Community",
+      "tilt": 1.6
+    },
+    {
+      "src": "gallery/gg-trainers-turf.jpg",
+      "alt": "Racing trainers on the gym turf before a session",
+      "caption": "Fresh FuelCells on the turf. Session pending.",
+      "event": "Training",
+      "tilt": 1.2
+    },
+    {
+      "src": "/georgegrayson/images/gallery/stock-finish.jpg",
+      "alt": "Athletes celebrating at the finish line",
+      "caption": "The finish line makes the early starts worth it.",
+      "event": "Race day",
+      "tilt": 1.5
+    }
+  ],
+  "brandingNote": "Wordmark GG from @ggcoaching_ — his own shorthand, not an invented name. SIG expands the initials."
 }

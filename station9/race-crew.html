@@ -83,7 +83,7 @@
         ]
       }
     </script>
-  </head>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style></head>
   <body>
     <div style="background:#ff3b3b;color:#fff;text-align:center;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:.5em 1em">Demo — this page is part of a Station&nbsp;9 client-site build.</div>
     <header class="masthead wrap">
@@ -110,7 +110,7 @@
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
           Menu
         </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style>        <ul class="menu" id="menu">
+        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style>        <ul class="menu" id="menu" data-booking-navigation><li><a href="/station9/planner.html" style="color:var(--pink,#b69aff);font-weight:800">Book a slot</a></li>
           <li><a href="/station9/">Home</a></li>
           <li>
             <button aria-expanded="false" aria-haspopup="true">The Platform <span class="caret"></span></button>

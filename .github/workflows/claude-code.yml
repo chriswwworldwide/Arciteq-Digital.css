@@ -12,13 +12,15 @@ permissions:
 
 jobs:
   review:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           fetch-depth: 0 # ensure full history for git diff
+          persist-credentials: false
 
       - name: Install jq JSON parser
         run: sudo apt-get update && sudo apt-get install -y jq
@@ -34,11 +36,13 @@ jobs:
           echo "$FILES"
 
           echo "" > review_output.txt
-          for FILE in $FILES; do
-            if [ -f "$FILE" ]; then
+          while IFS= read -r -d '' FILE; do
+            if [ -f "$FILE" ] && [ ! -L "$FILE" ]; then
+              REAL=$(realpath -e -- "$FILE")
+              case "$REAL" in "$GITHUB_WORKSPACE"/*) ;; *) continue ;; esac
               echo "Reviewing $FILE ..."
-              CONTENT=$(head -c 12000 "$FILE" | sed 's/"/\\"/g')
-              RESPONSE=$(curl -s https://api.anthropic.com/v1/messages \
+              CONTENT=$(head -c 12000 -- "$FILE" | sed 's/"/\\"/g')
+              RESPONSE=$(curl --fail --silent --show-error https://api.anthropic.com/v1/messages \
                 -H "x-api-key: $ANTHROPIC_API_KEY" \
                 -H "content-type: application/json" \
                 -d "{
@@ -47,12 +51,12 @@ jobs:
                       \"messages\": [
                         {\"role\": \"user\", \"content\": \"Please review the following file for potential issues, improvements, or best practices. Filename: $FILE\\n\\n$CONTENT\"}
                       ]
-                    }" | jq -r '.content[0].text')
+                    }" | jq -er '.content[0].text')
               echo "### 💬 Feedback for $FILE" >> review_output.txt
               echo "$RESPONSE" >> review_output.txt
               echo "" >> review_output.txt
             fi
-          done
+          done < <(git diff --name-only -z "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}")
 
       - name: 🗨️ Post Claude feedback as PR comment
         env:

@@ -991,7 +991,10 @@ function applyProfile() {
     "Walkthrough schedule — not " + profile.coachFirst + "’s actual diary.";
   document.querySelector(".timezone").textContent =
     "06:00–20:00 · " + profile.timeZone;
-  const accent = profile.accent;
+  const sitePink = getComputedStyle(document.documentElement)
+    .getPropertyValue("--pink")
+    .trim();
+  const accent = /^#[0-9a-f]{6}$/i.test(sitePink) ? sitePink : profile.accent;
   if (/^#[0-9a-f]{6}$/i.test(accent)) {
     document.body.style.setProperty("--purple", accent);
     document.body.style.setProperty(

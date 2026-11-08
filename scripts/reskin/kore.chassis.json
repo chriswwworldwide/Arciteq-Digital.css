@@ -1,0 +1,605 @@
+{
+  "mode": "chassis",
+  "slug": "kore",
+  "heroMode": "full",
+  "strictImages": true,
+  "assets": [
+    "scripts/reskin/kore-assets"
+  ],
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "omitImageSlots": [
+    "images/bike.jpg",
+    "images/coaching-hero.jpg",
+    "images/detail.jpg",
+    "images/doubles.jpg",
+    "images/events-hero.jpg",
+    "images/events-secondary.jpg",
+    "images/gallery/dinner-template.jpg",
+    "images/gallery/restaurant.jpg",
+    "images/half.jpg",
+    "images/hoodie.jpg",
+    "images/kerb.jpg",
+    "images/links-hero.jpg",
+    "images/momentum.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/pb.jpg",
+    "images/planner-watermark.jpg",
+    "images/predictor-hero.jpg",
+    "images/race-mate-hero.jpg",
+    "images/rooftop.jpg",
+    "images/run-compromised.jpg",
+    "images/run-hero.jpg",
+    "images/splits-hero.jpg",
+    "images/sprint.jpg",
+    "images/station-burpees.jpg",
+    "images/station-farmers-carry.jpg",
+    "images/station-row.jpg",
+    "images/station-sandbag-lunges.jpg",
+    "images/station-skierg.jpg",
+    "images/station-sled-pull.jpg",
+    "images/station-sled-push.jpg",
+    "images/station-wall-balls.jpg",
+    "images/stations-hero.jpg",
+    "images/suit.jpg",
+    "images/taper-hero.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg",
+    "images/squad-athlos.jpg",
+    "images/avatar.jpg"
+  ],
+  "seedFiles": {
+    "cities.json": {
+      "note": "DEMO SEED \u2014 UK race planner data for the KORE demo. Dates/venues are placeholders from public HYROX listings; refresh from hyrox.com before real use.",
+      "checked": "2026-11",
+      "home": "london",
+      "cities": [
+        {
+          "slug": "london",
+          "name": "London",
+          "nickname": "The Smoke",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "The big one. Multiple HYROX weekends a year and the fastest-selling tickets in the UK calendar.",
+          "coachSays": "Closest major race to us \u2014 two hours on the train and you're on the start line. Half the crew has raced here; the other half is about to.",
+          "race": {
+            "name": "HYROX London",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com first and sell out fast.",
+            "last": {
+              "dates": "May 2026",
+              "athletes": "~12,000"
+            },
+            "venue": "Olympia London",
+            "address": "Hammersmith Rd, London W14 8UX",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Newport to London Liverpool Street is about 1h 50m \u2014 book advance singles early, race weekend fills up.",
+            "Olympia is a short walk from Kensington (Olympia) station or Barons Court on the Piccadilly line.",
+            "Driving? Race-weekend parking around Kensington is painful and pricey \u2014 the train wins."
+          ],
+          "hotels": [
+            {
+              "area": "Kensington / Hammersmith (closest)",
+              "picks": "Walk-to-venue options \u2014 the stress-free race morning.",
+              "range": "\u00a3120 \u2013 \u00a3220 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Olympia%20London"
+            },
+            {
+              "area": "Earl's Court",
+              "picks": "Cheaper beds ten minutes from the venue.",
+              "range": "\u00a380 \u2013 \u00a3140 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Earls%20Court%20London"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Race morning: porridge or a bagel 3\u20134 hours out. Familiar food only \u2014 race day is not the day to experiment."
+          ],
+          "city": [
+            "Contactless or Oyster everywhere on the Tube \u2014 no cash needed.",
+            "London HYROX weekends sell out hotels near the venue \u2014 book when tickets drop, not after."
+          ],
+          "nightAfter": [
+            "Kensington and Hammersmith pubs do a roaring post-race trade \u2014 Sunday roast is basically mandatory."
+          ],
+          "meetup": null,
+          "coachNote": "This is the crew's home race \u2014 we take a proper contingent. If you're racing London, a 12-week block ending on race week is the sweet spot.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: whoever's racing finds the dinner. Pub booked near the venue, all levels welcome, race stories compulsory."
+          }
+        },
+        {
+          "slug": "manchester",
+          "name": "Manchester",
+          "nickname": "The Rainy City",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "The UK's biggest HYROX residency \u2014 multiple days, tens of thousands of athletes.",
+          "coachSays": "Eleven days of racing \u2014 if you can't find a wave that fits, that's on you. Worth the trip for the crowd alone.",
+          "race": {
+            "name": "HYROX Manchester",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next residency expected \u2014 check hyrox.com for the announced block.",
+            "last": {
+              "dates": "January 2026",
+              "athletes": "~30,000 across the residency"
+            },
+            "venue": "Manchester Central",
+            "address": "Petersfield, Manchester M2 3GX",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Newport to Manchester Piccadilly is around 4h 30m with one change \u2014 an overnighter makes sense.",
+            "Manchester Central is ten minutes on foot from Deansgate station."
+          ],
+          "hotels": [
+            {
+              "area": "Deansgate / city centre",
+              "picks": "Walk everywhere, food on the doorstep.",
+              "range": "\u00a380 \u2013 \u00a3150 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Manchester%20Central"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Northern Quarter for carbs the night before \u2014 pasta options everywhere."
+          ],
+          "city": [
+            "Stay near Deansgate and you won't need transport at all."
+          ],
+          "nightAfter": [
+            "Northern Quarter \u2014 the obvious post-race dinner territory."
+          ],
+          "meetup": null,
+          "coachNote": "The multi-day format means we can get several crews through in one weekend \u2014 good first away race.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner near the venue, all welcome."
+          }
+        },
+        {
+          "slug": "birmingham",
+          "name": "Birmingham",
+          "nickname": "Brum",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "NEC-scale HYROX \u2014 huge hall, huge field.",
+          "coachSays": "Big-arena energy. The NEC crowd makes you feel like a pro even when your sled disagrees.",
+          "race": {
+            "name": "HYROX Birmingham",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com.",
+            "last": {
+              "dates": "October 2026",
+              "athletes": "~15,000"
+            },
+            "venue": "NEC Birmingham",
+            "address": "North Ave, Marston Green, Birmingham B40 1NT",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Birmingham International station is inside the NEC campus \u2014 trains via one change from Newport, ~3h.",
+            "Driving is easy \u2014 the NEC is built for it, parking on site."
+          ],
+          "hotels": [
+            {
+              "area": "NEC / Birmingham International",
+              "picks": "On-campus hotels mean a five-minute walk to your wave.",
+              "range": "\u00a390 \u2013 \u00a3160 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=NEC%20Birmingham"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Resorts World next door covers pre-race dinner."
+          ],
+          "city": [
+            "The NEC campus is self-contained \u2014 you won't see much of Birmingham itself unless you plan to."
+          ],
+          "nightAfter": [
+            "Resorts World \u2014 restaurants five minutes from the hall."
+          ],
+          "meetup": null,
+          "coachNote": "Easiest logistics of the UK races \u2014 venue, hotel and dinner all within five minutes of each other.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner at Resorts World, all welcome."
+          }
+        },
+        {
+          "slug": "cardiff",
+          "name": "Cardiff",
+          "nickname": "The Diff",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "Welsh HYROX \u2014 a loud arena and a proper race-weekend city.",
+          "coachSays": "Long trip, worth it. Cardiff on race weekend is a city that actually notices you're there.",
+          "race": {
+            "name": "HYROX Cardiff",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com.",
+            "last": {
+              "dates": "June 2026",
+              "athletes": "~9,000"
+            },
+            "venue": "Utilita Arena Cardiff",
+            "address": "Mary Ann St, Cardiff CF10 2EQ",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Cardiff Central station is a ten-minute walk from the arena \u2014 trains via one change, ~4h from Newport."
+          ],
+          "hotels": [
+            {
+              "area": "City centre",
+              "picks": "Everything's walkable \u2014 venue, food, the lot.",
+              "range": "\u00a370 \u2013 \u00a3130 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=Cardiff%20city%20centre"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Carbs on St Mary Street \u2014 you won't struggle."
+          ],
+          "city": [
+            "Compact centre \u2014 book central and forget taxis."
+          ],
+          "nightAfter": [
+            "St Mary Street for the post-race feed."
+          ],
+          "meetup": null,
+          "coachNote": "Furthest of the UK trips \u2014 we usually make a weekend of it.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner in the city centre, all welcome."
+          }
+        },
+        {
+          "slug": "glasgow",
+          "name": "Glasgow",
+          "nickname": "The Dear Green Place",
+          "cityLang": "en",
+          "country": "United Kingdom",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "tagline": "Scottish HYROX at the SEC \u2014 the furthest trip and the friendliest crowd.",
+          "coachSays": "A proper expedition for us \u2014 fly it, don't sit on a train for seven hours.",
+          "race": {
+            "name": "HYROX Glasgow",
+            "status": "tbc",
+            "dates": null,
+            "expected": "Next edition expected \u2014 dates land on hyrox.com.",
+            "last": {
+              "dates": "March 2026",
+              "athletes": "~8,000"
+            },
+            "venue": "SEC Glasgow",
+            "address": "Exhibition Way, Glasgow G3 8YW",
+            "source": "https://hyrox.com/events/",
+            "sourceLabel": "hyrox.com event list"
+          },
+          "gettingThere": [
+            "Fly via a connection, or London direct \u2014 much easier than the 7h train."
+          ],
+          "hotels": [
+            {
+              "area": "Finnieston / SEC",
+              "picks": "Walk to the venue and the best food street in town.",
+              "range": "\u00a380 \u2013 \u00a3150 / night",
+              "link": "https://www.booking.com/searchresults.html?ss=SEC%20Glasgow"
+            }
+          ],
+          "flights": [],
+          "food": [
+            "Finnieston is Glasgow's food strip \u2014 pick anywhere."
+          ],
+          "city": [
+            "Cold even in spring \u2014 pack layers for queuing outside."
+          ],
+          "nightAfter": [
+            "Finnieston for dinner, done."
+          ],
+          "meetup": null,
+          "coachNote": "Only worth it as a committed trip \u2014 but as a crew weekend it's brilliant.",
+          "indoMeetup": {
+            "when": "Sunday evening after the race",
+            "note": "Station 9 travels: crew dinner in Finnieston, all welcome."
+          }
+        }
+      ],
+      "alsoOn": [
+        {
+          "name": "HYROX Dublin",
+          "city": "Dublin",
+          "flag": "\ud83c\uddee\ud83c\uddea",
+          "nickname": "The Pale",
+          "dates": "check hyrox.com",
+          "start": null,
+          "venue": "RDS",
+          "note": "Short hop and a huge atmosphere \u2014 Dublin weekends sell out early.",
+          "source": "https://hyrox.com/events/"
+        }
+      ],
+      "alsoTba": "Bristol, Leeds and Edinburgh are all expected back \u2014 dates land on hyrox.com first."
+    },
+    "gallery.json": {
+      "note": "DEMO SEED \u2014 photos pulled from KORE's IG for the walk-in mockup. Replace with real member photos on launch.",
+      "photos": [
+        {
+          "src": "/kore/images/gallery/crew-hyrox-wall.jpg",
+          "alt": "The KORE crew under the big HYROX letters at KORE",
+          "caption": "The whole lot of them. Every single one started somewhere.",
+          "by": "KORE",
+          "tilt": -1.5,
+          "event": "Squad sessions"
+        },
+        {
+          "src": "/kore/images/gallery/crew-race-day.jpg",
+          "alt": "KORE crew in race bibs outside a Newport church after a local race",
+          "caption": "Race day crew. Half of them didn't know each other a year ago.",
+          "by": "KORE",
+          "tilt": 2,
+          "event": "Race day"
+        },
+        {
+          "src": "/kore/images/gallery/six-am-crew.jpg",
+          "alt": "Early morning session \u2014 rowers and coaches in golden light",
+          "caption": "6AM hits different. Every week, same crew.",
+          "by": "KORE",
+          "tilt": 1,
+          "event": "Squad sessions"
+        },
+        {
+          "src": "/kore/images/gallery/train-recover.jpg",
+          "alt": "Train hard, recover properly \u2014 session and sauna split shot",
+          "caption": "Train hard. Recover properly. Repeat weekly.",
+          "by": "KORE",
+          "tilt": -2,
+          "event": "Performance Centre"
+        },
+        {
+          "src": "/kore/images/gallery/blakely-winners.jpg",
+          "alt": "KORE women's team holding the Blakely Apex winner board",
+          "caption": "Winners, female category. Not bad for a Tuesday-night class gym.",
+          "by": "KORE",
+          "tilt": 1.5,
+          "event": "Race day"
+        },
+        {
+          "src": "/kore/images/gallery/church-crew.jpg",
+          "alt": "The KORE crew in race bibs outside a Newport church on race day",
+          "caption": "Race-day crew, Newport 10k. The church bells were optional.",
+          "by": "KORE",
+          "event": "Race day"
+        },
+        {
+          "src": "/kore/images/gallery/values-wall.jpg",
+          "alt": "The KORE values wall inside KORE",
+          "caption": "House rules: good vibes, community, no egos. Written on the wall.",
+          "by": "KORE",
+          "event": "The gym"
+        },
+        {
+          "src": "/kore/images/gallery/street-race.jpg",
+          "alt": "KORE runner racing down a packed high street, crowd behind the barriers",
+          "caption": "High street takeover. Newport turns out when the crew races.",
+          "by": "KORE",
+          "tilt": -1,
+          "event": "Race day"
+        }
+      ]
+    },
+    "faq.json": {
+      "note": "Receptionist answers \u2014 the 10 questions KORE gets asked most. Instant answers in the Ask section; anything else goes to the inbox.",
+      "items": [
+        {
+          "q": "How much is membership?",
+          "keywords": [
+            "price",
+            "cost",
+            "membership",
+            "how much",
+            "plans",
+            "expensive",
+            "monthly",
+            "pay"
+          ],
+          "a": "Depends how you want to train: 3-Day Trial \u2014 \u00a330 (one-off \u2014 3 days). All-Access \u2014 \u00a355 (per month). HYROX Squad \u2014 \u00a340 (per month). 1:1 Coaching \u2014 \u00a3150 (per month). Rolling monthly, no lock-in \u2014 details on the plans section below."
+        },
+        {
+          "q": "Is there a trial?",
+          "keywords": [
+            "trial",
+            "taster",
+            "try",
+            "free",
+            "first session",
+            "test"
+          ],
+          "a": "Yes \u2014 the 3-Day Trial gives you the full run of the place: sessions, open gym, the lot. Most people who try a week stay."
+        },
+        {
+          "q": "I've never done HYROX \u2014 can beginners join?",
+          "keywords": [
+            "beginner",
+            "never done",
+            "new",
+            "first time",
+            "unfit",
+            "start"
+          ],
+          "a": "That's most of the room, honestly. Every station scales, nobody's watching your numbers, and Coach will tell you the same: show up twice a week and the rest takes care of itself."
+        },
+        {
+          "q": "What actually is HYROX?",
+          "keywords": [
+            "what is",
+            "hyrox",
+            "format",
+            "rules",
+            "stations",
+            "race"
+          ],
+          "a": "An indoor fitness race: eight 1km runs with a workout station between each \u2014 SkiErg, sled push, sled pull, burpee broad jumps, row, farmers carry, lunges, wall balls. Open, Pro, Doubles and Relay divisions, so everyone can race."
+        },
+        {
+          "q": "Where are you based?",
+          "keywords": [
+            "where",
+            "location",
+            "address",
+            "based",
+            "parking",
+            "directions",
+            "find you"
+          ],
+          "a": "We're in Newport \u2014 exact session locations go out in the member group each week, and the site has the details under Events. Parking's never been an issue."
+        },
+        {
+          "q": "When are the sessions?",
+          "keywords": [
+            "when",
+            "times",
+            "timetable",
+            "schedule",
+            "sessions",
+            "classes",
+            "morning",
+            "evening"
+          ],
+          "a": "Session times are on the diary page and go out weekly in the group \u2014 typically early morning and evening slots so it fits around work. Check the diary or just ask."
+        },
+        {
+          "q": "Do you run HYROX sim days?",
+          "keywords": [
+            "sim",
+            "simulation",
+            "sim day",
+            "practice race",
+            "test run",
+            "tryout"
+          ],
+          "a": "Yes \u2014 full race simulations with real timing and transitions, the closest thing to race day without the ticket. Members get first shout; dates land on the events page."
+        },
+        {
+          "q": "Do you do 1:1 coaching?",
+          "keywords": [
+            "1:1",
+            "pt",
+            "personal training",
+            "one to one",
+            "private",
+            "individual"
+          ],
+          "a": "Yes \u2014 1:1 coaching is on the plans. Technique work, race prep, or just faster progress than group sessions alone. Message Coach directly and you'll get a straight answer on whether it's worth it for you."
+        },
+        {
+          "q": "Can I cancel any time?",
+          "keywords": [
+            "cancel",
+            "contract",
+            "lock",
+            "commitment",
+            "quit",
+            "leave"
+          ],
+          "a": "Rolling monthly \u2014 cancel whenever, no exit forms, no guilt-trip retention script. If you leave, the door stays open."
+        },
+        {
+          "q": "I'm looking for a doubles partner",
+          "keywords": [
+            "partner",
+            "doubles",
+            "pair",
+            "teammate",
+            "race with"
+          ],
+          "a": "Post a card on the find-a-partner board \u2014 pace band, race target, one line about you. Coach matches people by hand, because doubles is chemistry, not just split times."
+        }
+      ]
+    }
+  },
+  "tokens": {
+    "SLUG": "kore",
+    "COACH_NAME": "the KORE coaching team",
+    "COACH_NAME_LC": "the kore coaching team",
+    "COACH_FIRST": "Coach",
+    "COACH_LAST": "team",
+    "WORDMARK_HTML": "K<span class=\"o\">O</span>RE",
+    "BRAND": "KORE",
+    "BRAND_SHORT": "KORE",
+    "BRAND_SOCIAL": "kore",
+    "CLOTHING_SHORT": "KORE",
+    "CITY": "Newport",
+    "REGION": "United Kingdom",
+    "REGION_LC": "united kingdom",
+    "TAGLINE": "hyrox classes and community in newport",
+    "HERO_TITLE_HTML": "HYROX gym.<br /><em>Newport.</em>",
+    "APPLY_URL": "https://www.instagram.com/kore/",
+    "PROGRAMMES_URL": "https://www.instagram.com/kore/",
+    "STORE_URL": "https://www.instagram.com/kore/",
+    "IG_URL": "https://www.instagram.com/kore/",
+    "BRAND_IG_URL": "https://www.instagram.com/kore/",
+    "YOUTUBE_URL": "https://www.instagram.com/kore/",
+    "TIKTOK_URL": "https://www.instagram.com/kore/",
+    "THREADS_URL": "https://www.instagram.com/kore/",
+    "LINKTREE_URL": "https://www.instagram.com/kore/",
+    "DOUBLES_PARTNER": "the crew",
+    "PB_VENUE": "Newport",
+    "PB_VENUE_LC": "newport",
+    "DOUBLES_VENUE": "Birmingham",
+    "DOUBLES_VENUE_LC": "birmingham",
+    "OPEN_VENUE": "London",
+    "PB_SOLO": "Open",
+    "PB_DOUBLES": "Doubles",
+    "PB_HALF": "the next start line",
+    "PB_OPEN": "Open",
+    "SEASON_START": "their first start line",
+    "PARTNER_GYM": "KORE",
+    "PARTNER_GYM_LC": "kore",
+    "PARTNER_GYM_URL": "https://www.instagram.com/kore/",
+    "PARTNER_SUPP": "HYROX",
+    "PARTNER_SUPP_LC": "hyrox",
+    "PARTNER_SUPP_URL": "https://hyrox.com/",
+    "PARTNER_KIT": "KORE",
+    "PARTNER_KIT_LC": "kore",
+    "PARTNER_KIT_TAG": "Crew kit",
+    "PARTNER_KIT_TITLE": "KORE crew kit",
+    "PARTNER_KIT_COPY": "Rep the crew \u2014 KORE kit for race day and training.",
+    "PARTNER_KIT_CTA": "Ask Coach",
+    "PARTNER_KIT_URL": "https://www.instagram.com/kore/",
+    "GYM_CODE": "KORE",
+    "PHOTO_BUDDY": "the crew",
+    "ACCENT": "#0891b2",
+    "ACCENT_DARK": "#0e7490",
+    "ACCENT_SOFT": "#cffafe",
+    "BRAND_SHORT_UPPER": "KORE",
+    "SOCIAL_HANDLE_UPPER": "KORE",
+    "VOICE_DOUBLES_HOOK": "Racing's better with a crew beside you.",
+    "VOICE_WEDDING": "the work still counts when conditions aren't perfect.",
+    "VOICE_NEWS_TAKE": "Consistency beats intensity \u2014 the plan only works if you do.",
+    "STORE_NAME": "KORE",
+    "STORE_TAG": "Crew base",
+    "STORE_COPY": "KORE home \u2014 sessions, crew and contact. Everything runs through there.",
+    "STORE_CTA": "Get in touch",
+    "WHATSAPP_URL": "https://wa.me/447000000000"
+  }
+}

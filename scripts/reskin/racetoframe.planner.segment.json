@@ -1,0 +1,15 @@
+[
+  {"path":"planner.html?backdrop=watermark","subs":[
+    {"text":"Your session planner — bookings and your working week, inside your own platform.","holdMs":5000},
+    {"text":"Clients see free slots, choose an initial assessment or book their next session. No back-and-forth.","actions":[{"selector":"#session","select":"assessment"},{"click":"#next-week"}],"scrollTo":".diary-panel","align":"start","holdMs":5500},
+    {"text":"New clients request a session. The 24-hour cancellation policy is clear before they confirm.","actions":[{"click":"#calendar .slot.free[data-hour='12']:not(.other-day)","pause":600}],"holdMs":5000},
+    {"text":"An existing client can book directly.","actions":[{"click":"#booking-form input[name='policy']"},{"click":"#booking-form button[type='submit']","pause":500}],"scrollTo":"#booking-summary","holdMs":4500},
+    {"text":"Your view shows the client details and requests. Approve a session or add one agreed by phone.","actions":[{"click":"button[data-mode='coach']"},{"scrollTo":"#calendar .slot.pending[data-hour='12']:not(.other-day)","align":"center"},{"click":"#calendar .slot.pending[data-hour='12']:not(.other-day)","pause":600}],"holdMs":4500},
+    {"text":"One diary, two views. The public calendar never shows another client's name.","actions":[{"click":"button[data-status='confirmed']","pause":500}],"scrollTo":".diary-panel","align":"start","holdMs":4500},
+    {"text":"Group classes stand out, with spaces left and highlights controlled by you.","scrollTo":"#group-section","holdMs":5000},
+    {"text":"6am to 8pm, lunch included. Set your hours, add buffers or block a holiday.","actions":[{"click":"#holiday-button","pause":500}],"holdMs":5000},
+    {"text":"Time away blocks new bookings and shows your return date. Existing sessions are flagged for review, not silently cancelled.","actions":[{"click":"#holiday-form input[type='checkbox']"},{"click":"#holiday-form button[type='submit']","pause":500}],"scrollTo":"#away-notice","holdMs":5500},
+    {"text":"Export sessions to your phone calendar.","actions":[{"click":"#export-week","pause":500}],"holdMs":5500},
+    {"text":"Less organising. More coaching. And next, the Desk brings the business side together.","actions":[{"click":"#close-dialog","pause":300}],"scrollTo":".intro","align":"start","holdMs":4500}
+  ]}
+]

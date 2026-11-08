@@ -1,0 +1,181 @@
+/* Graham training-guidance family: Coaching, Stations Prep, Run Zone, Taper Zone.
+   Loads after guide.css. Pages opt in with body.guidance + a family modifier:
+   guidance--coach (warm editorial), guidance--field (field guide),
+   guidance--pace (directional), guidance--calm (taper). */
+
+.guidance { --guidance-rule:#36363e; --guidance-muted:#b9b9c2; --guidance-accent:var(--pink); }
+body.zone-acc.guidance { --guidance-accent:var(--zone-accent); }
+
+/* --- Shared hero: compact editorial header, quiet photo ---------------- */
+
+.guidance .guide-hero { padding:40px 0 30px; background:var(--paper); border-bottom:1px solid var(--guidance-rule); }
+.guidance .guide-hero > .wrap { grid-template-columns:minmax(0,1fr) minmax(180px,260px); gap:48px; align-items:center; }
+.guidance .guide-hero h2 { font-size:clamp(2.1rem,4.3vw,4rem); line-height:1.02; letter-spacing:-.055em; max-width:20ch; margin:.8rem 0 1rem; }
+.guidance .guide-hero h2 em { font-style:normal; color:var(--pink); }
+.guidance .guide-hero .lead { font-size:1rem; line-height:1.65; max-width:62ch; color:var(--guidance-muted); }
+.guidance .guide-hero .eyebrow { display:flex; align-items:center; gap:.8rem; font:700 .7rem/1.4 monospace; letter-spacing:.13em; text-transform:uppercase; color:var(--guidance-accent); }
+.guidance .guide-hero .eyebrow::before { content:""; width:30px; height:1px; background:var(--guidance-accent); }
+.guidance .guide-hero .byline { font-size:.8rem; color:var(--ink-3); margin-top:1rem; }
+.guidance .guide-hero-photo { margin:0; position:relative; border:0; border-radius:0; background:none; }
+.guidance .guide-hero-photo img { width:100%; height:250px; object-fit:cover; border-radius:0 0 48% 8% / 0 0 7% 2%; box-shadow:none; }
+.guidance .guide-hero-photo::after { content:""; position:absolute; width:56px; height:56px; left:-8px; top:-8px; border-left:2px solid var(--pink); border-top:2px solid var(--pink); pointer-events:none; }
+
+/* --- Shared body: ruled rows, field-guide furniture -------------------- */
+
+.guidance .wrap.guide { padding-top:32px; gap:40px; align-items:start; }
+.guidance .article { min-width:0; }
+.guidance .toc { border:0; background:transparent; padding:0 0 0 16px; border-left:1px solid var(--guidance-rule); border-radius:0; }
+.guidance .toc p { font:700 .7rem/1.4 monospace; letter-spacing:.13em; text-transform:uppercase; color:var(--guidance-accent); margin-bottom:12px; }
+.guidance .toc ol { border-left:0; }
+.guidance .toc a { min-height:44px; display:flex; align-items:center; font-size:.82rem; padding:8px 0; border-left:0; margin-left:0; color:var(--guidance-muted); }
+.guidance .toc a:hover,.guidance .toc a:focus-visible { color:var(--ink); }
+.guidance .station { border:0; border-top:1px solid var(--guidance-rule); border-radius:0; padding:30px 0; margin-top:0; background:transparent; box-shadow:none; scroll-margin-top:80px; }
+.guidance .station:first-of-type { border-top:1px solid var(--guidance-rule); padding-top:30px; }
+.guidance .station > .num { display:block; font:700 .7rem/1.4 monospace; color:var(--guidance-accent); letter-spacing:.14em; text-transform:uppercase; border:0; background:transparent; padding:0; }
+.guidance .station h3 { font-size:clamp(1.5rem,2.7vw,2.2rem); line-height:1.1; letter-spacing:-.035em; margin:.65rem 0 1rem; scroll-margin-top:80px; }
+.guidance .station > p,.guidance .article > p { color:var(--guidance-muted); font-size:.95rem; }
+.guidance .article ul:not(.spec):not(.carry) { padding-left:0; list-style:none; }
+.guidance .article ul:not(.spec):not(.carry) li { position:relative; padding-left:1.4rem; margin-bottom:.55rem; }
+.guidance .article ul:not(.spec):not(.carry):not(.do):not(.dont) li::before { content:""; position:absolute; left:0; top:.72em; width:10px; height:1px; background:var(--pink); }
+
+/* Spec readouts: fine rules and tabular figures, not chips */
+.guidance .spec { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 28px; margin:18px 0 22px; padding:0; list-style:none; border-bottom:1px solid var(--guidance-rule); }
+.guidance .spec li { background:none; border-radius:0; border-top:1px solid var(--guidance-rule); padding:14px 0; font-size:.9rem; line-height:1.55; color:var(--guidance-muted); }
+.guidance .spec strong { display:block; color:var(--ink); font:700 .68rem/1.5 monospace; letter-spacing:.1em; text-transform:uppercase; margin-bottom:4px; }
+.guidance .calc-out .spec strong { font-size:clamp(1.5rem,3vw,2.3rem); letter-spacing:-.04em; font-variant-numeric:tabular-nums; text-transform:none; font-family:inherit; font-weight:650; color:var(--ink); }
+
+/* Callouts and notes: hairline-left, no fill */
+.guidance .callout { border-radius:0; background:transparent; border:0; border-left:2px solid var(--guidance-accent); padding:2px 0 2px 16px; margin:0 0 28px; }
+.guidance .callout p { color:var(--guidance-muted); font-size:.9rem; }
+.guidance .approve-note { border:0; border-left:2px solid var(--guidance-rule); border-radius:0; padding:0 0 0 12px; background:none; font-size:.8rem; color:var(--ink-3); }
+
+/* Graham's cue: small mono label, serif pull-quote */
+.guidance h4.cue { font:700 .7rem/1.4 monospace; letter-spacing:.13em; text-transform:uppercase; color:var(--pink); margin:26px 0 10px; }
+.guidance h4.cue + p { font-family:Georgia,serif; font-style:italic; font-size:clamp(1.05rem,1.6vw,1.3rem); line-height:1.45; color:var(--ink); border-left:2px solid var(--pink); padding-left:1.1rem; margin:0; max-width:56ch; }
+.guidance h4:not(.cue) { font-size:.95rem; font-weight:800; letter-spacing:-.01em; margin:26px 0 10px; }
+
+/* Photos as plates: ruled, numbered figures */
+.guidance .art-photo { margin:10px 0 34px; border-top:1px solid var(--guidance-rule); padding-top:14px; }
+.guidance .art-photo img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:3px; }
+.guidance .art-photo figcaption { margin-top:9px; font:700 .68rem/1.5 monospace; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); }
+
+/* Carry-over lifts (Stations strength zone) */
+.guidance .carry { gap:0; border-bottom:1px solid var(--guidance-rule); }
+.guidance .carry li { border:0; border-top:1px solid var(--guidance-rule); border-radius:0; padding:16px 0; font-size:.9rem; }
+.guidance .carry strong { font-size:1.05rem; letter-spacing:-.02em; }
+.guidance .carry .for { font:700 .68rem/1.6 monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--guidance-accent); }
+
+/* Inputs on guidance tools share the instrument language */
+.guidance .calc-form { grid-template-columns:repeat(auto-fit,minmax(180px,220px)); gap:22px 20px; margin:20px 0 0; align-items:end; }
+.guidance .calc-form label > span:first-child { color:var(--guidance-muted); font-size:.69rem; line-height:1.5; letter-spacing:.07em; min-height:1.5em; }
+.guidance .calc-form input:not([type=checkbox]):not([type=radio]),.guidance .calc-form select,.guidance .calc-form textarea { background:#101014; color:var(--ink); border:1px solid #45454f; border-radius:5px; padding:12px 13px; width:100%; min-height:48px; box-sizing:border-box; font-size:1rem; transition:border-color 180ms,box-shadow 180ms; }
+.guidance .calc-form input::placeholder { color:#85858f; opacity:1; }
+.guidance .calc-form select option { background:#101014; color:#f2f2f0; }
+.guidance .calc-form input:focus-visible,.guidance .calc-form select:focus-visible,.guidance .calc-form textarea:focus-visible { outline:1px solid var(--pink); outline-offset:3px; border-color:var(--pink); box-shadow:0 0 0 4px color-mix(in srgb,var(--pink) 10%,transparent); }
+.guidance .calc-form input { font-family:monospace; font-size:1.1rem; font-variant-numeric:tabular-nums; letter-spacing:.04em; }
+.guidance .calc-time input { font-family:monospace; }
+.guidance .btn { min-height:44px; border-radius:999px; padding:.75rem 1.15rem; font-size:.85rem; transition:box-shadow 180ms,background-color 180ms; }
+.guidance .btn:focus-visible { outline:2px solid var(--pink); outline-offset:4px; }
+.guidance .btn:active { box-shadow:inset 0 2px 5px #0004; }
+.guidance .calc-out { margin-top:22px; }
+.guidance .calc-note { font-size:.8rem!important; color:var(--ink-3)!important; max-width:60ch; }
+.guidance [hidden] { display:none!important; }
+
+/* FAQ + closing band match the instrument pages */
+.guidance .faq { background:var(--paper-2); border-top:1px solid var(--guidance-rule); padding:40px 0; }
+.guidance .faq .eyebrow { display:flex; align-items:center; gap:.8rem; font:700 .7rem/1.4 monospace; letter-spacing:.13em; text-transform:uppercase; color:var(--guidance-accent); margin-bottom:14px; }
+.guidance .faq .eyebrow::before { content:""; width:30px; height:1px; background:var(--guidance-accent); }
+.guidance .faq details { border-bottom:1px solid var(--guidance-rule); }
+.guidance .faq summary { font-size:.95rem; font-weight:650; }
+.guidance .faq details p { font-size:.9rem; color:var(--guidance-muted); max-width:68ch; }
+.guidance .cta-band { border-top:1px solid var(--guidance-rule); background:var(--paper-2); padding:40px 0; color:var(--ink); text-align:left; }
+.guidance .cta-band h3 { font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:-.04em; }
+.guidance .cta-band p { color:var(--guidance-muted); max-width:56ch; }
+.guidance .cta-band .btn-light { background:transparent; color:var(--ink); border:1px solid var(--guidance-rule); }
+
+/* --- Stations: field guide -------------------------------------------- */
+.guidance--field .station.strength { border-top:3px solid var(--guidance-accent); }
+
+/* --- Run Zone: directional / pace-led --------------------------------- */
+.guidance--pace .station .num::after { content:" →"; color:var(--guidance-muted); }
+.guidance--pace .toc a { transition:color 160ms,padding-left 160ms; }
+.guidance--pace .toc a:hover,.guidance--pace .toc a:focus-visible { padding-left:10px; }
+.guidance--pace .toc a:hover::before,.guidance--pace .toc a:focus-visible::before { content:"→"; color:var(--guidance-accent); position:absolute; left:-16px; }
+.guidance--pace .toc li { position:relative; }
+.guidance--pace .calc-out { border-top:1px solid var(--guidance-accent); padding-top:16px; }
+.guidance--pace #target-trend { font-family:Georgia,serif; font-style:italic; font-size:1.15rem; color:var(--ink); margin:0 0 10px; }
+
+/* --- Taper Zone: calmer ------------------------------------------------ */
+.guidance--calm .guide-hero { padding:36px 0 30px; }
+.guidance--calm .guide-hero h2 { font-size:clamp(1.9rem,3.6vw,3.2rem); letter-spacing:-.045em; }
+.guidance--calm .station { padding:40px 0; }
+.guidance--calm .station h3 { font-size:clamp(1.4rem,2.4vw,1.9rem); letter-spacing:-.03em; }
+.guidance--calm .station > .num { color:var(--ink-3); }
+.guidance--calm .article p,.guidance--calm .article li { line-height:1.7; }
+.guidance--calm .art-photo img { aspect-ratio:21/9; }
+.guidance--calm .guide-hero-photo img { height:230px; }
+
+/* --- Coaching: warm editorial ------------------------------------------ */
+.guidance--coach .coach-wrap { padding-top:40px; }
+.guidance--coach .coach-plans { grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; margin-top:0; }
+.guidance--coach .coach-plans > .plan { border:0; border-top:1px solid var(--guidance-rule); border-right:1px solid var(--guidance-rule); border-radius:0; background:none; padding:1.9rem 1.6rem 1.9rem 0; margin-right:1.6rem; box-shadow:none; transition:border-top-color 200ms; }
+.guidance--coach .coach-plans > .plan:last-child { border-right:0; margin-right:0; padding-right:0; }
+.guidance--coach .coach-plans > .plan.featured { background:linear-gradient(180deg,color-mix(in srgb,var(--pink) 7%,transparent),transparent 70%); }
+.guidance--coach .plan .tag { background:none; border:0; padding:0; color:var(--pink); font:700 .7rem/1.4 monospace; letter-spacing:.13em; text-transform:uppercase; }
+.guidance--coach .plan h4 { font-size:clamp(1.6rem,2.6vw,2.2rem); letter-spacing:-.04em; margin:.6rem 0 .3rem; }
+.guidance--coach .plan .price { font-size:.95rem; font-weight:650; color:var(--ink); }
+.guidance--coach .plan .per { color:var(--guidance-muted); font-size:.85rem; }
+.guidance--coach .plan ul { list-style:none; padding-left:0; margin:1.1rem 0 1.4rem; }
+.guidance--coach .plan ul li { position:relative; padding-left:1.4rem; margin-bottom:.55rem; font-size:.9rem; color:var(--guidance-muted); line-height:1.5; }
+.guidance--coach .plan ul li::before { content:""; position:absolute; left:0; top:.7em; width:10px; height:1px; background:var(--pink); }
+.guidance--coach .btn { transition:transform 420ms cubic-bezier(.16,1,.3,1),box-shadow 420ms cubic-bezier(.16,1,.3,1),background-color 200ms; }
+.guidance--coach .shop-note { border-top:1px solid var(--guidance-rule); padding-top:1.4rem; margin-top:2.6rem; font-size:.85rem; color:var(--ink-3); max-width:72ch; }
+
+@media(hover:hover) and (pointer:fine) {
+  .guidance--coach .btn:hover { transform:translateY(-3px) scale(1.045); box-shadow:0 10px 30px color-mix(in srgb,var(--pink) 22%,transparent); }
+  .guidance--coach .coach-plans > .plan:hover { border-top-color:var(--pink); }
+}
+
+/* --- Race Day: countdown timeline --------------------------------------- */
+.guidance--raceday .station > .num { color:var(--guidance-accent); }
+.guidance--raceday .art-photo img.shift-down { object-position:50% 30%; }
+.guidance--raceday .art-photo img.shift-up { object-position:50% 62%; }
+.guidance--raceday .dodont { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; border-top:1px solid var(--guidance-rule); margin-top:8px; }
+.guidance--raceday .dodont > div { padding:1.4rem 1.4rem 1.4rem 0; border-right:1px solid var(--guidance-rule); margin-right:1.4rem; }
+.guidance--raceday .dodont > div:last-child { border-right:0; margin-right:0; padding-right:0; }
+.guidance--raceday .dodont h4 { font:700 .7rem/1.4 monospace; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3); margin:0 0 .8rem; }
+.guidance--raceday .dodont ul { list-style:none; padding-left:0; margin:0; }
+.guidance--raceday .dodont li { position:relative; padding-left:1.5rem; margin-bottom:.55rem; font-size:.88rem; color:var(--guidance-muted); line-height:1.5; }
+.guidance--raceday .dodont .do li::before { content:"✓"; position:absolute; left:0; top:0; color:var(--guidance-accent); font-weight:800; font-size:.8rem; }
+.guidance--raceday .dodont .dont li::before { content:"×"; position:absolute; left:0; top:-1px; color:var(--pink); font-weight:800; font-size:1rem; }
+
+/* --- Layout breakpoints ------------------------------------------------- */
+@media(max-width:900px) {
+  .guidance .guide-hero > .wrap { grid-template-columns:minmax(0,1fr) 180px; gap:28px; }
+  .guidance .guide-hero-photo img { height:210px; }
+  .guidance .wrap.guide { padding-top:20px; gap:22px; }
+  .guidance .toc { position:static; border-left:0; padding-left:0; }
+  .guidance .toc ol { display:flex; flex-wrap:wrap; gap:4px 18px; }
+  .guidance .toc li { margin:0; }
+  .guidance .toc a { min-height:44px; }
+  .guidance--coach .coach-plans { grid-template-columns:1fr; }
+  .guidance--coach .coach-plans > .plan { border-right:0; border-top:1px solid var(--guidance-rule); margin-right:0; padding:1.5rem 0; }
+  .guidance--raceday .dodont { grid-template-columns:minmax(0,1fr); }
+  .guidance--raceday .dodont > div { border-right:0; margin-right:0; padding-right:0; border-bottom:1px solid var(--guidance-rule); }
+  .guidance--raceday .dodont > div:last-child { border-bottom:0; }
+}
+@media(max-width:600px) {
+  .guidance .guide-hero { padding:24px 0; }
+  .guidance .guide-hero > .wrap { grid-template-columns:minmax(0,1fr); }
+  .guidance .guide-hero-photo img { height:190px; }
+  .guidance .guide-hero h2 { font-size:2.4rem; }
+  .guidance--calm .guide-hero h2 { font-size:2.1rem; }
+  .guidance .spec { grid-template-columns:minmax(0,1fr); gap:0; }
+  .guidance .calc-form { grid-template-columns:minmax(0,1fr); gap:16px; }
+  .guidance .art-photo img { aspect-ratio:4/3; }
+  .guidance--calm .art-photo img { aspect-ratio:16/9; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .guidance input,.guidance select,.guidance .btn,.guidance .toc a { transition:none!important; }
+  .guidance--coach .btn:hover { transform:none; }
+}

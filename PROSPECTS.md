@@ -164,6 +164,128 @@ on the list → anyone scoring ≥ hot gets the full pipeline. Ambassadors have
 unusually high photo quality (sponsored content + event access) so they suit
 the "celebration of the athlete" pitch we built for Graham.
 
+## New creator-coach prospects — research 24 Oct 2026
+
+Coaches only (no gyms). Scored against the gates/weights above and the
+`scripts/qualify-prospects.js` checks: link-in-bio tool, UK, HYROX-led,
+sells coaching, active in the last 60 days, 5k–250k followers, affiliate
+codes / side businesses. Follower counts are from third-party trackers
+(Viralist/Flinque) and may be dated. **Not yet run through
+`qualify-prospects.js`** (Bright Data credits). Pitch angles: HANDOVER.md §5.
+
+| # | Prospect | Where | IG | Site / link | Public contact | Verdict |
+|---|---|---|---|---|---|---|
+| 1 | **Paul Gillingham** | Crawley, West Sussex | @paulgillingham_ (~35k, verified) | No own site — plans via roxlyfe.com (Greg Williams' brand), coaching via Paperform; linktr.ee/paulgillingham_ | Paulmgillingham@gmail.com (on his Linktree) | **Hot** |
+| 2 | **Lucas Parker** | Buxton / Wilmslow / Stockport catchment | @coachparkerpt (~17k); @runn1ngacademy | coachparker.uk + older coachparker.framer.website | WhatsApp in bio only; no email found | **Hot — territory backup while Hannah Burgon/Stockport is live** |
+| 3 | **Michele Wilder** | Maidstone / London-facing | @michele_wilderfitness (count unverified) | wilderfitness.co.uk + Facebook group "Hyrox Newbies UK" | wilderfitnessuk@gmail.com (official HYROX coach listing) | **Hot — pitch as Kent/UK online community unless London territory stays free** |
+| 4 | **Eilidh Boyd** | Glasgow / Elation Gym | @elationeilidh (~7k, verified) | linktr.ee/eilidhboydfit — two Google Forms | Gym only: elationgymgroup@gmail.com | **Backup — same gym/city as Graham; only if he declines or approves a separate personal-brand lane** |
+| 5 | **Martyn Paterson** | Menstrie / Stirling, Scotland | @martynpaterson_ (count unverified) | linktr.ee/martynpaterson_ → "MP Performance Coaching" on FITR | None found | Warm — usable only as Stirling/Clackmannanshire territory, not Glasgow/Scotland |
+| 6 | **Coach Kim** | Deptford / SE London | @coachedby_kim (~5k) | apreslondon.co.uk + linktr.ee/coachedbykim | admin@apreslondon.co.uk; +44 7471 581970 | Warm — SE London studio lane; distinct if Faisal is framed as Central/West London + global |
+| 7 | **Jade Leigh (Godfrey)** | Warwick / Kenilworth, Warwickshire | @jadeleighcoaching (~24k) | No site; WhatsApp + Facebook links | WhatsApp only; no verified email | Warm (HYROX-share risk; territory appears clear) |
+| 8 | **Lewys** | Cheltenham | @lewysmsfitness (~15k) | therevivalcoach.com + liinks.co/lewysmsfitness | WhatsApp/contact form only | Low warm (territory appears clear) |
+
+Why each:
+
+1. **Paul Gillingham** — "Mr HYROX": Team GB at the 2022–25 Europeans and
+   Worlds, age-group world record, 38+ races, PT since 2005. Linktree
+   carries ~13 affiliate codes (Hybryd PG10, Puma ROXLYFE30, Built for
+   Athletes PAUL15, Beet It PAUL25, Xendurance PAUL20, Zone 8 PAUL10…). Also
+   Deadly Dozen lead judge and head coach @cycamps.cyprus. Strongest
+   G&H-shape side hustle on the list, no platform of his own.
+2. **Lucas Parker** — HYROX world record holder, 39 races / 21 podiums, Pro
+   PB 57:18 (London 2026). Adidas athlete, Myprotein, Whoop. Founder of
+   Running Academy (group training). Buxton manual-jobs-to-elite story.
+   Free Framer template site = easy upgrade.
+3. **Michele Wilder** — founder of Hyrox Newbies, one of the largest HYROX
+   beginner communities (Facebook). Launched the 8-week "Foundations"
+   programme July 2026. Community already organised, living on Facebook.
+4. **Eilidh Boyd** — Elation Glasgow coach (Graham's gym), ESN / Teveo /
+   Wolf Tuna codes, onboarding via Google Forms (manual admin). Warm intro
+   via Graham.
+5. **Martyn Paterson** — British HYROX Pro, 13 races, Pro PB 1:02:38
+   (Gdansk, Oct 2026). Linktree created July 2026 = business just starting.
+6. **Coach Kim** — official HYROX coach, ATHX Games athlete, Third Space
+   London coach, founder/owner of Apres London gym (Deptford). Studio lane
+   confirmed. Oct 28 intel: recent content is form/technique-led; teased an
+   "AI Coach Kim" clone avatar on 6 Aug with no public link since. Pitch =
+   "be in more places at once": lead with owner video publishing + her own
+   technique library; Trainerize hookup stays but as supporting cast. See
+   HANDOVER for the full angle.
+7. **Jade Leigh** — HYROX coach, co-founder Summit & Soul retreats,
+   Radiance product business. Green field (no site). Content leans women's
+   health/hormones — may fail the HYROX-led check.
+8. **Lewys** — certified HYROX coach with a side brand; leans physique.
+   Lowest priority.
+
+### Territory / exclusivity check — Oct 2026
+
+Pitch promise is one lead coach per city/catchment. Do not offer overlapping
+local exclusivity unless the territory wording is explicit and defensible.
+
+- **Backup / same patch:** Eilidh Boyd — Elation Gym Glasgow, directly inside
+  Graham Halliday's demo territory. Keep on hold unless Graham declines or
+  explicitly approves a separate personal-brand lane.
+- **Backup / same catchment:** Lucas Parker — Buxton/Wilmslow/Stockport
+  running history overlaps Hannah Burgon's Stockport territory. Hold unless
+  Hannah fails or Lucas is deliberately positioned as national/online rather
+  than the local coach.
+- **London split:** Faisal should be framed as Central/West London plus
+  national/global coaching rather than exclusive for all London. Kim/Après
+  is Deptford SE8 — roughly 10–12 miles from Faisal's W10/Chiswick
+  footprints — so she can be pitched as SE London studio territory. Michele
+  should remain Kent/UK online-community infrastructure, not a London
+  exclusive.
+- **Conditional Scotland:** Martyn Paterson is Menstrie/Stirling-side rather
+  than Glasgow, so he can work if Graham's exclusivity is genuinely Glasgow
+  only. Do not describe his territory as Scotland or Greater Glasgow.
+- **Appears clear:** Jade Leigh — Warwick/Kenilworth/Warwickshire; Lewys —
+  Cheltenham; Paul Gillingham — Crawley. Pace Gym/Chichester is a separate
+  city, but avoid pitching it as a wider Sussex territory while Paul is
+  unresolved.
+
+Checked and excluded: Ollie Moore (@mmoorefit — Australia-based), Team
+Hogan (Ireland-based), Ben Blowes (owns The Shark Tank gym, Newmarket — gym
+lane), Liz May (Bangkok), Jake Dearden (~650k, too big).
+
+## Round 2 — gym lane (research 4 Nov 2026)
+
+Athlete-OWNED HYROX-focused facilities with no/basic web presence — setup fee
++ monthly pricing applies (gym lane), not the £99 athlete founding offer.
+Discounted from this sweep: chains (Gym Group, UBX, Team Bath, F45),
+polished sites (Atlas Training Club, The Engine Room Chichester),
+council-run (Active 9BX Dundee).
+
+| Prospect | Facility | Website | Contact | Notes |
+|---|---|---|---|---|
+| **Steve McClory** | Code Fitness; also runs @hyroxworkouts IG community | codefitness.co.uk = 114b redirect to empty `/lander` — effectively none | TBC (ukactive independent-council member) | **Top pick** — already operates HYROX media; endorsement reach >> single sale |
+| **Fabien Strawbridge** | Underdog Boutique Gym, Walthamstow (private boutique) | Site exists but thin (403s bots — verify in browser) | hello@underdogboutiquegym.com; @theunderdoggym | 23× HYROX finisher, top 13% AG; NE London territory — check no clash with other London lanes |
+| **Kirsty Keating** | Gym owner, South London (gym name TBC) | TBC | @kirstykeating | ~20 HYROX podiums / 37 races; elite credibility; verify gym name + territory (South London may overlap Deptford/SE lanes) |
+| **Scott (surname TBC)** | Forge Fitness, Newport — opened Jun 2025, ~100 members | Gymflow template — booking-functional, no brand/community | @forgefitnessnewport | KORE is also Newport — territory decision needed: one city, two HYROX gyms |
+
+### Secondary gym-lane
+
+- **Adam Corlett — ACE Performance, Warrington/Liverpool** — official HYROX
+  gym, email+phone published on own site; reasonable existing site →
+  upgrade-sale, not green field.
+- **Lee Evans — Endur Performance, Mold** — Flintshire's first CrossFit+HYROX
+  gym, expansion underway; WordPress site exists but generic. Borderline.
+- **Sheli McCoy** — co-owns Dundee gym, Gladiators profile; likely too big
+  for founding structure.
+
+### Carried into gym lane from existing pipeline
+
+- **Coach Kim — Apres London, Deptford SE8** — athlete-owned studio,
+  WordPress+TeamUp template site. Contacts logged: admin@apreslondon.co.uk,
+  +44 7471 581970. Suggested price £500 setup + £60/mo (six-month minimum).
+  Angle: technique-library publishing + "be in more places at once" (stalled
+  AI-clone project may be sensitivity or opportunity).
+- **Hyrox Doncaster — Nigel Wood** — dedicated HYROX gym, demo already built;
+  pencilled £800 + £75/mo. Highest-weighted gym lead.
+- **Graham Halliday — Elation Gym Glasgow** — Elite 15/PUMA athlete + gym
+  owner; demo live, pitch page live, email drafted to
+  elationgymgroup@gmail.com. Caution: Boyd/Heggarty coach at his gym — one
+  Elation lane only.
+
 ## Watchlist / parked
 
 - J13 Fitness (Worsley) — overlaps Hannah's patch
@@ -270,6 +392,15 @@ field the form needs.
 
 ## Rules of engagement
 
+- **Subject lines — flag to Chris before every pitch.** When reading pitch
+  notes / email drafts for any prospect, surface the subject-line options to
+  Chris for a decision rather than sending the draft's default. Standing
+  guidance (Nov 2026): avoid "Coaching enquiry"-style bait — it opens as a
+  fake client lead, disappoints, and risks sender reputation. Preferred:
+  honest curiosity lines that match the live-demo differentiator, e.g.
+  "Your new website — already live on the internet" (baseline),
+  "Built you something, <first name>", "<Gym>'s race tools — already live".
+  Several older drafts still use the ambiguous subject — always re-check.
 - Dina is not involved in outreach; her site is the proof case only.
 - No cold email intros. DMs from a real human account, or walk-in for local.
 - Every prospect gets a personalised reskin before/at first contact.
@@ -373,3 +504,117 @@ concierge 15%, tier upgrades, predictor-pro drip).
 
 Year 1 ≈ £10,600 (one-offs ~60%). Exit ~£586/mo run-rate, ARPU ~£65.
 Two humps: warm-list peak Nov–Jan, dip Mar–Aug, referral engine Sep+.
+
+## Station 9 pitch board — repriced per prospect, 5 November 2026
+
+£99 narrative retired. Monthly ladder: £95 / £145 / £195, with £995 setup on
+the business lane and Faisal bespoke. Setup says "a team built this"; athletes
+get no setup to keep the door frictionless. Gabby and Zara go as a named-pair
+"twins" rate — deliberate partnership pricing, not a discount.
+
+| Prospect | Price | Confidence | Why |
+|----------|-------|------------|-----|
+| Faisal Abdalla | £4,950 + £495/mo bespoke | Upside, low single probability | Voice of HYROX, celebrity clients, book, agent (Becca Barr — vicky@beccabarrmanagement.co.uk). Brand partnership; a counter-offer is a win |
+| Jade Skillen | £995 + £195/mo | Harder sell | "HYROX Queen", PUMA/Mirafit, 700+ coached via Smash Your HYROX — has a platform, pitch is upgrade vs incumbent |
+| Gabby Moriarty | £145/mo (twins rate) | Strong | lululemon + MARCHON, Lab Management, 27 podiums. Forwards Zara's link — best distribution channel on the board. **Route: WhatsApp +44 7745 733364** (no verified email) |
+| Zara Piergianni | £145/mo (twins rate) | Strong via Gabby | World Champ x2 + AG world record; full-time online coach. No direct contact — rides on the pair pitch |
+| Gregor & Hattie (Race to Frame) | £995 + £145/mo | Decent | Retail business + coaching, two revenue lines on one platform. **Route: racetoframe@gmail.com ONLY (verified in Shopify privacy policy). hello@racetoframe.co.uk bounced — domain doesn't exist. Pitched 5 Nov.** |
+| Graham (Elation) | £995 + £145/mo | Decent | Glasgow gym + Elite 15 pedigree |
+| Kim (Apres London) | £995 + £95/mo | Likely | Boutique SE London studio; video exists (card still says £499/£59 — needs re-render to £995/£95) |
+| Jamie Barker | £145/mo | Coin flip on timing | Red Bull x HYROX coach camp selection; more to sell than a typical PT |
+| Paul Gillingham | £95/mo | Likely | Founding athlete lane, video done, template case |
+| George Grayson | £95/mo | Likely | Athlete lane |
+| Tom Redmond (TR) | £95/mo | Likely | Athlete lane |
+| Michele Wilder | £95/mo | Likely | Hyrox Newbies founder |
+| Josh Harrison | £95/mo | Likely | Athlete lane |
+| Ross Fisher (HTC) | £95/mo | Likely | Athlete lane; least-known quantity |
+
+Expected outcome of ~14 pitches: strong run = 6-9 conversions, realistic
+floor = 3-4. The £95 lane + Kim + the twins do most of it. Jade and Faisal
+are upside, not the plan. Faisal's £495/mo is also the price anchor that
+makes every other tier look like a steal.
+
+Levers that move conversion more than price: timing (between race blocks,
+not in camp) and follow-up on tracking — an 80% video view is the
+call-to-action window.
+
+## HYROX official coach directory — mined 5 Nov 2026
+
+Source: coaches.hyrox.com (Level-1-certified Performance Coach listings).
+38 UK coaches with published contact details; ~16 publish a mobile number
+(= WhatsApp-eligible warm channel). These are **demand-ready prospects**:
+they paid/registered to be found, which is exactly the product promise.
+
+**Site audit:** ~5 dead/expired sites (urgent-rescue pitches), ~8 template
+brochures (displacement pitches), zero with a real platform. No
+disqualifiers on incumbent quality.
+
+### Top 10 (differentiated, ranked by pitch angle)
+
+| # | Coach | Territory | Hook | Contact |
+|---|---|---|---|---|
+| 1 | **Michele Wilder** — already built/queued (chassis demo + ~59 assets) | London | Community-owner lane: Hyrox Newbies, one of world's largest HYROX communities. Pitch = "your community deserves a home, not a Facebook group". £145 community tier suggested | wilderfitnessuk@gmail.com |
+| 2 | **Fabien Strawbridge** (Underdog Boutique) | Walthamstow | Gym owner, 23x finisher top-13% AG, first EMEA Champs. Business lane £995+£145 | hello@underdogboutiquegym.com |
+| 3 | **Ciara Langan** (CT Performance) | Blackpool/London | URGENT RESCUE — site literally expired; phone on file | ciaralangan@ctperformancecoaching.co.uk / 07947 452551 |
+| 4 | **Jayne Nisbet** (The Athlete Edge) | London | Dead site (404) — rescue pitch | jayne@theathleteedge.co.uk |
+| 5 | **Lucia Gabriel** | Birmingham | HYROX Pro athlete + HYROX judge — rare double credential | Lucia@angelhybrid.fit |
+| 6 | **Mark Harris** | Peterborough | Deadly Dozen Master Coach + DEKA + Spartan SGX — multi-format, validates expansion | healthshedshop@gmail.com |
+| 7 | **Stefano Rizzo** | London | "10,000 wall balls" voice; honest coach persona | stefano.rizzo.1974@gmail.com / +44 7388 233386 |
+| 8 | **Simon Graham** | Farnborough/Fleet | L4 nutritionist, triathlon/run coaching; established site = displacement | simon@simongpt.co.uk |
+| 9 | **Brian Stokes** | Farnham/Guildford/Woking | Ex-Royal Marines, 30 yrs, story-rich | brian.stokes@brianstokescoaching.com / 07824 505856 |
+| 10 | **Julian Crooknorth** (P4M) | Hampshire/Surrey | L2 + S&C + UESCA; covers 6 towns; competent site = displacement | info@p4mcoaching.com |
+
+London is triple-booked (Michele/Jayne/Stefano) — territory rule needs a
+decision: sequential pitches, borough split, or treat London as >1 patch.
+
+### The rest, rough priority order
+
+| Coach | Territory | Hook/note | Contact |
+|---|---|---|---|
+| Tom Redmond (trainedbytr) | Dublin/Glasgow/London/Mcr | ALREADY BUILT + pitched; directory confirms number | info@trainedbytr.com / 07769 695943 |
+| Jonno Ward | Epsom/Tadworth | Ex-police-officer story | jonwardpt@gmail.com |
+| Grant Bain | Edinburgh/Livingston | 20+ yrs, CrossFit L1 — Scotland (after Elation decision) | gbperformancecoaching@hotmail.com |
+| Marek Kipikasa | London | Holistic/mental-health angle | recalibrate.marek@outlook.com / 07463 646570 |
+| James Deag (Hybrid Athlete Club) | London | Club-brand shape | james@hybridathleteclub.com / 07457 406584 |
+| Jamie Jones | Liverpool/Mcr/Preston | NW territory, phone | jamiejones2766@gmail.com / 07585 464747 |
+| Michael Busby | Manchester | 35 yrs coaching; adaptive/functional angle | busbyfit@gmail.com / 07432 864110 |
+| Rachel Hanlon | Auchterarder, Scotland | Women's-coaching focus, phone | rachel.hanlon@mac.com / 07973 225192 |
+| Ayren Honey | Edinburgh | First-race beginner niche, phone | info@ayrenhoney.fitness / 07379 497568 |
+| Amy Taylor (Perform365) | Bishop Auckland | Races all categories, Wix site | amy@perform365fitness.com |
+| Karl Marshall | Worcester | Mental-health nurse + coach story | karljm.64@icloud.com / 07847 888839 |
+| Eddie Wardlaw | Wokingham | 7 yrs, execs/actors clientele | info@ewptonline.com / 07207 325011 |
+| Danny Livings | Hertfordshire | Client-connection voice; site 403 | danny@dl-pt.co.uk |
+| Andre Martey (Fitness By Night) | London | After-hours training niche; stub site | andre@fitnessbynight.co.uk |
+| Andrea Gallimore | Doncaster/Goole/Selby | 63, proves-age story; Doncaster territory check (hyroxdoncaster demo) | andreahgallimore@hotmail.com |
+| Michael Sangha (MS Coaching) | London/Reading | Olympia relay story | msangha83@gmail.com / 07538 209404 |
+| James Botham | Stoke-on-Trent | Stub site | james@jamesbotham.co.uk |
+| Dale Mercer | Ashton/Leigh/Mcr | No about listed | dmcoaching23@gmail.com |
+| Emma Davies | — | No about | emm4jd1@gmail.com |
+| Emma Petrie | — | No about | rad_chix_@outlook.com |
+| Emma Mitchell | Online | No about | emma.pfc@outlook.com |
+| Jason Ives | Online | No about | ivesy25@outlook.com |
+| Josh Fairclough | — | No about | josh.fairclough@outlook.com |
+| Zach King | — | No about | zacharyking1990.zk@gmail.com |
+| Serge Oxygen (The Breath Athlete) | London | Breathwork niche | serge.arja@gmail.com |
+| Ben Sheppard | Bristol | No about | benshep@hotmail.co.uk |
+| danieldublin | Dublin(?) | No about; verify location | dan.dublin1@gmail.com |
+
+### How to use this list
+
+- **Rescue pitches first** (Ciara, Jayne, Danny Livings, Andre Martey,
+  James Botham): dead sites = strongest openers; "I noticed your site's
+  down — I built you a working one."
+- **Phone-number tier** = WhatsApp-first nudge path for the ~1/3 who have
+  one; rest get the standard email→IG-nudge sequence.
+- **Consumer-Microsoft emails parked for outreach** (hotmail/outlook/live/
+  msn — Grant Bain, Andrea Gallimore, Emma Petrie, Emma Mitchell, Jason
+  Ives, Josh Fairclough, Ben Sheppard): the 5 Nov seed test showed
+  consumer Microsoft hard-rejects/junks our new domain (OUTREACH-LOG
+  §1-2). Do NOT farm these by email until a fresh spam-panel retest —
+  due ~mid-December, ~6 weeks after the 5 Nov test — shows the consumer
+  rows clearing. Exception: a live WhatsApp number overrides the park
+  (e.g. Marek Kipikasa keeps 07463 646570 → WhatsApp-first).
+- Directory tier pitches can run lighter than elite tier (shorter video,
+  standard chassis) — they're buyers not logos.
+- Cross-check territory against the live pitch board before sending
+  (London triplication, Doncaster vs existing demo, Scotland vs Elation).

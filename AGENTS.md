@@ -4,14 +4,47 @@ This is a living list of opportunities to push the project toward profitability 
 
 > **Session start:** check the "Chat notes" section in `BILLIONS.md` — it defines our conversation tone (dry British sarcasm, banter in Q&A, humour suspended during debugging/complex work).
 
+> **Current Kim continuation:** read the **30–31 October 2026** section at the top of `HANDOVER.md` before acting. It records the staged `/tmp` source, completed Desk/pitch/visual work, approvals, tests, parked reveal-banding issue and next visual-family task. This is not yet installed in the chassis; temporary sources must not be overwritten or assumed durable.
+
+## Mandatory before EVERY build or recording
+
+Read `.devin/rules/platform-build-and-video.md` before every site build, template change, recording or splice. **New sites MUST build from the canonical `chassis/` template, never another tenant.** The linked plan defines complete showcase content, confirmed events without TBA cards, verification and video text/photo pacing. It is always-on context, not standing permission to execute unrelated work. Existing personalised demos may receive specifically approved, targeted ports from the master without wholesale rebuilds; the nine-prospect plan in HANDOVER.md is not rollout permission. Gregor & Hattie remain wrapped. Only specifically approved targeted maintenance passes are allowed; the ones done so far are listed in HANDOVER.md (Desk navigation, nav regroup, nav colour zones). Their video and public content are not reopened by those passes. Start each session with the "START HERE" and "Latest session" sections at the top of HANDOVER.md. Before any tenant build or config change, read "Before every build — checklist" at the top of `scripts/reskin/CHASSIS.md` and the notes in `scripts/reskin/BUILD-LOG.md`, and time each build stage into that log.
+
+Build toolbox lives in `scripts/reskin/CHASSIS.md` item 12 (imageMap/extraCss, verify-build, drift-check, bust) — read it before any build or tenant edit. After any build or generated-site change, run `node scripts/verify-build.mjs <dir-or-slug>` and report its FAIL/EYE/WARN list — it mechanically checks broken images, viewport overflow (e.g. masthead sig), JS errors and missing folds. Every EYE item ships with a cropped screenshot in `verify-shots/`; open and look at each one before reporting to Chris — EYE means "suspicious, unprovable," so the agent eyeballs first and only escalates what still looks wrong. Eyeball protocol for crop EYEs: view the `-src` original FIRST, then the render. Judge what the lost band contained, not just what remains. Clear only when the lost region is empty space/background; if people, limbs, equipment or any distinctive detail disappeared, escalate it to Chris with both images — never clear a crop just because what remains still looks good.
+
+## Mandatory working agreement with Chris — scope control
+
+**Purpose: stop massive side projects that burn Chris's credit.** Do the task Chris asked for. Ask first before starting anything that is a big side project — architecture work, shared-system refactors, broad audits, rebuild campaigns, new features or multi-site work he hasn't requested.
+
+**Small, obvious fixes in the area you are already working on — just do them, then report them** (e.g. black-on-black text, a wrong photo description, a stray link on a page you're editing). Don't ask permission for these and don't list obvious suggestions for Chris to approve; fix them in passing.
+
+- "Go", "continue" and "finish" authorise completion of the agreed task, not a new task or the next logical project block.
+- Do not turn photo swaps, template refreshes or small fixes into architecture work, shared-system refactors, generic-library projects, broad audits or unrelated cleanup without explicit approval.
+- Use only the investigation and verification directly needed for the requested change. If a necessary blocker would need a big detour, explain it briefly, recommend an option and ask before expanding.
+- Bigger ideas and non-obvious observations are welcome: offer them concisely with a recommendation. Ask and wait before starting anything substantial beyond the agreed task. Recording an idea or pending item is not permission to execute a big one.
+- Reuse the established template, configuration and assets. Prefer the shortest safe path that satisfies the request.
+- Keep progress updates short and accurate. Report what actually changed, what was checked, what remains unfinished, and whether it is local, pushed or verified online.
+- Ask questions in plain chat text, never via clickable multiple-choice prompts — Chris often has a different idea from the listed options.
+- Tool permissions and autonomy settings do not override this scope rule. This agreement supersedes any older instruction suggesting autonomous follow-on blocks.
+
 ## Working rules (hard-won, keep these)
 
 These exist because the same two failure patterns keep costing hours. Follow them even when the guess feels certain — the guesses that feel like memory are the worst ones.
 
 1. **Verify, don't recall.** Never state a fact from memory when a tool call can check it — quote the file, the doc, the curl output. This applies most of all to things Devin itself wrote earlier (prices, config values, port numbers), which feel like established fact and aren't. A confident guess and a verified fact look identical in the transcript; only the wrong ones get found, later, expensively.
-2. **Use the reference, don't reinvent it.** For non-trivial UI/effect work, find the established open-source implementation first and build from that. Hand-rolled is only acceptable if it clearly beats the reference — "it renders" is not beating it. Correctness that can't be checked by compiling (does it *look* like the real effect?) needs the reference implementation, not a bespoke approximation.
+2. **Use the reference, don't reinvent it.** For non-trivial UI/effect work, find the established open-source implementation first and build from that. Hand-rolled is only acceptable if it clearly beats the reference — "it renders" is not beating it. Correctness that can't be checked by compiling (does it _look_ like the real effect?) needs the reference implementation, not a bespoke approximation.
+
+3. **Tenant refreshes: use the template, then reapply the brand and photos.** Do not turn a site refresh into a build-system redesign. Fix demonstrated blockers, check desktop/mobile and finish the requested site. Josh's active source is `scripts/reskin/joshharrison.demo.json` (chassis mode); `chassis/` is now maintained directly, and historical donor configurations are archival only—not a regeneration source. Preserve old generated output before replacement. Exercise photos must show the right activity; leave a clean text-only section rather than relabel an unrelated image.
 
 **Worked example — the hero pic effect saga (Nov 2026):** roughly two hours went in circles hand-rolling shimmer/sparkle/mosaic hero-reveal effects. Every iteration passed "does it compile/render" and failed "does it look like the real thing" — a check only the user's eyes could run. The fix that landed was building on the actual Codrops/open-source implementation that had been available from the start. Lesson: when the goal is "look like X", start from X's implementation, not from a guess at its recipe.
+
+## Editorial checks for pitch builds
+
+Homepage copy must use each tenant's `HERO_TITLE_HTML` and `HERO_DEK`; do not hard-code a brand into “Built for …” or assume racing experience means a new coaching career. Keep headlines concise and introductions audience-facing. Never give every tenant podium/Pro/Group Coach/founder credentials, geographic claims, published-channel ownership or fixed meetup schedules. Preserve verified local offers and factual achievements; do not invent first-person experiences or quotes. Inspect generated text after copy overrides and editorial packs, not just chassis source. A first editorial pass and selected phrase scan do not certify every claim or dynamic string. Keep necessary local-preview/integration caveats truthful and brief.
+
+## Commercial offers, affiliate links and testimonials
+
+Read the **Commercial-source contract** in `scripts/reskin/CHASSIS.md` before building or updating offer cards. Use per-tenant `coachingOffers` / `partnerOffers` with evidence URLs, not inherited Race Ready/Foundations cards or forced six-/twelve-week copy. Homepage, coaching page, generated price FAQs and campaign entry points must agree. Test links after runtime scripts; do not let the generic training-platform URL overwrite an individual product. Follow short-link redirects, preserve affiliate attribution, and check the actual product and billing unit. HTTP 200 alone is not verification. Do not bypass merchant challenges or certificate errors, enter payment data, submit applications or invent coupon URLs. Keep conflicting prices and blocked destinations in the tenant audit notes. Source exact testimonial excerpts and identify whether they describe that coach, an app or a book. The full November 2 audit and pending checks are in HANDOVER.md.
 
 ## On-site nudges and lifecycle
 
@@ -92,15 +125,16 @@ The iPhone version of Devin is a **read-only indexed-search assistant**. It cann
 
 The execution charter below applies to a desktop/terminal Devin session that has filesystem, shell, and browser access:
 
-When the user has said "go", "do it", "execute", or similar, desktop Devin has blanket permission to:
+Within the task Chris explicitly approved, "go", "do it", "execute", or similar allows desktop Devin to use the tools below. It does NOT approve extra scope or follow-on tasks:
 
 - Start and stop the local server (`npm start`, `node server.js`, etc.) for testing.
 - Run `curl`, `gh`, `git`, and other CLI commands without per-step approval.
 - Open browser previews, run lint/type-check, and make multiple file edits in one block.
-- Proceed with the next logical pre-launch block without asking for confirmation on every tool call.
-- Touch Global files (server.js, script.js, product.html templates, etc.) and report the impact after.
+- Finish the remaining steps of the explicitly agreed task without asking on every in-scope tool call. Ask before any next block or wider scope.
+- Touch Global files only when that is necessary within the agreed task; explain the cross-site impact before editing and ask if it would widen scope.
 
 Guardrails that still apply:
+
 - Do not run destructive commands (`rm -rf`, force push, drop tables, delete files) without explicit user confirmation.
 - Avoid exposing or logging secrets.
 - Keep the final summary concise: what changed, why, and what's next.
@@ -112,7 +146,7 @@ Two separate things control whether you get prompted:
 1. **Devin CLI / Devin Desktop (running on your machine).** `.devin/config.json` in this repo pre-approves the commands used here (git, gh, npm, npx, node, make, curl, file reads/writes) so they run without a prompt. `rm -rf` and force-with-lease pushes still ask, and `sudo`, `rm -rf /`, `rm -rf ~`, `git push --force`, `git reset --hard` and writes to `.env` are blocked outright. For a completely prompt-free local run, start the CLI in bypass mode: `devin --permission-mode bypass` (or `/bypass` inside a session) — note it still cannot override the deny rules above.
 2. **Cloud sessions (app.devin.ai, Slack, ACP).** These never show per-command approval buttons; the agent runs commands, starts local servers, and commits on its own. `.devin/config.json` does not apply there, so it is expected behaviour that nothing asks you to click Accept.
 
-Practical upshot: you can hand over a block of work and walk away in either place. Approval is only ever needed for the deny/ask cases above, or when the agent needs something only you have (a secret, a production setting).
+Practical upshot: Chris can hand over an agreed block and walk away, but the agent must stay inside that block. Always ask and wait before widening scope, as well as for destructive actions, required secrets or production settings. Automatic tool approval is not approval for extra work.
 
 ## Local dev quick reference
 
@@ -120,6 +154,25 @@ Practical upshot: you can hand over a block of work and walk away in either plac
 - Database: local Postgres 17 (`brew services start postgresql@17`), db `roxjaya`; schema via `node scripts/migrate.js` (safe to re-run).
 - Checks before commit (also run by the pre-commit hook): `npm run lint`, `npm run type-check`; tests: `npx vitest run`.
 - Internal control panel: http://localhost:3000/hq (admin key is in `.env.local`).
+- Booking planner previews: shared source is `scripts/reskin/booking-template/`; refresh existing coaching sites + neutral chassis with `node scripts/build-booking-planners.mjs`. Both tenant build modes and chassis regeneration install it automatically. `--from-pilot` is a one-time re-promotion from the original TR pilot and overwrites shared source; do not use it for routine rebuilds.
+- Planner tests: `npx vitest run tests/planner-demo.test.js tests/booking-rollout.test.js`. Preview data is fictional and in-memory only; production booking storage/authentication, reminders and calendar-provider connections are not enabled. Optional image slot: `images/planner-watermark.jpg`; neutral template has no selected image. Set tenant `booking.timeZone` when needed; Roxjaya defaults to Asia/Jakarta.
+
+- Walkthrough videos: before recording any coach's video, write a stage-by-stage storyboard (`scripts/reskin/<slug>.storyboard.md`, model: `joshharrison.storyboard.md`) listing every page/section shown and its caption, plus homepage sections deliberately skipped, and get Chris's review. Community pieces such as the Warriors Wall must not be dropped.
+- Walkthrough batch (23 Oct 2026): all 8 videos (`pitch/<slug>/video.mp4`, Josh now included with `pitch/joshharrison/`) have the new hero opening, blip-free captions (captions stay above pop-ups and over partner click-throughs) and the planner before the Desk. Josh was recorded whole; the other seven had homepage, partners and planner sections re-recorded and cut in at page-load boundaries with `node scripts/resplice-walkthrough.mjs <slug>` (writes `/tmp/s9-rerecord/<slug>/updated.mp4`; install by copying). Desktop review copies: `~/Desktop/<slug>-walkthrough-23oct.mp4`. Storyboards: `scripts/reskin/<slug>.storyboard.md`.
+- Video planner splice (historical, superseded by the batch above): `node scripts/splice-planner-videos.mjs [slug...]` locates The Desk using Apple Vision OCR, records the branded planner, and inserts it before The Desk. Needs macOS Swift and ffmpeg. `--analyze` only inspects transitions. Preserve `scripts/reskin/planner-video-splices.json`: it prevents double insertions and records backups/review times. `record-demo.mjs` now inserts `planner.segment.json` automatically before the Desk in full walkthrough recordings.
+
+## Security verification and deployment gates
+
+- The GitHub repository is public. Static-file guards do not make committed data private: keep real client schedules, private contact details and secrets in authenticated storage, not seeded JSON or checked-in files.
+
+- Use supported Node 22/24. The project records npm 11.21.0; npm 10 has a peer-resolution crash when upgrading this Vitest graph. Use `npx --yes --package=npm@11.21.0 npm ...` for dependency updates rather than deleting lockfiles, forcing peers or changing security settings.
+- Run `npm run lint`, `npm run type-check`, `npm test` (coverage gate remains 80%), `npm audit --omit=dev` and `npm audit`. Run `SECURITY_TEST_URL=http://127.0.0.1:3012 node scripts/security-smoke.mjs` against an isolated local app. The smoke tool intentionally refuses remote targets. NODE_ENV=test skips background schedulers; production monitoring is unchanged. Mock pitch-event browser requests when testing players so no owner notifications are sent.
+- Postgres transport: default remote connections verify certificates; `DATABASE_SSL_CA` can supply the public provider CA and URL flags cannot disable verification. Explicit `DATABASE_TRANSPORT=verify-full` also verifies local connections. Chris approved `DATABASE_TRANSPORT=railway-private` for the confirmed-private station9-demos service ONLY: valid `*.railway.internal` hostname and Railway project/environment/service IDs required, no PostgreSQL-layer TLS, relying on Railway's encrypted WireGuard network. Markers are sanity checks, not cryptographic attestation. Missing markers, routing overrides and conflicting TLS/CA settings fail closed before server listens. Do not use a project-wide shared variable or enable it on another service without confirming its connection. Coordinate code + variable at release; no live variable change/deploy yet. Verify a real DB query inside Railway, not just a green /health. Local loopback defaults remain supported without TLS. Pool, migrations and backup share these rules; backups keep passwords off command arguments.
+- Pitch summary now requires x-admin-key/x-admin-api-key, not query-string keys. Pitch requests: 90/10min/IP; owner notification dedupe plus 30/hour/process cap; private desk access: 120/min/IP. Limits are per process, not a distributed WAF. Valid pitch events can still record when the alert quota is exhausted.
+- GitHub Dependabot alerts and automatic fixes are enabled; secret scanning/push protection remain enabled. Main rejects force pushes/deletion including admins, but normal pushes/content bots remain allowed. Required CI/PR-review policy needs a deliberate decision after real green security runs. SONAR_TOKEN is not configured; FOSSA remains optional. Do not mark provider-backed scans as passed before their first real run.
+- Repo-wide formatting still has legacy HTML/CSS parse errors; do not exclude files, lower coverage/security thresholds or ignore failures to make checks green. Security CI jobs are independent so formatting does not suppress audits/scans. The original verify-refactor.sh kills a running server and replays database webhooks; use isolated smoke/tests and route snapshots for hardening changes, not blind live replay.
+
+- Shared exercise references live in `scripts/reskin/stock/`; `catalog.json` records reviewed crops and source/rights status. Do not trust filenames as activity labels or assume stock means royalty-free. Generic/cross-coach references must not be captioned as the prospect. Josh's Fuel page is hidden; Coaching uses the bright-trainers shot, Run Zone has no secondary photo, Taper reuses bio, and Crew uses the two setting templates. Reveal snapshots become invalid when the photo container resizes: restore the actual image rather than leaving a stale canvas or restarting a second reveal. Preserve the new chassis reveal guard during any intentional master regeneration.
 
 ## Start here for batch tenant builds
 
@@ -151,31 +204,29 @@ node scripts/prospect-pipeline.js --resume my-batch
 ```
 
 The pipeline stops at human gates:
+
 - thumbnail triage (`shortlist.json`)
 - visual index approval (`approval.json`)
 - allocation review (`allocation/*.jpg`)
 
 Set `decision: BUILD`, `allocation_verified: true` and `config_path` in the per-prospect `approval.json`, then rerun `--resume`.
 
-Method B — if configs and assets already exist, just loop:
+Method B — build only the prospect Chris explicitly approved, from `mode: "chassis"`, into a NEW isolated output:
 
 ```bash
-for cfg in scripts/reskin/*.demo.json; do
-  node scripts/reskin-tenant.js "$cfg"
-done
+node scripts/reskin-tenant.js .devin/template-preview.json --output-dir=/tmp/NEW-REVIEW-DIRECTORY/template-preview
+TEMPLATE_PREVIEW_DIR=/tmp/NEW-REVIEW-DIRECTORY/template-preview node scripts/verify-template-preview.mjs
 ```
 
-`tenants.json` serialises writes with a lockfile, so parallel loops are safe but serial is simpler.
+Replace the example config with the approved prospect's configuration when doing a prospect build. The verifier above is deliberately limited to the neutral `template-preview` fixture; it serves that fixture on an isolated loopback port and checks desktop/mobile workflows without sending submissions. Do not loop over all configs or overwrite existing sites without specific approval. Legacy maintenance and replacement require explicit flags as well as Chris's approval; they are never a new-build source. Isolated output leaves `tenants.json` unchanged.
 
-### Regenerate the shared chassis
-
-Run this whenever the donor tenant (`joshharrison/`) has improved and the neutral base needs to catch up:
+### Validate the canonical chassis — no donor regeneration
 
 ```bash
 node scripts/build-chassis.js
 ```
 
-This regenerates `joshharrison/`, copies it to `chassis/`, strips dead files, tokenises persona values, and fails loudly if any donor-specific string leaked into the chassis.
+This command now validates the maintained canonical template and its sourced race/news data. It does NOT rebuild a donor, overwrite `chassis/` or register a tenant. New builds must consume the current master. The verified race catalogue is `chassis/data/cities.json`: update it from specific official event pages when its check date is more than 14 days old, or if it lacks a relevant confirmed upcoming race. Stale/empty catalogues fail rather than emit TBA cards. Regression checks: `npx vitest run tests/template-showcase.test.js tests/reskin-stage.test.js tests/planner-demo.test.js tests/booking-rollout.test.js`.
 
 ### The photo process
 
@@ -202,7 +253,7 @@ These exist because the first batch build wasted 3+ hours searching stock photo 
    - Carousel with 6+ images (almost always professional event coverage)
    - Caption mentions a HYROX location (Rome, London, Birmingham, Glasgow, Hamburg, Warsaw, Athens, etc.)
    - Caption contains photographer credit signals (📸, "photo by", "@hyrox", etc.)
-   These posts should be prioritised during triage — they are the richest source of station, finish, and race shots.
+     These posts should be prioritised during triage — they are the richest source of station, finish, and race shots.
 
 4. **Pull generously, shortlist widely.** The per-slot candidate cap is 4 (not 2) and spares cap is 20 (not 10). When a coach has 60 great images on their IG, a tight cap forces the pipeline to discard the best material. Pull more, sort later.
 
@@ -212,19 +263,35 @@ These exist because the first batch build wasted 3+ hours searching stock photo 
 
 7. **Stock is last resort.** When the pipeline uses a stock image, it logs it explicitly (`STOCK FALLBACK: <handle> — <slot>`). If more than 3 slots per tenant fall back to stock, the pipeline requests a deeper IG pull before proceeding.
 
+### Tenant build gotchas (hard-won, Oct/Nov 2026 batch)
+
+1. **Move, don't copy, into image slots.** `strictImages` builds hash every copied image and fail when two slots share bytes. Move the spare file to the slot name; overwriting an existing unreferenced slot file is fine.
+2. **Check references before moving a spare.** Files in `<slug>-assets/images/` may be referenced by `tenantGallery` (wall), config JSON or generated pages even when they look "free". Grep the config and the built output for the basename first — stealing a referenced file 404s the build.
+3. **`omitImageSlots` is not the only way images disappear.** `copyOverrides` can strip whole `<figure>` elements via regex (`"<figure\\b..."` → `""`). If an un-omitted slot still renders no photo, grep the config for a figure-strip override before assuming the file is missing (this bit joshharrison).
+4. **Coach copy is gender-neutral `they` everywhere.** Never reintroduce she/he in shared chassis strings — it silently misgenders half the fleet. For duo tenants (racetoframe) singular "the coach" is also wrong — fix pluralisation via that tenant's `copyOverrides`.
+5. **Signature collisions are template-made, not copied content.** Engine-rendered phrases (e.g. `Apply for {PROG_TWO}`) can produce another tenant's signature string. Pick programme/section names that don't start with another coach's signature words ("HYROX ..." collided with Josh's "Apply for HYROX"). `check-batch-ghosts.py` is the arbiter.
+6. **Text-only beats a wrong photo.** Omit the slot rather than fill it with a merely-available or cross-tenant image — Chris will reject it and re-source from IG anyway.
+7. **Config filename ≠ slug.** `georgegrayson`→`ggeorge.demo.json`, `faisalpma`→`faisal.demo.json`, `mayaokafor`→`testchassis.demo.json`. Empty glob results mean a renamed config, not a missing tenant — check the slug field inside configs.
+8. **Stale staged dirs break the ghost gate.** Old builds left in `/tmp/pitch-batch` carry old chassis copy that can collide with newer signatures — delete or rebuild stale output dirs before gating.
+9. **Crew defaults live in the builder.** New "always copied" default images must be added to the crew-defaults list in `reskin-tenant.js` or every tenant 404s the reference (dinner-template.jpg was missed once).
+10. **House image treatment is `.guide-hero-photo`.** Any new public-page photo goes top/right inside `.guide-hero` (curved edge + partial frame via the per-family CSS). No bespoke centred/below-hero image blocks — coaching.html's one-off layout was the exception that proved the rule.
+
 ### CLIP scoring (image intelligence)
 
 CLIP replaces manual eyeballing for two things:
+
 - **Coach identity:** "Is this the coach or a stranger?" (coach similarity score, 0.7+ = confirmed, 0.55–0.7 = possible, <0.55 = unlikely)
 - **Scene classification:** "Is this a burpee, a sled push, rowing, coaching, a selfie, a text graphic?" (scores for 20+ scene types)
 
 Setup (one-time):
+
 ```bash
 python3.14 -m venv .venv
 .venv/bin/pip install open_clip_torch Pillow
 ```
 
 Usage:
+
 ```bash
 # Create 3-5 confirmed coach photos in a reference/ subfolder
 mkdir -p <source-dir>/reference
@@ -246,6 +313,8 @@ The chassis ships two hero modes controlled by `data-hero-mode="full|ambient"` o
 
 - **full** — full-bleed background image with a CSS scrim; best for high-impact coach photos.
 - **ambient** — darker/minimal background with the coach portrait as the focus; best for starker brands.
+
+**Hero standard (23 Oct 2026):** headline + subhead of max two lines sit on/beside the photo; no kicker line; buttons and stats sit below the photo (`.hero-below` in chassis, `.hero-footer` in the editorial pack). In editorial sites the `.hero-intro` lives inside `.hero-visual` so the reveal bakes the headline in. The 12 pitch sites were edited directly in their generated folders; their tenant configs still carry the older long hero subheads, so a rebuild would bring those back unless the config overrides are updated first.
 
 All three layers (CSS, `app.js` feather mask, `emerge.js` baked composite) read the same `data-hero-mode` flag. Changing one without the others is the main bug class the chassis fixes.
 

@@ -1,11 +1,39 @@
 // server/middleware.js
 // App-wide request middleware, in the order server.js mounts them:
-// canonical host redirect → 5xx tracking → cache policy → static files
+// security headers → canonical host redirect → 5xx tracking → cache policy → static files
 // (with the private-file guard). Each factory returns a plain middleware.
 
 import express from "express";
 import { isPrivateStaticPath } from "../src/static-guard.js";
 import { resolveTenantFromRequest } from "./tenancy.js";
+
+export function securityHeaders() {
+  return (req, res, next) => {
+    res.removeHeader("X-Powered-By");
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("X-Frame-Options", "SAMEORIGIN");
+    res.setHeader(
+      "Content-Security-Policy",
+      "base-uri 'self'; frame-ancestors 'self'; object-src 'none'",
+    );
+    res.setHeader(
+      "Referrer-Policy",
+      /^(\/admin|\/hq|\/pitch-views)(\/|$)/.test(req.path)
+        ? "no-referrer"
+        : "strict-origin-when-cross-origin",
+    );
+    res.setHeader(
+      "Permissions-Policy",
+      "camera=(), microphone=(), geolocation=()",
+    );
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+    if (req.secure)
+      res.setHeader("Strict-Transport-Security", "max-age=15552000");
+    if (/^\/(api|admin)(\/|$)/.test(req.path) || req.path === "/pitch-views")
+      res.setHeader("Cache-Control", "no-store, private");
+    next();
+  };
+}
 
 // Per-tenant canonical host: a tenant with `canonicalHost` set (e.g.
 // "roxjaya.com") 301s every other hostname it owns (www.) to it, so Google
@@ -15,7 +43,11 @@ export function canonicalHostRedirect() {
     const hostname = String(req.headers.host || "")
       .split(":")[0]
       .toLowerCase();
-    if (!hostname || hostname === "localhost" || hostname.endsWith(".localhost"))
+    if (
+      !hostname ||
+      hostname === "localhost" ||
+      hostname.endsWith(".localhost")
+    )
       return next();
     const tenant = resolveTenantFromRequest(req);
     const canonicalHost = String(tenant?.canonicalHost || "").toLowerCase();
@@ -36,7 +68,9 @@ export function trackServerErrors(recentServerErrors) {
         if (Number.isFinite(code) && code >= 500) {
           recentServerErrors.push({
             at: Date.now(),
-            path: String(req.originalUrl || req.url || ""),
+            path: String(req.path || req.originalUrl || req.url || "").split(
+              "?",
+            )[0],
           });
         }
         const cutoff = Date.now() - 15 * 60 * 1000;
@@ -61,7 +95,8 @@ const STATIC_ASSET_RE =
   /\.(css|js|png|jpe?g|webp|avif|svg|ico|woff2?|mp4|webm|json)$/i;
 export function cachePolicy() {
   return (req, res, next) => {
-    if (STATIC_ASSET_RE.test(req.path)) {
+    const local = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(req.hostname);
+    if (STATIC_ASSET_RE.test(req.path) && !local) {
       res.setHeader("Cache-Control", "public, max-age=300, must-revalidate");
     } else {
       res.setHeader(
@@ -91,4 +126,27 @@ export function staticFiles(rootDir) {
     if (isPrivateStaticPath(pathName)) return next();
     return serveStatic(req, res, next);
   };
+}
+
+export function requestErrorHandler(error, req, res, next) {
+  if (res.headersSent) return next(error);
+  const supplied = Number(error.status || error.statusCode);
+  const status =
+    Number.isInteger(supplied) && supplied >= 400 && supplied < 600
+      ? supplied
+      : 500;
+  if (status >= 500)
+    console.error("Request failed", {
+      path: req.path,
+      code: String(error.code || "INTERNAL_ERROR"),
+    });
+  res.setHeader("Cache-Control", "no-store, private");
+  return res.status(status).json({
+    error:
+      status === 413
+        ? "Request too large"
+        : status < 500
+          ? "Invalid request"
+          : "Something went wrong",
+  });
 }

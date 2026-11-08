@@ -149,8 +149,8 @@
       <h1>
         <a class="wordmark" href="/{{SLUG}}/"
           >{{WORDMARK_HTML}}
-          <span class="sig" aria-label="{{BRAND}}"
-            ><span class="sig-text">{{BRAND}}</span
+          <span class="sig" aria-label="{{SIG}}"
+            ><span class="sig-text">{{SIG}}</span
             ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
               <path
                 d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
@@ -372,12 +372,6 @@
       </div>
     </section>
 
-    <section class="block" id="stories"><div class="wrap"><p class="eyebrow">Between the start lines</p><h3>Keep learning between sessions.</h3><p class="lead">Race stories, coaching clips and useful places to explore next.</p><div class="showcase-grid">
-      <article class="showcase-card"><h4>HYROX news</h4><p>Race stories from around the world, with {{COACH_FIRST}}'s perspective on what matters.</p><a class="btn btn-ghost" href="/{{SLUG}}/news.html">Read the news</a></article>
-      <article class="showcase-card"><h4>Watch &amp; listen</h4><p>Training clips, race footage and longer conversations — ready when you are.</p><p><a class="btn btn-ghost" href="/{{SLUG}}/watch.html">Watch &amp; Learn</a> <a href="/{{SLUG}}/podcast.html">Studio series →</a></p></article>
-      <article class="showcase-card"><h4>More from {{BRAND}}</h4><p>Coaching routes, sessions and official channels.</p><a class="btn btn-ghost" href="/{{SLUG}}/shop.html">Open the links</a></article>
-    </div></div></section>
-
     <section class="block alt" id="events">
       <div class="wrap">
         <div class="events-head">
@@ -391,9 +385,7 @@
           </div>
           {{EVENTS_PHOTO_BLOCK}}
         </div>
-        <div class="events" id="race-cards" aria-live="polite"><div class="event"><div class="date"><strong><time datetime="2026-12-02">2 Dec 2026</time></strong><span>{{CITY}}</span></div><div><h4>Amazon HYROX London</h4><p>2 Dec 2026 – 6 Dec 2026 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-london-excel/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/{{SLUG}}/events.html#london">Plan the weekend</a></div>
-<div class="event"><div class="date"><strong><time datetime="2027-01-20">20 Jan 2027</time></strong><span>Manchester</span></div><div><h4>HYROX Manchester</h4><p>20 Jan 2027 – 31 Jan 2027 · United Kingdom</p><a href="https://hyrox.com/event/hyrox-manchester/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/{{SLUG}}/events.html#manchester">Plan the weekend</a></div>
-<div class="event"><div class="date"><strong><time datetime="2026-11-11">11 Nov 2026</time></strong><span>Dublin</span></div><div><h4>HYROX Dublin</h4><p>11 Nov 2026 – 15 Nov 2026 · Ireland</p><a href="https://hyrox.com/event/hyrox-dublin/" target="_blank" rel="noopener">Official event details</a></div><a class="btn btn-ghost" href="/{{SLUG}}/events.html#dublin">Plan the weekend</a></div></div></div></section>
+        <div class="events" id="race-cards" aria-live="polite">{{RACE_CARDS}}</div></div></section>
 
     <section class="cta-band" id="find-partner">
       <div class="wrap">

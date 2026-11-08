@@ -1,7 +1,7 @@
 (function () {
   const home = document.getElementById("zones");
   if (home) {
-    const order = ["zones", "story", "plans", "athletes-say", "stories", "events", "find-partner", "wall", "tips", "ask", "wall-photos"];
+    const order = ["zones", "story", "plans", "athletes-say", "find-partner", "wall", "tips", "ask", "events", "wall-photos"];
     const first = document.getElementById(order[0]);
     let previous = first;
     order.slice(1).forEach(id => {
@@ -12,6 +12,40 @@
   const event = new URLSearchParams(location.search).get("race");
   const question = document.querySelector('#ask-form [name="question"]');
   if (event && question && !question.value) question.value = `I'd like help preparing for ${event.slice(0, 120)}. My current training and target are: `;
+})();
+// Signature flourish dips below the wordmark by an amount that depends on the
+// signature length (it rotates -6deg, so longer swishes drop further). Measure
+// the real tip and set the city line's gap to match — keeps spacing even and
+// tight for every signature, short or long.
+(function () {
+  const sig = document.querySelector(".masthead .sig");
+  const line = document.querySelector(".masthead .sig-line");
+  const wordmark = document.querySelector(".masthead .wordmark");
+  const city = document.querySelector(".masthead .city");
+  if (!sig || !line || !wordmark || !city) return;
+  const fit = () => {
+    const snug = 16, below = 2;
+    const wb = wordmark.getBoundingClientRect();
+    sig.style.transform = "rotate(-6deg)";
+    const sb0 = sig.getBoundingClientRect();
+    if (sb0.width > wb.width) {
+      const dx = Math.round((wb.left + wb.right) / 2 - (sb0.left + sb0.right) / 2);
+      sig.style.transform = `translateX(${dx}px) rotate(-6deg)`;
+    }
+    city.style.marginTop = snug + "px";
+    const sb = sig.getBoundingClientRect();
+    const lb = line.getBoundingClientRect();
+    const range = document.createRange();
+    range.selectNodeContents(city);
+    const cb = range.getBoundingClientRect();
+    const xClash = lb.right > cb.left + 6 && lb.left < cb.right - 6;
+    const yClash = Math.max(sb.bottom, lb.bottom) > cb.top - below;
+    if (xClash && yClash) {
+      city.style.marginTop = Math.ceil(Math.max(sb.bottom, lb.bottom) - wb.bottom) + below + "px";
+    }
+  };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  fit();
 })();
 
 // Anchors to late sections (#ask, #tips) land short because wall/photo/quote
@@ -536,12 +570,7 @@
       if (!json) return;
       const athletes = Array.isArray(json.athletes) ? json.athletes
         : Array.isArray(json.items) ? json.items : [];
-      if (!athletes.length) {
-        athletes.push(
-          { before: "1:34:00", after: "1:21:44", name: "Alex Carter", division: "Open", event: "HYROX London", date: "Nov 2025", note: "placeholder result — replace with a real entry" },
-          { before: "1:12:30", after: "1:05:09", name: "Sam Doyle", division: "Pro", event: "HYROX Birmingham", date: "Oct 2025", note: "placeholder result — replace with a real entry" },
-        );
-      }
+      if (!athletes.length) return;
       const list = document.getElementById("wall-list");
       athletes.forEach((a) => {
         const li = document.createElement("li");
@@ -758,6 +787,7 @@ window.roxShare = (function () {
     img.src = String(p.src || "");
     img.alt = String(p.alt || p.caption || "");
     img.loading = "lazy";
+    if (p.pos) img.style.objectPosition = p.pos;
     img.width = 600;
     img.height = 600;
     const cap = document.createElement("p");
@@ -1047,7 +1077,7 @@ window.roxShare = (function () {
       mount.innerHTML = rows
         .map((q) => {
           let source;
-          try { source = new URL(q.sourceURL); } catch {}
+          try { source = new URL(q.sourceURL); } catch { /* noop */ }
           const link = source?.protocol === "https:" && !source.username && !source.password ? `<a class="quote-source" href="${esc(source.href)}" target="_blank" rel="noopener">Read the original testimonial →</a>` : "";
           return `<blockquote class="quote"><p>${esc(q.quote)}</p><footer><strong>${esc(q.name)}</strong>${q.detail ? " · " + esc(q.detail) : ""}${q.plan ? " · " + esc(q.plan) : ""}${link}</footer></blockquote>`;
         })
@@ -1237,3 +1267,56 @@ window.addEventListener("load", () => {
     if (t) setTimeout(() => t.scrollIntoView(), 60);
   }
 });
+
+// Homepage race calendar: first card always visible, the rest fold behind a
+// "+ N more races" details toggle. No-op on tenants with a single race.
+{
+  const cards = document.getElementById("race-cards");
+  if (cards) {
+    const events = [...cards.querySelectorAll(":scope > .event")];
+    if (events.length > 1) {
+      const more = document.createElement("details");
+      more.className = "events-more";
+      const sum = document.createElement("summary");
+      const label = (open) =>
+        open
+          ? "Show fewer races"
+          : `${events.length - 1} more race${events.length - 1 > 1 ? "s" : ""}`;
+      sum.textContent = label(false);
+      more.append(sum, ...events.slice(1));
+      cards.append(more);
+      more.addEventListener("toggle", () => {
+        sum.textContent = label(more.open);
+      });
+    }
+  }
+}
+
+// Coaching plans: three cards visible — first offers plus the Prep Club /
+// crew card, which always stays in view whether it sits inside the grid or as
+// its own banner; the middle offers fold behind "+ N more plans".
+{
+  const section = document.getElementById("plans");
+  const plans = section?.querySelector(".plans");
+  if (plans) {
+    const crew = [...(section.querySelectorAll(".plan-crew") || [])];
+    const normal = [...plans.querySelectorAll(":scope > .plan")].filter(
+      (c) => !c.classList.contains("plan-crew"),
+    );
+    const keep = Math.max(0, 3 - crew.length);
+    if (normal.length > keep) {
+      const folded = normal.slice(keep);
+      const more = document.createElement("details");
+      more.className = "plans-more";
+      const sum = document.createElement("summary");
+      const label = (open) =>
+        open ? "Show fewer plans" : `${folded.length} more plan${folded.length > 1 ? "s" : ""}`;
+      sum.textContent = label(false);
+      more.append(sum, ...folded);
+      plans.append(more);
+      more.addEventListener("toggle", () => {
+        sum.textContent = label(more.open);
+      });
+    }
+  }
+}

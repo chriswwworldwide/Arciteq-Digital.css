@@ -1,6 +1,61 @@
 {
   "mode": "chassis",
   "slug": "jadeskillen",
+  "coachingIntro": "Explore Jade's HYROX performance coaching or begin with her free video training. The two routes have different purposes: an application-led coaching conversation and an educational starting point.",
+  "coachingOffers": [
+    {
+      "title": "HYROX performance coaching",
+      "type": "Application-led coaching",
+      "description": "Jade's performance-coaching page is for experienced HYROX athletes looking to take their racing further. Open the application route to discuss suitability.",
+      "url": "https://smashyourhyrox.com/",
+      "action": "Explore performance coaching",
+      "sourceURL": "https://smashyourhyrox.com/"
+    },
+    {
+      "title": "Free HYROX video training",
+      "type": "Educational introduction",
+      "price": "Free",
+      "description": "A video introduction to three common HYROX preparation mistakes. This is free training content, not an application for paid 1:1 coaching.",
+      "url": "https://start.jadeskillen.com/",
+      "action": "Explore the free video training",
+      "sourceURL": "https://start.jadeskillen.com/"
+    }
+  ],
+  "partnerOffers": [
+    {
+      "title": "PUMA",
+      "type": "Athlete brand link",
+      "description": "Race and training footwear and apparel from the official UK store.",
+      "url": "https://uk.puma.com/uk/en",
+      "action": "Shop PUMA",
+      "sourceURL": "https://www.instagram.com/jade_skillen/"
+    },
+    {
+      "title": "Mirafit",
+      "type": "Equipment brand link",
+      "description": "Strength and functional-training equipment from Mirafit's official store.",
+      "url": "https://mirafit.co.uk/",
+      "action": "Explore Mirafit",
+      "sourceURL": "https://www.instagram.com/jade_skillen/"
+    },
+    {
+      "title": "Hilltop Honey",
+      "type": "Brand destination",
+      "description": "Honey and related products from Hilltop's current official store.",
+      "url": "https://lovehilltop.com/",
+      "action": "Visit Hilltop Honey",
+      "sourceURL": "https://lovehilltop.com/"
+    }
+  ],
+  "offerAudit": {
+    "checkedAt": "2026-11-02",
+    "notes": [
+      "start.jadeskillen.com is a free-video landing page, not the paid coaching application itself.",
+      "No public Foundations or six-week offer found; removed those template defaults.",
+      "Old hilltophoney.co.uk endpoint fails TLS; current official brand destination is lovehilltop.com.",
+      "Mirafit challenges automated browsers; no bypass attempted and no unverified code or discount added."
+    ]
+  },
   "heroMode": "full",
   "strictImages": true,
   "assets": "scripts/reskin/jadeskillen-assets",
@@ -9,17 +64,18 @@
     "mode": "hidden"
   },
   "tokens": {
+    "HERO_DEK": "Bring purpose to your next training block. Explore performance coaching with Jade, shaped by Elite 15 race experience and focused on your next goal.",
     "SLUG": "jadeskillen",
     "COACH_NAME": "Jade Skillen",
     "COACH_NAME_LC": "jade skillen",
     "COACH_FIRST": "Jade",
     "COACH_LAST": "Skillen",
     "WORDMARK_HTML": "<span class=\"o\">J</span>ADE",
-    "BRAND": "Jade Skillen",
+    "BRAND": "by Jade Skillen",
     "BRAND_SHORT": "jadeskillen",
     "BRAND_SOCIAL": "jade_skillen",
     "CLOTHING_SHORT": "JS",
-    "CITY": "Online",
+    "CITY": "Newmarket",
     "REGION": "United Kingdom",
     "REGION_LC": "united kingdom",
     "TAGLINE": "helping HYROX athletes hit a race PR in 60 days or less",
@@ -67,33 +123,42 @@
     "VOICE_NEWS_TAKE": "Performance isn't about having perfect conditions. It's about finding a way to execute anyway.",
     "SOCIAL_HANDLE_UPPER": "JADE_SKILLEN",
     "PARTNER_GYM_URL": "https://mirafit.co.uk/",
-    "PARTNER_SUPP_URL": "https://www.hilltophoney.co.uk/"
+    "PARTNER_SUPP_URL": "https://lovehilltop.com/",
+    "BIO_ROLE": "HYROX Elite 15 racer and coach",
+    "RACE_RECORD": "Elite 15 racing across Birmingham and Bordeaux",
+    "RACE_COUNT": "E15",
+    "RACE_COUNT_LABEL": "Elite 15 division racer",
+    "PROG_ONE": "Smash Your HYROX",
+    "PROG_ONE_TAG": "programme",
+    "OFFER_SUMMARY": "Smash Your HYROX programmes, coaching and race crew.",
+    "SIG": "by Jade Skillen"
   },
   "stripSections": [
     "merch"
   ],
   "omitImageSlots": [
-    "images/finish.jpg",
-    "images/pb-venue.jpg",
-    "images/race-revel.jpg",
-    "images/sprint.jpg",
-    "images/track.jpg",
-    "images/treadmill.jpg",
+    "images/avatar.jpg",
     "images/bike.jpg",
     "images/carry.jpg",
-    "images/rope.jpg",
-    "images/squad-athlos.jpg",
     "images/detail.jpg",
-    "images/station-lean.jpg",
+    "images/finish.jpg",
+    "images/gallery/dinner-template.jpg",
+    "images/hoodie.jpg",
     "images/kerb.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/race-revel.jpg",
     "images/rooftop.jpg",
-    "images/walkin.jpg",
-    "images/suit.jpg",
-    "images/hoodie.jpg"
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/sprint.jpg",
+    "images/station-lean.jpg",
+    "images/taper-hero.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg"
   ],
-  "stripPages": [
-    "watch.html"
-  ],
+  "stripPages": [],
   "copyOverrides": [
     {
       "pattern": "Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\.",
@@ -132,14 +197,6 @@
       "replace": "Dubai"
     },
     {
-      "pattern": "\\s*<li><a href=\"/jadeskillen/watch.html\">Watch</a></li>",
-      "replace": ""
-    },
-    {
-      "pattern": "\\s*<a href=\"/jadeskillen/watch.html\">Watch</a>",
-      "replace": ""
-    },
-    {
       "pattern": "on FITR",
       "replace": "by application"
     },
@@ -150,10 +207,385 @@
     {
       "pattern": "365",
       "replace": "performance"
+    },
+    {
+      "pattern": "src=\"/jadeskillen/images/startline\\.jpg(\\?v=\\d+)?\"(\\s*)alt=\"Athletes on the Hyrox start line waiting for the gun\"(\\s*)width=\"\\d+\"(\\s*)height=\"\\d+\"",
+      "replace": "src=\"/jadeskillen/images/js-run-elite15.jpg$1\"$2alt=\"Jade Skillen and Kat Parnell racing the Elite 15 in England vests\"$3width=\"552\"$4height=\"660\""
+    },
+    {
+      "pattern": "<figure class=\"art-photo\">\\s*<img\\s*src=\"/{{SLUG}}/images/momentum\\.jpg\\?v=\\d+\"[\\s\\S]*?</figure>",
+      "replace": "<figure class=\"art-photo taper-watch-photo\"><img src=\"/{{SLUG}}/images/momentum.jpg\" alt=\"Jade checking her watch between athletes on the training field — keeping an easy session honest\" width=\"847\" height=\"1024\" loading=\"lazy\" /><figcaption>Race week, kept quiet on purpose.</figcaption></figure>",
+      "flags": "g"
+    },
+    {
+      "pattern": "(<article class=\"station reveal\" id=\"sleep\">[\\s\\S]*?</article>)\\s*<article class=\"station reveal\" id=\"checklist\">",
+      "replace": "$1\n\n<figure class=\"art-photo taper-postsession-photo\"><img src=\"/{{SLUG}}/images/taper-postsession.jpg\" alt=\"Jade in the car straight after training, still buzzing from the session\" width=\"847\" height=\"1024\" loading=\"lazy\" /><figcaption>Finish the week feeling good — that is the point of it.</figcaption></figure>\n\n<article class=\"station reveal\" id=\"checklist\">",
+      "flags": "g"
     }
   ],
   "stripBlocks": [
     "tiktok-link"
   ],
-  "extraCss": "/* Dublin piggyback hero: portrait source — push the cover anchor\n   down so both faces survive the zoom */\n.hero--bleed{--hero-focus:50% 38%;}"
+  "extraCss": "/* Dublin piggyback hero: portrait source — push the cover anchor\n   down so both faces survive the zoom */\n.hero--bleed{--hero-focus:50% 38%;}\n.guidance--calm .art-photo.taper-watch-photo img{object-position:45% 32%;}\n.guidance--calm .art-photo.taper-postsession-photo img{object-position:60% 22%;}\n@media(max-width:600px){.guidance--calm .art-photo.taper-watch-photo img{object-position:45% 30%;}.guidance--calm .art-photo.taper-postsession-photo img{object-position:60% 20%;}}",
+  "seedFiles": {
+    "campaign-offers.json": "@scripts/reskin/jadeskillen-pages/data/campaign-offers.json",
+    "cities.json": "@scripts/reskin/jadeskillen-pages/data/cities.json",
+    "events.json": "@scripts/reskin/jadeskillen-pages/data/events.json",
+    "matchboard.json": "@scripts/reskin/jadeskillen-pages/data/matchboard.json",
+    "news.json": "@scripts/reskin/jadeskillen-pages/data/news.json",
+    "training-platform.json": "@scripts/reskin/jadeskillen-pages/data/training-platform.json",
+    "travelboard.json": "@scripts/reskin/jadeskillen-pages/data/travelboard.json",
+    "videos.json": "@scripts/reskin/jadeskillen-pages/data/videos.json"
+  },
+  "coachPreview": true,
+  "news": [
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "Watch the execution: controlled running, deliberate transitions and quality reps under fatigue.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. An away race also means planning travel, sleep and recovery.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Protect sleep and recovery when planning an away race. Travel is part of the performance plan.",
+      "takeStatus": "draft-for-review",
+      "link": "/jadeskillen/events.html",
+      "linkLabel": "Race Calendar & Travel →"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-23",
+      "title": "Stockholm: Australia defends its mixed-relay world title",
+      "summary": "PUMA's World Championships report records Australia's mixed-relay win in 50:19, with Jess Pettrow on the title-defending team. Joanna Wietrzyk also finished second in the women's Elite 15 solo race.",
+      "source": "https://mediahub.puma.com/articles/puma-dominates-hyrox-world-championships-from-elite-athlete-performances-to-community-initiatives",
+      "sourceName": "PUMA · World Championships report",
+      "take": "Be precise about handovers, pacing and who takes responsibility for each part of the race.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's new framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "Qualification now rewards a planned season. Check which results count before selecting your races.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027. Qualification gives the season a clear international destination.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "Work backwards from the standard required. Make the next block specific to the athlete, not the headline.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season, with kit, resources and performance support.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "Support helps, but clear training priorities and repeatable execution remain essential.",
+      "takeStatus": "draft-for-review"
+    }
+  ],
+  "races": {
+    "checked": "2026-10-25",
+    "source": "https://hyrox.com/find-my-race/",
+    "timeZone": "UTC",
+    "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
+    "cities": [
+      {
+        "slug": "dublin",
+        "name": "Dublin",
+        "country": "Ireland",
+        "timeZone": "Europe/Dublin",
+        "tagline": "A short hop can still deserve a proper race-weekend plan.",
+        "race": {
+          "name": "HYROX Dublin",
+          "status": "confirmed",
+          "start": "2026-11-11",
+          "end": "2026-11-15",
+          "source": "https://hyrox.com/event/hyrox-dublin/",
+          "sourceLabel": "Official HYROX Dublin event",
+          "dates": "11 Nov 2026 – 15 Nov 2026"
+        },
+        "gettingThere": [
+          "Check the official RDS event information and your division start time before booking travel.",
+          "Compare flight, ferry and local transport against the venue journey, including luggage and registration time."
+        ],
+        "hotels": [
+          {
+            "area": "Ballsbridge or central Dublin",
+            "picks": "Balance a practical journey to the RDS with food, sleep and somewhere easy for the crew to meet.",
+            "range": "Check live rates and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar and check early breakfast options near your stay."
+        ],
+        "nightAfter": [
+          "Plan a relaxed post-race meal and leave recovery time before the journey home."
+        ]
+      },
+      {
+        "slug": "singapore",
+        "name": "Singapore",
+        "country": "Singapore",
+        "timeZone": "Asia/Singapore",
+        "tagline": "Make an overseas race a shared weekend, not a rushed turnaround.",
+        "race": {
+          "name": "AIA HYROX Singapore",
+          "status": "confirmed",
+          "start": "2026-11-26",
+          "end": "2026-11-29",
+          "source": "https://hyrox.com/event/aia-hyrox-singapore/",
+          "sourceLabel": "Official AIA HYROX Singapore event",
+          "dates": "26 Nov 2026 – 29 Nov 2026"
+        },
+        "gettingThere": [
+          "Check passport, entry and airline baggage requirements before paying for travel.",
+          "Allow time to adjust to the local time zone and plan the venue journey from your chosen accommodation."
+        ],
+        "hotels": [
+          {
+            "area": "An easy venue journey",
+            "picks": "Choose a base with straightforward early transport, familiar food nearby and somewhere to recover after the finish.",
+            "range": "Compare live prices and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar; leave the food adventure for after the finish."
+        ],
+        "nightAfter": [
+          "Plan a crew meal with enough recovery time before the flight home."
+        ]
+      },
+      {
+        "slug": "london",
+        "name": "London",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "Choose the race slot first, then make the capital work around it.",
+        "race": {
+          "name": "Amazon HYROX London",
+          "status": "confirmed",
+          "start": "2026-12-02",
+          "end": "2026-12-06",
+          "source": "https://hyrox.com/event/hyrox-london-excel/",
+          "sourceLabel": "Official Amazon HYROX London event",
+          "dates": "2 Dec 2026 – 6 Dec 2026"
+        },
+        "gettingThere": [
+          "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
+          "Compare your arrival station or airport with the venue journey, including weekend service changes."
+        ],
+        "hotels": [
+          {
+            "area": "Venue access first",
+            "picks": "Prioritise a straightforward early journey over a small saving on a room across the city. Check breakfast and bag storage around your wave.",
+            "range": "Hotel rates vary by date; check live prices."
+          }
+        ],
+        "food": [
+          "Book a familiar meal near your hotel and carry the race fuel you have already practised with."
+        ],
+        "nightAfter": [
+          "Pick a post-race meeting point before the venue gets busy."
+        ]
+      },
+      {
+        "slug": "melbourne",
+        "name": "Melbourne",
+        "country": "Australia",
+        "timeZone": "Australia/Melbourne",
+        "tagline": "A longer-haul target deserves room for travel and recovery.",
+        "race": {
+          "name": "BYD HYROX Melbourne",
+          "status": "confirmed",
+          "start": "2026-12-09",
+          "end": "2026-12-13",
+          "source": "https://hyrox.com/event/hyrox-melbourne/",
+          "sourceLabel": "Official BYD HYROX Melbourne event",
+          "dates": "9 Dec 2026 – 13 Dec 2026"
+        },
+        "gettingThere": [
+          "Check the official venue and your race day before choosing flights and accommodation.",
+          "For long-haul travel, build in arrival, recovery and local time-zone adjustment rather than landing straight into a race."
+        ],
+        "hotels": [
+          {
+            "area": "Simple transport and recovery",
+            "picks": "Compare a venue-area stay with a base near reliable public transport. Ask about early breakfast and late checkout.",
+            "range": "Check live accommodation and flight prices."
+          }
+        ],
+        "food": [
+          "Arrange familiar race-morning food before exploring the local options afterwards."
+        ],
+        "nightAfter": [
+          "Keep the day after the race flexible before the journey home."
+        ]
+      },
+      {
+        "slug": "hong-kong",
+        "name": "Hong Kong",
+        "country": "Hong Kong",
+        "timeZone": "Asia/Hong_Kong",
+        "tagline": "Turn an international start line into a well-organised race trip.",
+        "race": {
+          "name": "AIA HYROX Hong Kong",
+          "status": "confirmed",
+          "start": "2027-01-07",
+          "end": "2027-01-10",
+          "source": "https://hyrox.com/event/hyrox-hong-kong/",
+          "sourceLabel": "Official AIA HYROX Hong Kong event",
+          "dates": "7 Jan 2027 – 10 Jan 2027"
+        },
+        "gettingThere": [
+          "Check entry requirements, airline baggage and official venue instructions before booking.",
+          "Compare the airport-to-hotel and hotel-to-venue journeys, allowing for your check-in and start time."
+        ],
+        "hotels": [
+          {
+            "area": "A practical race-weekend base",
+            "picks": "Balance easy venue access with food, sleep and a relaxed meeting place for your crew.",
+            "range": "Compare live rates and cancellation terms."
+          }
+        ],
+        "food": [
+          "Keep the meal before racing predictable and enjoy the city after your finish."
+        ],
+        "nightAfter": [
+          "Allow recovery time before sightseeing or flying home."
+        ]
+      },
+      {
+        "slug": "manchester",
+        "name": "Manchester",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "A city race with an easy plan for the days around it.",
+        "race": {
+          "name": "HYROX Manchester",
+          "status": "confirmed",
+          "start": "2027-01-20",
+          "end": "2027-01-31",
+          "source": "https://hyrox.com/event/hyrox-manchester/",
+          "sourceLabel": "Official HYROX Manchester event",
+          "dates": "20 Jan 2027 – 31 Jan 2027"
+        },
+        "gettingThere": [
+          "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
+          "Allow extra time if your route crosses the city, and include registration and warm-up in the plan."
+        ],
+        "hotels": [
+          {
+            "area": "Central or close to the venue",
+            "picks": "Compare a central base for the crew meal with a shorter early journey to the race. Check breakfast, checkout and bag storage.",
+            "range": "Check current rates for your particular race dates."
+          }
+        ],
+        "food": [
+          "Choose a familiar pre-race dinner and an uncomplicated breakfast."
+        ],
+        "nightAfter": [
+          "Agree where to meet and leave room for tired legs after the finish."
+        ]
+      }
+    ],
+    "home": "london"
+  },
+  "trainingPlatform": {
+    "name": "Jade's coaching routes",
+    "coachURL": "",
+    "clientURL": "",
+    "programmesURL": "https://smashyourhyrox.com/",
+    "applicationURL": "https://start.jadeskillen.com/",
+    "directCoachLink": false,
+    "offerTitle": "Jade Skillen coaching",
+    "offerDescription": "Explore the existing coaching and programme options, then choose the support that fits your next goal.",
+    "note": "Coach and client sign-in destinations still need confirmation. The existing public offer links below are not software logins. No workout or client-data sync is connected."
+  },
+  "contentPublishing": {
+    "podcast": false
+  },
+  "colors": {
+    "zoneAccent": "#7c3aed"
+  },
+  "tenantGallery": [
+    {
+      "src": "/jadeskillen/images/gallery/stock-arena.jpg",
+      "alt": "Race-day crowd on the arena floor",
+      "caption": "The calm before the storm. Arena doors open, nerves kick in.",
+      "event": "Race day",
+      "tilt": -1
+    },
+    {
+      "src": "js-bordeaux-hug.jpg",
+      "alt": "Jade and Kat hugging after winning age-group gold in Bordeaux",
+      "caption": "Bordeaux season opener — Mixed Doubles AG gold, 53:33.",
+      "event": "Race day",
+      "tilt": 1.2
+    },
+    {
+      "src": "/jadeskillen/images/gallery/stock-rower.jpg",
+      "alt": "Rower mid-stroke in race conditions",
+      "caption": "1,000 metres. The monitor doesn't lie and neither do your legs.",
+      "event": "Training",
+      "tilt": -1.4
+    },
+    {
+      "src": "js-podium-check.jpg",
+      "alt": "Third place podium check for E15 Doubles Women",
+      "caption": "E15 Doubles Women — third place. The cheque's nice; the podium's nicer.",
+      "event": "Race day",
+      "tilt": 0.9
+    },
+    {
+      "src": "js-arena-flag.jpg",
+      "alt": "Jade and Kat with the England flag at the Strawberry Arena",
+      "caption": "Flag over the shoulder at the Strawberry Arena. Still work to do.",
+      "event": "Race day",
+      "tilt": -0.8
+    },
+    {
+      "src": "/jadeskillen/images/gallery/stock-burpee.jpg",
+      "alt": "Athlete mid burpee on the race floor",
+      "caption": "Chest down, broad jump, repeat. Eighty metres of honesty.",
+      "event": "Race day",
+      "tilt": 1.5
+    },
+    {
+      "src": "js-flag-fan.jpg",
+      "alt": "Jade and Kat with a young fan holding the England flag",
+      "caption": "The best part of race day. Someone's watching and dreaming.",
+      "event": "Community",
+      "tilt": -1.1
+    },
+    {
+      "src": "/jadeskillen/images/gallery/stock-finish.jpg",
+      "alt": "Athletes celebrating at the finish line",
+      "caption": "That finish-line feeling. Shared, it's even better.",
+      "event": "Race day",
+      "tilt": 0.7
+    }
+  ],
+  "brandingNote": "Wordmark JADE (first-name brand, @jade_skillen full-name handle). SIG adds the surname for cadence."
 }

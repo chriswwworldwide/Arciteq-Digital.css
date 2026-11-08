@@ -1,7 +1,8 @@
 {
-  "_doc": "Chassis build recipe. build-chassis.js regenerates the donor tenant from its config, then applies these replacements to a copy. 'find' strings are literal unless regex:true. Applied longest-first automatically, so list order here is just for readability. After the pass, every {{TOKEN}} left in chassis/ is a slot a new tenant config must fill \u2014 the build FAILS if any forbiddenString survives (that's the whole point: no silent persona ghosts).",
+  "_doc": "The canonical template is maintained directly in chassis/. build-chassis.js validates it without regenerating a tenant donor. Historical donor mappings below are retained as reference only, not executed. Every new site must use mode: chassis; template tokens must all be filled and images verified by the tenant builder.",
+  "canonical": true,
   "donorSlug": "joshharrison",
-  "donorConfig": "scripts/reskin/joshharrison.demo.json",
+  "donorConfig": "scripts/reskin/joshharrison.donor.json",
   "outDir": "chassis",
   "stripFiles": [
     "alt.css",

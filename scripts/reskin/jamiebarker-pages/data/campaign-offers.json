@@ -1,0 +1,20 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Jamie Barker coaching",
+      "headline": "Take the next step with Jamie",
+      "destination": "https://findyouredge.app/",
+      "image": "/jamiebarker/images/coaching-hero.jpg?v=1792700913499",
+      "goal": "Coaching enquiries"
+    },
+    {
+      "id": "programme",
+      "name": "Jamie Barker training options",
+      "headline": "Find the right training support",
+      "destination": "https://findyouredge.app/",
+      "image": "/jamiebarker/images/coaching-hero.jpg?v=1792700913499",
+      "goal": "Programme and coaching enquiries"
+    }
+  ]
+}

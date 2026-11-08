@@ -187,7 +187,7 @@
     try {
       const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
       if (saved) return saved;
-    } catch {}
+    } catch { /* noop */ }
     return fallback;
   };
   const settings = { ...defaultSettings, ...load(settingsKey, {}) };
@@ -750,7 +750,7 @@
       packagesBought: 1,
       packagePath: plan,
       gap: "New client added outside the website",
-      source: "Coach added",
+      
       history: [{ date: "Today", title: "Added to Client Desk", detail: `${name} booked ${plan} outside the website.` }],
       sent: { early: false, final: false, followup: false },
       messages: []

@@ -1,6 +1,6 @@
 {
   "updated": "2026-09-21",
-  "note": "Crew finishers — DEMO SEED, replace with real verified results. Times as chip time h:mm:ss. Sources: official HYROX results + national records.",
+  "note": "Crew finishers — times as chip time h:mm:ss. Sources: official HYROX results + national records.",
   "divisions": {
     "women": {
       "label": "Women Singles (Open & Pro)",

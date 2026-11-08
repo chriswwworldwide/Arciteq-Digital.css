@@ -1,0 +1,22 @@
+[
+  {
+    "path": "desk.html#next-campaign",
+    "startAt": { "selector": "#next-campaign", "offset": 72 },
+    "subs": [
+      { "text": "Want to run a Race to Frame promotion around a race weekend? A few quick steps, and the Desk handles the rest.", "holdMs": 8500 },
+      { "text": "Choose the frame you want to promote. Its existing product photo and shop link come with it.", "actions": [{ "select": "frame", "selector": "#campaign-offer" }], "scrollTo": "#campaign-setup-fields", "holdMs": 8000 },
+      { "text": "Name the race weekend and set your total advertising budget. This example uses a £150 cap.", "actions": [{ "selector": "#campaign-event", "type": "London race weekend — example" }, { "selector": "#campaign-budget", "fill": "150" }], "holdMs": 8000 },
+      { "text": "Choose your campaign dates, platforms and audience location.", "actions": [{ "selector": "#campaign-start", "fill": "2026-11-27" }, { "selector": "#campaign-end", "fill": "2026-11-30" }, { "selector": "#campaign-platform", "select": "Instagram & Facebook" }, { "selector": "#campaign-location", "fill": "United Kingdom" }], "scrollTo": "#campaign-setup-fields", "holdMs": 8500 },
+      { "text": "Use the product photo already on your shop site, or upload a new one. Tell the Desk what the ad should focus on — for example, celebrating a race finish with a personalised frame.", "actions": [{ "selector": "#campaign-brief", "fill": "Celebrate the finish. Give your race-day achievement a place on the wall." }], "scrollTo": "#campaign-brief", "holdMs": 11000 },
+      { "text": "The Desk prepares your campaign draft, ready for you to review.", "actions": [{ "click": "#campaign-build", "pause": 1000 }], "scrollTo": "#campaign-headline", "align": "start", "holdMs": 8500 },
+      { "text": "Your frame becomes a feed post and a Story, ready for your social media ad campaign.", "scrollTo": "#campaign-headline", "align": "start", "holdMs": 7500 },
+      { "text": "Tailor the headline and copy before approving. The photo, wording and call to action remain yours to review.", "actions": [{ "selector": "#campaign-headline", "fill": "Your finish. Your frame." }], "scrollTo": "#campaign-headline", "align": "start", "holdMs": 9000 },
+      { "text": "Check the product, dates, audience and maximum spend together, including the exact shop destination.", "scrollTo": "#campaign-headline", "align": "start", "holdMs": 8500 },
+      { "text": "Each promotion leads straight to that product in your existing shop — a shorter route from celebrating a finish to framing it.", "scrollTo": "#campaign-destination", "holdMs": 9000 },
+      { "text": "Approve the creative, destination, audience, dates and spending cap. Nothing goes out without your say-so.", "actions": [{ "click": "#campaign-approved", "pause": 600 }], "scrollTo": "#campaign-approval-stage", "holdMs": 8500 },
+      { "text": "Connect your advertising account and the Desk can schedule and deliver your approved campaign within those limits.", "actions": [{ "click": "#campaign-launch", "pause": 900 }], "scrollTo": "#campaign-outcome", "holdMs": 9500 },
+      { "text": "The same process supports your next coaching intake. Choose Sculpt & Shape and the destination changes to its enquiry form.", "actions": [{ "selector": "#campaign-offer", "select": "coaching" }, { "selector": "#campaign-event", "fill": "Next coaching intake — example" }, { "selector": "#campaign-brief", "fill": "Eight weeks of structured workouts and progression. Enquire about Sculpt & Shape." }, { "click": "#campaign-build", "pause": 800 }], "scrollTo": "#campaign-headline", "align": "start", "holdMs": 10000 },
+      { "text": "Your products and coaching, promoted under your own brand — all from your Desk.", "scrollTo": "#campaign-headline", "align": "start", "holdMs": 9500 }
+    ]
+  }
+]

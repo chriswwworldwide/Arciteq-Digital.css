@@ -1,0 +1,25 @@
+{
+  "purpose": "Shared generic exercise references. Use coach-owned imagery first. Never describe a reference athlete as the coach.",
+  "rightsNote": "Existing project assets are not automatically royalty-free. Confirm source permissions before public or wider reuse. Original legacy stock filenames alone are not approval of activity, framing or license.",
+  "reviewedFraming": [
+    {
+      "file": "generic-rowing-detail.jpg",
+      "activity": "rowing",
+      "description": "RowErg athlete and handle detail; face excluded by the existing crop.",
+      "sourceFile": "scripts/reskin/jamiebarker-assets/images/station-row.jpg",
+      "faceVisible": false,
+      "licenseVerified": false,
+      "caption": "Rowing technique — legs, body, arms, in that order."
+    },
+    {
+      "file": "generic-wallball-release.jpg",
+      "activity": "wall-balls",
+      "description": "Ball and raised hands during a wall-ball release; no faces in the crop.",
+      "sourceFile": "scripts/reskin/trainedbytr-assets/images/station-wall-balls.jpg",
+      "crop": [0, 0, 850, 350],
+      "faceVisible": false,
+      "licenseVerified": false,
+      "caption": "Wall-ball release — hands high, eyes on the target."
+    }
+  ]
+}

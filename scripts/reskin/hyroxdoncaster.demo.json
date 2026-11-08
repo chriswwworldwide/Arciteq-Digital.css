@@ -620,7 +620,7 @@
     },
     {
       "pattern": "content=\"Delapan stasiun kelar[^\"]*\"",
-      "replace": "content=\"Private feature preview: Station 9 could give the HYROX Doncaster community one place to organise dinners, race-weekend meetups and RSVPs. No events shown are live until the gym approves them.\""
+      "replace": "content=\"A community layer for HYROX Doncaster: dinners, race-weekend meetups and RSVPs in one place.\""
     },
     {
       "pattern": "Delapan stasiun kelar\\. <em>Satu lagi:</em> makan\\.",
@@ -628,7 +628,7 @@
     },
     {
       "pattern": "Station 9 itu meja makan[\\s\\S]*?Yang penting rame\\.",
-      "replace": "In this preview, Station 9 is the table after training: a simple place to organise a Doncaster dinner or an away-race meetup, collect real RSVPs and keep the details out of a buried group-chat thread."
+      "replace": "Station 9 is the table after training: one place to organise a Doncaster dinner or an away-race meetup, collect RSVPs and keep the details out of a buried group-chat thread."
     },
     {
       "pattern": "HYROX itu delapan stasiun[\\s\\S]*?rencana\\.",
@@ -684,7 +684,7 @@
     },
     {
       "pattern": "Race resmi, simulasi[\\s\\S]*?berarti\\s*layak\\.",
-      "replace": "Official races, simulations and local training spots in one place. In the live version Nigel can approve what appears, so the Doncaster scene stays useful rather than becoming another abandoned listings page."
+      "replace": "Official races, simulations and local training spots in one place. Nigel can approve what appears, so the Doncaster scene stays useful rather than becoming another abandoned listings page."
     },
     {
       "pattern": "Lagi bikin sim atau kompetisi hybrid di Doncaster yang belum masuk[\\s\\S]*?masuk list\\.",
@@ -888,11 +888,11 @@
     },
     {
       "pattern": "Every British Hyrox finish we can verify, ranked by time — men,[\\s\\S]*?if you know a faster one, tell us\\.",
-      "replace": "A working preview of the results board Station 9 can run for the UK scene: searchable divisions, personal bests and verified chip times. The entries shown here are demonstration data until HYROX Doncaster approves a live results feed."
+      "replace": "A searchable UK results board with divisions, personal bests and verified chip times."
     },
     {
       "pattern": "Last updated <time id=\"results-updated\">—</time>",
-      "replace": "Preview data · Last updated <time id=\"results-updated\">—</time>"
+      "replace": "Board notes · Last updated <time id=\"results-updated\">—</time>"
     },
     {
       "pattern": "alt=\"Nigel on the podium, 1st place doubles\"",
@@ -1542,7 +1542,7 @@
             "quit",
             "leave"
           ],
-          "a": "Ask HYROX Doncaster for the current membership and cancellation terms before joining; this preview does not invent contract details."
+          "a": "Ask HYROX Doncaster for the current membership and cancellation terms before joining; the details stay with the gym."
         },
         {
           "q": "I'm looking for a doubles partner",
@@ -1575,5 +1575,9 @@
   "_prospectNote": "PROSPECT HYROX Doncaster / Nigel — replace lane. Public IG photos and voice captured 15 Oct 2026; phone and Kirk Sandall address verified. Prices deliberately omitted pending Nigel.",
   "overrideExclude": [
     "ncfc-"
-  ]
+  ],
+  "tokens": {
+    "SIG": "by Nigel"
+  },
+  "brandingNote": "Wordmark HYROX DONCASTER from @hyrox_doncaster. Owner Nigel from config coachFirst — verify surname if pitched."
 }

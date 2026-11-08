@@ -2,6 +2,57 @@
   "mode": "chassis",
   "sharedPack": "scripts/reskin/editorial-hero.pack.json",
   "slug": "jamiebarker",
+  "coachingIntro": "Bring strength, running and conditioning into one week with Edge. Explore the app's membership for coordinated programming and in-app support from Edge's coaching team, where Jamie is a Performance Coach.",
+  "coachingOffers": [
+    {
+      "title": "Edge hybrid training app",
+      "type": "App membership",
+      "price": "From £22.99/month",
+      "description": "Running, strength, HIIT and mobility planned around your goals, schedule and equipment.",
+      "features": [
+        "Six-month option listed at £84.99; annual option £129.99",
+        "Progressive sessions and exercise demonstrations",
+        "In-app support from the Edge coaching team"
+      ],
+      "url": "https://findyouredge.app/",
+      "action": "Explore Edge membership",
+      "sourceURL": "https://findyouredge.app/"
+    }
+  ],
+  "partnerOffers": [
+    {
+      "title": "Edge",
+      "type": "Training platform",
+      "description": "Explore the training app where Jamie is named as an Edge Performance Coach.",
+      "url": "https://findyouredge.app/",
+      "action": "Explore Edge",
+      "sourceURL": "https://www.findyouredge.app/news/why-january-is-the-most-misunderstood-phase-of-hybrid-training"
+    },
+    {
+      "title": "Red Bull",
+      "type": "Brand destination",
+      "description": "Explore training, sport and athlete stories through Red Bull's UK site. No discount or paid relationship is implied by this link.",
+      "url": "https://www.redbull.com/gb-en",
+      "action": "Visit Red Bull",
+      "sourceURL": "https://www.instagram.com/jamiebarker_fit/"
+    },
+    {
+      "title": "Myprotein",
+      "type": "Brand link",
+      "description": "Sports nutrition through the official UK store. Check product and offer details at the destination.",
+      "url": "https://www.myprotein.com/",
+      "action": "Visit Myprotein",
+      "sourceURL": "https://www.instagram.com/jamiebarker_fit/"
+    }
+  ],
+  "offerAudit": {
+    "checkedAt": "2026-11-02",
+    "notes": [
+      "Edge's current public site and support pages researched; Jamie's role is named in an official Edge article.",
+      "Do not relabel Edge App Store reviews as private Jamie coaching testimonials.",
+      "Removed template-only Foundations and generic standalone 1:1 offer; no separately verified personal application found."
+    ]
+  },
   "heroMode": "full",
   "strictImages": true,
   "assets": "scripts/reskin/jamiebarker-assets",
@@ -22,7 +73,7 @@
     "COACH_FIRST": "Jamie",
     "COACH_LAST": "Barker",
     "WORDMARK_HTML": "<span class=\"o\">J</span>AMIE",
-    "BRAND": "Jamie Barker",
+    "BRAND": "by Jamie Barker",
     "BRAND_SHORT": "jamiebarker",
     "BRAND_SOCIAL": "jamiebarker_fit",
     "CLOTHING_SHORT": "JB",
@@ -78,25 +129,39 @@
     "STORE_TAG": "Coaching app",
     "STORE_COPY": "Jamie's coaching platform — his plans and community live inside the EDGE app.",
     "STORE_CTA": "Visit EDGE",
-    "SEASON_HEADLINE": "From his first HYROX to a sub-60 debut."
+    "SEASON_HEADLINE": "From his first HYROX to a sub-60 debut.",
+    "PROG_ONE": "Find Your Edge",
+    "PROG_ONE_TAG": "coaching app",
+    "OFFER_SUMMARY": "Find Your Edge coaching — programming, testing and race crew.",
+    "SIG": "by Jamie Barker"
   },
   "stripSections": [
     "merch",
     "tips"
   ],
   "omitImageSlots": [
-    "images/station-lean.jpg",
-    "images/kerb.jpg",
-    "images/rooftop.jpg",
-    "images/walkin.jpg",
-    "images/suit.jpg",
+    "images/avatar.jpg",
+    "images/bike.jpg",
+    "images/carry.jpg",
+    "images/detail.jpg",
+    "images/gallery/dinner-template.jpg",
     "images/hoodie.jpg",
-    "images/wallball.jpg",
-    "images/treadmill.jpg"
+    "images/kerb.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/race-revel.jpg",
+    "images/rooftop.jpg",
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/sprint.jpg",
+    "images/station-lean.jpg",
+    "images/taper-hero.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg",
+    "images/wallball.jpg"
   ],
-  "stripPages": [
-    "watch.html"
-  ],
+  "stripPages": [],
   "copyOverrides": [
     {
       "pattern": "src=\"/jamiebarker/images/station-skierg\\.jpg\"\\s+alt=\"[^\"]*\"\\s+width=\"[^\"]*\"\\s+height=\"[^\"]*\"",
@@ -167,14 +232,6 @@
       "replace": "London"
     },
     {
-      "pattern": "\\s*<li><a href=\"/jamiebarker/watch.html\">Watch</a></li>",
-      "replace": ""
-    },
-    {
-      "pattern": "\\s*<a href=\"/jamiebarker/watch.html\">Watch</a>",
-      "replace": ""
-    },
-    {
       "pattern": "on FITR",
       "replace": "by application"
     },
@@ -185,10 +242,354 @@
     {
       "pattern": "365",
       "replace": "hybrid"
+    },
+    {
+      "pattern": "<figure class=\"art-photo\">\\s*<img\\s*src=\"/{{SLUG}}/images/momentum\\.jpg\\?v=\\d+\"[\\s\\S]*?</figure>",
+      "replace": "<figure class=\"art-photo taper-camp-photo\"><img src=\"/{{SLUG}}/images/momentum.jpg\" alt=\"Jamie and fellow coaches on an easy sunset run at the HYROX and Red Bull coaches camp\" width=\"1024\" height=\"581\" loading=\"lazy\" /><figcaption>Keep moving, but let the volume come down.</figcaption></figure>",
+      "flags": "g"
+    },
+    {
+      "pattern": "(<article class=\"station reveal\" id=\"sleep\">[\\s\\S]*?</article>)\\s*<article class=\"station reveal\" id=\"checklist\">",
+      "replace": "$1\n\n<figure class=\"art-photo taper-gameday-photo\"><img src=\"/{{SLUG}}/images/taper-gameday.jpg\" alt=\"Jamie on the ball at the coaches camp game day, mixing HYROX skills with football\" width=\"891\" height=\"1024\" loading=\"lazy\" /><figcaption>Movement can stay fun — skills and games still count.</figcaption></figure>\n\n<article class=\"station reveal\" id=\"checklist\">",
+      "flags": "g"
+    },
+    {
+      "pattern": "<li>Find Your Edge coaching — programming, testing and race crew\\.</li>",
+      "replace": "<li>Find Your Edge coaching — programming, testing and race crew.</li><li>One of 60 coaches selected worldwide for the Red Bull and HYROX coaches camp in São Paulo.</li>",
+      "flags": "g"
     }
   ],
+  "extraCss": ".guidance--calm .art-photo.taper-camp-photo img{object-position:50% 42%;}\n.guidance--calm .art-photo.taper-gameday-photo img{object-position:50% 30%;}\n@media(max-width:600px){.guidance--calm .art-photo.taper-camp-photo img{object-position:50% 38%;}.guidance--calm .art-photo.taper-gameday-photo img{object-position:50% 28%;}}",
   "stripBlocks": [
     "youtube-link",
     "tiktok-link"
-  ]
+  ],
+  "testimonialLabel": "Edge app member reviews",
+  "testimonialHeading": "What Edge members say.",
+  "seedFiles": {
+    "testimonials.json": {
+      "sourceURL": "https://findyouredge.app/",
+      "items": [
+        {
+          "name": "Lucy D",
+          "quote": "The workouts are clear, progressive and easy to follow, and I love having everything in one place.",
+          "detail": "Edge app review published by Edge",
+          "sourceURL": "https://findyouredge.app/"
+        },
+        {
+          "name": "Chris S",
+          "quote": "So well thought out. Takes into account running and any conditioning you want to do, all programmed around your own specific schedule.",
+          "detail": "Edge app review published by Edge",
+          "sourceURL": "https://findyouredge.app/"
+        },
+        {
+          "name": "Jason H",
+          "quote": "I’ve finally found a good balance between running and lifting. The app gives me a personalised plan to help me reach my goals.",
+          "detail": "Edge app review published by Edge",
+          "sourceURL": "https://findyouredge.app/"
+        }
+      ]
+    },
+    "campaign-offers.json": "@scripts/reskin/jamiebarker-pages/data/campaign-offers.json",
+    "cities.json": "@scripts/reskin/jamiebarker-pages/data/cities.json",
+    "events.json": "@scripts/reskin/jamiebarker-pages/data/events.json",
+    "matchboard.json": "@scripts/reskin/jamiebarker-pages/data/matchboard.json",
+    "news.json": "@scripts/reskin/jamiebarker-pages/data/news.json",
+    "training-platform.json": "@scripts/reskin/jamiebarker-pages/data/training-platform.json",
+    "travelboard.json": "@scripts/reskin/jamiebarker-pages/data/travelboard.json",
+    "videos.json": "@scripts/reskin/jamiebarker-pages/data/videos.json"
+  },
+  "coachPreview": true,
+  "news": [
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "Hybrid racing is more than a fast run. Watch how the running and station work fit together under pressure.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. An away race also means planning travel, sleep and recovery.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Choose a race your real life can support. A sensible travel plan makes it easier to enjoy the weekend.",
+      "takeStatus": "draft-for-review",
+      "link": "/jamiebarker/events.html",
+      "linkLabel": "Race Calendar & Travel →"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-23",
+      "title": "Stockholm: Australia defends its mixed-relay world title",
+      "summary": "PUMA's World Championships report records Australia's mixed-relay win in 50:19, with Jess Pettrow on the title-defending team. Joanna Wietrzyk also finished second in the women's Elite 15 solo race.",
+      "source": "https://mediahub.puma.com/articles/puma-dominates-hyrox-world-championships-from-elite-athlete-performances-to-community-initiatives",
+      "sourceName": "PUMA · World Championships report",
+      "take": "Teamwork gets practical when everyone knows their pace, their station and their recovery plan.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's new framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "A race schedule has to fit the training and the rest of life, not just the points table.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027. Qualification gives the season a clear international destination.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "Big ambitions are useful when they lead to manageable sessions this week.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season, with kit, resources and performance support.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "More athlete support is a positive step. Keep the training sustainable enough to make use of the opportunity.",
+      "takeStatus": "draft-for-review"
+    }
+  ],
+  "races": {
+    "checked": "2026-10-25",
+    "source": "https://hyrox.com/find-my-race/",
+    "timeZone": "UTC",
+    "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
+    "cities": [
+      {
+        "slug": "dublin",
+        "name": "Dublin",
+        "country": "Ireland",
+        "timeZone": "Europe/Dublin",
+        "tagline": "A short hop can still deserve a proper race-weekend plan.",
+        "race": {
+          "name": "HYROX Dublin",
+          "status": "confirmed",
+          "start": "2026-11-11",
+          "end": "2026-11-15",
+          "source": "https://hyrox.com/event/hyrox-dublin/",
+          "sourceLabel": "Official HYROX Dublin event",
+          "dates": "11 Nov 2026 – 15 Nov 2026"
+        },
+        "gettingThere": [
+          "Check the official RDS event information and your division start time before booking travel.",
+          "Compare flight, ferry and local transport against the venue journey, including luggage and registration time."
+        ],
+        "hotels": [
+          {
+            "area": "Ballsbridge or central Dublin",
+            "picks": "Balance a practical journey to the RDS with food, sleep and somewhere easy for the crew to meet.",
+            "range": "Check live rates and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar and check early breakfast options near your stay."
+        ],
+        "nightAfter": [
+          "Plan a relaxed post-race meal and leave recovery time before the journey home."
+        ]
+      },
+      {
+        "slug": "singapore",
+        "name": "Singapore",
+        "country": "Singapore",
+        "timeZone": "Asia/Singapore",
+        "tagline": "Make an overseas race a shared weekend, not a rushed turnaround.",
+        "race": {
+          "name": "AIA HYROX Singapore",
+          "status": "confirmed",
+          "start": "2026-11-26",
+          "end": "2026-11-29",
+          "source": "https://hyrox.com/event/aia-hyrox-singapore/",
+          "sourceLabel": "Official AIA HYROX Singapore event",
+          "dates": "26 Nov 2026 – 29 Nov 2026"
+        },
+        "gettingThere": [
+          "Check passport, entry and airline baggage requirements before paying for travel.",
+          "Allow time to adjust to the local time zone and plan the venue journey from your chosen accommodation."
+        ],
+        "hotels": [
+          {
+            "area": "An easy venue journey",
+            "picks": "Choose a base with straightforward early transport, familiar food nearby and somewhere to recover after the finish.",
+            "range": "Compare live prices and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar; leave the food adventure for after the finish."
+        ],
+        "nightAfter": [
+          "Plan a crew meal with enough recovery time before the flight home."
+        ]
+      },
+      {
+        "slug": "london",
+        "name": "London",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "Choose the race slot first, then make the capital work around it.",
+        "race": {
+          "name": "Amazon HYROX London",
+          "status": "confirmed",
+          "start": "2026-12-02",
+          "end": "2026-12-06",
+          "source": "https://hyrox.com/event/hyrox-london-excel/",
+          "sourceLabel": "Official Amazon HYROX London event",
+          "dates": "2 Dec 2026 – 6 Dec 2026"
+        },
+        "gettingThere": [
+          "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
+          "Compare your arrival station or airport with the venue journey, including weekend service changes."
+        ],
+        "hotels": [
+          {
+            "area": "Venue access first",
+            "picks": "Prioritise a straightforward early journey over a small saving on a room across the city. Check breakfast and bag storage around your wave.",
+            "range": "Hotel rates vary by date; check live prices."
+          }
+        ],
+        "food": [
+          "Book a familiar meal near your hotel and carry the race fuel you have already practised with."
+        ],
+        "nightAfter": [
+          "Pick a post-race meeting point before the venue gets busy."
+        ]
+      },
+      {
+        "slug": "melbourne",
+        "name": "Melbourne",
+        "country": "Australia",
+        "timeZone": "Australia/Melbourne",
+        "tagline": "A longer-haul target deserves room for travel and recovery.",
+        "race": {
+          "name": "BYD HYROX Melbourne",
+          "status": "confirmed",
+          "start": "2026-12-09",
+          "end": "2026-12-13",
+          "source": "https://hyrox.com/event/hyrox-melbourne/",
+          "sourceLabel": "Official BYD HYROX Melbourne event",
+          "dates": "9 Dec 2026 – 13 Dec 2026"
+        },
+        "gettingThere": [
+          "Check the official venue and your race day before choosing flights and accommodation.",
+          "For long-haul travel, build in arrival, recovery and local time-zone adjustment rather than landing straight into a race."
+        ],
+        "hotels": [
+          {
+            "area": "Simple transport and recovery",
+            "picks": "Compare a venue-area stay with a base near reliable public transport. Ask about early breakfast and late checkout.",
+            "range": "Check live accommodation and flight prices."
+          }
+        ],
+        "food": [
+          "Arrange familiar race-morning food before exploring the local options afterwards."
+        ],
+        "nightAfter": [
+          "Keep the day after the race flexible before the journey home."
+        ]
+      },
+      {
+        "slug": "hong-kong",
+        "name": "Hong Kong",
+        "country": "Hong Kong",
+        "timeZone": "Asia/Hong_Kong",
+        "tagline": "Turn an international start line into a well-organised race trip.",
+        "race": {
+          "name": "AIA HYROX Hong Kong",
+          "status": "confirmed",
+          "start": "2027-01-07",
+          "end": "2027-01-10",
+          "source": "https://hyrox.com/event/hyrox-hong-kong/",
+          "sourceLabel": "Official AIA HYROX Hong Kong event",
+          "dates": "7 Jan 2027 – 10 Jan 2027"
+        },
+        "gettingThere": [
+          "Check entry requirements, airline baggage and official venue instructions before booking.",
+          "Compare the airport-to-hotel and hotel-to-venue journeys, allowing for your check-in and start time."
+        ],
+        "hotels": [
+          {
+            "area": "A practical race-weekend base",
+            "picks": "Balance easy venue access with food, sleep and a relaxed meeting place for your crew.",
+            "range": "Compare live rates and cancellation terms."
+          }
+        ],
+        "food": [
+          "Keep the meal before racing predictable and enjoy the city after your finish."
+        ],
+        "nightAfter": [
+          "Allow recovery time before sightseeing or flying home."
+        ]
+      },
+      {
+        "slug": "manchester",
+        "name": "Manchester",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "A city race with an easy plan for the days around it.",
+        "race": {
+          "name": "HYROX Manchester",
+          "status": "confirmed",
+          "start": "2027-01-20",
+          "end": "2027-01-31",
+          "source": "https://hyrox.com/event/hyrox-manchester/",
+          "sourceLabel": "Official HYROX Manchester event",
+          "dates": "20 Jan 2027 – 31 Jan 2027"
+        },
+        "gettingThere": [
+          "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
+          "Allow extra time if your route crosses the city, and include registration and warm-up in the plan."
+        ],
+        "hotels": [
+          {
+            "area": "Central or close to the venue",
+            "picks": "Compare a central base for the crew meal with a shorter early journey to the race. Check breakfast, checkout and bag storage.",
+            "range": "Check current rates for your particular race dates."
+          }
+        ],
+        "food": [
+          "Choose a familiar pre-race dinner and an uncomplicated breakfast."
+        ],
+        "nightAfter": [
+          "Agree where to meet and leave room for tired legs after the finish."
+        ]
+      }
+    ],
+    "home": "london"
+  },
+  "trainingPlatform": {
+    "name": "Edge training app",
+    "coachURL": "",
+    "clientURL": "",
+    "programmesURL": "https://findyouredge.app/",
+    "applicationURL": "https://findyouredge.app/",
+    "directCoachLink": false,
+    "offerTitle": "Jamie Barker coaching",
+    "offerDescription": "Explore the existing coaching and programme options, then choose the support that fits your next goal.",
+    "note": "Coach and client sign-in destinations still need confirmation. The existing public offer links below are not software logins. No workout or client-data sync is connected."
+  },
+  "contentPublishing": {
+    "podcast": false
+  },
+  "colors": {
+    "zoneAccent": "#0e7490"
+  },
+  "brandingNote": "Wordmark JAMIE (@jamiebarker_fit full-name handle). SIG adds the surname."
 }

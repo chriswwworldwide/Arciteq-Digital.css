@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
 import dotenv from "dotenv";
+import { databaseOptions } from "../src/database-config.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,11 +24,7 @@ const migrationFiles = fs
   .sort((a, b) => a.localeCompare(b));
 
 const { Client } = pg;
-const needsSsl = !databaseUrl.includes("localhost") && !databaseUrl.includes("127.0.0.1");
-const client = new Client({
-  connectionString: databaseUrl,
-  ssl: needsSsl ? { rejectUnauthorized: false } : undefined,
-});
+const client = new Client(databaseOptions(databaseUrl));
 
 async function main() {
   await client.connect();

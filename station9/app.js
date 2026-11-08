@@ -456,7 +456,7 @@
     .catch(() => {});
 })();
 
-// Results wall + Station 9's week from station9/data/wall.json (consented entries only; empty lists stay hidden).
+// Results wall (consented entries only; renders placeholders when empty).
 (function () {
   const section = document.getElementById("wall");
   if (!section) return;
@@ -686,6 +686,7 @@ window.roxShare = (function () {
     img.src = String(p.src || "");
     img.alt = String(p.alt || p.caption || "");
     img.loading = "lazy";
+    if (p.pos) img.style.objectPosition = p.pos;
     img.width = 600;
     img.height = 600;
     const cap = document.createElement("p");
@@ -885,7 +886,7 @@ window.roxShare = (function () {
         "Upload didn't go through — WhatsApp is open, send the photo there instead.";
     } else {
       note.textContent =
-        "Upload didn't go through — send the photo and caption to Station 9 on Instagram (@station9fit) and she'll put it up.";
+        "Upload didn't go through — send the photo and caption to Station 9 on Instagram (@station9fit) and they'll put it up.";
     }
   });
 })();

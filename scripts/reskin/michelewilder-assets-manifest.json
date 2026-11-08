@@ -1,0 +1,897 @@
+{
+  "tenant": "michelewilder",
+  "coach": "Michele Wilder",
+  "sourceFolder": "scripts/reskin/michelewilder-source",
+  "created": "2026-10-27",
+  "status": "open intake — more Chris-supplied uploads expected",
+  "assetSource": "Chris-supplied uploads reviewed visually before assignment. Filenames describe the actual visible content, not the stated upload order.",
+  "orderCorrection": "The supplied message said the order was time board, after-race holding pen, run, row. The rendered upload order was actually time board, run, row, after-race holding pen. Files were named from visible content to avoid later slot errors.",
+  "uploads": {
+    "upload-01-time-board.jpg": {
+      "visibleContent": "Michele in blue race kit standing under a HYROX Cardiff finish-time board showing 1:26:30.",
+      "usableFor": [
+        "Results/finish proof",
+        "post-race credibility card",
+        "predictor or splits supporting proof"
+      ],
+      "avoid": "Do not label as a generic finish-line crowd shot or another city; Cardiff and 1:26:30 are visible.",
+      "quality": "Good vertical image; face and board legible; usable after crop checks."
+    },
+    "upload-02-run.jpg": {
+      "visibleContent": "Michele in blue race kit running through the race floor past station arches for Burpees, Rowing and Farmers Carry.",
+      "usableFor": [
+        "Run Zone hero or secondary",
+        "race-floor atmosphere",
+        "events/calendar supporting image"
+      ],
+      "avoid": "Do not label as a station-specific shot; the visible action is running/transition.",
+      "quality": "Strong landscape race atmosphere; Michele is small-to-medium in frame but identifiable."
+    },
+    "upload-03-row.jpg": {
+      "visibleContent": "Michele in blue race kit on a Concept2 RowErg, with another athlete rowing alongside.",
+      "usableFor": [
+        "Stations Prep — RowErg lead",
+        "split analyser/supporting proof",
+        "race-floor technique/action card"
+      ],
+      "avoid": "Do not caption as SkiErg, doubles, or a paired rowing effort; the other athlete is nearby but this is not proof they raced together.",
+      "quality": "Good landscape action shot; Michele is on the right and clearly the subject."
+    },
+    "upload-04-post-race-pen.jpg": {
+      "visibleContent": "Michele in blue race kit in the crowded post-race holding/exit area, holding a water bottle after finishing.",
+      "usableFor": [
+        "post-race/celebration secondary",
+        "community or race-day reality card",
+        "Results supporting image"
+      ],
+      "avoid": "Do not use as a hero if a cleaner portrait is available; crowded candid frame and obstructed edges.",
+      "quality": "Authentic but busy; useful as supporting material rather than a lead image."
+    },
+    "upload-05-running-mate.jpg": {
+      "visibleContent": "Michele with her running mate in matching PERFORM kits, seated together in empty red stadium seats.",
+      "usableFor": [
+        "race-mate/community card",
+        "doubles or partner-finder supporting image",
+        "crew/social proof"
+      ],
+      "avoid": "Do not caption as a doubles result or race-pair proof; the supplied label is running mate, not confirmed race partner/result.",
+      "quality": "Strong landscape image; both subjects clear; good community feel."
+    },
+    "upload-06-sled-pull-leg.jpg": {
+      "visibleContent": "Close-up of an athlete's lower leg with a PERFORM logo tattoo beside sled-pull ropes and race-floor equipment.",
+      "usableFor": [
+        "Stations Prep — Sled Pull supporting/detail shot",
+        "brand/voice texture",
+        "race-detail gallery image"
+      ],
+      "avoid": "Do not use as the main sled-pull technique photo; it is a close-up detail, not a full movement shot.",
+      "quality": "Atmospheric vertical detail shot; strong brand signal but limited coaching value on its own."
+    },
+    "upload-07-wallballs-judging.jpg": {
+      "visibleContent": "Michele kneeling on the race floor watching/judging an athlete during the wall-balls station.",
+      "usableFor": [
+        "coaching/judging credibility",
+        "coach-view or community supporting image",
+        "station-official/race-day role card"
+      ],
+      "avoid": "Do not label as Michele performing wall balls; she is judging/observing, not doing the station.",
+      "quality": "Good vertical candid; face visible and context clear, though foreground athlete is cropped."
+    },
+    "upload-08-profile-neutral.jpg": {
+      "visibleContent": "Michele post-training portrait in black sports top, neutral smile, gym equipment and pink bottle in background.",
+      "usableFor": [
+        "bio/about portrait",
+        "coaching page secondary",
+        "ask/contact background"
+      ],
+      "avoid": "Not a race-action image; keep as portrait/profile material.",
+      "quality": "Clean landscape portrait; usable, though less distinctive than race photography."
+    },
+    "upload-09-profile-flex.jpg": {
+      "visibleContent": "Michele post-training portrait in black sports top, flexing both arms and smiling.",
+      "usableFor": [
+        "bio/about alternate",
+        "motivation/mindset card",
+        "coach personality/community card"
+      ],
+      "avoid": "Not a race-action or station image; use as personality/profile material.",
+      "quality": "Good landscape portrait; stronger personality than upload-08, likely the better bio option."
+    },
+    "upload-10-wallball-out-of-puff.jpg": {
+      "visibleContent": "Michele bent over and catching breath beside a HYROX wall ball after the wall-balls station.",
+      "usableFor": [
+        "wall-balls secondary/effort shot",
+        "race-day reality card",
+        "station effort/comeback storytelling"
+      ],
+      "avoid": "Do not caption as active wall-ball technique; this is post-station effort/recovery, not a throw.",
+      "quality": "Strong emotional/action-adjacent vertical shot; good authenticity, cropped athlete on the left."
+    },
+    "upload-11-sled-pull.jpg": {
+      "visibleContent": "Michele braced low and pulling the sled-pull rope on the race floor.",
+      "usableFor": [
+        "Stations Prep — Sled Pull lead",
+        "strength station proof",
+        "race-floor action card"
+      ],
+      "avoid": "Do not crop so tightly that the rope/action context disappears.",
+      "quality": "Excellent full-action vertical shot; likely the main sled-pull image."
+    },
+    "upload-12-row.jpg": {
+      "visibleContent": "Michele rowing hard on a Concept2 RowErg with another athlete visible behind her.",
+      "usableFor": [
+        "Stations Prep — RowErg alternate/lead",
+        "race-floor effort card",
+        "split analyser/supporting proof"
+      ],
+      "avoid": "Do not caption as a paired row or doubles proof; nearby athlete is not proof of a team result.",
+      "quality": "Strong vertical action shot with expressive effort; likely better emotional impact than upload-03, though busier."
+    },
+    "upload-13-skierg-running-mate.jpg": {
+      "visibleContent": "Michele watches from the left while her running mate/another athlete is the foreground subject at the SkiErg station.",
+      "usableFor": [
+        "SkiErg supporting/coaching-community image",
+        "race-mate or partner-finder card",
+        "crew/supporting-athlete atmosphere"
+      ],
+      "avoid": "Do not caption as Michele doing SkiErg — per Chris she's the background figure while her partner is at the erg. Frame as coach-support/race-mate context.",
+      "quality": "Strong SkiErg station image; identity confirmed by Chris — Michele in background supporting, partner on the erg. Approved for SkiErg atmosphere use."
+    },
+    "upload-14-finish-line.jpg": {
+      "visibleContent": "Michele and her running mate crossing the finish area hand-in-hand beside the vertical FINISH board.",
+      "usableFor": [
+        "finish/celebration lead",
+        "race-mate/doubles community proof",
+        "Results supporting image"
+      ],
+      "avoid": "Do not invent a finishing time, division or podium claim; no result details are visible.",
+      "quality": "Excellent vertical finish-line/community shot; likely one of the strongest emotional images so far."
+    },
+    "upload-15-sled-pull-front.jpg": {
+      "visibleContent": "Michele front-on and braced low while pulling the sled-pull rope on a race floor.",
+      "usableFor": [
+        "Stations Prep — Sled Pull alternate/lead",
+        "race-floor intensity card",
+        "strength station proof"
+      ],
+      "avoid": "Do not caption as sled push or generic ropes; visible action is sled pull.",
+      "quality": "Excellent front-facing action shot; stronger eye contact and cleaner subject than upload-11."
+    },
+    "upload-16-professional-cable-gym.jpg": {
+      "visibleContent": "Professional gym portrait of Michele from behind using a cable station in pink/black kit under magenta lighting.",
+      "usableFor": [
+        "premium brand/strength portrait",
+        "fuel or strength-training secondary image",
+        "coach profile alternate"
+      ],
+      "avoid": "Do not present as HYROX race photography or a specific HYROX station; studio/model context is obvious.",
+      "quality": "High-polish professional image, but more model/fitness-brand than community HYROX; use sparingly."
+    },
+    "upload-17-professional-dumbbell-row.jpg": {
+      "visibleContent": "Professional gym portrait of Michele performing a single-arm dumbbell row on a bench in black kit.",
+      "usableFor": [
+        "strength-training secondary image",
+        "coaching/programme card",
+        "fuel/strength page support"
+      ],
+      "avoid": "Do not label as RowErg, race-floor rowing, or HYROX station proof; it is a dumbbell row in a studio/gym shoot.",
+      "quality": "High-polish professional image; useful visually but more generic fitness than HYROX-specific."
+    },
+    "upload-18-muscle-flex-selfie.jpg": {
+      "visibleContent": "Michele casual gym selfie in pink top flexing her biceps with headphones and wrist support.",
+      "usableFor": [
+        "low-priority bio/personality alternate",
+        "social/community behind-the-scenes image"
+      ],
+      "avoid": "Not polished enough for hero or premium profile use; do not use as a professional coaching image.",
+      "quality": "Casual selfie, slightly soft/low-res compared with the professional and race images."
+    },
+    "upload-19-biceps-curl-bw.jpg": {
+      "visibleContent": "Black-and-white gym shot of Michele performing a biceps curl near a preacher bench and weights area.",
+      "usableFor": [
+        "strength-training secondary",
+        "coach profile alternate",
+        "texture/gallery image"
+      ],
+      "avoid": "Do not treat as HYROX race proof or a station-specific image; this is a gym strength shot.",
+      "quality": "Strong monochrome gym portrait; useful for variety but less community-specific than race imagery."
+    },
+    "upload-20-yoga-mobility.jpg": {
+      "visibleContent": "Michele holding an advanced yoga/mobility pose on a mat.",
+      "usableFor": [
+        "mobility/recovery secondary",
+        "taper-zone support",
+        "wellness or habit card"
+      ],
+      "avoid": "Do not use as HYROX station proof or a main coaching hero; it is a mobility/lifestyle pose and lower resolution.",
+      "quality": "Distinctive flexibility/mobility image but visibly softer/compressed."
+    },
+    "upload-21-profile-victoria-sport.jpg": {
+      "visibleContent": "Older casual portrait of Michele in a black 'VICTORIA SPORT' top with hands near her waistband.",
+      "usableFor": [
+        "low-priority bio/profile alternate",
+        "personal-history or social archive image"
+      ],
+      "avoid": "Do not use as current brand portrait unless Chris confirms it still represents her current look.",
+      "quality": "Softer, warmer-lit casual portrait; likely older than the race/professional set."
+    },
+    "upload-22-fitness-journey-overlay.png": {
+      "visibleContent": "Instagram screenshot of Michele seated in black gymwear with large overlaid headline text and caption UI visible.",
+      "usableFor": [
+        "voice/copy reference",
+        "motto or quote-source asset",
+        "story-arc reference for bio/coaching copy"
+      ],
+      "avoid": "Do not use as a normal site image; Instagram UI, caption buttons and overlaid text are baked into the screenshot.",
+      "quality": "Not a clean image asset. Valuable for wording/voice, not visual placement."
+    },
+    "upload-23-story-illness-science.png": {
+      "visibleContent": "Instagram carousel screenshot with biographical text cards about severe illness in her twenties, biomedical science/NHS work, young motherhood and loneliness.",
+      "usableFor": [
+        "voice/story-arc reference",
+        "bio context note",
+        "vulnerability-to-community positioning"
+      ],
+      "avoid": "Do not use as a site image; Instagram UI and composite carousel text are baked in. Do not lead with illness/family details without Michele's exact approval.",
+      "quality": "Screenshot-only voice asset with sensitive biographical content."
+    },
+    "upload-24-story-yoga-post-babies.png": {
+      "visibleContent": "Instagram carousel screenshot showing a beach yoga pose with text about starting yoga and fitness classes after having babies.",
+      "usableFor": [
+        "voice/story-arc reference",
+        "mobility/recovery origin note"
+      ],
+      "avoid": "Do not use as a clean yoga/mobility photo; the post UI and text panel are baked in.",
+      "quality": "Screenshot-only voice asset; useful for tone rather than imagery."
+    },
+    "upload-25-story-transformation-toxic.png": {
+      "visibleContent": "Instagram carousel screenshot with a before/after-style transformation image and text about fitness giving her confidence to leave a toxic relationship.",
+      "usableFor": [
+        "voice/story-arc reference",
+        "transformation/confidence positioning",
+        "sensitive bio context"
+      ],
+      "avoid": "Do not use as site imagery or quote publicly without explicit approval; relationship and body-transformation content is sensitive.",
+      "quality": "Screenshot-only voice asset with highly sensitive personal context."
+    },
+    "upload-26-story-wilder-fitness-origin.png": {
+      "visibleContent": "Instagram carousel screenshot showing personal-trainer/business photos and transformation-client examples with text about leaving biomedical sciences, qualifying as a PT and building Wilder Fitness with her wife.",
+      "usableFor": [
+        "bio/business-origin voice reference",
+        "community credibility note",
+        "coaching-journey context"
+      ],
+      "avoid": "Do not use as a clean business/team image; composite screenshot includes Instagram UI and overlaid text. Confirm wording before using partner/family details.",
+      "quality": "Screenshot-only voice asset; useful for origin story and business positioning."
+    },
+    "upload-27-story-extreme-body.png": {
+      "visibleContent": "Instagram carousel screenshot with three polished physique/model images and text about pushing her body to the extreme, looking her best but feeling her worst.",
+      "usableFor": [
+        "voice/story-arc reference",
+        "sustainable-training/balance positioning",
+        "body-image-aware coaching copy"
+      ],
+      "avoid": "Do not use as normal gallery imagery or present the images as current race photography; screenshot includes text/UI and sensitive body-image context.",
+      "quality": "Screenshot-only voice asset; strong message but should be handled carefully."
+    },
+    "upload-28-client-michael-story.png": {
+      "visibleContent": "Instagram post caption screenshot telling client Michael's HYROX comeback story: age 60, prostate cancer diagnosis, three races booked, early 90+ minute result, later 1:31:05 PB and doubles with his son.",
+      "usableFor": [
+        "client-success voice reference",
+        "community proof story",
+        "coach-impact positioning"
+      ],
+      "avoid": "Do not use client health details, result, son/family detail or quote without explicit client and Michele approval.",
+      "quality": "Screenshot-only text/voice asset; powerful but sensitive client-health material."
+    },
+    "upload-29-official-coach-overlay.png": {
+      "visibleContent": "Instagram screenshot of Michele in PERFORM kit in red stadium seats with overlaid credential text: official HYROX coach, hybrid athlete specialist, founder of Hyrox Newbies and community-movement line.",
+      "usableFor": [
+        "credential/voice reference",
+        "bio positioning",
+        "hero-copy inspiration"
+      ],
+      "avoid": "Do not use as a normal image slot; Instagram UI and baked-in overlay text remain. The underlying stadium-seat image may already exist as upload-05/running-mate context.",
+      "quality": "Screenshot-only credential asset; useful for exact public positioning claims."
+    },
+    "upload-30-my-journey-others-theirs.png": {
+      "visibleContent": "Instagram collage screenshot of multiple athlete finish-board/race photos around the line 'THIS IS MY JOURNEY. AND NOW, I HELP OTHERS WRITE THEIRS.'",
+      "usableFor": [
+        "strong motto/copy source",
+        "community/results positioning",
+        "client-success overview"
+      ],
+      "avoid": "Do not use as a normal gallery image; collage and Instagram UI are baked in. Do not name unnamed clients or treat visible finish boards as verified result records without source confirmation.",
+      "quality": "Screenshot-only voice/proof collage; excellent message."
+    },
+    "upload-31-official-coach-70k.png": {
+      "visibleContent": "Instagram screenshot of Michele seated in a gym holding a medicine ball with overlaid text: official HYROX performance coach, 100+ athletes over three seasons, Hyrox Newbies community now 70,000+ strong.",
+      "usableFor": [
+        "credential/voice reference",
+        "community-size proof",
+        "bio/about positioning"
+      ],
+      "avoid": "Do not use as a clean gym portrait; overlay text and UI are baked in. The 70k number is post-date-sensitive and may be superseded by newer figures.",
+      "quality": "Screenshot-only credential asset; useful but claims need date checking before publication."
+    },
+    "upload-32-first-hyrox-123.png": {
+      "visibleContent": "Instagram screenshot of an athlete carrying two kettlebells in a HYROX arena with overlaid text saying her coach told her to try HYROX, she raced 12 weeks later, finished in 1:23 and became hooked on performance over aesthetics.",
+      "usableFor": [
+        "origin/voice reference",
+        "first-race story",
+        "performance-over-aesthetics positioning"
+      ],
+      "avoid": "Do not use as a clean Farmers Carry station photo; screenshot includes UI/text. The first-person caption confirms the 1:23 first-HYROX story is Michele's own, though the background frame itself remains screenshot-only.",
+      "quality": "Screenshot-only voice asset; first-HYROX 1:23 origin claim confirmed as Michele's own stated journey (first-person caption) per Chris, 27 Oct."
+    },
+    "upload-33-foundations-no-race.png": {
+      "visibleContent": "Instagram carousel screenshot for 'FOUNDATIONS by Wilder Fitness' with overlay text 'YOU DON'T NEED A HYROX RACE BOOKED TO START TRAINING' over a photo of a laptop showing a HYROX Vegas event page; caption begins 'No HYROX ticket yet? That's absolutely fine.'",
+      "usableFor": [
+        "Foundations/programme offer voice",
+        "beginner onboarding positioning",
+        "training-before-race messaging"
+      ],
+      "avoid": "Do not use as a clean photo slot; Instagram UI and programme branding are baked in. Do not treat 'Foundations' as a verified bookable programme until confirmed.",
+      "quality": "Screenshot-only voice/asset reference; overlay wording is the value."
+    },
+    "upload-34-gary-offseason-caption.png": {
+      "visibleContent": "Instagram caption screenshot: 'This is what an off-season can do.' Long coaching-voice text describing athlete Gary's off-season block — aerobic base, threshold, strength, nutrition/recovery, communication — ahead of Valencia four weeks out.",
+      "usableFor": [
+        "coaching-method voice",
+        "off-season/periodisation positioning",
+        "client-relationship tone reference"
+      ],
+      "avoid": "No result claimed yet — it is process praise, not a transformation result. Per Chris: 'Gary' can be anonymised newspaper-style ('one of my athletes') if adapted into copy, pending Michele's approval of the framing.",
+      "quality": "Screenshot-only voice asset; excellent example of Michele's detailed, process-led coaching voice."
+    },
+    "upload-35-foundations-offer-details.png": {
+      "visibleContent": "Instagram screenshot continuing the Foundations caption: 'Foundations II starts 5 October and you do not need a race booked to join us. £175 for the full 8 weeks or £99 pay in two. Link in bio x' dated 3 October, with the FOUNDATIONS by Wilder Fitness brand block.",
+      "usableFor": [
+        "programme offer details reference",
+        "pricing/format structure for a future offer card",
+        "voice reference for accessible beginner onboarding"
+      ],
+      "avoid": "Do not publish dates/prices as current offer — dated 3 October cohort announcement; verify what is live before any site use.",
+      "quality": "Screenshot-only voice/asset reference; commercial detail is useful for structuring the pitch, not for copying verbatim."
+    },
+    "upload-36-foundations-laptop-post.png": {
+      "visibleContent": "Instagram post screenshot of the same 'YOU DON'T NEED A HYROX RACE BOOKED TO START TRAINING' Foundations slide over the laptop/race-page photo, shown as a published post dated 3 October.",
+      "usableFor": [
+        "duplicate voice reference for the Foundations message",
+        "programme branding style reference"
+      ],
+      "avoid": "Do not count as a separate image asset; it duplicates upload-33's slide within post UI.",
+      "quality": "Screenshot-only; same overlay as upload-33."
+    },
+    "upload-37-run-first-caption.png": {
+      "visibleContent": "Instagram caption screenshot: 'Please don't wait until you can \"run properly\" before you start training for HYROX.' Lists common objections ('I need to improve my running first', 'I'll start HYROX training when I can run 5K', 'I'm nowhere near fit enough yet'), then 'But where you are now is your starting point... Foundations II starts 5 October.' Dated 2 October.",
+      "usableFor": [
+        "beginner-friendly positioning voice",
+        "objection-handling copy reference",
+        "Foundations programme messaging"
+      ],
+      "avoid": "Do not use as photo slot; pure caption screenshot. Verify programme is current before referencing 'Foundations II'.",
+      "quality": "Screenshot-only voice asset; captures Michele's welcoming, anti-gatekeeping tone."
+    },
+    "upload-38-gary-offseason-part2.png": {
+      "visibleContent": "Instagram caption screenshot continuing the Gary off-season post (dated 18 September): 'Build the athlete first. Then make the athlete specific. Huge credit to Gary, because I can write the best programme in the world, but it only works if the person on the other end commits to executing it, both inside and outside the gym. I cannot WAIT to see what all this work looks like on race day.'",
+      "usableFor": [
+        "coaching-method voice",
+        "coach-athlete partnership tone",
+        "off-season/periodisation positioning"
+      ],
+      "avoid": "No race-day result is claimed here. Per Chris: 'Gary' can be anonymised newspaper-style ('one of my athletes') if adapted into copy, pending Michele's approval of the framing.",
+      "quality": "Screenshot-only voice asset; pairs with upload-34 as one post."
+    },
+    "upload-39-limbo-land-selfie.png": {
+      "visibleContent": "Instagram post photo of Michele in a brown sports bra taking a gym selfie (earbud in, tattoo visible), with caption: 'Limbo land is not fun! But whilst I await my fate (cancer is a lot of waiting for results) I have been to a festival, booked some HYROX tickets, planned a holiday and I'm getting on with my life! Back to training, not sure when I can run but did legs, some upper band work and some bike... HYROX season 26/27 we are still coming for ya!!'",
+      "usableFor": [
+        "marginally usable casual photo (gym selfie, good likeness) IF the health context is approved",
+        "voice reference for resilience/keep-moving tone"
+      ],
+      "avoid": "HIGH SENSITIVITY — the caption discloses awaiting cancer results. Do not reuse photo or wording publicly without explicit approval from Michele; do not reference her health in pitch copy at all.",
+      "quality": "Photo itself is a decent casual likeness, but permanently tied to a sensitive health disclosure; treat as approval-required for any use."
+    },
+    "upload-40-sim-fatigue-caption.png": {
+      "visibleContent": "Instagram caption screenshot (21 August): 'A full sim creates a lot of fatigue and takes time to recover from... Your running. Your strength. Your aerobic engine. Your threshold. Your ability to run under fatigue. There's a difference between practising HYROX and building the qualities that make you good at HYROX... Every session should have a purpose. And a HYROX sim has to earn its place just like everything else.' Bottom edge shows a Foundations slide with an athlete on a SkiErg.",
+      "usableFor": [
+        "training-philosophy voice",
+        "purposeful-session messaging",
+        "anti-junk-volume positioning"
+      ],
+      "avoid": "Do not crop the bottom edge as a SkiErg photo — it's a partial branded slide inside a caption screenshot.",
+      "quality": "Screenshot-only voice asset; strong coaching-intelligence material."
+    },
+    "upload-41-sims-purpose-caption.png": {
+      "visibleContent": "Instagram post screenshot: caption 'I don't hate HYROX sims. I use them, I've done them myself and sometimes they're exactly the right session. But I don't think doing a full HYROX before your HYROX should automatically be part of everyone's training. My question is always why are we doing it? Are we testing a doubles strategy? Pacing? Fuelling? Building confidence?...' Top of frame shows a partial photo of athletes' legs/shoes on the race floor.",
+      "usableFor": [
+        "training-philosophy voice",
+        "every-session-has-a-purpose messaging",
+        "evidence-led coaching positioning"
+      ],
+      "avoid": "The partial legs photo at top is not a usable image slot — it's cropped inside a post screenshot.",
+      "quality": "Screenshot-only voice asset; part 1 of the same sims argument as upload-40."
+    },
+    "upload-42-perform-weekend-caption.png": {
+      "visibleContent": "Instagram caption screenshot (7 September): 'Well... the Perform crew had themselves a weekend 😂👏 Two podiums at Trycka. A 5-minute PB at the Deadly Dozen Doubles Championship. A 3-minute HYROX Doubles PB in Tenerife. And another one of our athletes back out there doing something we weren't sure he'd be able to do a little while ago... We're not coaching people just to complete one particular race. We're trying to help them become better athletes so they can go off and do the things they actually enjoy doing... Very proud of this lot. 💙 What a weekend.'",
+      "usableFor": [
+        "community-results voice",
+        "Perform coaching brand proof",
+        "weekend-roundup/news tone reference"
+      ],
+      "avoid": "Do not convert client results into site proof without permission; 'Trycka', 'Deadly Dozen' and 'Tenerife' are real events the athletes raced, not Michele's own results.",
+      "quality": "Screenshot-only voice asset; shows the 'Perform' coaching brand name and a proud-coach roundup style that maps perfectly to a News/Results feature."
+    },
+    "upload-43-running-partner-track.jpg": {
+      "visibleContent": "Two women running in sync side-by-side in white sports tops and black shorts with sunglasses, against a motion-blurred track/field background. The woman on the right (short dark hair, arm tattoo) matches Michele's appearance in upload-39.",
+      "usableFor": [
+        "Run Zone lead or hero candidate",
+        "training-with-a-partner / race-mate image",
+        "coaching-page energy shot"
+      ],
+      "avoid": "Do not caption as a race result or specific event; it's a dynamic run shot with no event context visible.",
+      "quality": "Excellent sharp action shot with strong motion-blur backdrop; both subjects clear; best running image so far."
+    },
+    "upload-44-crew-dinner-barcelona.jpg": {
+      "visibleContent": "Instagram screenshot of a group dinner in Barcelona — Michele (front left, taking the selfie) with seven others around a table of pizza and drinks at night; 'wilderfitnessuk and 2 others — Barcelona' header visible.",
+      "usableFor": [
+        "crew/community meetup page lead",
+        "race-trip/community culture image",
+        "social proof for Hyrox Newbies community"
+      ],
+      "avoid": "Instagram header chrome is baked in — crop above the photo edge before use. Do not name individuals or caption as a specific race result.",
+      "quality": "Warm, authentic community shot; strong candidate for crew page header per Chris."
+    },
+    "upload-45-crew-wallballs-arch.jpg": {
+      "visibleContent": "Five people (Michele in centre-front with glasses/cap, plus four others) posing under the inflatable 'WALL BALLS 08' HYROX station arch inside an arena.",
+      "usableFor": [
+        "crew/community at-event image",
+        "Wall Balls station context (as atmosphere, not technique)",
+        "race-day experience card"
+      ],
+      "avoid": "Do not use as Wall Balls technique/action proof — it's a posed group photo under the station arch.",
+      "quality": "Good clean group shot with iconic HYROX branding; Michele clearly identifiable in centre."
+    },
+    "upload-46-crew-big-group.jpg": {
+      "visibleContent": "Large group photo (~25 people) of mostly white-teamed athletes/coaches gathered in a modern lounge/viewing room with big windows; Michele appears centre-left with cap.",
+      "usableFor": [
+        "community scale proof — 'more members' per Chris",
+        "Hyrox Newbies / coach-network credibility",
+        "about/community page support"
+      ],
+      "avoid": "Keep the caption NEUTRAL if used (per Chris) — group context unconfirmed, could be an official-coach or community gathering. Describe as a HYROX community/event group, not 'her athletes'.",
+      "quality": "Good wide group shot; faces small individually but scale is the point."
+    },
+    "upload-47-finish-line-pair.jpg": {
+      "visibleContent": "Michele (right, glasses, grey tee) arm-in-arm with another woman in a 'TEAM HYROX' white tee, standing in front of a FINISH gantry and HYROX branding at an event.",
+      "usableFor": [
+        "event/community image",
+        "Team HYROX / official-coach adjacency proof",
+        "Find a Partner or crew supporting image"
+      ],
+      "avoid": "Do not caption the other woman as a client or named partner without confirmation; do not label as a finish-time/result photo.",
+      "quality": "Clean professional event photo; genuine HYROX branding visible; good secondary/community image."
+    },
+    "upload-48-head-judge-crew-caption.jpg": {
+      "visibleContent": "Instagram post screenshot: large group of HYROX officials/head judges in white Team HYROX tees posing on a finish podium under an 'ORIGINAL SOURCE HYROX' backdrop. Caption: '9 days of amazing, exhausting, super fun, incredible times with my awesome head judge friends. Hyrox has brought me so much, but one of the best things has got to be the new friendships that I've gained through Head Judging. What an awesome team!' dated 30 March.",
+      "usableFor": [
+        "MAJOR credential — Michele is a HYROX Head Judge, in her own words",
+        "official-coach/insider credibility copy",
+        "community/friendships voice angle"
+      ],
+      "avoid": "Screenshot includes full caption and post chrome — use the credential wording, not the image, unless cropped cleanly. Do not imply she head-judges at every event or name colleagues.",
+      "quality": "Screenshot-only credential asset; the 'Head Judging' claim is the key value here."
+    },
+    "upload-49-kiss-and-race-stockholm.jpg": {
+      "visibleContent": "Two women kissing on the circular 'KISS AND RACE' podium under yellow light bars at HYROX Stockholm (Intersport branding). Left woman's appearance is consistent with Michele but not confirmed.",
+      "usableFor": [
+        "Find a Partner page atmosphere/emotional hook (per Chris)",
+        "community/race-experience storytelling"
+      ],
+      "avoid": "CONFIRMED: Michele is NOT in this shot (per Chris). Usable only as generic Find a Partner/race-experience atmosphere — never caption as Michele or anyone specific; not a bio image.",
+      "quality": "Strong, characterful branded shot; the 'Kiss and Race' podium is a real HYROX feature. Use pending identity confirmation."
+    },
+    "upload-50-dublin-crew-selfie.jpg": {
+      "visibleContent": "Large group selfie (~25 people) in black 'Sports Direct HYROX' crew hoodies in front of a 'SPORTS DIRECT HYROX DUBLIN' lit sign, with FINISH gantry text visible behind.",
+      "usableFor": [
+        "event-crew/judging community proof",
+        "scale-of-involvement image (Dublin event crew)",
+        "community page support"
+      ],
+      "avoid": "Do not caption as her coached athletes — this is an event staff/crew group. Michele's position in the group is not singled out.",
+      "quality": "Good atmosphere group shot; branded event context is explicit (Dublin)."
+    },
+    "upload-51-team-wallballs-arch.jpg": {
+      "visibleContent": "Five people in white Team HYROX tees (one wearing a JUDGE lanyard) posing under the yellow-and-black 'WALL BALLS 08' inflatable arch inside an arena.",
+      "usableFor": [
+        "Wall Balls station image IF no action shot exists (per Chris — atmosphere/context only)",
+        "crew/judging at-event image",
+        "Team HYROX involvement proof"
+      ],
+      "avoid": "Do not present as wall-ball action/technique — posed group under the arch. Do not name individuals.",
+      "quality": "Clean posed group shot with strong station branding; acceptable station context image as a fallback."
+    },
+    "upload-52-team-burpees-arch.jpg": {
+      "visibleContent": "Nine people in grey Team HYROX tees posing under the 'BURPEES 04' inflatable arch, with Medic Zone and Macmillan Cancer Support banners visible behind.",
+      "usableFor": [
+        "Burpees station context image IF no action shot exists (per Chris — atmosphere only)",
+        "event-crew/community image",
+        "race-day atmosphere card"
+      ],
+      "avoid": "Do not present as burpee technique/action — posed group under the arch. Do not name individuals.",
+      "quality": "Clean posed group shot with clear station branding; acceptable station context image as a fallback."
+    },
+    "upload-53-gym-selfie-wit.jpg": {
+      "visibleContent": "Close-up gym selfie of Michele in a black WIT sports bra, earbuds in, tattoo visible, resting an arm on a bench; turquoise water bottle on the floor.",
+      "usableFor": [
+        "casual profile/bio secondary (per Chris: 'good profile shot')",
+        "training-day authenticity image"
+      ],
+      "avoid": "Do not use as hero — selfie angle and tight crop; professional portraits (16/17/55) outrank it for lead slots.",
+      "quality": "Good likeness, warm and approachable; casual tier below the pro shots."
+    },
+    "upload-54-our-sport-is-hyrox-wall.jpg": {
+      "visibleContent": "Michele in teal/black PERFORM race kit smiling and pointing up at a blue event wall reading 'MY SPORT IS / YOUR SPORT IS / OUR SPORT IS / HYROX' in large white letters.",
+      "usableFor": [
+        "excellent hero or about-page lead — on-brand, joyful, unmistakably HYROX",
+        "community/belonging messaging ('our sport')",
+        "profile shot with signage (per Chris)"
+      ],
+      "avoid": "None significant — arguably the single best brand-image in the set. Check mobile crop so the slogan text isn't lost.",
+      "quality": "Outstanding: clean portrait + iconic HYROX slogan wall + genuine smile. Top-tier candidate."
+    },
+    "upload-55-seated-wallball-portrait.jpg": {
+      "visibleContent": "Professional seated gym portrait of Michele in a white HYROX tee and pink shorts, one hand on a large black wall ball, smiling at camera in a gym setting.",
+      "usableFor": [
+        "Wall Balls station context portrait (per Chris: 'wallball profile shot')",
+        "bio/coaching-page lead portrait",
+        "professional brand photography tier"
+      ],
+      "avoid": "Do not caption as wall-ball action/technique — it's a posed portrait with the ball as a prop.",
+      "quality": "Polished professional photo; strong lead-portrait candidate and best Wall Balls-adjacent image."
+    },
+    "upload-56-it-depends-strategy.png": {
+      "visibleContent": "Instagram carousel screenshot with Wilder Fitness branding: 'SHORT ANSWER: IT DEPENDS. HYROX ISN'T A 5K FUN RUN YOU CAN JUST WING. IT'S A VERY SPECIFIC BEAST. TRAINING FOR IT = STRATEGY.' Caption below: 'How long do I need to train for HYROX...' dated 20 June 2025.",
+      "usableFor": [
+        "training-strategy voice",
+        "FAQ/how-long-to-train content seed",
+        "anti-wing-it positioning"
+      ],
+      "avoid": "Screenshot-only; branded slide, not a photo slot.",
+      "quality": "Strong educational-voice asset; pairs with her 'every session has a purpose' material."
+    },
+    "upload-57-season-pride-overlay.png": {
+      "visibleContent": "Instagram post screenshot: Michele seated in red stadium seats in PERFORM kit behind overlay text 'THIS SEASON, AS A COACH HAS FILLED ME TO THE BRIM WITH PRIDE WITH EMOTION WITH PURPOSE WITH JOY.' Caption: 'This season as a coach has filled me to the brim...' dated 28 June 2025.",
+      "usableFor": [
+        "coaching-joy/season-reflection voice",
+        "emotional hook for about/coaching page",
+        "underlying stadium-seats photo may itself be usable if a clean version exists (ask Michele)"
+      ],
+      "avoid": "Overlay text baked in — screenshot-only as supplied.",
+      "quality": "Lovely voice asset; the buried photo looks promising but needs a clean version to be an image slot."
+    },
+    "upload-58-taper-red-rocks.jpg": {
+      "visibleContent": "Michele seated outdoors on red rock formations under a clear blue sky, wearing a grey top, black leggings and white trainers.",
+      "usableFor": [
+        "Taper Zone active-recovery image",
+        "low-intensity movement/travel-week context",
+        "calm race-week mindset supporting image"
+      ],
+      "avoid": "Do not caption as HYROX training, a race venue or a hike PB; the location/event is not verified.",
+      "quality": "Strong clean portrait with a relaxed subject and clear recovery/travel feel; vertical source needs scoped crop focus in wide editorial frames."
+    },
+    "upload-59-race-venue-walkthrough.jpg": {
+      "visibleContent": "Michele standing outside the Principality Stadium entrance with the stadium sign and Gate 3 visible behind her.",
+      "usableFor": [
+        "Taper Zone race-week travel/venue familiarisation image",
+        "Calendar & Travel supporting image",
+        "arrive-early/race-admin guidance"
+      ],
+      "avoid": "Do not caption as a HYROX venue visit or race-day arrival; the stadium context is useful, but the event is not identified.",
+      "quality": "Clean real-world venue photo with a clear subject and readable place context; needs lower object-position in wide crops to retain Michele."
+    }
+  },
+  "captionVoiceNotes": [
+    {
+      "upload": "upload-05-running-mate.jpg",
+      "note": "Visible PERFORM identity and running-mate relationship could support community voice, but do not invent a named partner, division or result."
+    },
+    {
+      "upload": "upload-07-wallballs-judging.jpg",
+      "note": "Supplied label says judging wallballs; useful for a 'coach on the floor / race-day standards' angle, not athlete performance."
+    },
+    {
+      "upload": "upload-10-wallball-out-of-puff.jpg",
+      "note": "Voice angle: effort after the station, not perfect technique — 'the work is hard, but you are not doing it alone'."
+    },
+    {
+      "upload": "upload-13-skierg-running-mate.jpg",
+      "note": "Confirmed by Chris: Michele is the background figure, her partner is at the erg. Approved as SkiErg atmosphere / coach-support context, not as her own technique shot."
+    },
+    {
+      "upload": "upload-14-finish-line.jpg",
+      "note": "Strong voice angle around finishing together/community; no result, division or time should be invented."
+    },
+    {
+      "upload": "upload-15-sled-pull-front.jpg",
+      "note": "Best current sled-pull candidate: full-body front-on effort, clear rope context and strong eye contact."
+    },
+    {
+      "uploads": ["upload-16-professional-cable-gym.jpg", "upload-17-professional-dumbbell-row.jpg"],
+      "note": "Professional model/gym photography, not HYROX race proof. Useful for premium brand polish, but keep separate from race-floor station imagery."
+    },
+    {
+      "upload": "upload-22-fitness-journey-overlay.png",
+      "note": "Strong authentic voice source for 'rebuilt/confidence/community' positioning; use the wording as copy inspiration, not as an image slot."
+    },
+    {
+      "uploads": [
+        "upload-23-story-illness-science.png",
+        "upload-24-story-yoga-post-babies.png",
+        "upload-25-story-transformation-toxic.png",
+        "upload-26-story-wilder-fitness-origin.png",
+        "upload-27-story-extreme-body.png"
+      ],
+      "note": "Five-slide story arc: illness/science → yoga after babies → transformation/confidence → Wilder Fitness origin → extreme body pressure. Rich voice material, but sensitive details need Michele's approval before public use."
+    },
+    {
+      "uploads": [
+        "upload-28-client-michael-story.png",
+        "upload-29-official-coach-overlay.png",
+        "upload-30-my-journey-others-theirs.png",
+        "upload-31-official-coach-70k.png",
+        "upload-32-first-hyrox-123.png"
+      ],
+      "note": "Second story/credential batch: sensitive client comeback story, official-coach/community claims, 'help others write theirs' motto and first-HYROX 1:23 origin line. All are screenshot-only voice assets, not clean image slots."
+    },
+    {
+      "uploads": [
+        "upload-33-foundations-no-race.png",
+        "upload-34-gary-offseason-caption.png",
+        "upload-35-foundations-offer-details.png",
+        "upload-36-foundations-laptop-post.png",
+        "upload-37-run-first-caption.png"
+      ],
+      "note": "Foundations/voice batch: 'no race booked needed to start training', Gary off-season coaching voice, Foundations II offer details (£175/8 weeks, £99 in two, 5 October start) and 'don't wait until you can run properly' objection-handling. Shows Michele has a structured beginner programme — useful both for offer framing and for her welcoming tone."
+    },
+    {
+      "uploads": [
+        "upload-38-gary-offseason-part2.png",
+        "upload-39-limbo-land-selfie.png",
+        "upload-40-sim-fatigue-caption.png",
+        "upload-41-sims-purpose-caption.png",
+        "upload-42-perform-weekend-caption.png"
+      ],
+      "note": "Coaching-philosophy batch: 'Build the athlete first, then make the athlete specific', 'every session should have a purpose / a sim has to earn its place', and a Perform-crew weekend results roundup. upload-39 contains a marginally usable gym-selfie photo BUT its caption discloses awaiting cancer results — approval-required for any use and never referenced in pitch copy. 'Perform' appears to be her coached-athlete brand/crew name."
+    },
+    {
+      "uploads": [
+        "upload-43-running-partner-track.jpg",
+        "upload-44-crew-dinner-barcelona.jpg",
+        "upload-45-crew-wallballs-arch.jpg",
+        "upload-46-crew-big-group.jpg",
+        "upload-47-finish-line-pair.jpg"
+      ],
+      "note": "First strong clean-photo batch: track run with partner (best Run Zone candidate yet), Barcelona crew dinner (Chris: could top the crew meetup page), crew under the Wall Balls arch, large crew/coach gathering, and Michele with a Team HYROX athlete at a finish gantry. Community voice angle: 'the crew that trains, travels and eats together'."
+    },
+    {
+      "uploads": [
+        "upload-48-head-judge-crew-caption.jpg",
+        "upload-49-kiss-and-race-stockholm.jpg",
+        "upload-50-dublin-crew-selfie.jpg",
+        "upload-51-team-wallballs-arch.jpg",
+        "upload-52-team-burpees-arch.jpg"
+      ],
+      "note": "Official-side batch: her own caption confirms she works as a HYROX HEAD JUDGE — a major credibility upgrade beyond 'official coach'. Kiss-and-Race Stockholm podium is great Find-a-Partner material but subject identity unconfirmed. Wall Balls and Burpees arch groups are usable station-context fallbacks if no action shots exist, per Chris."
+    },
+    {
+      "uploads": [
+        "upload-53-gym-selfie-wit.jpg",
+        "upload-54-our-sport-is-hyrox-wall.jpg",
+        "upload-55-seated-wallball-portrait.jpg",
+        "upload-56-it-depends-strategy.png",
+        "upload-57-season-pride-overlay.png"
+      ],
+      "note": "Mixed batch: casual WIT selfie (profile backup), the standout 'OUR SPORT IS HYROX' wall portrait (top-tier hero candidate), a professional seated wall-ball portrait (best Wall Balls-adjacent image), plus two voice slides — 'HYROX isn't a 5k you can wing / training = strategy' and 'this season as a coach filled me to the brim'. Note: upload-57's underlying stadium photo may be worth requesting clean."
+    },
+    {
+      "uploads": [
+        "upload-58-taper-red-rocks.jpg",
+        "upload-59-race-venue-walkthrough.jpg"
+      ],
+      "note": "Taper/travel pair requested by Chris: red-rocks outdoor recovery shot for lower-volume movement, plus a venue walkthrough shot for race-week admin/travel guidance. Stadium is visually identifiable as the Principality Stadium, but the event is not verified — caption it as venue familiarisation, not a HYROX visit."
+    }
+  ],
+  "mottosOrTextOverlays": [
+    {
+      "text": "PERFORM",
+      "uploads": ["upload-05-running-mate.jpg", "upload-06-sled-pull-leg.jpg"],
+      "note": "Visible on kit/tattoo; potential voice/brand motif if Michele uses it publicly. Confirm before making it a headline."
+    },
+    {
+      "text": "THIS ISN'T JUST A FITNESS JOURNEY",
+      "uploads": ["upload-22-fitness-journey-overlay.png"],
+      "note": "Large overlaid headline from her own post; strong candidate for a quote/motto treatment, pending exact-copy approval."
+    },
+    {
+      "text": "It's how I rebuilt my life from the ground up",
+      "uploads": ["upload-22-fitness-journey-overlay.png"],
+      "note": "Visible supporting line from the same post; powerful bio/community-voice material."
+    },
+    {
+      "text": "From lost and lonely, to confident and capable, to leading a global Hyrox community",
+      "uploads": ["upload-22-fitness-journey-overlay.png"],
+      "note": "Visible caption text; captures the emotional arc and Hyrox Newbies/community positioning."
+    },
+    {
+      "text": "Battled SLE with severe renal involvement in my twenties",
+      "uploads": ["upload-23-story-illness-science.png"],
+      "note": "Sensitive health disclosure; approval required before reuse."
+    },
+    {
+      "text": "Loved science and trained as a biomedical scientist, but couldn't cope working for the NHS",
+      "uploads": ["upload-23-story-illness-science.png"],
+      "note": "Biographical background; useful for credibility/context but verify exact wording."
+    },
+    {
+      "text": "Lost who I was in the chaos of illness, young motherhood, and loneliness",
+      "uploads": ["upload-23-story-illness-science.png"],
+      "note": "Sensitive personal/family/health line; approval required before reuse."
+    },
+    {
+      "text": "Started with yoga and fitness classes post babies... just wanting to do something for me",
+      "uploads": ["upload-24-story-yoga-post-babies.png"],
+      "note": "Origin story line; consider smoothing grammar only if Michele approves."
+    },
+    {
+      "text": "One transformation changed everything",
+      "uploads": ["upload-25-story-transformation-toxic.png"],
+      "note": "Short powerful line; usable as a motif if she approves the surrounding context."
+    },
+    {
+      "text": "Being fit and capable gave me confidence to leave a toxic relationship and step into my true self",
+      "uploads": ["upload-25-story-transformation-toxic.png"],
+      "note": "Sensitive relationship disclosure; approval required before reuse."
+    },
+    {
+      "text": "Decided to quit my job in biomedical sciences. Qualified as a PT. Met my wife and built Wilder Fitness together.",
+      "uploads": ["upload-26-story-wilder-fitness-origin.png"],
+      "note": "Business-origin line; check whether wife/partner should appear in public-facing pitch copy."
+    },
+    {
+      "text": "Helping people transform their bodies and lives",
+      "uploads": ["upload-26-story-wilder-fitness-origin.png"],
+      "note": "Strong direct coaching/community line; lower sensitivity than the personal disclosures."
+    },
+    {
+      "text": "Pushed my body to the extreme. Looked my best... but felt my worst.",
+      "uploads": ["upload-27-story-extreme-body.png"],
+      "note": "Excellent sustainable-coaching angle; sensitive body-image context requires care."
+    },
+    {
+      "text": "Hyrox is a puzzle. The only way to figure it out is to race.",
+      "uploads": ["upload-28-client-michael-story.png"],
+      "note": "Client-story quote attributed to Michael's story; use only with approval because the surrounding post includes sensitive health details."
+    },
+    {
+      "text": "He smashed his PB by 14 minutes — 1:31:05",
+      "uploads": ["upload-28-client-michael-story.png"],
+      "note": "Client result claim; verify permission and exact wording before using as a success story."
+    },
+    {
+      "text": "Official HYROX coach. Hybrid athlete specialist. Founder of Hyrox Newbies. Leading the hybrid fitness community movement.",
+      "uploads": ["upload-29-official-coach-overlay.png"],
+      "note": "Public positioning/credential stack; useful for hero or bio copy after date/source check."
+    },
+    {
+      "text": "This is my journey. And now, I help others write theirs.",
+      "uploads": ["upload-30-my-journey-others-theirs.png"],
+      "note": "Best current motto candidate: concise, authentic and directly bridges personal journey to coaching/community."
+    },
+    {
+      "text": "Coached 100+ athletes over 3 seasons. Created Hyrox Newbies community now 70,000+ strong.",
+      "uploads": ["upload-31-official-coach-70k.png"],
+      "note": "Credential/community claim from September 2025 screenshot; check for a newer number before using."
+    },
+    {
+      "text": "Then my coach said... try HYROX. 12 weeks later, I raced. Finished in 1:23. And I was hooked on performance over aesthetics.",
+      "uploads": ["upload-32-first-hyrox-123.png"],
+      "note": "Strong origin line; first-person caption confirms it is Michele's own stated first-race story."
+    },
+    {
+      "text": "YOU DON'T NEED A HYROX RACE BOOKED TO START TRAINING",
+      "uploads": ["upload-33-foundations-no-race.png", "upload-36-foundations-laptop-post.png"],
+      "note": "Foundations headline; strong beginner-onboarding hook for a programme card or homepage banner."
+    },
+    {
+      "text": "This is what an off-season can do.",
+      "uploads": ["upload-34-gary-offseason-caption.png"],
+      "note": "Coaching-method hook; pairs with the longer process caption about aerobic base, threshold and strength."
+    },
+    {
+      "text": "We're not trying to suddenly get Gary fit now. We're teaching him to use the fitness he's spent months building.",
+      "uploads": ["upload-34-gary-offseason-caption.png"],
+      "note": "Excellent periodisation/coaching-intelligence line; lower sensitivity because it describes method, not private details."
+    },
+    {
+      "text": "Please don't wait until you can \"run properly\" before you start training for HYROX.",
+      "uploads": ["upload-37-run-first-caption.png"],
+      "note": "Welcoming objection-buster; strong beginner/community tone for Foundations-style messaging."
+    },
+    {
+      "text": "But where you are now is your starting point.",
+      "uploads": ["upload-37-run-first-caption.png"],
+      "note": "Clean, low-risk motivational line; usable almost anywhere."
+    },
+    {
+      "text": "Foundations II — 8 weeks, £175 or £99 pay in two; no race booked needed",
+      "uploads": ["upload-35-foundations-offer-details.png"],
+      "note": "Real programme structure/pricing from a 3 October post; useful for shaping her offer card, but verify current cohort before publishing."
+    },
+    {
+      "text": "Build the athlete first. Then make the athlete specific.",
+      "uploads": ["upload-38-gary-offseason-part2.png"],
+      "note": "Signature coaching-philosophy line; strong candidate for a coaching-methods headline."
+    },
+    {
+      "text": "I can write the best programme in the world, but it only works if the person on the other end commits to executing it",
+      "uploads": ["upload-38-gary-offseason-part2.png"],
+      "note": "Honest coach-athlete partnership line; good for expectations/onboarding copy."
+    },
+    {
+      "text": "Every session should have a purpose. And a HYROX sim has to earn its place just like everything else.",
+      "uploads": ["upload-40-sim-fatigue-caption.png", "upload-41-sims-purpose-caption.png"],
+      "note": "Strong anti-junk-volume positioning; pairs the 'why are we doing it?' question with a clear principle."
+    },
+    {
+      "text": "There's a difference between practising HYROX and building the qualities that make you good at HYROX.",
+      "uploads": ["upload-40-sim-fatigue-caption.png"],
+      "note": "Excellent expertise-signalling line; distinguishes smart coaching from just doing more HYROX."
+    },
+    {
+      "text": "We're not coaching people just to complete one particular race. We're trying to help them become better athletes.",
+      "uploads": ["upload-42-perform-weekend-caption.png"],
+      "note": "Big-picture coaching ethos line; great fit for a coaching-page header or about section."
+    },
+    {
+      "text": "HYROX season 26/27 we are still coming for ya!!",
+      "uploads": ["upload-39-limbo-land-selfie.png"],
+      "note": "Defiant/resilient line BUT attached to a sensitive health-disclosure post — do not use without explicit approval."
+    },
+    {
+      "text": "One of the best things has got to be the new friendships that I've gained through Head Judging.",
+      "uploads": ["upload-48-head-judge-crew-caption.jpg"],
+      "note": "Confirms her Head Judge role in her own words — combine with the credential: 'HYROX Head Judge + official coach + Hyrox Newbies founder' is a very strong credibility stack."
+    },
+    {
+      "text": "MY SPORT IS. YOUR SPORT IS. OUR SPORT IS. HYROX.",
+      "uploads": ["upload-54-our-sport-is-hyrox-wall.jpg"],
+      "note": "HYROX's own event-wall slogan she poses beneath — ideal belonging/community framing and it literally sits behind her in the photo."
+    },
+    {
+      "text": "HYROX isn't a 5k fun run you can just wing. It's a very specific beast. Training for it = strategy.",
+      "uploads": ["upload-56-it-depends-strategy.png"],
+      "note": "Educational/authority voice; good seed for 'how long to train' guidance content."
+    },
+    {
+      "text": "This season, as a coach, has filled me to the brim — with pride, with emotion, with purpose, with joy.",
+      "uploads": ["upload-57-season-pride-overlay.png"],
+      "note": "Warm season-reflection line; strong candidate for a coach-quote panel or about page."
+    }
+  ],
+  "pending": [
+    "Batch after upload-57 was re-sent images: verified via checksum that all four (kiss-and-race, Dublin crew, Wall Balls arch, Burpees arch) plus the head-judge caption were byte-identical duplicates of upload-48 through upload-52 — no new assets, no files saved.",
+    "Isolated chassis build approved and generated 28 Oct: scripts/reskin/michelewilder.demo.json + michelewilder-assets/images (slot-mapped). Staged at /tmp/michelewilder-review-3/michelewilder — registry unchanged, no repo output dir. Slot map: hero=54, bio=55, stations covered by 11/13/15/12/51 + dedicated stock for sled-push/burpees/farmers/lunges.",
+    "Continue numbering additional uploads from upload-60 onward; upload-58 and upload-59 are assigned to Taper Zone as momentum.jpg (previous stock preserved at michelewilder-assets/spares/momentum-stock.jpg) and taper-venue-walkthrough.jpg.",
+    "Ask Michele for a clean (no-overlay) version of the upload-57 stadium-seats photo — promising portrait buried under text.",
+    "upload-46 big group: keep caption neutral ('HYROX community/event group') — membership context unconfirmed per Chris.",
+    "upload-49 Kiss and Race: Chris confirms Michele is NOT in it — usable only as generic Find a Partner atmosphere.",
+    "Verify how to word the Head Judge credential (e.g. 'HYROX Head Judge' vs 'race official') — her caption says 'Head Judging' explicitly.",
+    "No Fuel Zone in the canonical template (dropped deliberately — nutrition views vary per coach), so no food imagery needed.",
+    "Stations with no personal action shot (Sled Push, Burpees, Farmers Carry, Sandbag Lunges): reuse existing faceless/backup stock from the site's shared asset files, as done on previous tenant pages.",
+    "upload-32 origin story confirmed as Michele's own via its first-person caption; still screenshot-only, not a clean photo slot.",
+    "Catalogue text-overlaid or captioned images separately under captionVoiceNotes/mottosOrTextOverlays so their wording is preserved without forcing them into photo slots.",
+    "Check crop safety on mobile before assigning any image to a hero slot.",
+    "Verify source/rights before production use."
+  ]
+}

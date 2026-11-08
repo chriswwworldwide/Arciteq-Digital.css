@@ -88,7 +88,7 @@
   .home-lab #wall-photos .polaroid.reveal.in:hover { transform:rotate(0deg) translateY(-12px) scale(1.04); z-index:2; box-shadow:0 25px 40px #1b171530; }
 }
 @media(max-width:800px) {
-  .home-lab .portrait-hairline { transform:rotate(90deg); }
+  .home-lab .portrait-hairline { transform:rotate(180deg); }
 }
 @media(max-width:760px) {
   .home-lab .block { padding-block:56px; }
@@ -111,3 +111,16 @@
   .home-lab .btn:hover,.home-lab .btn:active { transform:none; }
   .home-lab .hero-mask .hero-img,.home-lab .hero--bleed:hover .hero-img { transform:none; transition:none; }
 }
+
+/* Violet relief accents — must live here, this sheet loads after styles.css */
+.home-lab .pitch-tool-main { border-top-color: var(--zone-accent); }
+.home-lab #story .quote { border-left-color: var(--zone-accent); }
+.home-lab .profile-hairline path { stroke: var(--zone-accent); }
+.home-lab #story .eyebrow { color: var(--zone-accent); }
+
+
+/* dark-tinted panel text — tips band + plan-crew are dark surfaces on every site */
+.home-lab #tips h3, .home-lab #tips .lead, .home-lab #tips .tips-grid summary, .home-lab #tips .tips-grid ol,
+.home-lab .plan-crew h4, .home-lab .plan-crew p, .home-lab .plan-crew li { color: #f4f4f6; }
+.home-lab #tips .lead a { color: var(--zone-accent); }
+.home-lab .tips-hairline path { stroke: var(--zone-accent); }

@@ -1,0 +1,20 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Jade Skillen coaching",
+      "headline": "Take the next step with Jade",
+      "destination": "https://start.jadeskillen.com/",
+      "image": "/jadeskillen/images/coaching-hero.jpg?v=1792661953068",
+      "goal": "Coaching enquiries"
+    },
+    {
+      "id": "programme",
+      "name": "Jade Skillen training options",
+      "headline": "Find the right training support",
+      "destination": "https://smashyourhyrox.com/",
+      "image": "/jadeskillen/images/coaching-hero.jpg?v=1792661953068",
+      "goal": "Programme and coaching enquiries"
+    }
+  ]
+}

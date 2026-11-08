@@ -19,7 +19,19 @@
     const today = new Date().toISOString().slice(0, 10);
     const cities = (data.cities || []).filter(c => c.race?.status === "confirmed" && c.race.start && c.race.start >= today && /^https:\/\//.test(c.race.source || ""));
     if (!cities.length) throw new Error("No confirmed upcoming races");
-    if (cards) cards.innerHTML = cities.slice(0,3).map(c => `<div class="event"><div class="date"><strong><time datetime="${esc(c.race.start)}">${esc(when(c.race.start))}</time></strong><span>${esc(c.name)}</span></div><div><h4>${esc(c.race.name)}</h4><p>${esc(c.race.dates || when(c.race.start))} · ${esc(c.country)}</p>${source(c)}</div><a class="btn btn-ghost" href="/elationfitness/events.html#${esc(c.slug)}">Plan the weekend</a></div>`).join("");
+    if (cards) {
+      const lead = new Date(Date.now() + 14 * 864e5).toISOString().slice(0, 10);
+      const sorted = [...cities].sort((a, b) => a.race.start.localeCompare(b.race.start));
+      const eligible = sorted.filter(c => c.race.start >= lead);
+      const board = (eligible.length ? eligible : sorted).slice(0, 4);
+      const renderCard = c => `<div class="event"><div class="date"><strong><time datetime="${esc(c.race.start)}">${esc(when(c.race.start))}</time></strong><span>${esc(c.name)}</span></div><div><h4>${esc(c.race.name)}</h4><p>${esc(c.race.dates || when(c.race.start))} · ${esc(c.country)}</p>${source(c)}</div><a class="btn btn-ghost" href="/elationfitness/events.html#${esc(c.slug)}">Plan the weekend</a></div>`;
+      const extra = board.slice(1);
+      cards.innerHTML = renderCard(board[0]) + (extra.length ? `<details class="events-more"><summary>${extra.length} more race${extra.length > 1 ? "s" : ""}</summary>${extra.map(renderCard).join("")}</details>` : "");
+      const more = cards.querySelector(".events-more");
+      more?.addEventListener("toggle", () => {
+        more.querySelector("summary").textContent = more.open ? "Show fewer races" : `${extra.length} more race${extra.length > 1 ? "s" : ""}`;
+      });
+    }
     if (season) season.innerHTML = cities.map(c => `<li class="event"><time datetime="${esc(c.race.start)}">${esc(c.race.dates || when(c.race.start))}</time><div><h4><a href="#${esc(c.slug)}">${esc(c.race.name)}</a></h4><p>${esc(c.country)} · ${source(c)}</p><p><a href="#${esc(c.slug)}">Plan this race weekend →</a></p></div></li>`).join("");
     const stamp = document.getElementById("race-checked");
     if (stamp) stamp.textContent = `Official listings checked ${when(data.checked)}. Check current entry availability with the organiser.`;

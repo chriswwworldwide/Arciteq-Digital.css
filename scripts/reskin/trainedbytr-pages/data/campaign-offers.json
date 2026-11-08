@@ -1,0 +1,20 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Trained by TR coaching",
+      "headline": "Take the next step with Tom",
+      "destination": "https://go.trainedbytr.com/home",
+      "image": "/trainedbytr/images/coaching-hero.jpg?v=1792708747258",
+      "goal": "Coaching enquiries"
+    },
+    {
+      "id": "programme",
+      "name": "Trained by TR training options",
+      "headline": "Find the right training support",
+      "destination": "https://go.trainedbytr.com/home",
+      "image": "/trainedbytr/images/coaching-hero.jpg?v=1792708747258",
+      "goal": "Programme and coaching enquiries"
+    }
+  ]
+}

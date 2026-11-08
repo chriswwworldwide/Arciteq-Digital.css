@@ -1151,5 +1151,9 @@
     "images/(squad-anya|carry|coach|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station9-dinner|station10-dance)\\.jpg$"
   ],
   "sharedPack": "scripts/reskin/shared-packs/uk.json",
-  "broadcastDemo": true
+  "broadcastDemo": true,
+  "tokens": {
+    "SIG": "by Hannah"
+  },
+  "brandingNote": "Wordmark BURGON FITNESS from her business brand (@hannahburgon_pt personal handle). SIG drops the surname already in the mark."
 }

@@ -3,12 +3,13 @@
 // code, docs, migrations, scripts, ops ledgers and internal data. Public
 // root data files the storefront fetches are allow-listed explicitly.
 
+import path from "node:path";
+
 export const PUBLIC_ROOT_DATA_FILES = new Set([
   "/data/products.json",
   "/data/reviews.json",
   "/data/supplier-assignments.json",
   "/data/suppliers.json",
-  "/data/tenants.json",
   "/data/category-faqs.json",
 ]);
 
@@ -24,9 +25,42 @@ const PRIVATE_STATIC_RE = [
 ];
 
 export function isPrivateStaticPath(p) {
-  const pathName = String(p || "").toLowerCase();
+  let decoded = String(p || "");
+  try {
+    for (let i = 0; i < 3; i++) {
+      const next = decodeURIComponent(decoded);
+      if (next === decoded) break;
+      decoded = next;
+    }
+  } catch {
+    return true;
+  }
+  if (decoded.includes("\0")) return true;
+  const pathName = path.posix
+    .normalize("/" + decoded.replace(/\\/g, "/"))
+    .replace(/^\/+/, "/")
+    .toLowerCase();
+  if (/(^|\/)\.[^/]/.test(pathName)) return true;
   if (pathName.startsWith("/data/") && !PUBLIC_ROOT_DATA_FILES.has(pathName)) {
     return true;
   }
   return PRIVATE_STATIC_RE.some((re) => re.test(pathName));
+}
+
+export function publicTenantConfig(tenants) {
+  return {
+    tenants: tenants.map((tenant) => ({
+      tenant_id: String(tenant.tenant_id || ""),
+      hostnames: (Array.isArray(tenant.hostnames)
+        ? tenant.hostnames
+        : []
+      ).filter((value) => typeof value === "string"),
+      catalog: {
+        heroProductIds: (Array.isArray(tenant.catalog?.heroProductIds)
+          ? tenant.catalog.heroProductIds
+          : []
+        ).filter((value) => typeof value === "string"),
+      },
+    })),
+  };
 }

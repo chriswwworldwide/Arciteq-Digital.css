@@ -1,0 +1,1200 @@
+{
+  "mode": "chassis",
+  "slug": "coachedbykim",
+  "coachingIntro": "Online coaching with Kim, a first-HYROX programme, gym-confidence support or training at Après London. Choose the route that matches what you need next.",
+  "coachingOffers": [
+    {
+      "title": "1:1 online coaching",
+      "type": "Personalised coaching · enquiry",
+      "description": "Talk to Kim about your training goals and next HYROX race through her dedicated online-coaching enquiry form.",
+      "url": "https://3dxl5l929b0.typeform.com/to/YrCzbiGc",
+      "action": "Enquire about 1:1 coaching",
+      "sourceURL": "https://3dxl5l929b0.typeform.com/to/YrCzbiGc"
+    },
+    {
+      "title": "First Time Heroes",
+      "type": "12-week HYROX programme",
+      "description": "Kim's programme for building towards a first HYROX. Open the programme-specific form to discuss joining.",
+      "url": "https://3dxl5l929b0.typeform.com/to/vHubNv45",
+      "action": "Explore First Time Heroes",
+      "sourceURL": "https://3dxl5l929b0.typeform.com/to/vHubNv45"
+    },
+    {
+      "title": "Gym Confidence",
+      "type": "Six-week plan",
+      "description": "Structured workouts to help you feel more confident using weights and machines, with education alongside progression.",
+      "url": "https://3dxl5l929b0.typeform.com/to/jyoGk2ng",
+      "action": "Explore Gym Confidence",
+      "sourceURL": "https://3dxl5l929b0.typeform.com/to/jyoGk2ng"
+    },
+    {
+      "title": "Train at Après London",
+      "type": "Studio memberships",
+      "description": "Coached hybrid training with membership options for different weekly schedules. Explore the studio's passes and current terms.",
+      "url": "https://apreslondon.co.uk/memberships/",
+      "action": "View studio memberships",
+      "sourceURL": "https://apreslondon.co.uk/memberships/"
+    }
+  ],
+  "partnerOffers": [
+    {
+      "title": "Après London",
+      "type": "Kim's studio community",
+      "description": "Hybrid classes, studio memberships and a coached introduction to training in Deptford.",
+      "url": "https://apreslondon.co.uk/",
+      "action": "Explore Après London",
+      "sourceURL": "https://apreslondon.co.uk/"
+    },
+    {
+      "title": "14-day studio trial",
+      "type": "Après London trial",
+      "description": "Try the studio before choosing a membership. Check the trial page for current availability and terms.",
+      "url": "https://apreslondon.co.uk/trial/",
+      "action": "View the studio trial",
+      "sourceURL": "https://apreslondon.co.uk/"
+    }
+  ],
+  "offerAudit": {
+    "checkedAt": "2026-11-02",
+    "notes": [
+      "All three Typeform landing screens checked without submitting data.",
+      "Gym Confidence was incorrectly linked to First Time Heroes; corrected to jyoGk2ng.",
+      "No programme price published on the form landing screens; none invented."
+    ]
+  },
+  "heroMode": "full",
+  "strictImages": true,
+  "customCrewAssets": true,
+  "assets": "scripts/reskin/coachedbykim-assets",
+  "currency": "gbp",
+  "raceRegion": "United Kingdom",
+  "htmlTitle": "Kim Mansell | Après London coaching, race tools and studio booking",
+  "metaDescription": "Kim Mansell — HYROX Pro racer, coach and founder of Après London in Deptford. Coaching applications, First Time Heroes, Gym Confidence, studio booking, race tools and verified links.",
+  "booking": {
+    "timeZone": "Europe/London",
+    "watermark": "images/avatar.jpg"
+  },
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "coachPreview": true,
+  "navLabels": {
+    "shop.html": "Links",
+    "podcast.html": "Studio series"
+  },
+  "extraCss": ":root{--hero-focus:52% 58%;}\n.hero--bleed[data-hero-mode=\"full\"] .hero-img{object-position:var(--hero-focus);}\n@media(max-width:800px){.hero--bleed[data-hero-mode=\"full\"] .hero-img{object-position:52% 44%;}}\n#plans{padding-bottom:44px;}\n#athletes-say{padding-top:32px;}\n.tips-photo img{object-position:50% 36%;}\n@media(max-width:600px){.hero--bleed .wrap{align-items:end;padding-bottom:26px;}#plans{padding-bottom:36px;}#athletes-say{padding-top:28px;}}",
+  "tokens": {
+    "HERO_DEK": "From your first HYROX to your next big target. Train with Kim and Après London — strength, running and a community to share the work.",
+    "SLUG": "coachedbykim",
+    "COACH_NAME": "Kim Mansell",
+    "COACH_NAME_LC": "kim mansell",
+    "COACH_FIRST": "Kim",
+    "COACH_LAST": "Mansell",
+    "WORDMARK_HTML": "APRÈS <span class=\"o\">LONDON</span>",
+    "BRAND": "by Kim",
+    "BRAND_SHORT": "Après",
+    "BRAND_SHORT_UPPER": "APRÈS LONDON",
+    "BRAND_SOCIAL": "apres.london",
+    "CLOTHING_SHORT": "verified programme routes",
+    "CITY": "Deptford",
+    "REGION": "London",
+    "REGION_LC": "london",
+    "TAGLINE": "Taking fitness off-piste",
+    "HERO_TITLE_HTML": "Proven on the race floor.<br /><em>Built around your goals.</em>",
+    "APPLY_URL": "https://3dxl5l929b0.typeform.com/to/YrCzbiGc",
+    "PROGRAMMES_URL": "https://3dxl5l929b0.typeform.com/to/vHubNv45",
+    "STORE_URL": "https://apreslondon.co.uk/",
+    "IG_URL": "https://www.instagram.com/coachedby_kim/",
+    "BRAND_IG_URL": "https://www.instagram.com/apres.london/",
+    "YOUTUBE_URL": "https://www.youtube.com/@Apr%C3%A8s.London",
+    "TIKTOK_URL": "https://www.tiktok.com/@coachedby_kim",
+    "THREADS_URL": "https://apreslondon.co.uk/",
+    "LINKTREE_URL": "https://apreslondon.co.uk/",
+    "DOUBLES_PARTNER": "a race partner",
+    "PB_VENUE": "London",
+    "PB_VENUE_LC": "london",
+    "DOUBLES_VENUE": "London",
+    "DOUBLES_VENUE_LC": "london",
+    "OPEN_VENUE": "London",
+    "PB_SOLO": "1:12:20",
+    "PB_DOUBLES": "1:01:55",
+    "PB_HALF": "18",
+    "PB_HALF_LABEL": "HYROX races — her own count, Oct 2025",
+    "PB_OPEN": "1:12:20",
+    "SEASON_START": "18 races",
+    "SEASON_HEADLINE": "Race-floor proof, studio-owner focus.",
+    "PARTNER_GYM": "Après London studio",
+    "PARTNER_GYM_LC": "après london studio",
+    "PARTNER_SUPP": "Après coaching routes",
+    "PARTNER_SUPP_LC": "après coaching routes",
+    "PARTNER_KIT": "Après-ers",
+    "PARTNER_KIT_LC": "après-ers",
+    "PARTNER_KIT_TAG": "Community · Deptford",
+    "PARTNER_KIT_TITLE": "Après-ers",
+    "PARTNER_KIT_COPY": "The studio community around Après London — training partners, race-weekend support and people to share the work with.",
+    "PARTNER_KIT_CTA": "Meet the community",
+    "PARTNER_KIT_URL": "https://apreslondon.co.uk/",
+    "PARTNER_GYM_URL": "https://apreslondon.co.uk/",
+    "PARTNER_SUPP_URL": "https://3dxl5l929b0.typeform.com/to/jyoGk2ng",
+    "GYM_CODE": "No public code",
+    "PHOTO_BUDDY": "Après-ers",
+    "ACCENT": "#e63950",
+    "ACCENT_DARK": "#9f1f34",
+    "ACCENT_SOFT": "#2a0d15",
+    "SOCIAL_HANDLE_UPPER": "APRÈS.LONDON",
+    "VOICE_ATHLETE_QUOTE": "“Don't give up. On doing what you love, people you love, making progress, achieving your goals, being better every day… one day it will all make sense.”",
+    "VOICE_DOUBLES_HOOK": "Nine partners and seven divisions in — Kim knows a good pairing is a skill, not luck.",
+    "VOICE_WEDDING": "and she's learned the hard way what makes a team work.",
+    "VOICE_NEWS_TAKE": "Pick the race your life can support, then build sessions you can actually repeat.",
+    "STORE_NAME": "Après London links",
+    "STORE_TAG": "Verified routes",
+    "STORE_COPY": "Après London's studio site, coaching applications and official channels in one place — no public discount codes.",
+    "STORE_CTA": "Open the studio site",
+    "CURRENCY": "GBP",
+    "BIO_ROLE": "HYROX Pro racer, coach and studio owner",
+    "RACE_RECORD": "18 races across seven divisions and nine partners",
+    "RACE_COUNT": "18",
+    "RACE_COUNT_LABEL": "HYROX races — her own count, Oct 2025",
+    "PROG_ONE": "First Time Heroes",
+    "PROG_ONE_TAG": "12-week programme",
+    "PROG_TWO": "Gym Confidence",
+    "PROG_TWO_TAG": "6-week programme",
+    "OFFER_SUMMARY": "Après London: studio sessions, First Time Heroes, Gym Confidence and 1:1 coaching.",
+    "PLANS_LEAD": "One clear route in Deptford — studio sessions, Heroes, Gym Confidence and 1:1 coaching. Less hunting, more training.",
+    "PROGRAMMES_SUMMARY": "First Time Heroes, Gym Confidence and studio sessions",
+    "STUDIO_NOTE": " For studio sessions and more from Après London, <a href=\"https://apreslondon.co.uk/\" target=\"_blank\" rel=\"noopener\">visit the studio site →</a>",
+    "ATHLETE_FOCUS": "studio-owner focus",
+    "LINK_CARD_TAG": "Studio · official",
+    "LINK_CARD_NAME": "Après London studio",
+    "LINK_CARD_DESC": "Après London's official site — timetable, memberships, coaching routes and the Deptford studio.",
+    "LINK_CARD_CTA": "Open Après London →",
+    "PROG_CARD_DESC": "Gym Confidence — Kim's six-week route for people building the basics before a bigger goal.",
+    "COMMUNITY_DESC": "The Après community — training partners, race-weekend support and people to share the work with.",
+    "PKG_MONTHLY": "Hybrid Coaching · monthly",
+    "SIG": "by Kim"
+  },
+  "tenantGallery": [
+    {
+      "src": "gallery/stock-arena.jpg",
+      "alt": "Athlete walking the arena floor before a race",
+      "caption": "The calm before the storm. Arena doors open, nerves kick in, let's go.",
+      "by": "Race day",
+      "tilt": -1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "gallery/wall-crew-left.jpg",
+      "alt": "Après members cheering at the A wall",
+      "caption": "Saturdays hit different with this lot.",
+      "by": "Member post",
+      "event": "Après",
+      "tilt": 0.9
+    },
+    {
+      "src": "gallery/stock-rower.jpg",
+      "alt": "Athlete on a Concept2 rower mid-race",
+      "caption": "1,000 metres. The monitor doesn't lie and neither do your legs.",
+      "by": "Training",
+      "tilt": 1.2,
+      "event": "Training"
+    },
+    {
+      "src": "gallery/stock-finish.jpg",
+      "alt": "A doubles pair celebrating at the sled pull",
+      "caption": "That finish-line feeling. Shared, it's even better.",
+      "by": "Race day",
+      "tilt": -0.9,
+      "event": "Training"
+    },
+    {
+      "src": "gallery/wall-crew-right.jpg",
+      "alt": "Après members celebrating together at the A wall",
+      "caption": "Medals on, still buzzing.",
+      "by": "Member post",
+      "event": "Après",
+      "tilt": 1.1
+    },
+    {
+      "src": "gallery/stock-burpee.jpg",
+      "alt": "Burpee broad jump at HYROX event",
+      "caption": "Chest down, broad jump, repeat. Eighty metres.",
+      "by": "Race day",
+      "tilt": 0.7,
+      "event": "Race day"
+    },
+    {
+      "src": "/{{SLUG}}/images/studio-anniversary.jpg",
+      "alt": "The Après London crew celebrating one year — medals on, arms out",
+      "caption": "One year in. Day one to twelve months — the floor that fills.",
+      "by": "Après London",
+      "event": "Après",
+      "tilt": -0.7
+    }
+  ],
+  "trainingPlatform": {
+    "name": "Après London coaching routes",
+    "coachURL": "",
+    "clientURL": "",
+    "programmesURL": "https://3dxl5l929b0.typeform.com/to/vHubNv45",
+    "applicationURL": "https://3dxl5l929b0.typeform.com/to/YrCzbiGc",
+    "offerTitle": "First Time Heroes — 12-week programme",
+    "offerDescription": "Kim's structured first-race route, plus Gym Confidence for people building the basics first. Applications go through the verified Typeform routes.",
+    "directCoachLink": false,
+    "note": "Kim's verified public destinations are the three Typeform routes, Après London's site, Instagram, TikTok and the Après London YouTube channel. No client records, provider sign-in or workout sync are connected in this preview."
+  },
+  "news": [
+    {
+      "type": "news",
+      "date": "2026-10-29",
+      "dateLabel": "Checked",
+      "title": "Après London positions itself as a hybrid studio for everyday athletes",
+      "summary": "The studio's official site presents coached, scalable hybrid training in Deptford — built around strength, conditioning, competition prep and community.",
+      "source": "https://apreslondon.co.uk/",
+      "sourceName": "Après London · official site",
+      "take": "This is the clearest version of the offer: progressive training people can actually keep showing up to.",
+      "takeStatus": "draft-for-review",
+      "link": "/coachedbykim/coaching.html",
+      "linkLabel": "Coaching routes →"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-29",
+      "dateLabel": "Checked",
+      "title": "Amazon HYROX London returns to ExCeL on 2–6 December",
+      "summary": "The official event page confirms a five-day London race at ExCeL, including Elite15 and Challenger15 racing on 3–4 December.",
+      "source": "https://hyrox.com/event/hyrox-london-excel/",
+      "sourceName": "HYROX · official London event",
+      "take": "For Après-ers, the useful move is picking the right division and building backwards — not collecting a start line and hoping.",
+      "takeStatus": "draft-for-review",
+      "link": "/coachedbykim/events.html",
+      "linkLabel": "Race calendar →"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-29",
+      "dateLabel": "Checked",
+      "title": "The official HYROX Gym Finder is the safest route for club listings",
+      "summary": "HYROX's training finder is the official directory for gym affiliation and class discovery. Après London's own site remains the source for timetable, memberships and booking.",
+      "source": "https://hyrox-training-finder.hyrox.com/",
+      "sourceName": "HYROX · official Gym Finder",
+      "take": "The official directory handles discovery; Après London's own site handles the timetable, memberships and booking.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-29",
+      "dateLabel": "Checked",
+      "title": "The Après London channel is the verified video home",
+      "summary": "The public YouTube handle resolves to Après London, making it the correct destination for studio videos and race-weekend content.",
+      "source": "https://www.youtube.com/@Apr%C3%A8s.London",
+      "sourceName": "Après London · YouTube",
+      "take": "This is where a form library and studio content can live without scattering links across profiles.",
+      "takeStatus": "draft-for-review",
+      "link": "/coachedbykim/watch.html",
+      "linkLabel": "Watch & Learn →"
+    }
+  ],
+  "seedFiles": {
+    "faq.json": {
+      "note": "Kim Mansell preview answers — concise, non-committal where pricing, diary details or medical clearance need Kim.",
+      "items": [
+        {
+          "q": "How much does coaching cost?",
+          "keywords": [
+            "price",
+            "cost",
+            "membership",
+            "fee",
+            "pay"
+          ],
+          "a": "The verified routes are Kim's Typeform applications and the Après London site. Current prices and membership options stay on those official pages."
+        },
+        {
+          "q": "I've never done HYROX — can I start?",
+          "keywords": [
+            "beginner",
+            "never done",
+            "first time",
+            "new",
+            "start"
+          ],
+          "a": "Yes. First Time Heroes is the 12-week first-race route; Gym Confidence is the 6-week route for building the basics first. Both applications are linked here."
+        },
+        {
+          "q": "What is First Time Heroes?",
+          "keywords": [
+            "first time heroes",
+            "12 week",
+            "programme",
+            "first race"
+          ],
+          "a": "Kim's 12-week route for athletes working towards their first HYROX-style race. Apply through the verified Typeform link on this page."
+        },
+        {
+          "q": "Where is Après London?",
+          "keywords": [
+            "where",
+            "location",
+            "address",
+            "deptford",
+            "studio",
+            "london"
+          ],
+          "a": "Après London is in Deptford, south-east London. The studio's public address is Unit 12 Resolution Way, SE8 4NT."
+        },
+        {
+          "q": "Can I try a studio session?",
+          "keywords": [
+            "trial",
+            "class",
+            "session",
+            "book",
+            "drop in",
+            "studio"
+          ],
+          "a": "Start with Après London's official trial route; the planner shows how session requests can fit around the week."
+        },
+        {
+          "q": "Has Kim actually raced HYROX?",
+          "keywords": [
+            "results",
+            "pb",
+            "hyrox",
+            "races",
+            "pro athlete"
+          ],
+          "a": "Yes. Her race history includes 18 HYROX races across seven divisions and nine partners. Highlights include 1:12:20 solo in London 2023 and 1:01:55 mixed doubles in London 2024."
+        },
+        {
+          "q": "Can you help me find a doubles partner?",
+          "keywords": [
+            "partner",
+            "doubles",
+            "pair",
+            "team",
+            "mate",
+            "relay"
+          ],
+          "a": "Use Find a Race-mate to post your division and pace. Cards are reviewed before they appear publicly; contact details stay private."
+        },
+        {
+          "q": "Is there a discount code?",
+          "keywords": [
+            "discount",
+            "code",
+            "coupon",
+            "promo"
+          ],
+          "a": "No public discount code is listed right now; the links shown are Kim's verified routes."
+        }
+      ]
+    },
+    "testimonials.json": {
+      "note": "No approved client quotes yet — the testimonial section stays hidden until Kim approves distinct quotes.",
+      "items": []
+    },
+    "campaign-offers.json": {
+      "offers": [
+        {
+          "id": "coaching",
+          "name": "1:1 online coaching",
+          "goal": "Coaching applications",
+          "destination": "https://3dxl5l929b0.typeform.com/to/YrCzbiGc",
+          "image": "/coachedbykim/images/coaching-hero.jpg",
+          "headline": "Apply through Kim's verified 1:1 route.",
+          "actionLabel": "Apply for 1:1"
+        },
+        {
+          "id": "programme",
+          "name": "First Time Heroes",
+          "goal": "Programme applications",
+          "destination": "https://3dxl5l929b0.typeform.com/to/vHubNv45",
+          "image": "/coachedbykim/images/stations-hero.jpg",
+          "headline": "A 12-week first-race route.",
+          "actionLabel": "Apply for the programme"
+        },
+        {
+          "id": "studio",
+          "name": "Après London trial",
+          "goal": "Studio sessions",
+          "destination": "https://apreslondon.co.uk/trial/",
+          "image": "/coachedbykim/images/race-pair.jpg",
+          "headline": "Start at the Deptford studio through the official route.",
+          "actionLabel": "Book the official trial"
+        }
+      ]
+    },
+    "results.json": {
+      "updated": "2026-10-29",
+      "note": "Kim's recorded race history; partner names are omitted from public rows.",
+      "divisions": {
+        "women": {
+          "label": "Women Singles (Open & Pro)",
+          "results": [
+            {
+              "athlete": "Kim Mansell",
+              "time": "1:12:20",
+              "category": "Open Women — fastest recorded solo",
+              "event": "HYROX London",
+              "date": "2023",
+              "city": "London"
+            },
+            {
+              "athlete": "Kim Mansell",
+              "time": "1:12:49",
+              "category": "Open Women — recorded result",
+              "event": "HYROX Rotterdam",
+              "date": "2023",
+              "city": "Rotterdam"
+            },
+            {
+              "athlete": "Kim Mansell",
+              "time": "1:12:51",
+              "category": "Open Women — recorded result",
+              "event": "HYROX Malmö",
+              "date": "2023",
+              "city": "Malmö"
+            },
+            {
+              "athlete": "Kim Mansell",
+              "time": "1:24:39",
+              "category": "Pro Women — recorded result",
+              "event": "HYROX London",
+              "date": "2023",
+              "city": "London"
+            },
+            {
+              "athlete": "Kim Mansell",
+              "time": "1:24:07",
+              "category": "Pro Women — recorded result",
+              "event": "HYROX Nice",
+              "date": "2024",
+              "city": "Nice"
+            }
+          ]
+        },
+        "men": {
+          "label": "Men Singles (Open & Pro)",
+          "results": []
+        },
+        "doubles-women": {
+          "label": "Women Doubles",
+          "results": [
+            {
+              "athlete": "Kim + doubles partner",
+              "time": "1:23:35",
+              "category": "Women Doubles — recorded result",
+              "event": "HYROX London",
+              "date": "2022",
+              "city": "London"
+            },
+            {
+              "athlete": "Kim + doubles partner",
+              "time": "1:10:42",
+              "category": "Pro Women Doubles — recorded result",
+              "event": "HYROX Manchester",
+              "date": "2025",
+              "city": "Manchester"
+            }
+          ]
+        },
+        "doubles-men": {
+          "label": "Men Doubles",
+          "results": []
+        },
+        "doubles-mixed": {
+          "label": "Mixed Doubles",
+          "results": [
+            {
+              "athlete": "Kim + doubles partner",
+              "time": "1:04:19",
+              "category": "Mixed Doubles — recorded result",
+              "event": "HYROX Barcelona",
+              "date": "2023",
+              "city": "Barcelona"
+            },
+            {
+              "athlete": "Kim + doubles partner",
+              "time": "1:01:55",
+              "category": "Mixed Doubles — fastest recorded doubles",
+              "event": "HYROX London",
+              "date": "2024",
+              "city": "London"
+            }
+          ]
+        },
+        "relay": {
+          "label": "Team Relay",
+          "results": [
+            {
+              "athlete": "Kim + relay team",
+              "time": "1:04:48",
+              "category": "Mixed Relay — recorded result",
+              "event": "HYROX Birmingham",
+              "date": "2023",
+              "city": "Birmingham"
+            },
+            {
+              "athlete": "Kim + relay team",
+              "time": "1:02:51",
+              "category": "Women Relay — recorded result",
+              "event": "HYROX Manchester",
+              "date": "2025",
+              "city": "Manchester"
+            }
+          ]
+        }
+      }
+    },
+    "athletes.json": {
+      "note": "Kim's recorded race history; no third-party partner names are published.",
+      "athletes": {
+        "Kim Mansell": {
+          "tag": "HYROX Pro racer, coach and Après London founder.",
+          "races": [
+            {
+              "event": "HYROX London",
+              "date": "2023",
+              "division": "Open Women",
+              "time": "1:12:20",
+              "note": "Fastest recorded solo time"
+            },
+            {
+              "event": "HYROX London",
+              "date": "2024",
+              "division": "Mixed Doubles",
+              "time": "1:01:55",
+              "note": "Fastest recorded doubles time"
+            },
+            {
+              "event": "Recorded race history",
+              "date": "22 Oct 2025 caption",
+              "division": "All formats",
+              "time": "18 races",
+              "note": "Seven divisions and nine partners — her own count"
+            }
+          ]
+        }
+      }
+    },
+    "roundups.json": {
+      "note": "Race-weekend stories built from Kim's recorded race history.",
+      "items": [
+        {
+          "date": "2024",
+          "race": "HYROX London",
+          "weekend": "Mixed doubles",
+          "highlights": [
+            "1:01:55 race result",
+            "Her fastest recorded doubles time"
+          ],
+          "take": "A shared race works when the pair can split the work honestly — nine partners teaches you that fast.",
+          "source": "https://www.instagram.com/coachedby_kim/",
+          "sourceName": "Kim Mansell on Instagram"
+        },
+        {
+          "date": "2023",
+          "race": "HYROX Barcelona",
+          "weekend": "Mixed doubles",
+          "highlights": [
+            "1:04:19 race result",
+            "Race photography from Barcelona"
+          ],
+          "take": "Barcelona is proof the studio-owner version of Kim still has race-floor receipts behind it.",
+          "source": "https://www.instagram.com/coachedby_kim/",
+          "sourceName": "Kim Mansell on Instagram"
+        }
+      ]
+    },
+    "partners.json": {
+      "note": "Verified public routes for Kim and Après London — not affiliate offers and no public discount codes.",
+      "items": [
+        {
+          "id": "apres-studio",
+          "name": "Après London",
+          "url": "https://apreslondon.co.uk/",
+          "tagline": "Studio, timetable and memberships",
+          "slot": "partner",
+          "from": "2026-10-29",
+          "until": "2026-12-31"
+        },
+        {
+          "id": "first-time-heroes",
+          "name": "First Time Heroes",
+          "url": "https://3dxl5l929b0.typeform.com/to/vHubNv45",
+          "tagline": "12-week programme application",
+          "slot": "partner",
+          "from": "2026-10-29",
+          "until": "2026-12-31"
+        },
+        {
+          "id": "apres-youtube",
+          "name": "Après London on YouTube",
+          "url": "https://www.youtube.com/@Apr%C3%A8s.London",
+          "tagline": "Verified studio channel",
+          "slot": "results",
+          "from": "2026-10-29",
+          "until": "2026-12-31"
+        }
+      ]
+    },
+    "links.json": {
+      "note": "No external athlete-login destination is verified for this preview; the link stays hidden.",
+      "athleteLogin": ""
+    },
+    "videos.json": {
+      "note": "The Après London channel is verified; format cards show where Kim's own clips can sit.",
+      "items": [
+        {
+          "id": "apres-youtube",
+          "title": "Après London on YouTube",
+          "description": "The studio's verified video channel — the right public home for class, race and behind-the-scenes content.",
+          "category": "Studio",
+          "url": "https://www.youtube.com/@Apr%C3%A8s.London",
+          "thumbnail": "/coachedbykim/images/coaching-hero.jpg",
+          "status": "published",
+          "sample": false,
+          "linkLabel": "Open Après London"
+        },
+        {
+          "id": "technique-library",
+          "title": "Technique library",
+          "description": "Station cues and form checks — the training shelf is ready for Kim's clips.",
+          "category": "Training",
+          "url": "https://www.youtube.com/@Apr%C3%A8s.London",
+          "thumbnail": "/coachedbykim/images/stations-hero.jpg",
+          "status": "published",
+          "sample": true,
+          "linkLabel": "Open the channel"
+        },
+        {
+          "id": "race-weekend-stories",
+          "title": "Race-weekend stories",
+          "description": "Race stories and weekend debriefs — the shelf is ready for Kim's own videos.",
+          "category": "Race stories",
+          "url": "https://www.youtube.com/@Apr%C3%A8s.London",
+          "thumbnail": "/coachedbykim/images/run-hero.jpg",
+          "status": "published",
+          "sample": true,
+          "linkLabel": "Open the channel"
+        }
+      ]
+    },
+    "events.json": {
+      "note": "Next confirmed race for the countdown on /coachedbykim/events/; official link checked 29 Oct 2026.",
+      "next": {
+        "name": "Amazon HYROX London",
+        "date": "2026-12-02",
+        "url": "https://hyrox.com/event/hyrox-london-excel/"
+      }
+    },
+    "station9.json": {
+      "note": "PRIVATE PITCH PREVIEW — no invented Après meetup is published.",
+      "next": null,
+      "away": []
+    }
+  },
+  "stripSections": [
+    "merch"
+  ],
+  "stripBlocks": [],
+  "copyOverrides": [
+    {
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach & creator \\| {{BRAND_SHORT_UPPER}}",
+      "replace": "{{COACH_NAME}} — HYROX racer, coach & Après London founder | {{BRAND_SHORT_UPPER}}",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"{{COACH_NAME}}'s home on the web: {{BRAND}} 1:1 coaching and group programmes, free race tools, the race-mate finder, vlogs and partner codes — all in one place\\.\"",
+      "replace": "content=\"Kim Mansell's home on the web: Après London coaching routes, free race tools, studio booking, race-mate finder and verified links — all in one place.\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"{{COACH_NAME_LC}}, {{BRAND_SHORT}}, {{BRAND}}, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, {{REGION_LC}}shire hyrox\"",
+      "replace": "content=\"kim mansell, coachedby_kim, apres london, hyrox coach, hyrox pro athlete, deptford gym, london hyrox, race predictor, first time heroes, gym confidence\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "\"keywords\": \"{{COACH_NAME_LC}}, {{BRAND_SHORT}}, {{BRAND}}, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, {{REGION_LC}}shire hyrox\"",
+      "replace": "\"keywords\": \"kim mansell, coachedby_kim, apres london, hyrox coach, hyrox pro athlete, deptford gym, london hyrox, race predictor, first time heroes, gym confidence\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "content=\"GB-WOR\"",
+      "replace": "content=\"GB-LND\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "\"description\": \"{{COACH_NAME}} — HYROX Pro athlete, coach and creator\\. {{BRAND}} 1:1 coaching and programmes, race tools and race-mate finder\\.\"",
+      "replace": "\"description\": \"Kim Mansell — HYROX Pro racer, coach and Après London founder. Coaching routes, race tools and race-mate finder.\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "\"jobTitle\": \"HYROX Pro athlete, coach & creator\"",
+      "replace": "\"jobTitle\": \"HYROX Pro racer, coach & studio founder\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "\"sameAs\": \\[\"{{IG_URL}}\", \"{{YOUTUBE_URL}}\", \"{{TIKTOK_URL}}\", \"{{THREADS_URL}}\"\\]",
+      "replace": "\"sameAs\": [\"{{IG_URL}}\", \"{{BRAND_IG_URL}}\", \"{{YOUTUBE_URL}}\", \"{{TIKTOK_URL}}\"]",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{COACH_NAME}} — HYROX Pro athlete, coach, and the face behind {{BRAND}}\\. Went from {{SEASON_START}} to a {{PB_SOLO}} pro solo in one season\\. {{TAGLINE}}; the rest is reps\\.",
+      "replace": "Kim Mansell knows the HYROX start line from the sharp end — 18 races, seven divisions and nine partners. Now she's turning that race-floor grit into coaching, confidence and community for the Après&#8209;ers in Deptford.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<strong>{{PB_SOLO}}</strong><span>HYROX Pro Solo PB — {{PB_VENUE}}</span>",
+      "replace": "<strong>1:12:20</strong><span>Fastest solo — London 2023</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<strong>{{PB_DOUBLES}}</strong><span>Pro Doubles — {{DOUBLES_VENUE}}, with {{DOUBLES_PARTNER}}</span>",
+      "replace": "<strong>1:01:55</strong><span>Fastest doubles — London 2024</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{CITY}}, {{REGION}}\\. HYROX Pro athlete, coach and creator —[\\s\\S]*?the honest debriefs all go on the channel\\.",
+      "replace": "Deptford, London. HYROX Pro racer turned studio owner — 18 races, seven divisions and nine partners behind the coaching. Après London is where that race-floor experience becomes training people can actually repeat.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<ul>\\s*<li>\\s*HYROX Pro Solo {{PB_SOLO}} — {{PB_VENUE}}\\.[\\s\\S]*?</ul>",
+      "replace": "<ul><li>18 HYROX races across seven divisions and nine partners.</li><li>Fastest solo: 1:12:20 — London 2023.</li><li>Fastest doubles: 1:01:55 — London 2024.</li><li>Après London: studio training, online coaching routes, First Time Heroes and Gym Confidence.</li></ul>",
+      "flags": "g"
+    },
+    {
+      "pattern": "What {{COACH_FIRST}} sells: 1:1 coaching, structured programmes and[\\s\\S]*?no new inbox to check\\.",
+      "replace": "One clear route for First Time Heroes, Gym Confidence, 1:1 applications and Après studio sessions — less hunting, more training.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<span class=\"tag\">Application only</span>",
+      "replace": "<span class=\"tag\">1:1 · application</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<div class=\"price\">{{BRAND}}</div>\\s*<div class=\"per\">Spots limited — {{COACH_FIRST}} reviews every application</div>\\s*<ul>[\\s\\S]*?</ul>",
+      "replace": "<div class=\"price\">Online coaching</div><div class=\"per\">Verified Typeform application</div><ul><li>Goals, training history and schedule captured up front</li><li>Personal coaching route for athletes who need individual support</li><li>Race-specific work where it fits the application</li><li>Clear next step without hunting through a link-in-bio</li></ul>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<div class=\"plan reveal\">\\s*<span class=\"tag\">Structured</span>\\s*<h4>Group Programmes</h4>[\\s\\S]*?</div>\\s*<div class=\"plan reveal\" data-strip=\"store-card\">",
+      "replace": "<div class=\"plan reveal\"><span class=\"tag\">12-week programme</span><h4>First Time Heroes</h4><div class=\"price\">First race route</div><div class=\"per\">For athletes building towards a first HYROX-style start line</div><ul><li>Structured programme route through Kim's verified Typeform</li><li>Built for first-timers rather than generic circuits</li><li>Running, strength and station skill together</li><li>A supporting route for people not ready for 1:1</li></ul><a class=\"btn btn-ghost\" href=\"https://3dxl5l929b0.typeform.com/to/vHubNv45\" target=\"_blank\" rel=\"noopener\">Apply for First Time Heroes</a></div><div class=\"plan reveal\" data-strip=\"store-card\">",
+      "flags": "g"
+    },
+    {
+      "pattern": "Every route is {{COACH_FIRST}}'s official one — applications, programmes and the store\\. One tap out, nothing in between\\.",
+      "replace": "Every route is verified — Kim's three Typeform applications, the Après London site, Instagram, TikTok and the Après London YouTube channel. No invented discount codes.",
+      "flags": "g"
+    },
+    {
+      "pattern": "training through pregnancy",
+      "replace": "training around real life",
+      "flags": "g"
+    },
+    {
+      "pattern": "Three things per station that {{COACH_FIRST}} actually does on race day — including the embarrassing ones\\.",
+      "replace": "Three practical checks per station — race-floor lessons from a coach who has raced across divisions, partners and cities.",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} on the start line — flat expression, miles to go\"",
+      "replace": "alt=\"Kim Mansell in race paint beside a HYROX wall\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "src=\"/{{SLUG}}/images/skierg-laugh\\.jpg\"\\s+alt=\"{{COACH_FIRST}} on the SkiErg at a Hyrox race\"\\s+width=\"932\"\\s+height=\"1024\"",
+      "replace": "src=\"/{{SLUG}}/images/taper-hero.jpg\"\n            alt=\"Kim Mansell taking a lighter training moment by the gym bar\"\n            width=\"1024\"\n            height=\"768\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "Photo slot — swap for a race-week or kit-laid-out shot\\.",
+      "replace": "Race week, kept quiet on purpose.",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} driving the sled in a HYROX Pro Doubles race in {{DOUBLES_VENUE}}\"",
+      "replace": "alt=\"Kim Mansell and a race partner reaching for the finish line in Barcelona\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} mid burpee broad jump — arms up, eyes on the line\"",
+      "replace": "alt=\"Kim Mansell coaching wall balls in a class setting\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} — HYROX Pro athlete and coach\"",
+      "replace": "alt=\"Kim Mansell — HYROX racer, coach and Après London founder\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_NAME}} — coaching\"",
+      "replace": "alt=\"Kim Mansell coaching an outdoor group training session\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "@coachedbykimfit",
+      "replace": "@coachedby_kim",
+      "flags": "g"
+    },
+    {
+      "pattern": "@coachedbykim",
+      "replace": "@coachedby_kim",
+      "flags": "g"
+    },
+    {
+      "pattern": "The {{BRAND}}",
+      "replace": "Après London coaching",
+      "flags": "g"
+    },
+    {
+      "pattern": "The coaching arm\\.",
+      "replace": "Coaching, without the hunt.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Stories, ideas and the collection\\.",
+      "replace": "Stories, tools and official routes.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Read a race story, pick up a technique cue or explore the collection\\.",
+      "replace": "Read a race story, watch the verified studio channel or open Kim's verified links.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Podcast →",
+      "replace": "Studio series →",
+      "flags": "g"
+    },
+    {
+      "pattern": "<h4>Shop</h4><p>Explore the collection and head straight to the store\\.</p><a class=\"btn btn-ghost\" href=\"/{{SLUG}}/shop\\.html\">Visit the shop</a>",
+      "replace": "<h4>Verified links</h4><p>Open the studio site, coaching routes and official channels.</p><a class=\"btn btn-ghost\" href=\"/{{SLUG}}/shop.html\">Open the links</a>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Every result here is a {{COACH_FIRST}} athlete who said yes to being on the\\s*wall\\. Before and after, race by race\\.",
+      "replace": "Every result here is athlete-approved. Before and after, race by race.",
+      "flags": "g"
+    },
+    {
+      "pattern": "By {{COACH_FIRST}} — HYROX racer, coach and host of the crew table\\.",
+      "replace": "By Kim — HYROX Pro racer, Après London founder and host of the crew table.",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} on the HYROX floor after the {{PB_VENUE}} PB\"",
+      "replace": "alt=\"Kim Mansell and a race partner celebrating after HYROX Barcelona\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "alt=\"{{COACH_FIRST}} racing a half-marathon — {{PB_HALF}} on the day\"",
+      "replace": "alt=\"Kim Mansell with a HYROX race crew — 18 races across formats\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "Visit the video channel",
+      "replace": "Open Après London on YouTube",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore the podcast",
+      "replace": "Explore the studio series",
+      "flags": "g"
+    },
+    {
+      "pattern": "Podcast \\| {{BRAND}}",
+      "replace": "Studio series | {{BRAND}}",
+      "flags": "g"
+    },
+    {
+      "pattern": "Catch a short interview clip, follow the full conversation and hear the stories around the sport\\. Teasers and full-episode links stay together\\.",
+      "replace": "Après London's verified YouTube home can hold class clips, race stories and longer studio conversations — the right place for the Après-ers to watch the work unfold.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Sample clip cards demonstrate the format, not episodes claimed to have been recorded by the coach\\.",
+      "replace": "The Après London channel is verified; the cards below show how Kim's own videos can sit inside the site.",
+      "flags": "g"
+    },
+    {
+      "pattern": "The brands {{COACH_FIRST}} actually trains in — codes, links and what they do\\.\\s*No buried Linktree rows; everything labelled honestly\\.",
+      "replace": "Kim's verified routes — the studio, coaching applications, official social channels and the Après-ers community. No public discount codes are listed.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<h2>Codes and kit, in one place\\.</h2>",
+      "replace": "<h2>Verified routes, in one place.</h2>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<span class=\"pc-tag\">Affiliate · kit</span>",
+      "replace": "<span class=\"pc-tag\">Studio · official</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "The training kit — tees, hoodies, the day-to-day rotation from\\s*the feed\\.",
+      "replace": "Après London's official site — timetable, memberships, coaching routes and the Deptford studio.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<span class=\"code\">{{GYM_CODE}}</span>",
+      "replace": "<span class=\"code\">Verified link</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<span class=\"pc-tag\">Affiliate · nutrition</span>",
+      "replace": "<span class=\"pc-tag\">Programme · 6 weeks</span>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Protein, pre-workout, recovery — the fuel side of a heavy block\\.",
+      "replace": "Gym Confidence — Kim's six-week route for people building the basics before a bigger goal.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Shop {{PARTNER_GYM}} →",
+      "replace": "Open Après London →",
+      "flags": "g"
+    },
+    {
+      "pattern": "Shop {{PARTNER_SUPP}} →",
+      "replace": "Apply for Gym Confidence →",
+      "flags": "g"
+    },
+    {
+      "pattern": "Some links are affiliate links — {{COACH_FIRST}} earns a small commission at no[\\s\\S]*?the brand has rotated it\\.",
+      "replace": "These are Kim's verified routes. No public discount code is listed right now.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Shop \\| {{BRAND}}",
+      "replace": "Links | {{BRAND}}",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore the collection and training offers from {{BRAND}}\\.",
+      "replace": "Open Kim Mansell's verified Après London, coaching and social routes.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore <em>the collection\\.</em>",
+      "replace": "Open <em>Kim's links.</em>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Browse the latest collection, find your next training programme and head straight to the store for the full range\\.",
+      "replace": "Open the Après London site, coaching applications and official channels from one verified page.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Visit the store",
+      "replace": "Open Après London",
+      "flags": "g"
+    },
+    {
+      "pattern": "Sample collection cards demonstrate the shop format; replace them with the coach's real products before publication\\.",
+      "replace": "One clean page for the studio, coaching applications and official channels — no hunting through a link-in-bio.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Sample collection",
+      "replace": "Verified routes",
+      "flags": "g"
+    },
+    {
+      "pattern": "Apparel &amp; accessories",
+      "replace": "Après London official site",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore the current collection and check the full range in the store\\.",
+      "replace": "Open the studio site for timetable, memberships, location and the official trial route.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Browse the store",
+      "replace": "Open the studio site",
+      "flags": "g"
+    },
+    {
+      "pattern": "src=\"/{{SLUG}}/images/coaching-hero\\.jpg\" alt=\"Collection photography\" width=\"1000\" height=\"1000\"",
+      "replace": "src=\"/{{SLUG}}/images/links-hero.jpg\" alt=\"Kim Mansell presenting Après London at a business event\" width=\"819\" height=\"1024\"",
+      "flags": "g"
+    },
+    {
+      "pattern": "href=\"/{{SLUG}}/shop\\.html\">Shop",
+      "replace": "href=\"/{{SLUG}}/shop.html\">Links",
+      "flags": "g"
+    },
+    {
+      "pattern": "href=\"/{{SLUG}}/podcast\\.html\">Guides",
+      "replace": "href=\"/{{SLUG}}/podcast.html\">Studio series",
+      "flags": "g"
+    },
+    {
+      "pattern": "href=\"#plans\">Subscriptions",
+      "replace": "href=\"#plans\">Coaching",
+      "flags": "g"
+    },
+    {
+      "pattern": "London halls get warm\\.",
+      "replace": "HYROX halls get warm.",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{BRAND}} — useful extras, not noise\\.",
+      "replace": "Après London — useful routes, not noise.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Kit drops, partner offers and useful links when {{COACH_FIRST}}\\s*has them — the list hears first\\.",
+      "replace": "Programme updates, studio news and useful links when Kim has them — the list hears first.",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{BRAND}} 1:1, group programmes &amp; {{CLOTHING_SHORT}}",
+      "replace": "Après London coaching, First Time Heroes &amp; Gym Confidence",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{BRAND}} 1:1 coaching by application, structured programmes and {{CLOTHING_SHORT}}\\. Applications go through the existing forms\\.",
+      "replace": "Kim Mansell's coaching routes: 1:1 online coaching, First Time Heroes and Gym Confidence through the verified Typeform applications.",
+      "flags": "g"
+    },
+    {
+      "pattern": "<div class=\"price\">Spots limited</div>\\s*<div class=\"per\">Tell {{COACH_FIRST}} where you are starting and where you want to go</div>",
+      "replace": "<div class=\"price\">Online coaching</div><div class=\"per\">Kim's verified Typeform application</div>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Programme built around your life and race calendar",
+      "replace": "Application built around your goals, schedule and race plans",
+      "flags": "g"
+    },
+    {
+      "pattern": "Weekly check-ins and video form review",
+      "replace": "Personal coaching support through the verified route",
+      "flags": "g"
+    },
+    {
+      "pattern": "Pacing, stations, race plan — built to a number",
+      "replace": "Race pacing, stations and targets where they fit the application",
+      "flags": "g"
+    },
+    {
+      "pattern": "Direct line to {{COACH_FIRST}} between sessions",
+      "replace": "A clear next step without hunting through a link-in-bio",
+      "flags": "g"
+    },
+    {
+      "pattern": "<span class=\"tag\" data-training-provider>Training platform</span>\\s*<h4 data-training-offer-title>Training programmes</h4>",
+      "replace": "<span class=\"tag\" data-training-provider>First Time Heroes</span><h4 data-training-offer-title>12-week programme</h4>",
+      "flags": "g"
+    },
+    {
+      "pattern": "<div class=\"per\" data-training-offer-copy>Structured blocks towards your next goal</div>\\s*<ul>[\\s\\S]*?</ul>",
+      "replace": "<div class=\"per\" data-training-offer-copy>Structured first-race training through Kim's verified route</div><ul><li>Application captures goals, schedule and starting point</li><li>HYROX-specific work, not generic circuits</li><li>Build running, strength and station skill together</li><li>Gym Confidence remains the six-week supporting route</li></ul>",
+      "flags": "g"
+    },
+    {
+      "pattern": "Open the training platform used by your coach",
+      "replace": "Open Kim's verified coaching application route",
+      "flags": "g"
+    },
+    {
+      "pattern": "Use your existing account details",
+      "replace": "Use the verified Typeform or Après London route",
+      "flags": "g"
+    },
+    {
+      "pattern": "Follow the sessions in your programme",
+      "replace": "The verified application route keeps the next step clear",
+      "flags": "g"
+    },
+    {
+      "pattern": "Open my training",
+      "replace": "View coaching routes",
+      "flags": "g"
+    },
+    {
+      "pattern": "Explore a programme, apply for coaching or return to your existing\\s*training — choose the next step that fits where you are now\\.",
+      "replace": "Apply for 1:1, choose First Time Heroes or start with Gym Confidence — each card uses Kim's verified destination.",
+      "flags": "g"
+    },
+    {
+      "pattern": "Your email and private contact route go only to {{COACH_FIRST}}",
+      "replace": "Your email and private contact route go only to Kim",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{PARTNER_GYM}} code payout",
+      "replace": "Studio membership card batch",
+      "flags": "g"
+    },
+    {
+      "pattern": "{{PARTNER_SUPP}} code payout",
+      "replace": "Programme application income",
+      "flags": "g"
+    },
+    {
+      "pattern": "March drop — first weekend",
+      "replace": "Studio programme intake",
+      "flags": "g"
+    },
+    {
+      "pattern": "Clothing \\({{CLOTHING_SHORT}}\\)",
+      "replace": "Programme offers",
+      "flags": "g"
+    },
+    {
+      "pattern": "Programme cohort — spring block",
+      "replace": "First Time Heroes cohort",
+      "flags": "g"
+    },
+    {
+      "pattern": "Now they're turning that race-floor grit into coaching, confidence and community for the {{BRAND}} community in {{REGION}}.",
+      "replace": "Now she's put it on a floor of her own — Après London in Deptford: real sessions, real coaching, a crew that shows up."
+    },
+    {
+      "pattern": "<p class=\"eyebrow reveal\">{{BRAND}} coaching</p>",
+      "replace": "<p class=\"eyebrow reveal\">Training at {{BRAND}}</p>"
+    },
+    {
+      "pattern": "(<img\\s+class=\"crew-photo\"\\s+src=\"[^\"]*)doubles\\.jpg",
+      "replace": "$1studio-first-day.jpg"
+    },
+    {
+      "pattern": "(class=\"crew-photo\"[^>]*?alt=\")[^\"]*\"",
+      "replace": "$1Kim with the first crew inside Après London on opening day\""
+    }
+  ],
+  "colors": {
+    "pink": "#e63950",
+    "pink600": "#9f1f34",
+    "pink100": "#ffe1e7",
+    "zoneAccent": "#258176"
+  },
+  "omitImageSlots": [
+    "images/bike.jpg",
+    "images/carry.jpg",
+    "images/detail.jpg",
+    "images/doubles.jpg",
+    "images/hoodie.jpg",
+    "images/kerb.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/race-revel.jpg",
+    "images/rooftop.jpg",
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/sprint.jpg",
+    "images/station-lean.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg"
+  ],
+  "brandingNote": "Wordmark APRÈS LONDON from @apres.london — the gym is the brand, she is the owner. SIG supplies the person."
+}

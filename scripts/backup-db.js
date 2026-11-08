@@ -12,6 +12,8 @@ import { createGzip } from "node:zlib";
 import { pipeline } from "node:stream/promises";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
+import os from "node:os";
+import { databaseOptions } from "../src/database-config.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -39,24 +41,53 @@ const stamp = new Date().toISOString().slice(0, 10);
 const file = path.join(dir, `roxjaya-${stamp}.sql.gz`);
 const tmp = `${file}.partial`;
 
-const child = spawn(pgDump, ["--no-owner", "--no-privileges", databaseUrl], {
+const options = databaseOptions(databaseUrl);
+const connection = new URL(options.connectionString);
+const password = connection.password
+  ? decodeURIComponent(connection.password)
+  : process.env.PGPASSWORD || "";
+connection.password = "";
+let caDir;
+let caFile = process.env.PGSSLROOTCERT;
+if (options.ssl?.ca) {
+  caDir = fs.mkdtempSync(path.join(os.tmpdir(), "roxjaya-backup-ca-"));
+  caFile = path.join(caDir, "root.crt");
+  fs.writeFileSync(caFile, options.ssl.ca, { mode: 0o600 });
+}
+const child = spawn(pgDump, ["--no-owner", "--no-privileges"], {
   stdio: ["ignore", "pipe", "inherit"],
+  env: {
+    PATH: process.env.PATH,
+    HOME: process.env.HOME,
+    PGDATABASE: connection.toString(),
+    PGPASSWORD: password,
+    PGSSLMODE: options.ssl ? "verify-full" : "disable",
+    ...(caFile ? { PGSSLROOTCERT: caFile } : {}),
+  },
 });
 const exited = new Promise((resolve, reject) => {
   child.on("error", reject);
   child.on("close", (code) =>
-    code === 0 ? resolve() : reject(new Error(`pg_dump exited with code ${code}`)),
+    code === 0
+      ? resolve()
+      : reject(new Error(`pg_dump exited with code ${code}`)),
   );
 });
 
 try {
   await Promise.all([
-    pipeline(child.stdout, createGzip(), fs.createWriteStream(tmp, { mode: 0o600 })),
+    pipeline(
+      child.stdout,
+      createGzip(),
+      fs.createWriteStream(tmp, { mode: 0o600 }),
+    ),
     exited,
   ]);
   fs.renameSync(tmp, file);
   const size = fs.statSync(file).size;
-  console.log(`Backup written: ${path.relative(root, file)} (${Math.round(size / 1024)} KB)`);
+  console.log(
+    `Backup written: ${path.relative(root, file)} (${Math.round(size / 1024)} KB)`,
+  );
 
   const cutoff = Date.now() - KEEP_DAYS * 864e5;
   for (const name of fs.readdirSync(dir)) {
@@ -71,7 +102,11 @@ try {
   fs.rmSync(tmp, { force: true });
   console.error(`Backup failed: ${err.message}`);
   if (err.code === "ENOENT") {
-    console.error("pg_dump not found — install PostgreSQL client tools or set PG_DUMP_PATH.");
+    console.error(
+      "pg_dump not found — install PostgreSQL client tools or set PG_DUMP_PATH.",
+    );
   }
-  process.exit(1);
+  process.exitCode = 1;
+} finally {
+  if (caDir) fs.rmSync(caDir, { recursive: true, force: true });
 }

@@ -8,6 +8,7 @@
 // desks keep working unchanged.
 
 import crypto from "node:crypto";
+import { createRateLimiter } from "../src/submissions.js";
 
 export function hashDeskKey(key) {
   return crypto.createHash("sha256").update(String(key)).digest("hex");
@@ -30,11 +31,19 @@ export function createDeskAuth({
   loadTenants,
   resolveTenantFromPage,
 }) {
+  const attempts = createRateLimiter({ max: 120, windowMs: 60000 });
   const findTenant = (id) =>
     loadTenants().find((t) => String(t?.tenant_id || "") === String(id || ""));
 
-  // Resolves to { tenant, role } or sends 401/400 and resolves to null.
+  // Resolves to { tenant, role } or sends 401/400/429 and resolves to null.
   return async function requireDeskAccess(req, res) {
+    if (!attempts.check(req.ip || "unknown").ok) {
+      res
+        .set("Retry-After", "60")
+        .status(429)
+        .json({ error: "Too many access attempts" });
+      return null;
+    }
     const provided = String(
       req.headers["x-admin-key"] || req.headers["x-desk-key"] || "",
     ).trim();
@@ -45,7 +54,9 @@ export function createDeskAuth({
 
     if (adminApiKey && safeEqual(provided, adminApiKey)) {
       const explicit = String(req.query?.tenant || "").trim();
-      const tenant = explicit ? findTenant(explicit) : resolveTenantFromPage(req);
+      const tenant = explicit
+        ? findTenant(explicit)
+        : resolveTenantFromPage(req);
       if (!tenant) {
         res.status(400).json({ error: "Unknown tenant" });
         return null;

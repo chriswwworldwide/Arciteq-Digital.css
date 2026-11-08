@@ -1,6 +1,62 @@
 {
   "mode": "chassis",
   "slug": "elationfitness",
+  "coachingIntro": "Train with the Elation community in Glasgow. Choose small-group personal training with unlimited classes, or a class membership built around strength and HYROX-style conditioning.",
+  "coachingOffers": [
+    {
+      "title": "Small Group PT + Unlimited Classes",
+      "type": "Elation membership",
+      "price": "£100/month",
+      "description": "Small-group personal training alongside unlimited classes, with programming, progression and race preparation.",
+      "url": "https://elationfitnesstraining.co.uk/join",
+      "action": "Enquire about PT membership",
+      "sourceURL": "https://elationfitnesstraining.co.uk/"
+    },
+    {
+      "title": "Unlimited Classes",
+      "type": "Elation membership",
+      "price": "£75/month",
+      "description": "Unlimited functional fitness classes, HYROX-style conditioning and strength work with the coaching team.",
+      "url": "https://elationfitnesstraining.co.uk/classes",
+      "action": "Explore class membership",
+      "sourceURL": "https://elationfitnesstraining.co.uk/"
+    }
+  ],
+  "partnerOffers": [
+    {
+      "title": "Built for Athletes",
+      "type": "Partner tracking link",
+      "description": "Training backpacks and bags for the kit you take everywhere. Use ELATION for the current partner offer and check the store's terms.",
+      "code": "ELATION",
+      "affiliate": true,
+      "url": "https://builtforathletes.com/ELATION",
+      "action": "Shop Built for Athletes",
+      "sourceURL": "https://builtforathletes.com/ELATION"
+    },
+    {
+      "title": "Elation memberships",
+      "type": "Official gym destination",
+      "description": "Compare the gym's small-group PT and unlimited-class memberships before joining.",
+      "url": "https://elationfitnesstraining.co.uk/classes",
+      "action": "View Elation memberships",
+      "sourceURL": "https://elationfitnesstraining.co.uk/"
+    },
+    {
+      "title": "Myprotein",
+      "type": "Brand link",
+      "description": "Sports nutrition through the official UK store. Check current products and terms at Myprotein.",
+      "url": "https://www.myprotein.com/",
+      "action": "Visit Myprotein",
+      "sourceURL": "https://www.instagram.com/grahamhalliday_/"
+    }
+  ],
+  "offerAudit": {
+    "checkedAt": "2026-11-02",
+    "notes": [
+      "Replaced unsupported three-plan layout with the two priced memberships on Elation's live site.",
+      "BFA ELATION redirect chain verified; no percentage invented or purchase attempted."
+    ]
+  },
   "heroMode": "full",
   "strictImages": true,
   "allowDuplicateSlots": [
@@ -21,13 +77,6 @@
       "tilt": -0.5
     },
     {
-      "src": "/elationfitness/images/gallery/stock-barbell.jpg",
-      "alt": "Deadlift on gym floor",
-      "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
-      "event": "Training",
-      "tilt": 1.0
-    },
-    {
       "src": "gallery/race-pack.jpg",
       "alt": "Graham leading the pack at HYROX",
       "caption": "Leading from the front — HYROX arena",
@@ -35,21 +84,78 @@
       "tilt": -1.2
     },
     {
+      "src": "gallery/el-graham-eft-wall.jpg",
+      "alt": "Graham under the lit Eft sign on the gym wall",
+      "caption": "Home turf — the Eft wall, Balmore Road.",
+      "event": "Training",
+      "tilt": 1
+    },
+    {
+      "src": "gallery/el-podium-flags.jpg",
+      "alt": "Graham and Simone with their HYROX London podium flags under the Eft sign",
+      "caption": "HYROX London 54:21, second place — the flags finally arrived.",
+      "event": "Race day",
+      "tilt": 0.9
+    },
+    {
+      "src": "gallery/el-venue-crew-hex.jpg",
+      "alt": "Elation members grouped on the gym floor",
+      "caption": "Every level in one room — first-timers next to podium chasers.",
+      "event": "Training",
+      "tilt": -1.1
+    },
+    {
       "src": "gallery/doubles-medal.jpg",
       "alt": "Graham and Liam at HYROX Glasgow with medal",
       "caption": "Pro Doubles 50:54 — HYROX Glasgow",
       "event": "Race day",
       "tilt": 1.1
+    },
+    {
+      "src": "gallery/el-coaches-hoodies.jpg",
+      "alt": "Graham and a fellow coach in Elation hoodies on the gym floor",
+      "caption": "The coaching team — you'll see these two on the floor most days.",
+      "event": "Training",
+      "tilt": 0.8
+    },
+    {
+      "src": "gallery/el-graham-warsaw.jpg",
+      "alt": "Graham celebrating inside the stadium at HYROX Warsaw",
+      "caption": "PGE Narodowy. Visualise first — then go do it.",
+      "event": "Race day",
+      "tilt": -0.8
+    },
+    {
+      "src": "gallery/el-crew-floor-chat.jpg",
+      "alt": "Elation athletes talking between sets on the branded floor",
+      "caption": "Between sets. Nobody's in a hurry to leave.",
+      "event": "Training",
+      "tilt": -1.3
+    },
+    {
+      "src": "/elationfitness/images/gallery/stock-barbell.jpg",
+      "alt": "Deadlift on gym floor",
+      "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
+      "event": "Training",
+      "tilt": 1
+    },
+    {
+      "src": "gallery/el-venue-crew-big.jpg",
+      "alt": "The Elation class under the hex lights on the sled track",
+      "caption": "Post-class photo — the floor stays busy.",
+      "event": "Training",
+      "tilt": 1.4
     }
   ],
   "tokens": {
+    "HERO_DEK": "Build strength, find your rhythm and enjoy the work. Explore coaching and HYROX preparation with Graham and the Elation community.",
     "SLUG": "elationfitness",
     "COACH_NAME": "Graham Halliday",
     "COACH_NAME_LC": "graham halliday",
     "COACH_FIRST": "Graham",
     "COACH_LAST": "Halliday",
     "WORDMARK_HTML": "<span class=\"o\">E</span>LATION",
-    "BRAND": "Elation",
+    "BRAND": "by Graham & Matt",
     "BRAND_SHORT": "elationfitness",
     "BRAND_SOCIAL": "elationgymglasgow",
     "CLOTHING_SHORT": "ELATION",
@@ -105,57 +211,114 @@
     "STORE_TAG": "Glasgow training community",
     "STORE_COPY": "Small Group PT, unlimited classes and more than 60 sessions every week at our Balmore Road home.",
     "STORE_CTA": "Explore Elation",
-    "SEASON_HEADLINE": "Elite-level experience, brought back to the Elation floor."
+    "SEASON_HEADLINE": "Elite-level experience, brought back to the Elation floor.",
+    "OFFER_SUMMARY": "Elation: Small Group PT, unlimited classes and race crew at Balmore Road, Glasgow.",
+    "STUDIO_NOTE": " For classes at Balmore Road and more from Elation, <a href=\"https://elationfitnesstraining.co.uk/\" target=\"_blank\" rel=\"noopener\">visit the studio site →</a>",
+    "ATHLETE_FOCUS": "gym-owner focus",
+    "LINK_CARD_TAG": "Studio · official",
+    "LINK_CARD_NAME": "Elation Fitness",
+    "LINK_CARD_DESC": "The Elation site — Small Group PT, unlimited classes and 60+ sessions a week at Balmore Road, Glasgow.",
+    "LINK_CARD_CTA": "Open Elation →",
+    "COMMUNITY_DESC": "The Balmore Road community — class regulars, race-weekend support and people to share the work with.",
+    "PROG_ONE": "Small Group PT",
+    "PROG_ONE_TAG": "studio programme",
+    "PROG_TWO": "Class membership",
+    "PROG_TWO_TAG": "membership",
+    "SIG": "by Graham & Matt"
   },
   "stripSections": [
     "merch"
   ],
   "omitImageSlots": [
-    "images/station-lean.jpg",
-    "images/kerb.jpg",
-    "images/rooftop.jpg",
-    "images/walkin.jpg",
-    "images/suit.jpg",
-    "images/hoodie.jpg",
-    "images/carry.jpg",
-    "images/finish.jpg",
-    "images/track.jpg",
+    "images/avatar.jpg",
     "images/bike.jpg",
-    "images/rope.jpg",
-    "images/momentum.jpg",
+    "images/carry.jpg",
+    "images/doubles.jpg",
+    "images/finish.jpg",
+    "images/gallery/dinner-template.jpg",
     "images/half.jpg",
+    "images/hoodie.jpg",
+    "images/kerb.jpg",
+    "images/momentum.jpg",
     "images/night.jpg",
-    "images/sprint.jpg",
+    "images/pb-venue.jpg",
+    "images/race-pair.jpg",
+    "images/race-revel.jpg",
+    "images/rooftop.jpg",
+    "images/rope.jpg",
     "images/run-compromised.jpg",
-    "images/squad-athlos.jpg"
+    "images/sprint.jpg",
+    "images/station-lean.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg"
   ],
-  "stripPages": [
-    "watch.html"
-  ],
+  "stripPages": [],
   "news": [
     {
-      "date": "2026-10-19",
-      "title": "More than 60 chances to train every week",
-      "summary": "Classes that fit around real life, backed by 11 coaches and a community that keeps the standard high.",
-      "take": "Consistency gets easier when the right people are waiting for you on the floor.",
-      "link": "/elationfitness/coaching.html",
-      "linkLabel": "Train with Elation →"
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "Elite racing is useful when it gives everyday athletes something practical to bring back to the gym floor.",
+      "takeStatus": "draft-for-review"
     },
     {
-      "date": "2026-09-28",
-      "title": "Two ways into Elation",
-      "summary": "Small Group PT plus unlimited classes is £100 per month. Unlimited classes is £75 per month.",
-      "take": "Pick the support you need, then turn up and put the work in.",
-      "link": "/elationfitness/coaching.html",
-      "linkLabel": "See membership →"
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. An away race also means planning travel, sleep and recovery.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Pick a start line the crew can prepare for properly. Leave enough room around it to enjoy the achievement.",
+      "takeStatus": "draft-for-review",
+      "link": "/elationfitness/events.html",
+      "linkLabel": "Race Calendar & Travel →"
     },
     {
-      "date": "2026-06-21",
-      "title": "Elite experience on the gym floor",
-      "summary": "Two Elite 15 owners, Graham Halliday and Matt Agnew, coach alongside the Elation team in Glasgow.",
-      "take": "Elite standards are useful only when they help everyday athletes make real progress.",
-      "link": "/elationfitness/stations-prep.html",
-      "linkLabel": "Prepare for HYROX →"
+      "type": "news",
+      "date": "2026-06-23",
+      "title": "Stockholm: Australia defends its mixed-relay world title",
+      "summary": "PUMA's World Championships report records Australia's mixed-relay win in 50:19, with Jess Pettrow on the title-defending team. Joanna Wietrzyk also finished second in the women's Elite 15 solo race.",
+      "source": "https://mediahub.puma.com/articles/puma-dominates-hyrox-world-championships-from-elite-athlete-performances-to-community-initiatives",
+      "sourceName": "PUMA · World Championships report",
+      "take": "A relay result belongs to the whole team. Agree the roles and help each other arrive prepared.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's new framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "A season is more than a list of entries. Choose the races that support the work you can sustain.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027. Qualification gives the season a clear international destination.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "Big targets are earned through the smaller weeks. Keep showing up with quality and intent.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season, with kit, resources and performance support.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "It is encouraging to see more athletes recognised. Keep the focus on progress and the people doing the work.",
+      "takeStatus": "draft-for-review"
     }
   ],
   "copyOverrides": [
@@ -192,16 +355,287 @@
       "replace": "community"
     },
     {
-      "pattern": "\\s*<li><a href=\"/elationfitness/watch.html\">Watch</a></li>",
-      "replace": ""
+      "pattern": "(<img\\s+class=\"crew-photo\"\\s+src=\"[^\"]*)doubles\\.jpg",
+      "replace": "$1gallery/squad-gym.jpg"
     },
     {
-      "pattern": "\\s*<a href=\"/elationfitness/watch.html\">Watch</a>",
-      "replace": ""
+      "pattern": "(class=\"crew-photo\"[^>]*?alt=\")[^\"]*\"",
+      "replace": "$1The Elation squad gathered on the gym floor\""
+    },
+    {
+      "pattern": "src=\"/elationfitness/images/coaching-hero\\.jpg(\\?v=\\d+)?\"(\\s*)alt=\"Podcast and conversation photography\"(\\s*)width=\"\\d+\"(\\s*)height=\"\\d+\"",
+      "replace": "src=\"/elationfitness/images/gallery/el-coaches-hoodies.jpg$1\"$2alt=\"Two Elation coaches in branded hoodies talking on the gym floor\"$3width=\"841\"$4height=\"1024\""
+    },
+    {
+      "pattern": "src=\"/elationfitness/images/startline\\.jpg(\\?v=\\d+)?\"(\\s*)alt=\"Athletes on the Hyrox start line waiting for the gun\"(\\s*)width=\"\\d+\"(\\s*)height=\"\\d+\"",
+      "replace": "src=\"/elationfitness/images/detail.jpg$1\"$2alt=\"Graham Halliday with his name and the Scotland flag painted on his back before a race\"$3width=\"640\"$4height=\"640\""
+    },
+    {
+      "pattern": "src=\"/elationfitness/images/taper-hero\\.jpg(\\?v=\\d+)?\"(\\s*\\n\\s*)alt=\"[^\"]*\"(\\s*)width=\"\\d+\"(\\s*)height=\"\\d+\"",
+      "replace": "src=\"/elationfitness/images/taper-hero.jpg$1\"$2alt=\"Elation athletes arriving together at the HYROX venue\"$3width=\"640\"$4height=\"640\""
     }
   ],
   "stripBlocks": [
     "youtube-link",
     "tiktok-link"
-  ]
+  ],
+  "seedFiles": {
+    "testimonials.json": {
+      "sourceURL": "https://elationfitnesstraining.co.uk/",
+      "items": [
+        {
+          "name": "Naomi Kane",
+          "quote": "The team made me feel welcome from day one and provided constant support, encouragement and guidance.",
+          "detail": "Elation member",
+          "sourceURL": "https://elationfitnesstraining.co.uk/"
+        },
+        {
+          "name": "Stephen McNeil",
+          "quote": "It has a very close-knit, family-oriented atmosphere, and the coaches are incredibly supportive, knowledgeable and always willing to help.",
+          "detail": "Elation member",
+          "sourceURL": "https://elationfitnesstraining.co.uk/"
+        },
+        {
+          "name": "Debbie Ross",
+          "quote": "The sense of community and belonging was amazing.",
+          "detail": "Elation member",
+          "sourceURL": "https://elationfitnesstraining.co.uk/"
+        }
+      ]
+    },
+    "campaign-offers.json": "@scripts/reskin/elationfitness-pages/data/campaign-offers.json",
+    "cities.json": "@scripts/reskin/elationfitness-pages/data/cities.json",
+    "events.json": "@scripts/reskin/elationfitness-pages/data/events.json",
+    "matchboard.json": "@scripts/reskin/elationfitness-pages/data/matchboard.json",
+    "news.json": "@scripts/reskin/elationfitness-pages/data/news.json",
+    "training-platform.json": "@scripts/reskin/elationfitness-pages/data/training-platform.json",
+    "travelboard.json": "@scripts/reskin/elationfitness-pages/data/travelboard.json",
+    "videos.json": "@scripts/reskin/elationfitness-pages/data/videos.json"
+  },
+  "coachPreview": true,
+  "races": {
+    "checked": "2026-10-25",
+    "source": "https://hyrox.com/find-my-race/",
+    "timeZone": "UTC",
+    "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
+    "cities": [
+      {
+        "slug": "dublin",
+        "name": "Dublin",
+        "country": "Ireland",
+        "timeZone": "Europe/Dublin",
+        "tagline": "A short hop can still deserve a proper race-weekend plan.",
+        "race": {
+          "name": "HYROX Dublin",
+          "status": "confirmed",
+          "start": "2026-11-11",
+          "end": "2026-11-15",
+          "source": "https://hyrox.com/event/hyrox-dublin/",
+          "sourceLabel": "Official HYROX Dublin event",
+          "dates": "11 Nov 2026 – 15 Nov 2026"
+        },
+        "gettingThere": [
+          "Check the official RDS event information and your division start time before booking travel.",
+          "Compare flight, ferry and local transport against the venue journey, including luggage and registration time."
+        ],
+        "hotels": [
+          {
+            "area": "Ballsbridge or central Dublin",
+            "picks": "Balance a practical journey to the RDS with food, sleep and somewhere easy for the crew to meet.",
+            "range": "Check live rates and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar and check early breakfast options near your stay."
+        ],
+        "nightAfter": [
+          "Plan a relaxed post-race meal and leave recovery time before the journey home."
+        ]
+      },
+      {
+        "slug": "singapore",
+        "name": "Singapore",
+        "country": "Singapore",
+        "timeZone": "Asia/Singapore",
+        "tagline": "Make an overseas race a shared weekend, not a rushed turnaround.",
+        "race": {
+          "name": "AIA HYROX Singapore",
+          "status": "confirmed",
+          "start": "2026-11-26",
+          "end": "2026-11-29",
+          "source": "https://hyrox.com/event/aia-hyrox-singapore/",
+          "sourceLabel": "Official AIA HYROX Singapore event",
+          "dates": "26 Nov 2026 – 29 Nov 2026"
+        },
+        "gettingThere": [
+          "Check passport, entry and airline baggage requirements before paying for travel.",
+          "Allow time to adjust to the local time zone and plan the venue journey from your chosen accommodation."
+        ],
+        "hotels": [
+          {
+            "area": "An easy venue journey",
+            "picks": "Choose a base with straightforward early transport, familiar food nearby and somewhere to recover after the finish.",
+            "range": "Compare live prices and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar; leave the food adventure for after the finish."
+        ],
+        "nightAfter": [
+          "Plan a crew meal with enough recovery time before the flight home."
+        ]
+      },
+      {
+        "slug": "london",
+        "name": "London",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "Choose the race slot first, then make the capital work around it.",
+        "race": {
+          "name": "Amazon HYROX London",
+          "status": "confirmed",
+          "start": "2026-12-02",
+          "end": "2026-12-06",
+          "source": "https://hyrox.com/event/hyrox-london-excel/",
+          "sourceLabel": "Official Amazon HYROX London event",
+          "dates": "2 Dec 2026 – 6 Dec 2026"
+        },
+        "gettingThere": [
+          "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
+          "Compare your arrival station or airport with the venue journey, including weekend service changes."
+        ],
+        "hotels": [
+          {
+            "area": "Venue access first",
+            "picks": "Prioritise a straightforward early journey over a small saving on a room across the city. Check breakfast and bag storage around your wave.",
+            "range": "Hotel rates vary by date; check live prices."
+          }
+        ],
+        "food": [
+          "Book a familiar meal near your hotel and carry the race fuel you have already practised with."
+        ],
+        "nightAfter": [
+          "Pick a post-race meeting point before the venue gets busy."
+        ]
+      },
+      {
+        "slug": "melbourne",
+        "name": "Melbourne",
+        "country": "Australia",
+        "timeZone": "Australia/Melbourne",
+        "tagline": "A longer-haul target deserves room for travel and recovery.",
+        "race": {
+          "name": "BYD HYROX Melbourne",
+          "status": "confirmed",
+          "start": "2026-12-09",
+          "end": "2026-12-13",
+          "source": "https://hyrox.com/event/hyrox-melbourne/",
+          "sourceLabel": "Official BYD HYROX Melbourne event",
+          "dates": "9 Dec 2026 – 13 Dec 2026"
+        },
+        "gettingThere": [
+          "Check the official venue and your race day before choosing flights and accommodation.",
+          "For long-haul travel, build in arrival, recovery and local time-zone adjustment rather than landing straight into a race."
+        ],
+        "hotels": [
+          {
+            "area": "Simple transport and recovery",
+            "picks": "Compare a venue-area stay with a base near reliable public transport. Ask about early breakfast and late checkout.",
+            "range": "Check live accommodation and flight prices."
+          }
+        ],
+        "food": [
+          "Arrange familiar race-morning food before exploring the local options afterwards."
+        ],
+        "nightAfter": [
+          "Keep the day after the race flexible before the journey home."
+        ]
+      },
+      {
+        "slug": "hong-kong",
+        "name": "Hong Kong",
+        "country": "Hong Kong",
+        "timeZone": "Asia/Hong_Kong",
+        "tagline": "Turn an international start line into a well-organised race trip.",
+        "race": {
+          "name": "AIA HYROX Hong Kong",
+          "status": "confirmed",
+          "start": "2027-01-07",
+          "end": "2027-01-10",
+          "source": "https://hyrox.com/event/hyrox-hong-kong/",
+          "sourceLabel": "Official AIA HYROX Hong Kong event",
+          "dates": "7 Jan 2027 – 10 Jan 2027"
+        },
+        "gettingThere": [
+          "Check entry requirements, airline baggage and official venue instructions before booking.",
+          "Compare the airport-to-hotel and hotel-to-venue journeys, allowing for your check-in and start time."
+        ],
+        "hotels": [
+          {
+            "area": "A practical race-weekend base",
+            "picks": "Balance easy venue access with food, sleep and a relaxed meeting place for your crew.",
+            "range": "Compare live rates and cancellation terms."
+          }
+        ],
+        "food": [
+          "Keep the meal before racing predictable and enjoy the city after your finish."
+        ],
+        "nightAfter": [
+          "Allow recovery time before sightseeing or flying home."
+        ]
+      },
+      {
+        "slug": "manchester",
+        "name": "Manchester",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "A city race with an easy plan for the days around it.",
+        "race": {
+          "name": "HYROX Manchester",
+          "status": "confirmed",
+          "start": "2027-01-20",
+          "end": "2027-01-31",
+          "source": "https://hyrox.com/event/hyrox-manchester/",
+          "sourceLabel": "Official HYROX Manchester event",
+          "dates": "20 Jan 2027 – 31 Jan 2027"
+        },
+        "gettingThere": [
+          "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
+          "Allow extra time if your route crosses the city, and include registration and warm-up in the plan."
+        ],
+        "hotels": [
+          {
+            "area": "Central or close to the venue",
+            "picks": "Compare a central base for the crew meal with a shorter early journey to the race. Check breakfast, checkout and bag storage.",
+            "range": "Check current rates for your particular race dates."
+          }
+        ],
+        "food": [
+          "Choose a familiar pre-race dinner and an uncomplicated breakfast."
+        ],
+        "nightAfter": [
+          "Agree where to meet and leave room for tired legs after the finish."
+        ]
+      }
+    ],
+    "home": "london"
+  },
+  "trainingPlatform": {
+    "name": "Provider to confirm",
+    "coachURL": "",
+    "clientURL": "",
+    "programmesURL": "https://elationfitnesstraining.co.uk/",
+    "applicationURL": "https://elationfitnesstraining.co.uk/",
+    "directCoachLink": false,
+    "offerTitle": "Elation coaching",
+    "offerDescription": "Explore the existing coaching and programme options, then choose the support that fits your next goal.",
+    "note": "Coach and client sign-in destinations still need confirmation. The existing public offer links below are not software logins. No workout or client-data sync is connected."
+  },
+  "contentPublishing": {
+    "podcast": false
+  },
+  "colors": {
+    "zoneAccent": "#1d4ed8"
+  },
+  "brandingNote": "Wordmark ELATION from @elationgymglasgow. Two coaches + a gym → SIG signs both owners' first names."
 }

@@ -1,4 +1,5 @@
 import pg from "pg";
+import { databaseOptions } from "./src/database-config.js";
 
 // Plain DATE columns (entry_date, next_action_at, period_start/end) stay as
 // "YYYY-MM-DD" strings. By default pg turns them into local-midnight Date
@@ -10,8 +11,7 @@ let poolDatabaseUrl = "";
 
 export function getDbPool() {
   const rawDatabaseUrl = String(process.env.DATABASE_URL || "").trim();
-  const databaseUrl = rawDatabaseUrl.replace(/^postgresql:\/\//, "postgres://");
-  if (!databaseUrl) {
+  if (!rawDatabaseUrl) {
     console.error(
       "db: missing DATABASE_URL at runtime",
       "hasEnv=",
@@ -20,9 +20,8 @@ export function getDbPool() {
     return null;
   }
 
-  if (!databaseUrl.startsWith("postgres://") && !databaseUrl.startsWith("postgresql://")) {
-    console.error("db: unexpected DATABASE_URL scheme", databaseUrl.slice(0, 16));
-  }
+  const options = databaseOptions(rawDatabaseUrl);
+  const databaseUrl = JSON.stringify(options);
 
   if (pool && poolDatabaseUrl === databaseUrl) return pool;
   if (pool && poolDatabaseUrl !== databaseUrl) {
@@ -32,12 +31,10 @@ export function getDbPool() {
   }
 
   const { Pool } = pg;
-  const needsSsl = !databaseUrl.includes("localhost") && !databaseUrl.includes("127.0.0.1");
 
   try {
     pool = new Pool({
-      connectionString: databaseUrl,
-      ssl: needsSsl ? { rejectUnauthorized: false } : undefined,
+      ...options,
       keepAlive: true,
       connectionTimeoutMillis: 10000,
       idleTimeoutMillis: 30000,
@@ -45,7 +42,9 @@ export function getDbPool() {
     });
 
     pool.on("error", (err) => {
-      console.error("db: pool error", err);
+      console.error("db: pool error", {
+        code: String(err?.code || "DB_ERROR"),
+      });
       try {
         pool?.end().catch(() => {});
       } catch {
@@ -55,15 +54,8 @@ export function getDbPool() {
       poolDatabaseUrl = "";
     });
   } catch (err) {
-    const urlTail = databaseUrl.slice(-18);
-    const hasAt = databaseUrl.includes("@");
-    const hasPort = databaseUrl.includes(":5432");
     console.error("db: Pool creation failed", {
-      message: String(err?.message || err),
-      hasAt,
-      hasPort,
-      tail: urlTail,
-      needsSsl,
+      code: String(err?.code || "DB_ERROR"),
     });
     throw err;
   }
@@ -81,7 +73,7 @@ export async function dbQuery(text, params = []) {
   try {
     return await p.query(text, params);
   } catch (err) {
-    console.error("dbQuery failed", err);
+    console.error("dbQuery failed", { code: String(err?.code || "DB_ERROR") });
     throw err;
   }
 }

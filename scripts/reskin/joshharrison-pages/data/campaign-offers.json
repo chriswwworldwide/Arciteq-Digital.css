@@ -1,0 +1,20 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Hybrid Hub coaching",
+      "headline": "Take the next step with Josh",
+      "destination": "https://1hppzdej2by.typeform.com/to/LeVTUyHt",
+      "image": "/joshharrison/images/coaching-hero.jpg?v=1792770732254",
+      "goal": "Coaching enquiries"
+    },
+    {
+      "id": "programme",
+      "name": "Hybrid Hub training options",
+      "headline": "Find the right training support",
+      "destination": "https://the-hybrid-hub.fitr.training/t/TheHybridHub/",
+      "image": "/joshharrison/images/coaching-hero.jpg?v=1792770732254",
+      "goal": "Programme and coaching enquiries"
+    }
+  ]
+}

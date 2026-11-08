@@ -1,6 +1,6 @@
 {
     "urls": [
-        "https://lartdelaseduction.com"
+        "http://localhost:3000"
     ],
     "defaults": {
         "timeout": 30000,

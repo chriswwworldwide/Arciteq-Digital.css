@@ -1,1186 +1,814 @@
 {
+  "mode": "chassis",
+  "sharedPack": "scripts/reskin/editorial-hero.pack.json",
   "slug": "joshharrison",
-  "brand": "Josh Harrison",
-  "brandUpper": "JOSH HARRISON",
-  "brandShort": "Josh",
-  "wordmarkHtml": "JOSH HARRIS<span class=\"o\">O</span>N",
-  "coachFirst": "Josh",
-  "coachFull": "Josh Harrison",
-  "coachNick": "Josh",
-  "city": "Worcestershire",
-  "whatsapp": "",
-  "instagramUrl": "https://www.instagram.com/joshharrisonfit/",
-  "instagramHandle": "joshharrisonfit",
-  "greeting": "",
-  "email": "",
-  "colors": {
-    "pink": "#ff2e63",
-    "pink600": "#e01e4e",
-    "pink100": "#2a141b"
-  },
-  "features": {
-    "predictor": true,
-    "chatbot": false
-  },
-  "channels": [
+  "coachingIntro": "Choose bespoke coaching or a Hybrid Hub programme delivered through FITR. Each route has its own format, price and commitment — from ongoing hybrid training to a defined 12-week race build.",
+  "coachingOffers": [
     {
-      "label": "TikTok @joshharrisonfit",
-      "url": "https://www.tiktok.com/@joshharrisonfit"
+      "title": "1-1 Online Coaching",
+      "type": "Bespoke FITR coaching",
+      "price": "£180/month",
+      "description": "A tailored training and nutrition plan with coaching support, calorie and macro guidance, and check-ins.",
+      "features": [
+        "Home or gym programming",
+        "Weekly or fortnightly check-ins",
+        "Three-month minimum commitment"
+      ],
+      "url": "https://the-hybrid-hub.fitr.training/p/79339",
+      "action": "Explore bespoke coaching",
+      "sourceURL": "https://the-hybrid-hub.fitr.training/p/79339"
     },
     {
-      "label": "YouTube — JOSHHARRISONFIT",
-      "url": "https://www.youtube.com/@Joshharrisonfit"
+      "title": "HYROX 365",
+      "type": "Ongoing FITR programme",
+      "price": "£50/month",
+      "description": "Keep a HYROX focus through the year with the Hub's ongoing programme. Joining opens FITR enrolment.",
+      "url": "https://the-hybrid-hub.fitr.training/p/HYROX365_",
+      "action": "Join HYROX 365 on FITR",
+      "sourceURL": "https://the-hybrid-hub.fitr.training/t/TheHybridHub/"
     },
     {
-      "label": "Hybrid Hub @hybrid.hub",
-      "url": "https://www.instagram.com/hybrid.hub/"
+      "title": "12 Week HYROX Plan 1.0",
+      "type": "12-week FITR programme",
+      "price": "£60 one-off",
+      "description": "A progressive race build combining strength, running, HYROX conditioning, technique and recovery.",
+      "features": [
+        "Five training days listed",
+        "Test week with strength and running assessments",
+        "Technique and transition practice"
+      ],
+      "url": "https://the-hybrid-hub.fitr.training/p/HYROXPRESEASON",
+      "action": "View the 12-week plan",
+      "sourceURL": "https://the-hybrid-hub.fitr.training/p/HYROXPRESEASON"
     },
     {
-      "label": "HYBRID HUB 365",
-      "url": "https://thehybridhubclothing.com/"
-    },
-    {
-      "label": "All links",
-      "url": "https://linktr.ee/JHFIT"
+      "title": "Hybrid Performance",
+      "type": "Rolling FITR programme",
+      "price": "£19.99/month",
+      "description": "Strength and endurance sessions for becoming a more rounded athlete, with exercise demonstrations and teaching points.",
+      "url": "https://the-hybrid-hub.fitr.training/p/79437",
+      "action": "Explore Hybrid Performance",
+      "sourceURL": "https://the-hybrid-hub.fitr.training/p/79437"
     }
   ],
-  "cityRemap": {
-    "Worcestershire": "Birmingham",
-    "Indonesia": "United Kingdom",
-    "Indonesian": "British",
-    "Singapore": "London",
-    "Kuala Lumpur": "Manchester",
-    "Seoul": "Glasgow",
-    "Hong Kong": "Cardiff",
-    "Bangkok": "Birmingham",
-    "PIK": "the arena",
-    "macet": "M5 traffic"
-  },
-  "pageRenames": {
-    "station-9": "race-crew"
-  },
-  "metaKeywords": "josh harrison, jhfit, hybrid hub, hyrox coaching, hyrox pro athlete, hyrox uk, race predictor, hyrox programmes, worcestershire hyrox",
-  "htmlTitle": "Josh Harrison — HYROX Pro athlete, coach & creator | JHFIT",
-  "metaDescription": "Josh Harrison's home on the web: Hybrid Hub 1:1 coaching and group programmes, free race tools, the race-mate finder, vlogs and partner codes — all in one place.",
-  "extraPairs": [
-    [
-      "Pilih kelemahanmu. Kita ubah jadi split tercepatmu — tanpa drama.",
-      "Pick the weak link. Make it the weapon."
-    ],
-    [
-      "Punya tiket, nggak punya partner?",
-      "Got a ticket, need a partner?"
-    ],
-    [
-      "share the KL trip",
-      "share the race trip"
-    ],
-    [
-      "Rp 850k",
-      "£45"
-    ],
-    [
-      "Rp 599k",
-      "£35"
-    ],
-    [
-      "Rp 2.5m",
-      "£120"
-    ],
-    [
-      "Rp 6m",
-      "£250"
-    ],
-    [
-      "cancel kapan aja",
-      "cancel any time"
-    ],
-    [
-      "makan bareng",
-      "eating together"
-    ],
-    [
-      "Yang nggak ada di rulebook.",
-      "The stuff that's not in the rulebook."
-    ],
-    [
-      "Gas, biar namamu keitung.",
-      "Go on, get your name counted."
-    ],
-    [
-      "Kabar HYROX Asia",
-      "HYROX UK news"
-    ],
-    [
-      "Lagi ngambil yang terbaru…",
-      "Fetching the latest…"
-    ],
-    [
-      "Baca soal race. Terus ikutan race-nya.",
-      "Read about races. Then go run one."
-    ],
-    [
-      "Jadwal, Lokasi, Tiket",
-      "Venue, Tickets"
-    ],
-    [
-      "Lagi ngambil scene-nya…",
-      "Loading the scene…"
-    ],
-    [
-      "Sim dulu. Race belakangan. Podium bonus.",
-      "Sim first. Race later. Podium's a bonus."
-    ],
-    [
-      "Setiap meter race, kita bedah pelan-pelan.",
-      "Every metre, every station, every excuse."
-    ],
-    [
-      "The Big Durian",
-      "The Second City"
-    ],
-    [
-      "NICE, PIK2",
-      "the NEC"
-    ],
-    [
-      "NICE PIK2",
-      "the NEC"
-    ],
-    [
-      "Southeast Asia",
-      "Europe"
-    ],
-    [
-      "Asia-Pacific",
-      "UK & Ireland"
-    ],
-    [
-      "Indonesia's",
-      "the UK's"
-    ],
-    [
-      "Indonesian rupiah",
-      "pounds sterling"
-    ],
-    [
-      "Indonesian",
-      "British"
-    ],
-    [
-      "Team Indonesia",
-      "Team Hybrid Hub"
-    ],
-    [
-      "Indonesia",
-      "the UK"
-    ],
-    [
-      "Asian",
-      "British"
-    ],
-    [
-      "Asia",
-      "the UK"
-    ],
-    [
-      "\"Rp \" +",
-      "\"£\" +"
-    ],
-    [
-      "toLocaleString(\"id-ID\")",
-      "toLocaleString(\"en-GB\")"
-    ],
-    [
-      "Muka habis finish. Masih nggak percaya.",
-      "Finish-line face. Still can't believe it."
-    ],
-    [
-      "Tiap tiga bulan — tanggal muncul di sini",
-      "Every three months — next date appears here"
-    ],
-    [
-      "BCA bank transfer",
-      "bank transfer"
-    ],
-    [
-      "BCA app",
-      "banking app"
-    ],
-    [
-      "Rp ${",
-      "£${"
-    ],
-    [
-      "Pelatih HYROX",
-      "HYROX"
-    ],
-    [
-      "your BCA",
-      "your bank"
-    ],
-    [
-      "PIK humidity",
-      "arena heat"
-    ],
-    [
-      "to check in BCA",
-      "to check"
-    ],
-    [
-      "a QRIS code from your banking app",
-      "a payment link from your banking app"
-    ],
-    [
-      "data-city=\"london\"",
-      "data-city=\"birmingham\""
-    ],
-    [
-      "jakarta-top10",
-      "jh-crew"
-    ],
-    [
-      "Kirim di WhatsApp",
-      "Send on WhatsApp"
-    ],
-    [
-      "placeholder=\"62… — venue drops in the group\"",
-      "placeholder=\"07… — venue drops in the group\""
-    ],
-    [
-      "rgba(255, 45, 149",
-      "rgba(255, 46, 99"
-    ],
-    [
-      "rgba(224, 23, 124",
-      "rgba(224, 30, 78"
-    ],
-    [
-      "rgba(40, 14, 30",
-      "rgba(11, 11, 14"
-    ],
-    [
-      "#fff0f6",
-      "#1f1218"
-    ],
-    [
-      "#fff5f8",
-      "#0e0e12"
-    ],
-    [
-      "#2a1330",
-      "#0e0e12"
-    ],
-    [
-      "#1f0e22",
-      "#0b0b0e"
-    ],
-    [
-      "#150812",
-      "#08080a"
-    ],
-    [
-      "\"#ff2ea6\", \"#ff7ad0\", \"#ffffff\", \"#ffd2ef\"",
-      "\"#ff2e63\", \"#ff7a90\", \"#ffffff\", \"#ffc9d2\""
-    ],
-    [
-      "--paper: #fffdfb;",
-      "--paper: #0b0b0e;"
-    ],
-    [
-      "--paper-2: #fbf3ee;",
-      "--paper-2: #16161c;"
-    ],
-    [
-      "--line: #efe3e3;",
-      "--line: #2a2a32;"
-    ],
-    [
-      "--ink: #0f0f11;",
-      "--ink: #f2f2f0;"
-    ],
-    [
-      "--ink-2: #3a3a40;",
-      "--ink-2: #cfcfd6;"
-    ],
-    [
-      "--ink-3: #7a7a85;",
-      "--ink-3: #9c9ca6;"
-    ],
-    [
-      "background: #fff;",
-      "background: #14141a;"
-    ],
-    [
-      "background: rgba(255, 255, 255, 0.92);",
-      "background: rgba(12, 12, 16, 0.92);"
-    ],
-    [
-      "background: rgba(255, 255, 255, 0.85);",
-      "background: rgba(18, 18, 22, 0.88);"
-    ],
-    [
-      "#25d366",
-      "#ff2e63"
-    ],
-    [
-      "#25D366",
-      "#ff2e63"
-    ],
-    [
-      "#1ebe5b",
-      "#e01e4e"
-    ],
-    [
-      "color: #0b1a10;",
-      "color: #ffffff;"
-    ],
-    [
-      "vec3(1.0, 0.16, 0.62)",
-      "vec3(1.0, 0.18, 0.39)"
-    ],
-    [
-      "vec3(1.0, 0.5, 0.85)",
-      "vec3(1.0, 0.55, 0.62)"
-    ],
-    [
-      "vec3(0.9, 0.25, 0.6)",
-      "vec3(0.88, 0.14, 0.32)"
-    ],
-    [
-      "vec3(1.0, 0.9, 1.0)",
-      "vec3(1.0, 0.93, 0.95)"
-    ],
-    [
-      "Station 9",
-      "the ninth station"
-    ],
-    [
-      "/joshharrison/book-dina/",
-      "/joshharrison/coaching.html"
-    ],
-    [
-      "HYROX Group Coach, Hyrox athlete & personal trainer",
-      "HYROX Pro athlete, coach & creator"
-    ],
-    [
-      "HYROX Certified Coach, podium athlete, part-time oracle.",
-      "HYROX Pro athlete, coach, part-time metronome."
-    ],
-    [
-      "podium athlete, occasional matchmaker.",
-      "pro athlete, occasional matchmaker."
-    ],
-    [
-      "podium athlete, head of the table.",
-      "pro athlete, head of the table."
-    ],
-    [
-      "coaches, podium athlete, UK personal trainer.",
-      "pro athlete and coach."
-    ],
-    [
-      "Josh reads every card herself.",
-      "Josh reads every card himself."
-    ],
-    [
-      "she'll take your card down",
-      "he'll take your card down"
-    ],
-    [
-      "Josh books for the numbers she has — tell her you're coming",
-      "Josh books for the numbers he has — tell him you're coming"
-    ],
-    [
-      "Josh books the table for the RSVPs she has",
-      "Josh books the table for the RSVPs he has"
-    ],
-    [
-      "Josh carries a small bottle in her race belt",
-      "Josh carries a small bottle in his race belt"
-    ],
-    [
-      "Josh has done it herself, twice, pregnant.",
-      "Josh has done it himself — 1:14 to 1:05 in a season."
-    ],
-    [
-      "Josh intros you herself.",
-      "Josh makes the intro himself."
-    ],
-    [
-      "she's still enjoying herself.",
-      "still smiling at 100 m."
-    ],
-    [
-      "HYROX coach, podium athlete,",
-      "HYROX pro athlete, coach,"
-    ],
-    [
-      "who makes intros herself.",
-      "who makes intros himself."
-    ],
-    [
-      "If she thinks it fits — pace, format, race — she connects you both. She races this circuit; she knows who would actually suit you.",
-      "If he thinks it fits — pace, format, race — he connects you both. He races this circuit; he knows who would actually suit you."
-    ],
-    [
-      "she'll edit as her programming evolves",
-      "he'll edit as his programming evolves"
-    ],
-    [
-      "she'll see your real numbers",
-      "he'll see your real numbers"
-    ],
-    [
-      "only Josh sees them, on her private desk",
-      "only Josh sees them, on his private desk"
-    ],
-    [
-      "once Josh has booked a table. Numbers matter: she books for the RSVPs she has.",
-      "once Josh has booked a table. Numbers matter: he books for the RSVPs he has."
-    ],
-    [
-      "6–7 for most women",
-      "6–7 for most athletes"
-    ],
-    [
-      "pregnancy stage,",
-      "race history,"
-    ],
-    [
-      "Fit through pregnancy",
-      "Doubles partner hunt"
-    ],
-    [
-      "Post-natal comeback",
-      "Injury comeback"
-    ],
-    [
-      "Josh answers personally",
-      "Josh reads them personally"
-    ],
-    [
-      "Josh books for",
-      "Josh books for"
-    ],
-    [
-      "\"sameAs\": [\"https://www.instagram.com/joshharrisonfit/\"]",
-      "\"sameAs\": [\"https://www.instagram.com/joshharrisonfit/\", \"https://www.youtube.com/@Joshharrisonfit\", \"https://www.tiktok.com/@joshharrisonfit\", \"https://www.threads.com/@joshharrisonfit\"]"
-    ],
-    [
-      "en-ID",
-      "en-GB"
-    ],
-    [
-      "ID-JK",
-      "GB-WOR"
-    ],
-    [
-      "\"en\", \"id\"",
-      "\"en\""
-    ],
-    [
-      "href=\"/joshharrison/hyrox-london/\"",
-      "href=\"https://hyrox.com\" target=\"_blank\" rel=\"noopener\""
-    ],
-    [
-      "href=\"/joshharrison/london-hybrid-scene/\"",
-      "href=\"/joshharrison/news.html\""
-    ],
-    [
-      "href=\"/joshharrison/advertise/\"",
-      "href=\"/joshharrison/partners.html\""
-    ],
-    [
-      "href=\"/joshharrison/doubles/\"",
-      "href=\"/joshharrison/find-a-partner.html\""
-    ],
-    [
-      "<a href=\"/joshharrison/partners.html\">Advertise</a>\n        </nav>",
-      "<a href=\"/joshharrison/partners.html\">Partners</a>\n          <a href=\"/joshharrison/desk.html\">The desk</a>\n        </nav>"
-    ],
-    [
-      "on her private desk",
-      "on his private desk"
-    ],
-    [
-      "in her race belt",
-      "in his race belt"
-    ],
-    [
-      "in her HYROX race kit",
-      "in his HYROX race kit"
-    ],
-    [
-      "Josh and her doubles partner",
-      "Josh and his doubles partner"
-    ],
-    [
-      " (analisis split HYROX)",
-      ""
+  "partnerOffers": [
+    {
+      "title": "Hybrid Hub clothing",
+      "type": "Own brand store",
+      "description": "Training clothing and accessories through the Hub's separate clothing store.",
+      "url": "https://hybrid-hub.uk/",
+      "action": "Shop Hybrid Hub clothing",
+      "sourceURL": "https://hybrid-hub.uk/"
+    },
+    {
+      "title": "Gymshark",
+      "type": "Brand destination",
+      "description": "Explore Gymshark's training clothing and accessories through the official store.",
+      "url": "https://www.gymshark.com/",
+      "action": "Visit Gymshark",
+      "sourceURL": "https://www.instagram.com/joshharrisonfit/"
+    },
+    {
+      "title": "Myprotein",
+      "type": "Brand destination",
+      "description": "Sports nutrition from the official UK store.",
+      "url": "https://www.myprotein.com/",
+      "action": "Visit Myprotein",
+      "sourceURL": "https://www.instagram.com/joshharrisonfit/"
+    },
+    {
+      "title": "adidas training",
+      "type": "Brand destination",
+      "description": "Training apparel and footwear from adidas's UK training range.",
+      "url": "https://www.adidas.co.uk/training",
+      "action": "Explore adidas training",
+      "sourceURL": "https://www.instagram.com/joshharrisonfit/"
+    }
+  ],
+  "offerAudit": {
+    "checkedAt": "2026-11-02",
+    "notes": [
+      "Four active programmes and prices verified in FITR; individual product pages checked.",
+      "HYROX 365 product currently opens FITR account creation; CTA explicitly says Join, not a misleading details button.",
+      "Hybrid Hub clothing store and FITR coaching catalogue are separate destinations.",
+      "adidas automated access challenged; no bypass attempted."
     ]
+  },
+  "assets": "scripts/reskin/joshharrison-chassis-assets",
+  "heroMode": "full",
+  "strictImages": true,
+  "currency": "gbp",
+  "nutrition": {
+    "mode": "hidden"
+  },
+  "booking": {
+    "timeZone": "Europe/London",
+    "watermark": "images/bio.jpg"
+  },
+  "htmlTitle": "Josh Harrison — HYROX Pro athlete, coach & creator | Hybrid Hub",
+  "metaDescription": "Josh Harrison and Hybrid Hub: coaching, race tools, session-planner preview, race-mate finder, training videos and the work behind race day.",
+  "tokens": {
+    "SLUG": "joshharrison",
+    "COACH_NAME": "Josh Harrison",
+    "COACH_NAME_LC": "josh harrison",
+    "COACH_FIRST": "Josh",
+    "COACH_LAST": "Harrison",
+    "WORDMARK_HTML": "JOSH HARRIS<span class=\"o\">O</span>N",
+    "BRAND": "by Josh",
+    "BRAND_SHORT": "jhfit",
+    "BRAND_SHORT_UPPER": "JHFIT",
+    "BRAND_SOCIAL": "hybrid.hub",
+    "CLOTHING_LINE": "HYBRID HUB 365",
+    "CLOTHING_SHORT": "HH365",
+    "CITY": "Bewdley",
+    "REGION": "Worcestershire",
+    "REGION_LC": "worcester",
+    "TAGLINE": "Obsession beats talent",
+    "HERO_TITLE_HTML": "Hard work<br /><em>compounds.</em>",
+    "HERO_KICKER": "Josh Harrison · Hybrid Hub · Worcestershire",
+    "HERO_INTRO_HTML": "HYROX Pro athlete, coach and creator.<br />The training, the race plan and the work behind the result.",
+    "HERO_PHOTO_ALT": "Josh Harrison driving a sled on the HYROX race floor",
+    "HERO_PHOTO_WIDTH": "1125",
+    "HERO_PHOTO_HEIGHT": "1248",
+    "HERO_STATS_HTML": "<div><strong>1:05:43</strong><span>Recorded Pro Solo · Bologna</span></div><div><strong>57:14</strong><span>Recorded Pro Doubles · Manchester</span></div><div><strong>1:32:13</strong><span>Recorded Birmingham Half</span></div>",
+    "APPLY_URL": "https://1hppzdej2by.typeform.com/to/LeVTUyHt",
+    "PROGRAMMES_URL": "https://the-hybrid-hub.fitr.training/t/TheHybridHub/",
+    "STORE_URL": "https://hybrid-hub.uk/",
+    "IG_URL": "https://www.instagram.com/joshharrisonfit/",
+    "BRAND_IG_URL": "https://www.instagram.com/hybrid.hub/",
+    "YOUTUBE_URL": "https://www.youtube.com/@Joshharrisonfit",
+    "TIKTOK_URL": "https://www.tiktok.com/@joshharrisonfit",
+    "THREADS_URL": "https://www.threads.com/@joshharrisonfit",
+    "LINKTREE_URL": "https://linktr.ee/JHFIT",
+    "SOCIAL_HANDLE_UPPER": "JOSHHARRISONFIT",
+    "DOUBLES_PARTNER": "Rio Quarry",
+    "PB_VENUE": "Bologna",
+    "PB_VENUE_LC": "bologna",
+    "DOUBLES_VENUE": "Manchester",
+    "DOUBLES_VENUE_LC": "manchester",
+    "OPEN_VENUE": "ExCeL London",
+    "PB_SOLO": "1:05:43",
+    "PB_DOUBLES": "57:14",
+    "PB_HALF": "1:32:13",
+    "PB_OPEN": "1:06:13",
+    "SEASON_START": "1:14",
+    "SEASON_HEADLINE": "Josh Harrison. From 1:14 to 1:05 in one season.",
+    "VOICE_ATHLETE_QUOTE": "Obsession beats talent.",
+    "VOICE_DOUBLES_HOOK": "One race plan. Two people who are prepared to do the work.",
+    "VOICE_WEDDING": "Good communication is worth more than a matching pair of trainers.",
+    "VOICE_NEWS_TAKE": "The work happens between race weekends.",
+    "PARTNER_GYM": "Gymshark",
+    "PARTNER_GYM_LC": "gymshark",
+    "PARTNER_GYM_URL": "https://www.gymshark.com/",
+    "PARTNER_SUPP": "Myprotein",
+    "PARTNER_SUPP_LC": "myprotein",
+    "PARTNER_SUPP_URL": "https://www.myprotein.com/",
+    "PARTNER_KIT": "Adidas",
+    "PARTNER_KIT_LC": "adidas",
+    "PARTNER_KIT_TAG": "Race kit",
+    "PARTNER_KIT_TITLE": "Adidas training",
+    "PARTNER_KIT_COPY": "Training kit from Josh’s race-week rotation.",
+    "PARTNER_KIT_CTA": "View training kit",
+    "PARTNER_KIT_URL": "https://www.adidas.co.uk/training",
+    "GYM_CODE": "JOSHH",
+    "PHOTO_BUDDY": "the Hybrid Hub crew",
+    "ACCENT": "#ff2e63",
+    "ACCENT_DARK": "#e01e4e",
+    "ACCENT_SOFT": "#2a141b",
+    "STORE_NAME": "HYBRID HUB 365",
+    "STORE_TAG": "Josh's own clothing line",
+    "STORE_COPY": "The Hybrid Hub clothing line, alongside coaching and training programmes.",
+    "STORE_CTA": "Visit the store",
+    "PROG_ONE": "HYROX 365",
+    "PROG_ONE_TAG": "programme",
+    "PROG_TWO": "1-1 Bespoke Coaching",
+    "PROG_TWO_TAG": "3-month minimum",
+    "OFFER_SUMMARY": "The Hybrid Hub — 1:1 coaching, FITR programmes and the clothing store.",
+    "SIG": "by Josh"
+  },
+  "omitImageSlots": [
+    "images/bike.jpg",
+    "images/carry.jpg",
+    "images/detail.jpg",
+    "images/gallery/dinner-template.jpg",
+    "images/hoodie.jpg",
+    "images/kerb.jpg",
+    "images/night.jpg",
+    "images/pb-venue.jpg",
+    "images/race-pair.jpg",
+    "images/race-revel.jpg",
+    "images/rooftop.jpg",
+    "images/rope.jpg",
+    "images/run-compromised.jpg",
+    "images/run-recovery.jpg",
+    "images/skierg-laugh.jpg",
+    "images/sprint.jpg",
+    "images/station-lean.jpg",
+    "images/station-sandbag-lunges.jpg",
+    "images/track.jpg",
+    "images/treadmill.jpg",
+    "images/walkin.jpg",
+    "images/wallball.jpg"
   ],
   "copyOverrides": [
     {
-      "pattern": "· dari lantai Zumba ke podium",
-      "replace": "· obsession beats talent"
-    },
-    {
-      "pattern": "Run your own race,<br /><em>with <i>your</i> pace\\.</em>",
-      "replace": "Hard work<br /><em>compounds.</em>"
-    },
-    {
-      "pattern": "Aku \\w+[\\s\\S]*?Yang penting berani memulai\\.",
-      "replace": "Josh Harrison — HYROX Pro athlete, coach, and the face behind Hybrid Hub. Went from 1:14 to a 1:05:43 pro solo in one season. Obsession beats talent; the rest is reps."
-    },
-    {
-      "pattern": "<a class=\"btn btn-primary\" href=\"#plans\">See subscriptions</a>",
-      "replace": "<a class=\"btn btn-primary\" href=\"/joshharrison/coaching.html\">Coach with Josh</a>"
-    },
-    {
-      "pattern": "<div class=\"stats\">[\\s\\S]*?Hyrox races</span></div>\\s*</div>",
-      "replace": "<div class=\"stats\">\n          <div>\n            <strong>1:05:43</strong><span>HYROX Pro Solo PB — Bologna</span>\n          </div>\n          <div>\n            <strong>57:14</strong><span>Pro Doubles — Manchester, with Rio Quarry</span>\n          </div>\n          <div><strong>1:32:13</strong><span>AJ Bell Birmingham Half</span></div>\n        </div>"
-    },
-    {
-      "pattern": "href=\"/joshharrison/images/skierg-laugh\\.jpg\"",
-      "replace": "href=\"/joshharrison/images/hero-reveal.jpg\""
-    },
-    {
-      "pattern": "class=\"hero-amb\"\\s*\\n\\s*src=\"[^\"]*\"",
-      "replace": "class=\"hero-amb\"\n        src=\"/joshharrison/images/hero-reveal.jpg\""
-    },
-    {
-      "pattern": "class=\"hero-img\"\\s*\\n\\s*src=\"[^\"]*\"\\s*\\n\\s*alt=\"[^\"]*\"",
-      "replace": "class=\"hero-img\"\n          src=\"/joshharrison/images/hero-reveal.jpg\"\n          alt=\"Josh Harrison driving the sled, head-on — the station nobody enjoys\""
-    },
-    {
-      "pattern": "<p class=\"eyebrow\">Kenalan dulu</p>[\\s\\S]*?<p class=\"quote\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"eyebrow\">The athlete</p>\n          <h3>Josh Harrison. 1:14 to 1:05 in one season.</h3>\n          <p class=\"lead\">\n            Bewdley, Worcestershire. HYROX Pro athlete, coach and creator —\n            building Hybrid Hub between race blocks. Open solo 1:06:13 at\n            ExCeL London, pro solo 1:05:43 in Bologna, a 57:14 pro doubles\n            with Rio Quarry in Manchester. The training blocks, the race\n            weekends and the honest debriefs all go on the channel.\n          </p>\n          <p class=\"quote\">\n            \"What failure has taught me so far: obsession beats talent.\"\n          </p>"
-    },
-    {
-      "pattern": "Podium and 1st in age group 35–39[\\s\\S]*?16 active\\s*athletes\\s*</li>",
-      "replace": "HYROX Pro Solo 1:05:43 — Bologna. Started the season at 1:14.\n            </li>\n            <li>\n              Open solo 1:06:13 — ExCeL London. The benchmark that started it.\n            </li>\n            <li>\n              Pro Doubles 57:14 with Rio Quarry — HYROX Manchester.\n            </li>\n            <li>\n              Hybrid Hub: 1:1 coaching, group programmes, HYBRID HUB 365 kit.\n            </li>"
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/hero-reveal\\.jpg\"\\s*\\n\\s*alt=\"Josh and her doubles partner[^\"]*\"",
-      "replace": "src=\"/joshharrison/images/josh-collapse.jpg\"\n            alt=\"Josh Harrison flat on the arena floor post-finish, laughing — HYROX Pro athlete and coach\""
-    },
-    {
-      "pattern": "<p class=\"eyebrow reveal\">Subscriptions</p>[\\s\\S]*?</section>",
-      "replace": "<p class=\"eyebrow reveal\">The Hybrid Hub</p>\n        <h3 class=\"reveal\">The coaching arm.</h3>\n        <p class=\"lead reveal\">\n          What Josh sells: 1:1 coaching, group programmes on FITR, and the\n          HYBRID HUB 365 clothing line. Applications go through his existing\n          forms — no new inbox to check.\n        </p>\n        <div class=\"plan plan-crew reveal\">\n          <img\n            class=\"crew-photo\"\n            src=\"/joshharrison/images/josh-doubles.jpg\"\n            alt=\"Josh Harrison driving the sled in a HYROX Pro Doubles race in Manchester\"\n            loading=\"lazy\"\n          />\n          <div class=\"crew-copy\">\n            <span class=\"tag\">New here?</span>\n            <h4>Start with the free stuff</h4>\n            <p class=\"crew-line\">\n              Not ready for coaching? The race tools are free — predictor,\n              split analyser, stations prep. Use them, race better, and the\n              Hub is here when you want the structured version.\n            </p>\n            <p class=\"crew-note\">\n              Race predictor · split analyser · stations prep · race-mate\n              finder — free, always.\n            </p>\n          </div>\n          <div class=\"crew-side\">\n            <div class=\"price\">£0 <small>/ always</small></div>\n            <div class=\"per\">The tools below</div>\n            <a class=\"btn btn-primary\" href=\"#zones\">Use the tools</a>\n          </div>\n        </div>\n        <div class=\"plans\">\n          <div class=\"plan featured reveal\">\n            <span class=\"tag\">Application only</span>\n            <h4>1:1 Coaching</h4>\n            <div class=\"price\">Hybrid Hub</div>\n            <div class=\"per\">Spots limited — Josh reviews every application</div>\n            <ul>\n              <li>Programme built around your life and your race calendar</li>\n              <li>Weekly check-ins and video form review</li>\n              <li>Pacing, stations, race plan — built to a number</li>\n              <li>Direct line to Josh between sessions</li>\n            </ul>\n            <a\n              class=\"btn btn-primary\"\n              href=\"https://1hppzdej2by.typeform.com/to/LeVTUyHt\"\n              target=\"_blank\"\n              rel=\"noopener\"\n              >Apply for 1:1</a\n            >\n          </div>\n          <div class=\"plan reveal\">\n            <span class=\"tag\">On FITR</span>\n            <h4>Group Programmes</h4>\n            <div class=\"price\">Hybrid Hub</div>\n            <div class=\"per\">Structured blocks with the Hub cohort</div>\n            <ul>\n              <li>Programmed blocks in the FITR app</li>\n              <li>HYROX-specific work, not generic circuits</li>\n              <li>Start with the cohort, progress through blocks</li>\n              <li>The same engine behind Josh's own season</li>\n            </ul>\n            <a\n              class=\"btn btn-ghost\"\n              href=\"https://the-hybrid-hub.fitr.training/t/TheHybridHub/\"\n              target=\"_blank\"\n              rel=\"noopener\"\n              >See programmes on FITR</a\n            >\n          </div>\n          <div class=\"plan reveal\">\n            <span class=\"tag\">Drops</span>\n            <h4>HYBRID HUB 365</h4>\n            <div class=\"price\">Kit</div>\n            <div class=\"per\">Tees, hoodies, tanks — open per drop</div>\n            <ul>\n              <li>The clothing side of the Hub</li>\n              <li>Doors open per drop, not year-round</li>\n              <li>The list hears first when the next one lands</li>\n            </ul>\n            <a\n              class=\"btn btn-ghost\"\n              href=\"https://thehybridhubclothing.com/\"\n              target=\"_blank\"\n              rel=\"noopener\"\n              >Visit the store</a\n            >\n          </div>\n        </div>\n        <p class=\"plans-note\">\n          Applications, enrolment and checkout stay on Josh's existing forms\n          and stores — this page routes you to the right one rather than\n          inventing a new funnel. Sample preview copy.\n        </p>\n      </div>\n    </section>"
-    },
-    {
-      "pattern": "<strong>TBA</strong><span>Worcestershire</span></div>\\s*<div>\\s*<h4>HYROX Worcestershire 2027</h4>\\s*<p>[\\s\\S]*?</p>",
-      "replace": "<strong>TBA</strong><span>Budapest</span></div>\n            <div>\n              <h4>HYROX Budapest</h4>\n              <p>\n                The off-season test — raced it to see where the block stands\n                before tapering for the bigger targets. Watch for the vlog.\n              </p>"
-    },
-    {
-      "pattern": "<strong>TBA</strong><span>London</span></div>\\s*<div>\\s*<h4>HYROX London</h4>\\s*<p>[\\s\\S]*?</p>",
-      "replace": "<strong>TBA</strong><span>London</span></div>\n            <div>\n              <h4>HYROX London — ExCeL</h4>\n              <p>\n                The home weekend. Where the 1:06:13 open solo benchmark was\n                set — now it's the number everyone else is chasing.\n              </p>"
-    },
-    {
-      "pattern": "<strong>Sat</strong><span>Monthly</span></div>\\s*<div>\\s*<h4>[\\s\\S]*?</h4>\\s*<p>\\s*[\\s\\S]*?</p>",
-      "replace": "<strong>TBA</strong><span>Glasgow</span></div>\n            <div>\n              <h4>HYROX Glasgow — pro solo</h4>\n              <p>\n                The target the season was built towards. Building with each\n                session — watch the build on the channel.\n              </p>"
-    },
-    {
-      "pattern": "Belum berani race\\?[\\s\\S]*?seru\\.",
-      "replace": "Not racing yet? Watch the vlogs first — you'll want a start line by the end."
-    },
-    {
-      "pattern": "href=\"#ask\">Get notified</a>",
-      "replace": "href=\"/joshharrison/list.html\">Get notified</a>"
-    },
-    {
-      "pattern": "Tiga hal per station[\\s\\S]*?masuk sini\\.",
-      "replace": "Three things per station that Josh actually does on race day — including the embarrassing ones. Spot a gap? <a href=\"#ask\">Ask Josh</a> — it might make the list."
-    },
-    {
-      "pattern": "Kata Josh",
-      "replace": "Field notes"
-    },
-    {
-      "pattern": "every venue is different,\\s*Worcestershire's was notoriously slow",
-      "replace": "every venue is different — some carpets just never let go"
-    },
-    {
-      "pattern": "Racing from Worcestershire, this is the free minute\\.",
-      "replace": "Racing anywhere, this is the free minute."
-    },
-    {
-      "pattern": "Train outdoors at Worcestershire effort, race indoors at pace\\. Aircon venues are 10°C cooler than your Sunday run, so your race pace is faster than your training says\\.",
-      "replace": "Train outdoors in the cold, race indoors at pace. Arena halls run warmer than a Worcestershire winter, so your race pace is faster than your training says."
-    },
-    {
-      "pattern": "<summary>Heat &amp; travel</summary>|<summary>Heat & travel</summary>",
-      "replace": "<summary>Travel &amp; away races</summary>"
-    },
-    {
-      "pattern": "<summary>Training pregnant</summary>\\s*<ol>[\\s\\S]*?</ol>\\s*</details>",
-      "replace": "<summary>Coming back from a layoff</summary>\n            <ol>\n              <li>\n                Drop intensity before volume — keep the sessions, cut the\n                load. The habit is the hard part; the fitness comes back.\n              </li>\n              <li>\n                Race doubles first. Splitting the stations means you can go\n                hard for 30 seconds and recover — banking confidence instead\n                of a blow-up.\n              </li>\n              <li>\n                A plan beats guesswork. Ask Josh — that's what the coaching\n                page is for.\n              </li>\n            </ol>\n          </details>"
-    },
-    {
-      "pattern": "Prefer chat\\? Subscribers get Josh on\\s*<a class=\"chat-zone chat-zone-inline\" href=\"#ask\" data-whatsapp=\"\"\\s*>\\s*<span class=\"dot\"></span> WhatsApp</a\\s*>",
-      "replace": "Prefer chat? Find Josh on\n              <a class=\"chat-zone chat-zone-inline\" href=\"https://www.instagram.com/joshharrisonfit/\" target=\"_blank\" rel=\"noopener\"><span class=\"dot\"></span> Instagram</a>"
-    },
-    {
-      "pattern": "const waHref = `https://wa\\.me/\\$\\{ROX_WHATSAPP\\}[^`]*`;",
-      "replace": "const waHref = \"https://www.instagram.com/joshharrisonfit/\";"
-    },
-    {
-      "pattern": "<span class=\"dot\"></span> WhatsApp Josh",
-      "replace": "<span class=\"dot\"></span> DM Josh"
-    },
-    {
-      "pattern": "<span>WhatsApp Josh</span>",
-      "replace": "<span>Message Josh</span>"
-    },
-    {
-      "pattern": "Message Josh on WhatsApp",
-      "replace": "Message Josh on Instagram"
-    },
-    {
-      "pattern": "alt=\"Josh mid wall-ball rep at a Hyrox race\"",
-      "replace": "alt=\"Josh Harrison mid burpee broad jump — arms up, eyes on the line\""
-    },
-    {
-      "pattern": "alt=\"Josh, head coach\"",
-      "replace": "alt=\"Josh Harrison — HYROX Pro athlete and coach\""
-    },
-    {
-      "pattern": "<p class=\"eyebrow reveal\">Merchandise</p>\\s*<h3 class=\"reveal\">Warriors kit — coming soon\\.</h3>\\s*<p class=\"lead reveal\">[\\s\\S]*?</p>\\s*<a class=\"btn btn-ghost reveal\" href=\"#ask\">Tell me when it drops</a>",
-      "replace": "<p class=\"eyebrow reveal\">The clothing line</p>\n          <h3 class=\"reveal\">HYBRID HUB 365 — drops, not rails.</h3>\n          <p class=\"lead reveal\">\n            Tees, hoodies, tanks, joggers — the kit Josh trains and races\n            in. Doors open per drop; the list hears first.\n          </p>\n          <a class=\"btn btn-ghost reveal\" href=\"/joshharrison/list.html\">Join the list</a>"
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/rope\\.jpg\"\\s*\\n\\s*alt=\"Josh Harrison kit — photo coming soon\"",
-      "replace": "src=\"/joshharrison/images/josh-hoodie.jpg\"\n            alt=\"Josh in the black hoodie on a training run — HYBRID HUB 365 kit lands per drop\""
-    },
-    {
-      "pattern": "<a class=\"btn btn-primary\" href=\"#plans\">Start training</a>",
-      "replace": "<a class=\"btn btn-primary\" href=\"/joshharrison/coaching.html\">Train with Josh</a>"
-    },
-    {
-      "pattern": "content=\"Punya tiket[^\"]*\"",
-      "replace": "content=\"Got a race ticket, need a partner? Post your card on the JHFIT match board — first name and pace only — and Josh intros you to a HYROX partner at your level. Open, pro and mixed doubles, relay teams and race-trip company across the UK.\""
-    },
-    {
-      "pattern": "Punya tiket, <em>nggak</em> punya partner\\.",
-      "replace": "Got a ticket, <em>need</em> a partner?"
-    },
-    {
-      "pattern": "Udah booking flight sama hotel[\\s\\S]*?mejanya\\.",
-      "replace": "Booked flights and a hotel for your next race? Post your trip — others can join in: same flight, same hotel, split a room, or just travel to the venue together. Nothing booked yet? Post anyway — join someone's trip. Josh makes the intro, your number stays private."
-    },
-    {
-      "pattern": "content=\"Delapan stasiun kelar[^\"]*\"",
-      "replace": "content=\"Eight stations done — one more: dinner. The race-crew table is the JHFIT meetup: race-weekend dinners and post-race hangs for athletes, participants and the HYROX-curious. The dance floor is optional. RSVP so there's a chair for you.\""
-    },
-    {
-      "pattern": "Delapan stasiun kelar\\. <em>Satu lagi:</em> makan\\.",
-      "replace": "Eight stations down. <em>One more:</em> dinner."
-    },
-    {
-      "pattern": "the ninth station itu meja makan[\\s\\S]*?Yang penting rame\\.",
-      "replace": "The ninth station is the dinner table. Race-weekend meetups — athletes, racers and the HYROX-curious all welcome. And after away races, Sunday night: a busy restaurant, race stories, laughing. Not fine dining. Loud is the point."
-    },
-    {
-      "pattern": "HYROX itu delapan stasiun[\\s\\S]*?rencana\\.",
-      "replace": "HYROX has eight stations. The ninth station — a dinner table full of people who get why your legs are wrecked. No pace requirement, no partner needed, don't even need to have raced. If you're just curious you're the most welcome of all — sit down, eat, hear the stories, leave with a plan."
-    },
-    {
-      "pattern": "Yang kakinya masih berfungsi[\\s\\S]*?menang\\.",
-      "replace": "Legs still working? Carry on to the dance floor. Legs not working? Sit down — the gossip continues either way. Both count as winning."
-    },
-    {
-      "pattern": "an Indonesian\\s+flag in the results",
-      "replace": "a Hybrid Hub shirt in the results"
-    },
-    {
-      "pattern": "Makan bareng atlet, peserta[\\s\\S]*?edisi\\.",
-      "replace": "Dinner with athletes, racers and the HYROX-curious — a laid-back restaurant, race chat, then the dance floor for legs that still work. Broken bodies welcome to just sit — the gossip carries on. Venue announced per edition."
-    },
-    {
-      "pattern": "Apa yang lagi rame di <em>Asia</em>, dua baris aja\\.",
-      "replace": "What's moving in <em>UK HYROX</em>, two lines at a time."
-    },
-    {
-      "pattern": "Race baru, hasil, aturan yang berubah[\\s\\S]*?Worcestershire\\.",
-      "replace": "New races, results, rule changes and the bigger gossip — a handful every week: short summary, original source, and Josh's take on what it means for your next start line."
-    },
-    {
-      "pattern": "Ringkasan punya kita;[\\s\\S]*?kelewat\\?",
-      "replace": "Summaries are ours; the facts and full stories belong to the linked sources. Missed something?"
-    },
-    {
-      "pattern": "Pilih start line lo di planner[\\s\\S]*?minggunya\\.",
-      "replace": "Pick your start line in the planner, then let Josh build your 12 weeks."
-    },
-    {
-      "pattern": "Kapan HYROX Worcestershire 2027 dan bagaimana cara daftar \\(tiket\\)\\?",
-      "replace": "When is the next HYROX race and how do I register (tickets)?"
-    },
-    {
-      "pattern": "Jadwal HYROX Worcestershire 2027 belum diumumkan[^\"]*",
-      "replace": "Race dates are announced by HYROX on hyrox.com — registration and tickets open there once the official schedule drops; popular cities usually sell out within weeks. Join the list so you hear about it the day it happens."
-    },
-    {
-      "pattern": "<span lang=\"id\"\\s*>[\\s\\S]*?the UK\\.</span\\s*>",
+      "pattern": "[ \\t]*\\(\\s*<a\\b[^>]*href=\"/joshharrison/fuel-zone[^\"]*\"[^>]*>[\\s\\S]*?</a\\s*>\\s*\\)",
       "replace": ""
     },
     {
-      "pattern": "Apa yang bisa lo ikutan di <em>kota sendiri</em>\\.",
-      "replace": "What you can join <em>in your own city</em>."
-    },
-    {
-      "pattern": "Race resmi, simulasi[\\s\\S]*?berarti\\s*layak\\.",
-      "replace": "Official races, simulations, brand events, and training spots that actually have the stations — everything you need to stay race-ready at home. Josh curates it: if it's listed here, it's worth your time."
-    },
-    {
-      "pattern": "Lagi bikin sim atau kompetisi hybrid di Worcestershire yang belum masuk[\\s\\S]*?masuk list\\.",
-      "replace": "Running a sim or hybrid comp that's not listed? <a href=\"https://www.instagram.com/joshharrisonfit/\" target=\"_blank\" rel=\"noopener\">Tip Josh off</a> — send the organiser link and dates, it goes straight on the list."
-    },
-    {
-      "pattern": "Warriors dapet sim berwaktu[\\s\\S]*?hari-H\\.",
-      "replace": "Hybrid Hub athletes get timed sims and split breakdowns before every race block — so race day holds no surprises."
-    },
-    {
-      "pattern": " Jadwal HYROX Worcestershire dan the UK\\.",
+      "pattern": "\\s*<li>\\s*<a[^>]*href=\"/joshharrison/fuel-zone(?:\\.html|/)?\"[^>]*>[\\s\\S]*?</a>\\s*</li>",
       "replace": ""
     },
     {
-      "pattern": " Pelatih HYROX the UK di Worcestershire\\.| Pelatih HYROX the UK di Worcestershire\\.",
+      "pattern": "\\n[ \\t]*<a[^>]*href=\"/joshharrison/fuel-zone(?:\\.html|/)?\"[^>]*>\\s*Fuel Zone\\s*</a>[ \\t]*(?=\\n)",
       "replace": ""
     },
     {
-      "pattern": "RSVP — biar ada kursi buat lo",
-      "replace": "RSVP — so there's a chair for you"
-    },
-    {
-      "pattern": " lang=\"id\"",
-      "replace": ""
-    },
-    {
-      "pattern": "\"text\": \"PIK/PIK2 is closest[^\"]*\"",
-      "replace": "\"text\": \"Stay near the venue for a stress-free race morning; the city centre is best for the night after but allow an hour to get across in traffic.\""
-    },
-    {
-      "pattern": "PIK/PIK2 for closeness, Kelapa Gading for value, Sudirman/Thamrin[\\s\\S]*?(</li>|\\.)",
-      "replace": "Near the venue for closeness, the city centre for the night after$1"
-    },
-    {
-      "pattern": "scan with any British banking or e-wallet app \\(QRIS\\)",
-      "replace": "pay by bank transfer"
-    },
-    {
-      "pattern": "a QRIS code from your BCA app",
-      "replace": "a payment link from your banking app"
-    },
-    {
-      "pattern": "\"name\": \"Where is the Hyrox Worcestershire venue \\(lokasi HYROX Worcestershire\\)\\?\"",
-      "replace": "\"name\": \"Where is the venue?\""
-    },
-    {
-      "pattern": "\"text\": \"Nusantara International Convention Exhibition[^\"]*\"",
-      "replace": "\"text\": \"Race venues vary by city — check the official listing on hyrox.com for the address and door times. Allow an hour to get across town on race weekend.\""
-    },
-    {
-      "pattern": "Nusantara International Convention Exhibition \\(NICE\\) in PIK2,[\\s\\S]*?airport\\.",
-      "replace": "Venue details vary by city — the official listing on hyrox.com has the address and door times. Allow an hour to get across town on race weekend."
-    },
-    {
-      "pattern": "\"Udah dibilang kan[^\"]*\"",
-      "replace": "\"Told you — the 1:14 start meant nothing by April. One season, nine minutes gone. Hard work compounds.\""
-    },
-    {
-      "pattern": "\"1:01:49\\. Weekend panas[^\"]*\"",
-      "replace": "\"1:06:13 at ExCeL and 1:05:43 in Bologna — if you're racing the open, that's the number on the fridge now.\""
-    },
-    {
-      "pattern": "\"Lantai HYROX di Worcestershire[^\"]*\"",
-      "replace": "\"Pro solo 1:05:43, pro doubles 57:14 with Rio Quarry, and a coaching arm that trains like it races — Josh Harrison turned a Linktree into a business. Watch what happens with a real front door.\""
-    },
-    {
-      "pattern": "crew WhatsApp group",
-      "replace": "crew broadcast list"
-    },
-    {
-      "pattern": "WhatsApp \\(private, optional\\)",
-      "replace": "Phone (private, optional)"
-    },
-    {
-      "pattern": "Your email and WhatsApp never appear on the site",
-      "replace": "Your email and number never appear on the site"
-    },
-    {
-      "pattern": "<b>Josh checks every post\\.</b>\\s+Nothing goes up without her OK\\.\\s+She's the matchmaker, not an algorithm",
-      "replace": "<b>Josh checks every post.</b> Nothing goes up without his OK.\n              He's the matchmaker, not an algorithm"
-    },
-    {
-      "pattern": ":root\\s*\\{",
-      "replace": ":root{\n  --hero-focus: 50% 42%;"
-    },
-    {
-      "pattern": "<div class=\"results-tools\">",
-      "replace": "<p style=\"font-size:12px;opacity:.55;margin:-6px 0 10px\">Sample entries — the board fills from real submissions and results once live.</p>\n        <div class=\"results-tools\">"
-    },
-    {
-      "pattern": "(<h3>Race weekend roundups</h3>\\s*<p class=\"plan-source\">[\\s\\S]*?</p>)",
-      "replace": "$1\n          <p style=\"font-size:12px;opacity:.55;margin-top:-6px\">Sample roundups — the format, not the real write-ups yet.</p>"
-    },
-    {
-      "pattern": "women, doubles, mixed and relay\\. Official chip times, updated after",
-      "replace": "open, pro, doubles and relay. Sample entries for the preview — official chip times once live, updated after"
-    },
-    {
-      "pattern": "under an British nationality\\. All times are official chip times\\.",
-      "replace": "under a British nationality. Sample entries for the preview — official chip times once live."
-    },
-    {
-      "pattern": "\"text\": \"From the official Hyrox results \\(results\\.hyrox\\.com\\)[^\"]*\"",
-      "replace": "\"text\": \"Sample entries for the preview — the live board compiles finish times from official HYROX results (results.hyrox.com), hyresult.com and hyranking.com once connected.\""
-    },
-    {
-      "pattern": "\"description\": \"Finish times and personal bests of British Hyrox athletes[^\"]*\"",
-      "replace": "\"description\": \"Finish times and personal bests by division — sample board for the preview; live data compiles official HYROX results.\""
-    },
-    {
-      "pattern": "from official Hyrox results\\. Updated after every race\\. Hasil dan leaderboard HYROX the UK\\.",
-      "replace": "from official HYROX results once live. Updated after every race."
-    },
-    {
-      "pattern": "\"description\": \"HYROX coaching in \\w+ — online training program[^\"]*\"",
-      "replace": "\"description\": \"Josh Harrison — HYROX Pro athlete, coach and creator. Hybrid Hub 1:1 coaching and programmes, race tools and race-mate finder.\""
-    },
-    {
-      "pattern": "animation:\\s*\\n\\s*hero-enter 2\\.8s cubic-bezier\\(0\\.16, 0\\.6, 0\\.3, 1\\) both,\\s*\\n\\s*hero-drift 18s ease-in-out 4\\.4s infinite alternate;",
-      "replace": "animation: none;"
-    },
-    {
-      "pattern": "(footer \\{[^}]*?)padding: 40px 0;",
-      "replace": "$1padding: 40px 0 96px;"
-    },
-    {
-      "pattern": "g\\.addColorStop\\(0, \"rgba\\(11, 11, 14, 0\\.05\\)\"\\);\\s*\\n\\s*g\\.addColorStop\\(0\\.45, \"rgba\\(11, 11, 14, 0\\.2\\)\"\\);\\s*\\n\\s*g\\.addColorStop\\(1, \"rgba\\(11, 11, 14, 0\\.86\\)\"\\);",
-      "replace": "g.addColorStop(0, \"rgba(11, 11, 14, 0)\");\n      g.addColorStop(0.6, \"rgba(11, 11, 14, 0.02)\");\n      g.addColorStop(1, \"rgba(11, 11, 14, 0.18)\");"
-    },
-    {
-      "pattern": "g\\.addColorStop\\(0, \"rgba\\(11, 11, 14, 0\\.82\\)\"\\);\\s*\\n\\s*g\\.addColorStop\\(0\\.45, \"rgba\\(11, 11, 14, 0\\.35\\)\"\\);\\s*\\n\\s*g\\.addColorStop\\(0\\.68, \"rgba\\(11, 11, 14, 0\\)\"\\);",
-      "replace": "g.addColorStop(0, \"rgba(11, 11, 14, 0.2)\");\n      g.addColorStop(0.35, \"rgba(11, 11, 14, 0.07)\");\n      g.addColorStop(0.5, \"rgba(11, 11, 14, 0)\");"
-    },
-    {
-      "pattern": "bctx\\.drawImage\\(img, mx \\* dpr, my \\* dpr, dw \\* dpr, dh \\* dpr\\);",
-      "replace": "bctx.filter = \"brightness(1.22) contrast(1.02)\";\n      bctx.drawImage(img, mx * dpr, my * dpr, dw * dpr, dh * dpr);\n      bctx.filter = \"none\";"
-    },
-    {
-      "pattern": "Hyrox Worcestershire",
-      "replace": "Hyrox UK"
-    },
-    {
-      "pattern": "Worcestershire Scene|Worcestershire scene",
-      "replace": "UK scene"
-    },
-    {
-      "pattern": "Applications, enrolment and checkout stay on Josh's existing forms\\s*and stores — this page routes you to the right one rather than\\s*inventing a new funnel\\. Sample preview copy\\.",
-      "replace": "Every route is Josh's official one — applications, programmes and the store. One tap out, nothing in between."
-    },
-    {
-      "pattern": "(<p class=\"city\">Worcestershire</p>\\s*</header>)\\s*<section class=\"guide-hero\">",
-      "replace": "$1\n\n    <div class=\"nav\">\n      <div class=\"wrap\">\n        <button class=\"nav-toggle\" aria-expanded=\"false\" aria-controls=\"menu\">\n          Menu\n        </button>\n        <ul class=\"menu\" id=\"menu\"></ul>\n      </div>\n    </div>\n\n    <section class=\"guide-hero\">"
-    },
-    {
-      "pattern": "(<title>\\s*HYROX race-time predictor[\\s\\S]*?</title>)",
-      "replace": "$1\n    <style>\n      .guide-hero-photo img { max-height: 560px; }\n      .wrap.guide { grid-template-columns: minmax(0, 1fr); }\n      .wrap.guide .article { max-width: none; }\n      .wrap.guide .article p { max-width: 72ch; }\n      .wrap.guide .calc-form { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }\n      .wrap.guide .dossier { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }\n    </style>"
-    },
-    {
-      "pattern": "(<title>\\s*Hyrox Split Analyser[\\s\\S]*?</title>)",
-      "replace": "$1\n    <style>\n      .wrap.guide .article { max-width: none; }\n      .wrap.guide .calc-form { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }\n    </style>"
-    },
-    {
-      "pattern": "(Analyse real splits</a[^>]*>\\s*</p>\\s*</article>\\s*</div>\\s*</div>)",
-      "replace": "$1\n\n    <section class=\"cta-band\">\n      <div class=\"wrap\">\n        <h3>Want a number you can actually hold?</h3>\n        <p>\n          A prediction is a vibe. A coached plan is a number built from your\n          real splits — and re-checked after every race.\n        </p>\n        <a class=\"btn btn-light\" href=\"/joshharrison/coaching.html\">Coach with Josh</a>\n        <a class=\"btn btn-primary\" href=\"/joshharrison/#ask\">Ask Josh</a>\n      </div>\n    </section>"
-    },
-    {
-      "pattern": "Bisikin Josh",
-      "replace": "Tip Josh off"
-    },
-    {
-      "pattern": "part-time metronome\\.\\s*</p>\\s*</div>",
-      "replace": "part-time metronome.</p>\n        </div>\n        <figure class=\"guide-hero-photo\">\n          <img\n            src=\"/joshharrison/images/finish.jpg\"\n            alt=\"Josh mid-race in the arena — the bright kit pops against the dark\"\n            width=\"1600\"\n            height=\"1066\"\n            loading=\"lazy\"\n          />\n        </figure>"
-    },
-    {
-      "pattern": "she'll\\s*intro you herself\\. She races this circuit — she knows who'd actually\\s*suit you\\.",
-      "replace": "he'll intro you himself. He races this circuit — he knows who'd actually suit you."
-    },
-    {
-      "pattern": "HYROX Group Coach, pro athlete, occasional matchmaker\\.",
-      "replace": "HYROX Pro athlete, coach, occasional matchmaker."
-    },
-    {
-      "pattern": "Forget three dinner dates —\\s*watch someone on the sled push and you'll know everything you need\\s*to\\.",
-      "replace": "Forget three dinner dates — thirty seconds on a sled tells you everything you need."
-    },
-    {
-      "pattern": "— and\\s*absolutely take credit at the wedding\\.",
-      "replace": "— credit at the wedding is non-negotiable."
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Josh running a Hyrox lap in race kit\"",
-      "replace": "src=\"/joshharrison/images/josh-treadmill.jpg\"\n            alt=\"Josh putting in treadmill miles between race blocks\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/coaching\\.jpg\"\\s*\\n\\s*alt=\"Josh mid sandbag lunge\"",
-      "replace": "src=\"/joshharrison/images/josh-kerb.jpg\"\n            alt=\"Josh kerbside post-race — recovery starts before the next session\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/coaching\\.jpg\"\\s*\\n\\s*alt=\"Josh laughing mid-lunge, carrying the 20 kg sandbag on her shoulders at a Hyrox race\"",
-      "replace": "src=\"/joshharrison/images/josh-walkin.jpg\"\n            alt=\"Josh walking into the arena ahead of a race\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh low over the sled poles driving a loaded sled, CENTR plates visible\"",
-      "replace": "src=\"/joshharrison/images/station-lean.jpg\"\n            alt=\"Josh driving the sled away from camera — head down through the poles\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Josh mid broad jump between burpee reps in the arena\"",
-      "replace": "src=\"/joshharrison/images/wallball.jpg\"\n            alt=\"Josh mid broad jump between burpee reps in the arena\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/wallball\\.jpg\" alt=\"The squad mid rowing warm-up in the gym\"",
-      "replace": "src=\"/joshharrison/images/josh-bike.jpg\" alt=\"Josh on the erg between pieces — same engine, different machine\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh mid-stride on the farmers carry with competition kettlebells in the arena\"",
-      "replace": "src=\"/joshharrison/images/carry.jpg\"\n            alt=\"Josh mid-stride on the farmers carry — the grimace is the point\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Josh laughing with a 20 kg sandbag on each shoulder mid-lunges\"",
-      "replace": "src=\"/joshharrison/images/coaching.jpg\"\n            alt=\"Josh crouched low between efforts — the legs the lunges are built on\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/carry\\.jpg\" alt=\"Mid overhead press — the pressing pattern behind wall balls\"",
-      "replace": "src=\"/joshharrison/images/josh-detail.jpg\" alt=\"Head down between wall-ball sets — the breathing pattern holds\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"[\\s\\S]*?alt=\"Josh grinding through the farmers carry, low angle past the crowd barriers at Hyrox\"",
-      "replace": "src=\"/joshharrison/images/race-revel.jpg\"\n            alt=\"Josh mid-run between stations at HYROX Manchester\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/josh-kerb\\.jpg\"\\s*\\n\\s*alt=\"Josh kerbside post-race — recovery starts before the next session\"",
-      "replace": "src=\"/joshharrison/images/josh-kerb.jpg\"\n            style=\"object-position: 50% 68%\"\n            alt=\"Josh kerbside post-race — recovery starts before the next session\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh mid-stride on the farmers carry with competition kettlebells\"",
-      "replace": "src=\"/joshharrison/images/carry.jpg\"\n            alt=\"Josh mid-stride on the farmers carry — legs like this don't fuel themselves\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh head-on, driving a loaded sled in the arena\"",
-      "replace": "src=\"/joshharrison/images/josh-night.jpg\"\n            alt=\"Night miles logged before race morning\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/station-lean\\.jpg\"\\s*\\n\\s*alt=\"Josh mid sandbag lunge in black kit\"",
-      "replace": "src=\"/joshharrison/images/josh-momentum.jpg\"\n            alt=\"Track walk with the bottle — the taper is the training\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Josh on the podium, 1st place doubles\"",
-      "replace": "src=\"/joshharrison/images/josh-pb.jpg\"\n            alt=\"Josh on the HYROX floor after the Bologna PB\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Josh laughing mid-effort in his HYROX race kit\"",
-      "replace": "src=\"/joshharrison/images/josh-half.jpg\"\n            alt=\"Josh at the AJ Bell Birmingham Half — 1:32:13 on the day\""
-    },
-    {
-      "pattern": "Josh leaning back into the sled pull rope in her lilac kit, Worcestershire banner behind",
-      "replace": "Josh leaning back into the sled pull rope, arena behind"
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"\\s*\\n\\s*alt=\"Josh mid-stride on the farmers carry with competition kettlebells\"",
-      "replace": "src=\"/joshharrison/images/gallery/stock-arena.jpg\"\n            alt=\"Inside the arena — the atmosphere that makes the fuel worth it\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/carry\\.jpg\"[\\s\\S]*?alt=\"Josh grinding through the farmers carry, low angle past the crowd barriers at Hyrox\"",
-      "replace": "src=\"/joshharrison/images/josh-sprint.jpg\"\n            alt=\"Josh sprinting through the arena between stations\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/hero-reveal\\.jpg\"\\s*\\n\\s*alt=\"Josh and his doubles partner laughing at the Hyrox Birmingham finish line[^\"]*\"",
-      "replace": "src=\"/joshharrison/images/josh-startline.jpg\"\n            alt=\"Josh on the start line — flat expression, miles to go\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Josh with both arms raised in celebration at the finish line\"",
-      "replace": "src=\"/joshharrison/images/josh-bologna.jpg\"\n            style=\"aspect-ratio: 4/3; object-position: 50% 20%\"\n            alt=\"Josh beside the 1:05:43 finish board in Bologna\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/squad-athlos\\.jpg\"\\s*\\n\\s*alt=\"The whole crew after a session — all abilities, all welcome\"",
-      "replace": "src=\"/joshharrison/images/gallery/restaurant.jpg\"\n            alt=\"The crew meetup table — dinner after the race, all welcome\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/race-revel\\.jpg\"\\s*\\n\\s*alt=\"Josh and a teammate celebrating at a race event backdrop\"",
-      "replace": "src=\"/joshharrison/images/squad-athlos.jpg\"\n            alt=\"The orange wave leaving the start line — pick your weekend\""
-    },
-    {
-      "pattern": "src=\"/joshharrison/images/finish\\.jpg\"\\s*\\n\\s*alt=\"Arms up at the finish line — the celebration is the point\"",
-      "replace": "src=\"/joshharrison/images/gallery/dance.jpg\"\n              alt=\"The post-race dance floor — Station 10 is non-negotiable for some\""
-    },
-    {
-      "pattern": "(<b>Away edition — race weekends\\.</b>[\\s\\S]*?</li>\\s*</ul>)",
+      "pattern": "<a\\b[^>]*href=\"/joshharrison/fuel-zone[^\"]*\"[^>]*>([\\s\\S]*?)</a\\s*>",
       "replace": "$1"
+    },
+    {
+      "pattern": "pickle juice or\\s*mustard sachet",
+      "replace": "any other race-day essentials you have already tested"
+    },
+    {
+      "pattern": "<img\\b[^>]*src=\"/joshharrison/images/coaching-hero\\.jpg[^\"]*\"[^>]*>",
+      "replace": "<img src=\"/joshharrison/images/coaching-hero.jpg\" alt=\"Josh crouching beside the track between efforts, with his bright trainers visible\" width=\"1125\" height=\"1334\" loading=\"eager\" />"
+    },
+    {
+      "pattern": "<img\\b[^>]*src=\"/joshharrison/images/station-wall-balls\\.jpg[^\"]*\"[^>]*>",
+      "replace": "<img src=\"/joshharrison/images/station-wall-balls.jpg\" alt=\"Wall-ball release detail showing the ball and hands, with no face visible\" width=\"850\" height=\"350\" loading=\"lazy\" />"
+    },
+    {
+      "pattern": "(<img[^>]*src=\"[^\"]*station-wall-balls\\.jpg[^\"]*\"[\\s\\S]*?<figcaption>)[^<]*",
+      "replace": "$1Wall-ball release — faceless movement reference."
+    },
+    {
+      "pattern": "<img\\b[^>]*src=\"/joshharrison/images/station-burpees\\.jpg[^\"]*\"[^>]*>",
+      "replace": "<img src=\"/joshharrison/images/station-burpees.jpg\" alt=\"Josh in the chest-to-floor phase on a HYROX race lane\" width=\"1125\" height=\"1257\" loading=\"lazy\" />"
+    },
+    {
+      "pattern": "<img\\b[^>]*src=\"/joshharrison/images/station-row\\.jpg[^\"]*\"[^>]*>",
+      "replace": "<img src=\"/joshharrison/images/station-row.jpg\" alt=\"Rowing technique reference, cropped to exclude the athlete's face\" width=\"723\" height=\"690\" loading=\"lazy\" />"
+    },
+    {
+      "pattern": "(<img[^>]*src=\"[^\"]*station-row\\.jpg[^\"]*\"[\\s\\S]*?<figcaption>)[^<]*",
+      "replace": "$1Rowing technique — faceless movement reference."
+    },
+    {
+      "pattern": "<img\\b[^>]*src=\"/joshharrison/images/station-farmers-carry\\.jpg[^\"]*\"[^>]*>",
+      "replace": "<img src=\"/joshharrison/images/station-farmers-carry.jpg\" alt=\"Josh carrying kettlebells on the HYROX race floor\" width=\"1024\" height=\"877\" loading=\"lazy\" />"
+    },
+    {
+      "pattern": "/images/skierg-laugh\\.jpg",
+      "replace": "/images/bio.jpg"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} on the SkiErg at a Hyrox race",
+      "replace": "Josh Harrison — a static portrait between training blocks"
+    },
+    {
+      "pattern": "The crew meetup table — dinner after the race, all welcome",
+      "replace": "Team dinner after the race — everyone welcome."
+    },
+    {
+      "pattern": "The post-race dance floor — Station 10 is non-negotiable for some",
+      "replace": "The post-race social — food, stories and a proper exhale."
+    },
+    {
+      "pattern": "<article class=\"station\" id=\"heat\">[\\s\\S]*?</article>",
+      "replace": "<article class=\"station\" id=\"heat\"><span class=\"num\">Part 03</span><h3>Weather, pacing and recovery</h3><p>Worcestershire training means seasonal conditions, not year-round tropical heat. Match the effort to the day rather than forcing the same pace in every session.</p><ul><li><strong>Cold or wet days.</strong> Plan layers, visibility and grip before heading out.</li><li><strong>Warmer days.</strong> Ease the pace if the heat changes the effort, and plan access to drinks.</li><li><strong>Race preparation.</strong> Practise moving between running and station work in a suitable, supervised training setting.</li></ul><h4>Technique reminder</h4><p>A repeatable training week is more useful than chasing a single perfect session. Ask your coach to tailor the workload to your circumstances.</p></article>"
+    },
+    {
+      "pattern": "How do I train for Hyrox in {{REGION}}'s heat\\?",
+      "replace": "How should UK weather affect my HYROX training?"
+    },
+    {
+      "pattern": "Early or late outdoors for easy volume, treadmill for race-pace\\s*work, electrolytes in every long run, and expect slower outdoor\\s*paces\\. Races are indoors, so heat sessions build fitness rather than\\s*your race pace\\.",
+      "replace": "Adapt pace and kit to seasonal conditions. Use effort, visibility and grip to plan outdoor sessions, and ask your coach to tailor the workload."
+    },
+    {
+      "pattern": "Run early or late, hydrate with electrolytes rather than plain water, expect paces 15–30 seconds per km slower than in a cool gym, and use treadmill intervals for race-pace work\\. Races are indoors and air-conditioned, so heat sessions build fitness, not race-day pace\\.",
+      "replace": "Adapt pace and kit to seasonal conditions. Use effort, visibility and grip to plan outdoor sessions, and ask your coach to tailor the workload."
+    },
+    {
+      "pattern": "{{COACH_FIRST}}'s cue",
+      "replace": "Technique reminder"
+    },
+    {
+      "pattern": "The orange wave leaving the start line — pick your weekend",
+      "replace": "Josh heading into a race venue"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} mid-pull on the RowErg, side view",
+      "replace": "Rope work during Josh's training"
+    },
+    {
+      "pattern": "{{COACH_NAME}} driving the sled in a HYROX Pro Doubles race in Manchester",
+      "replace": "A doubles farmers-carry clip from Josh's channel"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} mid-race in the arena — the bright kit pops against the dark",
+      "replace": "Josh beside a race-results board"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} on the HYROX floor after the Bologna PB",
+      "replace": "Josh with a recorded race result"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} Harrison running on a rooftop at sunset in red race kit",
+      "replace": "Josh outdoors between race blocks"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} rolling on the arena floor, laughing, pink shoes up",
+      "replace": "Josh training on the track"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} in the black hoodie on a training run — {{BRAND}} 365 kit lands per drop",
+      "replace": "Josh away from the race floor"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} mid-stride on a street run in the black hoodie",
+      "replace": "Josh away from the race floor"
+    },
+    {
+      "pattern": "Your shots\\. Your words\\.",
+      "replace": "Training days. Race weekends."
+    },
+    {
+      "pattern": "Race faces, finish-line tears, the squad being daft\\. Send yours and it\\s*goes up here once {{COACH_FIRST}} has your OK\\.",
+      "replace": "Josh's training and race imagery — the kind of wall the crew can grow into."
+    },
+    {
+      "pattern": "var £ = function",
+      "replace": "var formatMoney = function"
+    },
+    {
+      "pattern": "£\\(",
+      "replace": "formatMoney("
+    },
+    {
+      "pattern": "jh-desk-v2",
+      "replace": "joshharrison-desk-demo-v3"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} putting in treadmill miles between race blocks",
+      "replace": "Josh Harrison running on the HYROX race floor"
+    },
+    {
+      "pattern": "{{COACH_FIRST}} mid-run between stations at HYROX {{DOUBLES_VENUE}}",
+      "replace": "Josh recovering beside the track, with his bright trainers visible"
+    },
+    {
+      "pattern": "(<img[^>]*src=\"[^\"]*(?:run-recovery|run-compromised)\\.jpg[^\"]*\"[\\s\\S]*?<figcaption>)[^<]*",
+      "replace": "$1Track-side recovery between efforts."
+    },
+    {
+      "pattern": "{{COACH_FIRST}} racing inside a HYROX event arena",
+      "replace": "Josh during a road race"
+    },
+    {
+      "pattern": "Race-floor effort — the reason the weekend is on the calendar\\.",
+      "replace": "The work that leads to a start line."
+    },
+    {
+      "pattern": "/images/run-compromised\\.jpg",
+      "replace": "/images/run-recovery.jpg"
+    },
+    {
+      "pattern": "{{COACH_NAME}} completing sandbag lunges with the bag across the shoulders",
+      "replace": "Josh recovering after a track session, with his bright trainers visible"
+    },
+    {
+      "pattern": "{{COACH_NAME}} running on compromised legs[^\"]*",
+      "replace": "Josh taking a breather beside the track after training"
+    },
+    {
+      "pattern": "/images/wallball\\.jpg",
+      "replace": "/images/training-erg.jpg"
+    },
+    {
+      "pattern": "{{COACH_NAME}} mid burpee broad jump[^\"]*",
+      "replace": "Josh working on an erg during training"
+    },
+    {
+      "pattern": "<p class=\"byline\">[\\s\\S]*?</p>",
+      "replace": "<p class=\"byline\">HYROX reference guide · draft for Josh's review · check your event's official rulebook.</p>"
+    },
+    {
+      "pattern": "HYROX Group Coach, podium athlete",
+      "replace": "HYROX Pro athlete and coach"
+    },
+    {
+      "pattern": "75 / 100 reps",
+      "replace": "100 reps"
+    },
+    {
+      "pattern": "75 reps",
+      "replace": "100 reps"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>102 kg incl\\. sled</li>\\s*<li><strong>Women Pro</strong>152 kg incl\\. sled</li>",
+      "replace": "<li><strong>Women Open</strong>102 kg incl. sled</li><li><strong>Women Pro / Men Open</strong>152 kg incl. sled</li><li><strong>Men Pro</strong>202 kg incl. sled</li>"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>78 kg incl\\. sled</li>\\s*<li><strong>Women Pro</strong>103 kg incl\\. sled</li>",
+      "replace": "<li><strong>Women Open</strong>78 kg incl. sled</li><li><strong>Women Pro / Men Open</strong>103 kg incl. sled</li><li><strong>Men Pro</strong>153 kg incl. sled</li>"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>2 × 16 kg kettlebells</li>\\s*<li><strong>Women Pro</strong>2 × 24 kg kettlebells</li>",
+      "replace": "<li><strong>Women Open</strong>2 × 16 kg</li><li><strong>Women Pro / Men Open</strong>2 × 24 kg</li><li><strong>Men Pro</strong>2 × 32 kg</li>"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>10 kg sandbag on shoulders</li>\\s*<li><strong>Women Pro</strong>20 kg sandbag on shoulders</li>",
+      "replace": "<li><strong>Women Open</strong>10 kg sandbag</li><li><strong>Women Pro / Men Open</strong>20 kg sandbag</li><li><strong>Men Pro</strong>30 kg sandbag</li>"
+    },
+    {
+      "pattern": "<li><strong>Women Open</strong>100 reps · 4 kg · 2\\.7 m target</li>\\s*<li><strong>Women Pro</strong>100 reps · 6 kg · 2\\.7 m target</li>",
+      "replace": "<li><strong>Women Open</strong>100 reps · 4 kg · 2.7 m</li><li><strong>Women Pro</strong>100 reps · 6 kg · 2.7 m</li><li><strong>Men Open</strong>100 reps · 6 kg · 3 m</li><li><strong>Men Pro</strong>100 reps · 9 kg · 3 m</li>"
+    },
+    {
+      "pattern": "Women's Open and Pro standards",
+      "replace": "Open and Pro division reference"
+    },
+    {
+      "pattern": "with women's Open and Pro standards",
+      "replace": "with Open and Pro division reference"
+    },
+    {
+      "pattern": "Stops? No problem",
+      "replace": "Pace the work"
+    },
+    {
+      "pattern": "A sachet of mustard or a shot of pickle juice[\\s\\S]*?Keep one in your kit bag\\.",
+      "replace": "Slow down and reassess rather than assuming a home remedy will fix it. Persistent or severe symptoms are a reason to seek help from the race medical team."
+    },
+    {
+      "pattern": "Three things per station that Josh actually does on race day — including the embarrassing ones\\.",
+      "replace": "Josh’s race-day reminders — the stuff that only shows up after enough start lines."
+    },
+    {
+      "pattern": "^[ ]+$",
+      "flags": "gm",
+      "replace": ""
+    },
+    {
+      "pattern": "<div class=\"plan reveal\"><span class=\"tag\">programme</span><h4>HYROX 365</h4><div class=\"price\">First race route</div>.*?</div><div class=\"plan reveal\"><span class=\"tag\">3-month minimum</span><h4>1-1 Bespoke Coaching</h4><div class=\"price\">Build your foundations</div>.*?Apply for 1-1 Bespoke Coaching</a></div>",
+      "replace": "<div class=\"plan reveal\"><span class=\"tag\">programme</span><h4>HYROX 365</h4><div class=\"price\">£50/month</div><div class=\"per\">HYROX-specific training through the Hybrid Hub</div><ul><li>HYROX-specific sessions delivered in the Fitr app</li><li>Community leaderboard and group chat</li><li>Fortnight check-ins and progress tracking</li><li>Running, strength and station skill together</li></ul><a class=\"btn btn-ghost\" href=\"https://the-hybrid-hub.fitr.training/t/TheHybridHub/\" target=\"_blank\" rel=\"noopener\">Apply for HYROX 365</a></div><div class=\"plan reveal\"><span class=\"tag\">3-month minimum</span><h4>1-1 Bespoke Coaching</h4><div class=\"price\">£180/month</div><div class=\"per\">A fully custom plan built around your goals and lifestyle</div><ul><li>A plan designed for you, not a template</li><li>Full coaching support in the Fitr app</li><li>Calories &amp; macros guidance</li><li>Mindset coaching and fortnight check-ins</li></ul><a class=\"btn btn-ghost\" href=\"https://1hppzdej2by.typeform.com/to/LeVTUyHt\" target=\"_blank\" rel=\"noopener\">Apply for 1-1 Bespoke Coaching</a></div>"
+    },
+    {
+      "pattern": "href=\"https://the-hybrid-hub\\.fitr\\.training/t/TheHybridHub/\"(\\s+target=\"_blank\"\\s+rel=\"noopener\"\\s*>Apply for 1-1 Bespoke Coaching)",
+      "replace": "href=\"https://1hppzdej2by.typeform.com/to/LeVTUyHt\"$1"
     }
   ],
-  "stripSections": [
-    "pelatih"
+  "extraCss": ".lead,.hero p{text-wrap:pretty}.hero.hero--editorial .hero-visual{background:#08080a}.hero.hero--editorial .hero-img{object-fit:contain!important;object-position:center!important}.sticky-cta,.wa-fab{display:none!important}.art-photo img,.tips-photo img{object-fit:contain;height:auto;max-height:620px}img[src*=\"coaching-hero.jpg\"]{display:block;width:100%;height:auto!important;aspect-ratio:1125/1334;object-fit:contain!important;max-width:100%}img[src*=\"station-burpees.jpg\"]{aspect-ratio:1125/1257!important;max-height:none!important;height:auto!important}img[src*=\"station-row.jpg\"]{aspect-ratio:723/690!important;max-height:none!important;height:auto!important}img[src*=\"station-wall-balls.jpg\"]{aspect-ratio:850/350!important;max-height:none!important;height:auto!important}img[src*=\"station-farmers-carry.jpg\"]{aspect-ratio:1024/877!important;max-height:none!important;height:auto!important}img[src*=\"run-recovery.jpg\"]{height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important}.guide-hero-photo img{object-fit:contain;background:#08080a}.coach-question{scroll-margin-top:110px}.menu .sub{max-height:65vh;overflow-y:auto}@media(max-width:900px){.menu .sub{max-height:none;overflow:visible}}",
+  "news": [
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "source": "https://hyrox.com/elite-series-races/",
+      "sourceName": "HYROX · official Elite Series schedule",
+      "take": "The work between race weekends decides how useful the next start line will be. Watch how the elites leave each station, not just the final time.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-10-25",
+      "dateLabel": "Checked",
+      "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
+      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. An away race also means planning travel, sleep and recovery.",
+      "source": "https://hyrox.com/find-my-race/",
+      "sourceName": "HYROX · official calendar",
+      "take": "Pick a target that gives the training a purpose. Give travel and recovery the same attention as the sessions.",
+      "takeStatus": "draft-for-review",
+      "link": "/joshharrison/events.html",
+      "linkLabel": "Race Calendar & Travel →"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-23",
+      "title": "Stockholm: Australia defends its mixed-relay world title",
+      "summary": "PUMA's World Championships report records Australia's mixed-relay win in 50:19, with Jess Pettrow on the title-defending team. Joanna Wietrzyk also finished second in the women's Elite 15 solo race.",
+      "source": "https://mediahub.puma.com/articles/puma-dominates-hyrox-world-championships-from-elite-athlete-performances-to-community-initiatives",
+      "sourceName": "PUMA · World Championships report",
+      "take": "A shared goal still needs individual preparation. Know your role before you reach the relay zone.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-22",
+      "dateLabel": "Effective",
+      "title": "Elite qualification switches to a rolling points system",
+      "summary": "HYROX's new framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
+      "source": "https://hyrox.com/elite-series-qualification/",
+      "sourceName": "HYROX · qualification rules",
+      "take": "Choose races that fit the build rather than bending every training week around another entry.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-20",
+      "title": "Hong Kong to host the 2027 World Championships",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027. Qualification gives the season a clear international destination.",
+      "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
+      "sourceName": "HYROX announcement · PR Newswire",
+      "take": "Start with the qualifying route, then work backwards to a repeatable week. The big target is not a substitute for the work.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-08",
+      "title": "Project Podium opens a new route to athlete support",
+      "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season, with kit, resources and performance support.",
+      "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
+      "sourceName": "PUMA · Project Podium announcement",
+      "take": "Support is welcome; consistent training remains the bit an athlete can control.",
+      "takeStatus": "draft-for-review"
+    }
   ],
   "seedFiles": {
-    "cities.json": {
-      "note": "UK race cities for the predictor demo.",
-      "items": []
-    },
-    "wall.json": {
-      "note": "PRIVATE PITCH PREVIEW — athlete wall shows placeholder entries only; real photos added with consent after launch.",
-      "items": []
-    },
-    "news.json": {
-      "note": "PRIVATE PITCH PREVIEW — demo headlines only.",
-      "items": [
+    "gallery.json": {
+      "note": "Josh's existing training and race imagery; community uploads can join the wall.",
+      "photos": [
         {
-          "date": "2026-10-14",
-          "title": "HYROX confirms the 26/27 UK calendar",
-          "summary": "London, Glasgow, Cardiff and Birmingham all land on the new season calendar, with the usual sell-out warnings attached. Full dates and venues are on the official site.",
-          "take": "Book the hotel before you book the heat — Saturday waves go first and nobody enjoys a 6 a.m. start in a city an hour away. Bologna taught me that one.",
-          "link": "https://hyrox.com",
-          "linkLabel": "Official calendar →",
-          "source": "https://hyrox.com",
-          "sourceName": "hyrox.com"
+          "src": "/joshharrison/images/gallery/race-recovery.jpg",
+          "alt": "Josh taking a breather on the race floor after a hard effort",
+          "caption": "The recovery after the work.",
+          "by": "@joshharrisonfit",
+          "event": "Race day",
+          "tilt": -1
         },
         {
-          "date": "2026-10-06",
-          "title": "Doubles fields keep getting quicker",
-          "summary": "Pro doubles times across the season are trending down, with more sub-hour pairs turning up at every major race.",
-          "take": "57:14 isn't a flex, it's a warning — the pairs game is where this sport is heading. Find your partner before you need one; the race-mate board exists for a reason.",
-          "link": "/joshharrison/find-a-partner.html",
-          "linkLabel": "Find a race-mate →"
+          "src": "/joshharrison/images/gallery/field-training.jpg",
+          "alt": "Josh outdoors during a training block",
+          "caption": "The sessions between start lines.",
+          "by": "@joshharrisonfit",
+          "event": "Training",
+          "tilt": 1
+        },
+        {
+          "src": "/joshharrison/images/gallery/after-effort.jpg",
+          "alt": "Josh recovering on the arena floor",
+          "caption": "A different kind of race-day portrait.",
+          "by": "@joshharrisonfit",
+          "event": "Race day",
+          "tilt": 1
+        },
+        {
+          "src": "/joshharrison/images/gallery/training-session.jpg",
+          "alt": "Josh during a training session",
+          "caption": "Behind the race result.",
+          "by": "@joshharrisonfit",
+          "event": "Training",
+          "tilt": -1
         }
       ]
     },
-    "partners.json": {
-      "note": "PRIVATE PITCH PREVIEW — partner offers below are illustrative.",
-      "items": []
-    },
-    "matchboard.json": {
-      "note": "PRIVATE PITCH PREVIEW — sample race-mate posts only.",
-      "items": []
-    },
-    "travelboard.json": {
-      "note": "PRIVATE PITCH PREVIEW — sample travel-board posts only.",
-      "items": []
-    },
-    "station9.json": {
-      "note": "PRIVATE PITCH PREVIEW — meetup listings are illustrative.",
-      "next": null,
-      "away": []
-    },
-    "gallery.json": {
-      "photos": [
-        {
-          "src": "/joshharrison/images/gallery/malaga-crew.jpg",
-          "alt": "HTCC crew on the race floor at HYROX Málaga",
-          "caption": "An unforgettable weekend full of PBs, sun, sangria and more laughs than I've had in a while. We'll be back next year — who's joining us?",
-          "by": "@sunday.squad",
-          "tilt": -1.5,
-          "event": "Race trip"
-        },
-        {
-          "src": "/joshharrison/images/gallery/malaga-three.jpg",
-          "alt": "Three HTCC athletes grinning after racing in Málaga",
-          "caption": "Dee's first ever HYROX. Hooked right from that first race.",
-          "by": "@hyrox.huns",
-          "tilt": 2,
-          "event": "Race trip"
-        },
-        {
-          "src": "/joshharrison/images/gallery/istanbul-podium.jpg",
-          "alt": "Michelle and Ellie with the Union flag on the podium at HYROX Istanbul",
-          "caption": "Michelle & Ellie — podium, Istanbul. Keep setting the standard.",
-          "by": "@racefloor.crew",
-          "tilt": 1,
-          "event": "Race day"
-        },
-        {
-          "src": "/joshharrison/images/gallery/glasgow-doors.jpg",
-          "alt": "Ross outside the HYROX Glasgow entrance",
-          "caption": "Glasgow. Just enjoy it they say. But don't underestimate the challenge.",
-          "by": "@sleds.and.regrets",
-          "tilt": -2,
-          "event": "Race day"
-        },
-        {
-          "src": "/joshharrison/images/gallery/glasgow-oxworld.jpg",
-          "alt": "HTCC crew at the OX World stand in Glasgow",
-          "caption": "Crew at Glasgow. Half of them didn't know each other a year ago.",
-          "by": "@the8amheat",
-          "tilt": 1.5,
-          "event": "Race day"
-        },
-        {
-          "src": "/joshharrison/images/gallery/doubles-finish.jpg",
-          "alt": "A doubles pair celebrating at the finish",
-          "caption": "You've smashed your training — now go smash this race. They did.",
-          "by": "@roxzone",
-          "event": "Race day"
-        },
-        {
-          "src": "/joshharrison/images/gallery/crew-faces.jpg",
-          "alt": "HTCC members in club tees after a group run",
-          "caption": "Sunny springy group runs. Run Club, Tuesdays and Wednesdays.",
-          "by": "@pb_chasers",
-          "tilt": 1,
-          "event": "Run club"
-        },
-        {
-          "src": "/joshharrison/images/gallery/crew-selfie.jpg",
-          "alt": "Post-race crew selfie",
-          "caption": "It's not just a club — it's friends & family.",
-          "by": "@finishline.fam",
-          "tilt": -1.5,
-          "event": "Race day"
-        }
-      ],
-      "note": "Seeded community picks — generic event photos standing in until real submissions land."
-    },
     "bulletin.json": {
-      "note": "PRIVATE PITCH PREVIEW.",
+      "note": "PRIVATE PITCH PREVIEW",
       "items": []
     },
     "diary.json": {
-      "note": "PRIVATE PITCH PREVIEW.",
+      "note": "PRIVATE PITCH PREVIEW",
       "items": []
     },
-    "faq.json": {
-      "note": "PRIVATE PITCH PREVIEW.",
-      "items": []
-    }
+    "campaign-offers.json": "@scripts/reskin/joshharrison-pages/data/campaign-offers.json",
+    "cities.json": "@scripts/reskin/joshharrison-pages/data/cities.json",
+    "events.json": "@scripts/reskin/joshharrison-pages/data/events.json",
+    "matchboard.json": "@scripts/reskin/joshharrison-pages/data/matchboard.json",
+    "news.json": "@scripts/reskin/joshharrison-pages/data/news.json",
+    "training-platform.json": "@scripts/reskin/joshharrison-pages/data/training-platform.json",
+    "travelboard.json": "@scripts/reskin/joshharrison-pages/data/travelboard.json",
+    "videos.json": "@scripts/reskin/joshharrison-pages/data/videos.json"
   },
-  "imageOverrides": [
-    "scripts/reskin/joshharrison-assets"
-  ],
-  "excludePatterns": [
-    "(warrior-program|hybrid-coaching-jakarta|elite-race-prep|pay|hyrox-jakarta|jakarta-hybrid-scene|book-dina|book|advertise|alt|coach|doubles|broadcast|diary|welcome)\\.html$",
-    "(coach|advertise|pay|book|broadcast)\\.js$",
-    "images/dina-",
-    "images/gallery/",
-    "images/(squad-anya|squad-athlos|carry|doubles|feature|hero|hero-alt|kb-carry|podium|run|skierg|sled-top|station-lean|venue-|wallball|wall-balls|sandbag|rowing|sled-|ski|burpee|bio|avatar|coaching|farmers|race-|finish|station9|station10).*\\.jpg$"
-  ],
-  "currency": "GBP",
-  "sharedPack": "scripts/reskin/shared-packs/uk.json",
-  "heroFull": true,
-  "extraCss": "/* readability: no orphan words in leads/standfirst, full-white copy in dark tips cards */\n.lead, .hero p { text-wrap: pretty; }\n.tips-grid ol, .tips-grid details p { color: #fff; }\nsection.cta-band { background: #14141a; }\nsection.cta-band .btn-light { background: var(--ink); color: #14141a; }",
-  "menu": "<style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style><ul class=\"menu\" id=\"menu\">\n          <li><a href=\"/joshharrison/coaching.html\">Coaching</a></li>\n          <li><a href=\"/joshharrison/watch.html\">Watch</a></li>\n          <li><a href=\"/joshharrison/find-a-partner.html\" style=\"color:var(--pink);font-weight:700\">Find a race-mate</a></li>\n          <li>\n            <button aria-expanded=\"false\" aria-haspopup=\"true\">Race Tools <span class=\"caret\"></span></button>\n            <ul class=\"sub\">\n              <li><a href=\"/joshharrison/predictor.html\">Race predictor</a></li>\n              <li><a href=\"/joshharrison/splits.html\">Split analyser</a></li>\n              <li><a href=\"/joshharrison/results.html\">Results board</a></li>\n              <li><a href=\"/joshharrison/stations-prep/\">Stations prep</a></li>\n              <li><a href=\"/joshharrison/run-zone/\">Run zone</a></li>\n              <li><a href=\"/joshharrison/fuel-zone/\">Fuel zone</a></li>\n              <li><a href=\"/joshharrison/events.html\">Race calendar</a></li>\n            </ul>\n          </li>\n          <li>\n            <button aria-expanded=\"false\" aria-haspopup=\"true\">Community <span class=\"caret\"></span></button>\n            <ul class=\"sub\">\n              <li><a href=\"/joshharrison/race-crew.html\">Race crew meetups</a></li>\n              <li><a href=\"https://www.instagram.com/hybrid.hub/\" target=\"_blank\" rel=\"noopener\">Hybrid Hub IG</a></li>\n              <li><a href=\"/joshharrison/#ask\">Ask Josh</a></li>\n              <li><a href=\"/joshharrison/news.html\">UK HYROX news</a></li>\n            </ul>\n          </li>\n          <li><a href=\"/joshharrison/partners.html\">Partners</a></li>\n          <li><a href=\"/joshharrison/list.html\">Join the list</a></li>\n        </ul>",
-  "pageFiles": {
-    "coaching.html": "@scripts/reskin/joshharrison-pages/coaching.html",
-    "watch.html": "@scripts/reskin/joshharrison-pages/watch.html",
-    "partners.html": "@scripts/reskin/joshharrison-pages/partners.html",
-    "desk.html": "@scripts/reskin/joshharrison-pages/desk.html",
-    "list.html": "@scripts/reskin/joshharrison-pages/list.html"
+  "coachPreview": true,
+  "races": {
+    "checked": "2026-10-25",
+    "source": "https://hyrox.com/find-my-race/",
+    "timeZone": "UTC",
+    "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
+    "cities": [
+      {
+        "slug": "dublin",
+        "name": "Dublin",
+        "country": "Ireland",
+        "timeZone": "Europe/Dublin",
+        "tagline": "A short hop can still deserve a proper race-weekend plan.",
+        "race": {
+          "name": "HYROX Dublin",
+          "status": "confirmed",
+          "start": "2026-11-11",
+          "end": "2026-11-15",
+          "source": "https://hyrox.com/event/hyrox-dublin/",
+          "sourceLabel": "Official HYROX Dublin event",
+          "dates": "11 Nov 2026 – 15 Nov 2026"
+        },
+        "gettingThere": [
+          "Check the official RDS event information and your division start time before booking travel.",
+          "Compare flight, ferry and local transport against the venue journey, including luggage and registration time."
+        ],
+        "hotels": [
+          {
+            "area": "Ballsbridge or central Dublin",
+            "picks": "Balance a practical journey to the RDS with food, sleep and somewhere easy for the crew to meet.",
+            "range": "Check live rates and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar and check early breakfast options near your stay."
+        ],
+        "nightAfter": [
+          "Plan a relaxed post-race meal and leave recovery time before the journey home."
+        ]
+      },
+      {
+        "slug": "singapore",
+        "name": "Singapore",
+        "country": "Singapore",
+        "timeZone": "Asia/Singapore",
+        "tagline": "Make an overseas race a shared weekend, not a rushed turnaround.",
+        "race": {
+          "name": "AIA HYROX Singapore",
+          "status": "confirmed",
+          "start": "2026-11-26",
+          "end": "2026-11-29",
+          "source": "https://hyrox.com/event/aia-hyrox-singapore/",
+          "sourceLabel": "Official AIA HYROX Singapore event",
+          "dates": "26 Nov 2026 – 29 Nov 2026"
+        },
+        "gettingThere": [
+          "Check passport, entry and airline baggage requirements before paying for travel.",
+          "Allow time to adjust to the local time zone and plan the venue journey from your chosen accommodation."
+        ],
+        "hotels": [
+          {
+            "area": "An easy venue journey",
+            "picks": "Choose a base with straightforward early transport, familiar food nearby and somewhere to recover after the finish.",
+            "range": "Compare live prices and flexible booking terms."
+          }
+        ],
+        "food": [
+          "Keep race-morning food familiar; leave the food adventure for after the finish."
+        ],
+        "nightAfter": [
+          "Plan a crew meal with enough recovery time before the flight home."
+        ]
+      },
+      {
+        "slug": "london",
+        "name": "London",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "Choose the race slot first, then make the capital work around it.",
+        "race": {
+          "name": "Amazon HYROX London",
+          "status": "confirmed",
+          "start": "2026-12-02",
+          "end": "2026-12-06",
+          "source": "https://hyrox.com/event/hyrox-london-excel/",
+          "sourceLabel": "Official Amazon HYROX London event",
+          "dates": "2 Dec 2026 – 6 Dec 2026"
+        },
+        "gettingThere": [
+          "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
+          "Compare your arrival station or airport with the venue journey, including weekend service changes."
+        ],
+        "hotels": [
+          {
+            "area": "Venue access first",
+            "picks": "Prioritise a straightforward early journey over a small saving on a room across the city. Check breakfast and bag storage around your wave.",
+            "range": "Hotel rates vary by date; check live prices."
+          }
+        ],
+        "food": [
+          "Book a familiar meal near your hotel and carry the race fuel you have already practised with."
+        ],
+        "nightAfter": [
+          "Pick a post-race meeting point before the venue gets busy."
+        ]
+      },
+      {
+        "slug": "melbourne",
+        "name": "Melbourne",
+        "country": "Australia",
+        "timeZone": "Australia/Melbourne",
+        "tagline": "A longer-haul target deserves room for travel and recovery.",
+        "race": {
+          "name": "BYD HYROX Melbourne",
+          "status": "confirmed",
+          "start": "2026-12-09",
+          "end": "2026-12-13",
+          "source": "https://hyrox.com/event/hyrox-melbourne/",
+          "sourceLabel": "Official BYD HYROX Melbourne event",
+          "dates": "9 Dec 2026 – 13 Dec 2026"
+        },
+        "gettingThere": [
+          "Check the official venue and your race day before choosing flights and accommodation.",
+          "For long-haul travel, build in arrival, recovery and local time-zone adjustment rather than landing straight into a race."
+        ],
+        "hotels": [
+          {
+            "area": "Simple transport and recovery",
+            "picks": "Compare a venue-area stay with a base near reliable public transport. Ask about early breakfast and late checkout.",
+            "range": "Check live accommodation and flight prices."
+          }
+        ],
+        "food": [
+          "Arrange familiar race-morning food before exploring the local options afterwards."
+        ],
+        "nightAfter": [
+          "Keep the day after the race flexible before the journey home."
+        ]
+      },
+      {
+        "slug": "hong-kong",
+        "name": "Hong Kong",
+        "country": "Hong Kong",
+        "timeZone": "Asia/Hong_Kong",
+        "tagline": "Turn an international start line into a well-organised race trip.",
+        "race": {
+          "name": "AIA HYROX Hong Kong",
+          "status": "confirmed",
+          "start": "2027-01-07",
+          "end": "2027-01-10",
+          "source": "https://hyrox.com/event/hyrox-hong-kong/",
+          "sourceLabel": "Official AIA HYROX Hong Kong event",
+          "dates": "7 Jan 2027 – 10 Jan 2027"
+        },
+        "gettingThere": [
+          "Check entry requirements, airline baggage and official venue instructions before booking.",
+          "Compare the airport-to-hotel and hotel-to-venue journeys, allowing for your check-in and start time."
+        ],
+        "hotels": [
+          {
+            "area": "A practical race-weekend base",
+            "picks": "Balance easy venue access with food, sleep and a relaxed meeting place for your crew.",
+            "range": "Compare live rates and cancellation terms."
+          }
+        ],
+        "food": [
+          "Keep the meal before racing predictable and enjoy the city after your finish."
+        ],
+        "nightAfter": [
+          "Allow recovery time before sightseeing or flying home."
+        ]
+      },
+      {
+        "slug": "manchester",
+        "name": "Manchester",
+        "country": "United Kingdom",
+        "timeZone": "Europe/London",
+        "tagline": "A city race with an easy plan for the days around it.",
+        "race": {
+          "name": "HYROX Manchester",
+          "status": "confirmed",
+          "start": "2027-01-20",
+          "end": "2027-01-31",
+          "source": "https://hyrox.com/event/hyrox-manchester/",
+          "sourceLabel": "Official HYROX Manchester event",
+          "dates": "20 Jan 2027 – 31 Jan 2027"
+        },
+        "gettingThere": [
+          "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
+          "Allow extra time if your route crosses the city, and include registration and warm-up in the plan."
+        ],
+        "hotels": [
+          {
+            "area": "Central or close to the venue",
+            "picks": "Compare a central base for the crew meal with a shorter early journey to the race. Check breakfast, checkout and bag storage.",
+            "range": "Check current rates for your particular race dates."
+          }
+        ],
+        "food": [
+          "Choose a familiar pre-race dinner and an uncomplicated breakfast."
+        ],
+        "nightAfter": [
+          "Agree where to meet and leave room for tired legs after the finish."
+        ]
+      }
+    ],
+    "home": "london"
   },
-  "seedEventsNext": {
-    "name": "HYROX Budapest",
-    "date": "2026-11-15",
-    "url": "https://hyrox.com/events/"
+  "stripPages": [],
+  "trainingPlatform": {
+    "name": "FITR",
+    "coachURL": "https://app.fitr.training/",
+    "clientURL": "https://app.fitr.training/",
+    "programmesURL": "https://the-hybrid-hub.fitr.training/t/TheHybridHub/",
+    "applicationURL": "https://1hppzdej2by.typeform.com/to/LeVTUyHt",
+    "directCoachLink": true,
+    "offerTitle": "Hybrid Hub coaching",
+    "offerDescription": "Explore the existing coaching and programme options, then choose the support that fits your next goal.",
+    "note": "Official FITR sign-in; use your existing account. The programme catalogue remains on the coach’s own FITR destination. No workout or client-data sync is connected."
   },
-  "wallLabel": "The JHFIT Wall"
+  "contentPublishing": {
+    "podcast": false
+  },
+  "colors": {
+    "zoneAccent": "#0f766e"
+  },
+  "brandingNote": "Wordmark JOSH HARRISON — site is literally his name (@hybrid.hub is the community). SIG = first name only."
 }

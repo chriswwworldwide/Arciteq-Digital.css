@@ -1,7 +1,7 @@
 [
-  {"path":"","subs":[
-    {"text":"Jamie — your name, your photos, your hybrid coaching. Already built into a working platform.","holdMs":6000},
-    {"text":"A home for your brand, with coaching, race tools and community together.","scrollTo":".hero-visual","holdMs":5500},
+  {"path":"","waitUntil":"domcontentloaded","startAt":{"selector":".hero-visual","offset":66},"subs":[
+    {"text":"Jamie — your name, your photos, your hybrid coaching. Already built into a working platform.","holdMs":5000},
+    {"text":"A home for your brand, with coaching, race tools and community together.","scrollTo":"body","align":"start","holdMs":4500},
     {"text":"The Zones — station prep, running and the race-day details athletes come back for.","scrollTo":"#zones","holdMs":5500},
     {"text":"Your story, with your own race imagery giving it some personality.","scrollTo":"#story","holdMs":5500},
     {"text":"The Madrid finish shot is here. Free tools first, then a clear route into your coaching.","scrollTo":"#plans","holdMs":6500},

@@ -9,6 +9,7 @@ import {
   safeReadJsonFile,
   safeWriteJsonFile,
   loadProductsData,
+  loadTenantsData,
   ROOT_DIR,
 } from "./data-files.js";
 import {
@@ -26,6 +27,7 @@ import {
 import { freeShippingProgress } from "../src/free-shipping.js";
 import { relatedProducts } from "../src/related-products.js";
 import express from "express";
+import { publicTenantConfig } from "../src/static-guard.js";
 
 // Live values still owned by server.js, linked in when the router mounts.
 const ctx = {};
@@ -33,6 +35,9 @@ const ctx = {};
 export function createCatalogRouter(deps) {
   Object.assign(ctx, deps);
   const router = express.Router();
+  router.get("/data/tenants.json", (req, res) =>
+    res.json(publicTenantConfig(loadTenantsData().list)),
+  );
   router.post("/admin/run-import", (req, res) => {
     const denied = requireAdmin(req, res);
     if (denied) return denied;

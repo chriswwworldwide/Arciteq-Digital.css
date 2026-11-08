@@ -15,7 +15,7 @@
 .home-lab .pitch-tools { gap:1.8rem; margin-top:2.5rem; }
 .home-lab .pitch-tool { border:0; border-top:1px solid var(--line); border-radius:0; background:transparent; padding:1.5rem 0; position:relative; }
 .home-lab .pitch-tool h4 { font-size:clamp(1.7rem,3vw,2.8rem); letter-spacing:-.04em; max-width:20ch; }
-.home-lab .pitch-tool-main { border-top:3px solid var(--pink); padding:clamp(1.5rem,4vw,3rem); background:linear-gradient(115deg,color-mix(in srgb,var(--pink) 14%,var(--paper)),var(--paper-2)); border-radius:0 0 56px 0; align-items:center; overflow:hidden; }
+.home-lab .pitch-tool-main { border-top:3px solid var(--pink); padding:clamp(1.5rem,4vw,3rem); background:linear-gradient(115deg,color-mix(in srgb,var(--pink) 14%,var(--paper)),var(--paper-2)); border-radius:0 0 12% 60% / 0 0 5% 18%; align-items:center; overflow:hidden; }
 .home-lab .pitch-tool-main h4 { font-size:clamp(2.2rem,4.3vw,4.3rem); max-width:12ch; }
 .home-lab .pitch-tool-main .tag { background:none; border:0; padding:0; color:var(--pink); }
 .home-lab .tool-preview { position:relative; overflow:hidden; border:1px solid var(--line); border-radius:16px; padding:1.5rem; background:var(--paper); transform:none; box-shadow:none; }
@@ -88,7 +88,7 @@
   .home-lab #wall-photos .polaroid.reveal.in:hover { transform:rotate(0deg) translateY(-12px) scale(1.04); z-index:2; box-shadow:0 25px 40px #1b171530; }
 }
 @media(max-width:800px) {
-  .home-lab .portrait-hairline { transform:rotate(90deg); }
+  .home-lab .portrait-hairline { transform:rotate(180deg); }
 }
 @media(max-width:760px) {
   .home-lab .block { padding-block:56px; }
@@ -111,3 +111,21 @@
   .home-lab .btn:hover,.home-lab .btn:active { transform:none; }
   .home-lab .hero-mask .hero-img,.home-lab .hero--bleed:hover .hero-img { transform:none; transition:none; }
 }
+
+
+/* Second-accent relief — sparse accents in --zone-accent, loads last so it wins */
+.home-lab .pitch-tool-main { border-top-color: var(--zone-accent); }
+.home-lab #story .eyebrow { color: var(--zone-accent); }
+.home-lab #story .quote { border-left-color: var(--zone-accent); }
+.home-lab #story li::before { background: var(--zone-accent); }
+.home-lab .profile-hairline path { stroke: var(--zone-accent); }
+.home-lab .tips-grid summary::after { color: var(--zone-accent); }
+.home-lab .faq-quick-label { color: var(--pink); }
+.home-lab #tips .eyebrow { color: var(--zone-accent); }
+
+
+/* dark-tinted panel text — tips band + plan-crew are dark surfaces on every site */
+.home-lab #tips h3, .home-lab #tips .lead, .home-lab #tips .tips-grid summary, .home-lab #tips .tips-grid ol,
+.home-lab .plan-crew h4, .home-lab .plan-crew p, .home-lab .plan-crew li { color: #f4f4f6; }
+.home-lab #tips .lead a { color: var(--zone-accent); }
+.home-lab .tips-hairline path { stroke: var(--zone-accent); }

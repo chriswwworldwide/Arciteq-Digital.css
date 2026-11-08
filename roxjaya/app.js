@@ -456,7 +456,7 @@
     .catch(() => {});
 })();
 
-// Results wall + Dina's week from roxjaya/data/wall.json (consented entries only; empty lists stay hidden).
+// Results wall (consented entries only; renders placeholders when empty).
 (function () {
   const section = document.getElementById("wall");
   if (!section) return;
@@ -686,6 +686,7 @@ window.roxShare = (function () {
     img.src = String(p.src || "");
     img.alt = String(p.alt || p.caption || "");
     img.loading = "lazy";
+    if (p.pos) img.style.objectPosition = p.pos;
     img.width = 600;
     img.height = 600;
     const cap = document.createElement("p");
@@ -1146,4 +1147,39 @@ window.roxShare = (function () {
   };
   window.addEventListener("resize", rerun);
   wide.addEventListener("change", rerun);
+})();
+
+// Signature flourish dips below the wordmark by an amount that depends on the
+// signature length (it rotates -6deg, so longer swishes drop further). Measure
+// the real tip and set the city line's gap to match — keeps spacing even and
+// tight for every signature, short or long.
+(function () {
+  const sig = document.querySelector(".masthead .sig");
+  const line = document.querySelector(".masthead .sig-line");
+  const wordmark = document.querySelector(".masthead .wordmark");
+  const city = document.querySelector(".masthead .city");
+  if (!sig || !line || !wordmark || !city) return;
+  const fit = () => {
+    const snug = 16, below = 2;
+    const wb = wordmark.getBoundingClientRect();
+    sig.style.transform = "rotate(-6deg)";
+    const sb0 = sig.getBoundingClientRect();
+    if (sb0.width > wb.width) {
+      const dx = Math.round((wb.left + wb.right) / 2 - (sb0.left + sb0.right) / 2);
+      sig.style.transform = `translateX(${dx}px) rotate(-6deg)`;
+    }
+    city.style.marginTop = snug + "px";
+    const sb = sig.getBoundingClientRect();
+    const lb = line.getBoundingClientRect();
+    const range = document.createRange();
+    range.selectNodeContents(city);
+    const cb = range.getBoundingClientRect();
+    const xClash = lb.right > cb.left + 6 && lb.left < cb.right - 6;
+    const yClash = Math.max(sb.bottom, lb.bottom) > cb.top - below;
+    if (xClash && yClash) {
+      city.style.marginTop = Math.ceil(Math.max(sb.bottom, lb.bottom) - wb.bottom) + below + "px";
+    }
+  };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  fit();
 })();

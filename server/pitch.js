@@ -22,9 +22,12 @@ const VALID_EVENTS = new Set([
   "revisit",
   "play",
   "progress",
+  "watch",
   "complete",
   "cta_demo",
   "cta_reply",
+  "site_visit",
+  "page_view",
 ]);
 const EMAIL_EVENTS = new Set([
   "view",
@@ -71,8 +74,15 @@ async function ensureTable() {
         session_id TEXT,
         ua TEXT,
         ip TEXT,
+        path TEXT,
+        secs INTEGER,
         created_at TIMESTAMPTZ NOT NULL DEFAULT now()
       )`,
+    );
+    await dbQuery(
+      `ALTER TABLE pitch_events
+        ADD COLUMN IF NOT EXISTS path TEXT,
+        ADD COLUMN IF NOT EXISTS secs INTEGER`,
     );
     tableReady = true;
     return true;
@@ -208,41 +218,64 @@ export function createPitchRouter({ adminApiKey }) {
     })();
   }
 
-  // Platform visit beacon: GET /<slug>/ (or index.html) on a tracked coach
-  // logs a site_visit and pings once per IP+slug per hour. Static assets are
-  // two segments deep, so only the front door counts. The middleware only
-  // observes — the request still falls through to the static site.
+  // Platform visit beacon: every GET /<slug>/ or /<slug>/<page>.html on a
+  // tracked coach logs an event with the path — that gives the pages-clicked
+  // count per visit. The front door pings once per IP+slug per hour (each
+  // distinct visit, not just the first ever); a returning visitor (seen >24h
+  // ago) pings as 'revisit' so you can tell fresh opens from coming back.
+  // The middleware only observes — the request falls through to the site.
   router.use((req, res, next) => {
     if (req.method !== "GET" && req.method !== "HEAD") return next();
-    const match = req.path.match(/^\/([a-z0-9-]+)\/?(?:index\.html)?$/);
+    const match = req.path.match(/^\/([a-z0-9-]+)\/?((?:index|[a-z0-9-]+)\.html)?$/);
     if (!match || !VALID_SLUGS.has(match[1])) return next();
     const slug = match[1];
+    const page = match[2] || null; // null = front door
     const ua = cleanStr(req.headers["user-agent"], 200);
     const ip = cleanStr(req.ip || "", 60);
     if (/bot|crawler|spider|preview|headless|slurp/i.test(ua)) return next();
     const self = isSelfVisitor(ip, ua);
 
-    (async () => {
-      if (await ensureTable())
-        dbQuery(
-          "INSERT INTO pitch_events (slug, event, session_id, ua, ip) VALUES ($1,'site_visit',$2,$3,$4)",
-          [slug, `site:${ip || ua.slice(0, 40)}`, ua || null, ip || null],
-        ).catch(() => {});
-    })().catch(() => {});
-
     const dedupeKey = `${slug}:${ip}`;
     const now = Date.now();
-    if (now - (recentSiteVisits.get(dedupeKey) || 0) > 3600000) {
-      recentSiteVisits.set(dedupeKey, now);
-      if (recentSiteVisits.size > 5000) recentSiteVisits.clear();
-      enqueueAlert(() =>
-        (cleanStr(process.env.PITCH_NTFY_TOPIC) &&
-          notifyViaNtfy({ slug, event: "site_visit", pct: null, self })) ||
-        (cleanStr(process.env.PITCH_WEB3FORMS_KEY) &&
-          notifyViaWeb3Forms({ slug, event: "site_visit", pct: null, self })) ||
-        notify({ slug, event: "site_visit", pct: null, self }),
-      );
-    }
+    const isVisit = !page || page === "index.html";
+    const firstOfVisit =
+      now - (recentSiteVisits.get(dedupeKey) || 0) > 3600000;
+    recentSiteVisits.set(dedupeKey, now);
+    if (recentSiteVisits.size > 5000) recentSiteVisits.clear();
+
+    (async () => {
+      let revisit = false;
+      if (await ensureTable()) {
+        if (isVisit && firstOfVisit) {
+          const prior = await dbQuery(
+            "SELECT 1 FROM pitch_events WHERE slug=$1 AND ip=$2 AND event IN ('site_visit','page_view') AND created_at < now() - interval '1 day' LIMIT 1",
+            [slug, ip],
+          ).catch(() => null);
+          revisit = !!(prior && prior.rows && prior.rows.length);
+        }
+        dbQuery(
+          "INSERT INTO pitch_events (slug, event, session_id, ua, ip, path) VALUES ($1,$2,$3,$4,$5,$6)",
+          [
+            slug,
+            isVisit && revisit ? "revisit" : isVisit ? "site_visit" : "page_view",
+            `site:${ip || ua.slice(0, 40)}`,
+            ua || null,
+            ip || null,
+            page,
+          ],
+        ).catch(() => {});
+      }
+      if (isVisit && firstOfVisit) {
+        const evt = revisit ? "revisit" : "site_visit";
+        enqueueAlert(() =>
+          (cleanStr(process.env.PITCH_NTFY_TOPIC) &&
+            notifyViaNtfy({ slug, event: evt, pct: null, self })) ||
+          (cleanStr(process.env.PITCH_WEB3FORMS_KEY) &&
+            notifyViaWeb3Forms({ slug, event: evt, pct: null, self })) ||
+          notify({ slug, event: evt, pct: null, self }),
+        );
+      }
+    })().catch(() => {});
     next();
   });
 
@@ -254,6 +287,10 @@ export function createPitchRouter({ adminApiKey }) {
       ? Math.max(0, Math.min(100, Math.round(pctRaw)))
       : null;
     const sessionId = cleanStr(req.body?.sid, 64);
+    const secsRaw = Number(req.body?.secs);
+    const secs = Number.isFinite(secsRaw)
+      ? Math.max(0, Math.min(36000, Math.round(secsRaw)))
+      : null;
 
     if (!VALID_SLUGS.has(slug) || !VALID_EVENTS.has(event)) {
       return res.status(400).json({ ok: false });
@@ -266,8 +303,8 @@ export function createPitchRouter({ adminApiKey }) {
     const ok = await ensureTable();
     if (ok) {
       dbQuery(
-        "INSERT INTO pitch_events (slug, event, pct, session_id, ua, ip) VALUES ($1,$2,$3,$4,$5,$6)",
-        [slug, event, pct, sessionId || null, ua || null, ip || null],
+        "INSERT INTO pitch_events (slug, event, pct, session_id, ua, ip, secs) VALUES ($1,$2,$3,$4,$5,$6,$7)",
+        [slug, event, pct, sessionId || null, ua || null, ip || null, secs],
       ).catch(() => {});
     }
 
@@ -313,7 +350,7 @@ export function createPitchRouter({ adminApiKey }) {
        ORDER BY slug, event`,
     );
     const latest = await dbQuery(
-      `SELECT slug, event, pct, session_id, ua, ip, created_at
+      `SELECT slug, event, pct, secs, session_id, ua, ip, path, created_at
        FROM pitch_events ORDER BY created_at DESC LIMIT 40`,
     );
     return res.json({

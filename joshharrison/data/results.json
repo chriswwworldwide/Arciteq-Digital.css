@@ -1,6 +1,6 @@
 {
   "updated": "2026-09-21",
-  "note": "Crew finishers — times as chip time h:mm:ss. Sources: official HYROX results + national records.",
+  "note": "Crew finishers plus Josh's own verified results — times as chip time h:mm:ss. Sources: official HYROX results.",
   "divisions": {
     "women": {
       "label": "Women Singles (Open & Pro)",
@@ -34,6 +34,22 @@
     "men": {
       "label": "Men Singles (Open & Pro)",
       "results": [
+        {
+          "athlete": "Josh Harrison",
+          "time": "1:05:43",
+          "category": "Pro · PB",
+          "event": "HYROX Bologna",
+          "date": "2025",
+          "city": "Bologna"
+        },
+        {
+          "athlete": "Josh Harrison",
+          "time": "1:06:13",
+          "category": "Open",
+          "event": "HYROX London ExCeL",
+          "date": "2025",
+          "city": "London"
+        },
         {
           "athlete": "Ollie Marsh",
           "time": "1:05:58",
@@ -76,6 +92,14 @@
     "doubles-men": {
       "label": "Men Doubles",
       "results": [
+        {
+          "athlete": "Josh & Rio",
+          "time": "57:14",
+          "category": "Pro",
+          "event": "HYROX Manchester",
+          "date": "2025",
+          "city": "Manchester"
+        },
         {
           "athlete": "Ollie & Dan",
           "time": "1:01:44",

@@ -2,12 +2,12 @@
   "mode": "chassis",
   "sharedPack": "scripts/reskin/editorial-hero.pack.json",
   "slug": "joshharrison",
-  "coachingIntro": "Choose bespoke coaching or a Hybrid Hub programme delivered through FITR. Each route has its own format, price and commitment — from ongoing hybrid training to a defined 12-week race build.",
+  "coachingIntro": "Choose bespoke coaching or a Hybrid Hub programme delivered through FITR. Each route has its own format, price and commitment \u2014 from ongoing hybrid training to a defined 12-week race build.",
   "coachingOffers": [
     {
       "title": "1-1 Online Coaching",
       "type": "Bespoke FITR coaching",
-      "price": "£180/month",
+      "price": "\u00a3180/month",
       "description": "A tailored training and nutrition plan with coaching support, calorie and macro guidance, and check-ins.",
       "features": [
         "Home or gym programming",
@@ -21,7 +21,7 @@
     {
       "title": "HYROX 365",
       "type": "Ongoing FITR programme",
-      "price": "£50/month",
+      "price": "\u00a350/month",
       "description": "Keep a HYROX focus through the year with the Hub's ongoing programme. Joining opens FITR enrolment.",
       "url": "https://the-hybrid-hub.fitr.training/p/HYROX365_",
       "action": "Join HYROX 365 on FITR",
@@ -30,7 +30,7 @@
     {
       "title": "12 Week HYROX Plan 1.0",
       "type": "12-week FITR programme",
-      "price": "£60 one-off",
+      "price": "\u00a360 one-off",
       "description": "A progressive race build combining strength, running, HYROX conditioning, technique and recovery.",
       "features": [
         "Five training days listed",
@@ -44,7 +44,7 @@
     {
       "title": "Hybrid Performance",
       "type": "Rolling FITR programme",
-      "price": "£19.99/month",
+      "price": "\u00a319.99/month",
       "description": "Strength and endurance sessions for becoming a more rounded athlete, with exercise demonstrations and teaching points.",
       "url": "https://the-hybrid-hub.fitr.training/p/79437",
       "action": "Explore Hybrid Performance",
@@ -105,7 +105,7 @@
     "timeZone": "Europe/London",
     "watermark": "images/bio.jpg"
   },
-  "htmlTitle": "Josh Harrison — HYROX Pro athlete, coach & creator | Hybrid Hub",
+  "htmlTitle": "Josh Harrison \u2014 HYROX Pro athlete, coach & creator | Hybrid Hub",
   "metaDescription": "Josh Harrison and Hybrid Hub: coaching, race tools, session-planner preview, race-mate finder, training videos and the work behind race day.",
   "tokens": {
     "SLUG": "joshharrison",
@@ -125,12 +125,12 @@
     "REGION_LC": "worcester",
     "TAGLINE": "Obsession beats talent",
     "HERO_TITLE_HTML": "Hard work<br /><em>compounds.</em>",
-    "HERO_KICKER": "Josh Harrison · Hybrid Hub · Worcestershire",
+    "HERO_KICKER": "Josh Harrison \u00b7 Hybrid Hub \u00b7 Worcestershire",
     "HERO_INTRO_HTML": "HYROX Pro athlete, coach and creator.<br />The training, the race plan and the work behind the result.",
     "HERO_PHOTO_ALT": "Josh Harrison driving a sled on the HYROX race floor",
     "HERO_PHOTO_WIDTH": "1125",
     "HERO_PHOTO_HEIGHT": "1248",
-    "HERO_STATS_HTML": "<div><strong>1:05:43</strong><span>Recorded Pro Solo · Bologna</span></div><div><strong>57:14</strong><span>Recorded Pro Doubles · Manchester</span></div><div><strong>1:32:13</strong><span>Recorded Birmingham Half</span></div>",
+    "HERO_STATS_HTML": "<div><strong>1:05:43</strong><span>Recorded Pro Solo \u00b7 Bologna</span></div><div><strong>57:14</strong><span>Recorded Pro Doubles \u00b7 Manchester</span></div><div><strong>1:32:13</strong><span>Recorded Birmingham Half</span></div>",
     "APPLY_URL": "https://1hppzdej2by.typeform.com/to/LeVTUyHt",
     "PROGRAMMES_URL": "https://the-hybrid-hub.fitr.training/t/TheHybridHub/",
     "STORE_URL": "https://hybrid-hub.uk/",
@@ -167,14 +167,14 @@
     "PARTNER_KIT_LC": "adidas",
     "PARTNER_KIT_TAG": "Race kit",
     "PARTNER_KIT_TITLE": "Adidas training",
-    "PARTNER_KIT_COPY": "Training kit from Josh’s race-week rotation.",
+    "PARTNER_KIT_COPY": "Training kit from Josh\u2019s race-week rotation.",
     "PARTNER_KIT_CTA": "View training kit",
     "PARTNER_KIT_URL": "https://www.adidas.co.uk/training",
     "GYM_CODE": "JOSHH",
     "PHOTO_BUDDY": "the Hybrid Hub crew",
-    "ACCENT": "#ff2e63",
-    "ACCENT_DARK": "#e01e4e",
-    "ACCENT_SOFT": "#2a141b",
+    "ACCENT": "#ec1c24",
+    "ACCENT_DARK": "#c8102e",
+    "ACCENT_SOFT": "#2a1414",
     "STORE_NAME": "HYBRID HUB 365",
     "STORE_TAG": "Josh's own clothing line",
     "STORE_COPY": "The Hybrid Hub clothing line, alongside coaching and training programmes.",
@@ -183,7 +183,7 @@
     "PROG_ONE_TAG": "programme",
     "PROG_TWO": "1-1 Bespoke Coaching",
     "PROG_TWO_TAG": "3-month minimum",
-    "OFFER_SUMMARY": "The Hybrid Hub — 1:1 coaching, FITR programmes and the clothing store.",
+    "OFFER_SUMMARY": "The Hybrid Hub \u2014 1:1 coaching, FITR programmes and the clothing store.",
     "SIG": "by Josh"
   },
   "omitImageSlots": [
@@ -241,7 +241,7 @@
     },
     {
       "pattern": "(<img[^>]*src=\"[^\"]*station-wall-balls\\.jpg[^\"]*\"[\\s\\S]*?<figcaption>)[^<]*",
-      "replace": "$1Wall-ball release — faceless movement reference."
+      "replace": "$1Wall-ball release \u2014 faceless movement reference."
     },
     {
       "pattern": "<img\\b[^>]*src=\"/joshharrison/images/station-burpees\\.jpg[^\"]*\"[^>]*>",
@@ -253,7 +253,7 @@
     },
     {
       "pattern": "(<img[^>]*src=\"[^\"]*station-row\\.jpg[^\"]*\"[\\s\\S]*?<figcaption>)[^<]*",
-      "replace": "$1Rowing technique — faceless movement reference."
+      "replace": "$1Rowing technique \u2014 faceless movement reference."
     },
     {
       "pattern": "<img\\b[^>]*src=\"/joshharrison/images/station-farmers-carry\\.jpg[^\"]*\"[^>]*>",
@@ -265,15 +265,15 @@
     },
     {
       "pattern": "{{COACH_FIRST}} on the SkiErg at a Hyrox race",
-      "replace": "Josh Harrison — a static portrait between training blocks"
+      "replace": "Josh Harrison \u2014 a static portrait between training blocks"
     },
     {
-      "pattern": "The crew meetup table — dinner after the race, all welcome",
-      "replace": "Team dinner after the race — everyone welcome."
+      "pattern": "The crew meetup table \u2014 dinner after the race, all welcome",
+      "replace": "Team dinner after the race \u2014 everyone welcome."
     },
     {
-      "pattern": "The post-race dance floor — Station 10 is non-negotiable for some",
-      "replace": "The post-race social — food, stories and a proper exhale."
+      "pattern": "The post-race dance floor \u2014 Station 10 is non-negotiable for some",
+      "replace": "The post-race social \u2014 food, stories and a proper exhale."
     },
     {
       "pattern": "<article class=\"station\" id=\"heat\">[\\s\\S]*?</article>",
@@ -288,7 +288,7 @@
       "replace": "Adapt pace and kit to seasonal conditions. Use effort, visibility and grip to plan outdoor sessions, and ask your coach to tailor the workload."
     },
     {
-      "pattern": "Run early or late, hydrate with electrolytes rather than plain water, expect paces 15–30 seconds per km slower than in a cool gym, and use treadmill intervals for race-pace work\\. Races are indoors and air-conditioned, so heat sessions build fitness, not race-day pace\\.",
+      "pattern": "Run early or late, hydrate with electrolytes rather than plain water, expect paces 15\u201330 seconds per km slower than in a cool gym, and use treadmill intervals for race-pace work\\. Races are indoors and air-conditioned, so heat sessions build fitness, not race-day pace\\.",
       "replace": "Adapt pace and kit to seasonal conditions. Use effort, visibility and grip to plan outdoor sessions, and ask your coach to tailor the workload."
     },
     {
@@ -296,7 +296,7 @@
       "replace": "Technique reminder"
     },
     {
-      "pattern": "The orange wave leaving the start line — pick your weekend",
+      "pattern": "The orange wave leaving the start line \u2014 pick your weekend",
       "replace": "Josh heading into a race venue"
     },
     {
@@ -308,7 +308,7 @@
       "replace": "A doubles farmers-carry clip from Josh's channel"
     },
     {
-      "pattern": "{{COACH_FIRST}} mid-race in the arena — the bright kit pops against the dark",
+      "pattern": "{{COACH_FIRST}} mid-race in the arena \u2014 the bright kit pops against the dark",
       "replace": "Josh beside a race-results board"
     },
     {
@@ -324,7 +324,7 @@
       "replace": "Josh training on the track"
     },
     {
-      "pattern": "{{COACH_FIRST}} in the black hoodie on a training run — {{BRAND}} 365 kit lands per drop",
+      "pattern": "{{COACH_FIRST}} in the black hoodie on a training run \u2014 {{BRAND}} 365 kit lands per drop",
       "replace": "Josh away from the race floor"
     },
     {
@@ -337,14 +337,14 @@
     },
     {
       "pattern": "Race faces, finish-line tears, the squad being daft\\. Send yours and it\\s*goes up here once {{COACH_FIRST}} has your OK\\.",
-      "replace": "Josh's training and race imagery — the kind of wall the crew can grow into."
+      "replace": "Josh's training and race imagery \u2014 the kind of wall the crew can grow into."
     },
     {
-      "pattern": "var £ = function",
+      "pattern": "var \u00a3 = function",
       "replace": "var formatMoney = function"
     },
     {
-      "pattern": "£\\(",
+      "pattern": "\u00a3\\(",
       "replace": "formatMoney("
     },
     {
@@ -368,7 +368,7 @@
       "replace": "Josh during a road race"
     },
     {
-      "pattern": "Race-floor effort — the reason the weekend is on the calendar\\.",
+      "pattern": "Race-floor effort \u2014 the reason the weekend is on the calendar\\.",
       "replace": "The work that leads to a start line."
     },
     {
@@ -393,7 +393,7 @@
     },
     {
       "pattern": "<p class=\"byline\">[\\s\\S]*?</p>",
-      "replace": "<p class=\"byline\">HYROX reference guide · draft for Josh's review · check your event's official rulebook.</p>"
+      "replace": "<p class=\"byline\">HYROX reference guide \u00b7 draft for Josh's review \u00b7 check your event's official rulebook.</p>"
     },
     {
       "pattern": "HYROX Group Coach, podium athlete",
@@ -416,16 +416,16 @@
       "replace": "<li><strong>Women Open</strong>78 kg incl. sled</li><li><strong>Women Pro / Men Open</strong>103 kg incl. sled</li><li><strong>Men Pro</strong>153 kg incl. sled</li>"
     },
     {
-      "pattern": "<li><strong>Women Open</strong>2 × 16 kg kettlebells</li>\\s*<li><strong>Women Pro</strong>2 × 24 kg kettlebells</li>",
-      "replace": "<li><strong>Women Open</strong>2 × 16 kg</li><li><strong>Women Pro / Men Open</strong>2 × 24 kg</li><li><strong>Men Pro</strong>2 × 32 kg</li>"
+      "pattern": "<li><strong>Women Open</strong>2 \u00d7 16 kg kettlebells</li>\\s*<li><strong>Women Pro</strong>2 \u00d7 24 kg kettlebells</li>",
+      "replace": "<li><strong>Women Open</strong>2 \u00d7 16 kg</li><li><strong>Women Pro / Men Open</strong>2 \u00d7 24 kg</li><li><strong>Men Pro</strong>2 \u00d7 32 kg</li>"
     },
     {
       "pattern": "<li><strong>Women Open</strong>10 kg sandbag on shoulders</li>\\s*<li><strong>Women Pro</strong>20 kg sandbag on shoulders</li>",
       "replace": "<li><strong>Women Open</strong>10 kg sandbag</li><li><strong>Women Pro / Men Open</strong>20 kg sandbag</li><li><strong>Men Pro</strong>30 kg sandbag</li>"
     },
     {
-      "pattern": "<li><strong>Women Open</strong>100 reps · 4 kg · 2\\.7 m target</li>\\s*<li><strong>Women Pro</strong>100 reps · 6 kg · 2\\.7 m target</li>",
-      "replace": "<li><strong>Women Open</strong>100 reps · 4 kg · 2.7 m</li><li><strong>Women Pro</strong>100 reps · 6 kg · 2.7 m</li><li><strong>Men Open</strong>100 reps · 6 kg · 3 m</li><li><strong>Men Pro</strong>100 reps · 9 kg · 3 m</li>"
+      "pattern": "<li><strong>Women Open</strong>100 reps \u00b7 4 kg \u00b7 2\\.7 m target</li>\\s*<li><strong>Women Pro</strong>100 reps \u00b7 6 kg \u00b7 2\\.7 m target</li>",
+      "replace": "<li><strong>Women Open</strong>100 reps \u00b7 4 kg \u00b7 2.7 m</li><li><strong>Women Pro</strong>100 reps \u00b7 6 kg \u00b7 2.7 m</li><li><strong>Men Open</strong>100 reps \u00b7 6 kg \u00b7 3 m</li><li><strong>Men Pro</strong>100 reps \u00b7 9 kg \u00b7 3 m</li>"
     },
     {
       "pattern": "Women's Open and Pro standards",
@@ -444,8 +444,8 @@
       "replace": "Slow down and reassess rather than assuming a home remedy will fix it. Persistent or severe symptoms are a reason to seek help from the race medical team."
     },
     {
-      "pattern": "Three things per station that Josh actually does on race day — including the embarrassing ones\\.",
-      "replace": "Josh’s race-day reminders — the stuff that only shows up after enough start lines."
+      "pattern": "Three things per station that Josh actually does on race day \u2014 including the embarrassing ones\\.",
+      "replace": "Josh\u2019s race-day reminders \u2014 the stuff that only shows up after enough start lines."
     },
     {
       "pattern": "^[ ]+$",
@@ -454,23 +454,23 @@
     },
     {
       "pattern": "<div class=\"plan reveal\"><span class=\"tag\">programme</span><h4>HYROX 365</h4><div class=\"price\">First race route</div>.*?</div><div class=\"plan reveal\"><span class=\"tag\">3-month minimum</span><h4>1-1 Bespoke Coaching</h4><div class=\"price\">Build your foundations</div>.*?Apply for 1-1 Bespoke Coaching</a></div>",
-      "replace": "<div class=\"plan reveal\"><span class=\"tag\">programme</span><h4>HYROX 365</h4><div class=\"price\">£50/month</div><div class=\"per\">HYROX-specific training through the Hybrid Hub</div><ul><li>HYROX-specific sessions delivered in the Fitr app</li><li>Community leaderboard and group chat</li><li>Fortnight check-ins and progress tracking</li><li>Running, strength and station skill together</li></ul><a class=\"btn btn-ghost\" href=\"https://the-hybrid-hub.fitr.training/t/TheHybridHub/\" target=\"_blank\" rel=\"noopener\">Apply for HYROX 365</a></div><div class=\"plan reveal\"><span class=\"tag\">3-month minimum</span><h4>1-1 Bespoke Coaching</h4><div class=\"price\">£180/month</div><div class=\"per\">A fully custom plan built around your goals and lifestyle</div><ul><li>A plan designed for you, not a template</li><li>Full coaching support in the Fitr app</li><li>Calories &amp; macros guidance</li><li>Mindset coaching and fortnight check-ins</li></ul><a class=\"btn btn-ghost\" href=\"https://1hppzdej2by.typeform.com/to/LeVTUyHt\" target=\"_blank\" rel=\"noopener\">Apply for 1-1 Bespoke Coaching</a></div>"
+      "replace": "<div class=\"plan reveal\"><span class=\"tag\">programme</span><h4>HYROX 365</h4><div class=\"price\">\u00a350/month</div><div class=\"per\">HYROX-specific training through the Hybrid Hub</div><ul><li>HYROX-specific sessions delivered in the Fitr app</li><li>Community leaderboard and group chat</li><li>Fortnight check-ins and progress tracking</li><li>Running, strength and station skill together</li></ul><a class=\"btn btn-ghost\" href=\"https://the-hybrid-hub.fitr.training/t/TheHybridHub/\" target=\"_blank\" rel=\"noopener\">Apply for HYROX 365</a></div><div class=\"plan reveal\"><span class=\"tag\">3-month minimum</span><h4>1-1 Bespoke Coaching</h4><div class=\"price\">\u00a3180/month</div><div class=\"per\">A fully custom plan built around your goals and lifestyle</div><ul><li>A plan designed for you, not a template</li><li>Full coaching support in the Fitr app</li><li>Calories &amp; macros guidance</li><li>Mindset coaching and fortnight check-ins</li></ul><a class=\"btn btn-ghost\" href=\"https://1hppzdej2by.typeform.com/to/LeVTUyHt\" target=\"_blank\" rel=\"noopener\">Apply for 1-1 Bespoke Coaching</a></div>"
     },
     {
       "pattern": "href=\"https://the-hybrid-hub\\.fitr\\.training/t/TheHybridHub/\"(\\s+target=\"_blank\"\\s+rel=\"noopener\"\\s*>Apply for 1-1 Bespoke Coaching)",
       "replace": "href=\"https://1hppzdej2by.typeform.com/to/LeVTUyHt\"$1"
     }
   ],
-  "extraCss": ".lead,.hero p{text-wrap:pretty}.hero.hero--editorial .hero-visual{background:#08080a}.hero.hero--editorial .hero-img{object-fit:contain!important;object-position:center!important}.sticky-cta,.wa-fab{display:none!important}.art-photo img,.tips-photo img{object-fit:contain;height:auto;max-height:620px}img[src*=\"coaching-hero.jpg\"]{display:block;width:100%;height:auto!important;aspect-ratio:1125/1334;object-fit:contain!important;max-width:100%}img[src*=\"station-burpees.jpg\"]{aspect-ratio:1125/1257!important;max-height:none!important;height:auto!important}img[src*=\"station-row.jpg\"]{aspect-ratio:723/690!important;max-height:none!important;height:auto!important}img[src*=\"station-wall-balls.jpg\"]{aspect-ratio:850/350!important;max-height:none!important;height:auto!important}img[src*=\"station-farmers-carry.jpg\"]{aspect-ratio:1024/877!important;max-height:none!important;height:auto!important}img[src*=\"run-recovery.jpg\"]{height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important}.guide-hero-photo img{object-fit:contain;background:#08080a}.coach-question{scroll-margin-top:110px}.menu .sub{max-height:65vh;overflow-y:auto}@media(max-width:900px){.menu .sub{max-height:none;overflow:visible}}",
+  "extraCss": ".lead,.hero p{text-wrap:pretty}.hero.hero--editorial .hero-visual{background:#08080a}.hero.hero--editorial .hero-img{object-fit:contain!important;object-position:center!important}.sticky-cta,.wa-fab{display:none!important}.tips-photo img{object-fit:contain!important;height:auto!important;max-height:620px;aspect-ratio:auto!important}img[src*=\"station-skierg.jpg\"]{object-position:50% 8%}img[src*=\"station-sled-push.jpg\"]{object-position:50% 30%}img[src*=\"station-sled-pull.jpg\"]{object-position:50% 25%}img[src*=\"station-burpees.jpg\"]{object-position:50% 25%}img[src*=\"station-row.jpg\"]{object-position:50% 15%}img[src*=\"station-farmers-carry.jpg\"]{object-position:50% 40%}img[src*=\"station-wall-balls.jpg\"]{object-position:50% 90%}img[src*=\"run-recovery.jpg\"]{height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important}.guide-hero-photo{position:relative}.guide-hero-photo img[src*=\"carry.jpg\"]{object-position:50% 40%!important}.guide-hero-photo img[src*=\"podcast-hero.jpg\"]{object-position:50% 30%!important}.guide-hero-photo img[src*=\"stations-hero.jpg\"]{object-position:50% 35%!important}.guide-hero-photo img[src*=\"run-hero.jpg\"]{object-position:50% 55%!important}.coach-question{scroll-margin-top:110px}.menu .sub{max-height:65vh;overflow-y:auto}@media(max-width:900px){.menu .sub{max-height:none;overflow:visible}}@media(max-width:900px){.guide-hero-photo:has(img[src*=\"run-hero.jpg\"]){aspect-ratio:4/5}.guide-hero-photo img[src*=\"run-hero.jpg\"]{object-position:50% 50%!important;height:100%!important;max-height:none!important}.guide-hero-photo img[src*=\"taper-hero.jpg\"]{object-position:50% 45%!important}.guide-hero-photo img[src*=\"after-effort.jpg\"]{object-position:50% 60%!important}.guide-hero-photo img[src*=\"field-training.jpg\"]{object-position:50% 55%!important}}body.home-lab{--paper:#f6f4ef;--paper-2:#ffffff;--ink:#191920;--ink-2:#44444d;--ink-3:#73737c;--line:#e3ded4;--pink-100:color-mix(in srgb,var(--pink) 9%,var(--paper));--shadow:0 12px 34px rgba(25,25,32,.10)}\nbody.home-lab .masthead{background:#0b0b0e;color:#f2f2f0;box-shadow:0 0 0 100vmax #0b0b0e;clip-path:inset(0 -100vmax)}\nbody.home-lab .masthead .city{color:#9c9ca6}\nbody.home-lab .coach-view{--ink:#f2f2f0;--ink-2:#cfcfd6;--ink-3:#9c9ca6;--paper:#14141a;--paper-2:#1e1e26;background:color-mix(in srgb,var(--pink) 8%,#14141a);color:var(--ink);box-shadow:0 0 0 100vmax #0b0b0e;clip-path:inset(-60px -100vmax -90px)}\nbody.home-lab .hero.hero--editorial{background:#0b0b0e}\nbody.home-lab .hero.hero--editorial .hero-visual{background:#08080a!important;aspect-ratio:934/512!important;max-height:76vh}\nbody.home-lab .hero-img{object-fit:cover!important;object-position:center 45%!important}\n@media(max-width:600px){body.home-lab .hero.hero--editorial .hero-visual{aspect-ratio:auto!important;max-height:none!important;overflow:visible!important;display:block!important}body.home-lab .hero.hero--editorial .hero-mask{position:static!important;height:auto!important;inset:auto!important}body.home-lab .hero-img{height:auto!important;object-fit:contain!important}body.home-lab .hero.hero--editorial .hero-visual>.hero-intro{position:relative!important;z-index:2;max-width:none!important;margin:0!important;padding:18px 20px!important;background:#0b0b0e;border-radius:0}}\nbody.home-lab .hero.hero--editorial .kicker{color:rgba(255,255,255,.72)}\nbody.home-lab .hero.hero--editorial .hero-intro p{color:rgba(255,255,255,.88)}\n@media(min-width:601px){body.home-lab .hero.hero--editorial .hero-visual>.hero-intro{max-width:400px!important}}\nbody.home-lab .hero.hero--editorial .stats{border-top-color:var(--line)}\nbody.home-lab .hero-img{filter:brightness(1.04) saturate(1.06)}\nbody.home-lab section img:not(.avatar){filter:brightness(1.04) saturate(1.05)}\nbody.home-lab #story figure img{filter:none}\nbody.home-lab .block.alt{background:color-mix(in srgb,var(--pink) 4%,#fff)}\nbody.home-lab .tips,body.home-lab #zones{background:color-mix(in srgb,var(--zone-accent) 9%,var(--paper))}\nbody.home-lab .tips-grid details{background:#fff;border-color:var(--line)}\nbody.home-lab .tips-grid ol,body.home-lab .tips-grid details p{color:var(--ink-2)!important}\nbody.home-lab #tips h3,body.home-lab #tips .lead,body.home-lab .tips-grid summary{color:var(--ink)!important}\nbody.home-lab .plan-crew h4{color:var(--ink)!important}\nbody.home-lab .plan-crew p,body.home-lab .plan-crew li{color:var(--ink-2)!important}\nbody.home-lab .btn-ghost{color:#fff;background:#14141a}\nbody.home-lab #events,body.home-lab .cta-band{--ink:#f2f2f0;--ink-2:#cfcfd6;--ink-3:#9c9ca6;--line:#2a2a32;color:var(--ink)}\nbody.home-lab #plans{--ink:#f2f2f0;--ink-2:#cfcfd6;--ink-3:#9c9ca6;--line:#2a2a32;background:#14141a;color:var(--ink)}\nbody.home-lab #plans .plan-crew{--ink:#191920;--ink-2:#44444d;--ink-3:#73737c}\nbody.home-lab #plans .plan-crew h4{color:#191920!important}\nbody.home-lab #plans .plan-crew .crew-line{color:#44444d!important}\nbody.home-lab #plans .plan-crew .crew-note,body.home-lab #plans .plan-crew .per{color:#6b6b74!important}\nbody.home-lab #plans .plan-crew .price{color:#191920!important}\nbody.home-lab .masthead .menu a,body.home-lab .masthead .menu>button{color:var(--ink-2)}\nbody.home-lab .nav{border-color:#2a2a32}\nbody.home-lab .site-credit a{border-color:rgba(25,25,32,.18)!important;color:rgba(25,25,32,.6)!important}",
   "news": [
     {
       "type": "news",
       "date": "2026-10-25",
       "dateLabel": "Checked",
       "title": "The Elite Series heads from Hamburg to Bangkok, Las Vegas and Lyon",
-      "summary": "The official 2026/27 schedule opens in Hamburg on 30–31 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
+      "summary": "The official 2026/27 schedule opens in Hamburg on 30\u201331 October, followed by London, Bangkok, Las Vegas and Lyon. Elite 15 and Challenger 15 races share the stage on the road to Hong Kong 2027.",
       "source": "https://hyrox.com/elite-series-races/",
-      "sourceName": "HYROX · official Elite Series schedule",
+      "sourceName": "HYROX \u00b7 official Elite Series schedule",
       "take": "The work between race weekends decides how useful the next start line will be. Watch how the elites leave each station, not just the final time.",
       "takeStatus": "draft-for-review"
     },
@@ -479,13 +479,13 @@
       "date": "2026-10-25",
       "dateLabel": "Checked",
       "title": "Singapore, Melbourne and Hong Kong offer an overseas start line",
-      "summary": "The official calendar lists Singapore on 26–29 November, Melbourne on 9–13 December and Hong Kong on 7–10 January. An away race also means planning travel, sleep and recovery.",
+      "summary": "The official calendar lists Singapore on 26\u201329 November, Melbourne on 9\u201313 December and Hong Kong on 7\u201310 January. An away race also means planning travel, sleep and recovery.",
       "source": "https://hyrox.com/find-my-race/",
-      "sourceName": "HYROX · official calendar",
+      "sourceName": "HYROX \u00b7 official calendar",
       "take": "Pick a target that gives the training a purpose. Give travel and recovery the same attention as the sessions.",
       "takeStatus": "draft-for-review",
       "link": "/joshharrison/events.html",
-      "linkLabel": "Race Calendar & Travel →"
+      "linkLabel": "Race Calendar & Travel \u2192"
     },
     {
       "type": "news",
@@ -493,7 +493,7 @@
       "title": "Stockholm: Australia defends its mixed-relay world title",
       "summary": "PUMA's World Championships report records Australia's mixed-relay win in 50:19, with Jess Pettrow on the title-defending team. Joanna Wietrzyk also finished second in the women's Elite 15 solo race.",
       "source": "https://mediahub.puma.com/articles/puma-dominates-hyrox-world-championships-from-elite-athlete-performances-to-community-initiatives",
-      "sourceName": "PUMA · World Championships report",
+      "sourceName": "PUMA \u00b7 World Championships report",
       "take": "A shared goal still needs individual preparation. Know your role before you reach the relay zone.",
       "takeStatus": "draft-for-review"
     },
@@ -504,7 +504,7 @@
       "title": "Elite qualification switches to a rolling points system",
       "summary": "HYROX's new framework uses a rolling 365-day window: the best five singles results or best three doubles results count. Elite Series doubles partners must share the same nationality and an active athlete licence is required.",
       "source": "https://hyrox.com/elite-series-qualification/",
-      "sourceName": "HYROX · qualification rules",
+      "sourceName": "HYROX \u00b7 qualification rules",
       "take": "Choose races that fit the build rather than bending every training week around another entry.",
       "takeStatus": "draft-for-review"
     },
@@ -512,9 +512,9 @@
       "type": "news",
       "date": "2026-06-20",
       "title": "Hong Kong to host the 2027 World Championships",
-      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10–13 June 2027. Qualification gives the season a clear international destination.",
+      "summary": "HYROX announced the first World Championships in the Asia-Pacific region, at Hong Kong's AsiaWorld-Expo on 10\u201313 June 2027. Qualification gives the season a clear international destination.",
       "source": "https://www.prnewswire.com/apac/news-releases/hong-kong-brings-the-puma-hyrox-world-championships-to-the-apac-region-for-the-first-time-in-2027-302805682.html",
-      "sourceName": "HYROX announcement · PR Newswire",
+      "sourceName": "HYROX announcement \u00b7 PR Newswire",
       "take": "Start with the qualifying route, then work backwards to a repeatable week. The big target is not a substitute for the work.",
       "takeStatus": "draft-for-review"
     },
@@ -524,7 +524,7 @@
       "title": "Project Podium opens a new route to athlete support",
       "summary": "PUMA announced a programme offering men's, women's and adaptive solo podium finishers at the 2026 World Championships the opportunity to become PUMA athletes for the following season, with kit, resources and performance support.",
       "source": "https://mediahub.puma.com/articles/puma-launches-project-podium-offering-hyrox-community-the-chance-to-become-puma-athletes",
-      "sourceName": "PUMA · Project Podium announcement",
+      "sourceName": "PUMA \u00b7 Project Podium announcement",
       "take": "Support is welcome; consistent training remains the bit an athlete can control.",
       "takeStatus": "draft-for-review"
     }
@@ -604,7 +604,7 @@
           "end": "2026-11-15",
           "source": "https://hyrox.com/event/hyrox-dublin/",
           "sourceLabel": "Official HYROX Dublin event",
-          "dates": "11 Nov 2026 – 15 Nov 2026"
+          "dates": "11 Nov 2026 \u2013 15 Nov 2026"
         },
         "gettingThere": [
           "Check the official RDS event information and your division start time before booking travel.",
@@ -637,7 +637,7 @@
           "end": "2026-11-29",
           "source": "https://hyrox.com/event/aia-hyrox-singapore/",
           "sourceLabel": "Official AIA HYROX Singapore event",
-          "dates": "26 Nov 2026 – 29 Nov 2026"
+          "dates": "26 Nov 2026 \u2013 29 Nov 2026"
         },
         "gettingThere": [
           "Check passport, entry and airline baggage requirements before paying for travel.",
@@ -670,7 +670,7 @@
           "end": "2026-12-06",
           "source": "https://hyrox.com/event/hyrox-london-excel/",
           "sourceLabel": "Official Amazon HYROX London event",
-          "dates": "2 Dec 2026 – 6 Dec 2026"
+          "dates": "2 Dec 2026 \u2013 6 Dec 2026"
         },
         "gettingThere": [
           "This listing links to the London ExCeL event. Check the organiser's final venue instructions.",
@@ -703,7 +703,7 @@
           "end": "2026-12-13",
           "source": "https://hyrox.com/event/hyrox-melbourne/",
           "sourceLabel": "Official BYD HYROX Melbourne event",
-          "dates": "9 Dec 2026 – 13 Dec 2026"
+          "dates": "9 Dec 2026 \u2013 13 Dec 2026"
         },
         "gettingThere": [
           "Check the official venue and your race day before choosing flights and accommodation.",
@@ -736,7 +736,7 @@
           "end": "2027-01-10",
           "source": "https://hyrox.com/event/hyrox-hong-kong/",
           "sourceLabel": "Official AIA HYROX Hong Kong event",
-          "dates": "7 Jan 2027 – 10 Jan 2027"
+          "dates": "7 Jan 2027 \u2013 10 Jan 2027"
         },
         "gettingThere": [
           "Check entry requirements, airline baggage and official venue instructions before booking.",
@@ -769,7 +769,7 @@
           "end": "2027-01-31",
           "source": "https://hyrox.com/event/hyrox-manchester/",
           "sourceLabel": "Official HYROX Manchester event",
-          "dates": "20 Jan 2027 – 31 Jan 2027"
+          "dates": "20 Jan 2027 \u2013 31 Jan 2027"
         },
         "gettingThere": [
           "Confirm the event's venue and transport guidance before choosing your station, parking or hotel.",
@@ -802,7 +802,7 @@
     "directCoachLink": true,
     "offerTitle": "Hybrid Hub coaching",
     "offerDescription": "Explore the existing coaching and programme options, then choose the support that fits your next goal.",
-    "note": "Official FITR sign-in; use your existing account. The programme catalogue remains on the coach’s own FITR destination. No workout or client-data sync is connected."
+    "note": "Official FITR sign-in; use your existing account. The programme catalogue remains on the coach\u2019s own FITR destination. No workout or client-data sync is connected."
   },
   "contentPublishing": {
     "podcast": false
@@ -810,5 +810,5 @@
   "colors": {
     "zoneAccent": "#0f766e"
   },
-  "brandingNote": "Wordmark JOSH HARRISON — site is literally his name (@hybrid.hub is the community). SIG = first name only."
+  "brandingNote": "Wordmark JOSH HARRISON \u2014 site is literally his name (@hybrid.hub is the community). SIG = first name only."
 }

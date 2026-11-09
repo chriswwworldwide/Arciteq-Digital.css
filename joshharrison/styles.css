@@ -8,7 +8,7 @@
   --paper: #0b0b0e;
   --paper-2: #16161c;
   --line: #2a2a32;
-  --pink: #ff2e63;
+  --pink: #ec1c24;
   --pink-600: color-mix(in srgb, var(--pink) 60%, #000);
   --pink-100: color-mix(in srgb, var(--pink) 11%, var(--paper));
   --zone-accent: #0f766e;
@@ -1718,6 +1718,7 @@ footer a:hover {
 /* Race Wall — polaroid scatter */
 .gallery {
   background: var(--paper-2);
+  border-top: 3px solid var(--zone-accent);
   overflow: hidden;
 }
 
@@ -2252,7 +2253,7 @@ body.has-sticky-cta {
 }
 
 .btn-wa:hover {
-  background: #e01e4e;
+  background: #c8102e;
   color: #ffffff;
 }
 
@@ -2941,7 +2942,39 @@ section.cta-band .btn-light { background: var(--ink); color: #14141a; }
   }
 }
 
-.lead,.hero p{text-wrap:pretty}.hero.hero--editorial .hero-visual{background:#08080a}.hero.hero--editorial .hero-img{object-fit:contain!important;object-position:center!important}.sticky-cta,.wa-fab{display:none!important}.art-photo img,.tips-photo img{object-fit:contain;height:auto;max-height:620px}img[src*="coaching-hero.jpg"]{display:block;width:100%;height:auto!important;aspect-ratio:1125/1334;object-fit:contain!important;max-width:100%}img[src*="station-burpees.jpg"]{aspect-ratio:1125/1257!important;max-height:none!important;height:auto!important}img[src*="station-row.jpg"]{aspect-ratio:723/690!important;max-height:none!important;height:auto!important}img[src*="station-wall-balls.jpg"]{aspect-ratio:850/350!important;max-height:none!important;height:auto!important}img[src*="station-farmers-carry.jpg"]{aspect-ratio:1024/877!important;max-height:none!important;height:auto!important}img[src*="run-recovery.jpg"]{height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important}.guide-hero-photo img{object-fit:contain;background:#08080a}.menu .sub{max-height:65vh;overflow-y:auto}@media(max-width:900px){.menu .sub{max-height:none;overflow:visible}}
+.lead,.hero p{text-wrap:pretty}.hero.hero--editorial .hero-visual{background:#08080a}.hero.hero--editorial .hero-img{object-fit:contain!important;object-position:center!important}.sticky-cta,.wa-fab{display:none!important}.tips-photo img{object-fit:contain!important;height:auto!important;max-height:620px;aspect-ratio:auto!important}img[src*="station-skierg.jpg"]{object-position:50% 8%}img[src*="station-sled-push.jpg"]{object-position:50% 30%}img[src*="station-sled-pull.jpg"]{object-position:50% 25%}img[src*="station-burpees.jpg"]{object-position:50% 25%}img[src*="station-row.jpg"]{object-position:50% 15%}img[src*="station-farmers-carry.jpg"]{object-position:50% 40%}img[src*="station-wall-balls.jpg"]{object-position:50% 90%}img[src*="run-recovery.jpg"]{height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important}.guide-hero-photo{position:relative}.guide-hero-photo img[src*="carry.jpg"]{object-position:50% 40%!important}.guide-hero-photo img[src*="podcast-hero.jpg"]{object-position:50% 30%!important}.guide-hero-photo img[src*="stations-hero.jpg"]{object-position:50% 35%!important}.guide-hero-photo img[src*="run-hero.jpg"]{object-position:50% 55%!important}.menu .sub{max-height:65vh;overflow-y:auto}@media(max-width:900px){.menu .sub{max-height:none;overflow:visible}}@media(max-width:900px){.guide-hero-photo:has(img[src*="run-hero.jpg"]){aspect-ratio:4/5}.guide-hero-photo img[src*="run-hero.jpg"]{object-position:50% 50%!important;height:100%!important;max-height:none!important}.guide-hero-photo img[src*="taper-hero.jpg"]{object-position:50% 45%!important}.guide-hero-photo img[src*="after-effort.jpg"]{object-position:50% 60%!important}.guide-hero-photo img[src*="field-training.jpg"]{object-position:50% 55%!important}}body.home-lab{--paper:#f6f4ef;--paper-2:#ffffff;--ink:#191920;--ink-2:#44444d;--ink-3:#73737c;--line:#e3ded4;--pink-100:color-mix(in srgb,var(--pink) 9%,var(--paper));--shadow:0 12px 34px rgba(25,25,32,.10)}
+body.home-lab .masthead{background:#0b0b0e;color:#f2f2f0;box-shadow:0 0 0 100vmax #0b0b0e;clip-path:inset(0 -100vmax)}
+body.home-lab .masthead .city{color:#9c9ca6}
+body.home-lab .coach-view{--ink:#f2f2f0;--ink-2:#cfcfd6;--ink-3:#9c9ca6;--paper:#14141a;--paper-2:#1e1e26;background:color-mix(in srgb,var(--pink) 8%,#14141a);color:var(--ink);box-shadow:0 0 0 100vmax #0b0b0e;clip-path:inset(-60px -100vmax -90px)}
+body.home-lab .hero.hero--editorial{background:#0b0b0e}
+body.home-lab .hero.hero--editorial .hero-visual{background:#08080a!important;aspect-ratio:934/512!important;max-height:76vh}
+body.home-lab .hero-img{object-fit:cover!important;object-position:center 45%!important}
+@media(max-width:600px){body.home-lab .hero.hero--editorial .hero-visual{aspect-ratio:auto!important;max-height:none!important;overflow:visible!important;display:block!important}body.home-lab .hero.hero--editorial .hero-mask{position:static!important;height:auto!important;inset:auto!important}body.home-lab .hero-img{height:auto!important;object-fit:contain!important}body.home-lab .hero.hero--editorial .hero-visual>.hero-intro{position:relative!important;z-index:2;max-width:none!important;margin:0!important;padding:18px 20px!important;background:#0b0b0e;border-radius:0}}
+body.home-lab .hero.hero--editorial .kicker{color:rgba(255,255,255,.72)}
+body.home-lab .hero.hero--editorial .hero-intro p{color:rgba(255,255,255,.88)}
+@media(min-width:601px){body.home-lab .hero.hero--editorial .hero-visual>.hero-intro{max-width:400px!important}}
+body.home-lab .hero.hero--editorial .stats{border-top-color:var(--line)}
+body.home-lab .hero-img{filter:brightness(1.04) saturate(1.06)}
+body.home-lab section img:not(.avatar){filter:brightness(1.04) saturate(1.05)}
+body.home-lab #story figure img{filter:none}
+body.home-lab .block.alt{background:color-mix(in srgb,var(--pink) 4%,#fff)}
+body.home-lab .tips,body.home-lab #zones{background:color-mix(in srgb,var(--zone-accent) 9%,var(--paper))}
+body.home-lab .tips-grid details{background:#fff;border-color:var(--line)}
+body.home-lab .tips-grid ol,body.home-lab .tips-grid details p{color:var(--ink-2)!important}
+body.home-lab #tips h3,body.home-lab #tips .lead,body.home-lab .tips-grid summary{color:var(--ink)!important}
+body.home-lab .plan-crew h4{color:var(--ink)!important}
+body.home-lab .plan-crew p,body.home-lab .plan-crew li{color:var(--ink-2)!important}
+body.home-lab .btn-ghost{color:#fff;background:#14141a}
+body.home-lab #events,body.home-lab .cta-band{--ink:#f2f2f0;--ink-2:#cfcfd6;--ink-3:#9c9ca6;--line:#2a2a32;color:var(--ink)}
+body.home-lab #plans{--ink:#f2f2f0;--ink-2:#cfcfd6;--ink-3:#9c9ca6;--line:#2a2a32;background:#14141a;color:var(--ink)}
+body.home-lab #plans .plan-crew{--ink:#191920;--ink-2:#44444d;--ink-3:#73737c}
+body.home-lab #plans .plan-crew h4{color:#191920!important}
+body.home-lab #plans .plan-crew .crew-line{color:#44444d!important}
+body.home-lab #plans .plan-crew .crew-note,body.home-lab #plans .plan-crew .per{color:#6b6b74!important}
+body.home-lab #plans .plan-crew .price{color:#191920!important}
+body.home-lab .masthead .menu a,body.home-lab .masthead .menu>button{color:var(--ink-2)}
+body.home-lab .nav{border-color:#2a2a32}
+body.home-lab .site-credit a{border-color:rgba(25,25,32,.18)!important;color:rgba(25,25,32,.6)!important}
 
 /* crop focal fixes 2026-11-03 — shift banded crops up so heads/faces stay in frame */
 figure img[src*='station-burpees.jpg'],.station img[src*='station-burpees.jpg']{object-position:50% 20%!important}
@@ -3027,4 +3060,69 @@ figure img[src*='station-burpees.jpg'],.station img[src*='station-burpees.jpg']{
 }
 .plans-more > summary {
   display: flex;
+}
+
+/* iOS date inputs carry an intrinsic min-width that ignores width:100% —
+   without this they poke out of the panel on narrow screens */
+form input[type="date"] {
+  min-width: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Back-to-top chip: bottom-left, quiet surface so the social fab keeps the
+   signature colour. Appears on scroll via .is-visible (app.js). */
+.top-fab {
+  position: fixed;
+  left: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.top-fab.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+body.has-sticky-cta .top-fab {
+  bottom: calc(88px + env(safe-area-inset-bottom));
+}
+
+@media (max-width: 600px) {
+  .top-fab {
+    padding: 0;
+    justify-content: center;
+  }
+
+  .top-fab span {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-fab {
+    transition: none;
+  }
 }

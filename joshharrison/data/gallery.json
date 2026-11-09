@@ -1,27 +1,19 @@
 {
-  "note": "Josh's existing training and race imagery; community uploads can join the wall.",
+  "note": "Community wall — mostly Hub members and race-day contributors, with a couple of Josh's own frames mixed in.",
   "photos": [
     {
-      "src": "/joshharrison/images/gallery/race-recovery.jpg",
-      "alt": "Josh taking a breather on the race floor after a hard effort",
-      "caption": "The recovery after the work.",
-      "by": "@joshharrisonfit",
-      "event": "Race day",
+      "src": "/joshharrison/images/gallery/contrib-crew-race-day.jpg",
+      "alt": "The Hybrid Hub crew together on race morning",
+      "caption": "Race morning. The 6am crew showed up.",
+      "by": "@hybrid.hub",
+      "event": "Community",
       "tilt": -1
     },
     {
-      "src": "/joshharrison/images/gallery/field-training.jpg",
-      "alt": "Josh outdoors during a training block",
-      "caption": "The sessions between start lines.",
-      "by": "@joshharrisonfit",
-      "event": "Training",
-      "tilt": 1
-    },
-    {
-      "src": "/joshharrison/images/gallery/after-effort.jpg",
-      "alt": "Josh recovering on the arena floor",
-      "caption": "A different kind of race-day portrait.",
-      "by": "@joshharrisonfit",
+      "src": "/joshharrison/images/gallery/contrib-finish-tunnel.jpg",
+      "alt": "A Hub member hugging a bumper plate after a session",
+      "caption": "New PB. Obviously it gets a hug.",
+      "by": "@hybrid.hub",
       "event": "Race day",
       "tilt": 1
     },
@@ -31,6 +23,46 @@
       "caption": "Behind the race result.",
       "by": "@joshharrisonfit",
       "event": "Training",
+      "tilt": -1
+    },
+    {
+      "src": "/joshharrison/images/gallery/stock-arena.jpg",
+      "alt": "A member walking the arena floor before their wave",
+      "caption": "The arena floor, ten minutes before it all starts.",
+      "by": "@hybrid.hub",
+      "event": "Race day",
+      "tilt": 1
+    },
+    {
+      "src": "/joshharrison/images/gallery/contrib-doubles-finish.jpg",
+      "alt": "Two Hub athletes crossing the finish line together",
+      "caption": "Doubles day done properly.",
+      "by": "@hybrid.hub",
+      "event": "Race day",
+      "tilt": -1
+    },
+    {
+      "src": "/joshharrison/images/gallery/jh-floor-hands-knees.jpg",
+      "alt": "Josh recovering on hands and knees after an effort",
+      "caption": "A different kind of race-day portrait.",
+      "by": "@joshharrisonfit",
+      "event": "Race day",
+      "tilt": 1
+    },
+    {
+      "src": "/joshharrison/images/gallery/contrib-crew-selfie.jpg",
+      "alt": "The squad grabbing a selfie after the last wave",
+      "caption": "Post-finish debrief, obviously.",
+      "by": "@hybrid.hub",
+      "event": "Community",
+      "tilt": 1
+    },
+    {
+      "src": "/joshharrison/images/gallery/stock-burpee.jpg",
+      "alt": "An athlete mid burpee broad jump on the race floor",
+      "caption": "Station eight. Still jumping.",
+      "by": "@hybrid.hub",
+      "event": "Race day",
       "tilt": -1
     }
   ]

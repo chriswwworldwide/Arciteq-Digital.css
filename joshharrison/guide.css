@@ -1464,3 +1464,9 @@ body.zone-acc .splits-consent input,
 body.zone-acc .calc-form .consent input {
   accent-color: var(--zone-accent);
 }
+
+/* Page heroes: a white hairline flush on the photo's right edge, following
+   the bottom-right curve — gives dark photos a deliberate edge on dark stages */
+.guide-hero-photo img {
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.7);
+}

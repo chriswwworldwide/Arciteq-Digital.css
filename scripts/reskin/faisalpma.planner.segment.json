@@ -1,0 +1,61 @@
+[
+  {
+    "path": "planner.html?backdrop=watermark",
+    "subs": [
+      {
+        "text": "His session planner — bookings and the working week, inside his own platform.",
+        "holdMs": 6000
+      },
+      {
+        "text": "Clients see free slots and book direct — assessments or sessions, no back-and-forth.",
+        "scroll": true,
+        "holdMs": 6000
+      },
+      {
+        "text": "New clients request a session; his cancellation policy is clear upfront.",
+        "scroll": true,
+        "holdMs": 5500
+      },
+      {
+        "text": "Existing clients book directly.",
+        "scroll": true,
+        "holdMs": 4000
+      },
+      {
+        "text": "His view shows requests and client details — approve, or add sessions agreed by phone.",
+        "scroll": true,
+        "holdMs": 6000
+      },
+      {
+        "text": "One diary, two views. Client names stay private on the public calendar.",
+        "scroll": true,
+        "holdMs": 5500
+      },
+      {
+        "text": "Group classes stand out — spaces left, highlights under his control.",
+        "scroll": true,
+        "holdMs": 5000
+      },
+      {
+        "text": "Set his hours, add buffers, block holidays — the diary runs itself.",
+        "scroll": true,
+        "holdMs": 5500
+      },
+      {
+        "text": "Time away blocks new bookings and flags his return date.",
+        "scroll": true,
+        "holdMs": 5000
+      },
+      {
+        "text": "Sessions export straight to his phone calendar.",
+        "scroll": true,
+        "holdMs": 4500
+      },
+      {
+        "text": "Less organising, more coaching. The Desk pulls the business side together.",
+        "scroll": true,
+        "holdMs": 5500
+      }
+    ]
+  }
+]

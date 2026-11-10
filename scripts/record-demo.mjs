@@ -33,12 +33,12 @@ if (fs.existsSync(pitchFile)) {
   ];
 }
 
-const plannerSceneFile = path.join(
-  root,
-  "scripts",
-  "reskin",
-  "planner.segment.json",
-);
+const plannerSegmentBase = path.join(root, "scripts", "reskin");
+const plannerSceneFile = fs.existsSync(
+  path.join(plannerSegmentBase, `${slug}.planner.segment.json`),
+)
+  ? path.join(plannerSegmentBase, `${slug}.planner.segment.json`)
+  : path.join(plannerSegmentBase, "planner.segment.json");
 const deskIndex = scenes.findIndex((scene) => scene.path === "desk.html");
 if (
   deskIndex >= 0 &&
@@ -255,7 +255,7 @@ async function scrollToSelector(page, selector, pauseMs, block = "center") {
               await Promise.all([
                 page
                   .waitForNavigation({
-                    timeout: 12000,
+                    timeout: 8000,
                     waitUntil: "domcontentloaded",
                   })
                   .catch(() => {}),
@@ -265,11 +265,18 @@ async function scrollToSelector(page, selector, pauseMs, block = "center") {
               await injectSubtitleBar(page).catch(() => {});
               await showSub(page, sub.text).catch(() => {});
               await page.waitForTimeout(act.holdMs || 2500);
-              await page
-                .goBack({ waitUntil: "domcontentloaded" })
-                .catch((error) => {
-                  if (process.env.PITCH_STRICT === "1") throw error;
-                });
+              if (act.returnTo) {
+                await page
+                  .goto(`${base}/${slug}/${act.returnTo}`, {
+                    waitUntil: "domcontentloaded",
+                    timeout: 10000,
+                  })
+                  .catch(() => {});
+              } else {
+                await page
+                  .goBack({ waitUntil: "domcontentloaded", timeout: 8000 })
+                  .catch(() => {});
+              }
               await page.waitForTimeout(800);
               await injectSubtitleBar(page);
               await showSub(page, sub.text);

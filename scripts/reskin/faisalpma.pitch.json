@@ -8,7 +8,7 @@
     },
     "subs": [
       {
-        "text": "A platform built around Faisal — his brand, his name, his voice.",
+        "text": "A platform built around Faisal \u2014 his brand, his name, his voice.",
         "holdMs": 5000
       },
       {
@@ -18,37 +18,37 @@
         "holdMs": 4500
       },
       {
-        "text": "Training content structured like a season — the substance behind the profile.",
+        "text": "Training content structured like a season \u2014 the substance behind the profile.",
         "scrollTo": "#zones",
         "holdMs": 5000
       },
       {
-        "text": "The profile does the talking: global HYROX MC, bestselling author, celebrity trainer.",
+        "text": "The profile does the talking: the Voice of HYROX, bestselling author, celebrity trainer.",
         "scrollTo": "#story",
         "holdMs": 5000
       },
       {
-        "text": "Coaching offers front and centre — one click becomes an application, not a DM.",
+        "text": "Coaching offers front and centre \u2014 one click becomes an application, not a DM.",
         "scrollTo": "#plans",
         "holdMs": 5000
       },
       {
-        "text": "Race calendar, crew, community — the audience lives on his platform, not a rented bio link.",
+        "text": "Race calendar, crew, community \u2014 the audience lives on his platform, not a rented bio link.",
         "scrollTo": "#events",
         "holdMs": 4500
       },
       {
-        "text": "His knowledge, in his voice — content that compounds instead of disappearing into a feed.",
+        "text": "His knowledge, in his voice \u2014 content that compounds instead of disappearing into a feed.",
         "scrollTo": "#tips",
         "holdMs": 5000
       },
       {
-        "text": "Ask Faisal — enquiries arrive structured, not buried in a DM queue.",
+        "text": "Ask Faisal \u2014 enquiries arrive structured, not buried in a DM queue.",
         "scrollTo": "#ask",
         "holdMs": 5000
       },
       {
-        "text": "The Warriors Wall — community proof at scale. These demo entries show the layout.",
+        "text": "The Warriors Wall \u2014 community proof at scale. These demo entries show the layout.",
         "scrollTo": "#wall-photos",
         "holdMs": 6000
       },
@@ -63,7 +63,7 @@
     "path": "coaching.html",
     "subs": [
       {
-        "text": "Coaching enquiries land as applications — qualified leads, not a payment link.",
+        "text": "Coaching enquiries land as applications \u2014 qualified leads, not a payment link.",
         "scroll": true,
         "holdMs": 5500
       }
@@ -73,7 +73,7 @@
     "path": "find-a-partner.html",
     "subs": [
       {
-        "text": "Race-mate board — a reason for athletes to register and keep returning.",
+        "text": "Race-mate board \u2014 a reason for athletes to register and keep returning.",
         "scrollTo": "#partner-form",
         "holdMs": 5500
       },
@@ -88,7 +88,7 @@
     "path": "predictor.html",
     "subs": [
       {
-        "text": "Race predictor — a tool athletes actually bookmark.",
+        "text": "Race predictor \u2014 a tool athletes actually bookmark.",
         "holdMs": 4000
       },
       {
@@ -102,7 +102,7 @@
     "path": "splits.html",
     "subs": [
       {
-        "text": "Split analyser — paste a result, get a station-by-station breakdown.",
+        "text": "Split analyser \u2014 paste a result, get a station-by-station breakdown.",
         "scrollTo": "#splits-form",
         "holdMs": 5500
       },
@@ -135,7 +135,7 @@
         "holdMs": 1500
       },
       {
-        "text": "Analysis that used to live in a spreadsheet — now it feeds his mailing list.",
+        "text": "Analysis that used to live in a spreadsheet \u2014 now it feeds his mailing list.",
         "scroll": true,
         "holdMs": 5000
       }
@@ -145,7 +145,7 @@
     "path": "results.html",
     "subs": [
       {
-        "text": "Results board — his times, his crew's times. An asset no Instagram post can replicate.",
+        "text": "Results board \u2014 his times, his crew's times. An asset no Instagram post can replicate.",
         "scroll": true,
         "holdMs": 5000
       }
@@ -165,7 +165,7 @@
     "path": "run-zone/",
     "subs": [
       {
-        "text": "Run zone — pacing and compromised running, the work between the stations.",
+        "text": "Run zone \u2014 pacing and compromised running, the work between the stations.",
         "scroll": true,
         "holdMs": 5000
       }
@@ -175,7 +175,7 @@
     "path": "taper-zone/",
     "subs": [
       {
-        "text": "Taper zone — the week before race day, done properly.",
+        "text": "Taper zone \u2014 the week before race day, done properly.",
         "scroll": true,
         "holdMs": 5000
       }
@@ -185,7 +185,7 @@
     "path": "events.html",
     "subs": [
       {
-        "text": "Race calendar — where he's competing, where the community meets.",
+        "text": "Race calendar \u2014 where he's competing, where the community meets.",
         "scroll": true,
         "holdMs": 5000
       }
@@ -195,7 +195,7 @@
     "path": "race-crew.html",
     "subs": [
       {
-        "text": "Race crew meetups — community organised on his own platform, not a group chat.",
+        "text": "Race crew meetups \u2014 community organised on his own platform, not a group chat.",
         "scroll": true,
         "holdMs": 5000
       }
@@ -205,7 +205,7 @@
     "path": "news.html",
     "subs": [
       {
-        "text": "Fresh HYROX coverage under his name — the search engine that keeps the brand findable.",
+        "text": "Fresh HYROX coverage under his name \u2014 the search engine that keeps the brand findable.",
         "scroll": true,
         "holdMs": 5000
       }
@@ -215,26 +215,20 @@
     "path": "partners.html",
     "subs": [
       {
-        "text": "Partners page — PUMA, Everlast, Applied Nutrition. Sponsor inventory with measurable clicks.",
+        "text": "Partners page \u2014 PUMA, Everlast, Applied Nutrition. Sponsor inventory with measurable clicks.",
         "scroll": true,
         "holdMs": 5000
       },
       {
-        "text": "Every partner click is a reportable conversion — data he can take back to sponsors.",
-        "actions": [
-          {
-            "navClick": "a.pc-cta[href='https://uk.puma.com/']",
-            "holdMs": 4000
-          }
-        ],
-        "holdMs": 2500
+        "text": "Every partner click is a reportable conversion \u2014 data he can take back to sponsors.",
+        "holdMs": 6000
       },
       {
-        "text": "Affiliate codes live inside his brand — traffic and data stay his, not a Linktree's.",
+        "text": "Affiliate codes live inside his brand \u2014 traffic and data stay his, not a Linktree's.",
         "holdMs": 5000
       },
       {
-        "text": "That's the difference from a bio link — the audience, the clicks and the proof all sit on his brand.",
+        "text": "That's the difference from a bio link \u2014 the audience, the clicks and the proof all sit on his brand.",
         "holdMs": 5000
       }
     ]
@@ -243,9 +237,29 @@
     "path": "list.html",
     "subs": [
       {
-        "text": "Join the list — every visitor becomes a contact his business owns outright.",
+        "text": "Join the list \u2014 every visitor becomes a contact his business owns outright.",
         "scroll": true,
         "holdMs": 5000
+      }
+    ]
+  },
+  {
+    "path": "campaigns.html",
+    "subs": [
+      {
+        "text": "Campaigns \u2014 social reach deployed at the tap of a button. Marketing that doesn't need a media team.",
+        "scroll": true,
+        "holdMs": 6000
+      },
+      {
+        "text": "Pick a photo, pick a moment \u2014 a race weekend, a city, an audience. The platform drafts the post and story.",
+        "scroll": true,
+        "holdMs": 6000
+      },
+      {
+        "text": "Set a spend cap, approve, done. Client results become campaigns too \u2014 with their sign-off built in.",
+        "scroll": true,
+        "holdMs": 6000
       }
     ]
   },
@@ -253,16 +267,16 @@
     "path": "desk.html",
     "subs": [
       {
-        "text": "And the management layer — the Desk.",
+        "text": "And the management layer \u2014 the Desk.",
         "holdMs": 4500
       },
       {
-        "text": "Coaching income, bookings, affiliate revenue, campaigns — one view, no spreadsheet.",
+        "text": "Coaching income, bookings, affiliate revenue \u2014 one view a management team can check between calls.",
         "scrollTo": ".desk-stats",
         "holdMs": 5000
       },
       {
-        "text": "Business management built in. He coaches; the platform keeps score.",
+        "text": "Numbers that hold up in a sponsor meeting. He coaches; the platform keeps score.",
         "scroll": true,
         "holdMs": 4500
       }
@@ -272,11 +286,15 @@
     "path": "",
     "subs": [
       {
-        "text": "This is a mockup — built to his spec, fast. Weeks, not months.",
+        "text": "This is a mockup \u2014 built to his spec, fast. Weeks, not months.",
         "holdMs": 5000
       },
       {
-        "text": "Worth a conversation. Happy to walk you through what it becomes with real content.",
+        "text": "Shaped in collaboration \u2014 booking requests can flag his management, not just his inbox.",
+        "holdMs": 5000
+      },
+      {
+        "text": "Worth a conversation.",
         "holdMs": 4500
       }
     ]

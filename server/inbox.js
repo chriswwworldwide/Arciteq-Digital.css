@@ -381,7 +381,10 @@ export function createInboxRouter(deps) {
   router.post("/admin/inbox", express.json({ limit: "512kb" }), (req, res) => {
     const denied = requireAdmin(req, res);
     if (denied) return denied;
-    const tenant = resolveTenantFromRequest(req);
+    const tenant =
+      req.body?.tenant && String(req.body.tenant) !== "default"
+        ? tenantById(req.body.tenant) || resolveTenantFromRequest(req)
+        : resolveTenantFromRequest(req);
     const cfg = tenantAutomation(tenant);
     if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
     const candidates = Array.isArray(req.body?.candidates)
@@ -456,7 +459,9 @@ export function createInboxRouter(deps) {
   router.get("/admin/digest", async (req, res) => {
     const denied = requireAdmin(req, res);
     if (denied) return denied;
-    const tenant = resolveTenantFromRequest(req);
+    const tenant = req.query?.tenant
+      ? tenantById(req.query.tenant) || resolveTenantFromRequest(req)
+      : resolveTenantFromRequest(req);
     const cfg = tenantAutomation(tenant);
     if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
     const digest = await collectDigest(
@@ -471,7 +476,9 @@ export function createInboxRouter(deps) {
   router.post("/admin/digest/send", async (req, res) => {
     const denied = requireAdmin(req, res);
     if (denied) return denied;
-    const tenant = resolveTenantFromRequest(req);
+    const tenant = req.query?.tenant
+      ? tenantById(req.query.tenant) || resolveTenantFromRequest(req)
+      : resolveTenantFromRequest(req);
     const cfg = tenantAutomation(tenant);
     if (!cfg) return res.status(404).json({ error: "Inbox not enabled" });
     const result = await sendDigestFor(

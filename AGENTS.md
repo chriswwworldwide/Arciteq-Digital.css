@@ -2,13 +2,15 @@
 
 This is a living list of opportunities to push the project toward profitability through nudges, SEO, and automation. Revisit it when planning the next block.
 
+> **Photo-upload trigger:** “Starting photos for [coach/site]” starts intake, not a build. Read **Photo intake and placement source of truth** below, map every batch into that tenant's durable photo map and wait for “that's all, build it” before allocating/building. Never require Chris to repeat the mapping instructions.
+
 > **Session start:** check the "Chat notes" section in `BILLIONS.md` — it defines our conversation tone (dry British sarcasm, banter in Q&A, humour suspended during debugging/complex work).
 
-> **Current Kim continuation:** read the **30–31 October 2026** section at the top of `HANDOVER.md` before acting. It records the staged `/tmp` source, completed Desk/pitch/visual work, approvals, tests, parked reveal-banding issue and next visual-family task. This is not yet installed in the chassis; temporary sources must not be overwritten or assumed durable.
+> **Current continuation:** read `HANDOVER.md` → **START HERE: latest continuation, 9 November 2026** first. The active next task is Underdog photo intake, not Kim/Elation or another existing-site pass. The handover gives targeted read paths and preserves older snapshots as history. Do not read the entire history by default, revive dated “next task” lists or use temporary previews as build donors.
 
 ## Mandatory before EVERY build or recording
 
-Read `.devin/rules/platform-build-and-video.md` before every site build, template change, recording or splice. **New sites MUST build from the canonical `chassis/` template, never another tenant.** The linked plan defines complete showcase content, confirmed events without TBA cards, verification and video text/photo pacing. It is always-on context, not standing permission to execute unrelated work. Existing personalised demos may receive specifically approved, targeted ports from the master without wholesale rebuilds; the nine-prospect plan in HANDOVER.md is not rollout permission. Gregor & Hattie remain wrapped. Only specifically approved targeted maintenance passes are allowed; the ones done so far are listed in HANDOVER.md (Desk navigation, nav regroup, nav colour zones). Their video and public content are not reopened by those passes. Start each session with the "START HERE" and "Latest session" sections at the top of HANDOVER.md. Before any tenant build or config change, read "Before every build — checklist" at the top of `scripts/reskin/CHASSIS.md` and the notes in `scripts/reskin/BUILD-LOG.md`, and time each build stage into that log.
+Read `.devin/rules/platform-build-and-video.md` before every site build, template change, recording or splice. **New sites MUST build from the canonical `chassis/` template, never another tenant.** The linked plan defines complete showcase content, confirmed events without TBA cards, verification and video text/photo pacing. It is always-on context, not standing permission to execute unrelated work. Existing personalised demos may receive specifically approved, targeted ports from the master without wholesale rebuilds; the nine-prospect plan in HANDOVER.md is not rollout permission. Gregor & Hattie remain wrapped. Only specifically approved targeted maintenance passes are allowed; the ones done so far are listed in HANDOVER.md (Desk navigation, nav regroup, nav colour zones). Their video and public content are not reopened by those passes. Start each session with the latest START HERE section at the top of HANDOVER.md; older session blocks are dated reference only. Before any tenant build or config change, read "Before every build — checklist" at the top of `scripts/reskin/CHASSIS.md` and the notes in `scripts/reskin/BUILD-LOG.md`, and time each build stage into that log.
 
 Build toolbox lives in `scripts/reskin/CHASSIS.md` item 12 (imageMap/extraCss, verify-build, drift-check, bust) — read it before any build or tenant edit. After any build or generated-site change, run `node scripts/verify-build.mjs <dir-or-slug>` and report its FAIL/EYE/WARN list — it mechanically checks broken images, viewport overflow (e.g. masthead sig), JS errors and missing folds. Every EYE item ships with a cropped screenshot in `verify-shots/`; open and look at each one before reporting to Chris — EYE means "suspicious, unprovable," so the agent eyeballs first and only escalates what still looks wrong. Eyeball protocol for crop EYEs: view the `-src` original FIRST, then the render. Judge what the lost band contained, not just what remains. Clear only when the lost region is empty space/background; if people, limbs, equipment or any distinctive detail disappeared, escalate it to Chris with both images — never clear a crop just because what remains still looks good.
 
@@ -276,9 +278,23 @@ These exist because the first batch build wasted 3+ hours searching stock photo 
 9. **Crew defaults live in the builder.** New "always copied" default images must be added to the crew-defaults list in `reskin-tenant.js` or every tenant 404s the reference (dinner-template.jpg was missed once).
 10. **House image treatment is `.guide-hero-photo`.** Any new public-page photo goes top/right inside `.guide-hero` (curved edge + partial frame via the per-family CSS). No bespoke centred/below-hero image blocks — coaching.html's one-off layout was the exception that proved the rule.
 
+### Photo intake and placement source of truth
+
+**New tenants:** after creating the canonical chassis config and setting its assets directory, run `node scripts/photo-map/setup.mjs scripts/reskin/<slug>.demo.json` as soon as photo intake starts. Setup creates `<assets>/photo-map.json`, scaffolds unallocated canonical page/feed slots and connects `photoMap` in the config. Re-running setup preserves existing entries. It does not rate or allocate photos.
+
+1. **One authored map:** the configured `photoMap` holds the library, placements, wall and feed selections. Do not create a second `intake.json` or hand-maintained `imageMap` for new builds. TR keeps `trainedbytr/photo-map.json`; other existing sites keep their legacy tooling until explicitly upgraded.
+2. **Every batch:** save originals in the tenant's durable assets/images directory and inspect them. Record batch/source/comment, rating (1–5), accurate subject, dimensions, known duplicate `identity`, face coordinates, generous head/body/equipment/signage boxes in `anchors.mustKeep`, source limitations, suggested `bestFor`/`alsoGoodFor` uses and rejection reasons. Set `reviewed: true` only after inspection. Acknowledge each batch briefly. If the tenant is unclear, ask before saving. Missing source pixels cannot be restored by coordinates.
+3. **Wait before allocating:** keep `intakeComplete: false` until Chris says “that's all”/“build it”, unless explicitly asked otherwise. Then compare the whole library, fill `placements`, `wall` and `dataPlacements`, set accurate alts and explicit desktop/mobile frames, and mark intake complete. Prefer a crew/community wall over coach-only shots. Keep `chassisSlot` when replacing a file. Intentional primary-photo reuse needs `reuseReason`; navigation/gallery uses are separately declared.
+4. **Automatic build enforcement:** new tenants require a completed reviewed map. The builder derives temporary slot aliases from it and compiles static choices/framing. Missing/unassigned images, unmapped rendered slots and impossible declared crops stop the build. Natural framing preserves the original; cover framing uses the anchors. New builds cannot use `mode: "existing"` to bypass framing. Known aliases rely on recorded identities, not image recognition. `usedOn` is derived, not a second allocation list.
+5. **Bounded review, then Chris's eyeball:** per slot, allow one initial choice and one correction only. Inspect originals first, take one desktop/phone pass, then recheck only the corrected slot. No repeated whole-site sweeps, new image-tool installations or experimental crop chains. Record attempts (slot, filenames, reasons and existing screenshot/preview paths) in `review.items`; filenames/new scripts/new threads do not reset the budget. If unresolved or subjective after that correction, set map `review.status: "needs-user-eye"`, preserve the last approved output and show Chris the unresolved slots together with at most two candidates each. The builder/compiler stop on that flag. Resume only after Chris's explicit decision, record it and mark review resolved; never clear the flag merely to get a build through. Technical failures still require fixing, not visual waivers.
+6. **Audit before review:** after allocation and BEFORE any visual review, run `node scripts/photo-map/check.mjs <slug>` and clear every `!` it prints. It reports unassigned slots, one photo filling two static slots without `reuseReason`, unreviewed/incomplete image entries, impossible must-keep crops, and unresolved `review.items`. The audit exists because allocation drift (silent duplicates, late back-filled slots, unlogged review attempts) is what makes review messy — catch it mechanically, not by eye.
+7. **Verify:** use a new isolated output directory and inspect desktop/phone renders against originals. Keep durable sources aligned. Never migrate or rebuild approved sites incidentally. Tests: `./node_modules/.bin/vitest run tests/photo-map.test.js tests/photo-map-setup.test.js`.
+
+`intake.json`, `scripts/photo-map.mjs` and the older flat `photo-map` schema are legacy utilities, not the new-build source of truth; the legacy slot solver is `scripts/photo-map/check-legacy.mjs`.
+
 ### CLIP scoring (image intelligence)
 
-CLIP replaces manual eyeballing for two things:
+Legacy/optional scoring assistance for the two tasks below. It does not replace the required visual review or author the source map for new builds:
 
 - **Coach identity:** "Is this the coach or a stranger?" (coach similarity score, 0.7+ = confirmed, 0.55–0.7 = possible, <0.55 = unlikely)
 - **Scene classification:** "Is this a burpee, a sled push, rowing, coaching, a selfie, a text graphic?" (scores for 20+ scene types)
@@ -322,7 +338,40 @@ The rest of the site template is a fixed page set: Home, Stations Prep, Run Zone
 
 ### What to change where
 
-- **Global (affects every tenant):** edit `chassis/` or root shared files, then regenerate all tenants.
+- **Global (shared engine):** edit `chassis/` or shared files and verify an isolated new output. Do not regenerate existing tenants without explicit rollout approval.
 - **Local (one prospect):** edit `scripts/reskin/<slug>.demo.json` and `scripts/reskin/<slug>-assets/`, then rerun `reskin-tenant.js`.
 
 Always run `npm run lint` and `npm run type-check` before committing.
+
+### External-link wiring rule (mandatory for every build)
+
+Two different promises on one page must never land on the same destination. Before wiring any outbound CTA, scope the coach's real web presence:
+
+1. **Find the real site first.** Check the config's verified links — then actually fetch them. Domains die (Michele's old `.co.uk` 404s; the live site is `wilderfitnessuk.com`). If the coach only has a Linktree/social bio link, **follow every link in it** and map where each leads — website pages, booking calendars, member logins, stores, YouTube, Facebook groups.
+2. **Inventory every page-level CTA on our site** (plan cards, "Access your training", "Open on YouTube", apply/enquire buttons) and assign each a distinct, promise-matching destination. E.g. a 1:1 coaching card → the coach's flagship offer page; a group/beginner card → the group programme page; "Book a consultation" → their actual calendar link; member access → wherever their client login lives (note: Wix "Log In" buttons are dialogs, not deep-linkable — point to the homepage).
+3. **Verify each destination loads and matches the label's promise** before shipping. If a coach's link tree genuinely offers only one useful destination, the fallback is the link tree itself (or profile page) — never invent a URL.
+4. Record every verified destination in the tenant config (`trainingPlatform`, tokens, `campaign-offers` destinations) so rebuilds keep the wiring.
+5. **Menu links stop on-site first.** Nav items labelled Shop/Partners/Links must land on the coach's on-site page (which then links out), never straight to an external URL — unless the tenant genuinely has no such page. One menu item per destination: `partners.html` = affiliate offer cards, `shop.html` = the coach's own link hub ("Links"). A tenant with both pages gets both items; a tenant with only one page gets one item, never two labels pointing at the same page.
+
+## Owner-upkeep automation (`scripts/ops/`)
+
+The approval-inbox pattern proven on Roxjaya (`roxjaya/automation/`) is generalised for every coaching tenant in `scripts/ops/`:
+
+- `scripts/ops/lib.mjs` — tenant lookup from `data/tenants.json`, data-dir resolution, `postInbox` (sends `{tenant, candidates}` to `/admin/inbox`), `sendDigest` (`/admin/digest/send?days=7&tenant=<id>`).
+- `scripts/ops/news-sync.mjs` — HYROX RSS + Google News candidates → owner inbox. Config via `automation.news` in `data/tenants.json` (`query`, `region` array). Blocks unsafe stories, dedupes against `<tenant>/data/news.json`.
+- `scripts/ops/hyrox-sync.mjs` — hyrox.com regional events → confirm/new-race/results-reminder candidates. Config via `automation.hyrox` (`continents`, `includeSlugs` regex, `cityMap`). `--digest` sends the weekly owner digest. Patches only `<tenant>/data/cities.json|events.json` — server-side `automation.writable` still gates application.
+- Run per tenant (`--tenant <id>[,<id>]`) or for every coaching tenant (`--all`). Dry-run by default; set `SITE_URL` + `ADMIN_API_KEY` to post. **Nothing publishes without owner approval** — candidates land in the tenant's Desk inbox.
+- Tests: `./node_modules/.bin/vitest run tests/ops.test.js`
+- `roxjaya/automation/guide-autopilot.js` is Pawsense-only — not part of this port.
+
+## Legacy photo-map utilities
+
+For existing unmigrated sites only. New builds use **Photo intake and placement source of truth** above; do not scaffold the older schema for a new tenant.
+
+- `chassis/photo-slots.json` — canonical slot map, generated by measuring rendered tenants. Slots marked `elastic` follow the photo's own aspect (no crop risk); the rest are pinned cover crops that constrain placement. Regenerate when chassis layout CSS changes:
+  `node scripts/photo-map/slot-scan.mjs <tenant> --out /tmp/<tenant>-slots.json` (per tenant, read-only)
+  `node scripts/photo-map/merge-slots.mjs /tmp/a.json /tmp/b.json --out chassis/photo-slots.json`
+- `scripts/reskin/<tenant>-assets/photo-map.json` — per-photo truth: `face` focal point, `must-keep` boxes (normalised 0–1 coords, generous margins), `slots` it may fill. Scaffold with `node scripts/photo-map/init-map.mjs <tenant>` then eyeball-fill.
+- `node scripts/photo-map/check-legacy.mjs <tenant>` — solver: prints the `object-position` per pinned slot or flags `CONFLICT` when must-keep boxes can't fit the slot's aspect range. Run before applying photos; conflicts are the human recrop list.
+- These tools are legacy-only. Josh Harrison's approved site remains excluded from incidental migrations or changes.
+- TR exception (9 November 2026): `trainedbytr/photo-map.json` is the sole authored source for its static photo placements, gallery wall and Prep Club feed images. Edit `placements`, `wall` and `dataPlacements`, then run `node scripts/photo-map/apply.mjs trainedbytr/photo-map.json <TR-output-directory>`. The demo config's opt-in `photoMap` runs the same compiler during chassis builds. This is not the older intake scanner or `check.mjs` schema. Frames can preserve natural proportions or declare an aspect ratio checked against `anchors.face` and `anchors.mustKeep`; impossible declared crops fail before output is written. Photo aliases share a manually recorded `identity`; intentional reuse between primary static placements needs `reuseReason`. Navigation cards and gallery selections are separately declared uses. There is no browser-time map fetch or automatic visual duplicate detection. `usedOn` is derived, not a second allocation list. Keep each placement's `chassisSlot` when replacing its file: it identifies the template slot filled by the mapped replacement, not another image to display. Tests: `./node_modules/.bin/vitest run tests/photo-map.test.js`.

@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "type": "news",
+      "date": "2026-11-09",
+      "dateLabel": "This month",
+      "title": "Team Underdog heads to HYROX London ExCeL",
+      "summary": "Around a dozen Underdog athletes are entered for HYROX London at ExCeL, 2–6 December — off the back of client PBs at Birmingham and Fabien's own race in Nice.",
+      "source": "https://www.instagram.com/theunderdoggym/",
+      "sourceName": "@theunderdoggym · 3 Nov post",
+      "take": "Twelve athletes on one start line tells you everything about the room. Watch this space.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-11-03",
+      "dateLabel": "Race weekend",
+      "title": "Birmingham PBs and a Nice finish",
+      "summary": "A superb Underdog weekend: client pairs posted a personal best and a faultless reverse-split run at HYROX Birmingham while Fabien raced in Nice.",
+      "source": "https://www.instagram.com/theunderdoggym/",
+      "sourceName": "@theunderdoggym · race-weekend post",
+      "take": "PBs for the clients, a finish for the coach — the gym had a good weekend.",
+      "takeStatus": "draft-for-review"
+    }
+  ]
+}

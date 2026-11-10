@@ -28,20 +28,84 @@
     <link
       rel="preload"
       as="image"
-      href="/elationfitness/images/hero.jpg?v=r1794139095185"
+      href="/elationfitness/images/hero.jpg?v=r1794225953601"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/elationfitness/styles.css?v=r1794139095185" />
+    <link rel="stylesheet" href="/elationfitness/styles.css?v=r1794225953601" />
     <script>
       document.documentElement.classList.add("js");
-      // Refresh = top of page + the hero entrance plays. Any hash left in
-      // the URL by nav clicks gets cleared before it can force a jump;
-      // in-page anchor clicks still scroll as normal.
-      if ("scrollRestoration" in history) {
-        history.scrollRestoration = "manual";
-        if (location.hash)
-          history.replaceState(null, "", location.pathname + location.search);
-      }
+      // Refresh = top of page + the hero entrance plays. Ordinary navigation
+      // keeps any #section so links from other pages land where promised.
+      const navEntry = performance.getEntriesByType?.("navigation")?.[0];
+      const reloaded = navEntry
+        ? navEntry.type === "reload"
+        : performance.navigation?.type === performance.navigation?.TYPE_RELOAD;
+      (() => {
+        const key = "__s9HomeScroll";
+        const returning = navEntry ? navEntry.type === "back_forward" : Boolean(performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD);
+        const auto = () => { if ("scrollRestoration" in history) history.scrollRestoration = "auto"; };
+        let restoring = false, stopRestore = () => {}, lastAnchor = null, activationEvent = null;
+        const findHomeAnchor = anchor => {
+          if (!anchor || !Number.isInteger(anchor.index) || anchor.index < 0 || typeof anchor.href !== "string" || !Number.isFinite(anchor.top)) return null;
+          const root = anchor.section ? document.getElementById(anchor.section) : anchor.footer ? document.querySelector("body > footer") : null;
+          const node = root && Array.from(root.querySelectorAll("a[href]")).filter(link => link.href === anchor.href)[anchor.index];
+          return node?.getClientRects().length ? node : null;
+        };
+        const remember = (link, event) => {
+          if (restoring) return;
+          if (link) {
+            const section = link.closest("section[id]"), footer = link.closest("footer");
+            const root = section || (footer?.parentElement === document.body ? footer : null);
+            lastAnchor = root ? { href: link.href, section: section?.id || "", footer: root === footer, index: Array.from(root.querySelectorAll("a[href]")).filter(node => node.href === link.href).indexOf(link), top: link.getBoundingClientRect().top } : null;
+            activationEvent = event;
+          } else if (!activationEvent || activationEvent.defaultPrevented) {
+            const node = findHomeAnchor(lastAnchor);
+            if (!node || Math.abs(node.getBoundingClientRect().top - lastAnchor.top) > 12) lastAnchor = null;
+          }
+          try { history.replaceState({ ...history.state, [key]: { x: scrollX, y: scrollY, anchor: lastAnchor } }, ""); } catch {}
+        };
+        const holdScroll = (target, duration = 2500, delays = [200, 600, 1200]) => {
+          restoring = true;
+          if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+          const inputs = ["wheel", "touchstart", "pointerdown", "keydown"];
+          const restore = () => {
+            if (!restoring) return;
+            const point = target();
+            window.scrollTo({ left: point.x, top: point.y, behavior: "instant" });
+          };
+          let observer, frame, deadline, retries = [];
+          const stop = () => {
+            restoring = false; observer?.disconnect(); cancelAnimationFrame(frame); clearTimeout(deadline); retries.forEach(clearTimeout);
+            inputs.forEach(type => removeEventListener(type, stop, true)); auto(); stopRestore = () => {};
+          };
+          stopRestore = stop;
+          inputs.forEach(type => addEventListener(type, stop, { capture: true, passive: true, once: true }));
+          if (typeof ResizeObserver === "function") { observer = new ResizeObserver(restore); observer.observe(document.body); }
+          frame = requestAnimationFrame(restore);
+          retries = delays.map(delay => setTimeout(restore, delay));
+          deadline = setTimeout(stop, duration);
+        };
+        if ("scrollRestoration" in history) history.scrollRestoration = reloaded || (returning && history.state?.[key]) ? "manual" : "auto";
+        if (reloaded && location.hash) history.replaceState(history.state, "", location.pathname + location.search);
+        addEventListener("pagehide", () => { remember(); stopRestore(); auto(); });
+        document.addEventListener("click", event => {
+          const link = event.target?.closest?.("a[href]");
+          if (link && (!link.target || link.target === "_self") && ["http:", "https:"].includes(link.protocol) && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { stopRestore(); remember(link, event); }
+        }, true);
+        addEventListener("pageshow", event => {
+          stopRestore();
+          const point = history.state?.[key];
+          lastAnchor = null; activationEvent = null;
+          if ((event.persisted || returning) && Number.isFinite(point?.x) && Number.isFinite(point?.y)) {
+            lastAnchor = point.anchor || null;
+            holdScroll(() => {
+              const node = findHomeAnchor(point.anchor);
+              return { x: point.x, y: node ? node.getBoundingClientRect().top + scrollY - point.anchor.top : point.y };
+            });
+          } else if (reloaded && !event.persisted) holdScroll(() => ({ x: 0, y: 0 }), 500, [50, 150, 350]);
+          else auto();
+        });
+      })();
     </script>
     <script type="application/ld+json">
       {
@@ -79,14 +143,14 @@
     .event-prep { color:var(--ink-2); font-size:.85rem; }
     @media(max-width:760px) { .pitch-tools,.pitch-tool-main { grid-template-columns:minmax(0,1fr); } .pitch-tool { padding:1.1rem; } .event-actions { min-width:0; } }
   </style>
-  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/elationfitness/showcase.css?v=r1794139095185" /><link rel="stylesheet" href="/elationfitness/home-editorial.css?v=r1794139095185" /><script src="/elationfitness/coach-view.js?v=r1794139095185"></script></head>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/elationfitness/showcase.css?v=r1794225953601" /><link rel="stylesheet" href="/elationfitness/home-editorial.css?v=r1794225953601" /><script src="/elationfitness/coach-view.js?v=r1794225953601"></script></head>
   <body class="home-lab">
     <header class="masthead wrap">
       <h1>
         <a class="wordmark" href="/elationfitness/"
           ><span class="o">E</span>LATION
-          <span class="sig" aria-label="by Graham & Matt"
-            ><span class="sig-text">by Graham & Matt</span
+          <span class="sig" aria-label="by Graham &amp; Matt"
+            ><span class="sig-text">by Graham &amp; Matt</span
             ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
               <path
                 d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
@@ -99,7 +163,7 @@
     </header>
 
     
-<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/elationfitness/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/elationfitness/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/elationfitness/desk.html?audience=coach">Finance</a><a data-coach-link href="/elationfitness/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/elationfitness/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/elationfitness/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/elationfitness/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/elationfitness/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/elationfitness/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/elationfitness/leads.html?audience=coach">Leads</a><a data-coach-link href="/elationfitness/desk.html?audience=coach">Finance</a><a data-coach-link href="/elationfitness/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/elationfitness/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/elationfitness/manage-videos.html?audience=coach">Content</a></nav><a class="coach-public-link" href="/elationfitness/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
 <div class="nav">
       <div class="wrap">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
@@ -113,6 +177,7 @@
               <li><a href="/elationfitness/coaching.html">Coaching &amp; programmes</a></li>
               <li><a href="/elationfitness/training.html">Access your training</a></li>
               <li><a href="/elationfitness/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/elationfitness/prep-club.html">HYROX Prep Club</a></li>
             </ul>
           </li>
           <li>
@@ -124,6 +189,7 @@
               <li><a href="/elationfitness/stations-prep/">Stations prep</a></li>
               <li><a href="/elationfitness/run-zone/">Run zone</a></li>
               <li><a href="/elationfitness/taper-zone/">Taper zone</a></li>
+              <li><a href="/elationfitness/race-day/">Race day</a></li>
               <li><a href="/elationfitness/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
@@ -141,8 +207,7 @@
             <button aria-expanded="false" aria-haspopup="true" class="nav-acc">More <span class="caret"></span></button>
             <ul class="sub">
               <li><a href="/elationfitness/partners.html">Partners</a></li>
-              <li><a href="https://elationfitnesstraining.co.uk/join" target="_blank" rel="noopener">Shop</a></li>
-            </ul>
+                          </ul>
           </li>
         </ul>
       </div>
@@ -151,7 +216,7 @@
     <section class="hero hero--bleed" data-hero-mode="full" data-hero-roll="full">
       <img
         class="hero-amb"
-        src="/elationfitness/images/hero.jpg?v=r1794139095185"
+        src="/elationfitness/images/hero.jpg?v=r1794225953601"
         alt=""
         aria-hidden="true"
         width="1125"
@@ -160,7 +225,7 @@
       <div class="hero-mask">
         <img
           class="hero-img"
-          src="/elationfitness/images/hero.jpg?v=r1794139095185"
+          src="/elationfitness/images/hero.jpg?v=r1794225953601"
           alt="Graham Halliday driving the sled, head-on — the station nobody enjoys"
           width="1125"
           height="1080"
@@ -245,7 +310,7 @@
       <div class="wrap story">
         <figure class="reveal">
           <img
-            src="/elationfitness/images/startline.jpg?v=r1794139095185"
+            src="/elationfitness/images/startline.jpg?v=r1794225953601"
             alt="Graham on the start line — flat expression, miles to go"
             width="985"
             height="1150"
@@ -338,7 +403,7 @@
         <div class="plan plan-crew reveal">
           <img
             class="crew-photo"
-            src="/elationfitness/images/doubles.jpg?v=r1794139095185"
+            src="/elationfitness/images/doubles.jpg?v=r1794225953601"
             alt="Graham Halliday driving the sled in a HYROX Pro Doubles race in Manchester"
             loading="lazy"
           />
@@ -375,7 +440,7 @@
             </ul>
             <a
               class="btn btn-primary"
-              href="https://elationfitnesstraining.co.uk/"
+              href="https://elationfitnesstraining.co.uk/join"
               target="_blank"
               rel="noopener"
               >Apply for 1:1</a
@@ -394,7 +459,7 @@
             </ul>
             <a
               class="btn btn-ghost"
-              href="https://elationfitnesstraining.co.uk/"
+              href="https://elationfitnesstraining.co.uk/classes"
               target="_blank"
               rel="noopener"
               >See programmes in Glasgow</a
@@ -406,7 +471,7 @@
             <div class="per">Small Group PT, unlimited classes and more than 60 sessions every week at our Balmore Road home.</div>
             <a
               class="btn btn-ghost"
-              href="https://elationfitnesstraining.co.uk/"
+              href="https://elationfitnesstraining.co.uk/schedule"
               target="_blank"
               rel="noopener"
               >Explore Elation</a
@@ -475,7 +540,7 @@
         </p>
         <figure class="tips-photo reveal">
           <img
-            src="/elationfitness/images/race-revel.jpg?v=r1794139095185"
+            src="/elationfitness/images/race-revel.jpg?v=r1794225953601"
             alt="The Elation squad celebrating at the finish line"
             width="970"
             height="1024"
@@ -709,7 +774,7 @@
     <section class="capture" id="ask">
       <img
         class="capture-bg"
-        src="/elationfitness/images/coaching.jpg?v=r1794139095185"
+        src="/elationfitness/images/coaching.jpg?v=r1794225953601"
         alt=""
         width="948"
         height="870"
@@ -719,7 +784,7 @@
         <div class="reveal coach">
           <span class="coach-portrait"><img
             class="bio"
-            src="/elationfitness/images/bio.jpg?v=r1794139095185"
+            src="/elationfitness/images/bio.jpg?v=r1794225953601"
             alt="Graham Halliday — HYROX Pro athlete and coach"
             width="120"
             height="120"
@@ -982,6 +1047,7 @@
           <a href="/elationfitness/stations-prep/">Stations Prep</a>
           <a href="/elationfitness/run-zone/">Run Zone</a>
           <a href="/elationfitness/taper-zone/">Taper Zone</a>
+          <a href="/elationfitness/race-day/">Race Day</a>
           <a href="/elationfitness/events/">Events</a>
           <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
           <a href="/elationfitness/events.html#cities">Race planner</a>
@@ -1014,10 +1080,10 @@
       <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/elationfitness/app.js?v=r1794139095185" defer></script>
-    <script src="/elationfitness/emerge.js?v=r1794139095185" defer></script>
-    <script src="/elationfitness/home-editorial.js?v=r1794139095185" defer></script>
-    <script src="/elationfitness/partners.js?v=r1794139095185" defer></script>
+    <script src="/elationfitness/app.js?v=r1794225953601" defer></script>
+    <script src="/elationfitness/emerge.js?v=r1794225953601" defer></script>
+    <script src="/elationfitness/home-editorial.js?v=r1794225953601" defer></script>
+    <script src="/elationfitness/partners.js?v=r1794225953601" defer></script>
   <script>(()=>{const h=document.querySelector(".hero--bleed");if(!h||!("IntersectionObserver" in window))return;new IntersectionObserver(([e])=>document.body.classList.toggle("hero-in-view",e.isIntersecting)).observe(h);})();</script>
   <script src="/elationfitness/planner.js" defer></script></body>
 </html>

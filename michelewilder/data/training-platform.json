@@ -1,11 +1,11 @@
 {
   "name": "Wilder Fitness coaching routes",
-  "coachURL": "",
-  "clientURL": "",
-  "programmesURL": "https://coaches.hyrox.com/coach/michelewilder/",
-  "applicationURL": "https://coaches.hyrox.com/coach/michelewilder/",
+  "coachURL": "https://www.wilderfitnessuk.com/",
+  "clientURL": "https://www.wilderfitnessuk.com/",
+  "programmesURL": "https://www.wilderfitnessuk.com/perform-1-1",
+  "applicationURL": "https://calendar.app.google/V57MTVeStUZbVSpm7",
   "directCoachLink": false,
   "offerTitle": "HYROX coaching with Michele",
-  "offerDescription": "Discuss preparation for your first HYROX or a stronger next race. Michele's official HYROX profile explains her focus and provides current contact details.",
-  "note": "The Wilder Fitness site and Hyrox Newbies community are Michele's verified public routes. No client records, workout sync or provider sign-in are connected to this preview."
+  "offerDescription": "Michele's verified routes — Perform 1:1 coaching and the eight-week Foundations group programme on wilderfitnessuk.com.",
+  "note": "wilderfitnessuk.com is Michele's verified site (member Log In lives on the homepage — a Wix dialog, not deep-linkable). No client records, workout sync or provider sign-in are connected to this preview."
 }

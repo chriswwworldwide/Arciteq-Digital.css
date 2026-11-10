@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "type": "news",
+      "date": "2026-11-09",
+      "dateLabel": "Last weekend",
+      "title": "PRO doubles podium at HYROX Birmingham",
+      "summary": "Adam Corlett and Lewis Overend took second in the PRO Doubles Men 35-39 at HYROX Birmingham in 51:21 — with a 51:36 doubles alongside Alex MacDonald the same weekend.",
+      "source": "https://hyresult.com/athlete/adam-corlett",
+      "sourceName": "HYRESULT · athlete record",
+      "take": "Two doubles races, one weekend, one podium. The engine never really stops.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-11-09",
+      "dateLabel": "Race calendar",
+      "title": "HYROX London ExCeL lands 2–6 December",
+      "summary": "The biggest HYROX on the calendar returns to ExCeL London across five race days — the next big target on the ACE timeline.",
+      "source": "https://hyrox.com/event/hyrox-london/",
+      "sourceName": "HYROX · official event page",
+      "take": "Five days of racing on the biggest floor in the sport — the perfect first HYROX or the perfect PB.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "type": "news",
+      "date": "2026-06-19",
+      "dateLabel": "Worlds 2026",
+      "title": "5th at the World Championships",
+      "summary": "Adam finished 5th in the world at HYROX World Championships 2026 in Stockholm (1:00:14 PRO) — defending his crown 'in the shape of my life'.",
+      "source": "https://www.instagram.com/adam_corlett_ace/",
+      "sourceName": "@adam_corlett_ace · Worlds post",
+      "take": "Fifth on the planet. And he coaches everyday athletes on weekday evenings — that mix is the whole point of this gym.",
+      "takeStatus": "draft-for-review"
+    }
+  ]
+}

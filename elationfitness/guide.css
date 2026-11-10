@@ -1464,3 +1464,30 @@ body.zone-acc .splits-consent input,
 body.zone-acc .calc-form .consent input {
   accent-color: var(--zone-accent);
 }
+
+/* Page heroes: a white hairline flush on the photo's right edge, following
+   the bottom-right curve — gives dark photos a deliberate edge on dark stages */
+.guide-hero-photo img {
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Burpee station: portrait jump shot — centre crop decapitated him; anchor top */
+.art-photo img[src*='station-burpees'] { object-position:50% 0%; }
+
+/* Portrait station shots decapitated at the default 50% centre crop —
+   anchor each near its head line */
+.art-photo img[src*='station-row'] { object-position:50% 8%; }
+.art-photo img[src*='station-sled-pull'] { object-position:50% 0%; }
+.art-photo img[src*='station-sandbag-lunges'] { object-position:50% 5%; }
+.art-photo img[src*='matt-carry'] { object-position:50% 5%; }
+
+/* Run Zone hero: portrait jump shot — the shallow mobile band cuts his legs.
+   Deepen the band and anchor mid-frame so the full stride stays in a
+   full-bleed cover crop (contain letterboxed and stranded the photo). */
+@media(max-width:900px){
+  .guidance .guide-hero-photo img[src*='run-hero'] { height:320px; max-height:none; object-fit:cover; object-position:50% 60%; }
+}
+
+/* News hero: the group sits in the bottom of this portrait — top 40% is
+   ceiling rigging. Anchor the band onto the people. */
+.community .guide-hero-photo img[src*='race-revel'] { object-position: 50% 75%; }

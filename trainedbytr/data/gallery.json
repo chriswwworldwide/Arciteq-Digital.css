@@ -3,44 +3,44 @@
   "photos": [
     {
       "src": "/trainedbytr/images/gallery/gym-squad.jpg",
-      "alt": "Tom coaching team session at the gym",
-      "caption": "The squad — another session in the books",
+      "alt": "The TransFit crew lined up beneath the Gym King sign",
+      "caption": "The crew, together after the session.",
       "event": "Training",
       "tilt": -1.2
     },
     {
-      "src": "/trainedbytr/images/gallery/stock-barbell.jpg",
-      "alt": "Deadlift on gym floor",
-      "caption": "Strength first. HYROX rewards the ones who can move weight and keep going.",
-      "event": "Training",
+      "src": "/trainedbytr/images/tr-crew-cardiff-board.jpg",
+      "alt": "Four athletes with their HYROX Cardiff finish board",
+      "caption": "Cardiff finish-line smiles.",
+      "event": "Race day",
       "tilt": 1
     },
     {
       "src": "/trainedbytr/images/gallery/event-crew.jpg",
-      "alt": "Team at HYROX event",
-      "caption": "Race day — the full crew",
-      "event": "Race day",
+      "alt": "A full gym crew grouped together after training",
+      "caption": "A full floor and a proper team effort.",
+      "event": "Training",
       "tilt": 0.8
     },
     {
       "src": "/trainedbytr/images/gallery/race-doubles.jpg",
-      "alt": "Tom sprinting through HYROX arch with doubles partner",
-      "caption": "Doubles — under the arch",
+      "alt": "Tom racing through the HYROX arch with a doubles partner",
+      "caption": "Two athletes. One finish line.",
       "event": "Race day",
       "tilt": -0.5
     },
     {
       "src": "/trainedbytr/images/gallery/tr-crew-attitude-wall.jpg",
-      "alt": "The TransFit Widnes class grouped at the Attitude is Everything wall",
-      "caption": "Full house again — class numbers keep climbing.",
+      "alt": "The TransFit class at the Attitude Is Everything wall",
+      "caption": "The people who keep showing up.",
       "event": "Training",
       "tilt": 1.1
     },
     {
-      "src": "/trainedbytr/images/gallery/tr-headcoach-poster.jpg",
-      "alt": "Trained by TR head coach promo shot",
-      "caption": "Head coach. TransFit Widnes.",
-      "event": "Training",
+      "src": "/trainedbytr/images/gallery/dance.jpg",
+      "alt": "A crowded dance floor with lights above the group",
+      "caption": "There is life beyond the finish line.",
+      "event": "Crew",
       "tilt": -0.9
     }
   ]

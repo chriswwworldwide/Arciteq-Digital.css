@@ -4,7 +4,7 @@
       "id": "coaching",
       "name": "Elation coaching",
       "headline": "Take the next step with Graham",
-      "destination": "https://elationfitnesstraining.co.uk/",
+      "destination": "https://elationfitnesstraining.co.uk/join",
       "image": "/elationfitness/images/coaching-hero.jpg?v=1792661953407",
       "goal": "Coaching enquiries"
     },
@@ -12,7 +12,7 @@
       "id": "programme",
       "name": "Elation training options",
       "headline": "Find the right training support",
-      "destination": "https://elationfitnesstraining.co.uk/",
+      "destination": "https://elationfitnesstraining.co.uk/classes",
       "image": "/elationfitness/images/coaching-hero.jpg?v=1792661953407",
       "goal": "Programme and coaching enquiries"
     }

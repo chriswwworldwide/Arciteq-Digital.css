@@ -1,0 +1,37 @@
+{
+  "note": "PRIVATE PITCH PREVIEW.",
+  "photos": [
+    {
+      "src": "/aceperformance/images/ace1-04-birmingham-podium.jpg",
+      "alt": "Adam and Lewis on the Birmingham champions podium",
+      "caption": "Silver on the PRO doubles podium — days before this went live.",
+      "by": "Race day",
+      "tilt": -1.4,
+      "event": "Race day"
+    },
+    {
+      "src": "/aceperformance/images/contrib-doubles-finish.jpg",
+      "alt": "Two athletes crossing the HYROX finish line together",
+      "caption": "Sent in — the finish that made it doubles.",
+      "by": "Sent in",
+      "tilt": 1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/aceperformance/images/contrib-finish-tunnel.jpg",
+      "alt": "Athlete hugging her finisher plate in the finish tunnel",
+      "caption": "Sent in — first plate, earned the hard way.",
+      "by": "Sent in",
+      "tilt": -1.1,
+      "event": "Community"
+    },
+    {
+      "src": "/aceperformance/images/ace3-01-ace-crew-group.jpg",
+      "alt": "The ACE crew in finisher medals",
+      "caption": "The crew that gets him there.",
+      "by": "Community",
+      "tilt": 1.7,
+      "event": "Community"
+    }
+  ]
+}

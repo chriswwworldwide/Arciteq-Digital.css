@@ -1,0 +1,2177 @@
+{
+  "tenant": "trainedbytr",
+  "mapped": "2026-11-06",
+  "ratingScale": "5 = hero-grade, distinctive, coach/branded energy. 4 = strong, safe to use anywhere. 3 = serviceable, context shot. 2 = weak: soft, generic or awkward crop — use only when nothing better fits. 1 = avoid.",
+  "duplicates": {
+    "note": "Derived usage is listed on each image. Primary photo identities must be unique unless the placement records an intentional reuseReason. Navigation cards and the community wall are separately declared uses."
+  },
+  "images": {
+    "gallery/stock-burpee.jpg": {
+      "rating": 3,
+      "subject": "Stock movement reference: an athlete performing a burpee broad jump",
+      "anchors": {
+        "mustKeep": [
+          {
+            "label": "Whole athlete including head, hands and shoes",
+            "box": [
+              0.1,
+              0.16,
+              0.72,
+              0.97
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "stations-prep.html:4"
+      ],
+      "aspect": "landscape",
+      "notes": "Chosen for the complete athlete and correct movement, not coach identity. Replaces a source-cropped detail.",
+      "dims": [
+        720,
+        600
+      ]
+    },
+    "hero.jpg": {
+      "rating": 5,
+      "subject": "Tom at the start line under the HYROX arch, race paint, crowd behind",
+      "anchors": {
+        "face": [
+          0.5,
+          0.28
+        ],
+        "mustKeep": [
+          {
+            "label": "HYROX arch text",
+            "box": [
+              0.15,
+              0.05,
+              0.85,
+              0.25
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "index.html:0"
+      ],
+      "aspect": "wide",
+      "notes": "Signature shot. Keep arch lettering.",
+      "dims": [
+        1024,
+        557
+      ],
+      "identity": "tom-start-line-arch"
+    },
+    "startline.jpg": {
+      "rating": 4,
+      "subject": "Tom race-ready beside HYROX wall, portrait",
+      "anchors": {
+        "face": [
+          0.5,
+          0.2
+        ]
+      },
+      "usedOn": [
+        "index.html:1"
+      ],
+      "aspect": "portrait",
+      "notes": "Homepage story placement. See derived usedOn for current usage.",
+      "dims": [
+        855,
+        1024
+      ]
+    },
+    "coaching-hero.jpg": {
+      "rating": 4,
+      "subject": "Tom writing HYROX on a session whiteboard",
+      "anchors": {
+        "face": [
+          0.5,
+          0.2
+        ]
+      },
+      "usedOn": [
+        "coaching.html:0",
+        "data/desk/prep-club-feed.json:4"
+      ],
+      "aspect": "portrait",
+      "notes": "Coaching hero and its Prep Club navigation card. Studio uses a different photo.",
+      "dims": [
+        886,
+        1024
+      ],
+      "identity": "tom-whiteboard-hyrox"
+    },
+    "coaching.jpg": {
+      "rating": 4,
+      "subject": "Tom coaching portrait",
+      "usedOn": [
+        "index.html:4"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        847,
+        1024
+      ],
+      "identity": "tom-whiteboard-hyrox"
+    },
+    "coaching-floor.jpg": {
+      "identity": "tom-pointing-session",
+      "rating": 4,
+      "subject": "Tom on the training floor with athletes",
+      "usedOn": [
+        "coaching.html:1"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        848,
+        1024
+      ]
+    },
+    "race-mate-hero.jpg": {
+      "rating": 4,
+      "subject": "Gym-floor briefing scene, wide",
+      "anchors": {
+        "face": [
+          0.62,
+          0.25
+        ]
+      },
+      "usedOn": [],
+      "aspect": "wide",
+      "notes": "Gym briefing scene, removed from Race Day. Available for coaching or training context, not race-floor content.",
+      "dims": [
+        1024,
+        571
+      ]
+    },
+    "squad-athlos.jpg": {
+      "rating": 3,
+      "subject": "Squad training shot, smaller resolution",
+      "usedOn": [],
+      "aspect": "portrait",
+      "notes": "Only 452x640 — soft at hero sizes.",
+      "dims": [
+        452,
+        640
+      ]
+    },
+    "predictor-hero.jpg": {
+      "rating": 4,
+      "subject": "Tom mid-effort race floor",
+      "anchors": {
+        "face": [
+          0.5,
+          0.18
+        ]
+      },
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        849,
+        1024
+      ],
+      "identity": "tom-arena-profile"
+    },
+    "splits-hero.jpg": {
+      "rating": 4,
+      "subject": "Race-floor effort shot",
+      "anchors": {
+        "face": [
+          0.5,
+          0.2
+        ]
+      },
+      "usedOn": [
+        "splits.html:0"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        865,
+        1024
+      ]
+    },
+    "run-hero.jpg": {
+      "rating": 4,
+      "subject": "Alternate crop of the homepage start-line running photograph",
+      "anchors": {
+        "face": [
+          0.5,
+          0.15
+        ],
+        "feet": [
+          0.5,
+          0.92
+        ]
+      },
+      "usedOn": [],
+      "aspect": "portrait",
+      "notes": "Full-body — watch head/feet on mobile like Josh's run hero.",
+      "dims": [
+        852,
+        1024
+      ],
+      "identity": "tom-start-line-arch"
+    },
+    "momentum.jpg": {
+      "rating": 3,
+      "subject": "Training effort",
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        840,
+        1024
+      ],
+      "identity": "tom-athlete-chat"
+    },
+    "skierg-laugh.jpg": {
+      "rating": 4,
+      "subject": "Tom smiling on a treadmill, not a SkiErg",
+      "anchors": {
+        "face": [
+          0.5,
+          0.28
+        ],
+        "mustKeep": [
+          {
+            "label": "Head and treadmill context",
+            "box": [
+              0.05,
+              0.05,
+              0.95,
+              0.95
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "prep-club.html:0"
+      ],
+      "aspect": "portrait",
+      "notes": "Filename lies — it's a treadmill shot. Great energy though.",
+      "dims": [
+        480,
+        640
+      ]
+    },
+    "race-pair.jpg": {
+      "rating": 3,
+      "subject": "Doubles pair post-race, small resolution",
+      "usedOn": [
+        "data/desk/prep-club-feed.json:2"
+      ],
+      "aspect": "portrait",
+      "notes": "480x640 only.",
+      "dims": [
+        480,
+        640
+      ]
+    },
+    "pb.jpg": {
+      "rating": 4,
+      "subject": "Finish-line/pb moment",
+      "anchors": {
+        "face": [
+          0.5,
+          0.2
+        ]
+      },
+      "usedOn": [
+        "results.html:0"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        841,
+        1024
+      ]
+    },
+    "half.jpg": {
+      "rating": 3,
+      "subject": "Outdoor road-race shot",
+      "anchors": {
+        "face": [
+          0.5,
+          0.2
+        ]
+      },
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        853,
+        1024
+      ]
+    },
+    "suit.jpg": {
+      "rating": 3,
+      "subject": "Kit/brand shot, landscape, low res",
+      "usedOn": [],
+      "aspect": "landscape",
+      "notes": "452x290 — small for a hero band.",
+      "dims": [
+        452,
+        290
+      ]
+    },
+    "events-hero.jpg": {
+      "rating": 4,
+      "subject": "Event/race scene",
+      "anchors": {
+        "face": [
+          0.5,
+          0.2
+        ]
+      },
+      "usedOn": [
+        "events.html:0",
+        "data/desk/prep-club-feed.json:5"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        841,
+        1024
+      ]
+    },
+    "events-secondary.jpg": {
+      "rating": 3,
+      "subject": "Crowd/event shot, tall 720x1280",
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        720,
+        1280
+      ]
+    },
+    "stations-hero.jpg": {
+      "rating": 4,
+      "subject": "Stations rail header, wide",
+      "usedOn": [
+        "stations-prep.html:0",
+        "data/desk/prep-club-feed.json:0"
+      ],
+      "aspect": "wide",
+      "dims": [
+        1024,
+        545
+      ]
+    },
+    "links-hero.jpg": {
+      "rating": 3,
+      "subject": "Portrait, 452x560 small",
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        452,
+        560
+      ]
+    },
+    "bio.jpg": {
+      "rating": 4,
+      "subject": "Tom headshot",
+      "anchors": {
+        "face": [
+          0.5,
+          0.35
+        ]
+      },
+      "usedOn": [
+        "index.html:5"
+      ],
+      "aspect": "landscape-ish",
+      "dims": [
+        1024,
+        649
+      ]
+    },
+    "detail.jpg": {
+      "rating": 3,
+      "subject": "Kit/detail shot",
+      "usedOn": [],
+      "aspect": "portrait",
+      "notes": "UNUSED.",
+      "dims": [
+        848,
+        1024
+      ],
+      "identity": "tom-running-shoes"
+    },
+    "run-detail.jpg": {
+      "rating": 4,
+      "subject": "Running-shoe and lower-leg action detail, intentionally photographed without a face",
+      "usedOn": [
+        "run-zone.html:0"
+      ],
+      "aspect": "portrait",
+      "notes": "Intentional footwear technique detail. Whole original retained; not a cropped full-body portrait.",
+      "dims": [
+        848,
+        1024
+      ],
+      "identity": "tom-running-shoes",
+      "reviewed": true,
+      "anchors": {
+        "mustKeep": [
+          {
+            "label": "Both running shoes and soles",
+            "box": [
+              0.2,
+              0.28,
+              0.72,
+              0.95
+            ]
+          }
+        ]
+      }
+    },
+    "tr-headcoach-poster.jpg": {
+      "rating": 4,
+      "subject": "Head Coach poster shot",
+      "anchors": {
+        "face": [
+          0.5,
+          0.25
+        ]
+      },
+      "usedOn": [],
+      "aspect": "portrait",
+      "notes": "Brand-defining.",
+      "dims": [
+        452,
+        560
+      ]
+    },
+    "tr-crew-attitude-wall.jpg": {
+      "rating": 5,
+      "subject": "Crew in front of ATTITUDE wall — TransFit signature",
+      "anchors": {
+        "mustKeep": [
+          {
+            "label": "ATTITUDE IS wall text",
+            "box": [
+              0.2,
+              0.1,
+              0.8,
+              0.35
+            ]
+          }
+        ]
+      },
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        452,
+        610
+      ]
+    },
+    "tr-class-floor-dark.jpg": {
+      "rating": 3,
+      "subject": "Dark class floor shot",
+      "usedOn": [],
+      "aspect": "portrait",
+      "notes": "UNUSED. Moody but dark.",
+      "dims": [
+        452,
+        620
+      ]
+    },
+    "tr-floor-through-rig.jpg": {
+      "rating": 3,
+      "subject": "Floor seen through the rig",
+      "usedOn": [],
+      "aspect": "portrait",
+      "notes": "UNUSED.",
+      "dims": [
+        452,
+        610
+      ]
+    },
+    "tr-whiteboard-clean.jpg": {
+      "rating": 4,
+      "subject": "Alternate file of the Tom-writing-HYROX photograph, not a text-only whiteboard",
+      "usedOn": [],
+      "aspect": "portrait",
+      "notes": "UNUSED — good for programming/coaching content.",
+      "dims": [
+        886,
+        1024
+      ],
+      "identity": "tom-whiteboard-hyrox"
+    },
+    "tr-class-gymking.jpg": {
+      "rating": 4,
+      "subject": "Class action shot, Gym King collab",
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        452,
+        560
+      ]
+    },
+    "station-skierg.jpg": {
+      "rating": 3,
+      "subject": "SkiErg station",
+      "usedOn": [
+        "stations-prep.html:1"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        843,
+        1024
+      ]
+    },
+    "station-sled-push.jpg": {
+      "rating": 3,
+      "subject": "Sled push, landscape 640x400",
+      "usedOn": [
+        "stations-prep.html:2"
+      ],
+      "aspect": "landscape",
+      "dims": [
+        640,
+        400
+      ],
+      "sourceLimitation": "Head is already clipped in the supplied file. Natural framing avoids additional loss but cannot restore missing pixels."
+    },
+    "station-sled-pull.jpg": {
+      "rating": 4,
+      "subject": "Tom hauling the sled-pull rope on the HYROX race floor",
+      "usedOn": [
+        "predictor.html:0",
+        "data/desk/prep-club-feed.json:1"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        859,
+        1024
+      ],
+      "reviewed": true,
+      "anchors": {
+        "face": [
+          [
+            0.76,
+            0.28
+          ],
+          [
+            0.74,
+            0.1
+          ]
+        ],
+        "mustKeep": [
+          {
+            "label": "Primary athlete, hands, rope and shoes",
+            "box": [
+              0.54,
+              0.16,
+              1,
+              0.95
+            ]
+          },
+          {
+            "label": "Background supporter head",
+            "box": [
+              0.64,
+              0.01,
+              0.85,
+              0.18
+            ]
+          }
+        ]
+      }
+    },
+    "station-burpees.jpg": {
+      "rating": 3,
+      "subject": "Burpees, 847x614",
+      "usedOn": [],
+      "aspect": "landscape",
+      "dims": [
+        847,
+        614
+      ],
+      "sourceLimitation": "Head is already clipped in the supplied file. Natural framing avoids additional loss but cannot restore missing pixels."
+    },
+    "station-row.jpg": {
+      "rating": 3,
+      "subject": "Rower, tall 720x1280",
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        720,
+        1280
+      ]
+    },
+    "station-farmers-carry.jpg": {
+      "rating": 5,
+      "subject": "Tom in TransFit orange on farmers carry, face + both kettlebells",
+      "anchors": {
+        "face": [
+          0.46,
+          0.19
+        ],
+        "mustKeep": [
+          {
+            "label": "Whole head, hands and both kettlebells",
+            "box": [
+              0.2,
+              0.06,
+              0.96,
+              0.95
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "stations-prep.html:6"
+      ],
+      "aspect": "portrait",
+      "notes": "Branded, on-theme — protect the bells in any crop.",
+      "dims": [
+        860,
+        1024
+      ]
+    },
+    "station-sandbag-lunges.jpg": {
+      "rating": 3,
+      "subject": "Sandbag lunges",
+      "usedOn": [
+        "stations-prep.html:7"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        840,
+        1024
+      ]
+    },
+    "station-wall-balls.jpg": {
+      "rating": 3,
+      "subject": "Wall balls",
+      "usedOn": [
+        "index.html:3",
+        "data/desk/prep-club-feed.json:3"
+      ],
+      "aspect": "portrait",
+      "notes": "Homepage tips and its Prep Club navigation card. Stations uses the banner photo.",
+      "dims": [
+        850,
+        1024
+      ]
+    },
+    "gallery/restaurant.jpg": {
+      "rating": 4,
+      "subject": "Chassis dinner-table shot",
+      "usedOn": [
+        "race-crew.html:0"
+      ],
+      "aspect": "landscape",
+      "dims": [
+        1600,
+        1067
+      ]
+    },
+    "gallery/dance.jpg": {
+      "rating": 3,
+      "subject": "Chassis nightclub shot",
+      "usedOn": [
+        "gallery wall:5"
+      ],
+      "aspect": "landscape",
+      "notes": "UNUSED — candidate for race-crew Station 10 if wanted.",
+      "dims": [
+        1600,
+        1067
+      ]
+    },
+    "gallery/gym-squad.jpg": {
+      "rating": 3,
+      "subject": "Squad photo, 480x640",
+      "usedOn": [
+        "gallery wall:0"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        480,
+        640
+      ]
+    },
+    "gallery/race-doubles.jpg": {
+      "rating": 3,
+      "subject": "Doubles race shot",
+      "usedOn": [
+        "gallery wall:3"
+      ],
+      "aspect": "landscape",
+      "dims": [
+        640,
+        426
+      ]
+    },
+    "gallery/event-crew.jpg": {
+      "rating": 3,
+      "subject": "Event crew",
+      "usedOn": [
+        "gallery wall:2"
+      ],
+      "aspect": "landscape",
+      "dims": [
+        640,
+        426
+      ]
+    },
+    "gallery/coach-patch.jpg": {
+      "rating": 3,
+      "subject": "Coach patch detail",
+      "usedOn": [],
+      "aspect": "portrait",
+      "notes": "UNUSED.",
+      "dims": [
+        834,
+        1024
+      ]
+    },
+    "gallery/whiteboard.jpg": {
+      "rating": 3,
+      "subject": "Whiteboard",
+      "usedOn": [],
+      "aspect": "portrait",
+      "notes": "UNUSED — tr-whiteboard-clean is the better version.",
+      "dims": [
+        859,
+        1024
+      ]
+    },
+    "gallery/stock-arena.jpg": {
+      "rating": 2,
+      "subject": "Stock arena",
+      "usedOn": [],
+      "aspect": "landscape",
+      "notes": "UNUSED. Generic stock.",
+      "dims": [
+        900,
+        1350
+      ]
+    },
+    "gallery/stock-barbell.jpg": {
+      "rating": 2,
+      "subject": "Stock barbell",
+      "usedOn": [],
+      "aspect": "landscape",
+      "notes": "Generic stock.",
+      "dims": [
+        900,
+        600
+      ]
+    },
+    "gallery/stock-finish.jpg": {
+      "rating": 2,
+      "subject": "Stock finish",
+      "usedOn": [],
+      "aspect": "landscape",
+      "notes": "UNUSED. Generic stock.",
+      "dims": [
+        1024,
+        877
+      ]
+    },
+    "gallery/stock-rower.jpg": {
+      "rating": 2,
+      "subject": "Stock rower",
+      "usedOn": [],
+      "aspect": "landscape",
+      "notes": "UNUSED. Generic stock.",
+      "dims": [
+        900,
+        600
+      ]
+    },
+    "tr-ig-fuel-guide-1.png": {
+      "rating": 4,
+      "subject": "IG post: fuel guide cover",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "notes": "Content graphic, not a photo.",
+      "dims": [
+        295,
+        640
+      ]
+    },
+    "tr-ig-fuel-guide-2.png": {
+      "rating": 4,
+      "subject": "IG post: fuel guide",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "dims": [
+        295,
+        640
+      ]
+    },
+    "tr-ig-fuel-guide-3.png": {
+      "rating": 4,
+      "subject": "IG post: fuel guide",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "dims": [
+        295,
+        640
+      ]
+    },
+    "tr-post-class-briefing.png": {
+      "rating": 4,
+      "subject": "IG post: class briefing",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "dims": [
+        472,
+        1024
+      ]
+    },
+    "tr-post-class-turnout.png": {
+      "rating": 5,
+      "subject": "IG post: big class turnout under ATTITUDE wall, 136 likes",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "notes": "Strong social proof — turnout numbers + wall.",
+      "dims": [
+        472,
+        1024
+      ]
+    },
+    "tr-post-crew2.png": {
+      "rating": 4,
+      "subject": "IG post: crew",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "dims": [
+        472,
+        1024
+      ]
+    },
+    "tr-post-expansion.png": {
+      "rating": 4,
+      "subject": "IG post: expansion/news",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "dims": [
+        472,
+        1024
+      ]
+    },
+    "tr-post-gymking-class.png": {
+      "rating": 4,
+      "subject": "IG post: Gym King class",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "dims": [
+        472,
+        1024
+      ]
+    },
+    "tr-post-hardio.png": {
+      "rating": 4,
+      "subject": "IG post: HARDIO session",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "dims": [
+        472,
+        1024
+      ]
+    },
+    "tr-post-headcoach.png": {
+      "rating": 4,
+      "subject": "IG post: head coach announcement",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "dims": [
+        472,
+        1024
+      ]
+    },
+    "tr-post-laptop.png": {
+      "rating": 3,
+      "subject": "IG post: laptop/work",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "dims": [
+        472,
+        1024
+      ]
+    },
+    "tr-post-whiteboard.png": {
+      "rating": 3,
+      "subject": "IG post: whiteboard",
+      "usedOn": [],
+      "aspect": "square-ish",
+      "dims": [
+        472,
+        1024
+      ]
+    },
+    "tr-coaching-floor-cue.jpg": {
+      "rating": 4,
+      "subject": "Tom clapping a cue on the TransFit floor, athletes mid-session, MP wall logos behind",
+      "anchors": {
+        "face": [
+          0.42,
+          0.22
+        ],
+        "mustKeep": [
+          {
+            "label": "clapping hands",
+            "box": [
+              0.28,
+              0.36,
+              0.58,
+              0.56
+            ]
+          },
+          {
+            "label": "MP wall logos",
+            "box": [
+              0.05,
+              0.02,
+              0.95,
+              0.12
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "taper-zone.html:0"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        853,
+        1024
+      ],
+      "notes": "Feet already cut at source — safe for any band crop. Coaching/class/briefing content."
+    },
+    "tr-manchester-finisher.jpg": {
+      "rating": 5,
+      "subject": "Finisher at the HYROX Manchester board holding finisher token, FINAL TIME 1:23:58",
+      "anchors": {
+        "face": [
+          0.29,
+          0.2
+        ],
+        "mustKeep": [
+          {
+            "label": "timeboard 1:23:58",
+            "box": [
+              0.44,
+              0.04,
+              0.74,
+              0.64
+            ]
+          },
+          {
+            "label": "finisher token",
+            "box": [
+              0.24,
+              0.44,
+              0.36,
+              0.56
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "news.html:0"
+      ],
+      "aspect": "landscape 1.55",
+      "dims": [
+        1024,
+        662
+      ],
+      "notes": "Verified result board — rare landscape in this library. Suits wide slots, Race Wall, results/predictor. Keep the full time digits."
+    },
+    "tr-hyrox-warmup.jpg": {
+      "rating": 5,
+      "subject": "Tom hands raised mid-floor under HYROX sign, head tipped back, race kit",
+      "anchors": {
+        "face": [
+          0.58,
+          0.45
+        ],
+        "mustKeep": [
+          {
+            "label": "raised hands",
+            "box": [
+              0.16,
+              0.38,
+              0.4,
+              0.58
+            ]
+          },
+          {
+            "label": "HYROX sign",
+            "box": [
+              0.3,
+              0.04,
+              0.85,
+              0.16
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "shop.html:0"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        842,
+        1024
+      ],
+      "notes": "Atmospheric — big arena energy. Headroom at top is dead space so it crops well at 20-40%."
+    },
+    "tr-glasgow-doubles-board.jpg": {
+      "rating": 5,
+      "subject": "Two shirtless athletes holding HYROX cards, Glasgow board behind, 0:58:09",
+      "anchors": {
+        "face": [
+          [
+            0.38,
+            0.24
+          ],
+          [
+            0.6,
+            0.22
+          ]
+        ],
+        "mustKeep": [
+          {
+            "label": "timeboard 0:58:09",
+            "box": [
+              0.3,
+              0.02,
+              0.74,
+              0.16
+            ]
+          },
+          {
+            "label": "HYROX cards",
+            "box": [
+              0.28,
+              0.42,
+              0.72,
+              0.58
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "results.html:1"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        842,
+        1024
+      ],
+      "notes": "Verified doubles time — results/doubles/community slots. Keep board digits and both faces."
+    },
+    "tr-crew-cardiff-board.jpg": {
+      "rating": 5,
+      "subject": "Four athletes at the Cardiff board, FINAL TIME 1:03:53, holding HYROX Cardiff cards",
+      "anchors": {
+        "face": [
+          [
+            0.2,
+            0.3
+          ],
+          [
+            0.37,
+            0.33
+          ],
+          [
+            0.56,
+            0.31
+          ],
+          [
+            0.76,
+            0.3
+          ]
+        ],
+        "mustKeep": [
+          {
+            "label": "timeboard 1:03:53",
+            "box": [
+              0.1,
+              0.1,
+              0.66,
+              0.28
+            ]
+          },
+          {
+            "label": "HYROX Cardiff cards",
+            "box": [
+              0.25,
+              0.52,
+              0.78,
+              0.6
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "gallery wall:1"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        847,
+        1024
+      ],
+      "notes": "Verified crew result — community/results gold. Four faces + digits all need room."
+    },
+    "tr-coach-pointing.jpg": {
+      "identity": "tom-pointing-session",
+      "rating": 5,
+      "subject": "Tom pointing a cue mid-floor, tattooed athlete beside him, moody arena light",
+      "anchors": {
+        "face": [
+          [
+            0.36,
+            0.26
+          ],
+          [
+            0.69,
+            0.33
+          ]
+        ],
+        "mustKeep": [
+          {
+            "label": "pointing hand",
+            "box": [
+              0.42,
+              0.3,
+              0.55,
+              0.42
+            ]
+          }
+        ]
+      },
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        855,
+        1024
+      ],
+      "notes": "Editorial-grade coaching shot — coaching/desk/prep-club hero candidate."
+    },
+    "tr-profile-arena.jpg": {
+      "rating": 5,
+      "subject": "Tom profile close-up against arena bokeh",
+      "anchors": {
+        "face": [
+          0.28,
+          0.44
+        ]
+      },
+      "usedOn": [
+        "podcast.html:0"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        845,
+        1024
+      ],
+      "notes": "Striking close crop — face on left third looking right. Keep left-side room; don't centre-crop.",
+      "identity": "tom-arena-profile"
+    },
+    "tr-whiteboard-writing.jpg": {
+      "rating": 4,
+      "subject": "Tom writing HYROX on the whiteboard, back-of-head angle, sleeve tattoo",
+      "anchors": {
+        "face": [
+          0.38,
+          0.38
+        ],
+        "mustKeep": [
+          {
+            "label": "HYROX word + pen hand",
+            "box": [
+              0.62,
+              0.16,
+              0.88,
+              0.36
+            ]
+          }
+        ]
+      },
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        857,
+        1024
+      ],
+      "notes": "Programming/coaching content. Right side must stay — that's where the word is.",
+      "identity": "tom-whiteboard-hyrox"
+    },
+    "tr-coaching-athlete.jpg": {
+      "rating": 4,
+      "subject": "Tom crouched coaching an athlete, dumbbells and TRAINING HOODIE mirror behind",
+      "anchors": {
+        "face": [
+          0.38,
+          0.27
+        ]
+      },
+      "usedOn": [
+        "list.html:0"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        832,
+        1024
+      ],
+      "notes": "Foreground athlete is intentionally soft — fine for coaching context shots.",
+      "identity": "tom-athlete-chat"
+    },
+    "tr-station-sled-pull-tom.jpg": {
+      "rating": 5,
+      "subject": "Tom leaning into a sled-pull rope between CENTR weight stacks, HYROX banner behind",
+      "anchors": {
+        "face": [
+          0.5,
+          0.27
+        ],
+        "mustKeep": [
+          {
+            "label": "rope line",
+            "box": [
+              0.36,
+              0.44,
+              0.56,
+              0.78
+            ]
+          },
+          {
+            "label": "CENTR stack left",
+            "box": [
+              0,
+              0.52,
+              0.42,
+              0.78
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "stations-prep.html:3"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        852,
+        1024
+      ],
+      "notes": "Real athlete + branded kit — sled-pull station upgrade over the current 3-rated shot."
+    },
+    "tr-doubles-run-joy.jpg": {
+      "rating": 5,
+      "subject": "Tom + partner high-fiving mid-run, she's carrying her shoe, HYROX sign behind",
+      "anchors": {
+        "face": [
+          [
+            0.18,
+            0.17
+          ],
+          [
+            0.63,
+            0.29
+          ]
+        ],
+        "mustKeep": [
+          {
+            "label": "HYROX sign",
+            "box": [
+              0.5,
+              0.09,
+              0.79,
+              0.21
+            ]
+          },
+          {
+            "label": "high-five hands",
+            "box": [
+              0.46,
+              0.16,
+              0.58,
+              0.3
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "find-a-partner.html:0"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        843,
+        1024
+      ],
+      "notes": "Pure doubles joy — find-a-partner/doubles/race-crew hero candidate."
+    },
+    "tr-finish-sprint.jpg": {
+      "rating": 4,
+      "subject": "Tom + partner sprinting flat out across the floor, arena stands behind",
+      "anchors": {
+        "face": [
+          [
+            0.26,
+            0.3
+          ],
+          [
+            0.68,
+            0.34
+          ]
+        ]
+      },
+      "usedOn": [
+        "race-day.html:0"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        840,
+        1024
+      ],
+      "notes": "Great energy, slightly busier background. Finish-line/race-day content."
+    },
+    "tr-coach-patch-backpack.jpg": {
+      "rating": 4,
+      "subject": "Backpack patches: TR17 COACH, HYROX MADRID, HYROX VANCOUVER, race lanyard",
+      "anchors": {
+        "mustKeep": [
+          {
+            "label": "TR17 COACH patch",
+            "box": [
+              0.48,
+              0.47,
+              0.78,
+              0.62
+            ]
+          },
+          {
+            "label": "HYROX city patches",
+            "box": [
+              0.3,
+              0.6,
+              0.75,
+              0.72
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "partners.html:0"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        850,
+        1024
+      ],
+      "notes": "Identity detail shot — coach/about/desk content. The patches ARE the story."
+    },
+    "tr-wall-balls-banner.jpg": {
+      "rating": 5,
+      "subject": "Tom tossing the wall ball under the WORLD SERIES OF FITNESS RACING banner",
+      "anchors": {
+        "face": [
+          0.5,
+          0.63
+        ],
+        "mustKeep": [
+          {
+            "label": "wall ball in flight",
+            "box": [
+              0.38,
+              0.28,
+              0.62,
+              0.48
+            ]
+          },
+          {
+            "label": "WORLD SERIES banner",
+            "box": [
+              0.02,
+              0.14,
+              0.98,
+              0.28
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "stations-prep.html:8"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        847,
+        1024
+      ],
+      "notes": "Ball, face and banner all need room — tall crop. Wall-balls station upgrade."
+    },
+    "tr-sled-pull-pair.jpg": {
+      "rating": 5,
+      "subject": "Tom in a deep squat hauling the sled-pull rope, partner watching behind, HYROX banner",
+      "anchors": {
+        "face": [
+          [
+            0.66,
+            0.27
+          ],
+          [
+            0.33,
+            0.03
+          ]
+        ],
+        "mustKeep": [
+          {
+            "label": "rope + hands",
+            "box": [
+              0.6,
+              0.42,
+              0.8,
+              0.75
+            ]
+          }
+        ]
+      },
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        837,
+        1024
+      ],
+      "notes": "Partner behind is cropped at the chin already — reads fine. Depth + effort, great station shot."
+    },
+    "tr-farmers-carry-hype.jpg": {
+      "rating": 5,
+      "subject": "Tom hyping behind partner mid farmers carry, CENTR kettlebells, HYROX wall",
+      "anchors": {
+        "face": [
+          [
+            0.72,
+            0.12
+          ],
+          [
+            0.24,
+            0.28
+          ]
+        ],
+        "mustKeep": [
+          {
+            "label": "CENTR kettlebells",
+            "box": [
+              0.52,
+              0.55,
+              0.95,
+              0.78
+            ]
+          },
+          {
+            "label": "HYROX wall text",
+            "box": [
+              0.2,
+              0.55,
+              0.55,
+              0.68
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "race-day.html:1"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        834,
+        1024
+      ],
+      "notes": "Coach + athlete + station all in one — farmers-carry upgrade candidate."
+    },
+    "tr-run-pair-banner.jpg": {
+      "rating": 4,
+      "subject": "Tom + partner running under the HYROX banner, other athletes behind",
+      "anchors": {
+        "face": [
+          [
+            0.42,
+            0.38
+          ],
+          [
+            0.68,
+            0.4
+          ]
+        ],
+        "mustKeep": [
+          {
+            "label": "HYROX banner",
+            "box": [
+              0.15,
+              0.05,
+              0.9,
+              0.16
+            ]
+          }
+        ]
+      },
+      "usedOn": [],
+      "aspect": "portrait",
+      "dims": [
+        855,
+        1024
+      ],
+      "notes": "Source has an Instagram 1/6 badge at the top right. Tested right-edge badge-removal crops also clipped the partner's arm, so do not use a rectangular crop to hide it. Prefer a clean original or another running photo.",
+      "identity": "tom-partner-hyrox-run"
+    },
+    "tr-sled-pull-closeup.jpg": {
+      "rating": 5,
+      "subject": "Tom in black tee pulling rope toward camera, tight intense crop, landscape",
+      "anchors": {
+        "face": [
+          0.4,
+          0.2
+        ],
+        "mustKeep": [
+          {
+            "label": "rope + hands",
+            "box": [
+              0.45,
+              0.55,
+              0.6,
+              0.85
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "watch.html:0"
+      ],
+      "aspect": "landscape 1.2",
+      "dims": [
+        1024,
+        849
+      ],
+      "notes": "The only landscape effort shot — suits wide bands. Intensity carries the frame."
+    },
+    "tr-coach-rower-shout.jpg": {
+      "rating": 5,
+      "subject": "Tom encouraging a partner on the RowErg, with both faces visible",
+      "anchors": {
+        "face": [
+          [
+            0.36,
+            0.32
+          ],
+          [
+            0.58,
+            0.42
+          ]
+        ],
+        "mustKeep": [
+          {
+            "label": "erg handles + rope",
+            "box": [
+              0.36,
+              0.62,
+              0.78,
+              0.78
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "stations-prep.html:5"
+      ],
+      "aspect": "portrait",
+      "dims": [
+        845,
+        1024
+      ],
+      "notes": "Coach-athlete energy — coaching/stations/community all fit."
+    },
+    "gallery/tr-class-gymking.jpg": {
+      "rating": 3,
+      "subject": "TransFit class training beneath the Gym King sign",
+      "anchors": {
+        "mustKeep": [
+          {
+            "label": "Gym King sign and class faces",
+            "box": [
+              0.02,
+              0.13,
+              0.98,
+              0.74
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "index.html:2"
+      ],
+      "dims": [
+        452,
+        560
+      ],
+      "reviewed": true
+    },
+    "taper-planning.jpg": {
+      "rating": 4,
+      "subject": "Tom explaining the session plan at a whiteboard",
+      "anchors": {
+        "face": [
+          0.57,
+          0.36
+        ],
+        "mustKeep": [
+          {
+            "label": "Head, pen and whiteboard gesture",
+            "box": [
+              0.03,
+              0.24,
+              0.75,
+              0.65
+            ]
+          }
+        ]
+      },
+      "usedOn": [
+        "taper-zone.html:1"
+      ],
+      "dims": [
+        909,
+        1024
+      ],
+      "reviewed": true
+    },
+    "taper-festival.jpg": {
+      "rating": 3,
+      "subject": "Needs review",
+      "anchors": {},
+      "usedOn": [],
+      "dims": [
+        784,
+        1024
+      ]
+    },
+    "gallery/tr-crew-attitude-wall.jpg": {
+      "rating": 4,
+      "subject": "The TransFit class at the Attitude Is Everything wall",
+      "anchors": {},
+      "usedOn": [
+        "gallery wall:4"
+      ]
+    }
+  },
+  "placements": [
+    {
+      "id": "coaching.html:0",
+      "chassisSlot": "coaching-hero.jpg",
+      "page": "coaching.html",
+      "role": "hero",
+      "file": "coaching-hero.jpg",
+      "alt": "Tom writing HYROX on a session whiteboard",
+      "frame": {
+        "mode": "natural"
+      }
+    },
+    {
+      "id": "coaching.html:1",
+      "page": "coaching.html",
+      "role": "photo",
+      "file": "coaching-floor.jpg",
+      "alt": "Tom coaching an athlete through a piece on the gym floor",
+      "frame": {
+        "mode": "natural"
+      }
+    },
+    {
+      "id": "events.html:0",
+      "page": "events.html",
+      "role": "hero",
+      "file": "events-hero.jpg",
+      "alt": "Race-weekend photography for Trained by TR",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "events-hero.jpg"
+    },
+    {
+      "id": "find-a-partner.html:0",
+      "page": "find-a-partner.html",
+      "role": "hero",
+      "file": "tr-doubles-run-joy.jpg",
+      "alt": "Two Tom athletes racing side by side at Hyrox",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "race-mate-hero.jpg"
+    },
+    {
+      "id": "index.html:0",
+      "page": "index.html",
+      "role": "photo",
+      "file": "hero.jpg",
+      "alt": "Tom Redmond running through the HYROX race tunnel",
+      "frame": {
+        "mode": "existing"
+      },
+      "chassisSlot": "hero.jpg"
+    },
+    {
+      "id": "index.html:1",
+      "page": "index.html",
+      "role": "photo",
+      "file": "startline.jpg",
+      "alt": "Tom Redmond in race paint beside a HYROX wall",
+      "frame": {
+        "mode": "existing"
+      },
+      "chassisSlot": "startline.jpg"
+    },
+    {
+      "id": "index.html:2",
+      "page": "index.html",
+      "role": "photo",
+      "file": "gallery/tr-class-gymking.jpg",
+      "alt": "A Trained by TR class mid-session under the Gym King sign at TransFit Widnes",
+      "frame": {
+        "mode": "existing"
+      },
+      "chassisSlot": "doubles.jpg",
+      "frameNote": "Existing square card preset: CSS height:auto overrides intrinsic height while preserving 150px desktop / 120px phone widths."
+    },
+    {
+      "id": "index.html:3",
+      "page": "index.html",
+      "role": "photo",
+      "file": "station-wall-balls.jpg",
+      "alt": "Tom Redmond coaching wall balls in a class setting",
+      "frame": {
+        "mode": "existing"
+      },
+      "chassisSlot": "wallball.jpg"
+    },
+    {
+      "id": "index.html:4",
+      "page": "index.html",
+      "role": "decorative",
+      "file": "coaching.jpg",
+      "alt": "",
+      "frame": {
+        "mode": "existing"
+      },
+      "chassisSlot": "coaching.jpg",
+      "reuseReason": "Intentional whiteboard background behind Ask Tom; not another primary hero."
+    },
+    {
+      "id": "index.html:5",
+      "page": "index.html",
+      "role": "photo",
+      "file": "bio.jpg",
+      "alt": "Tom Redmond — HYROX racer, coach and Trained by TR founder",
+      "frame": {
+        "mode": "existing"
+      },
+      "chassisSlot": "bio.jpg"
+    },
+    {
+      "id": "list.html:0",
+      "page": "list.html",
+      "role": "hero",
+      "file": "tr-coaching-athlete.jpg",
+      "alt": "Tom talking with an athlete beside the gym dumbbell rack",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "events-secondary.jpg"
+    },
+    {
+      "id": "news.html:0",
+      "page": "news.html",
+      "role": "hero",
+      "file": "tr-manchester-finisher.jpg",
+      "alt": "Tom Redmond with a HYROX race crew — 18 races across formats",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "half.jpg"
+    },
+    {
+      "id": "partners.html:0",
+      "page": "partners.html",
+      "role": "hero",
+      "file": "tr-coach-patch-backpack.jpg",
+      "alt": "TR17 coach and HYROX city patches on a backpack",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "suit.jpg"
+    },
+    {
+      "id": "podcast.html:0",
+      "page": "podcast.html",
+      "role": "hero",
+      "file": "tr-profile-arena.jpg",
+      "alt": "Tom in profile against the lights of the race arena",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "coaching-hero.jpg"
+    },
+    {
+      "id": "predictor.html:0",
+      "page": "predictor.html",
+      "role": "hero",
+      "file": "station-sled-pull.jpg",
+      "alt": "Tom hauling the sled-pull rope on the HYROX race floor",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "predictor-hero.jpg"
+    },
+    {
+      "id": "prep-club.html:0",
+      "page": "prep-club.html",
+      "role": "hero",
+      "file": "skierg-laugh.jpg",
+      "alt": "Tom smiling during a treadmill session",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "skierg-laugh.jpg"
+    },
+    {
+      "id": "race-crew.html:0",
+      "page": "race-crew.html",
+      "role": "hero",
+      "file": "gallery/restaurant.jpg",
+      "alt": "The crew meetup table — dinner after the race, all welcome",
+      "frame": {
+        "mode": "natural"
+      }
+    },
+    {
+      "id": "race-day.html:0",
+      "chassisSlot": "startline.jpg",
+      "page": "race-day.html",
+      "role": "hero",
+      "file": "tr-finish-sprint.jpg",
+      "alt": "Tom and a race partner sprinting across the arena floor",
+      "frame": {
+        "mode": "natural"
+      }
+    },
+    {
+      "id": "race-day.html:1",
+      "chassisSlot": "race-mate-hero.jpg",
+      "page": "race-day.html",
+      "role": "photo",
+      "file": "tr-farmers-carry-hype.jpg",
+      "alt": "Tom encouraging a race partner carrying CENTR kettlebells at HYROX",
+      "frame": {
+        "mode": "natural"
+      }
+    },
+    {
+      "id": "results.html:0",
+      "page": "results.html",
+      "role": "hero",
+      "file": "pb.jpg",
+      "alt": "Tom Redmond and a race partner celebrating after HYROX Barcelona",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "pb.jpg"
+    },
+    {
+      "id": "results.html:1",
+      "page": "results.html",
+      "role": "photo",
+      "file": "tr-glasgow-doubles-board.jpg",
+      "alt": "Two athletes with their Glasgow HYROX finish board",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "race-pair.jpg"
+    },
+    {
+      "id": "run-zone.html:0",
+      "page": "run-zone.html",
+      "role": "hero",
+      "file": "run-detail.jpg",
+      "alt": "Running-shoe action detail, with both feet in stride on the race floor",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "run-hero.jpg"
+    },
+    {
+      "id": "shop.html:0",
+      "page": "shop.html",
+      "role": "hero",
+      "file": "tr-hyrox-warmup.jpg",
+      "alt": "Tom warming up beneath the HYROX sign",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "links-hero.jpg"
+    },
+    {
+      "id": "splits.html:0",
+      "page": "splits.html",
+      "role": "hero",
+      "file": "splits-hero.jpg",
+      "alt": "Tom mid-pull on the RowErg, side view",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "splits-hero.jpg"
+    },
+    {
+      "id": "stations-prep.html:0",
+      "page": "stations-prep.html",
+      "role": "hero",
+      "file": "stations-hero.jpg",
+      "alt": "Tom walking into the arena ahead of a race",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "stations-hero.jpg"
+    },
+    {
+      "id": "stations-prep.html:1",
+      "page": "stations-prep.html",
+      "role": "photo",
+      "file": "station-skierg.jpg",
+      "alt": "Tom pulling the SkiErg handles in the race arena",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "station-skierg.jpg"
+    },
+    {
+      "id": "stations-prep.html:2",
+      "page": "stations-prep.html",
+      "role": "photo",
+      "file": "station-sled-push.jpg",
+      "alt": "An athlete driving a loaded sled",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "station-sled-push.jpg"
+    },
+    {
+      "id": "stations-prep.html:3",
+      "page": "stations-prep.html",
+      "role": "photo",
+      "file": "tr-station-sled-pull-tom.jpg",
+      "alt": "An athlete working through the sled-pull station",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "station-sled-pull.jpg"
+    },
+    {
+      "id": "stations-prep.html:4",
+      "page": "stations-prep.html",
+      "role": "photo",
+      "file": "gallery/stock-burpee.jpg",
+      "alt": "Burpee broad-jump movement reference",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "station-burpees.jpg"
+    },
+    {
+      "id": "stations-prep.html:5",
+      "page": "stations-prep.html",
+      "role": "photo",
+      "file": "tr-coach-rower-shout.jpg",
+      "alt": "Tom encouraging a partner during the RowErg station",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "station-row.jpg"
+    },
+    {
+      "id": "stations-prep.html:6",
+      "page": "stations-prep.html",
+      "role": "photo",
+      "file": "station-farmers-carry.jpg",
+      "alt": "An athlete carrying competition kettlebells",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "station-farmers-carry.jpg"
+    },
+    {
+      "id": "stations-prep.html:7",
+      "page": "stations-prep.html",
+      "role": "photo",
+      "file": "station-sandbag-lunges.jpg",
+      "alt": "Sandbag-lunge movement reference",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "station-sandbag-lunges.jpg"
+    },
+    {
+      "id": "stations-prep.html:8",
+      "page": "stations-prep.html",
+      "role": "photo",
+      "file": "tr-wall-balls-banner.jpg",
+      "alt": "Wall-ball movement reference",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "station-wall-balls.jpg"
+    },
+    {
+      "id": "taper-zone.html:0",
+      "page": "taper-zone.html",
+      "role": "hero",
+      "file": "tr-coaching-floor-cue.jpg",
+      "alt": "Tom clapping a coaching cue on the gym floor",
+      "frame": {
+        "mode": "natural"
+      }
+    },
+    {
+      "id": "taper-zone.html:1",
+      "page": "taper-zone.html",
+      "role": "photo",
+      "file": "taper-planning.jpg",
+      "alt": "Tom talking through the session plan at the whiteboard in the gym",
+      "frame": {
+        "mode": "natural"
+      }
+    },
+    {
+      "id": "watch.html:0",
+      "page": "watch.html",
+      "role": "hero",
+      "file": "tr-sled-pull-closeup.jpg",
+      "alt": "Tom hauling the sled-pull rope towards the camera",
+      "frame": {
+        "mode": "natural"
+      },
+      "chassisSlot": "squad-athlos.jpg"
+    }
+  ],
+  "wall": [
+    {
+      "file": "gallery/gym-squad.jpg",
+      "alt": "The TransFit crew lined up beneath the Gym King sign",
+      "caption": "The crew, together after the session.",
+      "event": "Training",
+      "tilt": -1.2
+    },
+    {
+      "file": "tr-crew-cardiff-board.jpg",
+      "alt": "Four athletes with their HYROX Cardiff finish board",
+      "caption": "Cardiff finish-line smiles.",
+      "event": "Race day",
+      "tilt": 1
+    },
+    {
+      "file": "gallery/event-crew.jpg",
+      "alt": "A full gym crew grouped together after training",
+      "caption": "A full floor and a proper team effort.",
+      "event": "Training",
+      "tilt": 0.8
+    },
+    {
+      "file": "gallery/race-doubles.jpg",
+      "alt": "Tom racing through the HYROX arch with a doubles partner",
+      "caption": "Two athletes. One finish line.",
+      "event": "Race day",
+      "tilt": -0.5
+    },
+    {
+      "file": "gallery/tr-crew-attitude-wall.jpg",
+      "alt": "The TransFit class at the Attitude Is Everything wall",
+      "caption": "The people who keep showing up.",
+      "event": "Training",
+      "tilt": 1.1
+    },
+    {
+      "file": "gallery/dance.jpg",
+      "alt": "A crowded dance floor with lights above the group",
+      "caption": "There is life beyond the finish line.",
+      "event": "Crew",
+      "tilt": -0.9
+    }
+  ],
+  "contract": "Edit placements and wall here. Run node scripts/photo-map/apply.mjs trainedbytr/photo-map.json trainedbytr to produce static HTML and gallery data. No browser-time map fetch or image analysis.",
+  "dataPlacements": [
+    {
+      "json": "data/desk/prep-club-feed.json",
+      "index": 0,
+      "field": "img",
+      "file": "stations-hero.jpg",
+      "page": "prep-club.html",
+      "container": "#prep-feed",
+      "frame": {
+        "mode": "natural"
+      },
+      "reuseReason": "A navigation card illustrating its linked page, not a second page hero."
+    },
+    {
+      "json": "data/desk/prep-club-feed.json",
+      "index": 1,
+      "field": "img",
+      "file": "station-sled-pull.jpg",
+      "page": "prep-club.html",
+      "container": "#prep-feed",
+      "frame": {
+        "mode": "natural"
+      },
+      "reuseReason": "A navigation card illustrating its linked page, not a second page hero."
+    },
+    {
+      "json": "data/desk/prep-club-feed.json",
+      "index": 2,
+      "field": "img",
+      "file": "race-pair.jpg",
+      "page": "prep-club.html",
+      "container": "#prep-feed",
+      "frame": {
+        "mode": "natural"
+      },
+      "reuseReason": "A navigation card illustrating its linked page, not a second page hero."
+    },
+    {
+      "json": "data/desk/prep-club-feed.json",
+      "index": 3,
+      "field": "img",
+      "file": "station-wall-balls.jpg",
+      "page": "prep-club.html",
+      "container": "#prep-feed",
+      "frame": {
+        "mode": "natural"
+      },
+      "reuseReason": "A navigation card illustrating its linked page, not a second page hero."
+    },
+    {
+      "json": "data/desk/prep-club-feed.json",
+      "index": 4,
+      "field": "img",
+      "file": "coaching-hero.jpg",
+      "page": "prep-club.html",
+      "container": "#prep-feed",
+      "frame": {
+        "mode": "natural"
+      },
+      "reuseReason": "A navigation card illustrating its linked page, not a second page hero."
+    },
+    {
+      "json": "data/desk/prep-club-feed.json",
+      "index": 5,
+      "field": "img",
+      "file": "events-hero.jpg",
+      "page": "prep-club.html",
+      "container": "#prep-feed",
+      "frame": {
+        "mode": "natural"
+      },
+      "reuseReason": "A navigation card illustrating its linked page, not a second page hero."
+    }
+  ]
+}

@@ -1718,6 +1718,7 @@ footer a:hover {
 /* Race Wall — polaroid scatter */
 .gallery {
   background: var(--paper-2);
+  border-top: 3px solid var(--zone-accent);
   overflow: hidden;
 }
 
@@ -3028,3 +3029,70 @@ section.cta-band .btn-light { background: var(--ink); color: #14141a; }
 .plans-more > summary {
   display: flex;
 }
+
+/* iOS date inputs carry an intrinsic min-width that ignores width:100% —
+   without this they poke out of the panel on narrow screens */
+form input[type="date"] {
+  min-width: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Back-to-top chip: bottom-left, quiet surface so the social fab keeps the
+   signature colour. Appears on scroll via .is-visible (app.js). */
+.top-fab {
+  position: fixed;
+  left: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.top-fab.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+body.has-sticky-cta .top-fab {
+  bottom: calc(88px + env(safe-area-inset-bottom));
+}
+
+@media (max-width: 600px) {
+  .top-fab {
+    padding: 0;
+    justify-content: center;
+  }
+
+  .top-fab span {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-fab {
+    transition: none;
+  }
+}
+
+.home-lab .plan-crew .crew-photo{height:auto;}

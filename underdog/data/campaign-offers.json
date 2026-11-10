@@ -1,0 +1,48 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "1-1 Personal Training",
+      "goal": "Offer enquiries",
+      "destination": "https://wa.me/4407931103106",
+      "image": "/underdog/images/coaching-hero.jpg",
+      "headline": "Level 4 personal training inside Underdog's private Walthamstow gym — built around your body, your history and your goals.",
+      "actionLabel": "Enquire about 1-1 PT"
+    },
+    {
+      "id": "programme",
+      "name": "Small-Group PT",
+      "goal": "Offer enquiries",
+      "destination": "https://wa.me/4407931103106",
+      "image": "/underdog/images/coaching-hero.jpg",
+      "headline": "Personal training energy in a small crew — the deadlift-party crowd, but year-round.",
+      "actionLabel": "Enquire about small groups"
+    },
+    {
+      "id": "programme-3",
+      "name": "Hybrid & HYROX Coaching",
+      "goal": "Offer enquiries",
+      "destination": "https://wa.me/4407931103106",
+      "image": "/underdog/images/coaching-hero.jpg",
+      "headline": "Race prep from an affiliated HYROX coach who races himself — 20-plus athletes coached from first-timer to PB.",
+      "actionLabel": "Start race prep"
+    },
+    {
+      "id": "programme-4",
+      "name": "Run Club",
+      "goal": "Offer enquiries",
+      "destination": "https://www.instagram.com/theunderdoggym/",
+      "image": "/underdog/images/coaching-hero.jpg",
+      "headline": "Underdog's inclusive run club — all paces welcome, nobody left behind.",
+      "actionLabel": "Join the run club"
+    },
+    {
+      "id": "shop",
+      "name": "Shop collection",
+      "goal": "Shop visits",
+      "destination": "https://underdogboutiquegym.com/",
+      "image": "/underdog/images/coaching-hero.jpg",
+      "headline": "Explore the collection."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "note": "Receptionist answers — the questions every HYROX coach gets asked, answered instantly in the Ask section. Tokenised; reskin-tenant substitutes coach/brand per tenant. Anything unmatched still goes to the coach's inbox.",
+  "items": [
+    {
+      "q": "I've never done HYROX — can I join?",
+      "keywords": [
+        "beginner",
+        "never done",
+        "first time",
+        "new to",
+        "start"
+      ],
+      "a": "Yes — that's most people who sign up. Fabien builds you up from base fitness: technique on the stations first, then race-pace work. Nobody starts as a racer."
+    },
+    {
+      "q": "What actually is HYROX?",
+      "keywords": [
+        "what is hyrox",
+        "sebenarnya",
+        "apa sih",
+        "explain",
+        "format",
+        "race format"
+      ],
+      "a": "8km of running split by 8 workout stations — SkiErg, sled push, sled pull, burpee broad jumps, rowing, farmers carry, sandbag lunges and wall balls. Same format worldwide, so your time compares globally."
+    },
+    {
+      "q": "Where do you train?",
+      "keywords": [
+        "where",
+        "lokasi",
+        "location",
+        "gym",
+        "address",
+        "di mana"
+      ],
+      "a": "Walthamstow-based — exact location and session times go out with the cohort announcements. Leave your email and you'll get the details directly."
+    },
+    {
+      "q": "When is the next race?",
+      "keywords": [
+        "when",
+        "kapan",
+        "next race",
+        "date",
+        "calendar",
+        "schedule"
+      ],
+      "a": "Confirmed dates are on the race planner and events pages — updated the day HYROX announces them. Join the list and race-weekend plans land in your inbox."
+    },
+    {
+      "q": "How do I join a sim day?",
+      "keywords": [
+        "sim",
+        "simulation",
+        "practice race",
+        "trial",
+        "try out"
+      ],
+      "a": "Sim days get announced on the events page and to the email list first — they fill fast. Leave your email here and you'll hear before public announcement."
+    },
+    {
+      "q": "Can you find me a doubles partner?",
+      "keywords": [
+        "partner",
+        "doubles",
+        "pair",
+        "team",
+        "mate",
+        "relay"
+      ],
+      "a": "That's literally what the find-a-partner page is for — post your target division and pace, and Fabien's community matches people up. Free to use."
+    },
+    {
+      "q": "What training options and prices are available?",
+      "keywords": [
+        "price",
+        "cost",
+        "fee",
+        "programme",
+        "program",
+        "coaching"
+      ],
+      "a": "1-1 Personal Training — enquire for current terms; Small-Group PT — enquire for current terms; Hybrid & HYROX Coaching — enquire for current terms; Run Club — enquire for current terms. Read the Coaching page for each offer's format and its official link. The provider sets current prices and terms."
+    },
+    {
+      "q": "How do I get started?",
+      "keywords": [
+        "start",
+        "book",
+        "sign up",
+        "join"
+      ],
+      "a": "Choose the offer that fits your goal on the Coaching page, then follow its own official button. Use Ask if you want to discuss your starting point first."
+    }
+  ]
+}

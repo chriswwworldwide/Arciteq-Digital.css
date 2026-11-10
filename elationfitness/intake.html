@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" data-coach-preview="true">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <meta name="robots" content="noindex,nofollow" />
+ <title>New client intake | by Graham & Matt</title>
+ <link rel="stylesheet" href="/elationfitness/styles.css?v=r1794225953601" />
+ <link rel="stylesheet" href="/elationfitness/guide.css?v=r1794225953601" />
+ <link rel="stylesheet" href="/elationfitness/showcase.css?v=r1794225953601" /><link rel="stylesheet" href="/elationfitness/utility.css?v=r1794225953601" />
+ <script src="/elationfitness/coach-view.js?v=r1794225953601"></script>
+ <style>
+ .intake-wrap { max-width: 640px; margin: 0 auto; padding: 48px 20px 84px; }
+ .intake-wrap .lead { color: var(--ink-2); }
+ .health-item { margin: .9rem 0; }
+ .health-item p { margin: 0 0 .35rem; color: var(--ink); font-weight: 600; }
+ .health-item .yesno { display: flex; gap: 1.2rem; font-size: .9rem; color: var(--ink-2); }
+ .intake-done { border: 1px solid var(--line); border-radius: 14px; background: var(--paper-2); padding: 1.2rem; margin-top: 1.2rem; }
+ .intake-done h3 { margin-top: 0; }
+ </style>
+</head>
+<body class="utility">
+ <header class="masthead wrap">
+ <a href="/elationfitness/" style="color: inherit; text-decoration: none"><h1><span class="wordmark"><span class="o">E</span>LATION<span class="sig" aria-label="by Graham & Matt"><span class="sig-text">by Graham & Matt</span><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true"><path d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z" fill="currentColor"/></svg></span></span></h1></a>
+ <p class="city">New client intake</p>
+ </header>
+ <main class="intake-wrap">
+ <p class="eyebrow">Before your first session</p>
+ <h2>A few honest answers.</h2>
+ <p class="lead">Two minutes, once. Graham reads this before your first session so the plan fits you — not the other way round. Nothing here is shared with anyone else.</p>
+
+ <form class="calc-form" id="intake-form">
+ <div class="form-row">
+ <label>Full name <input name="name" required autocomplete="name" /></label>
+ <label>Email <input name="email" type="email" required autocomplete="email" /></label>
+ </div>
+ <div class="form-row">
+ <label>Phone <input name="phone" type="tel" autocomplete="tel" /></label>
+ <label>Emergency contact <input name="emergency" placeholder="Name · number" required /></label>
+ </div>
+
+ <div class="health-item">
+ <p>Any heart, chest, blood-pressure or dizziness issues?</p>
+ <div class="yesno"><label><input type="radio" name="q_heart" value="Yes" /> Yes</label><label><input type="radio" name="q_heart" value="No" required /> No</label></div>
+ </div>
+ <div class="health-item">
+ <p>Any injuries or conditions that affect how you train?</p>
+ <div class="yesno"><label><input type="radio" name="q_injury" value="Yes" /> Yes</label><label><input type="radio" name="q_injury" value="No" required /> No</label></div>
+ </div>
+ <div class="health-item">
+ <p>Taking any medication Graham should know about?</p>
+ <div class="yesno"><label><input type="radio" name="q_meds" value="Yes" /> Yes</label><label><input type="radio" name="q_meds" value="No" required /> No</label></div>
+ </div>
+
+ <label>Anything else — history, worries, what you want from coaching
+ <textarea name="notes" placeholder="e.g. Old ACL repair on the left knee; want to feel confident in a busy gym."></textarea>
+ </label>
+
+ <label class="check"><input type="checkbox" name="consent" required /> I'm happy for Graham to use this to plan my coaching, and I'll say if anything changes.</label>
+
+ <button class="btn btn-primary" type="submit">Send my intake</button>
+ <p class="calc-note" id="intake-note" role="status"></p>
+ </form>
+
+ <div class="intake-done" id="intake-done" hidden>
+ <h3>Done — you're in.</h3>
+ <p>Graham has your intake on your record now. If anything changes before your first session, just say so.</p>
+ </div>
+ </main>
+ <script src="/elationfitness/contacts.js?v=r1794225953601"></script>
+ <script src="/elationfitness/integrations.js?v=r1794225953601"></script>
+ <script src="/elationfitness/intake.js?v=r1794225953601"></script>
+</body>
+</html>

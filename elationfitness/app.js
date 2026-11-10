@@ -1330,3 +1330,52 @@ window.addEventListener("load", () => {
     }
   }
 }
+
+// Back-to-top: floating chip bottom-left (the social fab owns bottom-right).
+// Appears after ~600px of scroll; tap to go top, then it remembers your spot
+// and flips to "Back" — tap again to return to where you left off.
+(function () {
+  if (document.querySelector(".top-fab")) return;
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "top-fab";
+  const up =
+    '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5l-7 7h4v7h6v-7h4z" fill="currentColor"/></svg><span>Top</span>';
+  const down =
+    '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19l7-7h-4V5h-6v7H5z" fill="currentColor"/></svg><span>Back</span>';
+  let savedY = 0;
+  const render = () => {
+    const returning = savedY > 0 && window.scrollY < 120;
+    btn.innerHTML = returning ? down : up;
+    btn.setAttribute(
+      "aria-label",
+      returning ? "Back to where you were" : "Back to top",
+    );
+  };
+  btn.addEventListener("click", () => {
+    if (savedY > 0 && window.scrollY < 120) {
+      const y = savedY;
+      savedY = 0;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    } else {
+      savedY = window.scrollY;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    render();
+  });
+  let raf = 0;
+  const onScroll = () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      render();
+      btn.classList.toggle(
+        "is-visible",
+        window.scrollY > 600 || (savedY > 0 && window.scrollY < 600),
+      );
+    });
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  document.body.appendChild(btn);
+  onScroll();
+})();

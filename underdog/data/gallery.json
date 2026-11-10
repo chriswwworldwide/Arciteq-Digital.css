@@ -1,0 +1,38 @@
+{
+  "note": "PRIVATE PITCH PREVIEW.",
+  "photos": [
+    {
+      "src": "/underdog/images/contrib-crew-race-day.jpg",
+      "alt": "A running crew grouped in the street before a race",
+      "caption": "The crew rolls deep on race morning.",
+      "by": "Sent in",
+      "tilt": -1.5,
+      "event": "Race day"
+    },
+    {
+      "src": "/underdog/images/batch9-01-nice-finish-board.jpg",
+      "alt": "Fabien at the HYROX Nice finish board, 1:23:51",
+      "caption": "HYROX Nice — the board says 1:23:51.",
+      "by": "Race day",
+      "tilt": 1.4,
+      "event": "Race day"
+    },
+    {
+      "src": "/underdog/images/contrib-doubles-finish.jpg",
+      "alt": "Two athletes celebrating together at the sled pull",
+      "caption": "Doubles means somebody to celebrate with.",
+      "by": "Sent in",
+      "tilt": -1.2,
+      "event": "Finish line"
+    },
+    {
+      "src": "/underdog/images/batch1-04-50th-cake.jpg",
+      "alt": "Cake, candles and friends at the Underdog 50th party",
+      "caption": "The 50th. They sang, he cried (a bit).",
+      "by": "Community",
+      "tilt": 1.8,
+      "event": "Community",
+      "reuseReason": "50th-party shot reused deliberately across community sections"
+    }
+  ]
+}

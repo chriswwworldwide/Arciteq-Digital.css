@@ -1,0 +1,67 @@
+{
+ "note": "Photo decisions log \u2014 approvals, rejections, swaps. See AGENTS.md 'Photo usage map, rejections and batch intake'.",
+ "entries": [
+  {
+   "file": "startline.jpg",
+   "status": "rejected",
+   "slot": "race-day hero",
+   "reason": "already homepage shot \u2014 Chris flagged duplicate",
+   "bestFor": [
+    "race-day hero"
+   ],
+   "alsoGoodFor": [],
+   "placed": []
+  },
+  {
+   "file": "wallball.jpg",
+   "status": "approved",
+   "slot": "race-day hero",
+   "comment": "Graham mid-carry, ELATION tattoo \u2014 race-floor feel",
+   "bestFor": [
+    "race-day hero",
+    "stations wall-balls"
+   ],
+   "alsoGoodFor": [
+    "coaching",
+    "partners"
+   ],
+   "placed": []
+  },
+  {
+   "file": "race-mate-hero.jpg",
+   "status": "rejected",
+   "slot": "race-day downpage",
+   "reason": "already on find-a-partner",
+   "bestFor": [
+    "race-day downpage"
+   ],
+   "alsoGoodFor": [],
+   "placed": []
+  },
+  {
+   "file": "pb-venue.jpg",
+   "status": "approved",
+   "slot": "race-day downpage",
+   "comment": "Graham celebrating at venue",
+   "bestFor": [
+    "race-day downpage",
+    "news"
+   ],
+   "alsoGoodFor": [
+    "find-a-partner"
+   ],
+   "placed": []
+  },
+  {
+   "file": "splits-hero.jpg",
+   "status": "approved",
+   "slot": "splits hero",
+   "comment": "top-down portrait \u2014 mobile shows contain/full frame",
+   "bestFor": [
+    "splits hero"
+   ],
+   "alsoGoodFor": [],
+   "placed": []
+  }
+ ]
+}

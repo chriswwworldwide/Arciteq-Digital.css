@@ -1,0 +1,131 @@
+.home-lab { --editorial-ease:cubic-bezier(.16,1,.3,1); }
+.home-lab .block { padding-block:clamp(64px,8vw,128px); }
+.home-lab section.block:has(+ section.block) { padding-bottom:48px; }
+.home-lab .block > .wrap > h3 { font-size:clamp(2.4rem,5.8vw,5.8rem); line-height:.96; letter-spacing:-.055em; max-width:16ch; margin:1.1rem 0 1.5rem; text-wrap:balance; }
+.home-lab .eyebrow { font-size:.72rem; letter-spacing:.2em; }
+.home-lab .block > .wrap > .eyebrow { display:flex; align-items:center; gap:1rem; }
+.home-lab .block > .wrap > .eyebrow::before { content:""; width:36px; height:2px; background:currentColor; }
+.home-lab .reveal { opacity:1; transform:none; transition:none; }
+.home-lab .btn { min-height:48px; border-radius:999px; padding:.85rem 1.3rem; transition:transform 420ms var(--editorial-ease),box-shadow 420ms var(--editorial-ease),background-color 200ms; }
+.home-lab .btn:focus-visible { outline:3px solid var(--pink); outline-offset:5px; }
+.home-lab .btn:active { transform:scale(.96); }
+.home-lab #zones { position:relative; }
+.home-lab #zones > .wrap { position:relative; }
+.home-lab #zones > .wrap::after { content:"01 / THE RACE EDIT"; position:absolute; top:0; right:0; color:var(--ink-3); font-size:.7rem; letter-spacing:.14em; writing-mode:vertical-rl; }
+.home-lab .pitch-tools { gap:1.8rem; margin-top:2.5rem; }
+.home-lab .pitch-tool { border:0; border-top:1px solid var(--line); border-radius:0; background:transparent; padding:1.5rem 0; position:relative; }
+.home-lab .pitch-tool h4 { font-size:clamp(1.7rem,3vw,2.8rem); letter-spacing:-.04em; max-width:20ch; }
+.home-lab .pitch-tool-main { border-top:3px solid var(--pink); padding:clamp(1.5rem,4vw,3rem); background:linear-gradient(115deg,color-mix(in srgb,var(--pink) 14%,var(--paper)),var(--paper-2)); border-radius:0 0 56px 0; align-items:center; overflow:hidden; }
+.home-lab .pitch-tool-main h4 { font-size:clamp(2.2rem,4.3vw,4.3rem); max-width:12ch; }
+.home-lab .pitch-tool-main .tag { background:none; border:0; padding:0; color:var(--pink); }
+.home-lab .tool-preview { position:relative; overflow:hidden; border:1px solid var(--line); border-radius:16px; padding:1.5rem; background:var(--paper); transform:none; box-shadow:none; }
+.home-lab .tool-preview strong { display:block; border-bottom:1px solid var(--line); padding-bottom:.8rem; font-size:clamp(1rem,1.8vw,1.4rem); letter-spacing:-.02em; }
+.home-lab .tool-preview strong:last-child { border:0; }
+.home-lab .tool-chips span { border-radius:2px; font-family:monospace; text-transform:uppercase; letter-spacing:.1em; }
+.home-lab .pitch-guides { border-block:1px solid var(--line); margin-top:2rem; }
+.home-lab #story { --ink:#151518; --ink-2:#424246; --ink-3:#626268; --line:#ccc5ba; background:#ece7dd; color:var(--ink); position:relative; }
+.home-lab #story .story { gap:clamp(2rem,6vw,6rem); align-items:center; }
+.home-lab #story figure { position:relative; margin:0; }
+.home-lab .profile-hairline { position:absolute; inset:-7px; width:calc(100% + 14px); height:calc(100% + 14px); overflow:visible; z-index:2; pointer-events:none; }
+.home-lab .profile-hairline path,.home-lab .portrait-hairline path,.home-lab .tips-hairline path { fill:none; stroke:var(--pink); stroke-width:1; vector-effect:non-scaling-stroke; stroke-linecap:round; }
+.home-lab .portrait-hairline path,.home-lab .tips-hairline path { stroke-width:1.5; }
+.home-lab .tips-photo { position:relative; }
+.home-lab .tips-hairline { position:absolute; inset:-7px; width:calc(100% + 14px); height:calc(100% + 14px); overflow:visible; pointer-events:none; }
+.home-lab .coach-portrait { position:relative; display:block; flex:none; width:max-content; line-height:0; }
+.home-lab .coach-portrait .bio { display:block; border:0; box-shadow:none; }
+.home-lab .portrait-hairline { position:absolute; inset:-6px; width:calc(100% + 12px); height:calc(100% + 12px); overflow:visible; pointer-events:none; }
+.home-lab #story figure img { border-radius:48% 48% 0 0; width:100%; display:block; aspect-ratio:4/5; object-fit:cover; object-position:center 30%; }
+.home-lab #story figure::after { display:none; }
+.home-lab #story h3 { font-size:clamp(2.3rem,4.2vw,4.5rem); line-height:1; letter-spacing:-.055em; }
+.home-lab #story figure::before { display:none; }
+.home-lab #story .quote { background:transparent; border:0; border-radius:0; font-family:Georgia,serif; font-size:clamp(1.3rem,2.2vw,2rem); font-style:italic; line-height:1.3; border-left:2px solid var(--pink); padding-left:1.2rem; color:var(--ink); }
+.home-lab #story li { color:var(--ink-2); }
+.home-lab #plans .plans { gap:0; border-top:1px solid var(--line); }
+.home-lab #plans .plans > .plan { border:0; border-right:1px solid var(--line); border-radius:0; background:none; padding:1.8rem; }
+.home-lab #plans .plans > .plan:last-child { border-right:0; }
+.home-lab #plans .plans > .plan h4 { font-size:1.6rem; letter-spacing:-.04em; }
+.home-lab #plans .plan.featured { box-shadow:none; background:linear-gradient(180deg,color-mix(in srgb,var(--pink) 8%,transparent),transparent); }
+.home-lab #plans .plan-crew { border-radius:0 32px 0 32px; border-width:1px; margin-bottom:2rem; }
+.home-lab #events { background:#14141a; }
+.home-lab #race-cards .event { border:0; border-top:1px solid var(--line); border-radius:0; padding:1.6rem 0; background:transparent; }
+.home-lab #race-cards .date { border-left:3px solid var(--pink); padding-left:1rem; }
+.home-lab #race-cards .date strong { font-size:1.65rem; line-height:1.15; letter-spacing:-.04em; }
+.home-lab #race-cards .date small { display:block; color:var(--ink-3); margin-top:.6rem; font-family:monospace; }
+.home-lab #race-cards h4 { font-size:1.5rem; letter-spacing:-.03em; }
+.home-lab #race-cards .event-actions { min-width:160px; align-items:flex-start; gap:.15rem; }
+.home-lab #race-cards .event-actions .btn { min-height:36px; font-size:.76rem; padding:.5rem .9rem; }
+.home-lab #race-cards .event-actions .btn-ghost { border:0; border-radius:0; padding:.45rem 0; background:transparent; text-decoration:underline; text-underline-offset:4px; box-shadow:none; }
+.home-lab #race-cards .event-actions > a:last-child { font-size:.78rem; padding:.4rem 0; }
+.home-lab .hero--bleed { isolation:isolate; contain:paint; }
+.home-lab .hero-mask { overflow:hidden; border-radius:0 0 48% 8% / 0 0 7% 2%; }
+.home-lab .hero-mask .hero-img { transform:scale(1.025); transform-origin:65% 50%; transition:transform 900ms var(--editorial-ease); }
+.home-lab .hero-mask::before { content:""; position:absolute; inset:0; z-index:2; pointer-events:none; background:radial-gradient(ellipse at 65% 42%,#ffffff12 0%,transparent 44%,#00000038 100%); box-shadow:inset 0 -18px 28px #00000024; }
+.home-lab #find-partner { border-block:1px solid var(--line); }
+.home-lab #wall-photos { --ink:#151518; --ink-2:#424246; --ink-3:#626268; --line:#c9c2b7; --paper:#f7f3ea; --paper-2:#e6dfd3; background:#ece7dd; color:var(--ink); position:relative; }
+.home-lab #wall-photos .lead,.home-lab #wall-photos .fine { color:var(--ink-2); }
+.home-lab #wall-photos .event-tabs { border-color:var(--line); }
+.home-lab #wall-photos .polaroid { background:#faf7ef; color:#17171b; border:0; border-radius:0; padding:12px 12px 22px; box-shadow:0 12px 24px #1b17151c; }
+.home-lab #wall-photos .polaroid img { border-radius:0; }
+.home-lab #wall-photos .polaroid small,.home-lab #wall-photos .polaroid p,.home-lab #wall-photos .caption { color:#424246; }
+.home-lab #wall-photos #event-tabs button { color:var(--ink); border-color:var(--line); background:transparent; }
+.home-lab #wall-photos #event-tabs button.active,.home-lab #wall-photos #event-tabs button[aria-selected=true] { color:#fff; background:var(--pink); }
+.home-lab #stories .showcase-grid { gap:2rem; }
+.home-lab #stories .showcase-card { border:0; border-top:1px solid var(--line); border-radius:0; background:none; padding:1.3rem 0; }
+.home-lab #stories .showcase-card h4 { font-size:1.5rem; letter-spacing:-.03em; }
+.home-lab.motion-ready .editorial-reveal { transition:opacity 800ms var(--editorial-ease),transform 1000ms var(--editorial-ease),clip-path 1100ms var(--editorial-ease); transition-delay:var(--entry-delay,0ms); }
+.home-lab.motion-ready .editorial-reveal:not(.is-visible) { opacity:0; transform:translateY(36px); }
+.home-lab.motion-ready #story figure.editorial-reveal:not(.is-visible) { clip-path:inset(18% 0 0 0); transform:translateY(28px) scale(.96); }
+.home-lab.motion-ready #story figure.editorial-reveal.is-visible { clip-path:inset(-9px); }
+.home-lab .tool-preview.is-visible strong { animation:editorial-highlight 3s ease 1s both; }
+.home-lab .tool-preview.is-visible strong:nth-of-type(2) { animation-delay:4s; }
+.home-lab .tool-preview.is-visible strong:nth-of-type(3) { animation-delay:7s; }
+@keyframes editorial-highlight { 0%,100% { color:var(--ink); transform:translateX(0); } 20%,75% { color:var(--pink); transform:translateX(5px); } }
+@media(hover:hover) and (pointer:fine) {
+  .home-lab .hero--bleed:hover .hero-img { transform:scale(1.065); }
+  .home-lab #race-cards .event-actions .btn-ghost:hover { transform:none; box-shadow:none; color:var(--pink); }
+  .home-lab .btn:hover { transform:translateY(-3px) scale(1.055); box-shadow:0 10px 30px color-mix(in srgb,var(--pink) 22%,transparent); }
+  .home-lab .pitch-tool:not(.pitch-tool-main):hover { border-top-color:var(--pink); }
+  .home-lab #wall-photos .polaroid.reveal.in:hover { transform:rotate(0deg) translateY(-12px) scale(1.04); z-index:2; box-shadow:0 25px 40px #1b171530; }
+}
+@media(max-width:800px) {
+  .home-lab .portrait-hairline { transform:rotate(180deg); }
+}
+@media(max-width:760px) {
+  .home-lab .block { padding-block:56px; }
+  .home-lab #race-cards .event-actions a,.home-lab #race-cards .event-actions .btn { min-height:44px; display:inline-flex; align-items:center; }
+  .home-lab .hero-mask { border-radius:0 0 45% 10% / 0 0 4% 2%; }
+  .home-lab .block > .wrap > h3 { font-size:clamp(2.25rem,10vw,3.6rem); }
+  .home-lab #zones > .wrap::after { display:none; }
+  .home-lab .pitch-tool-main { border-radius:0 0 32px 0; padding:1.3rem; gap:1.8rem; }
+  .home-lab .tool-preview { transform:none; box-shadow:none; }
+  .home-lab #story .story { gap:2rem; }
+  .home-lab #story figure { max-width:420px; margin-inline:8px; }
+  .home-lab #plans .plans > .plan { border:0; border-top:1px solid var(--line); padding:1.5rem 0; }
+  .home-lab #plans .plan-crew { border-radius:0 24px 0 24px; }
+  .home-lab #wall-photos .polaroid { padding:8px 8px 16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .home-lab .editorial-reveal,.home-lab .btn,.home-lab .polaroid,.home-lab .tool-preview { transition:none!important; animation:none!important; }
+  .home-lab.motion-ready .editorial-reveal:not(.is-visible) { opacity:1; transform:none; clip-path:none; }
+  .home-lab .tool-preview.is-visible strong { animation:none; }
+  .home-lab .btn:hover,.home-lab .btn:active { transform:none; }
+  .home-lab .hero-mask .hero-img,.home-lab .hero--bleed:hover .hero-img { transform:none; transition:none; }
+}
+
+
+/* Second-accent relief — sparse accents in --zone-accent, loads last so it wins */
+.home-lab .pitch-tool-main { border-top-color: var(--zone-accent); }
+.home-lab #story .eyebrow { color: var(--zone-accent); }
+.home-lab #story .quote { border-left-color: var(--zone-accent); }
+.home-lab #story li::before { background: var(--zone-accent); }
+.home-lab .profile-hairline path { stroke: var(--zone-accent); }
+.home-lab .tips-grid summary::after { color: var(--zone-accent); }
+.home-lab .faq-quick-label { color: var(--pink); }
+.home-lab #tips .eyebrow { color: var(--zone-accent); }
+
+
+/* dark-tinted panel text — tips band + plan-crew are dark surfaces on every site */
+.home-lab #tips h3, .home-lab #tips .lead, .home-lab #tips .tips-grid summary, .home-lab #tips .tips-grid ol,
+.home-lab .plan-crew h4, .home-lab .plan-crew p, .home-lab .plan-crew li { color: #f4f4f6; }
+.home-lab #tips .lead a { color: var(--zone-accent); }
+.home-lab .tips-hairline path { stroke: var(--zone-accent); }

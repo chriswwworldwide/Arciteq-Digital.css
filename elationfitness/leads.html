@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en" data-coach-preview="true" data-coach-page="true">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Leads | The Desk | by Graham & Matt</title>
+    <meta
+      name="description"
+      content="A private lead desk for the Graham Halliday site — enquiries, replies and follow-up status in one place."
+    />
+    <link rel="stylesheet" href="/elationfitness/styles.css?v=r1794225953601" />
+    <link rel="stylesheet" href="/elationfitness/guide.css?v=r1794225953601" />
+    <link rel="stylesheet" href="/elationfitness/showcase.css?v=r1794225953601" /><link rel="stylesheet" href="/elationfitness/desk.css?v=r1794225953601" /><script src="/elationfitness/desk-more.js?v=r1794225953601"></script>
+    <style>
+      .lead-wrap { padding: 48px 0 84px; }
+      .lead-disclaimer {
+        background: var(--paper-2);
+        border: 1px dashed var(--line);
+        border-radius: 12px;
+        padding: .8rem 1.1rem;
+        font-size: .85rem;
+        color: var(--ink-3);
+        margin: 0 0 1.4rem;
+      }
+      .lead-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin: 0 0 1.6rem;
+      }
+      .lead-stat {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1rem 1.1rem;
+        background: #14141a;
+      }
+      .lead-stat span {
+        display: block;
+        font-size: .72rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      .lead-stat strong {
+        display: block;
+        font-size: 1.7rem;
+        margin-top: .2rem;
+      }
+      .lead-grid {
+        display: grid;
+        grid-template-columns: minmax(280px, .85fr) minmax(0, 1.15fr);
+        gap: 1.2rem;
+        align-items: start;
+      }
+      .lead-list { display: grid; gap: .8rem; }
+      .lead-card,
+      .reply-panel {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1.1rem;
+        background: var(--paper-2);
+      }
+      .lead-card {
+        text-align: left;
+        width: 100%;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+      .lead-card[aria-pressed="true"] { border-color: var(--pink); }
+      .lead-card h3, .reply-panel h3 { margin: 0 0 .35rem; }
+      .lead-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .45rem;
+        align-items: center;
+        margin-bottom: .55rem;
+        font-size: .78rem;
+        color: var(--ink-3);
+      }
+      .lead-status {
+        border-radius: 999px;
+        padding: .22rem .55rem;
+        background: color-mix(in srgb, var(--pink) 16%, transparent);
+        color: var(--pink);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+      }
+      .lead-card p, .reply-panel p { color: var(--ink-2); margin: 0; }
+      .lead-origin { font-size: .8rem; color: var(--ink-3); margin-top: .55rem; }
+      .readiness-pill {
+        border-radius: 999px;
+        padding: .22rem .55rem;
+        font-size: .68rem;
+        font-weight: 850;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        background: rgba(242, 184, 75, .18);
+        color: #f2b84b;
+      }
+      .readiness-pill.hot { background: color-mix(in srgb, var(--pink) 18%, transparent); color: var(--pink); }
+      .nudge-box {
+        border-left: 3px solid #f2b84b;
+        border-radius: 0 10px 10px 0;
+        background: var(--paper);
+        padding: .8rem 1rem;
+        margin: .9rem 0;
+        color: var(--ink-2);
+      }
+      .thread {
+        display: grid;
+        gap: .7rem;
+        margin: 1rem 0;
+      }
+      .bubble {
+        border-radius: 14px;
+        padding: .85rem 1rem;
+        max-width: 92%;
+      }
+      .bubble span {
+        display: block;
+        font-size: .72rem;
+        letter-spacing: .07em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: .3rem;
+      }
+      .bubble p { line-height: 1.5; }
+      .bubble.inbound { background: var(--paper); justify-self: start; }
+      .bubble.outbound {
+        background: color-mix(in srgb, var(--pink) 13%, var(--paper));
+        justify-self: end;
+      }
+      .reply-panel textarea {
+        width: 100%;
+        min-height: 170px;
+        padding: .9rem 1rem;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--paper);
+        color: var(--ink);
+        font: inherit;
+        line-height: 1.55;
+        box-sizing: border-box;
+        resize: vertical;
+      }
+      .reply-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .65rem;
+        margin-top: 1rem;
+      }
+      .lead-note { font-size: .82rem; color: var(--ink-3); margin-top: .8rem; }
+      .lead-note a { color: var(--pink); }
+      .lead-toast {
+        margin-top: .9rem;
+        color: var(--pink);
+        font-weight: 700;
+      }
+      @media (max-width: 820px) {
+        .lead-grid { grid-template-columns: 1fr; }
+        .bubble { max-width: 100%; }
+      }
+    </style>
+    <script src="/elationfitness/coach-view.js?v=r1794225953601"></script>
+  </head>
+  <body class="desk-page">
+    <header class="masthead wrap">
+      <a href="/elationfitness/" style="color: inherit; text-decoration: none">
+        <h1>
+          <span class="wordmark"
+            ><span class="o">E</span>LATION
+            <span class="sig" aria-label="by Graham & Matt"
+              ><span class="sig-text">by Graham & Matt</span
+              ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+                <path
+                  d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                  fill="currentColor"
+                /></svg
+            ></span>
+          </span>
+        </h1>
+      </a>
+      <p class="city">The Desk</p>
+    </header><aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/elationfitness/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/elationfitness/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/elationfitness/leads.html?audience=coach">Leads</a></nav><a class="coach-public-link" href="/elationfitness/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></aside>
+
+    <section class="guide-hero">
+      <div class="wrap">
+        <div class="guide-hero-text">
+          <ol class="crumbs">
+            <li><a href="/elationfitness/">Graham Halliday</a></li>
+            <li>Leads</li>
+          </ol>
+          <p class="eyebrow">The Desk / Leads</p>
+          <h2>Turn interest into <em>a conversation.</em></h2>
+          <p class="lead">
+            See where the enquiry came from, answer it from The Desk, and move
+            it towards a booked conversation — without dropping into another
+            app to remember what you meant to say.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <main class="wrap lead-wrap">
+      <p class="lead-disclaimer">
+        <b>Lead workflow preview.</b> Replies are logged inside this walkthrough;
+        a connected inbox would send them from the coach’s chosen channel.
+      </p>
+
+      <div class="lead-stats" aria-label="Lead summary">
+        <div class="lead-stat"><span>New enquiries</span><strong id="stat-new">0</strong></div>
+        <div class="lead-stat"><span>Replies sent</span><strong id="stat-replied">0</strong></div>
+        <div class="lead-stat"><span>Booked chats</span><strong id="stat-booked">0</strong></div>
+        <div class="lead-stat"><span>Warm club leads</span><strong id="stat-warm">0</strong></div>
+        <div class="lead-stat"><span>Sales attributed</span><strong id="stat-converted">0</strong></div>
+      </div>
+
+      <div class="lead-grid">
+        <section class="lead-list" id="lead-list" aria-label="Enquiries"></section>
+
+        <section class="reply-panel" aria-live="polite">
+          <p class="eyebrow">In-platform reply</p>
+          <h3 id="reply-title">Pick an enquiry.</h3>
+          <p class="lead-note" id="reply-origin"></p>
+          <div class="thread" id="thread"></div>
+          <textarea id="reply-text" aria-label="Reply"></textarea>
+          <div class="reply-actions">
+            <button class="btn btn-primary" id="send-reply" type="button">Send reply</button>
+            <button class="btn btn-ghost" id="send-nudge" type="button">Use programme nudge</button>
+            <button class="btn btn-ghost" id="mark-booked" type="button">Mark booked</button>
+            <button class="btn btn-ghost" id="mark-converted" type="button">Mark sale</button>
+            <a class="btn btn-ghost" id="origin-link" href="#" target="_blank" rel="noopener">Open source page ↗</a>
+          </div>
+          <p class="lead-note">The loop is the point: enquiry arrives, reply goes out, then the lead can move through booked and sold.</p>
+          <p class="lead-toast" id="lead-toast" role="status" hidden></p>
+        </section>
+      </div>
+    </main>
+
+    <script src="/elationfitness/desk-config.js?v=r1794225953601"></script>
+    <script src="/elationfitness/contacts.js?v=r1794225953601"></script>
+    <script src="/elationfitness/integrations.js?v=r1794225953601"></script>
+    <script>
+      const seedLeads = [
+        {
+          id: "club-sam",
+          siteLead: true,
+          name: "Sam W.",
+          source: "Prep Club",
+          origin: "HYROX Prep Club · join form",
+          originURL: "/elationfitness/prep-club.html",
+          received: "Today · 09:12",
+          status: "New",
+          readiness: "Hot",
+          readinessReason: "3 engagement signals: joined club, used predictor, viewed coaching routes",
+          message: "Joined Prep Club · never raced · wants to find the right programme. Signals: joined club, used race predictor, viewed coaching routes.",
+          reply: "Thanks for joining Prep Club — you’ve done the useful bit already. The next step isn’t more random tips, it’s choosing the right route. Tell me your race date and current weekly training, and I’ll point you towards Small Group PT or the better fit.",
+          nudge: "Light nudge: Sam is warm enough for a programme suggestion. Mention Small Group PT as the confidence-first route, not a hard sell.",
+          sentReply: ""
+        },
+        {
+          id: "amelia",
+          name: "Amelia R.",
+          source: "Small Group PT form",
+          origin: "Coaching page · Small Group PT Typeform",
+          originURL: "/elationfitness/coaching.html",
+          received: "Today · 08:42",
+          status: "New",
+          message: "Never raced before. Scotland is the goal, but the stations feel like the scary bit.",
+          reply: "Love this — a first race is exactly where the Small Group PT route earns its keep. Send me your current weekly training and the race date you’re aiming for, and we’ll work out the right starting block. No need to feel HYROX-ready before you start; that’s the job of the plan.",
+          sentReply: ""
+        },
+        {
+          id: "marcus",
+          name: "Marcus T.",
+          source: "Ask Graham",
+          origin: "Homepage · Ask Graham form",
+          originURL: "/elationfitness/#ask",
+          received: "Yesterday · 19:16",
+          status: "Replied",
+          message: "Two races done. Run is decent, sled and wall balls cost me the place.",
+          reply: "That’s a really common place to lose time — and it’s fixable. I’d start with a station audit so we can see whether it’s technique, pacing or strength under fatigue. Tell me your last finish time and which station breaks first, and I’ll suggest the right coaching route.",
+          sentReply: "That’s a really common place to lose time — and it’s fixable. I’d start with a station audit so we can see whether it’s technique, pacing or strength under fatigue. Tell me your last finish time and which station breaks first, and I’ll suggest the right coaching route."
+        },
+        {
+          id: "priya",
+          name: "Priya S.",
+          source: "Class membership enquiry",
+          origin: "Coaching page · Class membership route",
+          originURL: "/elationfitness/coaching.html",
+          received: "Yesterday · 12:03",
+          status: "New",
+          message: "Wants to feel more comfortable on the gym floor before committing to a programme.",
+          reply: "Perfect reason to start. Class membership is built for exactly that — enough structure to make the floor feel familiar, without throwing you into a race plan before you want one. What days usually work around Scotland, and what’s the main thing you want to feel more confident doing?",
+          sentReply: ""
+        }
+      ];
+
+      const seedIds = new Set(seedLeads.map(lead => lead.id));
+      const leads = [...seedLeads, ...ContactStore.leads().map(c => ({ contactId: c.id, ...c.lead })).filter(lead => !seedIds.has(lead.id))];
+      const persistLeads = () => leads.forEach(lead => { if (lead.campaignLead || lead.siteLead) ContactStore.upsertLead(lead); });
+
+      const list = document.getElementById("lead-list");
+      const title = document.getElementById("reply-title");
+      const origin = document.getElementById("reply-origin");
+      const originLink = document.getElementById("origin-link");
+      const thread = document.getElementById("thread");
+      const reply = document.getElementById("reply-text");
+      const toast = document.getElementById("lead-toast");
+      const requestedLead = new URLSearchParams(location.search).get("lead");
+      let activeId = leads.some(lead => lead.id === requestedLead) ? requestedLead : leads[0].id;
+      let toastTimer;
+
+      const esc = value => String(value).replace(/[&<>"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[char]));
+      const active = () => leads.find(lead => lead.id === activeId) || leads[0];
+
+      function renderStats() {
+        document.getElementById("stat-new").textContent = leads.filter(lead => lead.status === "New").length;
+        document.getElementById("stat-replied").textContent = leads.filter(lead => lead.status === "Replied").length;
+        document.getElementById("stat-booked").textContent = leads.filter(lead => lead.status === "Booked").length;
+        document.getElementById("stat-warm").textContent = leads.filter(lead => lead.readiness === "Warm" || lead.readiness === "Hot").length;
+        document.getElementById("stat-converted").textContent = leads.filter(lead => lead.status === "Converted").length;
+      }
+
+      function render() {
+        const current = active();
+        list.innerHTML = leads.map(lead => `
+          <button class="lead-card" type="button" data-lead="${esc(lead.id)}" aria-pressed="${lead.id === activeId}">
+            <div class="lead-meta"><span class="lead-status">${esc(lead.status)}</span><span>${esc(lead.source)}</span>${lead.readiness ? `<span class="readiness-pill ${lead.readiness === "Hot" ? "hot" : ""}">${esc(lead.readiness)}</span>` : ""}</div>
+            <h3>${esc(lead.name)}</h3>
+            <p>${esc(lead.message)}</p>
+            <div class="lead-origin">Origin: ${esc(lead.origin)} · ${esc(lead.received)}${lead.readinessReason ? ` · ${esc(lead.readinessReason)}` : ""}</div>
+          </button>
+        `).join("");
+        window.deskCap?.(list, { noun: "enquiries" });
+        title.textContent = `${current.name} · ${current.status}`;
+        origin.innerHTML = `Origin: <strong>${esc(current.origin)}</strong> · ${esc(current.received)}${current.readinessReason ? `<br>Readiness: <strong>${esc(current.readiness)}</strong> · ${esc(current.readinessReason)}` : ""}`;
+        originLink.href = current.originURL;
+        document.getElementById("nudge-box")?.remove();
+        if (current.nudge) {
+          const nudge = document.createElement("div");
+          nudge.className = "nudge-box";
+          nudge.id = "nudge-box";
+          nudge.textContent = current.nudge;
+          origin.after(nudge);
+        }
+        thread.innerHTML = `
+          <div class="bubble inbound"><span>${esc(current.name)} · enquiry</span><p>${esc(current.message)}</p></div>
+          ${current.sentReply ? `<div class="bubble outbound"><span>Graham · sent from The Desk</span><p>${esc(current.sentReply)}</p></div>` : ""}
+        `;
+        reply.value = current.sentReply || current.reply;
+        renderStats();
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.hidden = false;
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.hidden = true, 3200);
+      }
+
+      list.addEventListener("click", event => {
+        const card = event.target.closest("[data-lead]");
+        if (!card) return;
+        activeId = card.dataset.lead;
+        render();
+        if (matchMedia("(max-width: 860px)").matches)
+          document.querySelector(".reply-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      document.getElementById("send-reply").addEventListener("click", () => {
+        const current = active();
+        current.sentReply = reply.value.trim();
+        if (!["Booked","Converted"].includes(current.status)) current.status = "Replied";
+        persistLeads();
+        ContactStore.logEvent({ id: current.contactId || current.id }, "message", "Coach reply sent");
+        render();
+        showToast("Reply sent in this walkthrough — the lead is now in the replied column.");
+      });
+
+      document.getElementById("send-nudge").addEventListener("click", () => {
+        const current = active();
+        if (!current.nudge) { showToast("No programme nudge is due for this lead yet."); return; }
+        reply.value = current.reply;
+        reply.focus();
+        showToast("Programme nudge loaded — review it, then send.");
+      });
+
+      document.getElementById("mark-booked").addEventListener("click", () => {
+        const current = active();
+        current.status = "Booked";
+        if (!current.sentReply) current.sentReply = reply.value.trim();
+        persistLeads();
+        ContactStore.logEvent({ id: current.contactId || current.id }, "stage", "Chat booked");
+        render();
+        showToast("Marked as a booked chat.");
+      });
+
+      document.getElementById("mark-converted").addEventListener("click", () => {
+        const current = active();
+        current.status = "Converted";
+        if (!current.sentReply) current.sentReply = reply.value.trim();
+        persistLeads();
+        ContactStore.logEvent({ id: current.contactId || current.id }, "stage", "Converted to client");
+        render();
+        showToast("Marked as an attributed sale.");
+      });
+
+      render();
+      if (requestedLead && leads.some(lead => lead.id === requestedLead)) {
+        const card = list.querySelector(`[data-lead="${CSS.escape(requestedLead)}"]`);
+        card?.scrollIntoView({ block: "nearest" });
+        if (matchMedia("(max-width: 860px)").matches)
+          document.querySelector(".reply-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    </script>
+
+    <footer><div class="wrap"><div>© <span id="year"></span> Graham Halliday</div><nav><a data-coach-link href="/elationfitness/?audience=coach">Back to coach homepage</a></nav></div>  <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a rel="noopener" style="cursor:default;display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+    </footer>
+  </body>
+</html>

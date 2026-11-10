@@ -1,0 +1,11 @@
+{
+  "name": "ACE Online Coaching",
+  "coachURL": "https://aceperformance.uk/ace-online-coaching/",
+  "clientURL": "https://aceperformance.uk/ace-online-coaching/",
+  "programmesURL": "https://aceperformance.uk/locations/",
+  "applicationURL": "https://aceperformance.uk/contact-us/",
+  "directCoachLink": true,
+  "offerTitle": "HYROX Training Sessions",
+  "offerDescription": "Beginner-friendly to elite — structured HYROX programming in the gym that world champions train out of.",
+  "note": "ACE's existing site/app handles delivery; this demo links out rather than claiming any sync."
+}

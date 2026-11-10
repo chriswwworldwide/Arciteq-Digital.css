@@ -1464,3 +1464,22 @@ body.zone-acc .splits-consent input,
 body.zone-acc .calc-form .consent input {
   accent-color: var(--zone-accent);
 }
+
+/* Page heroes: a white hairline flush on the photo's right edge, following
+   the bottom-right curve — gives dark photos a deliberate edge on dark stages */
+.guide-hero-photo img {
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Burpee station: portrait jump shot — centre crop decapitates. Anchor top. */
+.art-photo img[src*='station-burpees'] { object-position: 50% 0%; }
+
+/* Car-selfie taper photo: her face is top-right — anchor the 16:9 crop up. */
+.art-photo img[src*='taper-postsession'] { object-position: 50% 0%; }
+
+/* Taper hero (momentum watch-check): the two flanking athletes' heads sit at
+   the frame edge — anchor near the top so the band catches them. */
+.guidance .guide-hero-photo img[src*='momentum'] { object-position: 50% 0%; }
+
+/* Podcast hero: second-person's forehead sits at the frame edge — anchor up. */
+.guide-hero-photo img[src*='duo-bw-2'] { height:340px; object-position: 50% 25%; }

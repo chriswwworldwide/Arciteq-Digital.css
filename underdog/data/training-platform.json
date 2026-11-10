@@ -1,0 +1,11 @@
+{
+  "name": "Your coaching platform",
+  "coachURL": "",
+  "clientURL": "",
+  "programmesURL": "https://wa.me/4407931103106",
+  "applicationURL": "https://wa.me/4407931103106",
+  "directCoachLink": false,
+  "offerTitle": "1-1 Personal Training",
+  "offerDescription": "Level 4 personal training inside Underdog's private Walthamstow gym — built around your body, your history and your goals.",
+  "note": "Open your existing coaching setup. Training delivery and client records stay on that platform; no workout or progress-data sync is connected here."
+}

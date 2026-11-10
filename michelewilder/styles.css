@@ -1702,6 +1702,7 @@ footer a:hover {
 /* Race Wall — polaroid scatter */
 .gallery {
   background: var(--paper-2);
+  border-top: 3px solid var(--zone-accent);
   overflow: hidden;
 }
 
@@ -2925,7 +2926,7 @@ section.cta-band .btn-light { background: var(--ink); color: #14141a; }
   }
 }
 
-:root{--hero-focus:50% 62%;}
+:root{--hero-focus:50% 35%;}
 .hero--bleed[data-hero-mode="full"] .hero-img{object-position:var(--hero-focus);}
 @media(max-width:800px){.hero--bleed[data-hero-mode="full"] .hero-img{object-position:50% 40%;}}
 
@@ -3025,3 +3026,107 @@ figure img[src*='station-burpees.jpg'],.station img[src*='station-burpees.jpg']{
 .plans-more > summary {
   display: flex;
 }
+
+/* Homepage hero: deeper stage so the photo and copy can breathe */
+@media(min-width:801px){.hero--bleed,.hero--bleed .wrap{min-height:min(94vh,940px)}}
+
+/* Watch & Learn hero: pull the sled-push gate + crowd into the crop */
+.guide-hero-photo img[src*='squad-athlos.jpg']{object-position:50% 66%!important}
+
+/* Results hero: show the heads — anchor the crop near the top */
+.guide-hero-photo img[src*='pb.jpg']{object-position:50% 8%!important}
+
+/* Watch & Learn hero: drop the ceiling, keep the foreground head */
+.guide-hero-photo img[src*='squad-athlos.jpg']{object-position:50% 80%!important}
+/* Prep hero: keep the left-edge partial face out of frame */
+.guide-hero-photo img[src*='skierg-laugh.jpg']{object-position:62% 35%!important}
+/* Hero headline stays clear of Michele's body */
+.hero--bleed[data-hero-mode="full"] h2{max-width:660px}
+/* Race day photo: hold the pair's faces in the 16/9 crop */
+.art-photo img[src*='mw-finish-pair.jpg']{object-position:50% 14%!important}
+/* Homepage hero (desktop): fit the whole photo by height, right-anchored —
+   full wall text and full body both stay in frame */
+@media(min-width:801px){.hero--bleed[data-hero-mode="full"] .hero-img{object-fit:contain;object-position:100% 50%;}}
+/* Homepage hero (desktop): dissolve the photo's left edge into the stage.
+   Mask lives on .hero-mask (the img transform-animates — Safari drops masks
+   on animated elements). Stops in vh track the contain-fitted photo edge:
+   photo height ≈ 94vh, width ≈ 94vh × 1.135 ≈ 107vh, right-anchored. */
+@media(min-width:801px){.hero--bleed[data-hero-mode="full"] .hero-mask{-webkit-mask-image:linear-gradient(90deg,transparent calc(100% - 126vh),rgba(0,0,0,.35) calc(100% - 118vh),rgba(0,0,0,.72) calc(100% - 110vh),black calc(100% - 101vh));mask-image:linear-gradient(90deg,transparent calc(100% - 126vh),rgba(0,0,0,.35) calc(100% - 118vh),rgba(0,0,0,.72) calc(100% - 110vh),black calc(100% - 101vh));}}
+/* Mobile coaching hero: centre crop decapitated her — anchor to the top */
+@media(max-width:900px){.guide-hero-photo img[src*='coaching-hero']{object-position:50% 0%!important;}}
+
+/* iOS date inputs carry an intrinsic min-width that ignores width:100% —
+   without this they poke out of the panel on narrow screens */
+form input[type="date"] {
+  min-width: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+/* Mobile news hero: centre crop clips the back row's heads — lift to top */
+@media(max-width:900px){.guide-hero-photo img[src*='half.jpg']{object-position:50% 12%!important;}}
+
+/* Homepage hero (desktop): grey step in the dissolve — photo melts through
+   a slate band before the stage's black, softening the blue→ink jump */
+@media(min-width:801px){.hero--bleed[data-hero-mode="full"]::after{background:linear-gradient(180deg,rgba(11,11,14,0) 0%,rgba(11,11,14,.02) 60%,rgba(11,11,14,.18) 100%),linear-gradient(90deg,rgba(11,11,14,.2) 0%,rgba(11,11,14,.07) 35%,rgba(11,11,14,0) 50%),linear-gradient(90deg,rgba(11,11,14,.98) 0%,rgba(11,11,14,.85) calc(100% - 136vh),rgba(70,76,92,.4) calc(100% - 120vh),rgba(130,136,150,.14) calc(100% - 110vh),transparent calc(100% - 104vh));}}
+
+/* Back-to-top chip: bottom-left, quiet surface so the social fab keeps the
+   signature colour. Appears on scroll via .is-visible (app.js). */
+.top-fab {
+  position: fixed;
+  left: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.top-fab.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+body.has-sticky-cta .top-fab {
+  bottom: calc(88px + env(safe-area-inset-bottom));
+}
+
+@media (max-width: 600px) {
+  .top-fab {
+    padding: 0;
+    justify-content: center;
+  }
+
+  .top-fab span {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-fab {
+    transition: none;
+  }
+}
+
+
+/* events-secondary: group sits mid-lower in the shot — blanket 5% cut faces */
+@media(max-width:600px){ .community .guide-hero-photo img[src*='events-secondary'],
+  .guidance .guide-hero-photo img[src*='events-secondary'] { object-position:50% 40%; } }

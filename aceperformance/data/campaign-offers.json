@@ -1,0 +1,48 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "HYROX Training Sessions",
+      "goal": "Offer enquiries",
+      "destination": "https://aceperformance.uk/locations/",
+      "image": "/aceperformance/images/coaching-hero.jpg",
+      "headline": "Beginner-friendly to elite — structured HYROX programming in the gym that world champions train out of.",
+      "actionLabel": "Find a session"
+    },
+    {
+      "id": "programme",
+      "name": "Group Sessions & Memberships",
+      "goal": "Offer enquiries",
+      "destination": "https://legitfit.com/p/products/68e750281bb004c6e3ae6f12/memberships",
+      "image": "/aceperformance/images/coaching-hero.jpg",
+      "headline": "Hard work, pumping tunes, zero judgement — memberships or 6/12/18 class passes, plus open gym and gym hire.",
+      "actionLabel": "See membership options"
+    },
+    {
+      "id": "programme-3",
+      "name": "The Centurion",
+      "goal": "Offer enquiries",
+      "destination": "https://www.tickettailor.com/all-tickets/aceperformance/",
+      "image": "/aceperformance/images/coaching-hero.jpg",
+      "headline": "ACE's in-house hybrid race — fully chip timed with judges. The training ground race, done properly.",
+      "actionLabel": "Ask about The Centurion"
+    },
+    {
+      "id": "programme-4",
+      "name": "ACE Online Coaching",
+      "goal": "Offer enquiries",
+      "destination": "https://aceperformance.uk/ace-online-coaching/",
+      "image": "/aceperformance/images/coaching-hero.jpg",
+      "headline": "Elite online coaching from a coach with a decade in the industry — programmed, researched, tried and tested by Adam himself.",
+      "actionLabel": "Start online coaching"
+    },
+    {
+      "id": "shop",
+      "name": "Shop collection",
+      "goal": "Shop visits",
+      "destination": "https://aceperformance.uk/",
+      "image": "/aceperformance/images/coaching-hero.jpg",
+      "headline": "Explore the collection."
+    }
+  ]
+}

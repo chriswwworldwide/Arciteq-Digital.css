@@ -1,0 +1,677 @@
+{
+ "note": "Photo decisions log — approvals, rejections, swaps. See AGENTS.md 'Photo usage map, rejections and batch intake'.",
+ "entries": [
+  {
+   "file": "race-mate-hero.jpg",
+   "status": "rejected",
+   "slot": "race-day downpage",
+   "reason": "already find-a-partner hero — Chris flagged duplicate",
+   "bestFor": [
+    "race-day downpage"
+   ],
+   "alsoGoodFor": [],
+   "placed": [
+    {
+     "page": "find-a-partner.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "js-flag-fan.jpg",
+   "status": "used",
+   "slot": "race-day downpage",
+   "comment": "Jade+Kathryn+flag at Stockholm E15",
+   "bestFor": [
+    "race-day downpage",
+    "community/crew"
+   ],
+   "alsoGoodFor": [
+    "find-a-partner",
+    "news"
+   ],
+   "placed": [
+    {
+     "page": "race-day.html",
+     "slot": "art-photo"
+    },
+    {
+     "page": "data/gallery.json",
+     "slot": "data"
+    }
+   ]
+  },
+  {
+   "file": "coaching-hero.jpg",
+   "status": "flagged",
+   "slot": "podcast hero",
+   "reason": "same image on coaching.html hero — needs an alternate from unused pool",
+   "bestFor": [
+    "podcast hero"
+   ],
+   "alsoGoodFor": [],
+   "placed": [
+    {
+     "page": "coaching.html",
+     "slot": "guide-hero-photo"
+    },
+    {
+     "page": "data/campaign-offers.json",
+     "slot": "data"
+    },
+    {
+     "page": "data/campaign-offers.json",
+     "slot": "data"
+    }
+   ]
+  },
+  {
+   "file": "momentum.jpg",
+   "status": "used",
+   "slot": "taper hero",
+   "comment": "watch-check; anchored 50% 0% — flanking heads cut by source itself",
+   "bestFor": [
+    "taper hero",
+    "run-zone secondary"
+   ],
+   "alsoGoodFor": [
+    "watch thumbnail"
+   ],
+   "placed": [
+    {
+     "page": "taper-zone.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "bio.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "index.html",
+     "slot": "coach-portrait"
+    }
+   ]
+  },
+  {
+   "file": "coaching-hero-prev.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "coaching.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "index.html",
+     "slot": "capture"
+    },
+    {
+     "page": "data/videos.json",
+     "slot": "data"
+    }
+   ]
+  },
+  {
+   "file": "doubles.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "index.html",
+     "slot": "plan"
+    }
+   ]
+  },
+  {
+   "file": "events-hero.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "events.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "events-secondary.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "list.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "half.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "news.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "hero-prev.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "hero.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "index.html",
+     "slot": "hero-mask"
+    }
+   ]
+  },
+  {
+   "file": "js-arena-flag.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "data/gallery.json",
+     "slot": "data"
+    }
+   ]
+  },
+  {
+   "file": "js-bordeaux-hug.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "data/gallery.json",
+     "slot": "data"
+    }
+   ]
+  },
+  {
+   "file": "js-duo-bw-1.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "podcast.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "js-duo-bw-2.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-finish-floor.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-marden-run.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-park-outdoor.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-podium-check.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "data/gallery.json",
+     "slot": "data"
+    }
+   ]
+  },
+  {
+   "file": "js-post-bordeaux.png",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-post-e15-stats.png",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-post-elite15.png",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-post-kat-results.png",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-race-course.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-racewalk-bib.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-run-bw-concept.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-run-elite15.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "race-day.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "js-run-profile.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-run-rigs.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "js-track-highfive.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "links-hero.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "shop.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "pb.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "results.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "predictor-hero.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "predictor.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "race-pair.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "results.html",
+     "slot": "art-photo"
+    }
+   ]
+  },
+  {
+   "file": "run-hero.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "run-zone.html",
+     "slot": "guide-hero-photo"
+    },
+    {
+     "page": "data/videos.json",
+     "slot": "data"
+    }
+   ]
+  },
+  {
+   "file": "skierg-laugh.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "prep-club.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "splits-hero.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "splits.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "squad-athlos.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "watch.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "startline.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "index.html",
+     "slot": "reveal"
+    }
+   ]
+  },
+  {
+   "file": "station-burpees.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "stations-prep.html",
+     "slot": "art-photo"
+    }
+   ]
+  },
+  {
+   "file": "station-farmers-carry.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "stations-prep.html",
+     "slot": "art-photo"
+    }
+   ]
+  },
+  {
+   "file": "station-row.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "stations-prep.html",
+     "slot": "art-photo"
+    }
+   ]
+  },
+  {
+   "file": "station-sandbag-lunges.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "candidate",
+   "placed": []
+  },
+  {
+   "file": "station-skierg.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "stations-prep.html",
+     "slot": "art-photo"
+    }
+   ]
+  },
+  {
+   "file": "station-sled-pull.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "stations-prep.html",
+     "slot": "art-photo"
+    }
+   ]
+  },
+  {
+   "file": "station-sled-push.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "stations-prep.html",
+     "slot": "art-photo"
+    }
+   ]
+  },
+  {
+   "file": "station-wall-balls.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "stations-prep.html",
+     "slot": "art-photo"
+    }
+   ]
+  },
+  {
+   "file": "stations-hero.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "stations-prep.html",
+     "slot": "guide-hero-photo"
+    },
+    {
+     "page": "data/videos.json",
+     "slot": "data"
+    }
+   ]
+  },
+  {
+   "file": "suit.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "partners.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  },
+  {
+   "file": "taper-postsession.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "taper-zone.html",
+     "slot": "art-photo"
+    }
+   ]
+  },
+  {
+   "file": "wallball.jpg",
+   "comment": "",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "status": "used",
+   "placed": [
+    {
+     "page": "index.html",
+     "slot": "tips-photo"
+    }
+   ]
+  },
+  {
+   "file": "js-duo-bw-1.jpg",
+   "status": "rejected",
+   "slot": "podcast hero",
+   "comment": "too close to coaching-hero.jpg — same E15 portrait frame",
+   "bestFor": [],
+   "alsoGoodFor": [],
+   "placed": []
+  },
+  {
+   "file": "js-duo-bw-2.jpg",
+   "status": "used",
+   "slot": "podcast hero",
+   "comment": "second pose from the E15 duo shoot — distinct frame",
+   "bestFor": [
+    "podcast hero"
+   ],
+   "alsoGoodFor": [],
+   "placed": [
+    {
+     "page": "podcast.html",
+     "slot": "guide-hero-photo"
+    }
+   ]
+  }
+ ]
+}

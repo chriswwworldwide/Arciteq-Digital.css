@@ -1,3 +1,38 @@
 {
-  "items": []
+ "note": "Video-library layouts for coach-approved clips.",
+ "items": [
+  {
+   "id": "sample-technique",
+   "title": "Station technique",
+   "description": "A place for practical movement guidance and coaching cues.",
+   "category": "Training",
+   "url": "https://www.instagram.com/jade_skillen/",
+   "thumbnail": "/jadeskillen/images/stations-hero.jpg",
+   "status": "published",
+   "sample": true,
+   "linkLabel": "Open Jade's links"
+  },
+  {
+   "id": "sample-race",
+   "title": "The race-weekend debrief",
+   "description": "Race footage, lessons from the course and the next training target.",
+   "category": "Race stories",
+   "url": "https://www.instagram.com/jade_skillen/",
+   "thumbnail": "/jadeskillen/images/run-hero.jpg",
+   "status": "published",
+   "sample": true,
+   "linkLabel": "Open Jade's links"
+  },
+  {
+   "id": "sample-conversation",
+   "title": "A conversation about training",
+   "description": "A short interview clip can lead into the full podcast conversation.",
+   "category": "Podcast clips",
+   "url": "https://www.instagram.com/jade_skillen/",
+   "thumbnail": "/jadeskillen/images/coaching.jpg",
+   "status": "published",
+   "sample": true,
+   "linkLabel": "Open Jade's links"
+  }
+ ]
 }

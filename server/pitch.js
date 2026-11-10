@@ -47,6 +47,19 @@ const SELF_IPS = new Set(
 const isSelfVisitor = (ip, ua) =>
   SELF_IPS.has(ip) || /selftest|probe-check/i.test(ua);
 
+// Behind Cloudflare/Railway the socket IP is the proxy edge; the real client
+// is in CF-Connecting-IP (or X-Forwarded-For first hop).
+const realIp = (req) => {
+  const cf = cleanStr(req.headers["cf-connecting-ip"], 60);
+  if (cf) return cf;
+  const fwd = cleanStr(req.headers["x-forwarded-for"], 200);
+  if (fwd) {
+    const first = fwd.split(",")[0].trim();
+    if (first) return first.slice(0, 60);
+  }
+  return cleanStr(req.ip || "", 60);
+};
+
 const VALID_SLUGS = new Set([
   "faisalpma",
   "jadeskillen",
@@ -265,7 +278,7 @@ export function createPitchRouter({ adminApiKey }) {
     const slug = match[1];
     const page = match[2] || null; // null = front door
     const ua = cleanStr(req.headers["user-agent"], 200);
-    const ip = cleanStr(req.ip || "", 60);
+    const ip = realIp(req);
     if (/bot|crawler|spider|preview|headless|slurp/i.test(ua)) return next();
     const self = isSelfVisitor(ip, ua);
 
@@ -328,7 +341,7 @@ export function createPitchRouter({ adminApiKey }) {
     }
 
     const ua = cleanStr(req.headers["user-agent"], 200);
-    const ip = cleanStr(req.ip || "", 60);
+    const ip = realIp(req);
     const self = isSelfVisitor(ip, ua);
 
     const ok = await ensureTable();

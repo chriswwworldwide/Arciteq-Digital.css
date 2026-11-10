@@ -66,6 +66,7 @@ const VALID_SLUGS = new Set([
 ]);
 
 let tableReady = false;
+let wideColumns = true; // assume path/secs exist until proven otherwise
 async function ensureTable() {
   if (tableReady) return true;
   try {
@@ -83,16 +84,45 @@ async function ensureTable() {
         created_at TIMESTAMPTZ NOT NULL DEFAULT now()
       )`,
     );
-    await dbQuery(
-      `ALTER TABLE pitch_events
-        ADD COLUMN IF NOT EXISTS path TEXT,
-        ADD COLUMN IF NOT EXISTS secs INTEGER`,
-    );
+    try {
+      await dbQuery(
+        `ALTER TABLE pitch_events
+          ADD COLUMN IF NOT EXISTS path TEXT,
+          ADD COLUMN IF NOT EXISTS secs INTEGER`,
+      );
+    } catch {
+      // Table likely owned by another role/service — writes still land
+      // without the newer optional columns.
+      wideColumns = false;
+    }
     tableReady = true;
     return true;
   } catch {
     return false;
   }
+}
+
+async function logEvent({ slug, event, pct = null, sessionId = null, ua = null, ip = null, secs = null, path = null }) {
+  const base = [slug, event, pct, sessionId, ua, ip];
+  if (wideColumns) {
+    try {
+      await dbQuery(
+        "INSERT INTO pitch_events (slug, event, pct, session_id, ua, ip, secs, path) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)",
+        [...base, secs, path],
+      );
+      return;
+    } catch (err) {
+      if (String(err?.code) === "42703" || /column .* does not exist/i.test(String(err?.message))) {
+        wideColumns = false;
+      } else {
+        return;
+      }
+    }
+  }
+  await dbQuery(
+    "INSERT INTO pitch_events (slug, event, pct, session_id, ua, ip) VALUES ($1,$2,$3,$4,$5,$6)",
+    base,
+  ).catch(() => {});
 }
 
 function cleanStr(v, max = 120) {
@@ -257,17 +287,14 @@ export function createPitchRouter({ adminApiKey }) {
           ).catch(() => null);
           revisit = !!(prior && prior.rows && prior.rows.length);
         }
-        dbQuery(
-          "INSERT INTO pitch_events (slug, event, session_id, ua, ip, path) VALUES ($1,$2,$3,$4,$5,$6)",
-          [
-            slug,
-            isVisit && revisit ? "revisit" : isVisit ? "site_visit" : "page_view",
-            `site:${ip || ua.slice(0, 40)}`,
-            ua || null,
-            ip || null,
-            page,
-          ],
-        ).catch(() => {});
+        logEvent({
+          slug,
+          event: isVisit && revisit ? "revisit" : isVisit ? "site_visit" : "page_view",
+          sessionId: `site:${ip || ua.slice(0, 40)}`,
+          ua: ua || null,
+          ip: ip || null,
+          path: page,
+        });
       }
       if (isVisit && firstOfVisit) {
         const evt = revisit ? "revisit" : "site_visit";
@@ -306,10 +333,7 @@ export function createPitchRouter({ adminApiKey }) {
 
     const ok = await ensureTable();
     if (ok) {
-      dbQuery(
-        "INSERT INTO pitch_events (slug, event, pct, session_id, ua, ip, secs) VALUES ($1,$2,$3,$4,$5,$6,$7)",
-        [slug, event, pct, sessionId || null, ua || null, ip || null, secs],
-      ).catch(() => {});
+      logEvent({ slug, event, pct, sessionId: sessionId || null, ua: ua || null, ip: ip || null, secs });
     }
 
     if (
@@ -353,10 +377,16 @@ export function createPitchRouter({ adminApiKey }) {
        GROUP BY slug, event
        ORDER BY slug, event`,
     );
-    const latest = await dbQuery(
+    let latest = await dbQuery(
       `SELECT slug, event, pct, secs, session_id, ua, ip, path, created_at
        FROM pitch_events ORDER BY created_at DESC LIMIT 40`,
-    );
+    ).catch(() => null);
+    if (!latest || latest instanceof Error) {
+      latest = await dbQuery(
+        `SELECT slug, event, pct, session_id, ua, ip, created_at
+         FROM pitch_events ORDER BY created_at DESC LIMIT 40`,
+      ).catch(() => null);
+    }
     return res.json({
       ok: true,
       summary: rows?.rows || [],

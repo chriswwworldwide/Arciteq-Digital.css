@@ -20,7 +20,7 @@ body.zone-acc.community { --community-accent:var(--zone-accent); }
 .community .guide-hero .eyebrow::before { content:""; width:30px; height:1px; background:var(--community-accent); }
 .community .guide-hero .byline { font-size:.8rem; color:var(--ink-3); margin-top:1rem; }
 .community .guide-hero-photo { margin:0; position:relative; align-self:start; border:0; border-radius:0; background:none; }
-.community .guide-hero-photo img { width:100%; height:250px; object-fit:cover; border-radius:0 0 48% 8% / 0 0 7% 2%; box-shadow:none; }
+.community .guide-hero-photo img { width:100%; height:250px; object-fit:cover; object-position:50% 15%; border-radius:0 0 48% 8% / 0 0 7% 2%; box-shadow: 1px 0 0 rgba(255,255,255,.7); }
 .community .guide-hero-photo::after { content:""; position:absolute; width:56px; height:56px; left:-8px; top:-8px; border-left:2px solid var(--pink); border-top:2px solid var(--pink); pointer-events:none; }
 .community .guide-hero-photo.pair img { height:290px; object-position:50% 0%; }
 

@@ -2,6 +2,15 @@
   "note": "Curated HYROX Asia news. Filtered stories publish automatically from trusted feeds; edit or delete rows freely. Newest first. Items dated in the future auto-publish on their date. Dina's take remains optional.",
   "items": [
     {
+      "id": "2026-11-10-run-push-repeat-hyrox-finds-a-following-in-korea",
+      "date": "2026-11-10",
+      "title": "Run, push, repeat: Hyrox finds a following in Korea",
+      "summary": "Recent HYROX Asia coverage from The Korea Herald. Open the source for the full story.",
+      "take": "",
+      "source": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9sb2ZiLUhGYnBSdTk2RGRjRFItN1Y3Ql9lektyaXd2eDNkSnZxSHRtVVcwOEhQR3E1TkZHWWxPb252M1licWhqLTh1cmF3SDRCSzJLT0E4aw?oc=5",
+      "sourceName": "The Korea Herald"
+    },
+    {
       "id": "2026-11-04-drop-beer-sponsor-or-lose-permit-sports-ministry-w",
       "date": "2026-11-04",
       "title": "Drop beer sponsor or lose permit, sports ministry warns Hyrox Kuala Lumpur organisers",

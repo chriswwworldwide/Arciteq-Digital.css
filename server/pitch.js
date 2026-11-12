@@ -31,15 +31,18 @@ const VALID_EVENTS = new Set([
   "site_visit",
   "page_view",
 ]);
-const EMAIL_EVENTS = new Set([
-  "view",
-  "revisit",
-  "play",
-  "progress",
-  "complete",
-  "cta_demo",
-  "cta_reply",
-]);
+// Email is a sampled alert, not the ledger: everything still logs to the
+// table, but only high-signal events hit the inbox. PITCH_EMAIL_EVENTS can
+// widen/narrow the set without a code change.
+const EMAIL_EVENTS = new Set(
+  (
+    process.env.PITCH_EMAIL_EVENTS ||
+    "view,revisit,complete,cta_reply"
+  )
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean),
+);
 const SELF_IPS = (
   process.env.PITCH_SELF_IPS || "152.233.29.1,152.233.29.2,152.233.29.4,152.233.29.5"
 )
@@ -447,10 +450,30 @@ export function createPitchRouter({ adminApiKey }) {
          FROM pitch_events ORDER BY created_at DESC LIMIT 40`,
       ).catch(() => null);
     }
+    // ?slug=<slug> — the full forensic trail for one prospect: every event,
+    // page path, watch position and timestamp, newest first. The emails are
+    // a sampled alert; this is the ledger behind them.
+    const slugFilter = cleanStr(req.query.slug, 40);
+    let trail = null;
+    if (slugFilter) {
+      trail = await dbQuery(
+        `SELECT slug, event, pct, secs, session_id, ua, ip, path, created_at
+         FROM pitch_events WHERE slug=$1 ORDER BY created_at DESC LIMIT 500`,
+        [slugFilter],
+      ).catch(() => null);
+      if (!trail || trail instanceof Error) {
+        trail = await dbQuery(
+          `SELECT slug, event, pct, session_id, ua, ip, created_at
+           FROM pitch_events WHERE slug=$1 ORDER BY created_at DESC LIMIT 500`,
+          [slugFilter],
+        ).catch(() => null);
+      }
+    }
     return res.json({
       ok: true,
       summary: rows?.rows || [],
       latest: latest?.rows || [],
+      trail: trail?.rows || null,
     });
   });
 

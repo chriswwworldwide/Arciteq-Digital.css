@@ -3091,3 +3091,10 @@ form input[type="date"] {
 /* ask-zone: gym-floor shot — band shows the floor + members, not the ceiling */
 .capture-bg{object-fit:cover!important;object-position:50% 68%!important;}
 @media(max-width:800px){.capture-bg{object-position:50% 68%!important;}}
+
+/* Homepage menu edging — signature-colour menu text; nav-acc carries a
+   half edge (border-bottom only), matching submenu border + hover. */
+html body .nav .menu>li>a,html body .nav .menu>li>button{color:#4db1ff!important}
+html body .nav .menu>li>.nav-acc{color:#f7b54b!important;border-bottom:2px solid #a66908}
+html body .nav .menu>li:has(>.nav-acc) .sub{border-color:#a66908}
+html body .nav .menu>li:has(>.nav-acc) .sub a:hover,html body .nav .menu>li:has(>.nav-acc) .sub a:focus-visible{background:#35260d;color:#fff}

@@ -3067,3 +3067,10 @@ body.has-sticky-cta .top-fab {
 
 /* race-crew dance shot: face sits top-left — centred crop loses it on mobile */
 @media(max-width:600px){ .community img[src*='dance'], .community .art-photo img[src*='dance'] { object-position:50% 15%; } }
+
+/* Homepage menu edging — signature-colour menu text; nav-acc carries a
+   half edge (border-bottom only), matching submenu border + hover. */
+html body .nav .menu>li>a,html body .nav .menu>li>button{color:#f4d000!important}
+html body .nav .menu>li>.nav-acc{color:#597ee9!important;border-bottom:2px solid #153799}
+html body .nav .menu>li:has(>.nav-acc) .sub{border-color:#153799}
+html body .nav .menu>li:has(>.nav-acc) .sub a:hover,html body .nav .menu>li:has(>.nav-acc) .sub a:focus-visible{background:#0d1835;color:#fff}

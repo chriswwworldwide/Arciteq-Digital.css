@@ -3018,3 +3018,10 @@ figure img[src*='station-sled-push.jpg'],.station img[src*='station-sled-push.jp
 .plans-more > summary {
   display: flex;
 }
+
+/* Homepage menu edging — signature-colour menu text; nav-acc carries a
+   half edge (border-bottom only), matching submenu border + hover. */
+html body .nav .menu>li>a,html body .nav .menu>li>button{color:#0d9488!important}
+html body .nav .menu>li>.nav-acc{color:#f6954b!important;border-bottom:2px solid #a54c08}
+html body .nav .menu>li:has(>.nav-acc) .sub{border-color:#a54c08}
+html body .nav .menu>li:has(>.nav-acc) .sub a:hover,html body .nav .menu>li:has(>.nav-acc) .sub a:focus-visible{background:#351e0d;color:#fff}

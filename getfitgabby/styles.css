@@ -3071,3 +3071,10 @@ img[src*='station-farmers-carry.jpg']{object-position:50% 35%!important}
 
 /* Partners hero — keep both faces in the skierg-laugh crop */
 .guide-hero-photo img[src*='skierg-laugh.jpg']{object-position:30% 40%!important}
+
+/* Homepage menu edging — signature-colour menu text; nav-acc carries a
+   half edge (border-bottom only), matching submenu border + hover. */
+html body .nav .menu>li>a,html body .nav .menu>li>button{color:#e63946!important}
+html body .nav .menu>li>.nav-acc{color:#53cdee!important;border-bottom:2px solid #0e7490}
+html body .nav .menu>li:has(>.nav-acc) .sub{border-color:#0e7490}
+html body .nav .menu>li:has(>.nav-acc) .sub a:hover,html body .nav .menu>li:has(>.nav-acc) .sub a:focus-visible{background:#0d2c35;color:#fff}

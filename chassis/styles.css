@@ -3005,3 +3005,10 @@ section.cta-band .btn-light { background: var(--ink); color: #14141a; }
 .plans-more > summary {
   display: flex;
 }
+
+/* Homepage menu edging — signature-colour menu text; nav-acc carries a
+   half edge (border-bottom only), matching submenu border + hover. */
+html body .nav .menu>li>a,html body .nav .menu>li>button{color:var(--pink)!important}
+html body .nav .menu>li>.nav-acc{color:color-mix(in srgb,var(--zone-accent) 60%,#fff)!important;border-bottom:2px solid color-mix(in srgb,var(--zone-accent) 55%,#000)}
+html body .nav .menu>li:has(>.nav-acc) .sub{border-color:color-mix(in srgb,var(--zone-accent) 55%,#000)}
+html body .nav .menu>li:has(>.nav-acc) .sub a:hover,html body .nav .menu>li:has(>.nav-acc) .sub a:focus-visible{background:color-mix(in srgb,var(--zone-accent) 18%,#000);color:#fff}

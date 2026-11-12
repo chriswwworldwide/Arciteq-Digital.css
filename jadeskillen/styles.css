@@ -3138,3 +3138,10 @@ body.has-sticky-cta .top-fab {
 
 
 .art-photo img[src*='station-sandbag-lunges']{ object-position:50% 0%; }
+
+/* Homepage menu edging — signature-colour menu text; nav-acc carries a
+   half edge (border-bottom only), matching submenu border + hover. */
+html body .nav .menu>li>a,html body .nav .menu>li>button{color:#c6f24e!important}
+html body .nav .menu>li>.nav-acc{color:#8c52ef!important;border-bottom:2px solid #440f9f}
+html body .nav .menu>li:has(>.nav-acc) .sub{border-color:#440f9f}
+html body .nav .menu>li:has(>.nav-acc) .sub a:hover,html body .nav .menu>li:has(>.nav-acc) .sub a:focus-visible{background:#1c0d35;color:#fff}

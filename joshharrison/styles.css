@@ -3126,3 +3126,10 @@ body.has-sticky-cta .top-fab {
     transition: none;
   }
 }
+
+/* Homepage menu edging — signature-colour menu text; nav-acc carries a
+   half edge (border-bottom only), matching submenu border + hover. */
+html body .nav .menu>li>a,html body .nav .menu>li>button{color:#ec1c24!important}
+html body .nav .menu>li>.nav-acc{color:#58eade!important;border-bottom:2px solid #0f766e}
+html body .nav .menu>li:has(>.nav-acc) .sub{border-color:#0f766e}
+html body .nav .menu>li:has(>.nav-acc) .sub a:hover,html body .nav .menu>li:has(>.nav-acc) .sub a:focus-visible{background:#0d3532;color:#fff}

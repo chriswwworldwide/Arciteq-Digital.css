@@ -49,6 +49,12 @@ const SELF_IPS = new Set(
 const isSelfVisitor = (ip, ua) =>
   SELF_IPS.has(ip) || /selftest|probe-check/i.test(ua);
 
+// Automation/tooling UAs get no log row and no alert — verification curls,
+// recording probes and uptime checks otherwise look like real prospect
+// activity and fire false "came back" emails.
+const BOT_UA =
+  /bot|crawler|spider|preview|headless|slurp|curl|wget|httpie|python|go-http-client|okhttp|postman|insomnia|undici|axios|node-fetch|lighthouse|pingdom|uptime|selftest|probe-check/i;
+
 // Behind Cloudflare/Railway the socket IP is the proxy edge; the real client
 // is in CF-Connecting-IP (or X-Forwarded-For first hop).
 const realIp = (req) => {
@@ -308,7 +314,7 @@ export function createPitchRouter({ adminApiKey }) {
     const page = match[2] || null; // null = front door
     const ua = cleanStr(req.headers["user-agent"], 200);
     const ip = realIp(req);
-    if (/bot|crawler|spider|preview|headless|slurp/i.test(ua)) return next();
+    if (BOT_UA.test(ua)) return next();
     const self = isSelfVisitor(ip, ua);
 
     const dedupeKey = `${slug}:${ip}`;
@@ -374,6 +380,8 @@ export function createPitchRouter({ adminApiKey }) {
     const ua = cleanStr(req.headers["user-agent"], 200);
     const ip = realIp(req);
     const self = isSelfVisitor(ip, ua);
+
+    if (BOT_UA.test(ua)) return res.json({ ok: true });
 
     const ok = await ensureTable();
     if (ok) {

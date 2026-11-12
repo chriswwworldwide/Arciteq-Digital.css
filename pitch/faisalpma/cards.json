@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "status": "approved-Chris-12-Nov-2026",
+  "slug": "faisalpma",
+  "palette": {"pink":"#f21890","lilac":"#b69aff"},
+  "cards": [
+    {
+      "id":"agency-payoff","holdMs":9000,
+      "eyebrow":"New in this preview",
+      "title":"A booking brief—not another message to chase.",
+      "lines":["MC, appearances and brand work → management.","Management reviews the terms. Faisal approves availability."],
+      "footer":"Working preview · example commercial opportunities"
+    },
+    {
+      "id":"agency-callback","holdMs":8000,
+      "eyebrow":"Now working in the preview",
+      "title":"A stronger public brand—and a clearer commercial next step behind it.",
+      "lines":["Commercial enquiries are handed over, reviewed and agreed around Faisal and his management team.","Coaching, campaigns, finance and content stay part of the same platform."],
+      "footer":"Browser-local walkthrough · no live bookings or payments"
+    }
+  ]
+}

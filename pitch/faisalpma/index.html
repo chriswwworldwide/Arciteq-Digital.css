@@ -8,6 +8,30 @@
 <meta property="og:title" content="Faisal — your platform is already built">
 <meta property="og:description" content="A personal walkthrough of the platform we built for Faisal, before they paid a penny.">
 <link rel="stylesheet" href="/pitch/pitch.css?v=20261022cta">
+<style>
+:root{--accent:#f21890;--gold:#b69aff}
+.pitch__brand b{color:var(--accent)}
+.update-flag{border:2px solid var(--accent);border-radius:14px;padding:20px;background:#170d16;margin:20px 0 24px}
+.update-flag .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:8px;font-weight:800}
+.update-flag h2{font-size:26px;line-height:1.2;margin:0 0 10px;color:#fff}
+.update-flag p{font-size:16px;line-height:1.6;color:#ddd6e0;margin:0 0 16px}
+.update-flag .cta{margin:0}
+.update-flag .cta__demo{background:var(--accent);color:#170610}
+.card-proofs{margin-top:26px;font-size:13px;color:#b8b0a2}.card-proofs summary{cursor:pointer;padding:12px 0;min-height:44px}.card-proofs a{display:block;min-height:44px;color:var(--gold);padding:8px 0}
+.pitch a:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+html[data-card-requested] .pitch{display:none}
+.pitch-card{display:none}
+body.card-mode{display:block;padding:0;margin:0;width:100vw;min-height:100vh;background:#0b0b0e}
+.card-mode .pitch{display:none}
+.card-mode .pitch-card{width:100vw;min-height:100vh;padding:48px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+.card-copy{max-width:1000px}
+.card-eyebrow{font-size:17px;color:var(--gold);text-transform:uppercase;letter-spacing:.17em;margin-bottom:26px}
+.card-copy h1{font-size:clamp(34px,4.2vw,54px);line-height:1.12;letter-spacing:-.025em;margin-bottom:28px;color:var(--accent)}
+.card-line{font-size:clamp(19px,2vw,27px);line-height:1.6;color:#eee8f0}
+.card-footer{font-size:15px;color:#bfb5c5;margin-top:36px;line-height:1.5}
+[hidden]{display:none!important}
+@media(max-width:650px){.update-flag{padding:16px}.update-flag h2{font-size:23px}.card-mode .pitch-card{padding:28px}.card-eyebrow{font-size:12px}.card-footer{font-size:13px}.cta a{padding:14px 18px}}
+</style><script>if(new URLSearchParams(location.search).has('card'))document.documentElement.dataset.cardRequested='true';</script>
 </head>
 <body>
 <main class="pitch" data-slug="faisalpma">
@@ -15,8 +39,18 @@
   <h1 class="pitch__title">Faisal — <em>your platform is already built.</em></h1>
   <p class="pitch__sub">Your photos, your voice, your community — running on a platform made for you, live before you've paid a penny.</p>
 
+  <div class="update-flag">
+    <p class="eyebrow">New in this preview · Management bookings</p>
+    <h2>A clearer booking handover for Faisal and his management.</h2>
+    <p>The management-booking idea mentioned in the walkthrough now has a working example: appearance, MC and brand enquiries arrive as a proper brief, with commercial review and Faisal's availability approval kept together.</p>
+    <div class="cta">
+      <a class="cta__demo" data-cta="cta_chapter" href="#player" data-chapter>Watch the management-booking section</a>
+      <a class="cta__reply" data-cta="cta_desk" href="https://www.station9studio.co.uk/faisalpma/agency-bookings.html?audience=coach" target="_blank" rel="noopener">Try the booking workflow &rarr;</a>
+    </div>
+  </div>
+
   <div class="player" id="player">
-    <video id="pitchVideo" src="/pitch/faisalpma/video.mp4?v=hero2" poster="/pitch/faisalpma/poster.jpg" playsinline preload="metadata" controls></video>
+    <video id="pitchVideo" data-chapter-start="410.6" src="/pitch/faisalpma/video.mp4?v=desk1" poster="/pitch/faisalpma/poster.jpg" playsinline preload="metadata" controls></video>
     <div class="player__cover" id="playerCover">
       <button class="player__play" aria-label="Play walkthrough">&#9654;</button>
       <div class="player__hint">Tap to play — captioned walkthrough</div>
@@ -28,8 +62,12 @@
     <a class="cta__reply" data-cta="cta_reply" href="mailto:chris@station9studio.co.uk?subject=Re:%20my%20platform&body=Chris%20%E2%80%94">Just reply to Chris</a>
   </div>
 
+  <details class="card-proofs"><summary>Review the video cards</summary><nav id="card-proof-links" aria-label="Video card proofs"></nav></details>
   <p class="pitch__foot">Station 9 builds coach platforms that are live before they cost anything. This page, the video hosting, and the platform it shows — all ours.</p>
 </main>
+<main class="pitch-card" id="pitch-card" hidden aria-label="Video card proof"><div class="card-copy"><p class="card-eyebrow" id="card-eyebrow"></p><h1 id="card-title"></h1><div id="card-lines"></div><p class="card-footer" id="card-footer"></p></div></main>
 <script src="/pitch/pitch.js?v=20261022cta"></script>
+<script type="module" src="/pitch/faisalpma/preview.js"></script>
+<script>document.querySelector('[data-chapter]')?.addEventListener('click',event=>{event.preventDefault();const video=document.getElementById('pitchVideo');document.getElementById('playerCover')?.remove();video.currentTime=Number(video.dataset.chapterStart||0);video.play();video.scrollIntoView({block:'center'});});</script>
 </body>
 </html>

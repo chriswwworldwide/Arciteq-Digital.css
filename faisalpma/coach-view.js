@@ -79,8 +79,8 @@
         actions.append(supportLink);
       }
       if (actions) {
-        const order = ["today.html", "planner.html", "clients.html", "leads.html", "manage-programmes.html", "manage-videos.html", "desk.html", "campaigns.html", "tour.html"];
-        const labels = ["Today", "Bookings", "Clients", "Leads", "Programmes", "Content", "Finance", "Campaigns", "Tour"];
+        const order = ["today.html", "planner.html", "agency-bookings.html", "clients.html", "leads.html", "manage-programmes.html", "manage-videos.html", "desk.html", "campaigns.html", "tour.html"];
+        const labels = ["Today", "Bookings", "Events", "Clients", "Leads", "Programmes", "Content", "Finance", "Campaigns", "Tour"];
         order.forEach((page, index) => {
           let link = actions.querySelector(`a[href*="/${page}"]`);
           if (!link) {

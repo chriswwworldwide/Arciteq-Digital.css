@@ -3,9 +3,11 @@
 // POST /api/pitch-event records view/play/progress/cta events to Postgres
 // (pitch_events, created lazily) and emails PITCH_NOTIFY_TO on the events
 // that matter for follow-up timing (first view, play, complete).
-// GET /pitch-views?key=<ADMIN_API_KEY> returns a quick per-slug summary.
+// GET /pitch-views requires an admin header key for the per-slug summary.
 
 import express from "express";
+import { timingSafeEqual } from "node:crypto";
+import { createRateLimiter } from "../src/submissions.js";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { dbQuery } from "../db.js";
@@ -61,6 +63,7 @@ const realIp = (req) => {
 };
 
 const VALID_SLUGS = new Set([
+  "marcdean",
   "faisalpma",
   "jadeskillen",
   "elationfitness",
@@ -241,6 +244,26 @@ async function notifyViaNtfy({ slug, event, pct, self = false }) {
 export function createPitchRouter({ adminApiKey }) {
   const router = express.Router();
   const recentSiteVisits = new Map(); // `${slug}:${ip}` -> last-pinged ms
+  const eventLimiter = createRateLimiter({ max: 90, windowMs: 600000 });
+  const notifications = new Map();
+  let quotaStart = Date.now(), notificationCount = 0;
+  router.use('/api/pitch-event', (req, res, next) => {
+    if (req.method !== 'POST') return next();
+    if (!eventLimiter.check(req.ip || req.socket.remoteAddress).ok) return res.set('Retry-After', '600').status(429).json({ ok: false });
+    const origin = req.get('origin');
+    if (req.get('sec-fetch-site') === 'cross-site') return res.status(403).json({ ok: false });
+    if (origin) {
+      try {
+        const url = new URL(origin);
+        if (url.origin !== `${req.protocol}://${req.get('host')}` || url.username || url.password) return res.status(403).json({ ok: false });
+      } catch { return res.status(403).json({ ok: false }); }
+    }
+    if (Number(req.get('content-length')) > 4096) return res.status(413).json({ ok: false });
+    return next();
+  }, express.json({ limit: '4kb', inflate: false }), (error, req, res, next) => {
+    if (!error) return next();
+    return res.status(error.status === 413 ? 413 : error.status === 415 ? 415 : 400).json({ ok: false, error: error.status === 413 ? 'Request too large' : error.status === 415 ? 'Unsupported encoding' : 'Invalid JSON' });
+  });
 
   // Alert sends are serialised: bursts (e.g. a prospect clicking through
   // several pages, or a batch test) otherwise hit Resend's per-second limit
@@ -248,7 +271,13 @@ export function createPitchRouter({ adminApiKey }) {
   // sendmail fallback never runs on a failed API call either.
   const alertQueue = [];
   let alertDraining = false;
-  function enqueueAlert(send) {
+  function enqueueAlert(send, key = '') {
+    const now = Date.now();
+    if (now - quotaStart >= 3600000) { quotaStart = now; notificationCount = 0; }
+    for (const [id, time] of notifications) if (now - time >= 3600000) notifications.delete(id);
+    if (notificationCount >= 30 || (key && notifications.has(key))) return;
+    notificationCount++;
+    if (key) notifications.set(key, now);
     alertQueue.push(send);
     if (alertDraining) return;
     alertDraining = true;
@@ -259,7 +288,7 @@ export function createPitchRouter({ adminApiKey }) {
         } catch {
           // alert delivery is best-effort; never stall the queue
         }
-        await new Promise((r) => setTimeout(r, 600));
+        if (process.env.NODE_ENV !== 'test') await new Promise((r) => setTimeout(r, 600));
       }
       alertDraining = false;
     })();
@@ -272,7 +301,7 @@ export function createPitchRouter({ adminApiKey }) {
   // ago) pings as 'revisit' so you can tell fresh opens from coming back.
   // The middleware only observes — the request falls through to the site.
   router.use((req, res, next) => {
-    if (req.method !== "GET" && req.method !== "HEAD") return next();
+    if (req.method !== "GET") return next();
     const match = req.path.match(/^\/([a-z0-9-]+)\/?((?:index|[a-z0-9-]+)\.html)?$/);
     if (!match || !VALID_SLUGS.has(match[1])) return next();
     const slug = match[1];
@@ -336,6 +365,8 @@ export function createPitchRouter({ adminApiKey }) {
       ? Math.max(0, Math.min(36000, Math.round(secsRaw)))
       : null;
 
+    if (Buffer.byteLength(JSON.stringify(req.body || {})) > 4096) return res.status(413).json({ ok: false });
+    if (typeof req.body?.sid !== 'string' || !/^[a-zA-Z0-9_-]{8,64}$/.test(req.body.sid)) return res.status(400).json({ ok: false });
     if (!VALID_SLUGS.has(slug) || !VALID_EVENTS.has(event)) {
       return res.status(400).json({ ok: false });
     }
@@ -362,6 +393,7 @@ export function createPitchRouter({ adminApiKey }) {
         (cleanStr(process.env.PITCH_WEB3FORMS_KEY) &&
           notifyViaWeb3Forms({ slug, event, pct, self })) ||
         notify({ slug, event, pct, self }),
+        `${slug}:${sessionId}:${event}:${event === 'progress' ? pct : ''}`,
       );
     }
 
@@ -377,7 +409,10 @@ export function createPitchRouter({ adminApiKey }) {
   });
 
   router.get("/pitch-views", async (req, res) => {
-    if (!adminApiKey || cleanStr(req.query.key) !== adminApiKey) {
+    res.set('Cache-Control', 'no-store, private').set('Referrer-Policy', 'no-referrer');
+    const supplied = Buffer.from(String(req.get('x-admin-key') || req.get('x-admin-api-key') || '').trim());
+    const expected = Buffer.from(String(adminApiKey || ''));
+    if (req.query.key !== undefined || !expected.length || supplied.length !== expected.length || !timingSafeEqual(supplied, expected)) {
       return res.status(404).send("not found");
     }
     if (!(await ensureTable())) {

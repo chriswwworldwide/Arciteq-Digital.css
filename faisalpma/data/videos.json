@@ -1,3 +1,57 @@
 {
-  "items": []
+  "note": "Faisal-owned PMA Fitness training and verified guest conversations. Linked original publisher content; no claim Faisal hosts the guest podcasts.",
+  "checked": "2026-11-12",
+  "items": [
+    {
+      "id":"pma-abs-six-minutes",
+      "title":"6-minute non-stop abs workout · PMA Fitness",
+      "description":"A short core session from Faisal's own PMA Fitness YouTube channel.",
+      "category":"Training",
+      "url":"https://www.youtube.com/watch?v=qQ8sH8YJUC0",
+      "thumbnail":"https://i.ytimg.com/vi/qQ8sH8YJUC0/hqdefault.jpg",
+      "linkLabel":"Train with Faisal on YouTube",
+      "sourceURL":"https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DqQ8sH8YJUC0&format=json",
+      "sourceAuthor":"PMA Fitness · @PMAFitnessfaisal",
+      "relationship":"Owned channel"
+    },
+    {
+      "id":"rox-lyfe-faisal",
+      "title":"Faisal on Rox Lyfe · HYROX, PMA and the mic",
+      "description":"A guest conversation with Greg Williams about HYROX, positive mental attitude and what Faisal has learned from the finish line.",
+      "category":"Podcast episodes",
+      "url":"https://open.spotify.com/episode/5DGZaCGwWxxlxfcUkeUpHp",
+      "thumbnail":"https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be5dcb12a9948f589490661149",
+      "linkLabel":"Watch / listen on Rox Lyfe",
+      "sourceURL":"https://roxlyfe.com/faisal-abdalla/",
+      "metadataSource":"https://open.spotify.com/oembed?url=https%3A%2F%2Fopen.spotify.com%2Fepisode%2F5DGZaCGwWxxlxfcUkeUpHp",
+      "relationship":"Guest appearance"
+    },
+    {
+      "id":"lift-for-life-faisal",
+      "title":"Faisal with Angus Warburton · Achieving greatness",
+      "description":"A guest conversation with Angus Warburton about positive mental attitude, motivation and consistency.",
+      "category":"Podcast episodes",
+      "url":"https://www.youtube.com/watch?v=GP3ZPZn_9Ss",
+      "thumbnail":"https://i.ytimg.com/vi/GP3ZPZn_9Ss/hqdefault.jpg",
+      "linkLabel":"Watch the full conversation",
+      "sourceURL":"https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DGP3ZPZn_9Ss&format=json",
+      "sourceAuthor":"The Lift For Life Podcast",
+      "seriesNote":"Episode artwork and introduction identify The Angus Warburton Podcast; the current YouTube publisher is The Lift For Life Podcast.",
+      "relationship":"Guest appearance"
+    },
+    {
+      "id":"runpod-faisal-2019",
+      "title":"Faisal on RunPod · Mr PMA",
+      "description":"A 2019 guest conversation with Jenni Falconer about motivation, fitness goals and making time to train.",
+      "category":"Podcast episodes",
+      "url":"https://podcasts.apple.com/gb/podcast/faisal-abdalla-aka-mr-pma/id1457721095?i=1000455640224",
+      "thumbnail":"https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/f1/90/98/f1909830-22fb-5917-a62b-725835cd4b21/mza_5108879520501629930.jpg/600x600bb.jpg",
+      "linkLabel":"Listen on RunPod",
+      "sourceURL":"https://podcasts.apple.com/gb/podcast/faisal-abdalla-aka-mr-pma/id1457721095?i=1000455640224",
+      "metadataSource":"https://itunes.apple.com/lookup?id=1457721095",
+      "sourcePublishedDate":"2019-10-31",
+      "artworkNote":"RunPod show artwork returned by Apple's catalogue; not an invented Faisal show cover.",
+      "relationship":"Guest appearance"
+    }
+  ]
 }

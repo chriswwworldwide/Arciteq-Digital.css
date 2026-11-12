@@ -1,8 +1,8 @@
 {
-  "checked": "2026-10-25",
+  "checked": "2026-11-09",
   "source": "https://hyrox.com/find-my-race/",
   "timeZone": "UTC",
-  "note": "Dates checked against official HYROX event listings. Travel notes are planning guidance, not live quotes or claims that the coach will attend. Refresh within 14 days before each new build.",
+  "note": "Race dates matched the canonical official-source snapshot checked 9 November; London and Manchester official pages additionally rechecked 12 November. Travel notes preserved; no coach attendance implied.",
   "cities": [
     {
       "slug": "london",
@@ -203,5 +203,6 @@
       ]
     }
   ],
-  "home": "london"
+  "home": "london",
+  "regionalRechecked": "2026-11-12"
 }

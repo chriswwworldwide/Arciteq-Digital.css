@@ -3,12 +3,15 @@
   "slug": "template-preview",
   "heroMode": "ambient",
   "assets": ["scripts/reskin/chassis-demo-assets", "scripts/reskin/stock"],
-  "omitImageSlots": ["station-sandbag-lunges.jpg"],
+  "omitImageSlots": ["station-sandbag-lunges.jpg", "bike.jpg", "carry.jpg", "detail.jpg", "hoodie.jpg", "kerb.jpg", "night.jpg", "pb-venue.jpg", "race-revel.jpg", "rooftop.jpg", "rope.jpg", "run-compromised.jpg", "sprint.jpg", "station-lean.jpg", "track.jpg", "treadmill.jpg", "walkin.jpg"],
   "copyOverrides": [
+    {"pattern":"alt=\"{{COACH_NAME}} presenting {{BRAND}} at a business event\"","replace":"alt=\"Formalwear portrait; neutral links-page reference\""},
+    {"pattern":"alt=\"{{COACH_NAME}} taking a lighter training moment by the gym bar\"","replace":"alt=\"Outdoor running reference photograph\""},
     {"pattern":"src=\"/{{SLUG}}/images/station-burpees\\.jpg[^\"]*\"\\s*alt=\"[^\"]*\"","replace":"src=\"/{{SLUG}}/images/gallery/stock-burpee.jpg\" alt=\"Burpee broad-jump movement reference; not presented as the coach\""},
     {"pattern":"src=\"/{{SLUG}}/images/station-row\\.jpg[^\"]*\"\\s*alt=\"[^\"]*\"","replace":"src=\"/{{SLUG}}/generic-rowing-detail.jpg\" alt=\"RowErg movement detail; generic reference with the face excluded\""},
     {"pattern":"src=\"/{{SLUG}}/images/station-wall-balls\\.jpg[^\"]*\"\\s*alt=\"[^\"]*\"","replace":"src=\"/{{SLUG}}/generic-wallball-release.jpg\" alt=\"Wall-ball release; generic reference showing the ball and hands\""}
   ],
+  "seedFiles": {"gallery.json":"@chassis/data/gallery.json"},
   "currency": "gbp",
   "raceRegion": "United Kingdom",
   "booking": {"timeZone":"Europe/London"},

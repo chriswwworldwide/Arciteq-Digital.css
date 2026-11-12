@@ -151,8 +151,8 @@ app.post(
 );
 app.use(createAdminOpsRouter({ alertEmailTo, heartbeatState }));
 
-app.use(express.json({ limit: "2mb" }));
 app.use(createPitchRouter({ adminApiKey }));
+app.use(express.json({ limit: "2mb" }));
 app.use(cachePolicy());
 app.use(createSeoRouter({ publicBaseUrl }));
 app.use(staticFiles(__dirname));

@@ -32,8 +32,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image: var(--planner-watermark, none);
-  background-position: right 20%;
-  background-size: auto 115vh;
+  background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   filter: grayscale(1);
   opacity: 0.075;
@@ -52,8 +52,8 @@ body[data-backdrop="watermark"] {
   isolation: isolate;
 }
 body[data-backdrop="watermark"]::before {
-  background-position: right top;
-  background-size: auto 120vh;
+  background-position: center;
+  background-size: cover;
   opacity: 0.26;
   filter: grayscale(1) brightness(1.25);
 }
@@ -183,8 +183,8 @@ body[data-backdrop="watermark"]::after {
     justify-content: flex-start;
   }
   body[data-backdrop="watermark"]::before {
-    background-position: 56% top;
-    background-size: auto 110vh;
+    background-position: center;
+    background-size: cover;
     opacity: 0.22;
   }
   body[data-backdrop="watermark"]::after {
@@ -313,6 +313,20 @@ button[hidden],
   color: var(--muted);
   text-decoration: none;
   padding: 8px 0;
+}
+.topbar nav .planner-home-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: var(--text);
+}
+.topbar nav .planner-home-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 .topbar nav .nav-active {
   color: var(--text);

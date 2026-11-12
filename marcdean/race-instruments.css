@@ -1,0 +1,101 @@
+.race-instrument { --instrument-rule:#36363e; --instrument-muted:#b9b9c2; }
+body.race-instrument.zone-acc .station .num,body.race-instrument.zone-acc .guide-hero h2 em,body.race-instrument.zone-acc .toc p,body.race-instrument.zone-acc .splits-list a { color:var(--pink); }
+body.race-instrument.zone-acc .btn-primary { background:var(--pink); border-color:var(--pink); color:#fff; }
+body.race-instrument.zone-acc .approve-note { border-left-color:var(--instrument-rule); background:transparent; }
+.race-instrument .guide-hero { padding:40px 0 30px; background:var(--paper); border-bottom:1px solid var(--instrument-rule); }
+.race-instrument .guide-hero > .wrap { grid-template-columns:minmax(0,1fr) minmax(180px,260px); gap:48px; align-items:center; }
+.race-instrument .guide-hero h2 { font-size:clamp(2.1rem,4.3vw,4rem); line-height:1.02; letter-spacing:-.055em; max-width:20ch; margin:.8rem 0 1rem; }
+.race-instrument .guide-hero h2 em { font-style:normal; color:var(--pink); }
+.race-instrument .guide-hero .lead { font-size:1rem; line-height:1.65; max-width:62ch; color:var(--instrument-muted); }
+.race-instrument .guide-hero .eyebrow { display:flex; align-items:center; gap:.8rem; font:700 .7rem/1.4 monospace; letter-spacing:.13em; text-transform:uppercase; color:var(--pink); }
+.race-instrument .guide-hero .eyebrow::before { content:""; width:30px; height:1px; background:var(--pink); }
+.race-instrument .guide-hero .byline { font-size:.8rem; color:var(--ink-3); margin-top:1rem; }
+.race-instrument .guide-hero-photo { margin:0; position:relative; border:0; border-radius:0; background:none; }
+.race-instrument .guide-hero-photo img { width:100%; height:250px; object-fit:cover; object-position:50% 15%; border-radius:0 0 48% 8% / 0 0 7% 2%; box-shadow: 1px 0 0 rgba(255,255,255,.7); }
+.race-instrument .guide-hero-photo::after { content:""; position:absolute; width:56px; height:56px; left:-8px; top:-8px; border-left:2px solid var(--pink); border-top:2px solid var(--pink); pointer-events:none; }
+.race-instrument .wrap.guide { padding-top:32px; gap:40px; align-items:start; }
+.race-instrument .article { min-width:0; }
+.race-instrument .toc { border:0; border-left:1px solid var(--instrument-rule); border-radius:0; background:transparent; padding:0 0 0 16px; }
+.race-instrument .toc a { min-height:44px; display:flex; align-items:center; font-size:.82rem; }
+.race-instrument .station { border:0; border-top:1px solid var(--instrument-rule); border-radius:0; padding:28px 0; margin-top:0; background:transparent; box-shadow:none; scroll-margin-top:80px; }
+.race-instrument .station > .num { font:700 .7rem/1.4 monospace; color:var(--pink); letter-spacing:.14em; border:0; background:transparent; padding:0; }
+.race-instrument .station h3 { font-size:clamp(1.5rem,2.7vw,2.2rem); line-height:1.1; letter-spacing:-.035em; margin:.65rem 0 1rem; }
+.race-instrument .station > p { color:var(--instrument-muted); font-size:.95rem; }
+.race-instrument #stake,.race-instrument #enter { border:1px solid var(--instrument-rule); border-top:2px solid var(--pink); padding:clamp(20px,3vw,32px); background:linear-gradient(150deg,#19191f,var(--paper)); border-radius:3px 3px 16px 3px; margin-bottom:32px; }
+.race-instrument .calc-form { grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 20px; margin:24px 0 0; align-items:end; }
+.race-instrument .calc-form label { min-width:0; }
+.race-instrument .calc-form label > span:first-child { color:var(--instrument-muted); font-size:.69rem; line-height:1.5; letter-spacing:.07em; min-height:1.5em; }
+.race-instrument .calc-form input:not([type=checkbox]):not([type=radio]),.race-instrument .calc-form select,.race-instrument .results-search input { background:#101014; color:var(--ink); border:1px solid #45454f; border-radius:5px; padding:12px 13px; width:100%; min-height:48px; box-sizing:border-box; font-size:1rem; transition:border-color 180ms,box-shadow 180ms; }
+.race-instrument .calc-form input::placeholder,.race-instrument .results-search input::placeholder { color:#85858f; opacity:1; }
+.race-instrument .calc-form select option { background:#101014; color:#f2f2f0; }
+.race-instrument .calc-form input:focus-visible,.race-instrument .calc-form select:focus-visible,.race-instrument .results-search input:focus-visible { outline:1px solid var(--pink); outline-offset:3px; border-color:var(--pink); box-shadow:0 0 0 4px color-mix(in srgb,var(--pink) 10%,transparent); }
+.race-instrument .calc-form input[name=mypred],.race-instrument .calc-form input[name=benchtime],.race-instrument .splits-grid input { font-family:monospace; font-size:1.15rem; font-variant-numeric:tabular-nums; letter-spacing:.04em; }
+.race-instrument .calc-form > .btn { grid-column:1/-1; justify-self:start; margin-top:.5rem; }
+.race-instrument .btn { min-height:44px; border-radius:999px; padding:.75rem 1.15rem; font-size:.85rem; transition:box-shadow 180ms,background-color 180ms; }
+.race-instrument .btn:focus-visible { outline:2px solid var(--pink); outline-offset:4px; }
+.race-instrument .btn:active { box-shadow:inset 0 2px 5px #0004; }
+.race-instrument .calc-form .form-note { grid-column:1/-1; }
+.race-instrument .calc-form [hidden],.race-instrument [hidden] { display:none!important; }
+.race-instrument .instrument-extra { grid-column:1/-1; border-block:1px solid var(--instrument-rule); padding:.2rem 0; }
+.race-instrument .instrument-extra > summary { cursor:pointer; min-height:48px; padding:12px 0; font-size:.85rem; color:var(--instrument-muted); }
+.race-instrument .dossier { margin:0 0 18px; padding:16px 0; border:0; background:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; min-width:0; }
+.race-instrument .dossier legend { font-size:.75rem; padding:0; color:var(--ink-3); }
+.race-instrument .dossier .form-note { grid-column:1/-1; }
+.race-instrument .approve-note { border:0; border-left:2px solid var(--instrument-rule); border-radius:0; padding:0 0 0 12px; background:none; font-size:.8rem; }
+.race-instrument .splits-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; padding:20px 0; border-block:1px solid var(--instrument-rule); }
+.race-instrument .splits-grid label { padding:10px; border-radius:3px; background:#202027; }
+.race-instrument .splits-grid label:nth-child(even) { background:color-mix(in srgb,var(--pink) 7%,#202027); }
+.race-instrument .splits-grid label > span { font-size:.65rem; min-height:2.9em; display:flex; align-items:center; }
+.race-instrument .calc-form .splits-consent { align-items:center; }
+.race-instrument .calc-form .splits-consent input { width:20px; height:20px; min-height:20px; accent-color:var(--pink); }
+.race-instrument .calc-form .splits-consent span { font-size:.8rem; letter-spacing:0; text-transform:none; color:var(--instrument-muted); }
+.race-instrument .pred-total { --ink:#17171b; --ink-2:#45454d; --ink-3:#65656d; background:#eee9df; border:0; border-left:3px solid var(--pink); border-radius:0 20px 0 0; padding:28px; margin:18px 0 28px; color:var(--ink); }
+.race-instrument .pred-total .pred-eyebrow { color:#45454d; font-size:.72rem; letter-spacing:.12em; }
+.race-instrument .pred-time { color:#17171b; font-size:clamp(3rem,7vw,5.4rem); font-weight:650; letter-spacing:-.055em; font-variant-numeric:tabular-nums; line-height:1.1; margin:12px 0; }
+.race-instrument .pred-range { color:#45454d; line-height:1.6; }
+.race-instrument .pred-eyebrow { font:700 .72rem/1.5 monospace; color:var(--instrument-muted); letter-spacing:.07em; }
+.race-instrument .pred-table,.race-instrument .results-table { font-variant-numeric:tabular-nums; }
+.race-instrument .pred-table th,.race-instrument .results-table th { font:600 .65rem/1.5 monospace; letter-spacing:.08em; text-transform:uppercase; color:var(--instrument-muted); border-bottom:1px solid var(--instrument-rule); background:transparent; }
+.race-instrument .pred-table td,.race-instrument .results-table td { padding:14px 12px; border-bottom:1px solid var(--instrument-rule); }
+.race-instrument .results-table tbody tr:hover { background:color-mix(in srgb,var(--pink) 5%,transparent); }
+.race-instrument #analysis-summary { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; padding:0; border-top:1px solid var(--pink); margin:22px 0; }
+.race-instrument #analysis-summary li { list-style:none; border:0; border-bottom:1px solid var(--instrument-rule); border-radius:0; padding:18px 12px; background:var(--paper-2); }
+.race-instrument #analysis-summary strong { display:block; font-size:clamp(1.6rem,3vw,2.6rem); letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+.race-instrument #analysis-summary span { color:var(--instrument-muted); font-size:.75rem; }
+.race-instrument .results-tools { border-block:1px solid var(--instrument-rule); background:var(--paper-2); padding:22px; border-radius:0; gap:22px; align-items:end; margin-bottom:28px; }
+.race-instrument .results-mode { border:0; padding:0; }
+.race-instrument .results-mode legend,.race-instrument .results-search > span { font:700 .7rem/1.5 monospace; letter-spacing:.08em; color:var(--instrument-muted); margin-bottom:8px; }
+.race-instrument .results-mode label { min-height:44px; display:inline-flex; align-items:center; gap:8px; font-size:.85rem; }
+.race-instrument .results-mode input { accent-color:var(--pink); }
+.race-instrument .results-scroll { border:0; border-top:1px solid var(--instrument-rule); border-radius:0; }
+.race-instrument .results-table .time { font-family:monospace; font-size:1rem; color:var(--ink); }
+.race-instrument .cta-band { border-top:1px solid var(--instrument-rule); background:var(--paper-2); padding:40px 0; }
+.race-instrument .cta-band h3 { font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:-.04em; }
+@media(min-width:901px) {
+  .race-instrument:has(#predict-form) .wrap.guide { grid-template-columns:minmax(0,1fr); max-width:1040px; }
+}
+@media(max-width:900px) {
+  .race-instrument .guide-hero > .wrap { grid-template-columns:minmax(0,1fr) 180px; gap:28px; }
+  .race-instrument .guide-hero-photo img { height:220px; }
+  .race-instrument .splits-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:600px) {
+  .race-instrument .guide-hero { padding:24px 0; }
+  .race-instrument .guide-hero > .wrap { grid-template-columns:minmax(0,1fr); }
+  .race-instrument .guide-hero-photo img { height:200px; }
+  .race-instrument .guide-hero h2 { font-size:2.4rem; }
+  .race-instrument .wrap.guide { padding-top:20px; gap:20px; }
+  .race-instrument .toc { position:static; }
+  .race-instrument .toc ol { display:flex; flex-wrap:wrap; gap:4px 18px; }
+  .race-instrument .toc li { margin:0; }
+  .race-instrument .calc-form,.race-instrument .dossier { grid-template-columns:minmax(0,1fr); gap:18px; }
+  .race-instrument #stake,.race-instrument #enter { padding:18px; }
+  .race-instrument .splits-grid { gap:8px; }
+  .race-instrument .splits-grid label { padding:7px; }
+  .race-instrument .splits-grid input { padding:10px; }
+  .race-instrument .pred-total { padding:20px; }
+  .race-instrument .results-tools { padding:16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .race-instrument input,.race-instrument select,.race-instrument .btn { transition:none!important; }
+}

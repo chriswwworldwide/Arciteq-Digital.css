@@ -27,6 +27,7 @@
 
   var video = document.getElementById("pitchVideo");
   var cover = document.getElementById("playerCover");
+  if (video && cover) {
   var milestones = { 25: false, 50: false, 75: false };
   var played = false;
 
@@ -76,6 +77,8 @@
   video.addEventListener("ended", function () {
     send("complete", null, Math.round(video.currentTime));
   });
+
+  }
 
   document.querySelectorAll("[data-cta]").forEach(function (a) {
     a.addEventListener("click", function () {

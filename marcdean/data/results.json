@@ -1,0 +1,41 @@
+{
+  "updated": "2026-11-11",
+  "note": "PBs checked on HYRESULT profile and individual result pages, 11 November 2026: Pro Singles 55:46 Phoenix 2026; Pro Doubles 49:10 London 2025 with Alan Cao. Birmingham 55:53 retained as recent recap, not PB. HYRESULT is a third-party results source, not the official organiser. No race day inferred from undated screenshot.",
+  "divisions": {
+    "men": {
+      "label": "Men · race notebook",
+      "results": [
+        {
+          "athlete": "Marc Dean",
+          "time": "55:46",
+          "category": "Pro Men · Singles PB",
+          "event": "HYROX Phoenix 2026",
+          "sourceURL": "https://www.hyresult.com/result/LR3MS4JI45FEF6"
+        },
+        {
+          "athlete": "Marc Dean",
+          "time": "55:53",
+          "category": "Recent Pro Singles result · not PB",
+          "event": "HYROX Birmingham",
+          "sourceURL": "https://www.instagram.com/marcdean_/"
+        }
+      ]
+    },
+    "women": {
+      "label": "Women",
+      "results": []
+    },
+    "doubles": {
+      "label": "Doubles",
+      "results": [
+        {
+          "athlete": "Marc Dean & Alan Cao",
+          "time": "49:10",
+          "category": "Pro Doubles Men · PB",
+          "event": "HYROX London 2025",
+          "sourceURL": "https://www.hyresult.com/result/LR3MS4JI42E4B2"
+        }
+      ]
+    }
+  }
+}

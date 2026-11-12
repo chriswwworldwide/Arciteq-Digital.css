@@ -12,7 +12,7 @@ import {
   canJoinGroup,
   calendarFile,
   isAway,
-} from "./booking-model.js?v=679a3030c754";
+} from "./booking-model.js";
 
 const $ = (selector) => document.querySelector(selector);
 const esc = (value) =>
@@ -192,6 +192,13 @@ function render() {
   seedWeek();
   const coach = mode === "coach";
   document.body.dataset.mode = mode;
+  const homeLink = document.querySelector('[data-planner-home]');
+  if (homeLink) {
+    const home = profile.slug === 'chassis' ? '/' : `/${profile.slug}/`;
+    homeLink.href = `${home}?audience=${coach ? 'coach' : 'public'}`;
+    homeLink.toggleAttribute('data-coach-link', coach);
+    homeLink.textContent = coach ? `Back to ${profile.coachFirst}'s homepage` : 'Back to platform';
+  }
   $("#headline").innerHTML = coach
     ? "Your week.<br /><em>A little more headspace.</em>"
     : "Good sessions.<br /><em>Less back-and-forth.</em>";
@@ -986,10 +993,7 @@ function applyProfile() {
     "Walkthrough schedule — not " + profile.coachFirst + "’s actual diary.";
   document.querySelector(".timezone").textContent =
     "06:00–20:00 · " + profile.timeZone;
-  const sitePink = getComputedStyle(document.documentElement)
-    .getPropertyValue("--pink")
-    .trim();
-  const accent = /^#[0-9a-f]{6}$/i.test(sitePink) ? sitePink : profile.accent;
+  const accent = profile.accent;
   if (/^#[0-9a-f]{6}$/i.test(accent)) {
     document.body.style.setProperty("--purple", accent);
     document.body.style.setProperty(

@@ -789,9 +789,11 @@ if (cfg.mode === "chassis") {
       typeof content === "string" && content.startsWith("@")
         ? JSON.parse(fs.readFileSync(path.join(root, content.slice(1)), "utf8"))
         : content;
+    let seeded = JSON.stringify(data, null, 2);
+    for (const [token, value] of tokenPairs) seeded = seeded.split(token).join(JSON.stringify(String(value)).slice(1, -1));
     fs.writeFileSync(
       path.join(dst, "data", f),
-      JSON.stringify(data, null, 2) + "\n",
+      seeded + "\n",
     );
   }
 

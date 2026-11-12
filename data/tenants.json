@@ -6647,6 +6647,70 @@
         }
       ],
       "demo": true
+    },
+    {
+      "tenant_id": "marcdean",
+      "vertical": "coaching",
+      "hostnames": [
+        "marcdean.localhost",
+        "demo-marcdean.localhost"
+      ],
+      "canonicalHost": "marcdean.localhost",
+      "currency": "gbp",
+      "language": "en",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "Marc Dean · MD HYROX",
+        "tagline": "HYROX coaching, race preparation and athlete partnerships.",
+        "supportEmail": "",
+        "about": "Marc Dean’s HYROX coaching, race tools and athlete showcase.",
+        "meta": {
+          "homeDescription": "Explore Marc Dean’s training, race preparation and athlete showcase."
+        },
+        "sameAs": [
+          "https://www.instagram.com/marcdean_/",
+          "https://www.youtube.com/@marcdean28"
+        ],
+        "staticPages": [
+          {
+            "path": "/marcdean/",
+            "priority": "1.0"
+          },
+          {
+            "path": "/marcdean/coaching.html",
+            "priority": "0.9"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "date_alert",
+          "partner_search",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "offers": {},
+      "channels": [
+        {
+          "label": "MD HYROX on FITR",
+          "url": "https://app.fitr.training/p/87091"
+        }
+      ],
+      "demo": true
     }
   ]
 }

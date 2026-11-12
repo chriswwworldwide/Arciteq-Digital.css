@@ -1,0 +1,69 @@
+{
+  "note": "PRIVATE PITCH PREVIEW.",
+  "photos": [
+    {
+      "src": "/marcdean/images/wall-colour-malaga-crew.jpg",
+      "alt": "Athletes together on a HYROX race floor",
+      "caption": "Race weekends are better together.",
+      "by": "Race community",
+      "event": "Race community",
+      "tilt": -1.5
+    },
+    {
+      "src": "/marcdean/images/batch-006-04-sandbag-30kg.jpg",
+      "alt": "MD-marked tattooed athlete carrying 30 KG sandbag across shoulders, CAO-marked companion behind.",
+      "caption": "The work between the runs.",
+      "by": "Race day",
+      "event": "Race community",
+      "tilt": 1
+    },
+    {
+      "src": "/marcdean/images/wall-colour-malaga-three.jpg",
+      "alt": "Three athletes smiling together after racing",
+      "caption": "The finish is only half the story.",
+      "by": "Race community",
+      "event": "Race community",
+      "tilt": 1.5
+    },
+    {
+      "src": "/marcdean/images/wall-colour-istanbul-podium.jpg",
+      "alt": "Two athletes holding race banners at a HYROX podium",
+      "caption": "A moment worth celebrating.",
+      "by": "Race community",
+      "event": "Race community",
+      "tilt": -1.5
+    },
+    {
+      "src": "/marcdean/images/wall-colour-crew-selfie.jpg",
+      "alt": "Race-community group selfie",
+      "caption": "The people behind the training.",
+      "by": "Race community",
+      "event": "Race community",
+      "tilt": 1.5
+    },
+    {
+      "src": "/marcdean/images/batch-007-05-dean-skierg-area.jpg",
+      "alt": "DEAN-marked athlete standing centrally between SkiErg machines while adjacent athletes use them; orange shoes and MD cap visible.",
+      "caption": "Find your focus before the next effort.",
+      "by": "Race day",
+      "event": "Race community",
+      "tilt": 1
+    },
+    {
+      "src": "/marcdean/images/wall-colour-crew-faces.jpg",
+      "alt": "Four runners taking a group selfie beneath trees",
+      "caption": "Fresh air. Familiar faces.",
+      "by": "Race community",
+      "event": "Race community",
+      "tilt": -1.5
+    },
+    {
+      "src": "/marcdean/images/wall-colour-glasgow-doors.jpg",
+      "alt": "Athlete outside the HYROX Glasgow entrance",
+      "caption": "Next stop: the start line.",
+      "by": "Race community",
+      "event": "Race community",
+      "tilt": 1.5
+    }
+  ]
+}

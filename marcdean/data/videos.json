@@ -1,0 +1,36 @@
+{
+  "note": "Verified Marc-owned MDTV vlog and guest appearances. Publisher links/artwork retained; no claim Marc hosts Jake Dearden or Rox Lyfe podcasts.",
+  "items": [
+    {
+      "id": "mdtv-05",
+      "title": "MDTV 05 · Another race. Another flag.",
+      "description": "Marc’s own vlog: training, everyday life and the build-up to HYROX Karlsruhe after Tenerife.",
+      "category": "Race stories",
+      "url": "https://www.youtube.com/watch?v=sazvIEl3uPU",
+      "thumbnail": "https://i.ytimg.com/vi/sazvIEl3uPU/hqdefault.jpg",
+      "linkLabel": "Watch Marc’s vlog",
+      "publishedAt": "2026-10-03",
+      "sourceURL": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DsazvIEl3uPU&format=json"
+    },
+    {
+      "id": "jake-dearden-75",
+      "title": "Marc on The Jake Dearden Podcast · Episode 75",
+      "description": "From electrician to elite HYROX athlete: training structure, running, recovery and balancing sport with family life. Guest appearance.",
+      "category": "Podcast episodes",
+      "url": "https://shows.acast.com/the-jake-dearden-podcast/episodes/from-electrician-to-elite-hyrox-athlete-marc-dean-75",
+      "thumbnail": "https://open-images.acast.com/shows/69937398989966fe08ad110d/1771271314347-cbd86eb4-0be7-4550-b5b3-7baf167b3358.jpeg?height=315",
+      "linkLabel": "Listen on Jake’s podcast",
+      "publishedAt": "2026-10-30"
+    },
+    {
+      "id": "rox-lyfe-marc",
+      "title": "Marc on Rox Lyfe · Doubles world champion",
+      "description": "Marc joins Greg Williams to discuss winning the 2024 doubles world title, doubles strategy and fitting training around life. Guest appearance.",
+      "category": "Podcast episodes",
+      "url": "https://open.spotify.com/episode/44LwR1ennJWbxwLIxl0pae",
+      "thumbnail": "https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be1093547860f112f8a8bbb075",
+      "linkLabel": "Listen / watch on Spotify",
+      "publishedAt": "2024-08-29"
+    }
+  ]
+}

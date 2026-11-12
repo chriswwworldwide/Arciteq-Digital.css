@@ -1,0 +1,21 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "MD HYROX ONLINE",
+      "goal": "Offer enquiries",
+      "destination": "https://app.fitr.training/p/87091",
+      "image": "/marcdean/images/coaching-hero.jpg",
+      "headline": "A HYROX plan for all abilities, delivered through FITR.",
+      "actionLabel": "Explore MD HYROX ONLINE"
+    },
+    {
+      "id": "shop",
+      "name": "Shop collection",
+      "goal": "Shop visits",
+      "destination": "https://app.fitr.training/t/243156/",
+      "image": "/marcdean/images/coaching-hero.jpg",
+      "headline": "Explore the collection."
+    }
+  ]
+}

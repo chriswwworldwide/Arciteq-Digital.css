@@ -26,7 +26,10 @@
     if (previewEnabled) {
       try {
         const saved = JSON.parse(localStorage.getItem(key));
-        if (saved?.version === 1 && Array.isArray(saved.records)) return saved.records.slice(0, 100).map(record => ({ id: text(record.id, 100), published: metadata(record.published), draft: metadata(record.draft) })).filter(record => record.id && (record.published || record.draft));
+        if (saved?.version === 1 && Array.isArray(saved.records)) {
+          const kept = saved.records.slice(0, 100).map(record => ({ id: text(record.id, 100), published: metadata(record.published), draft: metadata(record.draft) })).filter(record => record.id && (record.published || record.draft));
+          return [...kept, ...structuredClone(seed).filter(record => !kept.some(savedRecord => savedRecord.id === record.id))].slice(0, 100);
+        }
       } catch { return structuredClone(seed); }
     }
     return structuredClone(seed);
@@ -34,19 +37,15 @@
   function card(item) {
     const image = item.thumbnail ? `<img src="${esc(item.thumbnail)}" alt="${esc(item.title)} thumbnail" loading="lazy" />` : '<div class="video-poster-empty" aria-hidden="true">Play content</div>';
     const episode = item.category === "Podcast clips" && item.episodeURL ? `<a href="${esc(item.episodeURL)}" target="_blank" rel="noopener">Listen to the full episode →</a>` : "";
-    return `<article class="video-card reveal" data-video-title="${esc(item.title)}">${image}<div class="video-card-body"><p class="eyebrow">${item.sample ? "Coming next · " : ""}${esc(item.category)}</p><h4>${esc(item.title)}</h4><p>${esc(item.description)}</p><a class="btn btn-ghost" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.linkLabel || (item.category === "Podcast episodes" ? "Listen / watch episode" : "Watch clip"))} ↗</a>${episode}</div></article>`;
+    return `<article class="video-card" data-video-title="${esc(item.title)}">${image}<div class="video-card-body"><p class="eyebrow">${item.sample ? "Sample video layout · " : ""}${esc(item.category)}</p><h4>${esc(item.title)}</h4><p>${esc(item.description)}</p><a class="btn btn-ghost" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.linkLabel || (item.category === "Podcast episodes" ? "Listen / watch episode" : "Watch clip"))} ↗</a>${episode}</div></article>`;
   }
   function renderLibrary() {
     if (!library) return;
     const published = records.map(record => record.published).filter(Boolean).sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
     const visible = published.filter(item => (!manager || matchesKind(item)) && (filter === "All" || item.category === filter || (filter === "Podcast" && item.category.startsWith("Podcast"))));
     library.innerHTML = visible.map(card).join("");
-    window.revealScan?.();
     const status = $("video-library-status");
-    if (status) {
-      status.hidden = Boolean(manager && visible.length);
-      status.textContent = visible.length ? manager ? "" : `${visible.length} ${visible.length === 1 ? "item" : "items"}${filter === "All" ? "" : ` · ${filter}`}` : "Your published cards will appear here. Start by adding a video or podcast episode.";
-    }
+    if (status) status.textContent = visible.length ? `${visible.length} ${visible.length === 1 ? "item" : "items"}${filter === "All" ? "" : ` · ${filter}`}` : "Nothing in this selection yet. Try another category or explore Faisal's channel above.";
     document.querySelectorAll("[data-video-filter]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.videoFilter === filter)));
   }
   function renderManager() {
@@ -56,7 +55,6 @@
       const state = record.published ? record.draft ? "Published · draft changes saved" : "Published" : "Draft — not on the owner-only preview";
       return `<article class="video-record" data-video-id="${esc(record.id)}"><h4>${esc(item.title)}</h4><p>${esc(state)} · ${esc(item.category)}</p><div class="video-record-actions"><button class="btn btn-ghost" type="button" data-video-action="edit" data-id="${esc(record.id)}">Edit</button>${record.published ? `<button class="btn btn-ghost" type="button" data-video-action="unpublish" data-id="${esc(record.id)}">Unpublish</button>` : ""}</div></article>`;
     }).join("");
-    window.deskCap?.($("video-records"), { noun: "items" });
   }
   function persist(next) {
     if (!previewEnabled) return false;

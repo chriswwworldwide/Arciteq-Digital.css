@@ -95,6 +95,21 @@ describe("pitch security", () => {
     expect(response.headers.get("cache-control")).toContain("no-store");
     expect(response.headers.get("referrer-policy")).toBe("no-referrer");
   });
+  it("rejects compressed telemetry without parsing or recording it", async () => {
+    const response = await fetch(base + "/api/pitch-event", { method: "POST", headers: { "Content-Type": "application/json", "Content-Encoding": "gzip" }, body: "not-a-valid-compressed-body" });
+    expect(response.status).toBe(415);
+    expect(dbQuery).not.toHaveBeenCalled();
+    expect(sendAlertEmail).not.toHaveBeenCalled();
+  });
+  it("does not treat HEAD probes as prospect visits", async () => {
+    await fetch(base + "/trainedbytr/", { method: "HEAD" });
+    expect(dbQuery).not.toHaveBeenCalled();
+    expect(sendAlertEmail).not.toHaveBeenCalled();
+  });
+  it("accepts same-origin telemetry but rejects cross-site metadata", async () => {
+    expect((await post(event, { Origin: base })).status).toBe(200);
+    expect((await post(event, { "Sec-Fetch-Site": "cross-site" })).status).toBe(403);
+  });
   it("does not intercept shared stylesheet or player paths", async () => {
     const response = await fetch(base + "/pitch/pitch.css");
     expect(response.status).toBe(404);

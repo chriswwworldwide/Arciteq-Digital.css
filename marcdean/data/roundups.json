@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "date": "2026-11-11",
+      "race": "London: put the race weekend in the diary",
+      "weekend": "2–6 December 2026",
+      "sourceURL": "https://hyrox.com/event/hyrox-london-excel/",
+      "highlights": [
+        "Amazon HYROX London runs at ExCeL from 2 to 6 December.",
+        "The official page lists Elite singles on 3 December and doubles on 4 December."
+      ],
+      "take": "Training note: choose your target, then protect the routine that gets you there.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "date": "2026-11-11",
+      "race": "Manchester: a northern start line",
+      "weekend": "20–31 January 2027",
+      "sourceURL": "https://hyrox.com/event/hyrox-manchester/",
+      "highlights": [
+        "Manchester returns to Manchester Central from 20 to 31 January.",
+        "Check your division’s day and published wave before booking travel."
+      ],
+      "take": "Training note: race planning starts with the practical details as well as the workouts.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "date": "2026-11-11",
+      "race": "Keep the taper purposeful",
+      "weekend": "Training editorial",
+      "highlights": [
+        "Keep easy sessions genuinely easy.",
+        "Use the final stretch to arrive rested rather than chase a last-minute fitness test."
+      ],
+      "take": "Editorial draft for review: balance recovery with familiar rhythm; make changes around your own plan, not somebody else’s volume.",
+      "takeStatus": "draft-for-review"
+    }
+  ]
+}

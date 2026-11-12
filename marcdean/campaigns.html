@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en" data-coach-preview="true" data-coach-page="true">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Campaigns | The Desk | MD HYROX</title>
+    <link rel="stylesheet" href="/marcdean/styles.css?v=r1794171542155" />
+    <link rel="stylesheet" href="/marcdean/guide.css?v=r1794171542155" />
+    <link rel="stylesheet" href="/marcdean/showcase.css?v=1794440443436" />
+    <link rel="stylesheet" href="/marcdean/desk.css?v=r1794171542155" />
+    <script src="/marcdean/desk-more.js?v=1794440443436"></script>
+    <script src="/marcdean/coach-view.js?v=1794440443436"></script>
+  </head>
+  <body class="desk-page">
+    <header class="desk-masthead wrap" data-desk-masthead>
+      <a class="desk-brand" data-coach-link href="/marcdean/?audience=coach"
+        ><span class="desk-wordmark">M<span class="o">D</span></span
+        ><span class="desk-signature">by Marc Dean</span></a
+      >
+      <p>The Desk</p>
+    </header>
+    <aside
+      class="coach-view wrap"
+      data-coach-view
+      data-coach-expanded="false"
+      aria-label="The Desk coaching tools"
+    >
+      <div class="coach-view-heading">
+        <strong
+          ><a
+            class="coach-home-link"
+            data-coach-link
+            href="/marcdean/?audience=coach"
+            aria-label="Coach homepage — The Desk"
+            >The Desk</a
+          ></strong
+        ><span>Your coaching tools</span>
+      </div>
+      <button
+        class="coach-view-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="coach-view-actions"
+      >
+        Show tools
+      </button>
+      <nav
+        class="coach-view-actions"
+        id="coach-view-actions"
+        aria-label="Coach tools"
+      >
+        <a
+          data-coach-link
+          href="/marcdean/planner.html?view=coach&amp;audience=coach"
+          >Client sessions</a
+        ><a data-coach-link href="/marcdean/agency-bookings.html?audience=coach"
+          >Events &amp; Partnerships</a
+        ><a data-coach-link href="/marcdean/desk.html?audience=coach">Finance</a
+        ><a data-coach-link href="/marcdean/campaigns.html?audience=coach"
+          >Campaigns</a
+        ><a
+          data-coach-link
+          href="/marcdean/manage-programmes.html?audience=coach"
+          >Programmes</a
+        ><a data-coach-link href="/marcdean/manage-videos.html?audience=coach"
+          >Content</a
+        >
+      </nav>
+      <div class="coach-view-links">
+        <a
+          class="coach-return-link"
+          data-coach-link
+          href="/marcdean/?audience=coach"
+          >Back to Marc&#39;s homepage</a
+        ><a
+          class="coach-public-link"
+          href="/marcdean/?audience=public"
+          target="_blank"
+          rel="noopener"
+          >Preview public site ↗</a
+        >
+      </div>
+    </aside>
+    <main class="wrap video-workspace">
+      <p class="eyebrow">The Desk / Campaigns</p>
+      <h2>Campaigns.</h2>
+      <p class="lead">
+        Promote your existing offers, then share a client’s achievement with
+        their permission and a clear next step.
+      </p>
+      <nav class="desk-content-switch" aria-label="Campaign sections">
+        <a class="btn btn-ghost" href="#next-campaign">01 · Your offers</a
+        ><a class="btn btn-ghost" href="#client-success"
+          >02 · Client success stories</a
+        >
+      </nav>
+      <section
+        class="wrap campaign-panel"
+        id="next-campaign"
+        aria-labelledby="campaign-title"
+      >
+        <p class="eyebrow">Your next promotion</p>
+        <h3 id="campaign-title">Choose the offer. Shape the campaign.</h3>
+        <p>
+          A coaching intake, a programme or a product — prepare, review and
+          approve it from your Desk.
+        </p>
+        <form id="campaign-form">
+          <div class="showcase-grid">
+            <label
+              >What to promote<select id="campaign-offer" required></select
+            ></label>
+            <label
+              >Race or campaign context<input
+                id="campaign-event"
+                required
+                maxlength="120"
+                placeholder="Race weekend or next coaching intake"
+            /></label>
+            <label
+              >Total advertising budget<input
+                id="campaign-budget"
+                type="number"
+                required
+                min="1"
+                max="100000"
+                step="1"
+                placeholder="150"
+            /></label>
+            <label
+              >Start date<input
+                id="campaign-start"
+                type="date"
+                required /></label
+            ><label
+              >End date<input id="campaign-end" type="date" required
+            /></label>
+            <label
+              >Platforms<select id="campaign-platform">
+                <option>Instagram &amp; Facebook</option>
+                <option>Instagram &amp; TikTok</option>
+                <option>Instagram, Facebook &amp; TikTok</option>
+                <option>Instagram, TikTok &amp; YouTube</option>
+                <option>All platforms</option>
+                <option>Instagram</option>
+                <option>Facebook</option>
+                <option>TikTok</option>
+                <option>YouTube</option>
+              </select></label
+            >
+            <label
+              >Audience location<input
+                id="campaign-location"
+                required
+                maxlength="120"
+                value="United Kingdom"
+            /></label>
+            <label
+              >Audience signal<input
+                id="campaign-audience"
+                required
+                maxlength="160"
+                placeholder="HYROX, hybrid racing, functional fitness"
+            /></label>
+            <label
+              >Use the offer photo or upload a new one<input
+                id="campaign-photo"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+            /></label>
+          </div>
+          <label
+            >What should the promotion focus on?<textarea
+              id="campaign-brief"
+              required
+              maxlength="500"
+              placeholder="The offer, who it helps and the next step you want people to take."
+            ></textarea>
+          </label>
+          <p id="campaign-status" role="status"></p>
+          <button class="btn btn-primary" type="submit" id="campaign-build">
+            Prepare campaign draft
+          </button>
+        </form>
+        <div id="campaign-review" hidden>
+          <h3>Your draft. Your say-so.</h3>
+          <dl class="campaign-summary" id="campaign-summary"></dl>
+          <div class="campaign-previews">
+            <figure class="campaign-preview" id="campaign-feed-preview">
+              <p class="eyebrow">Instagram / Facebook feed</p>
+              <img
+                id="campaign-feed-photo"
+                alt="Selected offer photo in the feed draft"
+              />
+              <h4 id="campaign-feed-title"></h4>
+              <p class="preview-copy" id="campaign-feed-copy"></p>
+            </figure>
+            <figure class="campaign-preview" id="campaign-story-preview-card">
+              <p class="eyebrow">Instagram / Facebook story</p>
+              <img
+                id="campaign-story-photo"
+                alt="Selected offer photo in the Story draft"
+              />
+              <p class="preview-copy" id="campaign-story-preview"></p>
+            </figure>
+            <figure
+              class="campaign-preview campaign-platform-preview"
+              id="campaign-tiktok-preview"
+              hidden
+            >
+              <p class="eyebrow">TikTok video concept</p>
+              <img
+                id="campaign-tiktok-photo"
+                alt="Selected offer photo in the TikTok draft"
+              />
+              <h4 id="campaign-tiktok-title"></h4>
+              <p class="preview-copy" id="campaign-tiktok-copy"></p>
+            </figure>
+            <figure
+              class="campaign-preview campaign-platform-preview"
+              id="campaign-youtube-preview"
+              hidden
+            >
+              <p class="eyebrow">YouTube video concept</p>
+              <img
+                id="campaign-youtube-photo"
+                alt="Selected offer photo in the YouTube draft"
+              />
+              <h4 id="campaign-youtube-title"></h4>
+              <p class="preview-copy" id="campaign-youtube-copy"></p>
+            </figure>
+          </div>
+          <label>Headline<input id="campaign-headline" maxlength="100" /></label
+          ><label
+            >Post caption<textarea
+              id="campaign-caption"
+              maxlength="1000"
+            ></textarea></label
+          ><label
+            >Story text<textarea
+              id="campaign-story-copy"
+              maxlength="400"
+            ></textarea>
+          </label>
+          <p>
+            <a
+              class="btn btn-ghost"
+              id="campaign-destination"
+              target="_blank"
+              rel="noopener"
+              >Check the exact destination</a
+            >
+          </p>
+          <label class="campaign-check"
+            ><input id="campaign-approved" type="checkbox" />I approve the
+            creative, destination, audience, dates and spending cap for this
+            preview.</label
+          ><button
+            class="btn btn-primary"
+            id="campaign-launch"
+            type="button"
+            disabled
+          >
+            Simulate launch
+          </button>
+          <p id="campaign-outcome" role="status" hidden>
+            Campaign launch preview complete. No ads published. No money spent.
+          </p>
+        </div>
+        <section
+          class="campaign-responses"
+          id="campaign-responses"
+          hidden
+          aria-live="polite"
+        >
+          <p class="eyebrow">Campaign responses</p>
+          <h4>Enquiries this promotion created.</h4>
+          <div id="campaign-response-list"></div>
+          <p>
+            <a class="btn btn-ghost" href="/marcdean/leads.html?audience=coach"
+              >Open Lead Desk</a
+            >
+          </p>
+        </section>
+        <section
+          class="campaign-history"
+          id="campaign-history"
+          hidden
+          aria-live="polite"
+        >
+          <p class="eyebrow">Campaign history</p>
+          <h4>What each promotion actually brought back.</h4>
+          <div id="campaign-history-list"></div>
+        </section>
+      </section>
+      <section
+        class="success-panel"
+        id="client-success"
+        aria-labelledby="success-title"
+      >
+        <p class="eyebrow">02 · Client success stories</p>
+        <h3 id="success-title">Show what the work can lead to.</h3>
+        <p>
+          A client’s training milestone. A stronger HYROX finish after a focused
+          block. Turn a real achievement into a thoughtful feed post and Story,
+          with their permission.
+        </p>
+        <form id="success-form">
+          <div class="success-fields">
+            <label
+              >Coaching offer<select id="success-offer">
+                <option value="">Choose a coaching offer</option>
+              </select></label
+            ><label
+              >Story focus<select id="success-focus">
+                <option>Strength &amp; confidence</option>
+                <option>HYROX progress</option>
+                <option>Weight-loss milestone</option>
+                <option>Another coaching milestone</option>
+              </select></label
+            >
+            <label
+              >Client-approved display name<input
+                id="success-name"
+                required
+                maxlength="80"
+                placeholder="First name, initials or anonymous client" /></label
+            ><label
+              >Training timeframe<input
+                id="success-period"
+                required
+                maxlength="100"
+                placeholder="e.g. three months of coaching" /></label
+            ><label class="success-wide"
+              >What changed? Use the actual result<textarea
+                id="success-result"
+                required
+                maxlength="500"
+                placeholder="Describe the client’s verified achievement in their own context."
+              ></textarea></label
+            ><label class="success-wide"
+              >Client-approved quote (optional)<textarea
+                id="success-quote"
+                maxlength="500"
+                placeholder="Only include words the client has approved for sharing."
+              ></textarea>
+            </label>
+            <label
+              >Client-approved starting photo (optional)<input
+                id="success-photo-before"
+                type="file"
+                accept="image/jpeg,image/png,image/webp" /></label
+            ><label
+              >Client-approved latest photo (optional)<input
+                id="success-photo-after"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+            /></label>
+            <label
+              >Where will you share it?<select id="success-channel">
+                <option>Instagram feed &amp; Story</option>
+                <option>Facebook</option>
+                <option>Instagram &amp; Facebook</option>
+              </select></label
+            ><label
+              >Planned sharing date<input
+                id="success-date"
+                type="date"
+                required
+            /></label>
+          </div>
+          <p class="success-permission">
+            Choose imagery that celebrates the client respectfully. Photos are
+            optional; a clear story can stand on its own. Use walkthrough
+            details while reviewing the workflow.
+          </p>
+          <button class="btn btn-primary" type="submit">
+            Prepare success-story draft
+          </button>
+          <p id="success-status" role="status"></p>
+        </form>
+        <div id="success-review" hidden>
+          <h4>Your draft. Their achievement.</h4>
+          <p id="success-summary"></p>
+          <div class="success-fields">
+            <label
+              >Headline<input id="success-headline" maxlength="100" /></label
+            ><label
+              >Story text<textarea
+                id="success-story"
+                maxlength="1500"
+              ></textarea></label
+            ><label class="success-wide"
+              >Feed caption<textarea
+                id="success-caption"
+                maxlength="2500"
+              ></textarea>
+            </label>
+          </div>
+          <div class="success-previews">
+            <figure>
+              <p class="eyebrow">Feed draft</p>
+              <div id="success-images"></div>
+              <h4 id="success-feed-title"></h4>
+              <p class="success-copy" id="success-feed-copy"></p>
+            </figure>
+            <figure>
+              <p class="eyebrow">Story draft</p>
+              <p class="success-copy" id="success-story-copy"></p>
+              <a
+                id="success-destination"
+                class="btn btn-ghost"
+                target="_blank"
+                rel="noopener"
+                >Check the enquiry form ↗</a
+              >
+            </figure>
+          </div>
+          <label class="success-check"
+            ><input id="success-consent" type="checkbox" />The client has
+            explicitly approved these results, their display name, quote and any
+            photos for the selected channels.</label
+          ><label class="success-check"
+            ><input id="success-verified" type="checkbox" />I have checked the
+            result and timeframe. The wording makes no guaranteed-outcome
+            claim.</label
+          ><label class="success-check"
+            ><input id="success-approved" type="checkbox" />I approve this exact
+            copy, imagery, destination and planned sharing date.</label
+          >
+          <div class="actions">
+            <button
+              class="btn btn-ghost"
+              id="success-copy"
+              type="button"
+              disabled
+            >
+              Copy approved caption</button
+            ><button
+              class="btn btn-primary"
+              id="success-schedule"
+              type="button"
+              disabled
+            >
+              Preview sharing plan
+            </button>
+          </div>
+          <div
+            class="success-outcome"
+            id="success-outcome"
+            role="status"
+            hidden
+          ></div>
+        </div>
+        <details class="desk-preview-note">
+          <summary>Sharing and permissions</summary>
+          <p>
+            This prepares an organic social campaign in your browser. Nothing is
+            posted or scheduled externally. Use client-approved content only. A
+            paid-ad version needs a separate check of the platform’s rules,
+            especially for weight-loss claims and before/after imagery.
+          </p>
+        </details>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap">
+        <div>© <span id="year"></span> Marc Dean</div>
+        <a data-coach-link href="/marcdean/?audience=coach"
+          >Back to coach homepage</a
+        >
+      </div>
+      <p class="management-contact">
+        <a href="/marcdean/work-with-marc.html?audience=public"
+          >Work with Marc · Brand and appearance enquiries</a
+        >
+      </p>
+      <p class="site-credit" style="text-align: center; margin: 2rem 0 0">
+        <a
+          rel="noopener"
+          style="
+            cursor: default;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45em;
+            padding: 0.45em 0.9em;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+          "
+          >Built with
+          <b style="color: #ff3b3b; font-weight: 700">Station 9</b></a
+        >
+      </p>
+    </footer>
+    <script src="/marcdean/app.js?v=r1794171542155" defer></script>
+    <script src="/marcdean/campaign.js?v=r1794171542155" defer></script>
+    <script src="/marcdean/client-success.js?v=r1794171542155" defer></script>
+  </body>
+</html>

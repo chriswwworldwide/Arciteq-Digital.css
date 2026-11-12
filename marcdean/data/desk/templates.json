@@ -1,0 +1,13 @@
+{
+  "earlyTemplate": "Hi {name}, just a heads-up that you have {remaining} left on your current plan. If you want to keep the momentum going, renew by {due} and we’ll keep the next block ready.",
+  "finalTemplate": "Hi {name}, brilliant work today — that was the last one in this block. If you want to keep going, renew today and we’ll roll straight into the next step.",
+  "followupTemplate": "Hi {name}, following up in case yesterday got busy — your next block/month is ready when you are. Renew today and we’ll keep the plan moving.",
+  "floorTemplate": "Hi {name}, your next gym-floor session is due around {floorDue}. Book your slot when you’re ready and we’ll keep the online plan moving around it.",
+  "defaultLeadReply": "Thanks for reaching out through the site. Tell me a little about where you are now, what you’re aiming for and what feels hardest at the moment — then I can point you to the right route.",
+  "prepClub": {
+    "hotReply": "Thanks for joining Prep Club — based on what you’ve been looking at, it sounds like the next useful step is choosing the right programme rather than collecting more random tips. Tell me your race date and current weekly training, and I’ll point you to the route that fits best.",
+    "warmReply": "Thanks for joining Prep Club — start with the station basics and the predictor, then tell me what feels hardest. Once you know what you’re aiming at, I can suggest the right programme without making it a leap.",
+    "hotNudge": "Light nudge: {name} is warm enough for a programme suggestion. Mention MD HYROX ONLINE or the route matching {goal}, not a hard sell.",
+    "warmNudge": "Light nudge later: keep {name} in the useful-tools loop and only suggest a programme after one more buying signal."
+  }
+}

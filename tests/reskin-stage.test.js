@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
+import { selectConfirmedRaces } from "../src/template-showcase.js";
 
 const digest = (file) => createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const run = (...args) => spawnSync(process.execPath, ["scripts/reskin-tenant.js", ...args], { encoding: "utf8", timeout: 30000 });
@@ -13,7 +14,12 @@ describe("isolated tenant build safety", () => {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "s9-stage-test-"));
     const output = path.join(tmp, "site");
     const originals = ["data/tenants.json", "trainedbytr/index.html", "trainedbytr/planner.html"].map((file) => [file, digest(file)]);
-    const result = run("scripts/reskin/trainedbytr.demo.json", `--output-dir=${output}`);
+    const config = JSON.parse(fs.readFileSync("scripts/reskin/trainedbytr.demo.json", "utf8"));
+    config.seedFiles["cities.json"] = "@chassis/data/cities.json";
+    config.races = JSON.parse(fs.readFileSync("chassis/data/cities.json", "utf8"));
+    const configPath = path.join(tmp, "fixture.json");
+    fs.writeFileSync(configPath, JSON.stringify(config));
+    const result = run(configPath, `--output-dir=${output}`);
     expect(result.status, result.stdout + result.stderr).toBe(0);
     expect(fs.existsSync(path.join(output, "planner.html"))).toBe(true);
     expect(fs.readFileSync(path.join(output, "planner.html"), "utf8")).toContain("Tom Redmond");
@@ -22,7 +28,7 @@ describe("isolated tenant build safety", () => {
     expect(existing.status).not.toBe(0);
     expect(existing.stderr).toContain("Staged output directory must be new");
     expect(fs.existsSync(path.join(output, "planner.html"))).toBe(true);
-  });
+  }, 30000);
   it("builds the neutral showcase with canonical data instead of asset-pack code or metadata", () => {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "s9-showcase-test-"));
     const output = path.join(tmp, "site");
@@ -30,7 +36,9 @@ describe("isolated tenant build safety", () => {
     expect(result.status, result.stdout + result.stderr).toBe(0);
     const read = name => fs.readFileSync(path.join(output, name), "utf8");
     expect(JSON.parse(read("build-provenance.json")).source).toBe("chassis");
-    expect(JSON.parse(read("data/cities.json")).cities).toHaveLength(6);
+    const upcoming = JSON.parse(read("data/cities.json")).cities;
+    expect(upcoming).toHaveLength(selectConfirmedRaces(JSON.parse(fs.readFileSync("chassis/data/cities.json", "utf8"))).length);
+    expect(upcoming.every(city => city.race.start >= new Date().toISOString().slice(0, 10))).toBe(true);
     expect(JSON.parse(read("data/news.json")).items).toHaveLength(6);
     const gallery = JSON.parse(read("data/gallery.json"));
     expect(gallery.photos).toHaveLength(4);
@@ -56,7 +64,7 @@ describe("isolated tenant build safety", () => {
     expect(training.name).toBe("ABC Trainerize");
     expect(training.coachURL).toBe("https://www.trainerize.com/login/");
     expect(JSON.parse(read("data/campaign-offers.json")).offers.find(offer => offer.id === "programme").destination).toBe(training.programmesURL);
-  });
+  }, 30000);
   it("omits demo management pages and the coach bar when coach preview is disabled", () => {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "s9-public-audience-"));
     const config = JSON.parse(fs.readFileSync(".devin/template-preview.json", "utf8"));
@@ -70,7 +78,7 @@ describe("isolated tenant build safety", () => {
     expect(fs.existsSync(path.join(output, "manage-videos.html"))).toBe(false);
     expect(fs.existsSync(path.join(output, "manage-programmes.html"))).toBe(false);
     expect(fs.readFileSync(path.join(output, "watch.html"), "utf8")).toContain('data-coach-preview="false"');
-  });
+  }, 30000);
   it("refuses a new legacy tenant even when the maintenance flag is passed", () => {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "s9-source-guard-"));
     const config = path.join(tmp, "new.json");

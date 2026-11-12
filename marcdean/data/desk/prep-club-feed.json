@@ -1,0 +1,75 @@
+[
+  {
+    "type": "Start here",
+    "title": "The stations do not need to be scary",
+    "copy": "A plain-English pass through the eight stations, what matters and what beginners can ignore for now.",
+    "href": "/marcdean/stations-prep/",
+    "cta": "Open station prep",
+    "img": "/marcdean/images/batch-009-04-sandbag-dean.jpg",
+    "signal": "Opened station prep"
+  },
+  {
+    "type": "Free tool",
+    "title": "What time should you actually target?",
+    "copy": "Use the race predictor before you start guessing what a good HYROX finish looks like for you.",
+    "href": "/marcdean/predictor.html",
+    "cta": "Try the predictor",
+    "img": "/marcdean/images/batch-001-05-finish-5553.jpg",
+    "signal": "Used race predictor"
+  },
+  {
+    "type": "Community",
+    "title": "Need a partner, not a lecture?",
+    "copy": "Find a race-mate, crew or doubles partner before you convince yourself you need to do it alone.",
+    "href": "/marcdean/find-a-partner.html",
+    "cta": "Find a race-mate",
+    "img": "/marcdean/images/batch-003-01-pair-running.jpg",
+    "signal": "Looked for a race-mate"
+  },
+  {
+    "type": "Confidence",
+    "title": "Farmers carry with a plan",
+    "copy": "The station everyone worries about, broken into reps, rhythm and what to practise first.",
+    "href": "/marcdean/stations-prep/#farmers-carry",
+    "cta": "Practise farmers carry",
+    "img": "/marcdean/images/batch-010-03-farmers-carry-detail.jpg",
+    "signal": "Checked wall-ball guidance"
+  },
+  {
+    "type": "Route",
+    "title": "When a programme starts making sense",
+    "copy": "A coached programme is the softer route into structured prep — enough guidance to feel held, not thrown in.",
+    "href": "/marcdean/coaching.html",
+    "cta": "See coaching routes",
+    "img": "/marcdean/images/batch-012-03-smiling-gym-portrait.jpg",
+    "signal": "Viewed coaching routes",
+    "hot": true
+  },
+  {
+    "type": "Stories",
+    "title": "Borrow confidence from other races",
+    "copy": "Race stories, coach notes and useful lessons from athletes who were beginners not long ago.",
+    "href": "/marcdean/news.html",
+    "cta": "Read the brief",
+    "img": "/marcdean/images/batch-003-04-karlsruhe-first.jpg",
+    "signal": "Read race stories"
+  },
+  {
+    "type": "Race week",
+    "title": "Do not guess the last fortnight",
+    "copy": "Taper guidance for the final stretch — what to keep, what to stop and what to stop panicking about.",
+    "href": "/marcdean/taper-zone/",
+    "cta": "Open taper zone",
+    "img": "/marcdean/images/batch-012-01-beach-portrait.jpg",
+    "signal": "Checked taper guidance"
+  },
+  {
+    "type": "Travel",
+    "title": "Turn the race into a weekend you can handle",
+    "copy": "Calendar, travel and crew planning so the race feels exciting rather than administratively feral.",
+    "href": "/marcdean/events.html",
+    "cta": "Plan the race",
+    "img": "/marcdean/images/batch-008-01-start-wide.jpg",
+    "signal": "Checked race plans"
+  }
+]

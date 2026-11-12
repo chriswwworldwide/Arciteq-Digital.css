@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en" data-coach-preview="true" data-coach-page="true">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Events &amp; Partnerships | Marc Dean</title>
+    <link rel="stylesheet" href="/marcdean/styles.css?v=1794440443436" />
+    <link
+      rel="stylesheet"
+      href="/marcdean/agency-bookings.css?v=1794440443436"
+    />
+    <link rel="stylesheet" href="/marcdean/showcase.css" />
+    <script src="/marcdean/coach-view.js"></script>
+  </head>
+  <body class="agency-page">
+    <header class="desk-masthead wrap" data-desk-masthead>
+      <a class="desk-brand" data-coach-link href="/marcdean/?audience=coach"
+        ><span class="desk-wordmark">M<span class="o">D</span></span
+        ><span class="desk-signature">by Marc Dean</span></a
+      >
+      <p>The Desk</p>
+    </header>
+    <aside
+      class="coach-view wrap"
+      data-coach-view
+      data-coach-expanded="false"
+      aria-label="The Desk coaching tools"
+    >
+      <div class="coach-view-heading">
+        <strong
+          ><a
+            class="coach-home-link"
+            data-coach-link
+            href="/marcdean/?audience=coach"
+            aria-label="Coach homepage — The Desk"
+            >The Desk</a
+          ></strong
+        ><span>Your coaching tools</span>
+      </div>
+      <button
+        class="coach-view-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="coach-view-actions"
+      >
+        Show tools
+      </button>
+      <nav
+        class="coach-view-actions"
+        id="coach-view-actions"
+        aria-label="Coach tools"
+      >
+        <a
+          data-coach-link
+          href="/marcdean/planner.html?view=coach&amp;audience=coach"
+          >Client sessions</a
+        ><a data-coach-link href="/marcdean/agency-bookings.html?audience=coach"
+          >Events &amp; Partnerships</a
+        ><a data-coach-link href="/marcdean/desk.html?audience=coach">Finance</a
+        ><a data-coach-link href="/marcdean/campaigns.html?audience=coach"
+          >Campaigns</a
+        ><a
+          data-coach-link
+          href="/marcdean/manage-programmes.html?audience=coach"
+          >Programmes</a
+        ><a data-coach-link href="/marcdean/manage-videos.html?audience=coach"
+          >Content</a
+        >
+      </nav>
+      <div class="coach-view-links">
+        <a
+          class="coach-return-link"
+          data-coach-link
+          href="/marcdean/?audience=coach"
+          >Back to Marc&#39;s homepage</a
+        ><a
+          class="coach-public-link"
+          href="/marcdean/?audience=public"
+          target="_blank"
+          rel="noopener"
+          >Preview public site ↗</a
+        >
+      </div>
+    </aside>
+    <main class="wrap agency-wrap">
+      <section class="agency-heading">
+        <div>
+          <p class="eyebrow">The Desk / Events &amp; Partnerships</p>
+          <h1>Good opportunities.<br /><em>Clearly handled.</em></h1>
+          <p>
+            Joe handles the commercial terms. Marc approves the time and the
+            brief. Keep the details, decisions and next step together.
+          </p>
+        </div>
+        <a
+          class="btn btn-ghost"
+          href="/marcdean/work-with-marc.html?audience=public"
+          target="_blank"
+          rel="noopener"
+          >Open public enquiry form ↗</a
+        >
+      </section>
+      <p class="agency-notice">
+        Local walkthrough with example opportunities and fees. Saved only in
+        this browser—not a shared live calendar or secure agency account. The
+        role switch shows responsibilities, not access control. Nothing is
+        emailed, contracted, invoiced or paid.
+      </p>
+      <div class="agency-controls">
+        <div
+          class="agency-role"
+          role="group"
+          aria-label="Preview responsibility"
+        >
+          <button class="btn btn-ghost" data-actor="Joe" aria-pressed="true">
+            View as Joe · Agent</button
+          ><button class="btn btn-ghost" data-actor="Marc" aria-pressed="false">
+            View as Marc · Athlete
+          </button>
+        </div>
+        <a href="/marcdean/planner.html?view=coach&amp;audience=coach"
+          >Client coaching sessions stay separate →</a
+        >
+      </div>
+      <div
+        class="agency-metrics"
+        id="agency-metrics"
+        aria-label="Booking pipeline summary"
+      ></div>
+      <div class="agency-grid">
+        <section
+          class="agency-panel agency-pipeline"
+          aria-label="Commercial booking pipeline"
+        >
+          <div class="agency-section-head">
+            <h2>Opportunities</h2>
+            <button class="btn btn-primary" id="new-booking">
+              Add enquiry
+            </button>
+          </div>
+          <div class="agency-filters">
+            <label
+              >Owner<select id="filter-owner">
+                <option value="">Everyone</option>
+                <option>Joe</option>
+                <option>Marc</option>
+              </select></label
+            ><label
+              >Stage<select id="filter-stage">
+                <option value="">All stages</option>
+                <option>Enquiry</option>
+                <option>Hold</option>
+                <option>Confirmed</option>
+                <option>Delivered</option>
+                <option>Declined</option>
+              </select></label
+            >
+          </div>
+          <div id="agency-list"></div>
+        </section>
+        <section
+          class="agency-panel agency-detail"
+          aria-labelledby="booking-title"
+        >
+          <p class="eyebrow" id="booking-stage">Enquiry</p>
+          <h2 id="booking-title">Pick an opportunity.</h2>
+          <p id="booking-next" class="agency-next"></p>
+          <div
+            id="booking-conflicts"
+            class="agency-warning"
+            role="status"
+            hidden
+          ></div>
+          <form id="agency-brief">
+            <div class="agency-fields">
+              <label
+                >Booking title<input
+                  name="title"
+                  required
+                  maxlength="100" /></label
+              ><label
+                >Organisation<input
+                  name="organisation"
+                  required
+                  maxlength="100" /></label
+              ><label
+                >Opportunity type<select name="type">
+                  <option>Appearance</option>
+                  <option>Sponsor content</option>
+                  <option>Event</option>
+                  <option>Partnership</option>
+                </select></label
+              ><label
+                >Responsible owner<select name="owner">
+                  <option>Joe</option>
+                  <option>Marc</option>
+                </select></label
+              ><label
+                >Date · UK local time<input name="date" type="date" required
+              /></label>
+              <div class="agency-times">
+                <label>Start<input name="start" type="time" required /></label
+                ><label>End<input name="end" type="time" required /></label>
+              </div>
+              <label
+                >Venue / location<input
+                  name="venue"
+                  required
+                  maxlength="150" /></label
+              ><label
+                >Indicative budget / fee · GBP<input
+                  name="fee"
+                  type="number"
+                  min="0"
+                  max="1000000"
+                  step="0.01"
+                  required
+                /><small
+                  >Indicative until Joe approves the terms. No VAT or commission
+                  assumed.</small
+                ></label
+              ><label class="agency-wide"
+                >Contact · walkthrough only<input
+                  name="contact"
+                  maxlength="160"
+                  placeholder="Name / example.test email" /></label
+              ><label class="agency-wide"
+                >Deliverables and event brief<textarea
+                  name="deliverables"
+                  required
+                  maxlength="1500"
+                  rows="3"
+                ></textarea></label
+              ><label class="agency-wide"
+                >Usage rights, exclusivity and commercial conditions<textarea
+                  name="rights"
+                  maxlength="1000"
+                  rows="3"
+                ></textarea>
+              </label>
+            </div>
+            <p class="agency-fine">
+              Changing the brief, fee, date, owner or rights resets both
+              approvals. A changed confirmed booking returns to Hold.
+            </p>
+            <button class="btn btn-primary" type="submit">Save brief</button>
+          </form>
+          <div class="agency-approvals">
+            <h3>Two people. One agreed booking.</h3>
+            <div id="approval-status"></div>
+            <div class="agency-actions">
+              <button class="btn btn-ghost" id="approve-booking">
+                Approve my part</button
+              ><button class="btn btn-ghost" id="hold-booking">
+                Put on hold</button
+              ><button class="btn btn-primary" id="confirm-booking">
+                Confirm booking · Joe</button
+              ><button class="btn btn-ghost" id="decline-booking">
+                Decline opportunity
+              </button>
+            </div>
+            <p class="agency-fine">
+              Save changes before approval. Marc approves availability and the
+              athlete brief; Joe approves fee, deliverables and rights. Both are
+              required, with no date conflicts.
+            </p>
+          </div>
+          <form id="agency-progress">
+            <h3>Delivery and fee tracking</h3>
+            <label class="agency-check"
+              ><input id="booking-delivered" type="checkbox" />All agreed
+              deliverables completed</label
+            ><label
+              >Invoice status · manual record<select id="booking-invoice">
+                <option>Not raised</option>
+                <option>Requested</option>
+                <option>Paid</option>
+              </select></label
+            >
+            <div class="agency-actions">
+              <button class="btn btn-ghost" type="submit">
+                Save delivery / invoice status</button
+              ><button
+                class="btn btn-ghost"
+                type="button"
+                id="export-engagement"
+              >
+                Download calendar file
+              </button>
+            </div>
+            <p class="agency-fine">
+              Calendar export is a one-time .ics file, not two-way calendar
+              sync. Invoice status does not send an invoice or take payment.
+            </p>
+          </form>
+          <details class="agency-history">
+            <summary>Decision history</summary>
+            <ol id="booking-history"></ol>
+          </details>
+        </section>
+      </div>
+      <details class="agency-panel agency-protected">
+        <summary>
+          Protected athlete time · training, travel and race commitments
+        </summary>
+        <p>
+          All times are Europe/London. Marc can add protected time in this
+          walkthrough. Conflicting dates cannot be confirmed.
+        </p>
+        <ul id="protected-list"></ul>
+        <form id="protected-form" class="agency-fields">
+          <label
+            >Commitment<input
+              name="title"
+              required
+              maxlength="100"
+              placeholder="Training / travel / race" /></label
+          ><label>Date<input name="date" type="date" required /></label
+          ><label>Start<input name="start" type="time" required /></label
+          ><label>End<input name="end" type="time" required /></label
+          ><button class="btn btn-ghost" type="submit">
+            Add protected time · Marc
+          </button>
+        </form>
+      </details>
+      <p
+        id="agency-message"
+        class="agency-message"
+        role="status"
+        tabindex="-1"
+        hidden
+      ></p>
+    </main>
+    <footer class="wrap">
+      <a href="/marcdean/?audience=coach">Back to The Desk</a>
+      <p>Preview workflow · example records only</p>
+      <p class="management-contact">
+        <a href="/marcdean/work-with-marc.html?audience=public"
+          >Work with Marc · Brand and appearance enquiries</a
+        >
+      </p>
+    </footer>
+    <script
+      type="module"
+      src="/marcdean/agency-bookings.js?v=1794440443436"
+    ></script>
+  </body>
+</html>

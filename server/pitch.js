@@ -40,14 +40,18 @@ const EMAIL_EVENTS = new Set([
   "cta_demo",
   "cta_reply",
 ]);
-const SELF_IPS = new Set(
-  (process.env.PITCH_SELF_IPS || "152.233.29.1,152.233.29.2,152.233.29.4,152.233.29.5")
-    .split(",")
-    .map((s) => s.trim())
-    .filter(Boolean),
-);
+const SELF_IPS = (
+  process.env.PITCH_SELF_IPS || "152.233.29.1,152.233.29.2,152.233.29.4,152.233.29.5"
+)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+// Entries ending ".*" match the whole prefix — home IPs rotate inside an
+// ISP range, so "195.149.*" stays valid across DHCP churn.
+const isSelfIp = (ip) =>
+  SELF_IPS.some((s) => (s.endsWith(".*") ? ip.startsWith(s.slice(0, -1)) : s === ip));
 const isSelfVisitor = (ip, ua) =>
-  SELF_IPS.has(ip) || /selftest|probe-check/i.test(ua);
+  isSelfIp(ip) || /selftest|probe-check/i.test(ua);
 
 // Automation/tooling UAs get no log row and no alert — verification curls,
 // recording probes and uptime checks otherwise look like real prospect

@@ -8,7 +8,7 @@ vi.mock("../db.js", () => ({ dbQuery: vi.fn() }));
 vi.mock("../server/email.js", () => ({ sendAlertEmail: vi.fn() }));
 let server;
 let base;
-const event = { slug: "trainedbytr", event: "play", sid: "demo-session-123" };
+const event = { slug: "trainedbytr", event: "view", sid: "demo-session-123" };
 const post = (body, headers = {}) =>
   fetch(base + "/api/pitch-event", {
     method: "POST",

@@ -8,10 +8,17 @@
   "siteFiles": 214,
   "video": {
     "file": "video.mp4",
-    "sha256": "141249dd118264715b6092219e5690cef7a5105c40f70dbcca1f08b94b5a3701",
-    "bytes": 56535576,
-    "duration": 158.2,
-    "revision": 3
+    "sha256": "f531638313c43d5148f60f194ab3db79d86636c007ce202bf449c13d389cdefb",
+    "bytes": 56369944,
+    "duration": 163.64,
+    "revision": 4
   },
-  "outreachStatus": "Not confirmed sent"
+  "outreachStatus": "Not confirmed sent",
+  "videoUpdatedAt": "2026-11-17T13:46:30.668Z",
+  "offer": {
+    "setupGBP": 795,
+    "monthlyGBP": 145,
+    "areaExclusivityUntil": "2026-11-27",
+    "territory": "your area; not a specified city-wide territory"
+  }
 }

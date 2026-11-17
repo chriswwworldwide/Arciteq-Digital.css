@@ -1,0 +1,21 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "1 to 1 HYROX Programming",
+      "goal": "Offer enquiries",
+      "destination": "https://app.fitr.training/p/237907",
+      "image": "/berelentless/images/coaching-hero.jpg",
+      "headline": "Personal HYROX programming with the BeRelentless coaching team, delivered through FITR.",
+      "actionLabel": "Explore 1-to-1 coaching"
+    },
+    {
+      "id": "shop",
+      "name": "Shop collection",
+      "goal": "Shop visits",
+      "destination": "https://app.fitr.training/t/508793/",
+      "image": "/berelentless/images/coaching-hero.jpg",
+      "headline": "Explore the collection."
+    }
+  ]
+}

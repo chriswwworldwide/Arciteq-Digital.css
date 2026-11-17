@@ -1,0 +1,16 @@
+{
+  "name": "FITR",
+  "coachURL": "https://app.fitr.training/",
+  "clientURL": "https://app.fitr.training/",
+  "programmesURL": "https://app.fitr.training/p/237907",
+  "applicationURL": "https://app.fitr.training/t/508793/",
+  "directCoachLink": true,
+  "offerTitle": "1 to 1 HYROX Programming",
+  "offerDescription": "Personal HYROX programming with the BeRelentless coaching team, delivered through FITR.",
+  "note": "The public BeRelentless programme and official FITR access are verified. Workouts, client data, messaging and programme delivery stay in FITR; this local website preview has no provider sync or authenticated private account connection.",
+  "detailURLs": {
+    "clientURL": "access-training.html",
+    "programmesURL": "programming.html",
+    "applicationURL": "coaching.html"
+  }
+}

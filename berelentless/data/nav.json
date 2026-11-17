@@ -1,0 +1,30 @@
+{
+  "Coaching": [
+    {
+      "label": "HYROX Prep Club",
+      "href": "/berelentless/prep-club.html"
+    }
+  ],
+  "Community": [
+    {
+      "label": "Race crew meetups",
+      "href": "/berelentless/race-crew.html"
+    },
+    {
+      "label": "News & coach takes",
+      "href": "/berelentless/news.html"
+    }
+  ],
+  "Race Tools": [
+    {
+      "label": "Find a race-mate",
+      "href": "/berelentless/find-a-partner.html",
+      "position": 5
+    },
+    {
+      "label": "Race day",
+      "href": "/berelentless/race-day.html",
+      "position": 8
+    }
+  ]
+}

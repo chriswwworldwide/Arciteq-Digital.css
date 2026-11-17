@@ -1,0 +1,27 @@
+{
+  "note": "Source-qualified brand recaps and editorial training notes, not official result verification or invented coach quotations.",
+  "items": [
+    {
+      "date": "2026-11-11",
+      "race": "From the team's race recaps",
+      "weekend": "Recap reviewed 11 November 2026; not the event date",
+      "highlights": [
+        "BeRelentless has shared athlete performances from Birmingham, Hamburg, Nice, Abu Dhabi and other race weekends.",
+        "The published recaps include solo and doubles efforts, first races and personal-best claims."
+      ],
+      "take": "Training note: choose one useful priority from a race debrief, then build it into the next training block.",
+      "takeStatus": "draft-for-review"
+    },
+    {
+      "date": "2025-11-30",
+      "race": "The BeRelentless beginning",
+      "weekend": "30 November 2025 · published brand launch",
+      "highlights": [
+        "The launch post named Sean Noble and Mick Daly as BeRelentless founders.",
+        "The shared coaching approach put personal programming and training progression at the centre."
+      ],
+      "take": "Training note: a programme should connect the work you can do consistently with the race you want to prepare for.",
+      "takeStatus": "draft-for-review"
+    }
+  ]
+}

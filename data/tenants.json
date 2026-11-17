@@ -6711,6 +6711,63 @@
         }
       ],
       "demo": true
+    },
+    {
+      "tenant_id": "berelentless",
+      "vertical": "coaching",
+      "currency": "eur",
+      "language": "en",
+      "hostnames": [
+        "berelentless.localhost",
+        "demo-berelentless.localhost"
+      ],
+      "canonicalHost": "berelentless.localhost",
+      "catalog": {
+        "nicheCategorySlugs": [],
+        "heroProductIds": [],
+        "productTypeSlugs": []
+      },
+      "seo": {
+        "brandName": "BeRelentless · Sean & Mick",
+        "tagline": "Personal HYROX coaching with Sean Noble and Mick Daly.",
+        "supportEmail": "",
+        "about": "HYROX coaching, race tools and community from BeRelentless.",
+        "meta": {
+          "homeDescription": "Explore BeRelentless coaching, race tools and your next training block with Sean and Mick."
+        },
+        "sameAs": [],
+        "staticPages": [
+          {
+            "path": "/berelentless/",
+            "priority": "1.0"
+          }
+        ]
+      },
+      "submissions": {
+        "kinds": [
+          "race_splits",
+          "wall_photo",
+          "date_alert",
+          "partner_search",
+          "race_result",
+          "predictor"
+        ]
+      },
+      "features": {
+        "predictor": true,
+        "chatbot": false
+      },
+      "analytics": {
+        "pageviews": true
+      },
+      "offers": {},
+      "channels": [
+        {
+          "label": "BeRelentless on FITR",
+          "url": "https://app.fitr.training/t/508793/"
+        }
+      ],
+      "demo": true
     }
   ]
 }

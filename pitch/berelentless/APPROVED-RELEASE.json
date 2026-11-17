@@ -1,0 +1,17 @@
+{
+  "slug": "berelentless",
+  "status": "APPROVED_FOR_PUBLICATION",
+  "approvedAt": "2026-11-17T12:49:52.755Z",
+  "siteURL": "https://www.station9studio.co.uk/berelentless/",
+  "pitchURL": "https://www.station9studio.co.uk/pitch/berelentless/",
+  "siteManifestSha256": "2ff4a99aad225a26554412a82d820c331ab1ceee42665ad678c92b8ae258fc68",
+  "siteFiles": 214,
+  "video": {
+    "file": "video.mp4",
+    "sha256": "141249dd118264715b6092219e5690cef7a5105c40f70dbcca1f08b94b5a3701",
+    "bytes": 56535576,
+    "duration": 158.2,
+    "revision": 3
+  },
+  "outreachStatus": "Not confirmed sent"
+}

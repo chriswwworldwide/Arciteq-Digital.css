@@ -1,0 +1,93 @@
+{
+  "updated": "2026-11-11",
+  "note": "Times transcribed from Chris-supplied BeRelentless recap screenshots, not independently verified official rankings. Dates omitted where event year/day not established. Exact displayed durations only; no seconds invented for rounded minute claims. Participant/publication approval required before launch.",
+  "divisions": {
+    "women": {
+      "label": "Women · team race recaps",
+      "results": [
+        {
+          "athlete": "Ashton Murphy",
+          "time": "1:13:14",
+          "category": "Pro Female · first Pro race, as reported",
+          "event": "HYROX Birmingham"
+        }
+      ]
+    },
+    "men": {
+      "label": "Men · team race recaps",
+      "results": [
+        {
+          "athlete": "Danny Loftus",
+          "time": "1:05:28",
+          "category": "Pro · first Pro race, as reported",
+          "event": "HYROX Hamburg"
+        },
+        {
+          "athlete": "Dean O'Halloran",
+          "time": "1:01:26",
+          "category": "Open · as reported",
+          "event": "HYROX Hamburg"
+        },
+        {
+          "athlete": "Hugo Torregrosa",
+          "time": "1:00:53",
+          "category": "Pro · as reported",
+          "event": "HYROX Nice"
+        },
+        {
+          "athlete": "Daire Plunkett",
+          "time": "1:00:07",
+          "category": "Open · as reported",
+          "event": "HYROX Birmingham"
+        },
+        {
+          "athlete": "Nick O'Donovan",
+          "time": "58:12",
+          "category": "Open · first race, as reported",
+          "event": "HYROX Birmingham"
+        }
+      ]
+    },
+    "doubles": {
+      "label": "Doubles · team race recaps",
+      "results": [
+        {
+          "athlete": "Cathy McCarron & partner",
+          "time": "1:06:25",
+          "category": "Pro Doubles · as reported",
+          "event": "HYROX Abu Dhabi"
+        },
+        {
+          "athlete": "Dean O'Halloran & partner",
+          "time": "56:54",
+          "category": "Doubles · as reported",
+          "event": "HYROX Hamburg"
+        },
+        {
+          "athlete": "Kellylei Lowry & partner",
+          "time": "58:19",
+          "category": "Doubles · as reported",
+          "event": "HYROX Abu Dhabi"
+        },
+        {
+          "athlete": "Sorcha Gillett & Annette Quaid",
+          "time": "1:02:02",
+          "category": "Pro Doubles · as reported",
+          "event": "HYROX Birmingham"
+        },
+        {
+          "athlete": "Chris Smith & partner",
+          "time": "55:33",
+          "category": "Open Doubles · as reported",
+          "event": "HYROX Birmingham"
+        },
+        {
+          "athlete": "Emer & PJ Reynolds",
+          "time": "59:31",
+          "category": "Mixed Doubles · source caption",
+          "event": "HYROX Bilbao"
+        }
+      ]
+    }
+  }
+}

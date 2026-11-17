@@ -1,0 +1,54 @@
+{
+  "note": "PRIVATE PITCH PREVIEW.",
+  "photos": [
+    {
+      "src": "/berelentless/images/wall-community-malaga-crew.jpg",
+      "alt": "Four athletes together on the race floor",
+      "caption": "Race day is better with your people.",
+      "by": "Race community",
+      "event": "Around the arena"
+    },
+    {
+      "src": "/berelentless/images/edit-004-01-client-tryka.jpg",
+      "alt": "Athlete raising a weighted implement at a TRYKA event",
+      "caption": "A hard effort. A shared moment.",
+      "by": "BeRelentless",
+      "event": "Community"
+    },
+    {
+      "src": "/berelentless/images/wall-community-malaga-three.jpg",
+      "alt": "Three athletes smiling together at the arena",
+      "caption": "The finish is only part of the story.",
+      "by": "Race community",
+      "event": "Race day"
+    },
+    {
+      "src": "/berelentless/images/edit-006-03-katowice-group.jpg",
+      "alt": "Group together with HYROX Katowice flags",
+      "caption": "The people around the race.",
+      "by": "BeRelentless",
+      "event": "Race day"
+    },
+    {
+      "src": "/berelentless/images/wall-community-istanbul-podium.jpg",
+      "alt": "Two athletes celebrating with HYROX Istanbul banners",
+      "caption": "A moment worth keeping.",
+      "by": "Race community",
+      "event": "Istanbul"
+    },
+    {
+      "src": "/berelentless/images/edit-007-02-rope-pull.jpg",
+      "alt": "Athlete pulling a rope during a race",
+      "caption": "One pull at a time.",
+      "by": "BeRelentless",
+      "event": "Race day"
+    },
+    {
+      "src": "/berelentless/images/wall-community-crew-selfie.jpg",
+      "alt": "A group of athletes taking a selfie in the arena",
+      "caption": "One more for the wall.",
+      "by": "Race community",
+      "event": "Together"
+    }
+  ]
+}

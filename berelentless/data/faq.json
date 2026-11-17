@@ -1,0 +1,66 @@
+{
+  "items": [
+    {
+      "q": "What coaching is available?",
+      "keywords": [
+        "coaching",
+        "programme",
+        "plan",
+        "price",
+        "cost"
+      ],
+      "a": "The current BeRelentless FITR page lists 1 to 1 HYROX Programming at €120 per month. Check the linked provider page for current availability and terms."
+    },
+    {
+      "q": "Who are the coaches?",
+      "keywords": [
+        "who",
+        "coaches",
+        "sean",
+        "mick"
+      ],
+      "a": "Sean Noble and Mick Daly are the BeRelentless co-founders and the coaches listed on the shared FITR page."
+    },
+    {
+      "q": "Where do I access my training?",
+      "keywords": [
+        "app",
+        "training",
+        "login",
+        "fitr"
+      ],
+      "a": "Training delivery and your coaching account stay in FITR. Use the official FITR access link; this website does not sync workouts or private client records."
+    },
+    {
+      "q": "Is this suitable for my first HYROX?",
+      "keywords": [
+        "beginner",
+        "first",
+        "new"
+      ],
+      "a": "Use the free preparation guides to get familiar with the race, then ask the coaching team which support fits your current training and goal."
+    },
+    {
+      "q": "What training options and prices are available?",
+      "keywords": [
+        "price",
+        "cost",
+        "fee",
+        "programme",
+        "program",
+        "coaching"
+      ],
+      "a": "1 to 1 HYROX Programming — €120 per month. Read the Coaching page for each offer's format and its official link. The provider sets current prices and terms."
+    },
+    {
+      "q": "How do I get started?",
+      "keywords": [
+        "start",
+        "book",
+        "sign up",
+        "join"
+      ],
+      "a": "Choose the offer that fits your goal on the Coaching page, then follow its own official button. Use Ask if you want to discuss your starting point first."
+    }
+  ]
+}

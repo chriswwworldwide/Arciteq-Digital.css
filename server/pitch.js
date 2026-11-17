@@ -70,6 +70,7 @@ const VALID_SLUGS = new Set([
   "underdog",
   "aceperformance",
   "berelentless",
+  "kore",
   "michelewilder",
   "joshharrison",
   "coachedbyzara",

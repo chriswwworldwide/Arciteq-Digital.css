@@ -1,4 +1,65 @@
 (function () {
+  const home = document.getElementById("zones");
+  if (home) {
+    const order = ["zones", "story", "plans", "athletes-say", "find-partner", "wall", "tips", "ask", "events", "wall-photos"];
+    const first = document.getElementById(order[0]);
+    let previous = first;
+    order.slice(1).forEach(id => {
+      const section = document.getElementById(id);
+      if (section) { previous.after(section); previous = section; }
+    });
+  }
+  const event = new URLSearchParams(location.search).get("race");
+  const question = document.querySelector('#ask-form [name="question"]');
+  if (event && question && !question.value) question.value = `I'd like help preparing for ${event.slice(0, 120)}. My current training and target are: `;
+})();
+// Signature flourish dips below the wordmark by an amount that depends on the
+// signature length (it rotates -6deg, so longer swishes drop further). Measure
+// the real tip and set the city line's gap to match — keeps spacing even and
+// tight for every signature, short or long.
+(function () {
+  const sig = document.querySelector(".masthead .sig");
+  const line = document.querySelector(".masthead .sig-line");
+  const wordmark = document.querySelector(".masthead .wordmark");
+  const city = document.querySelector(".masthead .city");
+  if (!sig || !line || !wordmark || !city) return;
+  const fit = () => {
+    const snug = 16, below = 2;
+    const wb = wordmark.getBoundingClientRect();
+    sig.style.transform = "rotate(-6deg)";
+    const sb0 = sig.getBoundingClientRect();
+    if (sb0.width > wb.width) {
+      const dx = Math.round((wb.left + wb.right) / 2 - (sb0.left + sb0.right) / 2);
+      sig.style.transform = `translateX(${dx}px) rotate(-6deg)`;
+    }
+    city.style.marginTop = snug + "px";
+    const sb = sig.getBoundingClientRect();
+    const lb = line.getBoundingClientRect();
+    const range = document.createRange();
+    range.selectNodeContents(city);
+    const cb = range.getBoundingClientRect();
+    const xClash = lb.right > cb.left + 6 && lb.left < cb.right - 6;
+    const yClash = Math.max(sb.bottom, lb.bottom) > cb.top - below;
+    if (xClash && yClash) {
+      city.style.marginTop = Math.ceil(Math.max(sb.bottom, lb.bottom) - wb.bottom) + below + "px";
+    }
+  };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  fit();
+})();
+
+// Anchors to late sections (#ask, #tips) land short because wall/photo/quote
+// sections hydrate above them after the initial jump — re-anchor once settled.
+(function () {
+  if (!location.hash) return;
+  const target = document.getElementById(location.hash.slice(1));
+  if (!target) return;
+  const reanchor = () => target.scrollIntoView({ block: "start" });
+  window.addEventListener("load", () => setTimeout(reanchor, 300));
+  setTimeout(reanchor, 1200);
+})();
+
+(function () {
   const menu = document.getElementById("menu");
   const toggle = document.querySelector(".nav-toggle");
   const dropdowns = Array.from(
@@ -88,6 +149,41 @@
     if (!res.ok) throw new Error(String(res.status));
   }
 
+  const leadKey = "kore-campaign-leads";
+  const pageName = document.title.split("|")[0].trim() || "Website";
+  const readLeads = () => { try { return JSON.parse(localStorage.getItem(leadKey) || "[]"); } catch { return []; } };
+  const writeLeads = leads => localStorage.setItem(leadKey, JSON.stringify(leads));
+  function queueSiteLead({ name = "Website enquiry", source, message, origin, originURL, reply }) {
+    const leads = readLeads();
+    leads.push({
+      id: `site-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+      siteLead: true,
+      name,
+      source,
+      origin: origin || `${pageName} · ${source}`,
+      originURL: originURL || location.pathname + location.hash,
+      received: "Just now",
+      status: "New",
+      message,
+      reply: reply || "Thanks for reaching out through the site. Tell me a little about where you are now, what you’re aiming for and what feels hardest at the moment — then I can point you to the right route.",
+      sentReply: ""
+    });
+    writeLeads(leads);
+  }
+
+  document.addEventListener("click", event => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    const href = link.href || "";
+    const label = link.textContent.trim();
+    if (!href.includes("typeform.com")) return;
+    queueSiteLead({
+      source: "Coaching application",
+      message: `Opened the ${label || "coaching application"} route from the site.`,
+      reply: "Thanks for taking the next step. Send over your goal, current training and anything you’re unsure about — I’ll come back with the route that fits best."
+    });
+  });
+
   // FAQ receptionist — the 10 questions every gym gets asked, answered
   // instantly from data/faq.json. Anything it can't match still lands in
   // the coach's inbox via the normal capture below.
@@ -148,11 +244,18 @@
       note.textContent = "Sending…";
       try {
         leadEmail = String(data.get("email") || "").trim();
+        const question = String(data.get("question") || "").trim();
+        queueSiteLead({
+          name: leadEmail ? leadEmail.split("@")[0] : "Ask Bodger enquiry",
+          source: "Ask Bodger",
+          message: question || "Sent an Ask Bodger enquiry.",
+          reply: "Thanks for your question. Tell me a little about where you are now and what you’re aiming at — I’ll come back with the route that fits best."
+        });
         await capture({
           email: leadEmail,
-          message: String(data.get("question") || ""),
+          message: question,
         });
-        note.textContent = "Got it — Coach will reply to your inbox.";
+        note.textContent = "Got it — KORE will reply to your inbox.";
         const hit = matchFaq(data.get("question"));
         if (hit) {
           faqQuick.hidden = false;
@@ -166,7 +269,7 @@
         }
       } catch {
         note.textContent =
-          "Couldn't send just now. DM @korewarriors on Instagram instead.";
+          "Couldn't send just now. DM @kore on Instagram instead.";
       } finally {
         if (btn) btn.disabled = false;
       }
@@ -180,14 +283,14 @@
       cta: "Join the Crew",
     },
     program: {
-      id: "kore-plan-warrior-001",
-      name: "Warrior Program",
+      id: "kore-plan-structured-001",
+      name: "Structured Program",
       cta: "Start the Program",
     },
     hybrid: {
       id: "kore-plan-hybrid-001",
-      name: "Hybrid Coaching",
-      cta: "Start Hybrid Coaching",
+      name: "Monthly coaching",
+      cta: "Start Monthly coaching",
     },
     elite: {
       id: "kore-plan-elite-001",
@@ -200,7 +303,7 @@
     const goal = String(p.goal || "");
     const exp = String(p.experience || "");
     const days = String(p.days_per_week || "");
-    const inNewport = /london|jkt|tangerang|bekasi|depok|bogor/i.test(
+    const inHomeCity = /norwich|stockport|cheltenham|london|birmingham|manchester|cardiff|glasgow|leeds|liverpool/i.test(
       String(p.city || ""),
     );
     const raced = exp === "2–4 races" || exp === "5+ races";
@@ -223,16 +326,16 @@
     }
     if (/pregnan|post-natal/i.test(goal)) {
       return {
-        key: inNewport ? "hybrid" : "program",
-        why: inNewport
-          ? "Training through pregnancy or a comeback is exactly where Coach's own experience counts — floor time for form checks plus weekly video review."
-          : "Coach programmes around your stage and checks your form on video each week; tell them in the notes where you are and they'll adjust.",
+        key: inHomeCity ? "hybrid" : "program",
+        why: inHomeCity
+          ? "Training through pregnancy or a comeback is exactly where KORE's own experience counts — floor time for form checks plus weekly video review."
+          : "KORE programmes around your stage and checks your form on video each week; tell them in the notes where you are and they'll adjust.",
       };
     }
-    if (inNewport && exp === "Never raced") {
+    if (inHomeCity && exp === "Never raced") {
       return {
         key: "crew",
-        why: "You've never raced and you're in Newport — that's exactly who the Rookie Crew is for: a weekly group session at your own pace, and a crew that grows as people join. No experience needed.",
+        why: "You've never raced and you're in London — that's exactly who the Rookie Crew is for: a weekly group session at your own pace, and a crew that grows as people join. No experience needed.",
       };
     }
     if (days === "2") {
@@ -242,19 +345,19 @@
       };
     }
     if (
-      inNewport &&
+      inHomeCity &&
       (goal === "First Hyrox" ||
         goal === "Faster time" ||
         goal === "Doubles / relay")
     ) {
       return {
         key: "hybrid",
-        why: "You're in Newport, so two floor sessions a month with Coach fix the station technique that costs first-timers and PB-chasers the most time.",
+        why: "You're in London, so two floor sessions a month with KORE fix the station technique that costs first-timers and PB-chasers the most time.",
       };
     }
     return {
       key: "program",
-      why: "A structured weekly programme with the station library and monthly Q&A covers your goal — and Coach can move you to 1:1 coaching any time.",
+      why: "A structured weekly programme with the station library and monthly Q&A covers your goal — and KORE can move you to 1:1 coaching any time.",
     };
   }
 
@@ -300,7 +403,7 @@
       try {
         await capture({ email: leadEmail, profile });
         note.textContent =
-          "Thanks — Coach has your details and will reply with a plan. Coached athletes get their programme in the KORE app app.";
+          "Thanks — KORE has your details and will reply with a plan. Coached athletes get their programme through the coaching app KORE uses.";
       } catch {
         note.textContent =
           "Couldn't save that just now — your email still went through.";
@@ -311,7 +414,7 @@
   const planButtons = Array.from(document.querySelectorAll("[data-plan]"));
   const plansNote = document.getElementById("plans-note");
 
-  // Payment is by bank transfer to Coach (Stripe can't onboard an British
+  // Payment is by bank transfer to KORE (Stripe can't onboard an British
   // freelancer). The card checkout below stays for the day a gateway exists.
   const PAY_BY_TRANSFER = true;
 
@@ -347,7 +450,7 @@
         if (plansNote) {
           plansNote.classList.add("error");
           plansNote.textContent =
-            "Checkout isn't open yet — send Coach a message below and they'll set you up. (" +
+            "Checkout isn't open yet — send KORE a message below and they'll set you up. (" +
             String(err && err.message ? err.message : "error") +
             ")";
         }
@@ -360,43 +463,43 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   const reveals = document.querySelectorAll(".reveal");
-  if (
+  const revealIO =
     "IntersectionObserver" in window &&
     !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  ) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((en) => {
-          if (en.isIntersecting) {
-            en.target.classList.add("in");
-            io.unobserve(en.target);
-          }
-        });
-      },
-      { rootMargin: "0px 0px -10% 0px" },
-    );
-    reveals.forEach((el) => io.observe(el));
-  } else {
-    reveals.forEach((el) => el.classList.add("in"));
-  }
+      ? new IntersectionObserver(
+          (entries) => {
+            entries.forEach((en) => {
+              if (en.isIntersecting) {
+                en.target.classList.add("in");
+                revealIO.unobserve(en.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px" },
+        )
+      : null;
+  window.revealScan = (root = document) => {
+    root
+      .querySelectorAll(".reveal:not(.in)")
+      .forEach((el) =>
+        revealIO ? revealIO.observe(el) : el.classList.add("in"),
+      );
+  };
+  window.revealScan();
 
-  // WhatsApp: Coach's number in international format, digits only. Every
-  // .chat-zone link and any a[data-whatsapp] becomes a wa.me deep-link with a
-  // greeting; the floating bubble is added to every page except the coach desk.
-  const ROX_WHATSAPP = "447000000000";
-  const CHAT_GREETING =
-    "Hi Coach! Found you on KORE — I'm interested in HYROX training. ";
-  const waHref = `https://wa.me/${ROX_WHATSAPP}?text=${encodeURIComponent(CHAT_GREETING)}`;
-  document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
-    a.dataset.whatsapp = ROX_WHATSAPP;
-    a.href = waHref;
+  // Instagram messaging: every .chat-zone link and any a[data-chat-link] points
+  // at KORE's Instagram profile; the floating message button is added
+  // to every page except the coach desk.
+  const igHref = "https://www.instagram.com/kore_gym_/";
+  document.querySelectorAll("a[data-chat-link]").forEach((a) => {
+    a.href = igHref;
     a.target = "_blank";
     a.rel = "noopener";
     if (
       a.classList.contains("chat-zone") &&
       !a.classList.contains("chat-zone-inline")
     ) {
-      a.innerHTML = '<span class="dot"></span> WhatsApp Coach';
+      a.innerHTML = '<span class="dot"></span> DM KORE';
     }
   });
   if (
@@ -405,14 +508,63 @@
   ) {
     const fab = document.createElement("a");
     fab.className = "wa-fab";
-    fab.href = waHref;
+    fab.href = igHref;
     fab.target = "_blank";
     fab.rel = "noopener";
-    fab.setAttribute("aria-label", "Message Coach on WhatsApp");
+    fab.setAttribute("aria-label", "Message KORE on Instagram");
     fab.innerHTML =
-      '<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.5.7 4.9 2 7L3 29l6.5-2.1a12.7 12.7 0 0 0 6.5 1.8c7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1.3 1.3-3.8-.3-.4a10.4 10.4 0 1 1 9 5zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.2 1.3 3.4c.2.2 2.3 3.5 5.6 4.9 2.8 1.1 3.3.9 3.9.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.3z"/></svg><span>WhatsApp Coach</span>';
+      '<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect x="4" y="4" width="24" height="24" rx="7" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="16" cy="16" r="6" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="23" cy="9" r="1.8" fill="currentColor"/></svg><span>Message KORE</span>';
     document.body.appendChild(fab);
   }
+})();
+
+// Back-to-top: floating chip bottom-left (the social fab owns bottom-right).
+// Appears after ~600px of scroll; tap to go top, then it remembers your spot
+// and flips to "Back" — tap again to return to where you left off.
+(function () {
+  if (document.querySelector(".top-fab")) return;
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "top-fab";
+  const up =
+    '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5l-7 7h4v7h6v-7h4z" fill="currentColor"/></svg><span>Top</span>';
+  const down =
+    '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19l7-7h-4V5h-6v7H5z" fill="currentColor"/></svg><span>Back</span>';
+  let savedY = 0;
+  const render = () => {
+    const returning = savedY > 0 && window.scrollY < 120;
+    btn.innerHTML = returning ? down : up;
+    btn.setAttribute(
+      "aria-label",
+      returning ? "Back to where you were" : "Back to top",
+    );
+  };
+  btn.addEventListener("click", () => {
+    if (savedY > 0 && window.scrollY < 120) {
+      const y = savedY;
+      savedY = 0;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    } else {
+      savedY = window.scrollY;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    render();
+  });
+  let raf = 0;
+  const onScroll = () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      render();
+      btn.classList.toggle(
+        "is-visible",
+        window.scrollY > 600 || (savedY > 0 && window.scrollY < 600),
+      );
+    });
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  document.body.appendChild(btn);
+  onScroll();
 })();
 
 // Founding-member seat counts: kore/data/seats.json, hidden until "taken" is set.
@@ -438,7 +590,7 @@
     .catch(() => {});
 })();
 
-// External tool links (KORE app etc.): kore/data/links.json, hidden until a URL is set.
+// External tool links: kore/data/links.json, hidden until a URL is set.
 (function () {
   const links = document.querySelectorAll("[data-link]");
   if (!links.length) return;
@@ -465,9 +617,9 @@
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       if (!json) return;
-      const athletes = Array.isArray(json.athletes) ? json.athletes : [];
-      const weeks = Array.isArray(json.weeks) ? json.weeks.slice(0, 3) : [];
-      if (!athletes.length && !weeks.length) return;
+      const athletes = Array.isArray(json.athletes) ? json.athletes
+        : Array.isArray(json.items) ? json.items : [];
+      if (!athletes.length) return;
       const list = document.getElementById("wall-list");
       athletes.forEach((a) => {
         const li = document.createElement("li");
@@ -494,19 +646,6 @@
         li.append(times, who);
         list.appendChild(li);
       });
-      if (weeks.length) {
-        const wl = document.getElementById("week-list");
-        weeks.forEach((w) => {
-          const li = document.createElement("li");
-          const d = document.createElement("time");
-          d.textContent = esc(w.date);
-          const p = document.createElement("p");
-          p.textContent = esc(w.text);
-          li.append(d, p);
-          wl.appendChild(li);
-        });
-        document.getElementById("week").hidden = false;
-      }
       section.hidden = false;
       section
         .querySelectorAll(".reveal")
@@ -536,7 +675,7 @@
     .then((json) => (json && json.next) || fromPlanner())
     .then((next) => {
       if (!next || !/^\d{4}-\d{2}-\d{2}$/.test(String(next.date || ""))) return;
-      const target = new Date(`${next.date}T00:00:00+07:00`).getTime();
+      const target = new Date(`${next.date}T00:00:00Z`).getTime();
       if (!Number.isFinite(target) || target < Date.now()) return;
       document.getElementById("countdown-name").textContent = String(
         next.name || "",
@@ -548,7 +687,7 @@
         day: "numeric",
         month: "long",
         year: "numeric",
-        timeZone: "the UK/Newport",
+        timeZone: "UTC",
       });
       if (typeof next.url === "string" && /^https:\/\//.test(next.url)) {
         const link = document.getElementById("countdown-link");
@@ -559,9 +698,16 @@
       }
       const tick = () => {
         const left = Math.max(0, target - Date.now());
-        document.getElementById("cd-days").textContent = String(
-          Math.floor(left / 864e5),
-        );
+        const days = Math.ceil(left / 864e5);
+        document.getElementById("cd-days").textContent =
+          days === 0 ? "Today" : String(days);
+        const label = document.getElementById("cd-label");
+        if (label) {
+          label.textContent =
+            days === 0
+              ? "— listed race date"
+              : `${days === 1 ? "day" : "days"} to the listed race date`;
+        }
         document.getElementById("cd-hours").textContent = String(
           Math.floor((left % 864e5) / 36e5),
         );
@@ -576,10 +722,10 @@
     .catch(() => {});
 })();
 
-// Share helper — one handler, three homes: news items, race rows, Warriors Wall
-// photos. Mobile: Web Share API, with the real image file for IG/WhatsApp when
+// Share helper — one handler, three homes: news items, race rows, Race Wall
+// photos. Mobile: Web Share API, with the real image file for social apps when
 // the browser supports sharing files. Otherwise a small popover offers a
-// prefilled WhatsApp message, copy link, and (for photos) a download.
+// copyable message, copy link, and (for photos) a download.
 window.roxShare = (function () {
   let pop = null;
   const onDoc = (e) => {
@@ -594,12 +740,16 @@ window.roxShare = (function () {
     closePop();
     pop = document.createElement("div");
     pop.className = "share-pop";
-    const wa = document.createElement("a");
+    const wa = document.createElement("button");
+    wa.type = "button";
     wa.className = "share-opt";
-    wa.href = `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`.trim())}`;
-    wa.target = "_blank";
-    wa.rel = "noopener";
-    wa.textContent = "Kirim di WhatsApp";
+    wa.textContent = "Copy message";
+    wa.addEventListener("click", () => {
+      navigator.clipboard?.writeText(`${text} ${url}`.trim()).then(
+        () => (wa.textContent = "Copied ✓"),
+        () => (wa.textContent = `${text} ${url}`.trim()),
+      );
+    });
     const cp = document.createElement("button");
     cp.type = "button";
     cp.className = "share-opt";
@@ -661,10 +811,10 @@ window.roxShare = (function () {
   };
 })();
 
-// Warriors Wall: IG-style photos from kore/data/gallery.json, grouped by event
+// Race Wall: IG-style photos from kore/data/gallery.json, grouped by event
 // (tabs), shown as a tilted polaroid scatter with a lightbox. "Send your shot"
 // saves caption/name/event/consent as a generic submission (kind wall_photo) on
-// the athlete's record, then hands off to WhatsApp/email for the photo itself.
+// the athlete's record, then hands off to the coach's social route for the photo itself.
 (function () {
   const section = document.getElementById("wall-photos");
   if (!section) return;
@@ -717,8 +867,8 @@ window.roxShare = (function () {
     if (share)
       share.onclick = () =>
         window.roxShare(share, {
-          title: "KORE",
-          text: String(p.caption || "KORE"),
+          title: "the KORE coaching team",
+          text: String(p.caption || "the KORE coaching team"),
           url: `${location.origin}/kore/#wall-photos`,
           fileUrl: p.src,
         });
@@ -775,7 +925,13 @@ window.roxShare = (function () {
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       const photos = Array.isArray(json?.photos) ? json.photos : [];
-      if (!photos.length) return;
+      if (!photos.length) {
+        const ph = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><rect width="100%" height="100%" fill="#26262d"/><text x="50%" y="50%" fill="#8a8a93" font-family="sans-serif" font-size="26" text-anchor="middle">Your photo here</text></svg>');
+        photos.push(
+          { src: ph, alt: "Placeholder — wall photo slot", caption: "Lorem ipsum — your shot lands here once wall photos arrive.", by: "Placeholder", event: "" },
+          { src: ph, alt: "Placeholder — wall photo slot", caption: "Lorem ipsum — second wall slot waiting for a real photo.", by: "Placeholder", event: "" },
+        );
+      }
       photos.forEach((p, i) => grid.appendChild(polaroid(p, i)));
       buildTabs(photos.map((p) => String(p.event || "")).filter(Boolean));
       if (options) {
@@ -805,8 +961,6 @@ window.roxShare = (function () {
     form.querySelector("textarea").focus();
   });
 
-  const wa = document.querySelector("a[data-whatsapp]");
-  const waDigits = String(wa?.dataset.whatsapp || "").replace(/\D/g, "");
   const fileInput = form.querySelector("input[name=photo]");
   const preview = document.getElementById("shot-preview");
 
@@ -818,7 +972,7 @@ window.roxShare = (function () {
   });
 
   // Shrink the photo for the trip — max 1600px JPEG (~300–500 KB). The file
-  // goes to the server as a data URL; it lands as a real image on Coach's
+  // goes to the server as a data URL; it lands as a real image on KORE's
   // desk, not inside the JSON payload.
   const shrink = (f) =>
     new Promise((resolve) => {
@@ -845,7 +999,7 @@ window.roxShare = (function () {
       by: String(data.get("by") || "").trim(),
       event: String(data.get("event") || "").trim(),
       consent: data.get("consent") ? "yes" : "no",
-      source: "warriors_wall",
+      source: "race_wall",
     };
     const email = String(data.get("email") || "").trim();
     const file = fileInput?.files?.[0];
@@ -870,31 +1024,20 @@ window.roxShare = (function () {
     }
     if (saved) {
       note.textContent =
-        "Got it — photo and caption on Coach's desk. It goes up once they've had a look.";
+        "Got it — photo and caption on KORE's desk. It goes up once they've had a look.";
       form.querySelector("button[type=submit]").disabled = true;
       return;
     }
-    // fallback: caption is typed anyway, so offer the WhatsApp route
-    const msg = `Hi Coach — a photo for the Warriors Wall.\nEvent: ${payload.event}\nCaption: ${payload.caption}\nBy: ${payload.by}\nI'm happy for it to go on the site and @kore.`;
-    if (waDigits) {
-      window.open(
-        `https://wa.me/${waDigits}?text=${encodeURIComponent(msg)}`,
-        "_blank",
-        "noopener",
-      );
-      note.textContent =
-        "Upload didn't go through — WhatsApp is open, send the photo there instead.";
-    } else {
-      note.textContent =
-        "Upload didn't go through — send the photo and caption to Coach on Instagram (@kore) and they'll put it up.";
-    }
+    // fallback: caption is typed anyway, so offer the public social route
+    note.textContent =
+      "Upload didn't go through — send the photo and caption to KORE on Instagram (@kore) and they'll put it up.";
   });
 })();
 
 // Page-view beacon: cookie-free, no personal data. A random visitor id lives
 // in localStorage for 30 days so returning visitors can be counted without
 // identifying anyone. Athletes who already have a private splits token are stitched
-// onto their own record so Coach can see which pages her leads read.
+// onto their own record so KORE can see which pages their leads read.
 (function () {
   if (/\/coach\/?$/.test(location.pathname)) return;
   let visitor = "";
@@ -969,17 +1112,24 @@ window.roxShare = (function () {
   fetch("/kore/data/testimonials.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : null))
     .then((j) => {
+      const seen = new Set();
       const rows = (j?.items || [])
         .filter((q) => q && String(q.quote || "").trim() && q.name)
+        .filter((q) => {
+          const key = String(q.quote).trim().toLowerCase();
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        })
         .slice(0, 3);
       if (!rows.length) return;
       mount.innerHTML = rows
-        .map(
-          (q) => `<blockquote class="quote">
-          <p>${esc(q.quote)}</p>
-          <footer><strong>${esc(q.name)}</strong>${q.detail ? " · " + esc(q.detail) : ""}${q.plan ? " · " + esc(q.plan) : ""}</footer>
-        </blockquote>`,
-        )
+        .map((q) => {
+          let source;
+          try { source = new URL(q.sourceURL); } catch { /* optional source link */ }
+          const link = source?.protocol === "https:" && !source.username && !source.password ? `<a class="quote-source" href="${esc(source.href)}" target="_blank" rel="noopener">Read the original testimonial →</a>` : "";
+          return `<blockquote class="quote"><p>${esc(q.quote)}</p><footer><strong>${esc(q.name)}</strong>${q.detail ? " · " + esc(q.detail) : ""}${q.plan ? " · " + esc(q.plan) : ""}${link}</footer></blockquote>`;
+        })
         .join("");
       sec.hidden = false;
     })
@@ -996,9 +1146,10 @@ window.roxShare = (function () {
   bar.hidden = false;
   document.body.classList.add("has-sticky-cta");
   let heroVisible = true;
+  let heroBelowVisible = true;
   let plansVisible = false;
   const update = () =>
-    bar.classList.toggle("is-visible", !heroVisible && !plansVisible);
+    bar.classList.toggle("is-visible", !heroVisible && !heroBelowVisible && !plansVisible);
   new IntersectionObserver(
     (entries) => {
       heroVisible = entries[0].isIntersecting;
@@ -1006,6 +1157,15 @@ window.roxShare = (function () {
     },
     { threshold: 0.15 },
   ).observe(hero);
+  const heroBelow = document.querySelector(".hero-below");
+  if (heroBelow)
+    new IntersectionObserver(
+      (entries) => {
+        heroBelowVisible = entries[0].isIntersecting;
+        update();
+      },
+      { threshold: 0.15 },
+    ).observe(heroBelow);
   if (plans) {
     new IntersectionObserver(
       (entries) => {
@@ -1017,7 +1177,7 @@ window.roxShare = (function () {
   }
 })();
 
-// HYROX Newport date alert — one email when the official date is published.
+// HYROX London date alert — one email when the official date is published.
 (() => {
   const form = document.getElementById("date-alert");
   if (!form) return;
@@ -1035,7 +1195,7 @@ window.roxShare = (function () {
         body: JSON.stringify({
           email,
           kind: "date_alert",
-          payload: { race: "hyrox-newport-2027", source: "hyrox-newport-page" },
+          payload: { race: "hyrox-london-2027", source: "hyrox-london-page" },
           website: String(data.get("website") || ""),
         }),
       });
@@ -1045,7 +1205,7 @@ window.roxShare = (function () {
     }
     if (note)
       note.textContent = saved
-        ? "Done — you'll get one email the day HYROX publishes the Newport 2027 date."
+        ? "Done — you'll get one email the day HYROX publishes the London 2027 date."
         : "Couldn't save just now — please try again in a minute.";
     if (saved) form.reset();
   });
@@ -1053,17 +1213,16 @@ window.roxShare = (function () {
 
 // Hero reveal lives in hero-reveal.js (a WebGL pixel-resolve over the photo).
 
-// Feather the hero photo's painted edges so the blurred ambient (the same
-// photo, defocused) bleeds through — the hard line disappears by colour-
-// matching itself. Desktop only: the mobile photo bleeds to the section
-// edges by design.
+// Feather the hero photo's painted edges into the flat stage — the
+// hard line disappears by colour-matching the backdrop. Desktop only:
+// the mobile photo bleeds to the section edges by design.
 (() => {
   const img = document.querySelector(".hero--bleed .hero-img");
   if (!img) return;
-  // hero--full paints the photo cover-fit across the whole hero — there is
-  // no ambient backdrop to melt into, so the contain-rect feather mask
-  // would crop the photo back into a pillarbox. Leave the mask off.
-  if (img.closest(".hero--full")) return;
+  // hero--full paints the photo cover-fit across the whole hero — the
+  // contain-rect feather mask would crop it back into a pillarbox.
+  // Leave the mask off.
+  if (img.closest('[data-hero-mode="full"]')) return;
   // The mask goes on the .hero-mask wrapper — the img carries the enter/drift
   // transform animations, and Safari won't composite a masked element that
   // itself (or an ancestor of it) transform-animates. Masked parent + moving
@@ -1148,3 +1307,65 @@ window.roxShare = (function () {
   window.addEventListener("resize", rerun);
   wide.addEventListener("change", rerun);
 })();
+
+// Deep-link anchor fix: re-scroll to the target once everything has settled
+// (lazy content can shift the target below the initial browser scroll position)
+window.addEventListener("load", () => {
+  if (location.hash) {
+    const t = document.querySelector(location.hash);
+    if (t) setTimeout(() => t.scrollIntoView(), 60);
+  }
+});
+
+// Homepage race calendar: first card always visible, the rest fold behind a
+// "+ N more races" details toggle. No-op on tenants with a single race.
+{
+  const cards = document.getElementById("race-cards");
+  if (cards) {
+    const events = [...cards.querySelectorAll(":scope > .event")];
+    if (events.length > 1) {
+      const more = document.createElement("details");
+      more.className = "events-more";
+      const sum = document.createElement("summary");
+      const label = (open) =>
+        open
+          ? "Show fewer races"
+          : `${events.length - 1} more race${events.length - 1 > 1 ? "s" : ""}`;
+      sum.textContent = label(false);
+      more.append(sum, ...events.slice(1));
+      cards.append(more);
+      more.addEventListener("toggle", () => {
+        sum.textContent = label(more.open);
+      });
+    }
+  }
+}
+
+// Coaching plans: three cards visible — first offers plus the Prep Club /
+// crew card, which always stays in view whether it sits inside the grid or as
+// its own banner; the middle offers fold behind "+ N more plans".
+{
+  const section = document.getElementById("plans");
+  const plans = section?.querySelector(".plans");
+  if (plans) {
+    const crew = [...(section.querySelectorAll(".plan-crew") || [])];
+    const normal = [...plans.querySelectorAll(":scope > .plan")].filter(
+      (c) => !c.classList.contains("plan-crew"),
+    );
+    const keep = Math.max(0, 3 - crew.length);
+    if (normal.length > keep) {
+      const folded = normal.slice(keep);
+      const more = document.createElement("details");
+      more.className = "plans-more";
+      const sum = document.createElement("summary");
+      const label = (open) =>
+        open ? "Show fewer plans" : `${folded.length} more plan${folded.length > 1 ? "s" : ""}`;
+      sum.textContent = label(false);
+      more.append(sum, ...folded);
+      plans.append(more);
+      more.addEventListener("toggle", () => {
+        sum.textContent = label(more.open);
+      });
+    }
+  }
+}

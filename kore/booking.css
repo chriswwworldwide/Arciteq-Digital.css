@@ -32,8 +32,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image: var(--planner-watermark, none);
-  background-position: right 20%;
-  background-size: auto 115vh;
+  background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   filter: grayscale(1);
   opacity: 0.075;
@@ -52,8 +52,8 @@ body[data-backdrop="watermark"] {
   isolation: isolate;
 }
 body[data-backdrop="watermark"]::before {
-  background-position: right top;
-  background-size: auto 120vh;
+  background-position: center;
+  background-size: cover;
   opacity: 0.26;
   filter: grayscale(1) brightness(1.25);
 }
@@ -183,8 +183,8 @@ body[data-backdrop="watermark"]::after {
     justify-content: flex-start;
   }
   body[data-backdrop="watermark"]::before {
-    background-position: 56% top;
-    background-size: auto 110vh;
+    background-position: center;
+    background-size: cover;
     opacity: 0.22;
   }
   body[data-backdrop="watermark"]::after {
@@ -1302,13 +1302,17 @@ dialog p {
   .week-controls {
     gap: 4px;
   }
+  .background-switch button,
+  .view-switch button,
+  .icon-button,
+  .today-button {
+    min-height: 44px;
+  }
   .icon-button {
-    min-width: 32px;
-    min-height: 34px;
+    min-width: 44px;
   }
   .today-button {
-    min-width: 48px;
-    min-height: 34px;
+    min-width: 58px;
     font-size: 10px;
   }
   .day-strip {

@@ -101,7 +101,7 @@
       }
 
       const art = document.createElement("article");
-      art.className = "station results-division";
+      art.className = "station results-division reveal";
       art.id = `div-${key}`;
       let body;
       if (rows.length === 0) {
@@ -134,6 +134,7 @@
       }
       root.appendChild(art);
     });
+    window.revealScan?.();
 
     if (toc && document.getElementById("roundups-root")) {
       const li = document.createElement("li");
@@ -155,7 +156,7 @@
     }
     rroot.innerHTML = rows
       .map(
-        (n) => `<div class="roundup">
+        (n) => `<div class="roundup reveal">
         <p class="roundup-meta"><strong>${esc(n.race)}</strong>${
           n.weekend ? ` · ${esc(n.weekend)}` : ""
         }</p>
@@ -164,7 +165,7 @@
           .join("")}</ul>
         ${
           n.take
-            ? `<p class="roundup-take"><strong>Coach's playbook:</strong> ${esc(n.take)}</p>`
+            ? `<p class="roundup-take"><strong>KORE's take:</strong> ${esc(n.take)}</p>`
             : ""
         }
         ${
@@ -175,6 +176,7 @@
       </div>`,
       )
       .join("");
+    window.revealScan?.();
   }
 
   fetch("/kore/data/roundups.json", { cache: "no-cache" })
@@ -219,7 +221,7 @@
   );
 
   // "Send your time" — athletes report their own finish; lands as a
-  // race_result submission on the desk. Coach verifies against the official
+  // race_result submission on the desk. KORE verifies against the official
   // results and adds the row by hand.
   const timeForm = document.getElementById("time-form");
   const timeNote = document.getElementById("time-note");
@@ -257,7 +259,7 @@
       ok = false;
     }
     timeNote.textContent = ok
-      ? "Got it — Coach'll check it against the official results and add it."
+      ? "Got it — KORE'll check it against the official results and add it."
       : "Couldn't send just now — DM your time to @kore instead.";
     if (ok) timeForm.querySelector("button[type=submit]").disabled = true;
   });

@@ -1,0 +1,1804 @@
+{
+  "generated": "2026-11-09",
+  "measuredOn": [
+    "faisalpma",
+    "elationfitness"
+  ],
+  "widths": [
+    360,
+    768,
+    1024,
+    1440
+  ],
+  "note": "aspect=rendered w/h. elastic slots follow the image aspect (no fixed frame); pinned slots crop via cover. must-keep boxes only constrained by pinned slots.",
+  "slots": [
+    {
+      "key": "campaigns||",
+      "page": "campaigns",
+      "figure": "",
+      "imgClass": "",
+      "src": "mic.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "campaigns|capture|capture-bg",
+      "page": "campaigns",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "92% 80%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "campaigns|coach-portrait|bio",
+      "page": "campaigns",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "campaigns|events-photo|",
+      "page": "campaigns",
+      "figure": "events-photo",
+      "imgClass": "",
+      "src": "rome.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 0.8,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "campaigns|hero-mask|hero-img",
+      "page": "campaigns",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero-wide.jpg",
+      "fit": "cover",
+      "pos": "50% 55%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "campaigns|plan.plan-crew|crew-photo",
+      "page": "campaigns",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "prep-club-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "campaigns|polaroid|",
+      "page": "campaigns",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "stock-arena.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "campaigns|tips-photo|",
+      "page": "campaigns",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "startline-burst.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "client||",
+      "page": "client",
+      "figure": "",
+      "imgClass": "",
+      "src": "startline.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "client|capture|capture-bg",
+      "page": "client",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "50% 42%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "client|coach-portrait|bio",
+      "page": "client",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "client|hero-mask|hero-img",
+      "page": "client",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero.jpg",
+      "fit": "cover",
+      "pos": "50% 22%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "client|plan.plan-crew|crew-photo",
+      "page": "client",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "doubles.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "client|polaroid|",
+      "page": "client",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "squad-gym.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "client|tips-photo|",
+      "page": "client",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "race-revel.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "clients||",
+      "page": "clients",
+      "figure": "",
+      "imgClass": "",
+      "src": "startline.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "clients|capture|capture-bg",
+      "page": "clients",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "50% 42%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "clients|coach-portrait|bio",
+      "page": "clients",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "clients|hero-mask|hero-img",
+      "page": "clients",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero.jpg",
+      "fit": "cover",
+      "pos": "50% 22%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "clients|plan.plan-crew|crew-photo",
+      "page": "clients",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "doubles.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "clients|polaroid|",
+      "page": "clients",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "squad-gym.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "clients|tips-photo|",
+      "page": "clients",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "race-revel.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "coaching|art-photo.coach-cruise-photo|",
+      "page": "coaching",
+      "figure": "art-photo.coach-cruise-photo",
+      "imgClass": "",
+      "src": "cruise-trio.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 1.333,
+      "aspectMax": 1.777,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "coaching|guide-hero-photo|",
+      "page": "coaching",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "coaching-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 3.488,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "desk||",
+      "page": "desk",
+      "figure": "",
+      "imgClass": "",
+      "src": "mic.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "desk|capture|capture-bg",
+      "page": "desk",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "92% 80%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "desk|coach-portrait|bio",
+      "page": "desk",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "desk|events-photo|",
+      "page": "desk",
+      "figure": "events-photo",
+      "imgClass": "",
+      "src": "rome.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 0.8,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "desk|hero-mask|hero-img",
+      "page": "desk",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero-wide.jpg",
+      "fit": "cover",
+      "pos": "50% 55%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "desk|plan.plan-crew|crew-photo",
+      "page": "desk",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "prep-club-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "desk|polaroid|",
+      "page": "desk",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "stock-arena.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "desk|tips-photo|",
+      "page": "desk",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "startline-burst.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "events|art-photo|",
+      "page": "events",
+      "figure": "art-photo",
+      "imgClass": "",
+      "src": "events-secondary.jpg",
+      "fit": "cover",
+      "pos": "50% 20%",
+      "aspectMin": 1.33,
+      "aspectMax": 1.333,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "events|guide-hero-photo|",
+      "page": "events",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "events-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.778,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "find-a-partner|guide-hero-photo.pair|",
+      "page": "find-a-partner",
+      "figure": "guide-hero-photo.pair",
+      "imgClass": "",
+      "src": "race-mate-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 0%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.39,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "index||",
+      "page": "index",
+      "figure": "",
+      "imgClass": "",
+      "src": "mic.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "index|capture|capture-bg",
+      "page": "index",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "92% 80%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "index|coach-portrait|bio",
+      "page": "index",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "index|events-photo|",
+      "page": "index",
+      "figure": "events-photo",
+      "imgClass": "",
+      "src": "rome.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 0.8,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "index|hero-mask|hero-img",
+      "page": "index",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero-wide.jpg",
+      "fit": "cover",
+      "pos": "50% 55%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "index|plan.plan-crew|crew-photo",
+      "page": "index",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "prep-club-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "index|polaroid|",
+      "page": "index",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "stock-arena.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "index|tips-photo|",
+      "page": "index",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "startline-burst.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "leads||",
+      "page": "leads",
+      "figure": "",
+      "imgClass": "",
+      "src": "startline.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "leads|capture|capture-bg",
+      "page": "leads",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "50% 42%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "leads|coach-portrait|bio",
+      "page": "leads",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "leads|hero-mask|hero-img",
+      "page": "leads",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero.jpg",
+      "fit": "cover",
+      "pos": "50% 22%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "leads|plan.plan-crew|crew-photo",
+      "page": "leads",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "doubles.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "leads|polaroid|",
+      "page": "leads",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "squad-gym.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "leads|tips-photo|",
+      "page": "leads",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "race-revel.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "list|guide-hero-photo|",
+      "page": "list",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "list-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.778,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "manage-programmes||",
+      "page": "manage-programmes",
+      "figure": "",
+      "imgClass": "",
+      "src": "mic.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-programmes|capture|capture-bg",
+      "page": "manage-programmes",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "92% 80%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "manage-programmes|coach-portrait|bio",
+      "page": "manage-programmes",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-programmes|events-photo|",
+      "page": "manage-programmes",
+      "figure": "events-photo",
+      "imgClass": "",
+      "src": "rome.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 0.8,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-programmes|hero-mask|hero-img",
+      "page": "manage-programmes",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero-wide.jpg",
+      "fit": "cover",
+      "pos": "50% 55%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-programmes|plan.plan-crew|crew-photo",
+      "page": "manage-programmes",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "prep-club-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-programmes|polaroid|",
+      "page": "manage-programmes",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "stock-arena.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-programmes|tips-photo|",
+      "page": "manage-programmes",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "startline-burst.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "manage-videos||",
+      "page": "manage-videos",
+      "figure": "",
+      "imgClass": "",
+      "src": "mic.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-videos|capture|capture-bg",
+      "page": "manage-videos",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "92% 80%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "manage-videos|coach-portrait|bio",
+      "page": "manage-videos",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-videos|events-photo|",
+      "page": "manage-videos",
+      "figure": "events-photo",
+      "imgClass": "",
+      "src": "rome.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 0.8,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-videos|hero-mask|hero-img",
+      "page": "manage-videos",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero-wide.jpg",
+      "fit": "cover",
+      "pos": "50% 55%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-videos|plan.plan-crew|crew-photo",
+      "page": "manage-videos",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "prep-club-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-videos|polaroid|",
+      "page": "manage-videos",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "stock-arena.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "manage-videos|tips-photo|",
+      "page": "manage-videos",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "startline-burst.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "news|guide-hero-photo|",
+      "page": "news",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "news-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.778,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "partners|guide-hero-photo|",
+      "page": "partners",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "suit.jpg",
+      "fit": "contain",
+      "pos": "50% 62%",
+      "aspectMin": 1,
+      "aspectMax": 1.775,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "planner||",
+      "page": "planner",
+      "figure": "",
+      "imgClass": "",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 0.883,
+      "aspectMax": 0.883,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "platform-setup||",
+      "page": "platform-setup",
+      "figure": "",
+      "imgClass": "",
+      "src": "mic.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "platform-setup|capture|capture-bg",
+      "page": "platform-setup",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "92% 80%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "platform-setup|coach-portrait|bio",
+      "page": "platform-setup",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "platform-setup|events-photo|",
+      "page": "platform-setup",
+      "figure": "events-photo",
+      "imgClass": "",
+      "src": "rome.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 0.8,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "platform-setup|hero-mask|hero-img",
+      "page": "platform-setup",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero-wide.jpg",
+      "fit": "cover",
+      "pos": "50% 55%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "platform-setup|plan.plan-crew|crew-photo",
+      "page": "platform-setup",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "prep-club-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "platform-setup|polaroid|",
+      "page": "platform-setup",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "stock-arena.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "platform-setup|tips-photo|",
+      "page": "platform-setup",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "startline-burst.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "podcast|guide-hero-photo|",
+      "page": "podcast",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "pb.jpg",
+      "fit": "cover",
+      "pos": "50% 28%",
+      "aspectMin": 1,
+      "aspectMax": 2.275,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "predictor|guide-hero-photo|",
+      "page": "predictor",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "predictor-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.6,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "prep-club|feed-card|",
+      "page": "prep-club",
+      "figure": "feed-card",
+      "imgClass": "",
+      "src": "finish.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1.533,
+      "aspectMax": 2.12,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "prep-club|guide-hero-photo.prep-hero-photo|",
+      "page": "prep-club",
+      "figure": "guide-hero-photo.prep-hero-photo",
+      "imgClass": "",
+      "src": "prep-club-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 38%",
+      "aspectMin": 1,
+      "aspectMax": 3.467,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "race-crew|art-photo.crew-cruise-photo|",
+      "page": "race-crew",
+      "figure": "art-photo.crew-cruise-photo",
+      "imgClass": "",
+      "src": "cruise-crew.jpg",
+      "fit": "cover",
+      "pos": "50% 62%",
+      "aspectMin": 1.333,
+      "aspectMax": 1.335,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "race-crew|guide-hero-photo|",
+      "page": "race-crew",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "restaurant.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.771,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "race-crew|station-photo|",
+      "page": "race-crew",
+      "figure": "station-photo",
+      "imgClass": "",
+      "src": "dance.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.762,
+      "aspectMax": 1.526,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "race-day|art-photo.race-smile-photo|",
+      "page": "race-day",
+      "figure": "art-photo.race-smile-photo",
+      "imgClass": "",
+      "src": "race-smile.jpg",
+      "fit": "cover",
+      "pos": "50% 24%",
+      "aspectMin": 1.333,
+      "aspectMax": 1.781,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "race-day|art-photo|shift-down",
+      "page": "race-day",
+      "figure": "art-photo",
+      "imgClass": "shift-down",
+      "src": "race-mate-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 1.333,
+      "aspectMax": 1.781,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "race-day|art-photo|shift-up",
+      "page": "race-day",
+      "figure": "art-photo",
+      "imgClass": "shift-up",
+      "src": "finish.jpg",
+      "fit": "cover",
+      "pos": "50% 62%",
+      "aspectMin": 1.333,
+      "aspectMax": 1.781,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "race-day|guide-hero-photo|",
+      "page": "race-day",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "race-day-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.684,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "race-planner|art-photo|",
+      "page": "race-planner",
+      "figure": "art-photo",
+      "imgClass": "",
+      "src": "events-secondary.jpg",
+      "fit": "cover",
+      "pos": "50% 20%",
+      "aspectMin": 1.33,
+      "aspectMax": 1.333,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "race-planner|guide-hero-photo|",
+      "page": "race-planner",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "events-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.778,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "results|art-photo|",
+      "page": "results",
+      "figure": "art-photo",
+      "imgClass": "",
+      "src": "race-pair.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1.771,
+      "aspectMax": 1.781,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "results|guide-hero-photo|",
+      "page": "results",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "startline.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.6,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "run-zone|guide-hero-photo|",
+      "page": "run-zone",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "stations-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.04,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "shop|guide-hero-photo|",
+      "page": "shop",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "links-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 28%",
+      "aspectMin": 1,
+      "aspectMax": 2.275,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "splits|guide-hero-photo|",
+      "page": "splits",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "splits-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "stations-prep|art-photo|",
+      "page": "stations-prep",
+      "figure": "art-photo",
+      "imgClass": "",
+      "src": "skierg-laugh.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1.33,
+      "aspectMax": 1.779,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "stations-prep|guide-hero-photo|",
+      "page": "stations-prep",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "station-wall-balls.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.684,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "taper-zone|art-photo.taper-offday-photo|",
+      "page": "taper-zone",
+      "figure": "art-photo.taper-offday-photo",
+      "imgClass": "",
+      "src": "cruise-crew.jpg",
+      "fit": "cover",
+      "pos": "50% 52%",
+      "aspectMin": 1.333,
+      "aspectMax": 1.335,
+      "seen": [
+        "faisalpma"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "taper-zone|guide-hero-photo|",
+      "page": "taper-zone",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "taper-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 15%",
+      "aspectMin": 0.563,
+      "aspectMax": 1.684,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    },
+    {
+      "key": "today||",
+      "page": "today",
+      "figure": "",
+      "imgClass": "",
+      "src": "startline.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "today|capture|capture-bg",
+      "page": "today",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "50% 42%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "today|coach-portrait|bio",
+      "page": "today",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "today|hero-mask|hero-img",
+      "page": "today",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero.jpg",
+      "fit": "cover",
+      "pos": "50% 22%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "today|plan.plan-crew|crew-photo",
+      "page": "today",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "doubles.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "today|polaroid|",
+      "page": "today",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "squad-gym.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "today|tips-photo|",
+      "page": "today",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "race-revel.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "tour||",
+      "page": "tour",
+      "figure": "",
+      "imgClass": "",
+      "src": "startline.jpg",
+      "fit": "cover",
+      "pos": "50% 30%",
+      "aspectMin": 0.8,
+      "aspectMax": 1.138,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "tour|capture|capture-bg",
+      "page": "tour",
+      "figure": "capture",
+      "imgClass": "capture-bg",
+      "src": "coaching.jpg",
+      "fit": "cover",
+      "pos": "50% 42%",
+      "aspectMin": 0.351,
+      "aspectMax": 2.759,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "tour|coach-portrait|bio",
+      "page": "tour",
+      "figure": "coach-portrait",
+      "imgClass": "bio",
+      "src": "bio.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "tour|hero-mask|hero-img",
+      "page": "tour",
+      "figure": "hero-mask",
+      "imgClass": "hero-img",
+      "src": "hero.jpg",
+      "fit": "cover",
+      "pos": "50% 22%",
+      "aspectMin": 0.949,
+      "aspectMax": 1.333,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "tour|plan.plan-crew|crew-photo",
+      "page": "tour",
+      "figure": "plan.plan-crew",
+      "imgClass": "crew-photo",
+      "src": "doubles.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "tour|polaroid|",
+      "page": "tour",
+      "figure": "polaroid",
+      "imgClass": "",
+      "src": "squad-gym.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 1,
+      "aspectMax": 1,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "tour|tips-photo|",
+      "page": "tour",
+      "figure": "tips-photo",
+      "imgClass": "",
+      "src": "race-revel.jpg",
+      "fit": "cover",
+      "pos": "50% 50%",
+      "aspectMin": 0.798,
+      "aspectMax": 1.6,
+      "seen": [
+        "elationfitness"
+      ],
+      "elastic": false
+    },
+    {
+      "key": "watch|guide-hero-photo|",
+      "page": "watch",
+      "figure": "guide-hero-photo",
+      "imgClass": "",
+      "src": "watch-hero.jpg",
+      "fit": "cover",
+      "pos": "50% 28%",
+      "aspectMin": 1,
+      "aspectMax": 3.467,
+      "seen": [
+        "faisalpma",
+        "elationfitness"
+      ],
+      "elastic": true
+    }
+  ]
+}

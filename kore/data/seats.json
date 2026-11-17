@@ -1,5 +1,5 @@
 {
-  "note": "Founding-member capacity per coached plan. Coach edits 'taken' after each signup; set 'taken' to null to hide the line for that plan. Capacity is real coaching hours, not a marketing number.",
+  "note": "Founding-member capacity per coached plan. KORE edits 'taken' after each signup; set 'taken' to null to hide the line for that plan. Capacity is real coaching hours, not a marketing number.",
   "plans": {
     "kore-plan-hybrid-001": {
       "label": "Hybrid",

@@ -1,0 +1,23 @@
+{
+  "slug": "kore",
+  "status": "APPROVED_FOR_PUBLICATION",
+  "approvedBy": "Chris",
+  "preparedAt": "2026-11-17T16:21:08.590Z",
+  "siteURL": "https://www.station9studio.co.uk/kore/",
+  "pitchURL": "https://www.station9studio.co.uk/pitch/kore/",
+  "siteManifestSha256": "7a086bc22d843fc1a60a400b1a64603a62f5d20dfb0bb503a8a20de77263037b",
+  "siteFiles": 229,
+  "video": {
+    "file": "video.mp4",
+    "sha256": "9ab5e38fa2d1960abf43064f696e8b5d0892bd002943da938ce621af9057cdc4",
+    "bytes": 53662389,
+    "duration": 157.44,
+    "revision": 2
+  },
+  "offer": {
+    "setupGBP": 775,
+    "monthlyGBP": 125,
+    "areaHoldUntil": "2026-11-27"
+  },
+  "outreachStatus": "Not confirmed sent"
+}

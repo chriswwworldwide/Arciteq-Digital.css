@@ -1,18 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Allura&display=swap");
+@media(max-width:800px){html body.home-lab #ask.capture>img.capture-bg{display:block!important;object-position:75% 50%!important;opacity:.65;z-index:-2}html body.home-lab #ask.capture::before{z-index:-1;background:linear-gradient(90deg,rgba(11,11,14,.7),rgba(11,11,14,.62))}}
 
 :root{
-  --hero-focus: 50% 35%;
-  --ink: #0f0f11;
-  --ink-2: #3a3a40;
-  --ink-3: #7a7a85;
-  --paper: #f7f9fa;
-  --paper-2: #edf3f4;
-  --line: #d8e1e4;
-  --pink: #0891b2;
-  --pink-600: #0e7490;
-  --pink-100: #cffafe;
+  --hero-focus: 50% 42%;
+  --ink: #f2f2f0;
+  --ink-2: #cfcfd6;
+  --ink-3: #9c9ca6;
+  --paper: #0b0b0e;
+  --paper-2: #16161c;
+  --line: #2a2a32;
+  --pink: #a2ff00;
+  --pink-600: color-mix(in srgb, var(--pink) 60%, #000);
+  --pink-100: color-mix(in srgb, var(--pink) 11%, var(--paper));
+  --zone-accent: #426600;
   --radius: 14px;
-  --shadow: 0 10px 30px rgba(0, 17, 21, 0.08);
+  --shadow: 0 10px 30px rgba(11, 11, 14, 0.08);
   --font: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
 }
 
@@ -128,7 +130,7 @@ a.wordmark {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(12, 12, 16, 0.92);
   backdrop-filter: blur(8px);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -147,6 +149,7 @@ a.wordmark {
   display: none;
   background: none;
   border: 1px solid var(--line);
+  color: var(--pink);
   border-radius: 999px;
   padding: 8px 16px;
   min-height: 44px;
@@ -195,6 +198,38 @@ a.wordmark {
   background: var(--paper-2);
 }
 
+/* nav zone colours — every tenant MUST allocate --zone-accent in its config
+   (colors.zoneAccent): a dark complement of the signature colour, readable
+   (>= ~4:1) on both white and the dark menu. nav-sell marks the coach's offer
+   in signature colour; nav-acc marks the shared visitor-benefit drawers. */
+.menu > li > a.nav-sell,
+.menu > li > button.nav-sell {
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.menu > li > a.nav-acc,
+.menu > li > button.nav-acc {
+  color: var(--zone-accent);
+}
+
+.menu > li > .nav-acc {
+  min-height: 44px;
+  border: 0;
+  border-bottom: 2px solid currentColor;
+  border-bottom-color: color-mix(in srgb, currentColor 65%, transparent);
+  box-shadow: none;
+}
+.menu > li > .nav-acc:hover,
+.menu > li > .nav-acc[aria-expanded="true"] {
+  border-color: currentColor;
+  background: color-mix(in srgb, currentColor 8%, var(--paper-2));
+}
+.menu > li > .nav-acc:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
 .menu .caret {
   width: 8px;
   height: 8px;
@@ -232,7 +267,7 @@ a.wordmark {
 }
 
 .sub a:hover {
-  background: var(--pink-100);
+  background: color-mix(in srgb, var(--pink) 18%, var(--paper-2));
   color: var(--ink);
 }
 
@@ -261,7 +296,7 @@ a.wordmark {
   height: 8px;
   border-radius: 50%;
   background: var(--pink);
-  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.25);
+  box-shadow: 0 0 0 3px rgba(255, 46, 99, 0.25);
 }
 
 .chat-zone:hover .dot {
@@ -324,14 +359,14 @@ a.wordmark {
   }
 }
 
-/* Station 9 — last menu item, pink text to pull the eye */
+/* the ninth station — last menu item, pink text to pull the eye */
 .s9-zone {
   color: var(--pink-600) !important;
 }
 
 .s9-zone:hover {
   color: var(--pink) !important;
-  background: var(--pink-100) !important;
+  background: color-mix(in srgb, var(--pink) 18%, var(--paper-2)) !important;
 }
 
 /* ---------- Buttons ---------- */
@@ -380,7 +415,7 @@ button.btn {
   margin: 0 0 12px;
   padding: 10px 12px;
   border-left: 3px solid var(--pink);
-  background: var(--pink-soft, #e6f1f4);
+  background: var(--pink-soft, #1f1218);
   font-size: 13px;
   line-height: 1.5;
   color: var(--ink-2, #444);
@@ -402,7 +437,7 @@ button.btn {
   padding: 18px 22px;
   border: 1px solid var(--line, #e6e6ea);
   border-radius: 14px;
-  background: #fff;
+  background: #14141a;
 }
 
 .wall-times {
@@ -437,7 +472,7 @@ button.btn {
   margin-top: 40px;
   padding: 24px 26px;
   border-radius: 14px;
-  background: var(--pink-soft, #e6f1f4);
+  background: var(--pink-soft, #1f1218);
 }
 
 .week ul {
@@ -508,7 +543,7 @@ button.btn {
 }
 
 .btn-ghost {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(18, 18, 22, 0.88);
   color: var(--ink);
 }
 
@@ -519,7 +554,7 @@ button.btn {
 }
 
 .btn-light:hover {
-  background: #fff;
+  background: #14141a;
   color: var(--ink);
 }
 
@@ -531,7 +566,7 @@ button.btn {
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   align-items: stretch;
   color: #fff;
-  background: var(--ink);
+  background: var(--paper);
   overflow: hidden;
   isolation: isolate;
 }
@@ -555,9 +590,9 @@ button.btn {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(0, 17, 21, 1) 0%,
-    rgba(0, 17, 21, 0) 22%,
-    rgba(0, 17, 21, 0) 100%
+    rgba(11, 11, 14, 1) 0%,
+    rgba(11, 11, 14, 0) 22%,
+    rgba(11, 11, 14, 0) 100%
   );
 }
 
@@ -640,15 +675,6 @@ button.btn {
   object-position: 55% 30%;
 }
 
-/* Desktop: show the whole photo over a blurred stretch of itself —
-   a near-square image cropped by a wide hero loses her head otherwise */
-.hero--bleed .hero-amb {
-  object-fit: cover;
-  object-position: 55% 30%;
-  filter: blur(48px) brightness(0.55) saturate(1.15);
-  transform: scale(1.15);
-}
-
 .hero--bleed .hero-img {
   object-fit: contain;
   /* Full-size photo pinned to the section's right edge; the headline
@@ -665,15 +691,15 @@ button.btn {
   background:
     linear-gradient(
       180deg,
-      rgba(0, 17, 21, 0.05) 0%,
-      rgba(0, 17, 21, 0.2) 45%,
-      rgba(0, 17, 21, 0.86) 100%
+      rgba(11, 11, 14, 0.05) 0%,
+      rgba(11, 11, 14, 0.2) 45%,
+      rgba(11, 11, 14, 0.86) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(0, 17, 21, 0.82) 0%,
-      rgba(0, 17, 21, 0.35) 45%,
-      rgba(0, 17, 21, 0) 68%
+      rgba(11, 11, 14, 0.82) 0%,
+      rgba(11, 11, 14, 0.35) 45%,
+      rgba(11, 11, 14, 0) 68%
     );
 }
 
@@ -718,6 +744,9 @@ section.block {
 section.block.alt {
   background: var(--paper-2);
 }
+
+section.block + section.block { padding-top: 48px; }
+section.block:has(+ .cta-band) { padding-bottom: 40px; }
 
 .eyebrow {
   font-size: 12px;
@@ -764,7 +793,7 @@ section.block.alt {
 .zone--hook {
   grid-column: 1 / -1;
   border-color: var(--pink);
-  background: linear-gradient(180deg, var(--paper), #e6f1f4);
+  background: linear-gradient(180deg, var(--paper), #0e0e12);
 }
 
 .zone:hover {
@@ -889,7 +918,7 @@ section.block.alt {
 
 .plan.featured {
   border-color: var(--pink);
-  box-shadow: 0 16px 40px rgba(8, 145, 178, 0.14);
+  box-shadow: 0 16px 40px rgba(255, 46, 99, 0.14);
 }
 
 .plan .tag {
@@ -900,8 +929,8 @@ section.block.alt {
   font-weight: 700;
   padding: 5px 10px;
   border-radius: 999px;
-  background: var(--pink-100);
-  color: var(--pink-600);
+  background: color-mix(in srgb, var(--pink) 9%, var(--paper-2));
+  color: var(--pink);
   margin-bottom: 14px;
 }
 
@@ -956,7 +985,7 @@ section.block.alt {
   margin: 40px 0 28px;
   border-style: dashed;
   border-color: var(--pink);
-  background: var(--pink-100);
+  background: color-mix(in srgb, var(--pink) 9%, var(--paper-2));
 }
 
 .crew-photo {
@@ -996,7 +1025,7 @@ section.block.alt {
 
 .event {
   display: grid;
-  grid-template-columns: 90px 1fr auto;
+  grid-template-columns: 120px 1fr auto;
   gap: 20px;
   align-items: center;
   padding: 18px 22px;
@@ -1039,11 +1068,15 @@ section.block.alt {
 }
 
 /* Capture band */
+#ask {
+  scroll-margin-top: 96px;
+}
+
 .capture {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: var(--ink);
+  background: var(--paper);
   color: #fff;
   padding: 72px 0;
 }
@@ -1055,8 +1088,8 @@ section.block.alt {
   height: 100%;
   object-fit: cover;
   object-position: 50% 80%;
-  opacity: 0.22;
-  filter: grayscale(1);
+  opacity: 0.38;
+  filter: grayscale(0.45);
   z-index: -1;
 }
 
@@ -1065,11 +1098,20 @@ section.block.alt {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 17, 21, 0.95) 0%,
-    rgba(0, 17, 21, 0.55) 100%
-  );
+  background:
+    /* safety scrim under the ask-circle avatar (top-right) — any face in the
+       coaching.jpg that lands behind the portrait reads as shadow */
+    radial-gradient(
+      ellipse 50% 40% at 84% 6%,
+      rgba(11, 11, 14, 0.85) 0%,
+      rgba(11, 11, 14, 0.4) 55%,
+      transparent 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(11, 11, 14, 0.95) 0%,
+      rgba(11, 11, 14, 0.55) 100%
+    );
 }
 
 .coach {
@@ -1085,7 +1127,7 @@ section.block.alt {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--pink);
-  box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.25);
+  box-shadow: 0 0 0 4px rgba(255, 46, 99, 0.25);
 }
 
 .capture .wrap {
@@ -1191,7 +1233,7 @@ section.block.alt {
   margin-top: 22px;
   padding: 24px;
   border-radius: 20px;
-  border: 1px solid rgba(8, 145, 178, 0.45);
+  border: 1px solid rgba(255, 46, 99, 0.45);
   background: rgba(0, 0, 0, 0.35);
 }
 
@@ -1216,7 +1258,7 @@ section.block.alt {
   margin-top: 22px;
   padding: 22px;
   border-radius: 20px;
-  border: 1px solid rgba(8, 145, 178, 0.45);
+  border: 1px solid rgba(255, 46, 99, 0.45);
   background: rgba(0, 0, 0, 0.35);
 }
 
@@ -1289,7 +1331,7 @@ section.block.alt {
 
 /* Footer */
 footer {
-  padding: 40px 0;
+  padding: 40px 0 96px;
   border-top: 1px solid var(--line);
   color: var(--ink-3);
   font-size: 14px;
@@ -1379,7 +1421,7 @@ footer a:hover {
     grid-row: 1;
     background: linear-gradient(
       180deg,
-      rgba(0, 17, 21, 0) 55%,
+      rgba(11, 11, 14, 0) 55%,
       var(--ink) 100%
     );
   }
@@ -1398,9 +1440,6 @@ footer a:hover {
     height: auto;
     max-height: 70vh;
     object-position: 65% 45%;
-  }
-  .hero--bleed .hero-amb {
-    display: none;
   }
   /* The mask wrapper is desktop-only positioning — on phones it must stay in
      the grid: row 1 with the ::after fade overlaying it, copy in row 2 —
@@ -1430,7 +1469,7 @@ footer a:hover {
     right: 0;
     bottom: 0;
     height: 15%;
-    background: linear-gradient(180deg, transparent, var(--ink));
+    background: linear-gradient(180deg, transparent, var(--paper));
     pointer-events: none;
   }
   .hero--bleed .hero-img {
@@ -1444,8 +1483,8 @@ footer a:hover {
     position: static;
     background: linear-gradient(
       180deg,
-      rgba(0, 17, 21, 0) 55%,
-      var(--ink) 100%
+      rgba(11, 11, 14, 0) 55%,
+      var(--paper) 100%
     );
   }
   .hero--bleed .wrap {
@@ -1460,11 +1499,23 @@ footer a:hover {
     gap: 24px;
   }
   .coach {
-    flex-direction: column;
+    position: relative;
+  }
+  .coach .coach-portrait,
+  .home-lab .coach .coach-portrait {
+    position: absolute;
+    /* per-tenant photo tuning: override --ask-circle-top / --ask-circle-right
+       in the demo config's extraCss (on .capture) when a background face
+       collides with the default spot */
+    top: var(--ask-circle-top, -30px);
+    right: var(--ask-circle-right, 44px);
+  }
+  .coach h3 {
+    padding-right: 105px;
   }
   .bio {
-    width: 96px;
-    height: 96px;
+    width: 88px;
+    height: 88px;
   }
   .story {
     grid-template-columns: 1fr;
@@ -1484,12 +1535,18 @@ footer a:hover {
   }
 }
 
+@media (min-width: 801px) {
+  .event {
+    column-gap: 48px;
+  }
+}
+
 @media (max-width: 560px) {
   .zones {
     grid-template-columns: 1fr;
   }
   .masthead h1 {
-    font-size: 7.4vw;
+    font-size: 24vw;
     letter-spacing: 0.04em;
   }
   .masthead .sig {
@@ -1508,12 +1565,12 @@ footer a:hover {
   }
 }
 
-/* Coach's 3 tips */
+/* KORE's 3 tips */
 .tips {
-  background: var(--pink-100);
+  background: color-mix(in srgb, var(--zone-accent) 11%, var(--paper));
 }
 .tips .lead a {
-  color: var(--pink-600);
+  color: var(--zone-accent);
   font-weight: 700;
 }
 .tips-grid {
@@ -1523,7 +1580,7 @@ footer a:hover {
   margin-top: 28px;
 }
 .tips-grid details {
-  background: #fff;
+  background: #14141a;
   border-radius: 14px;
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -1560,7 +1617,7 @@ footer a:hover {
   margin-top: 10px;
 }
 .tips-grid ol li::marker {
-  color: var(--pink);
+  color: var(--zone-accent);
   font-weight: 800;
 }
 @media (max-width: 900px) {
@@ -1596,9 +1653,11 @@ footer a:hover {
   aspect-ratio: 4 / 5;
   object-fit: cover;
 }
-.tips-grid {
-  grid-template-columns: repeat(2, 1fr);
-  align-items: start;
+@media (min-width: 561px) {
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+  }
 }
 @media (max-width: 900px) {
   .tips .wrap {
@@ -1611,7 +1670,7 @@ footer a:hover {
 
 .capture .chat-line {
   margin-top: 14px;
-  color: #444;
+  color: rgba(255, 255, 255, 0.88);
 }
 .chat-zone-inline {
   display: inline-flex;
@@ -1663,9 +1722,10 @@ footer a:hover {
   color: var(--ink-3);
 }
 
-/* Warriors Wall — polaroid scatter */
+/* Race Wall — polaroid scatter */
 .gallery {
   background: var(--paper-2);
+  border-top: 3px solid var(--zone-accent);
   overflow: hidden;
 }
 
@@ -1683,7 +1743,7 @@ footer a:hover {
   position: relative;
   width: clamp(190px, 22vw, 260px);
   padding: 12px 12px 14px;
-  background: #fff;
+  background: #14141a;
   border: 0;
   border-radius: 3px;
   box-shadow:
@@ -1711,7 +1771,7 @@ footer a:hover {
   width: 64px;
   height: 22px;
   margin-left: -32px;
-  background: rgba(8, 145, 178, 0.35);
+  background: rgba(224, 30, 78, 0.35);
   transform: rotate(calc(var(--tilt) * -1.5));
   border-radius: 2px;
 }
@@ -1758,7 +1818,7 @@ footer a:hover {
 }
 
 .polaroid .by b {
-  color: var(--pink-600);
+  color: var(--pink);
   font-weight: 700;
 }
 
@@ -1771,7 +1831,7 @@ footer a:hover {
 .shot-form {
   margin-top: 22px;
   padding: 22px;
-  background: #fff;
+  background: #14141a;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   text-align: left;
@@ -1866,12 +1926,12 @@ footer a:hover {
 }
 
 .lightbox::backdrop {
-  background: rgba(0, 17, 21, 0.92);
+  background: rgba(11, 11, 14, 0.92);
 }
 
 .lightbox figure {
   margin: 0;
-  background: #fff;
+  background: #14141a;
   padding: 14px 14px 18px;
   border-radius: 4px;
 }
@@ -1909,7 +1969,7 @@ footer a:hover {
   height: 44px;
   border: 0;
   border-radius: 50%;
-  background: #fff;
+  background: #14141a;
   color: var(--ink);
   font-size: 26px;
   line-height: 1;
@@ -1955,7 +2015,7 @@ footer a:hover {
   flex-direction: column;
   min-width: 180px;
   padding: 6px;
-  background: #fff;
+  background: #14141a;
   border: 1.5px solid var(--ink);
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
@@ -2010,7 +2070,7 @@ footer a:hover {
   padding: 8px 16px;
   border-radius: 999px;
   border: 1px solid rgba(0, 0, 0, 0.14);
-  background: #fff;
+  background: #14141a;
   color: var(--ink-2);
   font: inherit;
   font-size: 13px;
@@ -2020,9 +2080,9 @@ footer a:hover {
 }
 
 .event-tabs button[aria-selected="true"] {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #0b0b0e;
 }
 
 .event-tabs button span {
@@ -2087,6 +2147,12 @@ footer a:hover {
 }
 
 /* Testimonials (hidden until testimonials.json has a real quote) */
+.plans.verified-offers,.guidance--coach .plans.verified-offers{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));}
+.verified-offers .plan{min-width:0;}
+.verified-offers .btn{white-space:normal;text-align:center;}
+.offer-terms{font-size:.85rem;line-height:1.6;color:var(--ink-2);margin:1rem 0 1.5rem;}.coaching-testimonials{margin:2rem 0;}.quote-source{display:block;margin-top:.6rem;font-size:.8rem;}
+#athletes-say .quote{background:var(--paper-2);color:var(--ink);}
+#athletes-say .quote footer{padding:12px 0 0;margin:0;line-height:1.6;color:var(--ink-2);}.block#athletes-say:not([hidden]){padding-bottom:32px;}.block#athletes-say:not([hidden]) + #events{padding-top:32px;background:color-mix(in srgb,var(--paper) 94%,white);}
 .quotes {
   display: grid;
   gap: 18px;
@@ -2097,7 +2163,7 @@ footer a:hover {
   padding: 24px 26px;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: #fff;
+  background: #14141a;
 }
 .quote p {
   margin: 0 0 14px;
@@ -2174,18 +2240,6 @@ body.has-sticky-cta {
   }
 }
 
-#pelatih ul {
-  list-style: none;
-  padding: 0;
-  margin: 18px 0 0;
-  display: grid;
-  gap: 10px;
-}
-
-#pelatih li a {
-  font-weight: 700;
-}
-
 .hp {
   position: absolute !important;
   left: -9999px;
@@ -2194,20 +2248,20 @@ body.has-sticky-cta {
   overflow: hidden;
 }
 
-/* WhatsApp: hero button + floating bubble (app.js fills the number) */
+/* Message: hero button + floating Instagram button */
 .btn[hidden] {
   display: none;
 }
 
 .btn-wa {
-  background: #25d366;
-  color: #0b1a10;
-  border-color: #25d366;
+  background: #a2ff00;
+  color: #ffffff;
+  border-color: #a2ff00;
 }
 
 .btn-wa:hover {
-  background: #1ebe5b;
-  color: #0b1a10;
+  background: #426600;
+  color: #ffffff;
 }
 
 .wa-fab {
@@ -2253,16 +2307,79 @@ body.has-sticky-cta .wa-fab {
   }
 }
 
+/* Back-to-top chip: bottom-left, quiet surface so the social fab keeps the
+   signature colour. Appears on scroll via .is-visible (app.js). */
+.top-fab {
+  position: fixed;
+  left: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.top-fab.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+body.has-sticky-cta .top-fab {
+  bottom: calc(88px + env(safe-area-inset-bottom));
+}
+
+@media (max-width: 600px) {
+  .top-fab {
+    padding: 0;
+    justify-content: center;
+  }
+
+  .top-fab span {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-fab {
+    transition: none;
+  }
+}
+
 /* --- Motion layer: quiet life, transform/opacity only --- */
 
 /* White sheen sweeps the signature every few seconds */
+.masthead .sig { --signature-ink:color-mix(in srgb,var(--pink) 78%,#fff); color:var(--signature-ink); }
+.masthead .sig-text,.masthead .sig-line {
+  background-image:linear-gradient(105deg,var(--signature-ink) 42%,#fff 50%,var(--signature-ink) 58%);
+  background-size:300% 100%;
+  animation:sig-shine 7s ease-in-out infinite;
+}
+.masthead .sig-line {
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14'%3E%3Cpath fill='white' d='M3 10.5 C50 3.5 120 3 197 6.5 C120 6 50 8 3 10.5 Z'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14'%3E%3Cpath fill='white' d='M3 10.5 C50 3.5 120 3 197 6.5 C120 6 50 8 3 10.5 Z'/%3E%3C/svg%3E");
+  -webkit-mask-size:100% 100%; mask-size:100% 100%; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+}
+.masthead .sig-line path { fill:transparent; }
 .masthead .sig-text {
-  background: linear-gradient(
-    105deg,
-    var(--pink-600) 42%,
-    #e6f1f4 50%,
-    var(--pink-600) 58%
-  );
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -2298,7 +2415,7 @@ body.has-sticky-cta .wa-fab {
   inset: 0;
 }
 
-/* Desktop only: melt the photo's left edge into its own ambient blur —
+/* Desktop only: melt the photo's left edge into the flat stage —
    the headline tail can graze the fade without ever touching a hard
    crop. Mobile's mask stays unmasked (its own grid row + rules). */
 @media (min-width: 801px) {
@@ -2313,9 +2430,7 @@ body.has-sticky-cta .wa-fab {
    compositing path with a transform animation. */
 .hero--bleed .hero-img {
   transform-origin: 60% 90%;
-  animation:
-    hero-enter 2.8s cubic-bezier(0.16, 0.6, 0.3, 1) both,
-    hero-drift 18s ease-in-out 4.4s infinite alternate;
+  animation: none;
 }
 
 @keyframes hero-enter {
@@ -2389,7 +2504,7 @@ figure.reveal {
   transform: rotate(0deg) scale(1.05);
 }
 
-/* WhatsApp bubble takes a breath every ~9s */
+/* Floating message button takes a breath every ~9s */
 .wa-fab {
   animation: wa-breathe 9s ease-in-out infinite;
 }
@@ -2408,7 +2523,9 @@ figure.reveal {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .masthead .sig-text,.masthead .sig-line { background-image:linear-gradient(var(--signature-ink),var(--signature-ink)); }
   .masthead .sig-text,
+  .masthead .sig-line,
   .hero--bleed .hero-img,
   .wa-fab {
     animation: none;
@@ -2462,7 +2579,7 @@ figure.reveal {
   padding: 16px 18px;
   border: 1px solid rgba(15, 15, 17, 0.1);
   border-radius: 12px;
-  background: #fff;
+  background: #14141a;
 }
 
 .roundup-meta {
@@ -2496,6 +2613,15 @@ figure.reveal {
   text-decoration-style: dotted;
   text-underline-offset: 3px;
   cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .athlete-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 0;
+  }
 }
 
 .athlete-modal {
@@ -2588,7 +2714,7 @@ figure.reveal {
   border: 1px solid var(--pink-100);
   border-radius: 14px;
   padding: 22px;
-  box-shadow: 0 10px 30px rgba(0, 17, 21, 0.06);
+  box-shadow: 0 10px 30px rgba(11, 11, 14, 0.06);
   overflow: hidden;
 }
 .bc-head {
@@ -2677,8 +2803,8 @@ figure.reveal {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--pink-600);
-  background: var(--pink-100);
+  color: var(--pink);
+  background: color-mix(in srgb, var(--pink) 9%, var(--paper-2));
   border-radius: 20px;
   padding: 2px 9px;
   margin-right: 8px;
@@ -2810,11 +2936,7 @@ body[data-broadcast=locked] .bc-lock {
 
 /* hero--full: photo covers the whole hero; reveal unrolls across the
    full background. Opt-in per tenant via "heroFull": true. */
-.hero--bleed.hero--full .hero-amb {
-  display: none;
-}
-
-.hero--bleed.hero--full .hero-img {
+.hero--bleed[data-hero-mode="full"] .hero-img {
   object-fit: cover;
   /* --hero-focus keeps the subject clear of the bottom-left copy and is
      set per tenant on :root. A small lift keeps dark photos reading as a
@@ -2824,25 +2946,157 @@ body[data-broadcast=locked] .bc-lock {
   padding: 0;
 }
 
-.hero--bleed.hero--full::after {
+.hero--bleed[data-hero-mode="full"]::after {
   background:
     linear-gradient(
       180deg,
-      rgba(0, 17, 21, 0) 0%,
-      rgba(0, 17, 21, 0.02) 60%,
-      rgba(0, 17, 21, 0.18) 100%
+      rgba(11, 11, 14, 0) 0%,
+      rgba(11, 11, 14, 0.02) 60%,
+      rgba(11, 11, 14, 0.18) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(0, 17, 21, 0.2) 0%,
-      rgba(0, 17, 21, 0.07) 35%,
-      rgba(0, 17, 21, 0) 50%
+      rgba(11, 11, 14, 0.2) 0%,
+      rgba(11, 11, 14, 0.07) 35%,
+      rgba(11, 11, 14, 0) 50%
     );
 }
 
 @media (min-width: 801px) {
-  .hero--bleed.hero--full .hero-mask {
+  .hero--bleed[data-hero-mode="full"] .hero-mask {
     -webkit-mask-image: none;
     mask-image: none;
   }
 }
+
+/* readability: no orphan words in leads/standfirst, full-white copy in dark tips cards */
+.lead, .hero p { text-wrap: pretty; }
+.tips-grid ol, .tips-grid details p { color: #fff; }
+/* adjacent panels share one gap; delineate alt panels; tighten block before a CTA band */
+.block.alt { box-shadow: inset 0 1px 0 var(--line); }
+section.cta-band { background: #1e1e28; }
+section.cta-band .btn-light { background: var(--ink); color: #14141a; }
+
+/* Hero copy on the photo is headline + max two-line subhead; buttons and stats sit below the photo. */
+.hero-below{background:#0b0b0e;color:#fff;padding:22px 0 30px;border-bottom:1px solid rgba(255,255,255,.08)}
+.hero-below .wrap{width:min(1180px,100% - 40px);margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 40px}
+.hero-below .actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-below .stats{display:flex;gap:34px;flex-wrap:wrap}
+.hero-below .stats div strong{display:block;font-size:22px;font-weight:800}
+.hero-below .stats div span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+@media (max-width:700px){.hero-below .wrap{flex-direction:column;align-items:flex-start}.hero-below .stats{gap:16px 26px}}
+
+/* Mobile: the floating message button waits until the hero has scrolled away, so it never sits on the headline or hero buttons. */
+.wa-fab { transition: opacity 0.3s ease; }
+@media (max-width: 800px) { body.hero-in-view .wa-fab { opacity: 0; pointer-events: none; } }
+
+@media (min-width: 901px) {
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    width: 100%;
+    justify-content: center;
+  }
+}
+/* Events head: photo pinned right of the headline, hero-style corner + curve */
+.events-head { display: grid; grid-template-columns: 1fr minmax(280px, 360px); gap: clamp(2rem, 5vw, 4rem); align-items: center; margin-bottom: 1.5rem; }
+.events-head h3 { font-size: clamp(2.8rem, 6vw, 5.6rem); }
+.events-head .lead { max-width: 46ch; }
+.events-photo { position: relative; margin: 0; }
+.events-photo img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 30%; border-radius: 0 0 8% 48% / 0 0 2% 7%; }
+.events-photo::after { content: ""; position: absolute; width: 56px; height: 56px; right: -8px; top: -8px; border-right: 2px solid var(--pink); border-top: 2px solid var(--pink); pointer-events: none; }
+@media (max-width: 700px) { .events-head { grid-template-columns: 1fr; } .events-photo { max-width: 320px; margin-top: .5rem; } }
+
+/* collapsible race list — extra cards sit behind "+ N more races" */
+.events-more > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  margin-top: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  color: var(--pink);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: border-color 0.2s;
+}
+.events-more > summary::-webkit-details-marker {
+  display: none;
+}
+.events-more > summary::before {
+  content: "+";
+  font-size: 18px;
+  font-weight: 800;
+}
+.events-more[open] > summary::before {
+  content: "\2013";
+}
+.events-more > summary:hover {
+  border-color: var(--pink);
+}
+
+/* collapsible plan list — offers beyond the third sit behind "+ N more plans" */
+.plans-more > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 20px;
+  margin-top: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  color: var(--pink);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: border-color 0.2s;
+  grid-column: 1 / -1;
+}
+.plans-more > summary::-webkit-details-marker {
+  display: none;
+}
+.plans-more > summary::before {
+  content: "+";
+  font-size: 18px;
+  font-weight: 800;
+}
+.plans-more[open] > summary::before {
+  content: "\2013";
+}
+.plans-more > summary:hover {
+  border-color: var(--pink);
+}
+.plans-more {
+  grid-column: 1 / -1;
+  display: contents;
+}
+.plans-more > summary {
+  display: flex;
+}
+
+/* iOS date inputs carry an intrinsic min-width that ignores width:100% —
+   without this they poke out of the panel on narrow screens */
+form input[type="date"] {
+  min-width: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+@media (min-width: 901px) {
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+:root{--paper:#101110;--paper-2:#191b18;--ink:#f4f4ef;--ink-2:#d3d5cf;--ink-3:#a8aea2}html body .btn-primary{background:#a2ff00;color:#101110;border-color:#a2ff00}html body .btn-primary:hover{background:#baff49;color:#101110}html body .hero--bleed{height:auto;min-height:0;display:flex;flex-direction:column;padding:0;background:#101110}html body .hero--bleed .hero-mask{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:auto;order:2;overflow:hidden}html body .hero--bleed .hero-mask:after{display:none}html body .hero--bleed>.wrap{position:relative;inset:auto;order:1;min-height:0;padding:2rem 0 2.5rem;z-index:2}html body .hero--bleed .hero-img{position:relative;inset:auto;padding:0;filter:none}html body .hero--bleed::after{display:none}html body .nav .menu>li>.nav-acc,html body .nav .menu>li>a{color:#d3d5cf!important}html body .menu a:hover,html body .nav-acc:hover{color:#a2ff00}html body .hero--bleed h2{font-size:clamp(2.8rem,7vw,6.5rem);max-width:14ch;line-height:.95;color:#f4f4ef}html body .hero--bleed>.wrap>p{max-width:50ch;color:#d3d5cf}html body .hero-below{background:#191b18}.hero-below .stats strong{color:#a2ff00}html body .story figure{border-radius:4px;overflow:visible;aspect-ratio:auto;height:auto}html body .story figure img{border-radius:4px}html body .story .profile-hairline{}html body .capture{background:#101110;overflow:hidden}html body .capture-bg{opacity:.12;position:absolute!important;width:100%!important;height:100%!important;object-fit:cover!important}html body .coach{display:block}html body .capture .coach-portrait{display:none}html body .capture>.wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.5rem 3rem;align-items:start}html body .capture .ask-hero-photo{grid-column:1;grid-row:1/span 2;margin:0;overflow:hidden;border-radius:14px;border:1px solid #363a31}html body .capture .ask-hero-photo img{position:static;opacity:1;filter:none}html body .capture .ask-hero-photo figcaption{padding:.8rem 1rem;color:#c8cec0;font-size:.8rem;line-height:1.5}html body .capture>.wrap>.coach{grid-column:1;min-width:0}html body .capture>.wrap>div.reveal:not(.coach){grid-column:2;min-width:0}html body .capture #ask-form{display:grid;gap:.7rem}html body .capture #ask-form input{min-width:0;width:100%;box-sizing:border-box}@media(max-width:700px){html body .capture>.wrap{grid-template-columns:minmax(0,1fr);gap:1.5rem}html body .capture .ask-hero-photo,html body .capture>.wrap>.coach,html body .capture>.wrap>div.reveal:not(.coach){grid-column:1;grid-row:auto}}html body.zone-acc{--zone-accent:#b6de72;--pink:#a2ff00}html body .wa-fab{background:#a2ff00!important;color:#101110!important}html body .zone a,html body .plan a:not(.btn){text-decoration-thickness:1px}.sig{color:#a2ff00}.coach-view-toolbar{--pink:#a2ff00}.guide-hero-photo{background:#191b18}html body .polaroid img{height:auto;aspect-ratio:auto;object-fit:contain}html body .polaroid::before{background:rgba(65,70,61,.25)}html body .polaroid .by b{color:#426600}html body .btn:focus-visible,html body a:focus-visible{outline:3px solid #a2ff00;outline-offset:4px}@media(max-width:600px){html body .hero--bleed>.wrap{padding:1.5rem 1rem 2rem}html body .hero--bleed h2{font-size:3.1rem}html body .capture-bg{display:none}}

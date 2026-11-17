@@ -1,5 +1,4 @@
 {
-  "note": "Receptionist answers — the 10 questions KORE gets asked most. Instant answers in the Ask section; anything else goes to the inbox.",
   "items": [
     {
       "q": "How much is membership?",
@@ -7,123 +6,69 @@
         "price",
         "cost",
         "membership",
-        "how much",
-        "plans",
-        "expensive",
-        "monthly",
-        "pay"
+        "monthly"
       ],
-      "a": "Depends how you want to train: 3-Day Trial — £30 (one-off — 3 days). All-Access — £55 (per month). HYROX Squad — £40 (per month). 1:1 Coaching — £150 (per month). Rolling monthly, no lock-in — details on the plans section below."
+      "a": "Monthly membership is £64.99 per month, rolling monthly. Annual membership is £650 upfront for 12 months. ClubRight also lists a £10 day pass. Check the current terms before joining."
     },
     {
-      "q": "Is there a trial?",
-      "keywords": [
-        "trial",
-        "taster",
-        "try",
-        "free",
-        "first session",
-        "test"
-      ],
-      "a": "Yes — the 3-Day Trial gives you the full run of the place: sessions, open gym, the lot. Most people who try a week stay."
-    },
-    {
-      "q": "I've never done HYROX — can beginners join?",
-      "keywords": [
-        "beginner",
-        "never done",
-        "new",
-        "first time",
-        "unfit",
-        "start"
-      ],
-      "a": "That's most of the room, honestly. Every station scales, nobody's watching your numbers, and Coach will tell you the same: show up twice a week and the rest takes care of itself."
-    },
-    {
-      "q": "What actually is HYROX?",
-      "keywords": [
-        "what is",
-        "hyrox",
-        "format",
-        "rules",
-        "stations",
-        "race"
-      ],
-      "a": "An indoor fitness race: eight 1km runs with a workout station between each — SkiErg, sled push, sled pull, burpee broad jumps, row, farmers carry, lunges, wall balls. Open, Pro, Doubles and Relay divisions, so everyone can race."
-    },
-    {
-      "q": "Where are you based?",
+      "q": "Where is KORE?",
       "keywords": [
         "where",
-        "location",
         "address",
-        "based",
-        "parking",
-        "directions",
-        "find you"
+        "location"
       ],
-      "a": "We're in Newport — exact session locations go out in the member group each week, and the site has the details under Events. Parking's never been an issue."
+      "a": "KORE is on East Bank Road, Newport, NP19 4PP. Use the official KORE contact page for directions and current opening information."
     },
     {
-      "q": "When are the sessions?",
+      "q": "What can I train?",
       "keywords": [
-        "when",
-        "times",
-        "timetable",
-        "schedule",
-        "sessions",
         "classes",
-        "morning",
-        "evening"
+        "hyrox",
+        "strength",
+        "engine"
       ],
-      "a": "Session times are on the diary page and go out weekly in the group — typically early morning and evening slots so it fits around work. Check the diary or just ask."
+      "a": "HYROX-specific classes, strength, engine sessions and open gym. The live timetable is on KORE's official website."
     },
     {
-      "q": "Do you run HYROX sim days?",
+      "q": "Can beginners join?",
       "keywords": [
-        "sim",
-        "simulation",
-        "sim day",
-        "practice race",
-        "test run",
-        "tryout"
+        "beginner",
+        "new",
+        "first"
       ],
-      "a": "Yes — full race simulations with real timing and transitions, the closest thing to race day without the ticket. Members get first shout; dates land on the events page."
+      "a": "KORE describes its training as suitable for first-time racers and experienced competitors. Ask the team which session is the right starting point."
     },
     {
-      "q": "Do you do 1:1 coaching?",
+      "q": "What training options and prices are available?",
       "keywords": [
-        "1:1",
-        "pt",
-        "personal training",
-        "one to one",
-        "private",
-        "individual"
+        "price",
+        "cost",
+        "fee",
+        "programme",
+        "program",
+        "coaching"
       ],
-      "a": "Yes — 1:1 coaching is on the plans. Technique work, race prep, or just faster progress than group sessions alone. Message Coach directly and you'll get a straight answer on whether it's worth it for you."
+      "a": "Monthly membership — £64.99 per month · rolling monthly; Annual membership — £650 upfront · 12 months; Day pass — £10 one-off · 1 day. Read the Coaching page for each offer's format and its official link. The provider sets current prices and terms."
     },
     {
-      "q": "Can I cancel any time?",
+      "q": "How do I get started?",
       "keywords": [
-        "cancel",
-        "contract",
-        "lock",
-        "commitment",
-        "quit",
-        "leave"
+        "start",
+        "book",
+        "sign up",
+        "join"
       ],
-      "a": "Rolling monthly — cancel whenever, no exit forms, no guilt-trip retention script. If you leave, the door stays open."
+      "a": "Choose the offer that fits your goal on the Coaching page, then follow its own official button. Use Ask if you want to discuss your starting point first."
     },
     {
-      "q": "I'm looking for a doubles partner",
+      "q": "Where are the partner links and codes?",
       "keywords": [
-        "partner",
-        "doubles",
-        "pair",
-        "teammate",
-        "race with"
+        "discount",
+        "code",
+        "affiliate",
+        "partner brand"
       ],
-      "a": "Post a card on the find-a-partner board — pace band, race target, one line about you. Coach matches people by hand, because doubles is chemistry, not just split times."
+      "a": "The Partners page lists KORE membership, HYROX race information. Check the linked provider for current eligibility and terms."
     }
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "name": "KORE · ClubRight",
+  "coachURL": "https://koregym.clubright.co.uk/",
+  "clientURL": "https://koregym.clubright.co.uk/Account/Login",
+  "programmesURL": "https://koregym.clubright.co.uk/MemberArea/SelectMembership",
+  "applicationURL": "https://koregym.co.uk/online/",
+  "directCoachLink": true,
+  "offerTitle": "Monthly membership",
+  "offerDescription": "Unlimited HYROX classes and open gym, with access to KORE's training app.",
+  "note": "ClubRight membership and member login are verified official destinations. No session, account, workout or progress sync is connected in this local preview."
+}

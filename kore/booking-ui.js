@@ -12,7 +12,7 @@ import {
   canJoinGroup,
   calendarFile,
   isAway,
-} from "./booking-model.js";
+} from "./booking-model.js?v=09cc5a1adaa7";
 
 const $ = (selector) => document.querySelector(selector);
 const esc = (value) =>
@@ -726,7 +726,7 @@ function manageGroup(record) {
 function addGroup() {
   showDialog(
     "Make it a crew session.",
-    `<form id="group-form"><label class="field">Public class name<input name="title" required maxlength="60" value="HYROX lunchtime crew" /></label>${dateFields(selected, 12)}<div class="field-row"><label class="field">Length<select name="duration"><option value="60">60 minutes</option><option value="45">45 minutes</option><option value="30">30 minutes</option></select></label><label class="field">Spaces<input name="capacity" type="number" min="1" max="40" value="8" required /></label></div><label class="agreement"><input name="featured" type="checkbox" checked /><span>Highlight this class in the diary and featured cards.</span></label><p class="form-error" id="group-error" role="alert"></p><div class="dialog-actions"><button class="button primary" type="submit">Add walkthrough group class</button></div><p class="small-note">Walkthrough details only — no real classes are published.</p></form>`,
+    `<form id="group-form"><label class="field">Public class name<input name="title" required maxlength="60" value="HYROX lunchtime crew" /></label>${dateFields(selected, 12)}<div class="field-row"><label class="field">Length<select name="duration"><option value="60">60 minutes</option><option value="45">45 minutes</option><option value="30">30 minutes</option></select></label><label class="field">Spaces<input name="capacity" type="number" min="1" max="40" value="8" required /></label></div><label class="agreement"><input name="featured" type="checkbox" checked /><span>Highlight this class in the diary and featured cards.</span></label><p class="form-error" id="group-error" role="alert"></p><div class="dialog-actions"><button class="button primary" type="submit">Add walkthrough group class</button></div><p class="small-note">All details are examples. No real classes are published.</p></form>`,
     "COACH PREVIEW",
   );
   $("#group-form").addEventListener("submit", (event) => {
@@ -953,7 +953,7 @@ render();
 function applyProfile() {
   document.title = "Your week, made simple · " + profile.brand;
   const home = profile.slug === "chassis" ? "/" : "/" + profile.slug + "/";
-  const logo = document.querySelector(".wordmark");
+  const logo = document.querySelector(".topbar .wordmark");
   logo.textContent = profile.brand.toUpperCase();
   logo.href = home;
   const tagline = document.createElement("small");
@@ -986,10 +986,7 @@ function applyProfile() {
     "Walkthrough schedule — not " + profile.coachFirst + "’s actual diary.";
   document.querySelector(".timezone").textContent =
     "06:00–20:00 · " + profile.timeZone;
-  const sitePink = getComputedStyle(document.documentElement)
-    .getPropertyValue("--pink")
-    .trim();
-  const accent = /^#[0-9a-f]{6}$/i.test(sitePink) ? sitePink : profile.accent;
+  const accent = profile.accent;
   if (/^#[0-9a-f]{6}$/i.test(accent)) {
     document.body.style.setProperty("--purple", accent);
     document.body.style.setProperty(

@@ -1,0 +1,39 @@
+{
+  "offers": [
+    {
+      "id": "coaching",
+      "name": "Monthly membership",
+      "goal": "Offer enquiries",
+      "destination": "https://koregym.clubright.co.uk/MemberArea/SelectMembership",
+      "image": "/kore/images/coaching-hero.jpg",
+      "headline": "Unlimited HYROX classes and open gym, with access to KORE's training app.",
+      "actionLabel": "Choose monthly"
+    },
+    {
+      "id": "programme",
+      "name": "Annual membership",
+      "goal": "Offer enquiries",
+      "destination": "https://koregym.clubright.co.uk/MemberArea/SelectMembership",
+      "image": "/kore/images/coaching-hero.jpg",
+      "headline": "Commit to a year of classes, open gym and structured training with KORE.",
+      "actionLabel": "Choose annual"
+    },
+    {
+      "id": "programme-3",
+      "name": "Day pass",
+      "goal": "Offer enquiries",
+      "destination": "https://koregym.clubright.co.uk/MemberArea/SelectMembership",
+      "image": "/kore/images/coaching-hero.jpg",
+      "headline": "Drop in and get a feel for the training floor. ClubRight lists 24-hour access from activation.",
+      "actionLabel": "Explore day passes"
+    },
+    {
+      "id": "shop",
+      "name": "Shop collection",
+      "goal": "Shop visits",
+      "destination": "https://koregym.co.uk/",
+      "image": "/kore/images/coaching-hero.jpg",
+      "headline": "Explore the collection."
+    }
+  ]
+}

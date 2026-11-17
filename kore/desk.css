@@ -1,0 +1,230 @@
+/* desk.css — "The Desk" family: today, tour, leads, campaigns, clients,
+   client, desk (finance), manage-programmes, manage-videos, platform-setup.
+   Opt-in via body.desk-page. Coach's-view workspace: calm and efficient —
+   mono section labels, tabular figures, fine rules, quiet panels. Pink stays
+   for attention and actions; no theatrical treatments, no scroll reveals. */
+
+body.desk-page .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+body.desk-page main > .eyebrow::before,
+body.desk-page .video-workspace > .eyebrow::before,
+body.desk-page .today-wrap > .eyebrow::before {
+  content: "";
+  width: 1.4em;
+  border-top: 1px solid var(--pink);
+  opacity: 0.7;
+}
+
+/* Page heading — tight, quieter than the public site */
+body.desk-page main > h2,
+body.desk-page .video-workspace > h2,
+body.desk-page .today-wrap > h2 {
+  letter-spacing: -0.035em;
+}
+body.desk-page .lead {
+  color: var(--ink-2);
+  max-width: 60ch;
+}
+
+/* ---------- Panels & cards ---------- */
+
+body.desk-page .showcase-card,
+body.desk-page .record-card,
+body.desk-page .video-editor,
+body.desk-page .video-side-panel,
+body.desk-page .campaign-panel,
+body.desk-page .prompt-preview,
+body.desk-page .renewal-box {
+  position: relative;
+  border-radius: 14px;
+}
+body.desk-page .showcase-card {
+  border-top: 2px solid var(--line);
+  transition: border-color 0.25s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  body.desk-page .showcase-card:hover {
+    border-top-color: var(--pink);
+  }
+  body.desk-page .queue-item:hover,
+  body.desk-page .floor-item:hover {
+    border-color: var(--pink);
+  }
+  body.desk-page .desk-more > summary:hover {
+    border-color: var(--pink);
+    color: var(--ink);
+  }
+}
+
+/* Clickable rows — a hairline shift, not a lift. Tools stay planted. */
+body.desk-page .queue-item,
+body.desk-page .floor-item,
+body.desk-page .desk-row {
+  transition: border-color 0.2s ease;
+}
+/* ---------- Figures & labels ---------- */
+
+body.desk-page .ds-value,
+body.desk-page .dr-amt,
+body.desk-page .dr-date,
+body.desk-page .desk-stat,
+body.desk-page .lead-stat,
+body.desk-page .client-stat,
+body.desk-page .queue-tag,
+body.desk-page .floor-item time,
+body.desk-page .today-stats a {
+  font-variant-numeric: tabular-nums;
+}
+body.desk-page .queue-tag,
+body.desk-page .filter-chip,
+body.desk-page .ds-label {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: 0.08em;
+}
+
+/* Filter chips & section switches — instrument tabs */
+body.desk-page .filter-chip,
+body.desk-page .desk-content-switch .btn {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 8px;
+}
+body.desk-page .filter-chip[aria-pressed="true"],
+body.desk-page .filter-chip.active,
+body.desk-page .desk-content-switch .btn[aria-pressed="true"] {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #fff;
+}
+
+/* Stat strip — quiet tabular readouts */
+body.desk-page .lead-stat,
+body.desk-page .desk-stat,
+body.desk-page .client-stat {
+  border-left: 2px solid var(--line);
+  padding-left: 0.7rem;
+}
+body.desk-page .lead-stat strong,
+body.desk-page .desk-stat strong,
+body.desk-page .client-stat strong,
+body.desk-page .ds-value {
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+/* Finance amounts — calm signal colours already in place; keep numerals tidy */
+body.desk-page .dr-amt {
+  font-weight: 750;
+}
+
+/* Next-step / closing panels — one pink top rule */
+body.desk-page .desk-next-step {
+  border-top: 2px solid var(--pink);
+  border-radius: 0 0 14px 14px;
+}
+
+/* Notes & threads — fine rules */
+body.desk-page .client-note,
+body.desk-page .lead-note,
+body.desk-page .thread {
+  border-left: 2px solid var(--line);
+  padding-left: 0.9rem;
+}
+
+/* Preview/details notes — dashed, de-emphasised */
+body.desk-page .desk-preview-note {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  color: var(--ink-3);
+}
+body.desk-page .desk-preview-note summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* Form focus — pink ring, consistent with the site */
+body.desk-page input:focus,
+body.desk-page select:focus,
+body.desk-page textarea:focus {
+  border-color: var(--pink);
+  outline: none;
+}
+
+/* ---------- Long-list caps (desk-more.js) ---------- */
+
+body.desk-page .desk-count {
+  margin: 0 0 0.7rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+body.desk-page .desk-more {
+  margin: 0;
+}
+body.desk-page .desk-more > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  min-height: 48px;
+  padding: 0.7rem 1.1rem;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  list-style: none;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+body.desk-page .desk-more > summary::-webkit-details-marker {
+  display: none;
+}
+body.desk-page .desk-more > summary::after {
+  content: "▾";
+  color: var(--pink);
+  font-size: 0.9em;
+}
+body.desk-page .desk-more[open] > summary::after {
+  content: "▴";
+}
+body.desk-page .desk-more-items {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+}
+body.desk-page .desk-more-items > .desk-row {
+  margin-top: 0;
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  body.desk-page .showcase-card,
+  body.desk-page .queue-item,
+  body.desk-page .floor-item,
+  body.desk-page .desk-row {
+    transition: none;
+  }
+}

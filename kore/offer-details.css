@@ -1,0 +1,25 @@
+html body .offer-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:start;gap:clamp(2rem,5vw,5rem);padding-block:2.5rem 3.5rem}
+.offer-copy{min-width:0}
+.offer-copy .crumbs{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;padding:0;margin:0 0 2rem;font-size:.85rem;color:var(--ink-2)}
+.offer-copy .crumbs li+li:before{content:'/';margin-right:.6rem;color:var(--pink)}
+.offer-copy h2{font-size:clamp(2.7rem,5vw,4.7rem);line-height:1;letter-spacing:-.045em;margin:.6rem 0 1.5rem;max-width:13ch;text-wrap:balance}
+.offer-copy h3{font-size:1.15rem;margin:0 0 .5rem}
+.offer-price{font-weight:800;font-size:clamp(1.4rem,2.5vw,2rem);color:var(--pink);line-height:1.3;margin:.5rem 0 1.4rem}
+.offer-intro{font-size:1.05rem;line-height:1.7;color:var(--ink-2);max-width:54ch}
+.offer-inclusions{list-style:none;padding:0;margin:1.5rem 0 2rem;display:grid;gap:.75rem}
+.offer-inclusions li{padding-left:1.4rem;position:relative;line-height:1.5}
+.offer-inclusions li:before{content:'—';position:absolute;left:0;color:var(--pink)}
+html body .offer-photo{margin:1rem 0 0;position:relative;border-radius:4px 4px 40px 4px;border-top:2px solid var(--pink);overflow:hidden}
+html body .offer-photo img{display:block;width:100%;height:auto;max-height:none;object-fit:contain}
+.offer-photo figcaption{padding:1rem;background:var(--paper-2);color:var(--ink-2);font-size:.85rem;line-height:1.5}
+.offer-next .btn{min-height:48px}
+.offer-next p{font-size:.85rem;line-height:1.6;color:var(--ink-2);max-width:50ch;margin:1rem 0 0}
+.offer-facts{border-top:1px solid var(--line);padding-block:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem 4rem}
+.offer-facts h3{font-size:1.25rem;margin:0 0 .7rem}
+.offer-facts p{line-height:1.7;color:var(--ink-2);max-width:55ch}
+.offer-other{border-top:1px solid var(--line);padding-block:2rem 4rem}
+.offer-other h3{font-size:1.4rem;margin:0 0 1.25rem}
+.offer-other nav{display:flex;flex-wrap:wrap;gap:.8rem}
+.offer-other .btn{min-height:44px;white-space:normal;text-align:center}
+.offer-compare{display:inline-block;min-height:44px;padding-block:1rem;font-weight:700}
+@media(max-width:700px){html body .offer-hero{grid-template-columns:1fr;padding-top:1.5rem;gap:1.5rem}.offer-copy .crumbs{margin-bottom:1.5rem}.offer-copy h2{max-width:12ch}.offer-next .btn{width:100%}.offer-facts{grid-template-columns:1fr;gap:1.5rem}.offer-photo{max-width:480px}.offer-other nav{flex-direction:column}.offer-other .btn{width:100%}}

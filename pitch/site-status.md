@@ -32,7 +32,7 @@ These directories exist but are behind the current pitch standard. Do not send t
 
 | Site / slug | Current state | Action before use |
 |---|---|---|
-| `burgonfitness` | Legacy-style generated output; old Desk/tool set; Fuel links present; stale race content. | Rebuild from canonical chassis only if this prospect is revived. |
+| `burgonfitness` | Approved live final with targeted photo/menu/hero maintenance (18Nov); new photography, Race fuel main-menu item, Desk masthead and coach-preview tools restored; teaser video published at `/pitch/burgonfitness/`. | Live for Chris's pre-pitch review. |
 | `fennellfitness` | Legacy-style generated output; old Desk/tool set; Fuel links present; stale race content. | Rebuild from canonical chassis only if revived. |
 | `georgegrayson` | Older chassis-mode output, but lacks the latest owner-workspace pages and current race set. | Rebuild/patch before pitching. |
 | `gym64` | Legacy-style generated output; old Desk/tool set; Fuel links present. | Rebuild before any pitch use. |

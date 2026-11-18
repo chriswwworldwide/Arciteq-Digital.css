@@ -50,13 +50,14 @@ body.utility .guide-hero-photo img {
   width: 100%;
   height: 250px;
   object-fit: cover;
+  object-position: 50% 15%;
   border-radius: 0 0 48% 8% / 0 0 7% 2%;
 }
 body.utility .guide-hero-photo::after {
   content: "";
   position: absolute;
-  width: 56px;
-  height: 56px;
+  width: 50%;
+  height: 50%;
   left: -8px;
   top: -8px;
   border-left: 2px solid var(--pink);

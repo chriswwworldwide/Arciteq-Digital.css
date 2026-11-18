@@ -23,6 +23,22 @@
       .coach-plans ul {
         padding-left: 0;
       }
+      @media (min-width: 901px) {
+        .guidance--coach .guide-hero > .wrap {
+          grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        }
+        .guidance--coach .guide-hero-photo img {
+          height: auto;
+          max-height: 520px;
+          object-fit: contain;
+          border-radius: 18px;
+        }
+      }
+      @media (max-width: 900px) {
+        .guidance--coach .guide-hero-photo img {
+          object-position: 50% 40%;
+        }
+      }
     </style>
   <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style><link rel="stylesheet" href="/burgonfitness/showcase.css?v=r1794139095075" /><script src="/burgonfitness/coach-view.js?v=r1794139095075"></script></head>
   <body class="guidance guidance--coach">
@@ -74,10 +90,10 @@
               <li><a href="/burgonfitness/find-a-partner.html">Find a race-mate</a></li>
               <li><a href="/burgonfitness/run-zone.html">Run zone</a></li>
               <li><a href="/burgonfitness/taper-zone.html">Taper zone</a></li>
-              <li><a href="/burgonfitness/race-day.html">Race day</a></li>
               <li><a href="/burgonfitness/events.html">Race Calendar &amp; Travel</a></li>
             </ul>
           </li>
+          <li><a href="/burgonfitness/race-day.html" class="nav-acc">Race fuel</a></li>
           <li>
             <button aria-expanded="false" aria-haspopup="true" class="nav-acc">Community <span class="caret"></span></button>
             <ul class="sub">
@@ -115,7 +131,9 @@
         <figure class="guide-hero-photo reveal">
           <img
             src="/burgonfitness/images/coaching-hero.jpg?v=r1794139095075"
-            alt="Hannah Burgon coaching an outdoor group training session"
+            alt="Hannah Burgon mid-squat holding a dumbbell in the gym"
+            width="990"
+            height="840"
             loading="lazy"
           />
         </figure>

@@ -961,7 +961,7 @@ section.block:has(+ .cta-band) { padding-bottom: 40px; }
 
 .plan-crew {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1.5fr) auto;
+  grid-template-columns: minmax(0, 1.5fr) auto;
   gap: 24px;
   align-items: center;
   margin: 40px 0 28px;
@@ -1642,6 +1642,7 @@ footer a:hover {
   }
   .tips-photo img {
     aspect-ratio: 16 / 10;
+    object-position: 50% 0;
   }
 }
 

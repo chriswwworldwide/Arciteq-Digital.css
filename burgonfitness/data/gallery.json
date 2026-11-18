@@ -1,77 +1,61 @@
 {
-  "note": "DEMO SEED — photos pulled from Hannah's IG for the walk-in mockup. Replace with real member photos on launch.",
+  "note": "DEMO SEED \u2014 photos pulled from Hannah's IG for the walk-in mockup. Replace with real member photos on launch.",
   "photos": [
     {
-      "src": "/burgonfitness/images/finish.jpg",
-      "alt": "Hannah on the Warsaw podium holding the first-place banner",
-      "caption": "First place, Pro Women, Warsaw. The banner says it all.",
+      "src": "/burgonfitness/images/gallery/stock-finish.jpg",
+      "alt": "Two athletes celebrating together at the sled pull",
+      "caption": "Sled pull done. The hard part is behind you \u2014 nearly.",
       "by": "Hannah",
       "tilt": -1.5,
-      "event": "HYROX Warsaw"
-    },
-    {
-      "src": "/burgonfitness/images/squad-athlos.jpg",
-      "alt": "The Burgon Fitness crew on the orange turf at a Stockport sim",
-      "caption": "Sim day at Pyramid. Everyone in this photo started as a beginner.",
-      "by": "Hannah",
-      "tilt": 2,
-      "event": "Monthly sim"
-    },
-    {
-      "src": "/burgonfitness/images/gallery/pyramid-floor.jpg",
-      "alt": "Athletes mid-session on the Pyramid Performance floor",
-      "caption": "Saturday sims — real timing, real atmosphere, no travel to London.",
-      "by": "Hannah",
-      "tilt": 1,
-      "event": "Pyramid Performance"
-    },
-    {
-      "src": "/burgonfitness/images/gallery/club-tee.jpg",
-      "alt": "The Burgon Fitness HYROX CLUB tee",
-      "caption": "The club tee. Earned, not given.",
-      "by": "Hannah",
-      "tilt": -2,
-      "event": "Merch"
-    },
-    {
-      "src": "/burgonfitness/images/gallery/race-car.jpg",
-      "alt": "Hannah on the Burgon Fitness-sponsored race car",
-      "caption": "Spot the logo. Local sponsor, race-car fast.",
-      "by": "Hannah",
-      "tilt": 1.5,
-      "event": "Sponsor"
-    },
-    {
-      "src": "/burgonfitness/images/gallery/finish-tunnel.jpg",
-      "alt": "The HYROX finish tunnel before the crowds",
-      "caption": "The last thing you see before the floor goes loud.",
-      "by": "Hannah",
-      "tilt": -1,
       "event": "Race day"
-    },
-    {
-      "src": "/burgonfitness/images/gallery/finish-run.jpg",
-      "alt": "Hannah sprinting through the HYROX finish gantry, crowd behind the barriers",
-      "caption": "That finish-gantry feeling. You can't buy it — you have to earn it.",
-      "by": "Hannah",
-      "tilt": 2,
-      "event": "HYROX finish"
-    },
-    {
-      "src": "/burgonfitness/images/gallery/bike.jpg",
-      "alt": "Hannah mid-ride on the road bike, yellow helmet",
-      "caption": "Cross-training day. The engine doesn't only run indoors.",
-      "by": "Hannah",
-      "tilt": -2,
-      "event": "Off-season"
     },
     {
       "src": "/burgonfitness/images/gallery/deadlift.jpg",
       "alt": "Hannah pulling a heavy barbell deadlift at Pyramid",
       "caption": "Strength first. HYROX rewards the ones who can move weight tired.",
       "by": "Hannah",
-      "tilt": 1,
+      "tilt": -1,
       "event": "Strength"
+    },
+    {
+      "src": "/burgonfitness/images/gallery/stock-arena.jpg",
+      "alt": "Athlete walking the arena floor before a race",
+      "caption": "Walk the Roxzone before the buzzer. Race it calmer.",
+      "by": "Hannah",
+      "tilt": 2,
+      "event": "Race day"
+    },
+    {
+      "src": "/burgonfitness/images/gallery/istanbul-podium.jpg",
+      "alt": "Two athletes celebrating with HYROX Istanbul banners",
+      "caption": "Pick a race, book a weekend, make it a trip.",
+      "by": "Hannah",
+      "tilt": 1,
+      "event": "HYROX Istanbul"
+    },
+    {
+      "src": "/burgonfitness/images/gallery/bike.jpg",
+      "alt": "Hannah mid-ride on the road bike, yellow helmet",
+      "caption": "Cross-training day. The engine doesn't only run indoors.",
+      "by": "Hannah",
+      "tilt": 2,
+      "event": "Off-season"
+    },
+    {
+      "src": "/burgonfitness/images/gallery/malaga-three.jpg",
+      "alt": "Three athletes smiling together at the arena",
+      "caption": "Racing is better with your people. Doubles entries welcome.",
+      "by": "Hannah",
+      "tilt": -2,
+      "event": "HYROX Malaga"
+    },
+    {
+      "src": "/burgonfitness/images/gallery/crew-selfie.jpg",
+      "alt": "A group of athletes taking a selfie in the arena",
+      "caption": "The crew photo before the warmup. Tradition.",
+      "by": "Hannah",
+      "tilt": 1.5,
+      "event": "Race day"
     }
   ]
 }

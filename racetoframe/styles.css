@@ -3052,3 +3052,5 @@ html body .nav .menu>li>a,html body .nav .menu>li>button{color:#2563eb!important
 html body .nav .menu>li>.nav-acc{color:#f6954b!important;border-bottom:2px solid #a54c08}
 html body .nav .menu>li:has(>.nav-acc) .sub{border-color:#a54c08}
 html body .nav .menu>li:has(>.nav-acc) .sub a:hover,html body .nav .menu>li:has(>.nav-acc) .sub a:focus-visible{background:#351e0d;color:#fff}
+
+html body .hero--bleed .hero-mask{border-radius:0 0 48% 8% / 0 0 7% 2%;overflow:hidden}

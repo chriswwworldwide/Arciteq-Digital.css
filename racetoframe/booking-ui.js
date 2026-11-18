@@ -953,7 +953,7 @@ render();
 function applyProfile() {
   document.title = "Your week, made simple · " + profile.brand;
   const home = profile.slug === "chassis" ? "/" : "/" + profile.slug + "/";
-  const logo = document.querySelector(".wordmark");
+  const logo = document.querySelector(".topbar .wordmark");
   logo.textContent = profile.brand.toUpperCase();
   logo.href = home;
   const tagline = document.createElement("small");

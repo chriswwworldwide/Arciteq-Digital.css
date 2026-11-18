@@ -40,6 +40,36 @@
       back.textContent = "Back to coach view"; back.href = `${root}?audience=coach`; back.setAttribute("data-coach-link", "");
       banner.append(text, back); document.body.prepend(banner);
     }
+    const masthead = document.querySelector("[data-desk-masthead]");
+    if (masthead) {
+      const fitSignature = () => {
+        const sig = masthead.querySelector(".sig"), line = masthead.querySelector(".sig-line"), wordmark = masthead.querySelector(".wordmark"), city = masthead.querySelector(".city");
+        if (!sig || !line || !wordmark || !city) return;
+        const wb = wordmark.getBoundingClientRect();
+        sig.style.transform = "rotate(-6deg)";
+        const sb0 = sig.getBoundingClientRect();
+        if (sb0.width > wb.width) sig.style.transform = `translateX(${Math.round((wb.left + wb.right) / 2 - (sb0.left + sb0.right) / 2)}px) rotate(-6deg)`;
+        city.style.marginTop = "16px";
+        const sb = sig.getBoundingClientRect(), lb = line.getBoundingClientRect(), range = document.createRange();
+        range.selectNodeContents(city);
+        const cb = range.getBoundingClientRect();
+        if (lb.right > cb.left + 6 && lb.left < cb.right - 6 && Math.max(sb.bottom, lb.bottom) > cb.top - 2) city.style.marginTop = `${Math.ceil(Math.max(sb.bottom, lb.bottom) - wb.bottom) + 2}px`;
+      };
+      document.fonts?.ready.then(fitSignature);
+      window.addEventListener("resize", fitSignature);
+      fitSignature();
+    }
+    if (enabled && audience === "coach" && /\/(?:today|tour|clients?|leads|desk|campaigns|platform-setup|manage-videos|manage-programmes|planner)\.html$/.test(location.pathname)) {
+      const header = document.querySelector("header.masthead,header.topbar"), tools = document.querySelector("[data-coach-view]");
+      if (header && tools) {
+        if (header.matches(".masthead:not(.desk-masthead)")) {
+          header.style.padding = "28px 0 14px";
+          const city = header.querySelector(".city");
+          if (city) city.style.display = "block";
+        }
+        header.after(tools);
+      }
+    }
     document.querySelectorAll("[data-coach-view]").forEach(bar => {
       const button = bar.querySelector(".coach-view-toggle");
       if (!button) return;

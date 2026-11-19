@@ -1,5 +1,11 @@
 # Pitch email — Gregor & Hattie (Race to Frame)
 
+## Current teaser replacement —19 November 2026
+
+Chris authorised replacing the long player at `/pitch/racetoframe/` with the new ~3:02 teaser. Desktop deliverable: `/Users/chri/Desktop/Gregor and Hattie - Race to Frame - LATEST short teaser - 19 Nov 2026.mp4`. Opening hook: “You make moments count. An exceptional platform for everything you’re building.” Covers Race to Frame and its shop campaign, Hattie’s online coaching/Sculpt & Shape, Gregor’s HYROX programming, race tools and Desk workflows. £995 setup + £145/month for both retained; expired12Nov deadline omitted, no new deadline agreed. No new outreach sent.
+
+Archived previous live8:36.04 video, original landing page and poster: `/Users/chri/Desktop/Gregor and Hattie - Archived live pitch - 19 Nov 2026/` (`video.mp4`, `index.html`, `poster.jpg`). Old video SHA256 `d803cfe2658c1bf755cc28eba176396c5fec3b1a1bb79708b36433cf39f85508`. Durable Git recovery: `b5d9f2d:pitch/racetoframe/video.mp4`, with page/poster at the same commit. Original25Oct full-pitch Desktop film remains untouched. Long video removed from current player by replacement, not deleted from recovery history. Historical email below is not current hold wording.
+
 **To:** racetoframe@gmail.com (their stated business/privacy contact — verified live in the Shopify privacy policy). **SENT 5 Nov 2026 ~10:59.** hello@racetoframe.co.uk bounced — that domain does not exist (their store is racetoframe.com); do not reuse it. IG DM remains high-risk (account deactivated once already).
 **Subject:** Coaching enquiry (ambiguous — reads like a potential client, which is the point; alternatives: "Frame enquiry", "Race to Frame — quick question")
 **Walkthrough link:** https://www.station9studio.co.uk/pitch/racetoframe/ (tracked)

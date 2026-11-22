@@ -26,9 +26,13 @@ jobs:
         env:
           AUTO_PUBLISH: "true"
         run: node roxjaya/automation/hyrox-sync.js
+      - name: Check Roxjaya news safeguards
+        run: node --test tests/roxjaya-news.test.mjs
       - name: Discover and publish Hyrox Asia news
         env:
           AUTO_PUBLISH: "true"
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_NEWS_MODEL: claude-sonnet-5-5
         run: node roxjaya/automation/news-sync.js
       - name: Persist published updates
         run: |

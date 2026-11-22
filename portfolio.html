@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Chris Wood — Editorial &amp; AI Content Engineering Portfolio</title>
+    <meta
+      name="description"
+      content="Selected editorial work, voice systems and agentically built content platforms by Chris Wood. Prepared for Soda’s AI Content Engineer application."
+    />
+    <link
+      rel="canonical"
+      href="https://www.station9studio.co.uk/portfolio.html"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Chris Wood — Editorial &amp; AI Content Engineering"
+    />
+    <meta
+      property="og:description"
+      content="Editorial judgement, distinctive voices and working content systems. Selected work for Soda."
+    />
+    <meta
+      property="og:url"
+      content="https://www.station9studio.co.uk/portfolio.html"
+    />
+    <style>
+      :root {
+        --bg: #0d0f12;
+        --ink: #e8e6e1;
+        --mut: #9aa0a8;
+        --line: #262a30;
+        --acc: #e8c15a;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.65 "Georgia",
+          serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 56px 24px 80px;
+      }
+      .kicker {
+        font:
+          600 12px/1.4 "Helvetica Neue",
+          Arial,
+          sans-serif;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--acc);
+        margin-bottom: 14px;
+      }
+      h1 {
+        font-size: 34px;
+        line-height: 1.15;
+        font-weight: 400;
+        margin-bottom: 16px;
+      }
+      h1 em {
+        color: var(--acc);
+      }
+      .lede {
+        color: var(--mut);
+        font-size: 17px;
+        max-width: 640px;
+        margin-bottom: 48px;
+      }
+      section {
+        margin-bottom: 52px;
+      }
+      h2 {
+        font:
+          600 12px/1.4 "Helvetica Neue",
+          Arial,
+          sans-serif;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink);
+        margin-bottom: 8px;
+      }
+      .sintro {
+        color: var(--mut);
+        font-size: 14.5px;
+        max-width: 640px;
+        margin-bottom: 22px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--line);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        overflow: hidden;
+        background: #121418;
+        text-decoration: none;
+        color: var(--ink);
+        transition: border-color 0.2s;
+      }
+      .card:hover {
+        border-color: var(--acc);
+      }
+      .card img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .card:hover img {
+        transform: scale(1.03);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s cubic-bezier(0.22, 0.8, 0.3, 1);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+        .card img {
+          transition: none;
+        }
+        .card:hover img {
+          transform: none;
+        }
+      }
+      .card .body {
+        padding: 14px 16px 16px;
+      }
+      .card .title {
+        font-size: 16px;
+        line-height: 1.4;
+      }
+      .card .note {
+        color: var(--mut);
+        font-size: 13.5px;
+        line-height: 1.55;
+        margin-top: 6px;
+      }
+      .tag {
+        display: inline-block;
+        font:
+          600 9.5px/1 "Helvetica Neue",
+          Arial,
+          sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--acc);
+        border: 1px solid var(--acc);
+        border-radius: 3px;
+        padding: 4px 7px;
+        margin-top: 10px;
+      }
+      .byline {
+        margin-top: 22px;
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #121418;
+      }
+      .byline a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--acc);
+      }
+      .byline a:hover {
+        color: var(--acc);
+      }
+      .byline .note {
+        color: var(--mut);
+        font-size: 13.5px;
+        margin-top: 4px;
+      }
+      .pipe {
+        color: var(--acc);
+        font:
+          600 11.5px/1.6 "Helvetica Neue",
+          Arial,
+          sans-serif;
+        letter-spacing: 0.06em;
+        margin-top: 10px;
+      }
+      .sample {
+        grid-column: 1/-1;
+        border: 1px solid var(--acc);
+        border-radius: 10px;
+        padding: 20px 22px;
+        background: #121418;
+      }
+      .sample-label {
+        font:
+          600 11px/1.4 "Helvetica Neue",
+          Arial,
+          sans-serif;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--acc);
+        margin-bottom: 16px;
+      }
+      .sample blockquote {
+        margin-bottom: 18px;
+        padding-left: 14px;
+        border-left: 2px solid var(--line);
+      }
+      .sample blockquote:last-child {
+        margin-bottom: 0;
+      }
+      .sample .id {
+        font-style: italic;
+        font-size: 15px;
+        line-height: 1.55;
+      }
+      .sample .en {
+        color: var(--ink);
+        font-size: 14.5px;
+        margin-top: 6px;
+      }
+      .sample .en::before {
+        content: "— ";
+        color: var(--mut);
+      }
+      .sample .gloss {
+        color: var(--mut);
+        font-size: 12.5px;
+        margin-top: 6px;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        padding-top: 24px;
+        color: var(--mut);
+        font-size: 14px;
+      }
+      footer a {
+        color: var(--mut);
+      }
+      @media (max-width: 640px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        h1 {
+          font-size: 27px;
+        }
+        .wrap {
+          padding: 40px 20px 64px;
+        }
+      }
+    </style>
+    <noscript
+      ><style>
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      </style></noscript
+    >
+  </head>
+  <body>
+    <div class="wrap">
+      <p class="kicker">Chris Wood — portfolio</p>
+      <h1>
+        Editor who builds, <em>or builder who edits</em> — same person either
+        way.
+      </h1>
+      <p class="lede">
+        Collected for Soda's AI Content Engineer application, in three groups:
+        the editorial track record, the voice engine already running on a real
+        person, and the platform underneath it all. Everything below is live.
+      </p>
+
+      <section>
+        <h2>1 — The editorial track record</h2>
+        <p class="sintro">
+          Six years as final editorial gate on a weekly magazine at 60M monthly
+          uniques peak. Three features I commissioned, shaped and edited at Post
+          Magazine, South China Morning Post — the brief was mine, the quality
+          bar was mine.
+        </p>
+        <div class="grid">
+          <a
+            class="card reveal"
+            href="https://www.scmp.com/magazines/post-magazine/long-reads/article/3247902/how-ai-development-fostered-digital-sweatshop-and-why-it-matters-technologys-future"
+          >
+            <img
+              src="images/portfolio/sweatshop.jpg"
+              alt="Post Magazine cover image: a data labeller at work"
+            />
+            <div class="body">
+              <p class="title">
+                How AI development fostered a digital "sweatshop"
+              </p>
+              <p class="note">
+                Jan 2024. Commissioned after seeing the data-labelling industry
+                reported as a tech story with no humans in it. The brief: find
+                the people, follow the money, keep it readable.
+              </p>
+            </div>
+          </a>
+          <a
+            class="card reveal"
+            href="https://www.scmp.com/magazines/post-magazine/long-reads/article/3230746/quantum-computing-could-give-ai-rocket-fuel-it-needs-become-transformative-its-not-there-yet"
+          >
+            <img
+              src="images/portfolio/quantum.jpg"
+              alt="Post Magazine cover image for the quantum computing feature"
+            />
+            <div class="body">
+              <p class="title">
+                Quantum computing could give AI the rocket fuel it needs
+              </p>
+              <p class="note">
+                Aug 2023. The hardest kind of commission — a writer fluent
+                enough to be trusted by physicists, an edit sharp enough that a
+                general reader survives it. Both had to hold.
+              </p>
+            </div>
+          </a>
+          <a
+            class="card reveal"
+            href="https://www.scmp.com/magazines/post-magazine/long-reads/article/3200976/ai-rewriting-rules-creativity-what-does-mean-human-imagination"
+          >
+            <img
+              src="images/portfolio/creativity.jpg"
+              alt="Post Magazine cover image for the AI creativity feature"
+            />
+            <div class="body">
+              <p class="title">
+                AI is rewriting the rules of creativity. What does that mean for
+                human imagination?
+              </p>
+              <p class="note">
+                Nov 2022 — weeks before ChatGPT launched. The brief was a hunch
+                that generative AI was about to matter to everyone, not just the
+                tech desk. It aged well.
+              </p>
+            </div>
+          </a>
+          <div class="byline reveal">
+            <a href="https://www.scmp.com/author/chris-wood"
+              >My own writing archive →</a
+            >
+            <p class="note">
+              The three features I commissioned, shaped and edited — the brief
+              and the quality bar were mine. My own bylined writing lives here.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>2 — The voiceprint engine</h2>
+        <p class="sintro">
+          This is the Soda job, already running on a real person. Roxjaya's
+          coach doesn't write her news takes — her voice was sampled from her
+          own captions and messages: her tone, her rhythm, her word choices, not
+          a generic "casual Indonesian" register. That sampling produces a
+          voiceprint — a spec detailed enough that the system publishes weekly
+          commentary a stranger would mistake for her. Her regulars would read
+          these and hear <em>her</em>. In a second language, because the
+          voiceprint carries the voice — not the editor's fluency.
+        </p>
+        <div class="grid">
+          <a class="card reveal" href="https://roxjaya.com/roxjaya/news.html">
+            <img
+              src="images/portfolio/roxjaya-news.jpg"
+              alt="Roxjaya news page in Bahasa Indonesia"
+            />
+            <div class="body">
+              <p class="title">Dina's takes, auto-published in her voice</p>
+              <p class="note">
+                Race-weekend commentary drafted by the system in
+                <em>her</em> voice — voice sampling of her real captions and
+                messages producing a voiceprint: her rhythm, her phrases, her
+                register. Not translated copy, and not a generic "informal"
+                setting — one specific person's informal speech, automated.
+                Exactly what "make the founders sound like the founders"
+                describes.
+              </p>
+              <p class="pipe">
+                sample informal speech → derive voiceprint → system drafts →
+                publish
+              </p>
+              <span class="tag">voice sampling → voiceprint, automated</span>
+            </div>
+          </a>
+          <a class="card reveal" href="https://roxjaya.com/roxjaya/">
+            <img
+              src="images/portfolio/roxjaya.jpg"
+              alt="Roxjaya Warriors Jakarta homepage"
+            />
+            <div class="body">
+              <p class="title">Roxjaya Warriors Jakarta</p>
+              <p class="note">
+                The platform the voice engine runs on — a working
+                athlete-community site in use: coaching tools, race tools,
+                results boards and community content for Jakarta's HYROX scene.
+              </p>
+              <span class="tag">live platform, in use</span>
+            </div>
+          </a>
+          <div class="sample reveal">
+            <p class="sample-label">
+              What the voice actually sounds like — with gloss
+            </p>
+            <p class="gloss" style="margin-bottom: 18px">
+              The voice carries the whole site — bio, nav, booking copy, race
+              advice, news. Three examples: her own site copy, and two takes the
+              system auto-publishes.
+            </p>
+            <blockquote>
+              <p class="id">
+                "Aku Dina — guru Zumba yang nyasar ke HYROX, sekarang HYROX
+                Certified Coach dan juara doubles Jakarta (sambil hamil 7
+                minggu)."
+              </p>
+              <p class="en">
+                "I'm Dina — a Zumba teacher who stumbled into HYROX, now a HYROX
+                Certified Coach and Jakarta doubles champion (while seven weeks
+                pregnant)."
+              </p>
+              <p class="gloss">
+                Her actual bio, from the homepage. <em>Nyasar</em> — "stumbled
+                into" — is her self-deprecation, and the thrown-in pregnant
+                aside is exactly how she talks about herself. No style guide
+                produces this; it came from how she writes.
+              </p>
+            </blockquote>
+            <blockquote>
+              <p class="id">
+                "Udah dibilang kan — rekor Jakarta itu bukan kebetulan. Dua
+                orang ini race kayak udah bertahun-tahun main di level ini;
+                standar doubles Indonesia sekarang beneran level dunia. Sisanya
+                tinggal ngejar."
+              </p>
+              <p class="en">
+                "Told you — that Jakarta record was no fluke. These two race
+                like they've been at this level for years; the Indonesian
+                doubles standard is genuinely world-class now. Everyone else can
+                chase."
+              </p>
+              <p class="gloss">
+                An auto-published take. <em>Udah dibilang kan</em> — "told you,
+                didn't I" — opens like her caption, and the rhythm is hers:
+                short, punchy, talks like she coaches.
+              </p>
+            </blockquote>
+            <blockquote>
+              <p class="id">
+                "1:01:49. Weekend panas, nggak ada bantuan apa-apa. Kalau lo
+                latihan buat Singapore November — itu angka yang sekarang nempel
+                di kulkas."
+              </p>
+              <p class="en">
+                "1:01:49. A hot weekend, no help from anything. If you're
+                training for Singapore in November — that's a number now stuck
+                on the fridge."
+              </p>
+              <p class="gloss">
+                Her opinion, her imagery. "A number stuck on the fridge" isn't a
+                register setting — it's the kind of line she throws out; the
+                system learned it from her, not from Indonesian.
+              </p>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>3 — The platform underneath</h2>
+        <p class="sintro">
+          Editorial judgement made reusable: what each page needs to say, how
+          the voice should behave and where human approval belongs — built into
+          content structures and workflows, not left in a prompt someone has to
+          rewrite each time. Station 9 is the platform I’m developing through
+          Arciteq Digital, using Claude Code, MCP servers and agent skills.
+        </p>
+        <div class="grid">
+          <a class="card reveal" href="https://www.station9studio.co.uk/">
+            <img
+              src="images/portfolio/station9.jpg"
+              alt="Station 9 platform homepage"
+            />
+            <div class="body">
+              <p class="title">Station 9 — try the system</p>
+              <p class="note">
+                Add a coach’s name, colours and photographs, build a branded
+                homepage, then explore the public race tools and The Desk. It
+                demonstrates the content structures, page copy and workflows
+                I’ve built alongside the interface: a repeatable system that
+                produces a coach’s own site, not a software pitch. The builder
+                assembles a configured template; Roxjaya, above, demonstrates
+                the separate voice-sampling and automated publishing workflow.
+              </p>
+              <span class="tag">interactive demo · browser-local photos</span>
+            </div>
+          </a>
+          <a
+            class="card reveal"
+            href="https://www.station9studio.co.uk/faisalpma/"
+          >
+            <img
+              src="images/portfolio/faisalpma.jpg"
+              alt="Faisal PMA demo platform homepage"
+            />
+            <div class="body">
+              <p class="title">Faisal PMA</p>
+              <p class="note">
+                The most advanced build to date — a concept demo for a
+                prospective coaching client, not a paying deployment. Included
+                to show the ceiling: what the platform does when every feature
+                is switched on.
+              </p>
+              <span class="tag">concept build</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <footer id="foot">
+        <p>
+          Chris Wood · Norwich, UK ·
+          <a href="https://www.linkedin.com/in/chris-wood-26a753347"
+            >LinkedIn</a
+          >
+          · Editor, Post Magazine (SCMP) 2018–24 · Founder, Arciteq Digital
+        </p>
+      </footer>
+    </div>
+    <script>
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          }),
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll(".reveal").forEach((e, i) => {
+        e.style.transitionDelay = (i % 2) * 90 + "ms";
+        io.observe(e);
+      });
+    </script>
+  </body>
+</html>

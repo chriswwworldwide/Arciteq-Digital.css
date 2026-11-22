@@ -75,10 +75,46 @@
         color: var(--mut);
         font-size: 17px;
         max-width: 640px;
-        margin-bottom: 48px;
+        margin-bottom: 20px;
+      }
+      .section-links {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        max-width: 640px;
+        margin-bottom: 40px;
+        font:
+          600 13px/1.4 "Helvetica Neue",
+          Arial,
+          sans-serif;
+      }
+      .section-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 8px 6px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        color: var(--acc);
+        text-align: center;
+        text-decoration: none;
+      }
+      .section-links a:hover {
+        border-color: var(--acc);
+      }
+      .section-links a:focus-visible {
+        outline: 2px solid var(--acc);
+        outline-offset: 3px;
       }
       section {
         margin-bottom: 52px;
+        scroll-margin-top: 24px;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
       }
       h2 {
         font:
@@ -293,7 +329,13 @@
         person, and the platform underneath it all. Everything below is live.
       </p>
 
-      <section>
+      <nav class="section-links" aria-label="Portfolio sections">
+        <a href="#editorial-work">Editorial work</a>
+        <a href="#voice-system">Voice system</a>
+        <a href="#platform">Try the platform</a>
+      </nav>
+
+      <section id="editorial-work">
         <h2>1 — The editorial track record</h2>
         <p class="sintro">
           Six years as final editorial gate on a weekly magazine at 60M monthly
@@ -372,7 +414,7 @@
         </div>
       </section>
 
-      <section>
+      <section id="voice-system">
         <h2>2 — The voiceprint engine</h2>
         <p class="sintro">
           This is the Soda job, already running on a real person. Roxjaya's
@@ -490,7 +532,7 @@
         </div>
       </section>
 
-      <section>
+      <section id="platform">
         <h2>3 — The platform underneath</h2>
         <p class="sintro">
           Editorial judgement made reusable: what each page needs to say, how

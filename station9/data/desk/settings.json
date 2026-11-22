@@ -1,0 +1,20 @@
+{
+  "sessionThreshold": 2,
+  "dayThreshold": 7,
+  "finalMoment": "After the final session",
+  "followupTiming": "Next morning",
+  "blockSize": 8,
+  "monthLength": 30,
+  "floorDays": 3,
+  "monthlyFloorTotal": 2,
+  "onlineTotal": 8,
+  "quietHours": "21:00–07:00",
+  "stopOnPaymentIssue": true,
+  "hybridCheckins": true,
+  "progressionMonths": 3,
+  "readiness": {
+    "hotGoalKeywords": ["programme", "coaching", "structure"],
+    "warmSignals": 2,
+    "newSignals": 3
+  }
+}

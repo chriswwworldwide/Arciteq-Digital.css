@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en" data-coach-preview="true" data-coach-page="false">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>HYROX Prep Club | Your coach</title>
+    <meta
+      name="description"
+      content="A friendly HYROX prep club from Your coach — beginner-safe race guidance, free tools, community prompts and a softer route into coaching."
+    />
+    <link rel="stylesheet" href="/station9/styles.css?v=r1795365797846" />
+    <link rel="stylesheet" href="/station9/guide.css?v=r1795365797846" />
+    <link rel="stylesheet" href="/station9/shelf.css?v=r1795365797846" />
+    <link rel="stylesheet" href="/station9/showcase.css" />
+    <style>
+      .prep-wrap {
+        padding: 48px 0 84px;
+      }
+      .prep-hero-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--paper-2);
+        padding: 1.4rem;
+        margin-bottom: 2rem;
+      }
+      .prep-points {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.8rem;
+        margin: 1.2rem 0 0;
+      }
+      .prep-points div,
+      .prep-card,
+      .join-panel {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--paper-2);
+      }
+      .prep-points div {
+        padding: 0.9rem;
+      }
+      .prep-points strong {
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+      .prep-points p,
+      .prep-card p {
+        color: var(--ink-2);
+        margin: 0;
+      }
+      .prep-fit {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin: 1.2rem 0 2.4rem;
+      }
+      .prep-card {
+        padding: 1.1rem;
+      }
+      .prep-card span {
+        display: inline-flex;
+        margin-bottom: 0.55rem;
+        color: var(--pink);
+        font-size: 0.72rem;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .feed-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 1rem;
+        margin-top: 1.2rem;
+      }
+      .feed-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--paper-2);
+      }
+      .feed-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        display: block;
+      }
+      .feed-card div {
+        padding: 0.95rem;
+      }
+      .feed-card span {
+        color: var(--pink);
+        font-size: 0.68rem;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .feed-card h4 {
+        margin: 0.35rem 0 0.4rem;
+      }
+      .feed-card p {
+        color: var(--ink-2);
+        font-size: 0.9rem;
+      }
+      .feed-card a {
+        display: inline-flex;
+        margin-top: 0.75rem;
+        color: var(--pink);
+        font-weight: 800;
+      }
+      .join-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+        gap: 1.4rem;
+        padding: 1.4rem;
+        margin-top: 2.4rem;
+      }
+      .join-form {
+        display: grid;
+        gap: 0.75rem;
+      }
+      .join-form label {
+        display: grid;
+        gap: 0.3rem;
+        font-size: 0.76rem;
+        color: var(--ink-3);
+      }
+      .join-form input,
+      .join-form select {
+        min-height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--paper);
+        color: var(--ink);
+        font: inherit;
+        padding: 0.65rem 0.75rem;
+      }
+      .join-done {
+        border: 1px solid rgba(85, 201, 135, 0.4);
+        border-radius: 12px;
+        padding: 1rem;
+        color: #8fe0b1;
+        background: rgba(85, 201, 135, 0.08);
+      }
+      .club-note {
+        color: var(--ink-3);
+        font-size: 0.84rem;
+      }
+      @media (max-width: 820px) {
+        .prep-hero-card,
+        .join-panel {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <script src="/station9/coach-view.js"></script>
+    <link
+      rel="stylesheet"
+      data-brand-header
+      href="/station9/brand-header.css?v=r1795365797846"
+    />
+  </head>
+  <body class="shelf">
+    <header class="masthead wrap">
+      <a href="/station9/" style="color: inherit; text-decoration: none">
+        <h1>
+          <span class="wordmark"
+            >STATION <span class="o">9</span
+            ><span class="sig" aria-label="by Your coach"
+              ><span class="sig-text">by Your coach</span
+              ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
+                <path
+                  d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
+                  fill="currentColor"
+                /></svg></span
+          ></span>
+        </h1>
+      </a>
+      <p class="city">Prep Club</p>
+    </header>
+
+    <aside
+      class="coach-view wrap"
+      data-coach-view
+      data-coach-expanded="false"
+      aria-label="The Desk coaching tools"
+    >
+      <div class="coach-view-heading">
+        <strong
+          ><a
+            class="coach-home-link"
+            data-coach-link
+            href="/station9/?audience=coach"
+            aria-label="Coach homepage — The Desk"
+            >The Desk</a
+          ></strong
+        ><span>Your coaching tools</span>
+      </div>
+      <button
+        class="coach-view-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="coach-view-actions"
+      >
+        Show tools
+      </button>
+      <nav
+        class="coach-view-actions"
+        id="coach-view-actions"
+        aria-label="Coach tools"
+      >
+        <a
+          data-coach-link
+          href="/station9/planner.html?view=coach&amp;audience=coach"
+          >Bookings</a
+        ><a data-coach-link href="/station9/desk.html?audience=coach">Finance</a
+        ><a data-coach-link href="/station9/campaigns.html?audience=coach"
+          >Campaigns</a
+        ><a
+          data-coach-link
+          href="/station9/manage-programmes.html?audience=coach"
+          >Programmes</a
+        ><a data-coach-link href="/station9/manage-videos.html?audience=coach"
+          >Content</a
+        >
+      </nav>
+      <div class="coach-view-links">
+        <a
+          class="coach-return-link"
+          data-coach-link
+          href="/station9/?audience=coach"
+          >Back to Your coach&#39;s homepage</a
+        ><a
+          class="coach-public-link"
+          href="/station9/?audience=public"
+          target="_blank"
+          rel="noopener"
+          >Preview public site ↗</a
+        >
+      </div>
+    </aside>
+    <div class="nav">
+      <div class="wrap">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          Menu</button
+        ><style>
+          @media (min-width: 901px) {
+            .menu {
+              grid-template-columns: repeat(7, max-content);
+            }
+            .menu > li > a,
+            .menu > li > button {
+              padding: 8px 11px;
+              font-size: 13.5px;
+            }
+          }
+        </style>
+        <ul class="menu" id="menu" data-booking-navigation>
+          <li>
+            <a
+              href="/station9/planner.html?view=client"
+              style="color: var(--pink, #b69aff); font-weight: 800"
+              >Book a session</a
+            >
+          </li>
+          <li><a href="/station9/find-a-partner.html">Find a race-mate</a></li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-sell">
+              Coaching <span class="caret"></span>
+            </button>
+            <ul class="sub">
+              <li>
+                <a href="/station9/coaching.html">Coaching &amp; programmes</a>
+              </li>
+              <li>
+                <a href="/station9/training.html">Access your training</a>
+              </li>
+              <li><a href="/station9/watch.html">Watch &amp; Learn</a></li>
+              <li><a href="/station9/podcast.html">Studio series</a></li>
+              <li><a href="/station9/prep-club.html">HYROX Prep Club</a></li>
+              <li><a href="/station9/#ask">Ask Your coach</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">
+              Race Tools <span class="caret"></span>
+            </button>
+            <ul class="sub">
+              <li><a href="/station9/predictor.html">Race predictor</a></li>
+              <li><a href="/station9/splits.html">Split analyser</a></li>
+              <li><a href="/station9/results.html">Results board</a></li>
+              <li><a href="/station9/stations-prep.html">Stations prep</a></li>
+              <li>
+                <a href="/station9/find-a-partner.html">Find a race-mate</a>
+              </li>
+              <li><a href="/station9/run-zone.html">Run zone</a></li>
+              <li><a href="/station9/taper-zone.html">Taper zone</a></li>
+              <li><a href="/station9/race-day.html">Race day</a></li>
+              <li>
+                <a href="/station9/events.html">Race Calendar &amp; Travel</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">
+              Community <span class="caret"></span>
+            </button>
+            <ul class="sub">
+              <li><a href="/station9/race-crew.html">Race crew meetups</a></li>
+              <li>
+                <a
+                  href="https://www.instagram.com/station9.studio/"
+                  target="_blank"
+                  rel="noopener"
+                  >Station 9 IG</a
+                >
+              </li>
+              <li><a href="/station9/news.html">HYROX news</a></li>
+              <li><a href="/station9/list.html">Join the list</a></li>
+            </ul>
+          </li>
+          <li>
+            <button aria-expanded="false" aria-haspopup="true" class="nav-acc">
+              More <span class="caret"></span>
+            </button>
+            <ul class="sub">
+              <li><a href="/station9/partners.html">Partners</a></li>
+              <li><a href="/station9/shop.html">Links</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="guide-hero">
+      <div class="wrap">
+        <div class="guide-hero-text reveal">
+          <ol class="crumbs">
+            <li><a href="/station9/">Your coach</a></li>
+            <li>Prep Club</li>
+          </ol>
+          <p class="eyebrow">HYROX Prep Club</p>
+          <h2>Start before you feel ready.</h2>
+          <p class="lead">
+            A friendlier way into HYROX training — free tools, beginner-safe
+            station guidance, race prompts and a rolling feed that helps you
+            build confidence before you ever commit to coaching.
+          </p>
+        </div>
+
+        <figure class="guide-hero-photo prep-hero-photo">
+          <img
+            src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22600%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23161a22%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20fill%3D%22%23a2aabd%22%20font-family%3D%22sans-serif%22%3EPhoto%3C%2Ftext%3E%3C%2Fsvg%3E"
+            alt="Your coach coaching a relaxed SkiErg session"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <main class="wrap prep-wrap">
+      <section class="prep-hero-card reveal">
+        <div>
+          <p class="eyebrow">Free · beginner friendly</p>
+          <h3>You do not need to be “a HYROX person” yet.</h3>
+          <p class="lead">
+            Prep Club is for the person who is curious, a bit intimidated, wants
+            structure, or has a race ticket burning a hole in their calendar.
+            Dip in, use the tools, build confidence — coaching is there when you
+            want it.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#join">Join Prep Club</a
+            ><a class="btn btn-ghost" href="#feed">See this week's feed</a>
+          </div>
+          <div class="prep-points">
+            <div>
+              <strong>No pressure</strong>
+              <p>Explore free race tools and guidance at your own pace.</p>
+            </div>
+            <div>
+              <strong>Beginner-safe</strong>
+              <p>
+                Plain-English prep for people who do not know the stations yet.
+              </p>
+            </div>
+            <div>
+              <strong>Coach-guided</strong>
+              <p>
+                Find a useful next step, with Your coach there when you want
+                coaching advice.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <p class="eyebrow">Wherever you are</p>
+        <h3>Three ways in. None of them require a starting-line ego.</h3>
+        <div class="prep-fit">
+          <article class="prep-card reveal">
+            <span>Curious</span>
+            <h4>Never raced?</h4>
+            <p>
+              Start with station basics, confidence notes and the free tools —
+              no assumption you already know the lingo.
+            </p>
+          </article>
+          <article class="prep-card reveal">
+            <span>Booked</span>
+            <h4>Race on the calendar?</h4>
+            <p>
+              Track your target, sharpen the weak stations and use the rolling
+              prep feed to keep the next step obvious.
+            </p>
+          </article>
+          <article class="prep-card reveal">
+            <span>Ready soon</span>
+            <h4>Thinking about coaching?</h4>
+            <p>
+              Try the tools, explore the routes and ask Your coach which
+              approach fits your goals.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="feed">
+        <p class="eyebrow">This week in the club</p>
+        <h3>A rolling feed of useful next steps.</h3>
+        <p class="club-note">
+          Explore this week's selection of race tools, station guidance, stories
+          and community routes. Pick what helps you now.
+        </p>
+        <div class="feed-grid" id="prep-feed"></div>
+      </section>
+
+      <section class="join-panel reveal" id="join">
+        <div>
+          <p class="eyebrow">Join free</p>
+          <h3>Get the next useful thing, not more noise.</h3>
+          <p>
+            Join Prep Club and tell Your coach where you are: curious, booked,
+            coming back, or quietly deciding whether coaching is the next step.
+          </p>
+          <p class="club-note">
+            A useful starting point, at your pace. Tell Your coach what would
+            help and explore without committing to a programme.
+          </p>
+        </div>
+        <form class="join-form" id="join-form">
+          <label
+            >Email
+            <input
+              id="join-email"
+              type="email"
+              required
+              placeholder="you@email.com"
+          /></label>
+          <label>First name <input id="join-name" placeholder="Sam" /></label>
+          <label
+            >Where are you now?
+            <select id="join-experience">
+              <option>Just curious</option>
+              <option>Never raced</option>
+              <option>One race done</option>
+              <option>A few races done</option>
+              <option>Returning after a break</option>
+            </select>
+          </label>
+          <label
+            >What would help most?
+            <select id="join-goal">
+              <option>Build confidence first</option>
+              <option>Prepare for a first HYROX</option>
+              <option>Improve my finish time</option>
+              <option>Find the right programme</option>
+              <option>Train with more structure</option>
+            </select>
+          </label>
+          <button class="btn btn-primary" type="submit">Join Prep Club</button>
+          <div class="join-done" id="join-done" hidden>
+            <strong>You're in.</strong>
+            <p>
+              The next useful step is below — no pressure to buy before it fits.
+            </p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div>© <span id="year"></span> Your coach</div>
+        <nav>
+          <a href="/station9/coaching.html">Coaching</a
+          ><a href="/station9/prep-club.html">Prep Club</a
+          ><a href="/station9/news.html">HYROX news</a
+          ><a
+            href="https://www.instagram.com/station9.studio/"
+            target="_blank"
+            rel="noopener"
+            >Instagram</a
+          >
+        </nav>
+      </div>
+    </footer>
+    <script src="/station9/desk-config.js" defer></script>
+    <script src="/station9/contacts.js" defer></script>
+    <script src="/station9/integrations.js" defer></script>
+    <script src="/station9/app.js?v=r1795365797846" defer></script>
+    <script src="/station9/prep-club.js" defer></script>
+  </body>
+</html>

@@ -1,4 +1,156 @@
 (function () {
+  const templatePreview = new URLSearchParams(location.search).get("template") === "1" && document.documentElement.dataset.coachPage !== "true";
+  const homepage = /\/station9\/(index\.html)?$/.test(location.pathname);
+  const groups = {
+    Coaching: [["Coaching & programmes", "coaching.html"], ["Watch & Learn", "watch.html"]],
+    "Race Tools": [["Race predictor", "predictor.html"], ["Split analyser", "splits.html"], ["Results board", "results.html"], ["Stations Prep", "stations-prep.html"], ["Run Zone", "run-zone.html"], ["Taper Zone", "taper-zone.html"], ["Race Day", "race-day.html"], ["Fuel Zone", "fuel-zone.html"], ["Calendar & Travel", "events.html"]],
+    Community: [["Find a partner", "find-a-partner.html"], ["Race crew", "race-crew.html"], ["News", "news.html"], ["Join the list", "list.html"], ["Partners", "partners.html"]],
+  };
+  if (homepage || templatePreview) {
+    const style = document.createElement("style");
+    style.textContent = `.s9-template-nav{position:relative;z-index:5;background:#101218;border-block:1px solid #303440;padding:16px 20px;color:#eee}.s9-template-nav>div{max-width:1180px;margin:auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}.s9-template-nav a,.s9-template-nav summary{color:inherit;display:block;padding:12px 8px;min-height:44px;box-sizing:border-box}.s9-template-nav details{position:relative}.s9-template-nav details>div{position:absolute;top:100%;left:0;min-width:230px;background:#171a22;border:1px solid #424655;border-radius:8px;padding:8px;box-shadow:0 12px 30px #0008}.s9-template-nav summary{cursor:pointer}.s9-template-nav a:focus-visible,.s9-template-nav summary:focus-visible{outline:2px solid #ff5a7a}.s9-template-nav small{flex-basis:100%;color:#bbb}.s9-template-frame{background:#161a22;border:1px dashed #657084;border-radius:10px;overflow:hidden;position:relative}.s9-template-frame::after{content:'Photo';position:absolute;inset:0;display:grid;place-items:center;color:#a2aabd;font-size:12px;letter-spacing:.12em;text-transform:uppercase;pointer-events:none}.s9-template-frame img{visibility:hidden!important}.s9-template-empty{visibility:hidden!important}@media(max-width:640px){.s9-template-nav>div{gap:4px 12px}.s9-template-nav details{position:static}.s9-template-nav details>div{left:16px;right:16px;top:auto;max-height:60vh;overflow:auto}}`;
+    style.textContent += `.s9-template-nav{--s9-nav-primary:var(--pink,#ff353e);--s9-nav-secondary:#8c52ef;background:var(--paper,#0b0b0e);padding:8px 20px;font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif}.s9-template-nav>div{justify-content:center;gap:4px;min-height:60px}.s9-template-nav>div>a,.s9-template-nav summary{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;min-height:44px;font:600 14px/1.4 "Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;letter-spacing:.02em;color:var(--s9-nav-primary);background:none;border:0;border-radius:999px;white-space:nowrap}.s9-template-nav summary{list-style:none}.s9-template-nav summary::-webkit-details-marker{display:none}.s9-template-nav summary::marker{content:""}.s9-template-nav summary.nav-sell{font-weight:700}.s9-template-nav summary.nav-acc{color:var(--s9-nav-secondary);border:0;border-bottom:2px solid color-mix(in srgb,currentColor 65%,transparent);box-shadow:none}.s9-template-nav summary.nav-acc:hover,.s9-template-nav details[open]>summary.nav-acc{border-color:currentColor;background:color-mix(in srgb,currentColor 8%,var(--paper-2,#15151b))}.s9-template-nav summary:focus-visible,.s9-template-nav a:focus-visible{outline:2px solid currentColor;outline-offset:3px}.s9-template-nav .caret{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);opacity:.6}.s9-template-nav details>div{z-index:10;background:var(--paper,#0b0b0e);border-color:color-mix(in srgb,var(--s9-nav-primary) 65%,transparent);border-radius:12px}.s9-template-nav details:has(>.nav-acc)>div{border-color:color-mix(in srgb,var(--s9-nav-secondary) 65%,transparent)}.s9-template-nav details>div a{font-size:14px;color:var(--ink,#f4f4ef);border-radius:8px;text-decoration:none}.s9-template-nav details>div a:hover,.s9-template-nav details>div a:focus-visible{background:color-mix(in srgb,var(--s9-nav-secondary) 12%,var(--paper,#0b0b0e))}.s9-template-nav>div>.s9-template-return{color:var(--ink-3,#a8aea2);font-size:12px;font-weight:500}.s9-template-nav small{font-size:12px;padding:4px 8px;text-align:center}@media(max-width:640px){.s9-template-nav>div{gap:4px}.s9-template-nav>div>a,.s9-template-nav summary{padding:10px 12px}}`;
+    document.head.append(style);
+    const nav = document.createElement("nav");
+    nav.className = "s9-template-nav";
+    nav.id = "homepage-template";
+    nav.setAttribute("aria-label", "Homepage template navigation");
+    const row = document.createElement("div");
+    const home = document.createElement("a");
+    home.href = "/station9/#homepage-template";
+    home.textContent = "Home";
+    row.append(home);
+    Object.entries(groups).forEach(([label, links]) => {
+      const details = document.createElement("details");
+      const summary = document.createElement("summary");
+      summary.textContent = label;
+      summary.className = label === "Coaching" ? "nav-sell" : "nav-acc";
+      const caret = document.createElement("span");
+      caret.className = "caret";
+      caret.setAttribute("aria-hidden", "true");
+      summary.append(caret);
+      const list = document.createElement("div");
+      links.forEach(([text, page]) => {
+        const link = document.createElement("a");
+        link.textContent = text;
+        link.href = "/station9/" + page + "?template=1";
+        if (homepage) { link.target = "_blank"; link.rel = "noopener"; }
+        list.append(link);
+      });
+      details.append(summary, list);
+      details.addEventListener("toggle", () => {
+        if (details.open) row.querySelectorAll("details").forEach(other => { if (other !== details) other.open = false; });
+      });
+      row.append(details);
+    });
+    const back = document.createElement("a");
+    back.href = "/station9/#s9builder";
+    back.textContent = "Back to the builder";
+    back.className = "s9-template-return";
+    row.append(back);
+    if (new URLSearchParams(location.search).get("audience") === "public") {
+      const coach = document.createElement("a");
+      const coachURL = new URL(location.href);
+      coachURL.searchParams.set("audience", "coach");
+      coachURL.hash = "template-desk";
+      coach.href = coachURL.href;
+      coach.textContent = "Show coach tools ↗";
+      coach.setAttribute("data-coach-link", "");
+      coach.target = "_blank";
+      coach.rel = "noopener";
+      coach.style.cssText = "border:1px solid var(--pink,#ff353e);border-radius:8px;color:var(--pink,#ff353e)";
+      row.append(coach);
+    }
+    const note = document.createElement("small");
+    note.textContent = homepage ? "Explore the template pages — opens separately so your homepage build stays here." : "Template preview · photo frames intentionally empty · forms are not connected in this preview.";
+    row.append(note);
+    nav.append(row);
+    const paletteRequest = indexedDB.open("station9-homepage-preview", 1);
+    paletteRequest.onupgradeneeded = () => paletteRequest.transaction.abort();
+    paletteRequest.onerror = () => {};
+    paletteRequest.onsuccess = () => {
+      const db = paletteRequest.result;
+      if (!db.objectStoreNames.contains("builds")) { db.close(); return; }
+      const palette = db.transaction("builds").objectStore("builds").get("latest");
+      palette.onsuccess = () => {
+        const build = palette.result;
+        if (/^#[0-9a-f]{6}$/i.test(build?.colour2)) nav.style.setProperty("--s9-nav-primary", build.colour2);
+        if (/^#[0-9a-f]{6}$/i.test(build?.colour)) nav.style.setProperty("--s9-nav-secondary", build.colour);
+        db.close();
+      };
+      palette.onerror = () => db.close();
+    };
+    if (homepage) {
+      document.querySelector(".hero--bleed")?.before(nav);
+      const desk = document.querySelector("[data-coach-view]");
+      if (desk) {
+        desk.id = "template-desk";
+        desk.style.scrollMarginTop = "90px";
+        nav.before(desk);
+      }
+      document.addEventListener("click", event => {
+        const link = event.target.closest(".coach-view-actions a");
+        if (link && !link.href.startsWith("mailto:")) { link.target = "_blank"; link.rel = "noopener"; }
+      }, true);
+    } else {
+      document.querySelector(".nav")?.replaceWith(nav);
+      if (!nav.isConnected) document.querySelector("header")?.after(nav);
+      fetch("/station9/desk-toolbar.html").then(response => {
+        if (!response.ok) throw new Error("Desk toolbar unavailable");
+        return response.text();
+      }).then(markup => {
+        const container = document.createElement("div");
+        container.innerHTML = markup;
+        const desk = container.querySelector("[data-coach-view]");
+        if (!desk) throw new Error("Desk toolbar missing");
+        desk.id = "template-desk";
+        desk.style.scrollMarginTop = "90px";
+        if (!document.querySelector("[data-coach-view]")) nav.before(desk);
+        document.documentElement.dataset.coachPreview = "true";
+        document.documentElement.dataset.coachPage = "false";
+        const css = document.createElement("link");
+        css.rel = "stylesheet"; css.href = "/station9/showcase.css";
+        document.head.append(css);
+        if (!document.querySelector('script[src="/station9/coach-view.js"]')) {
+          const script = document.createElement("script");
+          script.src = "/station9/coach-view.js";
+          document.body.append(script);
+        }
+      }).catch(() => {});
+      const framePhotos = () => document.querySelectorAll("main img, section img, figure img, .hero img, .guide img, .coach-photo").forEach(img => {
+        if (img.closest(".masthead, .s9-template-frame")) return;
+        img.classList.add("s9-template-empty");
+        if (img.matches(".coach-photo")) {
+          const frame = document.createElement("div");
+          frame.className = "s9-template-frame";
+          img.before(frame);
+          frame.append(img);
+        } else {
+          const parent = img.parentElement;
+          if (parent && parent.tagName !== "BODY") parent.classList.add("s9-template-frame");
+        }
+      });
+      framePhotos();
+      new MutationObserver(framePhotos).observe(document.body, { childList: true, subtree: true });
+      document.addEventListener("click", event => {
+        const link = event.target.closest("a[href]");
+        if (!link || link.hasAttribute("data-coach-link")) return;
+        const url = new URL(link.href, location.href);
+        if (url.origin !== location.origin || !url.pathname.startsWith("/station9/") || /\/station9\/(index\.html)?$/.test(url.pathname)) return;
+        if (!url.pathname.endsWith(".html")) return;
+        url.searchParams.set("template", "1");
+        link.href = url.href;
+      }, true);
+      document.addEventListener("submit", event => {
+        event.preventDefault();
+        const status = document.createElement("p");
+        status.setAttribute("role", "status");
+        status.textContent = "Template preview — nothing has been sent.";
+        event.target.append(status);
+        event.stopImmediatePropagation();
+      }, true);
+    }
+  }
   const menu = document.getElementById("menu");
   const toggle = document.querySelector(".nav-toggle");
   const dropdowns = Array.from(
@@ -401,6 +553,7 @@
   });
   if (
     !/\/coach(\.html|\/)?$/.test(location.pathname) &&
+    !/^\/station9\/(index\.html)?$/.test(location.pathname) &&
     !document.querySelector(".wa-fab")
   ) {
     const fab = document.createElement("a");
@@ -771,7 +924,7 @@ window.roxShare = (function () {
     select(ALL);
   }
 
-  fetch("/station9/data/gallery.json", { cache: "no-cache" })
+  if (!grid.hasAttribute("data-gallery-static")) fetch("/station9/data/gallery.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : null))
     .then((json) => {
       const photos = Array.isArray(json?.photos) ? json.photos : [];

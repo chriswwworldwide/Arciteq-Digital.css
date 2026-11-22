@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-coach-preview="true" data-coach-page="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,24 +14,19 @@
     />
     <meta name="geo.region" content="GB-WOR" />
     <meta name="geo.placename" content="the UK" />
-    <link rel="canonical" href="https://station9.localhost/station9/" />
+    <link rel="canonical" href="https://www.station9studio.co.uk/" />
     <link
       rel="alternate"
       hreflang="en-GB"
-      href="https://station9.localhost/station9/"
+      href="https://www.station9studio.co.uk/"
     />
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://station9.localhost/station9/"
+      href="https://www.station9studio.co.uk/"
     />
-    <link
-      rel="preload"
-      as="image"
-      href="/station9/images/hero.jpg?v=1792661956154"
-      fetchpriority="high"
-    />
-    <link rel="stylesheet" href="/station9/styles.css?v=1792661956154" />
+
+    <link rel="stylesheet" href="/station9/styles.css?v=r1795365797846" />
     <script>
       document.documentElement.classList.add("js");
       // Refresh = top of page + the hero entrance plays. Any hash left in
@@ -49,7 +44,7 @@
         "@type": "SportsActivityLocation",
         "name": "Station 9",
         "description": "Station 9 — the platform behind coach sites: coaching links, race tools, community boards and the money desk, under each creator's own brand.",
-        "url": "https://station9.localhost/station9/",
+        "url": "https://www.station9studio.co.uk/",
         "areaServed": ["the UK", "the UK", "Europe"],
         "knowsLanguage": ["en"],
         "keywords": "station 9, station9, coaching platform, creator websites, race tools, hyrox uk, race predictor, coaching business software",
@@ -61,191 +56,616 @@
         }
       }
     </script>
-  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style></head>
+  <style id="booking-navigation-style">@media(min-width:901px){[data-booking-navigation]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:0 3px}[data-booking-navigation]>li>a,[data-booking-navigation]>li>button{padding:8px 9px;font-size:13px}}</style>
+<style id="s9builder-style">
+.s9ph{border:1.5px dashed #2c3240;background:#14171e;display:flex;align-items:center;justify-content:center;min-height:100%;position:relative;overflow:hidden}
+.s9ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.s9wallgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:6px 0 0}
+.s9wallcell{aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:#14171e;position:relative;border:1.5px dashed #2c3240;display:flex;align-items:center;justify-content:center}
+.s9wallcell span{color:#4d5464;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.s9wallcell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+@media(max-width:640px){.s9wallgrid{grid-template-columns:1fr 1fr}}
+.s9ph .s9ph-label{color:#4d5464;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:0 14px}
+.s9ph--round{width:120px;height:120px;border-radius:50%;flex-shrink:0}
+.coach-portrait{position:relative;display:block;flex:none;width:max-content;line-height:0}
+.portrait-hairline{position:absolute;inset:-6px;width:calc(100% + 12px);height:calc(100% + 12px);overflow:visible;pointer-events:none}
+.portrait-hairline path{fill:none;stroke:var(--pink,#e01e4e);stroke-width:1.5;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.s9ph--tall{min-height:380px;border-radius:12px}
+.story .s9-story-photo{position:relative;margin:7px 7px 28px;isolation:isolate}
+.story .s9-story-photo::before,.story .s9-story-photo::after{display:none}
+.story .s9-story-photo>.s9ph{border-radius:48% 48% 0 0;z-index:1}
+.story .s9-story-photo img{position:absolute;inset:0;width:100%;height:100%;max-height:none;aspect-ratio:auto;border-radius:48% 48% 0 0;object-fit:cover;object-position:center 30%}
+#story .profile-hairline{position:absolute;inset:-7px;width:calc(100% + 14px);height:calc(100% + 14px);overflow:visible;z-index:2;pointer-events:none}
+#story .profile-hairline path{fill:none;stroke:var(--pink);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.s9ph[data-filled=true]{border-color:transparent}
+.s9b-uploads{flex-basis:100%;width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.s9b-upload{min-width:0;border:1px dashed #485064;border-radius:12px;padding:14px;background:#11151e;display:flex;flex-direction:column;gap:10px}
+.s9b-upload.drag{border-color:var(--pink,#ff353e)}
+.s9b-upload p{font-size:13px;color:var(--muted,#b2a9c5);margin:0;min-height:42px}
+.s9b-upload button{min-height:44px;background:#202532;color:var(--ink,#fff);border:1px solid #586174;border-radius:8px;padding:8px 10px;cursor:pointer;font:inherit;font-size:13px}
+.s9b-upload button:focus-visible{outline:2px solid var(--pink,#ff353e);outline-offset:3px}
+.s9b-upload [hidden]{display:none!important}
+.s9b-upload>span{font-size:12px;overflow-wrap:anywhere;color:var(--muted,#b2a9c5)}
+.s9b-thumbs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;min-height:80px;align-items:center}
+.s9b-thumbs img{width:100%;height:80px;object-fit:contain;border-radius:6px;background:#080b10}
+.s9b-upload:not([data-photo-role=extra]) .s9b-thumbs{grid-template-columns:1fr}
+@media(max-width:900px){.s9b-uploads{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.s9b-uploads{grid-template-columns:1fr}}
+.s9ph--plans{min-height:200px;border-radius:12px;width:100%}
+.s9pol-ph{position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;border:1.5px dashed #3a4152;background:#14171e}
+.s9pol-ph .s9ph-label{color:#4d5464;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.s9pol-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.s9b-cols{display:flex;gap:26px;align-items:flex-start}
+#s9b-preview{display:none!important}
+.s9b-setup{width:100%}
+.s9b-setup .s9b-progress{padding:16px;margin-bottom:16px;border:1px solid var(--line,#34343d);border-radius:10px}
+.s9b-setup .s9b-progress[hidden]{display:none!important}
+.s9b-cols>div:first-child{flex:1;min-width:0}
+.s9b-live{width:230px;flex-shrink:0}
+.s9b-head.reveal,.s9b-live.reveal{opacity:1!important;transform:none!important;transition:none!important}
+.s9b-livetag{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--acc,#e8c15a);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.s9b-livedot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.18);flex-shrink:0}
+.s9b-live .frame{height:560px;overflow:hidden;border-radius:12px;border:1px solid #2a2f3a;position:relative;box-sizing:border-box}
+.s9b-live .frame img{width:100%;display:block;will-change:transform}
+.s9b-live .frame::after{content:"";position:absolute;inset:auto 0 0 0;height:90px;background:linear-gradient(180deg,transparent,rgba(11,13,18,.95))}
+.s9b-live .cap{position:absolute;inset:auto 0 0;z-index:1;font-size:12px;color:#d5d2dc;margin:0;padding:14px;line-height:1.5;background:linear-gradient(transparent,#0b0d12 32%)}
+.s9b-live .cap a{color:var(--acc,#e8c15a)}
+@media(max-width:820px){.s9b-cols{flex-direction:column}.s9b-live{width:100%}.s9b-live .frame{height:560px}}
+.s9feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+.s9feat{background:#0d0f14;border:1px solid #2a2f3a;border-radius:12px;padding:18px}
+.s9feat h4{font-size:15px;margin:0 0 12px;color:var(--ink,#eee)}
+.s9feat ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.s9feat li{font-size:13.5px;color:var(--muted,#b2a9c5);line-height:1.4;padding-left:16px;position:relative}
+.s9feat li::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;border-radius:50%;background:var(--pink,#ff2e63)}
+header.s9-tenant-masthead h2{margin:0}
+#zones> .wrap>h3{font-size:clamp(2.4rem,5.8vw,5.8rem);line-height:.96;letter-spacing:-.055em;max-width:16ch;text-wrap:balance}
+#zones .s9-pitch-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.8rem;margin:2.5rem 0 1.5rem}
+#zones .s9-pitch-tool{display:flex;flex-direction:column;gap:.8rem;min-width:0;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;padding:1.5rem 0;position:relative}
+#zones .s9-pitch-tool h4{font-size:clamp(1.7rem,3vw,2.8rem);line-height:1.15;letter-spacing:-.04em;max-width:20ch;margin:.3rem 0}
+#zones .s9-pitch-tool p{color:var(--ink-2);margin:0 0 1rem}
+#zones .s9-pitch-tool .btn{align-self:flex-start;margin-top:auto}
+#zones .s9-pitch-tool .tag{background:none;border:0;padding:0;align-self:flex-start;color:var(--ink-2)}
+#zones .s9-pitch-tool-main{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;border-top:3px solid var(--zone-accent,#8c52ef);padding:clamp(1.5rem,4vw,3rem);background:linear-gradient(115deg,color-mix(in srgb,var(--pink) 14%,var(--paper)),var(--paper-2));border-radius:0 0 56px 0;align-items:center;overflow:hidden}
+#zones .s9-pitch-tool-main h4{font-size:clamp(2.2rem,4.3vw,4.3rem);max-width:12ch}
+#zones .s9-pitch-tool-main .tag{color:var(--pink)}
+#zones .s9-tool-preview{display:grid;gap:.4rem;align-content:center;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:16px;padding:1.5rem;background:var(--paper)}
+#zones .s9-tool-preview span{color:var(--pink);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;margin-top:.5rem}
+#zones .s9-tool-preview strong{display:block;border-bottom:1px solid var(--line);padding-bottom:.8rem;font-size:clamp(1rem,1.8vw,1.4rem);letter-spacing:-.02em}
+#zones .s9-tool-preview strong:last-child{border:0}
+#zones .s9-tool-chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 1rem}
+#zones .s9-tool-chips span{padding:5px 8px;border:1px solid var(--line);border-radius:2px;font:12px monospace;text-transform:uppercase;letter-spacing:.1em}
+#zones .s9-pitch-guides{border-block:1px solid var(--line);margin-top:2rem}
+#zones .s9-pitch-guides>summary{min-height:44px;padding:16px 0;cursor:pointer}
+#zones .s9-pitch-guides>summary:focus-visible{outline:2px solid var(--pink);outline-offset:4px}
+@media(max-width:760px){#zones .s9-pitch-tools,#zones .s9-pitch-tool-main{grid-template-columns:minmax(0,1fr)}#zones .s9-pitch-tool-main{border-radius:0 0 32px 0;padding:1.3rem;gap:1.8rem}}
+
+#s9b-built-homepage{scroll-margin-top:24px}
+.s9b-journey{padding:16px 20px;margin:0 0 24px;border:1px solid var(--line,#34343d);border-radius:10px;background:#15151b}
+.s9b-journey p{margin:0 0 12px;color:var(--ink,#f4f4ef)}
+.s9b-journey [hidden]{display:none!important}
+#story{--ink:#151518;--ink-2:#424246;--ink-3:#626268;--muted:#626268;--line:#ccc5ba;--paper:#f7f3ea;--paper-2:#e6dfd3;background:#ece7dd;color:var(--ink);position:relative}
+#story .story{gap:clamp(2rem,6vw,6rem);align-items:center}
+#story h3{font-size:clamp(2.3rem,4.2vw,4.5rem);line-height:1;letter-spacing:-.055em}
+#story .quote{background:transparent;border:0;border-radius:0;font-family:Georgia,serif;font-size:clamp(1.3rem,2.2vw,2rem);font-style:italic;line-height:1.3;border-left:2px solid var(--pink);padding-left:1.2rem;color:var(--ink)}
+#story .lead,#story li,#story .fine,#story .s9-coach-stats span{color:var(--ink-2)}
+#story .s9ph:not([data-filled="true"]){background:#e6dfd3;border-color:#bfb7a9}
+#story .s9ph-label{color:#626268}
+.s9-coach-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px 0;border-top:1px solid var(--line,#34343d)}
+.s9-coach-stats strong{display:block;font-size:clamp(18px,2.4vw,28px);color:var(--pink,#ff353e);overflow-wrap:anywhere}
+.s9-coach-stats span{display:block;font-size:12px;color:var(--muted,#b2a9c5);margin-top:6px}
+.s9feat li a{color:inherit;text-decoration:underline;text-decoration-color:#586174;text-underline-offset:3px;display:inline-block;padding:5px 0}
+.s9feat li a:hover{color:var(--pink,#ff2e63)}
+.s9feat li a:focus-visible{outline:2px solid var(--pink,#ff2e63);outline-offset:4px;border-radius:2px}
+.s9feat li.s9feat-x{display:none}
+.s9feat.open li.s9feat-x{display:list-item}
+.s9feat-more{margin-top:12px;background:none;border:0;color:var(--pink,#ff2e63);font:inherit;font-size:12.5px;font-weight:700;letter-spacing:.05em;cursor:pointer;padding:6px 0}
+.s9steps{margin-top:34px;background:#0d0f14;border:1px solid #2a2f3a;border-radius:12px;padding:24px;text-align:center}
+.s9steps h4{margin:0 0 18px;font-size:16px;color:var(--ink,#eee)}
+.s9steps ol{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:left}
+.s9steps li{font-size:13.5px;color:var(--muted,#b2a9c5);line-height:1.5}
+.s9steps li span{display:block;font-size:11px;letter-spacing:.15em;color:var(--pink,#ff2e63);font-weight:800;margin-bottom:4px}
+.s9steps li strong{display:block;color:var(--ink,#eee);margin-bottom:4px;font-size:14px}
+@media(max-width:1000px){.s9feat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.s9feat-grid{grid-template-columns:1fr}.s9steps ol{grid-template-columns:1fr}}
+.hero-mask.s9ph{position:absolute;inset:0;border-radius:0 0 48% 8% / 0 0 7% 2%}
+.hero-mask.s9ph>img{transform:translate(var(--s9-hero-x,0%),var(--s9-hero-y,0%)) scale(var(--s9-hero-scale,1.025));transform-origin:center;transition:opacity .8s ease,transform 900ms cubic-bezier(.16,1,.3,1)}
+.hero--bleed.s9-hero-editing .hero-mask.s9ph>img{transition:none}
+#s9-hero-editor{box-sizing:border-box;width:min(960px,calc(100vw - 24px));max-height:90vh;max-height:90dvh;padding:20px;overflow-y:auto;border:1px solid #424655;border-radius:16px;background:#101218;color:#f4f4ef}
+#s9-hero-editor::backdrop{background:#000b;backdrop-filter:blur(4px)}
+.s9-editor-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.s9-editor-heading h3{font-size:clamp(20px,3vw,28px);margin:0;line-height:1.2}
+#s9-hero-editor-help{font-size:14px;color:#c9ccd4;margin:12px 0}
+#s9-hero-editor-stage{height:clamp(180px,38vh,420px);display:flex;justify-content:center;align-items:center;background:#08090c;border-radius:12px;overflow:hidden}
+#s9-hero-editor-viewport{position:relative;overflow:hidden;border-radius:0 0 48% 8% / 0 0 7% 2%;background:#191c24;touch-action:none;cursor:grab}
+#s9-hero-editor-viewport:active{cursor:grabbing}
+#s9-hero-editor-image{position:absolute;inset:0;width:100%;height:100%;max-width:none;user-select:none;pointer-events:none;transform:translate(var(--s9-hero-x,0%),var(--s9-hero-y,0%)) scale(var(--s9-hero-scale,1));transform-origin:center}
+.s9-editor-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px;margin:16px 0}
+.s9-editor-controls label{display:flex;flex-direction:column;gap:4px;min-width:0;font-size:13px}
+.s9-editor-controls input,.s9-editor-controls select{box-sizing:border-box;width:100%;min-width:0;min-height:44px;margin:0;accent-color:#ff5a7a}
+.s9-editor-controls select{font:inherit;background:#191c24;color:#f4f4ef;border:1px solid #424655;border-radius:8px;padding:8px}
+#s9-hero-editor button:focus-visible,#s9-hero-editor input:focus-visible,#s9-hero-editor select:focus-visible{outline:2px solid #ff5a7a;outline-offset:3px}
+#s9-hero-editor-note{font-size:12px;color:#c9ccd4}
+@media(max-width:760px){#s9-hero-editor-viewport{border-radius:0 0 45% 10% / 0 0 4% 2%}}
+.hero-mask.s9ph::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 65% 42%,#ffffff12 0%,transparent 44%,#00000038 100%);box-shadow:inset 0 -18px 28px #00000024}
+@media(hover:hover) and (pointer:fine){.hero--bleed:not(.s9-hero-editing):hover .hero-mask.s9ph>img{transform:translate(var(--s9-hero-x,0%),var(--s9-hero-y,0%)) scale(calc(var(--s9-hero-scale,1.025) * 1.039))}}
+@media(max-width:760px){.hero-mask.s9ph{border-radius:0 0 45% 10% / 0 0 4% 2%}}
+@media(prefers-reduced-motion:reduce){.hero-mask.s9ph>img,.hero--bleed:not(.s9-hero-editing):hover .hero-mask.s9ph>img{transform:translate(var(--s9-hero-x,0%),var(--s9-hero-y,0%)) scale(var(--s9-hero-scale,1));transition:none}}
+@media(min-width:901px){.hero--bleed,.hero--bleed .wrap{min-height:clamp(640px,92vh,960px)}}
+.s9-hero-adjust{box-sizing:border-box;padding:16px 20px;border:1px solid var(--line,#34343d);border-radius:10px;margin:12px auto;background:var(--paper-2,#15151b)}
+.s9-hero-adjust[hidden]{display:none!important}
+.s9-hero-below{background:#0b0b0e;color:#fff;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.s9-hero-below>.wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px}
+.s9-hero-below .actions{display:flex;gap:12px;flex-wrap:wrap}
+.s9-hero-below .stats{display:flex;gap:34px;flex-wrap:wrap}
+.s9-hero-below .stats strong{display:block;font-size:22px;font-weight:800}
+.s9-hero-below .stats span{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.s9-hero-position-label{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.s9-hero-position-label input[type=range]{width:100%;min-width:0;min-height:44px;margin:0;accent-color:var(--pink,#ff353e);cursor:pointer}
+.s9-hero-position-label input:focus-visible{outline:2px solid var(--pink,#ff353e);outline-offset:2px}
+.s9-position-ends{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted,#b2a9c5)}
+.s9-hero-adjust>.fine{display:block;margin-top:8px}
+.hero--bleed .hero-mask.s9ph::after{content:"";position:absolute;inset:0;height:100%;background:linear-gradient(90deg,rgba(8,9,13,.78),rgba(8,9,13,.3));pointer-events:none}
+#s9intro{background:#0d0f13;border-bottom:1px solid rgba(160,150,190,.15);padding-top:34px}
+#s9intro .s9i{max-width:680px}
+#s9intro h3{margin-bottom:14px}
+#s9intro p{color:var(--muted,#c4bccf);font-size:16px;line-height:1.65;margin-bottom:14px}
+#s9intro p a{color:var(--acc,#e8c15a)}
+#s9builder{background:#101218;border-bottom:1px solid rgba(160,150,190,.15)}
+#s9builder .s9b-head{max-width:640px;margin-bottom:22px}
+#s9builder .s9b-head a{color:var(--acc,#e8c15a)}
+#s9builder .s9b-form{display:flex;flex-wrap:wrap;gap:14px;align-items:end;margin-bottom:26px;background:#0d0f14;border:1px solid #2a2f3a;border-radius:12px;padding:18px 20px}
+#s9builder .s9b-form label{display:flex;flex-direction:column;gap:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#b2a9c5)}
+#s9builder .s9b-form input[type=text]{background:#161a22;border:1px solid #2a2f3a;border-radius:8px;color:inherit;padding:10px 12px;font-size:15px;min-width:180px}
+#s9builder .s9b-form input[type=color]{width:52px;height:42px;border:1px solid #2a2f3a;border-radius:8px;background:#161a22;padding:4px;cursor:pointer}
+#s9builder .s9b-drop{border:1.5px dashed #3a4152;border-radius:10px;padding:14px 18px;cursor:pointer;text-transform:none;letter-spacing:0;font-size:14px;color:var(--muted,#b2a9c5);min-width:260px}
+#s9builder .s9b-drop.drag{border-color:var(--acc,#e8c15a);color:var(--ink,#eee)}
+#s9builder .s9b-drop span{font-size:12px;color:var(--acc,#e8c15a);margin-top:4px}
+.s9b-vh{position:absolute!important;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
+#s9b-preview .s9b-progress{padding:22px 24px 20px;border-bottom:1px solid #22262f;background:#10131a}
+#s9b-preview .s9b-progress p{font-size:14px;color:var(--acc,#e8c15a);letter-spacing:.05em;margin-bottom:10px}
+#s9b-preview .s9b-bar{height:5px;border-radius:3px;background:#1d212b;overflow:hidden}
+#s9b-preview .s9b-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc,#e8c15a),#ff5a7a);border-radius:3px}
+#s9b-preview .s9b-site{border:1px solid #2a2f3a;border-radius:12px;overflow:hidden;background:#0b0d12}
+#s9b-preview .s9b-mast{text-align:center;padding:18px 16px 14px;border-bottom:1px solid #22262f}
+#s9b-preview .s9b-mast h4{font-size:26px;letter-spacing:.06em;font-weight:800;color:var(--c1,#eee)}
+#s9b-preview .s9b-script{font-family:Georgia,serif;font-style:italic;font-size:14px;color:#8a8296;margin-top:1px}
+#s9b-preview .s9b-city{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted,#b2a9c5);margin-top:6px}
+#s9b-preview .s9b-menu{display:inline-block;margin-top:10px;border:1px solid #2a2f3a;border-radius:20px;padding:5px 18px;font-size:11px;letter-spacing:.1em;color:#cfd3dc}
+#s9b-preview .s9b-hero{position:relative;min-height:300px;display:flex;align-items:end;overflow:hidden}
+#s9b-preview .s9b-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%}
+#s9b-preview .s9b-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(8,9,13,.92))}
+#s9b-preview .s9b-herotext{position:relative;z-index:1;padding:18px 22px}
+#s9b-preview .s9b-eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--c2,#ff5a7a);margin-bottom:8px}
+#s9b-preview .s9b-herotext h5{font-size:26px}
+#s9b-preview .s9b-herotext p{color:#cfd3dc;font-size:15px;max-width:420px}
+#s9b-preview .s9b-btns{display:flex;gap:10px;margin-top:16px;max-width:none}
+#s9b-preview .s9b-b1{background:var(--c2,#ff5a7a);color:#0b0d12;border-radius:22px;padding:9px 22px;font-size:13px;font-weight:700}
+#s9b-preview .s9b-b2{border:1px solid #3a4152;color:#e5e8ee;border-radius:22px;padding:9px 22px;font-size:13px}
+#s9b-preview .s9b-stats{display:flex;gap:30px;padding:12px 22px;border-top:1px solid #22262f}
+#s9b-preview .s9b-stats strong{display:block;font-size:19px;font-weight:800}
+#s9b-preview .s9b-stats span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6b7280}
+#s9b-preview .s9b-slot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#4d5464;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+#s9b-preview .s9b-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:110px;gap:10px;padding:14px 16px}
+#s9b-preview .s9b-grid .s9b-cell{border-radius:8px;overflow:hidden;background:#14171e;position:relative}
+#s9b-preview .s9b-grid .s9b-cell:first-child{grid-row:span 2}
+#s9b-preview .s9b-grid .s9b-cell img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block}
+#s9b-preview .s9b-grid .s9b-empty{border:1.5px dashed #2c3240;display:flex;align-items:center;justify-content:center;color:#4d5464;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+#s9b-preview .s9b-feats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 16px 14px}
+#s9b-preview .s9b-feat{border:1.5px dashed #2c3240;border-radius:8px;padding:12px 13px;text-align:left}
+#s9b-preview .s9b-feat .n{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--c2,#ff5a7a);margin-bottom:5px}
+#s9b-preview .s9b-feat .t{display:block;font-size:14px;font-weight:700;color:#d8dbe2;margin-bottom:3px}
+#s9b-preview .s9b-feat .s{display:block;font-size:12px;color:#6b7280;line-height:1.4}
+#s9b-preview .s9b-events{padding:0 16px 14px}
+#s9b-preview .s9b-evhead{font-size:15px;font-weight:800;color:#d8dbe2;margin-bottom:8px}
+#s9b-preview .s9b-evrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+#s9b-preview .s9b-ev{border:1px solid #2a2f3a;border-radius:8px;padding:12px 13px}
+#s9b-preview .s9b-ev .d{display:block;font-size:15px;font-weight:800;color:var(--c2,#ff5a7a)}
+#s9b-preview .s9b-ev .t{display:block;font-size:12.5px;font-weight:700;color:#d8dbe2;margin:3px 0}
+#s9b-preview .s9b-ev .s{display:block;font-size:11.5px;color:#6b7280;line-height:1.4}
+#s9b-preview .s9b-wall{padding:4px 0 0}
+#s9b-preview .s9b-wallhead{font-size:15px;font-weight:800;color:#d8dbe2;padding:0 16px}
+#s9b-preview .s9b-wallsub{font-size:12.5px;color:#6b7280;padding:2px 16px 0;max-width:480px}
+#s9b-preview .s9b-cap{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin:0 16px 14px;border:1px solid #2a2f3a;border-radius:8px;padding:16px 20px}
+#s9b-preview .s9b-cap h6{font-size:15px;font-weight:800;color:#d8dbe2;margin-bottom:4px}
+#s9b-preview .s9b-cap p{font-size:12.5px;color:#6b7280}
+#s9b-preview .s9b-capform{display:flex;gap:8px;align-items:center}
+#s9b-preview .s9b-capinput{border:1px solid #2a2f3a;border-radius:22px;padding:8px 16px;font-size:12.5px;color:#4d5464;min-width:170px}
+#s9b-preview .s9b-story{display:flex;gap:18px;padding:0 16px 14px;align-items:stretch}
+#s9b-preview .s9b-storyph{flex:0 0 210px;border:1.5px dashed #2c3240;border-radius:8px;display:flex;align-items:center;justify-content:center;min-height:130px;overflow:hidden;position:relative}
+#s9b-preview .s9b-storyph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+#s9b-preview .s9b-storyph span{color:#4d5464;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:0 12px;text-align:center}
+#s9b-preview .s9b-storytext .n{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--c2,#ff5a7a);margin-bottom:6px}
+#s9b-preview .s9b-storytext h6{font-size:17px;font-weight:700;color:#d8dbe2;margin-bottom:6px}
+#s9b-preview .s9b-storytext p{font-size:13px;color:#6b7280;line-height:1.5;margin-bottom:8px}
+#s9b-preview .s9b-storytext .more{font-size:12px;color:var(--c2,#ff5a7a);border-bottom:1px solid var(--c2,#ff5a7a);padding-bottom:1px}
+#s9b-preview .s9b-band{margin:0 16px 14px;border:1px solid #2a2f3a;border-radius:8px;padding:18px 20px;text-align:center;background:linear-gradient(120deg,rgba(255,90,122,.06),transparent 60%)}
+#s9b-preview .s9b-band h6{font-size:16px;font-weight:800;color:#d8dbe2;margin-bottom:5px}
+#s9b-preview .s9b-band p{font-size:12.5px;color:#6b7280;margin-bottom:10px}
+#s9b-preview .s9b-foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:14px 22px;border-top:1px solid #22262f;font-size:11.5px;color:#6b7280}
+#s9b-preview .s9b-foot span:first-child{color:var(--c1,#8a8296)}
+#s9b-preview .s9b-cta{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 22px;border-top:1px solid #22262f;background:#10131a}
+#s9b-preview .s9b-cta p{color:#cfd3dc;font-size:14.5px;max-width:460px}
+@media(max-width:640px){#s9b-preview .s9b-grid,#s9b-preview .s9b-feats,#s9b-preview .s9b-evrow{grid-template-columns:1fr 1fr}#s9b-preview .s9b-story{flex-direction:column}#s9b-preview .s9b-storyph{flex:none;min-height:160px}}
+</style><link rel="stylesheet" href="/station9/showcase.css" /><script src="/station9/coach-view.js"></script><link rel="stylesheet" href="/station9/brand-header.css" /></head>
   <body>
     <header class="masthead wrap">
       <h1>
-        <a class="wordmark" href="/station9/"
-          >STATION <span class="o">9</span>
-          <span class="sig" aria-label="by Station 9"
-            ><span class="sig-text">by Station 9</span
-            ><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true">
-              <path
-                d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z"
-                fill="currentColor"
-              /></svg
-          ></span>
-        </a>
+        <a class="wordmark" href="/station9/">STATION <span class="o">9</span></a>
       </h1>
       <p class="city">the UK</p>
     </header>
 
-    <div class="nav">
-      <div class="wrap">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
-          Menu
-        </button>
-        <style>@media(min-width:901px){.menu{grid-template-columns:repeat(7,max-content)}.menu>li>a,.menu>li>button{padding:8px 11px;font-size:13.5px}}</style>        <ul class="menu" id="menu" data-booking-navigation><li><a href="/station9/planner.html" style="color:var(--pink,#b69aff);font-weight:800">Book a slot</a></li>
-          <li><a href="/station9/">Home</a></li>
-          <li>
-            <button aria-expanded="false" aria-haspopup="true">The Platform <span class="caret"></span></button>
-            <ul class="sub">
-              <li><a href="/station9/predictor.html">Race predictor</a></li>
-              <li><a href="/station9/splits.html">Split analyser</a></li>
-              <li><a href="/station9/find-a-partner.html">Race-mate board</a></li>
-              <li><a href="/station9/results.html">Results board</a></li>
-              <li><a href="/station9/stations-prep.html">Stations prep</a></li>
-              <li><a href="/station9/events.html">Race calendar</a></li>
-            </ul>
-          </li>
-          <li><a href="/station9/news.html">News</a></li>
-          <li><a href="/station9/#story">About</a></li>
-          <li><a href="/station9/#ask">Work with us</a></li>
-          <li><a href="/station9/list.html">Join the list</a></li>
-        </ul>
-      </div>
-    </div>
 
+    <section class="block" id="s9intro">
+      <div class="wrap s9i">
+        <span class="kicker reveal">Who we are</span>
+        <h3 class="reveal">We're Station 9 — the platform behind coaches' branded sites.</h3>
+        <p class="reveal">
+          One engine runs every site we ship: coaching tools, race predictors and split analysers, booking, community boards, a news engine that writes in the coach's own voice, and a business desk for enquiries, finance and campaigns. What changes per site is everything you see — the brand, the colours, the photography, the voice. What stays is everything underneath.
+        </p>
+        <p class="reveal">
+          It already runs live in Jakarta for
+          <a href="https://roxjaya.com/roxjaya/" target="_blank" rel="noopener">Roxjaya Warriors</a> — an athlete community publishing weekly in conversational Bahasa Indonesia, in the coach's sampled voice. Below is the same system, personalised in your browser: give it your name, your colours and your photos, and watch it build your homepage in about a minute.
+        </p>
+      </div>
+    </section>
+
+    <section class="block" id="s9builder">
+      <div class="wrap">
+        <div class="s9b-head reveal">
+          <span class="kicker">The Station 9 template for HYROX coaches — try it yourself</span>
+          <h3>Build your own website preview — under two minutes.</h3>
+          <p>
+            Pick your photos, your brand name, your two colours — then hit build and watch the wireframe become your homepage, live in your browser. Nothing is uploaded; the photos never leave your device. Your built preview is saved in this browser so you can return to it. The empty slots are everything else your site would carry. Like it? <a href="#s9-enquiry">Tell us</a> and we'll quote you for the full platform.
+          </p>
+        </div>
+        <div class="s9b-form reveal">
+          <label>Coach's first and last name<input type="text" id="s9b-coach" maxlength="60" placeholder="e.g. Chris Wood" autocomplete="name"></label>
+          <label>Your site name<input type="text" id="s9b-name" maxlength="48" placeholder="e.g. Train with Chris"></label>
+          <label>Your city<input type="text" id="s9b-city" maxlength="24" placeholder="e.g. Leeds"></label>
+          <label>Colour one<input type="color" id="s9b-colour" value="#e8c15a"></label>
+          <label>Colour two<input type="color" id="s9b-colour2" value="#ff5a7a"></label>
+          <div class="s9b-uploads">
+            <div class="s9b-upload" data-photo-role="hero"><strong>Homepage hero</strong><p>Choose a favourite race or training photo. Portrait or landscape.</p><div class="s9b-thumbs" data-photo-thumbs="hero"></div><button type="button" data-photo-pick="hero">Choose hero photo</button><button type="button" data-photo-clear="hero" hidden>Clear hero</button><input type="file" id="s9b-hero-file" data-photo-input="hero" accept="image/*" class="s9b-vh" tabindex="-1"><span data-photo-status="hero" role="status">No hero selected</span><input type="hidden" id="s9b-hero-position" value="50"></div>
+            <div class="s9b-upload" data-photo-role="profile"><strong>Meet-the-coach photo</strong><p>A portrait for your biography and stats.</p><div class="s9b-thumbs" data-photo-thumbs="profile"></div><button type="button" data-photo-pick="profile">Choose profile photo</button><button type="button" data-photo-clear="profile" hidden>Clear profile</button><input type="file" id="s9b-profile-file" data-photo-input="profile" accept="image/*" class="s9b-vh" tabindex="-1"><span data-photo-status="profile" role="status">No profile selected</span></div>
+            <div class="s9b-upload" data-photo-role="avatar"><strong>Coach avatar</strong><p>A close-up for the circular Ask portrait.</p><div class="s9b-thumbs" data-photo-thumbs="avatar"></div><button type="button" data-photo-pick="avatar">Choose avatar photo</button><button type="button" data-photo-clear="avatar" hidden>Clear avatar</button><input type="file" id="s9b-avatar-file" data-photo-input="avatar" accept="image/*" class="s9b-vh" tabindex="-1"><span data-photo-status="avatar" role="status">No avatar selected</span></div>
+            <div class="s9b-upload" data-photo-role="extra"><strong>Training &amp; community</strong><p>Up to 4 photos for the wall, coaching, tips and faded background.</p><div class="s9b-thumbs" data-photo-thumbs="extra"></div><button type="button" data-photo-pick="extra">Choose extra photos</button><button type="button" data-photo-clear="extra" hidden>Clear extras</button><input type="file" id="s9b-files" data-photo-input="extra" accept="image/*" multiple class="s9b-vh" tabindex="-1"><span data-photo-status="extra" role="status">No extras selected</span></div>
+          </div>
+          <span id="s9b-count" role="status">No photos yet</span>
+          <button class="btn btn-primary" id="s9b-go" type="button">Build my homepage</button>
+          <button class="btn btn-ghost" id="s9b-reset" type="button">Start again</button>
+          <span id="s9b-reset-note" role="status"></span>
+        </div>
+        <div class="s9b-journey">
+          <p id="s9b-build-location" role="status">Build your homepage and we'll take you straight to the full-size result. You can return here to edit your details or start again.</p>
+          <a class="btn btn-primary" id="s9b-view-build" href="#s9b-built-homepage" hidden>View my full homepage ↓</a>
+        </div>
+        <div class="s9b-cols">
+        <div id="s9b-preview" class="reveal">
+          <div class="s9b-site">
+            <div class="s9b-progress" id="s9b-progress" hidden><p id="s9b-progtext">Building your homepage…</p><div class="s9b-bar"><i id="s9b-fill"></i></div></div>
+            <header class="s9b-mast"><h4 id="s9b-brand">YOUR BRAND</h4><p class="s9b-script" id="s9b-script">by Your Name</p><p class="s9b-city" id="s9b-town">your city</p><span class="s9b-menu">Menu</span></header>
+            <div class="s9b-hero" id="s9b-hero"><div class="s9b-slot">your hero photo</div><div class="s9b-herotext"><p class="s9b-eyebrow" id="s9b-eyebrow">Your sport · Your city · Your podium</p><h5 id="s9b-headline">Lorem ipsum dolor sit amet.</h5><p id="s9b-herosub">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p><p class="s9b-btns"><span class="s9b-b1">Start training</span><span class="s9b-b2">Work with me</span></p></div></div>
+            <div class="s9b-stats"><div><strong>8</strong><span>1 km runs</span></div><div><strong>8</strong><span>stations</span></div><div><strong>1</strong><span>finish line</span></div></div>
+            <div class="s9b-feats">
+              <div class="s9b-feat"><span class="n">01</span><span class="t">Race predictor</span><span class="s">Goal time → pacing plan</span></div>
+              <div class="s9b-feat"><span class="n">02</span><span class="t">Split analyser</span><span class="s">Find your weakest station</span></div>
+              <div class="s9b-feat"><span class="n">03</span><span class="t">Booking grid</span><span class="s">Choose a session and get training</span></div>
+              <div class="s9b-feat"><span class="n">04</span><span class="t">Coaching</span><span class="s">Find your next training step</span></div>
+              <div class="s9b-feat"><span class="n">05</span><span class="t">Race briefings</span><span class="s">What matters for your next start</span></div>
+              <div class="s9b-feat"><span class="n">06</span><span class="t">Race-mate finder</span><span class="s">Find your doubles partner</span></div>
+            </div>
+            <div class="s9b-events">
+              <p class="s9b-evhead" data-s9bt="Your races, on the calendar.">Lorem ipsum dolor sit.</p>
+              <div class="s9b-evrow">
+                <div class="s9b-ev"><span class="d" data-s9bt="Explore">—</span><span class="t" data-s9bt="Your next race">Lorem ipsum</span><span class="s" data-s9bt="Countdown + pacing plan">Dolor sit amet</span></div>
+                <div class="s9b-ev"><span class="d" data-s9bt="Explore">—</span><span class="t" data-s9bt="Your city race">Consectetur</span><span class="s" data-s9bt="Hotels, flights, the night after">Adipiscing elit</span></div>
+                <div class="s9b-ev"><span class="d" data-s9bt="Together">—</span><span class="t" data-s9bt="Squad session">Sed do</span><span class="s" data-s9bt="Open to all your athletes">Eiusmod tempor</span></div>
+              </div>
+            </div>
+            <div class="s9b-story"><div class="s9b-storyph"><span>your story photo</span></div><div class="s9b-storytext"><p class="n">Meet your coach</p><h6 id="s9b-storyh">Lorem ipsum, dolor sit amet consectetur.</h6><p id="s9b-storyp" data-s9bt="Strength for the stations, running for the whole race and a plan that fits the rest of your life.">Adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim.</p><span class="more">Read your story</span></div></div>
+            <div class="s9b-wall">
+              <p class="s9b-wallhead" data-s9bt="Your shots. Your words.">Lorem ipsum dolor.</p>
+              <p class="s9b-wallsub" id="s9b-wallsub" data-s9bt="Race faces, finish-line smiles and the squad being daft. Share your moment with the community.">Consectetur adipiscing elit sed do eiusmod.</p>
+              <div class="s9b-grid" id="s9b-grid"></div>
+            </div>
+            <div class="s9b-band"><h6 data-s9bt="Got the ticket. Missing the partner.">Lorem ipsum dolor sit.</h6><p data-s9bt="Open doubles, relay, race-trip company — post your card, the network does the intros.">Consectetur adipiscing elit sed do.</p><span class="s9b-b2">Find a partner</span></div>
+            <div class="s9b-cap"><div><h6 data-s9bt="Talk to your coach.">Lorem ipsum.</h6><p data-s9bt="Questions about training, booking a session or your next race? Let's talk.">Consectetur adipiscing elit.</p></div><div class="s9b-capform"><span class="s9b-capinput">you@email.com</span><span class="s9b-b1">Send it</span></div></div>
+            <footer class="s9b-foot"><span id="s9b-footbrand">© 2026 Your Brand</span><span>Built on Station 9</span></footer>
+            <div class="s9b-cta"><p id="s9b-ctanote">Your homepage, mocked up live in your browser — photos never left your device. The real platform fills every slot.</p><a class="btn btn-primary" href="#s9-enquiry">Quote me for the full site</a></div>
+          </div>
+        </div>
+        <div class="s9b-live reveal">
+          <p class="s9b-livetag"><span class="s9b-livedot"></span>Live site — Roxjaya Warriors, Jakarta</p>
+          <div class="frame"><img src="/station9/images/live-roxjaya.jpg" alt="A real Station 9 build — Roxjaya Warriors Jakarta homepage, top to bottom" loading="lazy"></div>
+          <script>
+          (function(){
+            var frame=document.querySelector('.s9b-live .frame'),img=frame&&frame.querySelector('img');
+            if(!img||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+            var HOLD1=2800,DOWN=52000,HOLD2=3500,UP=9000,T=HOLD1+DOWN+HOLD2+UP;
+            function ease(u){return u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2}
+            function travel(){return Math.max(0,img.offsetHeight-frame.offsetHeight)}
+            function ty(t){
+              if(t<HOLD1)return 0;t-=HOLD1;
+              if(t<DOWN)return -travel()*ease(t/DOWN);t-=DOWN;
+              if(t<HOLD2)return -travel();t-=HOLD2;
+              return -travel()*(1-ease(Math.min(t,UP)/UP));
+            }
+            var vt=0,last=0,paused=false;
+            frame.addEventListener('mouseenter',function(){paused=true});
+            frame.addEventListener('mouseleave',function(){paused=false});
+            (function tick(now){
+              if(!last)last=now;
+              if(!paused)vt+=now-last;
+              last=now;
+              img.style.transform='translateY('+ty(vt%T).toFixed(1)+'px)';
+              requestAnimationFrame(tick);
+            })(0);
+          })();
+          </script>
+          <p class="cap">A real coaching community, built on Station 9. <a href="https://roxjaya.com/roxjaya/" target="_blank" rel="noopener">See it live</a>.</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="whats-inside">
+      <div class="wrap">
+        <p class="eyebrow reveal">What's inside</p>
+        <h3 class="reveal">Everything the platform carries — not just a homepage.</h3>
+        <p class="lead reveal">
+          The demo above builds the front door. A full Station 9 build ships the whole clubhouse: athlete-facing tools that build trust, and a private Desk that turns that attention into bookings and income.
+        </p>
+        <div class="s9feat-grid">
+          <div class="s9feat reveal">
+            <h4>Race tools your athletes use</h4>
+            <ul>
+              <li><a href="/station9/predictor.html?template=1" target="_blank" rel="noopener">Race predictor — goal time from their benchmarks</a></li>
+              <li><a href="/station9/splits.html?template=1" target="_blank" rel="noopener">Split analyser — where the minutes went</a></li>
+              <li><a href="/station9/results.html?template=1" target="_blank" rel="noopener">Results board — athlete times</a></li>
+              <li><a href="/station9/events.html?template=1" target="_blank" rel="noopener">Race Calendar &amp; Travel — countdowns, city guides, hotels</a></li>
+              <li class="s9feat-x"><a href="/station9/find-a-partner.html?template=1" target="_blank" rel="noopener">Find a race-mate — doubles, relay, race-trip company</a></li>
+              <li class="s9feat-x"><a href="/station9/race-crew.html?template=1" target="_blank" rel="noopener">Race crew meetups</a></li>
+            </ul>
+            <button class="s9feat-more" type="button" aria-expanded="false">+ 2 more</button>
+          </div>
+          <div class="s9feat reveal">
+            <h4>Training content in your voice</h4>
+            <ul>
+              <li><a href="/station9/stations-prep.html?template=1" target="_blank" rel="noopener">Stations prep — technique, pacing, transitions</a></li>
+              <li><a href="/station9/run-zone.html?template=1" target="_blank" rel="noopener">Run zone — compromised-running sessions</a></li>
+              <li><a href="/station9/taper-zone.html?template=1" target="_blank" rel="noopener">Taper zone — arrive ready to race</a></li>
+              <li><a href="/station9/race-day.html?template=1" target="_blank" rel="noopener">Race-day guide — preparation to start line</a></li>
+              <li class="s9feat-x"><a href="/station9/news.html?template=1" target="_blank" rel="noopener">News in your sampled voice</a> · <a href="#tips">Coaching tips</a></li>
+              <li class="s9feat-x"><a href="/station9/watch.html?template=1" target="_blank" rel="noopener">Watch &amp; Learn video library</a></li>
+              <li class="s9feat-x"><a data-coach-link href="/station9/manage-videos.html?audience=coach#video-category" target="_blank" rel="noopener">Podcast-ready series — explore Content setup</a></li>
+              <li class="s9feat-x"><a href="/station9/prep-club.html?template=1" target="_blank" rel="noopener">HYROX Prep Club community tier</a></li>
+            </ul>
+            <button class="s9feat-more" type="button" aria-expanded="false">+ 4 more</button>
+          </div>
+          <div class="s9feat reveal">
+            <h4>The Desk — your back office</h4>
+            <ul>
+              <li><a data-coach-link href="/station9/planner.html?view=coach&amp;audience=coach" target="_blank" rel="noopener">Bookings — weekly planner, client requests</a></li>
+              <li><a data-coach-link href="/station9/leads.html?audience=coach" target="_blank" rel="noopener">Leads — every enquiry in one inbox</a></li>
+              <li><a data-coach-link href="/station9/desk.html?audience=coach" target="_blank" rel="noopener">Finance — income, spend and tax set-aside</a></li>
+              <li><a data-coach-link href="/station9/campaigns.html?audience=coach" target="_blank" rel="noopener">Campaigns — promote offers, track results</a></li>
+              <li class="s9feat-x"><a data-coach-link href="/station9/manage-programmes.html?audience=coach" target="_blank" rel="noopener">Programmes — manage coaching offers</a></li>
+              <li class="s9feat-x"><a data-coach-link href="/station9/manage-videos.html?audience=coach" target="_blank" rel="noopener">Content — publish videos and series</a></li>
+              <li class="s9feat-x"><a data-coach-link href="/station9/clients.html?audience=coach" target="_blank" rel="noopener">Clients — your coaching relationships</a></li>
+              <li class="s9feat-x"><a data-coach-link href="/station9/today.html?audience=coach" target="_blank" rel="noopener">Today — who needs you this morning</a></li>
+            </ul>
+            <button class="s9feat-more" type="button" aria-expanded="false">+ 4 more</button>
+          </div>
+          <div class="s9feat reveal">
+            <h4>Community &amp; growth</h4>
+            <ul>
+              <li><a href="#wall-photos">The wall — pinned shots plus member submissions</a></li>
+              <li><a href="/station9/list.html?template=1" target="_blank" rel="noopener">Join-the-list capture — your audience, yours</a></li>
+              <li><a href="#ask">Ask-the-coach — questions and conversations</a></li>
+              <li><a href="/station9/partners.html?template=1" target="_blank" rel="noopener">Partners &amp; links pages</a></li>
+              <li class="s9feat-x">Optional shop — <a href="#s9-enquiry">ask about adding it to your build</a></li>
+              <li class="s9feat-x">Client intake &amp; onboarding — <a href="#s9-enquiry">discuss the form your coaching needs</a></li>
+            </ul>
+            <button class="s9feat-more" type="button" aria-expanded="false">+ 2 more</button>
+          </div>
+        </div>
+        <div class="s9steps reveal">
+          <h4>How it works</h4>
+          <ol>
+            <li><span>01</span><strong>Send an enquiry.</strong> Tell us about your coaching — sport, city, what you offer.</li>
+            <li><span>02</span><strong>We quote for the build.</strong> A fixed price for the platform, tailored to what you actually need.</li>
+            <li><span>03</span><strong>We shape it together.</strong> Your brand, your photos, your voice — and we change layouts to suit your priorities.</li>
+          </ol>
+          <a class="btn btn-primary" href="#s9-enquiry">Start the conversation</a>
+        </div>
+      </div>
+    </section>
+
+<section class="block" id="s9-enquiry">
+      <div class="wrap s9steps">
+        <h3>Make this your coaching site.</h3>
+        <p>Tell Station 9 what you need. We'll quote for your build and shape the branding, voice and layout with you.</p>
+        <form id="ask-form" class="s9b-form" action="/api/capture-email" method="post" data-tenant="station9">
+          <label>Your email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label>
+          <label>What do you have in mind?<input type="text" name="question" placeholder="Your coaching, your goals, your questions"></label>
+          <button class="btn btn-primary" type="submit">Ask about your build</button>
+        </form>
+        <p class="fine" id="ask-note" role="status">Your enquiry goes to Station 9, not the example coach below.</p>
+      </div>
+    </section>
+
+<header class="masthead s9-tenant-masthead" id="s9b-built-homepage" aria-label="Your coaching site">
+      <p><a class="btn btn-ghost" href="#s9builder">Edit my details ↑</a></p>
+      <h2><a class="wordmark" href="#homepage-template"><span data-s9brand>Your brand</span><span class="sig" aria-label="Coach signature"><span class="sig-text" data-s9signature>by Your Name</span><svg class="sig-line" viewBox="0 0 200 14" aria-hidden="true"><path d="M3 10.5 C 50 3.5, 120 3, 197 6.5 C 120 6, 50 8, 3 10.5 Z" fill="currentColor" /></svg></span></a></h2>
+      <p class="city" data-s9city>Your city</p>
+    </header>
+<aside class="coach-view wrap" data-coach-view data-coach-expanded="false" aria-label="The Desk coaching tools"><div class="coach-view-heading"><strong><a class="coach-home-link" data-coach-link href="/station9/?audience=coach" aria-label="Coach homepage — The Desk">The Desk</a></strong><span>Your coaching tools</span></div><button class="coach-view-toggle" type="button" aria-expanded="false" aria-controls="coach-view-actions">Show tools</button><nav class="coach-view-actions" id="coach-view-actions" aria-label="Coach tools"><a data-coach-link href="/station9/planner.html?view=coach&amp;audience=coach">Bookings</a><a data-coach-link href="/station9/desk.html?audience=coach">Finance</a><a data-coach-link href="/station9/campaigns.html?audience=coach">Campaigns</a><a data-coach-link href="/station9/manage-programmes.html?audience=coach">Programmes</a><a data-coach-link href="/station9/manage-videos.html?audience=coach">Content</a></nav><div class="coach-view-links"><a class="coach-return-link" data-coach-link href="/station9/?audience=coach">Back to coach homepage</a><a class="coach-public-link" href="/station9/?audience=public" target="_blank" rel="noopener">Preview public site ↗</a></div></aside>
+    <div class="wrap s9-hero-adjust" id="s9-hero-adjust" hidden>
+      <button class="btn btn-ghost" id="s9-hero-edit" type="button">Fit &amp; position hero photo</button>
+      <span class="fine" id="s9-hero-position-note" role="status">Fit, zoom or move this photo. Changes stay in this browser.</span>
+    </div>
+    <dialog id="s9-hero-editor" aria-labelledby="s9-hero-editor-title" aria-describedby="s9-hero-editor-help">
+      <div class="s9-editor-heading"><h3 id="s9-hero-editor-title">Frame your hero photo</h3><button type="button" class="btn btn-primary" id="s9-hero-done">Done</button></div>
+      <p id="s9-hero-editor-help">Drag the photo, or use the controls below. Only your hero photo changes; the original file stays untouched.</p>
+      <div id="s9-hero-editor-stage"><div id="s9-hero-editor-viewport"><img id="s9-hero-editor-image" alt="Your hero photo framing preview" draggable="false"></div></div>
+      <div class="s9-editor-controls">
+        <label>Photo fit<select id="s9-hero-fit"><option value="cover">Fill the frame</option><option value="contain">Fit whole photo</option></select></label>
+        <label>Zoom <output id="s9-hero-zoom-value">100%</output><input type="range" id="s9-hero-zoom" min="50" max="250" value="100" step="1"></label>
+        <label>Move left / right<input type="range" id="s9-hero-x" min="-50" max="50" value="0" step="0.1"></label>
+        <label>Move up / down<input type="range" id="s9-hero-y" min="-50" max="50" value="0" step="0.1"></label>
+      </div>
+      <button type="button" class="btn btn-ghost" id="s9-hero-recentre">Reset framing</button>
+      <p class="fine" id="s9-hero-editor-note" role="status">Changes apply straight away and save when you release the control. Smaller photos leave space around the edges.</p>
+    </dialog>
     <section class="hero hero--bleed" data-hero-mode="full" data-hero-roll="full">
-      <img
-        class="hero-amb"
-        src="/station9/images/hero.jpg?v=1792661956154"
-        alt=""
-        aria-hidden="true"
-        width="1125"
-        height="1080"
-      />
-      <div class="hero-mask">
-        <img
-          class="hero-img"
-          src="/station9/images/hero.jpg?v=1792661956154"
-          alt="Station 9 driving the sled, head-on — the station nobody enjoys"
-          width="1125"
-          height="1080"
-          fetchpriority="high"
-        />
+      <div class="hero-mask s9ph" data-s9img="0" data-s9fit="top">
+        <span class="s9ph-label">your hero photo</span>
       </div>
       <div class="wrap">
-        <span class="kicker"
-          >Hyrox · the UK · the platform behind the coaches</span
-        >
-        <h2>
-          Your coaching.<br /><em>Your platform.</em>
+        <span class="kicker reveal" data-s9bt="HYROX · Personal training · [city]">Lorem · ipsum · dolor sit amet</span>
+        <h2 class="reveal" data-s9bt="Build your engine.<br /><em>Own your race.</em>">
+          Lorem ipsum.<br /><em>Dolor sit amet.</em>
         </h2>
-        <p>
-          Station 9 builds the sites coaches' businesses deserve — coaching links, race tools, community boards and the money desk, in one place, under your brand.
+        <p class="reveal" data-s9bt="Train with [coach]. Strength, running and station work brought together around your next start line — or simply a stronger everyday you.">
+          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#zones">See the platform</a>
-          <a class="btn btn-light" href="#ask">Talk to us</a>
+        <div class="actions reveal">
+          <a class="btn btn-primary" href="#plans" data-s9bt="Find your coaching">Lorem ipsum</a>
+          <a class="btn btn-light" href="#story" data-s9bt="Meet [coach]">Dolor sit</a>
         </div>
-        <div class="stats">
-          <div>
-            <strong>8</strong><span>station tools, zero plugins</span>
-          </div>
-          <div>
-            <strong>1</strong><span>network behind every site</span>
-          </div>
-          <div><strong>100%</strong><span>your brand, not ours</span></div>
+        <div class="stats reveal">
+          <div><strong data-s9bt="8">—</strong><span data-s9bt="1 km runs">Lorem ipsum</span></div>
+          <div><strong data-s9bt="8">—</strong><span data-s9bt="stations">Dolor sit</span></div>
+          <div><strong data-s9bt="1">—</strong><span data-s9bt="finish line. Your way there.">Amet elit</span></div>
         </div>
       </div>
-    </section><div class="booking-entry" style="display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;padding:24px 20px;background:var(--paper,#0d0e14);border-bottom:1px solid rgba(160,150,190,.15)"><a class="btn btn-primary" href="/station9/planner.html">Book a slot</a><span style="font-size:13px;color:var(--muted,#b2a9c5)">Explore the weekly session planner</span></div>
+    </section><div class="booking-entry reveal" style="display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;padding:24px 20px;background:var(--paper,#0d0e14);border-bottom:1px solid rgba(160,150,190,.15)"><a class="btn btn-primary" href="/station9/planner.html?view=client&amp;template=1" target="_blank" rel="noopener">Book a session</a><span style="font-size:13px;color:var(--muted,#b2a9c5)">Make time for your next step</span></div>
 
     <section class="block" id="zones">
       <div class="wrap">
-        <p class="eyebrow reveal">The Zones</p>
-        <h3 class="reveal">Every metre, every station, every excuse.</h3>
-        <p class="lead reveal">
-          Pick the weak link. Make it the weapon.
+        <p class="eyebrow reveal" data-s9bt="More than a finish time">Lorem Ipsum</p>
+        <h3 class="reveal" data-s9bt="Know your race. Find your people.">Lorem ipsum dolor sit amet.</h3>
+        <p class="lead reveal" data-s9bt="Your first start line or your next personal best — useful tools to turn a race idea into a plan.">
+          Consectetur adipiscing elit, sed do eiusmod tempor.
         </p>
+        <div class="s9-pitch-tools">
+          <article class="s9-pitch-tool s9-pitch-tool-main reveal"><div><span class="tag">After the finish</span><h4>Your finish time tells half the story.</h4><p>See where the minutes went, where you were strong and what deserves your next training block.</p><a class="btn btn-primary" href="/station9/splits.html?template=1" target="_blank" rel="noopener">Analyse my splits</a></div><div class="s9-tool-preview" aria-label="What the analysis covers"><span>01 · Running</span><strong>Did your pace fade?</strong><span>02 · Stations</span><strong>Where did time get away?</strong><span>03 · Next steps</span><strong>Know what to work on.</strong></div></article>
+          <article class="s9-pitch-tool reveal"><span class="tag">Better together</span><h4>Got the ticket. Missing the partner?</h4><p>Find someone aiming for your race, your format and a pace that fits. Doubles, relay or company for the race trip.</p><div class="s9-tool-chips"><span>Race</span><span>Division</span><span>Pace</span></div><a class="btn btn-ghost" href="/station9/find-a-partner.html?template=1" target="_blank" rel="noopener">Find my race-mate</a></article>
+          <article class="s9-pitch-tool reveal"><span class="tag">Before the start</span><h4>What time could you aim for?</h4><p>Bring your running and station benchmarks together for a race estimate — and a clearer starting point for training.</p><div class="s9-tool-chips"><span>8 runs</span><span>8 stations</span><span>One target</span></div><a class="btn btn-ghost" href="/station9/predictor.html?template=1" target="_blank" rel="noopener">Predict my race</a></article>
+        </div>
+        <p>New to all of this? <a href="/station9/prep-club.html?template=1" target="_blank" rel="noopener">Start with the free HYROX Prep Club →</a></p>
+        <details class="s9-pitch-guides"><summary>Explore station guides, running plans and race preparation</summary>
         <div class="zones">
-          <a class="zone zone--hook reveal" href="/station9/find-a-partner/">
+          <a class="zone zone--hook reveal" href="/station9/find-a-partner.html?template=1" target="_blank" rel="noopener">
             <span class="num">New</span>
-            <h4>Got a ticket, need a partner?</h4>
-            <p>
-              Doubles, mixed, relay, or just someone to share the race trip — post
-              your card and the network makes the intro.
+            <h4 data-s9bt="Got a ticket, need a partner?">Lorem ipsum dolor?</h4>
+            <p data-s9bt="Doubles, mixed, relay, or just someone to share the race trip — post your card and the network makes the intro.">
+              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
             </p>
             <span class="more">Find a partner</span>
           </a>
-          <a class="zone reveal" href="/station9/stations-prep/">
+          <a class="zone reveal" href="/station9/stations-prep.html?template=1" target="_blank" rel="noopener">
             <span class="num">01</span>
-            <h4>Stations Prep</h4>
-            <p>
-              Technique, pacing and transitions for all eight stations — from
-              SkiErg to the last wall ball.
+            <h4 data-s9bt="Stations Prep">Lorem Ipsum</h4>
+            <p data-s9bt="Technique, pacing and transitions for all eight stations — from SkiErg to the last wall ball.">
+              Sed do eiusmod tempor incididunt ut labore et dolore magna.
             </p>
             <span class="more">Open station guides</span>
           </a>
-          <a class="zone reveal" href="/station9/run-zone/">
+          <a class="zone reveal" href="/station9/run-zone.html?template=1" target="_blank" rel="noopener">
             <span class="num">02</span>
-            <h4>Run Zone</h4>
-            <p>
-              8 × 1 km with heavy legs. Compromised-running sessions built for
-              the UK halls get warm.
+            <h4 data-s9bt="Run Zone">Dolor Sit</h4>
+            <p data-s9bt="Eight kilometres on legs that have already done the work. Build the engine to run well between stations.">
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco.
             </p>
             <span class="more">Run plans</span>
           </a>
-          <a class="zone reveal" href="/station9/events/">
+          <a class="zone reveal" href="/station9/events.html?template=1" target="_blank" rel="noopener">
             <span class="num">03</span>
-            <h4>Upcoming Events</h4>
-            <p>
-              the UK countdown plus city planners for London, Birmingham, Hong
-              Kong and Glasgow — hotels, flights, food, the night after.
+            <h4 data-s9bt="Upcoming Events">Amet Elit</h4>
+            <p data-s9bt="Find your next start line, plan the journey and make a weekend of it with your training crew.">
+              Laboris nisi ut aliquip ex ea commodo consequat duis aute.
             </p>
             <span class="more">Race calendar</span>
           </a>
           <a class="zone reveal" href="#ask">
             <span class="num">04</span>
-            <h4>Talk to Station 9</h4>
-            <p>
-              Demos, pricing, migrating your stack — ask directly, get a real answer.
+            <h4 data-s9bt="Ask [coach]">Irure Dolor</h4>
+            <p data-s9bt="First race, a faster time or a fresh start with training? Tell me what you're working towards.">
+              Reprehenderit in voluptate velit esse cillum dolore eu fugiat.
             </p>
             <span class="more">Ask a question</span>
           </a>
         </div>
+        </details>
       </div>
     </section>
 
     <section class="block alt" id="story">
       <div class="wrap story">
-        <figure class="reveal">
-          <img
-            src="/station9/images/startline.jpg?v=1792661956154"
-            alt="Station 9 on the start line — flat expression, miles to go"
-            width="985"
-            height="1150"
-            loading="lazy"
-          />
-        </figure>
         <div class="reveal">
-          <p class="eyebrow">The platform</p>
-          <h3>Station 9. From Day one to 300 in one season.</h3>
-          <p class="lead">
-            We're the platform behind the coach sites athletes keep landing on. One engine runs the coaching links, the race tools, the community boards and the money desk — under each creator's own brand, not ours.
+          <figure class="s9-story-photo">
+            <div class="s9ph s9ph--tall" data-s9img="1" data-s9fit="frame" data-s9min="0.75" data-s9max="1.6"><span class="s9ph-label">your story photo</span></div>
+            <svg class="profile-hairline" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 A48 60 0 0 1 48 0 H50" /></svg>
+          </figure>
+          <p class="fine" data-s9bt="Illustrative race stats · replace with your own">Lorem ipsum dolor sit amet.</p>
+          <div class="s9-coach-stats">
+            <div><strong data-s9bt="1:18:42">—:—:—</strong><span data-s9bt="Open singles PB">Lorem ipsum</span></div>
+            <div><strong data-s9bt="4:52/km">—:—</strong><span data-s9bt="Average race run">Dolor sit</span></div>
+            <div><strong data-s9bt="6">—</strong><span data-s9bt="Races completed">Amet elit</span></div>
+          </div>
+        </div>
+        <div class="reveal">
+          <p class="eyebrow" data-s9bt="Your coach · [city]">Lorem ipsum</p>
+          <h3 data-s9bt="Meet [coach].">Lorem ipsum dolor sit amet elit.</h3>
+          <p class="lead" data-s9bt="A stronger sled push. A steadier last kilometre. More confidence walking into the gym. My coaching connects the work you do each week to the thing you want to do next.">
+            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.
           </p>
-          <p class="quote">
-            "the platform behind the coaches."
+          <p class="quote" data-s9bt="Strong enough for the stations. Fit enough to keep running.">
+            Lorem ipsum dolor sit amet.
           </p>
           <ul>
-            <li>
-              Every site ships race tools athletes actually use — predictor, splits, station prep.
-            </li>
-            <li>
-              Race-mate boards and crew pages keep communities on the coach's own domain.
-            </li>
-            <li>
-              The money desk gives coaches a live read on income, spend and tax set-aside.
-            </li>
-            <li>
-              Athletes get one account across the network — coaches keep the relationship.
-            </li>
+            <li data-s9bt="HYROX preparation: running, strength and station technique in one plan.">Sed do eiusmod tempor incididunt ut labore et dolore.</li>
+            <li data-s9bt="Personal training focused on your goals and your starting point.">Ut enim ad minim veniam, quis nostrud exercitation.</li>
+            <li data-s9bt="A training week that fits around work, family and the rest of your life.">Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+            <li data-s9bt="Clear sessions, useful feedback and a next step you understand.">Excepteur sint occaecat cupidatat non proident sunt.</li>
           </ul>
+          <a class="btn btn-primary" href="#plans" data-s9bt="Let's find your starting point">Lorem ipsum</a>
         </div>
       </div>
     </section>
 
 
+
+    <section class="block" id="plans">
+      <div class="wrap">
+        <p class="eyebrow reveal" data-s9bt="Coaching that fits">Lorem Ipsum</p>
+        <h3 class="reveal" data-s9bt="Find your way forward.">Lorem ipsum dolor sit.</h3>
+        <p class="lead reveal" data-s9bt="Build towards a race, get stronger with one-to-one support, or take your first step. Start where you are.">
+          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+        </p>
+        <div class="plan plan-crew reveal">
+          <div class="s9ph s9ph--plans" data-s9img="4" data-s9fit="frame" data-s9min="0.8" data-s9max="1.3"><span class="s9ph-label">your photo</span></div>
+          <div class="crew-copy">
+            <span class="tag">New here?</span>
+            <h4 data-s9bt="Start with the crew">Lorem ipsum dolor</h4>
+            <p class="crew-line" data-s9bt="Explore the race tools, get to know the stations and find your people. No coaching commitment needed.">
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+          <div class="crew-side">
+            <div class="price">£0 <small>/ always</small></div>
+            <a class="btn btn-primary" href="#ask">Join free</a>
+          </div>
+        </div>
+        <div class="plans">
+          <article class="plan featured reveal"><span class="tag" data-s9bt="Train with purpose">Lorem ipsum</span><h4 data-s9bt="HYROX coaching">Lorem ipsum</h4><div class="price">£—/month</div><p class="per" data-s9bt="Bring your running, strength and station work together in one purposeful training week.">Dolor sit amet consectetur elit sed do.</p><a class="btn btn-primary" href="#ask">Let's talk</a></article>
+          <article class="plan reveal"><span class="tag" data-s9bt="1:1">1:1</span><h4 data-s9bt="Personal coaching">Dolor sit</h4><div class="price">£—/month</div><p class="per" data-s9bt="Work on your technique, build confidence and make room for consistent progress.">Eiusmod tempor incididunt ut labore.</p><a class="btn btn-ghost" href="#ask">Let's talk</a></article>
+          <article class="plan reveal"><span class="tag" data-s9bt="Race prep">Race prep</span><h4 data-s9bt="12-week race block">Amet elit</h4><div class="price">£— / block</div><p class="per" data-s9bt="A focused build to one race — pacing, stations, taper.">Ut enim ad minim veniam quis.</p><a class="btn btn-ghost" href="#ask">Let's talk</a></article>
+        </div>
+      </div>
+    </section>
 
     <section class="block" id="athletes-say" hidden>
       <div class="wrap">
@@ -257,38 +677,38 @@
 
     <section class="block alt" id="events">
       <div class="wrap">
-        <p class="eyebrow reveal">Upcoming Events</p>
-        <h3 class="reveal">Put a race on the calendar.</h3>
-        <p class="lead reveal">
-          Every Station 9 site carries the live calendar — race countdowns, city planners, hotels, flights, food. The feed updates itself; nobody babysits it.
+        <p class="eyebrow reveal" data-s9bt="Upcoming Events">Lorem Ipsum</p>
+        <h3 class="reveal" data-s9bt="Put a race on the calendar.">Lorem ipsum dolor sit.</h3>
+        <p class="lead reveal" data-s9bt="Pick a race worth training for. Explore the calendar, plan your trip and find someone to share the start line.">
+          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
         </p>
         <div class="events">
           <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>Budapest</span></div>
+            <div class="date"><strong>—</strong><span data-s9bt="Budapest">City</span></div>
             <div>
-              <h4>HYROX Budapest</h4>
-              <p>
-                Every client site runs the same live countdown their athletes see.
+              <h4 data-s9bt="HYROX Budapest">Lorem ipsum</h4>
+              <p data-s9bt="Make a race weekend of it. Check the event details and build your training around the date.">
+                Dolor sit amet, consectetur adipiscing elit sed do.
               </p>
             </div>
             <a class="btn btn-ghost" href="/station9/list.html">Get notified</a>
           </div>
           <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>London</span></div>
+            <div class="date"><strong>—</strong><span data-s9bt="London">City</span></div>
             <div>
-              <h4>HYROX London — ExCeL</h4>
-              <p>
-                The city planner brings hotels, flights and the night-after together.
+              <h4 data-s9bt="HYROX London — ExCeL">Dolor sit</h4>
+              <p data-s9bt="The city planner brings hotels, flights and the night-after together.">
+                Eiusmod tempor incididunt ut labore et dolore magna.
               </p>
             </div>
             <a class="btn btn-ghost" href="/station9/list.html">Get notified</a>
           </div>
           <div class="event reveal">
-            <div class="date"><strong>TBA</strong><span>Glasgow</span></div>
+            <div class="date"><strong>—</strong><span data-s9bt="Glasgow">City</span></div>
             <div>
-              <h4>HYROX Glasgow — pro solo</h4>
-              <p>
-                The feed updates itself — the coach never touches a CMS.
+              <h4 data-s9bt="HYROX Glasgow">Amet elit</h4>
+              <p data-s9bt="Solo or doubles? Find your division, gather your crew and plan the work between now and race day.">
+                Ut enim ad minim veniam, quis nostrud exercitation.
               </p>
             </div>
             <a class="btn btn-ghost" href="/station9/list.html">Get notified</a>
@@ -299,12 +719,11 @@
 
     <section class="cta-band" id="find-partner">
       <div class="wrap">
-        <h3>Got the ticket. Missing the partner.</h3>
-        <p>
-          Open doubles, pro, mixed — yes, that one too — relay, or just
-          race-trip company. Post your card, the network does the intros.
+        <h3 class="reveal" data-s9bt="Got the ticket. Missing the partner.">Lorem ipsum dolor sit.</h3>
+        <p class="reveal" data-s9bt="Open doubles, pro, mixed — yes, that one too — relay, or just race-trip company. Post your card, the network does the intros.">
+          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
         </p>
-        <a class="btn btn-light" href="/station9/find-a-partner/"
+        <a class="btn btn-light reveal" href="/station9/find-a-partner.html?template=1" target="_blank" rel="noopener"
           >Find a partner</a
         >
       </div>
@@ -327,48 +746,68 @@
 
 
 
+    <section class="block tips" id="tips">
+      <div class="wrap">
+        <p class="eyebrow reveal" data-s9bt="Coach says">Lorem Ipsum</p>
+        <h3 class="reveal" data-s9bt="The stuff that's not in the rulebook.">Lorem ipsum dolor sit amet.</h3>
+        <p class="lead reveal" data-s9bt="The small decisions that make race day feel less like guesswork. Start with your running, your kit and your transitions.">
+          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+        </p>
+        <figure class="tips-photo reveal s9ph s9ph--plans" data-s9img="5" data-s9fit="frame" data-s9min="0.9" data-s9max="1.9">
+          <span class="s9ph-label">your photo</span>
+        </figure>
+        <div class="tips-grid reveal">
+          <details open>
+            <summary data-s9bt="Running">Lorem ipsum</summary>
+            <ol>
+              <li data-s9bt="Practise running after a station, not just running fresh. Learn what a sustainable pace feels like on tired legs.">Sed do eiusmod tempor incididunt ut labore et dolore magna.</li>
+              <li data-s9bt="Keep the first kilometre controlled. The pace you can hold after the sleds matters more than the pace you can hit before them.">Ut enim ad minim veniam quis nostrud exercitation ullamco.</li>
+              <li data-s9bt="Use a repeatable breathing rhythm as you leave each station. Let the first few strides settle before you chase the clock.">Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+            </ol>
+          </details>
+          <details>
+            <summary data-s9bt="Race-day kit">Dolor sit</summary>
+            <ol>
+              <li data-s9bt="Race in shoes and socks you've trained in. Test their grip on sled work before race week.">Sed do eiusmod tempor incididunt ut labore.</li>
+              <li data-s9bt="Pack your kit the night before, with a dry layer and something familiar to eat afterwards.">Ut enim ad minim veniam quis nostrud.</li>
+              <li data-s9bt="Check the current athlete guide for your start time, check-in requirements and permitted equipment.">Duis aute irure dolor in reprehenderit.</li>
+            </ol>
+          </details>
+          <details>
+            <summary data-s9bt="Stations">Amet elit</summary>
+            <ol>
+              <li data-s9bt="Practise the movement standard, not just the movement. A no-rep costs energy as well as time.">Sed do eiusmod tempor incididunt ut labore et dolore.</li>
+              <li data-s9bt="Choose manageable sets before fatigue chooses them for you. Short planned breaks can beat one long recovery.">Ut enim ad minim veniam quis nostrud exercitation.</li>
+              <li data-s9bt="Rehearse arriving, setting up and leaving. Know where your hands, feet and equipment need to go.">Duis aute irure dolor in reprehenderit in voluptate.</li>
+            </ol>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="capture" id="ask">
-      <img
-        class="capture-bg"
-        src="/station9/images/coaching.jpg?v=1792661956154"
-        alt=""
-        width="948"
-        height="870"
-        loading="lazy"
-      />
+      <img class="capture-bg" data-s9imgsrc="4" alt="" aria-hidden="true" />
       <div class="wrap">
         <div class="reveal coach">
-          <img
-            class="bio"
-            src="/station9/images/bio.jpg?v=1792661956154"
-            alt="Station 9 — the platform behind the coaches"
-            width="120"
-            height="120"
-            loading="lazy"
-          />
+          <span class="coach-portrait">
+            <div class="bio s9ph s9ph--round" data-s9img="2" data-s9fit="top"><span class="s9ph-label">your photo</span></div>
+            <svg class="portrait-hairline" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M33 3 A50 50 0 0 0 33 97" /></svg>
+          </span>
           <div>
-            <p class="eyebrow">Talk to Station 9</p>
-            <h3>Got a coaching business that deserves a real site? Just ask.</h3>
-            <p>
-              Leave your email and your question. A human reads them — and you'll be first to hear when new builds open.
+            <p class="eyebrow" data-s9bt="Ask [coach]">Lorem ipsum</p>
+            <h3 data-s9bt="Your next race starts with a question.">Lorem ipsum dolor sit amet elit?</h3>
+            <p data-s9bt="Not sure where to start, which coaching option fits or how to prepare for your first HYROX? Tell me what you're aiming for.">
+              Consectetur adipiscing elit, sed do eiusmod tempor incididunt.
             </p>
-            <p class="chat-line">
-              Prefer chat? Find us on
-              <a class="chat-zone chat-zone-inline" href="https://www.instagram.com/station9.studio/" target="_blank" rel="noopener"><span class="dot"></span> Instagram</a>
-            </p>
+            <p class="chat-line"><a href="/station9/planner.html?view=client&amp;template=1" target="_blank" rel="noopener" data-s9bt="Ready to train? Find a session.">Lorem ipsum dolor.</a></p>
           </div>
         </div>
         <div class="reveal">
-          <div class="faq-quick" id="faq-quick" hidden>
-            <p class="faq-quick-label">Fast answers — tap one:</p>
-            <div class="faq-chips" id="faq-chips"></div>
-            <div class="faq-answer" id="faq-answer" role="status" hidden></div>
-          </div>
+          <details><summary data-s9bt="Do I need a race booked?">Lorem ipsum?</summary><p data-s9bt="No. Start with the training and choose a race when you're ready. General strength and fitness goals count too.">Dolor sit amet.</p></details>
+          <details><summary data-s9bt="What if it's my first HYROX?">Lorem ipsum?</summary><p data-s9bt="Start with the movement standards and a realistic view of your running. Build both gradually before putting them together.">Dolor sit amet.</p></details>
+          <details><summary data-s9bt="Which coaching option should I choose?">Lorem ipsum?</summary><p data-s9bt="Tell me your goal, available training time and what support you want. We can work out the best starting point together.">Dolor sit amet.</p></details>
           <form
-            id="ask-form"
-            action="/api/capture-email"
-            method="post"
-            data-tenant="station9"
+            id="s9-coach-question"
           >
             <input
               type="email"
@@ -384,30 +823,57 @@
             />
             <button class="btn btn-primary" type="submit">Send it</button>
           </form>
-          <p class="fine" id="ask-note" role="status">
-            No spam. Unsubscribe any time.
-          </p>
+          <p class="fine" id="s9-coach-note" role="status">Preview form · no message is sent.</p>
           
           
         </div>
       </div>
     </section>
 
-    <section class="block gallery" id="wall-photos" hidden>
+    <section class="block gallery" id="wall-photos">
       <div class="wrap">
-        <p class="eyebrow reveal">Warriors Wall</p>
-        <h3 class="reveal">Your shots. Your words.</h3>
-        <p class="lead reveal">
-          Race faces, finish-line tears, the squad being daft. Send yours and it
-          goes up here once Station 9 has your OK.
+        <p class="eyebrow reveal" data-s9bt="The community wall">Lorem Ipsum</p>
+        <h3 class="reveal" data-s9bt="Your shots. Your words.">Lorem ipsum dolor.</h3>
+        <p class="lead reveal" data-s9bt="Race faces, finish-line smiles and the squad being daft. Share a moment from your training or race day.">
+          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
         </p>
-        <div
-          class="event-tabs reveal"
-          id="event-tabs"
-          role="tablist"
-          aria-label="Filter photos by event"
-        ></div>
-        <div class="polaroids" id="polaroids"></div>
+        <div class="polaroids" id="polaroids" data-gallery-static>
+          <div class="polaroid" style="--tilt:-2.4deg">
+            <img src="/station9/images/finish.jpg" alt="Athlete crossing a finish line" loading="lazy" />
+            <p class="cap">that finish-line feeling</p>
+            <p class="by"><b>@mara.runs</b> · HYROX London</p>
+          </div>
+          <div class="polaroid" style="--tilt:1.7deg">
+            <div class="s9pol-ph" data-s9fit="top" data-s9img="3"><span class="s9ph-label">your shot</span></div>
+            <p class="cap">your caption here</p>
+            <p class="by"><b>you</b> · your race</p>
+          </div>
+          <div class="polaroid" style="--tilt:-1.1deg">
+            <img src="/station9/images/doubles.jpg" alt="Two athletes after a doubles race" loading="lazy" />
+            <p class="cap">squad being daft, again</p>
+            <p class="by"><b>@thejoneses</b> · doubles</p>
+          </div>
+          <div class="polaroid" style="--tilt:2.3deg">
+            <img src="/station9/images/field.jpg" alt="Athletes on the competition floor" loading="lazy" />
+            <p class="cap">race faces only</p>
+            <p class="by"><b>@kt.lifts</b> · Birmingham</p>
+          </div>
+          <div class="polaroid" style="--tilt:-1.8deg">
+            <img src="/station9/images/night.jpg" alt="Athlete under arena lights" loading="lazy" />
+            <p class="cap">we don't do quiet</p>
+            <p class="by"><b>@dub.boy</b> · Glasgow</p>
+          </div>
+          <div class="polaroid" style="--tilt:2.6deg">
+            <div class="s9pol-ph" data-s9fit="top" data-s9img="6"><span class="s9ph-label">your shot</span></div>
+            <p class="cap">your caption here</p>
+            <p class="by"><b>you</b> · your race</p>
+          </div>
+          <div class="polaroid" style="--tilt:-2.1deg">
+            <img src="/station9/images/momentum.jpg" alt="Athlete mid-workout" loading="lazy" />
+            <p class="cap">first hyrox, not the last</p>
+            <p class="by"><b>@sam.engine</b> · Hong Kong</p>
+          </div>
+        </div>
         <div class="send-shot reveal">
           <button class="btn btn-primary" type="button" id="send-shot-btn">
             Send your shot
@@ -442,7 +908,7 @@
               </label>
             </div>
             <label>
-              Email <span class="opt">(so Station 9 can reply)</span>
+              Email <span class="opt">(so your coach can reply)</span>
               <input name="email" type="email" autocomplete="email" required />
             </label>
             <label>
@@ -463,16 +929,15 @@
             <label class="check">
               <input name="consent" type="checkbox" required />
               <span
-                >I'm in the photo (or everyone in it is happy), and Station 9 can
-                show it on this page and on @station9.studio. Ask us any time to take it down.</span
+                >I'm in the photo (or everyone in it is happy), and my coach can
+                show it on this community wall. Ask us any time to take it down.</span
               >
             </label>
             <div class="shot-actions">
               <button class="btn btn-primary" type="submit">Send it</button>
               <p class="fine" id="shot-note">
                 Already posted it on IG? Same photo works — pick it here and it
-                lands on Station 9's desk with your caption. Nothing goes live until
-                Station 9 approves it.
+                can join the wall with your caption after your coach approves it. This preview doesn't send photos.
               </p>
             </div>
           </form>
@@ -504,39 +969,446 @@
     ></div>
 
     <div class="sticky-cta" id="sticky-cta" hidden>
-      <a class="btn btn-primary" href="#ask">Work with us</a>
+      <a class="btn btn-primary" href="#plans">Find your coaching</a>
       <a class="btn btn-light" href="/station9/splits/">Try the split analyser</a>
     </div>
 
     <footer>
       <div class="wrap">
-        <div>© <span id="year"></span> Station 9</div>
-        <nav>
-          <a href="/station9/stations-prep/">Stations Prep</a>
-          <a href="/station9/run-zone/">Run Zone</a>
-          <a href="/station9/fuel-zone/">Fuel Zone</a>
-          <a href="/station9/taper-zone/">Taper Zone</a>
-          <a href="/station9/events/">Events</a>
-          <a href="https://hyrox.com" target="_blank" rel="noopener">Hyrox UK</a>
-          <a href="/station9/race-planner/">Race planner</a>
-          <a href="/station9/news/">News</a>
-          <a href="/station9/race-crew/">the ninth station</a>
-          <a href="/station9/results/">Results</a>
-          <a href="/station9/splits/">Splits</a>
-          <a href="/station9/find-a-partner/">Find a Partner</a>
-          <a href="#wall-photos">Warriors Wall</a>
-          <a href="#ask">Talk to us</a>
-          <a data-strip="youtube-link" href="https://www.youtube.com/@station9studio" target="_blank" rel="noopener">YouTube — STATION9STUDIO</a>
-
-          <a href="/station9/coaching.html">Work with us</a>
-          <a href="/station9/partners.html">Partner with us</a>
+        <div>© <span id="year"></span> <span data-s9brand>Your brand</span></div>
+        <nav aria-label="Footer">
+          <a href="#plans">Coaching</a>
+          <a href="/station9/stations-prep.html?template=1" target="_blank" rel="noopener">Stations Prep</a>
+          <a href="/station9/run-zone.html?template=1" target="_blank" rel="noopener">Run Zone</a>
+          <a href="/station9/taper-zone.html?template=1" target="_blank" rel="noopener">Taper Zone</a>
+          <a href="/station9/race-day.html?template=1" target="_blank" rel="noopener">Race Day</a>
+          <a href="/station9/events.html?template=1" target="_blank" rel="noopener">Events</a>
+          <a href="https://hyrox.com" target="_blank" rel="noopener">HYROX</a>
+          <a href="/station9/events.html?template=1#cities" target="_blank" rel="noopener">Race planner</a>
+          <a href="/station9/news.html?template=1" target="_blank" rel="noopener">News</a>
+          <a href="/station9/race-crew.html?template=1" target="_blank" rel="noopener">Race crew</a>
+          <a href="/station9/results.html?template=1" target="_blank" rel="noopener">Results</a>
+          <a href="/station9/splits.html?template=1" target="_blank" rel="noopener">Splits</a>
+          <a href="/station9/find-a-partner.html?template=1" target="_blank" rel="noopener">Find a Partner</a>
+          <a href="#wall-photos">Race Wall</a>
+          <a href="#ask">Ask <span data-s9coach>your coach</span></a>
+          <a href="/station9/watch.html?template=1" target="_blank" rel="noopener">Watch &amp; Learn</a>
+          <a href="/station9/planner.html?view=client&amp;template=1" target="_blank" rel="noopener">Book a session</a>
+          <a href="/station9/partners.html?template=1" target="_blank" rel="noopener">Partners</a>
         </nav>
       </div>
-      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="/" rel="noopener" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
+      <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="#s9-enquiry" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/station9/app.js?v=1792661956154" defer></script>
-    <script src="/station9/emerge.js?v=1792661956154" defer></script>
-    <script src="/station9/partners.js?v=1792661956154" defer></script>
-  </body>
+    <script src="/station9/app.js?v=r1795365797846" defer></script>
+    <script src="/station9/emerge.js?v=r1795365797846" defer></script>
+    <script src="/station9/partners.js?v=r1795365797846" defer></script>
+  <script>
+    (function () {
+      var files = [];
+      var builderColumns = document.querySelector("#s9builder .s9b-cols");
+      var setupPanel = document.createElement("div");
+      setupPanel.className = "s9b-setup";
+      setupPanel.append(document.querySelector("#s9builder .s9b-head"), document.querySelector("#s9builder .s9b-form"), document.querySelector("#s9builder .s9b-journey"), document.getElementById("s9b-progress"));
+      builderColumns.prepend(setupPanel);
+      var liveStrip = builderColumns.querySelector(".s9b-live");
+      var liveFrame = liveStrip.querySelector(".frame");
+      liveFrame.append(liveStrip.querySelector(".cap"));
+      function sizeLiveStrip() {
+        if (window.matchMedia("(max-width:820px)").matches) {
+          liveStrip.style.marginTop = "0";
+          liveFrame.style.height = "min(560px,75vh)";
+          return;
+        }
+        var heading = setupPanel.querySelector("h3").getBoundingClientRect();
+        var label = liveStrip.querySelector(".s9b-livetag");
+        liveStrip.style.marginTop = heading.top - setupPanel.getBoundingClientRect().top - label.getBoundingClientRect().height - parseFloat(getComputedStyle(label).marginBottom) + "px";
+        liveFrame.style.height = Math.max(300, setupPanel.querySelector(".s9b-journey").getBoundingClientRect().bottom - liveFrame.getBoundingClientRect().top) + "px";
+      }
+      new ResizeObserver(sizeLiveStrip).observe(setupPanel);
+      window.addEventListener("resize", sizeLiveStrip);
+      document.fonts.ready.then(sizeLiveStrip);
+      sizeLiveStrip();
+      var homepageHero = document.querySelector(".hero--bleed");
+      var heroBelow = document.createElement("div");
+      heroBelow.className = "s9-hero-below";
+      var heroBelowInner = document.createElement("div");
+      heroBelowInner.className = "wrap";
+      heroBelowInner.append(homepageHero.querySelector(".actions"), homepageHero.querySelector(".stats"));
+      heroBelow.append(heroBelowInner);
+      homepageHero.after(heroBelow);
+      document.addEventListener("submit", function (event) {
+        if (event.target.id !== "s9-coach-question" && event.target.id !== "shot-form") return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        var note = document.getElementById(event.target.id === "shot-form" ? "shot-note" : "s9-coach-note");
+        note.textContent = "Preview complete — nothing was sent. Your real site would send this to your coach.";
+      }, true);
+      var restoringBuild = false;
+      var resettingBuild = false;
+      var buildEdited = false;
+      document.getElementById("s9builder").addEventListener("input", function () { buildEdited = true; });
+      var previewDB = new Promise(function (resolve, reject) {
+        var request = indexedDB.open("station9-homepage-preview", 1);
+        request.onupgradeneeded = function () { request.result.createObjectStore("builds"); };
+        request.onsuccess = function () { resolve(request.result); };
+        request.onerror = function () { reject(request.error); };
+      });
+      previewDB.catch(function () {});
+      document.getElementById("s9b-reset").addEventListener("click", function () {
+        if (!window.confirm("Start again? This clears your saved homepage, photos, names, colours and photo position from this browser. It cannot be undone. Your separate Desk demos will not be changed.")) return;
+        buildEdited = true;
+        resettingBuild = true;
+        var button = this;
+        button.disabled = true;
+        document.getElementById("s9b-go").disabled = true;
+        previewDB.then(function (db) {
+          return new Promise(function (resolve, reject) {
+            var transaction = db.transaction("builds", "readwrite");
+            transaction.objectStore("builds").delete("latest");
+            transaction.oncomplete = resolve;
+            transaction.onerror = function () { reject(transaction.error); };
+            transaction.onabort = function () { reject(transaction.error); };
+          });
+        }).then(function () {
+          document.querySelectorAll("#s9builder input, #s9-hero-editor input").forEach(function (input) { input.value = input.type === "file" ? "" : input.defaultValue; });
+          document.getElementById("s9-hero-fit").value = "cover";
+          window.location.hash = "s9builder";
+          window.location.reload();
+        }).catch(function () {
+          resettingBuild = false;
+          button.disabled = false;
+          document.getElementById("s9b-go").disabled = false;
+          document.getElementById("s9b-reset-note").textContent = "Couldn't clear the saved build. Please check that browser storage is available and try again.";
+        });
+      });
+      function saveBuild(build) {
+        if (resettingBuild) return Promise.resolve();
+        return previewDB.then(function (db) {
+          return new Promise(function (resolve, reject) {
+            var transaction = db.transaction("builds", "readwrite");
+            transaction.objectStore("builds").put(build, "latest");
+            transaction.oncomplete = resolve;
+            transaction.onerror = function () { reject(transaction.error); };
+            transaction.onabort = function () { reject(transaction.error); };
+          });
+        });
+      }
+      var photos = { hero: null, profile: null, avatar: null, extra: [] };
+      var builtState = null;
+      var heroPosition = document.getElementById("s9b-hero-position");
+      var heroEditor = document.getElementById("s9-hero-editor");
+      var heroFit = document.getElementById("s9-hero-fit");
+      var heroZoom = document.getElementById("s9-hero-zoom");
+      var heroX = document.getElementById("s9-hero-x");
+      var heroY = document.getElementById("s9-hero-y");
+      var heroViewport = document.getElementById("s9-hero-editor-viewport");
+      var heroEditorImage = document.getElementById("s9-hero-editor-image");
+      function heroFraming() {
+        return { fit: heroFit.value, zoom: Number(heroZoom.value), x: Number(heroX.value), y: Number(heroY.value) };
+      }
+      function applyHeroPosition() {
+        var framing = heroFraming();
+        document.querySelectorAll('[data-s9img="0"] img, #s9-hero-editor-image').forEach(function (image) {
+          image.style.objectFit = framing.fit;
+          image.style.objectPosition = "center " + heroPosition.value + "%";
+          image.style.setProperty("--s9-hero-scale", framing.zoom / 100);
+          image.style.setProperty("--s9-hero-x", framing.x + "%");
+          image.style.setProperty("--s9-hero-y", framing.y + "%");
+        });
+        document.getElementById("s9-hero-zoom-value").textContent = framing.zoom + "%";
+        var adjust = document.getElementById("s9-hero-adjust");
+        adjust.hidden = !photos.hero || !document.querySelector('[data-s9img="0"] img');
+        homepageHero.before(adjust);
+      }
+      function saveHeroFraming() {
+        if (!builtState) return;
+        builtState.heroPosition = Number(heroPosition.value);
+        builtState.heroFraming = heroFraming();
+        saveBuild(builtState).catch(function () {
+          document.getElementById("s9-hero-editor-note").textContent = "Photo adjusted, but browser storage is unavailable — keep this tab open.";
+          document.getElementById("s9-hero-position-note").textContent = "Photo adjusted, but browser storage is unavailable — keep this tab open.";
+        });
+      }
+      function sizeHeroEditor() {
+        if (!heroEditor.open) return;
+        var stage = document.getElementById("s9-hero-editor-stage");
+        var frame = homepageHero.getBoundingClientRect();
+        var ratio = frame.width / frame.height;
+        var width = Math.min(stage.clientWidth, stage.clientHeight * ratio);
+        heroViewport.style.width = width + "px";
+        heroViewport.style.height = width / ratio + "px";
+      }
+      document.getElementById("s9-hero-edit").addEventListener("click", function () {
+        var image = homepageHero.querySelector('[data-s9img="0"] img');
+        if (!image) return;
+        heroEditorImage.src = image.src;
+        homepageHero.classList.add("s9-hero-editing");
+        heroEditor.showModal();
+        applyHeroPosition();
+        requestAnimationFrame(sizeHeroEditor);
+      });
+      document.getElementById("s9-hero-done").addEventListener("click", function () { heroEditor.close(); });
+      heroEditor.addEventListener("close", function () {
+        homepageHero.classList.remove("s9-hero-editing");
+        saveHeroFraming();
+        document.getElementById("s9-hero-edit").focus({ preventScroll: true });
+      });
+      [heroFit, heroZoom, heroX, heroY].forEach(function (control) {
+        control.addEventListener("input", function () { buildEdited = true; applyHeroPosition(); });
+        control.addEventListener("change", function () {
+          if (control === heroFit) {
+            heroPosition.value = "50";
+            heroZoom.value = "100";
+            heroX.value = heroY.value = "0";
+            applyHeroPosition();
+          }
+          saveHeroFraming();
+        });
+      });
+      document.getElementById("s9-hero-recentre").addEventListener("click", function () {
+        heroFit.value = "cover";
+        heroZoom.value = "100";
+        heroX.value = heroY.value = "0";
+        heroPosition.value = "50";
+        applyHeroPosition();
+        saveHeroFraming();
+      });
+      var heroDrag = null;
+      heroViewport.addEventListener("pointerdown", function (event) {
+        if (event.pointerType === "mouse" && event.button !== 0) return;
+        event.preventDefault();
+        heroDrag = { id: event.pointerId, x: event.clientX, y: event.clientY, startX: Number(heroX.value), startY: Number(heroY.value) };
+        heroViewport.setPointerCapture(event.pointerId);
+      });
+      heroViewport.addEventListener("pointermove", function (event) {
+        if (!heroDrag || event.pointerId !== heroDrag.id) return;
+        heroX.value = String(heroDrag.startX + (event.clientX - heroDrag.x) / heroViewport.clientWidth * 100);
+        heroY.value = String(heroDrag.startY + (event.clientY - heroDrag.y) / heroViewport.clientHeight * 100);
+        buildEdited = true;
+        applyHeroPosition();
+      });
+      ["pointerup", "pointercancel", "lostpointercapture"].forEach(function (name) {
+        heroViewport.addEventListener(name, function (event) {
+          if (!heroDrag || event.pointerId !== heroDrag.id) return;
+          heroDrag = null;
+          saveHeroFraming();
+        });
+      });
+      new ResizeObserver(sizeHeroEditor).observe(document.getElementById("s9-hero-editor-stage"));
+      window.addEventListener("resize", sizeHeroEditor);
+      var thumbnailURLs = {};
+      var suggestedName = "";
+      var coachInput = document.getElementById("s9b-coach");
+      var siteNameInput = document.getElementById("s9b-name");
+      coachInput.addEventListener("input", function () {
+        var firstName = coachInput.value.trim().split(/\s+/)[0];
+        var nextName = firstName ? "Train with " + firstName : "";
+        if (!siteNameInput.value || siteNameInput.value === suggestedName) siteNameInput.value = nextName;
+        suggestedName = nextName;
+      });
+      var count = document.getElementById("s9b-count");
+      var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+      function syncPhotos() {
+        files = [photos.hero, photos.profile, photos.avatar].concat(photos.extra);
+        files[6] = photos.extra[3] || photos.extra[2] || null;
+        var total = [photos.hero, photos.profile, photos.avatar].filter(Boolean).length + photos.extra.length;
+        count.textContent = total ? total + " photo" + (total > 1 ? "s" : "") + " ready" : "No photos yet";
+      }
+      function setPhotos(role, list) {
+        var selected = Array.prototype.slice.call(list).filter(function (f) { return f && f.type.indexOf("image/") === 0; }).slice(0, role === "extra" ? 4 : 1);
+        photos[role] = role === "extra" ? selected : selected[0] || null;
+        (thumbnailURLs[role] || []).forEach(function (url) { URL.revokeObjectURL(url); });
+        thumbnailURLs[role] = [];
+        var thumbs = document.querySelector('[data-photo-thumbs="' + role + '"]');
+        thumbs.replaceChildren();
+        selected.forEach(function (file) {
+          var image = new Image();
+          image.src = URL.createObjectURL(file);
+          thumbnailURLs[role].push(image.src);
+          image.alt = file.name;
+          thumbs.appendChild(image);
+        });
+        document.querySelector('[data-photo-status="' + role + '"]').textContent = selected.length ? (role === "extra" ? selected.length + " extra photos selected" : selected[0].name) : "No " + role + " selected";
+        document.querySelector('[data-photo-clear="' + role + '"]').hidden = !selected.length;
+        syncPhotos();
+        applyHeroPosition();
+      }
+      document.querySelectorAll("[data-photo-input]").forEach(function (input) {
+        var role = input.getAttribute("data-photo-input");
+        document.querySelector('[data-photo-pick="' + role + '"]').addEventListener("click", function () { input.click(); });
+        document.querySelector('[data-photo-clear="' + role + '"]').addEventListener("click", function () { buildEdited = true; input.value = ""; setPhotos(role, []); });
+        input.addEventListener("change", function () { if (input.files.length) { buildEdited = true; setPhotos(role, input.files); } });
+        var drop = input.closest(".s9b-upload");
+        ["dragover", "dragleave", "drop"].forEach(function (eventName) {
+          drop.addEventListener(eventName, function (event) {
+            event.preventDefault();
+            drop.classList.toggle("drag", eventName === "dragover");
+            if (eventName === "drop") { buildEdited = true; setPhotos(role, event.dataTransfer.files); }
+          });
+        });
+      });
+      var grid = document.getElementById("s9b-grid");
+      function emptySlots(n) {
+        for (var e = 0; e < n; e++) {
+          var em = document.createElement("div"); em.className = "s9b-cell s9b-empty"; em.textContent = "your photo here"; grid.appendChild(em);
+        }
+      }
+      emptySlots(4);
+      document.getElementById("s9b-go").addEventListener("click", function () {
+        var coach = coachInput.value.trim() || "Your coach";
+        var name = siteNameInput.value.trim() || (coachInput.value.trim() ? "Train with " + coach.split(/\s+/)[0] : "Train with you");
+        siteNameInput.value = name;
+        var city = document.getElementById("s9b-city").value.trim() || "your city";
+        var colour = document.getElementById("s9b-colour").value;
+        var colour2 = document.getElementById("s9b-colour2").value;
+        var replay = restoringBuild;
+        builtState = { name: name, coach: coach, city: city, colour: colour, colour2: colour2, heroPosition: Number(heroPosition.value), heroFraming: heroFraming(), photos: { hero: photos.hero, profile: photos.profile, avatar: photos.avatar, extra: photos.extra.slice() } };
+        if (!replay) saveBuild(builtState).catch(function () {
+          count.textContent = "Build works, but browser storage is unavailable — keep this tab open.";
+        });
+        var pv = document.getElementById("s9b-preview");
+        var prog = document.getElementById("s9b-progress");
+        var fill = document.getElementById("s9b-fill");
+        var steps = ["Building your homepage…", "Placing your photography…", "Adding your coaching copy…"];
+        prog.hidden = false;
+        fill.style.transition = "none"; fill.style.width = "0%";
+        var si = 0;
+        document.getElementById("s9b-progtext").textContent = steps[0];
+        requestAnimationFrame(function () { requestAnimationFrame(function () { fill.style.transition = "width 2.6s cubic-bezier(.3,.7,.3,1)"; fill.style.width = "100%"; }); });
+        var stepTimer = setInterval(function () { si++; if (si < steps.length) document.getElementById("s9b-progtext").textContent = steps[si]; }, 900);
+        setTimeout(function () {
+          clearInterval(stepTimer);
+          prog.hidden = true;
+          var site = pv.querySelector(".s9b-site");
+          site.style.setProperty("--c1", colour);
+          site.style.setProperty("--c2", colour2);
+          var raceTools = document.getElementById("zones");
+          raceTools.style.setProperty("--pink", colour2);
+          raceTools.style.setProperty("--zone-accent", colour);
+          var publicMenu = document.querySelector(".s9-template-nav");
+          if (publicMenu) {
+            publicMenu.style.setProperty("--s9-nav-primary", colour2);
+            publicMenu.style.setProperty("--s9-nav-secondary", colour);
+          }
+          document.getElementById("s9b-brand").textContent = name.toUpperCase();
+          document.getElementById("s9b-script").textContent = "by " + coach;
+          document.getElementById("s9b-town").textContent = city;
+          document.getElementById("s9b-eyebrow").textContent = "HYROX · " + city + " · Personal training";
+          document.getElementById("s9b-headline").innerHTML = "Build your engine. <em>Own your race.</em>";
+          document.getElementById("s9b-headline").querySelector("em").style.color = colour2;
+          document.getElementById("s9b-herosub").textContent = "Train with " + coach + ". Strength, running and station work for your next start line.";
+          document.querySelectorAll("[data-s9bt]").forEach(function (e) { e.innerHTML = e.getAttribute("data-s9bt").split("[coach]").join(esc(coach)).split("[city]").join(esc(city)); });
+          document.querySelectorAll("[data-s9coach]").forEach(function (e) { e.textContent = coach; });
+          document.querySelectorAll("[data-s9brand]").forEach(function (e) { e.textContent = name; });
+          var letters = Array.from(name);
+          var accentIndex = letters.findIndex(function (letter) { return /o/i.test(letter); });
+          if (accentIndex < 0) accentIndex = letters.findIndex(function (letter) { return /[aeiu]/i.test(letter); });
+          if (accentIndex < 0) accentIndex = 0;
+          var wordmark = document.querySelector(".s9-tenant-masthead [data-s9brand]");
+          var accentLetter = document.createElement("span");
+          accentLetter.className = "o";
+          accentLetter.style.color = colour2;
+          accentLetter.textContent = letters[accentIndex];
+          wordmark.replaceChildren(document.createTextNode(letters.slice(0, accentIndex).join("")), accentLetter, document.createTextNode(letters.slice(accentIndex + 1).join("")));
+          document.querySelectorAll("[data-s9signature]").forEach(function (e) { e.textContent = "by " + coach; });
+          document.querySelectorAll("[data-s9city]").forEach(function (e) { e.textContent = city; });
+          document.querySelectorAll("[data-s9img]").forEach(function (el) {
+            var idx = parseInt(el.getAttribute("data-s9img"), 10);
+            el.querySelectorAll("img").forEach(function (n) { n.remove(); });
+            var label = el.querySelector(".s9ph-label");
+            if (label) label.style.display = files[idx] ? "none" : "";
+            el.style.aspectRatio = "";
+            el.style.minHeight = "";
+            el.dataset.filled = files[idx] ? "true" : "false";
+            if (!files[idx]) return;
+            var fi = new Image(); fi.src = URL.createObjectURL(files[idx]); fi.alt = ""; fi.style.opacity = "0"; fi.style.transition = idx === 0 ? "" : "opacity .8s ease";
+            fi.onload = function () {
+              var r = fi.naturalWidth / fi.naturalHeight || 1;
+              var mode = el.getAttribute("data-s9fit") || "cover";
+              if (mode === "frame") {
+                var mn = parseFloat(el.getAttribute("data-s9min") || 0.7);
+                var mx = parseFloat(el.getAttribute("data-s9max") || 1.6);
+                el.style.aspectRatio = Math.min(mx, Math.max(mn, r)).toFixed(3);
+                el.style.minHeight = "0";
+              } else if (mode === "top") {
+                if (idx === 0) applyHeroPosition();
+                else fi.style.objectPosition = r < 1.6 ? "center 15%" : "center 30%";
+              }
+            };
+            el.appendChild(fi);
+            setTimeout(function () { fi.style.opacity = "1"; }, 150);
+          });
+          document.querySelectorAll("img[data-s9imgsrc]").forEach(function (im) {
+            var idx = parseInt(im.getAttribute("data-s9imgsrc"), 10);
+            if (files[idx]) { im.src = URL.createObjectURL(files[idx]); }
+            else { im.removeAttribute("src"); }
+          });
+          document.getElementById("s9b-storyh").innerHTML = "Meet <em>" + esc(coach) + ".</em>";
+          document.getElementById("s9b-storyh").querySelector("em").style.color = colour2;
+          document.getElementById("s9b-footbrand").textContent = "© " + new Date().getFullYear() + " " + name;
+          var hero = document.getElementById("s9b-hero");
+          hero.querySelectorAll("img,.s9b-slot").forEach(function (n) { n.remove(); });
+          if (!photos.hero) { var sl = document.createElement("div"); sl.className = "s9b-slot"; sl.textContent = "your hero photo"; hero.insertBefore(sl, hero.firstChild); }
+          grid.innerHTML = "";
+          var placed = [];
+          var sph = pv.querySelector(".s9b-storyph");
+          sph.querySelectorAll("img").forEach(function (n) { n.remove(); });
+          sph.querySelector("span").style.display = "";
+          if (photos.hero) {
+            var im = new Image(); im.src = URL.createObjectURL(photos.hero); im.alt = ""; im.style.opacity = "0"; im.style.transition = "opacity .8s ease"; im.onload = function () { im.style.objectPosition = "center " + heroPosition.value + "%"; }; hero.insertBefore(im, hero.firstChild); placed.push(im);
+          }
+          if (photos.profile) {
+            var sm = new Image(); sm.src = URL.createObjectURL(photos.profile); sm.alt = ""; sm.style.opacity = "0"; sm.style.transition = "opacity .8s ease"; sph.appendChild(sm); sph.querySelector("span").style.display = "none"; placed.push(sm);
+          }
+          photos.extra.forEach(function (file) {
+            var cell = document.createElement("div"); cell.className = "s9b-cell"; cell.style.opacity = "0"; cell.style.transform = "translateY(12px)"; cell.style.transition = "opacity .5s ease,transform .5s ease";
+            var g = new Image(); g.src = URL.createObjectURL(file); g.alt = ""; cell.appendChild(g); grid.appendChild(cell); placed.push(cell);
+          });
+          emptySlots(4 - grid.children.length);
+          applyHeroPosition();
+          document.getElementById("s9b-build-location").textContent = "Your full homepage is ready. View it below, or change your details here and build again.";
+          document.getElementById("s9b-view-build").hidden = false;
+          if (!replay) document.getElementById("s9b-built-homepage").scrollIntoView({ behavior: "smooth", block: "start" });
+          placed.forEach(function (el, i) { setTimeout(function () { el.style.opacity = "1"; el.style.transform = "none"; }, 120 * i); });
+        }, replay ? 0 : 2900);
+      });
+      previewDB.then(function (db) {
+        var request = db.transaction("builds").objectStore("builds").get("latest");
+        request.onsuccess = function () {
+          var build = request.result;
+          if (!build || buildEdited) return;
+          document.getElementById("s9b-name").value = build.name;
+          document.getElementById("s9b-coach").value = build.coach || "";
+          suggestedName = build.coach ? "Train with " + build.coach.trim().split(/\s+/)[0] : "";
+          document.getElementById("s9b-city").value = build.city;
+          document.getElementById("s9b-colour").value = build.colour;
+          document.getElementById("s9b-colour2").value = build.colour2;
+          heroPosition.value = build.heroPosition == null ? "50" : String(build.heroPosition);
+          var framing = build.heroFraming || {};
+          heroFit.value = framing.fit === "contain" ? "contain" : "cover";
+          heroZoom.value = String(framing.zoom == null ? 100 : framing.zoom);
+          heroX.value = String(framing.x == null ? 0 : framing.x);
+          heroY.value = String(framing.y == null ? 0 : framing.y);
+          var legacy = build.files || [];
+          var saved = build.photos || { hero: legacy[0], profile: legacy[1], avatar: legacy[2], extra: legacy.slice(3) };
+          ["hero", "profile", "avatar"].forEach(function (role) { setPhotos(role, saved[role] ? [saved[role]] : []); });
+          setPhotos("extra", saved.extra || []);
+          restoringBuild = true;
+          document.getElementById("s9b-go").click();
+          restoringBuild = false;
+        };
+      }).catch(function () {});
+      document.querySelectorAll(".s9feat-more").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var card = btn.closest(".s9feat");
+          var open = card.classList.toggle("open");
+          btn.setAttribute("aria-expanded", String(open));
+          var hidden = card.querySelectorAll(".s9feat-x").length;
+          btn.textContent = open ? "Show less" : "+ " + hidden + " more";
+        });
+      });
+    })();
+  </script>
+</body>
 </html>

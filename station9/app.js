@@ -1,10 +1,31 @@
 (function () {
-  const templatePreview = new URLSearchParams(location.search).get("template") === "1" && document.documentElement.dataset.coachPage !== "true";
+  const templatePreview =
+    new URLSearchParams(location.search).get("template") === "1" &&
+    document.documentElement.dataset.coachPage !== "true";
   const homepage = /\/station9\/(index\.html)?$/.test(location.pathname);
   const groups = {
-    Coaching: [["Coaching & programmes", "coaching.html"], ["Watch & Learn", "watch.html"]],
-    "Race Tools": [["Race predictor", "predictor.html"], ["Split analyser", "splits.html"], ["Results board", "results.html"], ["Stations Prep", "stations-prep.html"], ["Run Zone", "run-zone.html"], ["Taper Zone", "taper-zone.html"], ["Race Day", "race-day.html"], ["Fuel Zone", "fuel-zone.html"], ["Calendar & Travel", "events.html"]],
-    Community: [["Find a partner", "find-a-partner.html"], ["Race crew", "race-crew.html"], ["News", "news.html"], ["Join the list", "list.html"], ["Partners", "partners.html"]],
+    Coaching: [
+      ["Coaching & programmes", "coaching.html"],
+      ["Watch & Learn", "watch.html"],
+    ],
+    "Race Tools": [
+      ["Race predictor", "predictor.html"],
+      ["Split analyser", "splits.html"],
+      ["Results board", "results.html"],
+      ["Stations Prep", "stations-prep.html"],
+      ["Run Zone", "run-zone.html"],
+      ["Taper Zone", "taper-zone.html"],
+      ["Race Day", "race-day.html"],
+      ["Fuel Zone", "fuel-zone.html"],
+      ["Calendar & Travel", "events.html"],
+    ],
+    Community: [
+      ["Find a partner", "find-a-partner.html"],
+      ["Race crew", "race-crew.html"],
+      ["News", "news.html"],
+      ["Join the list", "list.html"],
+      ["Partners", "partners.html"],
+    ],
   };
   if (homepage || templatePreview) {
     const style = document.createElement("style");
@@ -34,12 +55,18 @@
         const link = document.createElement("a");
         link.textContent = text;
         link.href = "/station9/" + page + "?template=1";
-        if (homepage) { link.target = "_blank"; link.rel = "noopener"; }
+        if (homepage) {
+          link.target = "_blank";
+          link.rel = "noopener";
+        }
         list.append(link);
       });
       details.append(summary, list);
       details.addEventListener("toggle", () => {
-        if (details.open) row.querySelectorAll("details").forEach(other => { if (other !== details) other.open = false; });
+        if (details.open)
+          row.querySelectorAll("details").forEach((other) => {
+            if (other !== details) other.open = false;
+          });
       });
       row.append(details);
     });
@@ -58,11 +85,14 @@
       coach.setAttribute("data-coach-link", "");
       coach.target = "_blank";
       coach.rel = "noopener";
-      coach.style.cssText = "border:1px solid var(--pink,#ff353e);border-radius:8px;color:var(--pink,#ff353e)";
+      coach.style.cssText =
+        "border:1px solid var(--pink,#ff353e);border-radius:8px;color:var(--pink,#ff353e)";
       row.append(coach);
     }
     const note = document.createElement("small");
-    note.textContent = homepage ? "Explore the template pages — opens separately so your homepage build stays here." : "Template preview · photo frames intentionally empty · forms are not connected in this preview.";
+    note.textContent = homepage
+      ? "Explore the template pages — opens separately so your homepage build stays here."
+      : "Template preview · photo frames intentionally empty · forms are not connected in this preview.";
     row.append(note);
     nav.append(row);
     const paletteRequest = indexedDB.open("station9-homepage-preview", 1);
@@ -70,12 +100,20 @@
     paletteRequest.onerror = () => {};
     paletteRequest.onsuccess = () => {
       const db = paletteRequest.result;
-      if (!db.objectStoreNames.contains("builds")) { db.close(); return; }
-      const palette = db.transaction("builds").objectStore("builds").get("latest");
+      if (!db.objectStoreNames.contains("builds")) {
+        db.close();
+        return;
+      }
+      const palette = db
+        .transaction("builds")
+        .objectStore("builds")
+        .get("latest");
       palette.onsuccess = () => {
         const build = palette.result;
-        if (/^#[0-9a-f]{6}$/i.test(build?.colour2)) nav.style.setProperty("--s9-nav-primary", build.colour2);
-        if (/^#[0-9a-f]{6}$/i.test(build?.colour)) nav.style.setProperty("--s9-nav-secondary", build.colour);
+        if (/^#[0-9a-f]{6}$/i.test(build?.colour2))
+          nav.style.setProperty("--s9-nav-primary", build.colour2);
+        if (/^#[0-9a-f]{6}$/i.test(build?.colour))
+          nav.style.setProperty("--s9-nav-secondary", build.colour);
         db.close();
       };
       palette.onerror = () => db.close();
@@ -88,67 +126,102 @@
         desk.style.scrollMarginTop = "90px";
         nav.before(desk);
       }
-      document.addEventListener("click", event => {
-        const link = event.target.closest(".coach-view-actions a");
-        if (link && !link.href.startsWith("mailto:")) { link.target = "_blank"; link.rel = "noopener"; }
-      }, true);
+      document.addEventListener(
+        "click",
+        (event) => {
+          const link = event.target.closest(".coach-view-actions a");
+          if (link && !link.href.startsWith("mailto:")) {
+            link.target = "_blank";
+            link.rel = "noopener";
+          }
+        },
+        true,
+      );
     } else {
       document.querySelector(".nav")?.replaceWith(nav);
       if (!nav.isConnected) document.querySelector("header")?.after(nav);
-      fetch("/station9/desk-toolbar.html").then(response => {
-        if (!response.ok) throw new Error("Desk toolbar unavailable");
-        return response.text();
-      }).then(markup => {
-        const container = document.createElement("div");
-        container.innerHTML = markup;
-        const desk = container.querySelector("[data-coach-view]");
-        if (!desk) throw new Error("Desk toolbar missing");
-        desk.id = "template-desk";
-        desk.style.scrollMarginTop = "90px";
-        if (!document.querySelector("[data-coach-view]")) nav.before(desk);
-        document.documentElement.dataset.coachPreview = "true";
-        document.documentElement.dataset.coachPage = "false";
-        const css = document.createElement("link");
-        css.rel = "stylesheet"; css.href = "/station9/showcase.css";
-        document.head.append(css);
-        if (!document.querySelector('script[src="/station9/coach-view.js"]')) {
-          const script = document.createElement("script");
-          script.src = "/station9/coach-view.js";
-          document.body.append(script);
-        }
-      }).catch(() => {});
-      const framePhotos = () => document.querySelectorAll("main img, section img, figure img, .hero img, .guide img, .coach-photo").forEach(img => {
-        if (img.closest(".masthead, .s9-template-frame")) return;
-        img.classList.add("s9-template-empty");
-        if (img.matches(".coach-photo")) {
-          const frame = document.createElement("div");
-          frame.className = "s9-template-frame";
-          img.before(frame);
-          frame.append(img);
-        } else {
-          const parent = img.parentElement;
-          if (parent && parent.tagName !== "BODY") parent.classList.add("s9-template-frame");
-        }
-      });
+      fetch("/station9/desk-toolbar.html")
+        .then((response) => {
+          if (!response.ok) throw new Error("Desk toolbar unavailable");
+          return response.text();
+        })
+        .then((markup) => {
+          const container = document.createElement("div");
+          container.innerHTML = markup;
+          const desk = container.querySelector("[data-coach-view]");
+          if (!desk) throw new Error("Desk toolbar missing");
+          desk.id = "template-desk";
+          desk.style.scrollMarginTop = "90px";
+          if (!document.querySelector("[data-coach-view]")) nav.before(desk);
+          document.documentElement.dataset.coachPreview = "true";
+          document.documentElement.dataset.coachPage = "false";
+          const css = document.createElement("link");
+          css.rel = "stylesheet";
+          css.href = "/station9/showcase.css";
+          document.head.append(css);
+          if (
+            !document.querySelector('script[src="/station9/coach-view.js"]')
+          ) {
+            const script = document.createElement("script");
+            script.src = "/station9/coach-view.js";
+            document.body.append(script);
+          }
+        })
+        .catch(() => {});
+      const framePhotos = () =>
+        document
+          .querySelectorAll(
+            "main img, section img, figure img, .hero img, .guide img, .coach-photo",
+          )
+          .forEach((img) => {
+            if (img.closest(".masthead, .s9-template-frame")) return;
+            img.classList.add("s9-template-empty");
+            if (img.matches(".coach-photo")) {
+              const frame = document.createElement("div");
+              frame.className = "s9-template-frame";
+              img.before(frame);
+              frame.append(img);
+            } else {
+              const parent = img.parentElement;
+              if (parent && parent.tagName !== "BODY")
+                parent.classList.add("s9-template-frame");
+            }
+          });
       framePhotos();
-      new MutationObserver(framePhotos).observe(document.body, { childList: true, subtree: true });
-      document.addEventListener("click", event => {
-        const link = event.target.closest("a[href]");
-        if (!link || link.hasAttribute("data-coach-link")) return;
-        const url = new URL(link.href, location.href);
-        if (url.origin !== location.origin || !url.pathname.startsWith("/station9/") || /\/station9\/(index\.html)?$/.test(url.pathname)) return;
-        if (!url.pathname.endsWith(".html")) return;
-        url.searchParams.set("template", "1");
-        link.href = url.href;
-      }, true);
-      document.addEventListener("submit", event => {
-        event.preventDefault();
-        const status = document.createElement("p");
-        status.setAttribute("role", "status");
-        status.textContent = "Template preview — nothing has been sent.";
-        event.target.append(status);
-        event.stopImmediatePropagation();
-      }, true);
+      new MutationObserver(framePhotos).observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+      document.addEventListener(
+        "click",
+        (event) => {
+          const link = event.target.closest("a[href]");
+          if (!link || link.hasAttribute("data-coach-link")) return;
+          const url = new URL(link.href, location.href);
+          if (
+            url.origin !== location.origin ||
+            !url.pathname.startsWith("/station9/") ||
+            /\/station9\/(index\.html)?$/.test(url.pathname)
+          )
+            return;
+          if (!url.pathname.endsWith(".html")) return;
+          url.searchParams.set("template", "1");
+          link.href = url.href;
+        },
+        true,
+      );
+      document.addEventListener(
+        "submit",
+        (event) => {
+          event.preventDefault();
+          const status = document.createElement("p");
+          status.setAttribute("role", "status");
+          status.textContent = "Template preview — nothing has been sent.";
+          event.target.append(status);
+          event.stopImmediatePropagation();
+        },
+        true,
+      );
     }
   }
   const menu = document.getElementById("menu");
@@ -251,18 +324,20 @@
     if (!faqAnswer) return;
     faqAnswer.hidden = false;
     faqAnswer.innerHTML = `<strong>${item.q}</strong><p>${item.a}</p>`;
-    faqChips?.querySelectorAll("button").forEach((b) =>
-      b.classList.toggle("on", b.dataset.q === item.q)
-    );
+    faqChips
+      ?.querySelectorAll("button")
+      .forEach((b) => b.classList.toggle("on", b.dataset.q === item.q));
   };
   const matchFaq = (txt) => {
-    const t = ` ${String(txt || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ")} `;
+    const t = ` ${String(txt || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9 ]/g, " ")} `;
     let best = null;
     let score = 0;
     for (const item of faqItems) {
       const s = (item.keywords || []).reduce(
         (n, k) => n + (t.includes(k.toLowerCase()) ? 1 : 0),
-        0
+        0,
       );
       if (s > score) {
         score = s;
@@ -536,8 +611,7 @@
   // .chat-zone link and any a[data-whatsapp] becomes a wa.me deep-link with a
   // greeting; the floating bubble is added to every page except the coach desk.
   const ROX_WHATSAPP = "";
-  const CHAT_GREETING =
-    "";
+  const CHAT_GREETING = "";
   const waHref = "https://www.instagram.com/station9.studio/";
   document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
     a.dataset.whatsapp = ROX_WHATSAPP;
@@ -924,28 +998,29 @@ window.roxShare = (function () {
     select(ALL);
   }
 
-  if (!grid.hasAttribute("data-gallery-static")) fetch("/station9/data/gallery.json", { cache: "no-cache" })
-    .then((r) => (r.ok ? r.json() : null))
-    .then((json) => {
-      const photos = Array.isArray(json?.photos) ? json.photos : [];
-      if (!photos.length) return;
-      photos.forEach((p, i) => grid.appendChild(polaroid(p, i)));
-      buildTabs(photos.map((p) => String(p.event || "")).filter(Boolean));
-      if (options) {
-        [...new Set(photos.map((p) => p.event).filter(Boolean))].forEach(
-          (e) => {
-            const o = document.createElement("option");
-            o.value = String(e);
-            options.appendChild(o);
-          },
-        );
-      }
-      section.hidden = false;
-      section
-        .querySelectorAll(".reveal")
-        .forEach((el) => el.classList.add("in"));
-    })
-    .catch(() => {});
+  if (!grid.hasAttribute("data-gallery-static"))
+    fetch("/station9/data/gallery.json", { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((json) => {
+        const photos = Array.isArray(json?.photos) ? json.photos : [];
+        if (!photos.length) return;
+        photos.forEach((p, i) => grid.appendChild(polaroid(p, i)));
+        buildTabs(photos.map((p) => String(p.event || "")).filter(Boolean));
+        if (options) {
+          [...new Set(photos.map((p) => p.event).filter(Boolean))].forEach(
+            (e) => {
+              const o = document.createElement("option");
+              o.value = String(e);
+              options.appendChild(o);
+            },
+          );
+        }
+        section.hidden = false;
+        section
+          .querySelectorAll(".reveal")
+          .forEach((el) => el.classList.add("in"));
+      })
+      .catch(() => {});
 
   // Send your shot
   const toggle = document.getElementById("send-shot-btn");
@@ -1145,7 +1220,13 @@ window.roxShare = (function () {
   const bar = document.getElementById("sticky-cta");
   const hero = document.querySelector(".hero");
   const plans = document.getElementById("plans");
-  if (!bar || !hero || !("IntersectionObserver" in window)) return;
+  if (
+    !bar ||
+    !hero ||
+    bar.hasAttribute("data-studio-cta") ||
+    !("IntersectionObserver" in window)
+  )
+    return;
   bar.hidden = false;
   document.body.classList.add("has-sticky-cta");
   let heroVisible = true;

@@ -301,12 +301,12 @@ header.s9-tenant-masthead h2{margin:0}
         <span class="kicker reveal">Who we are</span>
         <h3 class="reveal">We're Station 9 — the platform behind coaches' branded sites.</h3>
         <p class="reveal">
-          One engine runs every site we ship: coaching tools, race predictors and split analysers, booking, community boards, a news engine that writes in the coach's own voice, and a business desk for enquiries, finance and campaigns. What changes per site is everything you see — the brand, the colours, the photography, the voice. What stays is everything underneath.
+          A branded home for your coaching, race tools and community, with booking, enquiry and business tools behind the scenes. Your name, your photographs, your voice.
         </p>
         <p class="reveal">
-          It already runs live in Jakarta for
-          <a href="https://roxjaya.com/roxjaya/" target="_blank" rel="noopener">Roxjaya Warriors</a> — an athlete community publishing weekly in conversational Bahasa Indonesia, in the coach's sampled voice. Below is the same system, personalised in your browser: give it your name, your colours and your photos, and watch it build your homepage in about a minute.
+          Already running for <a href="https://roxjaya.com/roxjaya/" target="_blank" rel="noopener">Roxjaya Warriors in Jakarta</a>, with weekly commentary in the coach's sampled voice.
         </p>
+        <p class="reveal"><a class="btn btn-primary" href="#s9builder">Build your preview ↓</a></p>
       </div>
     </section>
 
@@ -316,7 +316,7 @@ header.s9-tenant-masthead h2{margin:0}
           <span class="kicker">The Station 9 template for HYROX coaches — try it yourself</span>
           <h3>Build your own website preview — under two minutes.</h3>
           <p>
-            Pick your photos, your brand name, your two colours — then hit build and watch the wireframe become your homepage, live in your browser. Nothing is uploaded; the photos never leave your device. Your built preview is saved in this browser so you can return to it. The empty slots are everything else your site would carry. Like it? <a href="#s9-enquiry">Tell us</a> and we'll quote you for the full platform.
+            Start with your name — photos are optional — then hit build and watch the wireframe become your homepage, live in your browser. Nothing is uploaded; the photos never leave your device. Your built preview is saved in this browser so you can return to it. The empty slots are everything else your site would carry. Like it? <a href="#s9-enquiry">Tell us</a> and we'll quote you for the full platform.
           </p>
         </div>
         <div class="s9b-form reveal">
@@ -968,9 +968,9 @@ header.s9-tenant-masthead h2{margin:0}
       hidden
     ></div>
 
-    <div class="sticky-cta" id="sticky-cta" hidden>
-      <a class="btn btn-primary" href="#plans">Find your coaching</a>
-      <a class="btn btn-light" href="/station9/splits/">Try the split analyser</a>
+    <div class="sticky-cta" id="sticky-cta" data-studio-cta hidden>
+      <a class="btn btn-primary" href="#s9builder">Try the builder</a>
+      <a class="btn btn-light" href="#s9-enquiry">Ask about a build</a>
     </div>
 
     <footer>
@@ -1000,7 +1000,7 @@ header.s9-tenant-masthead h2{margin:0}
       <p class="site-credit" style="text-align:center;margin:2rem 0 0"><a href="#s9-enquiry" style="display:inline-flex;align-items:center;gap:.45em;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">Built with <b style="color:#ff3b3b;font-weight:700">Station 9</b></a></p>
     </footer>
 
-    <script src="/station9/app.js?v=r1795365797846" defer></script>
+    <script src="/station9/app.js?v=studio-navigation-1" defer></script>
     <script src="/station9/emerge.js?v=r1795365797846" defer></script>
     <script src="/station9/partners.js?v=r1795365797846" defer></script>
   <script>
@@ -1096,6 +1096,37 @@ header.s9-tenant-masthead h2{margin:0}
       }
       var photos = { hero: null, profile: null, avatar: null, extra: [] };
       var builtState = null;
+      var stickyCTA = document.getElementById("sticky-cta");
+      var stickyLinks = stickyCTA.querySelectorAll("a");
+      var stickyContext = "";
+      var stickyFrame = false;
+      function updateStudioCTA() {
+        stickyFrame = false;
+        var inHomepage = !!builtState && document.getElementById("s9b-built-homepage").getBoundingClientRect().top <= 120;
+        var context = inHomepage ? "coach" : "studio";
+        if (context !== stickyContext) {
+          stickyLinks[0].textContent = inHomepage ? "Find your coaching" : "Try the builder";
+          stickyLinks[0].setAttribute("href", inHomepage ? "#plans" : "#s9builder");
+          stickyLinks[1].textContent = inHomepage ? "Try the split analyser" : "Ask about a build";
+          stickyLinks[1].setAttribute("href", inHomepage ? "/station9/splits.html?template=1" : "#s9-enquiry");
+          stickyContext = context;
+        }
+        var visible = function (element) {
+          var bounds = element.getBoundingClientRect();
+          return bounds.top < window.innerHeight && bounds.bottom > 0;
+        };
+        stickyCTA.hidden = false;
+        stickyCTA.classList.toggle("is-visible", inHomepage ? !visible(homepageHero) && !visible(document.getElementById("plans")) : !visible(document.getElementById("s9builder")) && !visible(document.getElementById("s9-enquiry")));
+        document.body.classList.add("has-sticky-cta");
+      }
+      function queueStudioCTA() {
+        if (stickyFrame) return;
+        stickyFrame = true;
+        requestAnimationFrame(updateStudioCTA);
+      }
+      window.addEventListener("scroll", queueStudioCTA, { passive: true });
+      window.addEventListener("resize", queueStudioCTA);
+      queueStudioCTA();
       var heroPosition = document.getElementById("s9b-hero-position");
       var heroEditor = document.getElementById("s9-hero-editor");
       var heroFit = document.getElementById("s9-hero-fit");
@@ -1264,6 +1295,7 @@ header.s9-tenant-masthead h2{margin:0}
         var colour2 = document.getElementById("s9b-colour2").value;
         var replay = restoringBuild;
         builtState = { name: name, coach: coach, city: city, colour: colour, colour2: colour2, heroPosition: Number(heroPosition.value), heroFraming: heroFraming(), photos: { hero: photos.hero, profile: photos.profile, avatar: photos.avatar, extra: photos.extra.slice() } };
+        queueStudioCTA();
         if (!replay) saveBuild(builtState).catch(function () {
           count.textContent = "Build works, but browser storage is unavailable — keep this tab open.";
         });

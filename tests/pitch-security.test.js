@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import express from "express";
+import { readFileSync } from "node:fs";
 import { createPitchRouter } from "../server/pitch.js";
 import { dbQuery } from "../db.js";
 import { sendAlertEmail } from "../server/email.js";
@@ -114,5 +115,89 @@ describe("pitch security", () => {
     const response = await fetch(base + "/pitch/pitch.css");
     expect(response.status).toBe(404);
     expect(await response.text()).toContain("Cannot GET");
+  });
+});
+
+describe("portfolio activity", () => {
+  const visit = { slug: "portfolio", event: "view", sid: "portfolio-session-123" };
+
+  it("records a portfolio visit without storing an IP or user agent and emails the correct page", async () => {
+    expect((await post(visit)).status).toBe(200);
+    await vi.waitFor(() => expect(sendAlertEmail).toHaveBeenCalledTimes(1));
+    const insert = dbQuery.mock.calls.find(([sql]) => sql.startsWith("INSERT"));
+    expect(insert[1]).toEqual([
+      "portfolio", "view", null, visit.sid, null, null, null, "/portfolio.html",
+    ]);
+    expect(sendAlertEmail.mock.calls[0][0]).toMatchObject({
+      to: "owner@example.test",
+      subject: "Portfolio: opened Chris Wood's portfolio",
+    });
+    expect(sendAlertEmail.mock.calls[0][0].body).toContain("https://www.station9studio.co.uk/portfolio.html");
+    expect(sendAlertEmail.mock.calls[0][0].body).not.toContain("/pitch/portfolio/");
+  });
+
+  it("records and labels outbound links and section shortcuts", async () => {
+    for (const target of ["https://www.scmp.com/author/chris-wood", "#voice-system"]) {
+      expect((await post({ ...visit, event: "link_click", target })).status).toBe(200);
+    }
+    await vi.waitFor(() => expect(sendAlertEmail).toHaveBeenCalledTimes(2));
+    const inserts = dbQuery.mock.calls.filter(([sql]) => sql.startsWith("INSERT"));
+    expect(inserts.map(([, params]) => params[7])).toEqual([
+      "https://www.scmp.com/author/chris-wood", "#voice-system",
+    ]);
+    expect(sendAlertEmail.mock.calls[0][0].body).toContain("Bylined writing archive");
+    expect(sendAlertEmail.mock.calls[1][0].body).toContain("Voice system section");
+  });
+
+  it("supports every link currently shown on the portfolio", async () => {
+    const html = readFileSync(new URL("../portfolio.html", import.meta.url), "utf8");
+    const targets = [...html.slice(html.indexOf("<body>")).matchAll(/<a\b[^>]*href="([^"]+)"/g)]
+      .map((match) => match[1]);
+    expect(targets).toHaveLength(12);
+    for (const target of targets) {
+      expect((await post({ ...visit, event: "link_click", target })).status).toBe(200);
+    }
+    await vi.waitFor(() => expect(sendAlertEmail).toHaveBeenCalledTimes(12));
+  });
+
+  it("logs repeat activity but groups repeat alerts across reloads", async () => {
+    for (const sid of [visit.sid, "another-portfolio-session"]) {
+      expect((await post({ ...visit, sid })).status).toBe(200);
+      expect((await post({ ...visit, sid, event: "link_click", target: "#platform" })).status).toBe(200);
+    }
+    await vi.waitFor(() => expect(sendAlertEmail).toHaveBeenCalledTimes(2));
+    expect(dbQuery.mock.calls.filter(([sql]) => sql.startsWith("INSERT"))).toHaveLength(4);
+  });
+
+  it("ignores known self visits, probes and bots without recording or emailing", async () => {
+    for (const headers of [
+      { "User-Agent": "Station9-selftest/probe-check" },
+      { "User-Agent": "Googlebot" },
+      { "User-Agent": "Mozilla/5.0 HeadlessChrome" },
+      { "X-Forwarded-For": "152.233.29.1" },
+    ]) {
+      expect((await post(visit, headers)).status).toBe(200);
+    }
+    expect(dbQuery).not.toHaveBeenCalled();
+    expect(sendAlertEmail).not.toHaveBeenCalled();
+  });
+
+  it("rejects unapproved destinations and event types without recording or emailing", async () => {
+    for (const body of [
+      { ...visit, event: "link_click", target: "https://other.example.test/?email=private" },
+      { ...visit, event: "link_click", target: "https://www.station9studio.co.uk/admin" },
+      { ...visit, event: "link_click", target: "#voice-system?secret=private" },
+      { ...visit, event: "complete" },
+      { ...visit, target: "https://other.example.test" },
+    ]) expect((await post(body)).status).toBe(400);
+    expect(dbQuery).not.toHaveBeenCalled();
+    expect(sendAlertEmail).not.toHaveBeenCalled();
+  });
+
+  it("keeps the existing cross-site safeguards and coach event validation", async () => {
+    expect((await post(visit, { Origin: "https://other.example.test" })).status).toBe(403);
+    expect((await post({ ...event, event: "link_click", target: "#platform" })).status).toBe(400);
+    expect(dbQuery).not.toHaveBeenCalled();
+    expect(sendAlertEmail).not.toHaveBeenCalled();
   });
 });

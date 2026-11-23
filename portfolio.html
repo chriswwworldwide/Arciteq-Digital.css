@@ -418,13 +418,19 @@
         <h2>2 — The voiceprint engine</h2>
         <p class="sintro">
           This is the Soda job, already running on a real person. Roxjaya's
-          coach doesn't write her news takes — her voice was sampled from her
-          own captions and messages: her tone, her rhythm, her word choices, not
-          a generic "casual Indonesian" register. That sampling produces a
-          voiceprint — a spec detailed enough that the system publishes weekly
-          commentary a stranger would mistake for her. Her regulars would read
-          these and hear <em>her</em>. In a second language, because the
-          voiceprint carries the voice — not the editor's fluency.
+          coach doesn't write her news takes — the raw material is captured
+          first: her captions, her messages, her conversations. From that, a
+          voiceprint is derived — a spec detailed enough that the system
+          publishes weekly commentary a stranger would mistake for her: her
+          tone, her rhythm, her word choices, not a generic "casual
+          Indonesian" register. Her regulars would read these and hear
+          <em>her</em> — in a second language, because the voiceprint carries
+          the voice, not the editor's fluency. The same pipeline carries the
+          other half of the job: a recorded meeting, conversation or passing
+          thought becomes a source-grounded brief, and one brief becomes a
+          technical post, a webinar segment, a video script, a social thread
+          or a customer story — each drafted in the voice that channel calls
+          for.
         </p>
         <div class="grid">
           <a class="card reveal" href="https://roxjaya.com/roxjaya/news.html">
@@ -591,6 +597,7 @@
           >
           · Editor, Post Magazine (SCMP) 2018–24 · Founder, Arciteq Digital
         </p>
+        <p style="font-size: 12px">Visits and link clicks are recorded without tracking cookies.</p>
       </footer>
     </div>
     <script>
@@ -608,6 +615,52 @@
         e.style.transitionDelay = (i % 2) * 90 + "ms";
         io.observe(e);
       });
+    </script>
+    <script>
+      (() => {
+        if (
+          new URLSearchParams(location.search).get("selftest") === "1" ||
+          navigator.doNotTrack === "1" ||
+          navigator.globalPrivacyControl ||
+          !globalThis.crypto?.randomUUID
+        ) return;
+        const sid = `portfolio-${crypto.randomUUID()}`;
+        const send = (event, target) => {
+          const body = JSON.stringify({ slug: "portfolio", event, sid, ...(target ? { target } : {}) });
+          try {
+            if (navigator.sendBeacon?.("/api/pitch-event", new Blob([body], { type: "application/json" }))) return;
+          } catch {}
+          fetch("/api/pitch-event", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body,
+            keepalive: true,
+            credentials: "same-origin",
+          }).catch(() => {});
+        };
+        let viewed = false;
+        const view = () => {
+          if (viewed || document.visibilityState !== "visible") return;
+          viewed = true;
+          send("view");
+        };
+        document.addEventListener("visibilitychange", view);
+        view();
+        const trackLink = (event) => {
+          if (event.type === "auxclick" && event.button !== 1) return;
+          const link = event.target.closest?.("a[href]");
+          if (!link || document.visibilityState !== "visible") return;
+          const destination = new URL(link.href, location.href);
+          if (!/^https?:$/.test(destination.protocol)) return;
+          view();
+          const target = destination.origin === location.origin && destination.pathname === location.pathname
+            ? destination.hash
+            : destination.origin + destination.pathname;
+          if (target) send("link_click", target);
+        };
+        document.addEventListener("click", trackLink);
+        document.addEventListener("auxclick", trackLink);
+      })();
     </script>
   </body>
 </html>

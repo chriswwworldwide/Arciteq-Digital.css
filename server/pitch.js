@@ -62,6 +62,21 @@ const realIp = (req) => {
   return cleanStr(req.ip || "", 60);
 };
 
+const PORTFOLIO_TARGETS = new Map([
+  ["#editorial-work", "Editorial work section"],
+  ["#voice-system", "Voice system section"],
+  ["#platform", "Platform section"],
+  ["https://www.scmp.com/magazines/post-magazine/long-reads/article/3247902/how-ai-development-fostered-digital-sweatshop-and-why-it-matters-technologys-future", "AI digital sweatshop feature"],
+  ["https://www.scmp.com/magazines/post-magazine/long-reads/article/3230746/quantum-computing-could-give-ai-rocket-fuel-it-needs-become-transformative-its-not-there-yet", "Quantum computing feature"],
+  ["https://www.scmp.com/magazines/post-magazine/long-reads/article/3200976/ai-rewriting-rules-creativity-what-does-mean-human-imagination", "AI and creativity feature"],
+  ["https://www.scmp.com/author/chris-wood", "Bylined writing archive"],
+  ["https://roxjaya.com/roxjaya/news.html", "Roxjaya voice and news example"],
+  ["https://roxjaya.com/roxjaya/", "Roxjaya coaching website"],
+  ["https://www.station9studio.co.uk/", "Station 9 interactive builder"],
+  ["https://www.station9studio.co.uk/faisalpma/", "Faisal PMA concept demo"],
+  ["https://www.linkedin.com/in/chris-wood-26a753347", "LinkedIn profile"],
+]);
+
 const VALID_SLUGS = new Set([
   "marcdean",
   "faisalpma",
@@ -370,6 +385,44 @@ export function createPitchRouter({ adminApiKey }) {
 
     if (Buffer.byteLength(JSON.stringify(req.body || {})) > 4096) return res.status(413).json({ ok: false });
     if (typeof req.body?.sid !== 'string' || !/^[a-zA-Z0-9_-]{8,64}$/.test(req.body.sid)) return res.status(400).json({ ok: false });
+    if (slug === "portfolio") {
+      const target = req.body?.target;
+      if (
+        (event !== "view" && event !== "link_click") ||
+        (event === "view" && target !== undefined) ||
+        (event === "link_click" && !PORTFOLIO_TARGETS.has(target))
+      ) return res.status(400).json({ ok: false });
+
+      const ua = cleanStr(req.headers["user-agent"], 200);
+      const ip = realIp(req);
+      if (isSelfVisitor(ip, ua) || /bot|crawler|spider|preview|headless|slurp|prefetch/i.test(ua)) {
+        return res.json({ ok: true, ignored: true });
+      }
+      if (await ensureTable()) {
+        await logEvent({
+          slug, event, sessionId, path: target || "/portfolio.html",
+        });
+      }
+      const label = event === "view"
+        ? "opened Chris Wood's portfolio"
+        : `clicked ${PORTFOLIO_TARGETS.get(target)}`;
+      enqueueAlert(async () => {
+        const result = await sendAlertEmail({
+          to: cleanStr(process.env.PITCH_NOTIFY_TO || "chriswworldwide@outlook.com"),
+          subject: `Portfolio: ${label}`,
+          body: [
+            `Event: ${label}`,
+            `Page: https://www.station9studio.co.uk/portfolio.html`,
+            target ? `Destination: ${target}` : null,
+            `Anonymous session: ${sessionId}`,
+            `Time: ${new Date().toISOString()}`,
+            "Visitor identity and employer are not verified.",
+          ].filter(Boolean).join("\n"),
+        });
+        if (!result?.ok) console.warn("[portfolio-alert] send failed:", result);
+      }, `portfolio:${ip}:${event}:${target || ""}`);
+      return res.json({ ok: true });
+    }
     if (!VALID_SLUGS.has(slug) || !VALID_EVENTS.has(event)) {
       return res.status(400).json({ ok: false });
     }

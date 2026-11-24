@@ -25,6 +25,8 @@ jobs:
       - name: Discover and publish Asia race dates
         env:
           AUTO_PUBLISH: "true"
+          SITE_URL: ${{ secrets.ROXJAYA_SITE_URL }}
+          ADMIN_API_KEY: ${{ secrets.ROXJAYA_ADMIN_KEY }}
         run: node roxjaya/automation/hyrox-sync.js
       - name: Check Roxjaya news safeguards
         run: node --test tests/roxjaya-news.test.mjs

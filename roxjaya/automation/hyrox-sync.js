@@ -382,6 +382,21 @@ async function main() {
       applied += result.applied.length;
     }
     console.log(`published: ${applied} race update(s)`);
+    // Alerts have no file patch (e.g. "results are out — copy finishers").
+    // They still need to reach the owner inbox so the weekly digest sees them.
+    const alertsOnly = candidates.filter(
+      (c) => !(Array.isArray(c.apply) && c.apply.length),
+    );
+    if (alertsOnly.length && SITE_URL && ADMIN_KEY) {
+      const res = await postInbox(alertsOnly);
+      console.log(
+        `inbox alerts: +${res.added} new, ${res.updated} updated, ${res.pending} pending`,
+      );
+    } else if (alertsOnly.length) {
+      console.warn(
+        `${alertsOnly.length} alert(s) not delivered (no SITE_URL/ADMIN_API_KEY)`,
+      );
+    }
     return;
   }
   if (!SITE_URL || !ADMIN_KEY) {

@@ -295,12 +295,15 @@ Do not invent personal experiences, attendance, results, private opinions, clien
       !normalise(facts).includes(normalise(evidence))
     )
       return reject("unsupported evidence", draft);
+    const digitsOnly = (s) => s.replace(/[.,:]/g, "");
     const numbers = new Set(
-      `${facts} ${source.date}`.match(/\b\d+(?:[.,:]\d+)*\b/g) || [],
+      (`${facts} ${source.date}`.match(/\b\d+(?:[.,:]\d+)*\b/g) || []).map(
+        digitsOnly,
+      ),
     );
     if (
       (`${summary} ${take}`.match(/\b\d+(?:[.,:]\d+)*\b/g) || []).some(
-        (number) => !numbers.has(number),
+        (number) => !numbers.has(digitsOnly(number)),
       )
     )
       return reject("unsupported numbers", draft);

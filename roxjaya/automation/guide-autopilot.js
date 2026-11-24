@@ -117,7 +117,7 @@ async function draft(topic, existingTitles) {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 4000,
+      max_tokens: 8000,
       messages: [{ role: "user", content: buildPrompt(topic, existingTitles) }],
     }),
   });
@@ -126,6 +126,8 @@ async function draft(topic, existingTitles) {
       `anthropic ${res.status}: ${(await res.text()).slice(0, 300)}`,
     );
   const data = await res.json();
+  if (data.stop_reason && data.stop_reason !== "end_turn")
+    throw new Error(`model output truncated (${data.stop_reason})`);
   const text = (data.content || []).map((c) => c.text || "").join("");
   const start = text.indexOf("{");
   const end = text.lastIndexOf("}");

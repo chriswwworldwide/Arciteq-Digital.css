@@ -224,28 +224,66 @@
         Threads comment section.
       </p>
 
-      <h3>The moment it spread</h3>
-      <figure
-        class="viral-montage"
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:1.5rem 0"
-      >
+      <h3>The moment it went viral</h3>
+      <style>
+        .viral-montage {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 14px;
+          align-items: start;
+          margin: 1.5rem 0;
+        }
+        .viral-montage img {
+          width: 100%;
+          height: auto;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+          background: #111;
+        }
+        .viral-montage img:nth-child(1) {
+          transform: rotate(-2.5deg) translateY(10px);
+        }
+        .viral-montage img:nth-child(2) {
+          transform: rotate(1.5deg) translateY(-6px) scale(1.04);
+          position: relative;
+          z-index: 1;
+        }
+        .viral-montage img:nth-child(3) {
+          transform: rotate(-1deg) translateY(14px);
+        }
+        @media (max-width: 640px) {
+          .viral-montage {
+            grid-template-columns: 1fr 1fr;
+          }
+          .viral-montage img:nth-child(1) {
+            transform: rotate(-2deg);
+          }
+          .viral-montage img:nth-child(2) {
+            transform: rotate(1.5deg) scale(1.02);
+          }
+          .viral-montage img:nth-child(3) {
+            grid-column: 1 / -1;
+            max-width: 68%;
+            margin: 0 auto;
+            transform: rotate(-1.5deg);
+          }
+        }
+      </style>
+      <figure class="viral-montage">
         <img
           src="/roxjaya/images/jrf-viral-filed.jpg"
           alt="FILED coverage card: Dina Bawden finishes 10K JRF 2026 in 63 minutes"
           loading="lazy"
-          style="width:100%;height:auto;border-radius:12px"
         />
         <img
           src="/roxjaya/images/jrf-viral-infosulawesi.jpg"
           alt="Info Sulawesi graphic: pregnant runner completes 10K at Jakarta Running Festival"
           loading="lazy"
-          style="width:100%;height:auto;border-radius:12px"
         />
         <img
           src="/roxjaya/images/jrf-viral-kultur.jpg"
           alt="kulturdomestik Instagram post retelling Dina's story to its followers"
           loading="lazy"
-          style="width:100%;height:auto;border-radius:12px"
         />
       </figure>
       <p class="caption" style="font-size:.85rem;opacity:.75;margin-top:-.75rem">

@@ -146,6 +146,27 @@ export function plainExcerpt(html) {
   return `${text.slice(0, 280)}${text.length > 280 ? "…" : ""} (via source)`;
 }
 
+/** Best internal page for a story: keeps readers on roxjaya.com and spreads
+ * link authority to the pages Google already surfaces. */
+export function internalLinkFor(it) {
+  const text = `${it.title} ${it.excerpt || ""}`;
+  const rules = [
+    [/\b(results?|leaderboard|podium|finish(?:er|ing)?\s?times?|won|winners?|champion)/i, "/roxjaya/results/", "Leaderboard Indonesia →"],
+    [/jakarta/i, "/roxjaya/hyrox-jakarta/", "Panduan race Jakarta →"],
+    [/(kuala lumpur|kl\b)/i, "/roxjaya/race-planner/#kuala-lumpur", "Race guide →"],
+    [/singapore|singapura/i, "/roxjaya/race-planner/#singapore", "Race guide →"],
+    [/seoul/i, "/roxjaya/race-planner/#seoul", "Race guide →"],
+    [/bangkok/i, "/roxjaya/race-planner/#bangkok", "Race guide →"],
+    [/hong kong/i, "/roxjaya/race-planner/#hong-kong", "Race guide →"],
+    [/taipei/i, "/roxjaya/race-planner/#taipei", "Race guide →"],
+    [/manila/i, "/roxjaya/race-planner/#manila", "Race guide →"],
+    [/tokyo|osaka/i, "/roxjaya/race-planner/#tokyo", "Race guide →"],
+    [/\b(train(?:ing)?|latihan|workout|strength|teknik|tips)\b/i, "/roxjaya/stations-prep/", "Panduan stasiun →"],
+  ];
+  const hit = rules.find(([re]) => re.test(text));
+  return hit ? { link: hit[1], linkLabel: hit[2] } : {};
+}
+
 /** Turn selected stories into inbox candidates with an editable summary/take. */
 export function buildNewsCandidates(items) {
   return items.map((it) => {
@@ -182,6 +203,7 @@ export function buildNewsCandidates(items) {
             take: "",
             source: it.link,
             sourceName: it.sourceName,
+            ...internalLinkFor(it),
           },
         },
       ],

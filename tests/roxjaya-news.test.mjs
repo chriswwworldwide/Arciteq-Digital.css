@@ -113,17 +113,27 @@ for (const [label, change] of [
     "unsupported evidence",
     { evidence: "An invented statement not present in the source" },
   ],
-  ["wrong story identity", { id: "elsewhere" }],
 ]) {
-  test(`rejects ${label}`, async () => {
-    await assert.rejects(
-      draftNewsItems(
-        [story],
-        options(async () => response([{ ...copy, ...change }])),
+  test(`drops ${label} without losing the rest of the batch`, async () => {
+    const drafted = await draftNewsItems(
+      [{ ...story, title: "Valid story one" }, story],
+      options(async () =>
+        response([copy, { ...copy, id: "1", ...change }]),
       ),
     );
+    assert.equal(drafted.length, 1);
+    assert.equal(drafted[0].summary, copy.summary);
   });
 }
+
+test("wrong story identity fails closed", async () => {
+  await assert.rejects(
+    draftNewsItems(
+      [story],
+      options(async () => response([{ ...copy, id: "elsewhere" }])),
+    ),
+  );
+});
 
 test("missing or duplicate results fail rather than silently losing a story", async () => {
   await assert.rejects(

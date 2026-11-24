@@ -35,6 +35,7 @@ jobs:
           ANTHROPIC_NEWS_MODEL: claude-sonnet-5-5
         run: node roxjaya/automation/news-sync.js
       - name: Persist published updates
+        if: always()
         run: |
           if git diff --quiet -- roxjaya/data/news.json roxjaya/data/cities.json roxjaya/data/events.json; then exit 0; fi
           git add roxjaya/data/news.json roxjaya/data/cities.json roxjaya/data/events.json

@@ -266,6 +266,13 @@ Do not invent personal experiences, attendance, results, private opinions, clien
   const normalise = (value) =>
     String(value).toLowerCase().replace(/\s+/g, " ").trim();
   return sources.flatMap((source, i) => {
+    const reject = (reason, draft) => {
+      console.warn(
+        `news writer story ${source.id} ("${source.title.slice(0, 80)}") rejected: ${reason}` +
+          (draft ? ` | summary=${JSON.stringify(draft.summary)} take=${JSON.stringify(draft.take)} evidence=${JSON.stringify(draft.evidence)}` : ""),
+      );
+      return [];
+    };
     const draft = drafts.get(source.id);
     if (draft.skip === true) return [];
     const { summary, take, evidence } = draft;
@@ -280,14 +287,14 @@ Do not invent personal experiences, attendance, results, private opinions, clien
       !bahasa.test(summary) ||
       !bahasa.test(take)
     )
-      throw new Error("news writer returned invalid summary or commentary");
+      return reject("invalid summary or commentary", draft);
     const facts = `${source.title} ${source.excerpt}`;
     if (
       typeof evidence !== "string" ||
       evidence.trim().length < 16 ||
       !normalise(facts).includes(normalise(evidence))
     )
-      throw new Error("news writer returned unsupported evidence");
+      return reject("unsupported evidence", draft);
     const numbers = new Set(
       `${facts} ${source.date}`.match(/\b\d+(?:[.,:]\d+)*\b/g) || [],
     );
@@ -296,7 +303,7 @@ Do not invent personal experiences, attendance, results, private opinions, clien
         (number) => !numbers.has(number),
       )
     )
-      throw new Error("news writer introduced unsupported numbers");
+      return reject("unsupported numbers", draft);
     return [
       {
         ...buildNewsCandidates([items[i]])[0].apply[0].value,
@@ -364,10 +371,12 @@ async function main() {
     const current = JSON.parse(fs.readFileSync(file, "utf8"));
     const voice = fs.readFileSync(path.join(here, "..", "VOICE.md"), "utf8");
     const additions = await draftNewsItems(picked, { voice });
-    if (!additions.length)
-      throw new Error(
+    if (!additions.length) {
+      console.warn(
         "no news passed editorial checks; existing feed unchanged",
       );
+      return;
+    }
     current.items = mergeNewsItems(current.items || [], additions);
     const temporary = `${file}.tmp`;
     fs.writeFileSync(temporary, `${JSON.stringify(current, null, 2)}\n`);

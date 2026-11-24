@@ -54,6 +54,8 @@ export const TOPICS = [
   "Mental skills for HYROX: pacing plans, 'next station only' thinking and the rowing slump",
   "Common HYROX mistakes first-timers in Indonesia make, and the fix for each",
   "Building a HYROX community in your Indonesian city: squad sims, meet-ups and race trips",
+  "Kembali latihan setelah melahirkan (Bahasa): postpartum return-to-training — kapan mulai, apa yang aman, dan jangan buru-buru",
+  "Strength training untuk perempuan pemula di Jakarta (Bahasa): mulai dari mana, seberapa sering, dan mitos yang harus dilupakan",
 ];
 
 async function api(pathname, init = {}) {

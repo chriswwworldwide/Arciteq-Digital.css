@@ -211,6 +211,22 @@ a.wordmark {
 .menu > li > button.nav-acc {
   color: var(--zone-accent);
 }
+.menu > li > .nav-acc {
+  min-height: 44px;
+  border: 0;
+  border-bottom: 2px solid currentColor;
+  border-bottom-color: color-mix(in srgb, currentColor 65%, transparent);
+  box-shadow: none;
+}
+.menu > li > .nav-acc:hover,
+.menu > li > .nav-acc[aria-expanded="true"] {
+  border-color: currentColor;
+  background: color-mix(in srgb, currentColor 8%, var(--paper-2));
+}
+.menu > li > .nav-acc:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
 
 .menu .caret {
   width: 8px;
